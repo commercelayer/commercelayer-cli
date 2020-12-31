@@ -41,7 +41,6 @@
     "inversify": "^5.0.5",
     "kleur": "^4.1.3",
     "lodash": "^4.17.20",
-    "node-emoji": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.0.3",
     "validator": "^13.5.2"
