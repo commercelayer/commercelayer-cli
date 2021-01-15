@@ -9,7 +9,12 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "baseUrl": "src",
+    "paths": {
+      "#typings": ["./typings/index"],
+      "#commands/*": ["./commands/*"]
+    }
   },
   "exclude": ["node_modules", "lib", "test"]
 }
