@@ -2,10 +2,10 @@ import { prompt } from 'inquirer'
 import _ from 'lodash'
 import validator from 'validator'
 import chalk from 'chalk'
-import fs from 'fs'
 import path from 'path'
 import newApplication from './new'
 import applicationsList from './list'
+import applicationEdit from './edit'
 
 const listOfOptions = [
   { name: 'Add application', value: 'new' },
@@ -70,6 +70,12 @@ const applications = async () => {
       applicationsPath,
     })
   if (application === 'list') applicationsList(applicationsPath)
+  if (application === 'edit')
+    applicationEdit({
+      path: applicationsPath,
+      questions: newApplicationQuestions,
+      defaultPath,
+    })
 }
 
 export default applications

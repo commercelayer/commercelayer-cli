@@ -10,6 +10,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "importHelpers": true,
+    "sourceMap": true,
     "baseUrl": "src",
     "paths": {
       "#typings": ["./typings/index"],

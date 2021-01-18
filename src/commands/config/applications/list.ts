@@ -4,7 +4,9 @@ type ApplicationsList = (path: string) => void
 
 const applicationsList: ApplicationsList = (path) => {
   const directories = fs.readdirSync(path)
-  directories.map((dir) => console.log(`- ${dir}`))
+  directories
+    .filter((dir) => dir !== 'default')
+    .map((dir) => console.log(`- ${dir}`))
 }
 
 export default applicationsList
