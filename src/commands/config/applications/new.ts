@@ -32,7 +32,7 @@ const newApplication: NewApplication = async (questions, config) => {
     clientSecret,
     scope,
   }
-  const content = JSON.stringify(appConfig)
+  const content = JSON.stringify(appConfig, null, 4)
   if (!fs.existsSync(root)) {
     fs.mkdirSync(root)
   }

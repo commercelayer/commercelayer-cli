@@ -47,7 +47,7 @@ const applicationEdit: ApplicationEdit = async ({
     clientSecret,
     scope,
   }
-  const content = JSON.stringify(appConfig)
+  const content = JSON.stringify(appConfig, null, 4)
   if (setAsDefault) {
     const appConfigPath = join(defaultPath, 'config.json')
     fs.writeFileSync(appConfigPath, content)
