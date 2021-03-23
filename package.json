@@ -45,7 +45,7 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "cl",
+    "bin": "commercelayer",
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-not-found",

@@ -4,9 +4,9 @@ commercelayer-cli-new
 Commerce Layer CLI
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/commercelayer-cli-new.svg)](https://npmjs.org/package/commercelayer-cli-new)
-[![Downloads/week](https://img.shields.io/npm/dw/commercelayer-cli-new.svg)](https://npmjs.org/package/commercelayer-cli-new)
-[![License](https://img.shields.io/npm/l/commercelayer-cli-new.svg)](https://github.com/commercelayer/commercelayer-cli-new/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/commercelayer-cli.svg)](https://npmjs.org/package/commercelayer-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/commercelayer-cli.svg)](https://npmjs.org/package/commercelayer-cli)
+[![License](https://img.shields.io/npm/l/commercelayer-cli.svg)](https://github.com/commercelayer/commercelayer-cli/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -15,39 +15,39 @@ Commerce Layer CLI
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g @commercelayer/commercelayer-cli-new
-$ cl COMMAND
+$ npm install -g @commercelayer/commercelayer-cli
+$ commercelayer COMMAND
 running command...
-$ cl (-v|--version|version)
-@commercelayer/commercelayer-cli-new/0.0.0 darwin-x64 node-v14.16.0
-$ cl --help [COMMAND]
+$ commercelayer (-v|--version|version)
+@commercelayer/commercelayer-cli/0.0.0 darwin-x64 node-v14.16.0
+$ commercelayer --help [COMMAND]
 USAGE
-  $ cl COMMAND
+  $ commercelayer COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`cl applications:current`](#cl-applicationscurrent)
-* [`cl applications:login`](#cl-applicationslogin)
-* [`cl applications:token`](#cl-applicationstoken)
-* [`cl get RESOURCE [ID]`](#cl-get-resource-id)
-* [`cl help [COMMAND]`](#cl-help-command)
-* [`cl plugins`](#cl-plugins)
-* [`cl plugins:available`](#cl-pluginsavailable)
-* [`cl plugins:inspect PLUGIN...`](#cl-pluginsinspect-plugin)
-* [`cl plugins:install PLUGIN...`](#cl-pluginsinstall-plugin)
-* [`cl plugins:link PLUGIN`](#cl-pluginslink-plugin)
-* [`cl plugins:uninstall PLUGIN...`](#cl-pluginsuninstall-plugin)
-* [`cl plugins:update`](#cl-pluginsupdate)
+* [`commercelayer applications:current`](#commercelayer-applicationscurrent)
+* [`commercelayer applications:login`](#commercelayer-applicationslogin)
+* [`commercelayer applications:token`](#commercelayer-applicationstoken)
+* [`commercelayer get RESOURCE [ID]`](#commercelayer-get-resource-id)
+* [`commercelayer help [COMMAND]`](#commercelayer-help-command)
+* [`commercelayer plugins`](#commercelayer-plugins)
+* [`commercelayer plugins:available`](#commercelayer-pluginsavailable)
+* [`commercelayer plugins:inspect PLUGIN...`](#commercelayer-pluginsinspect-plugin)
+* [`commercelayer plugins:install PLUGIN...`](#commercelayer-pluginsinstall-plugin)
+* [`commercelayer plugins:link PLUGIN`](#commercelayer-pluginslink-plugin)
+* [`commercelayer plugins:uninstall PLUGIN...`](#commercelayer-pluginsuninstall-plugin)
+* [`commercelayer plugins:update`](#commercelayer-pluginsupdate)
 
-## `cl applications:current`
+## `commercelayer applications:current`
 
-set or show the current organization
+set or show the current CLI application
 
 ```
 USAGE
-  $ cl applications:current
+  $ commercelayer applications:current
 
 OPTIONS
   -o, --organization=organization  organization slug
@@ -56,13 +56,13 @@ OPTIONS
 
 _See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/current.ts)_
 
-## `cl applications:login`
+## `commercelayer applications:login`
 
 perform CLI login to Commerce Layer
 
 ```
 USAGE
-  $ cl applications:login
+  $ commercelayer applications:login
 
 OPTIONS
   -i, --clientId=clientId          (required) organization client_id
@@ -72,13 +72,13 @@ OPTIONS
 
 _See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/login.ts)_
 
-## `cl applications:token`
+## `commercelayer applications:token`
 
 get new access_token from Commerce Layer
 
 ```
 USAGE
-  $ cl applications:token
+  $ commercelayer applications:token
 
 OPTIONS
   -o, --organization=organization  (required) organization slug
@@ -88,13 +88,13 @@ OPTIONS
 
 _See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/token.ts)_
 
-## `cl get RESOURCE [ID]`
+## `commercelayer get RESOURCE [ID]`
 
 Get resources from Commerce Layer
 
 ```
 USAGE
-  $ cl get RESOURCE [ID]
+  $ commercelayer get RESOURCE [ID]
 
 OPTIONS
   -h, --help               show CLI help
@@ -103,13 +103,13 @@ OPTIONS
 
 _See code: [src/commands/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/get.ts)_
 
-## `cl help [COMMAND]`
+## `commercelayer help [COMMAND]`
 
-display help for cl
+display help for commercelayer
 
 ```
 USAGE
-  $ cl help [COMMAND]
+  $ commercelayer help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -120,41 +120,41 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `cl plugins`
+## `commercelayer plugins`
 
 list installed plugins
 
 ```
 USAGE
-  $ cl plugins
+  $ commercelayer plugins
 
 OPTIONS
   --core  show core plugins
 
 EXAMPLE
-  $ cl plugins
+  $ commercelayer plugins
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/index.ts)_
 
-## `cl plugins:available`
+## `commercelayer plugins:available`
 
 describe the command here
 
 ```
 USAGE
-  $ cl plugins:available
+  $ commercelayer plugins:available
 ```
 
 _See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/plugins/available.ts)_
 
-## `cl plugins:inspect PLUGIN...`
+## `commercelayer plugins:inspect PLUGIN...`
 
 displays installation properties of a plugin
 
 ```
 USAGE
-  $ cl plugins:inspect PLUGIN...
+  $ commercelayer plugins:inspect PLUGIN...
 
 ARGUMENTS
   PLUGIN  [default: .] plugin to inspect
@@ -164,18 +164,18 @@ OPTIONS
   -v, --verbose
 
 EXAMPLE
-  $ cl plugins:inspect myplugin
+  $ commercelayer plugins:inspect myplugin
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/inspect.ts)_
 
-## `cl plugins:install PLUGIN...`
+## `commercelayer plugins:install PLUGIN...`
 
 installs a plugin into the CLI
 
 ```
 USAGE
-  $ cl plugins:install PLUGIN...
+  $ commercelayer plugins:install PLUGIN...
 
 ARGUMENTS
   PLUGIN  plugin to install
@@ -195,23 +195,23 @@ DESCRIPTION
   the CLI without the need to patch and update the whole CLI.
 
 ALIASES
-  $ cl plugins:add
+  $ commercelayer plugins:add
 
 EXAMPLES
-  $ cl plugins:install myplugin 
-  $ cl plugins:install https://github.com/someuser/someplugin
-  $ cl plugins:install someuser/someplugin
+  $ commercelayer plugins:install myplugin 
+  $ commercelayer plugins:install https://github.com/someuser/someplugin
+  $ commercelayer plugins:install someuser/someplugin
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/install.ts)_
 
-## `cl plugins:link PLUGIN`
+## `commercelayer plugins:link PLUGIN`
 
 links a plugin into the CLI for development
 
 ```
 USAGE
-  $ cl plugins:link PLUGIN
+  $ commercelayer plugins:link PLUGIN
 
 ARGUMENTS
   PATH  [default: .] path to plugin
@@ -227,18 +227,18 @@ DESCRIPTION
   command will override the user-installed or core plugin implementation. This is useful for development work.
 
 EXAMPLE
-  $ cl plugins:link myplugin
+  $ commercelayer plugins:link myplugin
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/link.ts)_
 
-## `cl plugins:uninstall PLUGIN...`
+## `commercelayer plugins:uninstall PLUGIN...`
 
 removes a plugin from the CLI
 
 ```
 USAGE
-  $ cl plugins:uninstall PLUGIN...
+  $ commercelayer plugins:uninstall PLUGIN...
 
 ARGUMENTS
   PLUGIN  plugin to uninstall
@@ -248,19 +248,19 @@ OPTIONS
   -v, --verbose
 
 ALIASES
-  $ cl plugins:unlink
-  $ cl plugins:remove
+  $ commercelayer plugins:unlink
+  $ commercelayer plugins:remove
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/uninstall.ts)_
 
-## `cl plugins:update`
+## `commercelayer plugins:update`
 
 update installed plugins
 
 ```
 USAGE
-  $ cl plugins:update
+  $ commercelayer plugins:update
 
 OPTIONS
   -h, --help     show CLI help
