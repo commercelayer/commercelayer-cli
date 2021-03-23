@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "oclif",
+    "oclif-typescript"
+  ],
+  "rules": {
+    // "no-console": "off",
+    "indent": "off",
+    "object-curly-spacing": "off",
+    "padded-blocks": "off",
+    "no-multiple-empty-lines": "off",
+    "array-bracket-spacing": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-inferrable-types": "off"
+  }
+}

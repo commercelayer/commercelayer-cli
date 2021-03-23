@@ -1,103 +1,271 @@
-# TSDX User Guide
+commercelayer-cli-new
+=====================
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+Commerce Layer CLI
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be published to NPM. If you’re looking to build a Node app, you could use `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/commercelayer-cli-new.svg)](https://npmjs.org/package/commercelayer-cli-new)
+[![Downloads/week](https://img.shields.io/npm/dw/commercelayer-cli-new.svg)](https://npmjs.org/package/commercelayer-cli-new)
+[![License](https://img.shields.io/npm/l/commercelayer-cli-new.svg)](https://github.com/commercelayer/commercelayer-cli-new/blob/master/package.json)
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
+<!-- toc -->
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
+# Usage
+<!-- usage -->
+```sh-session
+$ npm install -g @commercelayer/commercelayer-cli-new
+$ cl COMMAND
+running command...
+$ cl (-v|--version|version)
+@commercelayer/commercelayer-cli-new/0.0.0 darwin-x64 node-v14.16.0
+$ cl --help [COMMAND]
+USAGE
+  $ cl COMMAND
+...
+```
+<!-- usagestop -->
+# Commands
+<!-- commands -->
+* [`cl applications:current`](#cl-applicationscurrent)
+* [`cl applications:login`](#cl-applicationslogin)
+* [`cl applications:token`](#cl-applicationstoken)
+* [`cl get RESOURCE [ID]`](#cl-get-resource-id)
+* [`cl help [COMMAND]`](#cl-help-command)
+* [`cl plugins`](#cl-plugins)
+* [`cl plugins:available`](#cl-pluginsavailable)
+* [`cl plugins:inspect PLUGIN...`](#cl-pluginsinspect-plugin)
+* [`cl plugins:install PLUGIN...`](#cl-pluginsinstall-plugin)
+* [`cl plugins:link PLUGIN`](#cl-pluginslink-plugin)
+* [`cl plugins:uninstall PLUGIN...`](#cl-pluginsuninstall-plugin)
+* [`cl plugins:update`](#cl-pluginsupdate)
 
-## Commands
+## `cl applications:current`
 
-TSDX scaffolds your new library inside `/src`.
+set or show the current organization
 
-To run TSDX, use:
+```
+USAGE
+  $ cl applications:current
 
-```bash
-npm start # or yarn start
+OPTIONS
+  -o, --organization=organization  organization slug
+  --live                           live execution mode
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/current.ts)_
 
-To do a one-off build, use `npm run build` or `yarn build`.
+## `cl applications:login`
 
-To run tests, use `npm test` or `yarn test`.
+perform CLI login to Commerce Layer
 
-## Configuration
+```
+USAGE
+  $ cl applications:login
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle Analysis
-
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+OPTIONS
+  -i, --clientId=clientId          (required) organization client_id
+  -o, --organization=organization  (required) organization slug
+  -s, --clientSecret=clientSecret  (required) organization client_secret
 ```
 
-### Rollup
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/login.ts)_
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+## `cl applications:token`
 
-### TypeScript
+get new access_token from Commerce Layer
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+```
+USAGE
+  $ cl applications:token
 
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
+OPTIONS
+  -o, --organization=organization  (required) organization slug
+  -s, --save                       save access_token
+  --live                           live execution mode
 ```
 
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/token.ts)_
 
-## Module Formats
+## `cl get RESOURCE [ID]`
 
-CJS, ESModules, and UMD module formats are supported.
+Get resources from Commerce Layer
 
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
+```
+USAGE
+  $ cl get RESOURCE [ID]
 
-## Named Exports
+OPTIONS
+  -h, --help               show CLI help
+  -i, --includes=includes  comma separated resources to include
+```
 
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
+_See code: [src/commands/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/get.ts)_
 
-## Including Styles
+## `cl help [COMMAND]`
 
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
+display help for cl
 
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
+```
+USAGE
+  $ cl help [COMMAND]
 
-## Publishing to NPM
+ARGUMENTS
+  COMMAND  command to show help for
 
-We recommend using [np](https://github.com/sindresorhus/np).
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
+## `cl plugins`
+
+list installed plugins
+
+```
+USAGE
+  $ cl plugins
+
+OPTIONS
+  --core  show core plugins
+
+EXAMPLE
+  $ cl plugins
+```
+
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/index.ts)_
+
+## `cl plugins:available`
+
+describe the command here
+
+```
+USAGE
+  $ cl plugins:available
+```
+
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/plugins/available.ts)_
+
+## `cl plugins:inspect PLUGIN...`
+
+displays installation properties of a plugin
+
+```
+USAGE
+  $ cl plugins:inspect PLUGIN...
+
+ARGUMENTS
+  PLUGIN  [default: .] plugin to inspect
+
+OPTIONS
+  -h, --help     show CLI help
+  -v, --verbose
+
+EXAMPLE
+  $ cl plugins:inspect myplugin
+```
+
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/inspect.ts)_
+
+## `cl plugins:install PLUGIN...`
+
+installs a plugin into the CLI
+
+```
+USAGE
+  $ cl plugins:install PLUGIN...
+
+ARGUMENTS
+  PLUGIN  plugin to install
+
+OPTIONS
+  -f, --force    yarn install with force flag
+  -h, --help     show CLI help
+  -v, --verbose
+
+DESCRIPTION
+  Can be installed from npm or a git url.
+
+  Installation of a user-installed plugin will override a core plugin.
+
+  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command 
+  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in 
+  the CLI without the need to patch and update the whole CLI.
+
+ALIASES
+  $ cl plugins:add
+
+EXAMPLES
+  $ cl plugins:install myplugin 
+  $ cl plugins:install https://github.com/someuser/someplugin
+  $ cl plugins:install someuser/someplugin
+```
+
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/install.ts)_
+
+## `cl plugins:link PLUGIN`
+
+links a plugin into the CLI for development
+
+```
+USAGE
+  $ cl plugins:link PLUGIN
+
+ARGUMENTS
+  PATH  [default: .] path to plugin
+
+OPTIONS
+  -h, --help     show CLI help
+  -v, --verbose
+
+DESCRIPTION
+  Installation of a linked plugin will override a user-installed or core plugin.
+
+  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello' 
+  command will override the user-installed or core plugin implementation. This is useful for development work.
+
+EXAMPLE
+  $ cl plugins:link myplugin
+```
+
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/link.ts)_
+
+## `cl plugins:uninstall PLUGIN...`
+
+removes a plugin from the CLI
+
+```
+USAGE
+  $ cl plugins:uninstall PLUGIN...
+
+ARGUMENTS
+  PLUGIN  plugin to uninstall
+
+OPTIONS
+  -h, --help     show CLI help
+  -v, --verbose
+
+ALIASES
+  $ cl plugins:unlink
+  $ cl plugins:remove
+```
+
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/uninstall.ts)_
+
+## `cl plugins:update`
+
+update installed plugins
+
+```
+USAGE
+  $ cl plugins:update
+
+OPTIONS
+  -h, --help     show CLI help
+  -v, --verbose
+```
+
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/update.ts)_
+<!-- commandsstop -->
