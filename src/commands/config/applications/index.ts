@@ -34,7 +34,7 @@ const newApplicationQuestions = params.map(({ slug, label, tip, required }) => {
     type: 'input',
     message,
     validate: (value: string) => {
-      if (_.isEmpty(value) && required) return chalk.red(`Can't be blank.`)
+      if (required && _.isEmpty(value)) return chalk.red(`Can't be blank.`)
       if (slug === 'organizationSlug' && !validator.isSlug(value))
         return chalk.red(`Must be a valid slug.`)
       return true
@@ -68,14 +68,18 @@ const applications = async () => {
       root,
       defaultPath,
       applicationsPath,
-    })
+  })
+  else
   if (application === 'list') applicationsList(applicationsPath)
+  else
   if (application === 'edit')
     applicationEdit({
       path: applicationsPath,
       questions: newApplicationQuestions,
       defaultPath,
     })
+  else
+  if (application === 'remove') {}
 }
 
 export default applications
