@@ -4,9 +4,9 @@ commercelayer-cli-new
 Commerce Layer CLI
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/commercelayer-cli.svg)](https://npmjs.org/package/commercelayer-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/commercelayer-cli.svg)](https://npmjs.org/package/commercelayer-cli)
-[![License](https://img.shields.io/npm/l/commercelayer-cli.svg)](https://github.com/commercelayer/commercelayer-cli/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/commercelayer-cli.svg)](https://npmjs.org/package/@commercelayer/commercelayer-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/commercelayer-cli.svg)](https://npmjs.org/package/@commercelayer/commercelayer-cli)
+[![License](https://img.shields.io/npm/l/@commercelayer/commercelayer-cli.svg)](https://github.com/commercelayer/commercelayer-cli/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
