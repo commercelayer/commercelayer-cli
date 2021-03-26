@@ -8,6 +8,8 @@ export default class ApplicationsCurrent extends Command {
 
   static description = 'set or show the current CLI application'
 
+  static aliases = ['app:current']
+
   static flags = {
     // help: flags.help({ char: 'h' }),
     organization: flags.string({
@@ -37,7 +39,6 @@ export default class ApplicationsCurrent extends Command {
     const { flags } = this.parse(ApplicationsCurrent)
 
     if (flags.organization) {
-
       const app: AppKey = {
         key: appKey(flags.organization, flags.domain),
         mode: execMode(flags.live),
@@ -49,9 +50,11 @@ export default class ApplicationsCurrent extends Command {
     }
 
     const stored = clicfg.get(ConfigParams.currentApplication)
-    const current = `${stored.key}.${stored.mode}` || 'none'
-    const color = (current === 'none') ? chalk.italic.gray : chalk.bold.yellow
-    this.log(`Current application: ${color(current)}`)
+    if (stored) {
+      const current = `${stored.key}.${stored.mode}` || 'none'
+      const color = (current === 'none') ? chalk.italic.gray : chalk.bold.yellow
+      this.log(`Current application: ${color(current)}`)
+    } else this.warn('No current application defined')
 
     if (flags.info) {
       const info = readConfigFile(this.config, stored)

@@ -4,10 +4,11 @@ import chalk from 'chalk'
 
 const hook: Hook<'prerun'> = async function (opts) {
 
+  // Only plugins commands are affected by this hook
   if (!opts.Command.id.startsWith('plugins')) return
   if (opts.argv.length === 0) return
 
-  if (opts.Command.id === 'plugins:install') {
+  if (['plugins:install', 'plugins:uninstall'].includes(opts.Command.id)) {
 
     let index = -1
     let plugin
