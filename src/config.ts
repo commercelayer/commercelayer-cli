@@ -14,7 +14,7 @@ interface AppKey {
 
 
 interface AppAuth {
-	endpoint: string;
+	baseUrl: string;
 	clientId: string;
 	clientSecret: string;
 }
@@ -79,6 +79,7 @@ const readTokenFile = (config: Config.IConfig, app: AppKey): any => {
 export { createConfigDir, configFilePath, tokenFilePath, configFileExists, tokenFileExists, writeConfigFile, writeTokenFile, readConfigFile, readTokenFile }
 
 
+
 const currentOrganization = (): string | undefined => {
 	const current = clicfg.get(ConfigParams.currentApplication)
 	return current?.key
@@ -89,16 +90,18 @@ const currentModeLive = (): boolean => {
 	return current?.mode === 'live'
 }
 
+
 export { currentOrganization, currentModeLive }
+
 
 
 enum ConfigParams {
 	currentApplication = 'currentApplication'
 }
 
-
 const configParam = (param: ConfigParams): any => {
 	return clicfg.get(param)
 }
+
 
 export { ConfigParams, configParam }

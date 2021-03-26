@@ -1,7 +1,7 @@
 import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 import chalk from 'chalk'
-import { AppKey, readConfigFile, writeTokenFile, configFileExists, currentOrganization, currentModeLive } from '../../config'
+import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentOrganization, currentModeLive } from '../../config'
 import { execMode, appKey } from '../../common'
 import { IConfig } from '@oclif/config'
 import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
@@ -11,6 +11,8 @@ import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
 export default class ApplicationsToken extends Command {
 
   static description = 'get new access_token from Commerce Layer'
+
+  static aliases = ['app:token']
 
   static flags = {
     // help: flags.help({ char: 'h' }),
@@ -71,10 +73,19 @@ export default class ApplicationsToken extends Command {
 }
 
 
+const getAccessToken = async (auth: AppAuth): Promise<any> => {
+  return getIntegrationToken({
+    clientId: auth.clientId,
+    clientSecret: auth.clientSecret,
+    endpoint: auth.baseUrl,
+  })
+}
+
+
 const newAccessToken = async (config: IConfig, app: AppKey, save: boolean = false): Promise<AuthReturnType> => {
 
   const cfg = readConfigFile(config, app)
-  const token = await getIntegrationToken(cfg)
+  const token = await getAccessToken(cfg)
 
   if (save) writeTokenFile(config, app, token?.data)
 

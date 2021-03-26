@@ -7,7 +7,7 @@ import { newAccessToken } from '../../commands/applications/token'
 
 
 const excludedTopics: string[] = ['applications', 'plugins']
-const exludedCommands: string[] = ['applications:login', 'applications:token', 'applications:current']
+const exludedCommands: string[] = ['noc']
 
 
 const isCommandExcluded = (cmd: string): boolean => {

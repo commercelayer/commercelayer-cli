@@ -10,6 +10,8 @@ export default class ApplicationsLogin extends Command {
 
   static description = 'perform CLI login to Commerce Layer'
 
+  static aliases = ['app:login']
+
   static flags = {
     // help: flags.help({ char: 'h' }),
     organization: flags.string({
@@ -43,12 +45,12 @@ export default class ApplicationsLogin extends Command {
     const config: AppAuth = {
       clientId: flags.clientId,
       clientSecret: flags.clientSecret,
-      endpoint: baseURL(flags.organization, flags.domain),
+      baseUrl: baseURL(flags.organization, flags.domain),
     }
 
     try {
 
-      const auth = await getIntegrationToken(config)
+      const auth = await getAccessToken(config)
 
       const app = await getApplicationInfo(config, auth?.accessToken || '')
 
@@ -78,10 +80,18 @@ export default class ApplicationsLogin extends Command {
 }
 
 
+const getAccessToken = async (auth: AppAuth): Promise<any> => {
+  return getIntegrationToken({
+    clientId: auth.clientId,
+    clientSecret: auth.clientSecret,
+    endpoint: auth.baseUrl,
+  })
+}
+
 
 const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
 
-  api.init({ accessToken, endpoint: auth.endpoint })
+  api.init({ accessToken, endpoint: auth.baseUrl })
 
   // Organization info
   const org = await api.Organization.all()
