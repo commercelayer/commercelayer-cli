@@ -28,6 +28,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`commercelayer applications`](#commercelayer-applications)
+* [`commercelayer applications:available [FILE]`](#commercelayer-applicationsavailable-file)
 * [`commercelayer applications:current`](#commercelayer-applicationscurrent)
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:token`](#commercelayer-applicationstoken)
@@ -41,6 +43,36 @@ USAGE
 * [`commercelayer plugins:uninstall PLUGIN...`](#commercelayer-pluginsuninstall-plugin)
 * [`commercelayer plugins:update`](#commercelayer-pluginsupdate)
 
+## `commercelayer applications`
+
+show a list of all (logged in) available CLI applications
+
+```
+USAGE
+  $ commercelayer applications
+
+ALIASES
+  $ commercelayer applications:available
+```
+
+_See code: [src/commands/applications.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications.ts)_
+
+## `commercelayer applications:available [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ commercelayer applications:available [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/applications/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/available.ts)_
+
 ## `commercelayer applications:current`
 
 set or show the current CLI application
@@ -52,6 +84,9 @@ USAGE
 OPTIONS
   -o, --organization=organization  organization slug
   --live                           live execution mode
+
+ALIASES
+  $ commercelayer app:current
 ```
 
 _See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/current.ts)_
@@ -68,6 +103,9 @@ OPTIONS
   -i, --clientId=clientId          (required) organization client_id
   -o, --organization=organization  (required) organization slug
   -s, --clientSecret=clientSecret  (required) organization client_secret
+
+ALIASES
+  $ commercelayer app:login
 ```
 
 _See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/login.ts)_
@@ -81,9 +119,12 @@ USAGE
   $ commercelayer applications:token
 
 OPTIONS
-  -o, --organization=organization  (required) organization slug
+  -o, --organization=organization  (required) [default: brioni] organization slug
   -s, --save                       save access_token
   --live                           live execution mode
+
+ALIASES
+  $ commercelayer app:token
 ```
 
 _See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/token.ts)_
