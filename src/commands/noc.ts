@@ -5,6 +5,10 @@ export default class Noc extends Command {
   static hidden = true
 
   static flags = {
+    organization: flags.string({
+      required: false,
+      hidden: true,
+    }),
     accessToken: flags.string({
       required: false,
       hidden: true,
@@ -15,8 +19,8 @@ export default class Noc extends Command {
 
     this.log('-= NoC =-')
 
-    const { flags } = this.parse(Noc)
-    this.log(flags.accessToken)
+    // const { flags } = this.parse(Noc)
+    // this.log(flags.accessToken)
 
   }
 

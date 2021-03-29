@@ -2,6 +2,7 @@ import { Command, flags } from '@oclif/command'
 import chalk from 'chalk'
 import clicfg, { ConfigParams, configFileExists, AppKey, readConfigFile } from '../../config'
 import { execMode, appKey } from '../../common'
+import { inspect } from 'util'
 
 
 export default class ApplicationsCurrent extends Command {
@@ -59,7 +60,8 @@ export default class ApplicationsCurrent extends Command {
     if (flags.info) {
       const info = readConfigFile(this.config, stored)
       this.log(chalk.blueBright('-= Application Info =-'))
-      this.log(JSON.stringify(info, null, 4))
+      // this.log(JSON.stringify(info, null, 4))
+      this.log(inspect(info, false, null, true))
     }
 
   }

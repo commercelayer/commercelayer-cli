@@ -13,4 +13,8 @@ const appKey = (slug: string, domain: string | undefined): string => {
 	return String(domain ? _.kebabCase(`${slug}.${domain}`) : slug).toLowerCase()
 }
 
-export { baseURL, execMode, appKey }
+const sleep = async (ms: number) => {
+	return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+export { baseURL, execMode, appKey, sleep }

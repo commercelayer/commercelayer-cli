@@ -1,13 +1,13 @@
 import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
-import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam } from '../../config'
+import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile } from '../../config'
 import { execMode, appKey } from '../../common'
-import { newAccessToken } from '../../commands/applications/token'
+import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 
 
 const excludedTopics: string[] = ['applications', 'plugins']
-const exludedCommands: string[] = ['noc']
+const exludedCommands: string[] = []
 
 
 const isCommandExcluded = (cmd: string): boolean => {
@@ -20,12 +20,12 @@ const isCommandExcluded = (cmd: string): boolean => {
 const hook: Hook<'prerun'> = async function (opts) {
 
   // Continue and check authentication only for command that:
-  if (isCommandExcluded(opts.Command.id)) return               // are not explicitly excluded from check
+  if (isCommandExcluded(opts.Command.id)) return                      // are not explicitly excluded from check
   if (!opts.Command.flags?.accessToken) return                        // require an accessToken as input flag
   if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
 
 
-  this.log(`Checking accessToken for command ${opts.Command.id} ...`)
+  // this.log(`Checking accessToken for command ${opts.Command.id} ...`)
 
   const flagConfig = {
     organization: flagUtil.string({ char: 'o', hidden: true }),
@@ -58,15 +58,12 @@ const hook: Hook<'prerun'> = async function (opts) {
     let tokenData = null
 
     if (tokenFileExists(opts.config, app)) {
-
       tokenData = readTokenFile(opts.config, app)
-
-      const createdAt = Number(tokenData.created_at)
-      const now = Math.floor(Date.now() / 1000)
-      const time = now - createdAt
-
-      if (time >= 7200) tokenData = null
-
+      if (isAccessTokenExpiring(tokenData)) {
+        this.log('Refreshing expiring access token ...')
+        await revokeAccessToken(readConfigFile(this.config, app), tokenData.access_token)
+        tokenData = null
+      }
     }
 
     if (tokenData === null) {

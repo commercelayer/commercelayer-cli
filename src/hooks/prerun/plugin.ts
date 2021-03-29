@@ -1,4 +1,4 @@
-import {Hook} from '@oclif/config'
+import { Hook } from '@oclif/config'
 import { getPluginInfo } from '../../commands/plugins/available'
 import chalk from 'chalk'
 

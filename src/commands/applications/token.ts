@@ -2,9 +2,10 @@ import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 import chalk from 'chalk'
 import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentOrganization, currentModeLive } from '../../config'
-import { execMode, appKey } from '../../common'
+import { execMode, appKey, sleep } from '../../common'
 import { IConfig } from '@oclif/config'
 import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
+import https from 'https'
 
 
 
@@ -93,4 +94,68 @@ const newAccessToken = async (config: IConfig, app: AppKey, save: boolean = fals
 
 }
 
-export { newAccessToken }
+
+const revokeAccessToken = async (app: AppAuth, token: string) => {
+
+  /*
+  return axios
+    .post(`${app.baseUrl}/oauth/revoke`, {
+      grant_type: 'client_credentials',
+      client_id: app.clientId,
+      client_secret: app.clientSecret,
+      token,
+    })
+  */
+
+  const data = JSON.stringify({
+    grant_type: 'client_credentials',
+    client_id: app.clientId,
+    client_secret: app.clientSecret,
+    token,
+  })
+
+  const options = {
+    hostname: app.baseUrl.replace('https://', '').replace('http://', ''),
+    port: 443,
+    path: '/oauth/revoke',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': data.length,
+    },
+  }
+
+  const req = https.request(options/* , res => {
+    console.log(`statusCode: ${res.statusCode}`)
+
+    res.on('data', d => {
+      process.stdout.write(d)
+    })
+  } */)
+
+  /*
+  req.on('error', error => {
+    console.error(error)
+  })
+  */
+
+  req.write(data)
+  req.end()
+
+  await sleep(300)
+
+}
+
+
+const isAccessTokenExpiring = (tokenData: any): boolean => {
+
+  const createdAt = Number(tokenData.created_at)
+  const now = Math.floor(Date.now() / 1000)
+  const time = now - createdAt
+
+  return (time >= (7200 - 30))
+
+}
+
+
+export { newAccessToken, revokeAccessToken, isAccessTokenExpiring }
