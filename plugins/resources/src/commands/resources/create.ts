@@ -1,19 +1,21 @@
-import {Command} from '@oclif/command'
+import Command from '../../base'
 
 export default class ResourcesCreate extends Command {
   static description = 'describe the command here'
 
-  static aliases = ['create', 'c']
+  static aliases = ['create', 'rc']
 
-  static flags = { }
+  static flags = {
+    ...Command.flags,
+  }
 
-  static args = [ ]
+  static args = []
 
   async run() {
 
-   // const {args, flags} = this.parse(ResourcesCreate)
+    const {flags} = this.parse(ResourcesCreate)
 
-    this.log('hello from /Users/pierlu/Documents/GitHub/commercelayer-cli-resources/src/commands/resources/create.ts')
+   this.log(JSON.stringify(flags))
 
   }
 

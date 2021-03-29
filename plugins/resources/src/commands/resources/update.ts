@@ -1,19 +1,22 @@
-import {Command} from '@oclif/command'
+import Command from '../../base'
 
 export default class ResourcesUpdate extends Command {
+
   static description = 'describe the command here'
 
   static aliases = ['update', 'ru']
 
-  static flags = { }
+  static flags = {
+    ...Command.flags,
+  }
 
   static args = [ ]
 
   async run() {
 
-    // const {args, flags} = this.parse(ResourcesUpdate)
+    const {flags} = this.parse(ResourcesUpdate)
 
-    this.log('hello from /Users/pierlu/Documents/GitHub/commercelayer-cli-resources/src/commands/resources/update.ts')
+    this.log(JSON.stringify(flags))
 
   }
 

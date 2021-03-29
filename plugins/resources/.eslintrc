@@ -9,6 +9,8 @@
     "object-curly-spacing": "off",
     "padded-blocks": "off",
     "no-multiple-empty-lines": "off",
-    "array-bracket-spacing": "off"
+    "array-bracket-spacing": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-multi-assign": "off"
   }
 }

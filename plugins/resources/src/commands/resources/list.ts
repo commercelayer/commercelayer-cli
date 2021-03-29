@@ -1,19 +1,31 @@
-import {Command} from '@oclif/command'
+import Command, { flags } from '../../base'
 
 export default class ResourcesList extends Command {
   static description = 'describe the command here'
 
-  static aliases = ['list', 'l']
+  static aliases = ['list', 'rl']
 
-  static flags = { }
+  static flags = {
+    ...Command.flags,
+    include: flags.string({
+      char: 'i',
+      multiple: true,
+      description: 'comma separated resources to include',
+    }),
+    fields: flags.string({
+      char: 'f',
+      multiple: true,
+      description: 'comma separeted list of fields in the format [resource]=field1,field2...',
+    }),
+  }
 
   static args = [ ]
 
   async run() {
 
-    // const {args, flags} = this.parse(ResourcesList)
+    const { flags } = this.parse(ResourcesList)
 
-    this.log('hello from /Users/pierlu/Documents/GitHub/commercelayer-cli-resources/src/commands/resources/list.ts')
+    this.log(JSON.stringify(flags))
 
   }
 
