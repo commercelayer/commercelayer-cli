@@ -34,7 +34,7 @@ const hook: Hook<'prerun'> = async function (opts) {
     accessToken: flagUtil.string({ hidden: true }),
   }
 
-  const { flags } = parse(opts.argv, { flags: flagConfig })
+  const { flags } = parse(opts.argv, { strict: false, flags: flagConfig })
 
   const app: AppKey = {
     key: appKey(flags.organization || '', flags.domain),
