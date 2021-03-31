@@ -22,6 +22,8 @@ export default class Noc extends Command {
     // const { flags } = this.parse(Noc)
     // this.log(flags.accessToken)
 
+    return 'PIPPO'
+
   }
 
 }
