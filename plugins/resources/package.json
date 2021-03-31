@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run",
@@ -43,9 +43,12 @@
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cl-resources",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
+    "plugins": [],
+    "topics": {
+      "resources": {
+        "description": "execute CRUD operations on resources"
+      }
+    }
   },
   "repository": "commercelayer/cli-plugin-resources",
   "scripts": {
@@ -57,10 +60,10 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/js-sdk": "^3.5.0",
+    "@commercelayer/js-sdk": "^3.6.3",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
-    "@oclif/plugin-help": "^3.2.2",
+    "cli-ux": "^5.5.1",
     "tslib": "^1.14.1"
   }
 }
