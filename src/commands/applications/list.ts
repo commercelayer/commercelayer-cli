@@ -5,10 +5,11 @@ import { AppInfo } from '../../config'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
 
-export default class ApplicationsAvailable extends Command {
+export default class ApplicationsList extends Command {
+
   static description = 'show a list of all (logged in) available CLI applications '
 
-  static aliases = ['applications']
+  static aliases = ['app:list']
 
   static flags = { }
 

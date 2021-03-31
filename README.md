@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/commercelayer-cli
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/commercelayer-cli/0.0.0 darwin-x64 node-v14.16.0
+@commercelayer/commercelayer-cli/0.0.1 darwin-x64 node-v14.16.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
@@ -28,9 +28,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`commercelayer applications`](#commercelayer-applications)
-* [`commercelayer applications:available [FILE]`](#commercelayer-applicationsavailable-file)
 * [`commercelayer applications:current`](#commercelayer-applicationscurrent)
+* [`commercelayer applications:list`](#commercelayer-applicationslist)
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:token`](#commercelayer-applicationstoken)
 * [`commercelayer get RESOURCE [ID]`](#commercelayer-get-resource-id)
@@ -42,36 +41,6 @@ USAGE
 * [`commercelayer plugins:link PLUGIN`](#commercelayer-pluginslink-plugin)
 * [`commercelayer plugins:uninstall PLUGIN...`](#commercelayer-pluginsuninstall-plugin)
 * [`commercelayer plugins:update`](#commercelayer-pluginsupdate)
-
-## `commercelayer applications`
-
-show a list of all (logged in) available CLI applications
-
-```
-USAGE
-  $ commercelayer applications
-
-ALIASES
-  $ commercelayer applications:available
-```
-
-_See code: [src/commands/applications.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications.ts)_
-
-## `commercelayer applications:available [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ commercelayer applications:available [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/applications/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/available.ts)_
 
 ## `commercelayer applications:current`
 
@@ -89,7 +58,21 @@ ALIASES
   $ commercelayer app:current
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.1/src/commands/applications/current.ts)_
+
+## `commercelayer applications:list`
+
+show a list of all (logged in) available CLI applications
+
+```
+USAGE
+  $ commercelayer applications:list
+
+ALIASES
+  $ commercelayer app:list
+```
+
+_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.1/src/commands/applications/list.ts)_
 
 ## `commercelayer applications:login`
 
@@ -108,7 +91,7 @@ ALIASES
   $ commercelayer app:login
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.1/src/commands/applications/login.ts)_
 
 ## `commercelayer applications:token`
 
@@ -127,7 +110,7 @@ ALIASES
   $ commercelayer app:token
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.1/src/commands/applications/token.ts)_
 
 ## `commercelayer get RESOURCE [ID]`
 
@@ -142,7 +125,7 @@ OPTIONS
   -i, --includes=includes  comma separated resources to include
 ```
 
-_See code: [src/commands/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/get.ts)_
+_See code: [src/commands/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.1/src/commands/get.ts)_
 
 ## `commercelayer help [COMMAND]`
 
@@ -180,14 +163,14 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ## `commercelayer plugins:available`
 
-describe the command here
+shows all available Commerce Layer plugins
 
 ```
 USAGE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.0/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.1/src/commands/plugins/available.ts)_
 
 ## `commercelayer plugins:inspect PLUGIN...`
 
