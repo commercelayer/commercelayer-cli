@@ -1,9 +1,10 @@
 import Command from '../../base'
 
 export default class ResourcesDelete extends Command {
-  static description = 'describe the command here'
 
-  static aliases = ['delete', 'rd']
+  static description = 'ddelete a resource'
+
+  static aliases = ['delete', 'rd', 'res:delete']
 
   static flags = {
     ...Command.flags,
