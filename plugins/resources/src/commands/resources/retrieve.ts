@@ -2,14 +2,13 @@ import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import { baseURL } from '../../common'
 import cl, { CLayer } from '@commercelayer/js-sdk'
-import { inspect } from 'util'
 
 
 export default class ResourcesRetrieve extends Command {
 
-  static description = 'describe the command here'
+  static description = 'fetch a single resource'
 
-  static aliases = ['retrieve', 'rr']
+  static aliases = ['retrieve', 'rr', 'res:retrieve']
 
   static flags = {
     ...Command.flags,
@@ -74,15 +73,14 @@ export default class ResourcesRetrieve extends Command {
       if (include && (include.length > 0)) req = req.includes(...include)
       if (fields && (fields.length > 0)) req = req.select(...fields)
 
-      const r = await req.find(id, { rawResponse: true })
+      const res = await req.find(id, { rawResponse: true })
 
-      if (r) this.log(flags.json ? JSON.stringify(r, null, 4) : inspect(r, false, null, true))
+      this.printOutput(res, flags)
+
+      return res
 
     } catch (error) {
-      if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
-        { suggestions: ['Execute login to get access to the selected resource'] }
-      )
-      else this.error(inspect(error.response.data.errors, false, null, true))
+      this.printError(error)
     }
 
   }

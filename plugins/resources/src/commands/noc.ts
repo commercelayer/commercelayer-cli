@@ -1,5 +1,4 @@
 import {Command, flags} from '@oclif/command'
-import { fieldsValues } from '../common'
 
 export default class Noc extends Command {
 
@@ -40,13 +39,8 @@ export default class Noc extends Command {
 
     this.log('-= NoC =-')
 
-    const { flags } = this.parse(Noc)
+    // const { flags } = this.parse(Noc)
 
-    const fields = fieldsValues(flags.fields)
-
-   for (const f of fields.keys()) {
-     this.log(`fields[${f}]=${fields.get(f)}`)
-   }
 
   }
 

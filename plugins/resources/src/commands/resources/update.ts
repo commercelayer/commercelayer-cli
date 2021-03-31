@@ -2,9 +2,9 @@ import Command from '../../base'
 
 export default class ResourcesUpdate extends Command {
 
-  static description = 'describe the command here'
+  static description = 'update a resource'
 
-  static aliases = ['update', 'ru']
+  static aliases = ['update', 'ru', 'res:update']
 
   static flags = {
     ...Command.flags,

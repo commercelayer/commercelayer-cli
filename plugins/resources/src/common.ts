@@ -4,7 +4,4 @@ const baseURL = (slug: string, domain: string | undefined): string => {
 }
 
 
-
-
-
 export { baseURL }

@@ -6,7 +6,7 @@ export default class ResourcesAvailable extends Command {
 
   static description = 'list all the available Commerce Layer API resources'
 
-  static aliases = [ 'resources' ]
+  static aliases = [ ]
 
   static flags = { }
 
