@@ -65,6 +65,8 @@ export default class ApplicationsToken extends Command {
 
       if (flags.save) this.log(`The new ${app.mode} access_token has been locally saved for application ${chalk.italic.bold(app.key)}`)
 
+      return token?.data
+
     } catch (error) {
       this.log(chalk.red.bold('FAILURE! ') + error.message)
     }
@@ -149,11 +151,13 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 
 const isAccessTokenExpiring = (tokenData: any): boolean => {
 
+  const safetyInterval = 30
+
   const createdAt = Number(tokenData.created_at)
   const now = Math.floor(Date.now() / 1000)
   const time = now - createdAt
 
-  return (time >= (7200 - 30))
+  return (time >= (7200 - safetyInterval))
 
 }
 
