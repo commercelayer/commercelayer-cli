@@ -11,6 +11,7 @@
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
+    "@types/ascii-art": "^1.4.0",
     "@types/chai": "^4.2.15",
     "@types/configstore": "^4.0.0",
     "@types/mocha": "^5.2.7",
@@ -56,11 +57,15 @@
         "./lib/hooks/prerun/login",
         "./lib/hooks/prerun/plugin"
       ],
-      "init": "./lib/hooks/init/update"
+      "init": "./lib/hooks/init/update",
+      "postrun": "./lib/hooks/postrun/save"
     },
     "topics": {
       "applications": {
-        "description": "manage login to cli applications"
+        "description": "manage login to CLI applications"
+      },
+      "plugins": {
+        "description": "manage CLI plugins"
       }
     }
   },
