@@ -1,8 +1,12 @@
 import { Command } from '@oclif/command'
 import chalk from 'chalk'
+import cliux from 'cli-ux'
 
 export default class PluginsAvailable extends Command {
-  static description = 'describe the command here'
+
+  static description = 'shows all available Commerce Layer plugins'
+
+  // static aliases = ['plugins:list']
 
   static flags = {}
 
@@ -13,10 +17,21 @@ export default class PluginsAvailable extends Command {
 
     // const {args, flags} = this.parse(PluginsAvailable)
 
-    this.log('List of all available Commerce Layer CLI plugins:')
+    this.log(chalk.blueBright('\nList of all available Commerce Layer CLI plugins:'))
 
-    const plugins = AvailablePlugins.map(p => `- ${chalk.yellow(p.name)} : ${p.description} [${p.plugin}]`)
-    this.log(plugins.join('\n'))
+    // const plugins = AvailablePlugins.map(p => `- ${chalk.yellow(p.name)} : ${p.description} [${p.plugin}]`)
+    // this.log(plugins.join('\n'))
+
+    this.log()
+    cliux.table(AvailablePlugins,
+      {
+        key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row =>  chalk.yellow(row.name) },
+        description: { header: 'DESCRIPTION' },
+      },
+      {
+        printLine: this.log,
+    })
+    this.log()
 
   }
 
@@ -24,8 +39,9 @@ export default class PluginsAvailable extends Command {
 
 
 const AvailablePlugins = [
-  { name: 'seeder', plugin: '@commercelayer/cli-plugin-seeder', description: 'organization data seeder' },
-] as const
+  { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder' },
+  { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD resources commands'  },
+]
 
 
 const getPluginInfo = (pluginName: string): any => {
