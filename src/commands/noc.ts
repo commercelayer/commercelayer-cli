@@ -17,12 +17,11 @@ export default class Noc extends Command {
 
   async run() {
 
-    this.log('-= NoC =-')
+    const output = '-= NoC =-'
 
-    // const { flags } = this.parse(Noc)
-    // this.log(flags.accessToken)
+    this.log(output)
 
-    return 'PIPPO'
+    return output
 
   }
 

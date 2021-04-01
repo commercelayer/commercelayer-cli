@@ -1,11 +1,11 @@
 import {expect, test} from '@oclif/test'
 
-describe('applications:login', () => {
+describe('applications:current', () => {
   test
   .stdout()
-  .command(['applications:login'])
-  .it('runs hello', ctx => {
-    expect(ctx.stdout).to.be.itself
+  .command(['noc'])
+  .it('runs applications:current', ctx => {
+    expect(ctx.stdout).to.contain('-= NoC =-')
   })
 
 })
