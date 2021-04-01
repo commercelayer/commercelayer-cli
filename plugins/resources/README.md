@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
 running command...
 $ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/0.0.1 darwin-x64 node-v14.16.0
+@commercelayer/cli-plugin-resources/0.0.6 darwin-x64 node-v14.16.0
 $ cl-resources --help [COMMAND]
 USAGE
   $ cl-resources COMMAND
@@ -28,50 +28,88 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`cl-resources help [COMMAND]`](#cl-resources-help-command)
-* [`cl-resources resources`](#cl-resources-resources)
-* [`cl-resources resources:available [FILE]`](#cl-resources-resourcesavailable-file)
+* [`cl-resources resources:available`](#cl-resources-resourcesavailable)
 * [`cl-resources resources:create`](#cl-resources-resourcescreate)
 * [`cl-resources resources:delete`](#cl-resources-resourcesdelete)
-* [`cl-resources resources:list`](#cl-resources-resourceslist)
+* [`cl-resources resources:filters`](#cl-resources-resourcesfilters)
+* [`cl-resources resources:get [FILE]`](#cl-resources-resourcesget-file)
+* [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
 * [`cl-resources resources:retrieve RESOURCE [ID]`](#cl-resources-resourcesretrieve-resource-id)
 * [`cl-resources resources:update`](#cl-resources-resourcesupdate)
 
-## `cl-resources help [COMMAND]`
-
-display help for cl-resources
-
-```
-USAGE
-  $ cl-resources help [COMMAND]
-
-ARGUMENTS
-  COMMAND  command to show help for
-
-OPTIONS
-  --all  see all commands in CLI
-```
-
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
-
-## `cl-resources resources`
+## `cl-resources resources:available`
 
 list all the available Commerce Layer API resources
 
 ```
 USAGE
-  $ cl-resources resources
+  $ cl-resources resources:available
 ```
 
-_See code: [src/commands/resources.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.1/src/commands/resources.ts)_
+_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/available.ts)_
 
-## `cl-resources resources:available [FILE]`
+## `cl-resources resources:create`
+
+create a new resource
+
+```
+USAGE
+  $ cl-resources resources:create
+
+OPTIONS
+  -a, --attribute=attribute        define a resource attribute
+  -j, --json                       convert output in standard JSON format
+  -o, --organization=organization  (required) the slug of your organization
+  -r, --relationship=relationship  define a relationship with another resource
+  -u, --unformatted                print unformatted JSON output
+
+ALIASES
+  $ cl-resources create
+  $ cl-resources rc
+  $ cl-resources res:create
+```
+
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/create.ts)_
+
+## `cl-resources resources:delete`
+
+ddelete a resource
+
+```
+USAGE
+  $ cl-resources resources:delete
+
+OPTIONS
+  -j, --json                       convert output in standard JSON format
+  -o, --organization=organization  (required) the slug of your organization
+  -u, --unformatted                print unformatted JSON output
+
+ALIASES
+  $ cl-resources delete
+  $ cl-resources rd
+  $ cl-resources res:delete
+```
+
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/delete.ts)_
+
+## `cl-resources resources:filters`
+
+shows a list of all available filter predicates
+
+```
+USAGE
+  $ cl-resources resources:filters
+```
+
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/filters.ts)_
+
+## `cl-resources resources:get [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ cl-resources resources:available [FILE]
+  $ cl-resources resources:get [FILE]
 
 OPTIONS
   -f, --force
@@ -79,65 +117,41 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.1/src/commands/resources/available.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/get.ts)_
 
-## `cl-resources resources:create`
+## `cl-resources resources:list RESOURCE`
 
-describe the command here
-
-```
-USAGE
-  $ cl-resources resources:create
-
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
-
-ALIASES
-  $ cl-resources create
-  $ cl-resources rc
-```
-
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.1/src/commands/resources/create.ts)_
-
-## `cl-resources resources:delete`
-
-describe the command here
+fetch a collection of resources
 
 ```
 USAGE
-  $ cl-resources resources:delete
+  $ cl-resources resources:list RESOURCE
+
+ARGUMENTS
+  RESOURCE  the resource type
 
 OPTIONS
+  -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=include            comma separated resources to include
+  -j, --json                       convert output in standard JSON format
+  -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
-
-ALIASES
-  $ cl-resources delete
-  $ cl-resources rd
-```
-
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.1/src/commands/resources/delete.ts)_
-
-## `cl-resources resources:list`
-
-describe the command here
-
-```
-USAGE
-  $ cl-resources resources:list
-
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
+  -p, --page=page                  page number
+  -s, --sort=sort                  defines results ordering
+  -u, --unformatted                print unformatted JSON output
+  -w, --where=where                comma separated list of query filters
 
 ALIASES
   $ cl-resources list
   $ cl-resources rl
+  $ cl-resources res:list
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.1/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/list.ts)_
 
 ## `cl-resources resources:retrieve RESOURCE [ID]`
 
-describe the command here
+fetch a single resource
 
 ```
 USAGE
@@ -150,30 +164,36 @@ ARGUMENTS
 OPTIONS
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
+  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources retrieve
   $ cl-resources rr
+  $ cl-resources res:retrieve
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.1/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/retrieve.ts)_
 
 ## `cl-resources resources:update`
 
-describe the command here
+update a resource
 
 ```
 USAGE
   $ cl-resources resources:update
 
 OPTIONS
+  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources update
   $ cl-resources ru
+  $ cl-resources res:update
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.1/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/update.ts)_
 <!-- commandsstop -->

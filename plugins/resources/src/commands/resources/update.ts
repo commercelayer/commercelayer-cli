@@ -10,11 +10,11 @@ export default class ResourcesUpdate extends Command {
     ...Command.flags,
   }
 
-  static args = [ ]
+  static args = []
 
   async run() {
 
-    const {flags} = this.parse(ResourcesUpdate)
+    const { flags } = this.parse(ResourcesUpdate)
 
     this.log(JSON.stringify(flags))
 

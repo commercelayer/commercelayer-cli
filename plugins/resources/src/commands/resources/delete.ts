@@ -2,7 +2,7 @@ import Command from '../../base'
 
 export default class ResourcesDelete extends Command {
 
-  static description = 'ddelete a resource'
+  static description = 'delete a resource'
 
   static aliases = ['delete', 'rd', 'res:delete']
 
@@ -10,11 +10,11 @@ export default class ResourcesDelete extends Command {
     ...Command.flags,
   }
 
-  static args = [ ]
+  static args = []
 
   async run() {
 
-    const {flags} = this.parse(ResourcesDelete)
+    const { flags } = this.parse(ResourcesDelete)
 
     this.log(JSON.stringify(flags))
 

@@ -28,21 +28,49 @@ export default abstract class extends Command {
 		json: flags.boolean({
 			char: 'j',
 			description: 'convert output in standard JSON format',
+			hidden: true,
 		}),
 		unformatted: flags.boolean({
 			char: 'u',
 			description: 'print unformatted JSON output',
 			dependsOn: ['json'],
+			hidden: true,
 		}),
 	}
 
 
-	checkResource(res: string): Resource | undefined {
+	checkResource(res: string, required = true): Resource | undefined {
+		if (!res && required) this.error('Resource type not defined')
 		const resource = findResource(res)
 		if (resource === undefined) this.error(`Invalid resource ${chalk.red(res)}`,
 			{ suggestions: [`Execute command ${chalk.italic('\'resources\'')} to get a list of all available CLI resources`] }
 		)
 		return resource
+	}
+
+
+	checkResourceId(resource: string, resourceId: string, required = true): any {
+
+		let res = resource
+		let id = resourceId
+
+		const si = res.indexOf('/')
+		if (si >= 0) {
+			const rt = res.split('/')
+			if (id && rt[1]) this.error(`Double definition of resource id: [${res}, ${id}]`, {
+				suggestions: [`Define resource id as command argument (${chalk.italic(id)}) or as part of the resource itself (${chalk.italic(res)}) but not both`],
+			})
+			else id = rt[1]
+			res = rt[0]
+		}
+
+		if (!id && required) this.error('Resource id not defined')
+
+		return {
+			res,
+			id,
+		}
+
 	}
 
 
@@ -164,11 +192,16 @@ export default abstract class extends Command {
 				if ((po < 2) || (pc < f.length) || (po > pc)) this.error(`Filter flag must be in the form ${chalk.italic('predicate(value)')}`)
 				*/
 
-				const si = f.indexOf('/')
-				if (si < 0) this.error(`Filter flag must be in the form ${chalk.italic('predicate/value')}`)
+				let sepChar = '/'
+				let si = f.indexOf(sepChar)
+				if (si < 0) {
+					sepChar = '='
+					si = f.indexOf(sepChar)
+					if (si < 0) this.error(`Filter flag must be in the form ${chalk.italic('predicate/value')} or ${chalk.italic('predicate=value')}`)
+				}
 
 				// const wt = f.split('(')
-				const wt = f.split('/')
+				const wt = f.split(sepChar)
 				const w = wt[0]
 				if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.red(w)}`,
 					{
@@ -209,7 +242,7 @@ export default abstract class extends Command {
 
 					const of = ot[0]
 					if (of.startsWith('-')) this.error('You cannot mix two ordering syntaxes',
-					{ suggestions: [`Choose between the style ${chalk.italic('<field>,<order>')} and the style ${chalk.italic('[-]<field>')}`] }
+						{ suggestions: [`Choose between the style ${chalk.italic('<field>,<order>')} and the style ${chalk.italic('[-]<field>')}`] }
 					)
 					const sd = ot[1] || 'asc'
 					if (!['asc', 'desc'].includes(sd)) this.error(`Invalid sort flag: ${chalk.red(f)}`,

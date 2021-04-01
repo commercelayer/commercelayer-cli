@@ -34,10 +34,10 @@ export default class ResourcesList extends Command {
       description: 'number of elements per page',
     }),
     sort: flags.string({
-			char: 's',
-			description: 'defines results ordering',
-			multiple: true,
-		}),
+      char: 's',
+      description: 'defines results ordering',
+      multiple: true,
+    }),
   }
 
   static args = [
@@ -46,11 +46,9 @@ export default class ResourcesList extends Command {
 
   async run() {
 
-    const {args, flags} = this.parse(ResourcesList)
+    const { args, flags } = this.parse(ResourcesList)
 
-    const res = args.resource
-    if (!res) this.error('Resource type not defined')
-    const resource = this.checkResource(res)
+    const resource = this.checkResource(args.resource)
 
     const baseUrl = baseURL(flags.organization, flags.domain)
     const accessToken = flags.accessToken

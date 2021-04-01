@@ -1,22 +1,22 @@
-import {Command} from '@oclif/command'
+import { Command } from '@oclif/command'
 import chalk from 'chalk'
 
 
 export default class ResourcesAvailable extends Command {
 
-  static description = 'list all the available Commerce Layer API resources'
+	static description = 'list all the available Commerce Layer API resources'
 
-  static aliases = [ ]
+	static aliases = []
 
-  static flags = { }
+	static flags = {}
 
-  static args = [ ]
+	static args = []
 
-  async run() {
-    this.log(chalk.blueBright('\n-= Commerce Layer API available resources =-\n'))
-    this.log(resourceList('api').join('\n'))
-    this.log()
-  }
+	async run() {
+		this.log(chalk.blueBright('\n-= Commerce Layer API available resources =-\n'))
+		this.log(resourceList('api').join('\n'))
+		this.log()
+	}
 
 }
 

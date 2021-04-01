@@ -1,5 +1,4 @@
 import Command, { flags } from '../../base'
-import chalk from 'chalk'
 import { baseURL } from '../../common'
 import cl, { CLayer } from '@commercelayer/js-sdk'
 
@@ -31,23 +30,9 @@ export default class ResourcesRetrieve extends Command {
 
   async run() {
 
-    const {args, flags} = this.parse(ResourcesRetrieve)
+    const { args, flags } = this.parse(ResourcesRetrieve)
 
-    let res = args.resource
-    let id = args.id
-
-    const si = res.indexOf('/')
-    if (si >= 0) {
-      const rt = res.split('/')
-      res = rt[0]
-      if (id && rt[1]) this.error(`Double definition of resource id: [${rt[1]}, ${id}]`, {
-        suggestions: [`Define resource id as command argument (${chalk.italic(id)}) or as part of the resource itself (${chalk.italic(`${res}/${rt[1]}`)}) but not both`],
-      })
-      else id = rt[1]
-    }
-
-    if (!res) this.error('Resource type not defined')
-    if (!id) this.error('Resource id not defined')
+    const { res, id } = this.checkResourceId(args.resource, args.id)
 
     const resource = this.checkResource(res)
 

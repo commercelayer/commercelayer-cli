@@ -1,4 +1,4 @@
-import {Command, flags} from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 
 export default class Noc extends Command {
 
@@ -6,11 +6,11 @@ export default class Noc extends Command {
 
   static flags = {
     organization: flags.string({
-			char: 'o',
-			description: 'the slug of your organization',
-			required: true,
+      char: 'o',
+      description: 'the slug of your organization',
+      required: true,
       env: 'CL_CLI_ORGANIZATION',
-		}),
+    }),
     domain: flags.string({
       char: 'd',
       required: false,
