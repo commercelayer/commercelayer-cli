@@ -70,6 +70,8 @@ export default class Seed extends Command {
       accessToken,
     })
 
+    return true
+
   }
 
 }
