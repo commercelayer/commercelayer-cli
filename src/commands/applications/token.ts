@@ -61,7 +61,7 @@ export default class ApplicationsToken extends Command {
       const token = await newAccessToken(this.config, app, flags.save)
 
       const accessToken = token?.accessToken
-      this.log(`\n${accessToken}\n`)
+      if (accessToken) this.log(`\n${chalk.blueBright(accessToken)}\n`)
 
       if (flags.save) this.log(`The new ${app.mode} access_token has been locally saved for application ${chalk.italic.bold(app.key)}`)
 

@@ -4,6 +4,7 @@ import { flags as flagUtil } from '@oclif/command'
 import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile } from '../../config'
 import { execMode, appKey } from '../../common'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
+import cliux from 'cli-ux'
 
 
 const excludedTopics: string[] = ['applications', 'plugins']
@@ -56,11 +57,13 @@ const hook: Hook<'prerun'> = async function (opts) {
   if (!flags.accessToken) {
 
     let tokenData = null
+    let refresh = false
 
     if (tokenFileExists(opts.config, app)) {
       tokenData = readTokenFile(opts.config, app)
       if (isAccessTokenExpiring(tokenData)) {
-        this.log('Refreshing expiring access token ...')
+        cliux.action.start('Refreshing access token ...')
+        refresh = true
         await revokeAccessToken(readConfigFile(this.config, app), tokenData.access_token)
         tokenData = null
       }
@@ -69,6 +72,7 @@ const hook: Hook<'prerun'> = async function (opts) {
     if (tokenData === null) {
       const token = await newAccessToken(this.config, app, true)
       tokenData = token?.data
+      if (refresh) cliux.action.stop()
     }
 
     opts.argv.push('--accessToken=' + tokenData.access_token)
