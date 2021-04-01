@@ -1,5 +1,5 @@
-commercelayer-cli-new
-=====================
+commercelayer-cli
+=================
 
 Commerce Layer CLI
 
