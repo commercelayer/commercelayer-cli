@@ -1,26 +1,24 @@
 
 import { Hook } from '@oclif/config'
 import updateNotifier from 'update-notifier'
-// import { inspect } from 'util'
+import chalk from 'chalk'
 
 const pkg = require('../../../package.json')
 
 
-const second = 1000
-const minute = second * 60
-const hour = minute * 60
-const day = hour * 24
-// const week = day * 7
-
 
 const hook: Hook<'init'> = async function (_opts) {
 
-  // this.log('Checking for CLI updates ...')
-  const notifier = updateNotifier({ pkg, updateCheckInterval: day })
+  const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
 
-  notifier.notify()
+  notifier.notify({
+    // isGlobal: true,
+    message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n
+    New version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}
+    Run ${chalk.cyanBright('{updateCommand}')} to update`,
+  })
+
   // console.log(notifier.update)
-  // this.log(inspect(notifier, false, null, true))
 
 }
 
