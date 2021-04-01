@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-seeder",
   "description": "Commerce Layer CLI seeder plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "contributors": [
     "Alessandro Casazza <alessandro@commercelayer.io>"
