@@ -1,10 +1,10 @@
 import {expect, test} from '@oclif/test'
 
-describe('applications:current', () => {
+describe('applications:list', () => {
   test
   .stdout()
   .command(['noc'])
-  .it('runs applications:current', ctx => {
+  .it('runs applications:list', ctx => {
     expect(ctx.stdout).to.contain('-= NoC =-')
   })
 
