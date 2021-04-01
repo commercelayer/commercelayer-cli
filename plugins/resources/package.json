@@ -7,7 +7,7 @@
     "cl-resources": "./bin/run",
     "cl-res": "./bin/run"
   },
-  "bugs": "https://github.com/commercelayer/cli-plugin-resources/issues",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
@@ -34,7 +34,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/commercelayer/cli-plugin-resources",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-resources",
   "keywords": [
     "oclif"
   ],
@@ -50,7 +50,7 @@
       }
     }
   },
-  "repository": "commercelayer/cli-plugin-resources",
+  "repository": "commercelayer/commercelayer-cli-plugin-resources",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
