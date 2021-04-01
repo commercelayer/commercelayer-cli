@@ -5,13 +5,7 @@ describe('applications:list', () => {
   .stdout()
   .command(['applications:list'])
   .it('runs hello', ctx => {
-    expect(ctx.stdout).to.contain('hello world')
+    expect(ctx.stdout).to.be.itself
   })
 
-  test
-  .stdout()
-  .command(['applications:list', '--name', 'jeff'])
-  .it('runs hello --name jeff', ctx => {
-    expect(ctx.stdout).to.contain('hello jeff')
-  })
 })
