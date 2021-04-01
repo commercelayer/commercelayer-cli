@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
 running command...
 $ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/0.0.6 darwin-x64 node-v14.16.0
+@commercelayer/cli-plugin-resources/0.0.7 darwin-x64 node-v15.13.0
 $ cl-resources --help [COMMAND]
 USAGE
   $ cl-resources COMMAND
@@ -32,7 +32,7 @@ USAGE
 * [`cl-resources resources:create`](#cl-resources-resourcescreate)
 * [`cl-resources resources:delete`](#cl-resources-resourcesdelete)
 * [`cl-resources resources:filters`](#cl-resources-resourcesfilters)
-* [`cl-resources resources:get [FILE]`](#cl-resources-resourcesget-file)
+* [`cl-resources resources:get RESOURCE [ID]`](#cl-resources-resourcesget-resource-id)
 * [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
 * [`cl-resources resources:retrieve RESOURCE [ID]`](#cl-resources-resourcesretrieve-resource-id)
 * [`cl-resources resources:update`](#cl-resources-resourcesupdate)
@@ -46,7 +46,7 @@ USAGE
   $ cl-resources resources:available
 ```
 
-_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/available.ts)_
+_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/available.ts)_
 
 ## `cl-resources resources:create`
 
@@ -58,10 +58,8 @@ USAGE
 
 OPTIONS
   -a, --attribute=attribute        define a resource attribute
-  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
   -r, --relationship=relationship  define a relationship with another resource
-  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources create
@@ -69,20 +67,18 @@ ALIASES
   $ cl-resources res:create
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/create.ts)_
 
 ## `cl-resources resources:delete`
 
-ddelete a resource
+delete a resource
 
 ```
 USAGE
   $ cl-resources resources:delete
 
 OPTIONS
-  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources delete
@@ -90,7 +86,7 @@ ALIASES
   $ cl-resources res:delete
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/delete.ts)_
 
 ## `cl-resources resources:filters`
 
@@ -101,23 +97,29 @@ USAGE
   $ cl-resources resources:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/filters.ts)_
 
-## `cl-resources resources:get [FILE]`
+## `cl-resources resources:get RESOURCE [ID]`
 
-describe the command here
+retrieve or list resources
 
 ```
 USAGE
-  $ cl-resources resources:get [FILE]
+  $ cl-resources resources:get RESOURCE [ID]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -o, --organization=organization  (required) the slug of your organization
+
+ALIASES
+  $ cl-resources get
+  $ cl-resources res:get
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/get.ts)_
 
 ## `cl-resources resources:list RESOURCE`
 
@@ -133,12 +135,10 @@ ARGUMENTS
 OPTIONS
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
-  -j, --json                       convert output in standard JSON format
   -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
   -p, --page=page                  page number
   -s, --sort=sort                  defines results ordering
-  -u, --unformatted                print unformatted JSON output
   -w, --where=where                comma separated list of query filters
 
 ALIASES
@@ -147,7 +147,7 @@ ALIASES
   $ cl-resources res:list
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/list.ts)_
 
 ## `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -164,9 +164,7 @@ ARGUMENTS
 OPTIONS
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
-  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources retrieve
@@ -174,7 +172,7 @@ ALIASES
   $ cl-resources res:retrieve
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/retrieve.ts)_
 
 ## `cl-resources resources:update`
 
@@ -185,9 +183,7 @@ USAGE
   $ cl-resources resources:update
 
 OPTIONS
-  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources update
@@ -195,5 +191,5 @@ ALIASES
   $ cl-resources res:update
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.6/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/cli-plugin-resources/blob/v0.0.7/src/commands/resources/update.ts)_
 <!-- commandsstop -->
