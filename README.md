@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/commercelayer-cli
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/commercelayer-cli/0.0.19 darwin-x64 node-v15.13.0
+@commercelayer/commercelayer-cli/0.0.20 darwin-x64 node-v15.13.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
@@ -57,7 +57,7 @@ ALIASES
   $ commercelayer app:current
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.19/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.20/src/commands/applications/current.ts)_
 
 ## `commercelayer applications:list`
 
@@ -71,7 +71,7 @@ ALIASES
   $ commercelayer app:list
 ```
 
-_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.19/src/commands/applications/list.ts)_
+_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.20/src/commands/applications/list.ts)_
 
 ## `commercelayer applications:login`
 
@@ -90,7 +90,7 @@ ALIASES
   $ commercelayer app:login
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.19/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.20/src/commands/applications/login.ts)_
 
 ## `commercelayer applications:token`
 
@@ -109,7 +109,7 @@ ALIASES
   $ commercelayer app:token
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.19/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.20/src/commands/applications/token.ts)_
 
 ## `commercelayer help [COMMAND]`
 
@@ -154,7 +154,7 @@ USAGE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.19/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.0.20/src/commands/plugins/available.ts)_
 
 ## `commercelayer plugins:inspect PLUGIN...`
 
