@@ -11,12 +11,11 @@ export default class ResourcesGet extends Command {
   static strict = false
 
   static flags = {
-    ...Command.flags,
+    ...ListCommand.flags,
   }
 
   static args = [
-    { name: 'resource', description: 'the resource type', required: true },
-    { name: 'id', description: 'id of the resource to retrieve', required: false },
+    ...RetrieveCommand.args,
   ]
 
   async run() {

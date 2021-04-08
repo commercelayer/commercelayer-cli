@@ -8,7 +8,7 @@ export default class ResourcesFilters extends Command {
 
   static hidden: true
 
-  static aliases: ['res:filters']
+  static aliases = ['res:filters']
 
   static flags = { }
 
@@ -19,7 +19,7 @@ export default class ResourcesFilters extends Command {
     cliux.table(filters,
       {
         predicate: { header: 'PREDICATE', minWidth: 20, get: row =>  chalk.blueBright(row.predicate) },
-        description: { header: '  DESCRIPTION ', get: row => `  ${row.description}` },
+        description: { header: '  DESCRIPTION ', get: row => `  ${chalk.italic(row.description)}` },
       },
       {
         printLine: this.log,

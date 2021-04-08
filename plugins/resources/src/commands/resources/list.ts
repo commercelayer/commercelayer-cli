@@ -41,7 +41,7 @@ export default class ResourcesList extends Command {
   }
 
   static args = [
-    { name: 'resource', description: 'the resource type', required: true },
+    ...Command.args,
   ]
 
   async run() {

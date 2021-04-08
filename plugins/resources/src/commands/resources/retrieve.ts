@@ -24,7 +24,7 @@ export default class ResourcesRetrieve extends Command {
   }
 
   static args = [
-    { name: 'resource', description: 'the resource type', required: true },
+    ...Command.args,
     { name: 'id', description: 'id of the resource to retrieve', required: false },
   ]
 
