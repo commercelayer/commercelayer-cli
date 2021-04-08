@@ -59,6 +59,7 @@ export default class ResourcesCreate extends Command {
     // Metadata
     attributes.metadata = metadata
 
+
     cl.init({ accessToken, endpoint: baseUrl })
 
     try {

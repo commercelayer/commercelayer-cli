@@ -18,8 +18,8 @@ export default class ResourcesFilters extends Command {
     this.log(chalk.blueBright('\n-= Commerce Layer API available resource filters =-\n'))
     cliux.table(filters,
       {
-        predicate: { header: 'PREDICATE', minWidth: 20, get: row =>  chalk.blueBright(row.predicate) },
-        description: { header: '  DESCRIPTION ', get: row => `  ${chalk.italic(row.description)}` },
+        predicate: { header: 'PREDICATE', minWidth: 25, get: row =>  chalk.blueBright(row.predicate) },
+        description: { header: 'DESCRIPTION' },
       },
       {
         printLine: this.log,
