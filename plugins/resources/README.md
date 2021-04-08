@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
 running command...
 $ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/0.0.14 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-resources/0.1.1 darwin-x64 node-v15.13.0
 $ cl-resources --help [COMMAND]
 USAGE
   $ cl-resources COMMAND
@@ -29,8 +29,8 @@ USAGE
 # Commands
 <!-- commands -->
 * [`cl-resources resources:available`](#cl-resources-resourcesavailable)
-* [`cl-resources resources:create`](#cl-resources-resourcescreate)
-* [`cl-resources resources:delete`](#cl-resources-resourcesdelete)
+* [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
+* [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
 * [`cl-resources resources:filters`](#cl-resources-resourcesfilters)
 * [`cl-resources resources:get RESOURCE [ID]`](#cl-resources-resourcesget-resource-id)
 * [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
@@ -44,20 +44,27 @@ list all the available Commerce Layer API resources
 ```
 USAGE
   $ cl-resources resources:available
+
+ALIASES
+  $ cl-resources res:available
 ```
 
-_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/available.ts)_
+_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/available.ts)_
 
-## `cl-resources resources:create`
+## `cl-resources resources:create RESOURCE`
 
 create a new resource
 
 ```
 USAGE
-  $ cl-resources resources:create
+  $ cl-resources resources:create RESOURCE
+
+ARGUMENTS
+  RESOURCE  the resource type
 
 OPTIONS
   -a, --attribute=attribute        define a resource attribute
+  -m, --metedata=metedata          define a metadata attribute or a set of metadata attributes
   -o, --organization=organization  (required) the slug of your organization
   -r, --relationship=relationship  define a relationship with another resource
 
@@ -67,15 +74,19 @@ ALIASES
   $ cl-resources res:create
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/create.ts)_
 
-## `cl-resources resources:delete`
+## `cl-resources resources:delete RESOURCE [ID]`
 
 delete a resource
 
 ```
 USAGE
-  $ cl-resources resources:delete
+  $ cl-resources resources:delete RESOURCE [ID]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
 
 OPTIONS
   -o, --organization=organization  (required) the slug of your organization
@@ -86,7 +97,7 @@ ALIASES
   $ cl-resources res:delete
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/delete.ts)_
 
 ## `cl-resources resources:filters`
 
@@ -100,7 +111,7 @@ ALIASES
   $ cl-resources res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/filters.ts)_
 
 ## `cl-resources resources:get RESOURCE [ID]`
 
@@ -128,7 +139,7 @@ ALIASES
   $ cl-resources res:get
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/get.ts)_
 
 ## `cl-resources resources:list RESOURCE`
 
@@ -156,7 +167,7 @@ ALIASES
   $ cl-resources res:list
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/list.ts)_
 
 ## `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -181,7 +192,7 @@ ALIASES
   $ cl-resources res:retrieve
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/retrieve.ts)_
 
 ## `cl-resources resources:update`
 
@@ -200,5 +211,5 @@ ALIASES
   $ cl-resources res:update
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.0.14/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.1.1/src/commands/resources/update.ts)_
 <!-- commandsstop -->
