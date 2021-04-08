@@ -1,4 +1,8 @@
 import Command, { flags } from '../../base'
+import { baseURL } from '../../common'
+import cl, { CLayer } from '@commercelayer/js-sdk'
+import _ from 'lodash'
+import chalk from 'chalk'
 
 export default class ResourcesCreate extends Command {
 
@@ -18,15 +22,62 @@ export default class ResourcesCreate extends Command {
       description: 'define a relationship with another resource',
       multiple: true,
     }),
+    metedata: flags.string({
+      char: 'm',
+      description: 'define a metadata attribute or a set of metadata attributes',
+      multiple: true,
+    }),
   }
 
-  static args = []
+  static args = [
+    ...Command.args,
+  ]
 
   async run() {
 
-    const { flags } = this.parse(ResourcesCreate)
+    const { args, flags } = this.parse(ResourcesCreate)
 
-    this.log(JSON.stringify(flags))
+    const resource = this.checkResource(args.resource)
+
+    const baseUrl = baseURL(flags.organization, flags.domain)
+    const accessToken = flags.accessToken
+
+    // Attributes flags
+    const attributes = this.mapToObject(this.attributeValuesMap(flags.attribute))
+    // Relationships flags
+    const relationships = this.relationshipValuesMap(flags.relationship)
+    // Metadata flags
+    const metadata = this.mapToObject(this.metadataValuesMap(flags.metedata))
+
+    // Relationships
+    if (relationships) relationships.forEach((value, key) => {
+      const relSdk: any = (cl as CLayer)[value.sdk as keyof CLayer]
+      const rel = relSdk.build({ id: value.id })
+      attributes[_.camelCase(key)] = rel
+    })
+
+    // Metadata
+    attributes.metadata = metadata
+
+    cl.init({ accessToken, endpoint: baseUrl })
+
+    try {
+
+      const resSdk: any = (cl as CLayer)[resource?.sdk as keyof CLayer]
+      const res = await resSdk.create(attributes)
+
+      /* */
+      const rawRes = await resSdk.find(res.id, { rawResponse: true })
+      this.printOutput(rawRes, flags)
+      /* */
+      // this.printOutput(res, flags)
+      if (res.valid()) this.log(`\n${chalk.green.bold('Success!')}: Created new resource of type ${chalk.italic(resource?.api as string)} with id ${chalk.bold(res.id)}\n`)
+
+      return rawRes
+
+    } catch (error) {
+      this.printError(error)
+    }
 
   }
 

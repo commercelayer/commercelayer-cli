@@ -1,8 +1,9 @@
 import Command, { flags } from '@oclif/command'
-import { findResource, Resource } from './commands/resources/available'
+import ResourcesAvailable, { findResource, Resource } from './commands/resources/available'
 import { filterAvailable } from './commands/resources/filters'
 import chalk from 'chalk'
 import { inspect } from 'util'
+import _ from 'lodash'
 
 export default abstract class extends Command {
 
@@ -39,11 +40,16 @@ export default abstract class extends Command {
 	}
 
 
+	static args = [
+		{ name: 'resource', description: 'the resource type', required: true },
+	]
+
+
 	checkResource(res: string, required = true): Resource | undefined {
 		if (!res && required) this.error('Resource type not defined')
 		const resource = findResource(res)
 		if (resource === undefined) this.error(`Invalid resource ${chalk.red(res)}`,
-			{ suggestions: [`Execute command ${chalk.italic('\'resources\'')} to get a list of all available CLI resources`] }
+			{ suggestions: [`Execute command ${chalk.italic('resources:available')} (or ${chalk.italic(ResourcesAvailable.aliases.join(', '))}) to get a list of all available CLI resources`] }
 		)
 		return resource
 	}
@@ -121,6 +127,21 @@ export default abstract class extends Command {
 		}
 
 		return fields
+
+	}
+
+
+	mapToObject(map: Map<string, any>): any {
+
+		const object: any = {}
+
+		map.forEach((val, key) => {
+			const k = key as keyof object
+			if (object[k] === undefined) object[k] = val
+			else object[k] = [...val, object[k]]
+		})
+
+		return object
 
 	}
 
@@ -269,19 +290,100 @@ export default abstract class extends Command {
 	}
 
 
+	_simpleValuesMap(flag: string[], type = 'attribute'): Map<string, string> {
+
+		const map = new Map<string, string>()
+
+		if (flag && (flag.length > 0)) {
+			flag.forEach(f => {
+
+				const eqi = f.indexOf('=')
+				if (eqi < 1) this.error(`Invalid ${type.toLowerCase()} ${chalk.red(f)}`, {
+					suggestions: [`${_.capitalize(type)} flags must be defined using the format ${chalk.italic('name=value')}`],
+				})
+
+				const name = f.substr(0, eqi)
+				const value = f.substr(eqi + 1)
+
+				if (map.get(name)) this.warn(`${_.capitalize(type)} ${chalk.yellow(name)} has already been defined`)
+
+				map.set(name, value)
+
+			})
+		}
+
+		return map
+
+	}
+
+
+	attributeValuesMap(flag: string[]): any {
+		return this._simpleValuesMap(flag, 'attribute')
+	}
+
+
+	relationshipValuesMap(flag: string[]): Map<string, any> {
+
+		const relationships = new Map<string, any>()
+
+		if (flag && (flag.length > 0)) {
+			flag.forEach(f => {
+
+				const rt = f.split('=')
+				if (rt.length !== 2) this.error(`Invalid relationship flag: ${chalk.red(f)}`, {
+					suggestions: [`Define the relationship using the format ${chalk.italic('attribute_name=resource_type/resource_id')}`],
+				})
+				const vt = rt[1].split('/')
+				if (vt.length !== 2) this.error(`Invalid relationship flag: ${chalk.red(f)}`, {
+					suggestions: [`Define the relationship value using the format ${chalk.italic('resource_type/resource_id')}`],
+				})
+
+				const name = rt[0]
+				const type = vt[0]
+				const id = vt[1]
+
+				const res = this.checkResource(type)
+
+				if (relationships.get(name)) this.warn(`Relationship ${chalk.yellow(name)} has already been defined`)
+
+				relationships.set(name, { type, id, sdk: res?.sdk })
+
+			})
+		}
+
+		return relationships
+
+	}
+
+
+	metadataValuesMap(flag: string[]): any {
+		return this._simpleValuesMap(flag, 'metadata')
+	}
+
+
+	// OUTPUT //
+
 	printOutput(output: any, flags: any) {
 		if (output) this.log(flags.json ? JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspect(output, false, null, true))
 	}
 
 	printError(error: any) {
+
 		let err = null
+
 		if (error.response) {
 			if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
 				{ suggestions: ['Execute login to get access to the selected resource'] }
 			)
 			else err = error.response.data.errors
-		} else err = error.toArray()
+		} else
+		if (error.errors) err = error.errors().toArray()
+		else
+		if (error.toArray) err = error.toArray()
+		else err = error
+
 		if (err) this.error(inspect(err, false, null, true))
+
 	}
 
 }

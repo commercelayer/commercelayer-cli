@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run",
@@ -63,7 +63,6 @@
     "@commercelayer/js-sdk": "^3.6.3",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
-    "cli-ux": "^5.5.1",
     "tslib": "^1.14.1"
   }
 }
