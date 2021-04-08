@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/commercelayer-cli",
   "description": "Commerce Layer CLI",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -86,7 +86,6 @@
     "@oclif/plugin-help": "^3.2.2",
     "@oclif/plugin-not-found": "^1.2.4",
     "@oclif/plugin-plugins": "^1.10.0",
-    "cli-flags": "^2.0.7",
     "configstore": "^5.0.1",
     "lodash": "^4.17.21",
     "tslib": "^1.14.1",
