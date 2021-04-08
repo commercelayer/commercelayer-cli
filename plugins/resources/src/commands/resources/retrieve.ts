@@ -39,9 +39,6 @@ export default class ResourcesRetrieve extends Command {
     const baseUrl = baseURL(flags.organization, flags.domain)
     const accessToken = flags.accessToken
 
-    // this.log('baseUrl: ' + baseUrl)
-    // this.log('accessToken: ' + accessToken)
-
     // Include flags
     const include: string[] = this.includeValuesArray(flags.include)
     // Fields flags
