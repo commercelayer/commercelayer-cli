@@ -4,6 +4,7 @@ import api from '@commercelayer/js-sdk'
 import { baseURL, appKey } from '../../common'
 import chalk from 'chalk'
 import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile } from '../../config'
+import { inspect } from 'util'
 
 
 export default class ApplicationsLogin extends Command {
@@ -72,7 +73,9 @@ export default class ApplicationsLogin extends Command {
       this.log(chalk.green.bold('Login successful! ') + `${app.mode} configuration and access_token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}`)
 
     } catch (error) {
-      this.log(chalk.red.bold('Login failed: ') + error.message)
+      this.log(chalk.bold.red('Login failed!'))
+      if (error.message) this.error(error.message)
+      else this.error(inspect(error.toArray(), false, null, true))
     }
 
   }
