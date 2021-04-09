@@ -1,6 +1,7 @@
-import {Command, flags} from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 import { baseURL } from '../common'
 import seeder from '@commercelayer/commercelayer-seeder'
+import chalk from 'chalk'
 
 
 export default class Seed extends Command {
@@ -9,15 +10,17 @@ export default class Seed extends Command {
 
   static flags = {
     organization: flags.string({
-			char: 'o',
-			description: 'the slug of your organization',
-			required: true,
-		}),
+      char: 'o',
+      description: 'the slug of your organization',
+      required: true,
+      env: 'CL_CLI_ORGANIZATION',
+    }),
     domain: flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
+      env: 'CL_CLI_DOMAIN',
     }),
     businessModel: flags.string({
       char: 'b',
@@ -35,14 +38,18 @@ export default class Seed extends Command {
       description: 'the resources URL or local path',
       default: 'https://data.commercelayer.app/seed',
     }),
-    accessToken: flags.string({ hidden: true, required: true }),
+    accessToken: flags.string({
+      hidden: true,
+      required: true,
+      env: 'CL_CLI_ACCESS_TOKEN',
+    }),
     infoLog: flags.boolean({ hidden: true }),
   }
 
 
   async run() {
 
-    const {args, flags} = this.parse(Seed)
+    const { args, flags } = this.parse(Seed)
 
     const businessModel = flags.businessModel as ('multi_market' | 'custom')
     const maxItems = flags.maxItems
@@ -62,15 +69,24 @@ export default class Seed extends Command {
     this.log('access_token: ' + accessToken)
 
 
-    await seeder({
-      endpoint,
-      businessModel,
-      infoLog,
-      maxItems: maxItems ? Number(maxItems) : undefined,
-      accessToken,
-    })
+    try {
 
-    return true
+      await seeder({
+        endpoint,
+        businessModel,
+        infoLog,
+        maxItems: maxItems ? Number(maxItems) : undefined,
+        accessToken,
+      })
+
+      this.log('🎉 The seed has been imported with success.')
+
+      return true
+
+    } catch (error) {
+      this.log(`${chalk.bold.red('Error!')} - An error occurred during seed import: ${error.message}`)
+      throw error
+    }
 
   }
 
