@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-seeder
 $ cl-seeder COMMAND
 running command...
 $ cl-seeder (-v|--version|version)
-@commercelayer/cli-plugin-seeder/0.0.4 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-seeder/0.0.5 darwin-x64 node-v15.13.0
 $ cl-seeder --help [COMMAND]
 USAGE
   $ cl-seeder COMMAND
@@ -47,5 +47,5 @@ OPTIONS
                                            path
 ```
 
-_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v0.0.4/src/commands/seed.ts)_
+_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v0.0.5/src/commands/seed.ts)_
 <!-- commandsstop -->
