@@ -54,8 +54,8 @@ export default class ApplicationsCurrent extends Command {
     if (stored) {
       const current = `${stored.key}.${stored.mode}` || 'none'
       const color = (current === 'none') ? chalk.italic.gray : chalk.bold.yellow
-      this.log(`Current application: ${color(current)}`)
-    } else this.warn('No current application defined')
+      this.log(`\nCurrent application: ${color(current)}\n`)
+    } else this.warn(chalk.italic('\nNo current application defined\n'))
 
     if (flags.info) {
       const info = readConfigFile(this.config, stored)

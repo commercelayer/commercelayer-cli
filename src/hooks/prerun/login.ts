@@ -26,8 +26,6 @@ const hook: Hook<'prerun'> = async function (opts) {
   if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
 
 
-  // this.log(`Checking accessToken for command ${opts.Command.id} ...`)
-
   const flagConfig = {
     organization: flagUtil.string({ char: 'o', hidden: true }),
     live: flagUtil.boolean({ hidden: true }),
