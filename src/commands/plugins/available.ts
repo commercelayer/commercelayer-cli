@@ -27,13 +27,13 @@ export default class PluginsAvailable extends Command {
     if (availablePlugins && (availablePlugins.length > 0)) {
       cliux.table(availablePlugins,
         {
-          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row =>  chalk.yellow(row.name) },
+          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row =>  chalk.yellowBright(row.name) },
           description: { header: 'DESCRIPTION' },
         },
         {
           printLine: this.log,
       })
-    } else this.log(chalk.italic('At the moiment there are no available plugins'))
+    } else this.log(chalk.italic('No available plugins'))
     this.log()
 
   }
@@ -42,8 +42,8 @@ export default class PluginsAvailable extends Command {
 
 
 const AvailablePlugins = [
+  { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources'           },
   { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder'                   },
-  { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD resources commands'                    },
   { name: 'importer',   plugin: '@commercelayer/cli-plugin-importer',   description: 'Organization data importer',  hidden: true  },
   { name: 'exporter',   plugin: '@commercelayer/cli-plugin-exporter',   description: 'Organization data exporter',  hidden: true  },
   { name: 'cleaner',    plugin: '@commercelayer/cli-plugin-cleaner',    description: 'Organization data cleaner',   hidden: true  },
