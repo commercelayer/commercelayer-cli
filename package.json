@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/commercelayer-cli",
   "description": "Commerce Layer CLI",
-  "version": "0.0.26",
+  "version": "0.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -90,5 +90,8 @@
     "lodash": "^4.17.21",
     "tslib": "^1.14.1",
     "update-notifier": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

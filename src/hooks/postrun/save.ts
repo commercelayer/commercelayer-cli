@@ -5,18 +5,33 @@ import _ from 'lodash'
 
 const hook: Hook<'postrun'> = async function (opts) {
 
-  // process.stdout.write(`example hook running ${opts.id}\n`)
-
+  // Save last results
   if (opts.result) {
 
     const saveDir = path.join(opts.config.dataDir, 'results')
-
     if (!fs.existsSync(saveDir)) fs.mkdirSync(saveDir, { recursive: true })
 
     const filePath = path.join(saveDir, _.kebabCase(opts.Command.name) + '.last.json')
     const data = JSON.stringify(opts.result, null, 4)
 
     fs.writeFileSync(filePath, data)
+
+  }
+
+
+  // Save last command
+  if (opts.argv) {
+
+    const commDir = path.join(opts.config.dataDir, 'commands')
+    if (!fs.existsSync(commDir)) fs.mkdirSync(commDir, { recursive: true })
+
+    const tstamp = new Date().toISOString()
+    const date = tstamp.substring(0, tstamp.indexOf('T'))
+
+    const filePath = path.join(commDir, date + '_command.list')
+    const data = [ '>', opts.Command.id, ...opts.argv ]
+
+    fs.appendFileSync(filePath, `${data.join(' ')}\n`)
 
   }
 
