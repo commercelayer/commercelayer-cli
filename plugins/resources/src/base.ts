@@ -131,12 +131,12 @@ export default abstract class extends Command {
 	}
 
 
-	mapToObject(map: Map<string, any>): any {
+	mapToSdkObject(map: Map<string, any>): any {
 
 		const object: any = {}
 
 		map.forEach((val, key) => {
-			const k = key as keyof object
+			const k = _.camelCase(key) as keyof object
 			if (object[k] === undefined) object[k] = val
 			else object[k] = [...val, object[k]]
 		})

@@ -43,11 +43,11 @@ export default class ResourcesCreate extends Command {
     const accessToken = flags.accessToken
 
     // Attributes flags
-    const attributes = this.mapToObject(this.attributeValuesMap(flags.attribute))
+    const attributes = this.mapToSdkObject(this.attributeValuesMap(flags.attribute))
     // Relationships flags
     const relationships = this.relationshipValuesMap(flags.relationship)
     // Metadata flags
-    const metadata = this.mapToObject(this.metadataValuesMap(flags.metedata))
+    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metedata))
 
     // Relationships
     if (relationships) relationships.forEach((value, key) => {
@@ -57,7 +57,7 @@ export default class ResourcesCreate extends Command {
     })
 
     // Metadata
-    attributes.metadata = metadata
+    if (metadata && (Object.keys(metadata).length > 0)) attributes.metadata = metadata
 
 
     cl.init({ accessToken, endpoint: baseUrl })
