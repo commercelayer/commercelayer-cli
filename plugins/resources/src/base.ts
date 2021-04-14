@@ -45,7 +45,7 @@ export default abstract class extends Command {
 	]
 
 
-	checkResource(res: string, required = true): Resource | undefined {
+	checkResource(res: string, required = true): Resource {
 		if (!res && required) this.error('Resource type not defined')
 		const resource = findResource(res)
 		if (resource === undefined) this.error(`Invalid resource ${chalk.red(res)}`,
@@ -131,14 +131,17 @@ export default abstract class extends Command {
 	}
 
 
-	mapToSdkObject(map: Map<string, any>): any {
+	mapToSdkObject(map: Map<string, any>, { camelCase = true } = {}): any {
 
 		const object: any = {}
 
 		map.forEach((val, key) => {
-			const k = _.camelCase(key) as keyof object
+			const k = camelCase ? _.camelCase(key) : key as keyof object
+			object[k] = val
+			/* it should never happen
 			if (object[k] === undefined) object[k] = val
 			else object[k] = [...val, object[k]]
+			*/
 		})
 
 		return object
@@ -154,8 +157,11 @@ export default abstract class extends Command {
 		map.forEach((val, key) => {
 			if (key !== '__self') {
 				if (subfields === null) subfields = {}
+				subfields[key] = val
+				/* it should never happen
 				if (subfields[key] === undefined) subfields[key] = val
 				else subfields[key] = [...val, subfields[key]]
+				*/
 			}
 		})
 
@@ -165,39 +171,44 @@ export default abstract class extends Command {
 
 	}
 
+	// eslint-disable-next-line valid-jsdoc
+	/**
+	  * @deprecated The method should not be used
+	  */
+	/*
+    mapToSdkParamExtended(map: Map<string, string[]>): any[] {
 
-	mapToSdkParamExtended(map: Map<string, string[]>): any[] {
+	   const param: any[] = map.get('__self') as any[] || []
+	   let subfields: any = null
 
-		const param: any[] = map.get('__self') as any[] || []
-		let subfields: any = null
+	   map.forEach((val, key) => {
+		   if (key !== '__self') {
+			   if (subfields === null) subfields = {}
+			   const kt = key.split('.')
+			   let s = subfields
+			   for (let i = 0; i < kt.length; i++) {
+				   const k = kt[i]
+				   if (i === (kt.length - 1)) {
+					   if (s[k] === undefined) s[k] = val
+					   else s[k] = [...val, s[k]]
+				   } else
+					   if (s[k] === undefined) s = s[k] = {}
+					   else
+						   if (Array.isArray(s[k])) {
+							   const o = s[k].find((x: any) => (typeof x === 'object'))
+							   if (o === undefined) s[k].push(s = {})
+							   else s = o
+						   } else s = s[k]
+			   }
+		   }
+	   })
 
-		map.forEach((val, key) => {
-			if (key !== '__self') {
-				if (subfields === null) subfields = {}
-				const kt = key.split('.')
-				let s = subfields
-				for (let i = 0; i < kt.length; i++) {
-					const k = kt[i]
-					if (i === (kt.length - 1)) {
-						if (s[k] === undefined) s[k] = val
-						else s[k] = [...val, s[k]]
-					} else
-						if (s[k] === undefined) s = s[k] = {}
-						else
-							if (Array.isArray(s[k])) {
-								const o = s[k].find((x: any) => (typeof x === 'object'))
-								if (o === undefined) s[k].push(s = {})
-								else s = o
-							} else s = s[k]
-				}
-			}
-		})
+	   if (subfields !== null) param.push(subfields)
 
-		if (subfields !== null) param.push(subfields)
+	   return param
 
-		return param
-
-	}
+   }
+   */
 
 
 	whereValuesMap(flag: string[]): Map<string, string> {
@@ -369,7 +380,7 @@ export default abstract class extends Command {
 
 	printError(error: any) {
 
-		let err = null
+		let err = error
 
 		if (error.response) {
 			if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
@@ -377,12 +388,13 @@ export default abstract class extends Command {
 			)
 			else err = error.response.data.errors
 		} else
-		if (error.errors) err = error.errors().toArray()
-		else
-		if (error.toArray) err = error.toArray()
-		else err = error
+			if (error.errors) err = error.errors().toArray()
+			else
+			if (error.toArray) err = error.toArray()
+			// else err = error
 
-		if (err) this.error(inspect(err, false, null, true))
+		// if (err)
+		this.error(inspect(err, false, null, true))
 
 	}
 

@@ -34,14 +34,15 @@ export default class ResourcesDelete extends Command {
 
     try {
 
-      const resSdk: any = (cl as CLayer)[resource?.sdk as keyof CLayer]
+      const resSdk: any = (cl as CLayer)[resource.sdk as keyof CLayer]
 
       const res = await resSdk.find(id).then((r: any) => {
         return r.destroy()
       })
 
       // this.printOutput(res, flags)
-      if (res.valid()) this.log(`\n${chalk.green.bold('Success!')}: Deleted resource of type ${chalk.italic(resource?.api as string)} with id ${chalk.bold(res.id)}\n`)
+      // if (res.valid())
+      this.log(`\n${chalk.green.bold('Success!')}: Deleted resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
       return res
 

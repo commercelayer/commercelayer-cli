@@ -57,10 +57,10 @@ export default class ResourcesUpdate extends Command {
     // Relationships flags
     const relationships = this.relationshipValuesMap(flags.relationship)
     // Metadata flags
-    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metadata))
+    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metadata), { camelCase: false })
 
     // Relationships
-    if (relationships) relationships.forEach((value, key) => {
+    if (relationships && (relationships.size > 0)) relationships.forEach((value, key) => {
       const relSdk: any = (cl as CLayer)[value.sdk as keyof CLayer]
       const rel = relSdk.build({ id: value.id })
       attributes[_.camelCase(key)] = rel
@@ -74,7 +74,7 @@ export default class ResourcesUpdate extends Command {
 
     try {
 
-      const resSdk: any = (cl as CLayer)[resource?.sdk as keyof CLayer]
+      const resSdk: any = (cl as CLayer)[resource.sdk as keyof CLayer]
 
       const remRes = await resSdk.find(id)
 
@@ -84,11 +84,12 @@ export default class ResourcesUpdate extends Command {
       const res = await remRes.update(attributes)
 
       /* */
-      // const rawRes = await resSdk.find(res.id, { rawResponse: true })
-      // this.printOutput(rawRes, flags)
+      const rawRes = await resSdk.find(res.id, { rawResponse: true })
+      this.printOutput(rawRes, flags)
       /* */
       // this.printOutput(res, flags)
-      if (res.valid()) this.log(`\n${chalk.green.bold('Success!')}: Updated resource of type ${chalk.italic(resource?.api as string)} with id ${chalk.bold(res.id)}\n`)
+      // if (res.valid())
+      this.log(`\n${chalk.green.bold('Success!')}: Updated resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
       // return rawRes
 

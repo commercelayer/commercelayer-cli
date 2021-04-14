@@ -120,7 +120,7 @@ interface Resource {
 
 const findResource = (res: string): (Resource | undefined) => {
 
-	if (res === undefined) return undefined
+	// if (res === undefined) return undefined
 
 	const lowRes = res.toLowerCase()
 

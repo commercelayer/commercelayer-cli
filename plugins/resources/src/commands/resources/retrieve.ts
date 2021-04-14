@@ -49,7 +49,7 @@ export default class ResourcesRetrieve extends Command {
 
     try {
 
-      const resObj: any = (cl as CLayer)[resource?.sdk as keyof CLayer]
+      const resObj: any = (cl as CLayer)[resource.sdk as keyof CLayer]
       let req = resObj
 
       if (include && (include.length > 0)) req = req.includes(...include)

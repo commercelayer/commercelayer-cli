@@ -47,10 +47,10 @@ export default class ResourcesCreate extends Command {
     // Relationships flags
     const relationships = this.relationshipValuesMap(flags.relationship)
     // Metadata flags
-    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metedata))
+    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metedata), { camelCase: false })
 
     // Relationships
-    if (relationships) relationships.forEach((value, key) => {
+    if (relationships && (relationships.size > 0)) relationships.forEach((value, key) => {
       const relSdk: any = (cl as CLayer)[value.sdk as keyof CLayer]
       const rel = relSdk.build({ id: value.id })
       attributes[_.camelCase(key)] = rel
@@ -64,7 +64,7 @@ export default class ResourcesCreate extends Command {
 
     try {
 
-      const resSdk: any = (cl as CLayer)[resource?.sdk as keyof CLayer]
+      const resSdk: any = (cl as CLayer)[resource.sdk as keyof CLayer]
       const res = await resSdk.create(attributes)
 
       /* */
@@ -72,7 +72,8 @@ export default class ResourcesCreate extends Command {
       this.printOutput(rawRes, flags)
       /* */
       // this.printOutput(res, flags)
-      if (res.valid()) this.log(`\n${chalk.green.bold('Success!')}: Created new resource of type ${chalk.italic(resource?.api as string)} with id ${chalk.bold(res.id)}\n`)
+      // if (res.valid())
+      this.log(`\n${chalk.green.bold('Success!')}: Created new resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
       return rawRes
 
