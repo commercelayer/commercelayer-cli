@@ -19,12 +19,13 @@ describe('resources:update', () => {
       const res = await cl.Customer.where({ emailEq: email }).first()
       return res.id
     })
-    .do(ctx => UpdateCommand.run(['customers', ctx.resId, '-ju', '-m meta_update=value_update', '-M', `-a reference=${ref}`, '-r customer_group=customer_groups/EyQYahWlye']))
-    .do(ctx => UpdateCommand.run(['customers', ctx.resId, '-ju', '-m meta_update2=valueUpdate2']))
-    .do(ctx => RetrieveCommand.run(['customers', ctx.resId, '-ju', '-i customer_group']))
+    .stdout()
+    .do(ctx => UpdateCommand.run(['customers', ctx.resId, '-ju', '-m meta_update=value_update', `-a reference=${ref}`, '-r customer_group=customer_groups/EyQYahWlye']))
+    .do(ctx => UpdateCommand.run(['customers', ctx.resId, '-ju', '-M meta_update2=valueUpdate2']))
+    .do(ctx => RetrieveCommand.run(['customers', ctx.resId, '-jur', '-i customer_group']))
     .do(ctx => {
       expect(ctx.stdout).to.contain('Success!')
-      expect(ctx.stdout).to.contain('"meta_update":"value_update"').and.contain('"meta_create":"value_create"').and.contain('"meta_update2":"valueUpdate2"')
+      expect(ctx.stdout).to.contain('"metadata":{"meta_update2":"valueUpdate2"}')
       expect(ctx.stdout).to.contain(`"reference":"${ref}"`)
       expect(ctx.stdout).to.contain('"included":[{"id":"EyQYahWlye","type":"customer_groups"')
     })
