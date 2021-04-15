@@ -13,7 +13,7 @@ describe('resources:create', () => {
 
   test
   .stdout()
-  .command(['resources:create', 'customers', `-a email=${email}nr`])
+  .command(['resources:create', 'customers', `-a email=${email}`])
   .it('runs resources:create without relationships', ctx => {
     expect(ctx.stdout).to.contain('Success!')
   })
