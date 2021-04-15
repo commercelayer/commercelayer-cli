@@ -13,9 +13,7 @@ const hook: Hook<'init'> = async function (_opts) {
 
   notifier.notify({
     // isGlobal: true,
-    message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n
-    New version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}
-    Run ${chalk.cyanBright('{updateCommand}')} to update`,
+    message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright('{updateCommand}')} to update`,
   })
 
   // console.log(notifier.update)
