@@ -55,11 +55,11 @@ export default abstract class extends Command {
 
 	async init() {
 
-		const notifier = updateNotifier({ pkg, updateCheckInterval: 0/* 1000 * 60 * 60 */ })
+		const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
 
 		if (notifier.update) {
 
-			const pluginMode = path.resolve(__dirname).includes('/@commercelayer/commercelayer-cli/node_modules/@commercelayer/cli-plugin-resources/')
+			const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/commercelayer-cli/node_modules/${pkg.name}/`)
 			const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
 
 			notifier.notify({
