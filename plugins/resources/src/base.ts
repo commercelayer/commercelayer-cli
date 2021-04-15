@@ -4,6 +4,14 @@ import { filterAvailable } from './commands/resources/filters'
 import chalk from 'chalk'
 import { inspect } from 'util'
 import _ from 'lodash'
+import fs from 'fs'
+import path from 'path'
+
+
+import updateNotifier from 'update-notifier'
+
+const pkg = require('../package.json')
+
 
 export default abstract class extends Command {
 
@@ -43,6 +51,31 @@ export default abstract class extends Command {
 	static args = [
 		{ name: 'resource', description: 'the resource type', required: true },
 	]
+
+
+	async init() {
+
+		const notifier = updateNotifier({ pkg, updateCheckInterval: 0/* 1000 * 60 * 60 */ })
+
+		if (notifier.update) {
+
+			const pluginMode = path.resolve(__dirname).includes('/@commercelayer/commercelayer-cli/node_modules/@commercelayer/cli-plugin-resources/')
+			const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
+
+			notifier.notify({
+				// isGlobal: true,
+				message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
+			})
+
+		}
+
+		return super.init()
+
+	}
+
+
+
+	// -- CUSTOM METHODS -- //
 
 
 	checkResource(res: string, required = true): Resource {
@@ -138,7 +171,7 @@ export default abstract class extends Command {
 		map.forEach((val, key) => {
 			const k = camelCase ? _.camelCase(key) : key as keyof object
 			object[k] = val
-			/* it should never happen
+			/* it should never happen in real use cases
 			if (object[k] === undefined) object[k] = val
 			else object[k] = [...val, object[k]]
 			*/
@@ -158,7 +191,7 @@ export default abstract class extends Command {
 			if (key !== '__self') {
 				if (subfields === null) subfields = {}
 				subfields[key] = val
-				/* it should never happen
+				/* it should never happenin real use cases
 				if (subfields[key] === undefined) subfields[key] = val
 				else subfields[key] = [...val, subfields[key]]
 				*/
@@ -176,7 +209,7 @@ export default abstract class extends Command {
 	  * @deprecated The method should not be used
 	  */
 	/*
-    mapToSdkParamExtended(map: Map<string, string[]>): any[] {
+	mapToSdkParamExtended(map: Map<string, string[]>): any[] {
 
 	   const param: any[] = map.get('__self') as any[] || []
 	   let subfields: any = null
@@ -372,13 +405,21 @@ export default abstract class extends Command {
 	}
 
 
-	// OUTPUT //
 
-	printOutput(output: any, flags: any) {
-		if (output) this.log(flags.json ? JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspect(output, false, null, true))
+	// --  OUTPUT  -- //
+
+	formatOutput(output: any, flags?: any, { color = true } = {}) {
+		if (output) return (flags && flags.json) ? JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspect(output, false, null, color)
+		return ''
 	}
 
-	printError(error: any) {
+
+	printOutput(output: any, flags: any | undefined) {
+		if (output) this.log(this.formatOutput(output, flags))
+	}
+
+
+	printError(error: any, flags?: any): void {
 
 		let err = error
 
@@ -390,11 +431,35 @@ export default abstract class extends Command {
 		} else
 			if (error.errors) err = error.errors().toArray()
 			else
-			if (error.toArray) err = error.toArray()
-			// else err = error
+				if (error.toArray) err = error.toArray()
 
-		// if (err)
-		this.error(inspect(err, false, null, true))
+
+		this.error(this.formatOutput(err, flags))
+
+	}
+
+
+	saveOutput(output: string, flags: any) {
+
+		try {
+
+			const filePath = flags.save || flags['save-path']
+			if (!filePath) this.warn('Undefined output save path')
+
+			const fileDir = path.dirname(filePath)
+			if (flags['save-path'] && !fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true })
+
+			const out = this.formatOutput(output, flags, { color: false })
+
+			fs.writeFileSync(filePath, out)
+			this.log(`Command output saved to file ${chalk.italic(filePath)}`)
+
+		} catch (error) {
+			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.red(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
+			else throw error
+		} finally {
+			this.log()
+		}
 
 	}
 
