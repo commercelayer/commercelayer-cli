@@ -12,9 +12,13 @@ const hook: Hook<'postrun'> = async function (opts) {
     if (!fs.existsSync(saveDir)) fs.mkdirSync(saveDir, { recursive: true })
 
     const filePath = path.join(saveDir, _.kebabCase(opts.Command.name) + '.last.json')
-    const data = JSON.stringify(opts.result, null, 4)
 
-    fs.writeFileSync(filePath, data)
+    try {
+      const data = JSON.stringify(opts.result, null, 4)
+      fs.writeFileSync(filePath, data)
+    } catch (error) {
+      this.warn(`Error saving ouput for command ${opts.Command.name}`)
+    }
 
   }
 
