@@ -24,13 +24,15 @@ export default class ResourcesUpdate extends Command {
     }),
     metadata: flags.string({
       char: 'm',
-      description: 'define a metadata attribute or a set of metadata attributes',
+      description: 'define a metadata attribute and merge it with the metadata already present in the remote resource',
       multiple: true,
+      exclusive: ['metadata-replace'],
     }),
-    merge: flags.boolean({
+    'metadata-replace': flags.string({
       char: 'M',
-      description: 'merge metadata attributues with fields already present in the remote resource',
-      dependsOn: ['metadata'],
+      description: 'define a metadata attribute and replace every item already presente in the remote resource',
+      multiple: true,
+      exclusive: ['metadata'],
     }),
   }
 
@@ -57,8 +59,7 @@ export default class ResourcesUpdate extends Command {
     // Relationships flags
     const relationships = this.relationshipValuesMap(flags.relationship)
     // Metadata flags
-    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metadata), { camelCase: false })
-
+    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metadata || flags['metadata-replace']), { camelCase: false })
     // Relationships
     if (relationships && (relationships.size > 0)) relationships.forEach((value, key) => {
       const relSdk: any = (cl as CLayer)[value.sdk as keyof CLayer]
@@ -79,7 +80,7 @@ export default class ResourcesUpdate extends Command {
       const remRes = await resSdk.find(id)
 
       // Metadata attributes merge
-      if (flags.merge && remRes.metadata && (Object.keys(remRes.metadata).length > 0)) attributes.metadata = { ...remRes.metadata, ...metadata }
+      if (flags.metadata && remRes.metadata && (Object.keys(remRes.metadata).length > 0)) attributes.metadata = { ...remRes.metadata, ...metadata }
 
       const res = await remRes.update(attributes)
 

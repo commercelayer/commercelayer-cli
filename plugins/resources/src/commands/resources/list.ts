@@ -1,12 +1,20 @@
 import Command, { flags } from '../../base'
 import { baseURL } from '../../common'
 import cl, { CLayer } from '@commercelayer/js-sdk'
+import chalk from 'chalk'
+import { denormalize } from '../../jsonapi'
 
 export default class ResourcesList extends Command {
 
   static description = 'fetch a collection of resources'
 
   static aliases = ['list', 'rl', 'res:list']
+
+  static examples = [
+    '$ commercelayer resources:list customers -f id,email -i customer_group -s updated_at',
+    '$ cl list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
+    '$ cl list -p 5 -n 10 -s -created_at',
+  ]
 
   static flags = {
     ...Command.flags,
@@ -37,6 +45,22 @@ export default class ResourcesList extends Command {
       char: 's',
       description: 'defines results ordering',
       multiple: true,
+    }),
+    save: flags.string({
+      char: 'x',
+      description: 'save command output to file',
+      multiple: false,
+      exclusive: ['save-path'],
+    }),
+    'save-path': flags.string({
+      char: 'X',
+      description: 'save command output to file and create missing path directories',
+      multiple: false,
+      exclusive: ['save'],
+    }),
+    raw: flags.boolean({
+      char: 'r',
+      description: 'print out the raw API response',
     }),
   }
 
@@ -82,22 +106,20 @@ export default class ResourcesList extends Command {
 
       const res = await req.all({ rawResponse: true })
 
-      this.printOutput(res, flags)
+      const out = flags.raw ? res : denormalize(res)
 
-      return res
+      if (res.data && (res.data.length > 0)) {
+        this.printOutput(out, flags)
+        this.log(`\nRecords: ${chalk.yellowBright(res.data.length)} of ${res.meta.record_count} | Page: ${chalk.yellowBright(String(flags.page || 1))} of ${res.meta.page_count}\n`)
+        if (flags.save || flags['save-path']) this.saveOutput(out, flags)
+      } else this.log(chalk.italic('\nNo records found\n'))
+
+
+      return out
 
     } catch (error) {
       this.printError(error)
     }
-
-    /*
-    console.log('INCLUDE'); console.log(include)
-    console.log('SELECT'); console.log(fields)
-    console.log('WHERE'); console.log(wheres)
-    console.log('ORDER'); console.log(order)
-    console.log('PAGE'); console.log(page)
-    console.log('PER-PAGE'); console.log(perPage)
-    */
 
   }
 

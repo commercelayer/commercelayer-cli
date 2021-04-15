@@ -1,6 +1,7 @@
 import Command, { flags } from '../../base'
 import { baseURL } from '../../common'
 import cl, { CLayer } from '@commercelayer/js-sdk'
+import { denormalize } from '../../jsonapi'
 
 
 export default class ResourcesRetrieve extends Command {
@@ -20,6 +21,22 @@ export default class ResourcesRetrieve extends Command {
       char: 'f',
       multiple: true,
       description: 'comma separeted list of fields in the format [resource]=field1,field2...',
+    }),
+    save: flags.string({
+      char: 'x',
+      description: 'save command output to file',
+      multiple: false,
+      exclusive: ['save-path'],
+    }),
+    'save-path': flags.string({
+      char: 'X',
+      description: 'save command output to file and create missing path directories',
+      multiple: false,
+      exclusive: ['save'],
+    }),
+    raw: flags.boolean({
+      char: 'r',
+      description: 'print out the raw API response',
     }),
   }
 
@@ -57,9 +74,14 @@ export default class ResourcesRetrieve extends Command {
 
       const res = await req.find(id, { rawResponse: true })
 
-      this.printOutput(res, flags)
+      const out = flags.raw ? res : denormalize(res)
 
-      return res
+      this.printOutput(out, flags)
+
+      if (flags.save || flags['save-path']) this.saveOutput(out, flags)
+
+
+      return out
 
     } catch (error) {
       this.printError(error)
