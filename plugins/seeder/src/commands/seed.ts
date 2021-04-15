@@ -3,6 +3,11 @@ import { baseURL } from '../common'
 import seeder from '@commercelayer/commercelayer-seeder'
 import chalk from 'chalk'
 
+import updateNotifier from 'update-notifier'
+import path from 'path'
+
+const pkg = require('../../package.json')
+
 
 export default class Seed extends Command {
 
@@ -47,9 +52,30 @@ export default class Seed extends Command {
   }
 
 
+  async init() {
+
+		const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
+
+		if (notifier.update) {
+
+			const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/commercelayer-cli/node_modules/${pkg.name}/`)
+			const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
+
+			notifier.notify({
+				// isGlobal: true,
+				message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
+			})
+
+		}
+
+		return super.init()
+
+	}
+
+
   async run() {
 
-    const { args, flags } = this.parse(Seed)
+    const { flags } = this.parse(Seed)
 
     const businessModel = flags.businessModel as ('multi_market' | 'custom')
     const maxItems = flags.maxItems
@@ -58,15 +84,15 @@ export default class Seed extends Command {
     const endpoint = baseURL(flags.organization, flags.domain)
     const infoLog = flags.infoLog
 
-    this.log('args: ' + Object.keys(args).join(','))
-    this.log('flags: ' + Object.keys(flags).join(','))
+    // this.log('args: ' + Object.keys(args).join(','))
+    // this.log('flags: ' + Object.keys(flags).join(','))
 
     this.log('businessModel: ' + businessModel)
     this.log('maxItems: ' + maxItems)
     this.log('resourcesUrl: ' + resourcesUrl)
     this.log('endpoint: ' + endpoint)
 
-    this.log('access_token: ' + accessToken)
+    // this.log('access_token: ' + accessToken)
 
 
     try {
