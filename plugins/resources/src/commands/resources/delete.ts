@@ -44,7 +44,7 @@ export default class ResourcesDelete extends Command {
       // if (res.valid())
       this.log(`\n${chalk.green.bold('Success!')}: Deleted resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
-      return res
+      // return res
 
     } catch (error) {
       this.printError(error)

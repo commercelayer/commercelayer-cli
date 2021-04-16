@@ -92,7 +92,7 @@ export default class ResourcesUpdate extends Command {
       // if (res.valid())
       this.log(`\n${chalk.green.bold('Success!')}: Updated resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
-      // return rawRes
+      return rawRes
 
     } catch (error) {
       this.printError(error)
