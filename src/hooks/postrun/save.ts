@@ -1,4 +1,4 @@
-import {Hook} from '@oclif/config'
+import { Hook } from '@oclif/config'
 import fs from 'fs'
 import path from 'path'
 import _ from 'lodash'
@@ -33,7 +33,7 @@ const hook: Hook<'postrun'> = async function (opts) {
     const date = tstamp.substring(0, tstamp.indexOf('T'))
 
     const filePath = path.join(commDir, date + '_command.list')
-    const data = [ '>', opts.Command.id, ...opts.argv ]
+    const data = ['>', opts.Command.id, ...opts.argv]
 
     fs.appendFileSync(filePath, `${data.join(' ')}\n`)
 
