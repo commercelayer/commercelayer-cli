@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-exporter",
   "description": "Commerce Layer CLI Exporter plugin",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-exporter": "./bin/run",
@@ -42,9 +42,7 @@
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cl-exporter",
-    "plugins": [
-      "@oclif/plugin-help"
-    ]
+    "plugins": []
   },
   "repository": "commercelayer/commercelayer-cli-plugin-exporter",
   "scripts": {
@@ -58,7 +56,6 @@
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
-    "@oclif/plugin-help": "^3.2.2",
     "tslib": "^1.14.1"
   },
   "publishConfig": {
