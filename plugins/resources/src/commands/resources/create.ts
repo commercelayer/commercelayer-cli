@@ -3,6 +3,7 @@ import { baseURL } from '../../common'
 import cl, { CLayer } from '@commercelayer/js-sdk'
 import _ from 'lodash'
 import chalk from 'chalk'
+import { readDataFile, rawRequest, Operation } from '../../raw'
 
 export default class ResourcesCreate extends Command {
 
@@ -22,10 +23,16 @@ export default class ResourcesCreate extends Command {
       description: 'define a relationship with another resource',
       multiple: true,
     }),
-    metedata: flags.string({
+    metadata: flags.string({
       char: 'm',
       description: 'define a metadata attribute or a set of metadata attributes',
       multiple: true,
+    }),
+    data: flags.string({
+      char: 'D',
+      description: 'the data file to use as request body',
+      multiple: false,
+      exclusive: ['attribute', 'relationship', 'metadata'],
     }),
   }
 
@@ -42,12 +49,26 @@ export default class ResourcesCreate extends Command {
     const baseUrl = baseURL(flags.organization, flags.domain)
     const accessToken = flags.accessToken
 
+
+    // Raw request
+    if (flags.data) {
+      try {
+        const rawRes = await rawRequest({ operation: Operation.Create, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data))
+        this.printOutput(rawRes, flags)
+        this.log(`\n${chalk.green.bold('Success!')}: Created new resource of type ${chalk.italic(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
+        return rawRes
+      } catch (error) {
+        this.printError(error)
+      }
+    }
+
+
     // Attributes flags
     const attributes = this.mapToSdkObject(this.attributeValuesMap(flags.attribute))
     // Relationships flags
     const relationships = this.relationshipValuesMap(flags.relationship)
     // Metadata flags
-    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metedata), { camelCase: false })
+    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metadata), { camelCase: false })
 
     // Relationships
     if (relationships && (relationships.size > 0)) relationships.forEach((value, key) => {

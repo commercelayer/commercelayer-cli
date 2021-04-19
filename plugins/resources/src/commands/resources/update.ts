@@ -3,6 +3,7 @@ import { baseURL } from '../../common'
 import cl, { CLayer } from '@commercelayer/js-sdk'
 import _ from 'lodash'
 import chalk from 'chalk'
+import { readDataFile, rawRequest, Operation } from '../../raw'
 
 export default class ResourcesUpdate extends Command {
 
@@ -34,6 +35,12 @@ export default class ResourcesUpdate extends Command {
       multiple: true,
       exclusive: ['metadata'],
     }),
+    data: flags.string({
+      char: 'D',
+      description: 'the data file to use as request body',
+      multiple: false,
+      exclusive: ['attribute', 'relationship', 'metadata', 'metadata-replace'],
+    }),
   }
 
   static args = [
@@ -52,6 +59,19 @@ export default class ResourcesUpdate extends Command {
 
     const baseUrl = baseURL(flags.organization, flags.domain)
     const accessToken = flags.accessToken
+
+
+    // Raw request
+    if (flags.data) {
+      try {
+        const rawRes = await rawRequest({ operation: Operation.Update, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data), id)
+        this.printOutput(rawRes, flags)
+        this.log(`\n${chalk.green.bold('Success!')}: Updated resource of type ${chalk.italic(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
+        return rawRes
+      } catch (error) {
+        this.printError(error)
+      }
+    }
 
 
     // Attributes flags
