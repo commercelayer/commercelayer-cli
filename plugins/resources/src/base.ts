@@ -409,8 +409,9 @@ export default abstract class extends Command {
 	// --  OUTPUT  -- //
 
 	formatOutput(output: any, flags?: any, { color = true } = {}) {
-		if (output) return (flags && flags.json) ? JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspect(output, false, null, color)
-		return ''
+		if (!output) return ''
+		if (typeof output === 'string') return output
+		return (flags && flags.json) ? JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspect(output, false, null, color)
 	}
 
 
@@ -431,7 +432,9 @@ export default abstract class extends Command {
 		} else
 			if (error.errors) err = error.errors().toArray()
 			else
-				if (error.toArray) err = error.toArray()
+			if (error.toArray) err = error.toArray()
+			else
+			if (error.message) err = error.message
 
 
 		this.error(this.formatOutput(err, flags))
