@@ -4,7 +4,7 @@ import cliux from 'cli-ux'
 
 export default class ResourcesFilters extends Command {
 
-  static description = 'shows a list of all available filter predicates'
+  static description = 'Show a list of all available filter predicates'
 
   static hidden: true
 

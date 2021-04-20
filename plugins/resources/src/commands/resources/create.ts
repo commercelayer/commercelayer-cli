@@ -7,7 +7,7 @@ import { readDataFile, rawRequest, Operation } from '../../raw'
 
 export default class ResourcesCreate extends Command {
 
-  static description = 'create a new resource'
+  static description = 'Create a new resource'
 
   static aliases = ['create', 'rc', 'res:create']
 

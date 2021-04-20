@@ -6,7 +6,7 @@ import { denormalize } from '../../jsonapi'
 
 export default class ResourcesList extends Command {
 
-  static description = 'fetch a collection of resources'
+  static description = 'Fetch a collection of resources'
 
   static aliases = ['list', 'rl', 'res:list']
 

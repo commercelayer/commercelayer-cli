@@ -4,7 +4,7 @@ import chalk from 'chalk'
 
 export default class ResourcesAvailable extends Command {
 
-	static description = 'list all the available Commerce Layer API resources'
+	static description = 'List all the available Commerce Layer API resources'
 
 	static aliases = ['res:available']
 

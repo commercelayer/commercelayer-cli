@@ -47,7 +47,7 @@
     "plugins": [],
     "topics": {
       "resources": {
-        "description": "execute CRUD operations on resources"
+        "description": "Execute CRUD operations on API resources"
       }
     }
   },

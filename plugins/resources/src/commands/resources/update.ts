@@ -7,7 +7,7 @@ import { readDataFile, rawRequest, Operation } from '../../raw'
 
 export default class ResourcesUpdate extends Command {
 
-  static description = 'update a resource'
+  static description = 'Update an exiasting resource'
 
   static aliases = ['update', 'ru', 'res:update']
 

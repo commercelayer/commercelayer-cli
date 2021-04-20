@@ -5,7 +5,7 @@ import chalk from 'chalk'
 
 export default class ResourcesDelete extends Command {
 
-  static description = 'delete a resource'
+  static description = 'Delete an existing resource'
 
   static aliases = ['delete', 'rd', 'res:delete']
 

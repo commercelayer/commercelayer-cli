@@ -4,7 +4,7 @@ import ListCommand from './list'
 
 export default class ResourcesGet extends Command {
 
-  static description = 'retrieve or list resources'
+  static description = 'Retrieve a resource or list a set of resources'
 
   static aliases = ['get', 'res:get']
 
