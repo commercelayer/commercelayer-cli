@@ -7,7 +7,7 @@ import chalk from 'chalk'
 
 export default class ApplicationsList extends Command {
 
-  static description = 'show a list of all (logged in) available CLI applications '
+  static description = 'Show a list of all (logged in) available CLI applications'
 
   static aliases = ['app:list']
 
@@ -17,12 +17,20 @@ export default class ApplicationsList extends Command {
 
   async run() {
 
-    const configFiles = fs.readdirSync(this.config.configDir).filter(f => f.endsWith('.config.json'))
+    let configData: AppInfo[]
 
-    const configData: AppInfo[] = configFiles.map(cf => {
-      const appConfig = fs.readFileSync(path.join(this.config.configDir, cf), { encoding: 'utf-8' })
-      return JSON.parse(appConfig)
-    })
+    try {
+
+      const configFiles = fs.readdirSync(this.config.configDir).filter(f => f.endsWith('.config.json'))
+
+      configData = configFiles.map(cf => {
+        const appConfig = fs.readFileSync(path.join(this.config.configDir, cf), { encoding: 'utf-8' })
+        return JSON.parse(appConfig)
+      })
+
+    } catch (error) {
+      this.error('No CLI applications config files found', { suggestions: ['Execute first login to at least one CLI application'] })
+    }
 
     this.log()
     cliux.table(configData,

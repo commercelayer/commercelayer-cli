@@ -11,7 +11,7 @@ import https from 'https'
 
 export default class ApplicationsToken extends Command {
 
-  static description = 'get new access_token from Commerce Layer'
+  static description = 'Get a new access token from Commerce Layer API'
 
   static aliases = ['app:token']
 
@@ -37,7 +37,7 @@ export default class ApplicationsToken extends Command {
     }),
     save: flags.boolean({
       char: 's',
-      description: 'save access_token',
+      description: 'save access token',
     }),
   }
 
@@ -53,7 +53,7 @@ export default class ApplicationsToken extends Command {
 
     if (!configFileExists(this.config, app))
       this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`,
-        { suggestions: ['execute \'login\' command to initialize application and get the first access_token'] }
+        { suggestions: ['execute \'login\' command to initialize application and get the first access token'] }
       )
 
     try {
@@ -63,7 +63,7 @@ export default class ApplicationsToken extends Command {
       const accessToken = token?.accessToken
       if (accessToken) this.log(`\n${chalk.blueBright(accessToken)}\n`)
 
-      if (flags.save) this.log(`The new ${app.mode} access_token has been locally saved for application ${chalk.italic.bold(app.key)}`)
+      if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${chalk.italic.bold(app.key)}`)
 
       return token?.data
 

@@ -7,7 +7,7 @@ import { inspect } from 'util'
 
 export default class ApplicationsCurrent extends Command {
 
-  static description = 'set or show the current CLI application'
+  static description = 'Set or show the current CLI application'
 
   static aliases = ['app:current']
 
@@ -55,7 +55,7 @@ export default class ApplicationsCurrent extends Command {
       const current = `${stored.key}.${stored.mode}` || 'none'
       const color = (current === 'none') ? chalk.italic.gray : chalk.bold.yellow
       this.log(`\nCurrent application: ${color(current)}\n`)
-    } else this.warn(chalk.italic('\nNo current application defined\n'))
+    } else this.warn(chalk.italic('No current application defined'))
 
     if (flags.info) {
       const info = readConfigFile(this.config, stored)

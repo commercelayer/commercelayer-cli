@@ -4,7 +4,7 @@ import cliux from 'cli-ux'
 
 export default class PluginsAvailable extends Command {
 
-  static description = 'shows all available Commerce Layer plugins'
+  static description = 'Show all available Commerce Layer CLI plugins'
 
   // static aliases = ['plugins:list']
 

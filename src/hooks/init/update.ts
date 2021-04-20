@@ -9,7 +9,7 @@ const pkg = require('../../../package.json')
 
 const hook: Hook<'init'> = async function (_opts) {
 
-  const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
+  const notifier = updateNotifier({ pkg, updateCheckInterval: (process.env.CL_CLI_UPDATE_NOTIFY ? 0 : 1000 * 60 * 60) })
 
   notifier.notify({
     // isGlobal: true,

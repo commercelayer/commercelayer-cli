@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/commercelayer-cli
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/commercelayer-cli/0.1.9 darwin-x64 node-v15.13.0
+@commercelayer/commercelayer-cli/0.2.4 darwin-x64 node-v15.13.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
@@ -43,7 +43,7 @@ USAGE
 
 ## `commercelayer applications:current`
 
-set or show the current CLI application
+Set or show the current CLI application
 
 ```
 USAGE
@@ -57,11 +57,11 @@ ALIASES
   $ commercelayer app:current
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.1.9/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.4/src/commands/applications/current.ts)_
 
 ## `commercelayer applications:list`
 
-show a list of all (logged in) available CLI applications
+Show a list of all (logged in) available CLI applications
 
 ```
 USAGE
@@ -71,11 +71,11 @@ ALIASES
   $ commercelayer app:list
 ```
 
-_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.1.9/src/commands/applications/list.ts)_
+_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.4/src/commands/applications/list.ts)_
 
 ## `commercelayer applications:login`
 
-perform CLI login to Commerce Layer
+Perform the login to a CLI Commerce Layer application
 
 ```
 USAGE
@@ -90,26 +90,26 @@ ALIASES
   $ commercelayer app:login
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.1.9/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.4/src/commands/applications/login.ts)_
 
 ## `commercelayer applications:token`
 
-get new access_token from Commerce Layer
+Get a new access token from Commerce Layer API
 
 ```
 USAGE
   $ commercelayer applications:token
 
 OPTIONS
-  -o, --organization=organization  (required) [default: brioni] organization slug
-  -s, --save                       save access_token
+  -o, --organization=organization  (required) organization slug
+  -s, --save                       save access token
   --live                           live execution mode
 
 ALIASES
   $ commercelayer app:token
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.1.9/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.4/src/commands/applications/token.ts)_
 
 ## `commercelayer help [COMMAND]`
 
@@ -147,14 +147,14 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ## `commercelayer plugins:available`
 
-shows all available Commerce Layer plugins
+Show all available Commerce Layer CLI plugins
 
 ```
 USAGE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.1.9/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.4/src/commands/plugins/available.ts)_
 
 ## `commercelayer plugins:inspect PLUGIN...`
 
