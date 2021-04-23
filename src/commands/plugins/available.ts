@@ -15,20 +15,15 @@ export default class PluginsAvailable extends Command {
 
   async run() {
 
-    this.log(chalk.blueBright('\n-= Available Commerce Layer CLI plugins =-'))
-
-    // const plugins = AvailablePlugins.map(p => `- ${chalk.yellow(p.name)} : ${p.description} [${p.plugin}]`)
-    // this.log(plugins.join('\n'))
+    this.log(chalk.blueBright('\n-= Available Commerce Layer CLI plugins =-\n'))
 
     const availablePlugins = AvailablePlugins.filter(p => !p.hidden)
-
-    this.log()
 
     if (availablePlugins && (availablePlugins.length > 0)) {
       cliux.table(availablePlugins,
         {
           key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row =>  chalk.yellowBright(row.name) },
-          description: { header: 'DESCRIPTION' },
+          description: { header: 'DESCRIPTION\n' },
         },
         {
           printLine: this.log,

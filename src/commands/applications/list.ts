@@ -38,7 +38,7 @@ export default class ApplicationsList extends Command {
         key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row =>  chalk.blueBright(row.key) },
         name: { header: '  NAME  ', get: row => `  ${row.name}  ` },
         baseUrl: { header: 'BASE URL', get: row => `${row.baseUrl ? `${row.baseUrl}  ` : ''}` },
-        mode: { header: 'MODE', get: row => `${(row.mode === 'live') ? chalk.green(row.mode) : chalk.yellow(row.mode)}` },
+        mode: { header: 'MODE\n', get: row => `${(row.mode === 'live') ? chalk.green(row.mode) : chalk.yellow(row.mode)}` },
       },
       {
         printLine: this.log,
