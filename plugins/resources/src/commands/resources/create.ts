@@ -86,17 +86,17 @@ export default class ResourcesCreate extends Command {
     try {
 
       const resSdk: any = (cl as CLayer)[resource.sdk as keyof CLayer]
-      const res = await resSdk.create(attributes)
+      const res = await resSdk.create(attributes, { rawResponse: true })
 
       /* */
-      const rawRes = await resSdk.find(res.id, { rawResponse: true })
-      this.printOutput(rawRes, flags)
+      // const rawRes = await resSdk.find(res.id, { rawResponse: true })
+      // this.printOutput(rawRes, flags)
       /* */
-      // this.printOutput(res, flags)
+      this.printOutput(res, flags)
       // if (res.valid())
       this.log(`\n${chalk.green.bold('Success!')}: Created new resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
-      return rawRes
+      return res
 
     } catch (error) {
       this.printError(error)
