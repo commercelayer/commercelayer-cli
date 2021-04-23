@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
 running command...
 $ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/0.7.2 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-resources/0.7.3 darwin-x64 node-v15.13.0
 $ cl-resources --help [COMMAND]
 USAGE
   $ cl-resources COMMAND
@@ -39,7 +39,7 @@ USAGE
 
 ## `cl-resources resources:available`
 
-list all the available Commerce Layer API resources
+List all the available Commerce Layer API resources
 
 ```
 USAGE
@@ -49,11 +49,11 @@ ALIASES
   $ cl-resources res:available
 ```
 
-_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/available.ts)_
+_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/available.ts)_
 
 ## `cl-resources resources:create RESOURCE`
 
-create a new resource
+Create a new resource
 
 ```
 USAGE
@@ -75,11 +75,11 @@ ALIASES
   $ cl-resources res:create
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/create.ts)_
 
 ## `cl-resources resources:delete RESOURCE [ID]`
 
-delete a resource
+Delete an existing resource
 
 ```
 USAGE
@@ -98,11 +98,11 @@ ALIASES
   $ cl-resources res:delete
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/delete.ts)_
 
 ## `cl-resources resources:filters`
 
-shows a list of all available filter predicates
+Show a list of all available filter predicates
 
 ```
 USAGE
@@ -112,11 +112,11 @@ ALIASES
   $ cl-resources res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/filters.ts)_
 
 ## `cl-resources resources:get RESOURCE [ID]`
 
-retrieve or list resources
+Retrieve a resource or list a set of resources
 
 ```
 USAGE
@@ -143,11 +143,11 @@ ALIASES
   $ cl-resources res:get
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/get.ts)_
 
 ## `cl-resources resources:list RESOURCE`
 
-fetch a collection of resources
+Fetch a collection of resources
 
 ```
 USAGE
@@ -179,11 +179,11 @@ EXAMPLES
   $ cl list -p 5 -n 10 -s -created_at
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/list.ts)_
 
 ## `cl-resources resources:retrieve RESOURCE [ID]`
 
-fetch a single resource
+Fetch a single resource
 
 ```
 USAGE
@@ -207,11 +207,11 @@ ALIASES
   $ cl-resources res:retrieve
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/retrieve.ts)_
 
 ## `cl-resources resources:update RESOURCE [ID]`
 
-update a resource
+Update an exiasting resource
 
 ```
 USAGE
@@ -242,5 +242,5 @@ ALIASES
   $ cl-resources res:update
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.2/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/update.ts)_
 <!-- commandsstop -->
