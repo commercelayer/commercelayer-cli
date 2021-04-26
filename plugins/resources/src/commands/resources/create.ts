@@ -11,6 +11,13 @@ export default class ResourcesCreate extends Command {
 
   static aliases = ['create', 'rc', 'res:create']
 
+  static examples = [
+    '$ commercelayer resources:create customers -a email=user@test.com',
+    '$ clayer res:create customers -a email="user@test-com" -r customer_group=customer_groups/<customerGroupId>',
+    '$ cl create customers -a email=user@test.com -m meta_key="meta value"',
+    '$ cl rc customers -D /path/to/data/file/data.json',
+  ]
+
   static flags = {
     ...Command.flags,
     attribute: flags.string({

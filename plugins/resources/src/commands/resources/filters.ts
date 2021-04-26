@@ -10,6 +10,10 @@ export default class ResourcesFilters extends Command {
 
   static aliases = ['res:filters']
 
+  static examples = [
+    '$ commercelayer resources:filters',
+  ]
+
   static flags = { }
 
   static args = [ ]

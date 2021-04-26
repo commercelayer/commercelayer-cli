@@ -9,6 +9,11 @@ export default class ResourcesDelete extends Command {
 
   static aliases = ['delete', 'rd', 'res:delete']
 
+  static examples = [
+    '$ commercelayer resources:delete customers/<customerId>',
+    '$ cl delete customers <customerId>',
+  ]
+
   static flags = {
     ...Command.flags,
   }

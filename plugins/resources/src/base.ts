@@ -78,9 +78,9 @@ export default abstract class extends Command {
 	// -- CUSTOM METHODS -- //
 
 
-	checkResource(res: string, required = true): Resource {
+	checkResource(res: string, { required = true, singular = false } = {}): Resource {
 		if (!res && required) this.error('Resource type not defined')
-		const resource = findResource(res)
+		const resource = findResource(res, { singular })
 		if (resource === undefined) this.error(`Invalid resource ${chalk.red(res)}`,
 			{ suggestions: [`Execute command ${chalk.italic('resources:available')} (or ${chalk.italic(ResourcesAvailable.aliases.join(', '))}) to get a list of all available CLI resources`] }
 		)

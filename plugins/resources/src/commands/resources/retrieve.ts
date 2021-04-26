@@ -10,6 +10,13 @@ export default class ResourcesRetrieve extends Command {
 
   static aliases = ['retrieve', 'rr', 'res:retrieve']
 
+  static examples = [
+    '$ commercelayer resources:retrieve customers/<customerId>',
+    '$ commercelayer retrieve customers <customerId>',
+    '$ cl res:retrieve customers <customerId>',
+    '$ clayer rr customers/<customerId>',
+  ]
+
   static flags = {
     ...Command.flags,
     include: flags.string({

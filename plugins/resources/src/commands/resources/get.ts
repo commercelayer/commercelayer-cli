@@ -8,6 +8,13 @@ export default class ResourcesGet extends Command {
 
   static aliases = ['get', 'res:get']
 
+  static examples = [
+    '$ commercelayer resources:get customers',
+    '$ commercelayer res:get customers',
+    '$ clayer res:get customers/<customerId>',
+    '$ cl get customers <customerId>',
+  ]
+
   static strict = false
 
   static flags = {

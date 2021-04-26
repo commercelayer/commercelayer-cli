@@ -9,6 +9,13 @@ export default class ResourcesAvailable extends Command {
 
 	static aliases = ['res:available']
 
+	static examples = [
+		'$ cl-resources resources:available',
+		'$ cl-res resources:available',
+		'$ commercelayer res:available',
+		'$ cl res:available',
+	]
+
 	static flags = {}
 
 	static args = []
@@ -23,7 +30,7 @@ export default class ResourcesAvailable extends Command {
 
 		cliux.table(resourceArray,
 			{
-				key: { header: 'NAME', minWidth: 35, get: row => chalk.yellowBright(row.name) },
+				key: { header: 'NAME', minWidth: 35, get: row => chalk.blueBright(row.name) },
 				description: { header: 'ONLINE DOCUMENTATION URL\n', get: row => row.url },
 			},
 			{

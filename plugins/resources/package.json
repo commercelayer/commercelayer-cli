@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run",
