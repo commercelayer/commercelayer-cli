@@ -26,7 +26,7 @@ export default class PluginsAvailable extends Command {
     if (availablePlugins && (availablePlugins.length > 0)) {
       cliux.table(availablePlugins,
         {
-          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row =>  chalk.yellowBright(row.name) },
+          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row =>  chalk.blueBright(row.name) },
           description: { header: 'DESCRIPTION\n' },
         },
         {
