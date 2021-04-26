@@ -61,8 +61,8 @@ ALIASES
   $ commercelayer app:current
 
 EXAMPLES
-  commercelayer applications:current
-  commercelayer app:current -o organizationSlug --live
+  $ commercelayer applications:current
+  $ commercelayer app:current -o <o>rganizationSlug> --live
 ```
 
 _See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/current.ts)_
@@ -79,7 +79,7 @@ ALIASES
   $ commercelayer app:list
 
 EXAMPLE
-  commercelayer applications:list
+  $ commercelayer applications:list
 ```
 
 _See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/list.ts)_
@@ -101,7 +101,7 @@ ALIASES
   $ commercelayer app:login
 
 EXAMPLE
-  commercelayer applications:login -o organizationSlug -i clientId -s clientSecret
+  $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>
 ```
 
 _See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/login.ts)_
@@ -123,8 +123,8 @@ ALIASES
   $ commercelayer app:token
 
 EXAMPLES
-  commercelayer applications:token
-  commercelayer app:token -o organizationSlug --live --save
+  $ commercelayer applications:token
+  $ commercelayer app:token -o <organizationSlug> --live --save
 ```
 
 _See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/token.ts)_
@@ -172,7 +172,7 @@ USAGE
   $ commercelayer plugins:available
 
 EXAMPLE
-  commercelayer plugins:available
+  $ commercelayer plugins:available
 ```
 
 _See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/plugins/available.ts)_
