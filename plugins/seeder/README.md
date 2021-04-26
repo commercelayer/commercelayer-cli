@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-seeder
 $ cl-seeder COMMAND
 running command...
 $ cl-seeder (-v|--version|version)
-@commercelayer/cli-plugin-seeder/0.1.3 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-seeder/0.1.4 darwin-x64 node-v15.13.0
 $ cl-seeder --help [COMMAND]
 USAGE
   $ cl-seeder COMMAND
@@ -45,7 +45,11 @@ OPTIONS
 
   -u, --resourcesUrl=resourcesUrl          [default: https://data.commercelayer.app/seed] the resources URL or local
                                            path
+
+EXAMPLES
+  $ cl-seeder seed -o <organizationSlug> -i <clientId> -s <clientSecret> --accessToken=<accessToken> -u <seedUrl>
+  $ cl seed -m all -u <seedUrl> -b multi_market
 ```
 
-_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v0.1.3/src/commands/seed.ts)_
+_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v0.1.4/src/commands/seed.ts)_
 <!-- commandsstop -->
