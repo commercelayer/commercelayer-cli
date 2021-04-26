@@ -13,7 +13,7 @@ export default class ApplicationsCurrent extends Command {
 
   static examples = [
     '$ commercelayer applications:current',
-    '$ commercelayer app:current -o <o>rganizationSlug> --live',
+    '$ commercelayer app:current -o <organizationSlug> --live',
   ]
 
   static flags = {
