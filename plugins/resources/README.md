@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
 running command...
 $ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/0.7.3 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-resources/0.8.2 darwin-x64 node-v15.13.0
 $ cl-resources --help [COMMAND]
 USAGE
   $ cl-resources COMMAND
@@ -47,9 +47,15 @@ USAGE
 
 ALIASES
   $ cl-resources res:available
+
+EXAMPLES
+  $ cl-resources resources:available
+  $ cl-res resources:available
+  $ commercelayer res:available
+  $ cl res:available
 ```
 
-_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/available.ts)_
+_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/available.ts)_
 
 ## `cl-resources resources:create RESOURCE`
 
@@ -73,9 +79,15 @@ ALIASES
   $ cl-resources create
   $ cl-resources rc
   $ cl-resources res:create
+
+EXAMPLES
+  $ commercelayer resources:create customers -a email=user@test.com
+  $ clayer res:create customers -a email="user@test-com" -r customer_group=customer_groups/<customerGroupId>
+  $ cl create customers -a email=user@test.com -m meta_key="meta value"
+  $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/create.ts)_
 
 ## `cl-resources resources:delete RESOURCE [ID]`
 
@@ -96,9 +108,13 @@ ALIASES
   $ cl-resources delete
   $ cl-resources rd
   $ cl-resources res:delete
+
+EXAMPLES
+  $ commercelayer resources:delete customers/<customerId>
+  $ cl delete customers <customerId>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/delete.ts)_
 
 ## `cl-resources resources:filters`
 
@@ -110,9 +126,12 @@ USAGE
 
 ALIASES
   $ cl-resources res:filters
+
+EXAMPLE
+  $ commercelayer resources:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/filters.ts)_
 
 ## `cl-resources resources:get RESOURCE [ID]`
 
@@ -141,9 +160,15 @@ OPTIONS
 ALIASES
   $ cl-resources get
   $ cl-resources res:get
+
+EXAMPLES
+  $ commercelayer resources:get customers
+  $ commercelayer res:get customers
+  $ clayer res:get customers/<customerId>
+  $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/get.ts)_
 
 ## `cl-resources resources:list RESOURCE`
 
@@ -175,11 +200,11 @@ ALIASES
 
 EXAMPLES
   $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
-  $ cl list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
-  $ cl list -p 5 -n 10 -s -created_at
+  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl list -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/list.ts)_
 
 ## `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -205,9 +230,15 @@ ALIASES
   $ cl-resources retrieve
   $ cl-resources rr
   $ cl-resources res:retrieve
+
+EXAMPLES
+  $ commercelayer resources:retrieve customers/<customerId>
+  $ commercelayer retrieve customers <customerId>
+  $ cl res:retrieve customers <customerId>
+  $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/retrieve.ts)_
 
 ## `cl-resources resources:update RESOURCE [ID]`
 
@@ -240,7 +271,14 @@ ALIASES
   $ cl-resources update
   $ cl-resources ru
   $ cl-resources res:update
+
+EXAMPLES
+  $ commercelayer resources:update customers/<customerId> -a reference=referenceId
+  $ commercelater res:update customers <customerId> -a reference_origin="Ref Origin"
+  $ cl update customers/<customerId> -m meta_key="meta value"
+  $ cl ru customers <customerId> -M mete_keu="metadata overwrite
+  $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.7.3/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/update.ts)_
 <!-- commandsstop -->
