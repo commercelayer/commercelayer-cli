@@ -16,8 +16,8 @@ export default class ApplicationsToken extends Command {
   static aliases = ['app:token']
 
   static examples = [
-    'commercelayer applications:token',
-    'commercelayer app:token -o organizationSlug --live --save',
+    '$ commercelayer applications:token',
+    '$ commercelayer app:token -o <organizationSlug> --live --save',
   ]
 
   static flags = {

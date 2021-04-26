@@ -14,7 +14,7 @@ export default class ApplicationsLogin extends Command {
   static aliases = ['app:login']
 
   static examples = [
-    'commercelayer applications:login -o organizationSlug -i clientId -s clientSecret',
+    '$ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>',
   ]
 
   static flags = {
