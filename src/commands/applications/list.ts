@@ -11,6 +11,10 @@ export default class ApplicationsList extends Command {
 
   static aliases = ['app:list']
 
+  static examples = [
+    'commercelayer applications:list',
+  ]
+
   static flags = { }
 
   static args = [ ]

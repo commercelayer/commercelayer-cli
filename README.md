@@ -8,6 +8,10 @@ Commerce Layer CLI
 [![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/commercelayer-cli.svg)](https://npmjs.org/package/@commercelayer/commercelayer-cli)
 [![License](https://img.shields.io/npm/l/@commercelayer/commercelayer-cli.svg)](https://github.com/commercelayer/commercelayer-cli/blob/master/package.json)
 
+<!-- intro -->
+
+<!-- introstop -->
+
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)

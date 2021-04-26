@@ -11,6 +11,11 @@ export default class ApplicationsCurrent extends Command {
 
   static aliases = ['app:current']
 
+  static examples = [
+    'commercelayer applications:current',
+    'commercelayer app:current -o organizationSlug --live',
+  ]
+
   static flags = {
     // help: flags.help({ char: 'h' }),
     organization: flags.string({

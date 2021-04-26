@@ -8,6 +8,10 @@ export default class PluginsAvailable extends Command {
 
   // static aliases = ['plugins:list']
 
+  static examples = [
+    'commercelayer plugins:available',
+  ]
+
   static flags = {}
 
   static args = []

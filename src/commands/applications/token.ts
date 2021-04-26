@@ -15,6 +15,11 @@ export default class ApplicationsToken extends Command {
 
   static aliases = ['app:token']
 
+  static examples = [
+    'commercelayer applications:token',
+    'commercelayer app:token -o organizationSlug --live --save',
+  ]
+
   static flags = {
     // help: flags.help({ char: 'h' }),
     organization: flags.string({
@@ -36,7 +41,7 @@ export default class ApplicationsToken extends Command {
       dependsOn: ['organization'],
     }),
     save: flags.boolean({
-      char: 's',
+      // char: 's',
       description: 'save access token',
     }),
   }
