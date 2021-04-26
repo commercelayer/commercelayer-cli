@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
 running command...
 $ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/0.8.2 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-resources/0.8.3 darwin-x64 node-v15.13.0
 $ cl-resources --help [COMMAND]
 USAGE
   $ cl-resources COMMAND
@@ -31,6 +31,7 @@ USAGE
 * [`cl-resources resources:available`](#cl-resources-resourcesavailable)
 * [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
 * [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
+* [`cl-resources resources:doc [FILE]`](#cl-resources-resourcesdoc-file)
 * [`cl-resources resources:filters`](#cl-resources-resourcesfilters)
 * [`cl-resources resources:get RESOURCE [ID]`](#cl-resources-resourcesget-resource-id)
 * [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
@@ -55,7 +56,7 @@ EXAMPLES
   $ cl res:available
 ```
 
-_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/available.ts)_
+_See code: [src/commands/resources/available.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/available.ts)_
 
 ## `cl-resources resources:create RESOURCE`
 
@@ -87,7 +88,7 @@ EXAMPLES
   $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/create.ts)_
 
 ## `cl-resources resources:delete RESOURCE [ID]`
 
@@ -114,7 +115,23 @@ EXAMPLES
   $ cl delete customers <customerId>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/delete.ts)_
+
+## `cl-resources resources:doc [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ cl-resources resources:doc [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/doc.ts)_
 
 ## `cl-resources resources:filters`
 
@@ -131,7 +148,7 @@ EXAMPLE
   $ commercelayer resources:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/filters.ts)_
 
 ## `cl-resources resources:get RESOURCE [ID]`
 
@@ -168,7 +185,7 @@ EXAMPLES
   $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/get.ts)_
 
 ## `cl-resources resources:list RESOURCE`
 
@@ -204,7 +221,7 @@ EXAMPLES
   $ cl list -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/list.ts)_
 
 ## `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -238,7 +255,7 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/retrieve.ts)_
 
 ## `cl-resources resources:update RESOURCE [ID]`
 
@@ -280,5 +297,5 @@ EXAMPLES
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.2/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.8.3/src/commands/resources/update.ts)_
 <!-- commandsstop -->
