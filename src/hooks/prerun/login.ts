@@ -8,7 +8,7 @@ import cliux from 'cli-ux'
 
 
 const excludedTopics: string[] = ['applications', 'plugins']
-const exludedCommands: string[] = []
+const exludedCommands: string[] = ['resources:filters', 'resources:doc', 'resources:available']
 
 
 const isCommandExcluded = (cmd: string): boolean => {
