@@ -23,7 +23,7 @@ $ npm install -g @commercelayer/commercelayer-cli
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/commercelayer-cli/0.2.10 darwin-x64 node-v15.13.0
+@commercelayer/commercelayer-cli/0.2.11 darwin-x64 node-v15.13.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
@@ -59,9 +59,13 @@ OPTIONS
 
 ALIASES
   $ commercelayer app:current
+
+EXAMPLES
+  commercelayer applications:current
+  commercelayer app:current -o organizationSlug --live
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.10/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/current.ts)_
 
 ## `commercelayer applications:list`
 
@@ -73,9 +77,12 @@ USAGE
 
 ALIASES
   $ commercelayer app:list
+
+EXAMPLE
+  commercelayer applications:list
 ```
 
-_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.10/src/commands/applications/list.ts)_
+_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/list.ts)_
 
 ## `commercelayer applications:login`
 
@@ -92,9 +99,12 @@ OPTIONS
 
 ALIASES
   $ commercelayer app:login
+
+EXAMPLE
+  commercelayer applications:login -o organizationSlug -i clientId -s clientSecret
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.10/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/login.ts)_
 
 ## `commercelayer applications:token`
 
@@ -106,14 +116,18 @@ USAGE
 
 OPTIONS
   -o, --organization=organization  (required) [default: cli-test-org] organization slug
-  -s, --save                       save access token
   --live                           live execution mode
+  --save                           save access token
 
 ALIASES
   $ commercelayer app:token
+
+EXAMPLES
+  commercelayer applications:token
+  commercelayer app:token -o organizationSlug --live --save
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.10/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/applications/token.ts)_
 
 ## `commercelayer help [COMMAND]`
 
@@ -156,9 +170,12 @@ Show all available Commerce Layer CLI plugins
 ```
 USAGE
   $ commercelayer plugins:available
+
+EXAMPLE
+  commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.10/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.2.11/src/commands/plugins/available.ts)_
 
 ## `commercelayer plugins:inspect PLUGIN...`
 
