@@ -13,6 +13,11 @@ export default class Seed extends Command {
 
   static description = 'Commerce Layer seeder'
 
+  static examples = [
+    '$ cl-seeder seed -o <organizationSlug> -i <clientId> -s <clientSecret> --accessToken=<accessToken> -u <seedUrl>',
+    '$ cl seed -m all -u <seedUrl> -b multi_market',
+  ]
+
   static flags = {
     organization: flags.string({
       char: 'o',
