@@ -12,6 +12,7 @@ export default class ResourcesFilters extends Command {
 
   static examples = [
     '$ commercelayer resources:filters',
+    '$ cl res:filters',
   ]
 
   static flags = { }
