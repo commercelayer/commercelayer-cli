@@ -1,10 +1,11 @@
 import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
-import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile } from '../../config'
+import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
 import { execMode, appKey, extractDomain } from '../../common'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
+import chalk from 'chalk'
 
 
 const excludedTopics: string[] = ['applications', 'plugins', 'config']
@@ -42,9 +43,12 @@ const hook: Hook<'prerun'> = async function (opts) {
 
   let configData
 
+  // No organization and domain passed on command line
   if (app.key === '') {
     const current = configParam(ConfigParams.currentApplication)
     if (current !== undefined) {
+      // Commented source: Config file is missing only if manually deleted
+      // if (!configFileExists(this.config, current)) this.error(`Unable to find configuration file for current application ${chalk.italic.bold(current.key)}`)
       Object.assign(app, current)
       configData = readConfigFile(this.config, app)
       opts.argv.push('--organization=' + configData.slug)
@@ -52,6 +56,7 @@ const hook: Hook<'prerun'> = async function (opts) {
     }
   }
 
+  // No current application saved in configuration
   if (app.key === '') return
 
 
@@ -66,6 +71,7 @@ const hook: Hook<'prerun'> = async function (opts) {
       if (isAccessTokenExpiring(tokenData)) {
         cliux.action.start('Refreshing access token ...')
         refresh = true
+        // If not overridden by saved current application, load configuration data
         if (!configData) configData = readConfigFile(this.config, app)
         await revokeAccessToken(configData, tokenData.access_token)
         tokenData = null
@@ -73,6 +79,8 @@ const hook: Hook<'prerun'> = async function (opts) {
     }
 
     if (tokenData === null) {
+      // If config file has not been loaded yet and does not exist we are not able to refresh access token
+      if (!configData && !configFileExists(this.config, app)) this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
       const token = await newAccessToken(this.config, app, true)
       tokenData = token?.data
       if (refresh) cliux.action.stop()
