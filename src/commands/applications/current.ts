@@ -45,6 +45,7 @@ export default class ApplicationsCurrent extends Command {
     const { flags } = this.parse(ApplicationsCurrent)
 
     if (flags.organization) {
+
       const app: AppKey = {
         key: appKey(flags.organization, flags.domain),
         mode: execMode(flags.live),
