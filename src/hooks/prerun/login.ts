@@ -2,7 +2,7 @@ import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
 import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile } from '../../config'
-import { execMode, appKey } from '../../common'
+import { execMode, appKey, extractDomain } from '../../common'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
 
@@ -40,11 +40,15 @@ const hook: Hook<'prerun'> = async function (opts) {
     mode: execMode(flags.live),
   }
 
+  let configData
+
   if (app.key === '') {
     const current = configParam(ConfigParams.currentApplication)
     if (current !== undefined) {
       Object.assign(app, current)
-      opts.argv.push('--organization=' + current.key)
+      configData = readConfigFile(this.config, app)
+      opts.argv.push('--organization=' + configData.slug)
+      opts.argv.push('--domain=' + extractDomain(configData.baseUrl))
     }
   }
 
@@ -62,7 +66,8 @@ const hook: Hook<'prerun'> = async function (opts) {
       if (isAccessTokenExpiring(tokenData)) {
         cliux.action.start('Refreshing access token ...')
         refresh = true
-        await revokeAccessToken(readConfigFile(this.config, app), tokenData.access_token)
+        if (!configData) configData = readConfigFile(this.config, app)
+        await revokeAccessToken(configData, tokenData.access_token)
         tokenData = null
       }
     }

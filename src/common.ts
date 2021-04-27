@@ -17,4 +17,9 @@ const sleep = async (ms: number) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export { baseURL, execMode, appKey, sleep }
+const extractDomain = (baseUrl: string): string | undefined => {
+	if (!baseUrl) return undefined
+	return baseUrl.substring(baseUrl.indexOf('.') + 1)
+}
+
+export { baseURL, execMode, appKey, sleep, extractDomain }

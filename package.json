@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/commercelayer-cli",
   "description": "Commerce Layer CLI",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
