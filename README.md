@@ -23,7 +23,7 @@ $ npm install -g @commercelayer/commercelayer-cli
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/commercelayer-cli/0.4.2 darwin-x64 node-v15.13.0
+@commercelayer/commercelayer-cli/0.4.3 darwin-x64 node-v15.13.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
@@ -62,7 +62,7 @@ EXAMPLES
   $ cl applications
 ```
 
-_See code: [src/commands/applications.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications.ts)_
+_See code: [src/commands/applications.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/applications.ts)_
 
 ## `commercelayer applications:current`
 
@@ -84,7 +84,7 @@ EXAMPLES
   $ commercelayer app:current -o <organizationSlug> --live
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/applications/current.ts)_
 
 ## `commercelayer applications:login`
 
@@ -106,7 +106,7 @@ EXAMPLE
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/applications/login.ts)_
 
 ## `commercelayer applications:token`
 
@@ -129,7 +129,7 @@ EXAMPLES
   $ commercelayer app:token -o <organizationSlug> --live --save
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/applications/token.ts)_
 
 ## `commercelayer config:del PARAM`
 
@@ -143,7 +143,7 @@ ARGUMENTS
   PARAM  configuration parameter name
 ```
 
-_See code: [src/commands/config/del.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/del.ts)_
+_See code: [src/commands/config/del.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/config/del.ts)_
 
 ## `commercelayer config:get PARAM`
 
@@ -157,7 +157,7 @@ ARGUMENTS
   PARAM  configuration parameter name
 ```
 
-_See code: [src/commands/config/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/get.ts)_
+_See code: [src/commands/config/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/config/get.ts)_
 
 ## `commercelayer config:set PARAM VALUE`
 
@@ -172,7 +172,7 @@ ARGUMENTS
   VALUE  value to be saved in configuration file
 ```
 
-_See code: [src/commands/config/set.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/set.ts)_
+_See code: [src/commands/config/set.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/config/set.ts)_
 
 ## `commercelayer config:show`
 
@@ -183,7 +183,7 @@ USAGE
   $ commercelayer config:show
 ```
 
-_See code: [src/commands/config/show.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/show.ts)_
+_See code: [src/commands/config/show.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/config/show.ts)_
 
 ## `commercelayer help [COMMAND]`
 
@@ -231,7 +231,7 @@ EXAMPLE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/plugins/available.ts)_
 
 ## `commercelayer plugins:inspect PLUGIN...`
 
