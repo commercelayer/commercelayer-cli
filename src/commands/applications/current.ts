@@ -7,7 +7,7 @@ import { inspect } from 'util'
 
 export default class ApplicationsCurrent extends Command {
 
-  static description = 'Set or show the current CLI application'
+  static description = 'set or show the current CLI application'
 
   static aliases = ['app:current']
 
@@ -51,7 +51,7 @@ export default class ApplicationsCurrent extends Command {
       }
 
       if (configFileExists(this.config, app)) clicfg.set(ConfigParams.currentApplication, { key: app.key, mode: app.mode })
-      else this.log(`${chalk.red('ERROR:')} Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
+      else this.log(`${chalk.redBright('ERROR:')} Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
 
     }
 
