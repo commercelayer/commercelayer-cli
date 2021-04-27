@@ -96,10 +96,12 @@ export { currentOrganization, currentModeLive }
 
 
 enum ConfigParams {
-	currentApplication = 'currentApplication'
+	currentApplication = 'currentApplication',
+	test = 'test'
 }
 
-const configParam = (param: ConfigParams): any => {
+const configParam = (param: ConfigParams, value?: any): any => {
+	if (value) clicfg.set(param, value)
 	return clicfg.get(param)
 }
 
