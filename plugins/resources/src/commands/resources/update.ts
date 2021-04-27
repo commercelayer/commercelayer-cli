@@ -7,7 +7,7 @@ import { readDataFile, rawRequest, Operation } from '../../raw'
 
 export default class ResourcesUpdate extends Command {
 
-  static description = 'Update an exiasting resource'
+  static description = 'update an exiasting resource'
 
   static aliases = ['update', 'ru', 'res:update']
 
@@ -74,7 +74,7 @@ export default class ResourcesUpdate extends Command {
       try {
         const rawRes = await rawRequest({ operation: Operation.Update, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data), id)
         this.printOutput(rawRes, flags)
-        this.log(`\n${chalk.green.bold('Success!')}: Updated resource of type ${chalk.italic(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
+        this.log(`\n${chalk.bold.greenBright('Success!')}: Updated resource of type ${chalk.italic(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
         return rawRes
       } catch (error) {
         this.printError(error)
@@ -118,7 +118,7 @@ export default class ResourcesUpdate extends Command {
       /* */
       this.printOutput(res, flags)
       // if (res.valid())
-      this.log(`\n${chalk.green.bold('Success!')}: Updated resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Success!')}: Updated resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
       return res
 

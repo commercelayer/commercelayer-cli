@@ -5,7 +5,7 @@ import chalk from 'chalk'
 
 export default class ResourcesDelete extends Command {
 
-  static description = 'Delete an existing resource'
+  static description = 'delete an existing resource'
 
   static aliases = ['delete', 'rd', 'res:delete']
 
@@ -47,7 +47,7 @@ export default class ResourcesDelete extends Command {
 
       // this.printOutput(res, flags)
       // if (res.valid())
-      this.log(`\n${chalk.green.bold('Success!')}: Deleted resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Success!')}: Deleted resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
       // return res
 
