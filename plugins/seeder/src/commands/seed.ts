@@ -11,7 +11,7 @@ const pkg = require('../../package.json')
 
 export default class Seed extends Command {
 
-  static description = 'Commerce Layer seeder'
+  static description = 'execute Commerce Layer seeder'
 
   static examples = [
     '$ cl-seeder seed -o <organizationSlug> -i <clientId> -s <clientSecret> --accessToken=<accessToken> -u <seedUrl>',
@@ -110,12 +110,13 @@ export default class Seed extends Command {
         accessToken,
       })
 
+      this.log()
       this.log('🎉 The seed has been imported with success.')
 
       return true
 
     } catch (error) {
-      this.log(`${chalk.bold.red('Error!')} - An error occurred during seed import: ${error.message}`)
+      this.log(`${chalk.bold.redBright('Error!')} - An error occurred during seed import: ${error.message}`)
       throw error
     }
 
