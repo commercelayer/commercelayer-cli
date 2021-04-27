@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Resource } from '../commands/resources/available'
+import { Resource } from '../commands/resources'
 
 const parseResources = (): Resource[] => {
 

@@ -1,5 +1,5 @@
 import Command, { flags } from '@oclif/command'
-import ResourcesAvailable, { findResource, Resource } from './commands/resources/available'
+import { findResource, Resource } from './commands/resources'
 import { filterAvailable } from './commands/resources/filters'
 import chalk from 'chalk'
 import { inspect } from 'util'
@@ -81,8 +81,8 @@ export default abstract class extends Command {
 	checkResource(res: string, { required = true, singular = false } = {}): Resource {
 		if (!res && required) this.error('Resource type not defined')
 		const resource = findResource(res, { singular })
-		if (resource === undefined) this.error(`Invalid resource ${chalk.red(res)}`,
-			{ suggestions: [`Execute command ${chalk.italic('resources:available')} (or ${chalk.italic(ResourcesAvailable.aliases.join(', '))}) to get a list of all available CLI resources`] }
+		if (resource === undefined) this.error(`Invalid resource ${chalk.redBright(res)}`,
+			{ suggestions: [`Execute command ${chalk.italic('resources')} to get a list of all available CLI resources`] }
 		)
 		return resource
 	}
@@ -268,7 +268,7 @@ export default abstract class extends Command {
 				// const wt = f.split('(')
 				const wt = f.split(sepChar)
 				const w = wt[0]
-				if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.red(w)}`,
+				if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.redBright(w)}`,
 					{
 						suggestions: [`Execute command ${chalk.italic('resources:filters')} to get a full list of all available filter predicates`],
 						ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
@@ -310,7 +310,7 @@ export default abstract class extends Command {
 						{ suggestions: [`Choose between the style ${chalk.italic('<field>,<order>')} and the style ${chalk.italic('[-]<field>')}`] }
 					)
 					const sd = ot[1] || 'asc'
-					if (!['asc', 'desc'].includes(sd)) this.error(`Invalid sort flag: ${chalk.red(f)}`,
+					if (!['asc', 'desc'].includes(sd)) this.error(`Invalid sort flag: ${chalk.redBright(f)}`,
 						{ suggestions: [`Sort direction can assume only the values ${chalk.italic('asc')} or ${chalk.italic('desc')}`] }
 					)
 
@@ -342,7 +342,7 @@ export default abstract class extends Command {
 			flag.forEach(f => {
 
 				const eqi = f.indexOf('=')
-				if (eqi < 1) this.error(`Invalid ${type.toLowerCase()} ${chalk.red(f)}`, {
+				if (eqi < 1) this.error(`Invalid ${type.toLowerCase()} ${chalk.redBright(f)}`, {
 					suggestions: [`${_.capitalize(type)} flags must be defined using the format ${chalk.italic('name=value')}`],
 				})
 
@@ -374,11 +374,11 @@ export default abstract class extends Command {
 			flag.forEach(f => {
 
 				const rt = f.split('=')
-				if (rt.length !== 2) this.error(`Invalid relationship flag: ${chalk.red(f)}`, {
+				if (rt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`, {
 					suggestions: [`Define the relationship using the format ${chalk.italic('attribute_name=resource_type/resource_id')}`],
 				})
 				const vt = rt[1].split('/')
-				if (vt.length !== 2) this.error(`Invalid relationship flag: ${chalk.red(f)}`, {
+				if (vt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`, {
 					suggestions: [`Define the relationship value using the format ${chalk.italic('resource_type/resource_id')}`],
 				})
 
@@ -458,7 +458,7 @@ export default abstract class extends Command {
 			this.log(`Command output saved to file ${chalk.italic(filePath)}`)
 
 		} catch (error) {
-			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.red(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
+			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
 			else throw error
 		} finally {
 			this.log()

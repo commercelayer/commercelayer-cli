@@ -3,17 +3,15 @@ import chalk from 'chalk'
 import cliux from 'cli-ux'
 
 
-export default class ResourcesAvailable extends Command {
+export default class Resources extends Command {
 
-	static description = 'List all the available Commerce Layer API resources'
-
-	static aliases = ['res:available']
+	static description = 'list all the available Commerce Layer API resources'
 
 	static examples = [
-		'$ cl-resources resources:available',
-		'$ cl-res resources:available',
-		'$ commercelayer res:available',
-		'$ cl res:available',
+		'$ cl-resources resources',
+		'$ cl-res resources',
+		'$ commercelayer resources',
+		'$ cl resources',
 	]
 
 	static flags = {}

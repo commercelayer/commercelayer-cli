@@ -1,10 +1,10 @@
 import {expect, test} from '@oclif/test'
 
-describe('resources:available', () => {
+describe('resources', () => {
   test
   .stdout()
-  .command(['resources:available'])
-  .it('runs resources:available', ctx => {
+  .command(['resources'])
+  .it('runs resources', ctx => {
     expect(ctx.stdout).to.contain('-= Commerce Layer API available resources =-').and.contain('addresses')
   })
 })
