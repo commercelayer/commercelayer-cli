@@ -9,15 +9,20 @@ export default class ConfigShow extends Command {
 
   static hidden: true
 
-  static flags = { }
+  static flags = {}
 
-  static args = [ ]
+  static args = []
 
   async run() {
 
-    this.log(`\n${chalk.blueBright('-= Commerce Layer CLI configuration =-')}\n`)
-    this.log(inspect(clicfg.all, false, null, true))
-    this.log()
+    const config = clicfg.all
+
+    if (!config || (Object.keys(config).length === 0)) this.warn(chalk.italic('CLI configuration is empty'))
+    else {
+      this.log(`\n${chalk.blueBright('-= Commerce Layer CLI configuration =-')}\n`)
+      this.log(inspect(clicfg.all, false, null, true))
+      this.log()
+    }
 
   }
 

@@ -36,6 +36,7 @@ USAGE
 * [`commercelayer applications:current`](#commercelayer-applicationscurrent)
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:token`](#commercelayer-applicationstoken)
+* [`commercelayer config:default [FILE]`](#commercelayer-configdefault-file)
 * [`commercelayer config:del PARAM`](#commercelayer-configdel-param)
 * [`commercelayer config:get PARAM`](#commercelayer-configget-param)
 * [`commercelayer config:set PARAM VALUE`](#commercelayer-configset-param-value)
@@ -130,6 +131,22 @@ EXAMPLES
 ```
 
 _See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/applications/token.ts)_
+
+## `commercelayer config:default [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ commercelayer config:default [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/config/default.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.3/src/commands/config/default.ts)_
 
 ## `commercelayer config:del PARAM`
 
