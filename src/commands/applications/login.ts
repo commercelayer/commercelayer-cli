@@ -9,7 +9,7 @@ import { inspect } from 'util'
 
 export default class ApplicationsLogin extends Command {
 
-  static description = 'Perform the login to a CLI Commerce Layer application'
+  static description = 'execute login to a CLI Commerce Layer application'
 
   static aliases = ['app:login']
 
@@ -74,10 +74,10 @@ export default class ApplicationsLogin extends Command {
       const current = clicfg.get(ConfigParams.currentApplication)
       this.log(`\nCurrent application: ${chalk.bold.yellow(current.key + '.' + current.mode)}`)
 
-      this.log(`\n${chalk.green.bold('Login successful!')} ${app.mode} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Login successful!')} ${app.mode} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
 
     } catch (error) {
-      this.log(chalk.bold.red('Login failed!'))
+      this.log(chalk.bold.redBright('Login failed!'))
       if (error.message) this.error(error.message)
       else this.error(inspect(error.toArray(), false, null, true))
     }

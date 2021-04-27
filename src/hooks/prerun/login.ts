@@ -7,8 +7,8 @@ import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../
 import cliux from 'cli-ux'
 
 
-const excludedTopics: string[] = ['applications', 'plugins']
-const exludedCommands: string[] = ['resources:filters', 'resources:doc', 'resources:available']
+const excludedTopics: string[] = ['applications', 'plugins', 'config']
+const exludedCommands: string[] = ['resources:filters', 'resources:doc', 'resources', 'applications']
 
 
 const isCommandExcluded = (cmd: string): boolean => {

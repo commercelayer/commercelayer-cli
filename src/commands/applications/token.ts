@@ -11,7 +11,7 @@ import https from 'https'
 
 export default class ApplicationsToken extends Command {
 
-  static description = 'Get a new access token from Commerce Layer API'
+  static description = 'get a new access token from Commerce Layer API'
 
   static aliases = ['app:token']
 
@@ -73,7 +73,7 @@ export default class ApplicationsToken extends Command {
       return token?.data
 
     } catch (error) {
-      this.log(chalk.red.bold('FAILURE! ') + error.message)
+      this.log(chalk.bold.redBright('FAILURE! ') + error.message)
     }
 
   }
