@@ -23,7 +23,7 @@ $ npm install -g @commercelayer/commercelayer-cli
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/commercelayer-cli/0.3.4 darwin-x64 node-v15.13.0
+@commercelayer/commercelayer-cli/0.4.2 darwin-x64 node-v15.13.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
@@ -32,10 +32,14 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`commercelayer applications`](#commercelayer-applications)
 * [`commercelayer applications:current`](#commercelayer-applicationscurrent)
-* [`commercelayer applications:list`](#commercelayer-applicationslist)
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:token`](#commercelayer-applicationstoken)
+* [`commercelayer config:del PARAM`](#commercelayer-configdel-param)
+* [`commercelayer config:get PARAM`](#commercelayer-configget-param)
+* [`commercelayer config:set PARAM VALUE`](#commercelayer-configset-param-value)
+* [`commercelayer config:show`](#commercelayer-configshow)
 * [`commercelayer help [COMMAND]`](#commercelayer-help-command)
 * [`commercelayer plugins`](#commercelayer-plugins)
 * [`commercelayer plugins:available`](#commercelayer-pluginsavailable)
@@ -45,9 +49,24 @@ USAGE
 * [`commercelayer plugins:uninstall PLUGIN...`](#commercelayer-pluginsuninstall-plugin)
 * [`commercelayer plugins:update`](#commercelayer-pluginsupdate)
 
+## `commercelayer applications`
+
+show a list of all (logged in) available CLI applications
+
+```
+USAGE
+  $ commercelayer applications
+
+EXAMPLES
+  $ commercelayer applications
+  $ cl applications
+```
+
+_See code: [src/commands/applications.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications.ts)_
+
 ## `commercelayer applications:current`
 
-Set or show the current CLI application
+set or show the current CLI application
 
 ```
 USAGE
@@ -65,28 +84,11 @@ EXAMPLES
   $ commercelayer app:current -o <organizationSlug> --live
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.3.4/src/commands/applications/current.ts)_
-
-## `commercelayer applications:list`
-
-Show a list of all (logged in) available CLI applications
-
-```
-USAGE
-  $ commercelayer applications:list
-
-ALIASES
-  $ commercelayer app:list
-
-EXAMPLE
-  $ commercelayer applications:list
-```
-
-_See code: [src/commands/applications/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.3.4/src/commands/applications/list.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications/current.ts)_
 
 ## `commercelayer applications:login`
 
-Perform the login to a CLI Commerce Layer application
+execute login to a CLI Commerce Layer application
 
 ```
 USAGE
@@ -104,11 +106,11 @@ EXAMPLE
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.3.4/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications/login.ts)_
 
 ## `commercelayer applications:token`
 
-Get a new access token from Commerce Layer API
+get a new access token from Commerce Layer API
 
 ```
 USAGE
@@ -127,7 +129,61 @@ EXAMPLES
   $ commercelayer app:token -o <organizationSlug> --live --save
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.3.4/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/applications/token.ts)_
+
+## `commercelayer config:del PARAM`
+
+delete a CLI configuration parameter
+
+```
+USAGE
+  $ commercelayer config:del PARAM
+
+ARGUMENTS
+  PARAM  configuration parameter name
+```
+
+_See code: [src/commands/config/del.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/del.ts)_
+
+## `commercelayer config:get PARAM`
+
+get a CLI configuration parameter
+
+```
+USAGE
+  $ commercelayer config:get PARAM
+
+ARGUMENTS
+  PARAM  configuration parameter name
+```
+
+_See code: [src/commands/config/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/get.ts)_
+
+## `commercelayer config:set PARAM VALUE`
+
+set a CLI configuration parameter
+
+```
+USAGE
+  $ commercelayer config:set PARAM VALUE
+
+ARGUMENTS
+  PARAM  configuration parameter name
+  VALUE  value to be saved in configuration file
+```
+
+_See code: [src/commands/config/set.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/set.ts)_
+
+## `commercelayer config:show`
+
+show current CLI configuration
+
+```
+USAGE
+  $ commercelayer config:show
+```
+
+_See code: [src/commands/config/show.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/config/show.ts)_
 
 ## `commercelayer help [COMMAND]`
 
@@ -165,7 +221,7 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ## `commercelayer plugins:available`
 
-Show all available Commerce Layer CLI plugins
+show all available Commerce Layer CLI plugins
 
 ```
 USAGE
@@ -175,7 +231,7 @@ EXAMPLE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.3.4/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.4.2/src/commands/plugins/available.ts)_
 
 ## `commercelayer plugins:inspect PLUGIN...`
 
