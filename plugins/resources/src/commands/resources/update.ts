@@ -110,17 +110,17 @@ export default class ResourcesUpdate extends Command {
       // Metadata attributes merge
       if (flags.metadata && remRes.metadata && (Object.keys(remRes.metadata).length > 0)) attributes.metadata = { ...remRes.metadata, ...metadata }
 
-      const res = await remRes.update(attributes, { rawResponse: true })
+      const res = await remRes.update(attributes, undefined, { rawResponse: true })
 
       /* */
-      const rawRes = await resSdk.find(res.id, { rawResponse: true })
-      this.printOutput(rawRes, flags)
+      // const rawRes = await resSdk.find(res.id, { rawResponse: true })
+      // this.printOutput(rawRes, flags)
       /* */
       // this.printOutput(res, flags)
       // if (res.valid())
-      this.log(`\n${chalk.bold.greenBright('Success!')}: Updated resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(rawRes.data.id)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Success!')}: Updated resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.data.id)}\n`)
 
-      return rawRes
+      return res
 
     } catch (error) {
       this.printError(error)
