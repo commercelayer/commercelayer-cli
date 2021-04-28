@@ -116,7 +116,7 @@ export default class ResourcesUpdate extends Command {
       // const rawRes = await resSdk.find(res.id, { rawResponse: true })
       // this.printOutput(rawRes, flags)
       /* */
-      // this.printOutput(res, flags)
+      this.printOutput(res, flags)
       // if (res.valid())
       this.log(`\n${chalk.bold.greenBright('Success!')}: Updated resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.data.id)}\n`)
 
