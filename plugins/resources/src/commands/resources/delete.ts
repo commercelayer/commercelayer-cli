@@ -29,7 +29,7 @@ export default class ResourcesDelete extends Command {
 
     const { res, id } = this.checkResourceId(args.resource, args.id)
 
-    const resource = this.checkResource(res)
+    const resource = this.checkResource(res, {singular: true })
 
     const baseUrl = baseURL(flags.organization, flags.domain)
     const accessToken = flags.accessToken
