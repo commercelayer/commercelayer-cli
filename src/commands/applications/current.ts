@@ -52,7 +52,7 @@ export default class ApplicationsCurrent extends Command {
       }
 
       if (configFileExists(this.config, app)) clicfg.set(ConfigParams.currentApplication, { key: app.key, mode: app.mode })
-      else this.log(`${chalk.redBright('ERROR:')} Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
+      else this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
 
     }
 

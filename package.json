@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/commercelayer-cli",
   "description": "Commerce Layer CLI",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -53,7 +53,9 @@
       "@oclif/plugin-plugins"
     ],
     "hooks": {
-      "init": "./lib/hooks/init/update",
+      "init": [
+        "./lib/hooks/init/update"
+      ],
       "prerun": [
         "./lib/hooks/prerun/login",
         "./lib/hooks/prerun/plugin"

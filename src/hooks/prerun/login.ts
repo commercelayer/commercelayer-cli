@@ -43,18 +43,18 @@ const hook: Hook<'prerun'> = async function (opts) {
 
   let configData
 
-  // No organization and domain passed on command line
+  // No organization and domain passed on command line, looking for saved current application
   if (app.key === '') {
     const current = configParam(ConfigParams.currentApplication)
     if (current !== undefined) {
-      // Commented source: Config file is missing only if manually deleted
-      // if (!configFileExists(this.config, current)) this.error(`Unable to find configuration file for current application ${chalk.italic.bold(current.key)}`)
       Object.assign(app, current)
       configData = readConfigFile(this.config, app)
       opts.argv.push('--organization=' + configData.slug)
       opts.argv.push('--domain=' + extractDomain(configData.baseUrl))
     }
-  }
+  } else
+    if (!configFileExists(this.config, app))
+      this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
 
   // No current application saved in configuration
   if (app.key === '') return
@@ -79,8 +79,6 @@ const hook: Hook<'prerun'> = async function (opts) {
     }
 
     if (tokenData === null) {
-      // If config file has not been loaded yet and does not exist we are not able to refresh access token
-      if (!configData && !configFileExists(this.config, app)) this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
       const token = await newAccessToken(this.config, app, true)
       tokenData = token?.data
       if (refresh) cliux.action.stop()
