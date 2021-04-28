@@ -47,7 +47,7 @@ export default class ResourcesDelete extends Command {
 
       // this.printOutput(res, flags)
       // if (res.valid())
-      this.log(`\n${chalk.bold.greenBright('Success!')}: Deleted resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Success!')}: Deleted resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
       // return res
 

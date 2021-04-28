@@ -51,7 +51,7 @@ export default class ResourcesCreate extends Command {
 
     const { args, flags } = this.parse(ResourcesCreate)
 
-    const resource = this.checkResource(args.resource)
+    const resource = this.checkResource(args.resource, { singular: true })
 
     const baseUrl = baseURL(flags.organization, flags.domain)
     const accessToken = flags.accessToken
@@ -62,7 +62,7 @@ export default class ResourcesCreate extends Command {
       try {
         const rawRes = await rawRequest({ operation: Operation.Create, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data))
         this.printOutput(rawRes, flags)
-        this.log(`\n${chalk.bold.greenBright('Success!')}: Created new resource of type ${chalk.italic(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
+        this.log(`\n${chalk.bold.greenBright('Success!')}: Created new resource of type ${chalk.bold(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
         return rawRes
       } catch (error) {
         this.printError(error)
@@ -101,7 +101,7 @@ export default class ResourcesCreate extends Command {
       /* */
       this.printOutput(res, flags)
       // if (res.valid())
-      this.log(`\n${chalk.bold.greenBright('Success!')}: Created new resource of type ${chalk.italic(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Success!')}: Created new resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.data.id)}\n`)
 
       return res
 
