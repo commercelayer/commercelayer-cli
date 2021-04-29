@@ -4,6 +4,7 @@ import cl, { CLayer } from '@commercelayer/js-sdk'
 import _ from 'lodash'
 import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
+import { denormalize } from '../../jsonapi'
 
 export default class ResourcesCreate extends Command {
 
@@ -61,9 +62,10 @@ export default class ResourcesCreate extends Command {
     if (flags.data) {
       try {
         const rawRes = await rawRequest({ operation: Operation.Create, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data))
-        this.printOutput(rawRes, flags)
-        this.log(`\n${chalk.bold.greenBright('Success!')}: Created new resource of type ${chalk.bold(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
-        return rawRes
+        const out = flags.raw ? rawRes : denormalize(rawRes)
+        this.printOutput(out, flags)
+        this.log(`\n${chalk.greenBright('Successfully')} created new resource of type ${chalk.bold(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
+        return out
       } catch (error) {
         this.printError(error)
       }
@@ -95,15 +97,13 @@ export default class ResourcesCreate extends Command {
       const resSdk: any = (cl as CLayer)[resource.sdk as keyof CLayer]
       const res = await resSdk.create(attributes, { rawResponse: true })
 
-      /* */
-      // const rawRes = await resSdk.find(res.id, { rawResponse: true })
-      // this.printOutput(rawRes, flags)
-      /* */
-      this.printOutput(res, flags)
-      // if (res.valid())
-      this.log(`\n${chalk.bold.greenBright('Success!')}: Created new resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.data.id)}\n`)
+      const out = flags.raw ? res : denormalize(res)
 
-      return res
+      this.printOutput(out, flags)
+      // if (res.valid())
+      this.log(`\n${chalk.greenBright('Successfully')} created new resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.data.id)}\n`)
+
+      return out
 
     } catch (error) {
       this.printError(error)

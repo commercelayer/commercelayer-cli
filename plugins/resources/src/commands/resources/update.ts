@@ -4,6 +4,7 @@ import cl, { CLayer } from '@commercelayer/js-sdk'
 import _ from 'lodash'
 import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
+import { denormalize } from '../../jsonapi'
 
 export default class ResourcesUpdate extends Command {
 
@@ -73,9 +74,10 @@ export default class ResourcesUpdate extends Command {
     if (flags.data) {
       try {
         const rawRes = await rawRequest({ operation: Operation.Update, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data), id)
-        this.printOutput(rawRes, flags)
-        this.log(`\n${chalk.bold.greenBright('Success!')}: Updated resource of type ${chalk.bold(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
-        return rawRes
+        const out = flags.raw ? rawRes : denormalize(rawRes)
+        this.printOutput(out, flags)
+        this.log(`\n${chalk.greenBright('Successfully')} updated resource of type ${chalk.bold(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
+        return out
       } catch (error) {
         this.printError(error)
       }
@@ -105,22 +107,23 @@ export default class ResourcesUpdate extends Command {
 
       const resSdk: any = (cl as CLayer)[resource.sdk as keyof CLayer]
 
-      const remRes = await resSdk.find(id)
-
       // Metadata attributes merge
-      if (flags.metadata && remRes.metadata && (Object.keys(remRes.metadata).length > 0)) attributes.metadata = { ...remRes.metadata, ...metadata }
+      if (flags.metadata) {
+        const remRes = await resSdk.select('metadata').find(id, { rawResponse: true })
+        const remMeta = remRes.data.attributes.metadata
+        if (remMeta && (Object.keys(remMeta).length > 0)) attributes.metadata = { ...remMeta, ...metadata }
+      }
 
-      const res = await remRes.update(attributes, undefined, { rawResponse: true })
 
-      /* */
-      // const rawRes = await resSdk.find(res.id, { rawResponse: true })
-      // this.printOutput(rawRes, flags)
-      /* */
-      this.printOutput(res, flags)
+      const res = await resSdk.build({ id }).update(attributes, undefined, { rawResponse: true })
+
+      const out = flags.raw ? res : denormalize(res)
+
+      this.printOutput(out, flags)
       // if (res.valid())
-      this.log(`\n${chalk.bold.greenBright('Success!')}: Updated resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.data.id)}\n`)
+      this.log(`\n${chalk.greenBright('Successfully')} updated resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.data.id)}\n`)
 
-      return res
+      return out
 
     } catch (error) {
       this.printError(error)
