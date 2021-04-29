@@ -37,7 +37,9 @@
   ],
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-resources",
   "keywords": [
-    "oclif"
+    "oclif",
+    "ecommerce",
+    "cli"
   ],
   "license": "MIT",
   "main": "lib/index.js",
