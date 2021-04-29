@@ -26,6 +26,10 @@ USAGE
 ...
 ```
 <!-- usagestop -->
+To install as a Commerce Layer CLI plugin run the following command:
+```sh-session
+$ commercelayer plugins:install resources
+```
 # Commands
 <!-- commands -->
 * [`cl-resources resources`](#cl-resources-resources)
