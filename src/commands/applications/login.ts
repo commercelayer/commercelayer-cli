@@ -59,7 +59,7 @@ export default class ApplicationsLogin extends Command {
 
       const app = await getApplicationInfo(config, auth?.accessToken || '')
 
-      if (app.type !== 'cli') this.error('Credential provided are not associated with a CLI application')
+      if (app.type !== 'cli') this.error('The credentials provided are not associated with a CLI application')
 
       createConfigDir(this.config)
 
