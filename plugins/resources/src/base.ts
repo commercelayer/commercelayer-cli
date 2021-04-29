@@ -45,6 +45,10 @@ export default abstract class extends Command {
 			dependsOn: ['json'],
 			hidden: true,
 		}),
+		raw: flags.boolean({
+			char: 'r',
+			description: 'print out the raw API response',
+		}),
 	}
 
 
@@ -432,9 +436,9 @@ export default abstract class extends Command {
 		} else
 			if (error.errors) err = error.errors().toArray()
 			else
-			if (error.toArray) err = error.toArray()
-			else
-			if (error.message) err = error.message
+				if (error.toArray) err = error.toArray()
+				else
+					if (error.message) err = error.message
 
 
 		this.error(this.formatOutput(err, flags))

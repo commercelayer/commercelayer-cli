@@ -58,10 +58,6 @@ export default class ResourcesList extends Command {
       multiple: false,
       exclusive: ['save'],
     }),
-    raw: flags.boolean({
-      char: 'r',
-      description: 'print out the raw API response',
-    }),
   }
 
   static args = [
