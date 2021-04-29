@@ -1,22 +1,20 @@
 commercelayer-cli
 =================
 
-Commerce Layer CLI
+The official [Commerce Layer](https://commercelayer.io) CLI
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/@commercelayer/commercelayer-cli.svg)](https://npmjs.org/package/@commercelayer/commercelayer-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/commercelayer-cli.svg)](https://npmjs.org/package/@commercelayer/commercelayer-cli)
 [![License](https://img.shields.io/npm/l/@commercelayer/commercelayer-cli.svg)](https://github.com/commercelayer/commercelayer-cli/blob/master/package.json)
 
-<!-- intro -->
-
-<!-- introstop -->
 
 <!-- toc -->
 * [Usage](#usage)
 * [Commands](#commands)
 * [Command Topics](#command-topics)
 <!-- tocstop -->
+* [Plugins](#plugins)
 # Usage
 <!-- usage -->
 ```sh-session
@@ -40,3 +38,12 @@ USAGE
 * [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins
 
 <!-- commandsstop -->
+# Plugins
+
+* [`resources`](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/README.md) - Execute CRUD operations on API resources
+* [`seeder`](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/README.md) - Execute Commerce Layer seeder
+
+Run the following command to get a list pf all available CLI plugins:
+```sh-session
+commercelayer plugins:available
+```
