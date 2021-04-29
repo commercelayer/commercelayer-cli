@@ -38,7 +38,9 @@
   ],
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-seeder",
   "keywords": [
-    "oclif"
+    "oclif",
+    "ecommerce",
+    "cli"
   ],
   "license": "MIT",
   "main": "lib/index.js",
