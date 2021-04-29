@@ -75,9 +75,22 @@ const readTokenFile = (config: Config.IConfig, app: AppKey): any => {
 	return JSON.parse(token)
 }
 
+const deleteConfigFile = (config: Config.IConfig, app: AppKey): boolean => {
+	const filePath = configFilePath(config, app)
+	fs.unlinkSync(filePath)
+	return true
+}
 
-export { createConfigDir, configFilePath, tokenFilePath, configFileExists, tokenFileExists, writeConfigFile, writeTokenFile, readConfigFile, readTokenFile }
+const deleteTokenFile = (config: Config.IConfig, app: AppKey): boolean => {
+	const filePath = tokenFilePath(config, app)
+	fs.unlinkSync(filePath,)
+	return true
+}
 
+
+export { createConfigDir }
+export { configFilePath, configFileExists, writeConfigFile, readConfigFile, deleteConfigFile }
+export { tokenFilePath, tokenFileExists, writeTokenFile, readTokenFile, deleteTokenFile }
 
 
 const currentOrganization = (): string | undefined => {

@@ -1,7 +1,7 @@
 import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 import api from '@commercelayer/js-sdk'
-import { baseURL, appKey } from '../../common'
+import { baseURL, appKey, extractDomain } from '../../common'
 import chalk from 'chalk'
 import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile } from '../../config'
 import { inspect } from 'util'
@@ -11,7 +11,7 @@ export default class ApplicationsLogin extends Command {
 
   static description = 'execute login to a CLI Commerce Layer application'
 
-  static aliases = ['app:login']
+  static aliases = ['app:login', 'app:add', 'applications:add']
 
   static examples = [
     '$ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>',
@@ -58,12 +58,12 @@ export default class ApplicationsLogin extends Command {
       const auth = await getAccessToken(config)
 
       const app = await getApplicationInfo(config, auth?.accessToken || '')
-
-      if (app.type !== 'cli') this.error('The credentials provided are not associated with a CLI application')
+      if (app.type !== 'cli') this.error('The credentials provided are not associated with a CLI application',
+        { suggestions: [`Provide correct credentials or access the online dashboard of ${app.organization} and create a new CLI application`] }
+      )
+      app.key = appKey(app.slug, flags.domain)
 
       createConfigDir(this.config)
-
-      app.key = appKey(app.slug, flags.domain)
 
       const overwrite = configFileExists(this.config, app)
       writeConfigFile(this.config, app)
@@ -74,7 +74,7 @@ export default class ApplicationsLogin extends Command {
       const current = clicfg.get(ConfigParams.currentApplication)
       this.log(`\nCurrent application: ${chalk.bold.yellow(current.key + '.' + current.mode)}`)
 
-      this.log(`\n${chalk.bold.greenBright('Login successful!')} ${app.mode} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Login successful!')} ${chalk.bold(app.mode)} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
 
     } catch (error) {
       this.log(chalk.bold.redBright('Login failed!'))
@@ -109,7 +109,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
   const appInfo: AppInfo = Object.assign({
     organization: org.name || '',
-    key: org.slug || '',
+    key: appKey(org.slug || '', extractDomain(auth.baseUrl)),
     slug: org.slug || '',
     mode: mode,
     type: 'cli', // app.kind || '',

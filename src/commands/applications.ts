@@ -9,6 +9,8 @@ export default class Applications extends Command {
 
   static description = 'show a list of all (logged in) available CLI applications'
 
+  static aliases = ['app:list', 'applications:list', 'app:available', 'applications:available']
+
   static examples = [
     '$ commercelayer applications',
     '$ cl applications',
@@ -39,6 +41,7 @@ export default class Applications extends Command {
     cliux.table(configData,
       {
         key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => chalk.blueBright(row.key) },
+        // slug: { header: '  SLUG  ', get: row => `  ${row.slug}  ` },
         name: { header: '  NAME  ', get: row => `  ${row.name}  ` },
         baseUrl: { header: 'BASE URL', get: row => `${row.baseUrl ? `${row.baseUrl}  ` : ''}` },
         mode: { header: 'MODE\n', get: row => `${(row.mode === 'live') ? chalk.greenBright(row.mode) : chalk.yellowBright(row.mode)}` },
