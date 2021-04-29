@@ -32,7 +32,7 @@ export default class ApplicationsCurrent extends Command {
       description: 'api domain',
       required: false,
       hidden: true,
-      dependsOn: ['organizarion'],
+      dependsOn: ['organization'],
     }),
     info: flags.boolean({
       hidden: true,
