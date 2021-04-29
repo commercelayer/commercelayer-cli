@@ -21,7 +21,7 @@ EXAMPLES
   $ cl applications
 ```
 
-_See code: [src/commands/applications.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.12/src/commands/applications.ts)_
+_See code: [src/commands/applications.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.13/src/commands/applications.ts)_
 
 ## `commercelayer applications:current`
 
@@ -43,7 +43,7 @@ EXAMPLES
   $ commercelayer app:current -o <organizationSlug> --live
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.12/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.13/src/commands/applications/current.ts)_
 
 ## `commercelayer applications:login`
 
@@ -65,7 +65,7 @@ EXAMPLE
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.12/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.13/src/commands/applications/login.ts)_
 
 ## `commercelayer applications:token`
 
@@ -88,4 +88,4 @@ EXAMPLES
   $ commercelayer app:token -o <organizationSlug> --live --save
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.12/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.5.13/src/commands/applications/token.ts)_
