@@ -46,7 +46,7 @@ export default abstract class extends Command {
 			hidden: true,
 		}),
 		raw: flags.boolean({
-			char: 'r',
+			char: 'R',
 			description: 'print out the raw API response',
 		}),
 	}
