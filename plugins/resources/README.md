@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
 running command...
 $ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/0.10.1 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-resources/0.10.2 darwin-x64 node-v15.13.0
 $ cl-resources --help [COMMAND]
 USAGE
   $ cl-resources COMMAND
@@ -53,7 +53,7 @@ EXAMPLES
   $ cl resources
 ```
 
-_See code: [src/commands/resources.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources.ts)_
+_See code: [src/commands/resources.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources.ts)_
 
 ## `cl-resources resources:create RESOURCE`
 
@@ -68,10 +68,10 @@ ARGUMENTS
 
 OPTIONS
   -D, --data=data                  the data file to use as request body
+  -R, --raw                        print out the raw API response
   -a, --attribute=attribute        define a resource attribute
   -m, --metadata=metadata          define a metadata attribute or a set of metadata attributes
   -o, --organization=organization  (required) the slug of your organization
-  -r, --raw                        print out the raw API response
   -r, --relationship=relationship  define a relationship with another resource
 
 ALIASES
@@ -86,7 +86,7 @@ EXAMPLES
   $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/create.ts)_
 
 ## `cl-resources resources:delete RESOURCE [ID]`
 
@@ -101,8 +101,8 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 OPTIONS
+  -R, --raw                        print out the raw API response
   -o, --organization=organization  (required) the slug of your organization
-  -r, --raw                        print out the raw API response
 
 ALIASES
   $ cl-resources delete
@@ -114,7 +114,7 @@ EXAMPLES
   $ cl delete customers <customerId>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/delete.ts)_
 
 ## `cl-resources resources:doc RESOURCE`
 
@@ -136,7 +136,7 @@ EXAMPLES
   $ cl res:doc cusatomers
 ```
 
-_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/doc.ts)_
+_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/doc.ts)_
 
 ## `cl-resources resources:filters`
 
@@ -154,7 +154,7 @@ EXAMPLES
   $ cl res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/filters.ts)_
 
 ## `cl-resources resources:get RESOURCE [ID]`
 
@@ -169,13 +169,13 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 OPTIONS
+  -R, --raw                        print out the raw API response
   -X, --save-path=save-path        save command output to file and create missing path directories
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
   -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
   -p, --page=page                  page number
-  -r, --raw                        print out the raw API response
   -s, --sort=sort                  defines results ordering
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
@@ -191,7 +191,7 @@ EXAMPLES
   $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/get.ts)_
 
 ## `cl-resources resources:list RESOURCE`
 
@@ -205,13 +205,13 @@ ARGUMENTS
   RESOURCE  the resource type
 
 OPTIONS
+  -R, --raw                        print out the raw API response
   -X, --save-path=save-path        save command output to file and create missing path directories
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
   -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
   -p, --page=page                  page number
-  -r, --raw                        print out the raw API response
   -s, --sort=sort                  defines results ordering
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
@@ -227,7 +227,7 @@ EXAMPLES
   $ cl list -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/list.ts)_
 
 ## `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -242,11 +242,11 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 OPTIONS
+  -R, --raw                        print out the raw API response
   -X, --save-path=save-path        save command output to file and create missing path directories
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
   -o, --organization=organization  (required) the slug of your organization
-  -r, --raw                        print out the raw API response
   -x, --save=save                  save command output to file
 
 ALIASES
@@ -261,7 +261,7 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/retrieve.ts)_
 
 ## `cl-resources resources:update RESOURCE [ID]`
 
@@ -281,14 +281,14 @@ OPTIONS
   -M, --metadata-replace=metadata-replace  define a metadata attribute and replace every item already presente in the
                                            remote resource
 
+  -R, --raw                                print out the raw API response
+
   -a, --attribute=attribute                define a resource attribute
 
   -m, --metadata=metadata                  define a metadata attribute and merge it with the metadata already present in
                                            the remote resource
 
   -o, --organization=organization          (required) the slug of your organization
-
-  -r, --raw                                print out the raw API response
 
   -r, --relationship=relationship          define a relationship with another resource
 
@@ -305,5 +305,5 @@ EXAMPLES
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.1/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v0.10.2/src/commands/resources/update.ts)_
 <!-- commandsstop -->
