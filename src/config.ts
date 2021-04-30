@@ -113,10 +113,31 @@ enum ConfigParams {
 	test = 'test'
 }
 
+enum ConfigParamsEditable {
+	test
+}
+
+const defaultConfig: any = {
+	test: 'defaultTestValue',
+}
+
+const paramEditable = (param: ConfigParams): boolean => {
+	return (Object.keys(ConfigParamsEditable).includes(param))
+}
+
+const paramExists = (param: string): boolean => {
+	return (Object.keys(ConfigParams).includes(param))
+}
+
+const paramDefault = (param: ConfigParamsEditable) => {
+	return defaultConfig[param]
+}
+
 const configParam = (param: ConfigParams, value?: any): any => {
-	if (value) clicfg.set(param, value)
-	return clicfg.get(param)
+	if (value && paramEditable(param)) clicfg.set(param, value)
+	return clicfg.get(param) || paramDefault(param as unknown as ConfigParamsEditable)
 }
 
 
-export { ConfigParams, configParam }
+export { ConfigParams, ConfigParamsEditable }
+export { configParam, paramEditable, paramExists, paramDefault }

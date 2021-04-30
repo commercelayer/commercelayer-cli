@@ -40,7 +40,7 @@ EXAMPLE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.6.4/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v0.6.5/src/commands/plugins/available.ts)_
 
 ## `commercelayer plugins:inspect PLUGIN...`
 
