@@ -1,11 +1,12 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "0.10.3",
+  "version": "1.0.0-beta",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run",
-    "cl-res": "./bin/run"
+    "cl-res": "./bin/run",
+    "clr": "./bin/run"
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "devDependencies": {
