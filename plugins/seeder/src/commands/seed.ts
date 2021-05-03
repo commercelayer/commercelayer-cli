@@ -19,6 +19,7 @@ export default class Seed extends Command {
   ]
 
   static flags = {
+    help: flags.help({ char: 'h' }),
     organization: flags.string({
       char: 'o',
       description: 'the slug of your organization',
@@ -59,23 +60,23 @@ export default class Seed extends Command {
 
   async init() {
 
-		const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
+    const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
 
-		if (notifier.update) {
+    if (notifier.update) {
 
-			const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/commercelayer-cli/node_modules/${pkg.name}/`)
-			const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
+      const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/commercelayer-cli/node_modules/${pkg.name}/`)
+      const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
 
-			notifier.notify({
-				// isGlobal: true,
-				message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
-			})
+      notifier.notify({
+        // isGlobal: true,
+        message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
+      })
 
-		}
+    }
 
-		return super.init()
+    return super.init()
 
-	}
+  }
 
 
   async run() {
