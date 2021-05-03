@@ -12,7 +12,9 @@ export default class PluginsAvailable extends Command {
     '$ commercelayer plugins:available',
   ]
 
-  static flags = {}
+  static flags = {
+    // help: flags.help({char: 'h'}),
+  }
 
   static args = []
 

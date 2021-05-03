@@ -9,7 +9,9 @@ export default class ConfigGet extends Command {
 
   static hidden: true
 
-  static flags = { }
+  static flags = {
+    // help: flags.help({char: 'h'}),
+  }
 
   static args = [
     { name: 'param', required: true, description: 'configuration parameter name' },

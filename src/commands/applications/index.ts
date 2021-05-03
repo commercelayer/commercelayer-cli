@@ -1,11 +1,11 @@
 import { Command } from '@oclif/command'
 import fs from 'fs'
 import path from 'path'
-import { AppInfo } from '../config'
+import { AppInfo, configParam, ConfigParams } from '../../config'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
 
-export default class Applications extends Command {
+export default class ApplicationsIndex extends Command {
 
   static description = 'show a list of all (logged in) available CLI applications'
 
@@ -16,7 +16,9 @@ export default class Applications extends Command {
     '$ cl applications',
   ]
 
-  static flags = {}
+  static flags = {
+    // help: flags.help({char: 'h'}),
+  }
 
   static args = []
 
@@ -37,10 +39,12 @@ export default class Applications extends Command {
       this.error('No CLI applications config files found', { suggestions: ['Execute first login to at least one CLI application'] })
     }
 
+    const current = configParam(ConfigParams.currentApplication)
+
     this.log()
     cliux.table(configData,
       {
-        key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => chalk.blueBright(row.key) },
+        key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => (current && (current.key === row.key) && (current.mode === row.mode)) ? chalk.magentaBright(`${row.key} *`) : chalk.blueBright(row.key) },
         // slug: { header: '  SLUG  ', get: row => `  ${row.slug}  ` },
         name: { header: '  NAME', get: row => `  ${row.name}` },
         organization: { header: '  ORGANIZATION  ', get: row => `  ${row.organization}  ` },
@@ -51,6 +55,11 @@ export default class Applications extends Command {
         printLine: this.log,
       })
     this.log()
+
+    if (current) {
+      this.log(chalk.italic.magentaBright('(*) Current application'))
+      this.log()
+    }
 
   }
 

@@ -9,6 +9,7 @@ export default class ConfigDefault extends Command {
   static hidden: true
 
   static flags = {
+    // help: flags.help({char: 'h'}),
     force: flags.boolean({
       char: 'F',
       required: false,  // checked programmatically later

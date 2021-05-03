@@ -15,7 +15,6 @@ The official [Commerce Layer](https://commercelayer.io) CLI
 * [Command Topics](#command-topics)
 * [Plugins](#plugins)
 <!-- tocstop -->
-* [Plugins](#plugins)
 # Usage
 <!-- usage -->
 ```sh-session
@@ -23,7 +22,7 @@ $ npm install -g @commercelayer/commercelayer-cli
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/commercelayer-cli/0.7.0 darwin-x64 node-v15.13.0
+@commercelayer/commercelayer-cli/1.0.0-beta.3 darwin-x64 node-v15.13.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
