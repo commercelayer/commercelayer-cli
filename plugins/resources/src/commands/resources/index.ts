@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 
@@ -15,12 +15,14 @@ export default class ResourcesIndex extends Command {
 	]
 
 	static flags = {
-		// help: flags.help({ char: 'h' }),
+		help: flags.help({ char: 'h' }),
 	}
 
 	static args = []
 
 	async run() {
+
+		this.parse(ResourcesIndex)
 
 		this.log(chalk.blueBright('\n-= Commerce Layer API available resources =-\n'))
 
@@ -39,6 +41,13 @@ export default class ResourcesIndex extends Command {
 		this.log()
 
 	}
+
+
+	async catch(error: any) {
+		if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
+		return super.catch(error)
+	}
+
 
 }
 
