@@ -8,13 +8,13 @@ import { denormalize } from '../../jsonapi'
 
 export default class ResourcesUpdate extends Command {
 
-  static description = 'update an exiasting resource'
+  static description = 'update an existing resource'
 
   static aliases = ['update', 'ru', 'res:update']
 
   static examples = [
     '$ commercelayer resources:update customers/<customerId> -a reference=referenceId',
-    '$ commercelater res:update customers <customerId> -a reference_origin="Ref Origin"',
+    '$ commercelayer res:update customers <customerId> -a reference_origin="Ref Origin"',
     '$ cl update customers/<customerId> -m meta_key="meta value"',
     '$ cl ru customers <customerId> -M mete_keu="metadata overwrite',
     '$ clayer update customers <customerId> -D /path/to/data/file/data.json',

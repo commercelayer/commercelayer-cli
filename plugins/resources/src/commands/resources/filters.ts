@@ -1,4 +1,4 @@
-import {Command} from '@oclif/command'
+import { Command } from '@oclif/command'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 
@@ -15,20 +15,22 @@ export default class ResourcesFilters extends Command {
     '$ cl res:filters',
   ]
 
-  static flags = { }
+  static flags = {
+    // help: flags.help({ char: 'h' }),
+  }
 
-  static args = [ ]
+  static args = []
 
   async run() {
     this.log(chalk.blueBright('\n-= Commerce Layer API available resource filters =-\n'))
     cliux.table(filters,
       {
-        predicate: { header: 'PREDICATE', minWidth: 25, get: row =>  chalk.blueBright(row.predicate) },
+        predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
         description: { header: 'DESCRIPTION' },
       },
       {
         printLine: this.log,
-    })
+      })
     this.log()
   }
 

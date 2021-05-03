@@ -16,6 +16,7 @@ const pkg = require('../package.json')
 export default abstract class extends Command {
 
 	static flags = {
+		// help: flags.help({ char: 'h' }),
 		organization: flags.string({
 			char: 'o',
 			description: 'the slug of your organization',

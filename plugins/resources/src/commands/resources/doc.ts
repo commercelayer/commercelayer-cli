@@ -1,5 +1,5 @@
 import { Command } from '@oclif/command'
-import { findResource } from '../resources'
+import { findResource } from '.'
 import axios from 'axios'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
@@ -16,7 +16,9 @@ export default class ResourcesDoc extends Command {
     '$ cl res:doc cusatomers',
   ]
 
-  static flags = { }
+  static flags = {
+    // help: flags.help({char: 'h'}),
+  }
 
   static args = [{ name: 'resource', required: true, description: 'the resource for wich you want to access the online documentation' }]
 

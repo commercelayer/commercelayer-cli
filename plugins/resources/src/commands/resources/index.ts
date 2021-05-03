@@ -3,7 +3,7 @@ import chalk from 'chalk'
 import cliux from 'cli-ux'
 
 
-export default class Resources extends Command {
+export default class ResourcesIndex extends Command {
 
 	static description = 'list all the available Commerce Layer API resources'
 
@@ -14,7 +14,9 @@ export default class Resources extends Command {
 		'$ cl resources',
 	]
 
-	static flags = {}
+	static flags = {
+		// help: flags.help({ char: 'h' }),
+	}
 
 	static args = []
 
