@@ -1,6 +1,13 @@
 #!/usr/bin/env node
 
+
+const handleError = async error => {
+	if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
+	// eslint-disable-next-line node/no-extraneous-require
+	require('@oclif/errors/handle')(error)
+}
+
+
 require('@oclif/command').run()
 .then(require('@oclif/command/flush'))
-// eslint-disable-next-line node/no-extraneous-require
-.catch(require('@oclif/errors/handle'))
+.catch(handleError)

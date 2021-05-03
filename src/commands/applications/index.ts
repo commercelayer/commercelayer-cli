@@ -24,6 +24,8 @@ export default class ApplicationsIndex extends Command {
 
   async run() {
 
+    this.parse(ApplicationsIndex)
+
     let configData: AppInfo[]
 
     try {
@@ -44,7 +46,7 @@ export default class ApplicationsIndex extends Command {
     this.log()
     cliux.table(configData,
       {
-        key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => (current && (current.key === row.key) && (current.mode === row.mode)) ? chalk.magentaBright(`${row.key} *`) : chalk.blueBright(row.key) },
+        key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => (current && (current.key === row.key) && (current.mode === row.mode)) ? chalk.cyanBright(`${row.key} *`) : chalk.blueBright(row.key) },
         // slug: { header: '  SLUG  ', get: row => `  ${row.slug}  ` },
         name: { header: '  NAME', get: row => `  ${row.name}` },
         organization: { header: '  ORGANIZATION  ', get: row => `  ${row.organization}  ` },
@@ -57,7 +59,7 @@ export default class ApplicationsIndex extends Command {
     this.log()
 
     if (current) {
-      this.log(chalk.italic.magentaBright('(*) Current application'))
+      this.log(chalk.italic.cyanBright('(*) Current application'))
       this.log()
     }
 
