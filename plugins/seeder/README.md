@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-seeder
 $ cl-seeder COMMAND
 running command...
 $ cl-seeder (-v|--version|version)
-@commercelayer/cli-plugin-seeder/1.0.0-beta.2 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-seeder/1.0.0-beta.9 darwin-x64 node-v15.13.0
 $ cl-seeder --help [COMMAND]
 USAGE
   $ cl-seeder COMMAND
@@ -40,7 +40,6 @@ USAGE
 
 OPTIONS
   -b, --businessModel=multi_market|custom  [default: multi_market] the kind of business model you want to import
-  -h, --help                               show CLI help
   -m, --maxItems=maxItems                  [default: all] the maximum number of SKUs that will be imported
   -o, --organization=organization          (required) the slug of your organization
 
@@ -52,5 +51,5 @@ EXAMPLES
   $ cl seed -m all -u <seedUrl> -b multi_market
 ```
 
-_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.0-beta.2/src/commands/seed.ts)_
+_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.0-beta.9/src/commands/seed.ts)_
 <!-- commandsstop -->
