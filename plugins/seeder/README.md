@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-seeder
 $ cl-seeder COMMAND
 running command...
 $ cl-seeder (-v|--version|version)
-@commercelayer/cli-plugin-seeder/1.0.0-beta.9 darwin-x64 node-v15.13.0
+@commercelayer/cli-plugin-seeder/1.0.0-beta.14 darwin-x64 node-v15.13.0
 $ cl-seeder --help [COMMAND]
 USAGE
   $ cl-seeder COMMAND
@@ -51,5 +51,5 @@ EXAMPLES
   $ cl seed -m all -u <seedUrl> -b multi_market
 ```
 
-_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.0-beta.9/src/commands/seed.ts)_
+_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.0-beta.14/src/commands/seed.ts)_
 <!-- commandsstop -->

@@ -19,7 +19,7 @@ export default class Seed extends Command {
   ]
 
   static flags = {
-    // help: flags.help({ char: 'h' }),
+    help: flags.help({ char: 'h' }),
     organization: flags.string({
       char: 'o',
       description: 'the slug of your organization',
@@ -76,6 +76,12 @@ export default class Seed extends Command {
 
     return super.init()
 
+  }
+
+
+  async catch(error: any) {
+    if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
+    return super.catch(error)
   }
 
 
