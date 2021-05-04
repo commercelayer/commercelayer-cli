@@ -15,12 +15,11 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 
 ## Table of contents
 
-* [Installation](#installation)<!-- toc -->
+* [Installation](#installation)<!-- toc-DISABLED -->
 * [Commerce Layer CLI](#commerce-layer-cli)
-* [Command Topics](#command-topics)
-<!-- tocstop -->
+* [Command Topics](#command-topics)<!-- tocstop-DISABLED -->
 * [Plugins](#plugins)
-* [Contributors guide](#contributors-guide)
+* [Contributors Guide](#contributors-guide)
 * [Need help](#need-help)
 * [License](#license)
 
@@ -79,7 +78,7 @@ You can run the command below to update all available CLI plugins:
 commercelayer plugins:update
 ```
 
-## Contributors guide
+## Contributors Guide
 
 1. Fork [this repository](https://github.com/commercelayer/commercelayer-cli) (learn how to do this [here](https://help.github.com/articles/fork-a-repo)).
 
