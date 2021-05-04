@@ -58,6 +58,7 @@ export default abstract class extends Command {
 	]
 
 
+	// INIT (override)
 	async init() {
 
 		const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
@@ -76,6 +77,16 @@ export default abstract class extends Command {
 
 		return super.init()
 
+	}
+
+
+	// CATCH (override)
+	async catch(error: any) {
+		if (error.message && error.message.match(/Missing 1 required arg:\nresource/))
+			this.error(`Missing argument ${chalk.redBright('resource')}`,
+				{ suggestions: [`Execute command ${chalk.italic('resources')} to get a list of all available CLI resources`] }
+			)
+		else throw error
 	}
 
 
