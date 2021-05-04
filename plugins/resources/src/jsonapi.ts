@@ -19,6 +19,13 @@ const denormalize = (response: any) => {
 }
 
 
+const findIncluded = (rel: any, included: any[]): any => {
+	return included.find(inc => {
+		return (rel.id === inc.id) && (rel.type === inc.type)
+	})
+}
+
+
 const denormalizeResource = (res: any, included: any[]) => {
 
 	// console.log(res)
@@ -33,10 +40,8 @@ const denormalizeResource = (res: any, included: any[]) => {
 	if (res.relationships) Object.keys(res.relationships).forEach(key => {
 		const rel = res.relationships[key].data
 		if (rel) {
-			const inc = included.find(inc => {
-				return (rel.id === inc.id) && (rel.type === inc.type)
-			})
-			resource[key] = denormalizeResource(inc, included)
+			if (Array.isArray(rel)) resource[key] = rel.map(r => denormalizeResource(findIncluded(r, included), included))
+			else resource[key] = denormalizeResource(findIncluded(rel, included), included)
 		}
 	})
 
