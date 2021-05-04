@@ -86,7 +86,8 @@ export default abstract class extends Command {
 			this.error(`Missing argument ${chalk.redBright('resource')}`,
 				{ suggestions: [`Execute command ${chalk.italic('resources')} to get a list of all available CLI resources`] }
 			)
-		else throw error
+		// else throw error				// overwrite command catch method
+		else return super.catch(error)	// extend command catch method
 	}
 
 
