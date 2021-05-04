@@ -15,15 +15,14 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 
 ## Table of contents
 
-<!-- toc -->
-* [Installation](#installation)
-* [Usage](#usage)
-* [Commands](#commands)
+* [Installation](#installation)<!-- toc -->
+* [Commerce Layer CLI](#commerce-layer-cli)
+* [Command Topics](#command-topics)
+<!-- tocstop -->
 * [Plugins](#plugins)
 * [Contributors guide](#contributors-guide)
 * [Need help](#need-help)
 * [License](#license)
-<!-- tocstop -->
 
 ## Installation
 
@@ -39,7 +38,7 @@ _More installation options, coming soon..._
 
 Installing the CLI provides access to the `commercelayer`, `clayer`, and `cl` command.
 
-<!-- usage -->
+<!-- usage-DISABLED -->
 ```sh-session
 $ (commercelayer | clayer | cl) COMMAND
 
@@ -47,16 +46,19 @@ $ commercelayer (-v | version | --version) to check the version of the CLI you h
 
 $ commercelayer [COMMAND] --help for detailed information about CLI commands.
 ```
-<!-- usagestop -->
+<!-- usagestop-DISABLED -->
 
 ## Commands
 
 The Commerce Layer CLI supports the following commands:
 
 <!-- commands -->
-* [`commercelayer applications`](docs/applications.md) - Manage login to CLI applications.
-* [`commercelayer help`](docs/help.md) - Display help for commercelayer.
-* [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins.
+# Command Topics
+
+* [`commercelayer applications`](docs/applications.md) - Manage login to CLI applications
+* [`commercelayer help`](docs/help.md) - display help for commercelayer
+* [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins
+
 <!-- commandsstop -->
 
 ## Plugins
