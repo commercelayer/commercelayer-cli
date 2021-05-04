@@ -3,7 +3,7 @@ import { getIntegrationToken } from '@commercelayer/js-auth'
 import api from '@commercelayer/js-sdk'
 import { baseURL, appKey, extractDomain } from '../../common'
 import chalk from 'chalk'
-import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile } from '../../config'
+import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, SUPER_USER_MODE} from '../../config'
 import { inspect } from 'util'
 
 
@@ -58,8 +58,8 @@ export default class ApplicationsLogin extends Command {
       const auth = await getAccessToken(config)
 
       const app = await getApplicationInfo(config, auth?.accessToken || '')
-      if (app.type !== 'cli') this.error('The credentials provided are not associated with a CLI application',
-        { suggestions: [`Provide correct credentials or access the online dashboard of ${app.organization} and create a new CLI application`] }
+      if ((app.type !== 'cli') && (process.env.CL_CLI_MODE !== SUPER_USER_MODE)) this.error('The credentials provided are not associated with a CLI application',
+        { suggestions: [`Double check your credentials or access the online dashboard of ${app.organization} and create a new CLI application`] }
       )
       app.key = appKey(app.slug, flags.domain)
 
@@ -78,6 +78,8 @@ export default class ApplicationsLogin extends Command {
 
     } catch (error) {
       this.log(chalk.bold.redBright('Login failed!'))
+      if (error.suggestions) throw error
+      else
       if (error.message) this.error(error.message)
       else this.error(inspect(error.toArray(), false, null, true))
     }
@@ -112,7 +114,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
     key: appKey(org.slug || '', extractDomain(auth.baseUrl)),
     slug: org.slug || '',
     mode: mode,
-    type: 'cli', // app.kind || '',
+    type: app.kind || '',
     name: app.name || '',
   }, auth)
 

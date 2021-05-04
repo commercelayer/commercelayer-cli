@@ -1,7 +1,7 @@
 import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
-import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
+import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile, configFileExists, SUPER_USER_MODE } from '../../config'
 import { execMode, appKey, extractDomain } from '../../common'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
@@ -45,13 +45,21 @@ const hook: Hook<'prerun'> = async function (opts) {
 
   // No organization and domain passed on command line, looking for saved current application
   if (app.key === '') {
+
     const current = configParam(ConfigParams.currentApplication)
     if (current !== undefined) {
+
       Object.assign(app, current)
       configData = readConfigFile(this.config, app)
+
+      if ((configData.type !== 'cli') && (process.env.CL_CLI_MODE !== SUPER_USER_MODE))
+        this.error(`The current application (${chalk.redBright(configData.key)}) is not a CLI application\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new CLI application`)
+
       opts.argv.push('--organization=' + configData.slug)
       opts.argv.push('--domain=' + extractDomain(configData.baseUrl))
+
     }
+
   } else
     if (!configFileExists(this.config, app))
       this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)

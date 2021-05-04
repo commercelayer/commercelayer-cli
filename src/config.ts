@@ -7,6 +7,9 @@ import Config from '@oclif/config'
 const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
 export default clicfg
 
+const SUPER_USER_MODE = 'SBREZZZA'
+export { SUPER_USER_MODE }
+
 interface AppKey {
 	key: string;
 	mode: string;
