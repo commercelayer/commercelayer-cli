@@ -73,7 +73,8 @@
         "description": "Manage CLI configuration",
         "hidden": true
       }
-    }
+    },
+    "helpClass": "./lib/help"
   },
   "repository": "https://github.com/commercelayer/commercelayer-cli",
   "scripts": {
