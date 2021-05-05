@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.15",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run",
@@ -60,11 +60,13 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "readme": "oclif-dev readme",
+    "resources": "ts-node src/util/resources.ts "
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/js-sdk": "^3.6.3",
+    "@commercelayer/js-sdk": "3.10.0",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "axios": "^0.21.1",

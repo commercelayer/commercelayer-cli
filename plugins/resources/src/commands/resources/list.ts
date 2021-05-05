@@ -3,6 +3,7 @@ import { baseURL } from '../../common'
 import cl, { CLayer } from '@commercelayer/js-sdk'
 import chalk from 'chalk'
 import { denormalize } from '../../jsonapi'
+import cliux from 'cli-ux'
 
 export default class ResourcesList extends Command {
 
@@ -100,7 +101,9 @@ export default class ResourcesList extends Command {
       if (perPage && (perPage > 0)) req = req.perPage(perPage)
       if (page && (page > 0)) req = req.page(page)
 
+      cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
       const res = await req.all({ rawResponse: true })
+      cliux.action.stop()
 
       const out = flags.raw ? res : denormalize(res)
 
