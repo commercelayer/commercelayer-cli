@@ -186,7 +186,7 @@ export default abstract class extends Command {
 		const object: any = {}
 
 		map.forEach((val, key) => {
-			const k = camelCase ? _.camelCase(key) : key as keyof object
+			const k = (camelCase && !key.startsWith('_')) ? _.camelCase(key) : key as keyof object
 			object[k] = val
 			/* it should never happen in real use cases
 			if (object[k] === undefined) object[k] = val
