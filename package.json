@@ -10,7 +10,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "devDependencies": {
-    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.15",
     "@types/configstore": "^4.0.0",
@@ -88,7 +88,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@commercelayer/js-auth": "^2.0.4",
-    "@commercelayer/js-sdk": "^3.5.0",
+    "@commercelayer/js-sdk": "^4.0.0",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
