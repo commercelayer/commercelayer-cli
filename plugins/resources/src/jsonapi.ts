@@ -42,7 +42,7 @@ const denormalizeResource = (res: any, included: any[]) => {
 		if (rel) {
 			if (Array.isArray(rel)) resource[key] = rel.map(r => denormalizeResource(findIncluded(r, included), included))
 			else resource[key] = denormalizeResource(findIncluded(rel, included), included)
-		}
+		}  else if (rel === null) resource[key] = null
 	})
 
 	return resource
