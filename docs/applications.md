@@ -28,7 +28,7 @@ EXAMPLES
   $ cl applications
 ```
 
-_See code: [src/commands/applications/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/index.ts)_
+_See code: [src/commands/applications/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.9/src/commands/applications/index.ts)_
 
 ### `commercelayer applications:current`
 
@@ -50,7 +50,7 @@ EXAMPLES
   $ commercelayer app:current -o <organizationSlug> --live
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.9/src/commands/applications/current.ts)_
 
 ### `commercelayer applications:login`
 
@@ -74,7 +74,7 @@ EXAMPLE
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.9/src/commands/applications/login.ts)_
 
 ### `commercelayer applications:logout`
 
@@ -94,7 +94,7 @@ ALIASES
   $ commercelayer applications:remove
 ```
 
-_See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/logout.ts)_
+_See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.9/src/commands/applications/logout.ts)_
 
 ### `commercelayer applications:token`
 
@@ -117,4 +117,4 @@ EXAMPLES
   $ commercelayer app:token -o <organizationSlug> --live --save
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.9/src/commands/applications/token.ts)_
