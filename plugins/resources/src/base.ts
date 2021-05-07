@@ -463,16 +463,25 @@ export default abstract class extends Command {
 
 		try {
 
-			const filePath = flags.save || flags['save-path']
+			let filePath = flags.save || flags['save-path']
 			if (!filePath) this.warn('Undefined output save path')
 
-			const fileDir = path.dirname(filePath)
+			// Special desktop dir
+			let fileDir
+			if (filePath.toLowerCase().startsWith('desktop')) {
+				const home = require('os').homedir()
+				fileDir = home + '/Desktop'
+				filePath = filePath.replace('desktop', fileDir)
+			} else fileDir = path.dirname(filePath)
 			if (flags['save-path'] && !fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true })
 
 			const out = this.formatOutput(output, flags, { color: false })
 
 			fs.writeFileSync(filePath, out)
-			this.log(`Command output saved to file ${chalk.italic(filePath)}`)
+			if (fs.existsSync(filePath)) this.log(`Command output saved to file ${chalk.italic(filePath)}`)
+			else this.error(`Unable to save command output to file ${filePath}`, {
+				suggestions: ['Please check you have the right file system permissions'],
+			})
 
 		} catch (error) {
 			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
