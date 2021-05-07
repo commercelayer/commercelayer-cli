@@ -21,6 +21,9 @@ const isCommandExcluded = (cmd: string): boolean => {
 
 const hook: Hook<'prerun'> = async function (opts) {
 
+  // Only for test purpouses to avoid an error of undefined object
+  if (!opts.Command || !opts.argv) return
+
   // Continue and check authentication only for command that:
   if (isCommandExcluded(opts.Command.id)) return                      // are not explicitly excluded from check
   if (!opts.Command.flags?.accessToken) return                        // require an accessToken as input flag

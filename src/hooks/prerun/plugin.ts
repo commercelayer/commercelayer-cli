@@ -4,6 +4,9 @@ import chalk from 'chalk'
 
 const hook: Hook<'prerun'> = async function (opts) {
 
+  // Only for test purpouses to avoid an error of undefined object
+  if (!opts.Command || !opts.argv) return
+
   // Only plugins commands are affected by this hook
   if (!opts.Command.id.startsWith('plugins')) return
   if (opts.argv.length === 0) return
