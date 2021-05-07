@@ -38,13 +38,13 @@ export default abstract class extends Command {
 		json: flags.boolean({
 			char: 'j',
 			description: 'convert output in standard JSON format',
-			hidden: true,
+			// hidden: true,
 		}),
 		unformatted: flags.boolean({
 			char: 'u',
 			description: 'print unformatted JSON output',
 			dependsOn: ['json'],
-			hidden: true,
+			// hidden: true,
 		}),
 		raw: flags.boolean({
 			char: 'R',
