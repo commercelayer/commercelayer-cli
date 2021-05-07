@@ -16,6 +16,7 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 ## Table of contents
 
 <!-- toc -->
+
 * [ Installation](#installation)
 * [ Usage](#usage)
 * [ Commands](#commands)
@@ -58,9 +59,11 @@ Kindly check out this [quick step-by-step example](https://gist.github.com/silvi
 The Commerce Layer CLI supports the following commands:
 
 <!-- commands -->
+
 * [`commercelayer applications`](docs/applications.md) - Manage login to CLI applications.
 * [`commercelayer help`](docs/help.md) - Display help for commercelayer.
 * [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins.
+
 <!-- commandsstop -->
 
 ## Plugins
