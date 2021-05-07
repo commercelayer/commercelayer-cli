@@ -9,30 +9,29 @@ Commerce Layer CLI seeder plugin
 [![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-seeder.svg)](https://github.com/commercelayer/cli-plugin-seeder/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+* [ Usage](#usage)
+* [ Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
+
 ```sh-session
-$ npm install -g @commercelayer/cli-plugin-seeder
 $ cl-seeder COMMAND
-running command...
-$ cl-seeder (-v|--version|version)
-@commercelayer/cli-plugin-seeder/1.0.0-beta.15 darwin-x64 node-v15.13.0
-$ cl-seeder --help [COMMAND]
-USAGE
-  $ cl-seeder COMMAND
-...
+
+$ cl-seeder (-v | version | --version) to check the version of the CLI you have installed.
+
+$ cl-seeder [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
-# Commands
+## Commands
 <!-- commands -->
+
 * [`cl-seeder seed`](#cl-seeder-seed)
 
-## `cl-seeder seed`
+### `cl-seeder seed`
 
-execute Commerce Layer seeder
+Execute Commerce Layer seeder.
 
 ```
 USAGE
@@ -52,5 +51,5 @@ EXAMPLES
   $ cl seed -m all -u <seedUrl> -b multi_market
 ```
 
-_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.0-beta.15/src/commands/seed.ts)_
+_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.0-beta.16/src/commands/seed.ts)_
 <!-- commandsstop -->
