@@ -14,15 +14,15 @@ describe('resources:delete', () => {
       const res = await cl.Customer.where({ emailEnd: '@cli-test.com' }).first()
       return res.id
     })
-    .do(ctx => DeleteCommand.run(['customers', ctx.customerId]))
+    .do(ctx => DeleteCommand.run(['customers', ctx.customerId || '']))
     .it('runs resources:delete', ctx => {
-      expect(ctx.stdout).to.contain('Success!')
+      expect(ctx.stdout).to.contain('Success')
     })
 
   test
     .stdout()
     .command(['resources:delete', 'customers', 'fake'])
-    .catch(error => expect(error.message).to.contain('RECORDNOTFOUND'))
+    .catch(error => expect(error.message).to.contain('RECORD_NOT_FOUND'))
     .it('runs resources:delete error')
 
 })

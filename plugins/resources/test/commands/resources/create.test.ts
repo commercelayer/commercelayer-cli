@@ -8,14 +8,14 @@ describe('resources:create', () => {
   .stdout()
   .command(['resources:create', 'customers', `-a email=${email}`, '-r customer_group=customer_groups/EyQYahWlye', '-m meta1=value1'])
   .it('runs resources:create', ctx => {
-    expect(ctx.stdout).to.contain('Success!')
+    expect(ctx.stdout).to.contain('Success')
   })
 
   test
   .stdout()
   .command(['resources:create', 'customers', `-a email=${email}`])
   .it('runs resources:create without relationships', ctx => {
-    expect(ctx.stdout).to.contain('Success!')
+    expect(ctx.stdout).to.contain('Success')
   })
 
   test
