@@ -449,12 +449,15 @@ export default abstract class extends Command {
 		} else
 			if (error.errors) err = error.errors().toArray()
 			else
-				if (error.toArray) err = error.toArray()
-				else
-					if (error.message) err = error.message
+			if (error.toArray) err = error.toArray().map((e: { code: string | undefined }) => {
+				if (e.code) e.code = _.snakeCase(e.code).toUpperCase()	// Fix SDK camelCase issue
+				return e
+			})
+			else
+			if (error.message) err = error.message
 
 
-		this.error(this.formatOutput(err, flags))
+			this.error(this.formatOutput(err, flags))
 
 	}
 
