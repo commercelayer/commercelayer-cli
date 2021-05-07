@@ -1,13 +1,13 @@
 `commercelayer help`
 ====================
 
-display help for commercelayer
+Display help for commercelayer.
 
 * [`commercelayer help [COMMAND]`](#commercelayer-help-command)
 
-## `commercelayer help [COMMAND]`
+### `commercelayer help [COMMAND]`
 
-display help for commercelayer
+Display help for commercelayer.
 
 ```
 USAGE

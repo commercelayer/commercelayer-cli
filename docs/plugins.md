@@ -1,7 +1,7 @@
 `commercelayer plugins`
 =======================
 
-Manage CLI plugins
+Manage CLI plugins.
 
 * [`commercelayer plugins`](#commercelayer-plugins)
 * [`commercelayer plugins:available`](#commercelayer-pluginsavailable)
@@ -11,9 +11,9 @@ Manage CLI plugins
 * [`commercelayer plugins:uninstall PLUGIN...`](#commercelayer-pluginsuninstall-plugin)
 * [`commercelayer plugins:update`](#commercelayer-pluginsupdate)
 
-## `commercelayer plugins`
+### `commercelayer plugins`
 
-list installed plugins
+List installed plugins.
 
 ```
 USAGE
@@ -28,9 +28,9 @@ EXAMPLE
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/index.ts)_
 
-## `commercelayer plugins:available`
+### `commercelayer plugins:available`
 
-show all available Commerce Layer CLI plugins
+Show all available Commerce Layer CLI plugins.
 
 ```
 USAGE
@@ -42,9 +42,9 @@ EXAMPLE
 
 _See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/plugins/available.ts)_
 
-## `commercelayer plugins:inspect PLUGIN...`
+### `commercelayer plugins:inspect PLUGIN...`
 
-displays installation properties of a plugin
+Displays installation properties of a plugin.
 
 ```
 USAGE
@@ -63,9 +63,9 @@ EXAMPLE
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/inspect.ts)_
 
-## `commercelayer plugins:install PLUGIN...`
+### `commercelayer plugins:install PLUGIN...`
 
-installs a plugin into the CLI
+Installs a plugin into the CLI
 
 ```
 USAGE
@@ -99,9 +99,9 @@ EXAMPLES
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/install.ts)_
 
-## `commercelayer plugins:link PLUGIN`
+### `commercelayer plugins:link PLUGIN`
 
-links a plugin into the CLI for development
+Links a plugin into the CLI for development
 
 ```
 USAGE
@@ -126,9 +126,9 @@ EXAMPLE
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/link.ts)_
 
-## `commercelayer plugins:uninstall PLUGIN...`
+### `commercelayer plugins:uninstall PLUGIN...`
 
-removes a plugin from the CLI
+Removes a plugin from the CLI.
 
 ```
 USAGE
@@ -148,9 +148,9 @@ ALIASES
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.0/src/commands/plugins/uninstall.ts)_
 
-## `commercelayer plugins:update`
+### `commercelayer plugins:update`
 
-update installed plugins
+Update installed plugins.
 
 ```
 USAGE

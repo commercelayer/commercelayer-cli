@@ -1,7 +1,7 @@
 `commercelayer applications`
 ============================
 
-Manage login to CLI applications
+Manage login to CLI applications.
 
 * [`commercelayer applications`](#commercelayer-applications)
 * [`commercelayer applications:current`](#commercelayer-applicationscurrent)
@@ -9,9 +9,9 @@ Manage login to CLI applications
 * [`commercelayer applications:logout`](#commercelayer-applicationslogout)
 * [`commercelayer applications:token`](#commercelayer-applicationstoken)
 
-## `commercelayer applications`
+### `commercelayer applications`
 
-show a list of all (logged in) available CLI applications
+Show a list of all (logged in) available CLI applications.
 
 ```
 USAGE
@@ -30,9 +30,9 @@ EXAMPLES
 
 _See code: [src/commands/applications/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/index.ts)_
 
-## `commercelayer applications:current`
+### `commercelayer applications:current`
 
-set or show the current CLI application
+Set or show the current CLI application.
 
 ```
 USAGE
@@ -52,9 +52,9 @@ EXAMPLES
 
 _See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/current.ts)_
 
-## `commercelayer applications:login`
+### `commercelayer applications:login`
 
-execute login to a CLI Commerce Layer application
+Execute login to a CLI Commerce Layer application.
 
 ```
 USAGE
@@ -76,9 +76,9 @@ EXAMPLE
 
 _See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/login.ts)_
 
-## `commercelayer applications:logout`
+### `commercelayer applications:logout`
 
-remove an application from CLI local configuration
+Remove an application from CLI local configuration.
 
 ```
 USAGE
@@ -96,9 +96,9 @@ ALIASES
 
 _See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.0-beta.8/src/commands/applications/logout.ts)_
 
-## `commercelayer applications:token`
+### `commercelayer applications:token`
 
-get a new access token from Commerce Layer API
+Get a new access token from Commerce Layer API.
 
 ```
 USAGE
