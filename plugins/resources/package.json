@@ -10,7 +10,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "devDependencies": {
-    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.15",
     "@types/mocha": "^5.2.7",
@@ -51,6 +51,10 @@
     "topics": {
       "resources": {
         "description": "Execute CRUD operations on API resources"
+      },
+      "order": {
+        "description": "Execute special operations on orders",
+        "hidden": true
       }
     }
   },

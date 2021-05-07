@@ -9,29 +9,28 @@ Commerce Layer CLI Resources plugin
 [![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-resources.svg)](https://github.com/commercelayer/cli-plugin-resources/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+* [ Usage](#usage)
+* [ Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
+
 ```sh-session
-$ npm install -g @commercelayer/cli-plugin-resources
 $ cl-resources COMMAND
-running command...
-$ cl-resources (-v|--version|version)
-@commercelayer/cli-plugin-resources/1.0.0-beta.16 darwin-x64 node-v15.13.0
-$ cl-resources --help [COMMAND]
-USAGE
-  $ cl-resources COMMAND
-...
+
+$ cl-resources (-v | version | --version) to check the version of the CLI you have installed.
+
+$ cl-resources [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
 ```sh-session
 $ commercelayer plugins:install resources
 ```
-# Commands
+## Commands
 <!-- commands -->
+
 * [`cl-resources resources`](#cl-resources-resources)
 * [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
 * [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
@@ -42,9 +41,9 @@ $ commercelayer plugins:install resources
 * [`cl-resources resources:retrieve RESOURCE [ID]`](#cl-resources-resourcesretrieve-resource-id)
 * [`cl-resources resources:update RESOURCE [ID]`](#cl-resources-resourcesupdate-resource-id)
 
-## `cl-resources resources`
+### `cl-resources resources`
 
-list all the available Commerce Layer API resources
+List all the available Commerce Layer API resources.
 
 ```
 USAGE
@@ -62,9 +61,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/index.ts)_
 
-## `cl-resources resources:create RESOURCE`
+### `cl-resources resources:create RESOURCE`
 
-create a new resource
+Create a new resource.
 
 ```
 USAGE
@@ -77,9 +76,11 @@ OPTIONS
   -D, --data=data                  the data file to use as request body
   -R, --raw                        print out the raw API response
   -a, --attribute=attribute        define a resource attribute
+  -j, --json                       convert output in standard JSON format
   -m, --metadata=metadata          define a metadata attribute or a set of metadata attributes
   -o, --organization=organization  (required) the slug of your organization
   -r, --relationship=relationship  define a relationship with another resource
+  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources create
@@ -95,9 +96,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/create.ts)_
 
-## `cl-resources resources:delete RESOURCE [ID]`
+### `cl-resources resources:delete RESOURCE [ID]`
 
-delete an existing resource
+Delete an existing resource.
 
 ```
 USAGE
@@ -109,7 +110,9 @@ ARGUMENTS
 
 OPTIONS
   -R, --raw                        print out the raw API response
+  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -u, --unformatted                print unformatted JSON output
 
 ALIASES
   $ cl-resources delete
@@ -123,9 +126,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/delete.ts)_
 
-## `cl-resources resources:doc RESOURCE`
+### `cl-resources resources:doc RESOURCE`
 
-show the online documentation of the resource in the browser
+Show the online documentation of the resource in the browser.
 
 ```
 USAGE
@@ -145,9 +148,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/doc.ts)_
 
-## `cl-resources resources:filters`
+### `cl-resources resources:filters`
 
-show a list of all available filter predicates
+Show a list of all available filter predicates.
 
 ```
 USAGE
@@ -163,9 +166,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/filters.ts)_
 
-## `cl-resources resources:get RESOURCE [ID]`
+### `cl-resources resources:get RESOURCE [ID]`
 
-retrieve a resource or list a set of resources
+Retrieve a resource or list a set of resources.
 
 ```
 USAGE
@@ -180,10 +183,12 @@ OPTIONS
   -X, --save-path=save-path        save command output to file and create missing path directories
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
+  -j, --json                       convert output in standard JSON format
   -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
   -p, --page=page                  page number
   -s, --sort=sort                  defines results ordering
+  -u, --unformatted                print unformatted JSON output
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
 
@@ -200,9 +205,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/get.ts)_
 
-## `cl-resources resources:list RESOURCE`
+### `cl-resources resources:list RESOURCE`
 
-fetch a collection of resources
+Fetch a collection of resources.
 
 ```
 USAGE
@@ -216,10 +221,12 @@ OPTIONS
   -X, --save-path=save-path        save command output to file and create missing path directories
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
+  -j, --json                       convert output in standard JSON format
   -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
   -p, --page=page                  page number
   -s, --sort=sort                  defines results ordering
+  -u, --unformatted                print unformatted JSON output
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
 
@@ -236,9 +243,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/list.ts)_
 
-## `cl-resources resources:retrieve RESOURCE [ID]`
+### `cl-resources resources:retrieve RESOURCE [ID]`
 
-fetch a single resource
+Fetch a single resource.
 
 ```
 USAGE
@@ -253,7 +260,9 @@ OPTIONS
   -X, --save-path=save-path        save command output to file and create missing path directories
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
+  -j, --json                       convert output in standard JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -u, --unformatted                print unformatted JSON output
   -x, --save=save                  save command output to file
 
 ALIASES
@@ -270,9 +279,9 @@ EXAMPLES
 
 _See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.0.0-beta.16/src/commands/resources/retrieve.ts)_
 
-## `cl-resources resources:update RESOURCE [ID]`
+### `cl-resources resources:update RESOURCE [ID]`
 
-update an existing resource
+Update an existing resource.
 
 ```
 USAGE
@@ -292,12 +301,16 @@ OPTIONS
 
   -a, --attribute=attribute                define a resource attribute
 
+  -j, --json                               convert output in standard JSON format
+
   -m, --metadata=metadata                  define a metadata attribute and merge it with the metadata already present in
                                            the remote resource
 
   -o, --organization=organization          (required) the slug of your organization
 
   -r, --relationship=relationship          define a relationship with another resource
+
+  -u, --unformatted                        print unformatted JSON output
 
 ALIASES
   $ cl-resources update
