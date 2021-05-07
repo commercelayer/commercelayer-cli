@@ -16,7 +16,6 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 ## Table of contents
 
 <!-- toc -->
-
 * [ Installation](#installation)
 * [ Usage](#usage)
 * [ Commands](#commands)
@@ -28,7 +27,7 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 
 ## Installation
 
-Run the commands below to install the CLI using NPM package manager:
+Run the command below to install the CLI using NPM package manager:
 
 ```bash
 npm install -g @commercelayer/commercelayer-cli
@@ -41,7 +40,6 @@ _More installation options, coming soon..._
 Installing the CLI provides access to the `commercelayer`, `clayer`, and `cl` command.
 
 <!-- usage-DISABLED -->
-
 ```sh-session
 $ (commercelayer | clayer | cl) COMMAND
 
@@ -53,16 +51,16 @@ $ commercelayer [COMMAND] (--help | -h) for detailed information about CLI comma
 ```
 <!-- usagestop-DISABLED -->
 
+Kindly check out this [quick step-by-step example](https://gist.github.com/silviorelli/93424c7e0483780dc5c51fe7a3d215c1) which will show you how to place an order using this CLI.
+
 ## Commands
 
 The Commerce Layer CLI supports the following commands:
 
 <!-- commands -->
-
 * [`commercelayer applications`](docs/applications.md) - Manage login to CLI applications.
 * [`commercelayer help`](docs/help.md) - Display help for commercelayer.
 * [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins.
-
 <!-- commandsstop -->
 
 ## Plugins
