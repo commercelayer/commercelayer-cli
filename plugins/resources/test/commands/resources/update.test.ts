@@ -20,22 +20,22 @@ describe('resources:update', () => {
       return res.id
     })
     .stdout()
-    .do(ctx => UpdateCommand.run(['customers', ctx.resId, '-ju', '-m meta_update=value_update', `-a reference=${ref}`, '-r customer_group=customer_groups/EyQYahWlye']))
-    .do(ctx => UpdateCommand.run(['customers', ctx.resId, '-ju', '-M meta_update2=valueUpdate2']))
-    .do(ctx => RetrieveCommand.run(['customers', ctx.resId, '-jur', '-i customer_group']))
+    .do(ctx => UpdateCommand.run(['customers', ctx.resId || '', '-ju', '-m=meta_update=value_update', `-a reference=${ref}`, '-r customer_group=customer_groups/EyQYahWlye']))
+    .do(ctx => UpdateCommand.run(['customers', ctx.resId || '', '-ju', '-M=meta_update2=valueUpdate2']))
+    .do(ctx => RetrieveCommand.run(['customers', ctx.resId || '', '-juR', '-i customer_group']))
     .do(ctx => {
-      expect(ctx.stdout).to.contain('Success!')
+      expect(ctx.stdout).to.contain('Success')
       expect(ctx.stdout).to.contain('"metadata":{"meta_update2":"valueUpdate2"}')
       expect(ctx.stdout).to.contain(`"reference":"${ref}"`)
       expect(ctx.stdout).to.contain('"included":[{"id":"EyQYahWlye","type":"customer_groups"')
     })
-    .do(ctx => DeleteCommand.run(['customers', ctx.resId]))
+    .do(ctx => DeleteCommand.run(['customers', ctx.resId || '']))
     .it('runs resources:update')
 
   test
     .stdout()
     .command(['resources:update', 'customers', 'fake'])
-    .catch(error => expect(error.message).to.contain('RECORDNOTFOUND'))
+    .catch(error => expect(error.message).to.contain('RECORD_NOT_FOUND'))
     .it('runs resources:update error')
 
 
