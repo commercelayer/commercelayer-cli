@@ -40,7 +40,7 @@ _More installation options, coming soon..._
 
 Installing the CLI provides access to the `commercelayer`, `clayer`, and `cl` command.
 
-<!-- usage -->
+<!-- usage-DISABLED -->
 
 ```sh-session
 $ (commercelayer | clayer | cl) COMMAND
@@ -51,7 +51,7 @@ $ commercelayer help [COMMAND]
 or
 $ commercelayer [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
-<!-- usagestop -->
+<!-- usagestop-DISABLED -->
 
 ## Commands
 
