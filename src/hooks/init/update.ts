@@ -12,7 +12,7 @@ const hook: Hook<'init'> = async function (_opts) {
   const notifier = updateNotifier({ pkg, updateCheckInterval: (process.env.CL_CLI_UPDATE_NOTIFY ? 0 : 1000 * 60 * 60) })
 
   notifier.notify({
-    // isGlobal: true,
+    isGlobal: true,
     message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright('{updateCommand}')} to update`,
   })
 
