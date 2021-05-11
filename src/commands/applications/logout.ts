@@ -48,9 +48,9 @@ export default class ApplicationsLogout extends Command {
         if (tokenFileExists(this.config, app)) deleteTokenFile(this.config, app)
         this.log(`\n${chalk.greenBright('Successfully')} removed ${chalk.bold(app.mode)} application ${chalk.bold(app.key)}\n`)
       }
-    } else this.error(`Unable to find ${chalk.bold(app.mode)} application ${chalk.bold(app.key)}`,
-      {suggestions: [`Execute command ${chalk.italic('commercelayer applications')} to get a list of all the available active applications`]}
-    )
+    } else this.error(`Unable to find ${chalk.bold(app.mode)} application ${chalk.bold(app.key)}`, {
+      suggestions: [`Execute command ${chalk.italic(`${this.config.bin} applications`)} to get a list of all the available active applications`],
+    })
 
   }
 
