@@ -424,11 +424,21 @@ export default abstract class extends Command {
 
 
 	// --  OUTPUT  -- //
+	inspectObject(object: any, color = true): string {
+		return inspect(object, {
+			showHidden: false,
+			depth: null,
+			colors: color,
+			sorted: true,
+			maxArrayLength: Infinity,
+		})
+	}
 
 	formatOutput(output: any, flags?: any, { color = true } = {}) {
 		if (!output) return ''
 		if (typeof output === 'string') return output
-		return (flags && flags.json) ? JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspect(output, false, null, color)
+		return (flags && flags.json) ?
+			JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : this.inspectObject(output, color)
 	}
 
 
@@ -469,19 +479,21 @@ export default abstract class extends Command {
 			let filePath = flags.save || flags['save-path']
 			if (!filePath) this.warn('Undefined output save path')
 
-			// Special desktop dir
+			// Special desktop dirv(home / desktop)
 			let fileDir
-			if (filePath.toLowerCase().startsWith('desktop')) {
+			const root = filePath.toLowerCase().split('/')[0]
+			if (['desktop', 'home'].includes(root)) {
 				const home = require('os').homedir()
-				fileDir = home + '/Desktop'
-				filePath = filePath.replace('desktop', fileDir)
+				fileDir = home
+				if (root === 'desktop') fileDir += '/Desktop'
+				filePath = filePath.replace(root, fileDir)
 			} else fileDir = path.dirname(filePath)
 			if (flags['save-path'] && !fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true })
 
 			const out = this.formatOutput(output, flags, { color: false })
 
 			fs.writeFileSync(filePath, out)
-			if (fs.existsSync(filePath)) this.log(`Command output saved to file ${chalk.italic(filePath)}`)
+			if (fs.existsSync(filePath)) this.log(`\nCommand output saved to file ${chalk.italic(filePath)}`)
 			else this.error(`Unable to save command output to file ${filePath}`, {
 				suggestions: ['Please check you have the right file system permissions'],
 			})
