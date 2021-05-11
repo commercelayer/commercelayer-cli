@@ -480,13 +480,13 @@ export default abstract class extends Command {
 			if (!filePath) this.warn('Undefined output save path')
 
 			// Special desktop dirv(home / desktop)
-			let fileDir
 			const root = filePath.toLowerCase().split('/')[0]
 			if (['desktop', 'home'].includes(root)) {
-				fileDir = this.config.home
-				if (root === 'desktop') fileDir += '/Desktop'
-				filePath = filePath.replace(root, fileDir)
-			} else fileDir = path.dirname(filePath)
+				let filePrefix = this.config.home
+				if (root === 'desktop') filePrefix += '/Desktop'
+				filePath = filePath.replace(root, filePrefix)
+			}
+			const fileDir = path.dirname(filePath)
 			if (flags['save-path'] && !fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true })
 
 			const out = this.formatOutput(output, flags, { color: false })

@@ -104,8 +104,6 @@ export default class ResourcesAll extends Command {
 
       let page = 0
       let pages = -1
-      let pagesLeft = pages
-      // let delay = 0
 
       const itemsDesc = resource.api.replace(/_/g, ' ')
 
@@ -154,20 +152,18 @@ export default class ResourcesAll extends Command {
 
         // eslint-disable-next-line no-await-in-loop
         const res = await req.page(page).all({ rawResponse: true })
+        pages = res.meta.page_count // pages count can change during extraction
 
         if (page === 1) {
           this.log()
-          pages = res.meta.page_count
-          pagesLeft = pages
           progressBar.start(res.meta.record_count, 0)
-        }
+        } else progressBar.setTotal(res.meta.record_count)
 
-        pagesLeft--
         resources.push(...(flags.raw ? res.data : denormalize(res)))
         progressBar.increment(res.data.length)
 
       }
-      while ((pages === -1) || (page < pages) || (pagesLeft > 0))
+      while ((pages === -1) || (page < pages))
 
       progressBar.stop()
 
