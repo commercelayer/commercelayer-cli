@@ -153,25 +153,30 @@ export default class ResourcesAll extends Command {
         // eslint-disable-next-line no-await-in-loop
         const res = await req.page(page).all({ rawResponse: true })
         pages = res.meta.page_count // pages count can change during extraction
+        const recordCount = res.meta.record_count
 
-        if (page === 1) {
-          this.log()
-          progressBar.start(res.meta.record_count, 0)
-        } else progressBar.setTotal(res.meta.record_count)
+        if (recordCount > 0) {
 
-        resources.push(...(flags.raw ? res.data : denormalize(res)))
-        progressBar.increment(res.data.length)
+          if (page === 1) {
+            this.log()
+            progressBar.start(recordCount, 0)
+          } else progressBar.setTotal(recordCount)
+
+          resources.push(...(flags.raw ? res.data : denormalize(res)))
+          progressBar.increment(res.data.length)
+
+        }
 
       }
       while ((pages === -1) || (page < pages))
 
       progressBar.stop()
 
-      const out = resources// .map(r => `${r.id};${r.customer_email};${r.metadata.first_name || ''};${r.metadata.last_name || ''};${r.metadata.country_code || ''};${r.metadata.language_code || ''}`)
+      const out = resources
 
       if (out.length > 0) {
         if (flags.print) this.printOutput(out, flags)
-        this.log(`\nFetched ${chalk.yellowBright(out.length)} ${itemsDesc}\n`)
+        this.log(`\nFetched ${chalk.yellowBright(out.length)} ${itemsDesc}`)
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
       } else this.log(chalk.italic('\nNo records found\n'))
 
