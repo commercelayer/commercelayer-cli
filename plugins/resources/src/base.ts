@@ -483,8 +483,7 @@ export default abstract class extends Command {
 			let fileDir
 			const root = filePath.toLowerCase().split('/')[0]
 			if (['desktop', 'home'].includes(root)) {
-				const home = require('os').homedir()
-				fileDir = home
+				fileDir = this.config.home
 				if (root === 'desktop') fileDir += '/Desktop'
 				filePath = filePath.replace(root, fileDir)
 			} else fileDir = path.dirname(filePath)

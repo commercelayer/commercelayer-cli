@@ -75,7 +75,6 @@
     "@oclif/config": "^1.17.0",
     "axios": "^0.21.1",
     "cli-ux": "^5.5.1",
-    "os": "^0.1.1",
     "tslib": "^1.14.1",
     "update-notifier": "^5.1.0"
   },
