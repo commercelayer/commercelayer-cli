@@ -429,7 +429,7 @@ export default abstract class extends Command {
 			showHidden: false,
 			depth: null,
 			colors: color,
-			sorted: true,
+			sorted: false,
 			maxArrayLength: Infinity,
 		})
 	}
