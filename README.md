@@ -28,10 +28,14 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 
 ## Installation
 
-Run the command below to install the CLI using NPM package manager:
+Run the command below to install the CLI using your favorite package manager:
 
 ```bash
 npm install -g @commercelayer/commercelayer-cli
+```
+
+```
+yarn global add @commercelayer/commercelayer-cli
 ```
 
 _More installation options, coming soon..._
