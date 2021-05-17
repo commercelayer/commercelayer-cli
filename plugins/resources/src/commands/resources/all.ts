@@ -99,7 +99,7 @@ export default class ResourcesAll extends Command {
 
   async checkAccessToken(jwtData: any, flags: any, baseUrl: string): Promise<any> {
 
-    if (((jwtData.exp * 1000) + (1000 * 60 * 60 * 2)) <= Date.now()) {
+    if (((jwtData.exp * 1000) + (1000 * 60 * 60 * 2) - (30 * 1000)) <= Date.now()) {
 
       // eslint-disable-next-line no-await-in-loop
       const token = await getIntegrationToken({
@@ -173,7 +173,7 @@ export default class ResourcesAll extends Command {
 
       cl.init({ accessToken, endpoint: baseUrl })
       let jwtData = jwt.decode(accessToken) as any
-      jwtData.exp = (Date.now() / 1000) - 7200 + 10
+      // jwtData.exp = (Date.now() / 1000) - 7200 + 10
 
       do {
 
