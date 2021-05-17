@@ -5,6 +5,19 @@ import cl, { CLayer } from '@commercelayer/js-sdk'
 import chalk from 'chalk'
 import { denormalize } from '../../jsonapi'
 import cliux from 'cli-ux'
+import notifier from 'node-notifier'
+import jwt from 'jsonwebtoken'
+import { getIntegrationToken } from '@commercelayer/js-auth'
+
+
+
+const notify = (message: string): void => {
+  notifier.notify({
+    title: 'Commerce Layer CLI',
+    message,
+    wait: true,
+  })
+}
 
 
 export default class ResourcesAll extends Command {
@@ -59,6 +72,23 @@ export default class ResourcesAll extends Command {
       char: 'P',
       description: 'print results on the console',
     }),
+    notify: flags.boolean({
+      char: 'N',
+      description: 'force system notification when export has finished',
+      hidden: true,
+    }),
+    clientId: flags.string({
+      char: 'i',
+      description: 'organization client_id',
+      hidden: true,
+      required: false,
+    }),
+    clientSecret: flags.string({
+      char: 's',
+      description: 'organization client_secret',
+      hidden: true,
+      required: false,
+    }),
   }
 
   static args = [
@@ -75,7 +105,7 @@ export default class ResourcesAll extends Command {
     const resource = this.checkResource(args.resource)
 
     const baseUrl = baseURL(flags.organization, flags.domain)
-    const accessToken = flags.accessToken
+    let accessToken = flags.accessToken
 
     // Include flags
     const include: string[] = this.includeValuesArray(flags.include)
@@ -86,8 +116,6 @@ export default class ResourcesAll extends Command {
     // Order flags
     const order = this.mapToSdkParam(this.orderingValuesMap(flags.sort))
 
-
-    cl.init({ accessToken, endpoint: baseUrl })
 
     try {
 
@@ -114,31 +142,32 @@ export default class ResourcesAll extends Command {
         hideCursor: true,
       })
 
+
+      let jwtData
+
+      console.log('clientId: ' + flags.clientId)
+      console.log('clientSecret: ' + flags.clientSecret)
+
       do {
 
-        /*
-        if (page === 0) {
-          // eslint-disable-next-line no-await-in-loop
-          const res = await req.page(++page).all({ rawResponse: true })
-          pages = res.meta.page_count
-          pagesLeft = pages - 1
-          resources.push(...res.data)
-          progressBar.start(res.meta.record_count, res.data.length)
+        if (!jwtData || ((jwtData.exp * 1000) + (1000 * 60 * 60 * 2)) <= Date.now()) {
+          if (jwtData) {
+            // eslint-disable-next-line no-await-in-loop
+            const token = await getIntegrationToken({
+              clientId: flags.clientId || '',
+              clientSecret: flags.clientSecret || '',
+              endpoint: baseUrl,
+            })?.catch(error => {
+              this.error('Unable to refresh access token: ' + error.message)
+            })
+            accessToken = token?.accessToken || ''
+            console.log('NEW ACCESS TOKEN')
+          }
+          cl.init({ accessToken, endpoint: baseUrl })
+          jwtData = jwt.decode(accessToken) as any
+          // TEST!!!! simulate expiring access token
+          jwtData.exp = (Date.now() / 1000) - 7200 + 10
         }
-
-        const calls: Promise<any>[] = []
-        for (let p = 0; p < Math.min(10, pagesLeft); p++) {
-          calls[p] = req.page(++page).all({ rawResponse: true }).then((res: { data: any; meta: any }) => {
-            resources.push(...res.data)
-            progressBar.increment(res.data.length)
-          })
-        }
-        pagesLeft -= calls.length
-        Promise.all(calls)
-
-        // eslint-disable-next-line no-await-in-loop
-        await cliux.wait((pages < 600) ? 2000 : 5000)
-        */
 
         page++
 
@@ -174,6 +203,8 @@ export default class ResourcesAll extends Command {
 
       const out = resources
 
+
+      // Print and save output
       if (out.length > 0) {
         if (flags.print) this.printOutput(out, flags)
         this.log(`\nFetched ${chalk.yellowBright(out.length)} ${itemsDesc}`)
@@ -181,12 +212,40 @@ export default class ResourcesAll extends Command {
       } else this.log(chalk.italic('\nNo records found\n'))
 
 
+      // Notification
+      if (flags.notify) notify(`Export of ${resources.length} ${itemsDesc} is finished!`)
+
+
       return out
 
     } catch (error) {
+      this.log()
       this.printError(error)
     }
 
   }
 
 }
+
+
+
+// Enable terminal cursor and line wrap in case of process interrupted
+process.on('SIGINT', () => {
+
+  // Cursor
+  // console.log('\u001B[?25l')  // \x1B[?25l
+  // eslint-disable-next-line no-console
+  console.log('\u001B[?25h')  // \x1B[?25h
+
+  // Line wrap
+  // console.log('\u001B[?7l')  // \x1B[?7l
+  // eslint-disable-next-line no-console
+  console.log('\u001B[?7h')  // \x1B[?7h
+
+  // eslint-disable-next-line no-console
+  console.log('\n')
+
+  // eslint-disable-next-line no-process-exit
+  process.exit()
+
+})
