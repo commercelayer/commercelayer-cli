@@ -33,6 +33,10 @@ const getResourcesJson = async (): Promise<any> => {
 }
 
 
+const isSingleton = (res: string): boolean => {
+	return ['organization'].includes(res)
+}
+
 
 const parseResourcesSchema = async (): Promise<Resource[]> => {
 
@@ -43,11 +47,14 @@ const parseResourcesSchema = async (): Promise<Resource[]> => {
 		const Inflector = require('inflector-js')
 
 		const resList = resJson.data.map((r: { id: string }) => {
-			return {
+			const singleton = isSingleton(r.id)
+			const item = {
 				name: r.id,
-				api: Inflector.pluralize(r.id),
+				api: singleton ? r.id : Inflector.pluralize(r.id),
 				sdk: Inflector.camelize(r.id),
+				singleton,
 			}
+			return item
 		})
 
 		return resList
@@ -63,13 +70,16 @@ const parseResourcesSdk = async (): Promise<Resource[]> => {
 
 	const Inflector = require('inflector-js')
 
-	const resList = Object.keys(cl).filter(r => r.charAt(0) === r.charAt(0).toUpperCase()).map(r => {
+	const resList = Object.keys(cl).filter(r => (r.charAt(0) === r.charAt(0).toUpperCase())).map(r => {
 		const name = Inflector.underscore(r)
-		return {
+		const singleton = isSingleton(name)
+		const item = {
 			name: name,
-			api: Inflector.pluralize(name),
+			api: singleton ? name : Inflector.pluralize(name),
 			sdk: r,
+			singleton,
 		}
+		return item
 	})
 
 
@@ -84,7 +94,11 @@ const exportResources = async ({ source = 'sdk', variable = false, name = 'resou
 
 	if (variable || array) console.log((variable ? `const ${name}: Resource[] = ` : '') + '[')
 	resources.forEach(res => {
-		console.log(`${tab ? '\t' : ''}{ name: '${res.name}', api: '${res.api}', sdk: '${res.sdk}' },`)
+		let item = `${tab ? '\t' : ''}{ `
+		item += `name: '${res.name}', api: '${res.api}', sdk: '${res.sdk}'`
+		if (res.singleton) item += ', singleton: true'
+		item += ' }'
+		console.log(item)
 	})
 	if (array) console.log(']\n')
 

@@ -69,7 +69,7 @@ export default abstract class extends Command {
 			const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
 
 			notifier.notify({
-				// isGlobal: true,
+				isGlobal: !pluginMode,
 				message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
 			})
 
@@ -113,14 +113,19 @@ export default abstract class extends Command {
 		const si = res.indexOf('/')
 		if (si >= 0) {
 			const rt = res.split('/')
-			if (id && rt[1]) this.error(`Double definition of resource id: [${res}, ${id}]`, {
-				suggestions: [`Define resource id as command argument (${chalk.italic(id)}) or as part of the resource itself (${chalk.italic(res)}) but not both`],
-			})
+			if (id && rt[1]) this.error(`Double definition of resource id: [${res}, ${id}]`,
+				{ suggestions: [`Define resource id as command argument (${chalk.italic(id)}) or as part of the resource itself (${chalk.italic(res)}) but not both`] }
+			)
 			else id = rt[1]
 			res = rt[0]
 		}
 
-		if (!id && required) this.error('Resource id not defined')
+		const res_ = findResource(res, { singular: true })
+		const singleton = res_ && res_.singleton
+
+		if (id) {
+			if (singleton) this.error(`Singleton resource ${chalk.italic(res)} does not require id`)
+		} else if (required && !singleton) this.error('Resource id not defined')
 
 		return {
 			res,
@@ -285,12 +290,10 @@ export default abstract class extends Command {
 				// const wt = f.split('(')
 				const wt = f.split(sepChar)
 				const w = wt[0]
-				if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.redBright(w)}`,
-					{
-						suggestions: [`Execute command ${chalk.italic('resources:filters')} to get a full list of all available filter predicates`],
-						ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
-					}
-				)
+				if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.redBright(w)}`, {
+					suggestions: [`Execute command ${chalk.italic('resources:filters')} to get a full list of all available filter predicates`],
+					ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
+				})
 
 				// const v = wt[1].substring(0, (wt[1].length - 1))
 				const v = wt[1]
@@ -391,13 +394,13 @@ export default abstract class extends Command {
 			flag.forEach(f => {
 
 				const rt = f.split('=')
-				if (rt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`, {
-					suggestions: [`Define the relationship using the format ${chalk.italic('attribute_name=resource_type/resource_id')}`],
-				})
+				if (rt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`,
+					{ suggestions: [`Define the relationship using the format ${chalk.italic('attribute_name=resource_type/resource_id')}`] }
+				)
 				const vt = rt[1].split('/')
-				if (vt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`, {
-					suggestions: [`Define the relationship value using the format ${chalk.italic('resource_type/resource_id')}`],
-				})
+				if (vt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`,
+					{ suggestions: [`Define the relationship value using the format ${chalk.italic('resource_type/resource_id')}`] }
+				)
 
 				const name = rt[0]
 				const type = vt[0]
@@ -431,6 +434,7 @@ export default abstract class extends Command {
 			colors: color,
 			sorted: false,
 			maxArrayLength: Infinity,
+			breakLength: 120,
 		})
 	}
 
@@ -493,9 +497,9 @@ export default abstract class extends Command {
 
 			fs.writeFileSync(filePath, out)
 			if (fs.existsSync(filePath)) this.log(`\nCommand output saved to file ${chalk.italic(filePath)}`)
-			else this.error(`Unable to save command output to file ${filePath}`, {
-				suggestions: ['Please check you have the right file system permissions'],
-			})
+			else this.error(`Unable to save command output to file ${filePath}`,
+				{ suggestions: ['Please check you have the right file system permissions'] }
+			)
 
 		} catch (error) {
 			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)

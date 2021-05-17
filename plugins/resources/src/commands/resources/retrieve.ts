@@ -75,7 +75,7 @@ export default class ResourcesRetrieve extends Command {
       if (include && (include.length > 0)) req = req.includes(...include)
       if (fields && (fields.length > 0)) req = req.select(...fields)
 
-      const res = await req.find(id, { rawResponse: true })
+      const res = await req.find(resource.singleton ? undefined : id, { rawResponse: true })
 
       const out = flags.raw ? res : denormalize(res)
 

@@ -99,7 +99,7 @@ const resources: Resource[] = [
 	{ name: 'merchant', api: 'merchants', sdk: 'Merchant' },
 	{ name: 'order', api: 'orders', sdk: 'Order' },
 	{ name: 'order_amount_promotion_rule', api: 'order_amount_promotion_rules', sdk: 'OrderAmountPromotionRule' },
-	{ name: 'organization', api: 'organizations', sdk: 'Organization' },
+	{ name: 'organization', api: 'organization', sdk: 'Organization', singleton: true },
 	{ name: 'package', api: 'packages', sdk: 'Package' },
 	{ name: 'parcel', api: 'parcels', sdk: 'Parcel' },
 	{ name: 'parcel_line_item', api: 'parcel_line_items', sdk: 'ParcelLineItem' },
@@ -146,6 +146,7 @@ interface Resource {
 	name: string;
 	api: string;
 	sdk: string;
+	singleton?: boolean;
 }
 
 
@@ -162,7 +163,7 @@ const findResource = (res: string, { singular = false } = {}): (Resource | undef
 }
 
 
-const resourceList = (field: keyof Resource): string[] => {
+const resourceList = (field: 'name' | 'api' | 'sdk'): string[] => {
 	return resources.map(r => r[field])
 }
 
