@@ -19,6 +19,7 @@ const isCommandExcluded = (cmd: string): boolean => {
 }
 
 
+// eslint-disable-next-line complexity
 const hook: Hook<'prerun'> = async function (opts) {
 
   // Only for test purpouses to avoid an error of undefined object
@@ -98,6 +99,10 @@ const hook: Hook<'prerun'> = async function (opts) {
     opts.argv.push('--accessToken=' + tokenData.access_token)
 
   }
+
+  // If command requires clientId and clioentSecret add them to the command line arguments
+  if (opts.Command.flags?.clientId && configData?.clientId) opts.argv.push('--clientId=' + configData?.clientId)
+  if (opts.Command.flags?.clientSecret && configData?.clientSecret) opts.argv.push('--clientSecret=' + configData?.clientSecret)
 
 }
 
