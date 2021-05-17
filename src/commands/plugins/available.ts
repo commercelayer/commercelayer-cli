@@ -23,7 +23,7 @@ export default class PluginsAvailable extends Command {
 
     this.log(chalk.blueBright('\n-= Available Commerce Layer CLI plugins =-\n'))
 
-    const availablePlugins = AvailablePlugins.filter(p => !p.hidden)
+    const availablePlugins = AvailablePlugins.filter(p => (!p.hidden && p.enabled))
 
     if (availablePlugins && (availablePlugins.length > 0)) {
       cliux.table(availablePlugins,
@@ -43,11 +43,11 @@ export default class PluginsAvailable extends Command {
 
 
 const AvailablePlugins = [
-  { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources'           },
-  { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder'                   },
-  { name: 'importer',   plugin: '@commercelayer/cli-plugin-importer',   description: 'Organization data importer',  hidden: true  },
-  { name: 'exporter',   plugin: '@commercelayer/cli-plugin-exporter',   description: 'Organization data exporter',  hidden: true  },
-  { name: 'cleaner',    plugin: '@commercelayer/cli-plugin-cleaner',    description: 'Organization data cleaner',   hidden: true  },
+  { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',  enabled: true   },
+  { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',          enabled: true   },
+  { name: 'importer',   plugin: '@commercelayer/cli-plugin-importer',   description: 'Organization data importer',        enabled: false  },
+  { name: 'exporter',   plugin: '@commercelayer/cli-plugin-exporter',   description: 'Organization data exporter',        enabled: true, hidden: true },
+  { name: 'cleaner',    plugin: '@commercelayer/cli-plugin-cleaner',    description: 'Organization data cleaner',         enabled: false  },
 ]
 
 
@@ -55,7 +55,7 @@ const getPluginInfo = (pluginName: string): any => {
 
   let plugin
 
-  AvailablePlugins.some(p => {
+  AvailablePlugins.filter(p => p.enabled).some(p => {
     if ((pluginName === p.name) || (pluginName === p.plugin) || (`@commercelayer/${pluginName}` === p.plugin)) {
       plugin = p
       return true
