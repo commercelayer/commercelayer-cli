@@ -100,6 +100,7 @@ export default class ResourcesAll extends Command {
   async checkAccessToken(jwtData: any, flags: any, baseUrl: string): Promise<any> {
 
     if (((jwtData.exp * 1000) + (1000 * 60 * 60 * 2)) <= Date.now()) {
+
       // eslint-disable-next-line no-await-in-loop
       const token = await getIntegrationToken({
         clientId: flags.clientId || '',
@@ -108,11 +109,14 @@ export default class ResourcesAll extends Command {
       })?.catch(error => {
         this.error('Unable to refresh access token: ' + error.message)
       })
+
       const accessToken = token?.accessToken || ''
       cl.init({ accessToken, endpoint: baseUrl })
       jwtData = jwt.decode(accessToken) as any
-      jwtData.exp = (Date.now() / 1000) - 7200 + 10
-      console.log('NEW ACCESS TOKEN SIMULATED')
+
+      // jwtData.exp = (Date.now() / 1000) - 7200 + 10
+      // console.log('NEW ACCESS TOKEN SIMULATED')
+
     }
 
     return jwtData
