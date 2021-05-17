@@ -96,6 +96,30 @@ export default class ResourcesAll extends Command {
   ]
 
 
+
+  async checkAccessToken(jwtData: any, flags: any, baseUrl: string): Promise<any> {
+
+    if (((jwtData.exp * 1000) + (1000 * 60 * 60 * 2)) <= Date.now()) {
+      // eslint-disable-next-line no-await-in-loop
+      const token = await getIntegrationToken({
+        clientId: flags.clientId || '',
+        clientSecret: flags.clientSecret || '',
+        endpoint: baseUrl,
+      })?.catch(error => {
+        this.error('Unable to refresh access token: ' + error.message)
+      })
+      const accessToken = token?.accessToken || ''
+      cl.init({ accessToken, endpoint: baseUrl })
+      jwtData = jwt.decode(accessToken) as any
+      jwtData.exp = (Date.now() / 1000) - 7200 + 10
+      console.log('NEW ACCESS TOKEN SIMULATED')
+    }
+
+    return jwtData
+
+  }
+
+
   async run() {
 
     const { args, flags } = this.parse(ResourcesAll)
@@ -105,7 +129,7 @@ export default class ResourcesAll extends Command {
     const resource = this.checkResource(args.resource)
 
     const baseUrl = baseURL(flags.organization, flags.domain)
-    let accessToken = flags.accessToken
+    const accessToken = flags.accessToken
 
     // Include flags
     const include: string[] = this.includeValuesArray(flags.include)
@@ -143,31 +167,10 @@ export default class ResourcesAll extends Command {
       })
 
 
-      let jwtData
-
-      console.log('clientId: ' + flags.clientId)
-      console.log('clientSecret: ' + flags.clientSecret)
+      cl.init({ accessToken, endpoint: baseUrl })
+      let jwtData = jwt.decode(accessToken) as any
 
       do {
-
-        if (!jwtData || ((jwtData.exp * 1000) + (1000 * 60 * 60 * 2)) <= Date.now()) {
-          if (jwtData) {
-            // eslint-disable-next-line no-await-in-loop
-            const token = await getIntegrationToken({
-              clientId: flags.clientId || '',
-              clientSecret: flags.clientSecret || '',
-              endpoint: baseUrl,
-            })?.catch(error => {
-              this.error('Unable to refresh access token: ' + error.message)
-            })
-            accessToken = token?.accessToken || ''
-            console.log('NEW ACCESS TOKEN')
-          }
-          cl.init({ accessToken, endpoint: baseUrl })
-          jwtData = jwt.decode(accessToken) as any
-          // TEST!!!! simulate expiring access token
-          jwtData.exp = (Date.now() / 1000) - 7200 + 10
-        }
 
         page++
 
@@ -178,6 +181,9 @@ export default class ResourcesAll extends Command {
         */
         // eslint-disable-next-line no-await-in-loop
         if ((page > 1) && (pages > 50)) await cliux.wait((pages < 600) ? 200 : 500)
+
+        // eslint-disable-next-line no-await-in-loop
+        jwtData = await this.checkAccessToken(jwtData, flags, baseUrl)
 
         // eslint-disable-next-line no-await-in-loop
         const res = await req.page(page).all({ rawResponse: true })
