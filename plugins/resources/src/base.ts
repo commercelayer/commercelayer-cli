@@ -130,6 +130,7 @@ export default abstract class extends Command {
 		return {
 			res,
 			id,
+			singleton,
 		}
 
 	}

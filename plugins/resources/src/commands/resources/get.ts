@@ -29,9 +29,9 @@ export default class ResourcesGet extends Command {
 
     const { args } = this.parse(ResourcesGet)
 
-    const { id } = this.checkResourceId(args.resource, args.id, false)
+    const { id, singleton } = this.checkResourceId(args.resource, args.id, false)
 
-    const command = id ? RetrieveCommand : ListCommand
+    const command = (id || singleton) ? RetrieveCommand : ListCommand
     const result = command.run(this.argv, this.config)
 
     return result
