@@ -111,9 +111,10 @@ export default class ResourcesAll extends Command {
       const accessToken = token?.accessToken || ''
       cl.init({ accessToken, endpoint: baseUrl })
       jwtData = jwt.decode(accessToken) as any
-      jwtData.exp = (Date.now() / 1000) - 7200 + 10
       console.log('NEW ACCESS TOKEN SIMULATED')
     }
+
+    jwtData.exp = (Date.now() / 1000) - 7200 + 10
 
     return jwtData
 
