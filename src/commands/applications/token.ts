@@ -10,6 +10,8 @@ import jwt from 'jsonwebtoken'
 
 
 
+const defaultTokenExpiration = 60 * 2
+
 export default class ApplicationsToken extends Command {
 
   static description = 'get a new access token from Commerce Layer API'
@@ -57,7 +59,7 @@ export default class ApplicationsToken extends Command {
     }),
     minutes: flags.integer({
       char: 'M',
-      description: 'minutes to token expiration',
+      description: `minutes to token expiration [2, ${defaultTokenExpiration}]`,
       hidden: true,
       dependsOn: ['shared'],
     }),
@@ -226,14 +228,12 @@ const isAccessTokenExpiring = (tokenData: any): boolean => {
 
 const generateAccessToken = (config: IConfig, app: AppKey, sharedSecret: string, valMinutes?: number): any => {
 
-  const defaultExp = 60 * 2
-
   const token = readTokenFile(config, app)
   const tokenData = jwt.decode(token.access_token) as { [key: string]: any }
 
-  let minutes = (valMinutes === undefined) ? defaultExp : valMinutes
+  let minutes = (valMinutes === undefined) ? defaultTokenExpiration : valMinutes
   if (minutes < 2) minutes = 2
-  else minutes = Math.min(minutes, defaultExp)
+  else minutes = Math.min(minutes, defaultTokenExpiration)
 
   const payload = {
     application: tokenData?.application,
