@@ -7,7 +7,7 @@ const baseURL = (slug: string, domain: string | undefined): string => {
 }
 
 const execMode = (liveFlag: string | boolean | undefined): string => {
-	return liveFlag ? 'live' : 'test'
+	return (liveFlag || (liveFlag === 'live')) ? 'live' : 'test'
 }
 
 const appKey = (slug: string, domain: string | undefined): string => {
