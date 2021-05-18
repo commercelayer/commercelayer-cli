@@ -68,7 +68,7 @@ export default class Seed extends Command {
       const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
 
       notifier.notify({
-        // isGlobal: true,
+        isGlobal: !pluginMode,
         message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
       })
 
