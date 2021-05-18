@@ -70,7 +70,7 @@ export default abstract class extends Command {
 
 			notifier.notify({
 				isGlobal: !pluginMode,
-				message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.grey('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
+				message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.dim('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
 			})
 
 		}
@@ -460,6 +460,8 @@ export default abstract class extends Command {
 			if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
 				{ suggestions: ['Execute login to get access to the selected resource'] }
 			)
+			else
+			if (error.response.status === 500) this.error('We\'re sorry, but something went wrong (500)')
 			else err = error.response.data.errors
 		} else
 			if (error.errors) err = error.errors().toArray()
@@ -506,7 +508,7 @@ export default abstract class extends Command {
 			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
 			else throw error
 		} finally {
-			this.log()
+			// this.log()
 		}
 
 	}
