@@ -1,5 +1,6 @@
 
 import _ from 'lodash'
+import { inspect } from 'util'
 
 const baseURL = (slug: string, domain: string | undefined): string => {
 	return `https://${slug.toLowerCase()}.${domain ? domain : 'commercelayer.io'}`
@@ -22,4 +23,15 @@ const extractDomain = (baseUrl: string): string | undefined => {
 	return baseUrl.substring(baseUrl.indexOf('.') + 1)
 }
 
-export { baseURL, execMode, appKey, sleep, extractDomain }
+const print = (object: any): string => {
+	return inspect(object, {
+		showHidden: false,
+		depth: null,
+		colors: true,
+		sorted: false,
+		maxArrayLength: Infinity,
+		breakLength: 120,
+	})
+}
+
+export { baseURL, execMode, appKey, sleep, extractDomain, print }
