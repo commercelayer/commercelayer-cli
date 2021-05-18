@@ -42,7 +42,7 @@ export default class ApplicationsLogout extends Command {
     }
 
     if (configFileExists(this.config, app)) {
-      const ok = await cliux.confirm(`>> Do you really want to remove this application from CLI configuration? ${chalk.gray('[Yy/Nn]')}`)
+      const ok = await cliux.confirm(`>> Do you really want to remove this application from CLI configuration? ${chalk.dim('[Yy/Nn]')}`)
       if (ok) {
         deleteConfigFile(this.config, app)
         if (tokenFileExists(this.config, app)) deleteTokenFile(this.config, app)
