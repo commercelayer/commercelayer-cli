@@ -1,11 +1,12 @@
 import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 import chalk from 'chalk'
-import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentOrganization, currentModeLive } from '../../config'
-import { execMode, appKey, sleep } from '../../common'
+import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentOrganization, currentModeLive, readTokenFile } from '../../config'
+import { execMode, appKey, sleep, print } from '../../common'
 import { IConfig } from '@oclif/config'
 import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
 import https from 'https'
+import jwt from 'jsonwebtoken'
 
 
 
@@ -41,8 +42,24 @@ export default class ApplicationsToken extends Command {
       dependsOn: ['organization'],
     }),
     save: flags.boolean({
-      // char: 's',
+      char: 's',
       description: 'save access token',
+    }),
+    info: flags.boolean({
+      char: 'i',
+      description: 'show token info',
+    }),
+    shared: flags.string({
+      char: 'S',
+      description: 'organization shared secret',
+      hidden: true,
+      exclusive: ['save'],
+    }),
+    minutes: flags.integer({
+      char: 'M',
+      description: 'minutes to token expiration',
+      hidden: true,
+      dependsOn: ['shared'],
     }),
   }
 
@@ -61,21 +78,51 @@ export default class ApplicationsToken extends Command {
         { suggestions: ['execute \'login\' command to initialize application and get the first access token'] }
       )
 
+
     try {
 
-      const token = await newAccessToken(this.config, app, flags.save)
+      let expMinutes
+      let accessToken
+      let returnData
 
-      const accessToken = token?.accessToken
-      if (accessToken) this.log(`\n${chalk.blueBright(accessToken)}\n`)
+      if (flags.shared) {
+        const token = generateAccessToken(this.config, app, flags.shared, flags.minutes)
+        accessToken = token.accessToken
+        returnData = token.info
+        expMinutes = token.expMinutes
+      } else {
+        const token = await newAccessToken(this.config, app, flags.save)
+        if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${chalk.italic.bold(app.key)}`)
+        accessToken = token?.accessToken
+        returnData = token?.data
+      }
 
-      if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${chalk.italic.bold(app.key)}`)
+      if (accessToken) {
+        this.log(`\n${chalk.blueBright(accessToken)}\n`)
+        if (flags.shared && expMinutes) {
+          this.warn(chalk.italic.dim(`this access token will expire in ${expMinutes} minutes`))
+          this.log()
+        }
+      }
 
-      return token?.data
+      if (flags.info) this.printAccessToken(accessToken)
+
+      return returnData
 
     } catch (error) {
       this.log(chalk.bold.redBright('FAILURE! ') + error.message)
     }
 
+  }
+
+
+  printAccessToken(accessToken: any): void {
+    if (accessToken) {
+      const info = jwt.decode(accessToken)
+      this.log(chalk.blueBright('Token Info:'))
+      this.log(print(info))
+      this.log()
+    }
   }
 
 }
@@ -156,7 +203,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 
 const isAccessTokenExpiring = (tokenData: any): boolean => {
 
-  const safetyInterval = 30
+  const safetyInterval = 30 // secs
 
   const createdAt = Number(tokenData.created_at)
   const now = Math.floor(Date.now() / 1000)
@@ -165,6 +212,39 @@ const isAccessTokenExpiring = (tokenData: any): boolean => {
   return (time >= (7200 - safetyInterval))
 
 }
+
+
+const generateAccessToken = (config: IConfig, app: AppKey, sharedSecret: string, remainingMinutes?: number): any => {
+
+  const defaultExp = 60 * 2
+
+  const token = readTokenFile(config, app)
+  const tokenData = jwt.decode(token.access_token) as { [key: string]: any }
+
+  let minutes = remainingMinutes || defaultExp
+  if (minutes < 1) minutes = 1
+  else minutes = Math.min(minutes, defaultExp)
+
+  const payload = {
+    application: tokenData?.application,
+    exp: Math.floor(Date.now() / 1000) + (minutes * 60),
+    organization: tokenData?.organization,
+    rand: Math.random(),
+    test: tokenData?.test,
+  }
+
+  const accessToken = jwt.sign(payload, sharedSecret, { algorithm: 'HS512', noTimestamp: true })
+  const info = jwt.verify(accessToken, sharedSecret, { algorithms: ['HS512'] })
+
+
+  return {
+    accessToken,
+    info,
+    expMinutes: minutes,
+  }
+
+}
+
 
 
 export { newAccessToken, revokeAccessToken, isAccessTokenExpiring }
