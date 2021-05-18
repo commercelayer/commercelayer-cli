@@ -59,7 +59,7 @@ export default class ApplicationsCurrent extends Command {
     const stored = clicfg.get(ConfigParams.currentApplication)
     if (stored) {
       const current = `${stored.key}.${stored.mode}` || 'none'
-      const color = (current === 'none') ? chalk.italic.gray : chalk.bold.yellowBright
+      const color = (current === 'none') ? chalk.italic.dim : chalk.bold.yellowBright
       this.log(`\nCurrent application: ${color(current)}\n`)
     } else this.warn(chalk.italic('No current application defined'))
 
