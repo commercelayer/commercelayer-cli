@@ -111,7 +111,7 @@ export default class ResourcesList extends Command {
         this.printOutput(out, flags)
         this.log(`\nRecords: ${chalk.blueBright(res.data.length)} of ${res.meta.record_count} | Page: ${chalk.blueBright(String(flags.page || 1))} of ${res.meta.page_count}\n`)
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
-      } else this.log(chalk.italic('\nNo records found\n'))
+      } else this.log(chalk.italic('\nNo records found'))
 
 
       return out

@@ -508,7 +508,7 @@ export default abstract class extends Command {
 			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
 			else throw error
 		} finally {
-			// this.log()
+			this.log()
 		}
 
 	}

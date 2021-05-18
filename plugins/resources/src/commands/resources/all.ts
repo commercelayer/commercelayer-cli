@@ -251,15 +251,19 @@ The process could be ${chalk.underline('very')} slow, we suggest you to add more
 
 
 const resetConsole = () => {
+
   // Cursor
-  // console.log('\u001B[?25l')  // \x1B[?25l
-  // eslint-disable-next-line no-console
-  console.log('\u001B[?25h')  // \x1B[?25h
+  // const showCursor = '\u001B[?25l'  // \x1B[?25l
+  const showCursor = '\u001B[?25h' // \x1B[?25h
 
   // Line wrap
-  // console.log('\u001B[?7l')  // \x1B[?7l
+  // const lineWrap = '\u001B[?7l'  // \x1B[?7l
+  const lineWrap = '\u001B[?7h' // \x1B[?7h
+
   // eslint-disable-next-line no-console
-  console.log('\u001B[?7h')  // \x1B[?7h
+  // console.log(`${showCursor}${lineWrap}`)
+  process.stdout.write(`${showCursor}${lineWrap}`)
+
 }
 
 
