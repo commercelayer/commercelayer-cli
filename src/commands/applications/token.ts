@@ -224,15 +224,15 @@ const isAccessTokenExpiring = (tokenData: any): boolean => {
 }
 
 
-const generateAccessToken = (config: IConfig, app: AppKey, sharedSecret: string, remainingMinutes?: number): any => {
+const generateAccessToken = (config: IConfig, app: AppKey, sharedSecret: string, valMinutes?: number): any => {
 
   const defaultExp = 60 * 2
 
   const token = readTokenFile(config, app)
   const tokenData = jwt.decode(token.access_token) as { [key: string]: any }
 
-  let minutes = remainingMinutes || defaultExp
-  if (minutes < 1) minutes = 1
+  let minutes = (valMinutes === undefined) ? defaultExp : valMinutes
+  if (minutes < 2) minutes = 2
   else minutes = Math.min(minutes, defaultExp)
 
   const payload = {
