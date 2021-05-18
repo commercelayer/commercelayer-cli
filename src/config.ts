@@ -95,6 +95,9 @@ export { createConfigDir }
 export { configFilePath, configFileExists, writeConfigFile, readConfigFile, deleteConfigFile }
 export { tokenFilePath, tokenFileExists, writeTokenFile, readTokenFile, deleteTokenFile }
 
+const currentApplication = (): AppKey | undefined => {
+	return clicfg.get(ConfigParams.currentApplication)
+}
 
 const currentOrganization = (): string | undefined => {
 	const current = clicfg.get(ConfigParams.currentApplication)
@@ -107,7 +110,7 @@ const currentModeLive = (): boolean => {
 }
 
 
-export { currentOrganization, currentModeLive }
+export { currentApplication, currentOrganization, currentModeLive }
 
 
 

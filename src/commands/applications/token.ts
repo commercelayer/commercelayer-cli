@@ -1,7 +1,7 @@
 import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 import chalk from 'chalk'
-import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentOrganization, currentModeLive, readTokenFile } from '../../config'
+import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentApplication, readTokenFile } from '../../config'
 import { execMode, appKey, sleep, print } from '../../common'
 import { IConfig } from '@oclif/config'
 import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
@@ -26,13 +26,13 @@ export default class ApplicationsToken extends Command {
     organization: flags.string({
       char: 'o',
       description: 'organization slug',
-      required: true,
-      default: currentOrganization(),
+      required: false,
+      // default: currentOrganization(),
     }),
     live: flags.boolean({
       description: 'live execution mode',
       dependsOn: ['organization'],
-      default: currentModeLive(),
+      // default: currentModeLive(),
     }),
     domain: flags.string({
       char: 'd',
@@ -67,9 +67,18 @@ export default class ApplicationsToken extends Command {
 
     const { flags } = this.parse(ApplicationsToken)
 
+    let organization = flags.organization
+    let mode = execMode(flags.live)
+
+    if (!organization) {
+      const current = currentApplication()
+      organization = current?.key || ''
+      mode = current?.mode || 'test'
+    }
+
     const app: AppKey = {
-      key: appKey(flags.organization, flags.domain),
-      mode: execMode(flags.live),
+      key: appKey(organization, flags.domain),
+      mode,
     }
 
 
@@ -98,9 +107,10 @@ export default class ApplicationsToken extends Command {
       }
 
       if (accessToken) {
+        this.log(`\nAccess token for application ${chalk.bold.yellowBright(`${app.key}.${app.mode}`)}`)
         this.log(`\n${chalk.blueBright(accessToken)}\n`)
         if (flags.shared && expMinutes) {
-          this.warn(chalk.italic.dim(`this access token will expire in ${expMinutes} minutes`))
+          this.warn(chalk.italic(`this access token will expire in ${expMinutes} minutes`))
           this.log()
         }
       }
