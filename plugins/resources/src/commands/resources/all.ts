@@ -1,3 +1,5 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable max-depth */
 /* eslint-disable complexity */
 import Command, { flags } from '../../base'
 import { baseURL } from '../../common'
@@ -9,6 +11,11 @@ import notifier from 'node-notifier'
 import jwt from 'jsonwebtoken'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 
+
+// const maxPagesWarning = 1000
+const maxItemsWarning = 20000
+const maxPageItems = 25
+const securityInterval = 2
 
 
 const notify = (message: string): void => {
@@ -82,12 +89,14 @@ export default class ResourcesAll extends Command {
       description: 'organization client_id',
       hidden: true,
       required: false,
+      env: 'CL_CLI_CLIENT_ID',
     }),
     clientSecret: flags.string({
       char: 's',
       description: 'organization client_secret',
       hidden: true,
       required: false,
+      env: 'CL_CLI_CLIENT_SECRET',
     }),
   }
 
@@ -99,9 +108,10 @@ export default class ResourcesAll extends Command {
 
   async checkAccessToken(jwtData: any, flags: any, baseUrl: string): Promise<any> {
 
-    if (((jwtData.exp * 1000) + (1000 * 60 * 60 * 2) - (30 * 1000)) <= Date.now()) {
+    if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
 
-      // eslint-disable-next-line no-await-in-loop
+      await cliux.wait((securityInterval + 1) * 1000)
+
       const token = await getIntegrationToken({
         clientId: flags.clientId || '',
         clientSecret: flags.clientSecret || '',
@@ -113,9 +123,6 @@ export default class ResourcesAll extends Command {
       const accessToken = token?.accessToken || ''
       cl.init({ accessToken, endpoint: baseUrl })
       jwtData = jwt.decode(accessToken) as any
-
-      // jwtData.exp = (Date.now() / 1000) - 7200 + 10
-      // console.log('NEW ACCESS TOKEN SIMULATED')
 
     }
 
@@ -154,7 +161,8 @@ export default class ResourcesAll extends Command {
       if (fields && (fields.length > 0)) req = req.select(...fields)
       if (wheres && (wheres.length > 0)) req = req.where(...wheres)
       if (order && (order.length > 0)) req = req.order(...order)
-      req = req.perPage(25)
+      else req = req.order({ created_at: 'asc' })  // query order issue
+      req = req.perPage(maxPageItems)
 
       const resources: any = []
 
@@ -164,7 +172,7 @@ export default class ResourcesAll extends Command {
       const itemsDesc = resource.api.replace(/_/g, ' ')
 
       const progressBar = cliux.progress({
-        format: `Fetching all ${itemsDesc} ... | ${chalk.greenBright('{bar}')} | ${chalk.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
+        format: `Fetching ${itemsDesc} ... | ${chalk.greenBright('{bar}')} | ${chalk.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
         hideCursor: true,
@@ -173,7 +181,6 @@ export default class ResourcesAll extends Command {
 
       cl.init({ accessToken, endpoint: baseUrl })
       let jwtData = jwt.decode(accessToken) as any
-      // jwtData.exp = (Date.now() / 1000) - 7200 + 10
 
       do {
 
@@ -184,13 +191,10 @@ export default class ResourcesAll extends Command {
          * 200ms  for pages within range 51 : 599
          * 500ms  for pages >= 600
         */
-        // eslint-disable-next-line no-await-in-loop
         if ((page > 1) && (pages > 50)) await cliux.wait((pages < 600) ? 200 : 500)
 
-        // eslint-disable-next-line no-await-in-loop
         jwtData = await this.checkAccessToken(jwtData, flags, baseUrl)
 
-        // eslint-disable-next-line no-await-in-loop
         const res = await req.page(page).all({ rawResponse: true })
         pages = res.meta.page_count // pages count can change during extraction
         const recordCount = res.meta.record_count
@@ -198,6 +202,11 @@ export default class ResourcesAll extends Command {
         if (recordCount > 0) {
 
           if (page === 1) {
+            if (recordCount > maxItemsWarning) {
+              this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})
+The process could be ${chalk.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
+              if (!await cliux.confirm(`>> Do you want to continue anyway? ${chalk.dim('[Yy/Nn]')}`)) return
+            }
             this.log()
             progressBar.start(recordCount, 0)
           } else progressBar.setTotal(recordCount)
@@ -230,8 +239,10 @@ export default class ResourcesAll extends Command {
       return out
 
     } catch (error) {
-      this.log()
       this.printError(error)
+      this.log()
+    } finally {
+      resetConsole()
     }
 
   }
@@ -239,10 +250,7 @@ export default class ResourcesAll extends Command {
 }
 
 
-
-// Enable terminal cursor and line wrap in case of process interrupted
-process.on('SIGINT', () => {
-
+const resetConsole = () => {
   // Cursor
   // console.log('\u001B[?25l')  // \x1B[?25l
   // eslint-disable-next-line no-console
@@ -252,11 +260,12 @@ process.on('SIGINT', () => {
   // console.log('\u001B[?7l')  // \x1B[?7l
   // eslint-disable-next-line no-console
   console.log('\u001B[?7h')  // \x1B[?7h
+}
 
-  // eslint-disable-next-line no-console
-  console.log('\n')
 
+// Enable terminal cursor and line wrap in case of process interrupted
+process.on('SIGINT', () => {
+  resetConsole()
   // eslint-disable-next-line no-process-exit
   process.exit()
-
 })
