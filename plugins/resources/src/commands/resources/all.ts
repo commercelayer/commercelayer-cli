@@ -141,6 +141,7 @@ export default class ResourcesAll extends Command {
 
     const baseUrl = baseURL(flags.organization, flags.domain)
     const accessToken = flags.accessToken
+    let notification = flags.notify
 
     // Include flags
     const include: string[] = this.includeValuesArray(flags.include)
@@ -203,9 +204,9 @@ export default class ResourcesAll extends Command {
 
           if (page === 1) {
             if (recordCount > maxItemsWarning) {
-              this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})
-The process could be ${chalk.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
+              this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})\nThe process could be ${chalk.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
               if (!await cliux.confirm(`>> Do you want to continue anyway? ${chalk.dim('[Yy/Nn]')}`)) return
+              notification = true
             }
             this.log()
             progressBar.start(recordCount, 0)
@@ -233,7 +234,7 @@ The process could be ${chalk.underline('very')} slow, we suggest you to add more
 
 
       // Notification
-      if (flags.notify) notify(`Export of ${resources.length} ${itemsDesc} is finished!`)
+      if (notification) notify(`Export of ${resources.length} ${itemsDesc} is finished!`)
 
 
       return out
@@ -262,7 +263,7 @@ const resetConsole = () => {
 
   // eslint-disable-next-line no-console
   // console.log(`${showCursor}${lineWrap}`)
-  process.stdout.write(`${showCursor}${lineWrap}`)
+  process.stdout.write(`${showCursor} ${lineWrap}`)
 
 }
 
