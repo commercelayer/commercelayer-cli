@@ -98,6 +98,12 @@ export default class ResourcesAll extends Command {
       required: false,
       env: 'CL_CLI_CLIENT_SECRET',
     }),
+    csv: flags.boolean({
+      char: 'C',
+      description: 'export fields in csv format',
+      exclusive: ['include'],
+      dependsOn: ['fields'],
+    }),
   }
 
   static args = [
@@ -263,7 +269,7 @@ const resetConsole = () => {
 
   // eslint-disable-next-line no-console
   // console.log(`${showCursor}${lineWrap}`)
-  process.stdout.write(`${showCursor} ${lineWrap}`)
+  process.stdout.write(`${showCursor}${lineWrap}`)
 
 }
 
