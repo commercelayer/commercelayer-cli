@@ -1,8 +1,8 @@
 import Command, { flags } from '@oclif/command'
 import { findResource, Resource } from './commands/resources'
 import { filterAvailable } from './commands/resources/filters'
+import { formatOutput } from './output'
 import chalk from 'chalk'
-import { inspect } from 'util'
 import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
@@ -426,49 +426,8 @@ export default abstract class extends Command {
 	}
 
 
-
-	// --  OUTPUT  -- //
-	inspectObject(object: any, color = true): string {
-		return inspect(object, {
-			showHidden: false,
-			depth: null,
-			colors: color,
-			sorted: false,
-			maxArrayLength: Infinity,
-			breakLength: 120,
-		})
-	}
-
-
-	formatCsv(output: any, flags?: any) {
-		if (!output || (output.length === 0)) return ''
-		const fields = Object.keys(output[0]).filter(f => {
-			if (['id', 'type'].includes(f)) return (flags && flags.fields.includes(f))
-			return true
-		})
-		let csv = ''
-		fields.forEach(f => {
-			csv += f.toUpperCase().replace(/_/g, ' ') + ';'
-		})
-		csv += '\n'
-		output.forEach((o: { [x: string]: any }) => {
-			csv += fields.map(f => o[f]).join(';') + '\n'
-		})
-		return csv
-	}
-
-
-	formatOutput(output: any, flags?: any, { color = true } = {}) {
-		if (!output) return ''
-		if (typeof output === 'string') return output
-		if (flags?.csv) return this.formatCsv(output, flags)
-		return (flags && flags.json) ?
-			JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : this.inspectObject(output, color)
-	}
-
-
 	printOutput(output: any, flags: any | undefined) {
-		if (output) this.log(this.formatOutput(output, flags))
+		if (output) this.log(formatOutput(output, flags))
 	}
 
 
@@ -494,7 +453,7 @@ export default abstract class extends Command {
 			if (error.message) err = error.message
 
 
-			this.error(this.formatOutput(err, flags))
+			this.error(formatOutput(err, flags))
 
 	}
 
@@ -516,7 +475,7 @@ export default abstract class extends Command {
 			const fileDir = path.dirname(filePath)
 			if (flags['save-path'] && !fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true })
 
-			const out = this.formatOutput(output, flags, { color: false })
+			const out = formatOutput(output, flags, { color: false })
 
 			fs.writeFileSync(filePath, out)
 			if (fs.existsSync(filePath)) this.log(`\nCommand output saved to file ${chalk.italic(filePath)}`)
