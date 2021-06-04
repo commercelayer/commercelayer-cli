@@ -465,7 +465,7 @@ export default abstract class extends Command {
 			let filePath = flags.save || flags['save-path']
 			if (!filePath) this.warn('Undefined output save path')
 
-			// Special desktop dirv(home / desktop)
+			// Special directory (home / desktop)
 			const root = filePath.toLowerCase().split('/')[0]
 			if (['desktop', 'home'].includes(root)) {
 				let filePrefix = this.config.home
