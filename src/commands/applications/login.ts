@@ -72,7 +72,7 @@ export default class ApplicationsLogin extends Command {
 
       clicfg.set(ConfigParams.currentApplication, { key: app.key, mode: app.mode })
       const current = clicfg.get(ConfigParams.currentApplication)
-      this.log(`\nCurrent application: ${chalk.bold.yellow(current.key + '.' + current.mode)}`)
+      this.log(`\nCurrent application: ${chalk.bold.yellowBright(current.key + '.' + current.mode)}`)
 
       this.log(`\n${chalk.bold.greenBright('Login successful!')} ${chalk.bold(app.mode)} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
 
