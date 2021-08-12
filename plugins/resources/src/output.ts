@@ -20,11 +20,7 @@ const formatCsv = (output: any, flags?: any) => {
 		if (['id', 'type'].includes(f)) return (flags && flags.fields.includes(f))
 		return true
 	})
-	let csv = ''
-	fields.forEach(f => {
-		csv += f.toUpperCase().replace(/_/g, ' ') + ';'
-	})
-	csv += '\n'
+	let csv = fields.map(f => f.toUpperCase().replace(/_/g, ' ')).join(';') + '\n'
 	output.forEach((o: { [x: string]: any }) => {
 		csv += fields.map(f => o[f]).join(';') + '\n'
 	})
