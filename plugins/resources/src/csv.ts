@@ -55,7 +55,7 @@ const analyzeItem = (name: string | undefined, item: object, flags: any): Set<st
 }
 
 
-const exportCsv = async (output: Array<object>, flags: any, path: string) => {
+const exportCsv = async (output: any, flags: any, path: string): Promise<boolean> => {
 
 	// Rename header fields
 	const header: { [field: string]: string } = {}
@@ -88,7 +88,7 @@ const exportCsv = async (output: Array<object>, flags: any, path: string) => {
 	}
 
 
-	return json2csvAsync(output, {
+	json2csvAsync(output, {
 		excelBOM: true,
 		expandArrayObjects: true,
 		prependHeader: true,
@@ -103,6 +103,8 @@ const exportCsv = async (output: Array<object>, flags: any, path: string) => {
 	}).catch(error => {
 		throw error
 	})
+
+	return Promise.resolve(true)
 
 }
 
