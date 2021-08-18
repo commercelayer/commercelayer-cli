@@ -38,7 +38,7 @@ export default class ResourcesAll extends Command {
   static examples = [
     '$ commercelayer resources:all customers -f id,email -i customer_group -s updated_at',
     '$ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
-    '$ cl all -s -created_at --raw',
+    '$ cl all -s -created_at --json',
   ]
 
   static flags = {
@@ -75,10 +75,12 @@ export default class ResourcesAll extends Command {
       multiple: false,
       exclusive: ['save'],
     }),
+    /*
     print: flags.boolean({
       char: 'P',
       description: 'print results on the console',
     }),
+    */
     notify: flags.boolean({
       char: 'N',
       description: 'force system notification when export has finished',
@@ -101,8 +103,13 @@ export default class ResourcesAll extends Command {
     csv: flags.boolean({
       char: 'C',
       description: 'export fields in csv format',
-      exclusive: ['include'],
+      exclusive: ['raw', 'json'],
       dependsOn: ['fields'],
+    }),
+    header: flags.string({
+      char: 'H',
+      description: 'comma-separated list of values field:"renamed title"',
+      dependsOn: ['csv'],
     }),
   }
 
@@ -233,7 +240,7 @@ export default class ResourcesAll extends Command {
 
       // Print and save output
       if (out.length > 0) {
-        if (flags.print) this.printOutput(out, flags)
+        // if (flags.print) this.printOutput(out, flags)
         this.log(`\nFetched ${chalk.yellowBright(out.length)} ${itemsDesc}`)
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
       } else this.log(chalk.italic('\nNo records found\n'))

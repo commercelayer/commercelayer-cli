@@ -1,7 +1,8 @@
 import Command, { flags } from '@oclif/command'
 import { findResource, Resource } from './commands/resources'
 import { filterAvailable } from './commands/resources/filters'
-import { formatOutput } from './output'
+import { formatOutput, exportOutput } from './output'
+import { exportCsv } from './csv'
 import chalk from 'chalk'
 import _ from 'lodash'
 import fs from 'fs'
@@ -475,13 +476,15 @@ export default abstract class extends Command {
 			const fileDir = path.dirname(filePath)
 			if (flags['save-path'] && !fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true })
 
-			const out = formatOutput(output, flags, { color: false })
 
-			fs.writeFileSync(filePath, out)
-			if (fs.existsSync(filePath)) this.log(`\nCommand output saved to file ${chalk.italic(filePath)}`)
-			else this.error(`Unable to save command output to file ${filePath}`,
-				{ suggestions: ['Please check you have the right file system permissions'] }
-			)
+			const fileExport = flags.csv ? exportCsv : exportOutput
+			fileExport(output, flags, filePath)
+				.then(() => {
+					if (fs.existsSync(filePath)) this.log(`\nCommand output saved to file ${chalk.italic(filePath)}\n`)
+				})
+				.catch(() => this.error(`Unable to save command output to file ${filePath}`,
+					{ suggestions: ['Please check you have the right file system permissions'] }
+				))
 
 		} catch (error) {
 			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
@@ -493,5 +496,6 @@ export default abstract class extends Command {
 	}
 
 }
+
 
 export { flags }

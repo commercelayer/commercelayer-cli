@@ -1,4 +1,6 @@
 import { inspect } from 'util'
+import fs from 'fs'
+import { formatCsv } from './csv'
 
 
 
@@ -14,20 +16,6 @@ const inspectObject = (object: any, color = true): string => {
 }
 
 
-const formatCsv = (output: any, flags?: any) => {
-	if (!output || (output.length === 0)) return ''
-	const fields = Object.keys(output[0]).filter(f => {
-		if (['id', 'type'].includes(f)) return (flags && flags.fields.includes(f))
-		return true
-	})
-	let csv = fields.map(f => f.toUpperCase().replace(/_/g, ' ')).join(';') + '\n'
-	output.forEach((o: { [x: string]: any }) => {
-		csv += fields.map(f => o[f]).join(';') + '\n'
-	})
-	return csv
-}
-
-
 const formatOutput = (output: any, flags?: any, { color = true } = {}) => {
 	if (!output) return ''
 	if (typeof output === 'string') return output
@@ -37,5 +25,12 @@ const formatOutput = (output: any, flags?: any, { color = true } = {}) => {
 }
 
 
+const exportOutput = async (output: any, flags: any, filePath: string) => {
+	const out = formatOutput(output, flags, { color: false })
+	fs.writeFileSync(filePath, out)
+	return Promise.resolve(true)
+}
 
-export { inspectObject, formatOutput, formatCsv }
+
+
+export { inspectObject, formatOutput, exportOutput }
