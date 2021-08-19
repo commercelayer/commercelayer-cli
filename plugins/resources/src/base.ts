@@ -188,13 +188,13 @@ export default abstract class extends Command {
 	}
 
 
-	mapToSdkObject(map: Map<string, any>, { camelCase = true } = {}): any {
+	mapToSdkObject(map: Map<string, any>, { camelCase = true, nullValues = true } = {}): any {
 
 		const object: any = {}
 
 		map.forEach((val, key) => {
 			const k = (camelCase && !key.startsWith('_')) ? _.camelCase(key) : key as keyof object
-			object[k] = val
+			object[k] = ((val === 'null') && nullValues) ? null : val
 			/* it should never happen in real use cases
 			if (object[k] === undefined) object[k] = val
 			else object[k] = [...val, object[k]]
