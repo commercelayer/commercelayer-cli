@@ -116,16 +116,21 @@ export { currentApplication, currentOrganization, currentModeLive }
 
 enum ConfigParams {
 	currentApplication = 'currentApplication',
-	test = 'test'
+	commandRetention = 'commandRetention',
+	test = 'test',
 }
 
 enum ConfigParamsEditable {
-	test
+	test,
+	commandRetention
 }
 
 const defaultConfig: any = {
 	test: 'defaultTestValue',
+	commandRetention: 30,	// days of retention
 }
+
+
 
 const paramEditable = (param: ConfigParams): boolean => {
 	return (Object.keys(ConfigParamsEditable).includes(param))

@@ -2,6 +2,7 @@ import { Hook } from '@oclif/config'
 import fs from 'fs'
 import path from 'path'
 import _ from 'lodash'
+import { configParam, ConfigParams } from '../../config'
 
 const hook: Hook<'postrun'> = async function (opts) {
 
@@ -37,8 +38,28 @@ const hook: Hook<'postrun'> = async function (opts) {
 
     fs.appendFileSync(filePath, `${data.join(' ')}\n`)
 
+    deleteOldFiles(commDir)
+
   }
 
 }
 
 export default hook
+
+
+
+const deleteOldFiles = (dir: string) => {
+
+  const files = fs.readdirSync(dir).filter((f: string) => {
+
+    const today = new Date()
+    const fday = new Date(f.substr(0, 10))
+    const diffday = Math.floor((today.getTime() - fday.getTime()) / 1000 / 60 / 60 / 24)
+
+    return (diffday > Number(configParam(ConfigParams.commandRetention)))
+
+  })
+
+  if (files && (files.length > 0)) files.forEach(f => fs.unlinkSync(path.join(dir, f)))
+
+}
