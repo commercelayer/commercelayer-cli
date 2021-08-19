@@ -55,9 +55,9 @@ export default class ApplicationsLogin extends Command {
 
     try {
 
-      const auth = await getAccessToken(config)
+      const token = await getAccessToken(config)
 
-      const app = await getApplicationInfo(config, auth?.accessToken || '')
+      const app = await getApplicationInfo(config, token?.accessToken || '')
       if ((app.type !== 'cli') && (process.env.CL_CLI_MODE !== SUPER_USER_MODE)) this.error('The credentials provided are not associated with a CLI application',
         { suggestions: [`Double check your credentials or access the online dashboard of ${app.organization} and create a new CLI application`] }
       )
@@ -68,7 +68,7 @@ export default class ApplicationsLogin extends Command {
       const overwrite = configFileExists(this.config, app)
       writeConfigFile(this.config, app)
 
-      writeTokenFile(this.config, app, auth?.data)
+      writeTokenFile(this.config, app, token?.data)
 
       clicfg.set(ConfigParams.currentApplication, { key: app.key, mode: app.mode })
       const current = clicfg.get(ConfigParams.currentApplication)

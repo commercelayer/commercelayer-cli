@@ -1,7 +1,7 @@
 import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 import chalk from 'chalk'
-import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentApplication, readTokenFile } from '../../config'
+import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentApplication, readTokenFile, SUPER_USER_MODE } from '../../config'
 import { execMode, appKey, sleep, print } from '../../common'
 import { IConfig } from '@oclif/config'
 import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
@@ -130,7 +130,7 @@ export default class ApplicationsToken extends Command {
 
   printAccessToken(accessToken: any): void {
     if (accessToken) {
-      const info = jwt.decode(accessToken)
+      const info = decodeAccessToken(accessToken)
       this.log(chalk.blueBright('Token Info:'))
       this.log(print(info))
       this.log()
@@ -140,7 +140,13 @@ export default class ApplicationsToken extends Command {
 }
 
 
-const getAccessToken = async (auth: AppAuth): Promise<any> => {
+const decodeAccessToken = (accessToken: any): any => {
+  const info = jwt.decode(accessToken)
+  return info
+}
+
+
+const getAccessToken = async (auth: AppAuth): Promise<AuthReturnType> => {
   return getIntegrationToken({
     clientId: auth.clientId,
     clientSecret: auth.clientSecret,
@@ -153,6 +159,10 @@ const newAccessToken = async (config: IConfig, app: AppKey, save: boolean = fals
 
   const cfg = readConfigFile(config, app)
   const token = await getAccessToken(cfg)
+
+  // Check application type on each token refresh
+  const info = decodeAccessToken(token?.accessToken)
+  if ((info.application.kind !== 'cli') && (process.env.CL_CLI_MODE !== SUPER_USER_MODE)) throw new Error('The locally saved credentials are not associated with a CLI application')
 
   if (save) writeTokenFile(config, app, token?.data)
 
