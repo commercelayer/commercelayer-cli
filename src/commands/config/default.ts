@@ -1,5 +1,5 @@
 import { Command, flags } from '@oclif/command'
-import clicfg, { ConfigParamsEditable } from '../../config'
+import clicfg, { ConfigParamsEditable, configParam, paramDefault, ConfigParams } from '../../config'
 import chalk from 'chalk'
 
 export default class ConfigDefault extends Command {
@@ -28,8 +28,10 @@ export default class ConfigDefault extends Command {
     if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${chalk.italic('--force (-F)')} flag to force setting save`)
 
 
-    // Object.keys(ConfigParamsEditable).forEach(k => configParam(k as ConfigParams, paramDefault(k as unknown as ConfigParamsEditable)))
-    Object.keys(ConfigParamsEditable).forEach(k => clicfg.delete(k))
+    // Set default value for all editable properties
+    Object.keys(ConfigParamsEditable).forEach(k => configParam(k as ConfigParams, paramDefault(k as unknown as ConfigParamsEditable)))
+    // Delete all test params
+    Object.keys(ConfigParamsEditable).filter(k => k.startsWith('test')).forEach(k => clicfg.delete(k))
 
     this.log(chalk.yellowBright('\nSuccessfully restored default CLI configuration\n'))
 
