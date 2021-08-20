@@ -60,7 +60,7 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
 	// Rename header fields
 	const header: { [field: string]: string } = {}
 	if (flags.header) {
-		flags.header.split(',').forEach((h: string) => {
+		flags.header.join(',').split(',').forEach((h: string) => {
 			const ft = h.split(':')
 			header[ft[0]] = ft[1]
 		})
