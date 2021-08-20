@@ -148,6 +148,50 @@ export default abstract class extends Command {
 	}
 
 
+	objectValuesMap(flag: string[]): Map<string, any> {
+
+		const objects = new Map<string, any>()
+
+		if (flag && (flag.length > 0)) {
+			flag.forEach(f => {
+
+					const kv = f.split('/')
+
+					if (kv.length > 2) this.error('Can be defined only one object for each object flag',
+						{ suggestions: [`Split the value ${chalk.italic(f)} into two object flags`] }
+					)
+					else
+					if (kv.length === 1) this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
+
+					const name = kv[0]
+					if (name === '') this.error(`No name defined in flag object ${f}`)
+					if (kv[1].trim() === '') this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
+
+					const fields = kv[1].split(/(?<!\\),/g).map(v => v.trim())
+					if (fields[0].trim() === '') this.error(`No fields defined for object field ${chalk.italic(name)}`)
+
+					const obj: { [n: string]: any } = {}
+
+					fields.forEach(f => {
+						const eqi = f.indexOf('=')
+						if (eqi < 0) this.error(`No value defined for object field ${chalk.italic(f)} of object ${chalk.italic(name)}`)
+						const n = f.substring(0, eqi)
+						let v: any = f.substring(eqi + 1)
+						if (v === 'null') v = null
+						obj[n] = v
+					})
+
+					if (objects.get(name) === undefined) objects.set(name, {})
+					objects.set(name, { ...objects.get(name), ...obj })
+
+			})
+		}
+
+		return objects
+
+	}
+
+
 	fieldsValuesMap(flag: string[]): Map<string, string[]> {
 
 		const fields = new Map<string, string[]>()

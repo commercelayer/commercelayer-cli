@@ -26,6 +26,11 @@ export default class ResourcesCreate extends Command {
       description: 'define a resource attribute',
       multiple: true,
     }),
+    object: flags.string({
+      char: 'O',
+      description: 'define a resource object attribute',
+      multiple: true,
+    }),
     relationship: flags.string({
       char: 'r',
       description: 'define a relationship with another resource',
@@ -71,9 +76,10 @@ export default class ResourcesCreate extends Command {
       }
     }
 
-
     // Attributes flags
     const attributes = this.mapToSdkObject(this.attributeValuesMap(flags.attribute))
+    // Objects flags
+    const objects = this.objectValuesMap(flags.object)
     // Relationships flags
     const relationships = this.relationshipValuesMap(flags.relationship)
     // Metadata flags
@@ -86,8 +92,19 @@ export default class ResourcesCreate extends Command {
       attributes[_.camelCase(key)] = rel
     })
 
+    // Objects
+    if (objects && (objects.size > 0)) {
+      for (const o of objects.keys()) {
+        if (Object.keys(attributes).includes(o)) this.warn(`Object ${o} will overwrite attribute ${o}`)
+        else attributes[o] = objects.get(o)
+      }
+    }
+
     // Metadata
-    if (metadata && (Object.keys(metadata).length > 0)) attributes.metadata = metadata
+    if (metadata && (Object.keys(metadata).length > 0)) {
+      if (attributes.metadata) this.warn(`Attribute ${chalk.italic('metadata')} will be overwritten by the content defined with the flag ${chalk.italic('-m')}`)
+      attributes.metadata = metadata
+    }
 
 
     cl.init({ accessToken, endpoint: baseUrl })
