@@ -7,6 +7,7 @@ import chalk from 'chalk'
 import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
+import { fixType } from './common'
 
 
 import updateNotifier from 'update-notifier'
@@ -173,12 +174,15 @@ export default abstract class extends Command {
 					const obj: { [n: string]: any } = {}
 
 					fields.forEach(f => {
+
 						const eqi = f.indexOf('=')
 						if (eqi < 0) this.error(`No value defined for object field ${chalk.italic(f)} of object ${chalk.italic(name)}`)
+
 						const n = f.substring(0, eqi)
-						let v: any = f.substring(eqi + 1)
-						if (v === 'null') v = null
-						obj[n] = v
+						const v = f.substring(eqi + 1)
+
+						obj[n] = fixType(v)
+
 					})
 
 					if (objects.get(name) === undefined) objects.set(name, {})
@@ -232,13 +236,19 @@ export default abstract class extends Command {
 	}
 
 
-	mapToSdkObject(map: Map<string, any>, { camelCase = true, nullValues = true } = {}): any {
+	mapToSdkObject(map: Map<string, any>, {
+		camelCase = true,
+		nullValues = true,
+		fixTypes = false,
+	} = {}): any {
 
 		const object: any = {}
 
 		map.forEach((val, key) => {
 			const k = (camelCase && !key.startsWith('_')) ? _.camelCase(key) : key as keyof object
-			object[k] = ((val === 'null') && nullValues) ? null : val
+			let v = ((val === 'null') && nullValues) ? null : val
+			if (fixTypes) v = fixType(v)
+			object[k] = v
 			/* it should never happen in real use cases
 			if (object[k] === undefined) object[k] = val
 			else object[k] = [...val, object[k]]

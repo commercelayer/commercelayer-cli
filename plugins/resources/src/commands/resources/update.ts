@@ -96,7 +96,7 @@ export default class ResourcesUpdate extends Command {
     // Relationships flags
     const relationships = this.relationshipValuesMap(flags.relationship)
     // Metadata flags
-    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metadata || flags['metadata-replace']), { camelCase: false })
+    const metadata = this.mapToSdkObject(this.metadataValuesMap(flags.metadata || flags['metadata-replace']), { camelCase: false, fixTypes: true })
 
     // Relationships
     if (relationships && (relationships.size > 0)) relationships.forEach((value, key) => {

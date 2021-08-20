@@ -59,7 +59,7 @@ EXAMPLES
   $ cl resources
 ```
 
-_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/index.ts)_
+_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/index.ts)_
 
 ### `cl-resources resources:create RESOURCE`
 
@@ -74,6 +74,7 @@ ARGUMENTS
 
 OPTIONS
   -D, --data=data                  the data file to use as request body
+  -O, --object=object              define a resource object attribute
   -R, --raw                        print out the raw API response
   -a, --attribute=attribute        define a resource attribute
   -j, --json                       convert output in standard JSON format
@@ -94,7 +95,7 @@ EXAMPLES
   $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/create.ts)_
 
 ### `cl-resources resources:delete RESOURCE [ID]`
 
@@ -124,7 +125,7 @@ EXAMPLES
   $ cl delete customers <customerId>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/delete.ts)_
 
 ### `cl-resources resources:doc RESOURCE`
 
@@ -146,7 +147,7 @@ EXAMPLES
   $ cl res:doc cusatomers
 ```
 
-_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/doc.ts)_
+_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/doc.ts)_
 
 ### `cl-resources resources:filters`
 
@@ -164,7 +165,7 @@ EXAMPLES
   $ cl res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/filters.ts)_
 
 ### `cl-resources resources:get RESOURCE [ID]`
 
@@ -203,7 +204,7 @@ EXAMPLES
   $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/get.ts)_
 
 ### `cl-resources resources:list RESOURCE`
 
@@ -241,7 +242,7 @@ EXAMPLES
   $ cl list -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/list.ts)_
 
 ### `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -277,7 +278,7 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/retrieve.ts)_
 
 ### `cl-resources resources:update RESOURCE [ID]`
 
@@ -296,6 +297,8 @@ OPTIONS
 
   -M, --metadata-replace=metadata-replace  define a metadata attribute and replace every item already presente in the
                                            remote resource
+
+  -O, --object=object                      define a resource object attribute
 
   -R, --raw                                print out the raw API response
 
@@ -325,5 +328,5 @@ EXAMPLES
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.0-beta.0/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.1.1-beta.0/src/commands/resources/update.ts)_
 <!-- commandsstop -->
