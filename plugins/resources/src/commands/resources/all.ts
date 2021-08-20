@@ -110,6 +110,7 @@ export default class ResourcesAll extends Command {
       char: 'H',
       description: 'comma-separated list of values field:"renamed title"',
       dependsOn: ['csv'],
+      multiple: true,
     }),
   }
 
