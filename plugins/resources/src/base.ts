@@ -540,7 +540,7 @@ export default abstract class extends Command {
 					{ suggestions: ['Please check you have the right file system permissions'] }
 				))
 
-		} catch (error) {
+		} catch (error: any) {
 			if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
 			else throw error
 		} finally {
