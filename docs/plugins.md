@@ -36,11 +36,14 @@ Show all available Commerce Layer CLI plugins.
 USAGE
   $ commercelayer plugins:available
 
+OPTIONS
+  --show-hidden
+
 EXAMPLE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.1/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v1.0.2/src/commands/plugins/available.ts)_
 
 ### `commercelayer plugins:inspect PLUGIN...`
 

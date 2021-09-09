@@ -17,13 +17,13 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 
 <!-- toc -->
 
-* [ Installation](#installation)
-* [ Usage](#usage)
-* [ Commands](#commands)
-* [ Plugins](#plugins)
-* [ Contributors Guide](#contributors-guide)
-* [ Need help?](#need-help)
-* [ License](#license)
+* [ Installation](#-installation)
+* [ Usage](#-usage)
+* [ Commands](#-commands)
+* [ Plugins](#-plugins)
+* [ Contributors Guide](#-contributors-guide)
+* [ Need help?](#-need-help)
+* [ License](#-license)
 <!-- tocstop -->
 
 ## Installation
@@ -67,6 +67,7 @@ The Commerce Layer CLI supports the following commands:
 * [`commercelayer applications`](docs/applications.md) - Manage login to CLI applications.
 * [`commercelayer help`](docs/help.md) - Display help for commercelayer.
 * [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins.
+* [`commercelayer util`](docs/util.md) - Decode a Commerce Layer JWT.
 
 <!-- commandsstop -->
 

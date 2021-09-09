@@ -4,7 +4,7 @@
     "oclif-typescript"
   ],
   "rules": {
-    // "no-console": "off",
+    "__no-console": "off",
     "indent": "off",
     "object-curly-spacing": "off",
     "padded-blocks": "off",
