@@ -86,6 +86,7 @@ USAGE
 
 OPTIONS
   -o, --organization=organization  (required) organization slug
+  -r, --revoke                     revoke current access token
   --live                           live execution mode
 
 ALIASES

@@ -13,7 +13,11 @@ export default class PluginsAvailable extends Command {
   ]
 
   static flags = {
-    'show-hidden': flags.boolean(),
+    'show-hidden': flags.boolean({
+      char: 'H',
+      description: 'show enabled but hidden plugins',
+      hidden: true,
+    }),
   }
 
   static args = []
