@@ -10,6 +10,7 @@ export default class WebhooksIndex extends Command {
 
 	static flags = {
 		...Command.flags,
+		...ListCommand.flags,
 	}
 
 	static args = [ ]
