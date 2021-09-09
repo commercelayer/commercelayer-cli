@@ -3,7 +3,7 @@ import { getIntegrationToken } from '@commercelayer/js-auth'
 import api from '@commercelayer/js-sdk'
 import { baseURL, appKey, extractDomain } from '../../common'
 import chalk from 'chalk'
-import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, SUPER_USER_MODE} from '../../config'
+import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, SUPER_USER_MODE } from '../../config'
 import { inspect } from 'util'
 
 
@@ -76,7 +76,7 @@ export default class ApplicationsLogin extends Command {
 
       this.log(`\n${chalk.bold.greenBright('Login successful!')} ${chalk.bold(app.mode)} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
 
-    } catch (error) {
+    } catch (error: any) {
       this.log(chalk.bold.redBright('Login failed!'))
       if (error.suggestions) throw error
       else
@@ -117,6 +117,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
     type: app.kind || '',
     name: app.name || '',
   }, auth)
+
 
   return appInfo
 

@@ -51,7 +51,7 @@ export default class ApplicationsIndex extends Command {
         name: { header: '  NAME', get: row => `  ${row.name}` },
         organization: { header: '  ORGANIZATION  ', get: row => `  ${row.organization}  ` },
         baseUrl: { header: 'BASE URL', get: row => `${row.baseUrl ? `${row.baseUrl}` : ''}` },
-        mode: { header: '  MODE\n', get: row => `  ${(row.mode === 'live') ? chalk.greenBright(row.mode) : chalk.yellowBright(row.mode)}` },
+        mode: { header: '  MODE', get: row => `  ${(row.mode === 'live') ? chalk.greenBright(row.mode) : chalk.yellowBright(row.mode)}` },
       },
       {
         printLine: this.log,

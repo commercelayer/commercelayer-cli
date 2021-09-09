@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 
@@ -13,7 +13,7 @@ export default class PluginsAvailable extends Command {
   ]
 
   static flags = {
-    // help: flags.help({char: 'h'}),
+    'show-hidden': flags.boolean(),
   }
 
   static args = []
@@ -21,15 +21,17 @@ export default class PluginsAvailable extends Command {
 
   async run() {
 
-    this.log(chalk.blueBright('\n-= Available Commerce Layer CLI plugins =-\n'))
+    const { flags } = this.parse(PluginsAvailable)
 
-    const availablePlugins = AvailablePlugins.filter(p => (!p.hidden && p.enabled))
+    this.log(chalk.blueBright('\n-= Commerce Layer CLI available plugins =-\n'))
+
+    const availablePlugins = AvailablePlugins.filter(p => ((!p.hidden || flags['show-hidden']) && p.enabled))
 
     if (availablePlugins && (availablePlugins.length > 0)) {
       cliux.table(availablePlugins,
         {
-          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row =>  chalk.blueBright(row.name) },
-          description: { header: 'DESCRIPTION\n' },
+          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? chalk.dim : chalk).blueBright(row.name) },
+          description: { header: 'DESCRIPTION', get: row => (row.hidden ? chalk.dim(row.description) : row.description) },
         },
         {
           printLine: this.log,
@@ -43,11 +45,12 @@ export default class PluginsAvailable extends Command {
 
 
 const AvailablePlugins = [
+  { name: 'cleaner',    plugin: '@commercelayer/cli-plugin-cleaner',    description: 'Organization data cleaner',         enabled: false  },
+  { name: 'exporter',   plugin: '@commercelayer/cli-plugin-exporter',   description: 'Organization data exporter',        enabled: false, hidden: true },
+  { name: 'importer',   plugin: '@commercelayer/cli-plugin-importer',   description: 'Organization data importer',        enabled: false, hidden: true },
   { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',  enabled: true   },
   { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',          enabled: true   },
-  { name: 'importer',   plugin: '@commercelayer/cli-plugin-importer',   description: 'Organization data importer',        enabled: false  },
-  { name: 'exporter',   plugin: '@commercelayer/cli-plugin-exporter',   description: 'Organization data exporter',        enabled: true, hidden: true },
-  { name: 'cleaner',    plugin: '@commercelayer/cli-plugin-cleaner',    description: 'Organization data cleaner',         enabled: false  },
+  { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',    enabled: true,  hidden: true  },
 ]
 
 

@@ -121,7 +121,7 @@ export default class ApplicationsToken extends Command {
 
       return returnData
 
-    } catch (error) {
+    } catch (error: any) {
       this.log(chalk.bold.redBright('FAILURE! ') + error.message)
     }
 
@@ -162,7 +162,8 @@ const newAccessToken = async (config: IConfig, app: AppKey, save: boolean = fals
 
   // Check application type on each token refresh
   const info = decodeAccessToken(token?.accessToken)
-  if ((info.application.kind !== 'cli') && (process.env.CL_CLI_MODE !== SUPER_USER_MODE)) throw new Error('The locally saved credentials are not associated with a CLI application')
+  if ((info.application.kind !== 'cli') && (process.env.CL_CLI_MODE !== SUPER_USER_MODE))
+    throw new Error('The locally saved credentials are not associated with a CLI application')
 
   if (save) writeTokenFile(config, app, token?.data)
 

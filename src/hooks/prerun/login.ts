@@ -8,7 +8,7 @@ import cliux from 'cli-ux'
 import chalk from 'chalk'
 
 
-const excludedTopics: string[] = ['applications', 'plugins', 'config']
+const excludedTopics: string[] = ['applications', 'plugins', 'config', 'util']
 const exludedCommands: string[] = ['resources:filters', 'resources:doc', 'resources', 'applications']
 
 
