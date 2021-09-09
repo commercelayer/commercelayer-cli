@@ -1,7 +1,7 @@
 {
-  "name": "cli-plugin-webhooks",
+  "name": "@commercelayer/cli-plugin-webhooks",
   "description": "Commerce Layer CLI Webhooks plugin",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-webhooks": "./bin/run",

@@ -76,7 +76,7 @@ export default class WebhooksList extends Command {
           head: ['ID', 'Topic', 'Circuit state', 'Failures'],
           // colWidths: [100, 200],
           style: {
-            head: ['yellow'],
+            head: ['brightYellow'],
             compact: false,
           },
         })
