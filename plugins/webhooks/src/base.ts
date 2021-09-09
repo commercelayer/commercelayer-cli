@@ -30,22 +30,6 @@ export default abstract class extends Command {
 			required: true,
 			env: 'CL_CLI_ACCESS_TOKEN',
 		}),
-		json: flags.boolean({
-			char: 'j',
-			description: 'convert output in standard JSON format',
-			hidden: true,
-		}),
-		unformatted: flags.boolean({
-			char: 'u',
-			description: 'print unformatted JSON output',
-			dependsOn: ['json'],
-			hidden: true,
-		}),
-		raw: flags.boolean({
-			char: 'R',
-			description: 'print out the raw API response',
-			hidden: true,
-		}),
 	}
 
 
@@ -88,7 +72,7 @@ export default abstract class extends Command {
 			if (error.response.status === 500) this.error('We\'re sorry, but something went wrong (500)')
 			else err = error.response.data.errors
 		} else
-			if (error.errors) err = error.errors().toArray()
+			if (error.errors) err = error.errors
 			else
 			if (error.toArray) err = error.toArray().map((e: { code: string | undefined }) => {
 				if (e.code) e.code = _.snakeCase(e.code).toUpperCase()	// Fix SDK camelCase issue
