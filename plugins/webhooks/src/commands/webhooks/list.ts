@@ -1,7 +1,8 @@
-import Command from '../../base'
+import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import CommerceLayer from '@commercelayer/sdk'
 import Table, { HorizontalAlignment } from 'cli-table3'
+import { QueryParamsList } from '@commercelayer/sdk/lib/query'
 
 
 export default class WebhooksList extends Command {
@@ -18,7 +19,13 @@ export default class WebhooksList extends Command {
 
   static flags = {
 		...Command.flags,
+    circuit: flags.string({
+      char: 'c',
+      description: 'show only webhooks with circuit in the decalred state',
+      options: ['open', 'closed'],
+    }),
 	}
+
 
   async run() {
 
@@ -36,24 +43,35 @@ export default class WebhooksList extends Command {
 
     try {
 
-      const tableData = []
+      let tableData = []
       let currentPage = 0
       let pageCount = 1
 
       while (currentPage < pageCount) {
+
+        const params: QueryParamsList = {
+          pageSize: 25,
+          pageNumber: ++currentPage,
+        }
+
         // eslint-disable-next-line no-await-in-loop
-        const webhooks = await cl.webhooks.list({ pageSize: 25, pageNumber: ++currentPage })
+        const webhooks = await cl.webhooks.list(params)
+
         if (webhooks?.length) {
           tableData.push(...webhooks)
           currentPage = webhooks.meta.currentPage
           pageCount = webhooks.meta.pageCount
         }
+
       }
 
 
-      if (tableData) {
+      if (flags.circuit && tableData?.length) tableData = tableData.filter(w => (w.circuit_state === flags.circuit))
 
-        this.log()
+      this.log()
+
+      if (tableData?.length) {
+
         const table = new Table({
           head: ['ID', 'Topic', 'Circuit state', 'Failures'],
           // colWidths: [100, 200],
@@ -73,9 +91,10 @@ export default class WebhooksList extends Command {
         ]))
 
         this.log(table.toString())
-        this.log()
 
-      }
+      } else this.log(chalk.italic(`No webhooks found${flags.circuit ? (' with circuit state ' + chalk.white.bold(flags.circuit)) : ''}`))
+
+      this.log()
 
       return tableData
 
