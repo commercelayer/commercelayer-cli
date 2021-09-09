@@ -1,17 +1,11 @@
 import {expect, test} from '@oclif/test'
 
-describe('webhooks:reset', () => {
+describe('seed', () => {
   test
   .stdout()
-  .command(['webhooks:reset'])
-  .it('runs hello', ctx => {
-    expect(ctx.stdout).to.contain('hello world')
+  .command(['webhooks:noc'])
+  .it('runs seed', ctx => {
+    expect(ctx.stdout).to.contain('-= NoC =-')
   })
 
-  test
-  .stdout()
-  .command(['webhooks:reset', '--name', 'jeff'])
-  .it('runs hello --name jeff', ctx => {
-    expect(ctx.stdout).to.contain('hello jeff')
-  })
 })
