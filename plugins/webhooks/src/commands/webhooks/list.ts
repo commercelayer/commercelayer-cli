@@ -73,7 +73,7 @@ export default class WebhooksList extends Command {
       if (tableData?.length) {
 
         const table = new Table({
-          head: ['ID', 'Topic', 'Circuit state', 'Failures'],
+          head: ['ID', 'Topic', 'Circuit state', 'Recent failures'],
           // colWidths: [100, 200],
           style: {
             head: ['brightYellow'],
