@@ -13,7 +13,7 @@ export default class WebhooksList extends Command {
 
   static examples = [
 		'$ commercelayer webhooks',
-		'$ cl webhooks:list',
+		'$ cl webhooks:list -c open',
 		'$ cl wh:list',
 	]
 

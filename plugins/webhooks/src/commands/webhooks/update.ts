@@ -8,7 +8,14 @@ import { WebhookUpdate } from '@commercelayer/sdk/lib/resources/webhooks'
 
 export default class WebhooksUpdate extends Command {
 
-  static description = 'create a new webhook'
+  static description = 'update an existing webhook'
+
+  static aliases: ['wh:update']
+
+  static examples = [
+		'$ commercelayer webhooks:update -t customers.create -u https://callback.url.io',
+		'$ cl wh:update -i customer_group',
+	]
 
   static flags = {
     ...Command.flags,

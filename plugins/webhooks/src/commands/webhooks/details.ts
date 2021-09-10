@@ -11,6 +11,12 @@ export default class WebhooksDetails extends Command {
 
   static aliases = ['webhook', 'wh:details']
 
+  static examples = [
+		'$ commercelayer webhooks:details <webhook-id>',
+		'$ cl webhook <webhook-id> -H',
+    '$ cl wh:details <webhook-id>',
+	]
+
   static flags = {
 		...Command.flags,
     'hide-empty': flags.boolean({
@@ -45,7 +51,7 @@ export default class WebhooksDetails extends Command {
 
       const table = new Table({
         // head: ['ID', 'Topic', 'Circuit state', 'Failures'],
-        colWidths: [25, 75],
+        colWidths: [23, 67],
         wordWrap: true,
       })
 

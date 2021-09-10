@@ -10,6 +10,11 @@ export default class WebhooksDestroy extends Command {
 
   static aliases = ['webhooks:delete', 'wh:delete', 'wh:destroy']
 
+  static examples = [
+		'$ commercelayer webhooks:destroy <webhook-id>>',
+		'$ cl wh:destroy <webhook-id>>',
+	]
+
   static flags = {
 		...Command.flags,
 	}

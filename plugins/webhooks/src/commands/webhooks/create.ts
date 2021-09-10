@@ -8,6 +8,13 @@ export default class WebhooksCreate extends Command {
 
   static description = 'create a new webhook'
 
+  static aliases: ['wh:create']
+
+  static examples = [
+		'$ commercelayer webhooks:create -t customers.create -u https://callback.url.io',
+		'$ cl wh:create -t orders.place -u http://myurl.com',
+	]
+
   static flags = {
     ...Command.flags,
     topic: flags.string({
