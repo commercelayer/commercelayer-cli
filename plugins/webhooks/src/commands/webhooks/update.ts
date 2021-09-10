@@ -51,10 +51,12 @@ export default class WebhooksUpdate extends Command {
 
     const id = args.id
 
-    if (!flags.topic && !flags.url && !flags.include && !flags.name) {
+    /*
+    if (!flags.topic && !flags.url && !flags.include) {
       this.warn(`No updates defined for webhook ${chalk.bold(id)}`)
       return
     }
+    */
 
     const topic = flags.topic
     const url = flags.url ? new URL(flags.url).toString() : undefined
