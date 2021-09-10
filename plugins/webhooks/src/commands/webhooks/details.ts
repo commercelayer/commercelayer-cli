@@ -81,13 +81,14 @@ const formatValue = (field: string, value: string): any => {
   switch (field) {
 
     case 'id': return chalk.bold(value)
+    case 'topic': return chalk.magenta(value)
     case 'circuit_state': return ((value === 'closed') ? chalk.green : chalk.red)(value || '')
     case 'include_resources': return String(value || '').replace(/,/g, ' | ')
     case 'metadata': {
       const t = new Table({ style: { compact: false } })
       t.push(...Object.entries(value).map(([k, v]) => {
         return [
-          { content: chalk.blueBright.italic(k), hAlign: 'right', vAlign: 'center' },
+          { content: chalk.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
           { content: chalk.italic((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
         ]
       }))
