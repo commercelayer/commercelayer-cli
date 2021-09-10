@@ -25,6 +25,13 @@ export default class WebhooksCreate extends Command {
       description: 'a comma separated list of related resources to be included',
       multiple: true,
     }),
+    name: flags.string({
+      char: 'n',
+      description: 'the webhook short name',
+      required: true,
+      default: 'null',
+      hidden: true,
+    }),
   }
 
 
@@ -37,7 +44,8 @@ export default class WebhooksCreate extends Command {
 
     const topic = flags.topic
     const url = new URL(flags.url).toString()
-    const include = flags.include ? flags.include.join(',').split(',') : []
+    const include = flags.include ? flags.include.join(',').split(',') : undefined
+    // const name = flags.name
 
 
     // eslint-disable-next-line new-cap

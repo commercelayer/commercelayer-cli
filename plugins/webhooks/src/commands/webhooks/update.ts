@@ -27,6 +27,13 @@ export default class WebhooksUpdate extends Command {
       description: 'a comma separated list of related resources to be included',
       multiple: true,
     }),
+    name: flags.string({
+      char: 'n',
+      description: 'the webhook short name',
+      required: false,
+      default: 'null',
+      hidden: true,
+    }),
   }
 
 
@@ -44,15 +51,20 @@ export default class WebhooksUpdate extends Command {
 
     const id = args.id
 
-    if (!flags.topic && !flags.url && !flags.include) {
+    if (!flags.topic && !flags.url && !flags.include && !flags.name) {
       this.warn(`No updates defined for webhook ${chalk.bold(id)}`)
       return
     }
 
     const topic = flags.topic
     const url = flags.url ? new URL(flags.url).toString() : undefined
-    const include = flags.include ? flags.include.join(',').split(',') : []
 
+    let include: Array<string> | undefined
+    if (flags.include) {
+      const inc = flags.include.join(',')
+      if (inc === 'null') include = []
+      else include = inc.split(',')
+    }
 
     // eslint-disable-next-line new-cap
     const cl = CommerceLayer({
