@@ -10,8 +10,8 @@ Commerce Layer CLI Resources plugin
 
 <!-- toc -->
 
-* [ Usage](#usage)
-* [ Commands](#commands)
+* [ Usage](#-usage)
+* [ Commands](#-commands)
 <!-- tocstop -->
 ## Usage
 <!-- usage -->
