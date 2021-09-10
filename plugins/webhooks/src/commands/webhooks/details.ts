@@ -45,7 +45,7 @@ export default class WebhooksDetails extends Command {
 
       const table = new Table({
         // head: ['ID', 'Topic', 'Circuit state', 'Failures'],
-        // colWidths: [100, 200],
+        colWidths: [25, 75],
         wordWrap: true,
       })
 
