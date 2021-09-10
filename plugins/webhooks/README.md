@@ -48,7 +48,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/index.ts)_
+_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/index.ts)_
 
 ### `cl-webhooks webhooks:create`
 
@@ -65,7 +65,7 @@ OPTIONS
   -u, --url=url                    (required) the callback URL used to POST data
 ```
 
-_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/create.ts)_
+_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/create.ts)_
 
 ### `cl-webhooks webhooks:destroy ID`
 
@@ -87,7 +87,7 @@ ALIASES
   $ cl-webhooks wh:destroy
 ```
 
-_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/destroy.ts)_
+_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/destroy.ts)_
 
 ### `cl-webhooks webhooks:details ID`
 
@@ -109,7 +109,7 @@ ALIASES
   $ cl-webhooks wh:details
 ```
 
-_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/details.ts)_
+_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/details.ts)_
 
 ### `cl-webhooks webhooks:events [FILE]`
 
@@ -125,7 +125,7 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/events.ts)_
+_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/events.ts)_
 
 ### `cl-webhooks webhooks:list`
 
@@ -148,7 +148,7 @@ EXAMPLES
   $ cl wh:list
 ```
 
-_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/list.ts)_
+_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/list.ts)_
 
 ### `cl-webhooks webhooks:reset ID`
 
@@ -165,7 +165,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/reset.ts)_
+_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/reset.ts)_
 
 ### `cl-webhooks webhooks:update ID`
 
@@ -185,5 +185,5 @@ OPTIONS
   -u, --url=url                    the callback URL used to POST data
 ```
 
-_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.2/src/commands/webhooks/update.ts)_
+_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.3/src/commands/webhooks/update.ts)_
 <!-- commandsstop -->
