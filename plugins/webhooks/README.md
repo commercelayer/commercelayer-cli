@@ -4,9 +4,9 @@ cli-plugin-webhooks
 Commerce Layer CLI Webhooks plugin
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/cli-plugin-webhooks.svg)](https://npmjs.org/package/commercelayer/cli-plugin-webhooks)
-[![Downloads/week](https://img.shields.io/npm/dw/cli-plugin-webhooks.svg)](https://npmjs.org/package/commercelayer/cli-plugin-webhooks)
-[![License](https://img.shields.io/npm/l/cli-plugin-webhooks.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-webhooks.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-webhooks)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-webhooks.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-webhooks)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-webhooks.svg)](https://github.com/commercelayer/cli-plugin-webhooks/blob/master/package.json)
 
 <!-- toc -->
 
