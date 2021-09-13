@@ -100,9 +100,12 @@ const hook: Hook<'prerun'> = async function (opts) {
 
   }
 
-  // If command requires clientId and clioentSecret add them to the command line arguments
+  // If command requires clientId and clientSecret add them to the command line arguments
   if (opts.Command.flags?.clientId && configData?.clientId) opts.argv.push('--clientId=' + configData?.clientId)
   if (opts.Command.flags?.clientSecret && configData?.clientSecret) opts.argv.push('--clientSecret=' + configData?.clientSecret)
+
+  // If present remove --live flag option
+  if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
 
 }
 

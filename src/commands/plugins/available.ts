@@ -6,16 +6,14 @@ export default class PluginsAvailable extends Command {
 
   static description = 'show all available Commerce Layer CLI plugins'
 
-  // static aliases = ['plugins:list']
-
   static examples = [
     '$ commercelayer plugins:available',
   ]
 
   static flags = {
-    'show-hidden': flags.boolean({
+    hidden: flags.boolean({
       char: 'H',
-      description: 'show enabled but hidden plugins',
+      description: 'show also enabled but hidden plugins',
       hidden: true,
     }),
   }
@@ -29,7 +27,7 @@ export default class PluginsAvailable extends Command {
 
     this.log(chalk.blueBright('\n-= Commerce Layer CLI available plugins =-\n'))
 
-    const availablePlugins = AvailablePlugins.filter(p => ((!p.hidden || flags['show-hidden']) && p.enabled))
+    const availablePlugins = AvailablePlugins.filter(p => ((!p.hidden || flags.hidden) && p.enabled))
 
     if (availablePlugins && (availablePlugins.length > 0)) {
       cliux.table(availablePlugins,
