@@ -4,9 +4,9 @@ cli-plugin-webhooks
 Commerce Layer CLI Webhooks plugin
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/cli-plugin-webhooks.svg)](https://npmjs.org/package/commercelayer/cli-plugin-webhooks)
-[![Downloads/week](https://img.shields.io/npm/dw/cli-plugin-webhooks.svg)](https://npmjs.org/package/commercelayer/cli-plugin-webhooks)
-[![License](https://img.shields.io/npm/l/cli-plugin-webhooks.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-imports.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-imports)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-imports.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-imports)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-imports.svg)](https://github.com/commercelayer/cli-plugin-imports/blob/master/package.json)
 
 <!-- toc -->
 
@@ -16,205 +16,171 @@ Commerce Layer CLI Webhooks plugin
 <!-- usage -->
 
 ```sh-session
-$ cl-webhooks COMMAND
+$ cl-imports COMMAND
 
-$ cl-webhooks (-v | version | --version) to check the version of the CLI you have installed.
+$ cl-imports (-v | version | --version) to check the version of the CLI you have installed.
 
-$ cl-webhooks [COMMAND] (--help | -h) for detailed information about CLI commands.
+$ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
 
-* [`cl-webhooks webhooks`](#cl-webhooks-webhooks)
-* [`cl-webhooks webhooks:create`](#cl-webhooks-webhookscreate)
-* [`cl-webhooks webhooks:destroy ID`](#cl-webhooks-webhooksdestroy-id)
-* [`cl-webhooks webhooks:details ID`](#cl-webhooks-webhooksdetails-id)
-* [`cl-webhooks webhooks:events`](#cl-webhooks-webhooksevents)
-* [`cl-webhooks webhooks:list`](#cl-webhooks-webhookslist)
-* [`cl-webhooks webhooks:reset ID`](#cl-webhooks-webhooksreset-id)
-* [`cl-webhooks webhooks:update ID`](#cl-webhooks-webhooksupdate-id)
+* [`cl-imports imports`](#cl-imports-imports)
+* [`cl-imports imports:create`](#cl-imports-importscreate)
+* [`cl-imports imports:delete ID`](#cl-imports-importsdelete-id)
+* [`cl-imports imports:details ID`](#cl-imports-importsdetails-id)
+* [`cl-imports imports:list`](#cl-imports-importslist)
+* [`cl-imports test [FILE]`](#cl-imports-test-file)
 
-### `cl-webhooks webhooks`
+### `cl-imports imports`
 
-List all the registered webhooks.
+List all the created imports.
 
 ```
 USAGE
-  $ cl-webhooks webhooks
+  $ cl-imports imports
 
 OPTIONS
-  -c, --circuit=open|closed        show only webhooks with circuit in the decalred state
-  -o, --organization=organization  (required) the slug of your organization
+  -A, --all
+      show all imports instead of first 25 only
+
+  -o, --organization=organization
+      (required) [default: cli-test-org] the slug of your organization
+
+  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+      the resource type of the import
 ```
 
-_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/index.ts)_
+_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/index.ts)_
 
-### `cl-webhooks webhooks:create`
+### `cl-imports imports:create`
 
-Create a new webhook.
+Create a new import.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:create
+  $ cl-imports imports:create
 
 OPTIONS
-  -i, --include=include            a comma separated list of related resources to be included
-  -o, --organization=organization  (required) the slug of your organization
-  -t, --topic=topic                (required) the identifier of the event that will trigger the webhook
-  -u, --url=url                    (required) the callback URL used to POST data
+  -c, --cleanup
+      delete all other existing items
+
+  -i, --inputs=inputs
+      (required) the path of the file containing teh resource data to import in CSV format
+
+  -j, --json
+      accept input file in JSON format
+
+  -o, --organization=organization
+      (required) [default: cli-test-org] the slug of your organization
+
+  -p, --parent=parent
+      the id of the parent resource to be associated with imported data
+
+  -r, --resource=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+      (required) the type of resource being imported
 
 EXAMPLES
-  $ commercelayer webhooks:create -t customers.create -u https://callback.url.io
-  $ cl wh:create -t orders.place -u http://myurl.com
+  $ commercelayer imports:create -r stock_items -p <stock_location-id>
+  $ cl imp:create skus -c
 ```
 
-_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/create.ts)_
+_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/create.ts)_
 
-### `cl-webhooks webhooks:destroy ID`
+### `cl-imports imports:delete ID`
 
-Destroy an existing webhook.
+Delete an existing import.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:destroy ID
+  $ cl-imports imports:delete ID
 
 ARGUMENTS
-  ID  unique id of the webhook
+  ID  unique id of the import
 
 OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
+  -o, --organization=organization  (required) [default: cli-test-org] the slug of your organization
 
 ALIASES
-  $ cl-webhooks webhooks:delete
-  $ cl-webhooks wh:delete
-  $ cl-webhooks wh:destroy
+  $ cl-imports imp:delete
 
 EXAMPLES
-  $ commercelayer webhooks:destroy <webhook-id>>
-  $ cl wh:destroy <webhook-id>>
+  $ commercelayer imports:delete <import-id>>
+  $ cl imp:delete <import-id>>
 ```
 
-_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/destroy.ts)_
+_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/delete.ts)_
 
-### `cl-webhooks webhooks:details ID`
+### `cl-imports imports:details ID`
 
-Show the details of an existing webhook.
+Show the details of an existing import.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:details ID
+  $ cl-imports imports:details ID
 
 ARGUMENTS
-  ID  unique id of the webhook
+  ID  unique id of the import
 
 OPTIONS
   -H, --hide-empty                 hide empty attributes
-  -o, --organization=organization  (required) the slug of your organization
+  -o, --organization=organization  (required) [default: cli-test-org] the slug of your organization
 
 ALIASES
-  $ cl-webhooks webhook
-  $ cl-webhooks wh:details
+  $ cl-imports import
+  $ cl-imports imp:details
 
 EXAMPLES
-  $ commercelayer webhooks:details <webhook-id>
-  $ cl webhook <webhook-id> -H
-  $ cl wh:details <webhook-id>
+  $ commercelayer imports:details <import-id>
+  $ cl import <import-id> -H
+  $ cl imp:details <import-id>
 ```
 
-_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/details.ts)_
+_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/details.ts)_
 
-### `cl-webhooks webhooks:events`
+### `cl-imports imports:list`
 
-List all the events associated to the webhook.
+List all the created imports.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:events
+  $ cl-imports imports:list
 
 OPTIONS
-  -c, --circuit=open|closed        show only webhooks with circuit in the decalred state
-  -o, --organization=organization  (required) the slug of your organization
+  -A, --all
+      show all imports instead of first 25 only
+
+  -o, --organization=organization
+      (required) [default: cli-test-org] the slug of your organization
+
+  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+      the resource type of the import
 
 ALIASES
-  $ cl-webhooks wh:events
+  $ cl-imports imp:list
 
 EXAMPLES
-  $ commercelayer webhooks
-  $ cl webhooks:list
-  $ cl wh:list
+  $ commercelayer imports
+  $ cl imports:list -A
+  $ cl imp:list
 ```
 
-_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/events.ts)_
+_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/list.ts)_
 
-### `cl-webhooks webhooks:list`
+### `cl-imports test [FILE]`
 
-List all the registered webhooks.
+Describe the command here.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:list
+  $ cl-imports test [FILE]
 
 OPTIONS
-  -c, --circuit=open|closed        show only webhooks with circuit in the decalred state
-  -o, --organization=organization  (required) the slug of your organization
-
-ALIASES
-  $ cl-webhooks wh:list
-
-EXAMPLES
-  $ commercelayer webhooks
-  $ cl webhooks:list -c open
-  $ cl wh:list
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
 ```
 
-_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/list.ts)_
-
-### `cl-webhooks webhooks:reset ID`
-
-Reset the circuit breaker associated to the webhook.
-
-```
-USAGE
-  $ cl-webhooks webhooks:reset ID
-
-ARGUMENTS
-  ID  unique id of the webhook
-
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
-
-ALIASES
-  $ cl-webhooks wh:reset
-
-EXAMPLES
-  $ commercelayer webhooks:reset <webhook-id>
-  $ cl wh:reset <webhook-id>
-```
-
-_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/reset.ts)_
-
-### `cl-webhooks webhooks:update ID`
-
-Update an existing webhook.
-
-```
-USAGE
-  $ cl-webhooks webhooks:update ID
-
-ARGUMENTS
-  ID  unique id of the webhook
-
-OPTIONS
-  -i, --include=include            a comma separated list of related resources to be included
-  -o, --organization=organization  (required) the slug of your organization
-  -t, --topic=topic                the identifier of the event that will trigger the webhook
-  -u, --url=url                    the callback URL used to POST data
-
-EXAMPLES
-  $ commercelayer webhooks:update -t customers.create -u https://callback.url.io
-  $ cl wh:update -i customer_group
-```
-
-_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.5/src/commands/webhooks/update.ts)_
+_See code: [src/commands/test.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/test.ts)_
 <!-- commandsstop -->

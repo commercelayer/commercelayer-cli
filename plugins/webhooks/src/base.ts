@@ -1,8 +1,8 @@
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
 import path from 'path'
-import { inspect } from 'util'
 import _ from 'lodash'
+import { formatOutput } from './common'
 
 import updateNotifier from 'update-notifier'
 
@@ -17,6 +17,7 @@ export default abstract class extends Command {
 			description: 'the slug of your organization',
 			required: true,
 			env: 'CL_CLI_ORGANIZATION',
+			default: 'cli-test-org',
 		}),
 		domain: flags.string({
 			char: 'd',
@@ -24,6 +25,7 @@ export default abstract class extends Command {
 			hidden: true,
 			dependsOn: ['organization'],
 			env: 'CL_CLI_DOMAIN',
+			default: 'preprod.commercelayer.dev',
 		}),
 		accessToken: flags.string({
 			hidden: true,
@@ -69,45 +71,48 @@ export default abstract class extends Command {
 				{ suggestions: ['Execute login to get access to the selected resource'] }
 			)
 			else
-			if (error.response.status === 500) this.error('We\'re sorry, but something went wrong (500)')
-			else err = error.response.data.errors
+				if (error.response.status === 500) this.error('We\'re sorry, but something went wrong (500)')
+				else err = error.response.data.errors
 		} else
-			if (error.errors) err = error.errors
-			else
-			if (error.toArray) err = error.toArray().map((e: { code: string | undefined }) => {
-				if (e.code) e.code = _.snakeCase(e.code).toUpperCase()	// Fix SDK camelCase issue
-				return e
-			})
-			else
-			if (error.message) err = error.message
+		if (error.errors) err = error.errors
+		else
+		if (error.toArray) err = error.toArray().map((e: { code: string | undefined }) => {
+			if (e.code) e.code = _.snakeCase(e.code).toUpperCase()	// Fix SDK camelCase issue
+			return e
+		})
+		else
+		if (error.message) err = error.message
 
 
-			this.error(formatOutput(err, flags))
+		this.error(formatOutput(err, flags))
 
+	}
+
+
+	protected specialFolder(filePath: string): string {
+		// Special directory (home / desktop)
+		const root = filePath.toLowerCase().split('/')[0]
+		if (['desktop', 'home'].includes(root)) {
+			let filePrefix = this.config.home
+			if (root === 'desktop') filePrefix += '/Desktop'
+			filePath = filePath.replace(root, filePrefix)
+		}
+		return filePath
+	}
+
+
+	protected importStatus(status?: string): string {
+		if (!status) return ''
+		switch (status.toLowerCase()) {
+			case 'completed': return chalk.greenBright(status)
+			case 'interrupted': return chalk.redBright(status)
+			case 'pending':
+			case 'in_progress':
+			default: return status
+		}
 	}
 
 }
 
 
 export { flags }
-
-
-
-const inspectObject = (object: any, color = true): string => {
-	return inspect(object, {
-		showHidden: false,
-		depth: null,
-		colors: color,
-		sorted: false,
-		maxArrayLength: Infinity,
-		breakLength: 120,
-	})
-}
-
-
-const formatOutput = (output: any, flags?: any, { color = true } = {}) => {
-	if (!output) return ''
-	if (typeof output === 'string') return output
-	return (flags && flags.json) ?
-		JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspectObject(output, color)
-}
