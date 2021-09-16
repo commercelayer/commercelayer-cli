@@ -1,18 +1,18 @@
 import Command from '../../base'
 import chalk from 'chalk'
 import CommerceLayer from '@commercelayer/sdk'
-import WebhooksDetails from './details'
+import ImportsDetails from './details'
 
 
-export default class WebhooksDestroy extends Command {
+export default class ImportsDelete extends Command {
 
-  static description = 'destroy an existing webhook'
+  static description = 'delete an existing import'
 
-  static aliases = ['webhooks:delete', 'wh:delete', 'wh:destroy']
+  static aliases = ['imp:delete']
 
   static examples = [
-		'$ commercelayer webhooks:destroy <webhook-id>>',
-		'$ cl wh:destroy <webhook-id>>',
+		'$ commercelayer imports:delete <import-id>>',
+		'$ cl imp:delete <import-id>>',
 	]
 
   static flags = {
@@ -20,27 +20,29 @@ export default class WebhooksDestroy extends Command {
 	}
 
 	static args = [
-		...WebhooksDetails.args,
+		...ImportsDetails.args,
 	]
 
 
   async run() {
 
-    const { args, flags } = this.parse(WebhooksDestroy)
+    const { args, flags } = this.parse(ImportsDelete)
 
     const organization = flags.organization
     const accessToken = flags.accessToken
+    const domain = flags.domain
     const id = args.id
 
     // eslint-disable-next-line new-cap
     const cl = CommerceLayer({
       organization,
+      domain,
       accessToken,
     })
 
 
     cl.webhooks.delete(id)
-      .then(() => this.log(`\n${chalk.greenBright('Successfully')} destroyed webhook with id ${chalk.bold(id)}\n`))
+      .then(() => this.log(`\n${chalk.greenBright('Successfully')} deleted import with id ${chalk.bold(id)}\n`))
       .catch(error => this.printError(error))
 
   }
