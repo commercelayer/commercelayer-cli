@@ -5,16 +5,16 @@ import Table  from 'cli-table3'
 import _ from 'lodash'
 
 
-export default class WebhooksDetails extends Command {
+export default class ImportsDetails extends Command {
 
-  static description = 'show the details of an existing webhook'
+  static description = 'show the details of an existing import'
 
-  static aliases = ['webhook', 'wh:details']
+  static aliases = ['import', 'imp:details']
 
   static examples = [
-		'$ commercelayer webhooks:details <webhook-id>',
-		'$ cl webhook <webhook-id> -H',
-    '$ cl wh:details <webhook-id>',
+		'$ commercelayer imports:details <import-id>',
+		'$ cl import <import-id> -H',
+    '$ cl imp:details <import-id>',
 	]
 
   static flags = {
@@ -26,13 +26,13 @@ export default class WebhooksDetails extends Command {
 	}
 
 	static args = [
-		{ name: 'id', description: 'unique id of the webhook', required: true, hidden: false },
+		{ name: 'id', description: 'unique id of the import', required: true, hidden: false },
 	]
 
 
   async run() {
 
-    const { args, flags } = this.parse(WebhooksDetails)
+    const { args, flags } = this.parse(ImportsDetails)
 
     const organization = flags.organization
     const accessToken = flags.accessToken
@@ -47,7 +47,7 @@ export default class WebhooksDetails extends Command {
 
     try {
 
-      const webhook = await cl.webhooks.retrieve(id)
+      const webhook = await cl.imports.retrieve(id)
 
       const table = new Table({
         // head: ['ID', 'Topic', 'Circuit state', 'Failures'],
