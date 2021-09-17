@@ -8,6 +8,7 @@ type Chunk = ImportCreate & {
 	end_item: number;
 	total_items: number;
 	group_id: string;
+	items_count: number;
 }
 
 
@@ -34,12 +35,14 @@ const splitImports = (imp: ImportCreate, size?: number): Array<Chunk> => {
 		total_items: totalItems,
 		inputs: allInputs.splice(0, chunkSize),
 		group_id: groupId,
+		items_count: 0,
 	})
 
 	return chunks.map(c => {
 		c.start_item = ((c.chunk_number - 1) * chunkSize) + 1
 		c.end_item = (c.start_item + c.inputs.length) - 1
 		c.total_chunks = chunks.length
+		c.items_count = c.inputs.length
 		return c
 	})
 
