@@ -52,6 +52,7 @@ export default class ImportsCreate extends Command {
     csv: flags.boolean({
       char: 'c',
       description: 'accept input file in CSV format',
+      dependsOn: ['inputs'],
     }),
     blind: flags.boolean({
       char: 'b',
