@@ -26,7 +26,7 @@ const generateInputJSON = async (filePath: string): Promise<Array<any>> => {
 		const json = JSON.parse(data)
 		if (!Array.isArray(json)) throw new Error(undefined)
 		return Promise.resolve(json)
-	} catch (error: any) {
+	} catch (error) {
 		return Promise.reject(error)
 	}
 

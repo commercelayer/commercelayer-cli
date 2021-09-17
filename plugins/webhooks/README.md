@@ -1,12 +1,12 @@
-cli-plugin-webhooks
-===================
+cli-plugin-imports
 
-Commerce Layer CLI Webhooks plugin
+Commerce Layer CLI Imports plugin
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-imports.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-imports)
 [![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-imports.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-imports)
 [![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-imports.svg)](https://github.com/commercelayer/cli-plugin-imports/blob/master/package.json)
+
 
 <!-- toc -->
 
@@ -31,7 +31,6 @@ $ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands
 * [`cl-imports imports:delete ID`](#cl-imports-importsdelete-id)
 * [`cl-imports imports:details ID`](#cl-imports-importsdetails-id)
 * [`cl-imports imports:list`](#cl-imports-importslist)
-* [`cl-imports test [FILE]`](#cl-imports-test-file)
 
 ### `cl-imports imports`
 
@@ -42,14 +41,15 @@ USAGE
   $ cl-imports imports
 
 OPTIONS
-  -A, --all
-      show all imports instead of first 25 only
+  -A, --all                                               show all imports instead of first 25 only
 
-  -o, --organization=organization
-      (required) [default: cli-test-org] the slug of your organization
+  -g, --group=group                                       the group ID associated to the import in case of multi-chunk
+                                                          imports
 
-  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
-      the resource type of the import
+  -o, --organization=organization                         (required) [default: cli-test-org] the slug of your
+                                                          organization
+
+  -s, --status=in_progress|pending|completed|interrupted  the import job status
 ```
 
 _See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/index.ts)_
@@ -148,14 +148,15 @@ USAGE
   $ cl-imports imports:list
 
 OPTIONS
-  -A, --all
-      show all imports instead of first 25 only
+  -A, --all                                               show all imports instead of first 25 only
 
-  -o, --organization=organization
-      (required) [default: cli-test-org] the slug of your organization
+  -g, --group=group                                       the group ID associated to the import in case of multi-chunk
+                                                          imports
 
-  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
-      the resource type of the import
+  -o, --organization=organization                         (required) [default: cli-test-org] the slug of your
+                                                          organization
+
+  -s, --status=in_progress|pending|completed|interrupted  the import job status
 
 ALIASES
   $ cl-imports imp:list
@@ -167,20 +168,4 @@ EXAMPLES
 ```
 
 _See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/list.ts)_
-
-### `cl-imports test [FILE]`
-
-Describe the command here.
-
-```
-USAGE
-  $ cl-imports test [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/test.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/test.ts)_
 <!-- commandsstop -->
