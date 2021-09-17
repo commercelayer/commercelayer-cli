@@ -23,6 +23,10 @@ const sleep = async (ms: number) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+const center = (str: string, width: number): string => {
+	return str.padStart(str.length + Math.floor((width - str.length) / 2), ' ').padEnd(width, ' ')
+}
+
 
 const localeDate = (date: string): string => {
 	if (!date) return ''
@@ -31,4 +35,4 @@ const localeDate = (date: string): string => {
 
 
 
-export { inspectObject, formatOutput, sleep, localeDate }
+export { inspectObject, formatOutput, sleep, localeDate, center }

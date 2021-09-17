@@ -16,4 +16,4 @@ const generateImportCustomers = (size: number) => {
 }
 
 
-generateImportCustomers(25683)
+generateImportCustomers(2390)
