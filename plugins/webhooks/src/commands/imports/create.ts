@@ -8,6 +8,7 @@ import { sleep } from '../../common'
 import { Monitor } from '../../monitor'
 import { Chunk, splitImports } from '../../chunk'
 import apiConf from '../../api-conf'
+import chalk from 'chalk'
 
 
 
@@ -29,8 +30,8 @@ export default class ImportsCreate extends Command {
 
   static flags = {
     ...Command.flags,
-    resource: flags.string({
-      char: 'r',
+    type: flags.string({
+      char: 't',
       description: 'the type of resource being imported',
       required: true,
       options: apiConf.imports_types,
@@ -40,7 +41,7 @@ export default class ImportsCreate extends Command {
       description: 'the id of the parent resource to be associated with imported data',
     }),
     cleanup: flags.boolean({
-      char: 'c',
+      char: 'x',
       description: 'delete all other existing items',
     }),
     inputs: flags.string({
@@ -48,9 +49,13 @@ export default class ImportsCreate extends Command {
       description: 'the path of the file containing teh resource data to import in CSV format',
       required: true,
     }),
-    json: flags.boolean({
-      char: 'j',
-      description: 'accept input file in JSON format',
+    csv: flags.boolean({
+      char: 'c',
+      description: 'accept input file in CSV format',
+    }),
+    blind: flags.boolean({
+      char: 'b',
+      description: 'execute in blind mode without showing the progress monitor',
     }),
   }
 
@@ -83,25 +88,35 @@ export default class ImportsCreate extends Command {
 
     try {
 
-      const resource = flags.resource
+      const type = flags.type
       const parentId = flags.parent
       const cleanup = flags.cleanup || false
       const inputFile = this.specialFolder(flags.inputs)
 
-      const monitor = true
+      const monitor = !flags.blind
 
 
       const inputs: Array<any> = await generateInputs(inputFile, flags).catch(error => this.error(error.message))
       const inputsLength = inputs.length
 
       const chunks: Array<Chunk> = splitImports({
-        resource_type: resource,
+        resource_type: type,
         parent_resource_id: parentId,
         cleanup_records: cleanup,
         inputs,
       })
 
+      const groupId = chunks[0].group_id
+      const resource = type.replace(/_/g, ' ')
+
+      if (chunks.length > 1) {
+        this.log()
+        this.warn(`The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${apiConf.imports_max_size} elements allowed for each single import
+         The import will be splitted into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}`)
+      }
+
       if (monitor) this.monitor = Monitor.create(inputsLength, this.log)
+      else this.log(`\nThe import of ${chalk.yellowBright(String(inputsLength))} ${resource} has been started`)
 
       const imports: Array<Promise<Import>> = []
 
@@ -110,12 +125,13 @@ export default class ImportsCreate extends Command {
         if (imp) imports.push(imp)
       }
 
-      await Promise.allSettled(imports)
-
       if (monitor && this.monitor) {
+        await Promise.allSettled(imports)
         this.monitor.stop()
-        this.log()
       }
+
+      this.log()
+
 
     } catch (error) {
       this.printError(error)
@@ -160,7 +176,7 @@ export default class ImportsCreate extends Command {
         let imp: Import = i
 
         if (monitor && this.monitor) {
-          if (bar) this.monitor.updateBar(bar, 0, { importId: i.id, message: 'Waiting ...' })
+          if (bar) this.monitor.updateBar(bar, 0, { importId: i.id, status: 'waiting ...' })
           do {
 
             await sleep(Math.max(1000, importsDelay(chunk.total_chunks)))
@@ -172,6 +188,7 @@ export default class ImportsCreate extends Command {
                 processed: Number(imp.processed_count),
                 warnings: Number(imp.warnings_count),
                 errors: Number(imp.errors_count),
+                status: imp.status,
               })
             }
 
@@ -183,7 +200,7 @@ export default class ImportsCreate extends Command {
 
       })
       .catch(error => {
-        this.monitor.updateBar(bar, undefined, { message: this.monitor.message(error.message || 'Error', 'error') })
+        this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
         return Promise.reject(error)
       })
 
