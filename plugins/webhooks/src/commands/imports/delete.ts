@@ -41,7 +41,7 @@ export default class ImportsDelete extends Command {
     })
 
 
-    cl.webhooks.delete(id)
+    cl.imports.delete(id)
       .then(() => this.log(`\n${chalk.greenBright('Successfully')} deleted import with id ${chalk.bold(id)}\n`))
       .catch(error => this.printError(error))
 
