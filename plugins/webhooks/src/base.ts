@@ -17,7 +17,7 @@ export default abstract class extends Command {
 			description: 'the slug of your organization',
 			required: true,
 			env: 'CL_CLI_ORGANIZATION',
-			default: 'cli-test-org',
+			// default: 'cli-test-org',
 		}),
 		domain: flags.string({
 			char: 'd',
@@ -25,7 +25,7 @@ export default abstract class extends Command {
 			hidden: true,
 			dependsOn: ['organization'],
 			env: 'CL_CLI_DOMAIN',
-			default: 'preprod.commercelayer.dev',
+			// default: 'preprod.commercelayer.dev',
 		}),
 		accessToken: flags.string({
 			hidden: true,
