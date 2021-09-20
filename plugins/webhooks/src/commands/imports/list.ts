@@ -26,13 +26,11 @@ export default class ImportsList extends Command {
       char: 'A',
       description: `show all imports instead of first ${apiConf.page_max_size} only `,
     }),
-    /*
     type: flags.string({
       char: 't',
       description: 'the type of resource imported',
       options: apiConf.imports_types,
     }),
-    */
     group: flags.string({
       char: 'g',
       description: 'the group ID associated to the import in case of multi-chunk imports',
@@ -42,6 +40,14 @@ export default class ImportsList extends Command {
       char: 's',
       description: 'the import job status',
       options: apiConf.imports_statuses,
+    }),
+    errors: flags.boolean({
+      char: 'e',
+      description: 'show only imports with errors',
+    }),
+    warnings: flags.boolean({
+      char: 'w',
+      description: 'show only import with warnings',
     }),
   }
 
@@ -81,9 +87,11 @@ export default class ImportsList extends Command {
         }
 
         if (params && params.filters) {
-          // if (flags.type) params.filters.resource_type_eq = flags.type
+          if (flags.type) params.filters.resource_type_eq = flags.type
           if (flags.group) params.filters.reference_start = flags.group + '-'
           if (flags.status) params.filters.status_eq = flags.status
+          if (flags.warnings) params.filters.warnings_count_gt = 0
+          if (flags.warnings) params.filters.errors_count_gt = 0
         }
 
         // eslint-disable-next-line no-await-in-loop
@@ -129,7 +137,7 @@ export default class ImportsList extends Command {
 
         this.log()
         if (flags.all) this.log(`Total imports count: ${chalk.yellowBright(String(totalItems))}`)
-        else this.warn(`Only ${chalk.yellowBright(String(pageSize))} of ${chalk.yellowBright(String(totalItems))} records are displayed, to see all the existing items run the command with the ${chalk.italic.bold('All')} flag enabled`)
+        else this.warn(`Only ${chalk.yellowBright(String(pageSize))} of ${chalk.yellowBright(String(totalItems))} records are displayed, to see all existing items run the command with the ${chalk.italic.bold('All')} flag enabled`)
 
       } else this.log(chalk.italic('No imports found'))
 
