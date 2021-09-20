@@ -189,6 +189,8 @@ const statusStyle = (s: string, processed?: number): string => {
 	if (status.includes('completed')) status = chalk.greenBright(status)
 	else
 	if (status.includes('waiting')) status = chalk.italic(status)
+	else
+	if (status.includes('interrupted')) status = chalk.redBright(status)
 
 	return status
 
