@@ -2,7 +2,7 @@
 
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-webhooks": "./bin/run",

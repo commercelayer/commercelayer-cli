@@ -30,7 +30,7 @@ $ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands
 * [`cl-imports imports:create`](#cl-imports-importscreate)
 * [`cl-imports imports:delete ID`](#cl-imports-importsdelete-id)
 * [`cl-imports imports:details ID`](#cl-imports-importsdetails-id)
-* [`cl-imports imports:group [FILE]`](#cl-imports-importsgroup-file)
+* [`cl-imports imports:group GROUP_ID`](#cl-imports-importsgroup-group_id)
 * [`cl-imports imports:list`](#cl-imports-importslist)
 
 ### `cl-imports imports`
@@ -42,18 +42,29 @@ USAGE
   $ cl-imports imports
 
 OPTIONS
-  -A, --all                                               show all imports instead of first 25 only
+  -A, --all
+      show all imports instead of first 25 only
 
-  -g, --group=group                                       the group ID associated to the import in case of multi-chunk
-                                                          imports
+  -e, --errors
+      show only imports with errors
 
-  -o, --organization=organization                         (required) [default: cli-test-org] the slug of your
-                                                          organization
+  -g, --group=group
+      the group ID associated to the import in case of multi-chunk imports
 
-  -s, --status=in_progress|pending|completed|interrupted  the import job status
+  -o, --organization=organization
+      (required) the slug of your organization
+
+  -s, --status=in_progress|pending|completed|interrupted
+      the import job status
+
+  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+      the type of resource imported
+
+  -w, --warnings
+      show only import with warnings
 ```
 
-_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/index.ts)_
+_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.0/src/commands/imports/index.ts)_
 
 ### `cl-imports imports:create`
 
@@ -74,7 +85,7 @@ OPTIONS
       (required) the path of the file containing teh resource data to import in CSV format
 
   -o, --organization=organization
-      (required) [default: cli-test-org] the slug of your organization
+      (required) the slug of your organization
 
   -p, --parent=parent
       the id of the parent resource to be associated with imported data
@@ -90,7 +101,7 @@ EXAMPLES
   $ cl imp:create skus -c
 ```
 
-_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/create.ts)_
+_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.0/src/commands/imports/create.ts)_
 
 ### `cl-imports imports:delete ID`
 
@@ -104,7 +115,7 @@ ARGUMENTS
   ID  unique id of the import
 
 OPTIONS
-  -o, --organization=organization  (required) [default: cli-test-org] the slug of your organization
+  -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
   $ cl-imports imp:delete
@@ -114,7 +125,7 @@ EXAMPLES
   $ cl imp:delete <import-id>>
 ```
 
-_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/delete.ts)_
+_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.0/src/commands/imports/delete.ts)_
 
 ### `cl-imports imports:details ID`
 
@@ -128,8 +139,9 @@ ARGUMENTS
   ID  unique id of the import
 
 OPTIONS
-  -H, --hide-empty                 hide empty attributes
-  -o, --organization=organization  (required) [default: cli-test-org] the slug of your organization
+  -i, --inputs                     show input items associated with the import
+  -l, --logs                       show warning and error logs related to the import process
+  -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
   $ cl-imports import
@@ -137,27 +149,35 @@ ALIASES
 
 EXAMPLES
   $ commercelayer imports:details <import-id>
-  $ cl import <import-id> -H
-  $ cl imp:details <import-id>
+  $ cl import <import-id> -i
+  $ cl imp:details <import-id> -i -l
 ```
 
-_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/details.ts)_
+_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.0/src/commands/imports/details.ts)_
 
-### `cl-imports imports:group [FILE]`
+### `cl-imports imports:group GROUP_ID`
 
-Describe the command here.
+List all the imports related to an import group.
 
 ```
 USAGE
-  $ cl-imports imports:group [FILE]
+  $ cl-imports imports:group GROUP_ID
+
+ARGUMENTS
+  GROUP_ID  unique id of the group import
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -o, --organization=organization  (required) the slug of your organization
+
+ALIASES
+  $ cl-imports imp:group
+
+EXAMPLES
+  $ commercelayer imports:group <group-id>
+  $ cl imports:ghroup <group-id>
 ```
 
-_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/group.ts)_
+_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.0/src/commands/imports/group.ts)_
 
 ### `cl-imports imports:list`
 
@@ -168,15 +188,26 @@ USAGE
   $ cl-imports imports:list
 
 OPTIONS
-  -A, --all                                               show all imports instead of first 25 only
+  -A, --all
+      show all imports instead of first 25 only
 
-  -g, --group=group                                       the group ID associated to the import in case of multi-chunk
-                                                          imports
+  -e, --errors
+      show only imports with errors
 
-  -o, --organization=organization                         (required) [default: cli-test-org] the slug of your
-                                                          organization
+  -g, --group=group
+      the group ID associated to the import in case of multi-chunk imports
 
-  -s, --status=in_progress|pending|completed|interrupted  the import job status
+  -o, --organization=organization
+      (required) the slug of your organization
+
+  -s, --status=in_progress|pending|completed|interrupted
+      the import job status
+
+  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+      the type of resource imported
+
+  -w, --warnings
+      show only import with warnings
 
 ALIASES
   $ cl-imports imp:list
@@ -187,5 +218,5 @@ EXAMPLES
   $ cl imp:list
 ```
 
-_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/list.ts)_
+_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.0/src/commands/imports/list.ts)_
 <!-- commandsstop -->
