@@ -1,4 +1,4 @@
-import {Command} from '@oclif/command'
+import { Command } from '@oclif/command'
 import UpdateCommand from '../resources/update'
 import BaseCommand from '../../base'
 
@@ -6,7 +6,7 @@ export default class OrderApprove extends Command {
 
   static description = 'approve an order'
 
-  static hidden = true
+  static hidden = false
 
   static flags = {
     ...BaseCommand.flags,

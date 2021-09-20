@@ -6,7 +6,7 @@ export default class OrderPlace extends Command {
 
   static description = 'place an order'
 
-  static hidden = true
+  static hidden = false
 
   static flags = {
     ...BaseCommand.flags,
