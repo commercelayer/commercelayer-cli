@@ -6,7 +6,7 @@ const generateImportCustomers = (size: number) => {
 	const inputs: Array<string> = [ 'email' ]
 
 	for (let i = 0; i < size; i++) {
-		inputs.push(`user${String(i).padStart(6, '0')}@test-import.org`)
+		inputs.push(`user${String(i + 1).padStart(6, '0')}@test-import.org`)
 	}
 
 	const data = inputs.join('\n')
