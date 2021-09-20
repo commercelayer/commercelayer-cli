@@ -1,13 +1,13 @@
 import { inspect } from 'util'
 
-const inspectObject = (object: any, color = true): string => {
+const inspectObject = (object: any, options?: any): string => {
 	return inspect(object, {
 		showHidden: false,
 		depth: null,
-		colors: color,
+		colors: options?.color || true,
 		sorted: false,
 		maxArrayLength: Infinity,
-		breakLength: 120,
+		breakLength: options?.breakLength || 120,
 	})
 }
 
