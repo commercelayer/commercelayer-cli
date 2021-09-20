@@ -6,7 +6,7 @@ export default class OrderCapture extends Command {
 
   static description = 'capture an order'
 
-  static hidden = true
+  static hidden = false
 
   static flags = {
     ...BaseCommand.flags,

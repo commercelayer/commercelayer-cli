@@ -33,6 +33,7 @@ $ commercelayer plugins:install resources
 
 * [`cl-resources order ACTION [ID]`](#cl-resources-order-action-id)
 * [`cl-resources order:actions`](#cl-resources-orderactions)
+* [`cl-resources order:approve ID`](#cl-resources-orderapprove-id)
 * [`cl-resources order:place ID`](#cl-resources-orderplace-id)
 * [`cl-resources resources`](#cl-resources-resources)
 * [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
@@ -75,6 +76,26 @@ USAGE
 ```
 
 _See code: [src/commands/order/actions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.2.0/src/commands/order/actions.ts)_
+
+### `cl-resources order:approve ID`
+
+Approve an order.
+
+```
+USAGE
+  $ cl-resources order:approve ID
+
+ARGUMENTS
+  ID  the id of the order to approve
+
+OPTIONS
+  -R, --raw                        print out the raw API response
+  -j, --json                       convert output in standard JSON format
+  -o, --organization=organization  (required) the slug of your organization
+  -u, --unformatted                print unformatted JSON output
+```
+
+_See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v1.2.0/src/commands/order/approve.ts)_
 
 ### `cl-resources order:place ID`
 
