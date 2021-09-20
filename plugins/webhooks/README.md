@@ -30,6 +30,7 @@ $ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands
 * [`cl-imports imports:create`](#cl-imports-importscreate)
 * [`cl-imports imports:delete ID`](#cl-imports-importsdelete-id)
 * [`cl-imports imports:details ID`](#cl-imports-importsdetails-id)
+* [`cl-imports imports:group [FILE]`](#cl-imports-importsgroup-file)
 * [`cl-imports imports:list`](#cl-imports-importslist)
 
 ### `cl-imports imports`
@@ -63,14 +64,14 @@ USAGE
   $ cl-imports imports:create
 
 OPTIONS
-  -c, --cleanup
-      delete all other existing items
+  -b, --blind
+      execute in blind mode without showing the progress monitor
+
+  -c, --csv
+      accept input file in CSV format
 
   -i, --inputs=inputs
       (required) the path of the file containing teh resource data to import in CSV format
-
-  -j, --json
-      accept input file in JSON format
 
   -o, --organization=organization
       (required) [default: cli-test-org] the slug of your organization
@@ -78,8 +79,11 @@ OPTIONS
   -p, --parent=parent
       the id of the parent resource to be associated with imported data
 
-  -r, --resource=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
       (required) the type of resource being imported
+
+  -x, --cleanup
+      delete all other existing items
 
 EXAMPLES
   $ commercelayer imports:create -r stock_items -p <stock_location-id>
@@ -138,6 +142,22 @@ EXAMPLES
 ```
 
 _See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/details.ts)_
+
+### `cl-imports imports:group [FILE]`
+
+Describe the command here.
+
+```
+USAGE
+  $ cl-imports imports:group [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.0.1/src/commands/imports/group.ts)_
 
 ### `cl-imports imports:list`
 
