@@ -113,7 +113,7 @@ export default class ImportsCreate extends Command {
       if (chunks.length > 1) {
         this.log()
         this.warn(`The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${apiConf.imports_max_size} elements allowed for each single import
-         The import will be splitted into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}`)
+         The import will be split into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}`)
       }
 
       if (monitor) this.monitor = Monitor.create(inputsLength, this.log)
@@ -194,7 +194,7 @@ export default class ImportsCreate extends Command {
             }
 
           }
-          while (imp.status !== 'completed')
+          while (!['completed', 'interrupted'].includes(imp.status || ''))
         }
 
         return imp
