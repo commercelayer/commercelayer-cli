@@ -11,9 +11,14 @@ const generateImportCustomers = (size: number) => {
 
 	const data = inputs.join('\n')
 
+	const filePath = '/users/pierlu/Desktop/test_import_customers.csv'
+
 	fs.writeFileSync('/users/pierlu/Desktop/test_import_customers.csv', data)
+
+	// eslint-disable-next-line no-console
+	console.log(`Saved ${size} customer inputs to file ${filePath}`)
 
 }
 
 
-generateImportCustomers(2390)
+generateImportCustomers(13648)
