@@ -35,8 +35,8 @@ const generateInputJSON = async (filePath: string): Promise<Array<any>> => {
 
 const generateInputs = async (filePath: string, flags?: any): Promise<Array<any>> => {
 	if (!fs.existsSync(filePath)) return Promise.reject(new Error('Unable to find file ' + chalk.italic(filePath)))
-	if (flags?.json) return generateInputJSON(filePath)
-	return generateInputsCSV(filePath)
+	if (flags?.csv) return generateInputsCSV(filePath)
+	return generateInputJSON(filePath)
 }
 
 
