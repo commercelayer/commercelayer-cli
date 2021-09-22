@@ -64,7 +64,7 @@ OPTIONS
       show only import with warnings
 ```
 
-_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.1/src/commands/imports/index.ts)_
+_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.2/src/commands/imports/index.ts)_
 
 ### `cl-imports imports:create`
 
@@ -82,7 +82,7 @@ OPTIONS
       accept input file in CSV format
 
   -i, --inputs=inputs
-      (required) the path of the file containing teh resource data to import in CSV format
+      (required) the path of the file containing the data to import
 
   -o, --organization=organization
       (required) the slug of your organization
@@ -97,11 +97,11 @@ OPTIONS
       delete all other existing items
 
 EXAMPLES
-  $ commercelayer imports:create -r stock_items -p <stock_location-id>
-  $ cl imp:create skus -c
+  $ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>
+  $ cl imp:create skus -c -i <input-file-path>
 ```
 
-_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.1/src/commands/imports/create.ts)_
+_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.2/src/commands/imports/create.ts)_
 
 ### `cl-imports imports:delete ID`
 
@@ -125,7 +125,7 @@ EXAMPLES
   $ cl imp:delete <import-id>>
 ```
 
-_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.1/src/commands/imports/delete.ts)_
+_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.2/src/commands/imports/delete.ts)_
 
 ### `cl-imports imports:details ID`
 
@@ -153,7 +153,7 @@ EXAMPLES
   $ cl imp:details <import-id> -i -l
 ```
 
-_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.1/src/commands/imports/details.ts)_
+_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.2/src/commands/imports/details.ts)_
 
 ### `cl-imports imports:group GROUP_ID`
 
@@ -177,7 +177,7 @@ EXAMPLES
   $ cl imports:ghroup <group-id>
 ```
 
-_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.1/src/commands/imports/group.ts)_
+_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.2/src/commands/imports/group.ts)_
 
 ### `cl-imports imports:list`
 
@@ -218,5 +218,5 @@ EXAMPLES
   $ cl imp:list
 ```
 
-_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.1/src/commands/imports/list.ts)_
+_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v0.1.2/src/commands/imports/list.ts)_
 <!-- commandsstop -->
