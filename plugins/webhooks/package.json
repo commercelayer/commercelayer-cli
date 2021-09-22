@@ -2,12 +2,12 @@
 
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
-    "cl-webhooks": "./bin/run",
-    "cl-wh": "./bin/run",
-    "clw": "./bin/run"
+    "cl-imports": "./bin/run",
+    "cl-imp": "./bin/run",
+    "cli": "./bin/run"
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-imports/issues",
   "devDependencies": {
