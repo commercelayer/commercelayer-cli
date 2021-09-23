@@ -11,9 +11,21 @@ import apiConf from '../../api-conf'
 import chalk from 'chalk'
 
 
+const MIN_DELAY = 1000
+const SECURITY_DELAY = 50
 
-const importsDelay = (totalItems: number): number => {
-  return Math.ceil(((totalItems * apiConf.requests_max_secs) / apiConf.requests_max_num) * 1000)
+const importsDelay = (parallelRequests: number): number => {
+
+  const unitDelayBurst = apiConf.requests_max_secs_burst / apiConf.requests_max_num_burst
+  const unitDelayAvg = apiConf.requests_max_secs_avg / apiConf.requests_max_num_avg
+
+  const delayBurst = parallelRequests * unitDelayBurst
+  const delayAvg = parallelRequests * unitDelayAvg
+
+  const delay = Math.ceil(Math.max(delayBurst, delayAvg) * 1000)
+
+  return Math.max(MIN_DELAY, delay + SECURITY_DELAY)
+
 }
 
 
@@ -41,7 +53,7 @@ export default class ImportsCreate extends Command {
       description: 'the id of the parent resource to be associated with imported data',
     }),
     cleanup: flags.boolean({
-      char: 'x',
+      char: 'c',
       description: 'delete all other existing items',
     }),
     inputs: flags.string({
@@ -50,7 +62,7 @@ export default class ImportsCreate extends Command {
       required: true,
     }),
     csv: flags.boolean({
-      char: 'c',
+      char: 'C',
       description: 'accept input file in CSV format',
       dependsOn: ['inputs'],
     }),
@@ -99,6 +111,8 @@ export default class ImportsCreate extends Command {
       const inputs: Array<any> = await generateInputs(inputFile, flags).catch(error => this.error(error.message))
       const inputsLength = inputs.length
 
+      if (inputsLength === 0) this.error(`No ${type.replaceAll(/_/, ' ')} to import`)
+
       const chunks: Array<Chunk> = splitImports({
         resource_type: type,
         parent_resource_id: parentId,
@@ -106,7 +120,7 @@ export default class ImportsCreate extends Command {
         inputs,
       })
 
-      const groupId = chunks[0].group_id
+      const groupId = chunks[0]?.group_id
       const resource = type.replace(/_/g, ' ')
 
       if (chunks.length > 1) {
@@ -136,6 +150,7 @@ The import will be split into a set of ${chalk.yellowBright(String(chunks.length
 
     } catch (error) {
       this.printError(error)
+
     }
 
   }
@@ -177,15 +192,22 @@ The import will be split into a set of ${chalk.yellowBright(String(chunks.length
         let imp: Import = i
 
         if (monitor && this.monitor) {
-          if (bar) this.monitor.updateBar(bar, 0, { importId: i.id, status: 'waiting ...' })
+          let barValue = 0
+          if (bar) barValue = this.monitor.updateBar(bar, 0, { importId: i.id, status: 'waiting ...' })
           do {
 
-            await sleep(Math.max(1000, importsDelay(chunk.total_chunks)))
-            const tmp = await this.cl.imports.retrieve(imp.id).catch(() => undefined)
+            await sleep(importsDelay(chunk.total_chunks))
+            const tmp = await this.cl.imports.retrieve(imp.id)
+              .catch(async err => {
+                if (this.cl.isApiError(err) && (err.status === 429)) {
+                  if (imp && imp.status) barValue = this.monitor.updateBar(bar, barValue, { status: chalk.cyanBright(imp.status) })
+                  await sleep(10000)
+                }
+              })
 
             if (tmp) {
               imp = tmp
-              if (bar) this.monitor.updateBar(bar, undefined, {
+              if (bar) barValue = this.monitor.updateBar(bar, undefined, {
                 processed: Number(imp.processed_count),
                 warnings: Number(imp.warnings_count),
                 errors: Number(imp.errors_count),

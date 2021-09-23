@@ -105,7 +105,7 @@ class Monitor {
 	}
 
 
-	updateBar(bar: SingleBar, value?: number, payload?: Payload) {
+	updateBar(bar: SingleBar, value?: number, payload?: Payload): number {
 
 		const maxImportLength = String(MAX_IMPORT_SIZE).length
 		const updCount = (value === undefined) ? ((payload?.processed || 0) + (payload?.warnings || 0) + (payload?.errors || 0)) : value
@@ -117,11 +117,13 @@ class Monitor {
 		if (payload?.errors) updPayload.errors = String(payload.errors).padStart(maxImportLength, ' ')
 		if (payload?.importId) updPayload.import = payload.importId
 
-		if (payload?.status) updPayload.status = this.statusStyle(payload.status, payload.processed)
+		if (payload?.status) updPayload.status = this.statusStyle(payload.status.replace(/_/, ' '), payload.processed)
 
 		updPayload.tbp = String(bar.getTotal() - updCount).padStart(maxImportLength, ' ')
 
 		if (bar) bar.update(updCount, updPayload)
+
+		return updCount
 
 	}
 
