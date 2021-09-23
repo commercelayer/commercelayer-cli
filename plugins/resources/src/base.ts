@@ -496,6 +496,8 @@ export default abstract class extends Command {
 			)
 			else
 			if (error.response.status === 500) this.error('We\'re sorry, but something went wrong (500)')
+			else
+			if (error.response.status === 429) this.error('You have done too many requests in the last 5 minutes')
 			else err = error.response.data.errors
 		} else
 			if (error.errors) err = error.errors().toArray()
