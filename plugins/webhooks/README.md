@@ -75,11 +75,14 @@ USAGE
   $ cl-imports imports:create
 
 OPTIONS
+  -C, --csv
+      accept input file in CSV format
+
   -b, --blind
       execute in blind mode without showing the progress monitor
 
-  -c, --csv
-      accept input file in CSV format
+  -c, --cleanup
+      delete all other existing items
 
   -i, --inputs=inputs
       (required) the path of the file containing the data to import
@@ -92,9 +95,6 @@ OPTIONS
 
   -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
       (required) the type of resource being imported
-
-  -x, --cleanup
-      delete all other existing items
 
 EXAMPLES
   $ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>
