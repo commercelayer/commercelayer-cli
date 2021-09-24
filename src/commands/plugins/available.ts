@@ -49,7 +49,7 @@ export default class PluginsAvailable extends Command {
 const AvailablePlugins = [
   { name: 'cleaner',    plugin: '@commercelayer/cli-plugin-cleaner',    description: 'Organization data cleaner',         enabled: false  },
   { name: 'exporter',   plugin: '@commercelayer/cli-plugin-exporter',   description: 'Organization data exporter',        enabled: false, hidden: true },
-  { name: 'imports',    plugin: '@commercelayer/cli-plugin-imports',    description: 'Organization imports manager',      enabled: true,  hidden: true },
+  { name: 'imports',    plugin: '@commercelayer/cli-plugin-imports',    description: 'Organization imports manager',      enabled: true   },
   { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',  enabled: true   },
   { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',          enabled: true   },
   { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',    enabled: true,  hidden: true  },
