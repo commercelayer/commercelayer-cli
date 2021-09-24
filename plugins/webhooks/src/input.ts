@@ -24,7 +24,7 @@ const generateInputJSON = async (filePath: string): Promise<Array<any>> => {
 	try {
 		const data = fs.readFileSync(filePath, { encoding: 'utf-8' })
 		const json = JSON.parse(data)
-		if (!Array.isArray(json)) throw new Error(undefined)
+		if (!Array.isArray(json)) throw new Error('The file does not contain an array of inputs')
 		return Promise.resolve(json)
 	} catch (error) {
 		return Promise.reject(error)
