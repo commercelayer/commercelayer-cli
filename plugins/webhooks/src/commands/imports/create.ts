@@ -125,9 +125,10 @@ export default class ImportsCreate extends Command {
 
       if (chunks.length > 1) {
         this.log()
-        this.warn(`
-The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${apiConf.imports_max_size} elements allowed for each single import
-The import will be split into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}`)
+        const msg1 = `The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${apiConf.imports_max_size} elements allowed for each single import.`
+        const msg2 = `The import will be split into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}.`
+        const msg3 = `Execute the command ${chalk.italic(`imports:group ${groupId}`)} to retrieve all the related imports`
+        this.log(`${msg1} ${msg2} ${msg3}`)
       }
 
       if (monitor) this.monitor = Monitor.create(inputsLength, this.log)
@@ -193,7 +194,7 @@ The import will be split into a set of ${chalk.yellowBright(String(chunks.length
 
         if (monitor && this.monitor) {
           let barValue = 0
-          if (bar) barValue = this.monitor.updateBar(bar, 0, { importId: i.id, status: 'waiting ...' })
+          if (bar) barValue = this.monitor.updateBar(bar, 0, { importId: i.id, status: 'waiting...' })
           do {
 
             await sleep(importsDelay(chunk.total_chunks))

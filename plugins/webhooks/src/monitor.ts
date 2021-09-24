@@ -264,7 +264,7 @@ class Monitor {
 	private statusStyle(status: string, processed?: number): string {
 
 		let s = status
-		if ((s.includes('in_progress')) && (processed === 0)) s = 'waiting ...'
+		if ((s.includes('in_progress')) && (processed === 0)) s = 'waiting...'
 		s = s.padEnd(11, ' ')
 
 		if (this.style.colors) {
