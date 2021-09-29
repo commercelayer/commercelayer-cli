@@ -1,20 +1,18 @@
 {
-
-  "name": "@commercelayer/cli-plugin-imports",
-  "description": "Commerce Layer CLI Imports plugin",
-  "version": "1.0.0",
+  "name": "@commercelayer/cli-plugin-webhooks",
+  "description": "Commerce Layer CLI Webhooks plugin",
+  "version": "0.1.7",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
-    "cl-imports": "./bin/run",
-    "cl-imp": "./bin/run",
-    "cli": "./bin/run"
+    "cl-webhooks": "./bin/run",
+    "cl-wh": "./bin/run",
+    "clw": "./bin/run"
   },
-  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-imports/issues",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.21",
-    "@types/cli-progress": "^3.9.2",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.17.60",
     "@types/update-notifier": "^5.0.0",
@@ -27,7 +25,7 @@
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
     "ts-node": "^8.10.2",
-    "typescript": "^4.4.0"
+    "typescript": "^3.9.10"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -38,7 +36,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-imports",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks",
   "keywords": [
     "oclif",
     "ecommerce",
@@ -48,10 +46,10 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "cl-imports",
+    "bin": "cl-webhooks",
     "plugins": []
   },
-  "repository": "commercelayer/commercelayer-cli-plugin-imports",
+  "repository": "commercelayer/commercelayer-cli-plugin-webhooks",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
@@ -64,12 +62,9 @@
   "dependencies": {
     "@commercelayer/js-auth": "^2.0.4",
     "@commercelayer/sdk": "^2.0.2",
-    "@fast-csv/parse": "^4.3.6",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
-    "cli-progress": "^3.9.0",
     "cli-table3": "0.6.0",
-    "log-symbols": "^5.0.0",
     "tslib": "^1.14.1",
     "update-notifier": "^5.1.0"
   },

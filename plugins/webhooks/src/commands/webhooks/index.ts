@@ -4,9 +4,9 @@ import ListCommand from './list'
 import DetailsCommand from './details'
 
 
-export default class ImportsIndex extends Command {
+export default class WebhooksIndex extends Command {
 
-	static description = 'list all the created imports'
+	static description = 'list all the registered webhooks'
 
 	static flags = {
 		...Command.flags,
@@ -17,7 +17,7 @@ export default class ImportsIndex extends Command {
 
 	async run() {
 
-		const { args } = this.parse(ImportsIndex)
+		const { args } = this.parse(WebhooksIndex)
 
 		const command = args.id ? DetailsCommand : ListCommand
 		const result = command.run(this.argv, this.config)
