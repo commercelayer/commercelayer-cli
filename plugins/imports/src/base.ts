@@ -1,7 +1,6 @@
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
 import path from 'path'
-import _ from 'lodash'
 import { formatOutput } from './common'
 
 import updateNotifier from 'update-notifier'
@@ -75,11 +74,6 @@ export default abstract class extends Command {
 				else err = error.response.data.errors
 		} else
 		if (error.errors) err = error.errors
-		else
-		if (error.toArray) err = error.toArray().map((e: { code: string | undefined }) => {
-			if (e.code) e.code = _.snakeCase(e.code).toUpperCase()	// Fix SDK camelCase issue
-			return e
-		})
 		else
 		if (error.message) err = error.message
 
