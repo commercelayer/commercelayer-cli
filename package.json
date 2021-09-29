@@ -1,7 +1,7 @@
 {
-  "name": "@commercelayer/commercelayer-cli",
+  "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -89,7 +89,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@commercelayer/js-auth": "^2.0.4",
-    "@commercelayer/js-sdk": "^4.1.1",
+    "@commercelayer/sdk": "^2.0.7",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",

@@ -3,6 +3,7 @@ const packageJson = require('../package.json')
 import path from 'path'
 import fs from 'fs'
 import Config from '@oclif/config'
+import type { ApiMode } from './common'
 
 const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
 export default clicfg
@@ -10,23 +11,25 @@ export default clicfg
 const SUPER_USER_MODE = 'SBREZZZA'
 export { SUPER_USER_MODE }
 
+
 interface AppKey {
 	key: string;
-	mode: string;
+	mode: ApiMode;
 }
 
 
 interface AppAuth {
-	baseUrl: string;
+	slug: string;
+	domain?: string;
 	clientId: string;
 	clientSecret: string;
 }
 
 interface AppInfo extends AppKey, AppAuth {
 	organization: string;
-	slug: string;
 	type: string;
 	name: string;
+	baseUrl?: string;
 }
 
 export { AppKey, AppAuth, AppInfo }
