@@ -33,8 +33,8 @@ const hook: Hook<'prerun'> = async function (opts) {
 
   const flagConfig = {
     organization: flagUtil.string({ char: 'o', hidden: true }),
-    live: flagUtil.boolean({ hidden: true }),
-    domain: flagUtil.string({ char: 'd', hidden: true }),
+    live: flagUtil.boolean({ hidden: true, dependsOn: ['organization'] }),
+    domain: flagUtil.string({ char: 'd', hidden: true, dependsOn: ['organization'] }),
     accessToken: flagUtil.string({ hidden: true }),
   }
 
