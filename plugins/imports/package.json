@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-imports": "./bin/run",
@@ -66,8 +66,10 @@
     "@fast-csv/parse": "^4.3.6",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
+    "chalk": "^2.4.2",
     "cli-progress": "^3.9.0",
     "cli-table3": "0.6.0",
+    "cli-ux": "^5.6.3",
     "tslib": "^1.14.1",
     "update-notifier": "^5.1.0"
   },
