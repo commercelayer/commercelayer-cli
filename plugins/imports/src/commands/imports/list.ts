@@ -95,7 +95,7 @@ export default class ImportsList extends Command {
         const params: QueryParamsList = {
           pageSize,
           pageNumber: ++currentPage,
-          sort: ['-completed_at'],
+          sort: ['-started_at'],
           filters: {},
         }
 
@@ -128,7 +128,7 @@ export default class ImportsList extends Command {
       if (tableData?.length) {
 
         const table = new Table({
-          head: ['ID', 'Resource type', 'Status', 'Processed', 'Warnings', 'Errors', 'Completed at', 'Group ID'],
+          head: ['ID', 'Resource type', 'Status', 'Prc.', 'Wrn.', 'Err.', 'Started at', 'Group ID'],
           // colWidths: [100, 200],
           style: {
             head: ['brightYellow'],
@@ -145,7 +145,7 @@ export default class ImportsList extends Command {
           { content: i.processed_count, hAlign: 'center' as HorizontalAlignment },
           { content: i.warnings_count, hAlign: 'center' as HorizontalAlignment },
           { content: i.errors_count, hAlign: 'center' as HorizontalAlignment },
-          localeDate(i.completed_at || ''),
+          localeDate(i.started_at || ''),
           { content: ((i.metadata?.group_id || i.metadata?.correlation_id) as string || ''), hAlign: 'center' as HorizontalAlignment },
         ]))
 
