@@ -8,6 +8,8 @@ import { localeDate } from '../../common'
 import cliux from 'cli-ux'
 
 
+const MAX_IMPORTS = 1000
+
 export default class ImportsList extends Command {
 
   static description = 'list all the created imports'
@@ -25,6 +27,7 @@ export default class ImportsList extends Command {
     all: flags.boolean({
       char: 'A',
       description: `show all imports instead of first ${apiConf.page_max_size} only `,
+      exclusive: ['limit'],
     }),
     type: flags.string({
       char: 't',
@@ -34,7 +37,7 @@ export default class ImportsList extends Command {
     group: flags.string({
       char: 'g',
       description: 'the group ID associated to the import in case of multi-chunk imports',
-      exclusive: ['all'],
+      exclusive: ['all, limit'],
     }),
     status: flags.string({
       char: 's',
@@ -49,12 +52,19 @@ export default class ImportsList extends Command {
       char: 'w',
       description: 'show only import with warnings',
     }),
+    limit: flags.integer({
+      char: 'l',
+      description: 'limit number imports in output',
+      exclusive: ['all'],
+    }),
   }
 
 
   async run() {
 
     const { flags } = this.parse(ImportsList)
+
+    if (flags.limit && (flags.limit < 1)) this.error(chalk.italic('Limit') + ' must be a positive integer')
 
     const organization = flags.organization
     const accessToken = flags.accessToken
@@ -70,11 +80,14 @@ export default class ImportsList extends Command {
 
     try {
 
-      const pageSize = apiConf.page_max_size
+      let pageSize = apiConf.page_max_size
       const tableData = []
       let currentPage = 0
       let pageCount = 1
+      let itemCount = 0
       let totalItems = 1
+
+      if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
       cliux.action.start('Fetching imports')
       while (currentPage < pageCount) {
@@ -100,8 +113,11 @@ export default class ImportsList extends Command {
         if (imports?.length) {
           tableData.push(...imports)
           currentPage = imports.meta.currentPage
-          if (flags.all) pageCount = imports.meta.pageCount
-          totalItems = imports.meta.recordCount
+          if (currentPage === 1) {
+            pageCount = this.computeNumPages(flags, imports.meta)
+            totalItems = imports.meta.recordCount
+          }
+          itemCount += imports.length
         }
 
       }
@@ -135,9 +151,7 @@ export default class ImportsList extends Command {
 
         this.log(table.toString())
 
-        this.log()
-        if (flags.all) this.log(`Total imports count: ${chalk.yellowBright(String(totalItems))}`)
-        else this.warn(`Only ${chalk.yellowBright(String(pageSize))} of ${chalk.yellowBright(String(totalItems))} records are displayed, to see all existing items run the command with the ${chalk.italic.bold('All')} flag enabled`)
+        this.footerMessage(flags, itemCount, totalItems)
 
       } else this.log(chalk.italic('No imports found'))
 
@@ -148,6 +162,43 @@ export default class ImportsList extends Command {
     } catch (error) {
       this.printError(error)
     }
+
+  }
+
+
+  private footerMessage(flags: any, itemCount: number, totalItems: number) {
+
+    this.log()
+    this.log(`Total displayed imports: ${chalk.yellowBright(String(itemCount))}`)
+    this.log(`Total import count: ${chalk.yellowBright(String(totalItems))}`)
+
+    if (itemCount < totalItems) {
+      if (flags.all || ((flags.limit || 0) > MAX_IMPORTS)) {
+        this.log()
+        this.warn(`The maximum number of imports that can be displayed is ${chalk.yellowBright(String(MAX_IMPORTS))}`)
+      } else
+      if (!flags.limit) {
+          this.log()
+          const displayedMsg = `Only ${chalk.yellowBright(String(itemCount))} of ${chalk.yellowBright(String(totalItems))} records are displayed`
+          if (totalItems < MAX_IMPORTS) this.warn(`${displayedMsg}, to see all existing items run the command with the ${chalk.italic.bold('--all')} flag enabled`)
+          else this.warn(`${displayedMsg}, to see more items (max ${MAX_IMPORTS}) run the command with the ${chalk.italic.bold('--limit')} flag enabled`)
+      }
+    }
+
+  }
+
+
+  private computeNumPages(flags: any, meta: any): number {
+
+    let numRecord = 25
+    if (flags.all) numRecord = meta.recordCount
+    else
+      if (flags.limit) numRecord = flags.limit
+
+    numRecord = Math.min(MAX_IMPORTS, numRecord)
+    const numPages = Math.ceil(numRecord / 25)
+
+    return numPages
 
   }
 
