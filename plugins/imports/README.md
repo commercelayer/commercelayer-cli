@@ -51,6 +51,9 @@ OPTIONS
   -g, --group=group
       the group ID associated to the import in case of multi-chunk imports
 
+  -l, --limit=limit
+      limit number imports in output
+
   -o, --organization=organization
       (required) the slug of your organization
 
@@ -64,7 +67,7 @@ OPTIONS
       show only import with warnings
 ```
 
-_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.0.4/src/commands/imports/index.ts)_
+_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/index.ts)_
 
 ### `cl-imports imports:create`
 
@@ -101,7 +104,7 @@ EXAMPLES
   $ cl imp:create skus -c -i <input-file-path>
 ```
 
-_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.0.4/src/commands/imports/create.ts)_
+_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/create.ts)_
 
 ### `cl-imports imports:delete ID`
 
@@ -125,7 +128,7 @@ EXAMPLES
   $ cl imp:delete <import-id>>
 ```
 
-_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.0.4/src/commands/imports/delete.ts)_
+_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/delete.ts)_
 
 ### `cl-imports imports:details ID`
 
@@ -153,7 +156,7 @@ EXAMPLES
   $ cl imp:details <import-id> -i -l
 ```
 
-_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.0.4/src/commands/imports/details.ts)_
+_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/details.ts)_
 
 ### `cl-imports imports:group GROUP_ID`
 
@@ -177,7 +180,7 @@ EXAMPLES
   $ cl imports:ghroup <group-id>
 ```
 
-_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.0.4/src/commands/imports/group.ts)_
+_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/group.ts)_
 
 ### `cl-imports imports:list`
 
@@ -196,6 +199,9 @@ OPTIONS
 
   -g, --group=group
       the group ID associated to the import in case of multi-chunk imports
+
+  -l, --limit=limit
+      limit number imports in output
 
   -o, --organization=organization
       (required) the slug of your organization
@@ -218,5 +224,5 @@ EXAMPLES
   $ cl imp:list
 ```
 
-_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.0.4/src/commands/imports/list.ts)_
+_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/list.ts)_
 <!-- commandsstop -->
