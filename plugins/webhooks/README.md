@@ -33,6 +33,7 @@ $ cl-webhooks [COMMAND] (--help | -h) for detailed information about CLI command
 * [`cl-webhooks webhooks:events ID`](#cl-webhooks-webhooksevents-id)
 * [`cl-webhooks webhooks:list`](#cl-webhooks-webhookslist)
 * [`cl-webhooks webhooks:reset ID`](#cl-webhooks-webhooksreset-id)
+* [`cl-webhooks webhooks:topics`](#cl-webhooks-webhookstopics)
 * [`cl-webhooks webhooks:update ID`](#cl-webhooks-webhooksupdate-id)
 
 ### `cl-webhooks webhooks`
@@ -48,7 +49,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/index.ts)_
+_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/index.ts)_
 
 ### `cl-webhooks webhooks:create`
 
@@ -69,7 +70,7 @@ EXAMPLES
   $ cl wh:create -t orders.place -u http://myurl.com
 ```
 
-_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/create.ts)_
+_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/create.ts)_
 
 ### `cl-webhooks webhooks:destroy ID`
 
@@ -95,7 +96,7 @@ EXAMPLES
   $ cl wh:destroy <webhook-id>>
 ```
 
-_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/destroy.ts)_
+_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/destroy.ts)_
 
 ### `cl-webhooks webhooks:details ID`
 
@@ -122,7 +123,7 @@ EXAMPLES
   $ cl wh:details <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/details.ts)_
+_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/details.ts)_
 
 ### `cl-webhooks webhooks:events ID`
 
@@ -146,7 +147,7 @@ EXAMPLES
   $ cl wh:events <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/events.ts)_
+_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/events.ts)_
 
 ### `cl-webhooks webhooks:list`
 
@@ -169,7 +170,7 @@ EXAMPLES
   $ cl wh:list
 ```
 
-_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/list.ts)_
+_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/list.ts)_
 
 ### `cl-webhooks webhooks:reset ID`
 
@@ -193,7 +194,18 @@ EXAMPLES
   $ cl wh:reset <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/reset.ts)_
+_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/reset.ts)_
+
+### `cl-webhooks webhooks:topics`
+
+Show online documentation for supported events.
+
+```
+USAGE
+  $ cl-webhooks webhooks:topics
+```
+
+_See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/topics.ts)_
 
 ### `cl-webhooks webhooks:update ID`
 
@@ -217,5 +229,5 @@ EXAMPLES
   $ cl wh:update -i customer_group
 ```
 
-_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v0.1.9/src/commands/webhooks/update.ts)_
+_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.0/src/commands/webhooks/update.ts)_
 <!-- commandsstop -->
