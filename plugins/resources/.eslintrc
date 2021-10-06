@@ -5,6 +5,7 @@
   ],
   "rules": {
     // "no-console": "off",
+    "complexity": "off",
     "indent": "off",
     "object-curly-spacing": "off",
     "padded-blocks": "off",

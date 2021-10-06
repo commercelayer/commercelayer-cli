@@ -3,13 +3,13 @@
 /* eslint-disable complexity */
 import Command, { flags } from '../../base'
 import { baseURL } from '../../common'
-import cl, { CLayer } from '@commercelayer/js-sdk'
+import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import chalk from 'chalk'
-import { denormalize } from '../../jsonapi'
 import cliux from 'cli-ux'
 import notifier from 'node-notifier'
 import jwt from 'jsonwebtoken'
 import { getIntegrationToken } from '@commercelayer/js-auth'
+import { QueryParamsList } from '@commercelayer/sdk/lib/query'
 
 
 // const maxPagesWarning = 1000
@@ -120,22 +120,26 @@ export default class ResourcesAll extends Command {
 
 
 
-  async checkAccessToken(jwtData: any, flags: any, baseUrl: string): Promise<any> {
+  async checkAccessToken(jwtData: any, flags: any, client: CommerceLayerClient): Promise<any> {
 
     if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
 
       await cliux.wait((securityInterval + 1) * 1000)
 
+      const organization = flags.organization
+      const domain = flags.domain
+
       const token = await getIntegrationToken({
         clientId: flags.clientId || '',
         clientSecret: flags.clientSecret || '',
-        endpoint: baseUrl,
+        endpoint: baseURL(organization, domain),
       })?.catch(error => {
         this.error('Unable to refresh access token: ' + error.message)
       })
 
       const accessToken = token?.accessToken || ''
-      cl.init({ accessToken, endpoint: baseUrl })
+
+      client.config({ organization, domain, accessToken })
       jwtData = jwt.decode(accessToken) as any
 
     }
@@ -153,31 +157,35 @@ export default class ResourcesAll extends Command {
 
     const resource = this.checkResource(args.resource)
 
-    const baseUrl = baseURL(flags.organization, flags.domain)
+    const organization = flags.organization
+    const domain = flags.domain
     const accessToken = flags.accessToken
     let notification = flags.notify
 
     // Include flags
-    const include: string[] = this.includeValuesArray(flags.include)
+    const include: string[] = this.includeFlag(flags.include)
     // Fields flags
-    const fields = this.mapToSdkParam(this.fieldsValuesMap(flags.fields))
+    const fields = this.fieldsFlag(flags.fields, resource.api)
     // Where flags
-    const wheres = this.mapToSdkParam(this.whereValuesMap(flags.where))
-    // Order flags
-    const order = this.mapToSdkParam(this.orderingValuesMap(flags.sort))
+    const wheres = this.whereFlag(flags.where)
+    // Sort flags
+    const sort = this.sortFlag(flags.sort)
 
 
     try {
 
-      const resObj: any = (cl as CLayer)[resource.sdk as keyof CLayer]
-      let req = resObj
+      const cl = commercelayer({ organization, domain, accessToken })
+      let jwtData = jwt.decode(accessToken) as any
 
-      if (include && (include.length > 0)) req = req.includes(...include)
-      if (fields && (fields.length > 0)) req = req.select(...fields)
-      if (wheres && (wheres.length > 0)) req = req.where(...wheres)
-      if (order && (order.length > 0)) req = req.order(...order)
-      else req = req.order({ created_at: 'asc' })  // query order issue
-      req = req.perPage(maxPageItems)
+      const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      const params: QueryParamsList = {}
+
+      if (include && (include.length > 0)) params.include = include
+      if (fields && (Object.keys(fields).length > 0)) params.fields = fields
+      if (wheres && (Object.keys(wheres).length > 0)) params.filters = wheres
+      if (sort && (Object.keys(sort).length > 0)) params.sort = sort
+      else params.sort = { created_at: 'asc' }  // query order issue
+      params.pageSize = maxPageItems
 
       const resources: any = []
 
@@ -194,9 +202,6 @@ export default class ResourcesAll extends Command {
       })
 
 
-      cl.init({ accessToken, endpoint: baseUrl })
-      let jwtData = jwt.decode(accessToken) as any
-
       do {
 
         page++
@@ -208,11 +213,13 @@ export default class ResourcesAll extends Command {
         */
         if ((page > 1) && (pages > 50)) await cliux.wait((pages < 600) ? 200 : 500)
 
-        jwtData = await this.checkAccessToken(jwtData, flags, baseUrl)
+        jwtData = await this.checkAccessToken(jwtData, flags, cl)
 
-        const res = await req.page(page).all({ rawResponse: true })
-        pages = res.meta.page_count // pages count can change during extraction
-        const recordCount = res.meta.record_count
+        params.pageNumber = page
+
+        const res = await resSdk.list(params)
+        pages = res.meta.pageCount // pages count can change during extraction
+        const recordCount = res.meta.recordCount
 
         if (recordCount > 0) {
 
@@ -226,8 +233,8 @@ export default class ResourcesAll extends Command {
             progressBar.start(recordCount, 0)
           } else progressBar.setTotal(recordCount)
 
-          resources.push(...(flags.raw ? res.data : denormalize(res)))
-          progressBar.increment(res.data.length)
+          resources.push(...res)
+          progressBar.increment(res.length)
 
         }
 
@@ -237,6 +244,7 @@ export default class ResourcesAll extends Command {
       progressBar.stop()
 
       const out = resources
+      if (out.meta) delete out.meta
 
 
       // Print and save output

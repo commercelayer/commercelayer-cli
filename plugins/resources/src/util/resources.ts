@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Resource } from '../commands/resources'
 import axios from 'axios'
-import cl from '@commercelayer/js-sdk'
+import { CommerceLayerStatic } from '@commercelayer/sdk'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
 const resFile = './resources.json'
@@ -34,7 +34,7 @@ const getResourcesJson = async (): Promise<any> => {
 
 
 const isSingleton = (res: string): boolean => {
-	return ['organization'].includes(res)
+	return ['organization', 'application'].includes(res)
 }
 
 
@@ -46,13 +46,12 @@ const parseResourcesSchema = async (): Promise<Resource[]> => {
 
 		const Inflector = require('inflector-js')
 
-		const resList = resJson.data.map((r: { id: string }) => {
-			const singleton = isSingleton(r.id)
+		const resList = resJson.data.map((r: { id: string; attributes: { singleton: boolean } }) => {
 			const item = {
 				name: r.id,
-				api: singleton ? r.id : Inflector.pluralize(r.id),
-				sdk: Inflector.camelize(r.id),
-				singleton,
+				api: r.attributes.singleton ? r.id : Inflector.pluralize(r.id),
+				model: Inflector.camelize(r.id),
+				singleton: r.attributes.singleton,
 			}
 			return item
 		})
@@ -70,14 +69,13 @@ const parseResourcesSdk = async (): Promise<Resource[]> => {
 
 	const Inflector = require('inflector-js')
 
-	const resList = Object.keys(cl).filter(r => (r.charAt(0) === r.charAt(0).toUpperCase())).map(r => {
-		const name = Inflector.underscore(r)
-		const singleton = isSingleton(name)
+	const resList = CommerceLayerStatic.resources().map(r => {
+		const singular = Inflector.singularize(r)
 		const item = {
-			name: name,
-			api: singleton ? name : Inflector.pluralize(name),
-			sdk: r,
-			singleton,
+			name: singular,
+			api: r,
+			model: Inflector.camelize(singular),
+			singleton: isSingleton(r),
 		}
 		return item
 	})
@@ -95,14 +93,18 @@ const exportResources = async ({ source = 'sdk', variable = false, name = 'resou
 	if (variable || array) console.log((variable ? `const ${name}: Resource[] = ` : '') + '[')
 	resources.forEach(res => {
 		let item = `${tab ? '\t' : ''}{ `
-		item += `name: '${res.name}', api: '${res.api}', sdk: '${res.sdk}'`
+		item += `name: '${res.name}', api: '${res.api}', model: '${res.model}'`
 		if (res.singleton) item += ', singleton: true'
-		item += ' }'
+		item += ' },'
 		console.log(item)
 	})
 	if (array) console.log(']\n')
 
+	console.log('\nResources generated from: ' + source + '\n')
+
 }
 
 
-exportResources({ array: true, tab: true })
+const source = (process.argv.length > 2) ? (['sdk', 'online'].includes(process.argv[2]) ? process.argv[2] : 'sdk') : undefined
+
+exportResources({ source, array: true, tab: true })

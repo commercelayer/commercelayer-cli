@@ -1,9 +1,8 @@
 import Command, { flags } from '../../base'
-import { baseURL } from '../../common'
-import cl, { CLayer } from '@commercelayer/js-sdk'
+import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import chalk from 'chalk'
-import { denormalize } from '../../jsonapi'
 import cliux from 'cli-ux'
+import { QueryParamsList } from '@commercelayer/sdk/lib/query'
 
 export default class ResourcesList extends Command {
 
@@ -71,45 +70,51 @@ export default class ResourcesList extends Command {
 
     const resource = this.checkResource(args.resource)
 
-    const baseUrl = baseURL(flags.organization, flags.domain)
+    // const baseUrl = baseURL(flags.organization, flags.domain)
+    const organization = flags.organization
+    const domain = flags.domain
     const accessToken = flags.accessToken
 
     // Include flags
-    const include: string[] = this.includeValuesArray(flags.include)
+    const include: string[] = this.includeFlag(flags.include)
     // Fields flags
-    const fields = this.mapToSdkParam(this.fieldsValuesMap(flags.fields))
+    const fields = this.fieldsFlag(flags.fields, resource.api)
     // Where flags
-    const wheres = this.mapToSdkParam(this.whereValuesMap(flags.where))
-    // Order flags
-    const order = this.mapToSdkParam(this.orderingValuesMap(flags.sort))
+    const wheres = this.whereFlag(flags.where)
+    // Sort flags
+    const sort = this.sortFlag(flags.sort)
 
     const page = flags.page
     const perPage = flags.pageSize
 
 
-    cl.init({ accessToken, endpoint: baseUrl })
+    const cl = commercelayer({ organization, domain, accessToken })
 
     try {
 
-      const resObj: any = (cl as CLayer)[resource.sdk as keyof CLayer]
-      let req = resObj
+      const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
 
-      if (include && (include.length > 0)) req = req.includes(...include)
-      if (fields && (fields.length > 0)) req = req.select(...fields)
-      if (wheres && (wheres.length > 0)) req = req.where(...wheres)
-      if (order && (order.length > 0)) req = req.order(...order)
-      if (perPage && (perPage > 0)) req = req.perPage(perPage)
-      if (page && (page > 0)) req = req.page(page)
+      const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      const params: QueryParamsList = {}
+
+      if (include && (include.length > 0)) params.include = include
+      if (fields && (Object.keys(fields).length > 0)) params.fields = fields
+      if (wheres && (Object.keys(wheres).length > 0)) params.filters = wheres
+      if (sort && (Object.keys(sort).length > 0)) params.sort = sort
+      if (perPage && (perPage > 0)) params.pageSize = perPage
+      if (page && (page > 0)) params.pageNumber = page
 
       cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
-      const res = await req.all({ rawResponse: true })
+      const res = await resSdk.list(params)
       cliux.action.stop()
 
-      const out = flags.raw ? res : denormalize(res)
+      const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
+      const meta = res.meta
+      if (!flags.raw) delete out.meta
 
-      if (res.data && (res.data.length > 0)) {
+      if (res && (res.length > 0)) {
         this.printOutput(out, flags)
-        this.log(`\nRecords: ${chalk.blueBright(res.data.length)} of ${res.meta.record_count} | Page: ${chalk.blueBright(String(flags.page || 1))} of ${res.meta.page_count}\n`)
+        this.log(`\nRecords: ${chalk.blueBright(res.length)} of ${meta.recordCount} | Page: ${chalk.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
       } else this.log(chalk.italic('\nNo records found\n'))
 

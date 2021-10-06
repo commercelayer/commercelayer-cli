@@ -8,11 +8,26 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import { fixType } from './common'
-
+import { CommerceLayerStatic } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'
 
+
+
 const pkg = require('../package.json')
+
+
+type KeyVal = { [key: string]: string | number | boolean | undefined | null }
+
+type KeyValString = { [key: string]: string }
+
+type KeyValArray = { [key: string]: string[] }
+
+type KeyValRel = { [key: string]: { readonly id: string; readonly type: string } }
+
+type KeyValObj = { [key: string]: any }
+
+type KeyValSort = { [key: string]: 'asc' | 'desc' }
 
 
 export default abstract class extends Command {
@@ -51,6 +66,7 @@ export default abstract class extends Command {
 		raw: flags.boolean({
 			char: 'R',
 			description: 'print out the raw API response',
+			hidden: false,
 		}),
 	}
 
@@ -138,7 +154,7 @@ export default abstract class extends Command {
 	}
 
 
-	includeValuesArray(flag: string[]): string[] {
+	includeFlag(flag: string[]): string[] {
 		const values: string[] = []
 		if (flag) {
 			const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
@@ -149,44 +165,44 @@ export default abstract class extends Command {
 	}
 
 
-	objectValuesMap(flag: string[]): Map<string, any> {
+	objectFlag(flag: string[]): KeyValObj {
 
-		const objects = new Map<string, any>()
+		const objects: KeyValObj = {}
 
 		if (flag && (flag.length > 0)) {
 			flag.forEach(f => {
 
-					const kv = f.split('/')
+				const kv = f.split('/')
 
-					if (kv.length > 2) this.error('Can be defined only one object for each object flag',
-						{ suggestions: [`Split the value ${chalk.italic(f)} into two object flags`] }
-					)
-					else
-					if (kv.length === 1) this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
+				if (kv.length > 2) this.error('Can be defined only one object for each object flag',
+					{ suggestions: [`Split the value ${chalk.italic(f)} into two object flags`] }
+				)
+				else
+				if (kv.length === 1) this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
 
-					const name = kv[0]
-					if (name === '') this.error(`No name defined in flag object ${f}`)
-					if (kv[1].trim() === '') this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
+				const name = kv[0]
+				if (name === '') this.error(`No name defined in flag object ${f}`)
+				if (kv[1].trim() === '') this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
 
-					const fields = kv[1].split(/(?<!\\),/g).map(v => v.trim())
-					if (fields[0].trim() === '') this.error(`No fields defined for object field ${chalk.italic(name)}`)
+				const fields = kv[1].split(/(?<!\\),/g).map(v => v.trim())
+				if (fields[0].trim() === '') this.error(`No fields defined for object field ${chalk.italic(name)}`)
 
-					const obj: { [n: string]: any } = {}
+				const obj: KeyValObj = {}
 
-					fields.forEach(f => {
+				fields.forEach(f => {
 
-						const eqi = f.indexOf('=')
-						if (eqi < 0) this.error(`No value defined for object field ${chalk.italic(f)} of object ${chalk.italic(name)}`)
+					const eqi = f.indexOf('=')
+					if (eqi < 0) this.error(`No value defined for object field ${chalk.italic(f)} of object ${chalk.italic(name)}`)
 
-						const n = f.substring(0, eqi)
-						const v = f.substring(eqi + 1)
+					const n = f.substring(0, eqi)
+					const v = f.substring(eqi + 1)
 
-						obj[n] = fixType(v)
+					obj[n] = fixType(v)
 
-					})
+				})
 
-					if (objects.get(name) === undefined) objects.set(name, {})
-					objects.set(name, { ...objects.get(name), ...obj })
+				if (objects[name] === undefined) objects[name] = {}
+				objects[name] = { ...objects[name], ...obj }
 
 			})
 		}
@@ -196,12 +212,16 @@ export default abstract class extends Command {
 	}
 
 
-	fieldsValuesMap(flag: string[]): Map<string, string[]> {
+	fieldsFlag(flag: string[], type: string): KeyValArray {
 
-		const fields = new Map<string, string[]>()
+		const fields: KeyValArray = {}
 
 		if (flag && (flag.length > 0)) {
 			flag.forEach(f => {
+
+				let res = type
+				let val = f
+
 				if (f.indexOf('/') > -1) {
 
 					const kv = f.split('/')
@@ -210,24 +230,19 @@ export default abstract class extends Command {
 						{ suggestions: [`Split the value ${chalk.italic(f)} into two fields flags`] }
 					)
 
-					const res = kv[0].replace('[', '').replace(']', '')
+					res = kv[0].replace('[', '').replace(']', '')
 					this.checkResource(res)
-					/*
-					if (res.split('.').length > 3) this.error('Can be defined only resources within the 3rd level',
-						{ suggestions: [`Reduce total depth of the requested resource ${chalk.italic(res)}`] }
-					)
-					*/
 
-					const values = kv[1].split(',').map(v => v.trim())
-					if (values[0].trim() === '') this.error(`No fields defined for resource ${chalk.italic(res)}`)
+					val = kv[1]
 
-					if (fields.get(res) === undefined) fields.set(res, [])
-					fields.get(res)?.push(...values)
-
-				} else {
-					if (fields.get('__self') === undefined) fields.set('__self', [])
-					fields.get('__self')?.push(...f.split(',').map(v => v.trim()))
 				}
+
+				const values = val.split(',').map(v => v.trim())
+				if (values[0].trim() === '') this.error(`No fields defined for resource ${chalk.italic(res)}`)
+
+				if (fields[res] === undefined) fields[res] = []
+				fields[res].push(...values)
+
 			})
 		}
 
@@ -235,24 +250,16 @@ export default abstract class extends Command {
 
 	}
 
-
-	mapToSdkObject(map: Map<string, any>, {
-		camelCase = true,
-		nullValues = true,
+/*
+	mapToSdkObject(map: Map<string, string>, {
 		fixTypes = false,
 	} = {}): any {
 
 		const object: any = {}
 
 		map.forEach((val, key) => {
-			const k = (camelCase && !key.startsWith('_')) ? _.camelCase(key) : key as keyof object
-			let v = ((val === 'null') && nullValues) ? null : val
-			if (fixTypes) v = fixType(v)
-			object[k] = v
-			/* it should never happen in real use cases
-			if (object[k] === undefined) object[k] = val
-			else object[k] = [...val, object[k]]
-			*/
+			const v = fixTypes ? fixType(val) : val
+			object[key] = v
 		})
 
 		return object
@@ -260,80 +267,25 @@ export default abstract class extends Command {
 	}
 
 
-	mapToSdkParam(map: Map<string, any>): any[] {
+	mapToSdkParam(map: Map<string, string[]>,): { [key: string]: string[] } {
 
-		const param: any[] = map.get('__self') as any[] || []
-		let subfields: any = null
+		const param: { [key: string]: string[] } = {}
 
 		map.forEach((val, key) => {
-			if (key !== '__self') {
-				if (subfields === null) subfields = {}
-				subfields[key] = val
-				/* it should never happenin real use cases
-				if (subfields[key] === undefined) subfields[key] = val
-				else subfields[key] = [...val, subfields[key]]
-				*/
-			}
+			param[key] = val
 		})
-
-		if (subfields !== null) param.push(subfields)
 
 		return param
 
 	}
+*/
 
-	// eslint-disable-next-line valid-jsdoc
-	/**
-	  * @deprecated The method should not be used
-	  */
-	/*
-	mapToSdkParamExtended(map: Map<string, string[]>): any[] {
+	whereFlag(flag: string[]): KeyValString {
 
-	   const param: any[] = map.get('__self') as any[] || []
-	   let subfields: any = null
-
-	   map.forEach((val, key) => {
-		   if (key !== '__self') {
-			   if (subfields === null) subfields = {}
-			   const kt = key.split('.')
-			   let s = subfields
-			   for (let i = 0; i < kt.length; i++) {
-				   const k = kt[i]
-				   if (i === (kt.length - 1)) {
-					   if (s[k] === undefined) s[k] = val
-					   else s[k] = [...val, s[k]]
-				   } else
-					   if (s[k] === undefined) s = s[k] = {}
-					   else
-						   if (Array.isArray(s[k])) {
-							   const o = s[k].find((x: any) => (typeof x === 'object'))
-							   if (o === undefined) s[k].push(s = {})
-							   else s = o
-						   } else s = s[k]
-			   }
-		   }
-	   })
-
-	   if (subfields !== null) param.push(subfields)
-
-	   return param
-
-   }
-   */
-
-
-	whereValuesMap(flag: string[]): Map<string, string> {
-
-		const wheres = new Map<string, string>()
+		const wheres: KeyValString = {}
 
 		if (flag && (flag.length > 0)) {
 			flag.forEach(f => {
-
-				/*
-				const po = f.indexOf('(') + 1
-				const pc = f.indexOf(')') + 1
-				if ((po < 2) || (pc < f.length) || (po > pc)) this.error(`Filter flag must be in the form ${chalk.italic('predicate(value)')}`)
-				*/
 
 				let sepChar = '/'
 				let si = f.indexOf(sepChar)
@@ -343,7 +295,6 @@ export default abstract class extends Command {
 					if (si < 0) this.error(`Filter flag must be in the form ${chalk.italic('predicate/value')} or ${chalk.italic('predicate=value')}`)
 				}
 
-				// const wt = f.split('(')
 				const wt = f.split(sepChar)
 				const w = wt[0]
 				if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.redBright(w)}`, {
@@ -351,10 +302,9 @@ export default abstract class extends Command {
 					ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
 				})
 
-				// const v = wt[1].substring(0, (wt[1].length - 1))
 				const v = wt[1]
 
-				wheres.set(w, v)
+				wheres[w] = v
 
 			})
 		}
@@ -364,9 +314,9 @@ export default abstract class extends Command {
 	}
 
 
-	orderingValuesMap(flag: string[]): Map<string, string> {
+	sortFlag(flag: string[]): KeyValSort {
 
-		const orderings = new Map<string, string>()
+		const sort: KeyValSort = {}
 
 		if (flag && (flag.length > 0)) {
 
@@ -390,7 +340,7 @@ export default abstract class extends Command {
 						{ suggestions: [`Sort direction can assume only the values ${chalk.italic('asc')} or ${chalk.italic('desc')}`] }
 					)
 
-					orderings.set(of, sd)
+					sort[of] = sd as 'asc' | 'desc'
 
 				})
 			} else {
@@ -399,20 +349,20 @@ export default abstract class extends Command {
 						const desc = f.startsWith('-')
 						const of = desc ? f.slice(1) : f
 						const sd = desc ? 'desc' : 'asc'
-						orderings.set(of, sd)
+						sort[of] = sd
 					})
 				})
 			}
 		}
 
-		return orderings
+		return sort
 
 	}
 
 
-	_simpleValuesMap(flag: string[], type = 'attribute'): Map<string, string> {
+	_keyvalFlag(flag: string[], type = 'attribute'): KeyValString {
 
-		const map = new Map<string, string>()
+		const param: KeyValString = {}
 
 		if (flag && (flag.length > 0)) {
 			flag.forEach(f => {
@@ -425,26 +375,41 @@ export default abstract class extends Command {
 				const name = f.substr(0, eqi)
 				const value = f.substr(eqi + 1)
 
-				if (map.get(name)) this.warn(`${_.capitalize(type)} ${chalk.yellow(name)} has already been defined`)
+				if (param[name]) this.warn(`${_.capitalize(type)} ${chalk.yellow(name)} has already been defined`)
 
-				map.set(name, value)
+				param[name] = value
 
 			})
 		}
 
-		return map
+		return param
 
 	}
 
 
-	attributeValuesMap(flag: string[]): any {
-		return this._simpleValuesMap(flag, 'attribute')
+	attributeFlag(flag: string[]): KeyValObj {
+		const attr = this._keyvalFlag(flag, 'attribute')
+		const attributes: KeyValObj = {}
+		Object.entries(attr).forEach(([k, v]) => {
+			attributes[k] = (v === 'null') ? null : v
+		})
+		return attributes
 	}
 
 
-	relationshipValuesMap(flag: string[]): Map<string, any> {
+	metadataFlag(flag: string[], { fixTypes = false } = {}): KeyVal {
+		const md = this._keyvalFlag(flag, 'metadata')
+		const metadata: KeyVal = {}
+		Object.keys(md).forEach(k => {
+			metadata[k] = fixTypes ? fixType(md[k]) : md[k]
+		})
+		return metadata
+	}
 
-		const relationships = new Map<string, any>()
+
+	relationshipFlag(flag: string[]): KeyValRel {
+
+		const relationships: KeyValRel = {}
 
 		if (flag && (flag.length > 0)) {
 			flag.forEach(f => {
@@ -458,26 +423,21 @@ export default abstract class extends Command {
 					{ suggestions: [`Define the relationship value using the format ${chalk.italic('resource_type/resource_id')}`] }
 				)
 
-				const name = rt[0]
-				const type = vt[0]
-				const id = vt[1]
+				const name = rt[0] as string
+				const id = vt[1] as string
+				const type = vt[0] as any
 
-				const res = this.checkResource(type)
+				// const res = this.checkResource(type)
 
-				if (relationships.get(name)) this.warn(`Relationship ${chalk.yellow(name)} has already been defined`)
+				if (relationships[name]) this.warn(`Relationship ${chalk.yellow(name)} has already been defined`)
 
-				relationships.set(name, { type, id, sdk: res?.sdk })
+				relationships[name] = { id, type }
 
 			})
 		}
 
 		return relationships
 
-	}
-
-
-	metadataValuesMap(flag: string[]): any {
-		return this._simpleValuesMap(flag, 'metadata')
 	}
 
 
@@ -490,27 +450,23 @@ export default abstract class extends Command {
 
 		let err = error
 
+		if (CommerceLayerStatic.isApiError(err)) {
+			err = err.errors
+		} else
 		if (error.response) {
 			if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
 				{ suggestions: ['Execute login to get access to the selected resource'] }
 			)
 			else
-			if (error.response.status === 500) this.error('We\'re sorry, but something went wrong (500)')
-			else
-			if (error.response.status === 429) this.error('You have done too many requests in the last 5 minutes')
-			else err = error.response.data.errors
+				if (error.response.status === 500) this.error(`We're sorry, but something went wrong (${error.response.status})`)
+				else
+					if (error.response.status === 429) this.error(`You have done too many requests in the last 5 minutes (${error.response.status})`)
+					else err = error.response.data.errors
 		} else
-			if (error.errors) err = error.errors().toArray()
-			else
-			if (error.toArray) err = error.toArray().map((e: { code: string | undefined }) => {
-				if (e.code) e.code = _.snakeCase(e.code).toUpperCase()	// Fix SDK camelCase issue
-				return e
-			})
-			else
-			if (error.message) err = error.message
+		if (error.message) err = error.message
 
 
-			this.error(formatOutput(err, flags))
+		this.error(formatOutput(err, flags))
 
 	}
 

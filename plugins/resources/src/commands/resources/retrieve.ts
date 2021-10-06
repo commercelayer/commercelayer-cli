@@ -1,7 +1,6 @@
 import Command, { flags } from '../../base'
-import { baseURL } from '../../common'
-import cl, { CLayer } from '@commercelayer/js-sdk'
-import { denormalize } from '../../jsonapi'
+import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
+import { QueryParamsRetrieve } from '@commercelayer/sdk/lib/query'
 
 
 export default class ResourcesRetrieve extends Command {
@@ -56,28 +55,31 @@ export default class ResourcesRetrieve extends Command {
 
     const resource = this.checkResource(res, { singular: true })
 
-    const baseUrl = baseURL(flags.organization, flags.domain)
+    const organization = flags.organization
+    const domain = flags.domain
     const accessToken = flags.accessToken
 
     // Include flags
-    const include: string[] = this.includeValuesArray(flags.include)
+    const include: string[] = this.includeFlag(flags.include)
     // Fields flags
-    const fields = this.mapToSdkParam(this.fieldsValuesMap(flags.fields))
+    const fields = this.fieldsFlag(flags.fields, resource.api)
 
 
-    cl.init({ accessToken, endpoint: baseUrl })
+    const cl = commercelayer({ organization, domain, accessToken })
 
     try {
 
-      const resObj: any = (cl as CLayer)[resource.sdk as keyof CLayer]
-      let req = resObj
+      const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
 
-      if (include && (include.length > 0)) req = req.includes(...include)
-      if (fields && (fields.length > 0)) req = req.select(...fields)
+      const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      const params: QueryParamsRetrieve = resSdk
 
-      const res = await req.find(resource.singleton ? undefined : id, { rawResponse: true })
+      if (include && (include.length > 0)) params.include = include
+      if (fields && (Object.keys(fields).length > 0)) params.fields = fields
 
-      const out = flags.raw ? res : denormalize(res)
+      const res = await resSdk.retrieve(id, params)
+
+      const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 
       this.printOutput(out, flags)
 
