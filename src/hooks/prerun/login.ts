@@ -2,7 +2,7 @@ import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
 import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile, configFileExists, SUPER_USER_MODE } from '../../config'
-import { execMode, appKey, extractDomain } from '../../common'
+import { execMode, appKey } from '../../common'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
@@ -33,8 +33,8 @@ const hook: Hook<'prerun'> = async function (opts) {
 
   const flagConfig = {
     organization: flagUtil.string({ char: 'o', hidden: true }),
-    live: flagUtil.boolean({ hidden: true }),
-    domain: flagUtil.string({ char: 'd', hidden: true }),
+    live: flagUtil.boolean({ hidden: true, dependsOn: ['organization'] }),
+    domain: flagUtil.string({ char: 'd', hidden: true, dependsOn: ['organization'] }),
     accessToken: flagUtil.string({ hidden: true }),
   }
 
@@ -60,7 +60,7 @@ const hook: Hook<'prerun'> = async function (opts) {
         this.error(`The current application (${chalk.redBright(configData.key)}) is not a CLI application\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new CLI application`)
 
       opts.argv.push('--organization=' + configData.slug)
-      opts.argv.push('--domain=' + extractDomain(configData.baseUrl))
+      opts.argv.push('--domain=' + configData.domain)
 
     }
 

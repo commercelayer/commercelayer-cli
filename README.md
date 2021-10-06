@@ -1,8 +1,8 @@
 # Commerce Layer CLI
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@commercelayer/commercelayer-cli.svg)](https://npmjs.org/package/@commercelayer/commercelayer-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/commercelayer-cli.svg)](https://npmjs.org/package/@commercelayer/commercelayer-cli)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli.svg)](https://npmjs.org/package/@commercelayer/cli)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli.svg)](https://npmjs.org/package/@commercelayer/cli)
 [![License](https://img.shields.io/npm/l/@commercelayer/commercelayer-cli.svg)](https://github.com/commercelayer/commercelayer-cli/blob/master/package.json)
 
 The official Commerce Layer CLI which helps you to manage your Commerce Layer applications right from the terminal.
@@ -31,11 +31,11 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 Run the command below to install the CLI using your favorite package manager:
 
 ```bash
-npm install -g @commercelayer/commercelayer-cli
+npm install -g @commercelayer/cli
 ```
 
 ```
-yarn global add @commercelayer/commercelayer-cli
+yarn global add @commercelayer/cli
 ```
 
 _More installation options, coming soon..._
@@ -77,6 +77,7 @@ The Commerce Layer CLI currently supports the following plugins:
 
 * [`resources`](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/README.md) - Execute CRUD operations on API resources.
 * [`seeder`](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/README.md) - Execute Commerce Layer seeder.
+* [`imports`](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/README.md) - Import resources in Commerce Layer..
 
 You can run the command below to get a list of all available CLI plugins:
 

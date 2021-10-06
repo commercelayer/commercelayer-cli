@@ -1,10 +1,11 @@
 import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
-import api from '@commercelayer/js-sdk'
-import { baseURL, appKey, extractDomain } from '../../common'
+import commercelayer from '@commercelayer/sdk'
+import { baseURL, appKey, ApiMode } from '../../common'
 import chalk from 'chalk'
 import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, SUPER_USER_MODE } from '../../config'
 import { inspect } from 'util'
+import { decodeAccessToken } from './token'
 
 
 export default class ApplicationsLogin extends Command {
@@ -50,7 +51,8 @@ export default class ApplicationsLogin extends Command {
     const config: AppAuth = {
       clientId: flags.clientId,
       clientSecret: flags.clientSecret,
-      baseUrl: baseURL(flags.organization, flags.domain),
+      slug: flags.organization,
+      domain: flags.domain,
     }
 
     try {
@@ -74,7 +76,8 @@ export default class ApplicationsLogin extends Command {
       const current = clicfg.get(ConfigParams.currentApplication)
       this.log(`\nCurrent application: ${chalk.bold.yellowBright(current.key + '.' + current.mode)}`)
 
-      this.log(`\n${chalk.bold.greenBright('Login successful!')} ${chalk.bold(app.mode)} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
+      // this.log(`\n${chalk.bold.greenBright('Login successful!')} ${chalk.bold(app.mode)} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
+      this.log(`\n${chalk.bold.greenBright('Login successful!')} Your configuration has been stored locally${overwrite ? ' (overwriting the existing one)' : ''}. You can now interact with ${chalk.italic.bold(app.organization)} organization\n`)
 
     } catch (error: any) {
       this.log(chalk.bold.redBright('Login failed!'))
@@ -93,29 +96,36 @@ const getAccessToken = async (auth: AppAuth): Promise<any> => {
   return getIntegrationToken({
     clientId: auth.clientId,
     clientSecret: auth.clientSecret,
-    endpoint: auth.baseUrl,
+    endpoint: baseURL(auth.slug, auth.domain),
   })
 }
 
 
 const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
 
-  api.init({ accessToken, endpoint: auth.baseUrl })
+  const cl = commercelayer({
+    organization: auth.slug,
+    domain: auth.domain,
+    accessToken,
+  })
+
+  const tokenInfo = decodeAccessToken(accessToken)
 
   // Organization info
-  const org = await api.Organization.all()
+  const org = await cl.organization.retrieve()
   // Application info
-  const app = await api.Application.all()
+  const app = await cl.application.retrieve()
 
-  const mode = app.getMetaInfo().mode || 'test'
+  const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
 
   const appInfo: AppInfo = Object.assign({
     organization: org.name || '',
-    key: appKey(org.slug || '', extractDomain(auth.baseUrl)),
+    key: appKey(org.slug || '', auth.domain),
     slug: org.slug || '',
     mode: mode,
     type: app.kind || '',
     name: app.name || '',
+    baseUrl: baseURL(auth.slug, auth.domain),
   }, auth)
 
 

@@ -2,7 +2,7 @@ import { Command, flags } from '@oclif/command'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 import chalk from 'chalk'
 import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentApplication, readTokenFile, SUPER_USER_MODE } from '../../config'
-import { execMode, appKey, sleep, print } from '../../common'
+import { execMode, appKey, sleep, print, baseURL } from '../../common'
 import { IConfig } from '@oclif/config'
 import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
 import https from 'https'
@@ -150,7 +150,7 @@ const getAccessToken = async (auth: AppAuth): Promise<AuthReturnType> => {
   return getIntegrationToken({
     clientId: auth.clientId,
     clientSecret: auth.clientSecret,
-    endpoint: auth.baseUrl,
+    endpoint: baseURL(auth.slug, auth.domain),
   })
 }
 
@@ -192,7 +192,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
   })
 
   const options = {
-    hostname: app.baseUrl.replace('https://', '').replace('http://', ''),
+    hostname: baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
     port: 443,
     path: '/oauth/revoke',
     method: 'POST',
@@ -268,4 +268,4 @@ const generateAccessToken = (config: IConfig, app: AppKey, sharedSecret: string,
 
 
 
-export { newAccessToken, revokeAccessToken, isAccessTokenExpiring }
+export { newAccessToken, revokeAccessToken, isAccessTokenExpiring, decodeAccessToken }

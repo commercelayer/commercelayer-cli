@@ -2,11 +2,16 @@
 import _ from 'lodash'
 import { inspect } from 'util'
 
+
+type ApiMode = 'test' | 'live'
+export type { ApiMode }
+
+
 const baseURL = (slug: string, domain: string | undefined): string => {
 	return `https://${slug.toLowerCase()}.${domain ? domain : 'commercelayer.io'}`
 }
 
-const execMode = (liveFlag: string | boolean | undefined): string => {
+const execMode = (liveFlag: string | boolean | undefined): ApiMode => {
 	return (liveFlag || (liveFlag === 'live')) ? 'live' : 'test'
 }
 
