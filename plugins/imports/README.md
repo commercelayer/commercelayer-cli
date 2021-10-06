@@ -32,6 +32,7 @@ $ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands
 * [`cl-imports imports:details ID`](#cl-imports-importsdetails-id)
 * [`cl-imports imports:group GROUP_ID`](#cl-imports-importsgroup-group_id)
 * [`cl-imports imports:list`](#cl-imports-importslist)
+* [`cl-imports imports:types [FILE]`](#cl-imports-importstypes-file)
 
 ### `cl-imports imports`
 
@@ -78,26 +79,13 @@ USAGE
   $ cl-imports imports:create
 
 OPTIONS
-  -C, --csv
-      accept input file in CSV format
-
-  -b, --blind
-      execute in blind mode without showing the progress monitor
-
-  -c, --cleanup
-      delete all other existing items
-
-  -i, --inputs=inputs
-      (required) the path of the file containing the data to import
-
-  -o, --organization=organization
-      (required) the slug of your organization
-
-  -p, --parent=parent
-      the id of the parent resource to be associated with imported data
-
-  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
-      (required) the type of resource being imported
+  -C, --csv                                  accept input file in CSV format
+  -b, --blind                                execute in blind mode without showing the progress monitor
+  -c, --cleanup                              delete all other existing items
+  -i, --inputs=inputs                        (required) the path of the file containing the data to import
+  -o, --organization=organization            (required) the slug of your organization
+  -p, --parent=parent                        the id of the parent resource to be associated with imported data
+  -t, --type=orders|coupons|skus|prices|...  (required) the type of resource being imported
 
 EXAMPLES
   $ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>
@@ -225,4 +213,20 @@ EXAMPLES
 ```
 
 _See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/list.ts)_
+
+### `cl-imports imports:types [FILE]`
+
+Describe the command here.
+
+```
+USAGE
+  $ cl-imports imports:types [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/imports/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/v1.1.0/src/commands/imports/types.ts)_
 <!-- commandsstop -->

@@ -47,6 +47,7 @@ export default class ImportsCreate extends Command {
       description: 'the type of resource being imported',
       required: true,
       options: apiConf.imports_types,
+      helpValue: apiConf.imports_types.slice(0, 4).join('|') + '|...',
     }),
     parent: flags.string({
       char: 'p',
