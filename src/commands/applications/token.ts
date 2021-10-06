@@ -86,7 +86,7 @@ export default class ApplicationsToken extends Command {
 
     if (!configFileExists(this.config, app))
       this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`,
-        { suggestions: ['execute \'login\' command to initialize application and get the first access token'] }
+        { suggestions: [`execute ${chalk.italic('applications:login')} command to initialize application and get the first access token`] }
       )
 
 

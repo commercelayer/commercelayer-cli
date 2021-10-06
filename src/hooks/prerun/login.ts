@@ -60,7 +60,7 @@ const hook: Hook<'prerun'> = async function (opts) {
         this.error(`The current application (${chalk.redBright(configData.key)}) is not a CLI application\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new CLI application`)
 
       opts.argv.push('--organization=' + configData.slug)
-      opts.argv.push('--domain=' + configData.domain)
+      if (configData.domain) opts.argv.push('--domain=' + configData.domain)
 
     }
 

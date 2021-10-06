@@ -61,7 +61,7 @@ export default class ApplicationsLogin extends Command {
 
       const app = await getApplicationInfo(config, token?.accessToken || '')
       if ((app.type !== 'cli') && (process.env.CL_CLI_MODE !== SUPER_USER_MODE)) this.error('The credentials provided are not associated with a CLI application',
-        { suggestions: [`Double check your credentials or access the online dashboard of ${app.organization} and create a new CLI application`] }
+        { suggestions: [`Double check your credentials or access the online dashboard of ${chalk.bold(app.organization)} and create a new CLI application`] }
       )
       app.key = appKey(app.slug, flags.domain)
 
