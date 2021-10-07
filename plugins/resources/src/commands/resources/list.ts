@@ -108,9 +108,8 @@ export default class ResourcesList extends Command {
       const res = await resSdk.list(params)
       cliux.action.stop()
 
-      const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
+      const out = (flags.raw && rawReader) ? rawReader.rawResponse : [...res]
       const meta = res.meta
-      if (!flags.raw) delete out.meta
 
       if (res && (res.length > 0)) {
         this.printOutput(out, flags)
