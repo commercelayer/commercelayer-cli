@@ -64,7 +64,7 @@ export default class Seed extends Command {
 
     if (notifier.update) {
 
-      const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/commercelayer-cli/node_modules/${pkg.name}/`)
+      const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/cli/node_modules/${pkg.name}/`)
       const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
 
       notifier.notify({
@@ -122,7 +122,7 @@ export default class Seed extends Command {
 
       return true
 
-    } catch (error) {
+    } catch (error: any) {
       this.log(`${chalk.bold.redBright('Error!')} - An error occurred during seed import: ${error.message}`)
       throw error
     }
