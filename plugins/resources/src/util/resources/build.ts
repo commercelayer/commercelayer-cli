@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
-import { Resource } from '../commands/resources'
+import { Resource } from '../../commands/resources'
 import axios from 'axios'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
+import path from 'path'
+import { writeFileSync } from 'fs'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
-const resFile = './resources.json'
+const resFile = path.join(__dirname, 'schema.json')
 
 
 const getResourcesJson = async (): Promise<any> => {
@@ -86,25 +88,36 @@ const parseResourcesSdk = async (): Promise<Resource[]> => {
 }
 
 
-const exportResources = async ({ source = 'sdk', variable = false, name = 'resources', array = false, tab = false } = {}): Promise<void> => {
+const exportResources = async ({ source = 'sdk', variable = false, name = 'resources', array = false, tab = false, immutable = false } = {}): Promise<void> => {
 
 	const resources = await ((source.toLowerCase() === 'sdk') ? parseResourcesSdk() : parseResourcesSchema())
 
-	if (variable || array) console.log((variable ? `const ${name}: Resource[] = ` : '') + '[')
-	resources.forEach(res => {
+	console.log('Parsed resources from source: ' + source)
+
+	const lines: string[] = ['']
+
+	if (variable || array) lines.push((variable ? `const ${name} = ` : '') + (array ? '[' : ''))
+
+	const resLines = resources.map(res => {
 		let item = `${tab ? '\t' : ''}{ `
 		item += `name: '${res.name}', api: '${res.api}', model: '${res.model}'`
 		if (res.singleton) item += ', singleton: true'
 		item += ' },'
-		console.log(item)
+		return item
 	})
-	if (array) console.log(']\n')
+	lines.push(...resLines)
 
-	console.log('\nResources generated from: ' + source + '\n')
+	if (array) lines.push(`]${immutable ? ' as const' : ''}\n`)
+
+	lines.push(`\n\nexport default ${name}\n`)
+
+	writeFileSync(path.join(__dirname, 'available.ts'), lines.join('\n'), { encoding: 'utf-8' })
+
+	console.log('Generated resource list')
 
 }
 
 
 const source = (process.argv.length > 2) ? (['sdk', 'online'].includes(process.argv[2]) ? process.argv[2] : 'sdk') : undefined
 
-exportResources({ source, array: true, tab: true })
+exportResources({ source, variable: true, name: 'RESOURCES', array: true, tab: true, immutable: true })
