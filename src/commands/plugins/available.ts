@@ -46,11 +46,19 @@ export default class PluginsAvailable extends Command {
 }
 
 
-const AvailablePlugins = [
+type PluginRelease = {
+  name: string;
+  plugin: string;
+  description: string;
+  enabled: boolean;
+  hidden?: boolean;
+}
+
+const AvailablePlugins: PluginRelease[] = [
   { name: 'imports',    plugin: '@commercelayer/cli-plugin-imports',    description: 'Organization imports manager',      enabled: true   },
   { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',  enabled: true   },
   { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',          enabled: true   },
-  { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',    enabled: true,  hidden: true  },
+  { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',    enabled: true   },
 ]
 
 
