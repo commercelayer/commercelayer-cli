@@ -116,6 +116,7 @@ export default class ResourcesCreate extends Command {
       const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      this.checkOperation(resSdk, 'create')
       const res = await resSdk.create(attributes)
 
       const out = (flags.raw && rawReader) ? rawReader.rawResponse : res

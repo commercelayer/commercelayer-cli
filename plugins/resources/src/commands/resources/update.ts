@@ -128,6 +128,7 @@ export default class ResourcesUpdate extends Command {
       const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      this.checkOperation(resSdk, 'update')
 
       // Metadata attributes merge
       if (flags.metadata) {

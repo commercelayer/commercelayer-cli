@@ -250,35 +250,6 @@ export default abstract class extends Command {
 
 	}
 
-/*
-	mapToSdkObject(map: Map<string, string>, {
-		fixTypes = false,
-	} = {}): any {
-
-		const object: any = {}
-
-		map.forEach((val, key) => {
-			const v = fixTypes ? fixType(val) : val
-			object[key] = v
-		})
-
-		return object
-
-	}
-
-
-	mapToSdkParam(map: Map<string, string[]>,): { [key: string]: string[] } {
-
-		const param: { [key: string]: string[] } = {}
-
-		map.forEach((val, key) => {
-			param[key] = val
-		})
-
-		return param
-
-	}
-*/
 
 	whereFlag(flag: string[]): KeyValString {
 
@@ -441,6 +412,12 @@ export default abstract class extends Command {
 	}
 
 
+	protected checkOperation(sdk: any, name: string): boolean {
+		if (!sdk[name]) this.error(`Operation not supported for resource ${chalk.italic(sdk.type())}: ${chalk.redBright(name)}`)
+		return true
+	}
+
+
 	printOutput(output: any, flags: any | undefined) {
 		if (output) this.log(formatOutput(output, flags))
 	}
@@ -458,10 +435,10 @@ export default abstract class extends Command {
 				{ suggestions: ['Execute login to get access to the selected resource'] }
 			)
 			else
-				if (error.response.status === 500) this.error(`We're sorry, but something went wrong (${error.response.status})`)
-				else
-					if (error.response.status === 429) this.error(`You have done too many requests in the last 5 minutes (${error.response.status})`)
-					else err = error.response.data.errors
+			if (error.response.status === 500) this.error(`We're sorry, but something went wrong (${error.response.status})`)
+			else
+			if (error.response.status === 429) this.error(`You have done too many requests in the last 5 minutes (${error.response.status})`)
+			else err = error.response.data.errors
 		} else
 		if (error.message) err = error.message
 

@@ -40,6 +40,7 @@ export default class ResourcesDelete extends Command {
     try {
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      this.checkOperation(resSdk, 'delete')
 
       await resSdk.delete(id)
 

@@ -95,6 +95,7 @@ export default class ResourcesList extends Command {
       const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      this.checkOperation(resSdk, 'list')
       const params: QueryParamsList = {}
 
       if (include && (include.length > 0)) params.include = include
