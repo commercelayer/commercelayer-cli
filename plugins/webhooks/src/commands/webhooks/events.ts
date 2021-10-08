@@ -1,103 +1,178 @@
-import Command from '../../base'
+import Command, { flags } from '../../base'
 import chalk from 'chalk'
-import CommerceLayer from '@commercelayer/sdk'
-import Table, { HorizontalAlignment } from 'cli-table3'
+import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk/lib/query'
+import apiConf from '../../api-conf'
+import { localeDate } from '../../common'
+import cliux from 'cli-ux'
+import { responseCodeColor } from './event'
 
+
+const MAX_EVENTS = 1000
 
 export default class WebhooksEvents extends Command {
 
-  static description = 'list all the events associated to the webhook'
+	static description = 'list all the events associated to the webhook'
 
-  static aliases = ['wh:events']
+	static aliases = ['wh:events']
 
-  static examples = [
+	static examples = [
 		'$ commercelayer webhooks:events <webhook-id>',
 		'$ cl wh:events <webhook-id>',
 	]
 
-  static flags = {
+	static flags = {
 		...Command.flags,
+		all: flags.boolean({
+			char: 'A',
+			description: `show all events instead of first ${apiConf.page_max_size} only `,
+			exclusive: ['limit'],
+		}),
+		limit: flags.integer({
+			char: 'l',
+			description: 'limit number of events in output',
+			exclusive: ['all'],
+		}),
 	}
 
-  static args = [
+	static args = [
 		{ name: 'id', description: 'unique id of the webhook', required: true, hidden: false },
 	]
 
 
-  async run() {
+	async run() {
 
-    const { args, flags } = this.parse(WebhooksEvents)
+		const { args, flags } = this.parse(WebhooksEvents)
 
-    const { organization, accessToken } = flags
-    const id = args.id
+		if (flags.limit && (flags.limit < 1)) this.error(chalk.italic('Limit') + ' must be a positive integer')
 
-    // eslint-disable-next-line new-cap
-    const cl = CommerceLayer({
-      organization,
-      accessToken,
-    })
+		const id = args.id
+
+		const cl = this.commercelayerInit(flags)
 
 
-    try {
+		try {
 
-      const tableData = []
-      let currentPage = 0
-      let pageCount = 1
+			let pageSize = apiConf.page_max_size
+			const tableData = []
+			let currentPage = 0
+			let pageCount = 1
+			let itemCount = 0
+			let totalItems = 1
 
-      while (currentPage < pageCount) {
+			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-        const params: QueryParamsList = {
-          pageSize: 25,
-          pageNumber: ++currentPage,
-        }
+			cliux.action.start('Fetching imports')
+			while (currentPage < pageCount) {
 
-        // eslint-disable-next-line no-await-in-loop
-        const webhooks = await cl.webhooks.list(params)
+				const params: QueryParamsList = {
+					pageSize,
+					pageNumber: ++currentPage,
+					sort: ['-created_at'],
+					filters: {},
+				}
 
-        if (webhooks?.length) {
-          tableData.push(...webhooks)
-          currentPage = webhooks.meta.currentPage
-          pageCount = webhooks.meta.pageCount
-        }
+				if (params && params.filters) {
+					/*
+				  if (flags.type) params.filters.resource_type_eq = flags.type
+				  if (flags.group) params.filters.reference_start = flags.group + '-'
+				  if (flags.status) params.filters.status_eq = flags.status
+				  if (flags.warnings) params.filters.warnings_count_gt = 0
+				  if (flags.warnings) params.filters.errors_count_gt = 0
+				  */
+				}
 
-      }
+				// eslint-disable-next-line no-await-in-loop
+				const events = await cl.event_callbacks.list(params)
+
+				if (events?.length) {
+					tableData.push(...events)
+					currentPage = events.meta.currentPage
+					if (currentPage === 1) {
+						pageCount = this.computeNumPages(flags, events.meta)
+						totalItems = events.meta.recordCount
+					}
+					itemCount += events.length
+				}
+
+			}
+			cliux.action.stop()
+
+			this.log()
+
+			if (tableData?.length) {
+
+				const table = new Table({
+					head: ['ID', 'Code', 'Response message', 'Created at'],
+					colWidths: [12, 7, 60, 14],
+					style: {
+						head: ['brightYellow'],
+						compact: false,
+					},
+					wordWrap: true,
+				})
+
+				// let index = 0
+				table.push(...tableData.map(e => [
+					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
+					{ content: chalk.blueBright(e.id || ''), vAlign: 'center' as VerticalAlignment },
+					{ content: responseCodeColor(e.response_code, e.response_message), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
+					e.response_message || '',
+					{ content: localeDate(e.created_at), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
+				]))
+
+				this.log(table.toString())
+
+				this.footerMessage(flags, itemCount, totalItems)
+
+			} else this.log(chalk.italic('No events found for webhook ' + chalk.blueBright(id)))
+
+			this.log()
+
+			return tableData
+
+		} catch (error) {
+			this.handleError(error, flags)
+		}
+
+	}
 
 
-      this.log()
+	private footerMessage(flags: any, itemCount: number, totalItems: number) {
 
-      if (tableData?.length) {
+		this.log()
+		this.log(`Total displayed events: ${chalk.yellowBright(String(itemCount))}`)
+		this.log(`Total event count: ${chalk.yellowBright(String(totalItems))}`)
 
-        const table = new Table({
-          head: ['ID', 'Topic', 'Circuit state', 'Recent failures'],
-          // colWidths: [100, 200],
-          style: {
-            head: ['brightYellow'],
-            compact: false,
-          },
-        })
+		if (itemCount < totalItems) {
+			if (flags.all || ((flags.limit || 0) > MAX_EVENTS)) {
+				this.log()
+				this.warn(`The maximum number of events that can be displayed is ${chalk.yellowBright(String(MAX_EVENTS))}`)
+			} else
+				if (!flags.limit) {
+					this.log()
+					const displayedMsg = `Only ${chalk.yellowBright(String(itemCount))} of ${chalk.yellowBright(String(totalItems))} records are displayed`
+					if (totalItems < MAX_EVENTS) this.warn(`${displayedMsg}, to see all existing items run the command with the ${chalk.italic.bold('--all')} flag enabled`)
+					else this.warn(`${displayedMsg}, to see more items (max ${MAX_EVENTS}) run the command with the ${chalk.italic.bold('--limit')} flag enabled`)
+				}
+		}
 
-        // let index = 0
-        table.push(...tableData.map(w => [
-          // { content: ++index, hAlign: 'right' as HorizontalAlignment },
-          chalk.blueBright(w.id || ''),
-          w.topic || '',
-          { content: ((w.circuit_state === 'closed') ? chalk.green : chalk.red)(w.circuit_state || ''), hAlign: 'center' as HorizontalAlignment },
-          { content: w.circuit_failure_count, hAlign: 'center' as HorizontalAlignment },
-        ]))
+	}
 
-        this.log(table.toString())
 
-      } else this.log(chalk.italic(`No events found for webhook ${id}`))
+	private computeNumPages(flags: any, meta: any): number {
 
-      this.log()
+		let numRecord = 25
+		if (flags.all) numRecord = meta.recordCount
+		else
+			if (flags.limit) numRecord = flags.limit
 
-      return tableData
+		numRecord = Math.min(MAX_EVENTS, numRecord)
+		const numPages = Math.ceil(numRecord / 25)
 
-    } catch (error) {
-      this.printError(error)
-    }
+		return numPages
 
-  }
+	}
 
 }
+

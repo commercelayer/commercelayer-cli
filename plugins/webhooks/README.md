@@ -30,6 +30,7 @@ $ cl-webhooks [COMMAND] (--help | -h) for detailed information about CLI command
 * [`cl-webhooks webhooks:create`](#cl-webhooks-webhookscreate)
 * [`cl-webhooks webhooks:destroy ID`](#cl-webhooks-webhooksdestroy-id)
 * [`cl-webhooks webhooks:details ID`](#cl-webhooks-webhooksdetails-id)
+* [`cl-webhooks webhooks:event [FILE]`](#cl-webhooks-webhooksevent-file)
 * [`cl-webhooks webhooks:events ID`](#cl-webhooks-webhooksevents-id)
 * [`cl-webhooks webhooks:list`](#cl-webhooks-webhookslist)
 * [`cl-webhooks webhooks:reset ID`](#cl-webhooks-webhooksreset-id)
@@ -124,6 +125,22 @@ EXAMPLES
 ```
 
 _See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/details.ts)_
+
+### `cl-webhooks webhooks:event [FILE]`
+
+Describe the command here.
+
+```
+USAGE
+  $ cl-webhooks webhooks:event [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/event.ts)_
 
 ### `cl-webhooks webhooks:events ID`
 

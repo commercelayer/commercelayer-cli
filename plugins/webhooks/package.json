@@ -61,7 +61,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@commercelayer/js-auth": "^2.0.4",
-    "@commercelayer/sdk": "^2.0.2",
+    "@commercelayer/sdk": "^2.1.0",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "chalk": "^2.4.2",
