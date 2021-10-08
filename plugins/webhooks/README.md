@@ -30,7 +30,7 @@ $ cl-webhooks [COMMAND] (--help | -h) for detailed information about CLI command
 * [`cl-webhooks webhooks:create`](#cl-webhooks-webhookscreate)
 * [`cl-webhooks webhooks:destroy ID`](#cl-webhooks-webhooksdestroy-id)
 * [`cl-webhooks webhooks:details ID`](#cl-webhooks-webhooksdetails-id)
-* [`cl-webhooks webhooks:event [FILE]`](#cl-webhooks-webhooksevent-file)
+* [`cl-webhooks webhooks:event ID`](#cl-webhooks-webhooksevent-id)
 * [`cl-webhooks webhooks:events ID`](#cl-webhooks-webhooksevents-id)
 * [`cl-webhooks webhooks:list`](#cl-webhooks-webhookslist)
 * [`cl-webhooks webhooks:reset ID`](#cl-webhooks-webhooksreset-id)
@@ -50,7 +50,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/index.ts)_
+_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/index.ts)_
 
 ### `cl-webhooks webhooks:create`
 
@@ -62,6 +62,7 @@ USAGE
 
 OPTIONS
   -i, --include=include            a comma separated list of related resources to be included
+  -n, --name=name                  the webhook short name
   -o, --organization=organization  (required) the slug of your organization
   -t, --topic=topic                (required) the identifier of the event that will trigger the webhook
   -u, --url=url                    (required) the callback URL used to POST data
@@ -71,7 +72,7 @@ EXAMPLES
   $ cl wh:create -t orders.place -u http://myurl.com
 ```
 
-_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/create.ts)_
+_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/create.ts)_
 
 ### `cl-webhooks webhooks:destroy ID`
 
@@ -97,7 +98,7 @@ EXAMPLES
   $ cl wh:destroy <webhook-id>>
 ```
 
-_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/destroy.ts)_
+_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/destroy.ts)_
 
 ### `cl-webhooks webhooks:details ID`
 
@@ -124,23 +125,33 @@ EXAMPLES
   $ cl wh:details <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/details.ts)_
+_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/details.ts)_
 
-### `cl-webhooks webhooks:event [FILE]`
+### `cl-webhooks webhooks:event ID`
 
-Describe the command here.
+Show the details of a firedf webhook event.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:event [FILE]
+  $ cl-webhooks webhooks:event ID
+
+ARGUMENTS
+  ID  unique id of the webhook event
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -f, --format                     format the payload output
+  -o, --organization=organization  (required) the slug of your organization
+  -p, --payload                    show the event payload sent to the callback endpoint
+
+ALIASES
+  $ cl-webhooks wh:event
+
+EXAMPLES
+  $ commercelayer webhooks:event <event-id>
+  $ cl webhooks:event <event-id> -p
 ```
 
-_See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/event.ts)_
+_See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/event.ts)_
 
 ### `cl-webhooks webhooks:events ID`
 
@@ -154,6 +165,8 @@ ARGUMENTS
   ID  unique id of the webhook
 
 OPTIONS
+  -A, --all                        show all events instead of first 25 only
+  -l, --limit=limit                limit number of events in output
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
@@ -164,7 +177,7 @@ EXAMPLES
   $ cl wh:events <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/events.ts)_
+_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/events.ts)_
 
 ### `cl-webhooks webhooks:list`
 
@@ -187,7 +200,7 @@ EXAMPLES
   $ cl wh:list
 ```
 
-_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/list.ts)_
+_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/list.ts)_
 
 ### `cl-webhooks webhooks:reset ID`
 
@@ -211,7 +224,7 @@ EXAMPLES
   $ cl wh:reset <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/reset.ts)_
+_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/reset.ts)_
 
 ### `cl-webhooks webhooks:topics`
 
@@ -222,7 +235,7 @@ USAGE
   $ cl-webhooks webhooks:topics
 ```
 
-_See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/topics.ts)_
+_See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/topics.ts)_
 
 ### `cl-webhooks webhooks:update ID`
 
@@ -237,6 +250,7 @@ ARGUMENTS
 
 OPTIONS
   -i, --include=include            a comma separated list of related resources to be included
+  -n, --name=name                  the webhook short name
   -o, --organization=organization  (required) the slug of your organization
   -t, --topic=topic                the identifier of the event that will trigger the webhook
   -u, --url=url                    the callback URL used to POST data
@@ -246,5 +260,5 @@ EXAMPLES
   $ cl wh:update -i customer_group
 ```
 
-_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.1/src/commands/webhooks/update.ts)_
+_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.0.2/src/commands/webhooks/update.ts)_
 <!-- commandsstop -->
