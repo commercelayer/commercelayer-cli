@@ -2,8 +2,10 @@ import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
 import path from 'path'
 import { formatOutput } from './common'
+import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'
+
 
 const pkg = require('../package.json')
 
@@ -61,25 +63,15 @@ export default abstract class extends Command {
 	}
 
 
-	printError(error: any, flags?: any): void {
-
-		let err = error
-
-		if (error.response) {
-			if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
-				{ suggestions: ['Execute login to get access to the selected resource'] }
-			)
-			else
-				if (error.response.status === 500) this.error('We\'re sorry, but something went wrong (500)')
-				else err = error.response.data.errors
-		} else
-		if (error.errors) err = error.errors
-		else
-		if (error.message) err = error.message
-
-
-		this.error(formatOutput(err, flags))
-
+	protected handleError(error: any, flags?: any): void {
+		if (CommerceLayerStatic.isApiError(error)) {
+			if (error.status === 401) {
+				const err = error.errors[0]
+				this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
+					{ suggestions: ['Execute login to get access to the organization\'s imports'] }
+				)
+			} else this.error(formatOutput(error, flags))
+		} else throw error
 	}
 
 
@@ -104,6 +96,21 @@ export default abstract class extends Command {
 			case 'in_progress':
 			default: return status
 		}
+	}
+
+
+	protected commercelayerInit(flags: any): CommerceLayerClient {
+
+		const organization = flags.organization
+		const domain = flags.domain
+		const accessToken = flags.accessToken
+
+		return commercelayer({
+			organization,
+			domain,
+			accessToken,
+		})
+
 	}
 
 }

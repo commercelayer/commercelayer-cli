@@ -1,6 +1,5 @@
 import Command from '../../base'
 import chalk from 'chalk'
-import CommerceLayer from '@commercelayer/sdk'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk/lib/query'
 import apiConf from '../../api-conf'
@@ -10,111 +9,103 @@ import cliux from 'cli-ux'
 
 export default class ImportsGroup extends Command {
 
-  static description = 'list all the imports related to an import group'
+	static description = 'list all the imports related to an import group'
 
-  static aliases = ['imp:group']
+	static aliases = ['imp:group']
 
-  static examples = [
-    '$ commercelayer imports:group <group-id>',
-    '$ cl imports:ghroup <group-id>',
-  ]
+	static examples = [
+		'$ commercelayer imports:group <group-id>',
+		'$ cl imports:ghroup <group-id>',
+	]
 
-  static flags = {
-    ...Command.flags,
-  }
+	static flags = {
+		...Command.flags,
+	}
 
-  static args = [
+	static args = [
 		{ name: 'group_id', description: 'unique id of the group import', required: true, hidden: false },
 	]
 
 
-  async run() {
+	async run() {
 
-    const { args, flags } = this.parse(ImportsGroup)
+		const { args, flags } = this.parse(ImportsGroup)
 
-    const organization = flags.organization
-    const accessToken = flags.accessToken
-    const domain = flags.domain
-    const groupId = args.group_id
+		const groupId = args.group_id
 
-    // eslint-disable-next-line new-cap
-    const cl = CommerceLayer({
-      organization,
-      domain,
-      accessToken,
-    })
+		const cl = this.commercelayerInit(flags)
 
 
-    try {
+		try {
 
-      const pageSize = apiConf.page_max_size
-      const tableData = []
-      let currentPage = 0
-      let pageCount = 1
+			const pageSize = apiConf.page_max_size
+			const tableData = []
+			let currentPage = 0
+			let pageCount = 1
 
-      cliux.action.start('Fetching imports')
-      while (currentPage < pageCount) {
+			cliux.action.start('Fetching imports')
+			while (currentPage < pageCount) {
 
-        const params: QueryParamsList = {
-          pageSize,
-          pageNumber: ++currentPage,
-          sort: ['reference', '-completed_at'],
-          filters: { reference_start: `${groupId}-`},
-        }
+				const params: QueryParamsList = {
+					pageSize,
+					pageNumber: ++currentPage,
+					sort: ['reference', '-completed_at'],
+					filters: { reference_start: `${groupId}-` },
+				}
 
 
-        // eslint-disable-next-line no-await-in-loop
-        const imports = await cl.imports.list(params)
+				// eslint-disable-next-line no-await-in-loop
+				const imports = await cl.imports.list(params)
 
-        if (imports?.length) {
-          tableData.push(...imports)
-          currentPage = imports.meta.currentPage
-          pageCount = imports.meta.pageCount
-        }
+				if (imports?.length) {
+					tableData.push(...imports)
+					currentPage = imports.meta.currentPage
+					pageCount = imports.meta.pageCount
+				}
 
-      }
-      cliux.action.stop()
+			}
+			cliux.action.stop()
 
-      this.log()
+			this.log()
 
-      if (tableData?.length) {
+			if (tableData?.length) {
 
-        const table = new Table({
-          head: ['ID', 'Resource type', 'Status', 'Processed', 'Warnings', 'Errors', 'Started at', 'Completed at'],
-          // colWidths: [100, 200],
-          style: {
-            head: ['brightYellow'],
-            compact: false,
-          },
-        })
+				const table = new Table({
+					head: ['ID', 'Resource type', 'Status', 'Prc.', 'Wrn.', 'Err.', 'Started at', 'Completed at'],
+					// colWidths: [100, 200],
+					style: {
+						head: ['brightYellow'],
+						compact: false,
+					},
+				})
 
-        // let index = 0
-        table.push(...tableData.map(i => [
-          // { content: ++index, hAlign: 'right' as HorizontalAlignment },
-          chalk.blueBright(i.id || ''),
-          i.resource_type || '',
-          { content: this.importStatus(i.status), hAlign: 'center' as HorizontalAlignment },
-          { content: i.processed_count, hAlign: 'center' as HorizontalAlignment },
-          { content: i.warnings_count, hAlign: 'center' as HorizontalAlignment },
-          { content: i.errors_count, hAlign: 'center' as HorizontalAlignment },
-          localeDate(i.started_at || ''),
-          localeDate(i.completed_at || ''),
-        ]))
+				// let index = 0
+				table.push(...tableData.map(i => [
+					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
+					chalk.blueBright(i.id || ''),
+					i.resource_type || '',
+					{ content: this.importStatus(i.status), hAlign: 'center' as HorizontalAlignment },
+					{ content: i.processed_count, hAlign: 'center' as HorizontalAlignment },
+					{ content: i.warnings_count, hAlign: 'center' as HorizontalAlignment },
+					{ content: i.errors_count, hAlign: 'center' as HorizontalAlignment },
+					localeDate(i.started_at || ''),
+					localeDate(i.completed_at || ''),
+				]))
 
-        this.log(table.toString())
+				this.log(table.toString())
 
-        this.log()
+				this.log()
 
-      } else this.log(chalk.italic(`Import group with id ${groupId} not found`))
+			} else this.log(chalk.italic(`Import group with id ${groupId} not found`))
 
-      this.log()
+			this.log()
 
-      return tableData
+			return tableData
 
-    } catch (error) {
-      this.printError(error)
-    }
+		} catch (error) {
+			this.handleError(error, flags)
+		}
 
-  }
+	}
 
 }

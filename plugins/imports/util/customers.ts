@@ -31,4 +31,4 @@ const generateImportCustomers = (size: number, format: string) => {
 }
 
 
-generateImportCustomers(25000, 'json')
+generateImportCustomers(20001, 'json')

@@ -1,3 +1,4 @@
+import ApiError from '@commercelayer/sdk/lib/error'
 import { inspect } from 'util'
 
 const inspectObject = (object: any, options?: any): string => {
@@ -18,10 +19,15 @@ const formatOutput = (output: any, flags?: any, { color = true } = {}) => {
 	return inspectObject(output, color)
 }
 
+const formatError = (error: ApiError, flags: any): string => {
+	return formatOutput(error.errors, flags)
+}
+
 
 const sleep = async (ms: number) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
+
 
 const center = (str: string, width: number): string => {
 	return str.padStart(str.length + Math.floor((width - str.length) / 2), ' ').padEnd(width, ' ')
@@ -35,4 +41,4 @@ const localeDate = (date: string): string => {
 
 
 
-export { inspectObject, formatOutput, sleep, localeDate, center }
+export { inspectObject, formatOutput, sleep, localeDate, center, formatError }
