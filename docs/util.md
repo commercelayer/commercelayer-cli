@@ -20,4 +20,4 @@ ALIASES
   $ commercelayer jwt
 ```
 
-_See code: [src/commands/util/jwt.ts](https://github.com/commercelayer/commercelayer-cli/blob/v2.0.4/src/commands/util/jwt.ts)_
+_See code: [src/commands/util/jwt.ts](https://github.com/commercelayer/commercelayer-cli/blob/v2.0.5/src/commands/util/jwt.ts)_
