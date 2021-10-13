@@ -6,6 +6,7 @@ import apiConf from '../../api-conf'
 import { localeDate } from '../../common'
 import cliux from 'cli-ux'
 import { responseCodeColor } from './event'
+import { EventCallback } from '@commercelayer/sdk'
 
 
 const MAX_EVENTS = 1000
@@ -101,30 +102,9 @@ export default class WebhooksEvents extends Command {
 			this.log()
 
 			if (tableData?.length) {
-
-				const table = new Table({
-					head: ['ID', 'Code', 'Response message', 'Created at'],
-					colWidths: [12, 7, 60, 14],
-					style: {
-						head: ['brightYellow'],
-						compact: false,
-					},
-					wordWrap: true,
-				})
-
-				// let index = 0
-				table.push(...tableData.map(e => [
-					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
-					{ content: chalk.blueBright(e.id || ''), vAlign: 'center' as VerticalAlignment },
-					{ content: responseCodeColor(e.response_code, e.response_message), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
-					e.response_message || '',
-					{ content: localeDate(e.created_at), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
-				]))
-
-				this.log(table.toString())
-
+				const table = buildEventsTableData(tableData)
+				this.log(table)
 				this.footerMessage(flags, itemCount, totalItems)
-
 			} else this.log(chalk.italic('No events found for webhook ' + chalk.blueBright(id)))
 
 			this.log()
@@ -176,3 +156,32 @@ export default class WebhooksEvents extends Command {
 
 }
 
+
+
+const buildEventsTableData = (tableData: EventCallback[]): string => {
+
+	const table = new Table({
+		head: ['ID', 'Code', 'Response message', 'Created at'],
+		colWidths: [12, 7, 46, 25],
+		style: {
+			head: ['brightYellow'],
+			compact: false,
+		},
+		wordWrap: true,
+	})
+
+	// let index = 0
+	table.push(...tableData.map(e => [
+		// { content: ++index, hAlign: 'right' as HorizontalAlignment },
+		{ content: chalk.blueBright(e.id || ''), vAlign: 'center' as VerticalAlignment },
+		{ content: responseCodeColor(e.response_code, e.response_message), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
+		e.response_message || '',
+		{ content: localeDate(e.created_at), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
+	]))
+
+	return table.toString()
+
+}
+
+
+export { buildEventsTableData }

@@ -2,6 +2,9 @@ import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table from 'cli-table3'
 import _ from 'lodash'
+import { localeDate } from '../../common'
+import { QueryParamsRetrieve } from '@commercelayer/sdk'
+import { buildEventsTableData } from './events'
 
 
 export default class WebhooksDetails extends Command {
@@ -22,6 +25,10 @@ export default class WebhooksDetails extends Command {
 			char: 'H',
 			description: 'hide empty attributes',
 		}),
+		events: flags.boolean({
+			char: 'e',
+			description: 'show the last event callbacks associated to the webhook',
+		}),
 	}
 
 	static args = [
@@ -40,18 +47,18 @@ export default class WebhooksDetails extends Command {
 
 		try {
 
-			const webhook = await cl.webhooks.retrieve(id)
+			const params: QueryParamsRetrieve = {}
+			if (flags.events) params.include = [ 'last_event_callbacks' ]
+			const webhook = await cl.webhooks.retrieve(id, params)
 
 			const table = new Table({
-				// head: ['ID', 'Topic', 'Circuit state', 'Failures'],
-				colWidths: [23, 67],
+				colWidths: [23, 67 + (flags.events ? 2 : 0)],
 				wordWrap: true,
 			})
 
 
-			// let index = 0
 			table.push(...Object.entries(webhook)
-				.filter(([k]) => !['type'].includes(k))
+				.filter(([k]) => !['type', 'last_event_callbacks'].includes(k))
 				.filter(([_k, v]) => !flags['hide-empty'] || !_.isEmpty(v) || (Array.isArray(v) && !(v.length === 0)))
 				.map(([k, v]) => {
 					return [
@@ -64,6 +71,15 @@ export default class WebhooksDetails extends Command {
 			this.log(table.toString())
 			this.log()
 
+			if (flags.events) {
+				this.log(chalk.blueBright('LAST EVENT CALLBACKS:'))
+				if (webhook.last_event_callbacks) {
+					const table = buildEventsTableData(webhook.last_event_callbacks)
+					this.log(table)
+				} else this.log(chalk.italic('No event fired for this webhook'))
+				this.log()
+			}
+
 			return webhook
 
 		} catch (error) {
@@ -75,13 +91,17 @@ export default class WebhooksDetails extends Command {
 }
 
 
+
 const formatValue = (field: string, value: string): any => {
+
+	if (field.endsWith('_date') || field.endsWith('_at')) return localeDate(value)
 
 	switch (field) {
 
 		case 'id': return chalk.bold(value)
 		case 'topic': return chalk.magentaBright(value)
-		case 'circuit_state': return ((value === 'closed') ? chalk.green : chalk.red)(value || '')
+		case 'circuit_state': return ((value === 'closed') ? chalk.greenBright : chalk.redBright)(value || '')
+		case 'circuit_failure_count': return chalk.yellow(value || '')
 		case 'include_resources': return String(value || '').replace(/,/g, ' | ')
 		case 'metadata': {
 			const t = new Table({ style: { compact: false } })
