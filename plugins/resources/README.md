@@ -65,7 +65,7 @@ OPTIONS
   -u, --unformatted                print unformatted JSON output
 ```
 
-_See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/order/index.ts)_
+_See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/order/index.ts)_
 
 ### `cl-resources order:actions`
 
@@ -76,7 +76,7 @@ USAGE
   $ cl-resources order:actions
 ```
 
-_See code: [src/commands/order/actions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/order/actions.ts)_
+_See code: [src/commands/order/actions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/order/actions.ts)_
 
 ### `cl-resources order:approve ID`
 
@@ -96,7 +96,7 @@ OPTIONS
   -u, --unformatted                print unformatted JSON output
 ```
 
-_See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/order/approve.ts)_
+_See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/order/approve.ts)_
 
 ### `cl-resources order:capture ID`
 
@@ -116,7 +116,7 @@ OPTIONS
   -u, --unformatted                print unformatted JSON output
 ```
 
-_See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/order/capture.ts)_
+_See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/order/capture.ts)_
 
 ### `cl-resources order:place ID`
 
@@ -136,7 +136,7 @@ OPTIONS
   -u, --unformatted                print unformatted JSON output
 ```
 
-_See code: [src/commands/order/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/order/place.ts)_
+_See code: [src/commands/order/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/order/place.ts)_
 
 ### `cl-resources resources`
 
@@ -156,7 +156,7 @@ EXAMPLES
   $ cl resources
 ```
 
-_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/index.ts)_
+_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/index.ts)_
 
 ### `cl-resources resources:create RESOURCE`
 
@@ -193,7 +193,7 @@ EXAMPLES
   $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/create.ts)_
 
 ### `cl-resources resources:delete RESOURCE [ID]`
 
@@ -223,7 +223,7 @@ EXAMPLES
   $ cl delete customers <customerId>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/delete.ts)_
 
 ### `cl-resources resources:doc RESOURCE`
 
@@ -245,7 +245,7 @@ EXAMPLES
   $ cl res:doc cusatomers
 ```
 
-_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/doc.ts)_
+_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/doc.ts)_
 
 ### `cl-resources resources:filters`
 
@@ -263,7 +263,7 @@ EXAMPLES
   $ cl res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/filters.ts)_
 
 ### `cl-resources resources:get RESOURCE [ID]`
 
@@ -302,7 +302,7 @@ EXAMPLES
   $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/get.ts)_
 
 ### `cl-resources resources:list RESOURCE`
 
@@ -340,7 +340,7 @@ EXAMPLES
   $ cl list -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/list.ts)_
 
 ### `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -376,7 +376,7 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/retrieve.ts)_
 
 ### `cl-resources resources:update RESOURCE [ID]`
 
@@ -427,5 +427,5 @@ EXAMPLES
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.3/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.1.4/src/commands/resources/update.ts)_
 <!-- commandsstop -->

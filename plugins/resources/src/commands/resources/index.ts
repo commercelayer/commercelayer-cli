@@ -34,7 +34,7 @@ export default class ResourcesIndex extends Command {
 		cliux.table(resourceArray,
 			{
 				key: { header: 'NAME', minWidth: 35, get: row => chalk.blueBright(row.name) },
-				description: { header: 'ONLINE DOCUMENTATION URL\n', get: row => row.url },
+				description: { header: 'ONLINE DOCUMENTATION URL', get: row => row.url },
 			},
 			{
 				printLine: this.log,
