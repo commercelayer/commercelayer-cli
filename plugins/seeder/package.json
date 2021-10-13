@@ -41,7 +41,8 @@
   "keywords": [
     "oclif",
     "ecommerce",
-    "cli"
+    "cli",
+    "commercelayer"
   ],
   "license": "MIT",
   "main": "lib/index.js",
