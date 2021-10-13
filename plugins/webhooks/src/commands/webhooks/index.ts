@@ -15,7 +15,7 @@ export default class WebhooksIndex extends Command {
 	}
 
 	static args = [
-		...DetailsCommand.args,
+		Object.assign({ ...DetailsCommand.args[0] }, { required: false }),
 	]
 
 
