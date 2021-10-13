@@ -51,5 +51,5 @@ EXAMPLES
   $ cl seed -m all -u <seedUrl> -b multi_market
 ```
 
-_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.1/src/commands/seed.ts)_
+_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.3/src/commands/seed.ts)_
 <!-- commandsstop -->
