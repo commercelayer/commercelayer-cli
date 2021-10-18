@@ -133,7 +133,7 @@ const responseCodeColor = (code?: string, message?: string): string => {
 	let styled = code || ''
 
 	if (code) {
-		if (Number.isInteger(code)) {
+		if (!Number.isNaN(code)) {
 			const c = Number(code)
 			if (c < 300) styled = chalk.greenBright(code)
 			else styled = chalk.redBright(code)
