@@ -1,6 +1,6 @@
 import {expect, test} from '@oclif/test'
 
-describe('seed', () => {
+describe('webhooks:list', () => {
   test
   .stdout()
   .command(['webhooks:noc'])

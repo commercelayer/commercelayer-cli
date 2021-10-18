@@ -1,9 +1,9 @@
 import {expect, test} from '@oclif/test'
 
-describe('seed', () => {
+describe('webhooks:create', () => {
   test
   .stdout()
-  .command(['webhooks:noc'])
+  .command(['webhooks:details'])
   .it('runs NoC', ctx => {
     expect(ctx.stdout).to.contain('-= NoC =-')
   })
