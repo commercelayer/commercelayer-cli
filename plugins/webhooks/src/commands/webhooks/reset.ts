@@ -6,7 +6,7 @@ export default class WebhooksReset extends Command {
 
   static description = 'reset the circuit breaker associated to the webhook'
 
-  static aliases = ['wh:reset']
+  static aliases = ['wh:reset', 'webhook:reset']
 
   static examples = [
 		'$ commercelayer webhooks:reset <webhook-id>',
@@ -31,7 +31,7 @@ export default class WebhooksReset extends Command {
     const cl = this.commercelayerInit(flags)
 
     cl.webhooks.update({ id, _reset_circuit: true })
-      .then(() => this.log(`\nThe circuit breaker associated to the webhook ${chalk.bold(id)} has been ${chalk.greenBright('successfully')} resetted\n`))
+      .then(() => this.log(`\nThe circuit breaker associated to the webhook ${chalk.bold(id)} has been ${chalk.greenBright('successfully')} reset\n`))
       .catch(error => this.handleError(error, flags))
 
   }

@@ -15,7 +15,7 @@ export default class WebhooksEvents extends Command {
 
 	static description = 'list all the events associated to the webhook'
 
-	static aliases = ['wh:events']
+	static aliases = ['wh:events', 'webhook:events']
 
 	static examples = [
 		'$ commercelayer webhooks:events <webhook-id>',
@@ -63,14 +63,16 @@ export default class WebhooksEvents extends Command {
 
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-			cliux.action.start('Fetching imports')
+			cliux.action.start('Fetching events')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
 					pageSize,
 					pageNumber: ++currentPage,
 					sort: ['-created_at'],
-					filters: {},
+					filters: {
+						webhook_id_eq: id,
+					},
 				}
 
 				if (params && params.filters) {
