@@ -124,7 +124,7 @@ export default class ImportsDetails extends Command {
 		if (warnings > 0) {
 			const table = new Table(tableOptions)
 			table.push(...Object.entries(warningLog || {})
-				.map(([k, v]) => [{ content: k || '', vAlign: 'center' }, inspectObject(v) as any]))
+				.map(([k, v]) => [{ content: ((k && (k !== 'unknown')) ? k : ''), vAlign: 'center' }, inspectObject(v) as any]))
 			this.log(table.toString())
 		}
 
@@ -140,7 +140,7 @@ export default class ImportsDetails extends Command {
 		if (errors > 0) {
 			const table = new Table(tableOptions)
 			table.push(...(Object.entries(errorLog || {}))
-				.map(([k, v]) => [{ content: k || '', vAlign: 'center' }, inspectObject(v) as any]))
+				.map(([k, v]) => [{ content: ((k && (k !== 'unknown')) ? k : ''), vAlign: 'center' }, inspectObject(v) as any]))
 			this.log(table.toString())
 		}
 
