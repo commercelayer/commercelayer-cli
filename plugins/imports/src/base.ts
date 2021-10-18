@@ -63,6 +63,12 @@ export default abstract class extends Command {
 	}
 
 
+	async catch(error: any) {
+		if (error.message && error.message.match(/quit/)) this.exit()
+		else return super.catch(error)
+	}
+
+
 	protected handleError(error: any, flags?: any): void {
 		if (CommerceLayerStatic.isApiError(error)) {
 			if (error.status === 401) {
