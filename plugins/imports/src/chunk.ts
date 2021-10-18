@@ -1,6 +1,7 @@
 import { ImportCreate } from '@commercelayer/sdk/lib/resources/imports'
 import apiConf from './api-conf'
 
+
 type Chunk = ImportCreate & {
 	chunk_number: number;
 	total_chunks: number;
@@ -8,6 +9,15 @@ type Chunk = ImportCreate & {
 	end_item: number;
 	total_items: number;
 	group_id: string;
+	items_count: number;
+	total_batch_chunks: number;
+	total_batch_items: number;
+}
+
+type Batch = {
+	batch_number: number;
+	total_batches: number;
+	chunks: Chunk[];
 	items_count: number;
 }
 
@@ -27,8 +37,8 @@ const splitImports = (imp: ImportCreate, size?: number): Array<Chunk> => {
 	while (allInputs.length) chunks.push({
 		resource_type: imp.resource_type,
 		parent_resource_id: imp.parent_resource_id,
-		cleanup_records: (++chunkNum === 1) ? imp.cleanup_records : false,
-		chunk_number: chunkNum,
+		cleanup_records: false,
+		chunk_number: ++chunkNum,
 		start_item: 0,
 		end_item: 0,
 		total_chunks: 0,
@@ -36,6 +46,8 @@ const splitImports = (imp: ImportCreate, size?: number): Array<Chunk> => {
 		inputs: allInputs.splice(0, chunkSize),
 		group_id: groupId,
 		items_count: 0,
+		total_batch_chunks: 0,
+		total_batch_items: totalItems,
 	})
 
 	return chunks.map(c => {
@@ -45,6 +57,48 @@ const splitImports = (imp: ImportCreate, size?: number): Array<Chunk> => {
 		c.items_count = c.inputs.length
 		return c
 	})
+
+}
+
+
+const splitChunks = (chunks: Chunk[], size: number): Batch[] => {
+
+	const totalChunks = chunks.length
+	const totalBatches = Math.ceil(totalChunks / size)
+	const batches: Batch[] = []
+	let batch: Batch = { batch_number: 0, total_batches: 0, chunks: [], items_count: 0 }
+
+	let bc = 0	// Batch count
+	let cc = 0	// Chunk count
+	let tc = 0	// Total chunk count
+
+	for (const chunk of chunks) {
+
+		cc++
+		tc++
+
+		if (cc === 1) batches.push(
+			batch = {
+				batch_number: ++bc,
+				total_batches: totalBatches,
+				chunks: [],
+				items_count: 0,
+			})
+
+		batch.chunks.push(chunk)
+		batch.items_count += chunk.items_count
+
+		if ((cc === size) || (tc === totalChunks)) {
+			cc = 0
+			for (const c of batch.chunks) {
+				c.total_batch_chunks = batch.chunks.length
+				c.total_batch_items = batch.items_count
+			}
+		}
+
+	}
+
+	return batches
 
 }
 
@@ -61,4 +115,4 @@ const generateGroupUID = () => {
 }
 
 
-export { Chunk, splitImports }
+export { Chunk, Batch, splitImports, splitChunks }

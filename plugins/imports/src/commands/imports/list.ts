@@ -25,7 +25,7 @@ export default class ImportsList extends Command {
 		...Command.flags,
 		all: flags.boolean({
 			char: 'A',
-			description: `show all imports instead of first ${apiConf.page_max_size} only `,
+			description: `show all imports instead of first ${apiConf.page_max_size} only`,
 			exclusive: ['limit'],
 		}),
 		type: flags.string({

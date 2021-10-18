@@ -1,6 +1,7 @@
 import ApiError from '@commercelayer/sdk/lib/error'
 import { inspect } from 'util'
 
+
 const inspectObject = (object: any, options?: any): string => {
 	return inspect(object, {
 		showHidden: false,

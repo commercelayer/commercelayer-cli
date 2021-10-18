@@ -6,15 +6,18 @@ import { SingleBar } from 'cli-progress'
 import { Import } from '@commercelayer/sdk/lib/resources/imports'
 import { sleep } from '../../common'
 import { Monitor } from '../../monitor'
-import { Chunk, splitImports } from '../../chunk'
+import { Chunk, Batch, splitChunks, splitImports } from '../../chunk'
 import apiConf from '../../api-conf'
 import chalk from 'chalk'
+import cliux from 'cli-ux'
 
 
-const MAX_INPUTS = 20000
+const MAX_INPUTS = 0	// 0 = No Max
+const MAX_CHUNKS = 10
 const MIN_DELAY = 1000
 const ERROR_429_DELAY = 10000
 const SECURITY_DELAY = 50
+
 
 const importsDelay = (parallelRequests: number): number => {
 
@@ -57,10 +60,6 @@ export default class ImportsCreate extends Command {
 			char: 'p',
 			description: 'the id of the parent resource to be associated with imported data',
 		}),
-		cleanup: flags.boolean({
-			char: 'c',
-			description: 'delete all other existing items',
-		}),
 		inputs: flags.string({
 			char: 'i',
 			description: 'the path of the file containing the data to import',
@@ -74,6 +73,12 @@ export default class ImportsCreate extends Command {
 		blind: flags.boolean({
 			char: 'b',
 			description: 'execute in blind mode without showing the progress monitor',
+			exclusive: ['quiet', 'silent'],
+		}),
+		quiet: flags.boolean({
+			char: 'q',
+			description: 'execute command without showing warning messages',
+			exclusive: ['blind'],
 		}),
 	}
 
@@ -100,7 +105,6 @@ export default class ImportsCreate extends Command {
 
 			const type = flags.type
 			const parentId = flags.parent
-			const cleanup = flags.cleanup || false
 			const inputFile = this.specialFolder(flags.inputs)
 
 			const monitor = !flags.blind
@@ -108,35 +112,60 @@ export default class ImportsCreate extends Command {
 			const inputs: Array<any> = await generateInputs(inputFile, flags).catch(error => this.error(error.message))
 			const inputsLength = inputs.length
 
-			const humanized = type.replaceAll(/_/g, ' ')
+			// Check import size
+			const humanized = type.replace(/_/g, ' ')
 			if (inputsLength === 0) this.error(`No ${humanized} to import`)
 			else
-			if (inputsLength > MAX_INPUTS) this.error(`You are trying to import ${chalk.yellowBright(String(inputsLength))} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
+			if ((MAX_INPUTS > 0) && (inputsLength > MAX_INPUTS)) this.error(`You are trying to import ${chalk.yellowBright(String(inputsLength))} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
 				suggestions: [`Split your input file into multiple files containing each a maximum of ${MAX_INPUTS} items`],
 			})
 
+			// Split input
 			const chunks: Array<Chunk> = splitImports({
 				resource_type: type,
 				parent_resource_id: parentId,
-				cleanup_records: cleanup,
+				cleanup_records: false,
 				inputs,
 			})
 
-			const groupId = chunks[0]?.group_id
-			const resource = type.replace(/_/g, ' ')
+			// Split chunks
+			const batches: Array<Batch> = splitChunks(chunks, MAX_CHUNKS)
 
-			if (chunks.length > 1) {
-				this.log()
-				const msg1 = `The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${apiConf.imports_max_size} elements allowed for each single import.`
-				const msg2 = `The import will be split into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}.`
-				const msg3 = `Execute the command ${chalk.italic(`imports:group ${groupId}`)} to retrieve all the related imports`
-				this.log(`${msg1} ${msg2} ${msg3}`)
+
+			const resource = type.replace(/_/g, ' ')
+			const multiChunk = chunks.length > 1
+			const multiBatch = batches.length > 1
+
+			// Show multi chunk/batch messages
+			if (!flags.quiet && !flags.blind) {
+				// Multi chunk message
+				if (multiChunk) {
+					const groupId = chunks[0]?.group_id
+					const msg1 = `The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${apiConf.imports_max_size} elements allowed for each single import.`
+					const msg2 = `The import will be split into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}.`
+					const msg3 = `Execute the command ${chalk.italic(`imports:group ${groupId}`)} to retrieve all the related imports`
+					this.log(`\n${msg1} ${msg2} ${msg3}`)
+				}
+				// Multi batch message
+				if (multiBatch) {
+					const msg1 = `The ${chunks.length} generated chunks will be elaborated in batches of ${MAX_CHUNKS}\n`
+					this.log(`\n${msg1}`)
+				}
+				if (multiChunk || multiBatch) await cliux.anykey()
 			}
 
-			if (monitor) this.monitor = Monitor.create(inputsLength, this.log)
-			else this.log(`\nThe import of ${chalk.yellowBright(String(inputsLength))} ${resource} has been started`)
 
-			await this.parallelizeImports(chunks, monitor)
+			if (monitor) {
+				for (const batch of batches) {
+					if (multiBatch) this.log(`\nProcessing batch # ${chalk.yellowBright(String(batch.batch_number))} of ${chalk.yellowBright(String(batch.total_batches))}...`)
+					this.monitor = Monitor.create(batch.items_count, this.log)
+					await this.parallelizeImports(batch.chunks, monitor)
+				}
+				this.log(`\nImport of ${chalk.yellowBright(String(inputsLength))} ${humanized} completed.`)
+			} else {
+				await this.parallelizeImports(chunks, monitor)
+				this.log(`\nThe import of ${chalk.yellowBright(String(inputsLength))} ${resource} has been started`)
+			}
 
 			this.log()
 
@@ -212,7 +241,7 @@ export default class ImportsCreate extends Command {
 
 				do {
 
-					await sleep(importsDelay(chunk.total_chunks - this.completed))
+					await sleep(importsDelay(chunk.total_batch_chunks - this.completed))
 					const tmp = await this.cl.imports.retrieve(imp.id).catch(async err => {
 						if (this.cl.isApiError(err) && (err.status === 429)) {
 							if (imp && imp.status) barValue = this.monitor.updateBar(bar, barValue, { status: chalk.cyanBright(imp.status) })
