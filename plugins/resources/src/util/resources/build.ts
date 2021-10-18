@@ -17,6 +17,7 @@ const getResourcesJson = async (): Promise<any> => {
 		console.log(`Loading resources from remote url ${resUrl} ...`)
 		const response = await axios.get(resUrl)
 		resources = response.data
+		writeFileSync(resFile, resources, { encoding: 'utf-8' })
 	} catch (error) {
 		console.log('Error loading resources from ' + resUrl)
 		resources = undefined
