@@ -181,7 +181,7 @@ class Monitor {
 			// Extract column name from format
 			const cols: Array<string> = []
 			f.split('|').forEach(p => {
-				const col = p.trim().replaceAll(/[^a-zA-Z_]/g, '').trim()
+				const col = p.trim().replace(/[^a-zA-Z_]/g, '').trim()
 				if (col) cols.push(col)
 			})
 
