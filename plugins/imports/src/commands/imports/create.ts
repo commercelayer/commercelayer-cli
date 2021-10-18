@@ -148,10 +148,13 @@ export default class ImportsCreate extends Command {
 				}
 				// Multi batch message
 				if (multiBatch) {
-					const msg1 = `The ${chunks.length} generated chunks will be elaborated in batches of ${MAX_CHUNKS}\n`
+					const msg1 = `The ${chunks.length} generated chunks will be elaborated in batches of ${MAX_CHUNKS}`
 					this.log(`\n${msg1}`)
 				}
-				if (multiChunk || multiBatch) await cliux.anykey()
+				if (multiChunk || multiBatch) {
+					this.log()
+					await cliux.anykey()
+				}
 			}
 
 
