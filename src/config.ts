@@ -5,11 +5,9 @@ import fs from 'fs'
 import Config from '@oclif/config'
 import type { ApiMode } from './common'
 
+
 const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
 export default clicfg
-
-const SUPER_USER_MODE = 'SBREZZZA'
-export { SUPER_USER_MODE }
 
 
 interface AppKey {
@@ -120,6 +118,7 @@ export { currentApplication, currentOrganization, currentModeLive }
 enum ConfigParams {
 	currentApplication = 'currentApplication',
 	commandRetention = 'commandRetention',
+	applicationTypeCheck = 'applicationTypeCheck',
 	test = 'test',
 }
 
@@ -131,6 +130,7 @@ enum ConfigParamsEditable {
 const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
+	applicationTypeCheck: false,
 }
 
 
@@ -148,7 +148,10 @@ const paramDefault = (param: ConfigParamsEditable) => {
 }
 
 const configParam = (param: ConfigParams, value?: any): any => {
-	if (value && paramEditable(param)) clicfg.set(param, value)
+	if (value) {
+		if (!paramEditable(param)) throw new Error(`Parameter ${param} is not editable`)
+		clicfg.set(param, value)
+	}
 	return clicfg.get(param) || paramDefault(param as unknown as ConfigParamsEditable)
 }
 
