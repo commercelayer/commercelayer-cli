@@ -124,6 +124,11 @@ export default class ResourcesUpdate extends Command {
 			attributes.metadata = metadata
 		}
 
+		// Include flags
+		const include: string[] = this.includeFlag(flags.include)
+		// Fields flags
+		const fields = this.fieldsFlag(flags.fields, resource.api)
+
 
 		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
 		const reqReader = lang ? addRequestReader(cl) : undefined
@@ -132,6 +137,10 @@ export default class ResourcesUpdate extends Command {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
 			this.checkOperation(resSdk, 'update')
+
+			const params: QueryParamsRetrieve = {}
+			if (include && (include.length > 0)) params.include = include
+			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
 
 			// Metadata attributes merge
 			if (flags.metadata) {
@@ -144,7 +153,7 @@ export default class ResourcesUpdate extends Command {
 
 			attributes.id = id
 
-			const res = await resSdk.update(attributes)
+			const res = await resSdk.update(attributes, params)
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 

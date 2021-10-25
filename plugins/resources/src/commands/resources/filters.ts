@@ -23,7 +23,7 @@ export default class ResourcesFilters extends Command {
 
   async run() {
     this.log(chalk.blueBright('\n-= Commerce Layer API available resource filters =-\n'))
-    cliux.table(filters,
+    cliux.table(filters.sort((a, b) =>  a.predicate.localeCompare(b.predicate)),
       {
         predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
         description: { header: 'DESCRIPTION' },

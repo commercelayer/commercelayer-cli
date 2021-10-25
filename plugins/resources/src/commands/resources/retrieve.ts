@@ -18,16 +18,6 @@ export default class ResourcesRetrieve extends Command {
 
 	static flags = {
 		...Command.flags,
-		include: flags.string({
-			char: 'i',
-			multiple: true,
-			description: 'comma separated resources to include',
-		}),
-		fields: flags.string({
-			char: 'f',
-			multiple: true,
-			description: 'comma separeted list of fields in the format [resource]=field1,field2...',
-		}),
 		save: flags.string({
 			char: 'x',
 			description: 'save command output to file',

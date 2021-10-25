@@ -1,5 +1,5 @@
 import Command, { flags } from '@oclif/command'
-import { findResource, Resource } from './commands/resources'
+import { findResource, Resource } from './util/resources'
 import { filterAvailable } from './commands/resources/filters'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
@@ -52,6 +52,16 @@ export default abstract class extends Command {
 			hidden: true,
 			required: true,
 			env: 'CL_CLI_ACCESS_TOKEN',
+		}),
+		include: flags.string({
+			char: 'i',
+			multiple: true,
+			description: 'comma separated resources to include',
+		}),
+		fields: flags.string({
+			char: 'f',
+			multiple: true,
+			description: 'comma separeted list of fields in the format [resource]=field1,field2...',
 		}),
 		json: flags.boolean({
 			char: 'j',
@@ -411,18 +421,29 @@ export default abstract class extends Command {
 		if (flag && (flag.length > 0)) {
 			flag.forEach(f => {
 
+				let rel: string
+				let name: string
+				let id: string
+				let type: string
+
 				const rt = f.split('=')
-				if (rt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`,
+				if (rt.length === 2) {
+					if ((name = rt[0]) === '') this.error('Relationship attribute name is empty')
+					if ((rel = rt[1]) === '') this.error('Relationship value is empty')
+				} else this.error(`Invalid relationship flag: ${chalk.redBright(f)}`,
 					{ suggestions: [`Define the relationship using the format ${chalk.italic('attribute_name=resource_type/resource_id')}`] }
 				)
-				const vt = rt[1].split('/')
-				if (vt.length !== 2) this.error(`Invalid relationship flag: ${chalk.redBright(f)}`,
-					{ suggestions: [`Define the relationship value using the format ${chalk.italic('resource_type/resource_id')}`] }
-				)
 
-				const name = rt[0] as string
-				const id = vt[1] as string
-				const type = vt[0] as any
+				const vt = rel.split('/')
+				if (vt.length === 2) {
+					if ((type = vt[0]) === '') this.error('Relationship type is empty')
+					if ((id = vt[1]) === '') this.error('Relationship resource id is empty')
+				} else {
+					id = vt[0]
+					const res = findResource(name, { singular: true })
+					if (res) type = res.api
+					else this.error('Relationship type is empty')
+				}
 
 				// const res = this.checkResource(type)
 

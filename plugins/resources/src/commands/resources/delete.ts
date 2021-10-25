@@ -27,6 +27,12 @@ export default class ResourcesDelete extends Command {
 
     const { args, flags } = this.parse(ResourcesDelete)
 
+    const invalidFlags: string[] = ['fields', 'include']
+    invalidFlags.forEach(x => {
+      if (flags[x as keyof typeof flags]) this.error(`Flag non supported in ${chalk.italic('delete')} operation: ${chalk.red(x)}`)
+    })
+
+
     const { res, id } = this.checkResourceId(args.resource, args.id)
 
     const resource = this.checkResource(res, { singular: true })

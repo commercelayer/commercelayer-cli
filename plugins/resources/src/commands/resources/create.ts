@@ -1,6 +1,6 @@
 import Command, { flags } from '../../base'
 import { baseURL } from '../../common'
-import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
 import { denormalize } from '../../jsonapi'
@@ -112,6 +112,11 @@ export default class ResourcesCreate extends Command {
 			attributes.metadata = metadata
 		}
 
+		// Include flags
+		const include: string[] = this.includeFlag(flags.include)
+		// Fields flags
+		const fields = this.fieldsFlag(flags.fields, resource.api)
+
 
 		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
 		const reqReader = lang ? addRequestReader(cl) : undefined
@@ -120,12 +125,17 @@ export default class ResourcesCreate extends Command {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
 			this.checkOperation(resSdk, 'create')
-			const res = await resSdk.create(attributes)
+
+			const params: QueryParamsRetrieve = {}
+			if (include && (include.length > 0)) params.include = include
+			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
+
+			const res = await resSdk.create(attributes, params)
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 
 			this.printOutput(out, flags)
-			// if (res.valid())
+
 			this.log(`\n${chalk.greenBright('Successfully')} created new resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
 
