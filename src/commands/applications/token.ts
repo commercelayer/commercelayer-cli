@@ -1,5 +1,5 @@
 import { Command, flags } from '@oclif/command'
-import { getIntegrationToken } from '@commercelayer/js-auth'
+import { getAccessToken } from './login'
 import chalk from 'chalk'
 import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentApplication, readTokenFile, ConfigParams, configParam } from '../../config'
 import { execMode, appKey, sleep, print, baseURL } from '../../common'
@@ -146,14 +146,6 @@ const decodeAccessToken = (accessToken: any): any => {
 }
 
 
-const getAccessToken = async (auth: AppAuth): Promise<AuthReturnType> => {
-	return getIntegrationToken({
-		clientId: auth.clientId,
-		clientSecret: auth.clientSecret,
-		endpoint: baseURL(auth.slug, auth.domain),
-	})
-}
-
 
 const newAccessToken = async (config: IConfig, app: AppKey, save: boolean = false): Promise<AuthReturnType> => {
 
@@ -162,9 +154,10 @@ const newAccessToken = async (config: IConfig, app: AppKey, save: boolean = fals
 
 	// Check application type on each token refresh
 	const info = decodeAccessToken(token?.accessToken)
-	if (configParam(ConfigParams.applicationTypeCheck)) {
-		if (info.application.kind !== 'cli')
-			throw new Error('The locally saved credentials are not associated with a CLI application')
+	const typeCheck = configParam(ConfigParams.applicationTypeCheck)
+	if (typeCheck) {
+		if (!typeCheck.includes(info.application.kind))
+			throw new Error(`The locally saved credentials are associated to an application of type ${chalk.red.italic(info.application.kind)} while the only allowed types are: ${chalk.green.italic(typeCheck.join(','))}`)
 	}
 
 	if (save) writeTokenFile(config, app, token?.data)

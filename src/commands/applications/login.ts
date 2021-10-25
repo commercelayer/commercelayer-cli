@@ -1,11 +1,13 @@
 import { Command, flags } from '@oclif/command'
-import { getIntegrationToken } from '@commercelayer/js-auth'
-import commercelayer from '@commercelayer/sdk'
+import { clientCredentials } from '@commercelayer/js-auth'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { baseURL, appKey, ApiMode } from '../../common'
 import chalk from 'chalk'
 import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import { decodeAccessToken } from './token'
+import { Credentials } from '@commercelayer/js-auth/dist/clientCredentials'
+import { AuthScope } from '@commercelayer/js-auth/dist/typings'
 
 
 export default class ApplicationsLogin extends Command {
@@ -33,7 +35,7 @@ export default class ApplicationsLogin extends Command {
 		clientSecret: flags.string({
 			char: 's',
 			description: 'organization client_secret',
-			required: true,
+			required: false,
 		}),
 		domain: flags.string({
 			char: 'd',
@@ -42,27 +44,41 @@ export default class ApplicationsLogin extends Command {
 			hidden: true,
 			dependsOn: ['organization'],
 		}),
+		scope: flags.string({
+			char: 'S',
+			description: 'access token scope (market, stock location)',
+			required: false,
+			multiple: true,
+		}),
 	}
 
 	async run() {
 
 		const { flags } = this.parse(ApplicationsLogin)
 
+		if (!flags.clientSecret && !flags.scope)
+			this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)
+
+		const scope = checkScope(flags.scope)
+
 		const config: AppAuth = {
 			clientId: flags.clientId,
 			clientSecret: flags.clientSecret,
 			slug: flags.organization,
 			domain: flags.domain,
+			scope,
 		}
+
 
 		try {
 
 			const token = await getAccessToken(config)
 
 			const app = await getApplicationInfo(config, token?.accessToken || '')
-			if (configParam(ConfigParams.applicationTypeCheck)) {
-				if (app.type !== 'cli') this.error('The credentials provided are not associated with a CLI application',
-					{ suggestions: [`Double check your credentials or access the online dashboard of ${chalk.bold(app.organization)} and create a new CLI application`] }
+			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
+			if (typeCheck) {
+				if (!typeCheck.includes(app.type)) this.error(`The credentials provided are associated to an application of type ${chalk.red.italic(app.type)} while the only allowed types are: ${chalk.green.italic(typeCheck.join(','))}`,
+					{ suggestions: [`Double check your credentials or access the online dashboard of ${chalk.bold(app.organization)} and create a new valid application `] }
 				)
 			}
 			app.key = appKey(app.slug, flags.domain)
@@ -83,10 +99,8 @@ export default class ApplicationsLogin extends Command {
 
 		} catch (error: any) {
 			this.log(chalk.bold.redBright('Login failed!'))
-			if (error.suggestions) throw error
-			else
-			if (error.message) this.error(error.message)
-			else this.error(inspect(error.toArray(), false, null, true))
+			if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
+			else this.error(error)
 		}
 
 	}
@@ -94,12 +108,18 @@ export default class ApplicationsLogin extends Command {
 }
 
 
-const getAccessToken = async (auth: AppAuth): Promise<any> => {
-	return getIntegrationToken({
+
+export const getAccessToken = async (auth: AppAuth): Promise<any> => {
+
+	const credentials: Credentials = {
 		clientId: auth.clientId,
 		clientSecret: auth.clientSecret,
 		endpoint: baseURL(auth.slug, auth.domain),
-	})
+		scope: auth.scope || '',
+	}
+
+	return clientCredentials(credentials)
+
 }
 
 
@@ -114,9 +134,14 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 	const tokenInfo = decodeAccessToken(accessToken)
 
 	// Organization info
-	const org = await cl.organization.retrieve()
+	const org = await cl.organization.retrieve().catch(() => {
+		throw new Error(`This application cannot access the ${chalk.italic('Organization')} resource`)
+	})
+
 	// Application info
-	const app = await cl.application.retrieve()
+	const app = await cl.application.retrieve().catch(() => {
+		throw new Error(`This application cannot access the ${chalk.italic('Application')} resource`)
+	})
 
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
 
@@ -132,5 +157,22 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 
 	return appInfo
+
+}
+
+
+const checkScope = (scopes: string[]): AuthScope => {
+
+	const scope: string[] = []
+
+	if (scopes) {
+		for (const s of scopes) {
+			const colonIdx = s.indexOf(':')
+			if ((colonIdx < 0) || (s.substr(colonIdx).trim() === '')) throw new Error(`Invalid scope: ${s}`)
+			else scope.push(s)
+		}
+	}
+
+	return (scope.length === 1) ? scope[0] : scope
 
 }

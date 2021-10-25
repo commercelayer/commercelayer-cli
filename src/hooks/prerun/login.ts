@@ -56,9 +56,10 @@ const hook: Hook<'prerun'> = async function (opts) {
 			Object.assign(app, current)
 			configData = readConfigFile(this.config, app)
 
-			if (configParam(ConfigParams.applicationTypeCheck)) {
-				if (configData.type !== 'cli')
-					this.error(`The current application (${chalk.redBright(configData.key)}) is not a CLI application\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new CLI application`)
+			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
+			if (typeCheck) {
+				if (!typeCheck.includes(configData.type))
+					this.error(`The current application (${chalk.redBright(configData.key)}) has an invalid type: ${chalk.red.italic(configData.type)}, while the only accepted type are ${chalk.green.italic(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
 			}
 
 			opts.argv.push('--organization=' + configData.slug)

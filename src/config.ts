@@ -4,6 +4,7 @@ import path from 'path'
 import fs from 'fs'
 import Config from '@oclif/config'
 import type { ApiMode } from './common'
+import { AuthScope, ClientId, ClientSecret } from '@commercelayer/js-auth/dist/typings'
 
 
 const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
@@ -19,8 +20,9 @@ interface AppKey {
 interface AppAuth {
 	slug: string;
 	domain?: string;
-	clientId: string;
-	clientSecret: string;
+	clientId: ClientId;
+	clientSecret?: ClientSecret;
+	scope?: AuthScope;
 }
 
 interface AppInfo extends AppKey, AppAuth {
@@ -130,7 +132,7 @@ enum ConfigParamsEditable {
 const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
-	applicationTypeCheck: false,
+	applicationTypeCheck: ['cli', 'sales_channel', 'integration'],
 }
 
 
