@@ -3,13 +3,12 @@
 /* eslint-disable complexity */
 import Command, { flags } from '../../base'
 import { baseURL } from '../../common'
-import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 import notifier from 'node-notifier'
 import jwt from 'jsonwebtoken'
 import { getIntegrationToken } from '@commercelayer/js-auth'
-import { QueryParamsList } from '@commercelayer/sdk/lib/query'
 
 
 // const maxPagesWarning = 1000

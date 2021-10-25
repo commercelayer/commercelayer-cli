@@ -11,6 +11,7 @@ import { fixType } from './common'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'
+import { availableLanguages, languageInfo } from './lang'
 
 
 
@@ -67,6 +68,31 @@ export default abstract class extends Command {
 			char: 'R',
 			description: 'print out the raw API response',
 			hidden: false,
+		}),
+		doc: flags.boolean({
+			char: 'D',
+			description: 'shows the CLI command in a specific language',
+		}),
+		lang: flags.string({
+			char: 'l',
+			description: 'show the CLI command in the specified language syntax',
+			exclusive: availableLanguages,
+			options: availableLanguages,
+			dependsOn: ['doc'],
+		}),
+		curl: flags.boolean({
+			description: `show the equivalent ${languageInfo.curl.label} of the CLI command`,
+			exclusive: ['lang', ...availableLanguages.filter(l => l !== 'curl')],
+			parse: () => 'curl',
+			hidden: !availableLanguages.includes('curl'),
+			dependsOn: ['doc'],
+		}),
+		typescript: flags.boolean({
+			description: `show the equivalent ${languageInfo.typescript.label} of the CLI command`,
+			exclusive: ['lang', ...availableLanguages.filter(l => l !== 'typescript')],
+			parse: () => 'typescript',
+			hidden: !availableLanguages.includes('typescript'),
+			dependsOn: ['doc'],
 		}),
 	}
 
@@ -481,6 +507,23 @@ export default abstract class extends Command {
 		} finally {
 			this.log()
 		}
+
+	}
+
+
+	printCommand(lang: string, command: string) {
+
+		const header = languageInfo[lang as keyof typeof languageInfo].label
+		// const footer = header.replace(/./g, '-')
+
+		this.log()
+		this.log(`${chalk.underline.cyan(header)}`)
+		// this.log(chalk.cyan(`------------------------------{ ${header} }------------------------------`))
+		this.log()
+		this.log(command)
+		// this.log()
+		// this.log(chalk.cyan(`---------------------------------${footer}---------------------------------`))
+		this.log()
 
 	}
 

@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run",
@@ -74,8 +74,8 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/js-auth": "^2.0.4",
-    "@commercelayer/sdk": "^2.1.1",
+    "@commercelayer/js-auth": "^2.0.8",
+    "@commercelayer/sdk": "latest",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "axios": "^0.21.4",
@@ -83,6 +83,7 @@
     "cli-ux": "^5.6.3",
     "json-2-csv": "^3.14.4",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "node-notifier": "^9.0.1",
     "tslib": "^1.14.1",
     "update-notifier": "^5.1.0"
