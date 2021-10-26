@@ -72,7 +72,7 @@ export default abstract class extends Command {
 	protected handleError(error: any, flags?: any): void {
 		if (CommerceLayerStatic.isApiError(error)) {
 			if (error.status === 401) {
-				const err = error.errors[0]
+				const err = error.first()
 				this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
 					{ suggestions: ['Execute login to get access to the organization\'s imports'] }
 				)

@@ -185,7 +185,7 @@ export default class ImportsCreate extends Command {
 			await this.cl.application.retrieve()
 		} catch (error) {
 			if (this.cl.isApiError(error) && error.status && (error.status >= 400)) {
-				const err = error.errors[0]
+				const err = error.first()
 				this.error(`${err.title}: ${err.detail}`)
 			}
 		}
