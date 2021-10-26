@@ -62,7 +62,7 @@ const addRequestReader = (cl: CommerceLayerClient, interrupt = true): RequestRea
 
 
 const isRequestInterrupted = (error: unknown): boolean => {
-	return (CommerceLayerStatic.isApiError(error) && (error.source instanceof RequestInterrupted) && error.source.requestInterrupted)
+	return (CommerceLayerStatic.isSdkError(error) && (error.source instanceof RequestInterrupted) && error.source.requestInterrupted)
 }
 
 
