@@ -155,6 +155,8 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		baseUrl: baseURL(auth.slug, auth.domain),
 	}, auth)
 
+	// if (Array.isArray(appInfo.scope) && (appInfo.scope.length === 0)) appInfo.scope = undefined
+
 
 	return appInfo
 
@@ -168,7 +170,9 @@ const checkScope = (scopes: string[]): AuthScope => {
 	if (scopes) {
 		for (const s of scopes) {
 			const colonIdx = s.indexOf(':')
-			if ((colonIdx < 0) || (s.substr(colonIdx).trim() === '')) throw new Error(`Invalid scope: ${s}`)
+			if ((colonIdx < 0) || (s.substr(colonIdx).trim() === '')) throw new Error(`Invalid scope: ${chalk.red(s)}`)
+			else
+			if (scope.includes(s)) throw new Error(`Duplicate login scope: ${chalk.red(s)}`)
 			else scope.push(s)
 		}
 	}
