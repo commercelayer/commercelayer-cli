@@ -1,0 +1,82 @@
+{
+  "name": "@commercelayer/cli-plugin-orders",
+  "description": "Commerce Layer CLI Orders plugin",
+  "version": "0.0.1",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "bin": {
+    "cl-orders": "./bin/run",
+    "cl-ord": "./bin/run",
+    "clo": "./bin/run"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-orders/issues",
+  "devDependencies": {
+    "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@oclif/test": "^1.2.8",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.17.60",
+    "@types/update-notifier": "^5.0.0",
+    "chai": "^4.3.4",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.2.0",
+    "jsonapi-typescript": "^0.1.3",
+    "globby": "^10.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^4.4.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-orders",
+  "keywords": [
+    "oclif",
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-orders",
+    "plugins": [],
+    "topics": {
+      "orders": {
+        "description": "Execute special operations on orders",
+        "hidden": true
+      }
+    }
+  },
+  "repository": "commercelayer/commercelayer-cli-plugin-orders",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md",
+    "readme": "oclif-dev readme"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@commercelayer/js-auth": "^2.1.0",
+    "@commercelayer/sdk": "2.3.0",
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "chalk": "^2.4.2",
+    "cli-ux": "^5.6.3",
+    "tslib": "^1.14.1",
+    "update-notifier": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
