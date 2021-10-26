@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Resource } from '../../commands/resources'
+import { Resource } from '../resources'
 import axios from 'axios'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import path from 'path'

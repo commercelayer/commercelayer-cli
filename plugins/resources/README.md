@@ -31,11 +31,6 @@ $ commercelayer plugins:install resources
 ## Commands
 <!-- commands -->
 
-* [`cl-resources order ACTION [ID]`](#cl-resources-order-action-id)
-* [`cl-resources order:actions`](#cl-resources-orderactions)
-* [`cl-resources order:approve ID`](#cl-resources-orderapprove-id)
-* [`cl-resources order:capture ID`](#cl-resources-ordercapture-id)
-* [`cl-resources order:place ID`](#cl-resources-orderplace-id)
 * [`cl-resources resources`](#cl-resources-resources)
 * [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
 * [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
@@ -45,110 +40,6 @@ $ commercelayer plugins:install resources
 * [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
 * [`cl-resources resources:retrieve RESOURCE [ID]`](#cl-resources-resourcesretrieve-resource-id)
 * [`cl-resources resources:update RESOURCE [ID]`](#cl-resources-resourcesupdate-resource-id)
-
-### `cl-resources order ACTION [ID]`
-
-Execute an action on the order (place, approve, capture ....
-
-```
-USAGE
-  $ cl-resources order ACTION [ID]
-
-ARGUMENTS
-  ACTION  the action to execute on the order
-  ID      the id of the order
-
-OPTIONS
-  -D, --doc                        shows the CLI command in a specific language
-  -R, --raw                        print out the raw API response
-  -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
-  -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
-  --curl                           show the equivalent cURL command of the CLI command
-```
-
-_See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/order/index.ts)_
-
-### `cl-resources order:actions`
-
-Show a list of possible actions.
-
-```
-USAGE
-  $ cl-resources order:actions
-```
-
-_See code: [src/commands/order/actions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/order/actions.ts)_
-
-### `cl-resources order:approve ID`
-
-Approve an order.
-
-```
-USAGE
-  $ cl-resources order:approve ID
-
-ARGUMENTS
-  ID  the id of the order to approve
-
-OPTIONS
-  -D, --doc                        shows the CLI command in a specific language
-  -R, --raw                        print out the raw API response
-  -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
-  -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
-  --curl                           show the equivalent cURL command of the CLI command
-```
-
-_See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/order/approve.ts)_
-
-### `cl-resources order:capture ID`
-
-Capture an order.
-
-```
-USAGE
-  $ cl-resources order:capture ID
-
-ARGUMENTS
-  ID  the id of the order to capture
-
-OPTIONS
-  -D, --doc                        shows the CLI command in a specific language
-  -R, --raw                        print out the raw API response
-  -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
-  -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
-  --curl                           show the equivalent cURL command of the CLI command
-```
-
-_See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/order/capture.ts)_
-
-### `cl-resources order:place ID`
-
-Place an order.
-
-```
-USAGE
-  $ cl-resources order:place ID
-
-ARGUMENTS
-  ID  the id of the order to place
-
-OPTIONS
-  -D, --doc                        shows the CLI command in a specific language
-  -R, --raw                        print out the raw API response
-  -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
-  -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
-  --curl                           show the equivalent cURL command of the CLI command
-```
-
-_See code: [src/commands/order/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/order/place.ts)_
 
 ### `cl-resources resources`
 
@@ -168,7 +59,7 @@ EXAMPLES
   $ cl resources
 ```
 
-_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/index.ts)_
+_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/index.ts)_
 
 ### `cl-resources resources:create RESOURCE`
 
@@ -187,13 +78,16 @@ OPTIONS
   -O, --object=object              define a resource object attribute
   -R, --raw                        print out the raw API response
   -a, --attribute=attribute        define a resource attribute
+  -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=include            comma separated resources to include
   -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
+  -l, --lang=curl|node             show the CLI command in the specified language syntax
   -m, --metadata=metadata          define a metadata attribute or a set of metadata attributes
   -o, --organization=organization  (required) the slug of your organization
   -r, --relationship=relationship  define a relationship with another resource
   -u, --unformatted                print unformatted JSON output
   --curl                           show the equivalent cURL command of the CLI command
+  --node                           show the equivalent Node SDK source code of the CLI command
 
 ALIASES
   $ cl-resources create
@@ -208,7 +102,7 @@ EXAMPLES
   $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/create.ts)_
 
 ### `cl-resources resources:delete RESOURCE [ID]`
 
@@ -225,11 +119,14 @@ ARGUMENTS
 OPTIONS
   -D, --doc                        shows the CLI command in a specific language
   -R, --raw                        print out the raw API response
+  -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=include            comma separated resources to include
   -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
+  -l, --lang=curl|node             show the CLI command in the specified language syntax
   -o, --organization=organization  (required) the slug of your organization
   -u, --unformatted                print unformatted JSON output
   --curl                           show the equivalent cURL command of the CLI command
+  --node                           show the equivalent Node SDK source code of the CLI command
 
 ALIASES
   $ cl-resources delete
@@ -241,7 +138,7 @@ EXAMPLES
   $ cl delete customers <customerId>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/delete.ts)_
 
 ### `cl-resources resources:doc RESOURCE`
 
@@ -263,7 +160,7 @@ EXAMPLES
   $ cl res:doc cusatomers
 ```
 
-_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/doc.ts)_
+_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/doc.ts)_
 
 ### `cl-resources resources:filters`
 
@@ -281,7 +178,7 @@ EXAMPLES
   $ cl res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/filters.ts)_
 
 ### `cl-resources resources:get RESOURCE [ID]`
 
@@ -302,7 +199,7 @@ OPTIONS
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
   -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
+  -l, --lang=curl|node             show the CLI command in the specified language syntax
   -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
   -p, --page=page                  page number
@@ -311,6 +208,7 @@ OPTIONS
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
   --curl                           show the equivalent cURL command of the CLI command
+  --node                           show the equivalent Node SDK source code of the CLI command
 
 ALIASES
   $ cl-resources get
@@ -323,7 +221,7 @@ EXAMPLES
   $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/get.ts)_
 
 ### `cl-resources resources:list RESOURCE`
 
@@ -343,7 +241,7 @@ OPTIONS
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
   -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
+  -l, --lang=curl|node             show the CLI command in the specified language syntax
   -n, --pageSize=pageSize          number of elements per page
   -o, --organization=organization  (required) the slug of your organization
   -p, --page=page                  page number
@@ -352,6 +250,7 @@ OPTIONS
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
   --curl                           show the equivalent cURL command of the CLI command
+  --node                           show the equivalent Node SDK source code of the CLI command
 
 ALIASES
   $ cl-resources list
@@ -364,7 +263,7 @@ EXAMPLES
   $ cl list -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/list.ts)_
 
 ### `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -385,11 +284,12 @@ OPTIONS
   -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=include            comma separated resources to include
   -j, --json                       convert output in standard JSON format
-  -l, --lang=curl                  show the CLI command in the specified language syntax
+  -l, --lang=curl|node             show the CLI command in the specified language syntax
   -o, --organization=organization  (required) the slug of your organization
   -u, --unformatted                print unformatted JSON output
   -x, --save=save                  save command output to file
   --curl                           show the equivalent cURL command of the CLI command
+  --node                           show the equivalent Node SDK source code of the CLI command
 
 ALIASES
   $ cl-resources retrieve
@@ -403,7 +303,7 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/retrieve.ts)_
 
 ### `cl-resources resources:update RESOURCE [ID]`
 
@@ -430,9 +330,13 @@ OPTIONS
 
   -a, --attribute=attribute                define a resource attribute
 
+  -f, --fields=fields                      comma separeted list of fields in the format [resource]=field1,field2...
+
+  -i, --include=include                    comma separated resources to include
+
   -j, --json                               convert output in standard JSON format
 
-  -l, --lang=curl                          show the CLI command in the specified language syntax
+  -l, --lang=curl|node                     show the CLI command in the specified language syntax
 
   -m, --metadata=metadata                  define a metadata attribute and merge it with the metadata already present in
                                            the remote resource
@@ -444,6 +348,8 @@ OPTIONS
   -u, --unformatted                        print unformatted JSON output
 
   --curl                                   show the equivalent cURL command of the CLI command
+
+  --node                                   show the equivalent Node SDK source code of the CLI command
 
 ALIASES
   $ cl-resources update
@@ -459,5 +365,5 @@ EXAMPLES
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.2.0/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.3.0/src/commands/resources/update.ts)_
 <!-- commandsstop -->

@@ -1,5 +1,5 @@
 import { Command } from '@oclif/command'
-import { findResource } from '.'
+import { findResource } from '../../util/resources'
 import axios from 'axios'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
