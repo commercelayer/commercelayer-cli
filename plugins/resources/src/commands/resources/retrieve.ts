@@ -1,6 +1,6 @@
 import Command, { flags } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve} from '@commercelayer/sdk'
-import { addRequestReader, buildCommand, getLanguage, isRequestInterrupted } from '../../lang'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 
 
 export default class ResourcesRetrieve extends Command {
@@ -49,8 +49,6 @@ export default class ResourcesRetrieve extends Command {
 		const domain = flags.domain
 		const accessToken = flags.accessToken
 
-		const lang = getLanguage(flags)
-
 
 		// Include flags
 		const include: string[] = this.includeFlag(flags.include)
@@ -61,12 +59,13 @@ export default class ResourcesRetrieve extends Command {
 		const cl = commercelayer({ organization, domain, accessToken })
 
 		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
-		const reqReader = lang ? addRequestReader(cl) : undefined
+		const reqReader = flags.doc ? addRequestReader(cl) : undefined
+
+		const params: QueryParamsRetrieve = {}
 
 		try {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
-			const params: QueryParamsRetrieve = {}
 
 			this.checkOperation(resSdk, 'retrieve')
 
@@ -81,20 +80,13 @@ export default class ResourcesRetrieve extends Command {
 
 			if (flags.save || flags['save-path']) this.saveOutput(out, flags)
 
-			if (lang && reqReader) {
-				this.printCommand(lang, buildCommand(lang, reqReader.request, params))
-				cl.removeInterceptor('request', reqReader.id)
-			}
-
 
 			return out
 
 		} catch (error) {
-			if (isRequestInterrupted(error)) {
-				if (lang && reqReader) {
-					this.printCommand(lang, buildCommand(lang, reqReader.request))
-					cl.removeInterceptor('request', reqReader.id)
-				}
+			if (isRequestInterrupted(error) && reqReader) {
+				this.showLiveDocumentation(reqReader.request, params, flags)
+				cl.removeInterceptor('request', reqReader.id)
 			} else this.printError(error)
 		}
 

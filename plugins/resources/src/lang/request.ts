@@ -1,4 +1,4 @@
-import { CommerceLayerClient, RequestObj } from '@commercelayer/sdk'
+import { CommerceLayerClient, CommerceLayerStatic, RequestObj } from '@commercelayer/sdk'
 
 
 type RequestData = {
@@ -62,7 +62,7 @@ const addRequestReader = (cl: CommerceLayerClient, interrupt = true): RequestRea
 
 
 const isRequestInterrupted = (error: unknown): boolean => {
-	return (error instanceof RequestInterrupted) && error.requestInterrupted
+	return (CommerceLayerStatic.isApiError(error) && (error.source instanceof RequestInterrupted) && error.source.requestInterrupted)
 }
 
 

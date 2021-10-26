@@ -4,7 +4,7 @@ import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commer
 import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
 import { denormalize } from '../../jsonapi'
-import { addRequestReader, buildCommand, getLanguage, isRequestInterrupted } from '../../lang'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 
 export default class ResourcesCreate extends Command {
 
@@ -63,7 +63,6 @@ export default class ResourcesCreate extends Command {
 		const domain = flags.domain
 		const accessToken = flags.accessToken
 
-		const lang = getLanguage(flags)
 
 		// Raw request
 		if (flags.data) {
@@ -119,14 +118,15 @@ export default class ResourcesCreate extends Command {
 
 
 		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
-		const reqReader = lang ? addRequestReader(cl) : undefined
+		const reqReader = flags.doc ? addRequestReader(cl) : undefined
+
+		const params: QueryParamsRetrieve = {}
 
 		try {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
 			this.checkOperation(resSdk, 'create')
 
-			const params: QueryParamsRetrieve = {}
 			if (include && (include.length > 0)) params.include = include
 			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
 
@@ -139,20 +139,12 @@ export default class ResourcesCreate extends Command {
 			this.log(`\n${chalk.greenBright('Successfully')} created new resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
 
 
-			if (lang && reqReader) {
-				this.printCommand(lang, buildCommand(lang, reqReader.request))
-				cl.removeInterceptor('request', reqReader.id)
-			}
-
-
 			return out
 
 		} catch (error) {
-			if (isRequestInterrupted(error)) {
-				if (lang && reqReader) {
-					this.printCommand(lang, buildCommand(lang, reqReader.request))
-					cl.removeInterceptor('request', reqReader.id)
-				}
+			if (isRequestInterrupted(error) && reqReader) {
+				this.showLiveDocumentation(reqReader.request, params, flags)
+				cl.removeInterceptor('request', reqReader.id)
 			} else this.printError(error)
 		}
 

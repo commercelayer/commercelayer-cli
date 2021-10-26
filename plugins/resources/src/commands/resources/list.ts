@@ -2,7 +2,8 @@ import Command, { flags } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
-import { addRequestReader, buildCommand, getLanguage, isRequestInterrupted } from '../../lang'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
+
 
 export default class ResourcesList extends Command {
 
@@ -65,8 +66,6 @@ export default class ResourcesList extends Command {
 		const domain = flags.domain
 		const accessToken = flags.accessToken
 
-		const lang = getLanguage(flags)
-
 
 		// Include flags
 		const include: string[] = this.includeFlag(flags.include)
@@ -84,13 +83,14 @@ export default class ResourcesList extends Command {
 		const cl = commercelayer({ organization, domain, accessToken })
 
 		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
-		const reqReader = lang ? addRequestReader(cl) : undefined
+		const reqReader = flags.doc ? addRequestReader(cl) : undefined
+
+		const params: QueryParamsList = {}
 
 		try {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
 			this.checkOperation(resSdk, 'list')
-			const params: QueryParamsList = {}
 
 			if (include && (include.length > 0)) params.include = include
 			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
@@ -116,11 +116,9 @@ export default class ResourcesList extends Command {
 			return out
 
 		} catch (error) {
-			if (isRequestInterrupted(error)) {
-				if (lang && reqReader) {
-					this.printCommand(lang, buildCommand(lang, reqReader.request))
-					cl.removeInterceptor('request', reqReader.id)
-				}
+			if (isRequestInterrupted(error) && reqReader) {
+				this.showLiveDocumentation(reqReader.request, params, flags)
+				cl.removeInterceptor('request', reqReader.id)
 			} else this.printError(error)
 		}
 

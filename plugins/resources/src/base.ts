@@ -8,10 +8,10 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import { fixType } from './common'
-import { CommerceLayerStatic } from '@commercelayer/sdk'
+import { CommerceLayerStatic, QueryParams } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'
-import { availableLanguages, languageInfo } from './lang'
+import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
 
 
 
@@ -97,11 +97,11 @@ export default abstract class extends Command {
 			hidden: !availableLanguages.includes('curl'),
 			dependsOn: ['doc'],
 		}),
-		typescript: flags.boolean({
-			description: `show the equivalent ${languageInfo.typescript.label} of the CLI command`,
-			exclusive: ['lang', ...availableLanguages.filter(l => l !== 'typescript')],
-			parse: () => 'typescript',
-			hidden: !availableLanguages.includes('typescript'),
+		node: flags.boolean({
+			description: `show the equivalent ${languageInfo.node.label} of the CLI command`,
+			exclusive: ['lang', ...availableLanguages.filter(l => l !== 'node')],
+			parse: () => 'node',
+			hidden: !availableLanguages.includes('node'),
 			dependsOn: ['doc'],
 		}),
 	}
@@ -532,7 +532,15 @@ export default abstract class extends Command {
 	}
 
 
-	printCommand(lang: string, command: string) {
+	protected async showLiveDocumentation(request: RequestData, params?: QueryParams, flags?: any): Promise<string> {
+		const lang = getLanguageArg(flags) || await promptLanguage()
+		const cmd = buildCommand(lang, request, params, flags)
+		this.printCommand(lang, cmd)
+		return cmd
+	}
+
+
+	protected printCommand(lang: string, command: string) {
 
 		const header = languageInfo[lang as keyof typeof languageInfo].label
 		// const footer = header.replace(/./g, '-')
