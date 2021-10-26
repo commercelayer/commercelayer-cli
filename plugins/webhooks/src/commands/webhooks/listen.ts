@@ -4,6 +4,7 @@ import { sleep } from '../../common'
 import { responseCodeColor } from './event'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
+import { EventCallback } from '@commercelayer/sdk'
 
 
 const MAX_LISTEN_TIME = 60 * 2	// 2 minutes
@@ -48,7 +49,8 @@ export default class WebhooksListen extends Command {
 		let lastEvent = new Date()
 		let elapsedWithoutEvents = 0
 
-		cliux.action.start('Listening webhook ' + chalk.yellowBright(id))
+		this.log(`Listening webhook ${chalk.yellowBright(id)}...`)
+		cliux.action.start('Waiting for next event callback')
 
 		try {
 
@@ -63,10 +65,7 @@ export default class WebhooksListen extends Command {
 				})
 
 				if (events.length > 0) {
-					for (const event of events) {
-						const tstamp = event.created_at.replace('T', ' ').replace('Z', '')
-						this.log(`${chalk.cyanBright('-->')}    ${tstamp}    ${event.id}    ${responseCodeColor(event.response_code, event.response_message)}`)
-					}
+					for (const event of events) this.log(eventMessage(event))
 					lastEvent = new Date(events[0].created_at)
 					lastEvent.setMilliseconds(lastEvent.getMilliseconds() + 1)
 				}
@@ -77,6 +76,7 @@ export default class WebhooksListen extends Command {
 			}
 			while (elapsedWithoutEvents < listenTime)
 
+			cliux.action.stop('timed out')
 			this.log(`\nNo events received in the last ${chalk.bold(String(listenTime))} seconds\n`)
 
 		} catch (error) {
@@ -86,4 +86,14 @@ export default class WebhooksListen extends Command {
 
 	}
 
+}
+
+
+const eventMessage = (e: EventCallback): string => {
+	const tstamp = e.created_at.replace('T', ' ').replace('Z', '')
+	// const ok = (!Number.isNaN(e.response_code)) && (Number(e.response_code) < 300)
+	const arrow = chalk.cyanBright('-->')
+	const code = responseCodeColor(e.response_code, e.response_message)
+	const msg = `${arrow}    ${tstamp}    ${e.id}    ${code}`
+	return msg
 }

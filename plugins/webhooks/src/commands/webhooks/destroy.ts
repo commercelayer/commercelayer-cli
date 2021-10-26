@@ -7,7 +7,7 @@ export default class WebhooksDestroy extends Command {
 
 	static description = 'destroy an existing webhook'
 
-	static aliases = ['webhooks:delete', 'wh:delete', 'wh:destroy']
+	static aliases = ['webhooks:delete', 'wh:delete', 'wh:destroy', 'webhook:delete', 'webhook:destroy']
 
 	static examples = [
 		'$ commercelayer webhooks:destroy <webhook-id>>',
