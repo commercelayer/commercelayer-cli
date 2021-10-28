@@ -4,9 +4,7 @@ import chalk from 'chalk'
 
 export default class OrdersActions extends Command {
 
-  static description = 'show a list of possible actions'
-
-  static hidden = false
+  static description = 'show a list of all actions that can be executed on an order'
 
 
   async run() {
@@ -16,12 +14,10 @@ export default class OrdersActions extends Command {
     })
 
     this.log()
-    cliux.table(actionsArray,
-      {
+    cliux.table(actionsArray, {
         action: { header: 'ACTION', minWidth: 35, get: row => chalk.blueBright(row.action) },
         description: { header: 'TO BE EXECUTED IF YOU WANT ...', get: row => row.description },
-      },
-      {
+      }, {
         printLine: this.log,
       })
     this.log()

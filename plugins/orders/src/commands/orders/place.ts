@@ -1,13 +1,16 @@
 import Command from '../../base'
+import exec from '../../exec'
+import { validActions } from './actions'
+
+
+const TRIGGER = 'place'
 
 
 export default class OrdersPlace extends Command {
 
-	static description = 'place an order'
+	static description = validActions[TRIGGER]
 
-	static hidden = false
-
-	static flags = {
+  static flags = {
 		...Command.flags,
 	}
 
@@ -17,15 +20,8 @@ export default class OrdersPlace extends Command {
 
 
 	async run() {
-
-		const { args, flags } = this.parse(OrdersPlace)
-
-		const cl = this.commercelayerInit(flags)
-
-		const result = cl.orders.update({ id: args.id, _place: true })
-
-		return result
-
+    const { args, flags } = this.parse(OrdersPlace)
+		return exec(args.id, TRIGGER, flags)
 	}
 
 }

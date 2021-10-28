@@ -3,10 +3,10 @@ import exec from '../../exec'
 import { validActions } from './actions'
 
 
-const TRIGGER = 'capture'
+const TRIGGER = '##__ACTION_ID__##'
 
 
-export default class OrdersCapture extends Command {
+export default class Orders##__ACTION_NAME__## extends Command {
 
 	static description = validActions[TRIGGER]
 
@@ -20,7 +20,7 @@ export default class OrdersCapture extends Command {
 
 
 	async run() {
-    const { args, flags } = this.parse(OrdersCapture)
+    const { args, flags } = this.parse(Orders##__ACTION_NAME__##)
 		return exec(args.id, TRIGGER, flags)
 	}
 
