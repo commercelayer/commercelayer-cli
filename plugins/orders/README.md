@@ -1,12 +1,12 @@
-@commercelayer/cli-plugin-resources
+@commercelayer/cli-plugin-orders
 ===================================
 
-Commerce Layer CLI Resources plugin
+Commerce Layer CLI Orders plugin
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-resources.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-resources)
-[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-resources.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-resources)
-[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-resources.svg)](https://github.com/commercelayer/cli-plugin-resources/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-orders.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-orders)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-orders.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-orders)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-orders.svg)](https://github.com/commercelayer/cli-plugin-orders/blob/master/package.json)
 
 <!-- toc -->
 
@@ -26,7 +26,7 @@ $ cl-orders [COMMAND] (--help | -h) for detailed information about CLI commands.
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
 ```sh-session
-$ commercelayer plugins:install resources
+$ commercelayer plugins:install orders
 ```
 ## Commands
 <!-- commands -->
@@ -58,7 +58,7 @@ USAGE
   $ cl-orders orders:actions
 ```
 
-_See code: [src/commands/orders/actions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/actions.ts)_
+_See code: [src/commands/orders/actions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/actions.ts)_
 
 ### `cl-orders orders:approve ID`
 
@@ -75,7 +75,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/approve.ts)_
+_See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/approve.ts)_
 
 ### `cl-orders orders:approve-and-capture ID`
 
@@ -92,7 +92,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/approve-and-capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/approve-and-capture.ts)_
+_See code: [src/commands/orders/approve-and-capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/approve-and-capture.ts)_
 
 ### `cl-orders orders:archive ID`
 
@@ -109,7 +109,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/archive.ts)_
+_See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/archive.ts)_
 
 ### `cl-orders orders:authorize ID`
 
@@ -126,7 +126,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/authorize.ts)_
+_See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/authorize.ts)_
 
 ### `cl-orders orders:billing-address-same-as-shipping ID`
 
@@ -143,7 +143,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/billing-address-same-as-shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/billing-address-same-as-shipping.ts)_
+_See code: [src/commands/orders/billing-address-same-as-shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/billing-address-same-as-shipping.ts)_
 
 ### `cl-orders orders:cancel ID`
 
@@ -160,7 +160,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/cancel.ts)_
+_See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/cancel.ts)_
 
 ### `cl-orders orders:capture ID`
 
@@ -177,7 +177,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/capture.ts)_
+_See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/capture.ts)_
 
 ### `cl-orders orders:place ID`
 
@@ -194,7 +194,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/place.ts)_
+_See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/place.ts)_
 
 ### `cl-orders orders:refresh ID`
 
@@ -211,7 +211,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/refresh.ts)_
+_See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/refresh.ts)_
 
 ### `cl-orders orders:refund ID`
 
@@ -228,7 +228,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/refund.ts)_
+_See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/refund.ts)_
 
 ### `cl-orders orders:save-billing-address-to-customer-address-book ID`
 
@@ -245,7 +245,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/save-billing-address-to-customer-address-book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/save-billing-address-to-customer-address-book.ts)_
+_See code: [src/commands/orders/save-billing-address-to-customer-address-book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/save-billing-address-to-customer-address-book.ts)_
 
 ### `cl-orders orders:save-payment-source-to-customer-wallet ID`
 
@@ -262,7 +262,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/save-payment-source-to-customer-wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/save-payment-source-to-customer-wallet.ts)_
+_See code: [src/commands/orders/save-payment-source-to-customer-wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/save-payment-source-to-customer-wallet.ts)_
 
 ### `cl-orders orders:save-shipping-address-to-customer-address-book ID`
 
@@ -279,7 +279,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/save-shipping-address-to-customer-address-book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/save-shipping-address-to-customer-address-book.ts)_
+_See code: [src/commands/orders/save-shipping-address-to-customer-address-book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/save-shipping-address-to-customer-address-book.ts)_
 
 ### `cl-orders orders:shipping-address-same-as-billing ID`
 
@@ -296,7 +296,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/shipping-address-same-as-billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/shipping-address-same-as-billing.ts)_
+_See code: [src/commands/orders/shipping-address-same-as-billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/shipping-address-same-as-billing.ts)_
 
 ### `cl-orders orders:unarchive ID`
 
@@ -313,7 +313,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/unarchive.ts)_
+_See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/unarchive.ts)_
 
 ### `cl-orders orders:update-taxes ID`
 
@@ -330,5 +330,5 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/update-taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.0/src/commands/orders/update-taxes.ts)_
+_See code: [src/commands/orders/update-taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.0.1/src/commands/orders/update-taxes.ts)_
 <!-- commandsstop -->
