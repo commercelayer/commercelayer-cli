@@ -96,15 +96,10 @@ export default class Seed extends Command {
     const endpoint = baseURL(flags.organization, flags.domain)
     const infoLog = flags.infoLog
 
-    // this.log('args: ' + Object.keys(args).join(','))
-    // this.log('flags: ' + Object.keys(flags).join(','))
-
     this.log('businessModel: ' + businessModel)
     this.log('maxItems: ' + maxItems)
     this.log('resourcesUrl: ' + resourcesUrl)
     this.log('endpoint: ' + endpoint)
-
-    // this.log('access_token: ' + accessToken)
 
 
     try {

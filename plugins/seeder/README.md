@@ -47,7 +47,7 @@ OPTIONS
                                            path
 
 EXAMPLES
-  $ cl-seeder seed -o <organizationSlug> -i <clientId> -s <clientSecret> --accessToken=<accessToken> -u <seedUrl>
+  $ cl-seeder seed -o <organizationSlug> --accessToken=<accessToken> -u <seedUrl>
   $ cl seed -m all -u <seedUrl> -b multi_market
 ```
 
