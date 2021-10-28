@@ -20,8 +20,12 @@ export default class WebhooksList extends Command {
 		...Command.flags,
 		circuit: flags.string({
 			char: 'c',
-			description: 'show only webhooks with circuit in the decalred state',
+			description: 'show only webhooks with circuit in the declared state',
 			options: ['open', 'closed'],
+		}),
+		topic: flags.string({
+			char: 't',
+			description: 'the event that triggered the webhook',
 		}),
 	}
 
@@ -45,6 +49,8 @@ export default class WebhooksList extends Command {
 					pageSize: 25,
 					pageNumber: ++currentPage,
 				}
+
+				if (flags.topic) params.filters = { topic_eq: flags.topic }
 
 				// eslint-disable-next-line no-await-in-loop
 				const webhooks = await cl.webhooks.list(params)
@@ -80,7 +86,7 @@ export default class WebhooksList extends Command {
 					w.name || '',
 					w.topic || '',
 					{ content: ((w.circuit_state === 'closed') ? chalk.green : chalk.red)(w.circuit_state || ''), hAlign: 'center' as HorizontalAlignment },
-					{ content: w.circuit_failure_count, hAlign: 'center' as HorizontalAlignment },
+					{ content: printFailures(w.circuit_failure_count), hAlign: 'center' as HorizontalAlignment },
 				]))
 
 				this.log(table.toString())
@@ -97,4 +103,11 @@ export default class WebhooksList extends Command {
 
 	}
 
+}
+
+
+const printFailures = (failures?: number): string => {
+	if (!failures || (failures === 0)) return String(failures || 0)
+	if (failures >= 10) return chalk.redBright(String(failures))
+	return chalk.yellowBright(String(failures))
 }
