@@ -78,7 +78,6 @@ export default abstract class extends Command {
 		const domain = flags.domain
 		const accessToken = flags.accessToken
 
-		// eslint-disable-next-line new-cap
 		return commercelayer({
 			organization,
 			domain,

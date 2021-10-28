@@ -1,11 +1,11 @@
-import {expect, test} from '@oclif/test'
+import { expect, test } from '@oclif/test'
 
-describe('webhooks:create', () => {
+describe('webhooks:details', () => {
   test
-  .stdout()
-  .command(['webhooks:details'])
-  .it('runs NoC', ctx => {
-    expect(ctx.stdout).to.contain('-= NoC =-')
-  })
+    .stdout()
+    .command(['webhooks:noc'])
+    .it('runs NoC', ctx => {
+      expect(ctx.stdout).to.contain('-= NoC =-')
+    })
 
 })
