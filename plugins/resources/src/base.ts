@@ -190,14 +190,24 @@ export default abstract class extends Command {
 	}
 
 
-	includeFlag(flag: string[]): string[] {
+	includeFlag(flag: string[], relationships?: KeyValRel): string[] {
+
 		const values: string[] = []
+
 		if (flag) {
 			const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
 			flagValues.forEach(a => values.push(...a))
 			if (values.some(f => f.split('.').length > 3)) this.error('Can be only included resources within the 3rd level of depth')
 		}
+
+		if (relationships) {
+			Object.keys(relationships).forEach(r => {
+				if (!values.includes(r)) values.push(r)
+			})
+		}
+
 		return values
+
 	}
 
 
@@ -214,7 +224,7 @@ export default abstract class extends Command {
 					{ suggestions: [`Split the value ${chalk.italic(f)} into two object flags`] }
 				)
 				else
-				if (kv.length === 1) this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
+					if (kv.length === 1) this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
 
 				const name = kv[0]
 				if (name === '') this.error(`No name defined in flag object ${f}`)
@@ -477,17 +487,17 @@ export default abstract class extends Command {
 		if (CommerceLayerStatic.isApiError(err)) {
 			err = err.errors
 		} else
-		if (error.response) {
-			if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
-				{ suggestions: ['Execute login to get access to the selected resource'] }
-			)
-			else
-			if (error.response.status === 500) this.error(`We're sorry, but something went wrong (${error.response.status})`)
-			else
-			if (error.response.status === 429) this.error(`You have done too many requests in the last 5 minutes (${error.response.status})`)
-			else err = error.response.data.errors
-		} else
-		if (error.message) err = error.message
+			if (error.response) {
+				if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
+					{ suggestions: ['Execute login to get access to the selected resource'] }
+				)
+				else
+					if (error.response.status === 500) this.error(`We're sorry, but something went wrong (${error.response.status})`)
+					else
+						if (error.response.status === 429) this.error(`You have done too many requests in the last 5 minutes (${error.response.status})`)
+						else err = error.response.data.errors
+			} else
+				if (error.message) err = error.message
 
 
 		this.error(formatOutput(err, flags))

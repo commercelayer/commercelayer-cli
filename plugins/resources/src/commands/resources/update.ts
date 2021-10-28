@@ -123,7 +123,7 @@ export default class ResourcesUpdate extends Command {
 		}
 
 		// Include flags
-		const include: string[] = this.includeFlag(flags.include)
+		const include: string[] = this.includeFlag(flags.include, relationships)
 		// Fields flags
 		const fields = this.fieldsFlag(flags.fields, resource.api)
 
