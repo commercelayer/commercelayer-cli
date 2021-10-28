@@ -67,7 +67,6 @@ The Commerce Layer CLI supports the following commands:
 * [`commercelayer applications`](docs/applications.md) - Manage login to CLI applications.
 * [`commercelayer help`](docs/help.md) - Display help for commercelayer.
 * [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins.
-* [`commercelayer util`](docs/util.md) - Decode a Commerce Layer JWT.
 
 <!-- commandsstop -->
 

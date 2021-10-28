@@ -54,7 +54,7 @@ type PluginRelease = {
 
 const AvailablePlugins: PluginRelease[] = [
   { name: 'imports',    plugin: '@commercelayer/cli-plugin-imports',    description: 'Organization imports manager',      enabled: true   },
-  { name: 'orders',     plugin: '@commercelayer/cli-plugin-orders',     description: 'Organization orders management',    enabled: false, hidden: true   },
+  { name: 'orders',     plugin: '@commercelayer/cli-plugin-orders',     description: 'Organization orders management',    enabled: true   },
   { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',  enabled: true   },
   { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',          enabled: true   },
   { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',    enabled: true   },
