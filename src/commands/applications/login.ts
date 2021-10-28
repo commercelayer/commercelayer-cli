@@ -1,5 +1,5 @@
 import { Command, flags } from '@oclif/command'
-import { clientCredentials } from '@commercelayer/js-auth'
+import { clientCredentials, getCustomerToken } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { baseURL, appKey, ApiMode } from '../../common'
 import chalk from 'chalk'
@@ -8,6 +8,7 @@ import { inspect } from 'util'
 import { decodeAccessToken } from './token'
 import { Credentials } from '@commercelayer/js-auth/dist/clientCredentials'
 import { AuthScope } from '@commercelayer/js-auth/dist/typings'
+import { User } from '@commercelayer/js-auth/dist/salesChannel'
 
 
 export default class ApplicationsLogin extends Command {
@@ -50,6 +51,16 @@ export default class ApplicationsLogin extends Command {
 			required: false,
 			multiple: true,
 		}),
+		email: flags.string({
+			char: 'e',
+			description: 'customer email',
+			dependsOn: ['password'],
+		}),
+		password: flags.string({
+			char: 'p',
+			description: 'secret password',
+			dependsOn: ['email'],
+		}),
 	}
 
 	async run() {
@@ -67,6 +78,8 @@ export default class ApplicationsLogin extends Command {
 			slug: flags.organization,
 			domain: flags.domain,
 			scope,
+			email: flags.email,
+			password: flags.password,
 		}
 
 
@@ -116,6 +129,14 @@ export const getAccessToken = async (auth: AppAuth): Promise<any> => {
 		clientSecret: auth.clientSecret,
 		endpoint: baseURL(auth.slug, auth.domain),
 		scope: auth.scope || '',
+	}
+
+	if (auth.email && auth.password) {
+		const user: User = {
+			username: auth.email,
+			password: auth.password,
+		}
+		return getCustomerToken(credentials, user)
 	}
 
 	return clientCredentials(credentials)
@@ -172,8 +193,8 @@ const checkScope = (scopes: string[]): AuthScope => {
 			const colonIdx = s.indexOf(':')
 			if ((colonIdx < 0) || (s.substr(colonIdx).trim() === '')) throw new Error(`Invalid scope: ${chalk.red(s)}`)
 			else
-			if (scope.includes(s)) throw new Error(`Duplicate login scope: ${chalk.red(s)}`)
-			else scope.push(s)
+				if (scope.includes(s)) throw new Error(`Duplicate login scope: ${chalk.red(s)}`)
+				else scope.push(s)
 		}
 	}
 

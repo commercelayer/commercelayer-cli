@@ -30,12 +30,10 @@ export default class PluginsAvailable extends Command {
     const availablePlugins = AvailablePlugins.filter(p => ((!p.hidden || flags.hidden) && p.enabled))
 
     if (availablePlugins && (availablePlugins.length > 0)) {
-      cliux.table(availablePlugins,
-        {
+      cliux.table(availablePlugins, {
           key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? chalk.dim : chalk).blueBright(row.name) },
           description: { header: 'DESCRIPTION', get: row => (row.hidden ? chalk.dim(row.description) : row.description) },
-        },
-        {
+        }, {
           printLine: this.log,
       })
     } else this.log(chalk.italic('No available plugins'))
@@ -56,6 +54,7 @@ type PluginRelease = {
 
 const AvailablePlugins: PluginRelease[] = [
   { name: 'imports',    plugin: '@commercelayer/cli-plugin-imports',    description: 'Organization imports manager',      enabled: true   },
+  { name: 'orders',     plugin: '@commercelayer/cli-plugin-orders',     description: 'Organization orders management',    enabled: false, hidden: true   },
   { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',  enabled: true   },
   { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',          enabled: true   },
   { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',    enabled: true   },

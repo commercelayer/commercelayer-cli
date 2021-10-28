@@ -11,22 +11,27 @@ const baseURL = (slug: string, domain: string | undefined): string => {
 	return `https://${slug.toLowerCase()}.${domain ? domain : 'commercelayer.io'}`
 }
 
+
 const execMode = (liveFlag: string | boolean | undefined): ApiMode => {
 	return (liveFlag || (liveFlag === 'live')) ? 'live' : 'test'
 }
+
 
 const appKey = (slug: string, domain: string | undefined): string => {
 	return String(domain ? _.kebabCase(`${slug}.${domain}`) : slug).toLowerCase()
 }
 
+
 const sleep = async (ms: number) => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
+
 
 const extractDomain = (baseUrl: string): string | undefined => {
 	if (!baseUrl) return undefined
 	return baseUrl.substring(baseUrl.indexOf('.') + 1)
 }
+
 
 const print = (object: any): string => {
 	return inspect(object, {
@@ -39,4 +44,11 @@ const print = (object: any): string => {
 	})
 }
 
-export { baseURL, execMode, appKey, sleep, extractDomain, print }
+
+const center = (str: string, width: number): string => {
+	return str.padStart(str.length + Math.floor((width - str.length) / 2), ' ').padEnd(width, ' ')
+}
+
+
+
+export { baseURL, execMode, appKey, sleep, extractDomain, print, center }

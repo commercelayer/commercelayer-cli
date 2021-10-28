@@ -4,12 +4,14 @@ import path from 'path'
 import { AppInfo, configParam, ConfigParams } from '../../config'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
+import { center } from '../../common'
+
 
 export default class ApplicationsIndex extends Command {
 
 	static description = 'show a list of all (logged in) available CLI applications'
 
-	static aliases = ['app:list', 'applications:list', 'app:available', 'applications:available']
+	static aliases = ['app:list', 'applications:list', 'app:available', 'applications:available', 'apps']
 
 	static examples = [
 		'$ commercelayer applications',
@@ -44,17 +46,16 @@ export default class ApplicationsIndex extends Command {
 		const current = configParam(ConfigParams.currentApplication)
 
 		this.log()
-		cliux.table(configData,
-			{
+		cliux.table(configData, {
 				key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => (current && (current.key === row.key) && (current.mode === row.mode)) ? chalk.magentaBright(`${row.key} *`) : chalk.blueBright(row.key) },
 				// slug: { header: '  SLUG  ', get: row => `  ${row.slug}  ` },
 				name: { header: 'NAME', get: row => `${row.name}` },
-				organization: { header: 'ORGANIZATION  ', get: row => `${row.organization}` },
+				organization: { header: 'ORGANIZATION', get: row => `${row.organization}` },
 				type: { header: 'TYPE' },
 				scope: { header: 'SCOPE', minWidth: 10, get: row => printScope(row.scope) },
+				customer: { header: 'PWD', get: row => (row.email && row.password) ? chalk.cyanBright(center('\u25C9', 'PWD'.length)) : '' },
 				mode: { header: 'MODE', get: row => `${(row.mode === 'live') ? chalk.greenBright(row.mode) : chalk.yellowBright(row.mode)}` },
-			},
-			{
+			}, {
 				printLine: this.log,
 			})
 		this.log()
@@ -73,7 +74,7 @@ const printScope = (scope: string | string[] | undefined): string => {
 	if (scope) {
 		if (Array.isArray(scope)) {
 			if (scope.length === 0) return ''
-			return scope[0] + ((scope.length > 1) ? ` | ${scope[1]}` : '') + ((scope.length > 2) ? ` ${chalk.italic.dim('+' + (scope.length - 2))}` : '')
+			return scope[0] + ((scope.length > 1) ? ` ${chalk.italic.dim('+' + (scope.length - 1))}` : '')
 		}
 		return scope
 	}

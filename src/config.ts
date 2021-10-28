@@ -23,6 +23,8 @@ interface AppAuth {
 	clientId: ClientId;
 	clientSecret?: ClientSecret;
 	scope?: AuthScope;
+	email?: string;
+	password?: string;
 }
 
 interface AppInfo extends AppKey, AppAuth {
