@@ -1,4 +1,4 @@
-import commercelayer, { CommerceLayerClient, Order, OrderUpdate } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
 
 
 type ActionType =
@@ -35,14 +35,17 @@ const commercelayerInit = (flags: any): CommerceLayerClient => {
 }
 
 
-const executeAction = (id: string, action: ActionType, flags: any): Promise<Order> => {
+const executeAction = (id: string, action: ActionType, flags: any, fields?: string[]): Promise<Order> => {
 
   const cl = commercelayerInit(flags)
 
   const res: OrderUpdate = { id }
   res[`_${action}`] = true
 
-  const result = cl.orders.update(res)
+  const params: QueryParamsRetrieve = {}
+  if (fields && (fields.length > 0)) params.fields = { orders: fields }
+
+  const result = cl.orders.update(res, params)
 
   return result
 

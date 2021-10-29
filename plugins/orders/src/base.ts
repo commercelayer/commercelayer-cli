@@ -1,9 +1,9 @@
-import { CommerceLayerStatic } from '@commercelayer/sdk'
+import { CommerceLayerStatic, Order } from '@commercelayer/sdk'
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
 import path from 'path'
 import updateNotifier from 'update-notifier'
-import { formatError } from './common'
+import { formatError, formatOutput } from './common'
 
 
 const pkg = require('../package.json')
@@ -74,6 +74,16 @@ export default abstract class extends Command {
         )
       } else this.error(formatError(error, flags))
     } else throw error
+  }
+
+
+  protected printOutput(order: Order, flags: any): void {
+    this.log(formatOutput(order, flags))
+  }
+
+
+  protected successMessage(trigger: string, id: string) {
+    this.log(`\nAction ${chalk.italic.cyanBright(trigger)} executed without errors on order ${chalk.yellowBright(id)}\n`)
   }
 
 }

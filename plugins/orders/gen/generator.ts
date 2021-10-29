@@ -2,6 +2,7 @@
 import { validActions } from '../src/commands/orders/actions'
 import fs from 'fs'
 import Manifest from '@oclif/dev-cli/lib/commands/manifest'
+import path from 'path'
 
 const Inflector = require('inflector-js')
 
@@ -35,8 +36,8 @@ const generate = () => {
   console.log('Cleaning folders ...')
   clean()
 
-  const actionTpl = fs.readFileSync(`${TEMPLATES_DIR}/action.tpl`, { encoding: 'utf-8' })
-  const specTpl = fs.readFileSync(`${TEMPLATES_DIR}/spec.tpl`, { encoding: 'utf-8' })
+  const actionTpl = fs.readFileSync(path.join(TEMPLATES_DIR, 'action.tpl'), { encoding: 'utf-8' })
+  const specTpl = fs.readFileSync(path.join(TEMPLATES_DIR, 'spec.tpl'), { encoding: 'utf-8' })
 
   Object.keys(validActions).forEach(action => {
 
@@ -45,13 +46,13 @@ const generate = () => {
     command = command.replace(/##__ACTION_NAME__##/g, name)
 
     const fileName = Inflector.dasherize(action) + '.ts'
-    fs.writeFileSync(`${COMMANDS_DIR}/${fileName}`, command)
+    fs.writeFileSync(path.join(COMMANDS_DIR, fileName), command)
     console.log(`Created command: ${action} [${fileName}]`)
 
 
     const spec = specTpl.replace(/##__ACTION_ID__##/g, action)
     const specName = fileName.replace(/.ts/g, '.test.ts')
-    fs.writeFileSync(`${SPECS_DIR}/${specName}`, spec)
+    fs.writeFileSync(path.join(SPECS_DIR, specName), spec)
     console.log(`Created spec: ${action} [${specName}]`)
 
   })
