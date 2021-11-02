@@ -1,6 +1,6 @@
 import Command from '../../base'
 import exec from '../../exec'
-import { validActions } from './actions'
+import { triggers } from '../../triggers'
 
 
 const TRIGGER = 'authorize'
@@ -8,7 +8,7 @@ const TRIGGER = 'authorize'
 
 export default class OrdersAuthorize extends Command {
 
-	static description = validActions[TRIGGER]
+	static description = triggers[TRIGGER].description
 
   static flags = {
 		...Command.flags,

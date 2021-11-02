@@ -1,6 +1,6 @@
 import Command from '../../base'
 import exec from '../../exec'
-import { validActions } from './actions'
+import { triggers } from '../../triggers'
 
 
 const TRIGGER = 'refund'
@@ -8,7 +8,7 @@ const TRIGGER = 'refund'
 
 export default class OrdersRefund extends Command {
 
-	static description = validActions[TRIGGER]
+	static description = triggers[TRIGGER].description
 
   static flags = {
 		...Command.flags,

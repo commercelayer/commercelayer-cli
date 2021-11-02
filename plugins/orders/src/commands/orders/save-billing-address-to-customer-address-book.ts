@@ -1,6 +1,6 @@
 import Command from '../../base'
 import exec from '../../exec'
-import { validActions } from './actions'
+import { triggers } from '../../triggers'
 
 
 const TRIGGER = 'save_billing_address_to_customer_address_book'
@@ -8,7 +8,7 @@ const TRIGGER = 'save_billing_address_to_customer_address_book'
 
 export default class OrdersSaveBillingAddressToCustomerAddressBook extends Command {
 
-	static description = validActions[TRIGGER]
+	static description = triggers[TRIGGER].description
 
   static flags = {
 		...Command.flags,

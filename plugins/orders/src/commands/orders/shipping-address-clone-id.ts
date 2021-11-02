@@ -3,10 +3,10 @@ import exec from '../../exec'
 import { triggers } from '../../triggers'
 
 
-const TRIGGER = 'shipping_address_same_as_billing'
+const TRIGGER = 'shipping_address_clone_id'
 
 
-export default class OrdersShippingAddressSameAsBilling extends Command {
+export default class OrdersShippingAddressCloneId extends Command {
 
 	static description = triggers[TRIGGER].description
 
@@ -21,7 +21,7 @@ export default class OrdersShippingAddressSameAsBilling extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersShippingAddressSameAsBilling)
+    const { args, flags } = this.parse(OrdersShippingAddressCloneId)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

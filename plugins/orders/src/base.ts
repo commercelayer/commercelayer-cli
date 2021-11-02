@@ -82,8 +82,8 @@ export default abstract class extends Command {
   }
 
 
-  protected successMessage(trigger: string, id: string) {
-    this.log(`\nAction ${chalk.italic.cyanBright(trigger)} executed without errors on order ${chalk.yellowBright(id)}\n`)
+  protected successMessage(action: string, id: string) {
+    this.log(`\nAction ${chalk.italic.cyanBright(action)} executed without errors on order ${chalk.yellowBright(id)}\n`)
   }
 
 }

@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
-import { validActions } from '../src/commands/orders/actions'
 import fs from 'fs'
 import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import path from 'path'
+import axios from 'axios'
+import { triggers } from '../src/triggers'
 
 const Inflector = require('inflector-js')
 
@@ -31,15 +32,67 @@ const clean = () => {
 }
 
 
-const generate = () => {
+const readTemplate = (template: string): string => {
+  let tpl = template
+  if (!tpl.endsWith('.tpl')) tpl += '.tpl'
+  return fs.readFileSync(path.join(TEMPLATES_DIR, tpl), { encoding: 'utf-8' })
+}
+
+
+const getOrderActions = async (): Promise<any[]> => {
+
+  const schemaUrl = 'https://data.commercelayer.app/schemas/openapi.json'
+
+  console.log('Downloading OpenAPI schema ...')
+
+  const response = await axios.get(schemaUrl)
+  const schema = await response.data
+
+  const triggers: any[] = []
+
+  Object.entries(schema.components.schemas.orderUpdate.properties.data.properties.attributes.properties).forEach(([k, a]) => {
+    if (k.startsWith('_')) triggers.push({ action: k.substring(1), trigger: k, description: (a as any).description })
+  })
+
+  return triggers
+
+}
+
+
+const updateTriggers = async () => {
+
+  const actions = await getOrderActions()
+
+  const triggersTpl = readTemplate('triggers')
+
+  let triggers = triggersTpl.replace(/##__TRIGGERS__##/, actions.map(r => {
+    return `${r.action}: {
+    action: '${r.action}',
+    trigger: '${r.trigger}',
+    description: '${r.description.replace(/'/g, '\\\'')}',
+  },`
+  }).join('\n\t'))
+
+  triggers = triggers.replace(/##__ACTION__##/, Object.values(actions).map(v => `'${v.action}'`).join(' |\n\t'))
+
+  fs.writeFileSync('src/triggers.ts', triggers, { encoding: 'utf-8' })
+
+}
+
+
+const generate = async () => {
+
+  console.log('Updating trigger list ...')
+  await updateTriggers()
+  console.log('Trigger list updated')
 
   console.log('Cleaning folders ...')
   clean()
 
-  const actionTpl = fs.readFileSync(path.join(TEMPLATES_DIR, 'action.tpl'), { encoding: 'utf-8' })
-  const specTpl = fs.readFileSync(path.join(TEMPLATES_DIR, 'spec.tpl'), { encoding: 'utf-8' })
+  const actionTpl = readTemplate('action')
+  const specTpl = readTemplate('spec')
 
-  Object.keys(validActions).forEach(action => {
+  Object.keys(triggers).forEach(action => {
 
     let command = actionTpl.replace(/##__ACTION_ID__##/g, action)
     const name = Inflector.camelize(action)

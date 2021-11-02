@@ -1,8 +1,8 @@
 import Command from '../../base'
 import exec from '../../exec'
 import inquirer from 'inquirer'
-import { validActions } from './actions'
 import chalk from 'chalk'
+import { triggers } from '../../triggers'
 
 
 export default class OrdersIndex extends Command {
@@ -23,16 +23,16 @@ export default class OrdersIndex extends Command {
 
     const id = args.id
 
-    const trigger = await promptAction(id)
+    const action = await promptAction(id)
 
     const fields = [] as string[] // ['id', 'status', 'payment_status', 'fulfillment_status', 'customer_email']
 
-    const res = await exec(id, trigger, flags, fields)
+    const res = await exec(id, action, flags, fields)
 
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(trigger, res.id)
+    this.successMessage(action, res.id)
 
     return res
 
@@ -42,13 +42,16 @@ export default class OrdersIndex extends Command {
 }
 
 
-const promptAction = (id: string) => {
-  return inquirer.prompt([{
+const promptAction = async (id: string) => {
+  const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',
     message: `Select an action to execute on order ${chalk.yellowBright(id)}:`,
-    choices: Object.keys(validActions).sort().map(a => {
+    choices: Object.keys(triggers).sort().map(a => {
       return { name: a, value: a }
     }),
-  }]).then(answers => answers.trigger)
+    loop: false,
+    pageSize: 10,
+  }])
+  return answers.trigger
 }
