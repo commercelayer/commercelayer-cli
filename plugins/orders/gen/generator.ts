@@ -18,14 +18,14 @@ const clean = () => {
   // Clean commands dir
   const files = fs.readdirSync(COMMANDS_DIR)
   files.forEach(f => {
-    if (!['index.ts', 'actions.ts', 'noc.ts'].includes(f)) fs.unlinkSync(`${COMMANDS_DIR}/${f}`)
+    if (!['index.ts', 'noc.ts'].includes(f)) fs.unlinkSync(`${COMMANDS_DIR}/${f}`)
   })
   console.log('Deleted command files')
 
   // Clean specs dir
   const specs = fs.readdirSync(SPECS_DIR)
   specs.forEach(f => {
-    if (!['index.test.ts', 'actions.test.ts', 'noc.test.ts'].includes(f)) fs.unlinkSync(`${SPECS_DIR}/${f}`)
+    if (!['index.test.ts', 'noc.test.ts'].includes(f)) fs.unlinkSync(`${SPECS_DIR}/${f}`)
   })
   console.log('Deleted spec files')
 
