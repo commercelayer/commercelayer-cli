@@ -22,7 +22,7 @@ const hook: Hook<'prerun'> = async function (opts) {
       if (a.startsWith('-')) return false
 
       const p = getPluginInfo(a)
-      if (p === undefined) this.error(`Unknown Commerce Layer CLI plugin: ${chalk.redBright(a)}: execute command ${chalk.italic(`${this.config.bin} plugins:available`)} to get a list of alla avilable plugins`)
+      if (p === undefined) this.error(`Unknown Commerce Layer CLI plugin: ${chalk.redBright(a)}: execute command '${chalk.italic(`${this.config.bin} plugins:available`)}' to get a list of all available plugins`)
       else plugin = p.plugin as string
 
       return true
