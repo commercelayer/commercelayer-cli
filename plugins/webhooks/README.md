@@ -52,9 +52,10 @@ ARGUMENTS
 
 OPTIONS
   -H, --hide-empty                 hide empty attributes
-  -c, --circuit=open|closed        show only webhooks with circuit in the decalred state
+  -c, --circuit=open|closed        show only webhooks with circuit in the declared state
   -e, --events                     show the last event callbacks associated to the webhook
   -o, --organization=organization  (required) the slug of your organization
+  -t, --topic=topic                the event that triggered the webhook
 ```
 
 _See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/v1.1.0/src/commands/webhooks/index.ts)_
@@ -201,8 +202,9 @@ USAGE
   $ cl-webhooks webhooks:list
 
 OPTIONS
-  -c, --circuit=open|closed        show only webhooks with circuit in the decalred state
+  -c, --circuit=open|closed        show only webhooks with circuit in the declared state
   -o, --organization=organization  (required) the slug of your organization
+  -t, --topic=topic                the event that triggered the webhook
 
 ALIASES
   $ cl-webhooks wh:list
