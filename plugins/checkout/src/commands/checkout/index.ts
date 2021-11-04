@@ -1,25 +1,138 @@
-import {Command, flags} from '@oclif/command'
+import Command, { flags } from '../../base'
+import CheckoutOrder from './order'
+import chalk from 'chalk'
+import { LineItemCreate } from '@commercelayer/sdk'
+import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
 
 export default class CheckoutIndex extends Command {
-  static description = 'describe the command here'
+
+  static description = 'create checkout URLs'
 
   static flags = {
-    help: flags.help({char: 'h'}),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({char: 'n', description: 'name to print'}),
-    // flag with no value (-f, --force)
-    force: flags.boolean({char: 'f'}),
+    ...Command.flags,
+    order: flags.string({
+      char: 'O',
+      description: 'an order id',
+      exclusive: ['sku'],
+      multiple: false,
+    }),
+    sku: flags.string({
+      char: 'S',
+      description: 'an SKU code',
+      exclusive: ['order'],
+      multiple: true,
+    }),
+    market: flags.string({
+      char: 'm',
+      description: 'a market number',
+      dependsOn: ['sku'],
+    }),
+    coupon: flags.string({
+      char: 'c',
+      description: 'a promo code',
+      dependsOn: ['sku'],
+    }),
+    email: flags.string({
+      char: 'e',
+      description: 'a customer email',
+      dependsOn: ['sku'],
+    }),
   }
 
-  static args = [{name: 'file'}]
 
   async run() {
-    const {args, flags} = this.parse(CheckoutIndex)
 
-    const name = flags.name ?? 'world'
-    this.log(`hello ${name} from /Users/pierlu/Documents/GitHub/commercelayer-cli-plugin-checkout/src/commands/checkout/index.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
-    }
+    const { flags } = this.parse(CheckoutIndex)
+
+    const organization = flags.organization
+    const accessToken = flags.accessToken
+
+
+    // Checkout URL by order id
+    if (flags.order) return CheckoutOrder.run([flags.order, '-o', organization, '-a', accessToken], this.config)
+
+
+    if (!flags.sku) this.error(`One of the options ${chalk.cyanBright('--order (-O)')} or ${chalk.cyanBright('--sku (-S)')} is required`)
+
+    this.checkApplication(accessToken, 'sales_channel')
+
+    // Parse SKU options
+    const skus: string[] = this.parseSKUs(flags)
+
+    // Build line items
+    const lineItems: LineItemCreate[] = this.buildLineItems(skus)
+
+    const cl = this.commercelayerInit(flags)
+
+    const clSkus = await cl.skus.list({ filters: { code_matches_any: lineItems.map(li => li.sku_code).join(',') } })
+    lineItems.forEach(li => {
+      if (!clSkus.some(cls => cls.code === li.sku_code)) this.error(`Inexistent SKU: ${li.sku_code}`)
+    })
+
+    // Create order
+    const market = flags.market
+    const coupon = flags.coupon
+    const email = flags.email
+
+    const order = await cl.orders.create({
+      customer_email: email,
+      coupon_code: coupon,
+      market: market ? cl.markets.relationship(market) : undefined,
+    })
+    this.log(`\nCreated order ${chalk.bold(order.id)}`)
+
+    // Create line items
+    const lis: Promise<LineItemCreate | void>[] = []
+    lineItems.forEach(async li => {
+      li.order = cl.orders.relationship(order)
+      const lineItem = cl.line_items.create(li).then(li =>
+        this.log(`Created line item ${chalk.bold(li.id)} for SKU ${chalk.italic(li.sku_code || '')} and associated to order ${chalk.bold(order.id)}`)
+      )
+      if (lineItem) lis.push(lineItem)
+    })
+
+    await Promise.all(lis)
+
+    const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken)
+
+    this.log(`\nCheckout URL for order ${chalk.yellowBright(order.id)}:\n`)
+    this.log(chalk.cyanBright(checkoutUrl))
+    this.log()
+
+    if (flags.open) openCheckoutUrl(checkoutUrl)
+
   }
+
+
+  private parseSKUs(flags: any): string[] {
+    const skus: string[] = []
+    flags.sku.forEach((s: string) => skus.push(...s.split(',')))
+    return skus
+  }
+
+
+  private buildLineItems(skus: string[]): LineItemCreate[] {
+
+    const lineItems: LineItemCreate[] = []
+
+    skus.forEach(s => {
+
+      const sd = s.split(':')
+      if (sd.length > 2) this.error('Invalid SKU option: ' + chalk.redBright(s))
+
+      const quantity = Number((sd.length > 1) ? sd[1] : 1)
+      if (Number.isNaN(quantity) || (quantity < 0)) this.error('Invalid SKU definition: ' + chalk.redBright(s))
+
+      lineItems.push({
+        sku_code: sd[0],
+        quantity,
+        _update_quantity: true,
+      })
+
+    })
+
+    return lineItems
+
+  }
+
 }

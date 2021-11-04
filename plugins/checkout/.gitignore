@@ -1,10 +1,10 @@
 *-debug.log
 *-error.log
+.DS_Store
+.editorconfig
 /.nyc_output
 /dist
 /lib
 /tmp
 /yarn.lock
 node_modules
-.DS_Store
-.editorconfig

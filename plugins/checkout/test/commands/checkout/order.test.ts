@@ -1,9 +1,9 @@
 import { expect, test } from '@oclif/test'
 
-describe('orders:##__ACTION_ID__##', () => {
+describe('checkout:order', () => {
   test
     .stdout()
-    .command(['orders:noc'])
+    .command(['checkout:noc'])
     .it('runs NoC', ctx => {
       expect(ctx.stdout).to.contain('-= NoC =-')
     })

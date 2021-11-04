@@ -1,6 +1,7 @@
 import ApiError from '@commercelayer/sdk/lib/error'
 import { inspect } from 'util'
 
+
 const inspectObject = (object: any, options?: any): string => {
 	return inspect(object, {
 		showHidden: false,
@@ -12,11 +13,13 @@ const inspectObject = (object: any, options?: any): string => {
 	})
 }
 
+
 const formatOutput = (output: any, flags?: any, { color = true } = {}) => {
 	if (!output) return ''
 	if (typeof output === 'string') return output
 	return inspectObject(output, color)
 }
+
 
 const formatError = (error: ApiError, flags: any): string => {
 	return formatOutput(error.errors, flags)
@@ -24,3 +27,12 @@ const formatError = (error: ApiError, flags: any): string => {
 
 
 export { formatOutput, formatError }
+
+
+
+const baseURL = (slug: string, domain: string | undefined): string => {
+	return `https://${slug.toLowerCase()}.${domain ? domain : 'commercelayer.io'}`
+}
+
+
+export { baseURL }
