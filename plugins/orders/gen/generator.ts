@@ -80,6 +80,16 @@ const updateTriggers = async () => {
 }
 
 
+
+const FLAG_VALUE_STR = `
+    value: flags.string({
+      char: 'v',
+      description: 'the trigger attribute value',
+      multiple: false,
+      required: true,
+    }),`
+
+
 const generate = async () => {
 
   console.log('Updating trigger list ...')
@@ -98,10 +108,14 @@ const generate = async () => {
     const name = Inflector.camelize(action)
     command = command.replace(/##__ACTION_NAME__##/g, name)
 
+    const flagValue = action.endsWith('_id') ? FLAG_VALUE_STR : ''
+    command = command.replace(/##__FLAG_VALUE__##/, flagValue)
+    const flagsImport = action.endsWith('_id') ? ', { flags }' : ''
+    command = command.replace(/##__FLAGS_IMPORT__##/, flagsImport)
+
     const fileName = Inflector.dasherize(action) + '.ts'
     fs.writeFileSync(path.join(COMMANDS_DIR, fileName), command)
     console.log(`Created command: ${action} [${fileName}]`)
-
 
     const spec = specTpl.replace(/##__ACTION_ID__##/g, action)
     const specName = fileName.replace(/.ts/g, '.test.ts')

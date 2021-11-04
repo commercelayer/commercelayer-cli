@@ -23,7 +23,7 @@ const executeAction = (id: string, action: ActionType, flags: any, fields?: stri
   const cl = commercelayerInit(flags)
 
   const res: OrderUpdate = { id }
-  res[`_${action}`] = true as unknown as undefined
+  res[`_${action}`] = flags.value || true as unknown as undefined
 
   const params: QueryParamsRetrieve = {}
   if (fields && (fields.length > 0)) params.fields = { orders: fields }

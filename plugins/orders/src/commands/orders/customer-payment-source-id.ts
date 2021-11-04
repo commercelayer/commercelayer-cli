@@ -1,4 +1,4 @@
-import Command from '../../base'
+import Command, { flags } from '../../base'
 import exec from '../../exec'
 import { triggers } from '../../triggers'
 
@@ -12,6 +12,12 @@ export default class OrdersCustomerPaymentSourceId extends Command {
 
   static flags = {
 		...Command.flags,
+    value: flags.string({
+      char: 'v',
+      description: 'the trigger attribute value',
+      multiple: false,
+      required: true,
+    }),
 	}
 
 	static args = [

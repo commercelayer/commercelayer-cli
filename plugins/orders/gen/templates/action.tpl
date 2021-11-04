@@ -1,4 +1,4 @@
-import Command from '../../base'
+import Command##__FLAGS_IMPORT__## from '../../base'
 import exec from '../../exec'
 import { triggers } from '../../triggers'
 
@@ -11,7 +11,7 @@ export default class Orders##__ACTION_NAME__## extends Command {
 	static description = triggers[TRIGGER].description
 
   static flags = {
-		...Command.flags,
+		...Command.flags,##__FLAG_VALUE__##
 	}
 
 	static args = [
