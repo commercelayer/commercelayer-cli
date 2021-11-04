@@ -7,9 +7,9 @@ import chalk from 'chalk'
 
 export default class ResourcesDoc extends Command {
 
-  static description = 'show the online documentation of the resource in the browser'
+  static description = 'open the default browser and show the online documentation for the resource'
 
-  static aliases = ['res:doc', 'rdoc']
+  static aliases = ['res:doc']
 
   static examples = [
     '$ commercelayer rdoc customers',
@@ -20,7 +20,10 @@ export default class ResourcesDoc extends Command {
     // help: flags.help({char: 'h'}),
   }
 
-  static args = [{ name: 'resource', required: true, description: 'the resource for wich you want to access the online documentation' }]
+  static args = [
+    { name: 'resource', required: true, description: 'the resource for which you want to access the online documentation' },
+  ]
+
 
   async run() {
 
