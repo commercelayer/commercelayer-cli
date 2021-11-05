@@ -12,6 +12,7 @@ import { CommerceLayerStatic, QueryParams } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
+import { decodeAccessToken } from './token'
 
 
 
@@ -565,6 +566,20 @@ export default abstract class extends Command {
 		this.log()
 
 	}
+
+
+  protected checkApplication(accessToken: string, kinds: string[]): boolean {
+
+    const info = decodeAccessToken(accessToken)
+
+    if (info === null) this.error('Invalid access token provided')
+    else
+    if (!kinds.includes(info.application.kind))
+      this.error(`Invalid application kind: ${chalk.redBright(info.application.kind)}. Application kind must be one of the following: ${chalk.cyanBright(kinds.join(', '))}`)
+
+    return true
+
+  }
 
 }
 

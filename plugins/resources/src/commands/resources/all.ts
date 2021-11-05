@@ -150,13 +150,15 @@ export default class ResourcesAll extends Command {
 
     const { args, flags } = this.parse(ResourcesAll)
 
+    const accessToken = flags.accessToken
+    this.checkApplication(accessToken, ['integration', 'cli'])
+
     if (!flags.save && !flags['save-path']) this.error('Undefined output file path')
 
     const resource = this.checkResource(args.resource)
 
     const organization = flags.organization
     const domain = flags.domain
-    const accessToken = flags.accessToken
     let notification = flags.notify
     const blindMode = flags.blind || false
 
