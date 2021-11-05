@@ -1,7 +1,7 @@
 import { Command, flags } from '@oclif/command'
 import chalk from 'chalk'
-import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, AppKey, deleteConfigFile, deleteTokenFile, ConfigParams } from '../../config'
-import { execMode, appKey } from '../../common'
+import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, AppKey, deleteConfigFile, deleteTokenFile, ConfigParams, configParam } from '../../config'
+import { execMode, appKey, appKeyMatch } from '../../common'
 import cliux from 'cli-ux'
 import { revokeAccessToken } from './token'
 
@@ -29,6 +29,10 @@ export default class ApplicationsLogout extends Command {
       hidden: true,
       dependsOn: ['organization'],
     }),
+    id: flags.string({
+      description: 'application id',
+      required: true,
+    }),
     revoke: flags.boolean({
       char: 'r',
       description: 'revoke current access token',
@@ -43,11 +47,14 @@ export default class ApplicationsLogout extends Command {
     const app: AppKey = {
       key: appKey(flags.organization, flags.domain),
       mode: execMode(flags.live),
+      id: flags.id,
     }
 
     if (configFileExists(this.config, app)) {
 
+      this.log()
       const ok = await cliux.confirm(`>> Do you really want to remove this application from CLI configuration? ${chalk.dim('[Yy/Nn]')}`)
+
       if (ok) {
 
         if (tokenFileExists(this.config, app)) {
@@ -61,7 +68,7 @@ export default class ApplicationsLogout extends Command {
           }
 
           deleteTokenFile(this.config, app)
-          clicfg.delete(ConfigParams.currentApplication)
+          if (appKeyMatch(app, configParam(ConfigParams.currentApplication))) clicfg.delete(ConfigParams.currentApplication)
 
         }
 
@@ -70,6 +77,7 @@ export default class ApplicationsLogout extends Command {
         this.log(`\n${chalk.greenBright('Successfully')} removed ${chalk.bold(app.mode)} application ${chalk.bold(app.key)}\n`)
 
       }
+
     } else this.error(`Unable to find ${chalk.bold(app.mode)} application ${chalk.bold(app.key)}`, {
       suggestions: [`Execute command ${chalk.italic(`${this.config.bin} applications`)} to get a list of all the available active applications`],
     })

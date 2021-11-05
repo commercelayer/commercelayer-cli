@@ -43,6 +43,11 @@ export default class ApplicationsToken extends Command {
 			hidden: true,
 			dependsOn: ['organization'],
 		}),
+		id: flags.string({
+			char: 'k',
+			description: 'application id',
+			dependsOn: ['organization'],
+		}),
 		save: flags.boolean({
 			char: 's',
 			description: 'save access token',
@@ -71,16 +76,19 @@ export default class ApplicationsToken extends Command {
 
 		let organization = flags.organization
 		let mode = execMode(flags.live)
+		let id = flags.id
 
 		if (!organization) {
 			const current = currentApplication()
 			organization = current?.key || ''
 			mode = current?.mode || 'test'
+			id = current?.id
 		}
 
 		const app: AppKey = {
 			key: appKey(organization, flags.domain),
 			mode,
+			id: id || '',
 		}
 
 
@@ -109,7 +117,7 @@ export default class ApplicationsToken extends Command {
 			}
 
 			if (accessToken) {
-				this.log(`\nAccess token for application ${chalk.bold.yellowBright(`${app.key}.${app.mode}`)}`)
+				this.log(`\nAccess token for application ${chalk.bold.yellowBright(`${app.key}.${app.mode} - ${app.id}`)}`)
 				this.log(`\n${chalk.blueBright(accessToken)}\n`)
 				if (flags.shared && expMinutes) {
 					this.warn(chalk.italic(`this access token will expire in ${expMinutes} minutes`))

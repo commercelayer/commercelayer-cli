@@ -1,6 +1,7 @@
 
 import _ from 'lodash'
 import { inspect } from 'util'
+import { AppKey } from './config'
 
 
 type ApiMode = 'test' | 'live'
@@ -19,6 +20,14 @@ const execMode = (liveFlag: string | boolean | undefined): ApiMode => {
 
 const appKey = (slug: string, domain: string | undefined): string => {
 	return String(domain ? _.kebabCase(`${slug}.${domain}`) : slug).toLowerCase()
+}
+
+const appKeyValid = (appKey: AppKey): boolean => {
+	return (appKey.key !== '') && (appKey.id !== '')
+}
+
+const appKeyMatch = (app1: AppKey, app2: AppKey): boolean => {
+	return app1 && app2 && (app1.key === app2.key) && (app1.mode === app2.mode) && (app1.id === app2.id)
 }
 
 
@@ -50,5 +59,12 @@ const center = (str: string, width: number): string => {
 }
 
 
+const maxLength = (values: any[], field: string): number => {
+	return values.reduce((ml, v) => {
+		return Math.max(ml, v[field].length)
+	}, 0)
+}
 
-export { baseURL, execMode, appKey, sleep, extractDomain, print, center }
+
+
+export { baseURL, execMode, appKey, appKeyValid, appKeyMatch, sleep, extractDomain, print, center, maxLength }

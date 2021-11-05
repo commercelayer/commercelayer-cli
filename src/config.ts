@@ -14,6 +14,8 @@ export default clicfg
 interface AppKey {
 	key: string;
 	mode: ApiMode;
+	id: string;
+	alias?: string;
 }
 
 
@@ -29,7 +31,7 @@ interface AppAuth {
 
 interface AppInfo extends AppKey, AppAuth {
 	organization: string;
-	type: string;
+	kind: string;
 	name: string;
 	baseUrl?: string;
 }
@@ -41,12 +43,12 @@ const createConfigDir = (config: Config.IConfig): void => {
 	fs.mkdirSync(config.configDir, { recursive: true })
 }
 
-const configFilePath = (config: Config.IConfig, { key, mode }: AppKey): string => {
-	return path.join(config.configDir, `${key}.${mode}.config.json`)
+const configFilePath = (config: Config.IConfig, { key, mode, id }: AppKey): string => {
+	return path.join(config.configDir, `${key}.${id}.${mode}.config.json`)
 }
 
-const tokenFilePath = (config: Config.IConfig, { key, mode }: AppKey): string => {
-	return path.join(config.configDir, `${key}.${mode}.token.json`)
+const tokenFilePath = (config: Config.IConfig, { key, mode, id }: AppKey): string => {
+	return path.join(config.configDir, `${key}.${id}.${mode}.token.json`)
 }
 
 
@@ -95,12 +97,44 @@ const deleteTokenFile = (config: Config.IConfig, app: AppKey): boolean => {
 	return true
 }
 
+const readConfigDir = (config: Config.IConfig, filter: { key?: string; mode?: string; id?: string }): AppInfo[] => {
+
+	const files = fs.readdirSync(config.configDir).map(f => {
+
+		const fc = f.split('.')
+
+		const key = fc[0]
+		const id = fc[1]
+		const mode = fc[2]
+		const type = fc[3]
+		const ext = fc[4]
+
+		if (fc.length < 5) return undefined
+		if (filter.key && (key !== filter.key)) return undefined
+		if (filter.id && (id !== filter.id)) return undefined
+		if (filter.mode && (mode !== filter.mode)) return undefined
+		if (type !== 'config') return undefined
+		if (ext !== 'json') return undefined
+
+		return { key, id, mode }
+
+	}).filter(f => f)
+
+	return files.map(f => {
+		return readConfigFile(config, f as AppInfo)
+	})
+
+}
+
 
 export { createConfigDir }
 export { configFilePath, configFileExists, writeConfigFile, readConfigFile, deleteConfigFile }
 export { tokenFilePath, tokenFileExists, writeTokenFile, readTokenFile, deleteTokenFile }
+export { readConfigDir }
 
-const currentApplication = (): AppKey | undefined => {
+
+
+const currentApplication = (): AppInfo | undefined => {
 	return clicfg.get(ConfigParams.currentApplication)
 }
 

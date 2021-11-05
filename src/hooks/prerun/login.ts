@@ -2,7 +2,7 @@ import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
 import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { execMode, appKey } from '../../common'
+import { execMode, appKey, appKeyValid } from '../../common'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
@@ -33,9 +33,10 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 	const flagConfig = {
 		organization: flagUtil.string({ char: 'o', hidden: true }),
-		live: flagUtil.boolean({ hidden: true, dependsOn: ['organization'] }),
+		live: flagUtil.boolean({ hidden: true/* , dependsOn: ['organization'] */ }),
 		domain: flagUtil.string({ char: 'd', hidden: true, dependsOn: ['organization'] }),
 		accessToken: flagUtil.string({ hidden: true }),
+		id: flagUtil.string({ char: 'k', hidden: true, dependsOn: ['organization'] }),
 	}
 
 	const { flags } = parse(opts.argv, { strict: false, flags: flagConfig })
@@ -43,12 +44,13 @@ const hook: Hook<'prerun'> = async function (opts) {
 	const app: AppKey = {
 		key: appKey(flags.organization || '', flags.domain),
 		mode: execMode(flags.live),
+		id: flags.id || '',
 	}
 
 	let configData
 
 	// No organization and domain passed on command line, looking for saved current application
-	if (app.key === '') {
+	if (!appKeyValid(app)) {
 
 		const current = configParam(ConfigParams.currentApplication)
 		if (current !== undefined) {
@@ -58,8 +60,8 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 			if (typeCheck) {
-				if (!typeCheck.includes(configData.type))
-					this.error(`The current application (${chalk.redBright(configData.key)}) has an invalid type: ${chalk.red.italic(configData.type)}, while the only accepted type are ${chalk.green.italic(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
+				if (!typeCheck.includes(configData.kind))
+					this.error(`The current application (${chalk.redBright(configData.key)}) has an invalid type: ${chalk.red.italic(configData.kind)}, while the only accepted type are ${chalk.green.italic(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
 			}
 
 			opts.argv.push('--organization=' + configData.slug)
@@ -67,12 +69,10 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 		}
 
-	} else
-		if (!configFileExists(this.config, app))
-			this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
+	} else if (!configFileExists(this.config, app)) this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
 
 	// No current application saved in configuration
-	if (app.key === '') return
+	if (!appKeyValid(app)) return
 
 
 	// if accessToken flag has not ben passed in command line
@@ -109,6 +109,9 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 	// If present remove --live flag option
 	if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
+
+	// If present remove application id flag option
+	if (opts.argv.includes('--id')) opts.argv.splice(opts.argv.indexOf('--id'), 2)
 
 }
 

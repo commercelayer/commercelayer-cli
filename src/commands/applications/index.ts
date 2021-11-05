@@ -1,10 +1,10 @@
-import { Command } from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 import fs from 'fs'
 import path from 'path'
 import { AppInfo, configParam, ConfigParams } from '../../config'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
-import { center } from '../../common'
+import { appKeyMatch, center } from '../../common'
 
 
 export default class ApplicationsIndex extends Command {
@@ -19,25 +19,37 @@ export default class ApplicationsIndex extends Command {
 	]
 
 	static flags = {
-		// help: flags.help({char: 'h'}),
+		kind: flags.string({
+			char: 'k',
+			description: 'application kind',
+			options: configParam(ConfigParams.applicationTypeCheck),
+		}),
+		mode: flags.string({
+			char: 'm',
+			description: 'execution mode',
+			options: ['test', 'live'],
+		}),
 	}
 
 	static args = []
 
 	async run() {
 
-		this.parse(ApplicationsIndex)
+		const { flags } = this.parse(ApplicationsIndex)
 
 		let configData: AppInfo[]
 
 		try {
 
-			const configFiles = fs.readdirSync(this.config.configDir).filter(f => f.endsWith('.config.json'))
+			const configFiles = fs.readdirSync(this.config.configDir).filter(f => f.endsWith('.config.json') && (f.split('.').length === 5))
 
 			configData = configFiles.map(cf => {
 				const appConfig = fs.readFileSync(path.join(this.config.configDir, cf), { encoding: 'utf-8' })
 				return JSON.parse(appConfig)
 			})
+
+			if (flags.kind) configData = configData.filter(a => a.kind === flags.kind)
+			if (flags.mode) configData = configData.filter(a => a.mode === flags.mode)
 
 		} catch (error) {
 			this.error('No CLI applications config files found', { suggestions: ['Execute first login to at least one CLI application'] })
@@ -46,27 +58,36 @@ export default class ApplicationsIndex extends Command {
 		const current = configParam(ConfigParams.currentApplication)
 
 		this.log()
-		cliux.table(configData, {
-				key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => (current && (current.key === row.key) && (current.mode === row.mode)) ? chalk.magentaBright(`${row.key} *`) : chalk.blueBright(row.key) },
-				// slug: { header: '  SLUG  ', get: row => `  ${row.slug}  ` },
-				name: { header: 'NAME', get: row => `${row.name}` },
-				organization: { header: 'ORGANIZATION', get: row => `${row.organization}` },
-				type: { header: 'TYPE' },
-				scope: { header: 'SCOPE', minWidth: 10, get: row => printScope(row.scope) },
+		if (configData.length > 0) {
+
+			cliux.table(configData, {
+				current: { header: '[*]', minWidth: 3, get: row => appKeyMatch(current, row) ? chalk.magentaBright(' * ') : '   ' },
+				organization: { header: 'ORGANIZATION', get: row => currentColor(row, current)(row.organization) },
+				name: { header: 'APPLICATION', get: row => currentColor(row, current)(row.name) },
+				kind: { header: 'KIND', get: row => currentColor(row, current)(row.kind) },
+				scope: { header: 'SCOPE', minWidth: 10, get: row => currentColor(row, current)(printScope(row.scope)) },
 				customer: { header: 'PWD', get: row => (row.email && row.password) ? chalk.cyanBright(center('\u25C9', 'PWD'.length)) : '' },
-				mode: { header: 'MODE', get: row => `${(row.mode === 'live') ? chalk.greenBright(row.mode) : chalk.yellowBright(row.mode)}` },
+				key: { header: 'SLUG', get: row => currentColor(row, current)(row.key) },
+				id: { header: 'ID', get: row => currentColor(row, current)(row.id)},
+				mode: { header: 'MODE', get: row => `${((row.mode === 'live') ? chalk.greenBright : chalk.yellowBright)(row.mode)}` },
+				alias: { header: 'ALIAS', get: row => chalk.cyanBright(row.alias || '') },
 			}, {
 				printLine: this.log,
 			})
-		this.log()
 
-		if (current) {
-			this.log(chalk.italic.magentaBright('(*) Current application'))
-			this.log()
-		}
+			if (current) this.log(chalk.italic.magentaBright('\n(*) Current application'))
+
+		} else this.log(chalk.italic('No application found'))
+
+		this.log()
 
 	}
 
+}
+
+
+const currentColor = (app: any, current: any): Function => {
+	return (appKeyMatch(current, app) ? chalk.magentaBright : chalk.visible)
 }
 
 

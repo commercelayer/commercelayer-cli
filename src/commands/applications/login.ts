@@ -1,24 +1,25 @@
 import { Command, flags } from '@oclif/command'
 import { clientCredentials, getCustomerToken } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { baseURL, appKey, ApiMode } from '../../common'
+import { baseURL, appKey, ApiMode, appKeyMatch } from '../../common'
 import chalk from 'chalk'
 import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import { decodeAccessToken } from './token'
 import { Credentials } from '@commercelayer/js-auth/dist/clientCredentials'
-import { AuthScope } from '@commercelayer/js-auth/dist/typings'
+import { AuthReturnType, AuthScope } from '@commercelayer/js-auth/dist/typings'
 import { User } from '@commercelayer/js-auth/dist/salesChannel'
+import { printCurrent } from './current'
 
 
 export default class ApplicationsLogin extends Command {
 
-	static description = 'execute login to a CLI Commerce Layer application'
+	static description = 'execute login to a Commerce Layer application'
 
-	static aliases = ['app:login', 'app:add', 'applications:add']
+	static aliases = ['app:login']
 
 	static examples = [
-		'$ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret>',
+		'$ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>',
 	]
 
 	static flags = {
@@ -30,12 +31,12 @@ export default class ApplicationsLogin extends Command {
 		}),
 		clientId: flags.string({
 			char: 'i',
-			description: 'organization client_id',
+			description: 'application client_id',
 			required: true,
 		}),
 		clientSecret: flags.string({
 			char: 's',
-			description: 'organization client_secret',
+			description: 'application client_secret',
 			required: false,
 		}),
 		domain: flags.string({
@@ -58,10 +59,17 @@ export default class ApplicationsLogin extends Command {
 		}),
 		password: flags.string({
 			char: 'p',
-			description: 'secret password',
+			description: 'customer secret password',
 			dependsOn: ['email'],
 		}),
+		alias: flags.string({
+			char: 'a',
+			description: 'the alias you want to associate to the application',
+			multiple: false,
+			required: true,
+		}),
 	}
+
 
 	async run() {
 
@@ -88,13 +96,15 @@ export default class ApplicationsLogin extends Command {
 			const token = await getAccessToken(config)
 
 			const app = await getApplicationInfo(config, token?.accessToken || '')
+
 			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 			if (typeCheck) {
-				if (!typeCheck.includes(app.type)) this.error(`The credentials provided are associated to an application of type ${chalk.red.italic(app.type)} while the only allowed types are: ${chalk.green.italic(typeCheck.join(','))}`,
+				if (!typeCheck.includes(app.kind)) this.error(`The credentials provided are associated to an application of type ${chalk.red.italic(app.kind)} while the only allowed types are: ${chalk.green.italic(typeCheck.join(','))}`,
 					{ suggestions: [`Double check your credentials or access the online dashboard of ${chalk.bold(app.organization)} and create a new valid application `] }
 				)
 			}
 			app.key = appKey(app.slug, flags.domain)
+			app.alias = flags.alias || ''
 
 			createConfigDir(this.config)
 
@@ -103,11 +113,10 @@ export default class ApplicationsLogin extends Command {
 
 			writeTokenFile(this.config, app, token?.data)
 
-			clicfg.set(ConfigParams.currentApplication, { key: app.key, mode: app.mode })
+			clicfg.set(ConfigParams.currentApplication, { key: app.key, mode: app.mode, id: app.id })
 			const current = configParam(ConfigParams.currentApplication)
-			this.log(`\nCurrent application: ${chalk.bold.yellowBright(current.key + '.' + current.mode)}`)
+			this.log(`\nCurrent application: ${printCurrent(appKeyMatch(current, app) ? app : current)}`)
 
-			// this.log(`\n${chalk.bold.greenBright('Login successful!')} ${chalk.bold(app.mode)} configuration and access token have been locally ${overwrite ? 'overwritten' : 'saved'} for application ${chalk.italic.bold(app.name)} of organization ${chalk.italic.bold(app.organization)}\n`)
 			this.log(`\n${chalk.bold.greenBright('Login successful!')} Your configuration has been stored locally${overwrite ? ' (overwriting the existing one)' : ''}. You can now interact with ${chalk.italic.bold(app.organization)} organization\n`)
 
 		} catch (error: any) {
@@ -122,7 +131,7 @@ export default class ApplicationsLogin extends Command {
 
 
 
-export const getAccessToken = async (auth: AppAuth): Promise<any> => {
+export const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 
 	const credentials: Credentials = {
 		clientId: auth.clientId,
@@ -144,7 +153,7 @@ export const getAccessToken = async (auth: AppAuth): Promise<any> => {
 }
 
 
-const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
+export const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
 
 	const cl = commercelayer({
 		organization: auth.slug,
@@ -171,9 +180,10 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		key: appKey(org.slug || '', auth.domain),
 		slug: org.slug || '',
 		mode: mode,
-		type: app.kind || '',
+		kind: app.kind || '',
 		name: app.name || '',
 		baseUrl: baseURL(auth.slug, auth.domain),
+		id: app.id,
 	}, auth)
 
 	// if (Array.isArray(appInfo.scope) && (appInfo.scope.length === 0)) appInfo.scope = undefined
@@ -184,7 +194,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 }
 
 
-const checkScope = (scopes: string[]): AuthScope => {
+export const checkScope = (scopes: string[]): AuthScope => {
 
 	const scope: string[] = []
 
