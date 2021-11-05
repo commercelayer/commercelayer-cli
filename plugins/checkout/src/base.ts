@@ -92,14 +92,14 @@ export default abstract class extends Command {
   }
 
 
-  protected checkApplication(accessToken: string, type: string): boolean {
+  protected checkApplication(accessToken: string, kind: string): boolean {
 
     const info = decodeAccessToken(accessToken)
 
     if (info === null) this.error('Invalid access token provided')
     else
-    if (info.application.kind !== type)
-      this.error(`Invalid application type: ${chalk.redBright(info.application.kind)}. Only ${chalk.cyanBright(type)} access token can be used to generate a checkout URL`)
+    if (info.application.kind !== kind)
+      this.error(`Invalid application kind: ${chalk.redBright(info.application.kind)}. Only ${chalk.cyanBright(kind)} access token can be used to generate a checkout URL`)
 
     return true
 
