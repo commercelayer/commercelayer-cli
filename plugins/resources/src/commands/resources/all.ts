@@ -74,12 +74,6 @@ export default class ResourcesAll extends Command {
       multiple: false,
       exclusive: ['save'],
     }),
-    /*
-    print: flags.boolean({
-      char: 'P',
-      description: 'print results on the console',
-    }),
-    */
     notify: flags.boolean({
       char: 'N',
       description: 'force system notification when export has finished',
@@ -110,6 +104,10 @@ export default class ResourcesAll extends Command {
       description: 'comma-separated list of values field:"renamed title"',
       dependsOn: ['csv'],
       multiple: true,
+    }),
+    blind: flags.boolean({
+      char: 'b',
+      description: 'execute in blind mode without prompt and progress bar',
     }),
   }
 
@@ -160,6 +158,7 @@ export default class ResourcesAll extends Command {
     const domain = flags.domain
     const accessToken = flags.accessToken
     let notification = flags.notify
+    const blindMode = flags.blind || false
 
     // Include flags
     const include: string[] = this.includeFlag(flags.include)
@@ -193,7 +192,7 @@ export default class ResourcesAll extends Command {
 
       const itemsDesc = resource.api.replace(/_/g, ' ')
 
-      const progressBar = cliux.progress({
+      const progressBar = blindMode ? blindProgressBar : cliux.progress({
         format: `Fetching ${itemsDesc} ... | ${chalk.greenBright('{bar}')} | ${chalk.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
@@ -223,13 +222,14 @@ export default class ResourcesAll extends Command {
         if (recordCount > 0) {
 
           if (page === 1) {
-            if (recordCount > maxItemsWarning) {
+            if ((recordCount > maxItemsWarning) && !blindMode) {
               this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})\nThe process could be ${chalk.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
               if (!await cliux.confirm(`>> Do you want to continue anyway? ${chalk.dim('[Yy/Nn]')}`)) return
               notification = true
             }
             this.log()
             progressBar.start(recordCount, 0)
+            if (blindMode) this.log(`Export of ${recordCount} ${itemsDesc} started`)
           } else progressBar.setTotal(recordCount)
 
           resources.push(...res)
@@ -248,14 +248,16 @@ export default class ResourcesAll extends Command {
 
       // Print and save output
       if (out.length > 0) {
-        // if (flags.print) this.printOutput(out, flags)
         this.log(`\nFetched ${chalk.yellowBright(out.length)} ${itemsDesc}`)
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
       } else this.log(chalk.italic('\nNo records found\n'))
 
 
       // Notification
-      if (notification) notify(`Export of ${resources.length} ${itemsDesc} is finished!`)
+      const finishMessage = `Export of ${resources.length} ${itemsDesc} is finished!`
+      if (notification && !blindMode) notify(finishMessage)
+      else
+      if (blindMode) this.log(finishMessage)
 
 
       return out
@@ -270,6 +272,15 @@ export default class ResourcesAll extends Command {
   }
 
 }
+
+/* eslint-disable no-console,@typescript-eslint/no-empty-function */
+const blindProgressBar = {
+  start() {},
+  stop() {},
+  setTotal() {},
+  increment() {},
+}
+/* eslint-enable no-console,@typescript-eslint/no-empty-function */
 
 
 const resetConsole = () => {
