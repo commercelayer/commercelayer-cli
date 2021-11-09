@@ -1,7 +1,7 @@
-import { Command, flags } from '@oclif/command'
+import Command, { flags } from '../../base'
 import chalk from 'chalk'
-import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, AppKey, deleteConfigFile, deleteTokenFile, ConfigParams, configParam } from '../../config'
-import { execMode, appKey, appKeyMatch } from '../../common'
+import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, deleteConfigFile, deleteTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
+import { appKeyMatch } from '../../common'
 import cliux from 'cli-ux'
 import { revokeAccessToken } from './token'
 
@@ -13,26 +13,7 @@ export default class ApplicationsLogout extends Command {
   static aliases = ['app:logout', 'app:remove', 'applications:remove']
 
   static flags = {
-    organization: flags.string({
-      char: 'o',
-      description: 'organization slug',
-      required: true,
-    }),
-    live: flags.boolean({
-      description: 'live execution mode',
-      dependsOn: ['organization'],
-    }),
-    domain: flags.string({
-      char: 'd',
-      description: 'api domain',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-    }),
-    id: flags.string({
-      description: 'application id',
-      required: true,
-    }),
+    ...Command.flags,
     revoke: flags.boolean({
       char: 'r',
       description: 'revoke current access token',
@@ -44,16 +25,12 @@ export default class ApplicationsLogout extends Command {
 
     const { flags } = this.parse(ApplicationsLogout)
 
-    const app: AppKey = {
-      key: appKey(flags.organization, flags.domain),
-      mode: execMode(flags.live),
-      id: flags.id,
-    }
+    const app = this.appFilterEnabled(flags) ? await this.findApplication(flags) : currentApplication()
 
-    if (configFileExists(this.config, app)) {
+    if (app && configFileExists(this.config, app)) {
 
       this.log()
-      const ok = await cliux.confirm(`>> Do you really want to remove this application from CLI configuration? ${chalk.dim('[Yy/Nn]')}`)
+      const ok = await cliux.confirm(`>> Do you really want to remove application ${chalk.bold.yellowBright(app.name)} of ${chalk.bold.yellowBright(app.organization)} from CLI configuration? ${chalk.dim('[Yy/Nn]')}`)
 
       if (ok) {
 
@@ -74,11 +51,13 @@ export default class ApplicationsLogout extends Command {
 
         deleteConfigFile(this.config, app)
 
-        this.log(`\n${chalk.greenBright('Successfully')} removed ${chalk.bold(app.mode)} application ${chalk.bold(app.key)}\n`)
+        this.log(`\n${chalk.greenBright('Successfully')} removed application ${chalk.bold(app.name)}`)
 
       }
 
-    } else this.error(`Unable to find ${chalk.bold(app.mode)} application ${chalk.bold(app.key)}`, {
+      this.log()
+
+    } else this.error('Unable to find application to logout', {
       suggestions: [`Execute command ${chalk.italic(`${this.config.bin} applications`)} to get a list of all the available active applications`],
     })
 

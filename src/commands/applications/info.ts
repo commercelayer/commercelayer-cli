@@ -1,8 +1,7 @@
-import { Command, flags } from '@oclif/command'
+import Command, { flags } from '../../base'
 import { readConfigFile } from '../../config'
 import chalk from 'chalk'
 import { inspect } from 'util'
-import { findApplication } from './add'
 
 
 export default class ApplicationsInfo extends Command {
@@ -12,25 +11,10 @@ export default class ApplicationsInfo extends Command {
   static aliases = ['app:info']
 
   static flags = {
-    organization: flags.string({
-      char: 'o',
-      description: 'organization slug',
-      required: false,
-    }),
-    domain: flags.string({
-      char: 'd',
-      description: 'api domain',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-    }),
-    id: flags.string({
-      description: 'application id',
-      required: true,
-    }),
+    ...Command.flags,
     json: flags.boolean({
       char: 'j',
-      dependsOn: ['info'],
+      description: 'show info in JSON format',
     }),
   }
 
@@ -39,7 +23,7 @@ export default class ApplicationsInfo extends Command {
 
     const { flags } = this.parse(ApplicationsInfo)
 
-    const app = await findApplication(this.config, flags)
+    const app = await this.findApplication(flags)
 
     if (app === undefined) this.error('Unable to find configuration file for application')
     else {

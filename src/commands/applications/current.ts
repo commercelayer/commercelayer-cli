@@ -1,7 +1,8 @@
 import { Command, flags } from '@oclif/command'
 import chalk from 'chalk'
-import { ConfigParams, readConfigFile, configParam, AppInfo } from '../../config'
+import { readConfigFile, AppInfo, currentApplication } from '../../config'
 import { inspect } from 'util'
+import { printScope } from '../../common'
 
 
 export default class ApplicationsCurrent extends Command {
@@ -22,6 +23,7 @@ export default class ApplicationsCurrent extends Command {
 		}),
 		json: flags.boolean({
 			char: 'j',
+			description: 'show info in JSON format',
 			dependsOn: ['info'],
 		}),
 	}
@@ -30,7 +32,7 @@ export default class ApplicationsCurrent extends Command {
 
 		const { flags } = this.parse(ApplicationsCurrent)
 
-		const stored = configParam(ConfigParams.currentApplication)
+		const stored = currentApplication()
 		if (stored) {
 
 			const info = readConfigFile(this.config, stored)
@@ -49,8 +51,8 @@ export default class ApplicationsCurrent extends Command {
 }
 
 
-export const printCurrent = (app: AppInfo): string => {
-	if (!app.key || (app.key === '')) return chalk.italic.dim('No current application')
+export const printCurrent = (app?: AppInfo): string => {
+	if (!app || !app.key || (app.key === '')) return chalk.italic.dim('No current application')
 	const mode = `${((app.mode === 'live') ? chalk.greenBright : chalk.yellowBright)(app.mode)}`
-	return `${chalk.bold.yellowBright(app.name)}  [ ${app.organization} | ${mode} ]`
+	return `${chalk.bold.yellowBright(app.name)}  [ ${app.organization} | ${app.kind} | ${mode} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
 }

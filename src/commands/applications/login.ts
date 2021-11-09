@@ -1,15 +1,17 @@
 import { Command, flags } from '@oclif/command'
+import { IConfig } from '@oclif/config'
 import { clientCredentials, getCustomerToken } from '@commercelayer/js-auth'
-import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { baseURL, appKey, ApiMode, appKeyMatch } from '../../common'
-import chalk from 'chalk'
-import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, configParam } from '../../config'
-import { inspect } from 'util'
-import { decodeAccessToken } from './token'
+import { User } from '@commercelayer/js-auth/dist/salesChannel'
 import { Credentials } from '@commercelayer/js-auth/dist/clientCredentials'
 import { AuthReturnType, AuthScope } from '@commercelayer/js-auth/dist/typings'
-import { User } from '@commercelayer/js-auth/dist/salesChannel'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
+import { baseURL, appKey, ApiMode } from '../../common'
+import chalk from 'chalk'
+import { AppInfo, ConfigParams, AppAuth, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication } from '../../config'
+import { inspect } from 'util'
+import { decodeAccessToken } from './token'
 import { printCurrent } from './current'
+import { filterApplications } from '../../base'
 
 
 export default class ApplicationsLogin extends Command {
@@ -23,11 +25,17 @@ export default class ApplicationsLogin extends Command {
 	]
 
 	static flags = {
-		// help: flags.help({ char: 'h' }),
 		organization: flags.string({
 			char: 'o',
 			description: 'organization slug',
 			required: true,
+		}),
+		domain: flags.string({
+			char: 'd',
+			description: 'api domain',
+			required: false,
+			hidden: true,
+			dependsOn: ['organization'],
 		}),
 		clientId: flags.string({
 			char: 'i',
@@ -38,13 +46,6 @@ export default class ApplicationsLogin extends Command {
 			char: 's',
 			description: 'application client_secret',
 			required: false,
-		}),
-		domain: flags.string({
-			char: 'd',
-			description: 'api domain',
-			required: false,
-			hidden: true,
-			dependsOn: ['organization'],
 		}),
 		scope: flags.string({
 			char: 'S',
@@ -71,6 +72,12 @@ export default class ApplicationsLogin extends Command {
 	}
 
 
+	async catch(error: any) {
+		this.error(error.message)
+	}
+
+
+
 	async run() {
 
 		const { flags } = this.parse(ApplicationsLogin)
@@ -79,6 +86,7 @@ export default class ApplicationsLogin extends Command {
 			this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)
 
 		const scope = checkScope(flags.scope)
+		const alias = await checkAlias(flags.alias, this.config, flags.organization)
 
 		const config: AppAuth = {
 			clientId: flags.clientId,
@@ -103,21 +111,19 @@ export default class ApplicationsLogin extends Command {
 					{ suggestions: [`Double check your credentials or access the online dashboard of ${chalk.bold(app.organization)} and create a new valid application `] }
 				)
 			}
-			app.key = appKey(app.slug, flags.domain)
-			app.alias = flags.alias || ''
+			app.alias = alias
 
 			createConfigDir(this.config)
 
-			const overwrite = configFileExists(this.config, app)
 			writeConfigFile(this.config, app)
 
 			writeTokenFile(this.config, app, token?.data)
 
-			clicfg.set(ConfigParams.currentApplication, { key: app.key, mode: app.mode, id: app.id })
-			const current = configParam(ConfigParams.currentApplication)
-			this.log(`\nCurrent application: ${printCurrent(appKeyMatch(current, app) ? app : current)}`)
+			currentApplication(app)
+			const current = currentApplication()
+			this.log(`\nCurrent application: ${printCurrent(current)}`)
 
-			this.log(`\n${chalk.bold.greenBright('Login successful!')} Your configuration has been stored locally${overwrite ? ' (overwriting the existing one)' : ''}. You can now interact with ${chalk.italic.bold(app.organization)} organization\n`)
+			this.log(`\n${chalk.bold.greenBright('Login successful!')} Your configuration has been stored locally. You can now interact with ${chalk.italic.bold(app.organization)} organization\n`)
 
 		} catch (error: any) {
 			this.log(chalk.bold.redBright('Login failed!'))
@@ -131,7 +137,7 @@ export default class ApplicationsLogin extends Command {
 
 
 
-export const getAccessToken = async (auth: AppAuth): AuthReturnType => {
+const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 
 	const credentials: Credentials = {
 		clientId: auth.clientId,
@@ -153,7 +159,7 @@ export const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 }
 
 
-export const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
+const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
 
 	const cl = commercelayer({
 		organization: auth.slug,
@@ -177,13 +183,14 @@ export const getApplicationInfo = async (auth: AppAuth, accessToken: string): Pr
 
 	const appInfo: AppInfo = Object.assign({
 		organization: org.name || '',
-		key: appKey(org.slug || '', auth.domain),
+		key: appKey(),
 		slug: org.slug || '',
 		mode: mode,
 		kind: app.kind || '',
 		name: app.name || '',
 		baseUrl: baseURL(auth.slug, auth.domain),
 		id: app.id,
+		alias: '',
 	}, auth)
 
 	// if (Array.isArray(appInfo.scope) && (appInfo.scope.length === 0)) appInfo.scope = undefined
@@ -194,7 +201,7 @@ export const getApplicationInfo = async (auth: AppAuth, accessToken: string): Pr
 }
 
 
-export const checkScope = (scopes: string[]): AuthScope => {
+const checkScope = (scopes: string[]): AuthScope => {
 
 	const scope: string[] = []
 
@@ -211,3 +218,28 @@ export const checkScope = (scopes: string[]): AuthScope => {
 	return (scope.length === 1) ? scope[0] : scope
 
 }
+
+
+const checkAlias = (alias: string, config?: IConfig, slug?: string): string => {
+
+	const match = alias.match(/^[a-z0-9_-]*$/)
+	if ((match === null) || (match.length > 1)) throw new Error(`Invalid alias: ${chalk.redBright(alias)}. Accepted characters are ${chalk.italic('[a-z0-9_-]')}`)
+
+	const ml = 15
+	const al = match[0]
+	if (al.length > ml) throw new Error(`Application alias must have a max length of ${chalk.yellowBright(String(ml))} characters`)
+
+	if (config) {
+		const flags = { alias, slug: '' }
+		if (slug) flags.slug = slug
+		const apps = filterApplications(config, flags)
+		if (apps.length > 0) throw new Error(`Alias ${chalk.yellowBright(alias)} has already been used for organization ${chalk.bold(apps[0].organization)}`)
+	}
+
+	return al
+
+}
+
+
+
+export { getAccessToken, getApplicationInfo, checkScope, checkAlias }

@@ -1,20 +1,29 @@
 import Configstore from 'configstore'
-const packageJson = require('../package.json')
 import path from 'path'
 import fs from 'fs'
-import Config from '@oclif/config'
+import Config, { IConfig } from '@oclif/config'
 import type { ApiMode } from './common'
 import { AuthScope, ClientId, ClientSecret } from '@commercelayer/js-auth/dist/typings'
+
+const packageJson = require('../package.json')
 
 
 const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
 export default clicfg
 
 
+const fixed = {
+	applicationsDir: 'applications',
+	configSuffix: 'config.json',
+	tokenSuffix: 'token.json',
+	encoding: 'utf-8',
+}
+
+
 interface AppKey {
 	key: string;
 	mode: ApiMode;
-	id: string;
+	id?: string;
 	alias?: string;
 }
 
@@ -39,16 +48,21 @@ interface AppInfo extends AppKey, AppAuth {
 export { AppKey, AppAuth, AppInfo }
 
 
+const configDir = (config: IConfig): string => {
+	return path.join(config.configDir, fixed.applicationsDir)
+}
+
 const createConfigDir = (config: Config.IConfig): void => {
-	fs.mkdirSync(config.configDir, { recursive: true })
+	fs.mkdirSync(configDir(config), { recursive: true })
 }
 
-const configFilePath = (config: Config.IConfig, { key, mode, id }: AppKey): string => {
-	return path.join(config.configDir, `${key}.${id}.${mode}.config.json`)
+
+const configFilePath = (config: Config.IConfig, { key }: AppKey): string => {
+	return path.join(configDir(config), `${key}.${fixed.configSuffix}`)
 }
 
-const tokenFilePath = (config: Config.IConfig, { key, mode, id }: AppKey): string => {
-	return path.join(config.configDir, `${key}.${id}.${mode}.token.json`)
+const tokenFilePath = (config: Config.IConfig, { key }: AppKey): string => {
+	return path.join(configDir(config), `${key}.${fixed.tokenSuffix}`)
 }
 
 
@@ -75,13 +89,13 @@ const writeTokenFile = (config: Config.IConfig, app: AppKey, token: any): void =
 
 const readConfigFile = (config: Config.IConfig, app: AppKey): AppInfo => {
 	const filePath = configFilePath(config, app)
-	const cliConfig = fs.readFileSync(filePath, { encoding: 'utf-8' })
+	const cliConfig = fs.readFileSync(filePath, { encoding: fixed.encoding })
 	return JSON.parse(cliConfig)
 }
 
 const readTokenFile = (config: Config.IConfig, app: AppKey): any => {
 	const filePath = tokenFilePath(config, app)
-	const token = fs.readFileSync(filePath, { encoding: 'utf-8' })
+	const token = fs.readFileSync(filePath, { encoding: fixed.encoding })
 	return JSON.parse(token)
 }
 
@@ -97,59 +111,61 @@ const deleteTokenFile = (config: Config.IConfig, app: AppKey): boolean => {
 	return true
 }
 
-const readConfigDir = (config: Config.IConfig, filter: { key?: string; mode?: string; id?: string }): AppInfo[] => {
+const readConfigDir = (config: Config.IConfig, filter: { key?: string }): AppInfo[] => {
 
-	const files = fs.readdirSync(config.configDir).map(f => {
+	const files = fs.readdirSync(configDir(config)).map(f => {
 
 		const fc = f.split('.')
 
+		if (fc.length !== 3) return undefined
+		if (fc[fc.length - 2] !== 'config') return undefined
+		if (fc[fc.length - 1] !== 'json') return undefined
+
 		const key = fc[0]
-		const id = fc[1]
-		const mode = fc[2]
-		const type = fc[3]
-		const ext = fc[4]
 
-		if (fc.length < 5) return undefined
 		if (filter.key && (key !== filter.key)) return undefined
-		if (filter.id && (id !== filter.id)) return undefined
-		if (filter.mode && (mode !== filter.mode)) return undefined
-		if (type !== 'config') return undefined
-		if (ext !== 'json') return undefined
 
-		return { key, id, mode }
+		return { key }
 
 	}).filter(f => f)
 
 	return files.map(f => {
-		return readConfigFile(config, f as AppInfo)
+		return readConfigFile(config, f as AppKey)
 	})
 
 }
 
 
-export { createConfigDir }
+export { createConfigDir, readConfigDir, configDir }
 export { configFilePath, configFileExists, writeConfigFile, readConfigFile, deleteConfigFile }
 export { tokenFilePath, tokenFileExists, writeTokenFile, readTokenFile, deleteTokenFile }
-export { readConfigDir }
 
 
 
-const currentApplication = (): AppInfo | undefined => {
+const currentApplication = (app?: AppInfo): AppInfo | undefined => {
+	if (app) clicfg.set(ConfigParams.currentApplication, {
+		key: app.key,
+		id: app.id,
+		name: app.name,
+		slug: app.slug,
+		domain: app.domain,
+		kind: app.kind,
+		mode: app.mode,
+		organization: app.organization,
+		scope: app.scope,
+		email: app.email,
+		alias: app.alias,
+	})
 	return clicfg.get(ConfigParams.currentApplication)
 }
 
 const currentOrganization = (): string | undefined => {
 	const current = clicfg.get(ConfigParams.currentApplication)
-	return current?.key
-}
-
-const currentModeLive = (): boolean => {
-	const current = clicfg.get(ConfigParams.currentApplication)
-	return current?.mode === 'live'
+	return current?.slug
 }
 
 
-export { currentApplication, currentOrganization, currentModeLive }
+export { currentApplication, currentOrganization }
 
 
 

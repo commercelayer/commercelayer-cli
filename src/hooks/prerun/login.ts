@@ -2,7 +2,7 @@ import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
 import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { execMode, appKey, appKeyValid } from '../../common'
+import { appKeyValid } from '../../common'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
@@ -32,19 +32,18 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 
 	const flagConfig = {
-		organization: flagUtil.string({ char: 'o', hidden: true }),
-		live: flagUtil.boolean({ hidden: true/* , dependsOn: ['organization'] */ }),
-		domain: flagUtil.string({ char: 'd', hidden: true, dependsOn: ['organization'] }),
+		// organization: flagUtil.string({ char: 'o', hidden: true }),
+		appkey: flagUtil.string({ hidden: true }),
+		// live: flagUtil.boolean({ hidden: true/* , dependsOn: ['organization'] */ }),
+		// domain: flagUtil.string({ char: 'd', hidden: true, dependsOn: ['organization'] }),
 		accessToken: flagUtil.string({ hidden: true }),
-		id: flagUtil.string({ char: 'k', hidden: true, dependsOn: ['organization'] }),
 	}
 
 	const { flags } = parse(opts.argv, { strict: false, flags: flagConfig })
 
 	const app: AppKey = {
-		key: appKey(flags.organization || '', flags.domain),
-		mode: execMode(flags.live),
-		id: flags.id || '',
+		key: flags.appkey || '',
+		mode: 'test', // execMode(flags.live),
 	}
 
 	let configData
@@ -69,7 +68,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 		}
 
-	} else if (!configFileExists(this.config, app)) this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`)
+	} else if (!configFileExists(this.config, app)) this.error('Unable to find configuration file for application')
 
 	// No current application saved in configuration
 	if (!appKeyValid(app)) return
@@ -110,8 +109,8 @@ const hook: Hook<'prerun'> = async function (opts) {
 	// If present remove --live flag option
 	if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
 
-	// If present remove application id flag option
-	if (opts.argv.includes('--id')) opts.argv.splice(opts.argv.indexOf('--id'), 2)
+	// If present remove application key flag option
+	if (opts.argv.includes('--appkey')) opts.argv.splice(opts.argv.indexOf('--appkey'), 2)
 
 }
 

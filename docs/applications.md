@@ -21,8 +21,12 @@ USAGE
   $ commercelayer applications
 
 OPTIONS
+  -a, --alias=alias                         the alias associated to the application
   -k, --kind=cli|sales_channel|integration  application kind
   -m, --mode=test|live                      execution mode
+  -o, --organization=organization           organization slug
+  --id=id                                   application id
+  --live                                    live execution mode
 
 ALIASES
   $ commercelayer app:list
@@ -36,7 +40,7 @@ EXAMPLES
   $ cl applications
 ```
 
-_See code: [src/commands/applications/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/index.ts)_
+_See code: [src/commands/applications/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/index.ts)_
 
 ### `commercelayer applications:add`
 
@@ -62,7 +66,7 @@ EXAMPLE
   $ commercelayer applications:add -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
-_See code: [src/commands/applications/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/add.ts)_
+_See code: [src/commands/applications/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/add.ts)_
 
 ### `commercelayer applications:current`
 
@@ -73,7 +77,7 @@ USAGE
   $ commercelayer applications:current
 
 OPTIONS
-  -j, --json
+  -j, --json  show info in JSON format
 
 ALIASES
   $ commercelayer app:current
@@ -83,7 +87,7 @@ EXAMPLES
   $ commercelayer app:current --info
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/current.ts)_
 
 ### `commercelayer applications:info`
 
@@ -94,15 +98,19 @@ USAGE
   $ commercelayer applications:info
 
 OPTIONS
-  -j, --json
-  -o, --organization=organization  organization slug
-  --id=id                          (required) application id
+  -a, --alias=alias                         the alias associated to the application
+  -j, --json                                show info in JSON format
+  -k, --kind=cli|sales_channel|integration  application kind
+  -m, --mode=test|live                      execution mode
+  -o, --organization=organization           organization slug
+  --id=id                                   application id
+  --live                                    live execution mode
 
 ALIASES
   $ commercelayer app:info
 ```
 
-_See code: [src/commands/applications/info.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/info.ts)_
+_See code: [src/commands/applications/info.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/info.ts)_
 
 ### `commercelayer applications:login`
 
@@ -128,7 +136,7 @@ EXAMPLE
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/login.ts)_
 
 ### `commercelayer applications:logout`
 
@@ -139,10 +147,13 @@ USAGE
   $ commercelayer applications:logout
 
 OPTIONS
-  -o, --organization=organization  (required) organization slug
-  -r, --revoke                     revoke current access token
-  --id=id                          (required) application id
-  --live                           live execution mode
+  -a, --alias=alias                         the alias associated to the application
+  -k, --kind=cli|sales_channel|integration  application kind
+  -m, --mode=test|live                      execution mode
+  -o, --organization=organization           organization slug
+  -r, --revoke                              revoke current access token
+  --id=id                                   application id
+  --live                                    live execution mode
 
 ALIASES
   $ commercelayer app:logout
@@ -150,7 +161,7 @@ ALIASES
   $ commercelayer applications:remove
 ```
 
-_See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/logout.ts)_
+_See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/logout.ts)_
 
 ### `commercelayer applications:switch`
 
@@ -172,7 +183,7 @@ ALIASES
   $ commercelayer app:switch
 ```
 
-_See code: [src/commands/applications/switch.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/switch.ts)_
+_See code: [src/commands/applications/switch.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/switch.ts)_
 
 ### `commercelayer applications:token`
 
@@ -183,11 +194,14 @@ USAGE
   $ commercelayer applications:token
 
 OPTIONS
-  -i, --info                       show token info
-  -k, --id=id                      application id
-  -o, --organization=organization  organization slug
-  -s, --save                       save access token
-  --live                           live execution mode
+  -a, --alias=alias                         the alias associated to the application
+  -i, --info                                show token info
+  -k, --kind=cli|sales_channel|integration  application kind
+  -m, --mode=test|live                      execution mode
+  -o, --organization=organization           organization slug
+  -s, --save                                save access token
+  --id=id                                   application id
+  --live                                    live execution mode
 
 ALIASES
   $ commercelayer app:token
@@ -197,4 +211,4 @@ EXAMPLES
   $ commercelayer app:token -o <organizationSlug> --live --save
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-alpha.0/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.0-beta.1/src/commands/applications/token.ts)_
