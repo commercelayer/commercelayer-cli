@@ -1,5 +1,5 @@
 import Command, { flags } from '../../base'
-import { readConfigFile } from '../../config'
+import { currentApplication, readConfigFile } from '../../config'
 import chalk from 'chalk'
 import { inspect } from 'util'
 
@@ -23,7 +23,7 @@ export default class ApplicationsInfo extends Command {
 
     const { flags } = this.parse(ApplicationsInfo)
 
-    const app = await this.findApplication(flags)
+    const app = this.appFilterEnabled(flags) ? await this.findApplication(flags) : currentApplication()
 
     if (app === undefined) this.error('Unable to find configuration file for application')
     else {

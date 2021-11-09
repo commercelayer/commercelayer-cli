@@ -54,12 +54,10 @@ export default class ApplicationsToken extends Command {
 
 		const app = this.appFilterEnabled(flags) ? await this.findApplication(flags) : currentApplication()
 
-
 		if (!app || !configFileExists(this.config, app))
 			this.error(`Unable to find configuration file for application${app ? ` ${app.name}` : ''}`,
 				{ suggestions: [`execute ${chalk.italic('applications:login')} command to initialize application and get the first access token`] }
 			)
-
 
 		try {
 
