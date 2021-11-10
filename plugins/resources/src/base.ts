@@ -231,7 +231,7 @@ export default abstract class extends Command {
 				if (name === '') this.error(`No name defined in flag object ${f}`)
 				if (kv[1].trim() === '') this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
 
-				const fields = kv[1].split(/(?<!\\),/g).map(v => v.trim())
+				const fields = kv[1].split(/(?<!\\),/g).map(v => v.trim())  // escape ',' in value with \\ (double back slash)
 				if (fields[0].trim() === '') this.error(`No fields defined for object field ${chalk.italic(name)}`)
 
 				const obj: KeyValObj = {}
@@ -242,7 +242,7 @@ export default abstract class extends Command {
 					if (eqi < 0) this.error(`No value defined for object field ${chalk.italic(f)} of object ${chalk.italic(name)}`)
 
 					const n = f.substring(0, eqi)
-					const v = f.substring(eqi + 1)
+					const v = f.substring(eqi + 1).replace(/\\,/g, ',')
 
 					obj[n] = fixType(v)
 
