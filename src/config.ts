@@ -3,7 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import Config, { IConfig } from '@oclif/config'
 import type { ApiMode } from './common'
-import { AuthScope, ClientId, ClientSecret } from '@commercelayer/js-auth/dist/typings'
+import { AuthScope, ClientId, ClientSecret } from '@commercelayer/js-auth'
 
 const packageJson = require('../package.json')
 

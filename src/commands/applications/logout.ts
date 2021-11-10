@@ -1,6 +1,6 @@
 import Command, { flags } from '../../base'
 import chalk from 'chalk'
-import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, deleteConfigFile, deleteTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
+import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, deleteConfigFile, deleteTokenFile, ConfigParams, currentApplication } from '../../config'
 import { appKeyMatch } from '../../common'
 import cliux from 'cli-ux'
 import { revokeAccessToken } from './token'
@@ -45,7 +45,7 @@ export default class ApplicationsLogout extends Command {
           }
 
           deleteTokenFile(this.config, app)
-          if (appKeyMatch(app, configParam(ConfigParams.currentApplication))) clicfg.delete(ConfigParams.currentApplication)
+          if (appKeyMatch(app, currentApplication())) clicfg.delete(ConfigParams.currentApplication)
 
         }
 

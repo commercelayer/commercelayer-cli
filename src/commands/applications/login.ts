@@ -1,9 +1,6 @@
 import { Command, flags } from '@oclif/command'
 import { IConfig } from '@oclif/config'
-import { clientCredentials, getCustomerToken } from '@commercelayer/js-auth'
-import { User } from '@commercelayer/js-auth/dist/salesChannel'
-import { Credentials } from '@commercelayer/js-auth/dist/clientCredentials'
-import { AuthReturnType, AuthScope } from '@commercelayer/js-auth/dist/typings'
+import { AuthReturnType, AuthScope, ClientCredentials, clientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { baseURL, appKey, ApiMode } from '../../common'
 import chalk from 'chalk'
@@ -139,7 +136,7 @@ export default class ApplicationsLogin extends Command {
 
 const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 
-	const credentials: Credentials = {
+	const credentials: ClientCredentials = {
 		clientId: auth.clientId,
 		clientSecret: auth.clientSecret,
 		endpoint: baseURL(auth.slug, auth.domain),

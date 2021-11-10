@@ -4,13 +4,14 @@ import chalk from 'chalk'
 import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
 import { sleep, print, baseURL } from '../../common'
 import { IConfig } from '@oclif/config'
-import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
 import https from 'https'
 import jwt from 'jsonwebtoken'
+import { AuthReturnType } from '@commercelayer/js-auth'
 
 
 
 const defaultTokenExpiration = 60 * 2
+
 
 export default class ApplicationsToken extends Command {
 
@@ -31,7 +32,7 @@ export default class ApplicationsToken extends Command {
 		}),
 		info: flags.boolean({
 			char: 'i',
-			description: 'show token info',
+			description: 'show access token info',
 		}),
 		shared: flags.string({
 			char: 'S',
