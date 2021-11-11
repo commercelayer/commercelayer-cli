@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentApplication, readTokenFile, ConfigParams, configParam } from '../../config'
 import { execMode, appKey, sleep, print, baseURL } from '../../common'
 import { IConfig } from '@oclif/config'
-import { AuthReturnType } from '@commercelayer/js-auth/dist/typings'
+import { AuthReturnType } from '@commercelayer/js-auth'
 import https from 'https'
 import jwt from 'jsonwebtoken'
 

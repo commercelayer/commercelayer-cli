@@ -4,7 +4,7 @@ import path from 'path'
 import fs from 'fs'
 import Config from '@oclif/config'
 import type { ApiMode } from './common'
-import { AuthScope, ClientId, ClientSecret } from '@commercelayer/js-auth/dist/typings'
+import { AuthScope, ClientId, ClientSecret } from '@commercelayer/js-auth'
 
 
 const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })

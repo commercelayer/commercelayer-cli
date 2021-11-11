@@ -1,14 +1,11 @@
 import { Command, flags } from '@oclif/command'
-import { clientCredentials, getCustomerToken } from '@commercelayer/js-auth'
+import { AuthScope, ClientCredentials, clientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { baseURL, appKey, ApiMode } from '../../common'
 import chalk from 'chalk'
 import clicfg, { AppInfo, ConfigParams, AppAuth, createConfigDir, configFileExists, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import { decodeAccessToken } from './token'
-import { Credentials } from '@commercelayer/js-auth/dist/clientCredentials'
-import { AuthScope } from '@commercelayer/js-auth/dist/typings'
-import { User } from '@commercelayer/js-auth/dist/salesChannel'
 
 
 export default class ApplicationsLogin extends Command {
@@ -124,7 +121,7 @@ export default class ApplicationsLogin extends Command {
 
 export const getAccessToken = async (auth: AppAuth): Promise<any> => {
 
-	const credentials: Credentials = {
+	const credentials: ClientCredentials = {
 		clientId: auth.clientId,
 		clientSecret: auth.clientSecret,
 		endpoint: baseURL(auth.slug, auth.domain),
