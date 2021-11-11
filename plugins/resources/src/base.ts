@@ -585,7 +585,7 @@ export default abstract class extends Command {
       const fileExport = flags.csv ? exportCsv : exportOutput
       fileExport(output, flags, filePath)
         .then(() => {
-          if (fs.existsSync(filePath)) this.log(`\nCommand output saved to file ${chalk.italic(filePath)}\n`)
+          if (fs.existsSync(filePath)) this.log(`Command output saved to file ${chalk.italic(filePath)}\n`)
         })
         .catch(() => this.error(`Unable to save command output to file ${filePath}`,
           { suggestions: ['Please check you have the right file system permissions'] }
