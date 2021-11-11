@@ -1,4 +1,5 @@
-import ApiError from '@commercelayer/sdk/lib/error'
+
+import { ApiError } from '@commercelayer/sdk'
 import { inspect } from 'util'
 
 const inspectObject = (object: any, options?: any): string => {
