@@ -30,6 +30,12 @@ export default class ResourcesRetrieve extends Command {
 			multiple: false,
 			exclusive: ['save'],
 		}),
+    extract: flags.string({
+      char: 'e',
+      description: 'extract subfields from object attributes',
+      multiple: true,
+      exclusive: ['raw'],
+    }),
 	}
 
 	static args = [
@@ -75,6 +81,11 @@ export default class ResourcesRetrieve extends Command {
 			const res = await resSdk.retrieve(id, params)
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
+
+      if (flags.extract) {
+        const ext = this.extractFlag(flags.extract)
+        this.extractObjectFields(ext, out)
+      }
 
 			this.printOutput(out, flags)
 

@@ -101,13 +101,19 @@ export default class ResourcesAll extends Command {
     }),
     header: flags.string({
       char: 'H',
-      description: 'comma-separated list of values field:"renamed title"',
+      description: 'rename column headers defining a comma-separated list of values field:"renamed title"',
       dependsOn: ['csv'],
       multiple: true,
     }),
     blind: flags.boolean({
       char: 'b',
       description: 'execute in blind mode without prompt and progress bar',
+    }),
+    extract: flags.string({
+      char: 'e',
+      description: 'extract subfields from object attributes',
+      multiple: true,
+      exclusive: ['raw'],
     }),
   }
 
@@ -233,6 +239,11 @@ export default class ResourcesAll extends Command {
             progressBar.start(recordCount, 0)
             if (blindMode) this.log(`Export of ${recordCount} ${itemsDesc} started`)
           } else progressBar.setTotal(recordCount)
+
+          if (flags.extract) {
+            const ext = this.extractFlag(flags.extract)
+            res.forEach((r: any) => this.extractObjectFields(ext, r))
+          }
 
           resources.push(...res)
           progressBar.increment(res.length)

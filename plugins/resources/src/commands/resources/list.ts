@@ -49,6 +49,12 @@ export default class ResourcesList extends Command {
 			multiple: false,
 			exclusive: ['save'],
 		}),
+    extract: flags.string({
+      char: 'e',
+      description: 'extract subfields from object attributes',
+      multiple: true,
+      exclusive: ['raw'],
+    }),
 	}
 
 	static args = [
@@ -106,10 +112,19 @@ export default class ResourcesList extends Command {
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : [...res]
 			const meta = res.meta
 
+
 			if (res && (res.length > 0)) {
+
+        if (flags.extract && Array.isArray(out)) {
+          const ext = this.extractFlag(flags.extract)
+          out.forEach(o => this.extractObjectFields(ext, o))
+        }
+
 				this.printOutput(out, flags)
 				this.log(`\nRecords: ${chalk.blueBright(res.length)} of ${meta.recordCount} | Page: ${chalk.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
-				if (flags.save || flags['save-path']) this.saveOutput(out, flags)
+
+        if (flags.save || flags['save-path']) this.saveOutput(out, flags)
+
 			} else this.log(chalk.italic('\nNo records found\n'))
 
 
