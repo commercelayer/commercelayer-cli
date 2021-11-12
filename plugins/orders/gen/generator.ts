@@ -3,7 +3,6 @@ import fs from 'fs'
 import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import path from 'path'
 import axios from 'axios'
-import { triggers } from '../src/triggers'
 
 const Inflector = require('inflector-js')
 
@@ -59,23 +58,27 @@ const getOrderActions = async (): Promise<any[]> => {
 }
 
 
-const updateTriggers = async () => {
+const updateTriggers = async (): Promise<any> => {
 
   const actions = await getOrderActions()
 
   const triggersTpl = readTemplate('triggers')
 
-  let triggers = triggersTpl.replace(/##__TRIGGERS__##/, actions.map(r => {
+  const actionsObject = actions.map(r => {
     return `${r.action}: {
     action: '${r.action}',
     trigger: '${r.trigger}',
     description: '${r.description.replace(/'/g, '\\\'')}',
   },`
-  }).join('\n\t'))
+  }).join('\n\t')
+
+  let triggers = triggersTpl.replace(/##__TRIGGERS__##/, actionsObject)
 
   triggers = triggers.replace(/##__ACTION__##/, Object.values(actions).map(v => `'${v.action}'`).join(' |\n\t'))
 
-  fs.writeFileSync('src/triggers.ts', triggers, { encoding: 'utf-8' })
+  fs.writeFileSync('src/triggers.ts', triggers)
+
+  return eval(`({${actionsObject}})`)
 
 }
 
@@ -93,7 +96,7 @@ const FLAG_VALUE_STR = `
 const generate = async () => {
 
   console.log('Updating trigger list ...')
-  await updateTriggers()
+  const triggers = await updateTriggers()
   console.log('Trigger list updated')
 
   console.log('Cleaning folders ...')
