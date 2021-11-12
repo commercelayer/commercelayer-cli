@@ -1,6 +1,6 @@
 
 import { inspect } from 'util'
-import { AppKey } from './config'
+import { AppKey, configParam, ConfigParams } from './config'
 import chalk from 'chalk'
 
 
@@ -9,7 +9,7 @@ export type { ApiMode }
 
 
 const baseURL = (slug: string, domain: string | undefined): string => {
-	return `https://${slug.toLowerCase()}.${domain ? domain : 'commercelayer.io'}`
+	return `https://${slug.toLowerCase()}.${domain ? domain : configParam(ConfigParams.defaultDomain)}`
 }
 
 const extractDomain = (baseUrl: string): string | undefined => {
@@ -19,7 +19,7 @@ const extractDomain = (baseUrl: string): string | undefined => {
 
 
 const execMode = (liveFlag: string | boolean | undefined): ApiMode => {
-	return (liveFlag || (liveFlag === 'live')) ? 'live' : 'test'
+	return ((liveFlag === true) || (liveFlag === 'live')) ? 'live' : 'test'
 }
 
 

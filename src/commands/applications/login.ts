@@ -95,6 +95,8 @@ export default class ApplicationsLogin extends Command {
 			password: flags.password,
 		}
 
+		if (config.domain === configParam(ConfigParams.defaultDomain)) config.domain = undefined
+
 
 		try {
 

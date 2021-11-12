@@ -52,6 +52,10 @@ const configDir = (config: IConfig): string => {
 	return path.join(config.configDir, fixed.applicationsDir)
 }
 
+const configDirExists = (config: IConfig): boolean => {
+	return fs.existsSync(configDir(config))
+}
+
 const createConfigDir = (config: Config.IConfig): void => {
 	fs.mkdirSync(configDir(config), { recursive: true })
 }
@@ -113,6 +117,8 @@ const deleteTokenFile = (config: Config.IConfig, app: AppKey): boolean => {
 
 const readConfigDir = (config: Config.IConfig, filter: { key?: string }): AppInfo[] => {
 
+	if (!configDirExists(config)) return []
+
 	const files = fs.readdirSync(configDir(config)).map(f => {
 
 		const fc = f.split('.')
@@ -136,7 +142,7 @@ const readConfigDir = (config: Config.IConfig, filter: { key?: string }): AppInf
 }
 
 
-export { createConfigDir, readConfigDir, configDir }
+export { createConfigDir, readConfigDir, configDir, configDirExists }
 export { configFilePath, configFileExists, writeConfigFile, readConfigFile, deleteConfigFile }
 export { tokenFilePath, tokenFileExists, writeTokenFile, readTokenFile, deleteTokenFile }
 
@@ -173,6 +179,7 @@ enum ConfigParams {
 	currentApplication = 'currentApplication',
 	commandRetention = 'commandRetention',
 	applicationTypeCheck = 'applicationTypeCheck',
+	defaultDomain = 'defaultDomain',
 	test = 'test',
 }
 
@@ -184,6 +191,7 @@ enum ConfigParamsEditable {
 const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
+	defaultDomain: 'commercelayer.io',
 	applicationTypeCheck: ['cli', 'sales_channel', 'integration'],
 }
 
