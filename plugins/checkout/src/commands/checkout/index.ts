@@ -37,6 +37,18 @@ export default class CheckoutIndex extends Command {
       description: 'a customer email',
       dependsOn: ['sku'],
     }),
+    /*
+    'set-defaults': flags.boolean({
+      char: 'D',
+      description: 'set order defaults',
+      dependsOn: ['sku'],
+    }),
+    place: flags.boolean({
+      char: 'P',
+      description: 'place the rorder',
+      dependsOn: ['sku'],
+    }),
+    */
   }
 
 
@@ -49,7 +61,12 @@ export default class CheckoutIndex extends Command {
 
 
     // Checkout URL by order id
-    if (flags.order) return CheckoutOrder.run([flags.order, '-o', organization, '-a', accessToken], this.config)
+    if (flags.order) {
+      const args = [flags.order, '-o', organization, '-a', accessToken]
+      if (flags.open) args.push('--open')
+      if (flags.domain) args.push('-d', flags.domain)
+      return CheckoutOrder.run(args, this.config)
+    }
 
 
     if (!flags.sku) this.error(`One of the options ${chalk.cyanBright('--order (-O)')} or ${chalk.cyanBright('--sku (-S)')} is required`)
