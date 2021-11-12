@@ -7,7 +7,7 @@ import chalk from 'chalk'
 import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
-import { fixType } from './common'
+import { fixType, splitSlash } from './common'
 import { CommerceLayerStatic, QueryParams } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'
@@ -219,19 +219,12 @@ export default abstract class extends Command {
     if (flag && (flag.length > 0)) {
       flag.forEach(f => {
 
-        const kv = f.split('/')
+        const slashSep = f.indexOf('/')
+        if (slashSep < 0) this.error(`No name or fields defined in flag object${chalk.italic(f)}`)
 
-        if (kv.length > 2) this.error('Can be defined only one object for each object flag',
-          { suggestions: [`Split the value ${chalk.italic(f)} into two object flags`] }
-        )
-        else
-          if (kv.length === 1) this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
-
-        const name = kv[0]
+        const name = f.substring(0, slashSep)
         if (name === '') this.error(`No name defined in flag object ${f}`)
-        if (kv[1].trim() === '') this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
-
-        const fields = kv[1].split(/(?<!\\),/g).map(v => v.trim())  // escape ',' in value with \\ (double back slash)
+        const fields = f.substring(slashSep + 1).split(/(?<!\\),/g).map(v => v.trim())  // escape ',' in value with \\ (double back slash)
         if (fields[0].trim() === '') this.error(`No fields defined for object field ${chalk.italic(name)}`)
 
         const obj: KeyValObj = {}
@@ -524,8 +517,6 @@ export default abstract class extends Command {
     })
 
   }
-
-
 
 
   protected checkOperation(sdk: any, name: string): boolean {
