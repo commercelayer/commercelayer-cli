@@ -3,6 +3,7 @@ import fs from 'fs'
 import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import path from 'path'
 import axios from 'axios'
+import { snakeCase } from 'lodash'
 
 const Inflector = require('inflector-js')
 
@@ -116,7 +117,7 @@ const generate = async () => {
     const flagsImport = action.endsWith('_id') ? ', { flags }' : ''
     command = command.replace(/##__FLAGS_IMPORT__##/, flagsImport)
 
-    const fileName = Inflector.dasherize(action) + '.ts'
+    const fileName = snakeCase(action) + '.ts'
     fs.writeFileSync(path.join(COMMANDS_DIR, fileName), command)
     console.log(`Created command: ${action} [${fileName}]`)
 

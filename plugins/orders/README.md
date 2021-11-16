@@ -33,25 +33,25 @@ $ commercelayer plugins:install orders
 
 * [`cl-orders orders ID`](#cl-orders-orders-id)
 * [`cl-orders orders:approve ID`](#cl-orders-ordersapprove-id)
-* [`cl-orders orders:approve-and-capture ID`](#cl-orders-ordersapprove-and-capture-id)
+* [`cl-orders orders:approve_and_capture ID`](#cl-orders-ordersapprove_and_capture-id)
 * [`cl-orders orders:archive ID`](#cl-orders-ordersarchive-id)
-* [`cl-orders orders:authorization-amount-cents ID`](#cl-orders-ordersauthorization-amount-cents-id)
+* [`cl-orders orders:authorization_amount_cents ID`](#cl-orders-ordersauthorization_amount_cents-id)
 * [`cl-orders orders:authorize ID`](#cl-orders-ordersauthorize-id)
-* [`cl-orders orders:billing-address-clone-id ID`](#cl-orders-ordersbilling-address-clone-id-id)
-* [`cl-orders orders:billing-address-same-as-shipping ID`](#cl-orders-ordersbilling-address-same-as-shipping-id)
+* [`cl-orders orders:billing_address_clone_id ID`](#cl-orders-ordersbilling_address_clone_id-id)
+* [`cl-orders orders:billing_address_same_as_shipping ID`](#cl-orders-ordersbilling_address_same_as_shipping-id)
 * [`cl-orders orders:cancel ID`](#cl-orders-orderscancel-id)
 * [`cl-orders orders:capture ID`](#cl-orders-orderscapture-id)
-* [`cl-orders orders:customer-payment-source-id ID`](#cl-orders-orderscustomer-payment-source-id-id)
+* [`cl-orders orders:customer_payment_source_id ID`](#cl-orders-orderscustomer_payment_source_id-id)
 * [`cl-orders orders:place ID`](#cl-orders-ordersplace-id)
 * [`cl-orders orders:refresh ID`](#cl-orders-ordersrefresh-id)
 * [`cl-orders orders:refund ID`](#cl-orders-ordersrefund-id)
-* [`cl-orders orders:save-billing-address-to-customer-address-book ID`](#cl-orders-orderssave-billing-address-to-customer-address-book-id)
-* [`cl-orders orders:save-payment-source-to-customer-wallet ID`](#cl-orders-orderssave-payment-source-to-customer-wallet-id)
-* [`cl-orders orders:save-shipping-address-to-customer-address-book ID`](#cl-orders-orderssave-shipping-address-to-customer-address-book-id)
-* [`cl-orders orders:shipping-address-clone-id ID`](#cl-orders-ordersshipping-address-clone-id-id)
-* [`cl-orders orders:shipping-address-same-as-billing ID`](#cl-orders-ordersshipping-address-same-as-billing-id)
+* [`cl-orders orders:save_billing_address_to_customer_address_book ID`](#cl-orders-orderssave_billing_address_to_customer_address_book-id)
+* [`cl-orders orders:save_payment_source_to_customer_wallet ID`](#cl-orders-orderssave_payment_source_to_customer_wallet-id)
+* [`cl-orders orders:save_shipping_address_to_customer_address_book ID`](#cl-orders-orderssave_shipping_address_to_customer_address_book-id)
+* [`cl-orders orders:shipping_address_clone_id ID`](#cl-orders-ordersshipping_address_clone_id-id)
+* [`cl-orders orders:shipping_address_same_as_billing ID`](#cl-orders-ordersshipping_address_same_as_billing-id)
 * [`cl-orders orders:unarchive ID`](#cl-orders-ordersunarchive-id)
-* [`cl-orders orders:update-taxes ID`](#cl-orders-ordersupdate-taxes-id)
+* [`cl-orders orders:update_taxes ID`](#cl-orders-ordersupdate_taxes-id)
 
 ### `cl-orders orders ID`
 
@@ -68,7 +68,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/index.ts)_
+_See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/index.ts)_
 
 ### `cl-orders orders:approve ID`
 
@@ -85,15 +85,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/approve.ts)_
+_See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/approve.ts)_
 
-### `cl-orders orders:approve-and-capture ID`
+### `cl-orders orders:approve_and_capture ID`
 
 Send this attribute if you want to approve and capture a placed order..
 
 ```
 USAGE
-  $ cl-orders orders:approve-and-capture ID
+  $ cl-orders orders:approve_and_capture ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -102,7 +102,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/approve-and-capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/approve-and-capture.ts)_
+_See code: [src/commands/orders/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/approve_and_capture.ts)_
 
 ### `cl-orders orders:archive ID`
 
@@ -119,15 +119,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/archive.ts)_
+_See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/archive.ts)_
 
-### `cl-orders orders:authorization-amount-cents ID`
+### `cl-orders orders:authorization_amount_cents ID`
 
 The authorization amount, in cents..
 
 ```
 USAGE
-  $ cl-orders orders:authorization-amount-cents ID
+  $ cl-orders orders:authorization_amount_cents ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -136,7 +136,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/authorization-amount-cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/authorization-amount-cents.ts)_
+_See code: [src/commands/orders/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/authorization_amount_cents.ts)_
 
 ### `cl-orders orders:authorize ID`
 
@@ -153,15 +153,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/authorize.ts)_
+_See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/authorize.ts)_
 
-### `cl-orders orders:billing-address-clone-id ID`
+### `cl-orders orders:billing_address_clone_id ID`
 
 The id of the address that you want to clone to create the order's billing address..
 
 ```
 USAGE
-  $ cl-orders orders:billing-address-clone-id ID
+  $ cl-orders orders:billing_address_clone_id ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -171,15 +171,15 @@ OPTIONS
   -v, --value=value                (required) the trigger attribute value
 ```
 
-_See code: [src/commands/orders/billing-address-clone-id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/billing-address-clone-id.ts)_
+_See code: [src/commands/orders/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/billing_address_clone_id.ts)_
 
-### `cl-orders orders:billing-address-same-as-shipping ID`
+### `cl-orders orders:billing_address_same_as_shipping ID`
 
 Send this attribute if you want the billing address to be cloned from the order's shipping address..
 
 ```
 USAGE
-  $ cl-orders orders:billing-address-same-as-shipping ID
+  $ cl-orders orders:billing_address_same_as_shipping ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -188,7 +188,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/billing-address-same-as-shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/billing-address-same-as-shipping.ts)_
+_See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/billing_address_same_as_shipping.ts)_
 
 ### `cl-orders orders:cancel ID`
 
@@ -205,7 +205,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/cancel.ts)_
+_See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/cancel.ts)_
 
 ### `cl-orders orders:capture ID`
 
@@ -222,15 +222,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/capture.ts)_
+_See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/capture.ts)_
 
-### `cl-orders orders:customer-payment-source-id ID`
+### `cl-orders orders:customer_payment_source_id ID`
 
 The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source..
 
 ```
 USAGE
-  $ cl-orders orders:customer-payment-source-id ID
+  $ cl-orders orders:customer_payment_source_id ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -240,7 +240,7 @@ OPTIONS
   -v, --value=value                (required) the trigger attribute value
 ```
 
-_See code: [src/commands/orders/customer-payment-source-id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/customer-payment-source-id.ts)_
+_See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/customer_payment_source_id.ts)_
 
 ### `cl-orders orders:place ID`
 
@@ -257,7 +257,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/place.ts)_
+_See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/place.ts)_
 
 ### `cl-orders orders:refresh ID`
 
@@ -274,7 +274,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/refresh.ts)_
+_See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/refresh.ts)_
 
 ### `cl-orders orders:refund ID`
 
@@ -291,15 +291,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/refund.ts)_
+_See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/refund.ts)_
 
-### `cl-orders orders:save-billing-address-to-customer-address-book ID`
+### `cl-orders orders:save_billing_address_to_customer_address_book ID`
 
 Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address..
 
 ```
 USAGE
-  $ cl-orders orders:save-billing-address-to-customer-address-book ID
+  $ cl-orders orders:save_billing_address_to_customer_address_book ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -308,15 +308,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/save-billing-address-to-customer-address-book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/save-billing-address-to-customer-address-book.ts)_
+_See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/save_billing_address_to_customer_address_book.ts)_
 
-### `cl-orders orders:save-payment-source-to-customer-wallet ID`
+### `cl-orders orders:save_payment_source_to_customer_wallet ID`
 
 Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source..
 
 ```
 USAGE
-  $ cl-orders orders:save-payment-source-to-customer-wallet ID
+  $ cl-orders orders:save_payment_source_to_customer_wallet ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -325,15 +325,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/save-payment-source-to-customer-wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/save-payment-source-to-customer-wallet.ts)_
+_See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/save_payment_source_to_customer_wallet.ts)_
 
-### `cl-orders orders:save-shipping-address-to-customer-address-book ID`
+### `cl-orders orders:save_shipping_address_to_customer_address_book ID`
 
 Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address..
 
 ```
 USAGE
-  $ cl-orders orders:save-shipping-address-to-customer-address-book ID
+  $ cl-orders orders:save_shipping_address_to_customer_address_book ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -342,15 +342,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/save-shipping-address-to-customer-address-book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/save-shipping-address-to-customer-address-book.ts)_
+_See code: [src/commands/orders/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/save_shipping_address_to_customer_address_book.ts)_
 
-### `cl-orders orders:shipping-address-clone-id ID`
+### `cl-orders orders:shipping_address_clone_id ID`
 
 The id of the address that you want to clone to create the order's shipping address..
 
 ```
 USAGE
-  $ cl-orders orders:shipping-address-clone-id ID
+  $ cl-orders orders:shipping_address_clone_id ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -360,15 +360,15 @@ OPTIONS
   -v, --value=value                (required) the trigger attribute value
 ```
 
-_See code: [src/commands/orders/shipping-address-clone-id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/shipping-address-clone-id.ts)_
+_See code: [src/commands/orders/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/shipping_address_clone_id.ts)_
 
-### `cl-orders orders:shipping-address-same-as-billing ID`
+### `cl-orders orders:shipping_address_same_as_billing ID`
 
 Send this attribute if you want the shipping address to be cloned from the order's billing address..
 
 ```
 USAGE
-  $ cl-orders orders:shipping-address-same-as-billing ID
+  $ cl-orders orders:shipping_address_same_as_billing ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -377,7 +377,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/shipping-address-same-as-billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/shipping-address-same-as-billing.ts)_
+_See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/shipping_address_same_as_billing.ts)_
 
 ### `cl-orders orders:unarchive ID`
 
@@ -394,15 +394,15 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/unarchive.ts)_
+_See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/unarchive.ts)_
 
-### `cl-orders orders:update-taxes ID`
+### `cl-orders orders:update_taxes ID`
 
 Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market)..
 
 ```
 USAGE
-  $ cl-orders orders:update-taxes ID
+  $ cl-orders orders:update_taxes ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -411,5 +411,5 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/orders/update-taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v1.2.5/src/commands/orders/update-taxes.ts)_
+_See code: [src/commands/orders/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/v2.0.0-beta.0/src/commands/orders/update_taxes.ts)_
 <!-- commandsstop -->
