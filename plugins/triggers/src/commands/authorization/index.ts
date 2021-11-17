@@ -47,7 +47,7 @@ export default class AuthorizationIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('authorization', action, res.id)
 
     return res
 

@@ -47,7 +47,7 @@ export default class StockTransferIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('stock transfer', action, res.id)
 
     return res
 

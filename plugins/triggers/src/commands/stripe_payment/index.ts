@@ -47,7 +47,7 @@ export default class StripePaymentIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('stripe payment', action, res.id)
 
     return res
 

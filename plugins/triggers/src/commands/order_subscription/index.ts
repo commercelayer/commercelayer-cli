@@ -47,7 +47,7 @@ export default class OrderSubscriptionIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('order subscription', action, res.id)
 
     return res
 

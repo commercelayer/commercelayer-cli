@@ -25,7 +25,7 @@ export default class InStockSubscriptionDeactivate extends Command {
 
 		const res = await exec('in_stock_subscriptions', args.id, TRIGGER, flags)
 
-    this.successMessage('in stock subscription', TRIGGER, res.id)
+    this.successMessage('in_stock_subscription', TRIGGER, res.id)
 
     return res
 

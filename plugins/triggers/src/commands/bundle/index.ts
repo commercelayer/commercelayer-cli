@@ -47,7 +47,7 @@ export default class BundleIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('bundle', action, res.id)
 
     return res
 

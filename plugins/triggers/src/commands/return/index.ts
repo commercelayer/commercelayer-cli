@@ -47,7 +47,7 @@ export default class ReturnIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('return', action, res.id)
 
     return res
 

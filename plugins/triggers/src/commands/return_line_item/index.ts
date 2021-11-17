@@ -47,7 +47,7 @@ export default class ReturnLineItemIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('return line item', action, res.id)
 
     return res
 

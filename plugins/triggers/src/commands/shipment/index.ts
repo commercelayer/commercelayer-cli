@@ -47,7 +47,7 @@ export default class ShipmentIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('shipment', action, res.id)
 
     return res
 

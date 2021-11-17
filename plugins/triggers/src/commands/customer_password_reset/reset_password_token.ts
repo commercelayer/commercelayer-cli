@@ -25,7 +25,7 @@ export default class CustomerPasswordResetResetPasswordToken extends Command {
 
 		const res = await exec('customer_password_resets', args.id, TRIGGER, flags)
 
-    this.successMessage('customer password reset', TRIGGER, res.id)
+    this.successMessage('customer_password_reset', TRIGGER, res.id)
 
     return res
 

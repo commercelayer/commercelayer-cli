@@ -84,7 +84,7 @@ export default abstract class extends Command {
 
 
   protected successMessage(resource: string, action: string, id: string) {
-    this.log(`\nAction ${chalk.italic.cyanBright(action)} executed without errors on ${resource} ${chalk.yellowBright(id)}\n`)
+    this.log(`\nAction ${chalk.italic.cyanBright(action)} executed without errors on ${resource.replace(/_/g, ' ')} ${chalk.yellowBright(id)}\n`)
   }
 
 }

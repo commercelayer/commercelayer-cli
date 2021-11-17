@@ -47,7 +47,7 @@ export default class CheckoutComPaymentIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('checkout com payment', action, res.id)
 
     return res
 

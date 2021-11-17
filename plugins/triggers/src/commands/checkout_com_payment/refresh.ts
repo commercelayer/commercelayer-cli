@@ -25,7 +25,7 @@ export default class CheckoutComPaymentRefresh extends Command {
 
 		const res = await exec('checkout_com_payments', args.id, TRIGGER, flags)
 
-    this.successMessage('checkout com payment', TRIGGER, res.id)
+    this.successMessage('checkout_com_payment', TRIGGER, res.id)
 
     return res
 

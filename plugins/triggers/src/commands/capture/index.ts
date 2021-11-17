@@ -47,7 +47,7 @@ export default class CaptureIndex extends Command {
     this.log()
     this.printOutput(res, flags)
 
-    this.successMessage(action, res.id)
+    this.successMessage('capture', action, res.id)
 
     return res
 
