@@ -25,7 +25,7 @@ export default class AdyenPaymentAuthorize extends Command {
 
 		const res = await exec('adyen_payments', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('adyen payment', TRIGGER, res.id)
 
     return res
 

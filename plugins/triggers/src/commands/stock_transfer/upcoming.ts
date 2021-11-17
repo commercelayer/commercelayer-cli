@@ -25,7 +25,7 @@ export default class StockTransferUpcoming extends Command {
 
 		const res = await exec('stock_transfers', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('stock transfer', TRIGGER, res.id)
 
     return res
 

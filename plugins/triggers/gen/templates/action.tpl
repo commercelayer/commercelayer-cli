@@ -25,7 +25,7 @@ export default class ##__RESOURCE_CLASS__####__ACTION_NAME__## extends Command {
 
 		const res = await exec('##__RESOURCE_TYPE__##', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('##__RESOURCE_NAME__##', TRIGGER, res.id)
 
     return res
 

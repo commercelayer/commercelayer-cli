@@ -31,7 +31,7 @@ export default class OrderShippingAddressCloneId extends Command {
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('order', TRIGGER, res.id)
 
     return res
 

@@ -25,7 +25,7 @@ export default class OrderSubscriptionActivate extends Command {
 
 		const res = await exec('order_subscriptions', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('order subscription', TRIGGER, res.id)
 
     return res
 

@@ -150,7 +150,7 @@ const generate = async () => {
 
       let command = actionTpl.replace(/##__ACTION_ID__##/g, action)
       command = command.replace(/##__ACTION_NAME__##/g, Inflector.camelize(action))
-      command = command.replace(/##__RESOURCE_NAME__##/g, resource)
+      command = command.replace(/##__RESOURCE_NAME__##/g, resource.replace(/_/g, ' '))
       command = command.replace(/##__RESOURCE_TYPE__##/g, resType)
       command = command.replace(/##__RESOURCE_CLASS__##/g, resClass)
 

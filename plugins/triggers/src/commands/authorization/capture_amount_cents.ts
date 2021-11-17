@@ -25,7 +25,7 @@ export default class AuthorizationCaptureAmountCents extends Command {
 
 		const res = await exec('authorizations', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('authorization', TRIGGER, res.id)
 
     return res
 

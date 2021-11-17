@@ -25,7 +25,7 @@ export default class GiftCardBalanceChangeCents extends Command {
 
 		const res = await exec('gift_cards', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('gift card', TRIGGER, res.id)
 
     return res
 

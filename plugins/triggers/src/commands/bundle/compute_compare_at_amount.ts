@@ -25,7 +25,7 @@ export default class BundleComputeCompareAtAmount extends Command {
 
 		const res = await exec('bundles', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('bundle', TRIGGER, res.id)
 
     return res
 

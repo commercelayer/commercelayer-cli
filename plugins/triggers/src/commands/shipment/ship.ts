@@ -25,7 +25,7 @@ export default class ShipmentShip extends Command {
 
 		const res = await exec('shipments', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('shipment', TRIGGER, res.id)
 
     return res
 

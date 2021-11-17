@@ -25,7 +25,7 @@ export default class WebhookResetCircuit extends Command {
 
 		const res = await exec('webhooks', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('webhook', TRIGGER, res.id)
 
     return res
 

@@ -25,7 +25,7 @@ export default class ReturnReject extends Command {
 
 		const res = await exec('returns', args.id, TRIGGER, flags)
 
-    this.successMessage(TRIGGER, res.id)
+    this.successMessage('return', TRIGGER, res.id)
 
     return res
 
