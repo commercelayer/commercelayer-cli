@@ -1,6 +1,6 @@
 /* eslint-disable no-console, no-eval */
 import fs from 'fs'
-import Manifest from '@oclif/dev-cli/lib/commands/manifest'
+// import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import path from 'path'
 import axios from 'axios'
 import { snakeCase } from 'lodash'
@@ -128,8 +128,10 @@ const generate = async () => {
 
   })
 
+  /*
   Manifest.run().then(() => console.log('Generated commands manifest'))
     .then(() => console.log('Order commands generation completed.'))
+    */
 
 }
 
