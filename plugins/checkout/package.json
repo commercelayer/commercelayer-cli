@@ -3,6 +3,10 @@
   "description": "Commerce Layer CLI Checkout plugin",
   "version": "1.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "bin": {
+    "cl-checkout": "./bin/run",
+    "clc": "./bin/run"
+  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
@@ -28,6 +32,7 @@
     "node": ">=8.0.0"
   },
   "files": [
+    "/bin",
     "/lib",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
