@@ -48,7 +48,7 @@ OPTIONS
   --open                           open checkout URL in default browser
 ```
 
-_See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/v1.0.2/src/commands/checkout/index.ts)_
+_See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/v1.1.0/src/commands/checkout/index.ts)_
 
 ### `cl-checkout checkout:order ID`
 
@@ -67,5 +67,5 @@ OPTIONS
   --open                           open checkout URL in default browser
 ```
 
-_See code: [src/commands/checkout/order.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/v1.0.2/src/commands/checkout/order.ts)_
+_See code: [src/commands/checkout/order.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/v1.1.0/src/commands/checkout/order.ts)_
 <!-- commandsstop -->
