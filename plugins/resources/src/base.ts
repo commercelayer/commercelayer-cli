@@ -7,7 +7,7 @@ import chalk from 'chalk'
 import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
-import { fixType, splitSlash } from './common'
+import { fixType } from './common'
 import { CommerceLayerStatic, QueryParams } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'

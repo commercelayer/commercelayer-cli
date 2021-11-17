@@ -25,6 +25,32 @@ const notify = (message: string): void => {
   })
 }
 
+/* eslint-disable no-console,@typescript-eslint/no-empty-function */
+const blindProgressBar = {
+  start() {},
+  stop() {},
+  setTotal() {},
+  increment() {},
+}
+/* eslint-enable no-console,@typescript-eslint/no-empty-function */
+
+
+const resetConsole = () => {
+
+  // Cursor
+  // const showCursor = '\u001B[?25l'  // \x1B[?25l
+  const showCursor = '\u001B[?25h' // \x1B[?25h
+
+  // Line wrap
+  // const lineWrap = '\u001B[?7l'  // \x1B[?7l
+  const lineWrap = '\u001B[?7h' // \x1B[?7h
+
+  // eslint-disable-next-line no-console
+  // console.log(`${showCursor}${lineWrap}`)
+  process.stdout.write(`${showCursor}${lineWrap}`)
+
+}
+
 
 export default class ResourcesAll extends Command {
 
@@ -283,32 +309,6 @@ export default class ResourcesAll extends Command {
     }
 
   }
-
-}
-
-/* eslint-disable no-console,@typescript-eslint/no-empty-function */
-const blindProgressBar = {
-  start() {},
-  stop() {},
-  setTotal() {},
-  increment() {},
-}
-/* eslint-enable no-console,@typescript-eslint/no-empty-function */
-
-
-const resetConsole = () => {
-
-  // Cursor
-  // const showCursor = '\u001B[?25l'  // \x1B[?25l
-  const showCursor = '\u001B[?25h' // \x1B[?25h
-
-  // Line wrap
-  // const lineWrap = '\u001B[?7l'  // \x1B[?7l
-  const lineWrap = '\u001B[?7h' // \x1B[?7h
-
-  // eslint-disable-next-line no-console
-  // console.log(`${showCursor}${lineWrap}`)
-  process.stdout.write(`${showCursor}${lineWrap}`)
 
 }
 

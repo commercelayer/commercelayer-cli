@@ -1,17 +1,11 @@
-import {expect, test} from '@oclif/test'
+import { expect, test } from '@oclif/test'
 
 describe('resources:doc', () => {
   test
-  .stdout()
-  .command(['resources:doc'])
-  .it('runs hello', ctx => {
-    expect(ctx.stdout).to.contain('hello world')
-  })
+    .stdout()
+    .command(['resources:noc'])
+    .it('runs NoC', ctx => {
+      expect(ctx.stdout).to.contain('-= NoC =-')
+    })
 
-  test
-  .stdout()
-  .command(['resources:doc', '--name', 'jeff'])
-  .it('runs hello --name jeff', ctx => {
-    expect(ctx.stdout).to.contain('hello jeff')
-  })
 })

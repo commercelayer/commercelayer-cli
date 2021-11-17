@@ -1,24 +1,4 @@
 
-const denormalize = (response: any) => {
-
-	let denormalizedResponse
-
-	if (response.links) delete response.links
-
-	const data = response.data
-	const included = response.included
-
-	// console.log(data)
-	// console.log(included)
-
-	if (Array.isArray(data)) denormalizedResponse = data.map(res => denormalizeResource(res, included))
-	else denormalizedResponse = denormalizeResource(data, included)
-
-	return denormalizedResponse
-
-}
-
-
 const findIncluded = (rel: any, included: any[]): any => {
 	return included.find(inc => {
 		return (rel.id === inc.id) && (rel.type === inc.type)
@@ -48,6 +28,27 @@ const denormalizeResource = (res: any, included: any[]) => {
 	return resource
 
 }
+
+
+const denormalize = (response: any) => {
+
+	let denormalizedResponse
+
+	if (response.links) delete response.links
+
+	const data = response.data
+	const included = response.included
+
+	// console.log(data)
+	// console.log(included)
+
+	if (Array.isArray(data)) denormalizedResponse = data.map(res => denormalizeResource(res, included))
+	else denormalizedResponse = denormalizeResource(data, included)
+
+	return denormalizedResponse
+
+}
+
 
 /*
 const includedResource = (rel: { id: any; type: any }, included: any[]) => {

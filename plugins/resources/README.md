@@ -39,6 +39,7 @@ $ commercelayer plugins:install resources
 * [`cl-resources resources:get RESOURCE [ID]`](#cl-resources-resourcesget-resource-id)
 * [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
 * [`cl-resources resources:retrieve RESOURCE [ID]`](#cl-resources-resourcesretrieve-resource-id)
+* [`cl-resources resources:test [FILE]`](#cl-resources-resourcestest-file)
 * [`cl-resources resources:update RESOURCE [ID]`](#cl-resources-resourcesupdate-resource-id)
 
 ### `cl-resources resources`
@@ -306,6 +307,22 @@ EXAMPLES
 ```
 
 _See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.1/src/commands/resources/retrieve.ts)_
+
+### `cl-resources resources:test [FILE]`
+
+Describe the command here.
+
+```
+USAGE
+  $ cl-resources resources:test [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/resources/test.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.1/src/commands/resources/test.ts)_
 
 ### `cl-resources resources:update RESOURCE [ID]`
 

@@ -2,45 +2,6 @@ import { Command } from '@oclif/command'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 
-export default class ResourcesFilters extends Command {
-
-  static description = 'show a list of all available filter predicates'
-
-  static hidden: true
-
-  static aliases = ['res:filters']
-
-  static examples = [
-    '$ commercelayer resources:filters',
-    '$ cl res:filters',
-  ]
-
-  static flags = {
-    // help: flags.help({ char: 'h' }),
-  }
-
-  static args = []
-
-  async run() {
-    this.log(chalk.blueBright('\n-= Commerce Layer API available resource filters =-\n'))
-    cliux.table(filters.sort((a, b) =>  a.predicate.localeCompare(b.predicate)),
-      {
-        predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
-        description: { header: 'DESCRIPTION' },
-      },
-      {
-        printLine: this.log,
-      })
-    this.log()
-  }
-
-}
-
-
-interface Filter {
-  predicate: string;
-  description: string;
-}
 
 const filters: Filter[] = [
   { predicate: '*_eq', description: 'The attribute is equal to the filter value' },
@@ -90,6 +51,47 @@ const filters: Filter[] = [
   { predicate: '*_true', description: 'The attribute is true' },
   { predicate: '*_false', description: 'The attribute is false' },
 ]
+
+
+export default class ResourcesFilters extends Command {
+
+  static description = 'show a list of all available filter predicates'
+
+  static hidden: true
+
+  static aliases = ['res:filters']
+
+  static examples = [
+    '$ commercelayer resources:filters',
+    '$ cl res:filters',
+  ]
+
+  static flags = {
+    // help: flags.help({ char: 'h' }),
+  }
+
+  static args = []
+
+  async run() {
+    this.log(chalk.blueBright('\n-= Commerce Layer API available resource filters =-\n'))
+    cliux.table(filters.sort((a, b) =>  a.predicate.localeCompare(b.predicate)),
+      {
+        predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
+        description: { header: 'DESCRIPTION' },
+      },
+      {
+        printLine: this.log,
+      })
+    this.log()
+  }
+
+}
+
+
+interface Filter {
+  predicate: string;
+  description: string;
+}
 
 
 const filterList = (): string[] => {
