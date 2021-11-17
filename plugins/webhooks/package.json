@@ -1,16 +1,16 @@
 {
   "name": "@commercelayer/cli-plugin-webhooks",
   "description": "Commerce Layer CLI Webhooks plugin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-webhooks": "./bin/run",
-    "cl-wh": "./bin/run",
     "clw": "./bin/run"
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@oclif/plugin-help": "^3.2.2",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.21",
     "@types/mocha": "^5.2.7",
@@ -48,7 +48,16 @@
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cl-webhooks",
-    "plugins": []
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "webhooks": {
+        "description": "Manage Commerce Layer webhooks",
+        "hidden": true
+      }
+    }
   },
   "repository": "commercelayer/commercelayer-cli-plugin-webhooks",
   "scripts": {
