@@ -59,7 +59,7 @@ const AvailablePlugins: PluginRelease[] = [
   { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',    enabled: true },
   { name: 'orders',     plugin: '@commercelayer/cli-plugin-orders',     description: 'Organization orders management',    enabled: true },
   { name: 'checkout',   plugin: '@commercelayer/cli-plugin-checkout',   description: 'Checkout URLs generation',          enabled: true },
-  { name: 'triggers',   plugin: '@commercelayer/cli-plugin-triggers',   description: 'Execute actions on resources',      enabled: true, hidden: true },
+  { name: 'triggers',   plugin: '@commercelayer/cli-plugin-triggers',   description: 'Execute actions on resources',      enabled: true },
 ]
 
 
