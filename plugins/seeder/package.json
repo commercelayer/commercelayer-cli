@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-seeder",
   "description": "Commerce Layer CLI Seeder plugin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "contributors": [
     "Alessandro Casazza <alessandro@commercelayer.io>"
@@ -13,12 +13,13 @@
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-seeder/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@oclif/plugin-help": "^3.2.2",
     "@oclif/test": "^1.2.8",
-    "@types/chai": "^4.2.15",
+    "@types/chai": "^4.2.17",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^10.17.54",
+    "@types/node": "^10.17.59",
     "@types/update-notifier": "^5.0.0",
-    "chai": "^4.3.3",
+    "chai": "^4.3.4",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
@@ -50,6 +51,9 @@
     "scope": "commercelayer",
     "commands": "./lib/commands",
     "bin": "cl-seeder",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
     "plugins": []
   },
   "repository": "commercelayer/commercelayer-cli-plugin-seeder",
