@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-eval */
 import fs from 'fs'
 import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import path from 'path'
