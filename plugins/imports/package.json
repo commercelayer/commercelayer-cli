@@ -5,12 +5,12 @@
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-imports": "./bin/run",
-    "cl-imp": "./bin/run",
     "cli": "./bin/run"
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-imports/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@oclif/plugin-help": "^3.2.2",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.21",
     "@types/cli-progress": "^3.9.2",
@@ -49,7 +49,16 @@
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cl-imports",
-    "plugins": []
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "imports": {
+        "description": "Import resources in Commerce Layer",
+        "hidden": true
+      }
+    }
   },
   "repository": "commercelayer/commercelayer-cli-plugin-imports",
   "scripts": {
