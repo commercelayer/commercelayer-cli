@@ -1,9 +1,9 @@
 /* eslint-disable no-console, no-eval */
 import fs from 'fs'
-import Manifest from '@oclif/dev-cli/lib/commands/manifest'
+// import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import path from 'path'
 import axios from 'axios'
-import _ from 'lodash'
+import { snakeCase } from 'lodash'
 
 const Inflector = require('inflector-js')
 
@@ -57,7 +57,7 @@ const getResourceActions = async (): Promise<{ [key: string]: any[] }> => {
     Object.entries((t as any).properties.data.properties.attributes.properties).forEach(([k, v]) => {
       if (k.startsWith('_')) triggerAttributes.push({ action: k.substring(1), trigger: k, description: (v as any).description })
     })
-    const res = _.snakeCase(k.replace('Update', ''))
+    const res = snakeCase(k.replace('Update', ''))
     if (triggerAttributes.length > 0) actions[res] = triggerAttributes
   })
 
@@ -122,12 +122,14 @@ const generate = async () => {
   const generatedTriggers = await updateTriggers()
   console.log('Trigger list updated')
 
+  const indexTpl = readTemplate('index')
   const actionTpl = readTemplate('action')
   const specTpl = readTemplate('spec')
 
   Object.entries(generatedTriggers).forEach(([resource, triggers]) => {
 
     const resType = Inflector.pluralize(resource)
+    const resClass = Inflector.camelize(resource)
 
     const cmdDir = path.join(COMMANDS_DIR, resource)
     // fs.rmdirSync(cmdDir)
@@ -138,13 +140,19 @@ const generate = async () => {
     fs.mkdirSync(spcDir)
 
 
+    let index = indexTpl.replace(/##__RESOURCE_NAME__##/g, resource.replace(/_/g, ' '))
+    index = index.replace(/##__RESOURCE_TYPE__##/g, resType)
+    index = index.replace(/##__RESOURCE_CLASS__##/g, resClass)
+    fs.writeFileSync(path.join(cmdDir, 'index.ts'), index)
+
+
     Object.keys(triggers).forEach(action => {
 
       let command = actionTpl.replace(/##__ACTION_ID__##/g, action)
       command = command.replace(/##__ACTION_NAME__##/g, Inflector.camelize(action))
       command = command.replace(/##__RESOURCE_NAME__##/g, resource)
       command = command.replace(/##__RESOURCE_TYPE__##/g, resType)
-      command = command.replace(/##__RESOURCE_CLASS__##/g, Inflector.camelize(resource))
+      command = command.replace(/##__RESOURCE_CLASS__##/g, resClass)
 
       const flagValue = action.endsWith('_id') ? FLAG_VALUE_STR : ''
       command = command.replace(/##__FLAG_VALUE__##/, flagValue)
@@ -167,8 +175,11 @@ const generate = async () => {
 
   fs.copyFileSync(path.join(TEMPLATES_DIR, 'noc.tpl'), path.join(COMMANDS_DIR, 'noc.ts'))
 
+  /*
+  console.log('Generating commands manifest ...')
   Manifest.run().then(() => console.log('Generated commands manifest'))
     .then(() => console.log('Order commands generation completed.'))
+  */
 
 }
 
