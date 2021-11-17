@@ -1,17 +1,11 @@
-import {expect, test} from '@oclif/test'
+import { expect, test } from '@oclif/test'
 
 describe('util:jwt', () => {
   test
-  .stdout()
-  .command(['util:jwt'])
-  .it('runs hello', ctx => {
-    expect(ctx.stdout).to.contain('hello world')
-  })
+    .stdout()
+    .command(['noc'])
+    .it('runs noc', ctx => {
+      expect(ctx.stdout).to.contain('-= NoC =-')
+    })
 
-  test
-  .stdout()
-  .command(['util:jwt', '--name', 'jeff'])
-  .it('runs hello --name jeff', ctx => {
-    expect(ctx.stdout).to.contain('hello jeff')
-  })
 })
