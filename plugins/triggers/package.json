@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
-  "version": "0.0.0-alpha.0",
+  "version": "1.0.0-alpha.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-triggers": "./bin/run",
