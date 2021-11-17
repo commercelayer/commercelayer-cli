@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-triggers
 $ cl-triggers COMMAND
 running command...
 $ cl-triggers (-v|--version|version)
-@commercelayer/cli-plugin-triggers/1.0.0-alpha.1 darwin-x64 node-v16.13.0
+@commercelayer/cli-plugin-triggers/1.0.0 darwin-x64 node-v16.13.0
 $ cl-triggers --help [COMMAND]
 USAGE
   $ cl-triggers COMMAND
@@ -125,7 +125,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/adyen_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/adyen_payment/index.ts)_
+_See code: [src/commands/adyen_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/adyen_payment/index.ts)_
 
 ## `cl-triggers adyen_payment:authorize ID`
 
@@ -142,7 +142,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/adyen_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/adyen_payment/authorize.ts)_
+_See code: [src/commands/adyen_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/adyen_payment/authorize.ts)_
 
 ## `cl-triggers adyen_payment:details ID`
 
@@ -159,7 +159,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/adyen_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/adyen_payment/details.ts)_
+_See code: [src/commands/adyen_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/adyen_payment/details.ts)_
 
 ## `cl-triggers authorization ID`
 
@@ -176,7 +176,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/authorization/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/authorization/index.ts)_
+_See code: [src/commands/authorization/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/authorization/index.ts)_
 
 ## `cl-triggers authorization:capture ID`
 
@@ -193,7 +193,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/authorization/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/authorization/capture.ts)_
+_See code: [src/commands/authorization/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/authorization/capture.ts)_
 
 ## `cl-triggers authorization:capture_amount_cents ID`
 
@@ -210,7 +210,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/authorization/capture_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/authorization/capture_amount_cents.ts)_
+_See code: [src/commands/authorization/capture_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/authorization/capture_amount_cents.ts)_
 
 ## `cl-triggers authorization:void ID`
 
@@ -227,7 +227,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/authorization/void.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/authorization/void.ts)_
+_See code: [src/commands/authorization/void.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/authorization/void.ts)_
 
 ## `cl-triggers bundle ID`
 
@@ -244,7 +244,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/bundle/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/bundle/index.ts)_
+_See code: [src/commands/bundle/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/bundle/index.ts)_
 
 ## `cl-triggers bundle:compute_compare_at_amount ID`
 
@@ -261,7 +261,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/bundle/compute_compare_at_amount.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/bundle/compute_compare_at_amount.ts)_
+_See code: [src/commands/bundle/compute_compare_at_amount.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/bundle/compute_compare_at_amount.ts)_
 
 ## `cl-triggers capture ID`
 
@@ -278,7 +278,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/capture/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/capture/index.ts)_
+_See code: [src/commands/capture/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/capture/index.ts)_
 
 ## `cl-triggers capture:refund ID`
 
@@ -295,7 +295,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/capture/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/capture/refund.ts)_
+_See code: [src/commands/capture/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/capture/refund.ts)_
 
 ## `cl-triggers capture:refund_amount_cents ID`
 
@@ -312,7 +312,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/capture/refund_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/capture/refund_amount_cents.ts)_
+_See code: [src/commands/capture/refund_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/capture/refund_amount_cents.ts)_
 
 ## `cl-triggers checkout_com_payment ID`
 
@@ -329,7 +329,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/checkout_com_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/checkout_com_payment/index.ts)_
+_See code: [src/commands/checkout_com_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/checkout_com_payment/index.ts)_
 
 ## `cl-triggers checkout_com_payment:authorize ID`
 
@@ -346,7 +346,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/checkout_com_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/checkout_com_payment/authorize.ts)_
+_See code: [src/commands/checkout_com_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/checkout_com_payment/authorize.ts)_
 
 ## `cl-triggers checkout_com_payment:details ID`
 
@@ -363,7 +363,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/checkout_com_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/checkout_com_payment/details.ts)_
+_See code: [src/commands/checkout_com_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/checkout_com_payment/details.ts)_
 
 ## `cl-triggers checkout_com_payment:refresh ID`
 
@@ -380,7 +380,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/checkout_com_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/checkout_com_payment/refresh.ts)_
+_See code: [src/commands/checkout_com_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/checkout_com_payment/refresh.ts)_
 
 ## `cl-triggers customer_password_reset ID`
 
@@ -397,7 +397,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/customer_password_reset/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/customer_password_reset/index.ts)_
+_See code: [src/commands/customer_password_reset/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/customer_password_reset/index.ts)_
 
 ## `cl-triggers customer_password_reset:reset_password_token ID`
 
@@ -414,7 +414,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/customer_password_reset/reset_password_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/customer_password_reset/reset_password_token.ts)_
+_See code: [src/commands/customer_password_reset/reset_password_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/customer_password_reset/reset_password_token.ts)_
 
 ## `cl-triggers gift_card ID`
 
@@ -431,7 +431,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/gift_card/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/gift_card/index.ts)_
+_See code: [src/commands/gift_card/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/gift_card/index.ts)_
 
 ## `cl-triggers gift_card:activate ID`
 
@@ -448,7 +448,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/gift_card/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/gift_card/activate.ts)_
+_See code: [src/commands/gift_card/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/gift_card/activate.ts)_
 
 ## `cl-triggers gift_card:balance_change_cents ID`
 
@@ -465,7 +465,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/gift_card/balance_change_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/gift_card/balance_change_cents.ts)_
+_See code: [src/commands/gift_card/balance_change_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/gift_card/balance_change_cents.ts)_
 
 ## `cl-triggers gift_card:deactivate ID`
 
@@ -482,7 +482,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/gift_card/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/gift_card/deactivate.ts)_
+_See code: [src/commands/gift_card/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/gift_card/deactivate.ts)_
 
 ## `cl-triggers gift_card:purchase ID`
 
@@ -499,7 +499,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/gift_card/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/gift_card/purchase.ts)_
+_See code: [src/commands/gift_card/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/gift_card/purchase.ts)_
 
 ## `cl-triggers in_stock_subscription ID`
 
@@ -516,7 +516,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/in_stock_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/in_stock_subscription/index.ts)_
+_See code: [src/commands/in_stock_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/in_stock_subscription/index.ts)_
 
 ## `cl-triggers in_stock_subscription:activate ID`
 
@@ -533,7 +533,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/in_stock_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/in_stock_subscription/activate.ts)_
+_See code: [src/commands/in_stock_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/in_stock_subscription/activate.ts)_
 
 ## `cl-triggers in_stock_subscription:deactivate ID`
 
@@ -550,7 +550,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/in_stock_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/in_stock_subscription/deactivate.ts)_
+_See code: [src/commands/in_stock_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/in_stock_subscription/deactivate.ts)_
 
 ## `cl-triggers order ID`
 
@@ -567,7 +567,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/index.ts)_
+_See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/index.ts)_
 
 ## `cl-triggers order:approve ID`
 
@@ -584,7 +584,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/approve.ts)_
+_See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/approve.ts)_
 
 ## `cl-triggers order:approve_and_capture ID`
 
@@ -601,7 +601,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/approve_and_capture.ts)_
+_See code: [src/commands/order/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/approve_and_capture.ts)_
 
 ## `cl-triggers order:archive ID`
 
@@ -618,7 +618,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/archive.ts)_
+_See code: [src/commands/order/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/archive.ts)_
 
 ## `cl-triggers order:authorization_amount_cents ID`
 
@@ -635,7 +635,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/authorization_amount_cents.ts)_
+_See code: [src/commands/order/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/authorization_amount_cents.ts)_
 
 ## `cl-triggers order:authorize ID`
 
@@ -652,7 +652,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/authorize.ts)_
+_See code: [src/commands/order/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/authorize.ts)_
 
 ## `cl-triggers order:billing_address_clone_id ID`
 
@@ -670,7 +670,7 @@ OPTIONS
   -v, --value=value                (required) the trigger attribute value
 ```
 
-_See code: [src/commands/order/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/billing_address_clone_id.ts)_
+_See code: [src/commands/order/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/billing_address_clone_id.ts)_
 
 ## `cl-triggers order:billing_address_same_as_shipping ID`
 
@@ -687,7 +687,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/billing_address_same_as_shipping.ts)_
+_See code: [src/commands/order/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/billing_address_same_as_shipping.ts)_
 
 ## `cl-triggers order:cancel ID`
 
@@ -704,7 +704,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/cancel.ts)_
+_See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/cancel.ts)_
 
 ## `cl-triggers order:capture ID`
 
@@ -721,7 +721,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/capture.ts)_
+_See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/capture.ts)_
 
 ## `cl-triggers order:customer_payment_source_id ID`
 
@@ -739,7 +739,7 @@ OPTIONS
   -v, --value=value                (required) the trigger attribute value
 ```
 
-_See code: [src/commands/order/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/customer_payment_source_id.ts)_
+_See code: [src/commands/order/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/customer_payment_source_id.ts)_
 
 ## `cl-triggers order:place ID`
 
@@ -756,7 +756,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/place.ts)_
+_See code: [src/commands/order/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/place.ts)_
 
 ## `cl-triggers order:refresh ID`
 
@@ -773,7 +773,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/refresh.ts)_
+_See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/refresh.ts)_
 
 ## `cl-triggers order:refund ID`
 
@@ -790,7 +790,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/refund.ts)_
+_See code: [src/commands/order/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/refund.ts)_
 
 ## `cl-triggers order:save_billing_address_to_customer_address_book ID`
 
@@ -807,7 +807,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/save_billing_address_to_customer_address_book.ts)_
+_See code: [src/commands/order/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/save_billing_address_to_customer_address_book.ts)_
 
 ## `cl-triggers order:save_payment_source_to_customer_wallet ID`
 
@@ -824,7 +824,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/save_payment_source_to_customer_wallet.ts)_
+_See code: [src/commands/order/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/save_payment_source_to_customer_wallet.ts)_
 
 ## `cl-triggers order:save_shipping_address_to_customer_address_book ID`
 
@@ -841,7 +841,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/save_shipping_address_to_customer_address_book.ts)_
+_See code: [src/commands/order/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/save_shipping_address_to_customer_address_book.ts)_
 
 ## `cl-triggers order:shipping_address_clone_id ID`
 
@@ -859,7 +859,7 @@ OPTIONS
   -v, --value=value                (required) the trigger attribute value
 ```
 
-_See code: [src/commands/order/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/shipping_address_clone_id.ts)_
+_See code: [src/commands/order/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/shipping_address_clone_id.ts)_
 
 ## `cl-triggers order:shipping_address_same_as_billing ID`
 
@@ -876,7 +876,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/shipping_address_same_as_billing.ts)_
+_See code: [src/commands/order/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/shipping_address_same_as_billing.ts)_
 
 ## `cl-triggers order:unarchive ID`
 
@@ -893,7 +893,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/unarchive.ts)_
+_See code: [src/commands/order/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/unarchive.ts)_
 
 ## `cl-triggers order:update_taxes ID`
 
@@ -910,7 +910,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order/update_taxes.ts)_
+_See code: [src/commands/order/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order/update_taxes.ts)_
 
 ## `cl-triggers order_subscription ID`
 
@@ -927,7 +927,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order_subscription/index.ts)_
+_See code: [src/commands/order_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order_subscription/index.ts)_
 
 ## `cl-triggers order_subscription:activate ID`
 
@@ -944,7 +944,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order_subscription/activate.ts)_
+_See code: [src/commands/order_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order_subscription/activate.ts)_
 
 ## `cl-triggers order_subscription:cancel ID`
 
@@ -961,7 +961,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order_subscription/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order_subscription/cancel.ts)_
+_See code: [src/commands/order_subscription/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order_subscription/cancel.ts)_
 
 ## `cl-triggers order_subscription:deactivate ID`
 
@@ -978,7 +978,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/order_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/order_subscription/deactivate.ts)_
+_See code: [src/commands/order_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/order_subscription/deactivate.ts)_
 
 ## `cl-triggers return ID`
 
@@ -995,7 +995,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/index.ts)_
+_See code: [src/commands/return/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/index.ts)_
 
 ## `cl-triggers return:approve ID`
 
@@ -1012,7 +1012,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/approve.ts)_
+_See code: [src/commands/return/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/approve.ts)_
 
 ## `cl-triggers return:archive ID`
 
@@ -1029,7 +1029,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/archive.ts)_
+_See code: [src/commands/return/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/archive.ts)_
 
 ## `cl-triggers return:cancel ID`
 
@@ -1046,7 +1046,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/cancel.ts)_
+_See code: [src/commands/return/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/cancel.ts)_
 
 ## `cl-triggers return:receive ID`
 
@@ -1063,7 +1063,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/receive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/receive.ts)_
+_See code: [src/commands/return/receive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/receive.ts)_
 
 ## `cl-triggers return:reject ID`
 
@@ -1080,7 +1080,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/reject.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/reject.ts)_
+_See code: [src/commands/return/reject.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/reject.ts)_
 
 ## `cl-triggers return:request ID`
 
@@ -1097,7 +1097,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/request.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/request.ts)_
+_See code: [src/commands/return/request.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/request.ts)_
 
 ## `cl-triggers return:restock ID`
 
@@ -1114,7 +1114,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/restock.ts)_
+_See code: [src/commands/return/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/restock.ts)_
 
 ## `cl-triggers return:ship ID`
 
@@ -1131,7 +1131,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/ship.ts)_
+_See code: [src/commands/return/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/ship.ts)_
 
 ## `cl-triggers return:unarchive ID`
 
@@ -1148,7 +1148,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return/unarchive.ts)_
+_See code: [src/commands/return/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return/unarchive.ts)_
 
 ## `cl-triggers return_line_item ID`
 
@@ -1165,7 +1165,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return_line_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return_line_item/index.ts)_
+_See code: [src/commands/return_line_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return_line_item/index.ts)_
 
 ## `cl-triggers return_line_item:restock ID`
 
@@ -1182,7 +1182,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/return_line_item/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/return_line_item/restock.ts)_
+_See code: [src/commands/return_line_item/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/return_line_item/restock.ts)_
 
 ## `cl-triggers shipment ID`
 
@@ -1199,7 +1199,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/index.ts)_
+_See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/index.ts)_
 
 ## `cl-triggers shipment:get_rates ID`
 
@@ -1216,7 +1216,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/get_rates.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/get_rates.ts)_
+_See code: [src/commands/shipment/get_rates.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/get_rates.ts)_
 
 ## `cl-triggers shipment:on_hold ID`
 
@@ -1233,7 +1233,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/on_hold.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/on_hold.ts)_
+_See code: [src/commands/shipment/on_hold.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/on_hold.ts)_
 
 ## `cl-triggers shipment:packing ID`
 
@@ -1250,7 +1250,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/packing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/packing.ts)_
+_See code: [src/commands/shipment/packing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/packing.ts)_
 
 ## `cl-triggers shipment:picking ID`
 
@@ -1267,7 +1267,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/picking.ts)_
+_See code: [src/commands/shipment/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/picking.ts)_
 
 ## `cl-triggers shipment:purchase ID`
 
@@ -1284,7 +1284,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/purchase.ts)_
+_See code: [src/commands/shipment/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/purchase.ts)_
 
 ## `cl-triggers shipment:ready_to_ship ID`
 
@@ -1301,7 +1301,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/ready_to_ship.ts)_
+_See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/ready_to_ship.ts)_
 
 ## `cl-triggers shipment:ship ID`
 
@@ -1318,7 +1318,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/shipment/ship.ts)_
+_See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/shipment/ship.ts)_
 
 ## `cl-triggers stock_transfer ID`
 
@@ -1335,7 +1335,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stock_transfer/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stock_transfer/index.ts)_
+_See code: [src/commands/stock_transfer/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stock_transfer/index.ts)_
 
 ## `cl-triggers stock_transfer:cancel ID`
 
@@ -1352,7 +1352,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stock_transfer/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stock_transfer/cancel.ts)_
+_See code: [src/commands/stock_transfer/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stock_transfer/cancel.ts)_
 
 ## `cl-triggers stock_transfer:complete ID`
 
@@ -1369,7 +1369,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stock_transfer/complete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stock_transfer/complete.ts)_
+_See code: [src/commands/stock_transfer/complete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stock_transfer/complete.ts)_
 
 ## `cl-triggers stock_transfer:in_transit ID`
 
@@ -1386,7 +1386,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stock_transfer/in_transit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stock_transfer/in_transit.ts)_
+_See code: [src/commands/stock_transfer/in_transit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stock_transfer/in_transit.ts)_
 
 ## `cl-triggers stock_transfer:picking ID`
 
@@ -1403,7 +1403,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stock_transfer/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stock_transfer/picking.ts)_
+_See code: [src/commands/stock_transfer/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stock_transfer/picking.ts)_
 
 ## `cl-triggers stock_transfer:upcoming ID`
 
@@ -1420,7 +1420,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stock_transfer/upcoming.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stock_transfer/upcoming.ts)_
+_See code: [src/commands/stock_transfer/upcoming.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stock_transfer/upcoming.ts)_
 
 ## `cl-triggers stripe_payment ID`
 
@@ -1437,7 +1437,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stripe_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stripe_payment/index.ts)_
+_See code: [src/commands/stripe_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stripe_payment/index.ts)_
 
 ## `cl-triggers stripe_payment:refresh ID`
 
@@ -1454,7 +1454,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/stripe_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/stripe_payment/refresh.ts)_
+_See code: [src/commands/stripe_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/stripe_payment/refresh.ts)_
 
 ## `cl-triggers webhook ID`
 
@@ -1471,7 +1471,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/webhook/index.ts)_
+_See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/webhook/index.ts)_
 
 ## `cl-triggers webhook:reset_circuit ID`
 
@@ -1488,5 +1488,5 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 ```
 
-_See code: [src/commands/webhook/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0-alpha.1/src/commands/webhook/reset_circuit.ts)_
+_See code: [src/commands/webhook/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/v1.0.0/src/commands/webhook/reset_circuit.ts)_
 <!-- commandsstop -->
