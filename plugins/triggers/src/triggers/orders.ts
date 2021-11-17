@@ -1,0 +1,129 @@
+
+import type { Trigger } from '../common'
+
+
+export const triggers: { [key: string ]: Trigger } = {
+  archive: {
+      action: 'archive',
+      trigger: '_archive',
+      description: 'Send this attribute if you want to archive the order.',
+    },
+	unarchive: {
+      action: 'unarchive',
+      trigger: '_unarchive',
+      description: 'Send this attribute if you want to unarchive the order.',
+    },
+	place: {
+      action: 'place',
+      trigger: '_place',
+      description: 'Send this attribute if you want to place the order.',
+    },
+	cancel: {
+      action: 'cancel',
+      trigger: '_cancel',
+      description: 'Send this attribute if you want to cancel a placed order. The order\'s authorization will be automatically voided.',
+    },
+	approve: {
+      action: 'approve',
+      trigger: '_approve',
+      description: 'Send this attribute if you want to approve a placed order.',
+    },
+	approve_and_capture: {
+      action: 'approve_and_capture',
+      trigger: '_approve_and_capture',
+      description: 'Send this attribute if you want to approve and capture a placed order.',
+    },
+	authorize: {
+      action: 'authorize',
+      trigger: '_authorize',
+      description: 'Send this attribute if you want to authorize the order\'s payment source.',
+    },
+	authorization_amount_cents: {
+      action: 'authorization_amount_cents',
+      trigger: '_authorization_amount_cents',
+      description: 'The authorization amount, in cents.',
+    },
+	capture: {
+      action: 'capture',
+      trigger: '_capture',
+      description: 'Send this attribute if you want to capture an approved order.',
+    },
+	refund: {
+      action: 'refund',
+      trigger: '_refund',
+      description: 'Send this attribute if you want to refund a captured order.',
+    },
+	update_taxes: {
+      action: 'update_taxes',
+      trigger: '_update_taxes',
+      description: 'Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order\'s market).',
+    },
+	billing_address_clone_id: {
+      action: 'billing_address_clone_id',
+      trigger: '_billing_address_clone_id',
+      description: 'The id of the address that you want to clone to create the order\'s billing address.',
+    },
+	shipping_address_clone_id: {
+      action: 'shipping_address_clone_id',
+      trigger: '_shipping_address_clone_id',
+      description: 'The id of the address that you want to clone to create the order\'s shipping address.',
+    },
+	customer_payment_source_id: {
+      action: 'customer_payment_source_id',
+      trigger: '_customer_payment_source_id',
+      description: 'The id of the customer payment source (i.e. credit card) that you want to use as the order\'s payment source.',
+    },
+	shipping_address_same_as_billing: {
+      action: 'shipping_address_same_as_billing',
+      trigger: '_shipping_address_same_as_billing',
+      description: 'Send this attribute if you want the shipping address to be cloned from the order\'s billing address.',
+    },
+	billing_address_same_as_shipping: {
+      action: 'billing_address_same_as_shipping',
+      trigger: '_billing_address_same_as_shipping',
+      description: 'Send this attribute if you want the billing address to be cloned from the order\'s shipping address.',
+    },
+	save_payment_source_to_customer_wallet: {
+      action: 'save_payment_source_to_customer_wallet',
+      trigger: '_save_payment_source_to_customer_wallet',
+      description: 'Send this attribute if you want the order\'s payment source to be saved in the customer\'s wallet as a customer payment source.',
+    },
+	save_shipping_address_to_customer_address_book: {
+      action: 'save_shipping_address_to_customer_address_book',
+      trigger: '_save_shipping_address_to_customer_address_book',
+      description: 'Send this attribute if you want the order\'s shipping address to be saved in the customer\'s address book as a customer address.',
+    },
+	save_billing_address_to_customer_address_book: {
+      action: 'save_billing_address_to_customer_address_book',
+      trigger: '_save_billing_address_to_customer_address_book',
+      description: 'Send this attribute if you want the order\'s billing address to be saved in the customer\'s address book as a customer address.',
+    },
+	refresh: {
+      action: 'refresh',
+      trigger: '_refresh',
+      description: 'Send this attribute if you want to manually refresh the order.',
+    },
+}
+
+
+export type ActionType =
+  'archive' |
+	'unarchive' |
+	'place' |
+	'cancel' |
+	'approve' |
+	'approve_and_capture' |
+	'authorize' |
+	'authorization_amount_cents' |
+	'capture' |
+	'refund' |
+	'update_taxes' |
+	'billing_address_clone_id' |
+	'shipping_address_clone_id' |
+	'customer_payment_source_id' |
+	'shipping_address_same_as_billing' |
+	'billing_address_same_as_shipping' |
+	'save_payment_source_to_customer_wallet' |
+	'save_shipping_address_to_customer_address_book' |
+	'save_billing_address_to_customer_address_book' |
+	'refresh'

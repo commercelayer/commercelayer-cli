@@ -1,0 +1,84 @@
+{
+  "name": "@commercelayer/cli-plugin-triggers",
+  "version": "0.0.0",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/plugin-help": "^3.2.2",
+    "@oclif/test": "^1.2.8",
+    "@types/chai": "^4.2.17",
+    "@types/inquirer": "^8.1.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^14.x",
+    "@types/update-notifier": "^5.1.0",
+    "chai": "^4.3.4",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.2.0",
+    "globby": "^10.0.2",
+    "inflector-js": "^1.0.1",
+    "jsonapi-typescript": "^0.1.3",
+    "lodash": "^4.17.21",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers",
+  "keywords": [
+    "oclif",
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-triggers",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "triggers": {
+        "description": "Execute resource triggers",
+        "hidden": true
+      }
+    }
+  },
+  "repository": "commercelayer/commercelayer-cli-plugin-triggers",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md",
+    "readme": "oclif-dev readme",
+    "generate": "ts-node gen/generator.ts"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@commercelayer/js-auth": "^2.2.3",
+    "@commercelayer/sdk": "^2.3.6",
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "chalk": "^4.1.2",
+    "cli-ux": "^5.6.3",
+    "inquirer": "^8.2.0",
+    "tslib": "^2.3.1",
+    "update-notifier": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,34 @@
+import Command##__FLAGS_IMPORT__## from '../../base'
+import exec from '../../exec'
+import { triggers } from '../../triggers/##__RESOURCE_TYPE__##'
+
+
+const TRIGGER = '##__ACTION_ID__##'
+
+
+export default class ##__RESOURCE_CLASS__####__ACTION_NAME__## extends Command {
+
+	static description = triggers[TRIGGER].description
+
+  static flags = {
+		...Command.flags,##__FLAG_VALUE__##
+	}
+
+	static args = [
+		...Command.args,
+	]
+
+
+	async run() {
+
+    const { args, flags } = this.parse(##__RESOURCE_CLASS__####__ACTION_NAME__##)
+
+		const res = await exec('##__RESOURCE_TYPE__##', args.id, TRIGGER, flags)
+
+    this.successMessage(TRIGGER, res.id)
+
+    return res
+
+	}
+
+}
