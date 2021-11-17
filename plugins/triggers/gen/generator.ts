@@ -141,6 +141,7 @@ const generate = async () => {
 
 
     let index = indexTpl.replace(/##__RESOURCE_NAME__##/g, resource.replace(/_/g, ' '))
+    index = index.replace(/##__RESOURCE_NAME__##/g, resource)
     index = index.replace(/##__RESOURCE_TYPE__##/g, resType)
     index = index.replace(/##__RESOURCE_CLASS__##/g, resClass)
     fs.writeFileSync(path.join(cmdDir, 'index.ts'), index)
@@ -150,7 +151,7 @@ const generate = async () => {
 
       let command = actionTpl.replace(/##__ACTION_ID__##/g, action)
       command = command.replace(/##__ACTION_NAME__##/g, Inflector.camelize(action))
-      command = command.replace(/##__RESOURCE_NAME__##/g, resource.replace(/_/g, ' '))
+      command = command.replace(/##__RESOURCE_NAME__##/g, resource)
       command = command.replace(/##__RESOURCE_TYPE__##/g, resType)
       command = command.replace(/##__RESOURCE_CLASS__##/g, resClass)
 
