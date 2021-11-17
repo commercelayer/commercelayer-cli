@@ -1,4 +1,4 @@
-import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerClient, CommerceLayerStatic, QueryParamsRetrieve } from '@commercelayer/sdk'
 
 
 
@@ -32,7 +32,10 @@ const executeAction = (resource: string, id: string, action: string, flags: any,
   }
 
   const resSdk: any = cl[resource as keyof CommerceLayerClient]
-  const result = resSdk.update(res, params)
+  const result = resSdk.update(res, params).catch((error: unknown) => {
+    if (CommerceLayerStatic.isApiError(error)) error.code = 'RES_' + resource
+    throw error
+  })
 
   return result
 

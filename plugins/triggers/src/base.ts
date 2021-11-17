@@ -69,8 +69,9 @@ export default abstract class extends Command {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
+        const res = error.code?.startsWith('RES_') ? error.code.replace('RES_', '') : ''
         this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s imports'] }
+          { suggestions: [`Execute login with sufficient privileges to get access to the organization's resources${res ? ` of type ${chalk.bold(res)}` : ''}`] }
         )
       } else this.error(formatError(error, flags))
     } else throw error
