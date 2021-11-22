@@ -4,6 +4,7 @@ import axios from 'axios'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import path from 'path'
 import { writeFileSync } from 'fs'
+import { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
 const resFile = path.join(__dirname, 'schema.json')
@@ -76,7 +77,7 @@ const parseResourcesSdk = async (): Promise<Resource[]> => {
 		const singular = Inflector.singularize(r)
 		const item = {
 			name: singular,
-			api: r,
+			api: r as ResourceTypeLock,
 			model: Inflector.camelize(singular),
 			singleton: isSingleton(r),
 		}

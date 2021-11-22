@@ -15,6 +15,7 @@ import { getIntegrationToken } from '@commercelayer/js-auth'
 const maxItemsWarning = 20000
 const maxPageItems = 25
 const securityInterval = 2
+const requestTimeout = { min: 1000, max: 10000 }
 
 
 const notify = (message: string): void => {
@@ -141,6 +142,11 @@ export default class ResourcesAll extends Command {
       multiple: true,
       exclusive: ['raw'],
     }),
+    timeout: flags.integer({
+      char: 'T',
+      description: `set request timeout in milliseconds [${requestTimeout.min} - ${requestTimeout.max}]`,
+      hidden: true,
+    }),
   }
 
   static args = [
@@ -203,10 +209,14 @@ export default class ResourcesAll extends Command {
     // Sort flags
     const sort = this.sortFlag(flags.sort)
 
+    const timeout = flags.timeout
+    if (timeout && ((timeout < 1000) || (timeout > 10000)))
+      this.error(`Invalid timeout: ${chalk.redBright(String(timeout))}. Timeout value must be in range [${requestTimeout.min} - ${requestTimeout.max}]`)
+
 
     try {
 
-      const cl = commercelayer({ organization, domain, accessToken })
+      const cl = commercelayer({ organization, domain, accessToken, timeout })
       let jwtData = jwt.decode(accessToken) as any
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]

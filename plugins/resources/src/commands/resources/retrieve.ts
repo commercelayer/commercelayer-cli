@@ -1,13 +1,17 @@
-import Command, { flags } from '../../base'
+import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve} from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { mergeCommandParams } from '../../commands'
+
+
+const OPERATION = 'retrieve'
 
 
 export default class ResourcesRetrieve extends Command {
 
 	static description = 'fetch a single resource'
 
-	static aliases = ['retrieve', 'rr', 'res:retrieve']
+	static aliases = [OPERATION, 'rr', 'res:retrieve']
 
 	static examples = [
 		'$ commercelayer resources:retrieve customers/<customerId>',
@@ -48,8 +52,11 @@ export default class ResourcesRetrieve extends Command {
 		const { args, flags } = this.parse(ResourcesRetrieve)
 
 		const { res, id } = this.checkResourceId(args.resource, args.id)
-
 		const resource = this.checkResource(res, { singular: true })
+
+    const loadParams = flags[FLAG_LOAD_PARAMS]
+    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    if (saveCmd) this.checkAlias(resource.api, saveCmd, this.config)
 
 		const organization = flags.organization
 		const domain = flags.domain
@@ -73,10 +80,17 @@ export default class ResourcesRetrieve extends Command {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
 
-			this.checkOperation(resSdk, 'retrieve')
+			this.checkOperation(resSdk, OPERATION)
 
 			if (include && (include.length > 0)) params.include = include
 			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
+
+
+      // Load saved command arguments
+      if (loadParams) {
+        const savedParams = this.loadParams(loadParams, resource.api, OPERATION)
+        if (savedParams) mergeCommandParams(params, savedParams)
+      }
 
 			const res = await resSdk.retrieve(id, params)
 
@@ -89,7 +103,11 @@ export default class ResourcesRetrieve extends Command {
 
 			this.printOutput(out, flags)
 
+
+      // Save command output
 			if (flags.save || flags['save-path']) this.saveOutput(out, flags)
+      // Save command srguments
+      if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
 
 
 			return out

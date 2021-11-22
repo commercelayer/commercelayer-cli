@@ -35,6 +35,7 @@ $ commercelayer plugins:install resources
 * [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
 * [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
 * [`cl-resources resources:doc RESOURCE`](#cl-resources-resourcesdoc-resource)
+* [`cl-resources resources:exec [FILE]`](#cl-resources-resourcesexec-file)
 * [`cl-resources resources:filters`](#cl-resources-resourcesfilters)
 * [`cl-resources resources:get RESOURCE [ID]`](#cl-resources-resourcesget-resource-id)
 * [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
@@ -87,7 +88,9 @@ OPTIONS
   -r, --relationship=relationship  define a relationship with another resource
   -u, --unformatted                print unformatted JSON output
   --curl                           show the equivalent cURL command of the CLI command
+  --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
+  --save-cmd=save-cmd              save command data to file for future use
 
 ALIASES
   $ cl-resources create
@@ -115,18 +118,6 @@ USAGE
 ARGUMENTS
   RESOURCE  the resource type
   ID        id of the resource to retrieve
-
-OPTIONS
-  -D, --doc                        shows the CLI command in a specific language
-  -R, --raw                        print out the raw API response
-  -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
-  -i, --include=include            comma separated resources to include
-  -j, --json                       convert output in standard JSON format
-  -l, --lang=curl|node             show the CLI command in the specified language syntax
-  -o, --organization=organization  (required) the slug of your organization
-  -u, --unformatted                print unformatted JSON output
-  --curl                           show the equivalent cURL command of the CLI command
-  --node                           show the equivalent Node SDK source code of the CLI command
 
 ALIASES
   $ cl-resources delete
@@ -160,6 +151,22 @@ EXAMPLES
 ```
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/doc.ts)_
+
+### `cl-resources resources:exec [FILE]`
+
+Describe the command here.
+
+```
+USAGE
+  $ cl-resources resources:exec [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/resources/exec.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/exec.ts)_
 
 ### `cl-resources resources:filters`
 
@@ -208,7 +215,9 @@ OPTIONS
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
   --curl                           show the equivalent cURL command of the CLI command
+  --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
+  --save-cmd=save-cmd              save command data to file for future use
 
 ALIASES
   $ cl-resources get
@@ -251,7 +260,9 @@ OPTIONS
   -w, --where=where                comma separated list of query filters
   -x, --save=save                  save command output to file
   --curl                           show the equivalent cURL command of the CLI command
+  --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
+  --save-cmd=save-cmd              save command data to file for future use
 
 ALIASES
   $ cl-resources list
@@ -291,7 +302,9 @@ OPTIONS
   -u, --unformatted                print unformatted JSON output
   -x, --save=save                  save command output to file
   --curl                           show the equivalent cURL command of the CLI command
+  --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
+  --save-cmd=save-cmd              save command data to file for future use
 
 ALIASES
   $ cl-resources retrieve
@@ -351,7 +364,11 @@ OPTIONS
 
   --curl                                   show the equivalent cURL command of the CLI command
 
+  --load-args=load-args                    load previously saved command arguments
+
   --node                                   show the equivalent Node SDK source code of the CLI command
+
+  --save-cmd=save-cmd                      save command data to file for future use
 
 ALIASES
   $ cl-resources update

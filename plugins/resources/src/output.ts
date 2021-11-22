@@ -16,12 +16,17 @@ const inspectObject = (object: any, color = true): string => {
 }
 
 
+const jsonObject = (obj: any, unformatted?: boolean) => {
+  return JSON.stringify(obj, null, (unformatted ? undefined : 4))
+}
+
+
 const formatOutput = (output: any, flags?: any, { color = true } = {}) => {
 	if (!output) return ''
 	if (typeof output === 'string') return output
 	if (flags?.csv) return formatCsv(output, flags)
 	return (flags && flags.json) ?
-		JSON.stringify(output, null, (flags.unformatted ? undefined : 4)) : inspectObject(output, color)
+		jsonObject(output, flags.unformatted) : inspectObject(output, color)
 }
 
 
@@ -33,4 +38,4 @@ const exportOutput = async (output: any, flags: any, filePath: string): Promise<
 
 
 
-export { inspectObject, formatOutput, exportOutput }
+export { inspectObject, jsonObject, formatOutput, exportOutput }

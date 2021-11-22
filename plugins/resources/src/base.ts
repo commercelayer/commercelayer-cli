@@ -8,11 +8,14 @@ import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
 import { fixType } from './common'
-import { CommerceLayerStatic, QueryParams } from '@commercelayer/sdk'
+import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 
 import updateNotifier from 'update-notifier'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
 import { decodeAccessToken } from './token'
+import { aliasExists, checkAlias, CommandParams, loadCommandData, ResourceOperation, saveCommandData } from './commands'
+import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
+import { IConfig } from '@oclif/config'
 
 
 
@@ -32,10 +35,13 @@ type KeyValObj = { [key: string]: any }
 type KeyValSort = { [key: string]: 'asc' | 'desc' }
 
 
+export const FLAG_SAVE_COMMAND = 'save-args'
+export const FLAG_LOAD_PARAMS = 'load-args'
+
+
 export default abstract class extends Command {
 
   static flags = {
-    // help: flags.help({ char: 'h' }),
     organization: flags.string({
       char: 'o',
       description: 'the slug of your organization',
@@ -104,6 +110,14 @@ export default abstract class extends Command {
       parse: () => 'node',
       hidden: !availableLanguages.includes('node'),
       dependsOn: ['doc'],
+    }),
+    'save-args': flags.string({
+      description: 'save command data to file for future use',
+      // exclusive: [FLAG_LOAD_PARAMS],
+    }),
+    'load-args': flags.string({
+      description: 'load previously saved command arguments',
+      // exclusive: [FLAG_SAVE_COMMAND],
     }),
   }
 
@@ -627,6 +641,58 @@ export default abstract class extends Command {
         this.error(`Invalid application kind: ${chalk.redBright(info.application.kind)}. Application kind must be one of the following: ${chalk.cyanBright(kinds.join(', '))}`)
 
     return true
+
+  }
+
+
+  protected checkAlias(resource: string, alias: string, config: IConfig) {
+    let ok = false
+    try {
+      ok = checkAlias(alias)
+    } catch (error) {
+      this.printError(error)
+    }
+    if (ok && aliasExists(resource, alias, config)) this.error(`Alias already used for resource type ${chalk.bold(resource)}: ${chalk.redBright(alias)}`)
+  }
+
+
+  protected saveParams = (alias: string, resource: ResourceType | ResourceId, operation: ResourceOperation, params: QueryParams) => {
+
+    const argvList = [...this.argv]
+
+    let idx: number
+    const toBeRemoved = ['--save-args', '--accessToken', '-o', '--organization', '-d', '--domain']
+    toBeRemoved.forEach(tbr => {
+      if ((idx = argvList.indexOf(tbr)) > -1) argvList.splice(idx, 2)
+    })
+
+
+    const data: CommandParams = {
+      command: this.ctor.id,
+      id: (resource as ResourceId).id,
+      resource: resource.type,
+      operation,
+      argv: argvList,
+      params,
+      saved_at: new Date(),
+    }
+
+    saveCommandData(alias, this.config, data)
+
+  }
+
+
+  protected loadParams(alias: string, resource: string, operation?: ResourceOperation): QueryParams {
+
+    const cmdData = loadCommandData(alias, resource, this.config/* , operation */)
+    if (!cmdData) this.error(`No command arguments saved with alias ${chalk.redBright(alias)} for resource type ${chalk.bold(resource)}`)
+
+    const queryParams: QueryParams = (operation && (operation === 'list')) ? cmdData.params : {
+      include: cmdData.params.include,
+      fields: cmdData.params.fields,
+    } as QueryParamsRetrieve
+
+    return queryParams
 
   }
 

@@ -1,9 +1,10 @@
+import { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
 import RESOURCES from './available'
 
 
 interface Resource {
 	name: string;
-	api: string;
+	api: ResourceTypeLock;
 	model: string;
 	singleton?: boolean;
 }

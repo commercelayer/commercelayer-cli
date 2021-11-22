@@ -1,15 +1,19 @@
-import Command, { flags } from '../../base'
+import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { mergeCommandParams } from '../../commands'
+
+
+const OPERATION = 'list'
 
 
 export default class ResourcesList extends Command {
 
 	static description = 'fetch a collection of resources'
 
-	static aliases = ['list', 'rl', 'res:list']
+	static aliases = [OPERATION, 'rl', 'res:list']
 
 	static examples = [
 		'$ commercelayer resources:list customers -f id,email -i customer_group -s updated_at',
@@ -67,6 +71,10 @@ export default class ResourcesList extends Command {
 
 		const resource = this.checkResource(args.resource)
 
+    const loadParams = flags[FLAG_LOAD_PARAMS]
+    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    if (saveCmd) this.checkAlias(resource.api, saveCmd, this.config)
+
 		// const baseUrl = baseURL(flags.organization, flags.domain)
 		const organization = flags.organization
 		const domain = flags.domain
@@ -105,6 +113,14 @@ export default class ResourcesList extends Command {
 			if (perPage && (perPage > 0)) params.pageSize = perPage
 			if (page && (page > 0)) params.pageNumber = page
 
+
+      // Load saved command arguments
+      if (loadParams) {
+        const savedParams = this.loadParams(loadParams, resource.api, OPERATION)
+        if (savedParams) mergeCommandParams(params, savedParams)
+      }
+
+
 			if (!flags.doc) cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
 			const res = await resSdk.list(params)
 			cliux.action.stop()
@@ -123,9 +139,14 @@ export default class ResourcesList extends Command {
 				this.printOutput(out, flags)
 				this.log(`\nRecords: ${chalk.blueBright(res.length)} of ${meta.recordCount} | Page: ${chalk.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
 
+        // Save command output
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
 
 			} else this.log(chalk.italic('\nNo records found\n'))
+
+
+      // Save command arguments
+      if (saveCmd) this.saveParams(saveCmd, { type: resource.api }, OPERATION, params)
 
 
 			return out

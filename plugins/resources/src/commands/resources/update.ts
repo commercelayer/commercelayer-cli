@@ -1,16 +1,21 @@
-import Command, { flags } from '../../base'
+import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import { baseURL } from '../../common'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
 import { denormalize } from '../../jsonapi'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { mergeCommandParams } from '../../commands'
+
+
+const OPERATION = 'update'
+
 
 export default class ResourcesUpdate extends Command {
 
 	static description = 'update an existing resource'
 
-	static aliases = ['update', 'ru', 'res:update', 'patch']
+	static aliases = [OPERATION, 'ru', 'res:update', 'patch']
 
 	static examples = [
 		'$ commercelayer resources:update customers/<customerId> -a reference=referenceId',
@@ -53,13 +58,13 @@ export default class ResourcesUpdate extends Command {
 			char: 'D',
 			description: 'the data file to use as request body',
 			multiple: false,
-			exclusive: ['attribute', 'relationship', 'metadata', 'metadata-replace', 'doc'],
+			exclusive: ['attribute', 'relationship', 'metadata', 'metadata-replace', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND],
 		}),
 	}
 
 	static args = [
 		...Command.args,
-		{ name: 'id', description: 'id of the resource to retrieve', required: false },
+		{ name: 'id', description: 'id of the resource to update', required: false },
 	]
 
 
@@ -68,8 +73,11 @@ export default class ResourcesUpdate extends Command {
 		const { args, flags } = this.parse(ResourcesUpdate)
 
 		const { res, id } = this.checkResourceId(args.resource, args.id)
-
 		const resource = this.checkResource(res, { singular: true })
+
+    const loadParams = flags[FLAG_LOAD_PARAMS]
+    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    if (saveCmd) this.checkAlias(resource.api, saveCmd, this.config)
 
 		const organization = flags.organization
 		const domain = flags.domain
@@ -136,7 +144,7 @@ export default class ResourcesUpdate extends Command {
 		try {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
-			this.checkOperation(resSdk, 'update')
+			this.checkOperation(resSdk, OPERATION)
 
 			if (include && (include.length > 0)) params.include = include
 			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
@@ -152,6 +160,14 @@ export default class ResourcesUpdate extends Command {
 
 			attributes.id = id
 
+
+      // Load saved command arguments
+      if (loadParams) {
+        const savedParams = this.loadParams(loadParams, resource.api, OPERATION)
+        if (savedParams) mergeCommandParams(params, savedParams)
+      }
+
+
 			const res = await resSdk.update(attributes, params)
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
@@ -159,6 +175,10 @@ export default class ResourcesUpdate extends Command {
 			this.printOutput(out, flags)
 
 			this.log(`\n${chalk.greenBright('Successfully')} updated resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
+
+
+      // Save command arguments
+      if (saveCmd) this.saveParams(saveCmd, { type: resource.api }, OPERATION, params)
 
 
 			return out

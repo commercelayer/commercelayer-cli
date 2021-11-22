@@ -1,16 +1,20 @@
-import Command, { flags } from '../../base'
+import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import { baseURL } from '../../common'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
 import { denormalize } from '../../jsonapi'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { mergeCommandParams } from '../../commands'
+
+
+const OPERATION = 'create'
 
 export default class ResourcesCreate extends Command {
 
 	static description = 'create a new resource'
 
-	static aliases = ['create', 'rc', 'res:create', 'post']
+	static aliases = [OPERATION, 'rc', 'res:create', 'post']
 
 	static examples = [
 		'$ commercelayer resources:create customers -a email=user@test.com',
@@ -45,7 +49,7 @@ export default class ResourcesCreate extends Command {
 			char: 'D',
 			description: 'the data file to use as request body',
 			multiple: false,
-			exclusive: ['attribute', 'relationship', 'metadata', 'doc'],
+			exclusive: ['attribute', 'relationship', 'metadata', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND],
 		}),
 	}
 
@@ -58,6 +62,10 @@ export default class ResourcesCreate extends Command {
 		const { args, flags } = this.parse(ResourcesCreate)
 
 		const resource = this.checkResource(args.resource, { singular: true })
+
+    const loadParams = flags[FLAG_LOAD_PARAMS]
+    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    if (saveCmd) this.checkAlias(resource.api, saveCmd, this.config)
 
 		const organization = flags.organization
 		const domain = flags.domain
@@ -125,10 +133,18 @@ export default class ResourcesCreate extends Command {
 		try {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
-			this.checkOperation(resSdk, 'create')
+			this.checkOperation(resSdk, OPERATION)
 
 			if (include && (include.length > 0)) params.include = include
 			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
+
+
+      // Load saved command arguments
+      if (loadParams) {
+        const savedParams = this.loadParams(loadParams, resource.api, OPERATION)
+        if (savedParams) mergeCommandParams(params, savedParams)
+      }
+
 
 			const res = await resSdk.create(attributes, params)
 
@@ -137,6 +153,10 @@ export default class ResourcesCreate extends Command {
 			this.printOutput(out, flags)
 
 			this.log(`\n${chalk.greenBright('Successfully')} created new resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
+
+
+      // Save command arguments
+      if (saveCmd) this.saveParams(saveCmd, { type: resource.api }, OPERATION, params)
 
 
 			return out
