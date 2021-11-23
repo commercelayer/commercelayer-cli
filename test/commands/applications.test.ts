@@ -1,9 +1,11 @@
-import { expect, test } from '@oclif/test'
+import {expect, test} from '@oclif/test'
 
-describe('hooks', () => {
+describe('applications', () => {
   test
-    .stdout()
-    .hook('prerun', { id: 'noc' })
-    .do(output => expect(output.stdout).to.be.itself)
-    .it('shows a message')
+  .stdout()
+  .command(['noc'])
+  .it('runs noc', ctx => {
+    expect(ctx.stdout).to.contain('-= NoC =-')
+  })
+
 })
