@@ -219,7 +219,7 @@ const checkScope = (scopes: string[]): AuthScope => {
 }
 
 
-const checkAlias = (alias: string, config?: IConfig, slug?: string): string => {
+const checkAlias = (alias: string, config?: IConfig, organization?: string): string => {
 
 	const match = alias.match(/^[a-z0-9_-]*$/)
 	if ((match === null) || (match.length > 1)) throw new Error(`Invalid alias: ${chalk.redBright(alias)}. Accepted characters are ${chalk.italic('[a-z0-9_-]')}`)
@@ -229,8 +229,7 @@ const checkAlias = (alias: string, config?: IConfig, slug?: string): string => {
 	if (al.length > ml) throw new Error(`Application alias must have a max length of ${chalk.yellowBright(String(ml))} characters`)
 
 	if (config) {
-		const flags = { alias, slug: '' }
-		if (slug) flags.slug = slug
+		const flags = { alias, organization }
 		const apps = filterApplications(config, flags)
 		if (apps.length > 0) throw new Error(`Alias ${chalk.yellowBright(alias)} has already been used for organization ${chalk.bold(apps[0].organization)}`)
 	}
