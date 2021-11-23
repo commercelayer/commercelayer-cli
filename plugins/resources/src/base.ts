@@ -661,20 +661,21 @@ export default abstract class extends Command {
     const argvList = [...this.argv]
 
     let idx: number
-    const toBeRemoved = ['--save-args', '--accessToken', '-o', '--organization', '-d', '--domain']
+    const toBeRemoved = ['--save-args', '--load-args', '--accessToken', '-o', '--organization', '-d', '--domain']
     toBeRemoved.forEach(tbr => {
       if ((idx = argvList.indexOf(tbr)) > -1) argvList.splice(idx, 2)
     })
 
 
     const data: CommandParams = {
+      alias,
       command: this.ctor.id,
       id: (resource as ResourceId).id,
       resource: resource.type,
       operation,
       argv: argvList,
       params,
-      saved_at: new Date(),
+      saved_at: new Date().toISOString(),
     }
 
     saveCommandData(alias, this.config, data)

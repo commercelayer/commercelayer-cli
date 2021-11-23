@@ -73,16 +73,17 @@ export default class ResourcesFilters extends Command {
   static args = []
 
   async run() {
+
     this.log(chalk.blueBright('\n-= Commerce Layer API available resource filters =-\n'))
-    cliux.table(filters.sort((a, b) =>  a.predicate.localeCompare(b.predicate)),
-      {
-        predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
-        description: { header: 'DESCRIPTION' },
-      },
-      {
-        printLine: this.log,
-      })
+    cliux.table(filters.sort((a, b) => a.predicate.localeCompare(b.predicate)), {
+      predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
+      description: { header: 'DESCRIPTION' },
+    }, {
+      printLine: this.log,
+    })
+
     this.log()
+
   }
 
 }

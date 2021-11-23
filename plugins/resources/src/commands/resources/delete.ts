@@ -2,7 +2,7 @@ import Command from '../../base'
 import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { excludeFlags } from '../../commands'
+import { excludeFlags } from '../../common'
 
 export default class ResourcesDelete extends Command {
 

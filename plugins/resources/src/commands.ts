@@ -12,13 +12,14 @@ const COMMANDS_DIR = 'commands'
 type ResourceOperation = 'retrieve' | 'list' | 'create' | 'update' | 'delete'
 
 type CommandParams = {
+  alias: string;
   command: string;
   resource: string;
   id?: string;
   operation: ResourceOperation;
   argv: string[];
   params: QueryParams;
-  saved_at: Date;
+  saved_at: string;
 }
 
 
@@ -39,9 +40,9 @@ const checkAlias = (alias: string): boolean => {
 }
 
 
-const commandFileName = (alias: string, params: CommandParams): string => {
+const commandFileName = (resource: string, alias: string, _operation?: string): string => {
   // return `${params.resource}.${params.operation}.${alias}.json`
-  return `${params.resource}.${alias}.json`
+  return `${resource}.${alias}.json`
 }
 
 const commandSaveDir = (config: IConfig) => {
@@ -49,11 +50,23 @@ const commandSaveDir = (config: IConfig) => {
 }
 
 
+const readCommandArgs = (config: IConfig, resource?: string): CommandParams[] => {
+  const saveDir = commandSaveDir(config)
+  const cmdParams = fs.readdirSync(saveDir)
+    .filter(f => (!resource || f.startsWith(resource)) && f.endsWith('.json'))
+    .map(f => {
+      const json = fs.readFileSync(join(saveDir, f), { encoding: 'utf-8' })
+      return JSON.parse(json)
+    })
+  return cmdParams
+}
+
+
 const saveCommandData = (alias: string, config: IConfig, params: CommandParams) => {
 
   checkAlias(alias)
 
-  const fileName = commandFileName(alias, params)
+  const fileName = commandFileName(params.resource, alias)
 
   const saveDir = commandSaveDir(config)
   if (!fs.existsSync(saveDir)) fs.mkdirSync(saveDir, { recursive: true })
@@ -72,6 +85,7 @@ const loadCommandData = (alias: string, resource: string, config: IConfig, opera
 
   if (!cmdFiles || (cmdFiles.length === 0)) return undefined
 
+  // There can be only one file with a specific alias for each resource type
   const cdmFile = fs.readFileSync(join(saveDir, cmdFiles[0]), { encoding: 'utf-8' })
 
   return JSON.parse(cdmFile)
@@ -82,11 +96,17 @@ const loadCommandData = (alias: string, resource: string, config: IConfig, opera
 const aliasExists = (resource: string, alias: string, config: IConfig, operation?: ResourceOperation): boolean => {
   const saveDir = commandSaveDir(config)
   const cmdData = fs.readdirSync(saveDir).find(f => !f.startsWith(`${resource}.${operation ? operation : ''}`) && f.endsWith(`${alias}.json`))
-  return  cmdData !== undefined
+  return cmdData !== undefined
 }
 
 
-export { saveCommandData, loadCommandData, checkAlias, aliasExists }
+const deleteArgsFile = (resource: string, alias: string, config: IConfig): void => {
+  const saveDir = commandSaveDir(config)
+  const fileName = commandFileName(resource, alias)
+  fs.unlinkSync(join(saveDir, fileName))
+}
+
+export { saveCommandData, loadCommandData, checkAlias, aliasExists, readCommandArgs, deleteArgsFile }
 
 
 
@@ -129,8 +149,3 @@ export const mergeCommandParams = (params: QueryParams, saved: QueryParams) => {
 
 }
 
-
-export const excludeFlags = (flags: any, exclude: string[]): any => {
-  const filteredFlags = { ...flags }
-  for (const e of exclude) delete filteredFlags[e]
-}

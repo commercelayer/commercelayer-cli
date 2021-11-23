@@ -3,6 +3,7 @@ const baseURL = (slug: string, domain: string | undefined): string => {
   return `https://${slug.toLowerCase()}.${domain ? domain : 'commercelayer.io'}`
 }
 
+
 const fixType = (val: string): string | number | boolean | null | undefined => {
 
   let v: any = val
@@ -15,6 +16,17 @@ const fixType = (val: string): string | number | boolean | null | undefined => {
 
   return v
 
+}
+
+
+const excludeFlags = (flags: any, exclude: string[]): any => {
+  const filteredFlags = { ...flags }
+  for (const e of exclude) delete filteredFlags[e]
+}
+
+
+const cleanDate = (date: string): string => {
+  return date.replace('T', ' ').replace('Z', '').substring(0, date.lastIndexOf('.'))
 }
 
 
@@ -52,4 +64,4 @@ const splitSlash = (str: string): string[] => {
 }
 
 
-export { baseURL, fixType, splitSlash }
+export { baseURL, fixType, splitSlash, excludeFlags, cleanDate }

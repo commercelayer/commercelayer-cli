@@ -32,10 +32,10 @@ $ commercelayer plugins:install resources
 <!-- commands -->
 
 * [`cl-resources resources`](#cl-resources-resources)
+* [`cl-resources resources:args [RESOURCE]`](#cl-resources-resourcesargs-resource)
 * [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
 * [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
 * [`cl-resources resources:doc RESOURCE`](#cl-resources-resourcesdoc-resource)
-* [`cl-resources resources:exec [FILE]`](#cl-resources-resourcesexec-file)
 * [`cl-resources resources:filters`](#cl-resources-resourcesfilters)
 * [`cl-resources resources:get RESOURCE [ID]`](#cl-resources-resourcesget-resource-id)
 * [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
@@ -61,6 +61,27 @@ EXAMPLES
 ```
 
 _See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/index.ts)_
+
+### `cl-resources resources:args [RESOURCE]`
+
+Show all the saved command arguments.
+
+```
+USAGE
+  $ cl-resources resources:args [RESOURCE]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+OPTIONS
+  -D, --delete       delete saved arguments associated to the alias
+  -a, --alias=alias  the alias associated to saved command arguments
+
+ALIASES
+  $ cl-resources res:args
+```
+
+_See code: [src/commands/resources/args.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/args.ts)_
 
 ### `cl-resources resources:create RESOURCE`
 
@@ -90,7 +111,7 @@ OPTIONS
   --curl                           show the equivalent cURL command of the CLI command
   --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
-  --save-cmd=save-cmd              save command data to file for future use
+  --save-args=save-args            save command data to file for future use
 
 ALIASES
   $ cl-resources create
@@ -152,22 +173,6 @@ EXAMPLES
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/doc.ts)_
 
-### `cl-resources resources:exec [FILE]`
-
-Describe the command here.
-
-```
-USAGE
-  $ cl-resources resources:exec [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/resources/exec.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/exec.ts)_
-
 ### `cl-resources resources:filters`
 
 Show a list of all available filter predicates.
@@ -217,7 +222,7 @@ OPTIONS
   --curl                           show the equivalent cURL command of the CLI command
   --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
-  --save-cmd=save-cmd              save command data to file for future use
+  --save-args=save-args            save command data to file for future use
 
 ALIASES
   $ cl-resources get
@@ -262,7 +267,7 @@ OPTIONS
   --curl                           show the equivalent cURL command of the CLI command
   --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
-  --save-cmd=save-cmd              save command data to file for future use
+  --save-args=save-args            save command data to file for future use
 
 ALIASES
   $ cl-resources list
@@ -304,7 +309,7 @@ OPTIONS
   --curl                           show the equivalent cURL command of the CLI command
   --load-args=load-args            load previously saved command arguments
   --node                           show the equivalent Node SDK source code of the CLI command
-  --save-cmd=save-cmd              save command data to file for future use
+  --save-args=save-args            save command data to file for future use
 
 ALIASES
   $ cl-resources retrieve
@@ -330,7 +335,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource to retrieve
+  ID        id of the resource to update
 
 OPTIONS
   -D, --data=data                          the data file to use as request body
@@ -368,7 +373,7 @@ OPTIONS
 
   --node                                   show the equivalent Node SDK source code of the CLI command
 
-  --save-cmd=save-cmd                      save command data to file for future use
+  --save-args=save-args                    save command data to file for future use
 
 ALIASES
   $ cl-resources update
