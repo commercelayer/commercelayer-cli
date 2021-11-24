@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-imports": "./bin/run",
@@ -58,7 +58,8 @@
         "description": "Import resources in Commerce Layer",
         "hidden": true
       }
-    }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>"
   },
   "repository": "commercelayer/commercelayer-cli-plugin-imports",
   "scripts": {
