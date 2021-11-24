@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-triggers": "./bin/run",
@@ -30,7 +30,7 @@
     "typescript": "^4.4.4"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=10.0.0"
   },
   "files": [
     "/bin",
@@ -59,7 +59,8 @@
         "description": "Execute resource triggers",
         "hidden": true
       }
-    }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>"
   },
   "repository": "commercelayer/commercelayer-cli-plugin-triggers",
   "scripts": {
