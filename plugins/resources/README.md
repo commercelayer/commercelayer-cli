@@ -32,7 +32,7 @@ $ commercelayer plugins:install resources
 <!-- commands -->
 
 * [`cl-resources resources`](#cl-resources-resources)
-* [`cl-resources resources:args [RESOURCE]`](#cl-resources-resourcesargs-resource)
+* [`cl-resources resources:args`](#cl-resources-resourcesargs)
 * [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
 * [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
 * [`cl-resources resources:doc RESOURCE`](#cl-resources-resourcesdoc-resource)
@@ -60,28 +60,27 @@ EXAMPLES
   $ cl resources
 ```
 
-_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/index.ts)_
+_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/index.ts)_
 
-### `cl-resources resources:args [RESOURCE]`
+### `cl-resources resources:args`
 
 Show all the saved command arguments.
 
 ```
 USAGE
-  $ cl-resources resources:args [RESOURCE]
-
-ARGUMENTS
-  RESOURCE  the resource type
+  $ cl-resources resources:args
 
 OPTIONS
-  -D, --delete       delete saved arguments associated to the alias
-  -a, --alias=alias  the alias associated to saved command arguments
+  -D, --delete                                 delete saved arguments associated to the alias
+  -a, --alias=alias                            the alias associated to saved command arguments
+  -o, --operation=list|retrieve|create|update  the resource operation
+  -r, --resource=resource                      the resource type
 
 ALIASES
   $ cl-resources res:args
 ```
 
-_See code: [src/commands/resources/args.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/args.ts)_
+_See code: [src/commands/resources/args.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/args.ts)_
 
 ### `cl-resources resources:create RESOURCE`
 
@@ -126,7 +125,7 @@ EXAMPLES
   $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/create.ts)_
 
 ### `cl-resources resources:delete RESOURCE [ID]`
 
@@ -150,7 +149,7 @@ EXAMPLES
   $ cl delete customers <customerId>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/delete.ts)_
 
 ### `cl-resources resources:doc RESOURCE`
 
@@ -171,7 +170,7 @@ EXAMPLES
   $ cl res:doc cusatomers
 ```
 
-_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/doc.ts)_
+_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/doc.ts)_
 
 ### `cl-resources resources:filters`
 
@@ -189,7 +188,7 @@ EXAMPLES
   $ cl res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/filters.ts)_
 
 ### `cl-resources resources:get RESOURCE [ID]`
 
@@ -235,7 +234,7 @@ EXAMPLES
   $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/get.ts)_
 
 ### `cl-resources resources:list RESOURCE`
 
@@ -280,7 +279,7 @@ EXAMPLES
   $ cl list -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/list.ts)_
 
 ### `cl-resources resources:retrieve RESOURCE [ID]`
 
@@ -323,7 +322,7 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/retrieve.ts)_
 
 ### `cl-resources resources:update RESOURCE [ID]`
 
@@ -389,5 +388,5 @@ EXAMPLES
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/v2.4.2/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/update.ts)_
 <!-- commandsstop -->

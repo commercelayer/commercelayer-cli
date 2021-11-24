@@ -56,7 +56,7 @@ export default class ResourcesRetrieve extends Command {
 
     const loadParams = flags[FLAG_LOAD_PARAMS]
     const saveCmd = flags[FLAG_SAVE_COMMAND]
-    if (saveCmd) this.checkAlias(resource.api, saveCmd, this.config)
+    if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
 
 		const organization = flags.organization
 		const domain = flags.domain

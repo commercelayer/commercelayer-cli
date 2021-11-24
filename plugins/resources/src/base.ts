@@ -645,14 +645,15 @@ export default abstract class extends Command {
   }
 
 
-  protected checkAlias(resource: string, alias: string, config: IConfig) {
+  protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: IConfig) {
     let ok = false
     try {
       ok = checkAlias(alias)
     } catch (error) {
       this.printError(error)
     }
-    if (ok && aliasExists(resource, alias, config)) this.error(`Alias already used for resource type ${chalk.bold(resource)}: ${chalk.redBright(alias)}`)
+    if (ok && aliasExists(alias, config, resource, operation))
+      this.error(`Alias already used for resource type ${chalk.yellowBright(resource)} and operation ${chalk.yellowBright(operation)}: ${chalk.redBright(alias)}`)
   }
 
 
@@ -683,10 +684,10 @@ export default abstract class extends Command {
   }
 
 
-  protected loadParams(alias: string, resource: string, operation?: ResourceOperation): QueryParams {
+  protected loadParams(alias: string, resource: string, operation: ResourceOperation): QueryParams {
 
-    const cmdData = loadCommandData(alias, resource, this.config/* , operation */)
-    if (!cmdData) this.error(`No command arguments saved with alias ${chalk.redBright(alias)} for resource type ${chalk.bold(resource)}`)
+    const cmdData = loadCommandData(alias, this.config, resource, operation)
+    if (!cmdData) this.error(`No command arguments saved with alias ${chalk.redBright(alias)} for resource type ${chalk.yellowBright(resource)} and operation ${chalk.yellowBright(operation)}`)
 
     const queryParams: QueryParams = (operation && (operation === 'list')) ? cmdData.params : {
       include: cmdData.params.include,
