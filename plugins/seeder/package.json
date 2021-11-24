@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-seeder",
   "description": "Commerce Layer CLI Seeder plugin",
-  "version": "1.0.4",
+  "version": "2.0.0-alpha.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "contributors": [
     "Alessandro Casazza <alessandro@commercelayer.io>"
@@ -54,7 +54,8 @@
     "devPlugins": [
       "@oclif/plugin-help"
     ],
-    "plugins": []
+    "plugins": [],
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>"
   },
   "repository": "commercelayer/commercelayer-cli-plugin-seeder",
   "scripts": {
