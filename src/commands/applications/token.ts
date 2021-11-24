@@ -153,6 +153,9 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 		grant_type: 'client_credentials',
 		client_id: app.clientId,
 		client_secret: app.clientSecret,
+		username: app.email,
+		password: app.password,
+		scope: app.scope,
 		token,
 	})
 
