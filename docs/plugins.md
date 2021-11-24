@@ -26,7 +26,7 @@ EXAMPLE
   $ commercelayer plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.1/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/index.ts)_
 
 ### `commercelayer plugins:available`
 
@@ -40,7 +40,7 @@ EXAMPLE
   $ commercelayer plugins:available
 ```
 
-_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/plugins/available.ts)_
+_See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/plugins/available.ts)_
 
 ### `commercelayer plugins:inspect PLUGIN...`
 
@@ -61,7 +61,7 @@ EXAMPLE
   $ commercelayer plugins:inspect myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.1/src/commands/plugins/inspect.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/inspect.ts)_
 
 ### `commercelayer plugins:install PLUGIN...`
 
@@ -97,7 +97,7 @@ EXAMPLES
   $ commercelayer plugins:install someuser/someplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.1/src/commands/plugins/install.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/install.ts)_
 
 ### `commercelayer plugins:link PLUGIN`
 
@@ -124,7 +124,7 @@ EXAMPLE
   $ commercelayer plugins:link myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.1/src/commands/plugins/link.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/link.ts)_
 
 ### `commercelayer plugins:uninstall PLUGIN...`
 
@@ -146,7 +146,7 @@ ALIASES
   $ commercelayer plugins:remove
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.1/src/commands/plugins/uninstall.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/uninstall.ts)_
 
 ### `commercelayer plugins:update`
 
@@ -161,4 +161,4 @@ OPTIONS
   -v, --verbose
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.1/src/commands/plugins/update.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/update.ts)_

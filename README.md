@@ -79,6 +79,8 @@ The Commerce Layer CLI currently supports the following plugins:
 * [`imports`](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/README.md) - Import resources in Commerce Layer.
 * [`webhooks`](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/README.md) - Manage webhooks in Commerce Layer.
 * [`orders`](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/README.md) - Execute actions on orders in Commerce Layer.
+* [`checkout`](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/README.md) - Generate checkout URLs.
+* [`triggers`](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/README.md) - Execute actions on resources in Commerce Layer.
 
 You can run the command below to get a list of all available CLI plugins:
 

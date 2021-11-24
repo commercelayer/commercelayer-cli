@@ -40,7 +40,7 @@ EXAMPLES
   $ cl applications
 ```
 
-_See code: [src/commands/applications/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/index.ts)_
+_See code: [src/commands/applications/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/index.ts)_
 
 ### `commercelayer applications:add`
 
@@ -66,7 +66,7 @@ EXAMPLE
   $ commercelayer applications:add -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
-_See code: [src/commands/applications/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/add.ts)_
+_See code: [src/commands/applications/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/add.ts)_
 
 ### `commercelayer applications:current`
 
@@ -87,7 +87,7 @@ EXAMPLES
   $ commercelayer app:current --info
 ```
 
-_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/current.ts)_
+_See code: [src/commands/applications/current.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/current.ts)_
 
 ### `commercelayer applications:info`
 
@@ -110,7 +110,7 @@ ALIASES
   $ commercelayer app:info
 ```
 
-_See code: [src/commands/applications/info.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/info.ts)_
+_See code: [src/commands/applications/info.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/info.ts)_
 
 ### `commercelayer applications:login`
 
@@ -136,7 +136,7 @@ EXAMPLE
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
-_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/login.ts)_
+_See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/login.ts)_
 
 ### `commercelayer applications:logout`
 
@@ -161,7 +161,7 @@ ALIASES
   $ commercelayer applications:remove
 ```
 
-_See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/logout.ts)_
+_See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/logout.ts)_
 
 ### `commercelayer applications:switch`
 
@@ -183,7 +183,7 @@ ALIASES
   $ commercelayer app:switch
 ```
 
-_See code: [src/commands/applications/switch.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/switch.ts)_
+_See code: [src/commands/applications/switch.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/switch.ts)_
 
 ### `commercelayer applications:token`
 
@@ -211,4 +211,4 @@ EXAMPLES
   $ commercelayer app:token -o <organizationSlug> --live --save
 ```
 
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/v3.0.2/src/commands/applications/token.ts)_
+_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/token.ts)_
