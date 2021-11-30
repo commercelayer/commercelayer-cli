@@ -209,7 +209,7 @@ export default class ResourcesAll extends Command {
     // Sort flags
     const sort = this.sortFlag(flags.sort)
 
-    const timeout = flags.timeout
+    const timeout = flags.timeout || 5000 // Icreased timeout (default 3 secs)
     if (timeout && ((timeout < 1000) || (timeout > 10000)))
       this.error(`Invalid timeout: ${chalk.redBright(String(timeout))}. Timeout value must be in range [${requestTimeout.min} - ${requestTimeout.max}]`)
 
