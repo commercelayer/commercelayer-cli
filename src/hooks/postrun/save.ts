@@ -1,10 +1,15 @@
 import { Hook } from '@oclif/config'
 import fs from 'fs'
 import path from 'path'
-import _ from 'lodash'
+import { kebabCase } from 'lodash'
 import { configParam, ConfigParams } from '../../config'
 
+
 const hook: Hook<'postrun'> = async function (opts) {
+
+  // Do not save fake commands output
+  if (opts.Command.id && (opts.Command.id.toLowerCase().endsWith('noc'))) return
+  if (opts.Command.name && (opts.Command.name.toLowerCase().endsWith('noc'))) return
 
   // Save last results
   if (opts.result) {
@@ -12,7 +17,7 @@ const hook: Hook<'postrun'> = async function (opts) {
     const saveDir = path.join(opts.config.dataDir, 'results')
     if (!fs.existsSync(saveDir)) fs.mkdirSync(saveDir, { recursive: true })
 
-    const filePath = path.join(saveDir, _.kebabCase(opts.Command.name) + '.last.json')
+    const filePath = path.join(saveDir, kebabCase(opts.Command.name) + '.last.json')
 
     try {
       const data = JSON.stringify(opts.result, null, 4)
@@ -25,7 +30,7 @@ const hook: Hook<'postrun'> = async function (opts) {
 
 
   // Save last command
-  if (opts.argv) {
+  if (opts.argv && (opts.argv.length > 0)) {
 
     const commDir = path.join(opts.config.dataDir, 'commands')
     if (!fs.existsSync(commDir)) fs.mkdirSync(commDir, { recursive: true })

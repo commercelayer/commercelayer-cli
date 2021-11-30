@@ -1,10 +1,8 @@
-import { Command } from '@oclif/command'
-import fs from 'fs'
-import path from 'path'
+import Command, { filterApplications, flags } from '../../base'
 import { AppInfo, configParam, ConfigParams } from '../../config'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
-import { center } from '../../common'
+import { appKeyMatch, center, printScope } from '../../common'
 
 
 export default class ApplicationsIndex extends Command {
@@ -19,64 +17,73 @@ export default class ApplicationsIndex extends Command {
 	]
 
 	static flags = {
-		// help: flags.help({char: 'h'}),
+		...Command.flags,
+		extra: flags.boolean({
+			char: 'X',
+			description: 'show applications extra info',
+			hidden: true,
+		}),
 	}
 
 	static args = []
 
 	async run() {
 
-		this.parse(ApplicationsIndex)
+		const { flags } = this.parse(ApplicationsIndex)
 
 		let configData: AppInfo[]
-
 		try {
-
-			const configFiles = fs.readdirSync(this.config.configDir).filter(f => f.endsWith('.config.json'))
-
-			configData = configFiles.map(cf => {
-				const appConfig = fs.readFileSync(path.join(this.config.configDir, cf), { encoding: 'utf-8' })
-				return JSON.parse(appConfig)
-			})
-
+			configData = filterApplications(this.config, flags)
 		} catch (error) {
-			this.error('No CLI applications config files found', { suggestions: ['Execute first login to at least one CLI application'] })
+			this.error('No application config file found', { suggestions: ['Execute first login to at least one Commerce Layer application'] })
 		}
 
 		const current = configParam(ConfigParams.currentApplication)
+		const currentChar = '\u25C9'
 
 		this.log()
-		cliux.table(configData, {
-				key: { header: 'APPLICATION (KEY)', minWidth: 20, get: row => (current && (current.key === row.key) && (current.mode === row.mode)) ? chalk.magentaBright(`${row.key} *`) : chalk.blueBright(row.key) },
-				// slug: { header: '  SLUG  ', get: row => `  ${row.slug}  ` },
-				name: { header: 'NAME', get: row => `${row.name}` },
-				organization: { header: 'ORGANIZATION', get: row => `${row.organization}` },
-				type: { header: 'TYPE' },
-				scope: { header: 'SCOPE', minWidth: 10, get: row => printScope(row.scope) },
-				customer: { header: 'PWD', get: row => (row.email && row.password) ? chalk.cyanBright(center('\u25C9', 'PWD'.length)) : '' },
-				mode: { header: 'MODE', get: row => `${(row.mode === 'live') ? chalk.greenBright(row.mode) : chalk.yellowBright(row.mode)}` },
+		if (configData.length > 0) {
+
+			const currentVisibile = configData.some(a => appKeyMatch(current, a))
+
+			cliux.table(configData, {
+				current: { header: `[${currentChar}]`, minWidth: 3, get: row => appKeyMatch(current, row) ? chalk.magentaBright(` ${currentChar} `) : '   ' },
+				organization: { header: 'ORGANIZATION', get: row => currentColor(row, current)(row.organization) },
+				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
+				name: { header: 'APPLICATION', get: row => currentColor(row, current)(row.name) },
+				id: { header: 'ID', get: row => currentColor(row, current)(row.id)},
+				kind: { header: 'KIND', get: row => currentColor(row, current)(row.kind) },
+				scope: { header: 'SCOPE', minWidth: 10, get: row => currentColor(row, current)(printScope(row.scope)) },
+				customer: { header: 'PWD', get: row => (row.email && row.password) ? chalk.cyanBright(center('\u221A', 'PWD'.length)) : '' },
+				mode: { header: 'MODE', get: row => `${((row.mode === 'live') ? chalk.greenBright : chalk.yellowBright)(row.mode)}` },
+				alias: { header: 'ALIAS', get: row => chalk.cyanBright(row.alias || '') },
+				...extraColumns(flags),
 			}, {
 				printLine: this.log,
 			})
+
+			if (current && currentVisibile) this.log(chalk.italic.magentaBright(`\n(${currentChar}) Current application`))
+
+		} else this.log(chalk.italic('No application found'))
+
 		this.log()
 
-		if (current) {
-			this.log(chalk.italic.magentaBright('(*) Current application'))
-			this.log()
-		}
-
 	}
 
 }
 
 
-const printScope = (scope: string | string[] | undefined): string => {
-	if (scope) {
-		if (Array.isArray(scope)) {
-			if (scope.length === 0) return ''
-			return scope[0] + ((scope.length > 1) ? ` ${chalk.italic.dim('+' + (scope.length - 1))}` : '')
-		}
-		return scope
+const extraColumns = (flags: any): any => {
+	const extra: any = {}
+	if (flags.extra) {
+		extra.appkey = { header: chalk.dim('APPKEY'), get: (row: { key: any }) => chalk.dim(row.key || '') }
+		extra.domain = { header: chalk.dim('   DOMAIN'), get: (row: { domain: any }) => chalk.dim(row.domain || '') }
 	}
-	return ''
+	return extra
 }
+
+
+const currentColor = (app: any, current: any): Function => {
+	return (appKeyMatch(current, app) ? chalk.magentaBright : chalk.visible)
+}
+

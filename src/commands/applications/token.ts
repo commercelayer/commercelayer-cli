@@ -1,16 +1,17 @@
-import { Command, flags } from '@oclif/command'
+import Command, { flags } from '../../base'
 import { getAccessToken } from './login'
 import chalk from 'chalk'
-import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, currentApplication, readTokenFile, ConfigParams, configParam } from '../../config'
-import { execMode, appKey, sleep, print, baseURL } from '../../common'
+import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
+import { sleep, print, baseURL } from '../../common'
 import { IConfig } from '@oclif/config'
-import { AuthReturnType } from '@commercelayer/js-auth'
 import https from 'https'
 import jwt from 'jsonwebtoken'
+import { AuthReturnType } from '@commercelayer/js-auth'
 
 
 
 const defaultTokenExpiration = 60 * 2
+
 
 export default class ApplicationsToken extends Command {
 
@@ -20,36 +21,18 @@ export default class ApplicationsToken extends Command {
 
 	static examples = [
 		'$ commercelayer applications:token',
-		'$ commercelayer app:token -o <organizationSlug> --live --save',
+		'$ commercelayer app:token --info',
 	]
 
 	static flags = {
-		// help: flags.help({ char: 'h' }),
-		organization: flags.string({
-			char: 'o',
-			description: 'organization slug',
-			required: false,
-			// default: currentOrganization(),
-		}),
-		live: flags.boolean({
-			description: 'live execution mode',
-			dependsOn: ['organization'],
-			// default: currentModeLive(),
-		}),
-		domain: flags.string({
-			char: 'd',
-			description: 'api domain',
-			required: false,
-			hidden: true,
-			dependsOn: ['organization'],
-		}),
+		...Command.flags,
 		save: flags.boolean({
 			char: 's',
 			description: 'save access token',
 		}),
 		info: flags.boolean({
 			char: 'i',
-			description: 'show token info',
+			description: 'show access token info',
 		}),
 		shared: flags.string({
 			char: 'S',
@@ -65,30 +48,17 @@ export default class ApplicationsToken extends Command {
 		}),
 	}
 
+
 	async run() {
 
 		const { flags } = this.parse(ApplicationsToken)
 
-		let organization = flags.organization
-		let mode = execMode(flags.live)
+		const app = this.appFilterEnabled(flags) ? await this.findApplication(flags) : currentApplication()
 
-		if (!organization) {
-			const current = currentApplication()
-			organization = current?.key || ''
-			mode = current?.mode || 'test'
-		}
-
-		const app: AppKey = {
-			key: appKey(organization, flags.domain),
-			mode,
-		}
-
-
-		if (!configFileExists(this.config, app))
-			this.error(`Unable to find ${chalk.italic.bold(app.mode)} configuration file for application ${chalk.italic.bold(app.key)}`,
+		if (!app || !configFileExists(this.config, app))
+			this.error(`Unable to find configuration file for application${app ? ` ${app.name}` : ''}`,
 				{ suggestions: [`execute ${chalk.italic('applications:login')} command to initialize application and get the first access token`] }
 			)
-
 
 		try {
 
@@ -103,13 +73,13 @@ export default class ApplicationsToken extends Command {
 				expMinutes = token.expMinutes
 			} else {
 				const token = await newAccessToken(this.config, app, flags.save)
-				if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${chalk.italic.bold(app.key)}`)
+				if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${chalk.italic.bold(app.name)}`)
 				accessToken = token?.accessToken
 				returnData = token?.data
 			}
 
 			if (accessToken) {
-				this.log(`\nAccess token for application ${chalk.bold.yellowBright(`${app.key}.${app.mode}`)}`)
+				this.log(`\nAccess token for application ${chalk.bold.yellowBright(app.name)} of ${chalk.bold.yellowBright(app.organization)}`)
 				this.log(`\n${chalk.blueBright(accessToken)}\n`)
 				if (flags.shared && expMinutes) {
 					this.warn(chalk.italic(`this access token will expire in ${expMinutes} minutes`))
@@ -128,7 +98,7 @@ export default class ApplicationsToken extends Command {
 	}
 
 
-	printAccessToken(accessToken: any): void {
+	private printAccessToken(accessToken: any): void {
 		if (accessToken) {
 			const info = decodeAccessToken(accessToken)
 			this.log(chalk.blueBright('Token Info:'))
@@ -183,6 +153,9 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 		grant_type: 'client_credentials',
 		client_id: app.clientId,
 		client_secret: app.clientSecret,
+		username: app.email,
+		password: app.password,
+		scope: app.scope,
 		token,
 	})
 

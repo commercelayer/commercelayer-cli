@@ -4,8 +4,7 @@ describe('applications:token', () => {
   test
     .stdout()
     .command(['noc'])
-    .it('runs applications:token', ctx => {
+    .it('runs noc', ctx => {
       expect(ctx.stdout).to.contain('-= NoC =-')
     })
-
 })

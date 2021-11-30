@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('applications:list', () => {
+describe('applications:switch', () => {
   test
     .stdout()
     .command(['noc'])

@@ -4,7 +4,7 @@ describe('plugins:available', () => {
   test
   .stdout()
   .command(['noc'])
-  .it('runs plugins:available', ctx => {
+  .it('runs noc', ctx => {
     expect(ctx.stdout).to.contain('-= NoC =-')
   })
 
