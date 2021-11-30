@@ -208,7 +208,7 @@ ALIASES
 
 EXAMPLES
   $ commercelayer applications:token
-  $ commercelayer app:token -o <organizationSlug> --live --save
+  $ commercelayer app:token --info
 ```
 
 _See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/token.ts)_

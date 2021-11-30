@@ -2,6 +2,8 @@ import { Hook } from '@oclif/config'
 import { getPluginInfo } from '../../commands/plugins/available'
 import chalk from 'chalk'
 
+
+
 const hook: Hook<'prerun'> = async function (opts) {
 
   // Only for test purpouses to avoid an error of undefined object
@@ -29,7 +31,19 @@ const hook: Hook<'prerun'> = async function (opts) {
 
     })
 
-    if (found && plugin) opts.argv[index] = plugin
+
+    // Check tag flag
+    if (found && plugin) {
+
+      const tgIndex = opts.argv.indexOf('--tag')
+
+      if (tgIndex > -1) {
+        opts.argv[index] = plugin + '@' + opts.argv[tgIndex + 1]
+        opts.argv.splice(tgIndex, 2)
+      }
+      else opts.argv[index] = plugin
+
+    }
 
   }
 

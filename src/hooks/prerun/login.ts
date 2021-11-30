@@ -107,7 +107,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 	if (opts.Command.flags?.clientSecret && configData?.clientSecret) opts.argv.push('--clientSecret=' + configData?.clientSecret)
 
 	// If present remove --live flag option
-	if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
+	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
 
 	// If present remove application key flag option
 	if (opts.argv.includes('--appkey')) opts.argv.splice(opts.argv.indexOf('--appkey'), 2)
