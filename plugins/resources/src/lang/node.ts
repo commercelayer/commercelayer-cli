@@ -8,7 +8,8 @@ const buildTypescript = (request: RequestData, params?: QueryParams, flags?: any
 
 	const hasParams = params && (Object.keys(params).length > 0)
 	const operation = getOperation(request)
-	const paramsImport = hasParams ? `, { QueryParams${(operation === 'list') ? 'List' : 'Retrieve'} }` : ''
+  const qpSuffix = (operation === 'list') ? 'List' : 'Retrieve'
+	const paramsImport = hasParams ? `, { QueryParams${qpSuffix} }` : ''
 
 	let ts = `import commercelayer${paramsImport} from '@commercelayer/sdk'`
 
@@ -17,7 +18,7 @@ const buildTypescript = (request: RequestData, params?: QueryParams, flags?: any
 
 	ts += '\n\nconst cl = commercelayer({ organization, accessToken })'
 
-	if (hasParams) ts += '\n\nconst params: QueryParamsList = ' + inspectObject(params, false)
+	if (hasParams) ts += `\n\nconst params: QueryParams${qpSuffix} = ${inspectObject(params, false)}`
 
 	ts += `\n\ncl.${getResource(request)}.${operation}(${hasParams ? 'params' : ''}).then(console.log)`
 
