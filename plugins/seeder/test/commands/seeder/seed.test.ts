@@ -1,9 +1,9 @@
 import {expect, test} from '@oclif/test'
 
-describe('seed', () => {
+describe('seeder:seed', () => {
   test
   .stdout()
-  .command(['noc'])
+  .command(['seeder:noc'])
   .it('runs seed', ctx => {
     expect(ctx.stdout).to.contain('-= NoC =-')
   })

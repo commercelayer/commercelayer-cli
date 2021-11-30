@@ -27,29 +27,31 @@ $ cl-seeder [COMMAND] (--help | -h) for detailed information about CLI commands.
 ## Commands
 <!-- commands -->
 
-* [`cl-seeder seed`](#cl-seeder-seed)
+* [`cl-seeder seeder:seed ID`](#cl-seeder-seederseed-id)
 
-### `cl-seeder seed`
+### `cl-seeder seeder:seed ID`
 
 Execute Commerce Layer seeder.
 
 ```
 USAGE
-  $ cl-seeder seed
+  $ cl-seeder seeder:seed ID
+
+ARGUMENTS
+  ID  the unique id of the order
 
 OPTIONS
-  -b, --businessModel=multi_market|custom  [default: multi_market] the kind of business model you want to import
-  -h, --help                               show CLI help
-  -m, --maxItems=maxItems                  [default: all] the maximum number of SKUs that will be imported
-  -o, --organization=organization          (required) the slug of your organization
+  -b, --businessModel=single_sku   [default: single_sku] the kind of business model you want to import
+  -o, --organization=organization  (required) the slug of your organization
+  -u, --url=url                    [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
 
-  -u, --resourcesUrl=resourcesUrl          [default: https://data.commercelayer.app/seed] the resources URL or local
-                                           path
+ALIASES
+  $ cl-seeder seed
 
 EXAMPLES
   $ cl-seeder seed -o <organizationSlug> -i <clientId> -s <clientSecret> --accessToken=<accessToken> -u <seedUrl>
   $ cl seed -m all -u <seedUrl> -b multi_market
 ```
 
-_See code: [src/commands/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/v1.0.4/src/commands/seed.ts)_
+_See code: [src/commands/seeder/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/seed.ts)_
 <!-- commandsstop -->
