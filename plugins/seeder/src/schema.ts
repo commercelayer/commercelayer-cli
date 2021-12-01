@@ -55,7 +55,7 @@ const loadSchema = async (): Promise<SchemaData> => {
 export { loadSchema }
 
 
-const attribute = (type: string, name: string): string | undefined => {
+const attributeType = (type: string, name: string): string | undefined => {
   const res = schemaData[type as keyof SchemaModel]
   if (!res) return undefined
   const attr = res.attributes[name]
@@ -71,4 +71,4 @@ const relationshipType = (type: string, name: string): string | undefined => {
   return rel
 }
 
-export { attribute, relationshipType }
+export { attributeType, relationshipType }

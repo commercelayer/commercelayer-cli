@@ -1,15 +1,14 @@
 /* eslint-disable no-await-in-loop */
 import Command, { flags } from '../../base'
 import { ResourceData, SeederResource } from '../../data'
-import commercelayer, { CommerceLayerClient, CommerceLayerStatic, QueryParamsList } from '@commercelayer/sdk'
+import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import config from '../../config'
 import Listr from 'listr'
-import { readModelData, readResourceData } from '../../data'
-import { loadSchema, relationshipType } from '../../schema'
-import { ResourceCreate, ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
-import cliux from 'cli-ux'
-import { pathJoin } from '../../common'
+import { readResourceData } from '../../data'
+import { relationshipType } from '../../schema'
+import { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
+import { checkResourceType } from './check'
 
 
 
@@ -20,27 +19,17 @@ export default class SeederSeed extends Command {
   static aliases = ['seed']
 
   static examples = [
-    '$ cl-seeder seed -o <organizationSlug> -i <clientId> -s <clientSecret> --accessToken=<accessToken> -u <seedUrl>',
-    '$ cl seed -m all -u <seedUrl> -b multi_market',
+    '$ commercelayer seeder:seed -u <seedUrl>',
+    '$ cl seed -b multi_market',
   ]
 
   static flags = {
     ...Command.flags,
-    businessModel: flags.string({
-      char: 'b',
-      description: 'the kind of business model you want to import',
-      options: ['single_sku'],
-      default: 'single_sku',
-    }),
-    url: flags.string({
-      char: 'u',
-      description: 'seeder data URL',
-      default: pathJoin(config.dataUrl, config.seederFolder),
+    keep: flags.boolean({
+      char: 'k',
+      description: 'keep existing resources without updating them',
     }),
   }
-
-
-  private cl!: CommerceLayerClient
 
 
   async run() {
@@ -48,11 +37,9 @@ export default class SeederSeed extends Command {
     const { flags } = this.parse(SeederSeed)
 
     const organization = flags.organization
-    const domain = flags.domain
     const businessModel = flags.businessModel
-    const accessToken = flags.accessToken
 
-    this.cl = commercelayer({ organization, domain, accessToken })
+    this.initCommerceLayer(flags)
 
     this.log()
 
@@ -85,58 +72,9 @@ export default class SeederSeed extends Command {
   }
 
 
-  private async readOpenAPISchema() {
-    cliux.action.start(`Reading ${chalk.yellowBright('OpenAPI')} schema`)
-    return loadSchema()
-      .then(() => cliux.action.stop(`done ${chalk.green('\u2714')}`))
-      .catch(() => {
-        cliux.action.stop(chalk.redBright('Error'))
-        this.error('Error reading OpenAPI schema')
-      })
-      .finally(() => this.log())
-  }
+  private async resolveRelationships(type: string, res: ResourceData): Promise<any> {
 
-
-  private async readBusinessModelData(url: string, model: string) {
-    cliux.action.start(`Reading business model ${chalk.yellowBright(model)} from path ${chalk.yellowBright(url)}`)
-    return readModelData(url, model)
-      .then(model => {
-        cliux.action.stop(`done ${chalk.green('\u2714')}`)
-        return model
-      })
-      .catch(error => {
-        cliux.action.stop(chalk.redBright('Error'))
-        this.error(error)
-      })
-      .finally(() => this.log())
-  }
-
-
-  private async findByReference(type: string, reference: string): Promise<ResourceId | undefined> {
-
-    const params: QueryParamsList = {
-      fields: {},
-      filters: {
-        reference_eq: reference,
-      },
-      pageSize: 1,
-    }
-    if (params.fields) params.fields[type] = ['id', 'reference']
-
-    try {
-      const resSdk = this.cl[type as keyof CommerceLayerClient] as any
-      const list = await resSdk.list(params)
-      return list[0] as ResourceId
-    } catch (error) {
-      return undefined
-    }
-
-  }
-
-
-  private async resolveRelationships(type: string, res: ResourceData): Promise<ResourceCreate> {
-
-    const resourceCreate: any = {}
+    const resourceMod: any = {}
 
     for (const field in res) {
       if (field === 'key') continue
@@ -145,13 +83,13 @@ export default class SeederSeed extends Command {
         if (Array.isArray(res[field])) throw new Error(`Relationship ${type}.${field} cannot be an array`)
         else {
           const remoteRes = await this.findByReference(rel, res[field] as string)
-          if (remoteRes) resourceCreate[field] = { type: rel, id: remoteRes.id }
+          if (remoteRes) resourceMod[field] = { type: rel, id: remoteRes.id }
           else throw new Error(`Unable to find resource of type ${rel} with reference ${chalk.redBright(res[field])}`)
         }
-      } else resourceCreate[field] = res[field]
+      } else resourceMod[field] = res[field]
     }
 
-    return resourceCreate
+    return resourceMod
 
   }
 
@@ -161,8 +99,7 @@ export default class SeederSeed extends Command {
     const resourceCreate = await this.resolveRelationships(type, res)
 
     const resType = res.type || type
-
-    if (!this.cl.resources().includes(resType)) throw new Error(`Invalid resource type: ${chalk.redBright(resType)}`)
+    checkResourceType(resType)
 
     const resSdk: any = this.cl[resType as keyof CommerceLayerClient]
     resourceCreate.reference_origin = config.referenceOrigin
@@ -171,6 +108,31 @@ export default class SeederSeed extends Command {
         const err = error.first()
         if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)
         else throw new Error(`Error creating resource of type ${resType} and reference ${resourceCreate.reference}`)
+      }
+    })
+
+    return remoteRes
+
+  }
+
+
+  private async updateResource(type: string, id: string, res: ResourceData): Promise<ResourceUpdate> {
+
+    const resourceUpdate = await this.resolveRelationships(type, res)
+
+    const resType = res.type || type
+    checkResourceType(resType)
+
+    const resSdk: any = this.cl[resType as keyof CommerceLayerClient]
+
+    resourceUpdate.id = id
+    resourceUpdate.reference_origin = config.referenceOrigin
+
+    const remoteRes = await resSdk.update(resourceUpdate).catch((error: any) => {
+      if (CommerceLayerStatic.isApiError(error)) {
+        const err = error.first()
+        if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)
+        else throw new Error(`Error creating resource of type ${resType} and reference ${resourceUpdate.reference}`)
       }
     })
 
@@ -201,8 +163,10 @@ export default class SeederSeed extends Command {
 
       // If resource exists in CL exit, otherwise create it
       const remoteRes = await this.findByReference(res.resourceType, resource.reference)
-      if (remoteRes) continue
-      else await this.createResource(res.resourceType, resource)
+      if (remoteRes) {
+        if (flags.keep) continue
+        else await this.updateResource(res.resourceType, remoteRes.id, resource)
+      } else await this.createResource(res.resourceType, resource)
 
     }
 
