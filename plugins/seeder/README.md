@@ -27,29 +27,36 @@ $ cl-seeder [COMMAND] (--help | -h) for detailed information about CLI commands.
 ## Commands
 <!-- commands -->
 
-* [`cl-seeder seeder:check [FILE]`](#cl-seeder-seedercheck-file)
+* [`cl-seeder seeder:check ID`](#cl-seeder-seedercheck-id)
 * [`cl-seeder seeder:clean ID`](#cl-seeder-seederclean-id)
 * [`cl-seeder seeder:seed ID`](#cl-seeder-seederseed-id)
 
-### `cl-seeder seeder:check [FILE]`
+### `cl-seeder seeder:check ID`
 
-Describe the command here.
+Execute a check on seeder data.
 
 ```
 USAGE
-  $ cl-seeder seeder:check [FILE]
+  $ cl-seeder seeder:check ID
+
+ARGUMENTS
+  ID  the unique id of the order
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -b, --businessModel=businessModel  [default: single_sku] the kind of business model you want to import
+  -o, --organization=organization    (required) the slug of your organization
+  -u, --url=url                      [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
+
+EXAMPLES
+  $ commercelayer seeder:check -u <seedUrl>
+  $ cl seeder:check -b multi_market
 ```
 
 _See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/check.ts)_
 
 ### `cl-seeder seeder:clean ID`
 
-Describe the command here.
+Clean previously imported seeder data.
 
 ```
 USAGE
@@ -59,9 +66,13 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
-  -b, --businessModel=single_sku   [default: single_sku] the kind of business model you want to import
-  -o, --organization=organization  (required) the slug of your organization
-  -u, --url=url                    [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
+  -b, --businessModel=businessModel  [default: single_sku] the kind of business model you want to import
+  -o, --organization=organization    (required) the slug of your organization
+  -u, --url=url                      [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
+
+EXAMPLES
+  $ commercelayer seeder:clean -u <seedUrl>
+  $ cl seeder:clean -b multi_market
 ```
 
 _See code: [src/commands/seeder/clean.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/clean.ts)_
@@ -78,16 +89,16 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
-  -b, --businessModel=single_sku   [default: single_sku] the kind of business model you want to import
-  -k, --keep                       keep existing resources without updating them
-  -o, --organization=organization  (required) the slug of your organization
-  -u, --url=url                    [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
+  -b, --businessModel=businessModel  [default: single_sku] the kind of business model you want to import
+  -k, --keep                         keep existing resources without updating them
+  -o, --organization=organization    (required) the slug of your organization
+  -u, --url=url                      [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
 
 ALIASES
   $ cl-seeder seed
 
 EXAMPLES
-  $ commercelayer seed -u <seedUrl>
+  $ commercelayer seeder:seed -u <seedUrl>
   $ cl seed -b multi_market
 ```
 
