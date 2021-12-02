@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
-import Command from '../../base'
-import { ResourceData, SeederResource } from '../../data'
+import Command, { flags } from '../../base'
+import { BusinessModel, getResource, modelIndex, ResourceData, SeederResource } from '../../data'
 import chalk from 'chalk'
 import Listr from 'listr'
 import { readResourceData } from '../../data'
@@ -22,11 +22,15 @@ export default class SeederCheck extends Command {
 
   static examples = [
     '$ commercelayer seeder:check -u <seedUrl>',
-    '$ cl seeder:check -b multi_market',
+    '$ cl seeder:check -b single_sku',
   ]
 
   static flags = {
     ...Command.flags,
+    relationships: flags.boolean({
+      char: 'r',
+      description: 'check resource relationships',
+    }),
   }
 
 
@@ -34,7 +38,6 @@ export default class SeederCheck extends Command {
 
     const { flags } = this.parse(SeederCheck)
 
-    const organization = flags.organization
     const businessModel = flags.businessModel
 
     this.log()
@@ -51,13 +54,13 @@ export default class SeederCheck extends Command {
         title: `Check ${chalk.italic(res.resourceType)}`,
         task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
           const origTitle = task.title
-          const n = await this.checkResources(res, flags, task)
+          const n = await this.checkResources(res, flags, task, model)
           task.title = `${origTitle}: [${n}]`
         },
       }
     }), { concurrent: true, exitOnError: false })
 
-    this.log(`Checking data for organization ${chalk.yellowBright(organization)} using business model ${chalk.yellowBright(businessModel)}...\n`)
+    this.log(`Checking business model ${chalk.yellowBright(businessModel)} data...\n`)
 
     // Execute tasks
     tasks.run()
@@ -68,11 +71,11 @@ export default class SeederCheck extends Command {
   }
 
 
-  private async checkResource(type: string, res: ResourceData) {
+
+  private async checkResource(type: string, res: ResourceData, model: BusinessModel, flags: any) {
 
     const resType = res.type || type
     checkResourceType(resType)
-
 
     const invalidFields: string[] = []
 
@@ -85,7 +88,13 @@ export default class SeederCheck extends Command {
 
       const rel = relationshipType(type, field)
       if (rel) {
-        if (Array.isArray(res[field])) throw new Error(`Relationship ${type}.${field} cannot be an array`)
+        const val = res[field] as string
+        if (Array.isArray(val)) throw new Error(`Relationship ${type}.${field} cannot be an array`)
+        else if (flags.relationships) {
+          const relRes = await getResource(flags.url, rel, val)
+          if (!relRes) throw new Error(`Resource of type ${chalk.yellowBright(rel)} and reference ${chalk.yellowBright(val)} not found`)
+          if (modelIndex(model, type, res.reference) < modelIndex(model, rel, val)) throw new Error(`Resource ${rel}.${val} must be created before resource ${type}.${res.reference}`)
+        }
       } else invalidFields.push(field)
 
     }
@@ -95,7 +104,7 @@ export default class SeederCheck extends Command {
   }
 
 
-  private async checkResources(res: SeederResource, flags: any, task: Listr.ListrTaskWrapper): Promise<number> {
+  private async checkResources(res: SeederResource, flags: any, task: Listr.ListrTaskWrapper, model: BusinessModel): Promise<number> {
 
     checkResourceType(res.resourceType)
 
@@ -117,8 +126,7 @@ export default class SeederCheck extends Command {
       const resource = resourceData[r]
       if (!resource) throw new Error(`Resource not found in ${res.resourceType} file: ${chalk.redBright(r)}`)
 
-
-     await this.checkResource(res.resourceType, resource)
+      await this.checkResource(res.resourceType, resource, model, flags)
 
     }
 

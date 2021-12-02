@@ -45,7 +45,7 @@ const cache = (resourceType: string, fileData?: ResourceDataCollection): Resourc
     fileData.forEach(r => {
       resourceMap[r.reference] = r
     })
-    return resourceMap
+    fileCache[resourceType] = resourceMap
   }
   return fileCache[resourceType]
 }
@@ -93,5 +93,18 @@ const readResourceData = async (url: string, resource: string): Promise<Resource
 }
 
 
+const getResource = async (url: string, type: string, reference: string): Promise<ResourceData | undefined> => {
+  const resMap = await readResourceData(url, type)
+  return resMap[reference]
+}
 
-export { readModelData, readResourceData }
+
+const modelIndex = (model: BusinessModel, type: string, reference: string): number => {
+  return model.findIndex(res => {
+    return (res.resourceType === type) && (res.importAll || res.referenceKeys.includes(reference))
+  })
+}
+
+
+
+export { readModelData, readResourceData, getResource, modelIndex }
