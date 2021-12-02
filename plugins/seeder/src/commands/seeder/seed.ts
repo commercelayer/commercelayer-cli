@@ -25,6 +25,24 @@ export default class SeederSeed extends Command {
 
   static flags = {
     ...Command.flags,
+    organization: flags.string({
+      char: 'o',
+      description: 'the slug of your organization',
+      required: true,
+      env: 'CL_CLI_ORGANIZATION',
+    }),
+    domain: flags.string({
+      char: 'd',
+      required: false,
+      hidden: true,
+      dependsOn: ['organization'],
+      env: 'CL_CLI_DOMAIN',
+    }),
+    accessToken: flags.string({
+      hidden: true,
+      required: true,
+      env: 'CL_CLI_ACCESS_TOKEN',
+    }),
     keep: flags.boolean({
       char: 'k',
       description: 'keep existing resources without updating them',
@@ -161,7 +179,7 @@ export default class SeederSeed extends Command {
       const resource = resourceData[r]
       if (!resource) throw new Error(`Resource not found in ${res.resourceType} file: ${chalk.redBright(r)}`)
 
-      // If resource exists in CL exit, otherwise create it
+      // If resource exists in CL update it, otherwise create it
       const remoteRes = await this.findByReference(res.resourceType, resource.reference)
       if (remoteRes) {
         if (flags.keep) continue

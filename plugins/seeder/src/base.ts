@@ -5,7 +5,7 @@ import path from 'path'
 import config from './config'
 import updateNotifier from 'update-notifier'
 import { isRemotePath, pathJoin } from './common'
-import { readModelData } from './data'
+import { BusinessModel, readModelData } from './data'
 import cliux from 'cli-ux'
 import { ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
 import { loadSchema } from './schema'
@@ -17,24 +17,6 @@ const pkg = require('../package.json')
 export default abstract class extends Command {
 
   static flags = {
-    organization: flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-    }),
-    domain: flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
-    }),
-    accessToken: flags.string({
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-    }),
     businessModel: flags.string({
       char: 'b',
       description: 'the kind of business model you want to import',
@@ -104,7 +86,7 @@ export default abstract class extends Command {
   }
 
 
-  protected async readBusinessModelData(url: string, model: string) {
+  protected async readBusinessModelData(url: string, model: string): Promise<BusinessModel> {
     cliux.action.start(`Reading business model ${chalk.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${chalk.yellowBright(url)}`)
     return readModelData(url, model)
       .then(model => {

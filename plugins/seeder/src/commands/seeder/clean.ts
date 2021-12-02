@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command from '../../base'
+import Command, { flags } from '../../base'
 import Listr from 'listr'
 import chalk from 'chalk'
 import { readResourceData, SeederResource } from '../../data'
@@ -13,6 +13,24 @@ export default class SeederClean extends Command {
 
   static flags = {
     ...Command.flags,
+    organization: flags.string({
+      char: 'o',
+      description: 'the slug of your organization',
+      required: true,
+      env: 'CL_CLI_ORGANIZATION',
+    }),
+    domain: flags.string({
+      char: 'd',
+      required: false,
+      hidden: true,
+      dependsOn: ['organization'],
+      env: 'CL_CLI_DOMAIN',
+    }),
+    accessToken: flags.string({
+      hidden: true,
+      required: true,
+      env: 'CL_CLI_ACCESS_TOKEN',
+    }),
   }
 
   static examples = [
