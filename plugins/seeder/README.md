@@ -44,12 +44,12 @@ ARGUMENTS
 
 OPTIONS
   -b, --businessModel=businessModel  [default: single_sku] the kind of business model you want to import
-  -o, --organization=organization    (required) the slug of your organization
+  -r, --relationships                check resource relationships
   -u, --url=url                      [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
 
 EXAMPLES
   $ commercelayer seeder:check -u <seedUrl>
-  $ cl seeder:check -b multi_market
+  $ cl seeder:check -b single_sku
 ```
 
 _See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/check.ts)_
