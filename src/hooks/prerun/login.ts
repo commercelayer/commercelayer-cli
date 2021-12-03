@@ -8,8 +8,15 @@ import cliux from 'cli-ux'
 import chalk from 'chalk'
 
 
-const excludedTopics: string[] = ['applications', 'plugins', 'config', 'util']
-const exludedCommands: string[] = ['resources:filters', 'resources:doc', 'resources', 'applications']
+const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util']
+const exludedCommands: string[] = [
+	'imports:types',
+	'resources',
+	'resources:doc',
+	'resources:filters',
+	'seeder:check',
+	'webhooks:topics',
+]
 
 
 const isCommandExcluded = (cmd: string): boolean => {
