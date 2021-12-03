@@ -56,36 +56,43 @@ export default class SeederSeed extends Command {
 
     const organization = flags.organization
     const businessModel = flags.businessModel
+    const name = this.modelNameChack(flags)
 
     this.initCommerceLayer(flags)
 
     this.log()
 
-    // Initialize OpenAPI schema
-    await this.readOpenAPISchema()
+    try {
 
-    // Read business model data
-    const model = await this.readBusinessModelData(flags.url, businessModel)
+      // Initialize OpenAPI schema
+      await this.readOpenAPISchema()
 
-    // Create tasks
-    const tasks = new Listr(model.map(res => {
-      return {
-        title: `Create ${chalk.italic(res.resourceType)}`,
-        task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
-          const origTitle = task.title
-          const n = await this.createResources(res, flags, task)
-          task.title = `${origTitle}: [${n}]`
-        },
-      }
-    }), { concurrent: false, exitOnError: true })
+      // Read business model data
+      const model = await this.readBusinessModelData(flags.url, name)
 
-    this.log(`Seeding data for organization ${chalk.yellowBright(organization)} using business model ${chalk.yellowBright(businessModel)}...\n`)
+      // Create tasks
+      const tasks = new Listr(model.map(res => {
+        return {
+          title: `Create ${chalk.italic(res.resourceType)}`,
+          task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
+            const origTitle = task.title
+            const n = await this.createResources(res, flags, task)
+            task.title = `${origTitle}: [${n}]`
+          },
+        }
+      }), { concurrent: false, exitOnError: true })
 
-    // Execute tasks
-    tasks.run()
-      .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data seeding completed! \u2705`))
-      .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data seeding not completed, correct errors and rerun the ${chalk.bold('seed')} command`))
-      .finally(() => this.log())
+      this.log(`Seeding data for organization ${chalk.yellowBright(organization)} using business model ${chalk.yellowBright(businessModel)}...\n`)
+
+      // Execute tasks
+      tasks.run()
+        .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data seeding completed! \u2705`))
+        .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data seeding not completed, correct errors and rerun the ${chalk.bold('seed')} command`))
+        .finally(() => this.log())
+
+    } catch (error: any) {
+      this.error(error.message)
+    }
 
   }
 

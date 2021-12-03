@@ -1,6 +1,6 @@
 
 import config from './config'
-import { getCommerceLayerDataFile, pathJoin } from './common'
+import { getCommerceLayerDataFile, isRemotePath, pathJoin } from './common'
 import chalk from 'chalk'
 
 
@@ -62,7 +62,7 @@ const readModelData = async (url: string, model: string): Promise<BusinessModel>
 
   const fileName = model + '.json'
   const modelData = await readSeederFile(url, fileName).catch(() => {
-    throw new Error(`Error reading data file from ${chalk.yellowBright(url)}`)
+    throw new Error(`Unable to read data file ${chalk.yellowBright(fileName)} from ${isRemotePath(url) ? 'url' : 'path'} ${chalk.yellowBright(url)}`)
   })
 
   // Validation

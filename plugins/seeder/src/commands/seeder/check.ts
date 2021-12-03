@@ -39,34 +39,41 @@ export default class SeederCheck extends Command {
     const { flags } = this.parse(SeederCheck)
 
     const businessModel = flags.businessModel
+    const name = this.modelNameChack(flags)
 
     this.log()
 
-    // Initialize OpenAPI schema
-    await this.readOpenAPISchema()
+    try {
 
-    // Read business model data
-    const model = await this.readBusinessModelData(flags.url, businessModel)
+      // Initialize OpenAPI schema
+      await this.readOpenAPISchema()
 
-    // Create tasks
-    const tasks = new Listr(model.map(res => {
-      return {
-        title: `Check ${chalk.italic(res.resourceType)}`,
-        task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
-          const origTitle = task.title
-          const n = await this.checkResources(res, flags, task, model)
-          task.title = `${origTitle}: [${n}]`
-        },
-      }
-    }), { concurrent: true, exitOnError: false })
+      // Read business model data
+      const model = await this.readBusinessModelData(flags.url, name)
 
-    this.log(`Checking business model ${chalk.yellowBright(businessModel)} data...\n`)
+      // Create tasks
+      const tasks = new Listr(model.map(res => {
+        return {
+          title: `Check ${chalk.italic(res.resourceType)}`,
+          task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
+            const origTitle = task.title
+            const n = await this.checkResources(res, flags, task, model)
+            task.title = `${origTitle}: [${n}]`
+          },
+        }
+      }), { concurrent: true, exitOnError: false })
 
-    // Execute tasks
-    tasks.run()
-      .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data check completed! \u2705`))
-      .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data check completed with errors`))
-      .finally(() => this.log())
+      this.log(`Checking business model ${chalk.yellowBright(businessModel)} data...\n`)
+
+      // Execute tasks
+      tasks.run()
+        .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data check completed! \u2705`))
+        .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data check completed with errors`))
+        .finally(() => this.log())
+
+    } catch (error: any) {
+      this.error(error.message)
+    }
 
   }
 

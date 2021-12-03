@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-plugin-seeder",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-seeder": "./bin/run",

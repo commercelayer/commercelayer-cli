@@ -45,36 +45,43 @@ export default class SeederClean extends Command {
 
     const organization = flags.organization
     const businessModel = flags.businessModel
+    const name = this.modelNameChack(flags)
 
     this.initCommerceLayer(flags)
 
     this.log()
 
-    // Read business model data
-    const model = await this.readBusinessModelData(flags.url, businessModel)
+    try {
 
-    // Delete resource in reverse order
-    const resources = model.reverse()
+      // Read business model data
+      const model = await this.readBusinessModelData(flags.url, name)
 
-    // Create tasks
-    const tasks = new Listr(resources.map(res => {
-      return {
-        title: `Delete ${chalk.italic(res.resourceType)}`,
-        task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
-          const origTitle = task.title
-          const n = await this.deleteResources(res, flags, task)
-          task.title = `${origTitle}: [${n}]`
-        },
-      }
-    }), { concurrent: false, exitOnError: true })
+      // Delete resource in reverse order
+      const resources = model.reverse()
 
-    this.log(`Cleaning data for organization ${chalk.yellowBright(organization)} using business model ${chalk.yellowBright(businessModel)}...\n`)
+      // Create tasks
+      const tasks = new Listr(resources.map(res => {
+        return {
+          title: `Delete ${chalk.italic(res.resourceType)}`,
+          task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
+            const origTitle = task.title
+            const n = await this.deleteResources(res, flags, task)
+            task.title = `${origTitle}: [${n}]`
+          },
+        }
+      }), { concurrent: false, exitOnError: true })
 
-    // Execute tasks
-    tasks.run()
-      .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data cleaning completed! \u2705`))
-      .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data cleaning not completed, correct errors and rerun the ${chalk.bold('clean')} command`))
-      .finally(() => this.log())
+      this.log(`Cleaning data for organization ${chalk.yellowBright(organization)} using business model ${chalk.yellowBright(businessModel)}...\n`)
+
+      // Execute tasks
+      tasks.run()
+        .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data cleaning completed! \u2705`))
+        .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data cleaning not completed, correct errors and rerun the ${chalk.bold('clean')} command`))
+        .finally(() => this.log())
+
+    } catch (error: any) {
+      this.error(error.message)
+    }
 
   }
 
@@ -113,11 +120,11 @@ export default class SeederClean extends Command {
 
   private async deleteResource(type: string, id: string): Promise<void> {
 
-   checkResourceType(type)
+    checkResourceType(type)
 
     const resSdk: any = this.cl[type as keyof CommerceLayerClient]
 
-   await resSdk.delete(id).catch((error: any) => {
+    await resSdk.delete(id).catch((error: any) => {
       if (CommerceLayerStatic.isApiError(error)) {
         const err = error.first()
         if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)

@@ -20,13 +20,18 @@ export default abstract class extends Command {
     businessModel: flags.string({
       char: 'b',
       description: 'the kind of business model you want to import',
-      // options: ['single_sku'],
+      options: ['single_sku', 'custom'],
       default: 'single_sku',
     }),
     url: flags.string({
       char: 'u',
       description: 'seeder data URL',
       default: pathJoin(config.dataUrl, config.seederFolder),
+    }),
+    name: flags.string({
+      char: 'n',
+      description: 'the name of the business model file to use',
+      dependsOn: ['url'],
     }),
   }
 
@@ -64,6 +69,7 @@ export default abstract class extends Command {
     if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
     return super.catch(error)
   }
+
 
 
   protected initCommerceLayer(flags: any): void {
@@ -120,6 +126,12 @@ export default abstract class extends Command {
       return undefined
     }
 
+  }
+
+
+  protected modelNameChack(flags: any): string {
+    if (flags.name && (flags.businessModel !== 'custom')) if (flags.businessModel !== 'custom') this.error(`Model name can be specified only using the ${chalk.bold('custom')} business model`)
+    return flags.name || flags.businessModel
   }
 
 }
