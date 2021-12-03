@@ -22,6 +22,7 @@ const fixType = (val: string): string | number | boolean | null | undefined => {
 const excludeFlags = (flags: any, exclude: string[]): any => {
   const filteredFlags = { ...flags }
   for (const e of exclude) delete filteredFlags[e]
+  return filteredFlags
 }
 
 

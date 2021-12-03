@@ -139,6 +139,20 @@ ARGUMENTS
   RESOURCE  the resource type
   ID        id of the resource to retrieve
 
+OPTIONS
+  -D, --doc                        shows the CLI command in a specific language
+  -R, --raw                        print out the raw API response
+  -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=include            comma separated resources to include
+  -j, --json                       convert output in standard JSON format
+  -l, --lang=curl|node             show the CLI command in the specified language syntax
+  -o, --organization=organization  (required) the slug of your organization
+  -u, --unformatted                print unformatted JSON output
+  --curl                           show the equivalent cURL command of the CLI command
+  --load-args=load-args            load previously saved command arguments
+  --node                           show the equivalent Node SDK source code of the CLI command
+  --save-args=save-args            save command data to file for future use
+
 ALIASES
   $ cl-resources delete
   $ cl-resources rd

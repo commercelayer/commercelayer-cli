@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run",
@@ -18,23 +18,23 @@
     "@types/node": "^10.17.60",
     "@types/node-notifier": "^8.0.0",
     "@types/update-notifier": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
     "chai": "^4.3.4",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
+    "eslint-config-xo-space": "^0.20.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-unicorn": "^6.0.1",
     "globby": "^10.0.2",
     "inflector-js": "^1.0.1",
     "jsonapi-typescript": "^0.1.3",
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
     "ts-node": "^10.4.0",
-    "typescript": "^4.4.4",
-    "@typescript-eslint/eslint-plugin": "^2.6.1",
-    "@typescript-eslint/parser": "^2.6.1",
-    "eslint-config-xo-space": "^0.20.0",
-    "eslint-plugin-mocha": "^5.2.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-unicorn": "^6.0.1"
+    "typescript": "^4.4.4"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -85,7 +85,7 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@commercelayer/js-auth": "^2.2.2",
-    "@commercelayer/sdk": "^2.3.6",
+    "@commercelayer/sdk": "^2.3.8",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@types/inquirer": "^8.1.3",
