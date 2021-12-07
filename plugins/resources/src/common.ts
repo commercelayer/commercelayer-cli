@@ -19,9 +19,9 @@ const fixType = (val: string): string | number | boolean | null | undefined => {
 }
 
 
-const excludeFlags = (flags: any, exclude: string[]): any => {
+const commandFlags = (flags: any, exclude?: string[]): any => {
   const filteredFlags = { ...flags }
-  for (const e of exclude) delete filteredFlags[e]
+  if (exclude) for (const e of exclude) delete filteredFlags[e]
   return filteredFlags
 }
 
@@ -65,4 +65,4 @@ const splitSlash = (str: string): string[] => {
 }
 
 
-export { baseURL, fixType, splitSlash, excludeFlags, cleanDate }
+export { baseURL, fixType, splitSlash, commandFlags, cleanDate }
