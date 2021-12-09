@@ -17,27 +17,27 @@ Commerce Layer CLI seeder plugin
 <!-- usage -->
 
 ```sh-session
-$ cl-seeder COMMAND
+$ commercelayer COMMAND
 
-$ cl-seeder (-v | version | --version) to check the version of the CLI you have installed.
+$ commercelayer (-v | version | --version) to check the version of the CLI you have installed.
 
-$ cl-seeder [COMMAND] (--help | -h) for detailed information about CLI commands.
+$ commercelayer [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 ## Commands
 <!-- commands -->
 
-* [`cl-seeder seeder:check ID`](#cl-seeder-seedercheck-id)
-* [`cl-seeder seeder:clean ID`](#cl-seeder-seederclean-id)
-* [`cl-seeder seeder:seed ID`](#cl-seeder-seederseed-id)
+* [`commercelayer seeder:check ID`](#commercelayer-seedercheck-id)
+* [`commercelayer seeder:clean ID`](#commercelayer-seederclean-id)
+* [`commercelayer seeder:seed ID`](#commercelayer-seederseed-id)
 
-### `cl-seeder seeder:check ID`
+### `commercelayer seeder:check ID`
 
 Execute a check on seeder data.
 
 ```
 USAGE
-  $ cl-seeder seeder:check ID
+  $ commercelayer seeder:check ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -55,13 +55,13 @@ EXAMPLES
 
 _See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/check.ts)_
 
-### `cl-seeder seeder:clean ID`
+### `commercelayer seeder:clean ID`
 
 Clean previously imported seeder data.
 
 ```
 USAGE
-  $ cl-seeder seeder:clean ID
+  $ commercelayer seeder:clean ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -79,13 +79,13 @@ EXAMPLES
 
 _See code: [src/commands/seeder/clean.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/clean.ts)_
 
-### `cl-seeder seeder:seed ID`
+### `commercelayer seeder:seed ID`
 
 Execute Commerce Layer seeder.
 
 ```
 USAGE
-  $ cl-seeder seeder:seed ID
+  $ commercelayer seeder:seed ID
 
 ARGUMENTS
   ID  the unique id of the order
@@ -98,7 +98,7 @@ OPTIONS
   -u, --url=url                          [default: https://commercelayer-data.pages.dev/seeder] seeder data URL
 
 ALIASES
-  $ cl-seeder seed
+  $ commercelayer seed
 
 EXAMPLES
   $ commercelayer seeder:seed -u <seedUrl>

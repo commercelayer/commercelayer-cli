@@ -1,11 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-seeder",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "bin": {
-    "cl-seeder": "./bin/run",
-    "cls": "./bin/run"
-  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-seeder/issues",
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
@@ -47,7 +43,7 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "cl-seeder",
+    "bin": "commercelayer",
     "devPlugins": [
       "@oclif/plugin-help"
     ],
