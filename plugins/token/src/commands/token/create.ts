@@ -1,7 +1,8 @@
 import Command, { flags } from '../../base'
 import config from '../../api-conf'
 import chalk from 'chalk'
-import { decodeAccessToken, generateAccessToken } from '../../token'
+import { CustomToken, decodeAccessToken, generateAccessToken } from '../../token'
+import commercelayer from '@commercelayer/sdk'
 
 
 const VALIDITY_MIN = 2
@@ -12,6 +13,11 @@ const VALIDITY_MAX = config.default_token_expiration_mins
 export default class TokenCreate extends Command {
 
   static description = 'create a new custom access token'
+
+  static examples = [
+		'$ commercelayer token:create -s <sharedSecret> -m 30',
+		'$ cl token:create -s <sharedSecret> -m 15 --info',
+	]
 
   static flags = {
     ...Command.flags,
@@ -42,9 +48,13 @@ export default class TokenCreate extends Command {
 
     try {
 
-      const generated = await generateAccessToken(flags.accessToken, flags.shared, flags.minutes)
+      const decoded = decodeAccessToken(flags.accessToken)
+
+      const generated = generateAccessToken(decoded, flags.shared, flags.minutes)
 
       if (generated) {
+
+        if (!this.testAccessToken(generated, flags)) this.error('Unable to generate a valid access token with the provided input data')
 
         const accessToken = generated.accessToken
         const decodedAccessToken = decodeAccessToken(accessToken)
@@ -67,8 +77,28 @@ export default class TokenCreate extends Command {
 
 
   private checkValidity(mins: number): boolean {
-    if ((mins < VALIDITY_MIN) || (mins > VALIDITY_MAX)) this.error(`Token expiration time must be beyween ${VALIDITY_MIN} and ${VALIDITY_MAX} minutes`)
+    if ((mins < VALIDITY_MIN) || (mins > VALIDITY_MAX))
+      this.error(`Token expiration time must be between ${chalk.yellowBright(VALIDITY_MIN)} and ${chalk.yellowBright(VALIDITY_MAX)} minutes`)
     return true
+  }
+
+
+  private async testAccessToken(token: CustomToken, flags: any): Promise<boolean> {
+
+    const organization = flags.organization
+    const domain = flags.domain
+    const accessToken = token.accessToken
+
+    const cl = commercelayer({
+      organization,
+      domain,
+      accessToken,
+    })
+
+    return cl.organization.retrieve()
+      .then(org => org.slug === organization)
+      .catch(() => false)
+
   }
 
 }

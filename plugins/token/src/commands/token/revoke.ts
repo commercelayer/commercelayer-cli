@@ -7,6 +7,11 @@ export default class TokenRevoke extends Command {
 
   static description = 'revoke a Commerce Layer access token'
 
+  static examples = [
+		'$ commercelayer token:revoke',
+		'$ cl token:revoke -a <accessToken>',
+	]
+
   static flags = {
     ...Command.flags,
     clientId: flags.string({

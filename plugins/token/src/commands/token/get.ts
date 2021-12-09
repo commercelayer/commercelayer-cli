@@ -29,6 +29,11 @@ export default class TokenGet extends Command {
 
   static description = 'get a new access token'
 
+  static examples = [
+		'$ commercelayer token:get',
+    '$ cl token:get --info',
+	]
+
   static flags = {
     ...(commandFlags<typeof Command.flags>(Command.flags, ['accessToken'])),
     clientId: flags.string({

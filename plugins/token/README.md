@@ -9,147 +9,117 @@ commercelayer-cli-plugin-token
 [![License](https://img.shields.io/npm/l/commercelayer-cli-plugin-token.svg)](https://github.com/pviti/commercelayer-cli-plugin-token/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+
 <!-- tocstop -->
 # Usage
 <!-- usage -->
+
 ```sh-session
-$ npm install -g commercelayer-cli-plugin-token
-$ commercelayer-cli-plugin-token COMMAND
-running command...
-$ commercelayer-cli-plugin-token (-v|--version|version)
-commercelayer-cli-plugin-token/0.0.0 darwin-x64 node-v16.13.0
-$ commercelayer-cli-plugin-token --help [COMMAND]
-USAGE
-  $ commercelayer-cli-plugin-token COMMAND
-...
+$ @commercelayer/cli-plugin-token COMMAND
+
+$ @commercelayer/cli-plugin-token (-v | version | --version) to check the version of the CLI you have installed.
+
+$ @commercelayer/cli-plugin-token [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`commercelayer-cli-plugin-token hello [FILE]`](#commercelayer-cli-plugin-token-hello-file)
-* [`commercelayer-cli-plugin-token help [COMMAND]`](#commercelayer-cli-plugin-token-help-command)
-* [`commercelayer-cli-plugin-token token:create [FILE]`](#commercelayer-cli-plugin-token-tokencreate-file)
-* [`commercelayer-cli-plugin-token token:decode [FILE]`](#commercelayer-cli-plugin-token-tokendecode-file)
-* [`commercelayer-cli-plugin-token token:get [FILE]`](#commercelayer-cli-plugin-token-tokenget-file)
-* [`commercelayer-cli-plugin-token token:noc [FILE]`](#commercelayer-cli-plugin-token-tokennoc-file)
-* [`commercelayer-cli-plugin-token token:revoke [FILE]`](#commercelayer-cli-plugin-token-tokenrevoke-file)
 
-## `commercelayer-cli-plugin-token hello [FILE]`
+* [`@commercelayer/cli-plugin-token token:create`](#commercelayercli-plugin-token-tokencreate)
+* [`@commercelayer/cli-plugin-token token:decode [TOKEN]`](#commercelayercli-plugin-token-tokendecode-token)
+* [`@commercelayer/cli-plugin-token token:get`](#commercelayercli-plugin-token-tokenget)
+* [`@commercelayer/cli-plugin-token token:revoke [TOKEN]`](#commercelayercli-plugin-token-tokenrevoke-token)
 
-describe the command here
+### `@commercelayer/cli-plugin-token token:create`
+
+Create a new custom access token.
 
 ```
 USAGE
-  $ commercelayer-cli-plugin-token hello [FILE]
+  $ @commercelayer/cli-plugin-token token:create
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -m, --minutes=minutes            (required) minutes to token expiration [2, 120]
+  -o, --organization=organization  (required) the slug of your organization
+  -s, --shared=shared              (required) organization shared secret
+  --info                           show access token info
 
-EXAMPLE
-  $ commercelayer-cli-plugin-token hello
-  hello world from ./src/hello.ts!
+EXAMPLES
+  $ commercelayer token:create -s <sharedSecret> -m 30
+  $ cl token:create -s <sharedSecret> -m 15 --info
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/pviti/commercelayer-cli-plugin-token/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/token/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/create.ts)_
 
-## `commercelayer-cli-plugin-token help [COMMAND]`
+### `@commercelayer/cli-plugin-token token:decode [TOKEN]`
 
-display help for commercelayer-cli-plugin-token
+Decode a Commerce Layer access token.
 
 ```
 USAGE
-  $ commercelayer-cli-plugin-token help [COMMAND]
+  $ @commercelayer/cli-plugin-token token:decode [TOKEN]
 
 ARGUMENTS
-  COMMAND  command to show help for
+  TOKEN  the access token to decode
 
 OPTIONS
-  --all  see all commands in CLI
+  -o, --organization=organization  (required) the slug of your organization
+
+ALIASES
+  $ @commercelayer/cli-plugin-token token:info
+
+EXAMPLES
+  $ commercelayer token:decode
+  $ cl token:info -a <accessToken>
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.6/src/commands/help.ts)_
+_See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
 
-## `commercelayer-cli-plugin-token token:create [FILE]`
+### `@commercelayer/cli-plugin-token token:get`
 
-describe the command here
+Get a new access token.
 
 ```
 USAGE
-  $ commercelayer-cli-plugin-token token:create [FILE]
+  $ @commercelayer/cli-plugin-token token:get
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -S, --scope=scope                access token scope (market, stock location)
+  -e, --email=email                customer email
+  -i, --clientId=clientId          (required) application client_id
+  -o, --organization=organization  (required) the slug of your organization
+  -p, --password=password          customer secret password
+  -s, --clientSecret=clientSecret  application client_secret
+  --info                           show access token info
+
+EXAMPLES
+  $ commercelayer token:get
+  $ cl token:get --info
 ```
 
-_See code: [src/commands/token/create.ts](https://github.com/pviti/commercelayer-cli-plugin-token/blob/v0.0.0/src/commands/token/create.ts)_
+_See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/get.ts)_
 
-## `commercelayer-cli-plugin-token token:decode [FILE]`
+### `@commercelayer/cli-plugin-token token:revoke [TOKEN]`
 
-describe the command here
+Revoke a Commerce Layer access token.
 
 ```
 USAGE
-  $ commercelayer-cli-plugin-token token:decode [FILE]
+  $ @commercelayer/cli-plugin-token token:revoke [TOKEN]
+
+ARGUMENTS
+  TOKEN  access token to revoke
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -i, --clientId=clientId          (required) application client_id
+  -o, --organization=organization  (required) the slug of your organization
+  -s, --clientSecret=clientSecret  (required) application client_secret
+
+EXAMPLES
+  $ commercelayer token:revoke
+  $ cl token:revoke -a <accessToken>
 ```
 
-_See code: [src/commands/token/decode.ts](https://github.com/pviti/commercelayer-cli-plugin-token/blob/v0.0.0/src/commands/token/decode.ts)_
-
-## `commercelayer-cli-plugin-token token:get [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ commercelayer-cli-plugin-token token:get [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/token/get.ts](https://github.com/pviti/commercelayer-cli-plugin-token/blob/v0.0.0/src/commands/token/get.ts)_
-
-## `commercelayer-cli-plugin-token token:noc [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ commercelayer-cli-plugin-token token:noc [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/token/noc.ts](https://github.com/pviti/commercelayer-cli-plugin-token/blob/v0.0.0/src/commands/token/noc.ts)_
-
-## `commercelayer-cli-plugin-token token:revoke [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ commercelayer-cli-plugin-token token:revoke [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-```
-
-_See code: [src/commands/token/revoke.ts](https://github.com/pviti/commercelayer-cli-plugin-token/blob/v0.0.0/src/commands/token/revoke.ts)_
+_See code: [src/commands/token/revoke.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/revoke.ts)_
 <!-- commandsstop -->

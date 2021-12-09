@@ -46,16 +46,14 @@ const decodeAccessToken = (accessToken: string): AccessTokenInfo => {
 }
 
 
-const generateAccessToken = (token: string, sharedSecret: string, minutes: number): CustomToken => {
+const generateAccessToken = (token: string | AccessTokenInfo, sharedSecret: string, minutes: number): CustomToken => {
 
-  const tokenData = decodeAccessToken(token)
+  const tokenData = (typeof token === 'string') ? decodeAccessToken(token) : token
 
   const payload = {
-    application: tokenData?.application,
+    ...tokenData,
     exp: Math.floor(Date.now() / 1000) + (minutes * 60),
-    organization: tokenData?.organization,
     rand: Math.random(),
-    test: tokenData?.test,
   }
 
   const accessToken = jwt.sign(payload, sharedSecret, { algorithm: 'HS512', noTimestamp: true })

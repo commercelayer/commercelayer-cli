@@ -7,6 +7,13 @@ export default class TokenDecode extends Command {
 
   static description = 'decode a Commerce Layer access token'
 
+  static aliases = ['token:info']
+
+  static examples = [
+		'$ commercelayer token:decode',
+		'$ cl token:info -a <accessToken>',
+	]
+
   static flags = {
     ...Command.flags,
   }
