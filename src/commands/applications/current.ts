@@ -54,5 +54,5 @@ export default class ApplicationsCurrent extends Command {
 export const printCurrent = (app?: AppInfo): string => {
 	if (!app || !app.key || (app.key === '')) return chalk.italic.dim('No current application')
 	const mode = `${((app.mode === 'live') ? chalk.greenBright : chalk.yellowBright)(app.mode)}`
-	return `${chalk.bold.yellowBright(app.name)}  [ ${app.organization} | ${app.kind} | ${mode} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
+	return `${chalk.bold.yellowBright(app.name)}  [ ${app.organization} | ${app.kind} | ${mode} | ${app.alias} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
 }
