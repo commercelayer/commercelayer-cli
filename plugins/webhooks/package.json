@@ -1,12 +1,8 @@
 {
   "name": "@commercelayer/cli-plugin-webhooks",
   "description": "Commerce Layer CLI Webhooks plugin",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "bin": {
-    "cl-webhooks": "./bin/run",
-    "clw": "./bin/run"
-  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
@@ -47,7 +43,7 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "cl-webhooks",
+    "bin": "commercelayer",
     "devPlugins": [
       "@oclif/plugin-help"
     ],
