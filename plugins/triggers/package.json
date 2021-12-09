@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
   "devDependencies": {
@@ -45,6 +45,7 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
+    "bin": "commercelayer",
     "devPlugins": [
       "@oclif/plugin-help"
     ],
