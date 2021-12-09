@@ -19,6 +19,8 @@ export default class ApplicationsToken extends Command {
 
 	static aliases = ['app:token']
 
+	static hidden = true
+
 	static examples = [
 		'$ commercelayer applications:token',
 		'$ commercelayer app:token --info',
@@ -79,7 +81,7 @@ export default class ApplicationsToken extends Command {
 			}
 
 			if (accessToken) {
-				this.log(`\nAccess token for application ${chalk.bold.yellowBright(app.name)} of ${chalk.bold.yellowBright(app.organization)}`)
+				this.log(`\nAccess token for application ${chalk.bold.yellowBright(app.name)} of organization ${chalk.bold.yellowBright(app.organization)}`)
 				this.log(`\n${chalk.blueBright(accessToken)}\n`)
 				if (flags.shared && expMinutes) {
 					this.warn(chalk.italic(`this access token will expire in ${expMinutes} minutes`))
