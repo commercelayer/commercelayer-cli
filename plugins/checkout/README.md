@@ -16,26 +16,26 @@ Commerce Layer CLI Checkout plugin
 <!-- usage -->
 
 ```sh-session
-$ cl-checkout COMMAND
+$ commercelayer COMMAND
 
-$ cl-checkout (-v | version | --version) to check the version of the CLI you have installed.
+$ commercelayer (-v | version | --version) to check the version of the CLI you have installed.
 
-$ cl-checkout [COMMAND] (--help | -h) for detailed information about CLI commands.
+$ commercelayer [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
 
-* [`cl-checkout checkout`](#cl-checkout-checkout)
-* [`cl-checkout checkout:order ID`](#cl-checkout-checkoutorder-id)
+* [`commercelayer checkout`](#commercelayer-checkout)
+* [`commercelayer checkout:order ID`](#commercelayer-checkoutorder-id)
 
-### `cl-checkout checkout`
+### `commercelayer checkout`
 
 Create checkout URLs.
 
 ```
 USAGE
-  $ cl-checkout checkout
+  $ commercelayer checkout
 
 OPTIONS
   -O, --order=order                an order id
@@ -50,13 +50,13 @@ OPTIONS
 
 _See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/src/commands/checkout/index.ts)_
 
-### `cl-checkout checkout:order ID`
+### `commercelayer checkout:order ID`
 
 Create checkout URLs starting from an existing order.
 
 ```
 USAGE
-  $ cl-checkout checkout:order ID
+  $ commercelayer checkout:order ID
 
 ARGUMENTS
   ID  unique id of the order
