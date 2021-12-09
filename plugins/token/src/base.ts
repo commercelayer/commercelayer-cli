@@ -76,10 +76,7 @@ export default abstract class extends Command {
   protected printAccessToken(accessToken?: string, expMinutes?: number) {
     if (accessToken) {
       this.log(`\n${chalk.blueBright(accessToken)}\n`)
-      if (expMinutes) {
-        this.warn(chalk.italic(`this access token will expire in ${expMinutes} minutes`))
-        this.log()
-      }
+      if (expMinutes) this.warn(chalk.italic(`This access token will expire in ${chalk.yellowBright(expMinutes)} minutes\n`))
     }
   }
 

@@ -16,28 +16,28 @@ commercelayer-cli-plugin-token
 <!-- usage -->
 
 ```sh-session
-$ @commercelayer/cli-plugin-token COMMAND
+$ commercelayer COMMAND
 
-$ @commercelayer/cli-plugin-token (-v | version | --version) to check the version of the CLI you have installed.
+$ commercelayer (-v | version | --version) to check the version of the CLI you have installed.
 
-$ @commercelayer/cli-plugin-token [COMMAND] (--help | -h) for detailed information about CLI commands.
+$ commercelayer [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
 
-* [`@commercelayer/cli-plugin-token token:create`](#commercelayercli-plugin-token-tokencreate)
-* [`@commercelayer/cli-plugin-token token:decode [TOKEN]`](#commercelayercli-plugin-token-tokendecode-token)
-* [`@commercelayer/cli-plugin-token token:get`](#commercelayercli-plugin-token-tokenget)
-* [`@commercelayer/cli-plugin-token token:revoke [TOKEN]`](#commercelayercli-plugin-token-tokenrevoke-token)
+* [`commercelayer token:create`](#commercelayer-tokencreate)
+* [`commercelayer token:decode [TOKEN]`](#commercelayer-tokendecode-token)
+* [`commercelayer token:get`](#commercelayer-tokenget)
+* [`commercelayer token:revoke [TOKEN]`](#commercelayer-tokenrevoke-token)
 
-### `@commercelayer/cli-plugin-token token:create`
+### `commercelayer token:create`
 
 Create a new custom access token.
 
 ```
 USAGE
-  $ @commercelayer/cli-plugin-token token:create
+  $ commercelayer token:create
 
 OPTIONS
   -m, --minutes=minutes            (required) minutes to token expiration [2, 120]
@@ -52,13 +52,13 @@ EXAMPLES
 
 _See code: [src/commands/token/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/create.ts)_
 
-### `@commercelayer/cli-plugin-token token:decode [TOKEN]`
+### `commercelayer token:decode [TOKEN]`
 
 Decode a Commerce Layer access token.
 
 ```
 USAGE
-  $ @commercelayer/cli-plugin-token token:decode [TOKEN]
+  $ commercelayer token:decode [TOKEN]
 
 ARGUMENTS
   TOKEN  the access token to decode
@@ -67,7 +67,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ @commercelayer/cli-plugin-token token:info
+  $ commercelayer token:info
 
 EXAMPLES
   $ commercelayer token:decode
@@ -76,13 +76,13 @@ EXAMPLES
 
 _See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
 
-### `@commercelayer/cli-plugin-token token:get`
+### `commercelayer token:get`
 
 Get a new access token.
 
 ```
 USAGE
-  $ @commercelayer/cli-plugin-token token:get
+  $ commercelayer token:get
 
 OPTIONS
   -S, --scope=scope                access token scope (market, stock location)
@@ -100,13 +100,13 @@ EXAMPLES
 
 _See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/get.ts)_
 
-### `@commercelayer/cli-plugin-token token:revoke [TOKEN]`
+### `commercelayer token:revoke [TOKEN]`
 
 Revoke a Commerce Layer access token.
 
 ```
 USAGE
-  $ @commercelayer/cli-plugin-token token:revoke [TOKEN]
+  $ commercelayer token:revoke [TOKEN]
 
 ARGUMENTS
   TOKEN  access token to revoke
