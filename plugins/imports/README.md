@@ -16,31 +16,31 @@ Commerce Layer CLI Imports plugin
 <!-- usage -->
 
 ```sh-session
-$ cl-imports COMMAND
+$ @commercelayer/cli-plugin-imports COMMAND
 
-$ cl-imports (-v | version | --version) to check the version of the CLI you have installed.
+$ @commercelayer/cli-plugin-imports (-v | version | --version) to check the version of the CLI you have installed.
 
-$ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands.
+$ @commercelayer/cli-plugin-imports [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
 
-* [`cl-imports imports`](#cl-imports-imports)
-* [`cl-imports imports:create`](#cl-imports-importscreate)
-* [`cl-imports imports:delete ID`](#cl-imports-importsdelete-id)
-* [`cl-imports imports:details ID`](#cl-imports-importsdetails-id)
-* [`cl-imports imports:group GROUP_ID`](#cl-imports-importsgroup-group_id)
-* [`cl-imports imports:list`](#cl-imports-importslist)
-* [`cl-imports imports:types`](#cl-imports-importstypes)
+* [`@commercelayer/cli-plugin-imports imports`](#commercelayercli-plugin-imports-imports)
+* [`@commercelayer/cli-plugin-imports imports:create`](#commercelayercli-plugin-imports-importscreate)
+* [`@commercelayer/cli-plugin-imports imports:delete ID`](#commercelayercli-plugin-imports-importsdelete-id)
+* [`@commercelayer/cli-plugin-imports imports:details ID`](#commercelayercli-plugin-imports-importsdetails-id)
+* [`@commercelayer/cli-plugin-imports imports:group GROUP_ID`](#commercelayercli-plugin-imports-importsgroup-group_id)
+* [`@commercelayer/cli-plugin-imports imports:list`](#commercelayercli-plugin-imports-importslist)
+* [`@commercelayer/cli-plugin-imports imports:types`](#commercelayercli-plugin-imports-importstypes)
 
-### `cl-imports imports`
+### `@commercelayer/cli-plugin-imports imports`
 
 List all the created imports.
 
 ```
 USAGE
-  $ cl-imports imports
+  $ @commercelayer/cli-plugin-imports imports
 
 OPTIONS
   -A, --all
@@ -61,7 +61,9 @@ OPTIONS
   -s, --status=in_progress|pending|completed|interrupted
       the import job status
 
-  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+  -t, 
+  --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax
+  _categories
       the type of resource imported
 
   -w, --warnings
@@ -70,22 +72,22 @@ OPTIONS
 
 _See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/index.ts)_
 
-### `cl-imports imports:create`
+### `@commercelayer/cli-plugin-imports imports:create`
 
 Create a new import.
 
 ```
 USAGE
-  $ cl-imports imports:create
+  $ @commercelayer/cli-plugin-imports imports:create
 
 OPTIONS
-  -C, --csv                                  accept input file in CSV format
-  -b, --blind                                execute in blind mode without showing the progress monitor
-  -i, --inputs=inputs                        (required) the path of the file containing the data to import
-  -o, --organization=organization            (required) the slug of your organization
-  -p, --parent=parent                        the id of the parent resource to be associated with imported data
-  -q, --quiet                                execute command without showing warning messages
-  -t, --type=orders|coupons|skus|prices|...  (required) the type of resource being imported
+  -C, --csv                                     accept input file in CSV format
+  -b, --blind                                   execute in blind mode without showing the progress monitor
+  -i, --inputs=inputs                           (required) the path of the file containing the data to import
+  -o, --organization=organization               (required) the slug of your organization
+  -p, --parent=parent                           the id of the parent resource to be associated with imported data
+  -q, --quiet                                   execute command without showing warning messages
+  -t, --type=orders|coupons|skus|sku_lists|...  (required) the type of resource being imported
 
 EXAMPLES
   $ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>
@@ -94,13 +96,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/create.ts)_
 
-### `cl-imports imports:delete ID`
+### `@commercelayer/cli-plugin-imports imports:delete ID`
 
 Delete an existing import.
 
 ```
 USAGE
-  $ cl-imports imports:delete ID
+  $ @commercelayer/cli-plugin-imports imports:delete ID
 
 ARGUMENTS
   ID  unique id of the import
@@ -109,7 +111,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-imports imp:delete
+  $ @commercelayer/cli-plugin-imports imp:delete
 
 EXAMPLES
   $ commercelayer imports:delete <import-id>>
@@ -118,13 +120,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/delete.ts)_
 
-### `cl-imports imports:details ID`
+### `@commercelayer/cli-plugin-imports imports:details ID`
 
 Show the details of an existing import.
 
 ```
 USAGE
-  $ cl-imports imports:details ID
+  $ @commercelayer/cli-plugin-imports imports:details ID
 
 ARGUMENTS
   ID  unique id of the import
@@ -135,8 +137,8 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-imports import
-  $ cl-imports imp:details
+  $ @commercelayer/cli-plugin-imports import
+  $ @commercelayer/cli-plugin-imports imp:details
 
 EXAMPLES
   $ commercelayer imports:details <import-id>
@@ -146,13 +148,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/details.ts)_
 
-### `cl-imports imports:group GROUP_ID`
+### `@commercelayer/cli-plugin-imports imports:group GROUP_ID`
 
 List all the imports related to an import group.
 
 ```
 USAGE
-  $ cl-imports imports:group GROUP_ID
+  $ @commercelayer/cli-plugin-imports imports:group GROUP_ID
 
 ARGUMENTS
   GROUP_ID  unique id of the group import
@@ -161,7 +163,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-imports imp:group
+  $ @commercelayer/cli-plugin-imports imp:group
 
 EXAMPLES
   $ commercelayer imports:group <group-id>
@@ -170,13 +172,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/group.ts)_
 
-### `cl-imports imports:list`
+### `@commercelayer/cli-plugin-imports imports:list`
 
 List all the created imports.
 
 ```
 USAGE
-  $ cl-imports imports:list
+  $ @commercelayer/cli-plugin-imports imports:list
 
 OPTIONS
   -A, --all
@@ -197,14 +199,16 @@ OPTIONS
   -s, --status=in_progress|pending|completed|interrupted
       the import job status
 
-  -t, --type=orders|coupons|skus|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_categories
+  -t, 
+  --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax
+  _categories
       the type of resource imported
 
   -w, --warnings
       show only import with warnings
 
 ALIASES
-  $ cl-imports imp:list
+  $ @commercelayer/cli-plugin-imports imp:list
 
 EXAMPLES
   $ commercelayer imports
@@ -214,13 +218,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/list.ts)_
 
-### `cl-imports imports:types`
+### `@commercelayer/cli-plugin-imports imports:types`
 
 Show online documentation for supported resources.
 
 ```
 USAGE
-  $ cl-imports imports:types
+  $ @commercelayer/cli-plugin-imports imports:types
 ```
 
 _See code: [src/commands/imports/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/types.ts)_

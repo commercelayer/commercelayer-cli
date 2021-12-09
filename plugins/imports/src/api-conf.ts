@@ -1,7 +1,10 @@
+
 const IMPORTS_RESOURCE_TYPES: Array<string> = [
 	'orders',
 	'coupons',
 	'skus',
+  'sku_lists',
+  'sku_list_items',
 	'prices',
 	'stock_items',
 	'gift_cards',
@@ -9,6 +12,7 @@ const IMPORTS_RESOURCE_TYPES: Array<string> = [
 	'customer_subscriptions',
 	'tax_categories',
 ]
+
 
 const IMPORTS_STATUSES: Array<string> = [
 	'in_progress',

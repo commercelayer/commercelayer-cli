@@ -1,12 +1,8 @@
 {
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "bin": {
-    "cl-imports": "./bin/run",
-    "cli": "./bin/run"
-  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-imports/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
@@ -48,7 +44,6 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "cl-imports",
     "devPlugins": [
       "@oclif/plugin-help"
     ],
@@ -72,8 +67,8 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/js-auth": "^2.0.4",
-    "@commercelayer/sdk": "^2.1.1",
+    "@commercelayer/js-auth": "^2.0.8",
+    "@commercelayer/sdk": "^2.1.2",
     "@fast-csv/parse": "^4.3.6",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
