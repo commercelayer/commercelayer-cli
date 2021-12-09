@@ -10,6 +10,7 @@ import chalk from 'chalk'
 
 const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util']
 const exludedCommands: string[] = [
+	'plugins',
 	'imports:types',
 	'resources',
 	'resources:doc',
@@ -34,8 +35,8 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 	// Continue and check authentication only for command that:
 	if (isCommandExcluded(opts.Command.id)) return                      // are not explicitly excluded from check
-	if (!opts.Command.flags?.accessToken) return                        // require an accessToken as input flag
-	if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
+	// if (!opts.Command.flags?.accessToken) return                        // require an accessToken as input flag
+	// if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
 
 
 	const flagConfig = {
@@ -55,34 +56,59 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 	let configData
 
-	// No organization and domain passed on command line, looking for saved current application
+	// No appkey passed io command line, looking for saved current application
 	if (!appKeyValid(app)) {
-
 		const current = configParam(ConfigParams.currentApplication)
-		if (current !== undefined) {
+		if (current !== undefined) Object.assign(app, current)
+		if (!appKeyValid(app)) return
+	}
+	
+	// Check if config file exists and load application data
+	if (!configFileExists(this.config, app)) this.error('Unable to find configuration file for application')
+	else configData = readConfigFile(this.config, app)
 
-			Object.assign(app, current)
-			configData = readConfigFile(this.config, app)
+	if (!configData) return
 
-			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
-			if (typeCheck) {
-				if (!typeCheck.includes(configData.kind))
-					this.error(`The current application (${chalk.redBright(configData.key)}) has an invalid type: ${chalk.red.italic(configData.kind)}, while the only accepted type are ${chalk.green.italic(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
-			}
-
-			opts.argv.push('--organization=' + configData.slug)
-			if (configData.domain) opts.argv.push('--domain=' + configData.domain)
-
-		}
-
-	} else if (!configFileExists(this.config, app)) this.error('Unable to find configuration file for application')
-
-	// No current application saved in configuration
-	if (!appKeyValid(app)) return
+	// If config file exists check application type
+	const typeCheck = configParam(ConfigParams.applicationTypeCheck)
+	if (typeCheck) {
+		if (!typeCheck.includes(configData.kind))
+			this.error(`The application (${chalk.redBright(configData.key)}) has an invalid type: ${chalk.red.italic(configData.kind)}, while the only accepted type are ${chalk.green.italic(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
+	}
 
 
-	// if accessToken flag has not ben passed in command line
+	const _flags = opts.Command.flags || {}
+
+	// Add to command line args application info read from config file
+	if (_flags.organization && configData.slug) opts.argv.push('--organization=' + configData.slug)
+	if (_flags.domain && configData.domain) opts.argv.push('--domain=' + configData.domain)
+
+	/** !!!! Temporarily used by token plugin !!!! **/
+	// If command requires clientId and clientSecret (or scope) add them to the command line arguments
+	if (_flags.clientId && configData.clientId) opts.argv.push('--clientId=' + configData.clientId)
+	if (_flags.clientSecret && configData.clientSecret) opts.argv.push('--clientSecret=' + configData.clientSecret)
+	if (_flags.scope && configData.scope) {
+		if (Array.isArray(configData.scope)) opts.argv.push(...configData.scope.map(s => '--scope=' + s))
+		else opts.argv.push('--scope=' + configData.scope)
+	}
+	if (_flags.email && configData.email) opts.argv.push('--email=' + configData.email)
+	if (_flags.password && configData.password) opts.argv.push('--password=' + configData.password)
+	/** !!!! ********** ********** !!!! **/
+
+	// If present remove --live flag option
+	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
+
+	// If present remove application key flag option (needed only to load application info)
+	if (opts.argv.includes('--appkey')) opts.argv.splice(opts.argv.indexOf('--appkey'), 2)
+
+
+
+	// If accessToken flag has not ben passed in command line
 	if (!flags.accessToken) {
+
+		// Check if command requires accessToken
+		if (!_flags.accessToken) return                        // require an accessToken as input flag
+		if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
 
 		let tokenData = null
 		let refresh = false
@@ -108,16 +134,6 @@ const hook: Hook<'prerun'> = async function (opts) {
 		opts.argv.push('--accessToken=' + tokenData.access_token)
 
 	}
-
-	// If command requires clientId and clientSecret add them to the command line arguments
-	if (opts.Command.flags?.clientId && configData?.clientId) opts.argv.push('--clientId=' + configData?.clientId)
-	if (opts.Command.flags?.clientSecret && configData?.clientSecret) opts.argv.push('--clientSecret=' + configData?.clientSecret)
-
-	// If present remove --live flag option
-	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
-
-	// If present remove application key flag option
-	if (opts.argv.includes('--appkey')) opts.argv.splice(opts.argv.indexOf('--appkey'), 2)
 
 }
 
