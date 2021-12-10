@@ -1,8 +1,11 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "bin": {
+    "cl-triggers": "./bin/run"
+  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
@@ -46,7 +49,7 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "commercelayer",
+    "bin": "cl-triggers",
     "devPlugins": [
       "@oclif/plugin-help"
     ],
