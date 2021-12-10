@@ -10,7 +10,6 @@ Manage login to CLI applications.
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:logout`](#commercelayer-applicationslogout)
 * [`commercelayer applications:switch`](#commercelayer-applicationsswitch)
-* [`commercelayer applications:token`](#commercelayer-applicationstoken)
 
 ### `commercelayer applications`
 
@@ -184,31 +183,3 @@ ALIASES
 ```
 
 _See code: [src/commands/applications/switch.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/switch.ts)_
-
-### `commercelayer applications:token`
-
-Get a new access token from Commerce Layer API.
-
-```
-USAGE
-  $ commercelayer applications:token
-
-OPTIONS
-  -a, --alias=alias                         the alias associated to the application
-  -i, --info                                show access token info
-  -k, --kind=cli|sales_channel|integration  application kind
-  -m, --mode=test|live                      execution mode
-  -o, --organization=organization           organization slug
-  -s, --save                                save access token
-  --id=id                                   application id
-  --live                                    live execution mode
-
-ALIASES
-  $ commercelayer app:token
-
-EXAMPLES
-  $ commercelayer applications:token
-  $ commercelayer app:token --info
-```
-
-_See code: [src/commands/applications/token.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/token.ts)_
