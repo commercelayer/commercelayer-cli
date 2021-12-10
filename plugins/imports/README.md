@@ -16,31 +16,31 @@ Commerce Layer CLI Imports plugin
 <!-- usage -->
 
 ```sh-session
-$ commercelayer COMMAND
+$ cl-imports COMMAND
 
-$ commercelayer (-v | version | --version) to check the version of the CLI you have installed.
+$ cl-imports (-v | version | --version) to check the version of the CLI you have installed.
 
-$ commercelayer [COMMAND] (--help | -h) for detailed information about CLI commands.
+$ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
 
-* [`commercelayer imports`](#commercelayer-imports)
-* [`commercelayer imports:create`](#commercelayer-importscreate)
-* [`commercelayer imports:delete ID`](#commercelayer-importsdelete-id)
-* [`commercelayer imports:details ID`](#commercelayer-importsdetails-id)
-* [`commercelayer imports:group GROUP_ID`](#commercelayer-importsgroup-group_id)
-* [`commercelayer imports:list`](#commercelayer-importslist)
-* [`commercelayer imports:types`](#commercelayer-importstypes)
+* [`cl-imports imports`](#cl-imports-imports)
+* [`cl-imports imports:create`](#cl-imports-importscreate)
+* [`cl-imports imports:delete ID`](#cl-imports-importsdelete-id)
+* [`cl-imports imports:details ID`](#cl-imports-importsdetails-id)
+* [`cl-imports imports:group GROUP_ID`](#cl-imports-importsgroup-group_id)
+* [`cl-imports imports:list`](#cl-imports-importslist)
+* [`cl-imports imports:types`](#cl-imports-importstypes)
 
-### `commercelayer imports`
+### `cl-imports imports`
 
 List all the created imports.
 
 ```
 USAGE
-  $ commercelayer imports
+  $ cl-imports imports
 
 OPTIONS
   -A, --all
@@ -72,13 +72,13 @@ OPTIONS
 
 _See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/index.ts)_
 
-### `commercelayer imports:create`
+### `cl-imports imports:create`
 
 Create a new import.
 
 ```
 USAGE
-  $ commercelayer imports:create
+  $ cl-imports imports:create
 
 OPTIONS
   -C, --csv                                     accept input file in CSV format
@@ -96,13 +96,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/create.ts)_
 
-### `commercelayer imports:delete ID`
+### `cl-imports imports:delete ID`
 
 Delete an existing import.
 
 ```
 USAGE
-  $ commercelayer imports:delete ID
+  $ cl-imports imports:delete ID
 
 ARGUMENTS
   ID  unique id of the import
@@ -111,7 +111,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ commercelayer imp:delete
+  $ cl-imports imp:delete
 
 EXAMPLES
   $ commercelayer imports:delete <import-id>>
@@ -120,13 +120,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/delete.ts)_
 
-### `commercelayer imports:details ID`
+### `cl-imports imports:details ID`
 
 Show the details of an existing import.
 
 ```
 USAGE
-  $ commercelayer imports:details ID
+  $ cl-imports imports:details ID
 
 ARGUMENTS
   ID  unique id of the import
@@ -137,8 +137,8 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ commercelayer import
-  $ commercelayer imp:details
+  $ cl-imports import
+  $ cl-imports imp:details
 
 EXAMPLES
   $ commercelayer imports:details <import-id>
@@ -148,13 +148,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/details.ts)_
 
-### `commercelayer imports:group GROUP_ID`
+### `cl-imports imports:group GROUP_ID`
 
 List all the imports related to an import group.
 
 ```
 USAGE
-  $ commercelayer imports:group GROUP_ID
+  $ cl-imports imports:group GROUP_ID
 
 ARGUMENTS
   GROUP_ID  unique id of the group import
@@ -163,7 +163,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ commercelayer imp:group
+  $ cl-imports imp:group
 
 EXAMPLES
   $ commercelayer imports:group <group-id>
@@ -172,13 +172,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/group.ts)_
 
-### `commercelayer imports:list`
+### `cl-imports imports:list`
 
 List all the created imports.
 
 ```
 USAGE
-  $ commercelayer imports:list
+  $ cl-imports imports:list
 
 OPTIONS
   -A, --all
@@ -208,7 +208,7 @@ OPTIONS
       show only import with warnings
 
 ALIASES
-  $ commercelayer imp:list
+  $ cl-imports imp:list
 
 EXAMPLES
   $ commercelayer imports
@@ -218,13 +218,13 @@ EXAMPLES
 
 _See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/list.ts)_
 
-### `commercelayer imports:types`
+### `cl-imports imports:types`
 
 Show online documentation for supported resources.
 
 ```
 USAGE
-  $ commercelayer imports:types
+  $ cl-imports imports:types
 ```
 
 _See code: [src/commands/imports/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/types.ts)_
