@@ -6,14 +6,14 @@ import { AuthScope } from '@commercelayer/js-auth'
 
 
 
-const checkScope = (scopes: string[]): AuthScope => {
+const checkScope = (scopeFlags: string[]): AuthScope => {
 
   const scope: string[] = []
 
-  if (scopes) {
-    for (const s of scopes) {
+  if (scopeFlags) {
+    for (const s of scopeFlags) {
       const colonIdx = s.indexOf(':')
-      if ((colonIdx < 0) || (s.substr(colonIdx).trim() === '')) throw new Error(`Invalid scope: ${chalk.red(s)}`)
+      if ((colonIdx < 0) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${chalk.red(s)}`)
       else
         if (scope.includes(s)) throw new Error(`Duplicate login scope: ${chalk.red(s)}`)
         else scope.push(s)
