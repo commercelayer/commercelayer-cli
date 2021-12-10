@@ -1,5 +1,6 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
+  "description": "Commerce Layer CLI Triggers plugin",
   "version": "1.0.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
