@@ -19,7 +19,7 @@ $ npm install -g @commercelayer/cli-plugin-triggers
 $ commercelayer COMMAND
 running command...
 $ commercelayer (-v|--version|version)
-@commercelayer/cli-plugin-triggers/1.0.3 darwin-x64 node-v15.14.0
+@commercelayer/cli-plugin-triggers/1.0.4 darwin-x64 node-v15.14.0
 $ commercelayer --help [COMMAND]
 USAGE
   $ commercelayer COMMAND
