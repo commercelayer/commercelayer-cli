@@ -72,7 +72,7 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif-dev manifest && npm run version",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md",
     "readme": "oclif-dev readme",
