@@ -1,11 +1,10 @@
 {
   "name": "@commercelayer/cli-plugin-orders",
   "description": "Commerce Layer CLI Orders plugin",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
-    "cl-orders": "./bin/run",
-    "clo": "./bin/run"
+    "cl-orders": "./bin/run"
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-orders/issues",
   "devDependencies": {

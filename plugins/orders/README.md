@@ -18,7 +18,7 @@ $ npm install -g @commercelayer/cli-plugin-orders
 $ cl-orders COMMAND
 running command...
 $ cl-orders (-v|--version|version)
-@commercelayer/cli-plugin-orders/2.0.1 darwin-x64 node-v16.13.0
+@commercelayer/cli-plugin-orders/2.0.2 darwin-x64 node-v15.14.0
 $ cl-orders --help [COMMAND]
 USAGE
   $ cl-orders COMMAND
