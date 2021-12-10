@@ -83,17 +83,9 @@ const hook: Hook<'prerun'> = async function (opts) {
 	if (_flags.organization && configData.slug) opts.argv.push('--organization=' + configData.slug)
 	if (_flags.domain && configData.domain) opts.argv.push('--domain=' + configData.domain)
 
-	/** !!!! Temporarily used by token plugin !!!! **/
 	// If command requires clientId and clientSecret (or scope) add them to the command line arguments
 	if (_flags.clientId && configData.clientId) opts.argv.push('--clientId=' + configData.clientId)
 	if (_flags.clientSecret && configData.clientSecret) opts.argv.push('--clientSecret=' + configData.clientSecret)
-	if (_flags.scope && configData.scope) {
-		if (Array.isArray(configData.scope)) opts.argv.push(...configData.scope.map(s => '--scope=' + s))
-		else opts.argv.push('--scope=' + configData.scope)
-	}
-	if (_flags.email && configData.email) opts.argv.push('--email=' + configData.email)
-	if (_flags.password && configData.password) opts.argv.push('--password=' + configData.password)
-	/** !!!! ********** ********** !!!! **/
 
 	// If present remove --live flag option
 	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
