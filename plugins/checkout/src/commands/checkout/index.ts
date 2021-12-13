@@ -8,6 +8,12 @@ export default class CheckoutIndex extends Command {
 
   static description = 'create checkout URLs'
 
+  static examples = [
+		'$ commercelayer checkout -O <order-id>',
+		'$ cl checkout -S <sku-code> -m <market-id> -c <coupon-code> -e <email-address>',
+    '$ cl checkout -S <sku-code-1> -S <sku-code-2> -m <market-id>',
+	]
+
   static flags = {
     ...Command.flags,
     order: flags.string({
