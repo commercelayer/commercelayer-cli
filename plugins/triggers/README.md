@@ -9,25 +9,17 @@ Commerce Layer CLI Triggers plugin
 [![License](https://img.shields.io/npm/l/commercelayer-cli-plugin-triggers.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+
 <!-- tocstop -->
 # Usage
 <!-- usage -->
-```sh-session
-$ npm install -g @commercelayer/cli-plugin-triggers
-$ cl-triggers COMMAND
-running command...
-$ cl-triggers (-v|--version|version)
-@commercelayer/cli-plugin-triggers/1.0.5 darwin-x64 node-v15.14.0
-$ cl-triggers --help [COMMAND]
-USAGE
-  $ cl-triggers COMMAND
-...
-```
+
+
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+
 * [`cl-triggers adyen_payment ID`](#cl-triggers-adyen_payment-id)
 * [`cl-triggers adyen_payment:authorize ID`](#cl-triggers-adyen_paymentauthorize-id)
 * [`cl-triggers adyen_payment:details ID`](#cl-triggers-adyen_paymentdetails-id)
@@ -110,9 +102,9 @@ USAGE
 * [`cl-triggers webhook ID`](#cl-triggers-webhook-id)
 * [`cl-triggers webhook:reset_circuit ID`](#cl-triggers-webhookreset_circuit-id)
 
-## `cl-triggers adyen_payment ID`
+### `cl-triggers adyen_payment ID`
 
-execute an action on a resource of type adyen_payments
+Execute an action on a resource of type adyen_payments.
 
 ```
 USAGE
@@ -127,9 +119,9 @@ OPTIONS
 
 _See code: [src/commands/adyen_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/index.ts)_
 
-## `cl-triggers adyen_payment:authorize ID`
+### `cl-triggers adyen_payment:authorize ID`
 
-Send this attribute if you want to authorize the payment.
+Send this attribute if you want to authorize the payment..
 
 ```
 USAGE
@@ -144,9 +136,9 @@ OPTIONS
 
 _See code: [src/commands/adyen_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/authorize.ts)_
 
-## `cl-triggers adyen_payment:details ID`
+### `cl-triggers adyen_payment:details ID`
 
-Send this attribute if you want to send additional details the payment request.
+Send this attribute if you want to send additional details the payment request..
 
 ```
 USAGE
@@ -161,9 +153,9 @@ OPTIONS
 
 _See code: [src/commands/adyen_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/details.ts)_
 
-## `cl-triggers authorization ID`
+### `cl-triggers authorization ID`
 
-execute an action on a resource of type authorizations
+Execute an action on a resource of type authorizations.
 
 ```
 USAGE
@@ -178,9 +170,9 @@ OPTIONS
 
 _See code: [src/commands/authorization/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/index.ts)_
 
-## `cl-triggers authorization:capture ID`
+### `cl-triggers authorization:capture ID`
 
-Send this attribute if you want to create a capture for this authorization.
+Send this attribute if you want to create a capture for this authorization..
 
 ```
 USAGE
@@ -195,9 +187,9 @@ OPTIONS
 
 _See code: [src/commands/authorization/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/capture.ts)_
 
-## `cl-triggers authorization:capture_amount_cents ID`
+### `cl-triggers authorization:capture_amount_cents ID`
 
-The associated capture amount, in cents.
+The associated capture amount, in cents..
 
 ```
 USAGE
@@ -212,9 +204,9 @@ OPTIONS
 
 _See code: [src/commands/authorization/capture_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/capture_amount_cents.ts)_
 
-## `cl-triggers authorization:void ID`
+### `cl-triggers authorization:void ID`
 
-Send this attribute if you want to create a void for this authorization.
+Send this attribute if you want to create a void for this authorization..
 
 ```
 USAGE
@@ -229,9 +221,9 @@ OPTIONS
 
 _See code: [src/commands/authorization/void.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/void.ts)_
 
-## `cl-triggers bundle ID`
+### `cl-triggers bundle ID`
 
-execute an action on a resource of type bundles
+Execute an action on a resource of type bundles.
 
 ```
 USAGE
@@ -246,9 +238,9 @@ OPTIONS
 
 _See code: [src/commands/bundle/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/index.ts)_
 
-## `cl-triggers bundle:compute_compare_at_amount ID`
+### `cl-triggers bundle:compute_compare_at_amount ID`
 
-Send this attribute if you want to compute the compare_at_amount_cents as the sum of the prices of the bundle SKUs for the market.
+Send this attribute if you want to compute the compare_at_amount_cents as the sum of the prices of the bundle SKUs for the market..
 
 ```
 USAGE
@@ -263,9 +255,9 @@ OPTIONS
 
 _See code: [src/commands/bundle/compute_compare_at_amount.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/compute_compare_at_amount.ts)_
 
-## `cl-triggers capture ID`
+### `cl-triggers capture ID`
 
-execute an action on a resource of type captures
+Execute an action on a resource of type captures.
 
 ```
 USAGE
@@ -280,9 +272,9 @@ OPTIONS
 
 _See code: [src/commands/capture/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/index.ts)_
 
-## `cl-triggers capture:refund ID`
+### `cl-triggers capture:refund ID`
 
-Send this attribute if you want to create a refund for this capture.
+Send this attribute if you want to create a refund for this capture..
 
 ```
 USAGE
@@ -297,9 +289,9 @@ OPTIONS
 
 _See code: [src/commands/capture/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/refund.ts)_
 
-## `cl-triggers capture:refund_amount_cents ID`
+### `cl-triggers capture:refund_amount_cents ID`
 
-The associated refund amount, in cents.
+The associated refund amount, in cents..
 
 ```
 USAGE
@@ -314,9 +306,9 @@ OPTIONS
 
 _See code: [src/commands/capture/refund_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/refund_amount_cents.ts)_
 
-## `cl-triggers checkout_com_payment ID`
+### `cl-triggers checkout_com_payment ID`
 
-execute an action on a resource of type checkout_com_payments
+Execute an action on a resource of type checkout_com_payments.
 
 ```
 USAGE
@@ -331,9 +323,9 @@ OPTIONS
 
 _See code: [src/commands/checkout_com_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/index.ts)_
 
-## `cl-triggers checkout_com_payment:authorize ID`
+### `cl-triggers checkout_com_payment:authorize ID`
 
-Send this attribute if you want to authorize the payment.
+Send this attribute if you want to authorize the payment..
 
 ```
 USAGE
@@ -348,9 +340,9 @@ OPTIONS
 
 _See code: [src/commands/checkout_com_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/authorize.ts)_
 
-## `cl-triggers checkout_com_payment:details ID`
+### `cl-triggers checkout_com_payment:details ID`
 
-Send this attribute if you want to send additional details the payment request (i.e. upon 3DS check).
+Send this attribute if you want to send additional details the payment request (i.e. upon 3DS check)..
 
 ```
 USAGE
@@ -365,9 +357,9 @@ OPTIONS
 
 _See code: [src/commands/checkout_com_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/details.ts)_
 
-## `cl-triggers checkout_com_payment:refresh ID`
+### `cl-triggers checkout_com_payment:refresh ID`
 
-Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic.
+Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic..
 
 ```
 USAGE
@@ -382,9 +374,9 @@ OPTIONS
 
 _See code: [src/commands/checkout_com_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/refresh.ts)_
 
-## `cl-triggers customer_password_reset ID`
+### `cl-triggers customer_password_reset ID`
 
-execute an action on a resource of type customer_password_resets
+Execute an action on a resource of type customer_password_resets.
 
 ```
 USAGE
@@ -399,9 +391,9 @@ OPTIONS
 
 _See code: [src/commands/customer_password_reset/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer_password_reset/index.ts)_
 
-## `cl-triggers customer_password_reset:reset_password_token ID`
+### `cl-triggers customer_password_reset:reset_password_token ID`
 
-Send the 'reset_password_token' that you got on create when updating the customer password.
+Send the 'reset_password_token' that you got on create when updating the customer password..
 
 ```
 USAGE
@@ -416,9 +408,9 @@ OPTIONS
 
 _See code: [src/commands/customer_password_reset/reset_password_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer_password_reset/reset_password_token.ts)_
 
-## `cl-triggers gift_card ID`
+### `cl-triggers gift_card ID`
 
-execute an action on a resource of type gift_cards
+Execute an action on a resource of type gift_cards.
 
 ```
 USAGE
@@ -433,9 +425,9 @@ OPTIONS
 
 _See code: [src/commands/gift_card/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/index.ts)_
 
-## `cl-triggers gift_card:activate ID`
+### `cl-triggers gift_card:activate ID`
 
-Send this attribute if you want to activate a gift card.
+Send this attribute if you want to activate a gift card..
 
 ```
 USAGE
@@ -450,9 +442,9 @@ OPTIONS
 
 _See code: [src/commands/gift_card/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/activate.ts)_
 
-## `cl-triggers gift_card:balance_change_cents ID`
+### `cl-triggers gift_card:balance_change_cents ID`
 
-The balance change, in cents. Send a negative value to reduces the card balance by the specified amount. Send a positive value to recharge the gift card (if rechargeable).
+The balance change, in cents. Send a negative value to reduces the card balance by the specified amount. Send a positive value to recharge the gift card (if rechargeable)..
 
 ```
 USAGE
@@ -467,9 +459,9 @@ OPTIONS
 
 _See code: [src/commands/gift_card/balance_change_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/balance_change_cents.ts)_
 
-## `cl-triggers gift_card:deactivate ID`
+### `cl-triggers gift_card:deactivate ID`
 
-Send this attribute if you want to deactivate a gift card.
+Send this attribute if you want to deactivate a gift card..
 
 ```
 USAGE
@@ -484,9 +476,9 @@ OPTIONS
 
 _See code: [src/commands/gift_card/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/deactivate.ts)_
 
-## `cl-triggers gift_card:purchase ID`
+### `cl-triggers gift_card:purchase ID`
 
-Send this attribute if you want to confirm a draft gift card. The gift card becomes 'inactive', waiting to be activated.
+Send this attribute if you want to confirm a draft gift card. The gift card becomes 'inactive', waiting to be activated..
 
 ```
 USAGE
@@ -501,9 +493,9 @@ OPTIONS
 
 _See code: [src/commands/gift_card/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/purchase.ts)_
 
-## `cl-triggers in_stock_subscription ID`
+### `cl-triggers in_stock_subscription ID`
 
-execute an action on a resource of type in_stock_subscriptions
+Execute an action on a resource of type in_stock_subscriptions.
 
 ```
 USAGE
@@ -518,9 +510,9 @@ OPTIONS
 
 _See code: [src/commands/in_stock_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/in_stock_subscription/index.ts)_
 
-## `cl-triggers in_stock_subscription:activate ID`
+### `cl-triggers in_stock_subscription:activate ID`
 
-Send this attribute if you want to activate an inactive subscription.
+Send this attribute if you want to activate an inactive subscription..
 
 ```
 USAGE
@@ -535,9 +527,9 @@ OPTIONS
 
 _See code: [src/commands/in_stock_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/in_stock_subscription/activate.ts)_
 
-## `cl-triggers in_stock_subscription:deactivate ID`
+### `cl-triggers in_stock_subscription:deactivate ID`
 
-Send this attribute if you want to dactivate an active subscription.
+Send this attribute if you want to dactivate an active subscription..
 
 ```
 USAGE
@@ -552,9 +544,9 @@ OPTIONS
 
 _See code: [src/commands/in_stock_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/in_stock_subscription/deactivate.ts)_
 
-## `cl-triggers order ID`
+### `cl-triggers order ID`
 
-execute an action on a resource of type orders
+Execute an action on a resource of type orders.
 
 ```
 USAGE
@@ -569,9 +561,9 @@ OPTIONS
 
 _See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/index.ts)_
 
-## `cl-triggers order:approve ID`
+### `cl-triggers order:approve ID`
 
-Send this attribute if you want to approve a placed order.
+Send this attribute if you want to approve a placed order..
 
 ```
 USAGE
@@ -586,9 +578,9 @@ OPTIONS
 
 _See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/approve.ts)_
 
-## `cl-triggers order:approve_and_capture ID`
+### `cl-triggers order:approve_and_capture ID`
 
-Send this attribute if you want to approve and capture a placed order.
+Send this attribute if you want to approve and capture a placed order..
 
 ```
 USAGE
@@ -603,9 +595,9 @@ OPTIONS
 
 _See code: [src/commands/order/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/approve_and_capture.ts)_
 
-## `cl-triggers order:archive ID`
+### `cl-triggers order:archive ID`
 
-Send this attribute if you want to archive the order.
+Send this attribute if you want to archive the order..
 
 ```
 USAGE
@@ -620,9 +612,9 @@ OPTIONS
 
 _See code: [src/commands/order/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/archive.ts)_
 
-## `cl-triggers order:authorization_amount_cents ID`
+### `cl-triggers order:authorization_amount_cents ID`
 
-The authorization amount, in cents.
+The authorization amount, in cents..
 
 ```
 USAGE
@@ -637,9 +629,9 @@ OPTIONS
 
 _See code: [src/commands/order/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/authorization_amount_cents.ts)_
 
-## `cl-triggers order:authorize ID`
+### `cl-triggers order:authorize ID`
 
-Send this attribute if you want to authorize the order's payment source.
+Send this attribute if you want to authorize the order's payment source..
 
 ```
 USAGE
@@ -654,9 +646,9 @@ OPTIONS
 
 _See code: [src/commands/order/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/authorize.ts)_
 
-## `cl-triggers order:billing_address_clone_id ID`
+### `cl-triggers order:billing_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's billing address.
+The id of the address that you want to clone to create the order's billing address..
 
 ```
 USAGE
@@ -672,9 +664,9 @@ OPTIONS
 
 _See code: [src/commands/order/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/billing_address_clone_id.ts)_
 
-## `cl-triggers order:billing_address_same_as_shipping ID`
+### `cl-triggers order:billing_address_same_as_shipping ID`
 
-Send this attribute if you want the billing address to be cloned from the order's shipping address.
+Send this attribute if you want the billing address to be cloned from the order's shipping address..
 
 ```
 USAGE
@@ -689,9 +681,9 @@ OPTIONS
 
 _See code: [src/commands/order/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/billing_address_same_as_shipping.ts)_
 
-## `cl-triggers order:cancel ID`
+### `cl-triggers order:cancel ID`
 
-Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
+Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided..
 
 ```
 USAGE
@@ -706,9 +698,9 @@ OPTIONS
 
 _See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/cancel.ts)_
 
-## `cl-triggers order:capture ID`
+### `cl-triggers order:capture ID`
 
-Send this attribute if you want to capture an approved order.
+Send this attribute if you want to capture an approved order..
 
 ```
 USAGE
@@ -723,9 +715,9 @@ OPTIONS
 
 _See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/capture.ts)_
 
-## `cl-triggers order:customer_payment_source_id ID`
+### `cl-triggers order:customer_payment_source_id ID`
 
-The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
+The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source..
 
 ```
 USAGE
@@ -741,9 +733,9 @@ OPTIONS
 
 _See code: [src/commands/order/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/customer_payment_source_id.ts)_
 
-## `cl-triggers order:place ID`
+### `cl-triggers order:place ID`
 
-Send this attribute if you want to place the order.
+Send this attribute if you want to place the order..
 
 ```
 USAGE
@@ -758,9 +750,9 @@ OPTIONS
 
 _See code: [src/commands/order/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/place.ts)_
 
-## `cl-triggers order:refresh ID`
+### `cl-triggers order:refresh ID`
 
-Send this attribute if you want to manually refresh the order.
+Send this attribute if you want to manually refresh the order..
 
 ```
 USAGE
@@ -775,9 +767,9 @@ OPTIONS
 
 _See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refresh.ts)_
 
-## `cl-triggers order:refund ID`
+### `cl-triggers order:refund ID`
 
-Send this attribute if you want to refund a captured order.
+Send this attribute if you want to refund a captured order..
 
 ```
 USAGE
@@ -792,9 +784,9 @@ OPTIONS
 
 _See code: [src/commands/order/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refund.ts)_
 
-## `cl-triggers order:save_billing_address_to_customer_address_book ID`
+### `cl-triggers order:save_billing_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address.
+Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address..
 
 ```
 USAGE
@@ -809,9 +801,9 @@ OPTIONS
 
 _See code: [src/commands/order/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/save_billing_address_to_customer_address_book.ts)_
 
-## `cl-triggers order:save_payment_source_to_customer_wallet ID`
+### `cl-triggers order:save_payment_source_to_customer_wallet ID`
 
-Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source.
+Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source..
 
 ```
 USAGE
@@ -826,9 +818,9 @@ OPTIONS
 
 _See code: [src/commands/order/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/save_payment_source_to_customer_wallet.ts)_
 
-## `cl-triggers order:save_shipping_address_to_customer_address_book ID`
+### `cl-triggers order:save_shipping_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address.
+Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address..
 
 ```
 USAGE
@@ -843,9 +835,9 @@ OPTIONS
 
 _See code: [src/commands/order/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/save_shipping_address_to_customer_address_book.ts)_
 
-## `cl-triggers order:shipping_address_clone_id ID`
+### `cl-triggers order:shipping_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's shipping address.
+The id of the address that you want to clone to create the order's shipping address..
 
 ```
 USAGE
@@ -861,9 +853,9 @@ OPTIONS
 
 _See code: [src/commands/order/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/shipping_address_clone_id.ts)_
 
-## `cl-triggers order:shipping_address_same_as_billing ID`
+### `cl-triggers order:shipping_address_same_as_billing ID`
 
-Send this attribute if you want the shipping address to be cloned from the order's billing address.
+Send this attribute if you want the shipping address to be cloned from the order's billing address..
 
 ```
 USAGE
@@ -878,9 +870,9 @@ OPTIONS
 
 _See code: [src/commands/order/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/shipping_address_same_as_billing.ts)_
 
-## `cl-triggers order:unarchive ID`
+### `cl-triggers order:unarchive ID`
 
-Send this attribute if you want to unarchive the order.
+Send this attribute if you want to unarchive the order..
 
 ```
 USAGE
@@ -895,9 +887,9 @@ OPTIONS
 
 _See code: [src/commands/order/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/unarchive.ts)_
 
-## `cl-triggers order:update_taxes ID`
+### `cl-triggers order:update_taxes ID`
 
-Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market).
+Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market)..
 
 ```
 USAGE
@@ -912,9 +904,9 @@ OPTIONS
 
 _See code: [src/commands/order/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/update_taxes.ts)_
 
-## `cl-triggers order_subscription ID`
+### `cl-triggers order_subscription ID`
 
-execute an action on a resource of type order_subscriptions
+Execute an action on a resource of type order_subscriptions.
 
 ```
 USAGE
@@ -929,9 +921,9 @@ OPTIONS
 
 _See code: [src/commands/order_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/index.ts)_
 
-## `cl-triggers order_subscription:activate ID`
+### `cl-triggers order_subscription:activate ID`
 
-Send this attribute if you want to mark this subscription as active.
+Send this attribute if you want to mark this subscription as active..
 
 ```
 USAGE
@@ -946,9 +938,9 @@ OPTIONS
 
 _See code: [src/commands/order_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/activate.ts)_
 
-## `cl-triggers order_subscription:cancel ID`
+### `cl-triggers order_subscription:cancel ID`
 
-Send this attribute if you want to mark this subscription as cancelled.
+Send this attribute if you want to mark this subscription as cancelled..
 
 ```
 USAGE
@@ -963,9 +955,9 @@ OPTIONS
 
 _See code: [src/commands/order_subscription/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/cancel.ts)_
 
-## `cl-triggers order_subscription:deactivate ID`
+### `cl-triggers order_subscription:deactivate ID`
 
-Send this attribute if you want to mark this subscription as inactive.
+Send this attribute if you want to mark this subscription as inactive..
 
 ```
 USAGE
@@ -980,9 +972,9 @@ OPTIONS
 
 _See code: [src/commands/order_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/deactivate.ts)_
 
-## `cl-triggers return ID`
+### `cl-triggers return ID`
 
-execute an action on a resource of type returns
+Execute an action on a resource of type returns.
 
 ```
 USAGE
@@ -997,9 +989,9 @@ OPTIONS
 
 _See code: [src/commands/return/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/index.ts)_
 
-## `cl-triggers return:approve ID`
+### `cl-triggers return:approve ID`
 
-Send this attribute if you want to mark this return as approved.
+Send this attribute if you want to mark this return as approved..
 
 ```
 USAGE
@@ -1014,9 +1006,9 @@ OPTIONS
 
 _See code: [src/commands/return/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/approve.ts)_
 
-## `cl-triggers return:archive ID`
+### `cl-triggers return:archive ID`
 
-Send this attribute if you want to archive the return.
+Send this attribute if you want to archive the return..
 
 ```
 USAGE
@@ -1031,9 +1023,9 @@ OPTIONS
 
 _See code: [src/commands/return/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/archive.ts)_
 
-## `cl-triggers return:cancel ID`
+### `cl-triggers return:cancel ID`
 
-Send this attribute if you want to mark this return as cancelled.
+Send this attribute if you want to mark this return as cancelled..
 
 ```
 USAGE
@@ -1048,9 +1040,9 @@ OPTIONS
 
 _See code: [src/commands/return/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/cancel.ts)_
 
-## `cl-triggers return:receive ID`
+### `cl-triggers return:receive ID`
 
-Send this attribute if you want to mark this return as received.
+Send this attribute if you want to mark this return as received..
 
 ```
 USAGE
@@ -1065,9 +1057,9 @@ OPTIONS
 
 _See code: [src/commands/return/receive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/receive.ts)_
 
-## `cl-triggers return:reject ID`
+### `cl-triggers return:reject ID`
 
-Send this attribute if you want to mark this return as rejected.
+Send this attribute if you want to mark this return as rejected..
 
 ```
 USAGE
@@ -1082,9 +1074,9 @@ OPTIONS
 
 _See code: [src/commands/return/reject.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/reject.ts)_
 
-## `cl-triggers return:request ID`
+### `cl-triggers return:request ID`
 
-Send this attribute if you want to activate this return.
+Send this attribute if you want to activate this return..
 
 ```
 USAGE
@@ -1099,9 +1091,9 @@ OPTIONS
 
 _See code: [src/commands/return/request.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/request.ts)_
 
-## `cl-triggers return:restock ID`
+### `cl-triggers return:restock ID`
 
-Send this attribute if you want to restock all of the return line items.
+Send this attribute if you want to restock all of the return line items..
 
 ```
 USAGE
@@ -1116,9 +1108,9 @@ OPTIONS
 
 _See code: [src/commands/return/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/restock.ts)_
 
-## `cl-triggers return:ship ID`
+### `cl-triggers return:ship ID`
 
-Send this attribute if you want to mark this return as shipped.
+Send this attribute if you want to mark this return as shipped..
 
 ```
 USAGE
@@ -1133,9 +1125,9 @@ OPTIONS
 
 _See code: [src/commands/return/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/ship.ts)_
 
-## `cl-triggers return:unarchive ID`
+### `cl-triggers return:unarchive ID`
 
-Send this attribute if you want to unarchive the return.
+Send this attribute if you want to unarchive the return..
 
 ```
 USAGE
@@ -1150,9 +1142,9 @@ OPTIONS
 
 _See code: [src/commands/return/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/unarchive.ts)_
 
-## `cl-triggers return_line_item ID`
+### `cl-triggers return_line_item ID`
 
-execute an action on a resource of type return_line_items
+Execute an action on a resource of type return_line_items.
 
 ```
 USAGE
@@ -1167,9 +1159,9 @@ OPTIONS
 
 _See code: [src/commands/return_line_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return_line_item/index.ts)_
 
-## `cl-triggers return_line_item:restock ID`
+### `cl-triggers return_line_item:restock ID`
 
-Send this attribute if you want to restock the line item.
+Send this attribute if you want to restock the line item..
 
 ```
 USAGE
@@ -1184,9 +1176,9 @@ OPTIONS
 
 _See code: [src/commands/return_line_item/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return_line_item/restock.ts)_
 
-## `cl-triggers shipment ID`
+### `cl-triggers shipment ID`
 
-execute an action on a resource of type shipments
+Execute an action on a resource of type shipments.
 
 ```
 USAGE
@@ -1201,9 +1193,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/index.ts)_
 
-## `cl-triggers shipment:get_rates ID`
+### `cl-triggers shipment:get_rates ID`
 
-Send this attribute if you want get the shipping rates from the associated carrier accounts.
+Send this attribute if you want get the shipping rates from the associated carrier accounts..
 
 ```
 USAGE
@@ -1218,9 +1210,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/get_rates.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/get_rates.ts)_
 
-## `cl-triggers shipment:on_hold ID`
+### `cl-triggers shipment:on_hold ID`
 
-Send this attribute if you want to put this shipment on hold.
+Send this attribute if you want to put this shipment on hold..
 
 ```
 USAGE
@@ -1235,9 +1227,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/on_hold.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/on_hold.ts)_
 
-## `cl-triggers shipment:packing ID`
+### `cl-triggers shipment:packing ID`
 
-Send this attribute if you want to start packing this shipment.
+Send this attribute if you want to start packing this shipment..
 
 ```
 USAGE
@@ -1252,9 +1244,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/packing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/packing.ts)_
 
-## `cl-triggers shipment:picking ID`
+### `cl-triggers shipment:picking ID`
 
-Send this attribute if you want to start picking this shipment.
+Send this attribute if you want to start picking this shipment..
 
 ```
 USAGE
@@ -1269,9 +1261,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/picking.ts)_
 
-## `cl-triggers shipment:purchase ID`
+### `cl-triggers shipment:purchase ID`
 
-Send this attribute if you want to purchase this shipment with the selected rate.
+Send this attribute if you want to purchase this shipment with the selected rate..
 
 ```
 USAGE
@@ -1286,9 +1278,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/purchase.ts)_
 
-## `cl-triggers shipment:ready_to_ship ID`
+### `cl-triggers shipment:ready_to_ship ID`
 
-Send this attribute if you want to mark this shipment as ready to ship.
+Send this attribute if you want to mark this shipment as ready to ship..
 
 ```
 USAGE
@@ -1303,9 +1295,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/ready_to_ship.ts)_
 
-## `cl-triggers shipment:ship ID`
+### `cl-triggers shipment:ship ID`
 
-Send this attribute if you want to mark this shipment as shipped.
+Send this attribute if you want to mark this shipment as shipped..
 
 ```
 USAGE
@@ -1320,9 +1312,9 @@ OPTIONS
 
 _See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/ship.ts)_
 
-## `cl-triggers stock_transfer ID`
+### `cl-triggers stock_transfer ID`
 
-execute an action on a resource of type stock_transfers
+Execute an action on a resource of type stock_transfers.
 
 ```
 USAGE
@@ -1337,9 +1329,9 @@ OPTIONS
 
 _See code: [src/commands/stock_transfer/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/index.ts)_
 
-## `cl-triggers stock_transfer:cancel ID`
+### `cl-triggers stock_transfer:cancel ID`
 
-Send this attribute if you want to cancel this stock transfer.
+Send this attribute if you want to cancel this stock transfer..
 
 ```
 USAGE
@@ -1354,9 +1346,9 @@ OPTIONS
 
 _See code: [src/commands/stock_transfer/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/cancel.ts)_
 
-## `cl-triggers stock_transfer:complete ID`
+### `cl-triggers stock_transfer:complete ID`
 
-Send this attribute if you want to complete this stock transfer.
+Send this attribute if you want to complete this stock transfer..
 
 ```
 USAGE
@@ -1371,9 +1363,9 @@ OPTIONS
 
 _See code: [src/commands/stock_transfer/complete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/complete.ts)_
 
-## `cl-triggers stock_transfer:in_transit ID`
+### `cl-triggers stock_transfer:in_transit ID`
 
-Send this attribute if you want to mark this stock transfer as in transit.
+Send this attribute if you want to mark this stock transfer as in transit..
 
 ```
 USAGE
@@ -1388,9 +1380,9 @@ OPTIONS
 
 _See code: [src/commands/stock_transfer/in_transit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/in_transit.ts)_
 
-## `cl-triggers stock_transfer:picking ID`
+### `cl-triggers stock_transfer:picking ID`
 
-Send this attribute if you want to start picking this stock transfer.
+Send this attribute if you want to start picking this stock transfer..
 
 ```
 USAGE
@@ -1405,9 +1397,9 @@ OPTIONS
 
 _See code: [src/commands/stock_transfer/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/picking.ts)_
 
-## `cl-triggers stock_transfer:upcoming ID`
+### `cl-triggers stock_transfer:upcoming ID`
 
-Send this attribute if you want to mark this stock transfer as upcoming.
+Send this attribute if you want to mark this stock transfer as upcoming..
 
 ```
 USAGE
@@ -1422,9 +1414,9 @@ OPTIONS
 
 _See code: [src/commands/stock_transfer/upcoming.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/upcoming.ts)_
 
-## `cl-triggers stripe_payment ID`
+### `cl-triggers stripe_payment ID`
 
-execute an action on a resource of type stripe_payments
+Execute an action on a resource of type stripe_payments.
 
 ```
 USAGE
@@ -1439,9 +1431,9 @@ OPTIONS
 
 _See code: [src/commands/stripe_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_payment/index.ts)_
 
-## `cl-triggers stripe_payment:refresh ID`
+### `cl-triggers stripe_payment:refresh ID`
 
-Send this attribute if you want to refresh the payment status, can be used as webhooks fallback logic.
+Send this attribute if you want to refresh the payment status, can be used as webhooks fallback logic..
 
 ```
 USAGE
@@ -1456,9 +1448,9 @@ OPTIONS
 
 _See code: [src/commands/stripe_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_payment/refresh.ts)_
 
-## `cl-triggers webhook ID`
+### `cl-triggers webhook ID`
 
-execute an action on a resource of type webhooks
+Execute an action on a resource of type webhooks.
 
 ```
 USAGE
@@ -1473,9 +1465,9 @@ OPTIONS
 
 _See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/index.ts)_
 
-## `cl-triggers webhook:reset_circuit ID`
+### `cl-triggers webhook:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero failures count..
 
 ```
 USAGE
