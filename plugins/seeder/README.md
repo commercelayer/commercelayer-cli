@@ -10,30 +10,30 @@ Commerce Layer CLI seeder plugin
 
 <!-- toc -->
 
-* [ Usage](#usage)
-* [ Commands](#commands)
 <!-- tocstop -->
 ## Usage
 <!-- usage -->
-
 ```sh-session
+$ npm install -g @commercelayer/cli-plugin-seeder
 $ cl-seeder COMMAND
-
-$ cl-seeder (-v | version | --version) to check the version of the CLI you have installed.
-
-$ cl-seeder [COMMAND] (--help | -h) for detailed information about CLI commands.
+running command...
+$ cl-seeder (-v|--version|version)
+@commercelayer/cli-plugin-seeder/2.1.5 darwin-x64 node-v16.13.0
+$ cl-seeder --help [COMMAND]
+USAGE
+  $ cl-seeder COMMAND
+...
 ```
 <!-- usagestop -->
 ## Commands
 <!-- commands -->
-
 * [`cl-seeder seeder:check ID`](#cl-seeder-seedercheck-id)
 * [`cl-seeder seeder:clean ID`](#cl-seeder-seederclean-id)
 * [`cl-seeder seeder:seed ID`](#cl-seeder-seederseed-id)
 
-### `cl-seeder seeder:check ID`
+## `cl-seeder seeder:check ID`
 
-Execute a check on seeder data.
+execute a check on seeder data
 
 ```
 USAGE
@@ -55,9 +55,9 @@ EXAMPLES
 
 _See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/check.ts)_
 
-### `cl-seeder seeder:clean ID`
+## `cl-seeder seeder:clean ID`
 
-Clean previously imported seeder data.
+clean previously imported seeder data
 
 ```
 USAGE
@@ -79,9 +79,9 @@ EXAMPLES
 
 _See code: [src/commands/seeder/clean.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/clean.ts)_
 
-### `cl-seeder seeder:seed ID`
+## `cl-seeder seeder:seed ID`
 
-Execute Commerce Layer seeder.
+execute Commerce Layer seeder
 
 ```
 USAGE
