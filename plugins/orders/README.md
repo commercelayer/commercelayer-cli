@@ -10,20 +10,13 @@ Commerce Layer CLI Orders plugin
 
 <!-- toc -->
 
+* [ Usage](#-usage)
+* [ Commands](#-commands)
 <!-- tocstop -->
 ## Usage
 <!-- usage -->
-```sh-session
-$ npm install -g @commercelayer/cli-plugin-orders
-$ cl-orders COMMAND
-running command...
-$ cl-orders (-v|--version|version)
-@commercelayer/cli-plugin-orders/2.0.2 darwin-x64 node-v15.14.0
-$ cl-orders --help [COMMAND]
-USAGE
-  $ cl-orders COMMAND
-...
-```
+
+
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
 ```sh-session
@@ -31,6 +24,7 @@ $ commercelayer plugins:install orders
 ```
 ## Commands
 <!-- commands -->
+
 * [`cl-orders orders ID`](#cl-orders-orders-id)
 * [`cl-orders orders:approve ID`](#cl-orders-ordersapprove-id)
 * [`cl-orders orders:approve_and_capture ID`](#cl-orders-ordersapprove_and_capture-id)
@@ -53,9 +47,9 @@ $ commercelayer plugins:install orders
 * [`cl-orders orders:unarchive ID`](#cl-orders-ordersunarchive-id)
 * [`cl-orders orders:update_taxes ID`](#cl-orders-ordersupdate_taxes-id)
 
-## `cl-orders orders ID`
+### `cl-orders orders ID`
 
-execute an action on an order
+Execute an action on an order.
 
 ```
 USAGE
@@ -70,9 +64,9 @@ OPTIONS
 
 _See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/index.ts)_
 
-## `cl-orders orders:approve ID`
+### `cl-orders orders:approve ID`
 
-Send this attribute if you want to approve a placed order.
+Send this attribute if you want to approve a placed order..
 
 ```
 USAGE
@@ -87,9 +81,9 @@ OPTIONS
 
 _See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve.ts)_
 
-## `cl-orders orders:approve_and_capture ID`
+### `cl-orders orders:approve_and_capture ID`
 
-Send this attribute if you want to approve and capture a placed order.
+Send this attribute if you want to approve and capture a placed order..
 
 ```
 USAGE
@@ -104,9 +98,9 @@ OPTIONS
 
 _See code: [src/commands/orders/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve_and_capture.ts)_
 
-## `cl-orders orders:archive ID`
+### `cl-orders orders:archive ID`
 
-Send this attribute if you want to archive the order.
+Send this attribute if you want to archive the order..
 
 ```
 USAGE
@@ -121,9 +115,9 @@ OPTIONS
 
 _See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/archive.ts)_
 
-## `cl-orders orders:authorization_amount_cents ID`
+### `cl-orders orders:authorization_amount_cents ID`
 
-The authorization amount, in cents.
+The authorization amount, in cents..
 
 ```
 USAGE
@@ -138,9 +132,9 @@ OPTIONS
 
 _See code: [src/commands/orders/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorization_amount_cents.ts)_
 
-## `cl-orders orders:authorize ID`
+### `cl-orders orders:authorize ID`
 
-Send this attribute if you want to authorize the order's payment source.
+Send this attribute if you want to authorize the order's payment source..
 
 ```
 USAGE
@@ -155,9 +149,9 @@ OPTIONS
 
 _See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorize.ts)_
 
-## `cl-orders orders:billing_address_clone_id ID`
+### `cl-orders orders:billing_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's billing address.
+The id of the address that you want to clone to create the order's billing address..
 
 ```
 USAGE
@@ -173,9 +167,9 @@ OPTIONS
 
 _See code: [src/commands/orders/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/billing_address_clone_id.ts)_
 
-## `cl-orders orders:billing_address_same_as_shipping ID`
+### `cl-orders orders:billing_address_same_as_shipping ID`
 
-Send this attribute if you want the billing address to be cloned from the order's shipping address.
+Send this attribute if you want the billing address to be cloned from the order's shipping address..
 
 ```
 USAGE
@@ -190,9 +184,9 @@ OPTIONS
 
 _See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/billing_address_same_as_shipping.ts)_
 
-## `cl-orders orders:cancel ID`
+### `cl-orders orders:cancel ID`
 
-Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
+Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided..
 
 ```
 USAGE
@@ -207,9 +201,9 @@ OPTIONS
 
 _See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/cancel.ts)_
 
-## `cl-orders orders:capture ID`
+### `cl-orders orders:capture ID`
 
-Send this attribute if you want to capture an approved order.
+Send this attribute if you want to capture an approved order..
 
 ```
 USAGE
@@ -224,9 +218,9 @@ OPTIONS
 
 _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/capture.ts)_
 
-## `cl-orders orders:customer_payment_source_id ID`
+### `cl-orders orders:customer_payment_source_id ID`
 
-The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
+The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source..
 
 ```
 USAGE
@@ -242,9 +236,9 @@ OPTIONS
 
 _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/customer_payment_source_id.ts)_
 
-## `cl-orders orders:place ID`
+### `cl-orders orders:place ID`
 
-Send this attribute if you want to place the order.
+Send this attribute if you want to place the order..
 
 ```
 USAGE
@@ -259,9 +253,9 @@ OPTIONS
 
 _See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/place.ts)_
 
-## `cl-orders orders:refresh ID`
+### `cl-orders orders:refresh ID`
 
-Send this attribute if you want to manually refresh the order.
+Send this attribute if you want to manually refresh the order..
 
 ```
 USAGE
@@ -276,9 +270,9 @@ OPTIONS
 
 _See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refresh.ts)_
 
-## `cl-orders orders:refund ID`
+### `cl-orders orders:refund ID`
 
-Send this attribute if you want to refund a captured order.
+Send this attribute if you want to refund a captured order..
 
 ```
 USAGE
@@ -293,9 +287,9 @@ OPTIONS
 
 _See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund.ts)_
 
-## `cl-orders orders:save_billing_address_to_customer_address_book ID`
+### `cl-orders orders:save_billing_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address.
+Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address..
 
 ```
 USAGE
@@ -310,9 +304,9 @@ OPTIONS
 
 _See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_billing_address_to_customer_address_book.ts)_
 
-## `cl-orders orders:save_payment_source_to_customer_wallet ID`
+### `cl-orders orders:save_payment_source_to_customer_wallet ID`
 
-Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source.
+Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source..
 
 ```
 USAGE
@@ -327,9 +321,9 @@ OPTIONS
 
 _See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_payment_source_to_customer_wallet.ts)_
 
-## `cl-orders orders:save_shipping_address_to_customer_address_book ID`
+### `cl-orders orders:save_shipping_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address.
+Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address..
 
 ```
 USAGE
@@ -344,9 +338,9 @@ OPTIONS
 
 _See code: [src/commands/orders/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_shipping_address_to_customer_address_book.ts)_
 
-## `cl-orders orders:shipping_address_clone_id ID`
+### `cl-orders orders:shipping_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's shipping address.
+The id of the address that you want to clone to create the order's shipping address..
 
 ```
 USAGE
@@ -362,9 +356,9 @@ OPTIONS
 
 _See code: [src/commands/orders/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_clone_id.ts)_
 
-## `cl-orders orders:shipping_address_same_as_billing ID`
+### `cl-orders orders:shipping_address_same_as_billing ID`
 
-Send this attribute if you want the shipping address to be cloned from the order's billing address.
+Send this attribute if you want the shipping address to be cloned from the order's billing address..
 
 ```
 USAGE
@@ -379,9 +373,9 @@ OPTIONS
 
 _See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_same_as_billing.ts)_
 
-## `cl-orders orders:unarchive ID`
+### `cl-orders orders:unarchive ID`
 
-Send this attribute if you want to unarchive the order.
+Send this attribute if you want to unarchive the order..
 
 ```
 USAGE
@@ -396,9 +390,9 @@ OPTIONS
 
 _See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/unarchive.ts)_
 
-## `cl-orders orders:update_taxes ID`
+### `cl-orders orders:update_taxes ID`
 
-Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market).
+Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market)..
 
 ```
 USAGE

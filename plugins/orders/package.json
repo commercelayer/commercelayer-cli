@@ -1,14 +1,14 @@
 {
   "name": "@commercelayer/cli-plugin-orders",
   "description": "Commerce Layer CLI Orders plugin",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-orders": "./bin/run"
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-orders/issues",
   "devDependencies": {
-    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
     "@oclif/plugin-help": "^3.2.2",
     "@oclif/test": "^1.2.8",
     "@types/chai": "^4.2.17",
@@ -72,10 +72,9 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif-dev manifest && npm run version",
+    "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif-dev manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif-dev readme && git add README.md",
-    "readme": "oclif-dev readme",
+    "readme": "oclif-dev readme --plugin && git add README.md",
     "generate": "ts-node gen/generator.ts"
   },
   "types": "lib/index.d.ts",
