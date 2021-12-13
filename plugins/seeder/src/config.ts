@@ -7,4 +7,5 @@ export default {
   dataFolder: 'data',
   schemaFolder: 'schemas',
   referenceOrigin: 'CLI',
+  validApplicationKind: 'integration',
 }

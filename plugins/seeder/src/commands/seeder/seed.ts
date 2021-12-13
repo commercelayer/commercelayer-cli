@@ -9,6 +9,7 @@ import { readResourceData } from '../../data'
 import { relationshipType } from '../../schema'
 import { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
+import { decodeAccessToken } from '../../token'
 
 
 
@@ -56,7 +57,14 @@ export default class SeederSeed extends Command {
 
     const organization = flags.organization
     const businessModel = flags.businessModel
+    const accessToken = flags.accessToken
     const name = this.modelNameChack(flags)
+
+    const tokenInfo = decodeAccessToken(accessToken)
+    if (tokenInfo.application.kind !== config.validApplicationKind)
+      this.error(`Invalid application type: ${chalk.redBright(tokenInfo.application.kind)}`, {
+        suggestions: [`To execute ${chalk.cyanBright('seeder')} you must use an application ok kind ${chalk.yellowBright(config.validApplicationKind)}`],
+      })
 
     this.initCommerceLayer(flags)
 
