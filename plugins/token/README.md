@@ -15,13 +15,7 @@ commercelayer-cli-plugin-token
 # Usage
 <!-- usage -->
 
-```sh-session
-$ cl-token COMMAND
 
-$ cl-token (-v | version | --version) to check the version of the CLI you have installed.
-
-$ cl-token [COMMAND] (--help | -h) for detailed information about CLI commands.
-```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
