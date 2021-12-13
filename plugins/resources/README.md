@@ -16,13 +16,7 @@ Commerce Layer CLI Resources plugin
 ## Usage
 <!-- usage -->
 
-```sh-session
-$ cl-resources COMMAND
 
-$ cl-resources (-v | version | --version) to check the version of the CLI you have installed.
-
-$ cl-resources [COMMAND] (--help | -h) for detailed information about CLI commands.
-```
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
 ```sh-session
