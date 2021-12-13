@@ -1,9 +1,8 @@
 /* eslint-disable no-await-in-loop */
 import Command, { flags } from '../../base'
-import type { CommerceLayerClient } from '@commercelayer/sdk'
+import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
 import { generateInputs } from '../../input'
 import { SingleBar } from 'cli-progress'
-import { Import } from '@commercelayer/sdk/lib/resources/imports'
 import { sleep } from '../../common'
 import { Monitor } from '../../monitor'
 import { Chunk, Batch, splitChunks, splitImports } from '../../chunk'

@@ -1,4 +1,4 @@
-import { ImportCreate } from '@commercelayer/sdk/lib/resources/imports'
+import { ImportCreate } from '@commercelayer/sdk'
 import apiConf from './api-conf'
 
 

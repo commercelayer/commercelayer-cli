@@ -15,13 +15,7 @@ Commerce Layer CLI Imports plugin
 # Usage
 <!-- usage -->
 
-```sh-session
-$ cl-imports COMMAND
 
-$ cl-imports (-v | version | --version) to check the version of the CLI you have installed.
-
-$ cl-imports [COMMAND] (--help | -h) for detailed information about CLI commands.
-```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
@@ -61,9 +55,8 @@ OPTIONS
   -s, --status=in_progress|pending|completed|interrupted
       the import job status
 
-  -t, 
-  --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax
-  _categories
+  -t, --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions
+  |tax_categories
       the type of resource imported
 
   -w, --warnings
@@ -199,9 +192,8 @@ OPTIONS
   -s, --status=in_progress|pending|completed|interrupted
       the import job status
 
-  -t, 
-  --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax
-  _categories
+  -t, --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions
+  |tax_categories
       the type of resource imported
 
   -w, --warnings

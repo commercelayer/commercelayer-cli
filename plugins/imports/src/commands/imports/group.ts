@@ -1,7 +1,7 @@
 import Command from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment } from 'cli-table3'
-import { QueryParamsList } from '@commercelayer/sdk/lib/query'
+import { QueryParamsList } from '@commercelayer/sdk'
 import apiConf from '../../api-conf'
 import { localeDate } from '../../common'
 import cliux from 'cli-ux'
