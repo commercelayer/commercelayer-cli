@@ -2,7 +2,7 @@ import Command, { flags } from '../../base'
 import { URL } from 'url'
 import chalk from 'chalk'
 import WebhooksDetails from './details'
-import { WebhookUpdate } from '@commercelayer/sdk/lib/resources/webhooks'
+import { WebhookUpdate } from '@commercelayer/sdk'
 
 
 export default class WebhooksUpdate extends Command {

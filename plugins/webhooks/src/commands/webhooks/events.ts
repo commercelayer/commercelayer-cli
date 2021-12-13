@@ -1,12 +1,11 @@
 import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
-import { QueryParamsList } from '@commercelayer/sdk/lib/query'
 import apiConf from '../../api-conf'
 import { localeDate } from '../../common'
 import cliux from 'cli-ux'
 import { responseCodeColor } from './event'
-import { EventCallback } from '@commercelayer/sdk'
+import { EventCallback, QueryParamsList } from '@commercelayer/sdk'
 
 
 const MAX_EVENTS = 1000

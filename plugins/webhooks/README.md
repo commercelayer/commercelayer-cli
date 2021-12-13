@@ -15,13 +15,7 @@ Commerce Layer CLI Webhooks plugin
 # Usage
 <!-- usage -->
 
-```sh-session
-$ cl-webhooks COMMAND
 
-$ cl-webhooks (-v | version | --version) to check the version of the CLI you have installed.
-
-$ cl-webhooks [COMMAND] (--help | -h) for detailed information about CLI commands.
-```
 <!-- usagestop -->
 # Commands
 <!-- commands -->

@@ -1,7 +1,7 @@
 import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment } from 'cli-table3'
-import { QueryParamsList } from '@commercelayer/sdk/lib/query'
+import { QueryParamsList } from '@commercelayer/sdk'
 
 
 export default class WebhooksList extends Command {
