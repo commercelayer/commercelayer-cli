@@ -15,13 +15,7 @@ Commerce Layer CLI Checkout plugin
 # Usage
 <!-- usage -->
 
-```sh-session
-$ cl-checkout COMMAND
 
-$ cl-checkout (-v | version | --version) to check the version of the CLI you have installed.
-
-$ cl-checkout [COMMAND] (--help | -h) for detailed information about CLI commands.
-```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
@@ -46,6 +40,11 @@ OPTIONS
   -m, --market=market              a market number
   -o, --organization=organization  (required) the slug of your organization
   --open                           open checkout URL in default browser
+
+EXAMPLES
+  $ commercelayer checkout -O <order-id>
+  $ cl checkout -S <sku-code> -m <market-id> -c <coupon-code> -e <email-address>
+  $ cl checkout -S <sku-code-1> -S <sku-code-2> -m <market-id>
 ```
 
 _See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/src/commands/checkout/index.ts)_
