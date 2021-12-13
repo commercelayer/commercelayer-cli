@@ -18,7 +18,7 @@ $ npm install -g @commercelayer/cli-plugin-seeder
 $ cl-seeder COMMAND
 running command...
 $ cl-seeder (-v|--version|version)
-@commercelayer/cli-plugin-seeder/2.1.5 darwin-x64 node-v16.13.0
+@commercelayer/cli-plugin-seeder/2.1.6 darwin-x64 node-v16.13.0
 $ cl-seeder --help [COMMAND]
 USAGE
   $ cl-seeder COMMAND
