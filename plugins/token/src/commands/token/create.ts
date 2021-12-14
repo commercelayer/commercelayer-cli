@@ -1,12 +1,12 @@
 import Command, { flags } from '../../base'
-import config from '../../api-conf'
+import { config } from '@commercelayer/cli-core'
 import chalk from 'chalk'
 import { CustomToken, decodeAccessToken, generateAccessToken } from '../../token'
 import commercelayer from '@commercelayer/sdk'
 
 
 const VALIDITY_MIN = 2
-const VALIDITY_MAX = config.default_token_expiration_mins
+const VALIDITY_MAX = config.api.default_token_expiration_mins
 
 
 

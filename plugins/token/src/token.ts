@@ -1,34 +1,8 @@
 import { AuthReturnType, clientCredentials, ClientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
 import jwt from 'jsonwebtoken'
-import { AppAuth, baseURL, sleep } from './common'
+import { api, AppAuth, util, AccessTokenInfo, token } from '@commercelayer/cli-core'
 import https from 'https'
 
-
-export type AccessTokenInfo = {
-  organization: {
-    id: string;
-    slug: string;
-  };
-  application: {
-    id: string;
-    kind: 'integration' | 'sales_channel';
-    public: boolean;
-  };
-  test: boolean;
-  exp?: number;
-  rand: number;
-  owner?: {
-    id: string;
-    type: 'Customer' | string;
-  };
-  market?: {
-    id: string[];
-    price_list_id: string;
-    stock_location_ids: string[];
-    geocode_id?: string;
-    allows_external_prices: boolean;
-  };
-}
 
 
 export type CustomToken = {
@@ -40,9 +14,7 @@ export type CustomToken = {
 
 
 const decodeAccessToken = (accessToken: string): AccessTokenInfo => {
-  const info = jwt.decode(accessToken)
-  if (info === null) throw new Error('Error deconding access token')
-  return info as AccessTokenInfo
+  return token.decodeAccessToken(accessToken)
 }
 
 
@@ -74,7 +46,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 	const credentials: ClientCredentials = {
 		clientId: auth.clientId,
 		clientSecret: auth.clientSecret,
-		endpoint: baseURL(auth.slug, auth.domain),
+		endpoint: api.baseURL(auth.slug, auth.domain),
 		scope: auth.scope || '',
 	}
 
@@ -111,7 +83,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
   })
 
   const options = {
-    hostname: baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
+    hostname: api.baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
     port: 443,
     path: '/oauth/revoke',
     method: 'POST',
@@ -138,7 +110,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
   req.write(data)
   req.end()
 
-  await sleep(300)
+  await util.sleep(300)
 
 }
 

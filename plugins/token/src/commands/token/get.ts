@@ -1,5 +1,5 @@
 import Command, { flags } from '../../base'
-import { AppAuth, commandFlags } from '../../common'
+import { AppAuth, command } from '@commercelayer/cli-core'
 import chalk from 'chalk'
 import { decodeAccessToken, getAccessToken } from '../../token'
 import { AuthScope } from '@commercelayer/js-auth'
@@ -35,7 +35,7 @@ export default class TokenGet extends Command {
 	]
 
   static flags = {
-    ...(commandFlags<typeof Command.flags>(Command.flags, ['accessToken'])),
+    ...(command.commandFlags<typeof Command.flags>(Command.flags, ['accessToken'])),
     clientId: flags.string({
       char: 'i',
       description: 'application client_id',
