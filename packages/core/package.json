@@ -1,0 +1,66 @@
+{
+  "name": "@commercelayer/cli-core",
+  "version": "0.0.5",
+  "main": "lib/cjs/index.js",
+  "types": "lib/cjs/index.d.ts",
+  "module": "lib/esm/index.js",
+  "scripts": {
+    "lint": "eslint ./src --ext .ts",
+    "lintspec": "eslint ./specs/ --ext .spec.ts",
+    "build": "rm -rf lib && tsc -b tsconfig.json tsconfig.esm.json --verbose",
+    "start": "ts-node src/index.ts",
+    "prepare": "npm run build",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "postbuild": "minimize-js lib"
+  },
+  "keywords": [
+    "javascript",
+    "ecommerce",
+    "jamstack",
+    "commercelayer"
+  ],
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
+  "description": "Commerce Layer Javascript CLI core lib",
+  "files": [
+    "lib/**/*"
+  ],
+  "engines": {
+    "node": ">=12.20"
+  },
+  "dependencies": {
+    "@commercelayer/js-auth": "^2.2.7",
+    "chalk": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "update-notifier": "^5.1.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "@size-limit/preset-small-lib": "^6.0.3",
+    "@types/jest": "^27.0.3",
+    "@types/jsonwebtoken": "^8.5.6",
+    "@types/node": "^16.11.0",
+    "@types/update-notifier": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "eslint": "^8.1.0",
+    "jest": "^27.3.1",
+    "minimize-js": "^1.0.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "repository": "github:commercelayer/commercelayer-cli-core",
+  "publishConfig": {
+    "access": "public"
+  },
+  "size-limit": [
+    {
+      "path": "lib",
+      "limit": "350 kB",
+      "webpack": false
+    }
+  ]
+}
