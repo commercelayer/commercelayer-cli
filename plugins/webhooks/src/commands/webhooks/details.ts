@@ -2,7 +2,7 @@ import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table from 'cli-table3'
 import _ from 'lodash'
-import { localeDate } from '../../common'
+import { output } from '@commercelayer/cli-core'
 import { QueryParamsRetrieve } from '@commercelayer/sdk'
 import { buildEventsTableData } from './events'
 
@@ -94,7 +94,7 @@ export default class WebhooksDetails extends Command {
 
 const formatValue = (field: string, value: string): any => {
 
-	if (field.endsWith('_date') || field.endsWith('_at')) return localeDate(value)
+	if (field.endsWith('_date') || field.endsWith('_at')) return output.localeDate(value)
 
 	switch (field) {
 

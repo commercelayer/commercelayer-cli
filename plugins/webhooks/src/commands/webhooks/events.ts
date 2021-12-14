@@ -1,8 +1,7 @@
 import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
-import apiConf from '../../api-conf'
-import { localeDate } from '../../common'
+import { config, output } from '@commercelayer/cli-core'
 import cliux from 'cli-ux'
 import { responseCodeColor } from './event'
 import { EventCallback, QueryParamsList } from '@commercelayer/sdk'
@@ -25,7 +24,7 @@ export default class WebhooksEvents extends Command {
 		...Command.flags,
 		all: flags.boolean({
 			char: 'A',
-			description: `show all events instead of first ${apiConf.page_max_size} only `,
+			description: `show all events instead of first ${config.api.page_max_size} only `,
 			exclusive: ['limit'],
 		}),
 		limit: flags.integer({
@@ -53,7 +52,7 @@ export default class WebhooksEvents extends Command {
 
 		try {
 
-			let pageSize = apiConf.page_max_size
+			let pageSize = config.api.page_max_size
 			const tableData = []
 			let currentPage = 0
 			let pageCount = 1
@@ -177,7 +176,7 @@ const buildEventsTableData = (tableData: EventCallback[]): string => {
 		{ content: chalk.blueBright(e.id || ''), vAlign: 'center' as VerticalAlignment },
 		{ content: responseCodeColor(e.response_code, e.response_message), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
 		e.response_message || '',
-		{ content: localeDate(e.created_at), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
+		{ content: output.localeDate(e.created_at), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
 	]))
 
 	return table.toString()

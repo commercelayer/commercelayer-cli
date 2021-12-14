@@ -1,6 +1,6 @@
 import Command, { flags } from '../../base'
 import chalk from 'chalk'
-import { inspectObject } from '../../common'
+import { output } from '@commercelayer/cli-core'
 
 
 
@@ -49,7 +49,7 @@ export default class WebhooksPayload extends Command {
 
 			if (event.payload) {
         const payload = JSON.parse((typeof event.payload === 'string') ? event.payload : String(event.payload))
-        this.log(flags.format ? inspectObject(payload) : JSON.stringify(payload, null, 4))
+        this.log(flags.format ? output.printObject(payload) : JSON.stringify(payload, null, 4))
       }
 
 			return event

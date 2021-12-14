@@ -1,7 +1,7 @@
 import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table from 'cli-table3'
-import { localeDate, inspectObject } from '../../common'
+import { output } from '@commercelayer/cli-core'
 import { EventCallback } from '@commercelayer/sdk'
 
 
@@ -89,7 +89,7 @@ export default class WebhooksEvent extends Command {
 					})
 
 					const payloadObject = (typeof event.payload === 'object') ? event.payload : JSON.parse(event.payload as unknown as string)
-					t.push([ flags.format ? inspectObject(payloadObject) : JSON.stringify(payloadObject, null, 2) ])
+					t.push([ flags.format ? output.printObject(payloadObject) : JSON.stringify(payloadObject, null, 2) ])
 					this.log(t.toString())
 
 				} else this.log(chalk.italic('No payload associated to this event'))
@@ -113,7 +113,7 @@ export default class WebhooksEvent extends Command {
 
 const formatValue = (field: string, value: string, obj?: EventCallback): any => {
 
-	if (field.endsWith('_date') || field.endsWith('_at')) return localeDate(value)
+	if (field.endsWith('_date') || field.endsWith('_at')) return output.localeDate(value)
 
 	switch (field) {
 		case 'id': return chalk.bold(value)
