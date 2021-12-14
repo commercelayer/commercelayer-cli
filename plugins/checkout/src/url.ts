@@ -1,9 +1,9 @@
-import { baseURL } from './common'
+import { api } from '@commercelayer/cli-core'
 import cliux from 'cli-ux'
 
 
 const buildCheckoutUrl = (organization: string, id: string, accessToken: string): string => {
-  const baseUrl = baseURL(organization, 'checkout.commercelayer.app')
+  const baseUrl = api.baseURL(organization, 'checkout.commercelayer.app')
   const checkoutUrl = `${baseUrl}/${id}?accessToken=${accessToken}`
   return checkoutUrl
 }
