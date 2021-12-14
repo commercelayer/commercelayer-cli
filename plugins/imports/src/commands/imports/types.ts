@@ -1,7 +1,7 @@
 import { Command } from '@oclif/command'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
-import apiConf from '../../api-conf'
+import { config } from '@commercelayer/cli-core'
 
 
 export default class ImportsTopics extends Command {
@@ -14,7 +14,7 @@ export default class ImportsTopics extends Command {
     this.log()
     this.log(chalk.blueBright('Supported import types'))
     this.log()
-    this.log(apiConf.imports_types.sort().join(' | '))
+    this.log(config.imports.types.sort().join(' | '))
     this.log()
 
     await cliux.open('https://docs.commercelayer.io/api/importing-resources#supported-resources')

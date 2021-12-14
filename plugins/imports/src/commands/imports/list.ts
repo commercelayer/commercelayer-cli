@@ -2,8 +2,7 @@ import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
-import apiConf from '../../api-conf'
-import { localeDate } from '../../common'
+import { config, output } from '@commercelayer/cli-core'
 import cliux from 'cli-ux'
 
 
@@ -25,13 +24,13 @@ export default class ImportsList extends Command {
 		...Command.flags,
 		all: flags.boolean({
 			char: 'A',
-			description: `show all imports instead of first ${apiConf.page_max_size} only`,
+			description: `show all imports instead of first ${config.api.page_max_size} only`,
 			exclusive: ['limit'],
 		}),
 		type: flags.string({
 			char: 't',
 			description: 'the type of resource imported',
-			options: apiConf.imports_types,
+			options: config.imports.types,
 		}),
 		group: flags.string({
 			char: 'g',
@@ -41,7 +40,7 @@ export default class ImportsList extends Command {
 		status: flags.string({
 			char: 's',
 			description: 'the import job status',
-			options: apiConf.imports_statuses,
+			options: config.imports.statuses,
 		}),
 		errors: flags.boolean({
 			char: 'e',
@@ -70,7 +69,7 @@ export default class ImportsList extends Command {
 
 		try {
 
-			let pageSize = apiConf.page_max_size
+			let pageSize = config.api.page_max_size
 			const tableData = []
 			let currentPage = 0
 			let pageCount = 1
@@ -135,7 +134,7 @@ export default class ImportsList extends Command {
 					{ content: i.processed_count, hAlign: 'center' as HorizontalAlignment },
 					{ content: i.warnings_count, hAlign: 'center' as HorizontalAlignment },
 					{ content: i.errors_count, hAlign: 'center' as HorizontalAlignment },
-					localeDate(i.started_at || ''),
+					output.localeDate(i.started_at || ''),
 					{ content: ((i.metadata?.group_id || i.metadata?.correlation_id) as string || ''), hAlign: 'center' as HorizontalAlignment },
 				]))
 

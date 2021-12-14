@@ -1,10 +1,8 @@
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
-import path from 'path'
-import { formatOutput } from './common'
+import { output, update } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 
-import updateNotifier from 'update-notifier'
 
 
 const pkg = require('../package.json')
@@ -43,23 +41,8 @@ export default abstract class extends Command {
 
 	// INIT (override)
 	async init() {
-
-		const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
-
-		if (notifier.update) {
-
-			const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/cli/node_modules/${pkg.name}/`)
-			const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
-
-			notifier.notify({
-				isGlobal: !pluginMode,
-				message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.dim('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
-			})
-
-		}
-
+    update.checkUpdate(pkg)
 		return super.init()
-
 	}
 
 
@@ -76,7 +59,7 @@ export default abstract class extends Command {
 				this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
 					{ suggestions: ['Execute login to get access to the organization\'s imports'] }
 				)
-			} else this.error(formatOutput(error, flags))
+			} else this.error(output.formatOutput(error, flags))
 		} else throw error
 	}
 
