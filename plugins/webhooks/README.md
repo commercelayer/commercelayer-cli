@@ -12,34 +12,29 @@ Commerce Layer CLI Webhooks plugin
 
 
 <!-- tocstop -->
-# Usage
-<!-- usage -->
-
-
-<!-- usagestop -->
 # Commands
 <!-- commands -->
 
-* [`cl-webhooks webhooks [ID]`](#cl-webhooks-webhooks-id)
-* [`cl-webhooks webhooks:create`](#cl-webhooks-webhookscreate)
-* [`cl-webhooks webhooks:destroy ID`](#cl-webhooks-webhooksdestroy-id)
-* [`cl-webhooks webhooks:details ID`](#cl-webhooks-webhooksdetails-id)
-* [`cl-webhooks webhooks:event ID`](#cl-webhooks-webhooksevent-id)
-* [`cl-webhooks webhooks:events ID`](#cl-webhooks-webhooksevents-id)
-* [`cl-webhooks webhooks:list`](#cl-webhooks-webhookslist)
-* [`cl-webhooks webhooks:listen ID`](#cl-webhooks-webhookslisten-id)
-* [`cl-webhooks webhooks:payload ID`](#cl-webhooks-webhookspayload-id)
-* [`cl-webhooks webhooks:reset ID`](#cl-webhooks-webhooksreset-id)
-* [`cl-webhooks webhooks:topics`](#cl-webhooks-webhookstopics)
-* [`cl-webhooks webhooks:update ID`](#cl-webhooks-webhooksupdate-id)
+* [`commercelayer webhooks [ID]`](#commercelayer-webhooks-id)
+* [`commercelayer webhooks:create`](#commercelayer-webhookscreate)
+* [`commercelayer webhooks:destroy ID`](#commercelayer-webhooksdestroy-id)
+* [`commercelayer webhooks:details ID`](#commercelayer-webhooksdetails-id)
+* [`commercelayer webhooks:event ID`](#commercelayer-webhooksevent-id)
+* [`commercelayer webhooks:events ID`](#commercelayer-webhooksevents-id)
+* [`commercelayer webhooks:list`](#commercelayer-webhookslist)
+* [`commercelayer webhooks:listen ID`](#commercelayer-webhookslisten-id)
+* [`commercelayer webhooks:payload ID`](#commercelayer-webhookspayload-id)
+* [`commercelayer webhooks:reset ID`](#commercelayer-webhooksreset-id)
+* [`commercelayer webhooks:topics`](#commercelayer-webhookstopics)
+* [`commercelayer webhooks:update ID`](#commercelayer-webhooksupdate-id)
 
-### `cl-webhooks webhooks [ID]`
+### `commercelayer webhooks [ID]`
 
 List all the registered webhooks.
 
 ```
 USAGE
-  $ cl-webhooks webhooks [ID]
+  $ commercelayer webhooks [ID]
 
 ARGUMENTS
   ID  unique id of the webhook
@@ -54,13 +49,13 @@ OPTIONS
 
 _See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/index.ts)_
 
-### `cl-webhooks webhooks:create`
+### `commercelayer webhooks:create`
 
 Create a new webhook.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:create
+  $ commercelayer webhooks:create
 
 OPTIONS
   -i, --include=include            a comma separated list of related resources to be included
@@ -76,13 +71,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/create.ts)_
 
-### `cl-webhooks webhooks:destroy ID`
+### `commercelayer webhooks:destroy ID`
 
 Destroy an existing webhook.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:destroy ID
+  $ commercelayer webhooks:destroy ID
 
 ARGUMENTS
   ID  unique id of the webhook
@@ -91,11 +86,11 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-webhooks webhooks:delete
-  $ cl-webhooks wh:delete
-  $ cl-webhooks wh:destroy
-  $ cl-webhooks webhook:delete
-  $ cl-webhooks webhook:destroy
+  $ commercelayer webhooks:delete
+  $ commercelayer wh:delete
+  $ commercelayer wh:destroy
+  $ commercelayer webhook:delete
+  $ commercelayer webhook:destroy
 
 EXAMPLES
   $ commercelayer webhooks:destroy <webhook-id>>
@@ -104,13 +99,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/destroy.ts)_
 
-### `cl-webhooks webhooks:details ID`
+### `commercelayer webhooks:details ID`
 
 Show the details of an existing webhook.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:details ID
+  $ commercelayer webhooks:details ID
 
 ARGUMENTS
   ID  unique id of the webhook
@@ -121,9 +116,9 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-webhooks webhook
-  $ cl-webhooks wh:details
-  $ cl-webhooks webhook:details
+  $ commercelayer webhook
+  $ commercelayer wh:details
+  $ commercelayer webhook:details
 
 EXAMPLES
   $ commercelayer webhooks:details <webhook-id>
@@ -133,13 +128,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/details.ts)_
 
-### `cl-webhooks webhooks:event ID`
+### `commercelayer webhooks:event ID`
 
 Show the details of a firedf webhook event.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:event ID
+  $ commercelayer webhooks:event ID
 
 ARGUMENTS
   ID  unique id of the webhook event
@@ -150,8 +145,8 @@ OPTIONS
   -p, --payload                    show the event payload sent to the callback endpoint
 
 ALIASES
-  $ cl-webhooks wh:event
-  $ cl-webhooks webhook:event
+  $ commercelayer wh:event
+  $ commercelayer webhook:event
 
 EXAMPLES
   $ commercelayer webhooks:event <event-id>
@@ -160,13 +155,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/event.ts)_
 
-### `cl-webhooks webhooks:events ID`
+### `commercelayer webhooks:events ID`
 
 List all the events associated to the webhook.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:events ID
+  $ commercelayer webhooks:events ID
 
 ARGUMENTS
   ID  unique id of the webhook
@@ -177,8 +172,8 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-webhooks wh:events
-  $ cl-webhooks webhook:events
+  $ commercelayer wh:events
+  $ commercelayer webhook:events
 
 EXAMPLES
   $ commercelayer webhooks:events <webhook-id>
@@ -187,13 +182,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/events.ts)_
 
-### `cl-webhooks webhooks:list`
+### `commercelayer webhooks:list`
 
 List all the registered webhooks.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:list
+  $ commercelayer webhooks:list
 
 OPTIONS
   -c, --circuit=open|closed        show only webhooks with circuit in the declared state
@@ -201,7 +196,7 @@ OPTIONS
   -t, --topic=topic                the event that triggered the webhook
 
 ALIASES
-  $ cl-webhooks wh:list
+  $ commercelayer wh:list
 
 EXAMPLES
   $ commercelayer webhooks
@@ -211,13 +206,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/list.ts)_
 
-### `cl-webhooks webhooks:listen ID`
+### `commercelayer webhooks:listen ID`
 
 Listen a webhook for outgoing callbacks.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:listen ID
+  $ commercelayer webhooks:listen ID
 
 ARGUMENTS
   ID  unique id of the webhook
@@ -227,8 +222,8 @@ OPTIONS
   -t, --time=time                  [default: 120] waiting time for the first event
 
 ALIASES
-  $ cl-webhooks wh:listen
-  $ cl-webhooks webhook:listen
+  $ commercelayer wh:listen
+  $ commercelayer webhook:listen
 
 EXAMPLES
   $ commercelayer webhooks:listen <webhook-id>
@@ -237,13 +232,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/listen.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/listen.ts)_
 
-### `cl-webhooks webhooks:payload ID`
+### `commercelayer webhooks:payload ID`
 
 Show the payload associated to an event callback.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:payload ID
+  $ commercelayer webhooks:payload ID
 
 ARGUMENTS
   ID  unique id of the webhook event
@@ -253,8 +248,8 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-webhooks wh:payload
-  $ cl-webhooks webhook:payload
+  $ commercelayer wh:payload
+  $ commercelayer webhook:payload
 
 EXAMPLES
   $ commercelayer webhooks:payload <event-id>
@@ -264,13 +259,13 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/payload.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/payload.ts)_
 
-### `cl-webhooks webhooks:reset ID`
+### `commercelayer webhooks:reset ID`
 
 Reset the circuit breaker associated to the webhook.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:reset ID
+  $ commercelayer webhooks:reset ID
 
 ARGUMENTS
   ID  unique id of the webhook
@@ -279,8 +274,8 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-webhooks wh:reset
-  $ cl-webhooks webhook:reset
+  $ commercelayer wh:reset
+  $ commercelayer webhook:reset
 
 EXAMPLES
   $ commercelayer webhooks:reset <webhook-id>
@@ -289,24 +284,24 @@ EXAMPLES
 
 _See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/reset.ts)_
 
-### `cl-webhooks webhooks:topics`
+### `commercelayer webhooks:topics`
 
 Show online documentation for supported events.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:topics
+  $ commercelayer webhooks:topics
 ```
 
 _See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/topics.ts)_
 
-### `cl-webhooks webhooks:update ID`
+### `commercelayer webhooks:update ID`
 
 Update an existing webhook.
 
 ```
 USAGE
-  $ cl-webhooks webhooks:update ID
+  $ commercelayer webhooks:update ID
 
 ARGUMENTS
   ID  unique id of the webhook
