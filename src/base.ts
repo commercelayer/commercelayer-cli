@@ -1,7 +1,8 @@
 import Command, { flags } from '@oclif/command'
-import { AppInfo, configParam, ConfigParams, readConfigDir } from './config'
+import { configParam, ConfigParams, readConfigDir } from './config'
 import inquirer from 'inquirer'
-import { execMode, maxLength, printScope } from './common'
+import { printScope } from './common'
+import { output, api, AppInfo } from '@commercelayer/cli-core'
 import { IConfig } from '@oclif/config'
 
 
@@ -84,7 +85,7 @@ export { flags }
 
 const promptApplication = async (apps: AppInfo[]) => {
 
-	const appMaxLength = maxLength(apps, 'name') + 2
+	const appMaxLength = output.maxLength(apps, 'name') + 2
 	const details = ['organization', 'kind', 'mode', 'alias']
 
 	const answers = await inquirer.prompt([{
@@ -93,7 +94,7 @@ const promptApplication = async (apps: AppInfo[]) => {
 		message: 'Select an application to switch to:',
 		choices: apps.map(a => {
 			return { name: `${a.name.padEnd(appMaxLength, ' ')} [ ${details.map(d => {
-				return String(a[d as keyof AppInfo]).padEnd(maxLength(apps, d))
+				return String(a[d as keyof AppInfo]).padEnd(output.maxLength(apps, d))
 			}).join(' | ')} ]${(a.scope && a.scope.length > 0) ? ` (${printScope(a.scope)})` : ''}`, value: a }
 		}),
 		loop: false,
@@ -107,7 +108,7 @@ const promptApplication = async (apps: AppInfo[]) => {
 
 export const filterApplications = (config: IConfig, flags: any): AppInfo[] => {
 
-	const mode = flags.mode || (flags.live ? execMode(flags.live) : undefined)
+	const mode = flags.mode || (flags.live ? api.execMode(flags.live) : undefined)
 
 	const applications = readConfigDir(config, { key: flags.key || flags.appkey }).filter(app => {
 

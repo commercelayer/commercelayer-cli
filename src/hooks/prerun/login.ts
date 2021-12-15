@@ -1,8 +1,8 @@
 import { Hook } from '@oclif/config'
 import { parse } from '@oclif/parser'
 import { flags as flagUtil } from '@oclif/command'
-import { tokenFileExists, readTokenFile, AppKey, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { appKeyValid } from '../../common'
+import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
+import { application, AppKey } from '@commercelayer/cli-core'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
@@ -57,15 +57,15 @@ const hook: Hook<'prerun'> = async function (opts) {
 	let configData
 
 	// No appkey passed io command line, looking for saved current application
-	if (!appKeyValid(app)) {
+	if (!application.appKeyValid(app)) {
 		const current = configParam(ConfigParams.currentApplication)
 		if (current !== undefined) Object.assign(app, current)
-		if (!appKeyValid(app)) return
+		if (!application.appKeyValid(app)) return
 	}
-	
+
 	// Check if config file exists and load application data
-	if (!configFileExists(this.config, app)) this.error('Unable to find configuration file for application')
-	else configData = readConfigFile(this.config, app)
+	if (configFileExists(this.config, app)) configData = readConfigFile(this.config, app)
+	else this.error('Unable to find configuration file for application')
 
 	if (!configData) return
 

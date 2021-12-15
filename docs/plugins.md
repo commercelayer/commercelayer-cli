@@ -26,7 +26,7 @@ EXAMPLE
   $ commercelayer plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.10/src/commands/plugins/index.ts)_
 
 ### `commercelayer plugins:available`
 
@@ -61,7 +61,7 @@ EXAMPLE
   $ commercelayer plugins:inspect myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/inspect.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.10/src/commands/plugins/inspect.ts)_
 
 ### `commercelayer plugins:install PLUGIN...`
 
@@ -97,7 +97,7 @@ EXAMPLES
   $ commercelayer plugins:install someuser/someplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/install.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.10/src/commands/plugins/install.ts)_
 
 ### `commercelayer plugins:link PLUGIN`
 
@@ -117,14 +117,14 @@ OPTIONS
 DESCRIPTION
   Installation of a linked plugin will override a user-installed or core plugin.
 
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello' 
-  command will override the user-installed or core plugin implementation. This is useful for development work.
+  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
+   command will override the user-installed or core plugin implementation. This is useful for development work.
 
 EXAMPLE
   $ commercelayer plugins:link myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/link.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.10/src/commands/plugins/link.ts)_
 
 ### `commercelayer plugins:uninstall PLUGIN...`
 
@@ -146,7 +146,7 @@ ALIASES
   $ commercelayer plugins:remove
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/uninstall.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.10/src/commands/plugins/uninstall.ts)_
 
 ### `commercelayer plugins:update`
 
@@ -161,4 +161,4 @@ OPTIONS
   -v, --verbose
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.2/src/commands/plugins/update.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v1.10.10/src/commands/plugins/update.ts)_

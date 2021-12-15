@@ -1,16 +1,16 @@
 import Command, { flags } from '../../base'
 import { getAccessToken } from './login'
 import chalk from 'chalk'
-import { AppKey, AppAuth, readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
-import { sleep, print, baseURL } from '../../common'
-import { IConfig } from '@oclif/config'
+import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
+import { output, util, api, AppKey, AppAuth, token, config } from '@commercelayer/cli-core'
+import type { IConfig } from '@oclif/config'
 import https from 'https'
 import jwt from 'jsonwebtoken'
-import { AuthReturnType } from '@commercelayer/js-auth'
+import type { AuthReturnType } from '@commercelayer/js-auth'
 
 
 
-const defaultTokenExpiration = 60 * 2
+const defaultTokenExpiration = config.api.default_token_expiration_mins
 
 
 export default class ApplicationsToken extends Command {
@@ -104,7 +104,7 @@ export default class ApplicationsToken extends Command {
 		if (accessToken) {
 			const info = decodeAccessToken(accessToken)
 			this.log(chalk.blueBright('Token Info:'))
-			this.log(print(info))
+			this.log(output.printObject(info))
 			this.log()
 		}
 	}
@@ -113,8 +113,7 @@ export default class ApplicationsToken extends Command {
 
 
 const decodeAccessToken = (accessToken: any): any => {
-	const info = jwt.decode(accessToken)
-	return info
+	return token.decodeAccessToken(accessToken)
 }
 
 
@@ -162,7 +161,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 	})
 
 	const options = {
-		hostname: baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
+		hostname: api.baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
 		port: 443,
 		path: '/oauth/revoke',
 		method: 'POST',
@@ -189,7 +188,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 	req.write(data)
 	req.end()
 
-	await sleep(300)
+	await util.sleep(300)
 
 }
 
@@ -209,8 +208,8 @@ const isAccessTokenExpiring = (tokenData: any): boolean => {
 
 const generateAccessToken = (config: IConfig, app: AppKey, sharedSecret: string, valMinutes?: number): any => {
 
-	const token = readTokenFile(config, app)
-	const tokenData = jwt.decode(token.access_token) as { [key: string]: any }
+	const savedToken = readTokenFile(config, app)
+	const tokenData = token.decodeAccessToken(savedToken.access_token) as { [key: string]: any }
 
 	let minutes = (valMinutes === undefined) ? defaultTokenExpiration : valMinutes
 	if (minutes < 2) minutes = 2

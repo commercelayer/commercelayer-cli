@@ -1,8 +1,9 @@
 import { Command, flags } from '@oclif/command'
 import chalk from 'chalk'
-import { readConfigFile, AppInfo, currentApplication } from '../../config'
+import { readConfigFile, currentApplication } from '../../config'
 import { inspect } from 'util'
 import { printScope } from '../../common'
+import type { AppInfo } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsCurrent extends Command {

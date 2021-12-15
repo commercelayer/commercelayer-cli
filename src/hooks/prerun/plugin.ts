@@ -40,8 +40,7 @@ const hook: Hook<'prerun'> = async function (opts) {
       if (tgIndex > -1) {
         opts.argv[index] = plugin + '@' + opts.argv[tgIndex + 1]
         opts.argv.splice(tgIndex, 2)
-      }
-      else opts.argv[index] = plugin
+      } else opts.argv[index] = plugin
 
     }
 

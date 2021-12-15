@@ -2,9 +2,9 @@ import { Command, flags } from '@oclif/command'
 import { IConfig } from '@oclif/config'
 import { AuthReturnType, AuthScope, ClientCredentials, clientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { baseURL, appKey, ApiMode } from '../../common'
+import { ApiMode, AppAuth, AppInfo, application, api } from '@commercelayer/cli-core'
 import chalk from 'chalk'
-import { AppInfo, ConfigParams, AppAuth, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication } from '../../config'
+import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication } from '../../config'
 import { inspect } from 'util'
 import { decodeAccessToken } from './token'
 import { printCurrent } from './current'
@@ -141,7 +141,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 	const credentials: ClientCredentials = {
 		clientId: auth.clientId,
 		clientSecret: auth.clientSecret,
-		endpoint: baseURL(auth.slug, auth.domain),
+		endpoint: api.baseURL(auth.slug, auth.domain),
 		scope: auth.scope || '',
 	}
 
@@ -182,12 +182,12 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	const appInfo: AppInfo = Object.assign({
 		organization: org.name || '',
-		key: appKey(),
+		key: application.appKey(),
 		slug: org.slug || '',
 		mode: mode,
 		kind: app.kind || '',
 		name: app.name || '',
-		baseUrl: baseURL(auth.slug, auth.domain),
+		baseUrl: api.baseURL(auth.slug, auth.domain),
 		id: app.id,
 		alias: '',
 	}, auth)
@@ -215,8 +215,6 @@ const checkScope = (scopeFlags: string[]): AuthScope => {
 	}
 
 	const _scope = (scope.length === 1) ? scope[0] : scope
-
-	console.log(_scope)
 
 	return _scope
 

@@ -2,8 +2,7 @@ import Configstore from 'configstore'
 import path from 'path'
 import fs from 'fs'
 import Config, { IConfig } from '@oclif/config'
-import type { ApiMode } from './common'
-import { AuthScope, ClientId, ClientSecret } from '@commercelayer/js-auth'
+import type { AppKey, AppInfo } from '@commercelayer/cli-core'
 
 const packageJson = require('../package.json')
 
@@ -19,34 +18,6 @@ const fixed = {
 	tokenSuffix: 'token.json',
 	encoding: 'utf-8',
 }
-
-
-interface AppKey {
-	key: string;
-	mode: ApiMode;
-	id?: string;
-	alias?: string;
-}
-
-
-interface AppAuth {
-	slug: string;
-	domain?: string;
-	clientId: ClientId;
-	clientSecret?: ClientSecret;
-	scope?: AuthScope;
-	email?: string;
-	password?: string;
-}
-
-interface AppInfo extends AppKey, AppAuth {
-	organization: string;
-	kind: string;
-	name: string;
-	baseUrl?: string;
-}
-
-export { AppKey, AppAuth, AppInfo }
 
 
 const configDir = (config: IConfig): string => {

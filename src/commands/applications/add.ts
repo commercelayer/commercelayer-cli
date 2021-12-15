@@ -1,9 +1,10 @@
 import { Command } from '@oclif/command'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import chalk from 'chalk'
-import { ConfigParams, AppAuth, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
+import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import ApplicationsLogin, { checkAlias, checkScope, getAccessToken, getApplicationInfo } from './login'
+import type { AppAuth } from '@commercelayer/cli-core'
 
 
 
