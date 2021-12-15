@@ -147,4 +147,3 @@ export const mergeCommandParams = (params: QueryParams, saved: QueryParams) => {
   })
 
 }
-
