@@ -73,7 +73,7 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif-dev manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "oclif-dev readme --plugin && git add README.md",
+    "readme": "oclif-dev readme --plugin --bin=commercelayer && git add README.md",
     "generate": "ts-node gen/generator.ts"
   },
   "types": "lib/index.d.ts",
