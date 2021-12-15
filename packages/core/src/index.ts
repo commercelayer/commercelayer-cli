@@ -1,6 +1,8 @@
 
 export * as api from './api'
 
+export * as application from './application'
+
 export { default as config } from './config'
 
 export * as command from './command'
