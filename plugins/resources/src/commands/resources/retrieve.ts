@@ -112,7 +112,7 @@ export default class ResourcesRetrieve extends Command {
 
 			return out
 
-		} catch (error) {
+		} catch (error: any) {
 			if (isRequestInterrupted(error) && reqReader) {
 				this.showLiveDocumentation(reqReader.request, params, flags)
 				cl.removeInterceptor('request', reqReader.id)
