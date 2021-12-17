@@ -23,7 +23,7 @@ const IMPORTS_STATUSES: Array<string> = [
 
 type ApiConfig = {
   default_domain: string;
-  default_token_expiration_mins: number;
+  token_expiration_mins: number;
   token_encoding_algorithm: string;
   requests_max_num_burst: number;
   requests_max_secs_burst: number;
@@ -48,7 +48,7 @@ type Config = {
 const config: Config = {
 	api: {
 		default_domain: 'commercelayer.io',
-		default_token_expiration_mins: 60 * 2,
+		token_expiration_mins: 60 * 2,
 		token_encoding_algorithm: 'HS512',
 		requests_max_num_burst: 50,
 		requests_max_secs_burst: 10,
