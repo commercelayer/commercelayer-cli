@@ -6,7 +6,7 @@ import commercelayer from '@commercelayer/sdk'
 
 
 const VALIDITY_MIN = 2
-const VALIDITY_MAX = config.api.default_token_expiration_mins
+const VALIDITY_MAX = config.api.token_expiration_mins
 
 
 

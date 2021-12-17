@@ -1,6 +1,6 @@
 import { AuthReturnType, clientCredentials, ClientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
-import jwt from 'jsonwebtoken'
-import { api, AppAuth, util, AccessTokenInfo, token } from '@commercelayer/cli-core'
+import jwt, { Algorithm } from 'jsonwebtoken'
+import { api, AppAuth, util, AccessTokenInfo, token, config } from '@commercelayer/cli-core'
 import https from 'https'
 
 
@@ -28,8 +28,10 @@ const generateAccessToken = (token: string | AccessTokenInfo, sharedSecret: stri
     rand: Math.random(),
   }
 
-  const accessToken = jwt.sign(payload, sharedSecret, { algorithm: 'HS512', noTimestamp: true })
-  const info = jwt.verify(accessToken, sharedSecret, { algorithms: ['HS512'] })
+  const algo = config.api.token_encoding_algorithm as Algorithm
+
+  const accessToken = jwt.sign(payload, sharedSecret, { algorithm: algo, noTimestamp: true })
+  const info = jwt.verify(accessToken, sharedSecret, { algorithms: [ algo ] })
 
 
   return {
