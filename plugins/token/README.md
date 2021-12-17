@@ -20,18 +20,18 @@ commercelayer-cli-plugin-token
 # Commands
 <!-- commands -->
 
-* [`cl-token token:create`](#cl-token-tokencreate)
-* [`cl-token token:decode [TOKEN]`](#cl-token-tokendecode-token)
-* [`cl-token token:get`](#cl-token-tokenget)
-* [`cl-token token:revoke [TOKEN]`](#cl-token-tokenrevoke-token)
+* [`commercelayer token:create`](#commercelayer-tokencreate)
+* [`commercelayer token:decode [TOKEN]`](#commercelayer-tokendecode-token)
+* [`commercelayer token:get`](#commercelayer-tokenget)
+* [`commercelayer token:revoke [TOKEN]`](#commercelayer-tokenrevoke-token)
 
-### `cl-token token:create`
+### `commercelayer token:create`
 
 Create a new custom access token.
 
 ```
 USAGE
-  $ cl-token token:create
+  $ commercelayer token:create
 
 OPTIONS
   -m, --minutes=minutes            (required) minutes to token expiration [2, 120]
@@ -46,13 +46,13 @@ EXAMPLES
 
 _See code: [src/commands/token/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/create.ts)_
 
-### `cl-token token:decode [TOKEN]`
+### `commercelayer token:decode [TOKEN]`
 
 Decode a Commerce Layer access token.
 
 ```
 USAGE
-  $ cl-token token:decode [TOKEN]
+  $ commercelayer token:decode [TOKEN]
 
 ARGUMENTS
   TOKEN  the access token to decode
@@ -61,7 +61,7 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ cl-token token:info
+  $ commercelayer token:info
 
 EXAMPLES
   $ commercelayer token:decode
@@ -70,13 +70,13 @@ EXAMPLES
 
 _See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
 
-### `cl-token token:get`
+### `commercelayer token:get`
 
 Get a new access token.
 
 ```
 USAGE
-  $ cl-token token:get
+  $ commercelayer token:get
 
 OPTIONS
   -S, --scope=scope                access token scope (market, stock location)
@@ -94,13 +94,13 @@ EXAMPLES
 
 _See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/get.ts)_
 
-### `cl-token token:revoke [TOKEN]`
+### `commercelayer token:revoke [TOKEN]`
 
 Revoke a Commerce Layer access token.
 
 ```
 USAGE
-  $ cl-token token:revoke [TOKEN]
+  $ commercelayer token:revoke [TOKEN]
 
 ARGUMENTS
   TOKEN  access token to revoke
