@@ -53,14 +53,14 @@ type PluginRelease = {
 }
 
 const AvailablePlugins: PluginRelease[] = [
-  { name: 'resources',  plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',    enabled: true },
-  { name: 'seeder',     plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',            enabled: true },
-  { name: 'imports',    plugin: '@commercelayer/cli-plugin-imports',    description: 'Organization imports manager',        enabled: true },
-  { name: 'webhooks',   plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',      enabled: true },
-  { name: 'orders',     plugin: '@commercelayer/cli-plugin-orders',     description: 'Organization orders management',      enabled: true },
-  { name: 'checkout',   plugin: '@commercelayer/cli-plugin-checkout',   description: 'Checkout URLs generation',            enabled: true },
-  { name: 'triggers',   plugin: '@commercelayer/cli-plugin-triggers',   description: 'Execute actions on resources',        enabled: true },
-  { name: 'token',      plugin: '@commercelayer/cli-plugin-token',      description: 'Manage Commerce Layer access tokens', enabled: true, hidden: true },
+  { name: 'resources',    plugin: '@commercelayer/cli-plugin-resources',  description: 'CRUD operations on API resources',    enabled: true },
+  { name: 'seeder',       plugin: '@commercelayer/cli-plugin-seeder',     description: 'Organization data seeder',            enabled: true },
+  { name: 'imports',      plugin: '@commercelayer/cli-plugin-imports',    description: 'Organization imports manager',        enabled: true },
+  { name: 'webhooks',     plugin: '@commercelayer/cli-plugin-webhooks',   description: 'Organization webhooks analyzer',      enabled: true },
+  { name: 'orders',       plugin: '@commercelayer/cli-plugin-orders',     description: 'Organization orders management',      enabled: true },
+  { name: 'checkout',     plugin: '@commercelayer/cli-plugin-checkout',   description: 'Checkout URLs generation',            enabled: true },
+  { name: 'triggers',     plugin: '@commercelayer/cli-plugin-triggers',   description: 'Execute actions on resources',        enabled: true },
+  { name: 'token',        plugin: '@commercelayer/cli-plugin-token',      description: 'Manage Commerce Layer access tokens', enabled: true },
 ]
 
 

@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -71,7 +71,10 @@
         "./lib/hooks/prerun/login",
         "./lib/hooks/prerun/plugin"
       ],
-      "postrun": "./lib/hooks/postrun/save"
+      "postrun": [
+        "./lib/hooks/postrun/save",
+        "./lib/hooks/postrun/autocomplete"
+      ]
     },
     "topics": {
       "applications": {
@@ -102,7 +105,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/cli-core": "^0.0.6",
+    "@commercelayer/cli-core": "^0.1.4",
     "@commercelayer/js-auth": "^2.2.3",
     "@commercelayer/sdk": "^2.3.4",
     "@oclif/command": "^1.8.0",

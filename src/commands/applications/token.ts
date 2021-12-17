@@ -10,7 +10,7 @@ import type { AuthReturnType } from '@commercelayer/js-auth'
 
 
 
-const defaultTokenExpiration = config.api.default_token_expiration_mins
+const defaultTokenExpiration = config.api.token_expiration_mins
 
 
 export default class ApplicationsToken extends Command {
