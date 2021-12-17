@@ -2,8 +2,8 @@
 import { inspect } from 'util'
 
 /** Print a formatted object */
-const printObject = (object: any, options?: { color?: boolean, sort?: boolean, width?: number }): string => {
-	return inspect(object, {
+const printObject = (obj: any, options?: { color?: boolean, sort?: boolean, width?: number }): string => {
+	return inspect(obj, {
 		showHidden: false,
 		depth: null,
 		colors: options?.color || true,
@@ -15,8 +15,23 @@ const printObject = (object: any, options?: { color?: boolean, sort?: boolean, w
 
 
 /** Print object in JSON format */
-const jsonObject = (obj: any, { unformatted }: { unformatted?: boolean }) => {
-	return JSON.stringify(obj, null, (unformatted ? undefined : 4))
+const printJSON = (obj: any, options?: { unformatted?: boolean; tabSize?: number }): string => {
+	return JSON.stringify(obj, null, ((options?.unformatted || false) ? undefined : (options?.tabSize || 4)))
+}
+
+
+/** Print object in CSV format */
+const printCSV = (obj: Array<object>, flags?: any): string => {
+	if (!obj || (obj.length === 0)) return ''
+	const fields = Object.keys(obj[0]).filter(f => {
+		if (['id', 'type'].includes(f)) return (flags && flags.fields.includes(f))
+		return true
+	})
+	let csv = fields.map(f => f.toUpperCase().replace(/_/g, ' ')).join(';') + '\n'
+	obj.forEach((o: { [x: string]: any }) => {
+		csv += fields.map(f => o[f]).join(';') + '\n'
+	})
+	return csv
 }
 
 
@@ -40,6 +55,7 @@ const cleanDate = (date: string): string => {
 	return date.replace('T', ' ').replace('Z', '').substring(0, date.lastIndexOf('.'))
 }
 
+/** Localized string date */
 const localeDate = (date: string): string => {
 	if (!date) return ''
 	return new Date(Date.parse(date)).toLocaleString()
@@ -50,6 +66,10 @@ const localeDate = (date: string): string => {
 const formatOutput = (output: any, flags?: any, { color = true } = {}): string => {
 	if (!output) return ''
 	if (typeof output === 'string') return output
+	if (flags) {
+		if (flags.csv) return printCSV(output, flags)
+		if (flags.json) return printJSON(output, { unformatted: flags.unformatted })
+	}
 	return printObject(output, { color })
 }
 
@@ -60,4 +80,4 @@ const formatError = (error: any, flags: any): string => {
 }
 
 
-export { printObject, jsonObject, center, maxLength, cleanDate, localeDate, formatOutput, formatError }
+export { printObject, printJSON, printCSV, center, maxLength, cleanDate, localeDate, formatOutput, formatError }
