@@ -2,7 +2,7 @@ import { QueryParams, QueryParamsList } from '@commercelayer/sdk'
 import { IConfig } from '@oclif/config'
 import { join } from 'path'
 import fs from 'fs'
-import { jsonObject } from './output'
+import { output } from '@commercelayer/cli-core'
 import chalk from 'chalk'
 
 
@@ -71,7 +71,7 @@ const saveCommandData = (alias: string, config: IConfig, params: CommandParams) 
 
   if (!fs.existsSync(saveDir)) fs.mkdirSync(saveDir, { recursive: true })
 
-  fs.writeFileSync(join(saveDir, fileName), jsonObject(params))
+  fs.writeFileSync(join(saveDir, fileName), output.printJSON(params))
 
 }
 

@@ -2,7 +2,7 @@ import Command from '../../base'
 import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { commandFlags } from '../../common'
+import { command } from '@commercelayer/cli-core'
 
 export default class ResourcesDelete extends Command {
 
@@ -16,7 +16,7 @@ export default class ResourcesDelete extends Command {
 	]
 
 	static flags = {
-		...(commandFlags(Command.flags, ['save-params', 'load-params']) as typeof Command.flags),
+		...(command.commandFlags<typeof Command.flags>(Command.flags, ['save-params', 'load-params'])),
 	}
 
 	static args = [

@@ -12,7 +12,7 @@ import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commerce
 
 import updateNotifier from 'update-notifier'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
-import { decodeAccessToken } from './token'
+import { token } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, CommandParams, loadCommandData, ResourceOperation, saveCommandData } from './commands'
 import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 import { IConfig } from '@oclif/config'
@@ -633,7 +633,7 @@ export default abstract class extends Command {
 
   protected checkApplication(accessToken: string, kinds: string[]): boolean {
 
-    const info = decodeAccessToken(accessToken)
+    const info = token.decodeAccessToken(accessToken)
 
     if (info === null) this.error('Invalid access token provided')
     else

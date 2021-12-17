@@ -1,19 +1,11 @@
 
 import { json2csvAsync } from 'json-2-csv'
 import fs from 'fs'
+import { output } from '@commercelayer/cli-core'
 
 
-const formatCsv = (output: Array<object>, flags?: any) => {
-	if (!output || (output.length === 0)) return ''
-	const fields = Object.keys(output[0]).filter(f => {
-		if (['id', 'type'].includes(f)) return (flags && flags.fields.includes(f))
-		return true
-	})
-	let csv = fields.map(f => f.toUpperCase().replace(/_/g, ' ')).join(';') + '\n'
-	output.forEach((o: { [x: string]: any }) => {
-		csv += fields.map(f => o[f]).join(';') + '\n'
-	})
-	return csv
+const formatCsv = (obj: Array<object>, flags?: any) => {
+	return output.printCSV(obj, flags)
 }
 
 

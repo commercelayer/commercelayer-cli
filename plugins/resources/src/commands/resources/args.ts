@@ -5,7 +5,7 @@ import { deleteArgsFile, loadCommandData, readCommandArgs, ResourceOperation } f
 import { formatOutput } from '../../output'
 import cliux from 'cli-ux'
 import { QueryParamsList } from '@commercelayer/sdk'
-import { cleanDate } from '../../common'
+import { output } from '@commercelayer/cli-core'
 
 
 export default class ResourcesArgs extends Command {
@@ -84,7 +84,7 @@ export default class ResourcesArgs extends Command {
             sort: { header: 'SORT', get: row => Object.keys(((row.params as QueryParamsList).sort || {})).sort().join('\n') },
             pageSize: { header: 'PG. SIZE', get: row => (row.params as QueryParamsList).pageSize || '' },
             pageNumber: { header: 'PG. NUM.', get: row => (row.params as QueryParamsList).pageNumber || '' },
-            savedAt: { header: 'SAVED AT', get: row => cleanDate(row.saved_at) },
+            savedAt: { header: 'SAVED AT', get: row => output.cleanDate(row.saved_at) },
           }, {
             printLine: this.log,
           })

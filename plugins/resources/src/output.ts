@@ -1,32 +1,10 @@
-import { inspect } from 'util'
+
 import fs from 'fs'
-import { formatCsv } from './csv'
+import { output } from '@commercelayer/cli-core'
 
 
-
-const inspectObject = (object: any, color = true): string => {
-	return inspect(object, {
-		showHidden: false,
-		depth: null,
-		colors: color,
-		sorted: false,
-		maxArrayLength: Infinity,
-		breakLength: 120,
-	})
-}
-
-
-const jsonObject = (obj: any, unformatted?: boolean) => {
-  return JSON.stringify(obj, null, (unformatted ? undefined : 4))
-}
-
-
-const formatOutput = (output: any, flags?: any, { color = true } = {}) => {
-	if (!output) return ''
-	if (typeof output === 'string') return output
-	if (flags?.csv) return formatCsv(output, flags)
-	return (flags && flags.json) ?
-		jsonObject(output, flags.unformatted) : inspectObject(output, color)
+const formatOutput = (out: any, flags?: any, { color = true } = {}) => {
+	return output.formatOutput(out, flags, { color })
 }
 
 
@@ -38,4 +16,4 @@ const exportOutput = async (output: any, flags: any, filePath: string): Promise<
 
 
 
-export { inspectObject, jsonObject, formatOutput, exportOutput }
+export { formatOutput, exportOutput }

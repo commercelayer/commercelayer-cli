@@ -25,24 +25,24 @@ $ commercelayer plugins:install resources
 ## Commands
 <!-- commands -->
 
-* [`cl-resources resources`](#cl-resources-resources)
-* [`cl-resources resources:args`](#cl-resources-resourcesargs)
-* [`cl-resources resources:create RESOURCE`](#cl-resources-resourcescreate-resource)
-* [`cl-resources resources:delete RESOURCE [ID]`](#cl-resources-resourcesdelete-resource-id)
-* [`cl-resources resources:doc RESOURCE`](#cl-resources-resourcesdoc-resource)
-* [`cl-resources resources:filters`](#cl-resources-resourcesfilters)
-* [`cl-resources resources:get RESOURCE [ID]`](#cl-resources-resourcesget-resource-id)
-* [`cl-resources resources:list RESOURCE`](#cl-resources-resourceslist-resource)
-* [`cl-resources resources:retrieve RESOURCE [ID]`](#cl-resources-resourcesretrieve-resource-id)
-* [`cl-resources resources:update RESOURCE [ID]`](#cl-resources-resourcesupdate-resource-id)
+* [`commercelayer resources`](#commercelayer-resources)
+* [`commercelayer resources:args`](#commercelayer-resourcesargs)
+* [`commercelayer resources:create RESOURCE`](#commercelayer-resourcescreate-resource)
+* [`commercelayer resources:delete RESOURCE [ID]`](#commercelayer-resourcesdelete-resource-id)
+* [`commercelayer resources:doc RESOURCE`](#commercelayer-resourcesdoc-resource)
+* [`commercelayer resources:filters`](#commercelayer-resourcesfilters)
+* [`commercelayer resources:get RESOURCE [ID]`](#commercelayer-resourcesget-resource-id)
+* [`commercelayer resources:list RESOURCE`](#commercelayer-resourceslist-resource)
+* [`commercelayer resources:retrieve RESOURCE [ID]`](#commercelayer-resourcesretrieve-resource-id)
+* [`commercelayer resources:update RESOURCE [ID]`](#commercelayer-resourcesupdate-resource-id)
 
-### `cl-resources resources`
+### `commercelayer resources`
 
 List all the available Commerce Layer API resources.
 
 ```
 USAGE
-  $ cl-resources resources
+  $ commercelayer resources
 
 OPTIONS
   -h, --help  show CLI help
@@ -56,13 +56,13 @@ EXAMPLES
 
 _See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/index.ts)_
 
-### `cl-resources resources:args`
+### `commercelayer resources:args`
 
 Show all the saved command arguments.
 
 ```
 USAGE
-  $ cl-resources resources:args
+  $ commercelayer resources:args
 
 OPTIONS
   -D, --delete                                 delete saved arguments associated to the alias
@@ -71,18 +71,18 @@ OPTIONS
   -r, --resource=resource                      the resource type
 
 ALIASES
-  $ cl-resources res:args
+  $ commercelayer res:args
 ```
 
 _See code: [src/commands/resources/args.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/args.ts)_
 
-### `cl-resources resources:create RESOURCE`
+### `commercelayer resources:create RESOURCE`
 
 Create a new resource.
 
 ```
 USAGE
-  $ cl-resources resources:create RESOURCE
+  $ commercelayer resources:create RESOURCE
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -107,10 +107,10 @@ OPTIONS
   --save-args=save-args            save command data to file for future use
 
 ALIASES
-  $ cl-resources create
-  $ cl-resources rc
-  $ cl-resources res:create
-  $ cl-resources post
+  $ commercelayer create
+  $ commercelayer rc
+  $ commercelayer res:create
+  $ commercelayer post
 
 EXAMPLES
   $ commercelayer resources:create customers -a email=user@test.com
@@ -121,13 +121,13 @@ EXAMPLES
 
 _See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/create.ts)_
 
-### `cl-resources resources:delete RESOURCE [ID]`
+### `commercelayer resources:delete RESOURCE [ID]`
 
 Delete an existing resource.
 
 ```
 USAGE
-  $ cl-resources resources:delete RESOURCE [ID]
+  $ commercelayer resources:delete RESOURCE [ID]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -148,9 +148,9 @@ OPTIONS
   --save-args=save-args            save command data to file for future use
 
 ALIASES
-  $ cl-resources delete
-  $ cl-resources rd
-  $ cl-resources res:delete
+  $ commercelayer delete
+  $ commercelayer rd
+  $ commercelayer res:delete
 
 EXAMPLES
   $ commercelayer resources:delete customers/<customerId>
@@ -159,19 +159,19 @@ EXAMPLES
 
 _See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/delete.ts)_
 
-### `cl-resources resources:doc RESOURCE`
+### `commercelayer resources:doc RESOURCE`
 
 Open the default browser and show the online documentation for the resource.
 
 ```
 USAGE
-  $ cl-resources resources:doc RESOURCE
+  $ commercelayer resources:doc RESOURCE
 
 ARGUMENTS
   RESOURCE  the resource for which you want to access the online documentation
 
 ALIASES
-  $ cl-resources res:doc
+  $ commercelayer res:doc
 
 EXAMPLES
   $ commercelayer rdoc customers
@@ -180,16 +180,16 @@ EXAMPLES
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/doc.ts)_
 
-### `cl-resources resources:filters`
+### `commercelayer resources:filters`
 
 Show a list of all available filter predicates.
 
 ```
 USAGE
-  $ cl-resources resources:filters
+  $ commercelayer resources:filters
 
 ALIASES
-  $ cl-resources res:filters
+  $ commercelayer res:filters
 
 EXAMPLES
   $ commercelayer resources:filters
@@ -198,13 +198,13 @@ EXAMPLES
 
 _See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/filters.ts)_
 
-### `cl-resources resources:get RESOURCE [ID]`
+### `commercelayer resources:get RESOURCE [ID]`
 
 Retrieve a resource or list a set of resources.
 
 ```
 USAGE
-  $ cl-resources resources:get RESOURCE [ID]
+  $ commercelayer resources:get RESOURCE [ID]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -232,8 +232,8 @@ OPTIONS
   --save-args=save-args            save command data to file for future use
 
 ALIASES
-  $ cl-resources get
-  $ cl-resources res:get
+  $ commercelayer get
+  $ commercelayer res:get
 
 EXAMPLES
   $ commercelayer resources:get customers
@@ -244,13 +244,13 @@ EXAMPLES
 
 _See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/get.ts)_
 
-### `cl-resources resources:list RESOURCE`
+### `commercelayer resources:list RESOURCE`
 
 Fetch a collection of resources.
 
 ```
 USAGE
-  $ cl-resources resources:list RESOURCE
+  $ commercelayer resources:list RESOURCE
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -277,9 +277,9 @@ OPTIONS
   --save-args=save-args            save command data to file for future use
 
 ALIASES
-  $ cl-resources list
-  $ cl-resources rl
-  $ cl-resources res:list
+  $ commercelayer list
+  $ commercelayer rl
+  $ commercelayer res:list
 
 EXAMPLES
   $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
@@ -289,13 +289,13 @@ EXAMPLES
 
 _See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/list.ts)_
 
-### `cl-resources resources:retrieve RESOURCE [ID]`
+### `commercelayer resources:retrieve RESOURCE [ID]`
 
 Fetch a single resource.
 
 ```
 USAGE
-  $ cl-resources resources:retrieve RESOURCE [ID]
+  $ commercelayer resources:retrieve RESOURCE [ID]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -319,9 +319,9 @@ OPTIONS
   --save-args=save-args            save command data to file for future use
 
 ALIASES
-  $ cl-resources retrieve
-  $ cl-resources rr
-  $ cl-resources res:retrieve
+  $ commercelayer retrieve
+  $ commercelayer rr
+  $ commercelayer res:retrieve
 
 EXAMPLES
   $ commercelayer resources:retrieve customers/<customerId>
@@ -332,13 +332,13 @@ EXAMPLES
 
 _See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/retrieve.ts)_
 
-### `cl-resources resources:update RESOURCE [ID]`
+### `commercelayer resources:update RESOURCE [ID]`
 
 Update an existing resource.
 
 ```
 USAGE
-  $ cl-resources resources:update RESOURCE [ID]
+  $ commercelayer resources:update RESOURCE [ID]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -383,10 +383,10 @@ OPTIONS
   --save-args=save-args                    save command data to file for future use
 
 ALIASES
-  $ cl-resources update
-  $ cl-resources ru
-  $ cl-resources res:update
-  $ cl-resources patch
+  $ commercelayer update
+  $ commercelayer ru
+  $ commercelayer res:update
+  $ commercelayer patch
 
 EXAMPLES
   $ commercelayer resources:update customers/<customerId> -a reference=referenceId
