@@ -25,6 +25,8 @@ export default class Orders##__ACTION_NAME__## extends Command {
 
 		const res = await exec(args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage(TRIGGER, res.id)
 
     return res

@@ -59,7 +59,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/index.ts)_
@@ -76,7 +79,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve.ts)_
@@ -93,7 +99,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve_and_capture.ts)_
@@ -110,7 +119,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/archive.ts)_
@@ -127,7 +139,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorization_amount_cents.ts)_
@@ -144,7 +159,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorize.ts)_
@@ -161,7 +179,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
   -v, --value=value                (required) the trigger attribute value
 ```
 
@@ -179,7 +200,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/billing_address_same_as_shipping.ts)_
@@ -196,7 +220,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/cancel.ts)_
@@ -213,7 +240,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/capture.ts)_
@@ -230,7 +260,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
   -v, --value=value                (required) the trigger attribute value
 ```
 
@@ -248,7 +281,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/place.ts)_
@@ -265,7 +301,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refresh.ts)_
@@ -282,7 +321,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund.ts)_
@@ -299,7 +341,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_billing_address_to_customer_address_book.ts)_
@@ -316,7 +361,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_payment_source_to_customer_wallet.ts)_
@@ -333,7 +381,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_shipping_address_to_customer_address_book.ts)_
@@ -350,7 +401,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
   -v, --value=value                (required) the trigger attribute value
 ```
 
@@ -368,7 +422,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_same_as_billing.ts)_
@@ -385,7 +442,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/unarchive.ts)_
@@ -402,7 +462,10 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified order
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/orders/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/update_taxes.ts)_

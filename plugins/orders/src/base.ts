@@ -28,6 +28,20 @@ export default abstract class extends Command {
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
     }),
+    print: flags.boolean({
+      char: 'p',
+      description: 'print out the modified order',
+    }),
+    json: flags.boolean({
+      char: 'j',
+      description: 'print result in JSON format',
+      dependsOn: ['print'],
+    }),
+    unformatted: flags.boolean({
+      char: 'u',
+      description: 'print JSON output without indentation',
+      dependsOn: ['json'],
+    }),
   }
 
 
