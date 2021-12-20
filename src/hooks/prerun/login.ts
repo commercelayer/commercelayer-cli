@@ -8,7 +8,7 @@ import cliux from 'cli-ux'
 import chalk from 'chalk'
 
 
-const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util']
+const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete']
 const exludedCommands: string[] = [
 	'plugins',
 	'imports:types',
@@ -17,6 +17,8 @@ const exludedCommands: string[] = [
 	'resources:filters',
 	'seeder:check',
 	'webhooks:topics',
+	'autocomplete',
+	'applications',
 ]
 
 
