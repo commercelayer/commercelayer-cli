@@ -3,19 +3,6 @@ import axios from 'axios'
 import fs from 'fs'
 
 
-const baseURL = (slug: string, domain: string | undefined): string => {
-	return `https://${slug.toLowerCase()}.${domain ? domain : 'commercelayer.io'}`
-}
-
-
-const sleep = async (ms: number) => {
-	return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-
-export { baseURL, sleep }
-
-
 const isRemotePath = (path: string): boolean => {
   return path.startsWith('http://') || path.startsWith('https://')
 }
