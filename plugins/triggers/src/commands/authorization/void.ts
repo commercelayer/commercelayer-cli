@@ -25,6 +25,8 @@ export default class AuthorizationVoid extends Command {
 
 		const res = await exec('authorizations', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('authorization', TRIGGER, res.id)
 
     return res

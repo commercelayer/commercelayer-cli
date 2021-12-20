@@ -25,6 +25,8 @@ export default class ShipmentPacking extends Command {
 
 		const res = await exec('shipments', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('shipment', TRIGGER, res.id)
 
     return res

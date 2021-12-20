@@ -21,7 +21,6 @@ Commerce Layer CLI Triggers plugin
 <!-- commands -->
 
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
-* [`commercelayer adyen_payment:authorize ID`](#commercelayer-adyen_paymentauthorize-id)
 * [`commercelayer adyen_payment:details ID`](#commercelayer-adyen_paymentdetails-id)
 * [`commercelayer authorization ID`](#commercelayer-authorization-id)
 * [`commercelayer authorization:capture ID`](#commercelayer-authorizationcapture-id)
@@ -33,7 +32,6 @@ Commerce Layer CLI Triggers plugin
 * [`commercelayer capture:refund ID`](#commercelayer-capturerefund-id)
 * [`commercelayer capture:refund_amount_cents ID`](#commercelayer-capturerefund_amount_cents-id)
 * [`commercelayer checkout_com_payment ID`](#commercelayer-checkout_com_payment-id)
-* [`commercelayer checkout_com_payment:authorize ID`](#commercelayer-checkout_com_paymentauthorize-id)
 * [`commercelayer checkout_com_payment:details ID`](#commercelayer-checkout_com_paymentdetails-id)
 * [`commercelayer checkout_com_payment:refresh ID`](#commercelayer-checkout_com_paymentrefresh-id)
 * [`commercelayer customer_password_reset ID`](#commercelayer-customer_password_reset-id)
@@ -111,30 +109,16 @@ USAGE
   $ commercelayer adyen_payment ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/adyen_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/index.ts)_
-
-### `commercelayer adyen_payment:authorize ID`
-
-Send this attribute if you want to authorize the payment..
-
-```
-USAGE
-  $ commercelayer adyen_payment:authorize ID
-
-ARGUMENTS
-  ID  the unique id of the order
-
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
-```
-
-_See code: [src/commands/adyen_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/authorize.ts)_
 
 ### `commercelayer adyen_payment:details ID`
 
@@ -145,10 +129,13 @@ USAGE
   $ commercelayer adyen_payment:details ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/adyen_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/details.ts)_
@@ -162,10 +149,13 @@ USAGE
   $ commercelayer authorization ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/authorization/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/index.ts)_
@@ -179,10 +169,13 @@ USAGE
   $ commercelayer authorization:capture ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/authorization/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/capture.ts)_
@@ -196,10 +189,13 @@ USAGE
   $ commercelayer authorization:capture_amount_cents ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/authorization/capture_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/capture_amount_cents.ts)_
@@ -213,10 +209,13 @@ USAGE
   $ commercelayer authorization:void ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/authorization/void.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/void.ts)_
@@ -230,10 +229,13 @@ USAGE
   $ commercelayer bundle ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/bundle/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/index.ts)_
@@ -247,10 +249,13 @@ USAGE
   $ commercelayer bundle:compute_compare_at_amount ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/bundle/compute_compare_at_amount.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/compute_compare_at_amount.ts)_
@@ -264,10 +269,13 @@ USAGE
   $ commercelayer capture ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/capture/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/index.ts)_
@@ -281,10 +289,13 @@ USAGE
   $ commercelayer capture:refund ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/capture/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/refund.ts)_
@@ -298,10 +309,13 @@ USAGE
   $ commercelayer capture:refund_amount_cents ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/capture/refund_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/refund_amount_cents.ts)_
@@ -315,30 +329,16 @@ USAGE
   $ commercelayer checkout_com_payment ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/checkout_com_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/index.ts)_
-
-### `commercelayer checkout_com_payment:authorize ID`
-
-Send this attribute if you want to authorize the payment..
-
-```
-USAGE
-  $ commercelayer checkout_com_payment:authorize ID
-
-ARGUMENTS
-  ID  the unique id of the order
-
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
-```
-
-_See code: [src/commands/checkout_com_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/authorize.ts)_
 
 ### `commercelayer checkout_com_payment:details ID`
 
@@ -349,10 +349,13 @@ USAGE
   $ commercelayer checkout_com_payment:details ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/checkout_com_payment/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/details.ts)_
@@ -366,10 +369,13 @@ USAGE
   $ commercelayer checkout_com_payment:refresh ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/checkout_com_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/refresh.ts)_
@@ -383,10 +389,13 @@ USAGE
   $ commercelayer customer_password_reset ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/customer_password_reset/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer_password_reset/index.ts)_
@@ -400,10 +409,13 @@ USAGE
   $ commercelayer customer_password_reset:reset_password_token ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/customer_password_reset/reset_password_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer_password_reset/reset_password_token.ts)_
@@ -417,10 +429,13 @@ USAGE
   $ commercelayer gift_card ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/gift_card/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/index.ts)_
@@ -434,10 +449,13 @@ USAGE
   $ commercelayer gift_card:activate ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/gift_card/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/activate.ts)_
@@ -451,10 +469,13 @@ USAGE
   $ commercelayer gift_card:balance_change_cents ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/gift_card/balance_change_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/balance_change_cents.ts)_
@@ -468,10 +489,13 @@ USAGE
   $ commercelayer gift_card:deactivate ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/gift_card/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/deactivate.ts)_
@@ -485,10 +509,13 @@ USAGE
   $ commercelayer gift_card:purchase ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/gift_card/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/purchase.ts)_
@@ -502,10 +529,13 @@ USAGE
   $ commercelayer in_stock_subscription ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/in_stock_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/in_stock_subscription/index.ts)_
@@ -519,10 +549,13 @@ USAGE
   $ commercelayer in_stock_subscription:activate ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/in_stock_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/in_stock_subscription/activate.ts)_
@@ -536,10 +569,13 @@ USAGE
   $ commercelayer in_stock_subscription:deactivate ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/in_stock_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/in_stock_subscription/deactivate.ts)_
@@ -553,10 +589,13 @@ USAGE
   $ commercelayer order ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/index.ts)_
@@ -570,10 +609,13 @@ USAGE
   $ commercelayer order:approve ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/approve.ts)_
@@ -587,10 +629,13 @@ USAGE
   $ commercelayer order:approve_and_capture ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/approve_and_capture.ts)_
@@ -604,10 +649,13 @@ USAGE
   $ commercelayer order:archive ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/archive.ts)_
@@ -621,10 +669,13 @@ USAGE
   $ commercelayer order:authorization_amount_cents ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/authorization_amount_cents.ts)_
@@ -638,10 +689,13 @@ USAGE
   $ commercelayer order:authorize ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/authorize.ts)_
@@ -655,10 +709,13 @@ USAGE
   $ commercelayer order:billing_address_clone_id ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
   -v, --value=value                (required) the trigger attribute value
 ```
 
@@ -673,10 +730,13 @@ USAGE
   $ commercelayer order:billing_address_same_as_shipping ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/billing_address_same_as_shipping.ts)_
@@ -690,10 +750,13 @@ USAGE
   $ commercelayer order:cancel ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/cancel.ts)_
@@ -707,10 +770,13 @@ USAGE
   $ commercelayer order:capture ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/capture.ts)_
@@ -724,10 +790,13 @@ USAGE
   $ commercelayer order:customer_payment_source_id ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
   -v, --value=value                (required) the trigger attribute value
 ```
 
@@ -742,10 +811,13 @@ USAGE
   $ commercelayer order:place ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/place.ts)_
@@ -759,10 +831,13 @@ USAGE
   $ commercelayer order:refresh ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refresh.ts)_
@@ -776,10 +851,13 @@ USAGE
   $ commercelayer order:refund ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refund.ts)_
@@ -793,10 +871,13 @@ USAGE
   $ commercelayer order:save_billing_address_to_customer_address_book ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/save_billing_address_to_customer_address_book.ts)_
@@ -810,10 +891,13 @@ USAGE
   $ commercelayer order:save_payment_source_to_customer_wallet ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/save_payment_source_to_customer_wallet.ts)_
@@ -827,10 +911,13 @@ USAGE
   $ commercelayer order:save_shipping_address_to_customer_address_book ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/save_shipping_address_to_customer_address_book.ts)_
@@ -844,10 +931,13 @@ USAGE
   $ commercelayer order:shipping_address_clone_id ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
   -v, --value=value                (required) the trigger attribute value
 ```
 
@@ -862,10 +952,13 @@ USAGE
   $ commercelayer order:shipping_address_same_as_billing ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/shipping_address_same_as_billing.ts)_
@@ -879,10 +972,13 @@ USAGE
   $ commercelayer order:unarchive ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/unarchive.ts)_
@@ -896,10 +992,13 @@ USAGE
   $ commercelayer order:update_taxes ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/update_taxes.ts)_
@@ -913,10 +1012,13 @@ USAGE
   $ commercelayer order_subscription ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order_subscription/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/index.ts)_
@@ -930,10 +1032,13 @@ USAGE
   $ commercelayer order_subscription:activate ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/activate.ts)_
@@ -947,10 +1052,13 @@ USAGE
   $ commercelayer order_subscription:cancel ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order_subscription/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/cancel.ts)_
@@ -964,10 +1072,13 @@ USAGE
   $ commercelayer order_subscription:deactivate ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/order_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/deactivate.ts)_
@@ -981,10 +1092,13 @@ USAGE
   $ commercelayer return ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/index.ts)_
@@ -998,10 +1112,13 @@ USAGE
   $ commercelayer return:approve ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/approve.ts)_
@@ -1015,10 +1132,13 @@ USAGE
   $ commercelayer return:archive ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/archive.ts)_
@@ -1032,10 +1152,13 @@ USAGE
   $ commercelayer return:cancel ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/cancel.ts)_
@@ -1049,10 +1172,13 @@ USAGE
   $ commercelayer return:receive ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/receive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/receive.ts)_
@@ -1066,10 +1192,13 @@ USAGE
   $ commercelayer return:reject ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/reject.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/reject.ts)_
@@ -1083,10 +1212,13 @@ USAGE
   $ commercelayer return:request ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/request.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/request.ts)_
@@ -1100,10 +1232,13 @@ USAGE
   $ commercelayer return:restock ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/restock.ts)_
@@ -1117,10 +1252,13 @@ USAGE
   $ commercelayer return:ship ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/ship.ts)_
@@ -1134,10 +1272,13 @@ USAGE
   $ commercelayer return:unarchive ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/unarchive.ts)_
@@ -1151,10 +1292,13 @@ USAGE
   $ commercelayer return_line_item ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return_line_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return_line_item/index.ts)_
@@ -1168,10 +1312,13 @@ USAGE
   $ commercelayer return_line_item:restock ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/return_line_item/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return_line_item/restock.ts)_
@@ -1185,10 +1332,13 @@ USAGE
   $ commercelayer shipment ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/index.ts)_
@@ -1202,10 +1352,13 @@ USAGE
   $ commercelayer shipment:get_rates ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/get_rates.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/get_rates.ts)_
@@ -1219,10 +1372,13 @@ USAGE
   $ commercelayer shipment:on_hold ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/on_hold.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/on_hold.ts)_
@@ -1236,10 +1392,13 @@ USAGE
   $ commercelayer shipment:packing ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/packing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/packing.ts)_
@@ -1253,10 +1412,13 @@ USAGE
   $ commercelayer shipment:picking ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/picking.ts)_
@@ -1270,10 +1432,13 @@ USAGE
   $ commercelayer shipment:purchase ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/purchase.ts)_
@@ -1287,10 +1452,13 @@ USAGE
   $ commercelayer shipment:ready_to_ship ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/ready_to_ship.ts)_
@@ -1304,10 +1472,13 @@ USAGE
   $ commercelayer shipment:ship ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/ship.ts)_
@@ -1321,10 +1492,13 @@ USAGE
   $ commercelayer stock_transfer ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stock_transfer/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/index.ts)_
@@ -1338,10 +1512,13 @@ USAGE
   $ commercelayer stock_transfer:cancel ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stock_transfer/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/cancel.ts)_
@@ -1355,10 +1532,13 @@ USAGE
   $ commercelayer stock_transfer:complete ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stock_transfer/complete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/complete.ts)_
@@ -1372,10 +1552,13 @@ USAGE
   $ commercelayer stock_transfer:in_transit ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stock_transfer/in_transit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/in_transit.ts)_
@@ -1389,10 +1572,13 @@ USAGE
   $ commercelayer stock_transfer:picking ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stock_transfer/picking.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/picking.ts)_
@@ -1406,10 +1592,13 @@ USAGE
   $ commercelayer stock_transfer:upcoming ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stock_transfer/upcoming.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/upcoming.ts)_
@@ -1423,10 +1612,13 @@ USAGE
   $ commercelayer stripe_payment ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stripe_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_payment/index.ts)_
@@ -1440,10 +1632,13 @@ USAGE
   $ commercelayer stripe_payment:refresh ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/stripe_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_payment/refresh.ts)_
@@ -1457,10 +1652,13 @@ USAGE
   $ commercelayer webhook ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/index.ts)_
@@ -1474,10 +1672,13 @@ USAGE
   $ commercelayer webhook:reset_circuit ID
 
 ARGUMENTS
-  ID  the unique id of the order
+  ID  the unique id of the resource
 
 OPTIONS
+  -j, --json                       print result in JSON format
   -o, --organization=organization  (required) the slug of your organization
+  -p, --print                      print out the modified resource
+  -u, --unformatted                print JSON output without indentation
 ```
 
 _See code: [src/commands/webhook/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/reset_circuit.ts)_

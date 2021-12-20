@@ -25,6 +25,8 @@ export default class OrderSubscriptionDeactivate extends Command {
 
 		const res = await exec('order_subscriptions', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('order_subscription', TRIGGER, res.id)
 
     return res

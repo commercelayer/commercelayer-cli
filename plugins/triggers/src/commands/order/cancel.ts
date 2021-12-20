@@ -25,6 +25,8 @@ export default class OrderCancel extends Command {
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('order', TRIGGER, res.id)
 
     return res

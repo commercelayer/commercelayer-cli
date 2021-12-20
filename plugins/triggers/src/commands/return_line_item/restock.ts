@@ -25,6 +25,8 @@ export default class ReturnLineItemRestock extends Command {
 
 		const res = await exec('return_line_items', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('return_line_item', TRIGGER, res.id)
 
     return res

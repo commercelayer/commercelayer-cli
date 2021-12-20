@@ -1,4 +1,4 @@
-import { CommerceLayerStatic, Order } from '@commercelayer/sdk'
+import { CommerceLayerStatic } from '@commercelayer/sdk'
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
 import { output, update } from '@commercelayer/cli-core'
@@ -28,11 +28,25 @@ export default abstract class extends Command {
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
     }),
+    print: flags.boolean({
+      char: 'p',
+      description: 'print out the modified resource',
+    }),
+    json: flags.boolean({
+      char: 'j',
+      description: 'print result in JSON format',
+      dependsOn: ['print'],
+    }),
+    unformatted: flags.boolean({
+      char: 'u',
+      description: 'print JSON output without indentation',
+      dependsOn: ['json'],
+    }),
   }
 
 
   static args = [
-    { name: 'id', description: 'the unique id of the order', required: true },
+    { name: 'id', description: 'the unique id of the resource', required: true },
   ]
 
 
@@ -61,8 +75,8 @@ export default abstract class extends Command {
   }
 
 
-  protected printOutput(order: Order, flags: any): void {
-    this.log(output.formatOutput(order, flags))
+  protected printOutput(res: any, flags: any): void {
+    this.log(output.formatOutput(res, flags))
   }
 
 

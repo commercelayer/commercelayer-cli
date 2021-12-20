@@ -25,6 +25,8 @@ export default class StripePaymentRefresh extends Command {
 
 		const res = await exec('stripe_payments', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('stripe_payment', TRIGGER, res.id)
 
     return res

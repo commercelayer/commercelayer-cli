@@ -25,6 +25,8 @@ export default class CaptureRefund extends Command {
 
 		const res = await exec('captures', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('capture', TRIGGER, res.id)
 
     return res

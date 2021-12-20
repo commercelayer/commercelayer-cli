@@ -25,6 +25,8 @@ export default class StockTransferInTransit extends Command {
 
 		const res = await exec('stock_transfers', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('stock_transfer', TRIGGER, res.id)
 
     return res

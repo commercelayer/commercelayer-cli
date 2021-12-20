@@ -25,6 +25,8 @@ export default class AdyenPaymentDetails extends Command {
 
 		const res = await exec('adyen_payments', args.id, TRIGGER, flags)
 
+    if (flags.print) this.printOutput(res, flags)
+
     this.successMessage('adyen_payment', TRIGGER, res.id)
 
     return res
