@@ -133,12 +133,11 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ commercelayer import
   $ commercelayer imp:details
 
 EXAMPLES
   $ commercelayer imports:details <import-id>
-  $ cl import <import-id> -i
+  $ cl imp:details <import-id> -i
   $ cl imp:details <import-id> -i -l
 ```
 
@@ -163,7 +162,7 @@ ALIASES
 
 EXAMPLES
   $ commercelayer imports:group <group-id>
-  $ cl imports:ghroup <group-id>
+  $ cl imp:group <group-id>
 ```
 
 _See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/group.ts)_
@@ -203,6 +202,7 @@ OPTIONS
       show only import with warnings
 
 ALIASES
+  $ commercelayer imports
   $ commercelayer imp:list
 
 EXAMPLES
@@ -220,6 +220,13 @@ Show online documentation for supported resources.
 ```
 USAGE
   $ commercelayer imports:types
+
+ALIASES
+  $ commercelayer imp:types
+
+EXAMPLES
+  $ commercelayer imports:types
+  $ cl imp:types
 ```
 
 _See code: [src/commands/imports/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/types.ts)_

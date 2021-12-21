@@ -12,7 +12,7 @@ export default class ImportsList extends Command {
 
 	static description = 'list all the created imports'
 
-	static aliases = ['imp:list']
+	static aliases = ['imports', 'imp:list']
 
 	static examples = [
 		'$ commercelayer imports',

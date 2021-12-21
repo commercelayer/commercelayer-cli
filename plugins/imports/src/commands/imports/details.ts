@@ -9,11 +9,11 @@ export default class ImportsDetails extends Command {
 
 	static description = 'show the details of an existing import'
 
-	static aliases = ['import', 'imp:details']
+	static aliases = ['imp:details']
 
 	static examples = [
 		'$ commercelayer imports:details <import-id>',
-		'$ cl import <import-id> -i',
+		'$ cl imp:details <import-id> -i',
 		'$ cl imp:details <import-id> -i -l',
 	]
 

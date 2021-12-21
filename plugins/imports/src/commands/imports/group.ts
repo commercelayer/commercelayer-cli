@@ -14,7 +14,7 @@ export default class ImportsGroup extends Command {
 
 	static examples = [
 		'$ commercelayer imports:group <group-id>',
-		'$ cl imports:ghroup <group-id>',
+		'$ cl imp:group <group-id>',
 	]
 
 	static flags = {

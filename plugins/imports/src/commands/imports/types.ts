@@ -8,6 +8,13 @@ export default class ImportsTopics extends Command {
 
   static description = 'show online documentation for supported resources'
 
+  static aliases = ['imp:types']
+
+  static examples = [
+		'$ commercelayer imports:types',
+		'$ cl imp:types',
+	]
+
 
   async run() {
 
