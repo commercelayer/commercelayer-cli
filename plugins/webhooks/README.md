@@ -64,6 +64,9 @@ OPTIONS
   -t, --topic=topic                (required) the identifier of the event that will trigger the webhook
   -u, --url=url                    (required) the callback URL used to POST data
 
+ALIASES
+  $ commercelayer wh:create
+
 EXAMPLES
   $ commercelayer webhooks:create -t customers.create -u https://callback.url.io
   $ cl wh:create -t orders.place -u http://myurl.com
@@ -89,8 +92,6 @@ ALIASES
   $ commercelayer webhooks:delete
   $ commercelayer wh:delete
   $ commercelayer wh:destroy
-  $ commercelayer webhook:delete
-  $ commercelayer webhook:destroy
 
 EXAMPLES
   $ commercelayer webhooks:destroy <webhook-id>>
@@ -116,13 +117,12 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
 
 ALIASES
-  $ commercelayer webhook
   $ commercelayer wh:details
   $ commercelayer webhook:details
 
 EXAMPLES
   $ commercelayer webhooks:details <webhook-id>
-  $ cl webhook <webhook-id> -H
+  $ cl webhooks:details <webhook-id> -H
   $ cl wh:details <webhook-id>
 ```
 
@@ -146,11 +146,10 @@ OPTIONS
 
 ALIASES
   $ commercelayer wh:event
-  $ commercelayer webhook:event
 
 EXAMPLES
   $ commercelayer webhooks:event <event-id>
-  $ cl webhooks:event <event-id> -p
+  $ cl wh:event <event-id> -p
 ```
 
 _See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/event.ts)_
@@ -173,7 +172,6 @@ OPTIONS
 
 ALIASES
   $ commercelayer wh:events
-  $ commercelayer webhook:events
 
 EXAMPLES
   $ commercelayer webhooks:events <webhook-id>
@@ -223,7 +221,6 @@ OPTIONS
 
 ALIASES
   $ commercelayer wh:listen
-  $ commercelayer webhook:listen
 
 EXAMPLES
   $ commercelayer webhooks:listen <webhook-id>
@@ -249,7 +246,6 @@ OPTIONS
 
 ALIASES
   $ commercelayer wh:payload
-  $ commercelayer webhook:payload
 
 EXAMPLES
   $ commercelayer webhooks:payload <event-id>
@@ -275,7 +271,6 @@ OPTIONS
 
 ALIASES
   $ commercelayer wh:reset
-  $ commercelayer webhook:reset
 
 EXAMPLES
   $ commercelayer webhooks:reset <webhook-id>
@@ -291,6 +286,13 @@ Show online documentation for supported events.
 ```
 USAGE
   $ commercelayer webhooks:topics
+
+ALIASES
+  $ commercelayer wh:topics
+
+EXAMPLES
+  $ commercelayer webhooks:topics
+  $ cl wh:topics
 ```
 
 _See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/topics.ts)_
@@ -312,6 +314,9 @@ OPTIONS
   -o, --organization=organization  (required) the slug of your organization
   -t, --topic=topic                the identifier of the event that will trigger the webhook
   -u, --url=url                    the callback URL used to POST data
+
+ALIASES
+  $ commercelayer wh:update
 
 EXAMPLES
   $ commercelayer webhooks:update -t customers.create -u https://callback.url.io

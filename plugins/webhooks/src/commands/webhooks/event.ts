@@ -9,11 +9,11 @@ export default class WebhooksEvent extends Command {
 
 	static description = 'show the details of a firedf webhook event'
 
-	static aliases = ['wh:event', 'webhook:event']
+	static aliases = ['wh:event']
 
 	static examples = [
 		'$ commercelayer webhooks:event <event-id>',
-		'$ cl webhooks:event <event-id> -p',
+		'$ cl wh:event <event-id> -p',
 	]
 
 	static flags = {

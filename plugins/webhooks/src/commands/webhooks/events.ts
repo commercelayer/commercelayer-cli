@@ -13,7 +13,7 @@ export default class WebhooksEvents extends Command {
 
 	static description = 'list all the events associated to the webhook'
 
-	static aliases = ['wh:events', 'webhook:events']
+	static aliases = ['wh:events']
 
 	static examples = [
 		'$ commercelayer webhooks:events <webhook-id>',

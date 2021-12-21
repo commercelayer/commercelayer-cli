@@ -11,11 +11,11 @@ export default class WebhooksDetails extends Command {
 
 	static description = 'show the details of an existing webhook'
 
-	static aliases = ['webhook', 'wh:details', 'webhook:details']
+	static aliases = ['wh:details', 'webhook:details']
 
 	static examples = [
 		'$ commercelayer webhooks:details <webhook-id>',
-		'$ cl webhook <webhook-id> -H',
+		'$ cl webhooks:details <webhook-id> -H',
 		'$ cl wh:details <webhook-id>',
 	]
 

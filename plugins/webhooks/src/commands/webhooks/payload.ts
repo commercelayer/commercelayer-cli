@@ -8,7 +8,7 @@ export default class WebhooksPayload extends Command {
 
 	static description = 'show the payload associated to an event callback'
 
-	static aliases = ['wh:payload', 'webhook:payload']
+	static aliases = ['wh:payload']
 
 	static examples = [
 		'$ commercelayer webhooks:payload <event-id>',

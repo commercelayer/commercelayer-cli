@@ -9,7 +9,7 @@ export default class WebhooksUpdate extends Command {
 
 	static description = 'update an existing webhook'
 
-	static aliases: ['wh:update']
+	static aliases = ['wh:update']
 
 	static examples = [
 		'$ commercelayer webhooks:update -t customers.create -u https://callback.url.io',

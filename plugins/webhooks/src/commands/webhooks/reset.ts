@@ -6,7 +6,7 @@ export default class WebhooksReset extends Command {
 
   static description = 'reset the circuit breaker associated to the webhook'
 
-  static aliases = ['wh:reset', 'webhook:reset']
+  static aliases = ['wh:reset']
 
   static examples = [
 		'$ commercelayer webhooks:reset <webhook-id>',

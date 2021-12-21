@@ -15,7 +15,7 @@ export default class WebhooksListen extends Command {
 
 	static description = 'listen a webhook for outgoing callbacks'
 
-	static aliases = ['wh:listen', 'webhook:listen']
+	static aliases = ['wh:listen']
 
 	static examples = [
 		'$ commercelayer webhooks:listen <webhook-id>',
