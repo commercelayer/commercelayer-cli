@@ -312,15 +312,8 @@ export default abstract class extends Command {
     if (flag && (flag.length > 0)) {
       flag.forEach(f => {
 
-        let sepChar = '/'
-        let si = f.indexOf(sepChar)
-        if (si < 0) {
-          sepChar = '='
-          si = f.indexOf(sepChar)
-          if (si < 0) this.error(`Filter flag must be in the form ${chalk.italic('predicate/value')} or ${chalk.italic('predicate=value')}`)
-        }
-
-        const wt = f.split(sepChar)
+        const wt = f.split('=')
+        if (wt.length < 2) this.error(`Filter flag must be in the form ${chalk.italic('predicate=value')}`)
         const w = wt[0]
         if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.redBright(w)}`, {
           suggestions: [`Execute command ${chalk.italic('resources:filters')} to get a full list of all available filter predicates`],

@@ -151,8 +151,7 @@ export default class ResourcesUpdate extends Command {
 
 			// Metadata attributes merge
 			if (flags.metadata) {
-				const params: QueryParamsRetrieve = { fields: {} }
-				if (params?.fields) params.fields[resource.api] = ['metadata']
+				const params: QueryParamsRetrieve = { fields: { [resource.api]: ['metadata'] } }
 				const remRes = await resSdk.retrieve(id, params)
 				const remMeta = remRes.metadata
 				if (remMeta && (Object.keys(remMeta).length > 0)) attributes.metadata = { ...remMeta, ...metadata }
