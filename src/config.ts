@@ -16,7 +16,7 @@ const fixed = {
 	applicationsDir: 'applications',
 	configSuffix: 'config.json',
 	tokenSuffix: 'token.json',
-	encoding: 'utf-8',
+	encoding: 'utf-8' as BufferEncoding,
 }
 
 
