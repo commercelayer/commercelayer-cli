@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-plugin-seeder",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-seeder": "./bin/run"
@@ -70,7 +70,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/cli-core": "^0.1.5",
+    "@commercelayer/cli-core": "^0.3.0",
     "@commercelayer/js-auth": "^2.2.3",
     "@commercelayer/sdk": "^2.3.10",
     "@oclif/command": "^1.8.0",
