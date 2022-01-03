@@ -1,9 +1,8 @@
 import Command, { flags } from '@oclif/command'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
-import path from 'path'
 import config from './config'
-import updateNotifier from 'update-notifier'
+import { update } from '@commercelayer/cli-core'
 import { isRemotePath, pathJoin } from './common'
 import { BusinessModel, readModelData } from './data'
 import cliux from 'cli-ux'
@@ -45,23 +44,8 @@ export default abstract class extends Command {
 
 
   async init() {
-
-    const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
-
-    if (notifier.update) {
-
-      const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/cli/node_modules/${pkg.name}/`)
-      const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
-
-      notifier.notify({
-        isGlobal: !pluginMode,
-        message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.dim('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
-      })
-
-    }
-
+    update.checkUpdate(pkg)
     return super.init()
-
   }
 
 
