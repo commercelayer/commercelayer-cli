@@ -9,10 +9,8 @@ import fs from 'fs'
 import path from 'path'
 import { fixType } from './common'
 import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
-
-import updateNotifier from 'update-notifier'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
-import { token } from '@commercelayer/cli-core'
+import { token, update } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, CommandParams, loadCommandData, ResourceOperation, saveCommandData } from './commands'
 import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 import { IConfig } from '@oclif/config'
@@ -129,23 +127,8 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init() {
-
-    const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 })
-
-    if (notifier.update) {
-
-      const pluginMode = path.resolve(__dirname).includes(`/@commercelayer/cli/node_modules/${pkg.name}/`)
-      const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
-
-      notifier.notify({
-        isGlobal: !pluginMode,
-        message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.dim('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
-      })
-
-    }
-
+    update.checkUpdate(pkg)
     return super.init()
-
   }
 
 
