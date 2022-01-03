@@ -22,12 +22,13 @@ commercelayer-cli-plugin-token
 
 * [`commercelayer token:create`](#commercelayer-tokencreate)
 * [`commercelayer token:decode [TOKEN]`](#commercelayer-tokendecode-token)
+* [`commercelayer token:generate`](#commercelayer-tokengenerate)
 * [`commercelayer token:get`](#commercelayer-tokenget)
 * [`commercelayer token:revoke [TOKEN]`](#commercelayer-tokenrevoke-token)
 
 ### `commercelayer token:create`
 
-Create a new custom access token.
+Create a new custom access token for the current application.
 
 ```
 USAGE
@@ -69,6 +70,24 @@ EXAMPLES
 ```
 
 _See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
+
+### `commercelayer token:generate`
+
+Start a wizard to generate a custom access token.
+
+```
+USAGE
+  $ commercelayer token:generate
+
+OPTIONS
+  -i, --info  print generated token info
+
+EXAMPLES
+  $ commercelayer token:generate
+  $ cl token:generate
+```
+
+_See code: [src/commands/token/generate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/generate.ts)_
 
 ### `commercelayer token:get`
 

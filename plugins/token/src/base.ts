@@ -1,6 +1,6 @@
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
-import { output, update } from '@commercelayer/cli-core'
+import { AccessTokenInfo, output, update } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -38,14 +38,14 @@ export default abstract class extends Command {
 
 
 
-  protected printAccessTokenInfo(data: any): string {
+  protected printAccessTokenInfo(data: AccessTokenInfo): string {
 
     this.log(`\n${chalk.blueBright('-= Access token info =-')}\n`)
     const tokenData = output.printObject(data)
     this.log(tokenData)
     this.log()
 
-    const exp = new Date(data.exp * 1000)
+    const exp = new Date((data.exp || 0) * 1000)
     const expMsg = (exp.getTime() < Date.now()) ? `\t ${chalk.yellowBright.underline('Token expired!')}` : ''
     // \u23F0 \u23F1  \u23F2  \u23F3
     this.log(chalk.blueBright('\u23F1  This access token will expire at: ') + chalk.cyanBright(exp.toLocaleString()) + expMsg)

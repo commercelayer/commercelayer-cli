@@ -1,23 +1,19 @@
 import Command, { flags } from '../../base'
-import { config } from '@commercelayer/cli-core'
+import { CustomToken } from '@commercelayer/cli-core'
 import chalk from 'chalk'
-import { CustomToken, decodeAccessToken, generateAccessToken } from '../../token'
+import { decodeAccessToken, generateAccessToken, VALIDITY_MIN, VALIDITY_MAX } from '../../token'
 import commercelayer from '@commercelayer/sdk'
-
-
-const VALIDITY_MIN = 2
-const VALIDITY_MAX = config.api.token_expiration_mins
 
 
 
 export default class TokenCreate extends Command {
 
-  static description = 'create a new custom access token'
+  static description = 'create a new custom access token for the current application'
 
   static examples = [
-		'$ commercelayer token:create -s <sharedSecret> -m 30',
-		'$ cl token:create -s <sharedSecret> -m 15 --info',
-	]
+    '$ commercelayer token:create -s <sharedSecret> -m 30',
+    '$ cl token:create -s <sharedSecret> -m 15 --info',
+  ]
 
   static flags = {
     ...Command.flags,
