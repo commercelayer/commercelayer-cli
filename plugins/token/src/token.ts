@@ -1,5 +1,6 @@
 import { AuthReturnType } from '@commercelayer/js-auth'
 import { AppAuth, AccessTokenInfo, token, CustomToken, config } from '@commercelayer/cli-core'
+import commercelayer from '@commercelayer/sdk'
 
 
 export const VALIDITY_MIN = 2
@@ -29,4 +30,23 @@ const revokeAccessToken = async (app: AppAuth, accessToken: string) => {
 }
 
 
-export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken }
+const testAccessToken = async (token: CustomToken | string, flags: any): Promise<boolean> => {
+
+  const organization = flags.organization
+  const domain = flags.domain
+  const accessToken = (typeof token === 'string') ? token : token.accessToken
+
+  const cl = commercelayer({
+    organization,
+    domain,
+    accessToken,
+  })
+
+  return cl.organization.retrieve()
+    .then(org => org.slug === organization)
+    .catch(() => false)
+
+}
+
+
+export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken, testAccessToken }

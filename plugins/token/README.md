@@ -80,7 +80,8 @@ USAGE
   $ commercelayer token:generate
 
 OPTIONS
-  -i, --info  print generated token info
+  -c, --check  check generated access token
+  -i, --info   print generated token info
 
 EXAMPLES
   $ commercelayer token:generate

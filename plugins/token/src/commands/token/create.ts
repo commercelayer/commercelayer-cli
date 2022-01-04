@@ -1,8 +1,7 @@
 import Command, { flags } from '../../base'
-import { CustomToken } from '@commercelayer/cli-core'
 import chalk from 'chalk'
-import { decodeAccessToken, generateAccessToken, VALIDITY_MIN, VALIDITY_MAX } from '../../token'
-import commercelayer from '@commercelayer/sdk'
+import { decodeAccessToken, generateAccessToken, VALIDITY_MIN, VALIDITY_MAX, testAccessToken } from '../../token'
+import { checkValidity } from '../../check'
 
 
 
@@ -50,7 +49,7 @@ export default class TokenCreate extends Command {
 
       if (generated) {
 
-        if (!this.testAccessToken(generated, flags)) this.error('Unable to generate a valid access token with the provided input data')
+        if (!testAccessToken(generated, flags)) this.error('Unable to generate a valid access token with the provided input data')
 
         const accessToken = generated.accessToken
         const decodedAccessToken = decodeAccessToken(accessToken)
@@ -73,28 +72,9 @@ export default class TokenCreate extends Command {
 
 
   private checkValidity(mins: number): boolean {
-    if ((mins < VALIDITY_MIN) || (mins > VALIDITY_MAX))
-      this.error(`Token expiration time must be between ${chalk.yellowBright(VALIDITY_MIN)} and ${chalk.yellowBright(VALIDITY_MAX)} minutes`)
+    const check = checkValidity(mins)
+    if (check !== true) this.error(check)
     return true
-  }
-
-
-  private async testAccessToken(token: CustomToken, flags: any): Promise<boolean> {
-
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken = token.accessToken
-
-    const cl = commercelayer({
-      organization,
-      domain,
-      accessToken,
-    })
-
-    return cl.organization.retrieve()
-      .then(org => org.slug === organization)
-      .catch(() => false)
-
   }
 
 }
