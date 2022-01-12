@@ -1,31 +1,31 @@
 import { AuthReturnType } from '@commercelayer/js-auth'
-import { AppAuth, AccessTokenInfo, token, CustomToken, config } from '@commercelayer/cli-core'
+import { AppAuth, AccessTokenInfo, CustomToken, clToken, clConfig } from '@commercelayer/cli-core'
 import commercelayer from '@commercelayer/sdk'
 
 
 export const VALIDITY_MIN = 2
-export const VALIDITY_MAX = config.api.token_expiration_mins
+export const VALIDITY_MAX = clConfig.api.token_expiration_mins
 
 
 const decodeAccessToken = (accessToken: string): AccessTokenInfo => {
-  return token.decodeAccessToken(accessToken)
+  return clToken.decodeAccessToken(accessToken)
 }
 
 
 const generateAccessToken = (accessToken: string | AccessTokenInfo, sharedSecret: string, minutes: number): CustomToken => {
   const tokenData = (typeof accessToken === 'string') ? decodeAccessToken(accessToken) : accessToken
-  return token.generateAccessToken(tokenData, sharedSecret, minutes)
+  return clToken.generateAccessToken(tokenData, sharedSecret, minutes)
 }
 
 
 const getAccessToken = async (auth: AppAuth): AuthReturnType => {
-  return token.getAccessToken(auth)
+  return clToken.getAccessToken(auth)
 
 }
 
 
 const revokeAccessToken = async (app: AppAuth, accessToken: string) => {
-  return token.revokeAccessToken(app, accessToken)
+  return clToken.revokeAccessToken(app, accessToken)
 
 }
 

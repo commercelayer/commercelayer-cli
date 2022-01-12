@@ -1,8 +1,7 @@
 import Command, { flags } from '../../base'
-import { output, command, AccessTokenInfo } from '@commercelayer/cli-core'
+import { clOutput, clCommand, clConfig, clToken, AccessTokenInfo } from '@commercelayer/cli-core'
 import inquirer from 'inquirer'
 import chalk from 'chalk'
-import { token, config } from '@commercelayer/cli-core'
 import { testAccessToken, decodeAccessToken } from '../../token'
 import { checkMandatory, checkList, checkValidity } from '../../check'
 
@@ -17,7 +16,7 @@ export default class TokenGenerate extends Command {
   ]
 
   static flags = {
-    ...command.commandFlags<typeof Command.flags>(Command.flags, ['organization', 'domain', 'accessToken']),
+    ...clCommand.commandFlags<typeof Command.flags>(Command.flags, ['organization', 'domain', 'accessToken']),
     domain: flags.string({
       char: 'd',
       required: false,
@@ -60,7 +59,7 @@ export default class TokenGenerate extends Command {
 
     if (flags.print) {
       this.log()
-      this.log(output.printObject(answers))
+      this.log(clOutput.printObject(answers))
       this.log()
     }
 
@@ -106,7 +105,7 @@ export default class TokenGenerate extends Command {
     const sharedSecret = answers.sharedSecret
     const minutes = answers.validity
 
-    const generated = token.generateAccessToken(payload, sharedSecret, minutes)
+    const generated = clToken.generateAccessToken(payload, sharedSecret, minutes)
 
 
     if (generated) {
@@ -154,7 +153,7 @@ export default class TokenGenerate extends Command {
         type: 'list',
         name: 'applicationKind',
         message: 'Application kind:',
-        choices: config.application.kinds,
+        choices: clConfig.application.kinds,
         validate: checkMandatory,
       },
       {

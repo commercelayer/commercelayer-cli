@@ -1,6 +1,6 @@
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
-import { AccessTokenInfo, output, update } from '@commercelayer/cli-core'
+import { AccessTokenInfo, clOutput, clUpdate } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -32,7 +32,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init() {
-    update.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
@@ -41,7 +41,7 @@ export default abstract class extends Command {
   protected printAccessTokenInfo(data: AccessTokenInfo): string {
 
     this.log(`\n${chalk.blueBright('-= Access token info =-')}\n`)
-    const tokenData = output.printObject(data)
+    const tokenData = clOutput.printObject(data)
     this.log(tokenData)
     this.log()
 
