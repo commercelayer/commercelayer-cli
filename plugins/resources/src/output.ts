@@ -1,10 +1,10 @@
 
 import fs from 'fs'
-import { output } from '@commercelayer/cli-core'
+import { clOutput } from '@commercelayer/cli-core'
 
 
 const formatOutput = (out: any, flags?: any, { color = true } = {}) => {
-	return output.formatOutput(out, flags, { color })
+	return clOutput.formatOutput(out, flags, { color })
 }
 
 

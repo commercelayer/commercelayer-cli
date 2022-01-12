@@ -1,11 +1,11 @@
 
 import { json2csvAsync } from 'json-2-csv'
 import fs from 'fs'
-import { output } from '@commercelayer/cli-core'
+import { clOutput } from '@commercelayer/cli-core'
 
 
 const formatCsv = (obj: Array<object>, flags?: any) => {
-	return output.printCSV(obj, flags)
+	return clOutput.printCSV(obj, flags)
 }
 
 

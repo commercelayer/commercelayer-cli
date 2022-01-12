@@ -2,7 +2,7 @@
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
 import Command, { flags } from '../../base'
-import { api } from '@commercelayer/cli-core'
+import { clApi } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
@@ -167,7 +167,7 @@ export default class ResourcesAll extends Command {
       const token = await getIntegrationToken({
         clientId: flags.clientId || '',
         clientSecret: flags.clientSecret || '',
-        endpoint: api.baseURL(organization, domain),
+        endpoint: clApi.baseURL(organization, domain),
       })?.catch(error => {
         this.error('Unable to refresh access token: ' + error.message)
       })

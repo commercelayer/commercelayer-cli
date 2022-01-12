@@ -1,5 +1,5 @@
 import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
-import { api } from '@commercelayer/cli-core'
+import { clApi } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
@@ -87,7 +87,7 @@ export default class ResourcesUpdate extends Command {
 		// Raw request
 		if (flags.data) {
 			try {
-				const baseUrl = api.baseURL(flags.organization, flags.domain)
+				const baseUrl = clApi.baseURL(flags.organization, flags.domain)
 				const rawRes = await rawRequest({ operation: Operation.Update, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data), id)
 				const out = flags.raw ? rawRes : denormalize(rawRes)
 				this.printOutput(out, flags)

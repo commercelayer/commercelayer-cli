@@ -10,7 +10,7 @@ import path from 'path'
 import { fixType } from './common'
 import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
-import { token, update } from '@commercelayer/cli-core'
+import { clToken, clUpdate } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, CommandParams, loadCommandData, ResourceOperation, saveCommandData } from './commands'
 import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 import { IConfig } from '@oclif/config'
@@ -127,7 +127,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init() {
-    update.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
@@ -609,7 +609,7 @@ export default abstract class extends Command {
 
   protected checkApplication(accessToken: string, kinds: string[]): boolean {
 
-    const info = token.decodeAccessToken(accessToken)
+    const info = clToken.decodeAccessToken(accessToken)
 
     if (info === null) this.error('Invalid access token provided')
     else

@@ -1,6 +1,6 @@
 import { QueryParams } from '@commercelayer/sdk'
 import { getOperation, getResource } from '.'
-import { output } from '@commercelayer/cli-core'
+import { clOutput } from '@commercelayer/cli-core'
 import { RequestData } from './request'
 
 
@@ -18,7 +18,7 @@ const buildTypescript = (request: RequestData, params?: QueryParams, flags?: any
 
 	ts += '\n\nconst cl = commercelayer({ organization, accessToken })'
 
-	if (hasParams) ts += `\n\nconst params: QueryParams${qpSuffix} = ${output.printObject(params, { color: false })}`
+	if (hasParams) ts += `\n\nconst params: QueryParams${qpSuffix} = ${clOutput.printObject(params, { color: false })}`
 
 	ts += `\n\ncl.${getResource(request)}.${operation}(${hasParams ? 'params' : ''}).then(console.log)`
 
