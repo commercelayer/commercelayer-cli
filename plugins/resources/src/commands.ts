@@ -4,6 +4,7 @@ import { join } from 'path'
 import fs from 'fs'
 import { clOutput } from '@commercelayer/cli-core'
 import chalk from 'chalk'
+import { KeyValArray } from './common'
 
 
 const COMMANDS_DIR = 'commands'
@@ -117,7 +118,7 @@ export const mergeCommandParams = (params: QueryParams, saved: QueryParams) => {
   })
 
   const fields = saved.fields || {}
-  if (params.fields) Object.entries(params.fields).forEach(([k, v]) => Object.assign(fields[k] || {}, v))
+  if (params.fields) Object.entries(params.fields).forEach(([k, v]) => Object.assign((fields as KeyValArray)[k] || {}, v))
 
   const sl = saved as QueryParamsList
   const pl = params as QueryParamsList

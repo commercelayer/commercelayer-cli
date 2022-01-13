@@ -7,7 +7,7 @@ import chalk from 'chalk'
 import _ from 'lodash'
 import fs from 'fs'
 import path from 'path'
-import { fixType } from './common'
+import { fixType, KeyValRel, KeyValArray, KeyValObj, KeyValString, KeyValSort, KeyVal } from './common'
 import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
 import { clToken, clUpdate } from '@commercelayer/cli-core'
@@ -18,19 +18,6 @@ import { IConfig } from '@oclif/config'
 
 
 const pkg = require('../package.json')
-
-
-type KeyVal = { [key: string]: string | number | boolean | undefined | null }
-
-type KeyValString = { [key: string]: string }
-
-type KeyValArray = { [key: string]: string[] }
-
-type KeyValRel = { [key: string]: { readonly id: string; readonly type: string } }
-
-type KeyValObj = { [key: string]: any }
-
-type KeyValSort = { [key: string]: 'asc' | 'desc' }
 
 
 export const FLAG_SAVE_COMMAND = 'save-args'

@@ -45,6 +45,8 @@ const RESOURCES = [
 	{ name: 'inventory_model', api: 'inventory_models', model: 'InventoryModel' },
 	{ name: 'inventory_return_location', api: 'inventory_return_locations', model: 'InventoryReturnLocation' },
 	{ name: 'inventory_stock_location', api: 'inventory_stock_locations', model: 'InventoryStockLocation' },
+	{ name: 'klarna_gateway', api: 'klarna_gateways', model: 'KlarnaGateway' },
+	{ name: 'klarna_payment', api: 'klarna_payments', model: 'KlarnaPayment' },
 	{ name: 'line_item_option', api: 'line_item_options', model: 'LineItemOption' },
 	{ name: 'line_item', api: 'line_items', model: 'LineItem' },
 	{ name: 'manual_gateway', api: 'manual_gateways', model: 'ManualGateway' },
