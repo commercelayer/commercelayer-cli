@@ -233,7 +233,7 @@ const checkAlias = (alias: string, config?: IConfig, organization?: string): str
 	if (config) {
 		const flags = { alias, organization }
 		const apps = filterApplications(config, flags)
-		if (apps.length > 0) throw new Error(`Alias ${chalk.yellowBright(alias)} has already been used for organization ${chalk.bold(apps[0].organization)}`)
+		if (apps.length > 0) throw new Error(`Alias ${chalk.redBright(alias)} has already been used for organization ${chalk.bold(apps[0].organization)}`)
 	}
 
 	return al
