@@ -622,10 +622,11 @@ export default abstract class extends Command {
 
   protected saveParams = (alias: string, resource: ResourceType | ResourceId, operation: ResourceOperation, params: QueryParams) => {
 
-    const argvList = [...this.argv]
+    const toBeRemoved = ['--save-args', '--load-args', '--accessToken', '-o', '--organization', '-d', '--domain']
+
+    const argvList = [...this.argv].filter(a => !toBeRemoved.some(r => a.startsWith(`${r}=`)))
 
     let idx: number
-    const toBeRemoved = ['--save-args', '--load-args', '--accessToken', '-o', '--organization', '-d', '--domain']
     toBeRemoved.forEach(tbr => {
       if ((idx = argvList.indexOf(tbr)) > -1) argvList.splice(idx, 2)
     })
