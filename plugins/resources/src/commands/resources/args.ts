@@ -61,12 +61,11 @@ export default class ResourcesArgs extends Command {
 
       const cmdData = loadCommandData(alias, this.config, resource, operation)
       if (cmdData) {
-        this.log(formatOutput(cmdData))
         if (flags.delete) {
           deleteArgsFile(cmdData.alias, this.config, cmdData.resource, cmdData.operation)
-          this.log(`Deleted args ${chalk.yellowBright(alias)}`)
-        }
-      } else this.log(`No saved arguments found with alias ${chalk.yellowBright(alias)} for the resource type ${chalk.yellowBright(resource)} and operation ${chalk.yellowBright(operation)}`)
+          this.log(`Deleted args with alias ${chalk.yellowBright()} for resource type ${chalk.yellowBright(cmdData.resource)} and operation ${chalk.yellowBright(cmdData.operation)}`)
+        } else this.log(formatOutput(cmdData))
+      } else this.log(`No saved arguments found with alias ${chalk.yellowBright(alias)} for resource type ${chalk.yellowBright(resource)} and operation ${chalk.yellowBright(operation)}`)
 
     } else {
 
@@ -75,8 +74,9 @@ export default class ResourcesArgs extends Command {
       if (commands.length > 0) {
 
         if (flags.pretty) {
-          cliux.table(commands.sort((a, b) => (a.resource + a.alias).localeCompare(b.resource + b.alias)), {
+          cliux.table(commands.sort((a, b) => (a.resource + a.operation + a.alias).localeCompare(b.resource + b.operation + b.alias)), {
             resource: { header: 'RESOURCE', get: row => chalk.cyanBright(row.resource) },
+            operation: { header: 'OPERATION', get: row => chalk.cyanBright(row.operation) },
             alias: { header: 'ALIAS', get: row => chalk.yellowBright(row.alias || '') },
             include: { header: 'INCLUDE', get: row => (row.params.include || []).sort().join('\n') },
             fields: { header: 'FIELDS', get: row => Object.keys((row.params.fields || {})).sort().join('\n') },
@@ -91,7 +91,7 @@ export default class ResourcesArgs extends Command {
         } else {
           this.log(this.flagsMessageSuffix('Saved command arguments', resource, operation) + chalk.blueBright(' with ') + chalk.cyanBright('alias'))
           commands.forEach(c => {
-            this.log(`\n${chalk.cyanBright('\u002A ' + c.alias)}`)
+            this.log(`\n${chalk.cyanBright(`\u002A  ${c.alias} [${c.operation}]`)}`)
             this.log(`${c.operation} ${c.argv.join(' ')}`)
           })
         }
@@ -104,6 +104,7 @@ export default class ResourcesArgs extends Command {
 
   }
 
+
   private flagsMessageSuffix(message: string, resource?: string, operation?: ResourceOperation) {
 
     const f = resource || operation ? ' for ' : ''
@@ -114,7 +115,6 @@ export default class ResourcesArgs extends Command {
     return chalk.blueBright(`${message}${f}${res}${a}${op}`)
 
   }
-
 
 
   protected checkResource(res: string): Resource {
