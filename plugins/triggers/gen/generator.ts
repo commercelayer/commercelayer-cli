@@ -50,6 +50,8 @@ const getResourceActions = async (): Promise<{ [key: string]: any[] }> => {
   const response = await axios.get(schemaUrl)
   const schema = await response.data
 
+  console.log('Downloaded OpenAPI schema v' + schema.info.version)
+
   const actions: { [key: string]: any[] } = {}
 
   Object.entries(schema.components.schemas).filter(([k, _t]) => k.endsWith('Update')).forEach(([k, t]) => {
