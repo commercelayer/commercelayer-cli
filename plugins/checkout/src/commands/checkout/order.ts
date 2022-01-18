@@ -1,6 +1,6 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import Command from '../../base'
-import { output } from '@commercelayer/cli-core'
+import { clOutput } from '@commercelayer/cli-core'
 import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
 import chalk from 'chalk'
 
@@ -44,7 +44,7 @@ export default class CheckoutOrder extends Command {
 
     } catch (error) {
       if (CommerceLayerStatic.isApiError(error)) {
-        this.error(output.formatError(error, flags))
+        this.error(clOutput.formatError(error, flags))
       } else throw error
     }
 

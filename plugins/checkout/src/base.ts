@@ -1,7 +1,7 @@
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
-import { output, token, update } from '@commercelayer/cli-core'
+import { clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -37,25 +37,25 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init() {
-    update.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
 
   async catch(error: any) {
-    this.handleError(error)
+    return this.handleError(error)
   }
 
 
-  protected handleError(error: any, flags?: any): void {
+  protected handleError(error: any, flags?: any) {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
         this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
           { suggestions: ['Execute login to get access to the organization\'s resources'] }
         )
-      } else this.error(output.formatError(error, flags))
-    } else throw error
+      } else this.error(clOutput.formatError(error, flags))
+    } else return super.catch(error)
   }
 
 
@@ -76,7 +76,7 @@ export default abstract class extends Command {
 
   protected checkApplication(accessToken: string, kind: string): boolean {
 
-    const info = token.decodeAccessToken(accessToken)
+    const info = clToken.decodeAccessToken(accessToken)
 
     if (info === null) this.error('Invalid access token provided')
     else

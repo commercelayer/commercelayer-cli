@@ -32,6 +32,7 @@ USAGE
   $ cl-checkout checkout
 
 OPTIONS
+  -B, --bundle=bundle              a bundle code
   -O, --order=order                an order id
   -S, --sku=sku                    an SKU code
   -a, --accessToken=accessToken    (required)

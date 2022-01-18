@@ -9,17 +9,17 @@ export default class CheckoutIndex extends Command {
   static description = 'create checkout URLs'
 
   static examples = [
-		'$ commercelayer checkout -O <order-id>',
-		'$ cl checkout -S <sku-code> -m <market-id> -c <coupon-code> -e <email-address>',
+    '$ commercelayer checkout -O <order-id>',
+    '$ cl checkout -S <sku-code> -m <market-id> -c <coupon-code> -e <email-address>',
     '$ cl checkout -S <sku-code-1> -S <sku-code-2> -m <market-id>',
-	]
+  ]
 
   static flags = {
     ...Command.flags,
     order: flags.string({
       char: 'O',
       description: 'an order id',
-      exclusive: ['sku'],
+      exclusive: ['sku', 'bundle'],
       multiple: false,
     }),
     sku: flags.string({
@@ -28,20 +28,26 @@ export default class CheckoutIndex extends Command {
       exclusive: ['order'],
       multiple: true,
     }),
+    bundle: flags.string({
+      char: 'B',
+      description: 'a bundle code',
+      exclusive: ['order'],
+      multiple: true,
+    }),
     market: flags.string({
       char: 'm',
       description: 'a market number',
-      dependsOn: ['sku'],
+      exclusive: ['order'],
     }),
     coupon: flags.string({
       char: 'c',
       description: 'a promo code',
-      dependsOn: ['sku'],
+      exclusive: ['order'],
     }),
     email: flags.string({
       char: 'e',
       description: 'a customer email',
-      dependsOn: ['sku'],
+      exclusive: ['order'],
     }),
     /*
     'set-defaults': flags.boolean({
@@ -75,21 +81,31 @@ export default class CheckoutIndex extends Command {
     }
 
 
-    if (!flags.sku) this.error(`One of the options ${chalk.cyanBright('--order (-O)')} or ${chalk.cyanBright('--sku (-S)')} is required`)
+    if (!flags.sku && !flags.bundle) this.error(`One of the options ${chalk.cyanBright('--order (-O)')}, ${chalk.cyanBright('--sku (-S)')} or ${chalk.cyanBright('--bundle (-B)')} is required`)
 
     this.checkApplication(accessToken, 'sales_channel')
 
-    // Parse SKU options
-    const skus: string[] = this.parseSKUs(flags)
+    // Parse SKU and Bundle options
+    const skus: string[] = this.parseItems(flags.sku)
+    const bundles: string[] = this.parseItems(flags.bundle)
 
     // Build line items
-    const lineItems: LineItemCreate[] = this.buildLineItems(skus)
+    const lineItems: LineItemCreate[] = this.buildLineItems(skus, bundles)
 
     const cl = this.commercelayerInit(flags)
 
-    const clSkus = await cl.skus.list({ filters: { code_matches_any: lineItems.map(li => li.sku_code).join(',') } })
-    lineItems.forEach(li => {
-      if (!clSkus.some(cls => cls.code === li.sku_code)) this.error(`Inexistent SKU: ${li.sku_code}`)
+    // Check SKUs existence
+    const liSkus = lineItems.filter(li => li.item_type === 'sku')
+    const clSkus = await cl.skus.list({ filters: { code_matches_any: liSkus.map(li => li.sku_code).join(',') } })
+    liSkus.forEach(li => {
+      if (!clSkus.some(cls => cls.code === li.sku_code)) this.error(`Inexistent ${this.itemName('sku')}: ${chalk.redBright(String(li.sku_code))}`)
+    })
+
+    // Check bundles existence
+    const liBundles = lineItems.filter(li => li.item_type === 'bundle')
+    const clBundles = await cl.bundles.list({ filters: { code_matches_any: liBundles.map(li => li.bundle_code).join(',') } })
+    liBundles.forEach(li => {
+      if (!clBundles.some(clb => clb.code === li.bundle_code)) this.error(`Inexistent ${this.itemName('bundle')}: ${chalk.redBright(String(li.bundle_code))}`)
     })
 
     // Create order
@@ -104,13 +120,17 @@ export default class CheckoutIndex extends Command {
     })
     this.log(`\nCreated order ${chalk.bold(order.id)}`)
 
+
     // Create line items
     const lis: Promise<LineItemCreate | void>[] = []
+
     lineItems.forEach(async li => {
       li.order = cl.orders.relationship(order)
-      const lineItem = cl.line_items.create(li).then(li =>
-        this.log(`Created line item ${chalk.bold(li.id)} for SKU ${chalk.italic(li.sku_code || '')} and associated to order ${chalk.bold(order.id)}`)
-      )
+      const lineItem = cl.line_items.create(li).then(lic => {
+        const liName = this.itemName(li.item_type || '')
+        const liCode = (['sku', 'skus'].includes(lic.item_type || '')) ? lic.sku_code : lic.bundle_code
+        this.log(`Created line item ${chalk.bold(lic.id)} for ${liName} ${chalk.italic(String(liCode))} and associated to order ${chalk.bold(order.id)}`)
+      })
       if (lineItem) lis.push(lineItem)
     })
 
@@ -127,31 +147,68 @@ export default class CheckoutIndex extends Command {
   }
 
 
-  private parseSKUs(flags: any): string[] {
-    const skus: string[] = []
-    flags.sku.forEach((s: string) => skus.push(...s.split(',')))
-    return skus
+  private parseItems(itemsFlags: string[]): string[] {
+    const items: string[] = []
+    if (itemsFlags) itemsFlags.forEach((i: string) => items.push(...i.split(',')))
+    return items
   }
 
 
-  private buildLineItems(skus: string[]): LineItemCreate[] {
+  private checkItem(item: string, type: string): { code: string; quantity: number; type: string } {
+
+    const def = item.split(':')
+    if (def.length > 2) this.error(`Invalid ${this.itemName(type)} option: ${chalk.redBright(item)}`)
+
+    const code = def[0]
+    const quantity = Number((def.length > 1) ? def[1] : 1)
+    if (Number.isNaN(quantity) || (quantity < 0)) this.error(`Invalid ${this.itemName(type)} definition: ${chalk.redBright(item)}`)
+
+    return {
+      code,
+      quantity,
+      type,
+    }
+
+  }
+
+
+  private itemName(itemType: string): string {
+    switch (itemType) {
+      case 'skus':
+      case 'sku': return 'SKU'
+      case 'bundles':
+      case 'bundle': return 'bundle'
+      default: return itemType
+    }
+  }
+
+
+  private buildLineItems(skus?: string[], bundles?: string[]): LineItemCreate[] {
 
     const lineItems: LineItemCreate[] = []
 
-    skus.forEach(s => {
-
-      const sd = s.split(':')
-      if (sd.length > 2) this.error('Invalid SKU option: ' + chalk.redBright(s))
-
-      const quantity = Number((sd.length > 1) ? sd[1] : 1)
-      if (Number.isNaN(quantity) || (quantity < 0)) this.error('Invalid SKU definition: ' + chalk.redBright(s))
-
+    // SKUs
+    if (skus && (skus.length > 0)) skus.forEach(s => {
+      const checkSku = this.checkItem(s, 'sku')
       lineItems.push({
-        sku_code: sd[0],
-        quantity,
+        item_type: checkSku.type,
+        sku_code: checkSku.code,
+        quantity: checkSku.quantity,
         _update_quantity: true,
+        order: { id: '', type: 'orders' },
       })
+    })
 
+    // Bundles
+    if (bundles && (bundles.length > 0)) bundles.forEach(b => {
+      const checkBundle = this.checkItem(b, 'bundle')
+      lineItems.push({
+        item_type: checkBundle.type,
+        bundle_code: checkBundle.code,
+        quantity: checkBundle.quantity,
+        _update_quantity: true,
+        order: { id: '', type: 'orders' },
+      })
     })
 
     return lineItems

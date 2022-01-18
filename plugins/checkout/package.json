@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-checkout",
   "description": "Commerce Layer CLI Checkout plugin",
-  "version": "1.2.3",
+  "version": "2.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-checkout": "./bin/run"
@@ -75,9 +75,9 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/cli-core": "^0.1.2",
-    "@commercelayer/js-auth": "^2.1.0",
-    "@commercelayer/sdk": "2.3.0",
+    "@commercelayer/cli-core": "^1.0.0",
+    "@commercelayer/js-auth": "^2.2.9",
+    "@commercelayer/sdk": "^3.3.0",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "chalk": "^2.4.2",
