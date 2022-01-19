@@ -112,7 +112,7 @@ export default class ResourcesUpdate extends Command {
 		// Relationships
 		if (relationships && Object.keys(relationships).length > 0) Object.entries(relationships).forEach(([key, value]) => {
 			const relSdk: any = cl[value.type as keyof CommerceLayerClient]
-			const rel = relSdk.relationship(value)
+			const rel = relSdk.relationship(((value.id === null) || (value.id === 'null')) ? null : value)
 			attributes[key] = rel
 		})
 

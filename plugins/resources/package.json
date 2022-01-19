@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "3.5.0",
+  "version": "3.6.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run"
@@ -84,7 +84,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^1.0.0",
     "@commercelayer/js-auth": "^2.2.2",
-    "@commercelayer/sdk": "^3.3.0",
+    "@commercelayer/sdk": "^3.5.0",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@types/inquirer": "^8.1.3",
