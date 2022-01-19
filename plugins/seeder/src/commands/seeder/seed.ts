@@ -9,7 +9,7 @@ import { readResourceData } from '../../data'
 import { relationshipType } from '../../schema'
 import { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
-import { token } from '@commercelayer/cli-core'
+import { clToken } from '@commercelayer/cli-core'
 
 
 
@@ -60,17 +60,17 @@ export default class SeederSeed extends Command {
     const accessToken = flags.accessToken
     const name = this.modelNameChack(flags)
 
-    const tokenInfo = token.decodeAccessToken(accessToken)
-    if (tokenInfo.application.kind !== config.validApplicationKind)
-      this.error(`Invalid application type: ${chalk.redBright(tokenInfo.application.kind)}`, {
-        suggestions: [`To execute ${chalk.cyanBright('seeder')} you must use an application ok kind ${chalk.yellowBright(config.validApplicationKind)}`],
-      })
-
-    this.initCommerceLayer(flags)
-
-    this.log()
-
     try {
+
+      const tokenInfo = clToken.decodeAccessToken(accessToken)
+      if (tokenInfo.application.kind !== config.validApplicationKind)
+        this.error(`Invalid application type: ${chalk.redBright(tokenInfo.application.kind)}`, {
+          suggestions: [`To execute ${chalk.cyanBright('seeder')} you must use an application ok kind ${chalk.yellowBright(config.validApplicationKind)}`],
+        })
+
+      this.initCommerceLayer(flags)
+
+      this.log()
 
       // Initialize OpenAPI schema
       await this.readOpenAPISchema()

@@ -2,7 +2,7 @@ import Command, { flags } from '@oclif/command'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import config from './config'
-import { update } from '@commercelayer/cli-core'
+import { clUpdate } from '@commercelayer/cli-core'
 import { isRemotePath, pathJoin } from './common'
 import { BusinessModel, readModelData } from './data'
 import cliux from 'cli-ux'
@@ -44,7 +44,7 @@ export default abstract class extends Command {
 
 
   async init() {
-    update.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
