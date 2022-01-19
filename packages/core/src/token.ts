@@ -44,7 +44,7 @@ export type CustomToken = {
 /** Decode a Commerce Layer access token */
 const decodeAccessToken = (accessToken: string): AccessTokenInfo => {
   const info = jwt.decode(accessToken)
-  if (info === null) throw new Error('Error deconding access token')
+  if (info === null) throw new Error('Error decoding access token')
   return info as AccessTokenInfo
 }
 
