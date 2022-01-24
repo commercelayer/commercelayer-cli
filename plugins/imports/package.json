@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-imports": "./bin/run"
@@ -77,7 +77,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^0.1.2",
     "@commercelayer/js-auth": "^2.0.8",
-    "@commercelayer/sdk": "sdk3",
+    "@commercelayer/sdk": "^3.5.0",
     "@fast-csv/parse": "^4.3.6",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
