@@ -112,7 +112,7 @@ USAGE
   $ commercelayer adyen_payment ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -132,7 +132,7 @@ USAGE
   $ commercelayer adyen_payment:details ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -152,7 +152,7 @@ USAGE
   $ commercelayer authorization ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -172,7 +172,7 @@ USAGE
   $ commercelayer authorization:capture ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -192,7 +192,7 @@ USAGE
   $ commercelayer authorization:capture_amount_cents ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -212,7 +212,7 @@ USAGE
   $ commercelayer authorization:void ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -232,7 +232,7 @@ USAGE
   $ commercelayer bundle ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -252,7 +252,7 @@ USAGE
   $ commercelayer bundle:compute_compare_at_amount ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -272,7 +272,7 @@ USAGE
   $ commercelayer bundle:compute_price_amount ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -292,7 +292,7 @@ USAGE
   $ commercelayer capture ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -312,7 +312,7 @@ USAGE
   $ commercelayer capture:refund ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -332,7 +332,7 @@ USAGE
   $ commercelayer capture:refund_amount_cents ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -352,7 +352,7 @@ USAGE
   $ commercelayer checkout_com_payment ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -372,7 +372,7 @@ USAGE
   $ commercelayer checkout_com_payment:details ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -392,7 +392,7 @@ USAGE
   $ commercelayer checkout_com_payment:refresh ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -412,7 +412,7 @@ USAGE
   $ commercelayer customer_password_reset ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -432,7 +432,7 @@ USAGE
   $ commercelayer customer_password_reset:reset_password_token ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -452,7 +452,7 @@ USAGE
   $ commercelayer gift_card ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -472,7 +472,7 @@ USAGE
   $ commercelayer gift_card:activate ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -492,7 +492,7 @@ USAGE
   $ commercelayer gift_card:balance_change_cents ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -512,7 +512,7 @@ USAGE
   $ commercelayer gift_card:deactivate ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -532,7 +532,7 @@ USAGE
   $ commercelayer gift_card:purchase ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -552,7 +552,7 @@ USAGE
   $ commercelayer in_stock_subscription ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -572,7 +572,7 @@ USAGE
   $ commercelayer in_stock_subscription:activate ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -592,7 +592,7 @@ USAGE
   $ commercelayer in_stock_subscription:deactivate ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -612,7 +612,7 @@ USAGE
   $ commercelayer klarna_payment ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -632,7 +632,7 @@ USAGE
   $ commercelayer klarna_payment:update ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -652,7 +652,7 @@ USAGE
   $ commercelayer order ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -672,7 +672,7 @@ USAGE
   $ commercelayer order:approve ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -692,7 +692,7 @@ USAGE
   $ commercelayer order:approve_and_capture ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -712,7 +712,7 @@ USAGE
   $ commercelayer order:archive ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -732,7 +732,7 @@ USAGE
   $ commercelayer order:authorization_amount_cents ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -752,7 +752,7 @@ USAGE
   $ commercelayer order:authorize ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -772,7 +772,7 @@ USAGE
   $ commercelayer order:billing_address_clone_id ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -793,7 +793,7 @@ USAGE
   $ commercelayer order:billing_address_same_as_shipping ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -813,7 +813,7 @@ USAGE
   $ commercelayer order:cancel ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -833,7 +833,7 @@ USAGE
   $ commercelayer order:capture ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -853,7 +853,7 @@ USAGE
   $ commercelayer order:customer_payment_source_id ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -874,7 +874,7 @@ USAGE
   $ commercelayer order:place ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -894,7 +894,7 @@ USAGE
   $ commercelayer order:refresh ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -914,7 +914,7 @@ USAGE
   $ commercelayer order:refund ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -934,7 +934,7 @@ USAGE
   $ commercelayer order:save_billing_address_to_customer_address_book ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -954,7 +954,7 @@ USAGE
   $ commercelayer order:save_payment_source_to_customer_wallet ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -974,7 +974,7 @@ USAGE
   $ commercelayer order:save_shipping_address_to_customer_address_book ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -994,7 +994,7 @@ USAGE
   $ commercelayer order:shipping_address_clone_id ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1015,7 +1015,7 @@ USAGE
   $ commercelayer order:shipping_address_same_as_billing ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1035,7 +1035,7 @@ USAGE
   $ commercelayer order:unarchive ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1055,7 +1055,7 @@ USAGE
   $ commercelayer order:update_taxes ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1075,7 +1075,7 @@ USAGE
   $ commercelayer order_subscription ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1095,7 +1095,7 @@ USAGE
   $ commercelayer order_subscription:activate ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1115,7 +1115,7 @@ USAGE
   $ commercelayer order_subscription:cancel ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1135,7 +1135,7 @@ USAGE
   $ commercelayer order_subscription:deactivate ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1155,7 +1155,7 @@ USAGE
   $ commercelayer return ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1175,7 +1175,7 @@ USAGE
   $ commercelayer return:approve ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1195,7 +1195,7 @@ USAGE
   $ commercelayer return:archive ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1215,7 +1215,7 @@ USAGE
   $ commercelayer return:cancel ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1235,7 +1235,7 @@ USAGE
   $ commercelayer return:receive ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1255,7 +1255,7 @@ USAGE
   $ commercelayer return:reject ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1275,7 +1275,7 @@ USAGE
   $ commercelayer return:request ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1295,7 +1295,7 @@ USAGE
   $ commercelayer return:restock ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1315,7 +1315,7 @@ USAGE
   $ commercelayer return:ship ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1335,7 +1335,7 @@ USAGE
   $ commercelayer return:unarchive ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1355,7 +1355,7 @@ USAGE
   $ commercelayer return_line_item ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1375,7 +1375,7 @@ USAGE
   $ commercelayer return_line_item:restock ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1395,7 +1395,7 @@ USAGE
   $ commercelayer shipment ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1415,7 +1415,7 @@ USAGE
   $ commercelayer shipment:get_rates ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1435,7 +1435,7 @@ USAGE
   $ commercelayer shipment:on_hold ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1455,7 +1455,7 @@ USAGE
   $ commercelayer shipment:packing ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1475,7 +1475,7 @@ USAGE
   $ commercelayer shipment:picking ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1495,7 +1495,7 @@ USAGE
   $ commercelayer shipment:purchase ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1515,7 +1515,7 @@ USAGE
   $ commercelayer shipment:ready_to_ship ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1535,7 +1535,7 @@ USAGE
   $ commercelayer shipment:ship ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1555,7 +1555,7 @@ USAGE
   $ commercelayer stock_transfer ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1575,7 +1575,7 @@ USAGE
   $ commercelayer stock_transfer:cancel ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1595,7 +1595,7 @@ USAGE
   $ commercelayer stock_transfer:complete ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1615,7 +1615,7 @@ USAGE
   $ commercelayer stock_transfer:in_transit ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1635,7 +1635,7 @@ USAGE
   $ commercelayer stock_transfer:picking ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1655,7 +1655,7 @@ USAGE
   $ commercelayer stock_transfer:upcoming ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1675,7 +1675,7 @@ USAGE
   $ commercelayer stripe_payment ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1695,7 +1695,7 @@ USAGE
   $ commercelayer stripe_payment:refresh ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1715,7 +1715,7 @@ USAGE
   $ commercelayer webhook ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format
@@ -1735,7 +1735,7 @@ USAGE
   $ commercelayer webhook:reset_circuit ID
 
 ARGUMENTS
-  ID  the unique ID of the resource
+  ID  the unique id of the resource
 
 OPTIONS
   -j, --json                       print result in JSON format

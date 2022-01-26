@@ -1,7 +1,7 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
-import { output, update } from '@commercelayer/cli-core'
+import { clOutput, clUpdate } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -52,7 +52,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init() {
-    update.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
@@ -70,13 +70,13 @@ export default abstract class extends Command {
         this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
           { suggestions: [`Execute login with sufficient privileges to get access to the organization's resources${res ? ` of type ${chalk.bold(res)}` : ''}`] }
         )
-      } else this.error(output.formatError(error, flags))
+      } else this.error(clOutput.formatError(error, flags))
     } else throw error
   }
 
 
   protected printOutput(res: any, flags: any): void {
-    this.log(output.formatOutput(res, flags))
+    this.log(clOutput.formatOutput(res, flags))
   }
 
 
