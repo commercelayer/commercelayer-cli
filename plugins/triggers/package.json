@@ -76,7 +76,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/cli-core": "^1.0.0",
+    "@commercelayer/cli-core": "^1.0.1",
     "@commercelayer/js-auth": "^2.2.4",
     "@commercelayer/sdk": "4.3.0-beta.6",
     "@oclif/core": "^1.1.2",
