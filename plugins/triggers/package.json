@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "2.0.3",
+  "version": "2.0.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-triggers": "./bin/run"
@@ -29,7 +29,7 @@
     "typescript": "^4.4.4"
   },
   "engines": {
-    "node": ">=12.20"
+    "node": ">=14"
   },
   "files": [
     "/bin",
@@ -78,7 +78,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^1.0.1",
     "@commercelayer/js-auth": "^2.2.4",
-    "@commercelayer/sdk": "4.3.0-beta.6",
+    "@commercelayer/sdk": "^4.3.0",
     "@oclif/core": "^1.1.2",
     "chalk": "^4.1.2",
     "cli-ux": "^5.6.3",
