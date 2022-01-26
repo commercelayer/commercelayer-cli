@@ -93,7 +93,7 @@ export default abstract class extends Command {
 
   protected async findByReference(type: string, reference: string): Promise<ResourceId | undefined> {
 
-    const params: QueryParamsList = {
+    const params: QueryParamsList & { fields: {[key: string]: string[] } } = {
       fields: {},
       filters: {
         reference_eq: reference,

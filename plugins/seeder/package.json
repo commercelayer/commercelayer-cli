@@ -1,6 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-seeder",
-  "version": "2.2.1",
+  "description": "Commerce Layer CLI Seeder plugin",
+  "version": "3.0.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-seeder": "./bin/run"
@@ -8,9 +9,8 @@
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-seeder/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
-    "@oclif/plugin-help": "^3.2.2",
-    "@oclif/test": "^1.2.8",
-    "@types/chai": "^4.2.17",
+    "@oclif/test": "^2.0.3",
+    "@types/chai": "^4.2.22",
     "@types/jsonwebtoken": "^8.5.6",
     "@types/listr": "^0.14.4",
     "@types/mocha": "^5.2.7",
@@ -21,7 +21,6 @@
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
     "globby": "^10.0.2",
-    "jsonapi-typescript": "^0.1.3",
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
     "ts-node": "^10.4.0",
@@ -58,7 +57,11 @@
         "hidden": true
       }
     },
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>"
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": " "
   },
   "repository": "commercelayer/commercelayer-cli-plugin-seeder",
   "scripts": {
@@ -71,11 +74,10 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@commercelayer/cli-core": "^1.0.1",
-    "@commercelayer/js-auth": "^2.2.3",
-    "@commercelayer/sdk": "^2.3.10",
-    "@oclif/command": "^1.8.0",
-    "@oclif/config": "^1.17.0",
-    "axios": "^0.24.0",
+    "@commercelayer/js-auth": "^2.2.4",
+    "@commercelayer/sdk": "4.3.0-beta.6",
+    "@oclif/core": "^1.1.2",
+    "axios": "^0.25.0",
     "chalk": "^4.1.2",
     "cli-ux": "^6.0.8",
     "listr": "^0.14.3",
