@@ -1,7 +1,7 @@
 import { CommerceLayerStatic, Order } from '@commercelayer/sdk'
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
-import { output, update } from '@commercelayer/cli-core'
+import { clOutput, clUpdate } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -52,7 +52,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init() {
-    update.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
@@ -69,13 +69,13 @@ export default abstract class extends Command {
         this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
           { suggestions: ['Execute login to get access to the organization\'s imports'] }
         )
-      } else this.error(output.formatError(error, flags))
+      } else this.error(clOutput.formatError(error, flags))
     } else throw error
   }
 
 
   protected printOutput(order: Order, flags: any): void {
-    this.log(output.formatOutput(order, flags))
+    this.log(clOutput.formatOutput(order, flags))
   }
 
 
