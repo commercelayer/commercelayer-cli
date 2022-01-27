@@ -1,6 +1,6 @@
 import Command, { flags } from '@oclif/command'
 import chalk from 'chalk'
-import { output, update } from '@commercelayer/cli-core'
+import { clOutput, clUpdate } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 
 
@@ -41,7 +41,7 @@ export default abstract class extends Command {
 
 	// INIT (override)
 	async init() {
-    update.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg)
 		return super.init()
 	}
 
@@ -59,7 +59,7 @@ export default abstract class extends Command {
 				this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
 					{ suggestions: ['Execute login to get access to the organization\'s imports'] }
 				)
-			} else this.error(output.formatOutput(error, flags))
+			} else this.error(clOutput.formatOutput(error, flags))
 		} else throw error
 	}
 

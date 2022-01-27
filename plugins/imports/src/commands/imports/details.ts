@@ -1,7 +1,7 @@
 import Command, { flags } from '../../base'
 import chalk from 'chalk'
 import Table from 'cli-table3'
-import { output } from '@commercelayer/cli-core'
+import { clOutput } from '@commercelayer/cli-core'
 
 
 
@@ -93,7 +93,7 @@ export default class ImportsDetails extends Command {
 
 		if (imp.length > 0) {
 			const table = new Table({ colWidths: [90], wordWrap: true })
-			table.push(...(inputs || []).map(i => [output.printObject(i, { width: 86 })]))
+			table.push(...(inputs || []).map(i => [clOutput.printObject(i, { width: 86 })]))
 			this.log(table.toString())
 		}
 
@@ -124,7 +124,7 @@ export default class ImportsDetails extends Command {
 		if (warnings > 0) {
 			const table = new Table(tableOptions)
 			table.push(...Object.entries(warningLog || {})
-				.map(([k, v]) => [{ content: ((k && (k !== 'unknown')) ? k : ''), vAlign: 'center' }, output.printObject(v) as any]))
+				.map(([k, v]) => [{ content: ((k && (k !== 'unknown')) ? k : ''), vAlign: 'center' }, clOutput.printObject(v) as any]))
 			this.log(table.toString())
 		}
 
@@ -140,7 +140,7 @@ export default class ImportsDetails extends Command {
 		if (errors > 0) {
 			const table = new Table(tableOptions)
 			table.push(...(Object.entries(errorLog || {}))
-				.map(([k, v]) => [{ content: ((k && (k !== 'unknown')) ? k : ''), vAlign: 'center' }, output.printObject(v) as any]))
+				.map(([k, v]) => [{ content: ((k && (k !== 'unknown')) ? k : ''), vAlign: 'center' }, clOutput.printObject(v) as any]))
 			this.log(table.toString())
 		}
 
@@ -168,7 +168,7 @@ const statusColor = (status: string): string => {
 
 const formatValue = (field: string, value: string): any => {
 
-	if (field.endsWith('_date') || field.endsWith('_at')) return output.localeDate(value)
+	if (field.endsWith('_date') || field.endsWith('_at')) return clOutput.localeDate(value)
 
 	switch (field) {
 

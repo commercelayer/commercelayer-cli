@@ -2,7 +2,7 @@ import Command from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
-import { config, output } from '@commercelayer/cli-core'
+import { clConfig, clOutput } from '@commercelayer/cli-core'
 import cliux from 'cli-ux'
 
 
@@ -37,7 +37,7 @@ export default class ImportsGroup extends Command {
 
 		try {
 
-			const pageSize = config.api.page_max_size
+			const pageSize = clConfig.api.page_max_size
 			const tableData = []
 			let currentPage = 0
 			let pageCount = 1
@@ -87,8 +87,8 @@ export default class ImportsGroup extends Command {
 					{ content: i.processed_count, hAlign: 'center' as HorizontalAlignment },
 					{ content: i.warnings_count, hAlign: 'center' as HorizontalAlignment },
 					{ content: i.errors_count, hAlign: 'center' as HorizontalAlignment },
-					output.localeDate(i.started_at || ''),
-					output.localeDate(i.completed_at || ''),
+					clOutput.localeDate(i.started_at || ''),
+					clOutput.localeDate(i.completed_at || ''),
 				]))
 
 				this.log(table.toString())

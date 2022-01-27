@@ -1,5 +1,5 @@
 import { ImportCreate } from '@commercelayer/sdk'
-import { config } from '@commercelayer/cli-core'
+import { clConfig } from '@commercelayer/cli-core'
 
 
 type Chunk = ImportCreate & {
@@ -27,7 +27,7 @@ const splitImports = (imp: ImportCreate, size?: number): Array<Chunk> => {
 	const chunks: Array<Chunk> = []
 	if (!imp || !imp.inputs || (imp.inputs.length === 0)) return chunks
 
-	const chunkSize = size || config.imports.max_size
+	const chunkSize = size || clConfig.imports.max_size
 
 	const allInputs = imp.inputs
 	const totalItems = imp.inputs.length

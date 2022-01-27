@@ -3,7 +3,7 @@ import Command, { flags } from '../../base'
 import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
 import { generateInputs } from '../../input'
 import { SingleBar } from 'cli-progress'
-import { util, config } from '@commercelayer/cli-core'
+import { clUtil, clConfig } from '@commercelayer/cli-core'
 import { Monitor } from '../../monitor'
 import { Chunk, Batch, splitChunks, splitImports } from '../../chunk'
 import chalk from 'chalk'
@@ -19,8 +19,8 @@ const SECURITY_DELAY = 50
 
 const importsDelay = (parallelRequests: number): number => {
 
-	const unitDelayBurst = config.api.requests_max_secs_burst / config.api.requests_max_num_burst
-	const unitDelayAvg = config.api.requests_max_secs_avg / config.api.requests_max_num_avg
+	const unitDelayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
+	const unitDelayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
 
 	const delayBurst = parallelRequests * unitDelayBurst
 	const delayAvg = parallelRequests * unitDelayAvg
@@ -51,8 +51,8 @@ export default class ImportsCreate extends Command {
 			char: 't',
 			description: 'the type of resource being imported',
 			required: true,
-			options: config.imports.types,
-			helpValue: config.imports.types.slice(0, 4).join('|') + '|...',
+			options: clConfig.imports.types,
+			helpValue: clConfig.imports.types.slice(0, 4).join('|') + '|...',
 		}),
 		parent: flags.string({
 			char: 'p',
@@ -139,7 +139,7 @@ export default class ImportsCreate extends Command {
 				// Multi chunk message
 				if (multiChunk) {
 					const groupId = chunks[0]?.group_id
-					const msg1 = `The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${config.imports.max_size} elements allowed for each single import.`
+					const msg1 = `The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${clConfig.imports.max_size} elements allowed for each single import.`
 					const msg2 = `The import will be split into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}.`
 					const msg3 = `Execute the command ${chalk.italic(`imports:group ${groupId}`)} to retrieve all the related imports`
 					this.log(`\n${msg1} ${msg2} ${msg3}`)
@@ -242,11 +242,11 @@ export default class ImportsCreate extends Command {
 
 				do {
 
-					await util.sleep(importsDelay(chunk.total_batch_chunks - this.completed))
+					await clUtil.sleep(importsDelay(chunk.total_batch_chunks - this.completed))
 					const tmp = await this.cl.imports.retrieve(imp.id).catch(async err => {
 						if (this.cl.isApiError(err) && (err.status === 429)) {
 							if (imp && imp.status) barValue = this.monitor.updateBar(bar, barValue, { status: chalk.cyanBright(imp.status) })
-							await util.sleep(ERROR_429_DELAY)
+							await clUtil.sleep(ERROR_429_DELAY)
 						}
 					})
 

@@ -1,10 +1,10 @@
 import chalk from 'chalk'
 import cliProgress, { SingleBar, MultiBar } from 'cli-progress'
 import type { Chunk } from './chunk'
-import { output, config } from '@commercelayer/cli-core'
+import { clOutput, clConfig } from '@commercelayer/cli-core'
 
 
-const MAX_IMPORT_SIZE = config.imports.max_size
+const MAX_IMPORT_SIZE = clConfig.imports.max_size
 
 const TERMINAL_SIZE = process.stdout.columns || 80
 
@@ -237,7 +237,7 @@ class Monitor {
 		const labels = header.map((h: HeaderColumn) => {
 
 			const w = (h.width + (h.pad ? 2 : 0))
-			const label = output.center(h.title, w)
+			const label = clOutput.center(h.title, w)
 
 			let styled = chalk.bold(label)
 			if (style.colors && h.style) styled = h.style(styled)
