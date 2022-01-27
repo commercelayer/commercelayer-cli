@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 import Command, { flags } from '../../base'
-import { util } from '@commercelayer/cli-core'
+import { clUtil } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
@@ -70,7 +70,7 @@ export default class WebhooksListen extends Command {
 					lastEvent.setMilliseconds(lastEvent.getMilliseconds() + 1)
 				}
 
-				await util.sleep(1000)
+				await clUtil.sleep(1000)
 				elapsedWithoutEvents = Math.floor((Date.now() - lastEvent.getTime()) / 1000)
 
 			}
