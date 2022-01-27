@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "3.6.2",
+  "version": "4.0.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-resources": "./bin/run"
@@ -9,34 +9,28 @@
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
-    "@oclif/plugin-help": "^3.2.2",
-    "@oclif/test": "^1.2.8",
-    "@types/chai": "^4.2.17",
-    "@types/jsonwebtoken": "^8.5.1",
+    "@oclif/test": "^2.0.3",
+    "@types/chai": "^4.2.22",
+    "@types/inquirer": "^8.1.3",
+    "@types/lodash": "^4.14.178",
     "@types/mocha": "^5.2.7",
     "@types/node": "^16.11.0",
     "@types/node-notifier": "^8.0.0",
     "@types/update-notifier": "^5.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.6.1",
-    "@typescript-eslint/parser": "^2.6.1",
+    "@types/jsonwebtoken": "^8.5.1",
     "chai": "^4.3.4",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
-    "eslint-config-xo-space": "^0.20.0",
-    "eslint-plugin-mocha": "^5.2.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-unicorn": "^6.0.1",
     "globby": "^10.0.2",
     "inflector-js": "^1.0.1",
-    "jsonapi-typescript": "^0.1.3",
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   },
   "engines": {
-    "node": ">=12.20"
+    "node": ">=14"
   },
   "files": [
     "/bin",
@@ -69,7 +63,11 @@
         "hidden": true
       }
     },
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>"
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": " "
   },
   "repository": "commercelayer/commercelayer-cli-plugin-resources",
   "scripts": {
@@ -83,19 +81,17 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@commercelayer/cli-core": "^1.0.0",
-    "@commercelayer/js-auth": "^2.2.2",
-    "@commercelayer/sdk": "^3.5.0",
-    "@oclif/command": "^1.8.0",
-    "@oclif/config": "^1.17.0",
-    "@types/inquirer": "^8.1.3",
-    "axios": "^0.24.0",
-    "chalk": "^2.4.2",
-    "cli-ux": "^5.6.3",
-    "inquirer": "^6.5.2",
+    "@commercelayer/js-auth": "^2.2.4",
+    "@commercelayer/sdk": "^4.3.0",
+    "@oclif/core": "^1.1.2",
+    "axios": "^0.25.0",
+    "chalk": "^4.1.2",
+    "cli-ux": "^6.0.8",
+    "inquirer": "^8.2.0",
     "json-2-csv": "^3.14.4",
     "lodash": "^4.17.21",
     "node-notifier": "^9.0.1",
-    "tslib": "^1.14.1"
+    "tslib": "^2.3.1"
   },
   "publishConfig": {
     "access": "public"

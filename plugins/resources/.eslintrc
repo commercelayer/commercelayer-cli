@@ -12,6 +12,7 @@
     "no-multiple-empty-lines": "off",
     "array-bracket-spacing": "off",
     "no-multi-assign": "off",
-    "unicorn/prevent-abbreviations": "off"
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/prefer-module": "off"
   }
 }

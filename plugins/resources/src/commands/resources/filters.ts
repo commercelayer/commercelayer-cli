@@ -89,7 +89,7 @@ export default class ResourcesFilters extends Command {
 }
 
 
-interface Filter {
+interface Filter extends Record<string, unknown> {
   predicate: string;
   description: string;
 }
