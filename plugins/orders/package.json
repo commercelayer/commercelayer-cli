@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-orders",
   "description": "Commerce Layer CLI Orders plugin",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "cl-orders": "./bin/run"
@@ -81,7 +81,7 @@
     "@commercelayer/sdk": "^4.3.0",
     "@oclif/core": "^1.1.2",
     "chalk": "^4.1.2",
-    "cli-ux": "^5.6.3",
+    "cli-ux": "^6.0.8",
     "inquirer": "^8.2.0",
     "tslib": "^2.3.1"
   },
