@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import CheckoutOrder from './order'
 import chalk from 'chalk'
 import { LineItemCreate } from '@commercelayer/sdk'
@@ -16,35 +16,35 @@ export default class CheckoutIndex extends Command {
 
   static flags = {
     ...Command.flags,
-    order: flags.string({
+    order: Flags.string({
       char: 'O',
       description: 'an order id',
       exclusive: ['sku', 'bundle'],
       multiple: false,
     }),
-    sku: flags.string({
+    sku: Flags.string({
       char: 'S',
       description: 'an SKU code',
       exclusive: ['order'],
       multiple: true,
     }),
-    bundle: flags.string({
+    bundle: Flags.string({
       char: 'B',
       description: 'a bundle code',
       exclusive: ['order'],
       multiple: true,
     }),
-    market: flags.string({
+    market: Flags.string({
       char: 'm',
       description: 'a market number',
       exclusive: ['order'],
     }),
-    coupon: flags.string({
+    coupon: Flags.string({
       char: 'c',
       description: 'a promo code',
       exclusive: ['order'],
     }),
-    email: flags.string({
+    email: Flags.string({
       char: 'e',
       description: 'a customer email',
       exclusive: ['order'],
@@ -66,7 +66,7 @@ export default class CheckoutIndex extends Command {
 
   async run() {
 
-    const { flags } = this.parse(CheckoutIndex)
+    const { flags } = await this.parse(CheckoutIndex)
 
     const organization = flags.organization
     const accessToken = flags.accessToken

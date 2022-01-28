@@ -1,5 +1,5 @@
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import Command, { flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
 import { clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
 
@@ -10,26 +10,26 @@ const pkg = require('../package.json')
 export default abstract class extends Command {
 
   static flags = {
-    organization: flags.string({
+    organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
     }),
-    domain: flags.string({
+    domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
-    accessToken: flags.string({
+    accessToken: Flags.string({
       char: 'a',
       hidden: false,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
     }),
-    open: flags.boolean({
+    open: Flags.boolean({
       description: 'open checkout URL in default browser',
     }),
   }
@@ -91,4 +91,4 @@ export default abstract class extends Command {
 
 
 
-export { flags }
+export { Flags }

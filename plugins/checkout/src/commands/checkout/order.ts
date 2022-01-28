@@ -20,7 +20,7 @@ export default class CheckoutOrder extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(CheckoutOrder)
+    const { args, flags } = await this.parse(CheckoutOrder)
 
     const id = args.id
     const organization = flags.organization
