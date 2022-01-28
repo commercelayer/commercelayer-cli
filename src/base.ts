@@ -1,49 +1,48 @@
-import Command, { flags } from '@oclif/command'
+import { Command, Flags, Config } from '@oclif/core'
 import { configParam, ConfigParams, readConfigDir } from './config'
 import inquirer from 'inquirer'
 import { printScope } from './common'
-import { output, api, AppInfo } from '@commercelayer/cli-core'
-import { IConfig } from '@oclif/config'
+import { clOutput, clApi, AppInfo } from '@commercelayer/cli-core'
 
 
 export default abstract class extends Command {
 
 	static flags = {
-		organization: flags.string({
+		organization: Flags.string({
 			char: 'o',
 			description: 'organization slug',
 		}),
-		domain: flags.string({
+		domain: Flags.string({
 			char: 'd',
 			description: 'api domain',
 			required: false,
 			hidden: true,
 			dependsOn: ['organization'],
 		}),
-		kind: flags.string({
+		kind: Flags.string({
 			char: 'k',
 			description: 'application kind',
 			options: configParam(ConfigParams.applicationTypeCheck),
 		}),
-		mode: flags.string({
+		mode: Flags.string({
 			char: 'm',
 			description: 'execution mode',
 			options: ['test', 'live'],
 		}),
-		live: flags.boolean({
+		live: Flags.boolean({
 			description: 'live execution mode',
 			exclusive: ['mode'],
 		}),
-		id: flags.string({
+		id: Flags.string({
 			description: 'application id',
 		}),
-		alias: flags.string({
+		alias: Flags.string({
 			char: 'a',
 			description: 'the alias associated to the application',
 			exclusive: ['id'],
 			multiple: false,
 		}),
-		appkey: flags.string({
+		appkey: Flags.string({
 			description: 'CLI application key',
 			hidden: true,
 			exclusive: ['alias', 'id', 'mode', 'kind'],
@@ -79,13 +78,13 @@ export default abstract class extends Command {
 }
 
 
-export { flags }
+export { Flags }
 
 
 
 const promptApplication = async (apps: AppInfo[]) => {
 
-	const appMaxLength = output.maxLength(apps, 'name') + 2
+	const appMaxLength = clOutput.maxLength(apps, 'name') + 2
 	const details = ['organization', 'kind', 'mode', 'alias']
 
 	const answers = await inquirer.prompt([{
@@ -94,7 +93,7 @@ const promptApplication = async (apps: AppInfo[]) => {
 		message: 'Select an application to switch to:',
 		choices: apps.map(a => {
 			return { name: `${a.name.padEnd(appMaxLength, ' ')} [ ${details.map(d => {
-				return String(a[d as keyof AppInfo]).padEnd(output.maxLength(apps, d))
+				return String(a[d as keyof AppInfo]).padEnd(clOutput.maxLength(apps, d))
 			}).join(' | ')} ]${(a.scope && a.scope.length > 0) ? ` (${printScope(a.scope)})` : ''}`, value: a }
 		}),
 		loop: false,
@@ -106,9 +105,9 @@ const promptApplication = async (apps: AppInfo[]) => {
 }
 
 
-export const filterApplications = (config: IConfig, flags: any): AppInfo[] => {
+export const filterApplications = (config: Config, flags: any): AppInfo[] => {
 
-	const mode = flags.mode || (flags.live ? api.execMode(flags.live) : undefined)
+	const mode = flags.mode || (flags.live ? clApi.execMode(flags.live) : undefined)
 
 	const applications = readConfigDir(config, { key: flags.key || flags.appkey }).filter(app => {
 

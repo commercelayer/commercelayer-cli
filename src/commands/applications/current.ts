@@ -1,4 +1,4 @@
-import { Command, flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
 import { readConfigFile, currentApplication } from '../../config'
 import { inspect } from 'util'
@@ -18,11 +18,11 @@ export default class ApplicationsCurrent extends Command {
 	]
 
 	static flags = {
-		info: flags.boolean({
+		info: Flags.boolean({
 			hidden: true,
 			exclusive: ['organization', 'live'],
 		}),
-		json: flags.boolean({
+		json: Flags.boolean({
 			char: 'j',
 			description: 'show info in JSON format',
 			dependsOn: ['info'],
@@ -31,7 +31,7 @@ export default class ApplicationsCurrent extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(ApplicationsCurrent)
+		const { flags } = await this.parse(ApplicationsCurrent)
 
 		const stored = currentApplication()
 		if (stored) {

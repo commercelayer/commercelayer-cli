@@ -1,15 +1,15 @@
-import {Command, flags} from '@oclif/command'
+import { Command, Flags} from '@oclif/core'
 
 export default class Noc extends Command {
 
   static hidden = true
 
   static flags = {
-    organization: flags.string({
+    organization: Flags.string({
       required: false,
       hidden: true,
     }),
-    accessToken: flags.string({
+    accessToken: Flags.string({
       required: false,
       hidden: true,
     }),

@@ -1,4 +1,4 @@
-import { Command, flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import clicfg, { ConfigParamsEditable, configParam, paramDefault, ConfigParams } from '../../config'
 import chalk from 'chalk'
 
@@ -10,7 +10,7 @@ export default class ConfigDefault extends Command {
 
   static flags = {
     // help: flags.help({char: 'h'}),
-    force: flags.boolean({
+    force: Flags.boolean({
       char: 'F',
       required: false,  // checked programmatically later
       hidden: true,
@@ -22,7 +22,7 @@ export default class ConfigDefault extends Command {
 
   async run() {
 
-    const { flags } = this.parse(ConfigDefault)
+    const { flags } = await this.parse(ConfigDefault)
 
 
     if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${chalk.italic('--force (-F)')} flag to force setting save`)

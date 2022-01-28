@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command } from '@oclif/core'
 import clicfg from '../../config'
 import { inspect } from 'util'
 import chalk from 'chalk'

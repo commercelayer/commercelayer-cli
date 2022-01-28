@@ -1,4 +1,4 @@
-import { Command, flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import { paramExists, paramEditable, configParam } from '../../config'
 import { inspect } from 'util'
 import chalk from 'chalk'
@@ -11,7 +11,7 @@ export default class ConfigSet extends Command {
 
   static flags = {
     // help: flags.help({char: 'h'}),
-    force: flags.boolean({
+    force: Flags.boolean({
       char: 'F',
       required: false,  // checked programmatically later
       hidden: true,
@@ -26,7 +26,7 @@ export default class ConfigSet extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(ConfigSet)
+    const { args, flags } = await this.parse(ConfigSet)
 
     const param = args.param
     const value = args.value

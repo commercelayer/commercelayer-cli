@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command } from '@oclif/core'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
@@ -31,7 +31,7 @@ export default class ApplicationsAdd extends Command {
 
   async run() {
 
-    const { flags } = this.parse(ApplicationsAdd)
+    const { flags } = await this.parse(ApplicationsAdd)
 
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)

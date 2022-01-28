@@ -1,9 +1,9 @@
-import Command, { filterApplications, flags } from '../../base'
+import Command, { filterApplications, Flags } from '../../base'
 import {configParam, ConfigParams } from '../../config'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
 import { printScope } from '../../common'
-import { AppInfo, application, output } from '@commercelayer/cli-core'
+import { AppInfo, clApplication, clOutput } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsIndex extends Command {
@@ -19,7 +19,7 @@ export default class ApplicationsIndex extends Command {
 
 	static flags = {
 		...Command.flags,
-		extra: flags.boolean({
+		extra: Flags.boolean({
 			char: 'X',
 			description: 'show applications extra info',
 			hidden: true,
@@ -30,7 +30,7 @@ export default class ApplicationsIndex extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(ApplicationsIndex)
+		const { flags } = await this.parse(ApplicationsIndex)
 
 		let configData: AppInfo[]
 		try {
@@ -45,17 +45,17 @@ export default class ApplicationsIndex extends Command {
 		this.log()
 		if (configData.length > 0) {
 
-			const currentVisibile = configData.some(a => application.appKeyMatch(current, a))
+			const currentVisibile = configData.some(a => clApplication.appKeyMatch(current, a))
 
-			cliux.table(configData, {
-				current: { header: `[${currentChar}]`, minWidth: 3, get: row => application.appKeyMatch(current, row) ? chalk.magentaBright(` ${currentChar} `) : '   ' },
+			cliux.table(configData as any, {
+				current: { header: `[${currentChar}]`, minWidth: 3, get: row => clApplication.appKeyMatch(current, row as unknown as AppInfo) ? chalk.magentaBright(` ${currentChar} `) : '   ' },
 				organization: { header: 'ORGANIZATION', get: row => currentColor(row, current)(row.organization) },
 				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
 				name: { header: 'APPLICATION', get: row => currentColor(row, current)(row.name) },
 				id: { header: 'ID', get: row => currentColor(row, current)(row.id)},
 				kind: { header: 'KIND', get: row => currentColor(row, current)(row.kind) },
-				scope: { header: 'SCOPE', minWidth: 10, get: row => currentColor(row, current)(printScope(row.scope)) },
-				customer: { header: 'PWD', get: row => (row.email && row.password) ? chalk.cyanBright(output.center('\u221A', 'PWD'.length)) : '' },
+				scope: { header: 'SCOPE', minWidth: 10, get: row => currentColor(row, current)(printScope(row.scope as string)) },
+				customer: { header: 'PWD', get: row => (row.email && row.password) ? chalk.cyanBright(clOutput.center('\u221A', 'PWD'.length)) : '' },
 				mode: { header: 'MODE', get: row => `${((row.mode === 'live') ? chalk.greenBright : chalk.yellowBright)(row.mode)}` },
 				alias: { header: 'ALIAS', get: row => chalk.cyanBright(row.alias || '') },
 				...extraColumns(flags),
@@ -85,6 +85,6 @@ const extraColumns = (flags: any): any => {
 
 
 const currentColor = (app: any, current: any): Function => {
-	return (application.appKeyMatch(current, app) ? chalk.magentaBright : chalk.visible)
+	return (clApplication.appKeyMatch(current, app) ? chalk.magentaBright : chalk.visible)
 }
 

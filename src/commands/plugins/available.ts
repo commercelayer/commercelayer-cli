@@ -1,4 +1,4 @@
-import { Command, flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 
@@ -11,7 +11,7 @@ export default class PluginsAvailable extends Command {
   ]
 
   static flags = {
-    hidden: flags.boolean({
+    hidden: Flags.boolean({
       char: 'H',
       description: 'show also enabled but hidden plugins',
       hidden: true,
@@ -23,7 +23,7 @@ export default class PluginsAvailable extends Command {
 
   async run() {
 
-    const { flags } = this.parse(PluginsAvailable)
+    const { flags } = await this.parse(PluginsAvailable)
 
     this.log(chalk.blueBright('\n-= Commerce Layer CLI available plugins =-\n'))
 
@@ -37,6 +37,7 @@ export default class PluginsAvailable extends Command {
           printLine: this.log,
       })
     } else this.log(chalk.italic('No available plugins'))
+
     this.log()
 
   }

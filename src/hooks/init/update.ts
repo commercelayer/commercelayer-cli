@@ -1,5 +1,5 @@
 
-import { Hook } from '@oclif/config'
+import { Hook } from '@oclif/core'
 import updateNotifier from 'update-notifier'
 import chalk from 'chalk'
 

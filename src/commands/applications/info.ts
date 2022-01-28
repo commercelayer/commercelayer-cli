@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { currentApplication, readConfigFile } from '../../config'
 import chalk from 'chalk'
 import { inspect } from 'util'
@@ -12,7 +12,7 @@ export default class ApplicationsInfo extends Command {
 
   static flags = {
     ...Command.flags,
-    json: flags.boolean({
+    json: Flags.boolean({
       char: 'j',
       description: 'show info in JSON format',
     }),
@@ -21,7 +21,7 @@ export default class ApplicationsInfo extends Command {
 
   async run() {
 
-    const { flags } = this.parse(ApplicationsInfo)
+    const { flags } = await this.parse(ApplicationsInfo)
 
     const app = this.appFilterEnabled(flags) ? await this.findApplication(flags) : currentApplication()
 

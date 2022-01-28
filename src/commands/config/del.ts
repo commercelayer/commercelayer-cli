@@ -1,4 +1,4 @@
-import { Command, flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import clicfg, { ConfigParams } from '../../config'
 import chalk from 'chalk'
 
@@ -10,7 +10,7 @@ export default class ConfigDel extends Command {
 
   static flags = {
     // help: flags.help({char: 'h'}),
-    force: flags.boolean({
+    force: Flags.boolean({
       char: 'F',
       required: false,  // checked programmatically later
       hidden: true,
@@ -24,7 +24,7 @@ export default class ConfigDel extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(ConfigDel)
+    const { args, flags } = await this.parse(ConfigDel)
 
     const param = args.param
 

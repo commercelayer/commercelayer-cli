@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command } from '@oclif/core'
 import { ConfigParams, configParam } from '../../config'
 import { inspect } from 'util'
 import chalk from 'chalk'
@@ -19,7 +19,7 @@ export default class ConfigGet extends Command {
 
   async run() {
 
-    const { args } = this.parse(ConfigGet)
+    const { args } = await this.parse(ConfigGet)
 
     const param = args.param
 

@@ -11,6 +11,7 @@
     "no-multiple-empty-lines": "off",
     "array-bracket-spacing": "off",
     "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/no-inferrable-types": "off"
+    "@typescript-eslint/no-inferrable-types": "off",
+    "unicorn/prefer-module": "off"
   }
 }

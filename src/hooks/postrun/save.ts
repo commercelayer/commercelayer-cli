@@ -1,4 +1,4 @@
-import { Hook } from '@oclif/config'
+import { Hook } from '@oclif/core'
 import fs from 'fs'
 import path from 'path'
 import { kebabCase } from 'lodash'

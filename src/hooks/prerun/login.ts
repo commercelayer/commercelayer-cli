@@ -1,8 +1,6 @@
-import { Hook } from '@oclif/config'
-import { parse } from '@oclif/parser'
-import { flags as flagUtil } from '@oclif/command'
+import { Hook, Parser, Flags } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { application, AppKey } from '@commercelayer/cli-core'
+import { clApplication, AppKey } from '@commercelayer/cli-core'
 import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
@@ -43,13 +41,13 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 	const flagConfig = {
 		// organization: flagUtil.string({ char: 'o', hidden: true }),
-		appkey: flagUtil.string({ hidden: true }),
+		appkey: Flags.string({ hidden: true }),
 		// live: flagUtil.boolean({ hidden: true/* , dependsOn: ['organization'] */ }),
 		// domain: flagUtil.string({ char: 'd', hidden: true, dependsOn: ['organization'] }),
-		accessToken: flagUtil.string({ hidden: true }),
+		accessToken: Flags.string({ hidden: true }),
 	}
 
-	const { flags } = parse(opts.argv, { strict: false, flags: flagConfig })
+	const { flags } = await Parser.parse(opts.argv, { strict: false, flags: flagConfig })
 
 	const app: AppKey = {
 		key: flags.appkey || '',
@@ -59,10 +57,10 @@ const hook: Hook<'prerun'> = async function (opts) {
 	let configData
 
 	// No appkey passed io command line, looking for saved current application
-	if (!application.appKeyValid(app)) {
+	if (!clApplication.appKeyValid(app)) {
 		const current = configParam(ConfigParams.currentApplication)
 		if (current !== undefined) Object.assign(app, current)
-		if (!application.appKeyValid(app)) return
+		if (!clApplication.appKeyValid(app)) return
 	}
 
 	// Check if config file exists and load application data

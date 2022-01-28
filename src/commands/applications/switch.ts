@@ -18,7 +18,7 @@ export default class ApplicationsSwitch extends Command {
 
   async run() {
 
-    const { flags } = this.parse(ApplicationsSwitch)
+    const { flags } = await this.parse(ApplicationsSwitch)
 
     const app = await this.findApplication(flags)
 

@@ -1,7 +1,7 @@
 import Configstore from 'configstore'
 import path from 'path'
 import fs from 'fs'
-import Config, { IConfig } from '@oclif/config'
+import { Config } from '@oclif/core/lib/interfaces/config'
 import type { AppKey, AppInfo } from '@commercelayer/cli-core'
 
 const packageJson = require('../package.json')
@@ -20,74 +20,74 @@ const fixed = {
 }
 
 
-const configDir = (config: IConfig): string => {
+const configDir = (config: Config): string => {
 	return path.join(config.configDir, fixed.applicationsDir)
 }
 
-const configDirExists = (config: IConfig): boolean => {
+const configDirExists = (config: Config): boolean => {
 	return fs.existsSync(configDir(config))
 }
 
-const createConfigDir = (config: Config.IConfig): void => {
+const createConfigDir = (config: Config): void => {
 	fs.mkdirSync(configDir(config), { recursive: true })
 }
 
 
-const configFilePath = (config: Config.IConfig, { key }: AppKey): string => {
+const configFilePath = (config: Config, { key }: AppKey): string => {
 	return path.join(configDir(config), `${key}.${fixed.configSuffix}`)
 }
 
-const tokenFilePath = (config: Config.IConfig, { key }: AppKey): string => {
+const tokenFilePath = (config: Config, { key }: AppKey): string => {
 	return path.join(configDir(config), `${key}.${fixed.tokenSuffix}`)
 }
 
 
-const configFileExists = (config: Config.IConfig, app: AppKey): boolean => {
+const configFileExists = (config: Config, app: AppKey): boolean => {
 	const filePath = configFilePath(config, app)
 	return fs.existsSync(filePath)
 }
 
-const tokenFileExists = (config: Config.IConfig, app: AppKey): boolean => {
+const tokenFileExists = (config: Config, app: AppKey): boolean => {
 	const filePath = tokenFilePath(config, app)
 	return fs.existsSync(filePath)
 }
 
 
-const writeConfigFile = (config: Config.IConfig, app: AppInfo): void => {
+const writeConfigFile = (config: Config, app: AppInfo): void => {
 	const filePath = configFilePath(config, app)
 	fs.writeFileSync(filePath, JSON.stringify(app, null, 4))
 }
 
-const writeTokenFile = (config: Config.IConfig, app: AppKey, token: any): void => {
+const writeTokenFile = (config: Config, app: AppKey, token: any): void => {
 	const filePath = tokenFilePath(config, app)
 	fs.writeFileSync(filePath, JSON.stringify(token, null, 4))
 }
 
-const readConfigFile = (config: Config.IConfig, app: AppKey): AppInfo => {
+const readConfigFile = (config: Config, app: AppKey): AppInfo => {
 	const filePath = configFilePath(config, app)
 	const cliConfig = fs.readFileSync(filePath, { encoding: fixed.encoding })
 	return JSON.parse(cliConfig)
 }
 
-const readTokenFile = (config: Config.IConfig, app: AppKey): any => {
+const readTokenFile = (config: Config, app: AppKey): any => {
 	const filePath = tokenFilePath(config, app)
 	const token = fs.readFileSync(filePath, { encoding: fixed.encoding })
 	return JSON.parse(token)
 }
 
-const deleteConfigFile = (config: Config.IConfig, app: AppKey): boolean => {
+const deleteConfigFile = (config: Config, app: AppKey): boolean => {
 	const filePath = configFilePath(config, app)
 	fs.unlinkSync(filePath)
 	return true
 }
 
-const deleteTokenFile = (config: Config.IConfig, app: AppKey): boolean => {
+const deleteTokenFile = (config: Config, app: AppKey): boolean => {
 	const filePath = tokenFilePath(config, app)
 	fs.unlinkSync(filePath,)
 	return true
 }
 
-const readConfigDir = (config: Config.IConfig, filter: { key?: string }): AppInfo[] => {
+const readConfigDir = (config: Config, filter: { key?: string }): AppInfo[] => {
 
 	if (!configDirExists(config)) return []
 

@@ -1,8 +1,7 @@
-import { Command, flags } from '@oclif/command'
-import { IConfig } from '@oclif/config'
+import { Command, Flags, Config } from '@oclif/core'
 import { AuthReturnType, AuthScope, ClientCredentials, clientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { ApiMode, AppAuth, AppInfo, application, api } from '@commercelayer/cli-core'
+import { ApiMode, AppAuth, AppInfo, clApplication, clApi } from '@commercelayer/cli-core'
 import chalk from 'chalk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication } from '../../config'
 import { inspect } from 'util'
@@ -22,45 +21,45 @@ export default class ApplicationsLogin extends Command {
 	]
 
 	static flags = {
-		organization: flags.string({
+		organization: Flags.string({
 			char: 'o',
 			description: 'organization slug',
 			required: true,
 		}),
-		domain: flags.string({
+		domain: Flags.string({
 			char: 'd',
 			description: 'api domain',
 			required: false,
 			hidden: true,
 			dependsOn: ['organization'],
 		}),
-		clientId: flags.string({
+		clientId: Flags.string({
 			char: 'i',
 			description: 'application client_id',
 			required: true,
 		}),
-		clientSecret: flags.string({
+		clientSecret: Flags.string({
 			char: 's',
 			description: 'application client_secret',
 			required: false,
 		}),
-		scope: flags.string({
+		scope: Flags.string({
 			char: 'S',
 			description: 'access token scope (market, stock location)',
 			required: false,
 			multiple: true,
 		}),
-		email: flags.string({
+		email: Flags.string({
 			char: 'e',
 			description: 'customer email',
 			dependsOn: ['password'],
 		}),
-		password: flags.string({
+		password: Flags.string({
 			char: 'p',
 			description: 'customer secret password',
 			dependsOn: ['email'],
 		}),
-		alias: flags.string({
+		alias: Flags.string({
 			char: 'a',
 			description: 'the alias you want to associate to the application',
 			multiple: false,
@@ -77,7 +76,7 @@ export default class ApplicationsLogin extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(ApplicationsLogin)
+		const { flags } = await this.parse(ApplicationsLogin)
 
 		if (!flags.clientSecret && !flags.scope)
 			this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)
@@ -141,7 +140,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 	const credentials: ClientCredentials = {
 		clientId: auth.clientId,
 		clientSecret: auth.clientSecret,
-		endpoint: api.baseURL(auth.slug, auth.domain),
+		endpoint: clApi.baseURL(auth.slug, auth.domain),
 		scope: auth.scope || '',
 	}
 
@@ -182,12 +181,12 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	const appInfo: AppInfo = Object.assign({
 		organization: org.name || '',
-		key: application.appKey(),
+		key: clApplication.appKey(),
 		slug: org.slug || '',
 		mode: mode,
 		kind: app.kind || '',
 		name: app.name || '',
-		baseUrl: api.baseURL(auth.slug, auth.domain),
+		baseUrl: clApi.baseURL(auth.slug, auth.domain),
 		id: app.id,
 		alias: '',
 	}, auth)
@@ -221,7 +220,7 @@ const checkScope = (scopeFlags: string[]): AuthScope => {
 }
 
 
-const checkAlias = (alias: string, config?: IConfig, organization?: string): string => {
+const checkAlias = (alias: string, config?: Config, organization?: string): string => {
 
 	const match = alias.match(/^[a-z0-9_-]*$/)
 	if ((match === null) || (match.length > 1)) throw new Error(`Invalid alias: ${chalk.redBright(alias)}. Accepted characters are ${chalk.italic('[a-z0-9_-]')}`)

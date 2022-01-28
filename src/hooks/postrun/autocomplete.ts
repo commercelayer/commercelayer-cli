@@ -1,4 +1,4 @@
-import { Hook } from '@oclif/config'
+import { Hook } from '@oclif/core'
 import chalk from 'chalk'
 
 
@@ -15,7 +15,10 @@ const hook: Hook<'postrun'> = async function (opts) {
 
       try {
         const acCmd = opts.config.findCommand('autocomplete')
-        if (acCmd && (opts.argv[0] !== '@oclif/plugin-autocomplete')) await acCmd.load().run(['--refresh-cache'], opts.config)
+        if (acCmd && (opts.argv[0] !== '@oclif/plugin-autocomplete')) {
+          const runCmd = await acCmd.load()
+          await runCmd.run(['--refresh-cache'], opts.config)
+        }
       } catch (error: any) {
         this.error(error.message)
       }

@@ -1,16 +1,16 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { getAccessToken } from './login'
 import chalk from 'chalk'
 import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
-import { output, util, api, AppKey, AppAuth, token, config } from '@commercelayer/cli-core'
-import type { IConfig } from '@oclif/config'
+import { clOutput, clUtil, clApi, AppKey, AppAuth, clToken, clConfig } from '@commercelayer/cli-core'
+import type { Config } from '@oclif/core/lib/interfaces/config'
 import https from 'https'
 import jwt from 'jsonwebtoken'
 import type { AuthReturnType } from '@commercelayer/js-auth'
 
 
 
-const defaultTokenExpiration = config.api.token_expiration_mins
+const defaultTokenExpiration = clConfig.api.token_expiration_mins
 
 
 export default class ApplicationsToken extends Command {
@@ -28,21 +28,21 @@ export default class ApplicationsToken extends Command {
 
 	static flags = {
 		...Command.flags,
-		save: flags.boolean({
+		save: Flags.boolean({
 			char: 's',
 			description: 'save access token',
 		}),
-		info: flags.boolean({
+		info: Flags.boolean({
 			char: 'i',
 			description: 'show access token info',
 		}),
-		shared: flags.string({
+		shared: Flags.string({
 			char: 'S',
 			description: 'organization shared secret',
 			hidden: true,
 			exclusive: ['save'],
 		}),
-		minutes: flags.integer({
+		minutes: Flags.integer({
 			char: 'M',
 			description: `minutes to token expiration [2, ${defaultTokenExpiration}]`,
 			hidden: true,
@@ -53,7 +53,7 @@ export default class ApplicationsToken extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(ApplicationsToken)
+		const { flags } = await this.parse(ApplicationsToken)
 
 		const app = this.appFilterEnabled(flags) ? await this.findApplication(flags) : currentApplication()
 
@@ -104,7 +104,7 @@ export default class ApplicationsToken extends Command {
 		if (accessToken) {
 			const info = decodeAccessToken(accessToken)
 			this.log(chalk.blueBright('Token Info:'))
-			this.log(output.printObject(info))
+			this.log(clOutput.printObject(info))
 			this.log()
 		}
 	}
@@ -113,12 +113,12 @@ export default class ApplicationsToken extends Command {
 
 
 const decodeAccessToken = (accessToken: any): any => {
-	return token.decodeAccessToken(accessToken)
+	return clToken.decodeAccessToken(accessToken)
 }
 
 
 
-const newAccessToken = async (config: IConfig, app: AppKey, save: boolean = false): Promise<AuthReturnType> => {
+const newAccessToken = async (config: Config, app: AppKey, save: boolean = false): Promise<AuthReturnType> => {
 
 	const cfg = readConfigFile(config, app)
 	const token = await getAccessToken(cfg)
@@ -161,7 +161,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 	})
 
 	const options = {
-		hostname: api.baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
+		hostname: clApi.baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
 		port: 443,
 		path: '/oauth/revoke',
 		method: 'POST',
@@ -188,7 +188,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 	req.write(data)
 	req.end()
 
-	await util.sleep(300)
+	await clUtil.sleep(300)
 
 }
 
@@ -206,10 +206,10 @@ const isAccessTokenExpiring = (tokenData: any): boolean => {
 }
 
 
-const generateAccessToken = (config: IConfig, app: AppKey, sharedSecret: string, valMinutes?: number): any => {
+const generateAccessToken = (config: Config, app: AppKey, sharedSecret: string, valMinutes?: number): any => {
 
 	const savedToken = readTokenFile(config, app)
-	const tokenData = token.decodeAccessToken(savedToken.access_token) as { [key: string]: any }
+	const tokenData = decodeAccessToken(savedToken.access_token)
 
 	let minutes = (valMinutes === undefined) ? defaultTokenExpiration : valMinutes
 	if (minutes < 2) minutes = 2
