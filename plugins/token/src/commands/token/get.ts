@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { AppAuth, clCommand } from '@commercelayer/cli-core'
 import chalk from 'chalk'
 import { decodeAccessToken, getAccessToken } from '../../token'
@@ -36,33 +36,33 @@ export default class TokenGet extends Command {
 
   static flags = {
     ...(clCommand.commandFlags<typeof Command.flags>(Command.flags, ['accessToken'])),
-    clientId: flags.string({
+    clientId: Flags.string({
       char: 'i',
       description: 'application client_id',
       required: true,
     }),
-    clientSecret: flags.string({
+    clientSecret: Flags.string({
       char: 's',
       description: 'application client_secret',
       required: false,
     }),
-    scope: flags.string({
+    scope: Flags.string({
       char: 'S',
       description: 'access token scope (market, stock location)',
       required: false,
       multiple: true,
     }),
-    email: flags.string({
+    email: Flags.string({
       char: 'e',
       description: 'customer email',
       dependsOn: ['password'],
     }),
-    password: flags.string({
+    password: Flags.string({
       char: 'p',
       description: 'customer secret password',
       dependsOn: ['email'],
     }),
-    info: flags.boolean({
+    info: Flags.boolean({
       description: 'show access token info',
     }),
   }
@@ -72,7 +72,7 @@ export default class TokenGet extends Command {
 
   async run() {
 
-    const { flags } = this.parse(TokenGet)
+    const { flags } = await this.parse(TokenGet)
 
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)

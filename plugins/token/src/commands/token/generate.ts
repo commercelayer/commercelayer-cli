@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { clOutput, clCommand, clConfig, clToken, AccessTokenInfo } from '@commercelayer/cli-core'
 import inquirer from 'inquirer'
 import chalk from 'chalk'
@@ -17,22 +17,22 @@ export default class TokenGenerate extends Command {
 
   static flags = {
     ...clCommand.commandFlags<typeof Command.flags>(Command.flags, ['organization', 'domain', 'accessToken']),
-    domain: flags.string({
+    domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       env: 'CL_CLI_DOMAIN',
     }),
-    print: flags.boolean({
+    print: Flags.boolean({
       char: 'p',
       description: 'print users answers',
       hidden: true,
     }),
-    info: flags.boolean({
+    info: Flags.boolean({
       char: 'i',
       description: 'print generated token info',
     }),
-    check: flags.boolean({
+    check: Flags.boolean({
       char: 'c',
       description: 'check generated access token',
     }),
@@ -54,7 +54,7 @@ export default class TokenGenerate extends Command {
       })
 
 
-    const { flags } = this.parse(TokenGenerate)
+    const { flags } = await this.parse(TokenGenerate)
 
 
     if (flags.print) {

@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { decodeAccessToken, revokeAccessToken } from '../../token'
 import chalk from 'chalk'
 
@@ -14,12 +14,12 @@ export default class TokenRevoke extends Command {
 
   static flags = {
     ...Command.flags,
-    clientId: flags.string({
+    clientId: Flags.string({
       char: 'i',
       description: 'application client_id',
       required: true,
     }),
-    clientSecret: flags.string({
+    clientSecret: Flags.string({
       char: 's',
       description: 'application client_secret',
       required: true,
@@ -33,7 +33,7 @@ export default class TokenRevoke extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(TokenRevoke)
+    const { args, flags } = await this.parse(TokenRevoke)
 
     const organization = flags.organization
     // const domain = flags.domain

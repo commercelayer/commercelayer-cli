@@ -25,7 +25,7 @@ export default class TokenDecode extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(TokenDecode)
+    const { args, flags } = await this.parse(TokenDecode)
 
     const organization = flags.organization
     // const domain = flags.domain

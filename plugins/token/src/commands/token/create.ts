@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import { decodeAccessToken, generateAccessToken, VALIDITY_MIN, VALIDITY_MAX, testAccessToken } from '../../token'
 import { checkValidity } from '../../check'
@@ -16,17 +16,17 @@ export default class TokenCreate extends Command {
 
   static flags = {
     ...Command.flags,
-    shared: flags.string({
+    shared: Flags.string({
       char: 's',
       description: 'organization shared secret',
       required: true,
     }),
-    minutes: flags.integer({
+    minutes: Flags.integer({
       char: 'm',
       description: `minutes to token expiration [${VALIDITY_MIN}, ${VALIDITY_MAX}]`,
       required: true,
     }),
-    info: flags.boolean({
+    info: Flags.boolean({
       description: 'show access token info',
     }),
   }
@@ -36,7 +36,7 @@ export default class TokenCreate extends Command {
 
   async run() {
 
-    const { flags } = this.parse(TokenCreate)
+    const { flags } = await this.parse(TokenCreate)
 
     this.checkValidity(flags.minutes)
 
