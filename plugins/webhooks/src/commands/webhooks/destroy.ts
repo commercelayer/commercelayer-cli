@@ -25,7 +25,7 @@ export default class WebhooksDestroy extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(WebhooksDestroy)
+		const { args, flags } = await this.parse(WebhooksDestroy)
 
 		const id = args.id
 

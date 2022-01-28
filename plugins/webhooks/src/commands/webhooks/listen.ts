@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { clUtil } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import cliux from 'cli-ux'
@@ -24,7 +24,7 @@ export default class WebhooksListen extends Command {
 
 	static flags = {
 		...Command.flags,
-		time: flags.integer({
+		time: Flags.integer({
 			char: 't',
 			description: 'waiting time for the first event',
 			required: false,
@@ -39,7 +39,7 @@ export default class WebhooksListen extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(WebhooksListen)
+		const { args, flags } = await this.parse(WebhooksListen)
 
 		const id = args.id
 		const listenTime = Math.max(MIN_LISTEN_TIME, flags.time)

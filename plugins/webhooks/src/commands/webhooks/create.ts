@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { URL } from 'url'
 import chalk from 'chalk'
 
@@ -16,22 +16,22 @@ export default class WebhooksCreate extends Command {
 
 	static flags = {
 		...Command.flags,
-		topic: flags.string({
+		topic: Flags.string({
 			char: 't',
 			description: 'the identifier of the event that will trigger the webhook',
 			required: true,
 		}),
-		url: flags.string({
+		url: Flags.string({
 			char: 'u',
 			description: 'the callback URL used to POST data',
 			required: true,
 		}),
-		include: flags.string({
+		include: Flags.string({
 			char: 'i',
 			description: 'a comma separated list of related resources to be included',
 			multiple: true,
 		}),
-		name: flags.string({
+		name: Flags.string({
 			char: 'n',
 			description: 'the webhook short name',
 			default: '',	// TEMP: the sdk currently consider this field as mandatory
@@ -41,7 +41,7 @@ export default class WebhooksCreate extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(WebhooksCreate)
+		const { flags } = await this.parse(WebhooksCreate)
 
 		const cl = this.commercelayerInit(flags)
 

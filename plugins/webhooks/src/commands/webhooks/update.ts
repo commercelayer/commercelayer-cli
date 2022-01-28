@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { URL } from 'url'
 import chalk from 'chalk'
 import WebhooksDetails from './details'
@@ -18,22 +18,22 @@ export default class WebhooksUpdate extends Command {
 
 	static flags = {
 		...Command.flags,
-		topic: flags.string({
+		topic: Flags.string({
 			char: 't',
 			description: 'the identifier of the event that will trigger the webhook',
 			required: false,
 		}),
-		url: flags.string({
+		url: Flags.string({
 			char: 'u',
 			description: 'the callback URL used to POST data',
 			required: false,
 		}),
-		include: flags.string({
+		include: Flags.string({
 			char: 'i',
 			description: 'a comma separated list of related resources to be included',
 			multiple: true,
 		}),
-		name: flags.string({
+		name: Flags.string({
 			char: 'n',
 			description: 'the webhook short name',
 			required: false,
@@ -48,7 +48,7 @@ export default class WebhooksUpdate extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(WebhooksUpdate)
+		const { args, flags } = await this.parse(WebhooksUpdate)
 
 		const id = args.id
 

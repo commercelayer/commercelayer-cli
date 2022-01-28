@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/prefer-module */
-import Command, { flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { clOutput, clUpdate } from '@commercelayer/cli-core'
@@ -11,20 +11,20 @@ const pkg = require('../package.json')
 export default abstract class extends Command {
 
 	static flags = {
-		organization: flags.string({
+		organization: Flags.string({
 			char: 'o',
 			description: 'the slug of your organization',
 			required: true,
 			env: 'CL_CLI_ORGANIZATION',
 		}),
-		domain: flags.string({
+		domain: Flags.string({
 			char: 'd',
 			required: false,
 			hidden: true,
 			dependsOn: ['organization'],
 			env: 'CL_CLI_DOMAIN',
 		}),
-		accessToken: flags.string({
+		accessToken: Flags.string({
 			hidden: true,
 			required: true,
 			env: 'CL_CLI_ACCESS_TOKEN',
@@ -73,4 +73,4 @@ export default abstract class extends Command {
 }
 
 
-export { flags }
+export { Flags }

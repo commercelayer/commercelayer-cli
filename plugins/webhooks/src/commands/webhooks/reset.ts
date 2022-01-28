@@ -24,7 +24,7 @@ export default class WebhooksReset extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(WebhooksReset)
+    const { args, flags } = await this.parse(WebhooksReset)
 
     const id = args.id
 

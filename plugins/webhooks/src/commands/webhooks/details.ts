@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import Table from 'cli-table3'
 import _ from 'lodash'
@@ -21,11 +21,11 @@ export default class WebhooksDetails extends Command {
 
 	static flags = {
 		...Command.flags,
-		'hide-empty': flags.boolean({
+		'hide-empty': Flags.boolean({
 			char: 'H',
 			description: 'hide empty attributes',
 		}),
-		events: flags.boolean({
+		events: Flags.boolean({
 			char: 'e',
 			description: 'show the last event callbacks associated to the webhook',
 		}),
@@ -38,7 +38,7 @@ export default class WebhooksDetails extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(WebhooksDetails)
+		const { args, flags } = await this.parse(WebhooksDetails)
 
 		const id = args.id
 

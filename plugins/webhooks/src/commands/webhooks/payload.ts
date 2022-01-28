@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import { clOutput } from '@commercelayer/cli-core'
 
@@ -18,7 +18,7 @@ export default class WebhooksPayload extends Command {
 
 	static flags = {
 		...Command.flags,
-		format: flags.boolean({
+		format: Flags.boolean({
 			char: 'f',
 			description: 'format the payload output',
 		}),
@@ -31,7 +31,7 @@ export default class WebhooksPayload extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(WebhooksPayload)
+		const { args, flags } = await this.parse(WebhooksPayload)
 
 		const id = args.id
 

@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import Table from 'cli-table3'
 import { clOutput } from '@commercelayer/cli-core'
@@ -18,11 +18,11 @@ export default class WebhooksEvent extends Command {
 
 	static flags = {
 		...Command.flags,
-		payload: flags.boolean({
+		payload: Flags.boolean({
 			char: 'p',
 			description: 'show the event payload sent to the callback endpoint',
 		}),
-		format: flags.boolean({
+		format: Flags.boolean({
 			char: 'f',
 			description: 'format the payload output',
 			dependsOn: ['payload'],
@@ -33,9 +33,10 @@ export default class WebhooksEvent extends Command {
 		{ name: 'id', description: 'unique id of the webhook event', required: true, hidden: false },
 	]
 
+
 	async run() {
 
-		const { args, flags } = this.parse(WebhooksEvent)
+		const { args, flags } = await this.parse(WebhooksEvent)
 
 		const id = args.id
 

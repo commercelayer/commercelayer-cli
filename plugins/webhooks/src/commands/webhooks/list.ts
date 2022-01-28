@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
@@ -18,12 +18,12 @@ export default class WebhooksList extends Command {
 
 	static flags = {
 		...Command.flags,
-		circuit: flags.string({
+		circuit: Flags.string({
 			char: 'c',
 			description: 'show only webhooks with circuit in the declared state',
 			options: ['open', 'closed'],
 		}),
-		topic: flags.string({
+		topic: Flags.string({
 			char: 't',
 			description: 'the event that triggered the webhook',
 		}),
@@ -32,7 +32,7 @@ export default class WebhooksList extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(WebhooksList)
+		const { flags } = await this.parse(WebhooksList)
 
 		const cl = this.commercelayerInit(flags)
 

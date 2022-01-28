@@ -21,7 +21,7 @@ export default class WebhooksIndex extends Command {
 
 	async run() {
 
-		const { args } = this.parse(WebhooksIndex)
+		const { args } = await this.parse(WebhooksIndex)
 
 		const command = args.id ? DetailsCommand : ListCommand
 		const result = command.run(this.argv, this.config)

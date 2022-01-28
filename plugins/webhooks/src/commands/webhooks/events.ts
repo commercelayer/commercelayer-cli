@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
 import { clConfig, clOutput } from '@commercelayer/cli-core'
@@ -22,12 +22,12 @@ export default class WebhooksEvents extends Command {
 
 	static flags = {
 		...Command.flags,
-		all: flags.boolean({
+		all: Flags.boolean({
 			char: 'A',
 			description: `show all events instead of first ${clConfig.api.page_max_size} only `,
 			exclusive: ['limit'],
 		}),
-		limit: flags.integer({
+		limit: Flags.integer({
 			char: 'l',
 			description: 'limit number of events in output',
 			exclusive: ['all'],
@@ -41,7 +41,7 @@ export default class WebhooksEvents extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(WebhooksEvents)
+		const { args, flags } = await this.parse(WebhooksEvents)
 
 		if (flags.limit && (flags.limit < 1)) this.error(chalk.italic('Limit') + ' must be a positive integer')
 
