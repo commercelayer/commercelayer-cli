@@ -1,4 +1,4 @@
-import { Command, flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import { findResource, Resource } from '../../util/resources'
 import chalk from 'chalk'
 import { deleteArgsFile, loadCommandData, readCommandArgs, ResourceOperation } from '../../commands'
@@ -15,26 +15,26 @@ export default class ResourcesArgs extends Command {
   static aliases = ['res:args']
 
   static flags = {
-    alias: flags.string({
+    alias: Flags.string({
       char: 'a',
       description: 'the alias associated to saved command arguments',
       dependsOn: ['operation', 'resource'],
     }),
-    resource: flags.string({
+    resource: Flags.string({
       char: 'r',
       description: 'the resource type',
     }),
-    operation: flags.string({
+    operation: Flags.string({
       char: 'o',
       description: 'the resource operation',
       options: ['list', 'retrieve', 'create', 'update'],
     }),
-    delete: flags.boolean({
+    delete: Flags.boolean({
       char: 'D',
       description: 'delete saved arguments associated to the alias',
       dependsOn: ['alias'],
     }),
-    pretty: flags.boolean({
+    pretty: Flags.boolean({
       char: 'P',
       description: 'show saved arguments in table format',
       hidden: true,
@@ -45,7 +45,7 @@ export default class ResourcesArgs extends Command {
 
   async run() {
 
-    const { flags } = this.parse(ResourcesArgs)
+    const { flags } = await this.parse(ResourcesArgs)
 
     const resource = flags.resource
     const alias = flags.alias

@@ -1,4 +1,4 @@
-import Command, { flags } from '@oclif/command'
+import { Command, Flags, Config } from '@oclif/core'
 import { findResource, Resource } from './util/resources'
 import { filterAvailable } from './commands/resources/filters'
 import { formatOutput, exportOutput } from './output'
@@ -13,7 +13,6 @@ import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptL
 import { clToken, clUpdate } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, CommandParams, loadCommandData, ResourceOperation, saveCommandData } from './commands'
 import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
-import { IConfig } from '@oclif/config'
 
 
 
@@ -27,80 +26,80 @@ export const FLAG_LOAD_PARAMS = 'load-args'
 export default abstract class extends Command {
 
   static flags = {
-    organization: flags.string({
+    organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
     }),
-    domain: flags.string({
+    domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
-    accessToken: flags.string({
+    accessToken: Flags.string({
       hidden: true,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
     }),
-    include: flags.string({
+    include: Flags.string({
       char: 'i',
       multiple: true,
       description: 'comma separated resources to include',
     }),
-    fields: flags.string({
+    fields: Flags.string({
       char: 'f',
       multiple: true,
       description: 'comma separeted list of fields in the format [resource]=field1,field2...',
     }),
-    json: flags.boolean({
+    json: Flags.boolean({
       char: 'j',
       description: 'convert output in standard JSON format',
       // hidden: true,
     }),
-    unformatted: flags.boolean({
+    unformatted: Flags.boolean({
       char: 'u',
       description: 'print unformatted JSON output',
       dependsOn: ['json'],
       // hidden: true,
     }),
-    raw: flags.boolean({
+    raw: Flags.boolean({
       char: 'R',
       description: 'print out the raw API response',
       hidden: false,
     }),
-    doc: flags.boolean({
+    doc: Flags.boolean({
       char: 'D',
       description: 'shows the CLI command in a specific language',
     }),
-    lang: flags.string({
+    lang: Flags.string({
       char: 'l',
       description: 'show the CLI command in the specified language syntax',
       exclusive: availableLanguages,
       options: availableLanguages,
       dependsOn: ['doc'],
     }),
-    curl: flags.boolean({
+    curl: Flags.boolean({
       description: `show the equivalent ${languageInfo.curl.label} of the CLI command`,
       exclusive: ['lang', ...availableLanguages.filter(l => l !== 'curl')],
-      parse: () => 'curl',
+      parse: () => Promise.resolve('curl'),
       hidden: !availableLanguages.includes('curl'),
       dependsOn: ['doc'],
     }),
-    node: flags.boolean({
+    node: Flags.boolean({
       description: `show the equivalent ${languageInfo.node.label} of the CLI command`,
       exclusive: ['lang', ...availableLanguages.filter(l => l !== 'node')],
-      parse: () => 'node',
+      parse: () => Promise.resolve('node'),
       hidden: !availableLanguages.includes('node'),
       dependsOn: ['doc'],
     }),
-    'save-args': flags.string({
+    'save-args': Flags.string({
       description: 'save command data to file for future use',
       // exclusive: [FLAG_LOAD_PARAMS],
     }),
-    'load-args': flags.string({
+    'load-args': Flags.string({
       description: 'load previously saved command arguments',
       // exclusive: [FLAG_SAVE_COMMAND],
     }),
@@ -608,7 +607,7 @@ export default abstract class extends Command {
   }
 
 
-  protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: IConfig) {
+  protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: Config) {
     let ok = false
     try {
       ok = checkAlias(alias)
@@ -665,4 +664,4 @@ export default abstract class extends Command {
 }
 
 
-export { flags }
+export { Flags }

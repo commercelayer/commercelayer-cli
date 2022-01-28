@@ -1,4 +1,4 @@
-import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import { clApi } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import chalk from 'chalk'
@@ -27,34 +27,34 @@ export default class ResourcesUpdate extends Command {
 
 	static flags = {
 		...Command.flags,
-		attribute: flags.string({
+		attribute: Flags.string({
 			char: 'a',
 			description: 'define a resource attribute',
 			multiple: true,
 		}),
-		object: flags.string({
+		object: Flags.string({
 			char: 'O',
 			description: 'define a resource object attribute',
 			multiple: true,
 		}),
-		relationship: flags.string({
+		relationship: Flags.string({
 			char: 'r',
 			description: 'define a relationship with another resource',
 			multiple: true,
 		}),
-		metadata: flags.string({
+		metadata: Flags.string({
 			char: 'm',
 			description: 'define a metadata attribute and merge it with the metadata already present in the remote resource',
 			multiple: true,
 			exclusive: ['metadata-replace'],
 		}),
-		'metadata-replace': flags.string({
+		'metadata-replace': Flags.string({
 			char: 'M',
 			description: 'define a metadata attribute and replace every item already presente in the remote resource',
 			multiple: true,
 			exclusive: ['metadata'],
 		}),
-		data: flags.string({
+		data: Flags.string({
 			char: 'D',
 			description: 'the data file to use as request body',
 			multiple: false,
@@ -70,7 +70,7 @@ export default class ResourcesUpdate extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(ResourcesUpdate)
+		const { args, flags } = await this.parse(ResourcesUpdate)
 
 		const { res, id } = this.checkResourceId(args.resource, args.id)
 		const resource = this.checkResource(res, { singular: true })

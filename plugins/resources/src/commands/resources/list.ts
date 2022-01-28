@@ -1,4 +1,4 @@
-import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
@@ -23,37 +23,37 @@ export default class ResourcesList extends Command {
 
 	static flags = {
 		...Command.flags,
-		where: flags.string({
+		where: Flags.string({
 			char: 'w',
 			multiple: true,
 			description: 'comma separated list of query filters',
 		}),
-		page: flags.integer({
+		page: Flags.integer({
 			char: 'p',
 			description: 'page number',
 		}),
-		pageSize: flags.integer({
+		pageSize: Flags.integer({
 			char: 'n',
 			description: 'number of elements per page',
 		}),
-		sort: flags.string({
+		sort: Flags.string({
 			char: 's',
 			description: 'defines results ordering',
 			multiple: true,
 		}),
-		save: flags.string({
+		save: Flags.string({
 			char: 'x',
 			description: 'save command output to file',
 			multiple: false,
 			exclusive: ['save-path'],
 		}),
-		'save-path': flags.string({
+		'save-path': Flags.string({
 			char: 'X',
 			description: 'save command output to file and create missing path directories',
 			multiple: false,
 			exclusive: ['save'],
 		}),
-    extract: flags.string({
+    extract: Flags.string({
       char: 'e',
       description: 'extract subfields from object attributes',
       multiple: true,
@@ -65,9 +65,10 @@ export default class ResourcesList extends Command {
 		...Command.args,
 	]
 
+
 	async run() {
 
-		const { args, flags } = this.parse(ResourcesList)
+		const { args, flags } = await this.parse(ResourcesList)
 
 		const resource = this.checkResource(args.resource)
 

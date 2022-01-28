@@ -24,9 +24,10 @@ export default class ResourcesDelete extends Command {
 		{ name: 'id', description: 'id of the resource to retrieve', required: false },
 	]
 
+
 	async run() {
 
-		const { args, flags } = this.parse(ResourcesDelete)
+		const { args, flags } = await this.parse(ResourcesDelete)
 
 		const invalidFlags: string[] = ['fields', 'include']
 		invalidFlags.forEach(x => {

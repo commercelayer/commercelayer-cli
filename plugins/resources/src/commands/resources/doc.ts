@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command } from '@oclif/core'
 import { findResource } from '../../util/resources'
 import axios from 'axios'
 import cliux from 'cli-ux'
@@ -27,7 +27,7 @@ export default class ResourcesDoc extends Command {
 
   async run() {
 
-    const { args } = this.parse(ResourcesDoc)
+    const { args } = await this.parse(ResourcesDoc)
 
     const resource = args.resource
 
@@ -35,7 +35,7 @@ export default class ResourcesDoc extends Command {
 
     if (res) {
       const resourceUrl = `https://docs.commercelayer.io/api/resources/${res?.api}`
-      axios.get(resourceUrl).then(() =>  cliux.open(resourceUrl)).catch(() => this.warn(`No online documentation available for the resource ${chalk.italic.redBright(resource)}`))
+      axios.get(resourceUrl).then(() => cliux.open(resourceUrl)).catch(() => this.warn(`No online documentation available for the resource ${chalk.italic.redBright(resource)}`))
     } else this.warn(`Invalid resource ${chalk.italic.redBright(resource)}`)
 
   }

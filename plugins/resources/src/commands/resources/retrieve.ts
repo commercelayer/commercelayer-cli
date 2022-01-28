@@ -1,4 +1,4 @@
-import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve} from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
@@ -22,19 +22,19 @@ export default class ResourcesRetrieve extends Command {
 
 	static flags = {
 		...Command.flags,
-		save: flags.string({
+		save: Flags.string({
 			char: 'x',
 			description: 'save command output to file',
 			multiple: false,
 			exclusive: ['save-path'],
 		}),
-		'save-path': flags.string({
+		'save-path': Flags.string({
 			char: 'X',
 			description: 'save command output to file and create missing path directories',
 			multiple: false,
 			exclusive: ['save'],
 		}),
-    extract: flags.string({
+    extract: Flags.string({
       char: 'e',
       description: 'extract subfields from object attributes',
       multiple: true,
@@ -49,7 +49,7 @@ export default class ResourcesRetrieve extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(ResourcesRetrieve)
+		const { args, flags } = await this.parse(ResourcesRetrieve)
 
 		const { res, id } = this.checkResourceId(args.resource, args.id)
 		const resource = this.checkResource(res, { singular: true })

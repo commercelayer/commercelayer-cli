@@ -45,7 +45,7 @@ USAGE
   $ commercelayer resources
 
 OPTIONS
-  -h, --help  show CLI help
+  -h, --help  Show CLI help.
 
 EXAMPLES
   $ cl-resources resources

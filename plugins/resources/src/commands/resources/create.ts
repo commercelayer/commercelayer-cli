@@ -1,4 +1,4 @@
-import Command, { flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
 import { clApi } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import chalk from 'chalk'
@@ -25,27 +25,27 @@ export default class ResourcesCreate extends Command {
 
 	static flags = {
 		...Command.flags,
-		attribute: flags.string({
+		attribute: Flags.string({
 			char: 'a',
 			description: 'define a resource attribute',
 			multiple: true,
 		}),
-		object: flags.string({
+		object: Flags.string({
 			char: 'O',
 			description: 'define a resource object attribute',
 			multiple: true,
 		}),
-		relationship: flags.string({
+		relationship: Flags.string({
 			char: 'r',
 			description: 'define a relationship with another resource',
 			multiple: true,
 		}),
-		metadata: flags.string({
+		metadata: Flags.string({
 			char: 'm',
 			description: 'define a metadata attribute or a set of metadata attributes',
 			multiple: true,
 		}),
-		data: flags.string({
+		data: Flags.string({
 			char: 'D',
 			description: 'the data file to use as request body',
 			multiple: false,
@@ -57,9 +57,10 @@ export default class ResourcesCreate extends Command {
 		...Command.args,
 	]
 
+
 	async run() {
 
-		const { args, flags } = this.parse(ResourcesCreate)
+		const { args, flags } = await this.parse(ResourcesCreate)
 
 		const resource = this.checkResource(args.resource, { singular: true })
 

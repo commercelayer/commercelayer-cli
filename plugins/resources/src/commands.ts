@@ -1,5 +1,5 @@
 import { QueryParams, QueryParamsList } from '@commercelayer/sdk'
-import { IConfig } from '@oclif/config'
+import { Config } from '@oclif/core'
 import { join } from 'path'
 import fs from 'fs'
 import { clOutput } from '@commercelayer/cli-core'
@@ -44,12 +44,12 @@ const commandFileName = (resource: string, alias: string, operation: ResourceOpe
   return `${resource}.${operation}.${alias}.json`
 }
 
-const commandSaveDir = (config: IConfig) => {
+const commandSaveDir = (config: Config) => {
   return join(config.configDir, COMMANDS_DIR)
 }
 
 
-const readCommandArgs = (config: IConfig, resource?: string, operation?: ResourceOperation): CommandParams[] => {
+const readCommandArgs = (config: Config, resource?: string, operation?: ResourceOperation): CommandParams[] => {
   const saveDir = commandSaveDir(config)
   const cmdParams = fs.readdirSync(saveDir)
     .filter(f => f.endsWith('.json'))
@@ -63,7 +63,7 @@ const readCommandArgs = (config: IConfig, resource?: string, operation?: Resourc
 }
 
 
-const saveCommandData = (alias: string, config: IConfig, params: CommandParams) => {
+const saveCommandData = (alias: string, config: Config, params: CommandParams) => {
 
   checkAlias(alias)
 
@@ -77,7 +77,7 @@ const saveCommandData = (alias: string, config: IConfig, params: CommandParams) 
 }
 
 
-const loadCommandData = (alias: string, config: IConfig, resource: string, operation: ResourceOperation): CommandParams | undefined => {
+const loadCommandData = (alias: string, config: Config, resource: string, operation: ResourceOperation): CommandParams | undefined => {
 
   const saveDir = commandSaveDir(config)
   const fileName = commandFileName(resource, alias, operation)
@@ -92,14 +92,14 @@ const loadCommandData = (alias: string, config: IConfig, resource: string, opera
 }
 
 
-const aliasExists = (alias: string, config: IConfig, resource: string, operation: ResourceOperation): boolean => {
+const aliasExists = (alias: string, config: Config, resource: string, operation: ResourceOperation): boolean => {
   const saveDir = commandSaveDir(config)
   const fileName = commandFileName(resource, alias, operation)
   return fs.existsSync(join(saveDir, fileName))
 }
 
 
-const deleteArgsFile = (alias: string, config: IConfig, resource: string, operation: ResourceOperation): void => {
+const deleteArgsFile = (alias: string, config: Config, resource: string, operation: ResourceOperation): void => {
   const saveDir = commandSaveDir(config)
   const fileName = commandFileName(resource, alias, operation)
   fs.unlinkSync(join(saveDir, fileName))

@@ -1,13 +1,12 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
-import Command, { flags } from '../../base'
-import { clApi } from '@commercelayer/cli-core'
+import Command, { Flags } from '../../base'
+import { clApi, clToken } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 import notifier from 'node-notifier'
-import jwt from 'jsonwebtoken'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 
 
@@ -69,80 +68,80 @@ export default class ResourcesAll extends Command {
 
   static flags = {
     ...Command.flags,
-    include: flags.string({
+    include: Flags.string({
       char: 'i',
       multiple: true,
       description: 'comma separated resources to include',
     }),
-    fields: flags.string({
+    fields: Flags.string({
       char: 'f',
       multiple: true,
       description: 'comma separeted list of fields in the format [resource]=field1,field2...',
     }),
-    where: flags.string({
+    where: Flags.string({
       char: 'w',
       multiple: true,
       description: 'comma separated list of query filters',
     }),
-    sort: flags.string({
+    sort: Flags.string({
       char: 's',
       description: 'defines results ordering',
       multiple: true,
     }),
-    save: flags.string({
+    save: Flags.string({
       char: 'x',
       description: 'save command output to file',
       multiple: false,
       exclusive: ['save-path'],
     }),
-    'save-path': flags.string({
+    'save-path': Flags.string({
       char: 'X',
       description: 'save command output to file and create missing path directories',
       multiple: false,
       exclusive: ['save'],
     }),
-    notify: flags.boolean({
+    notify: Flags.boolean({
       char: 'N',
       description: 'force system notification when export has finished',
       hidden: true,
     }),
-    clientId: flags.string({
+    clientId: Flags.string({
       char: 'i',
       description: 'organization client_id',
       hidden: true,
       required: false,
       env: 'CL_CLI_CLIENT_ID',
     }),
-    clientSecret: flags.string({
+    clientSecret: Flags.string({
       char: 's',
       description: 'organization client_secret',
       hidden: true,
       required: false,
       env: 'CL_CLI_CLIENT_SECRET',
     }),
-    csv: flags.boolean({
+    csv: Flags.boolean({
       char: 'C',
       description: 'export fields in csv format',
       exclusive: ['raw', 'json'],
       dependsOn: ['fields'],
     }),
-    header: flags.string({
+    header: Flags.string({
       char: 'H',
       description: 'rename column headers defining a comma-separated list of values field:"renamed title"',
       dependsOn: ['csv'],
       multiple: true,
     }),
-    blind: flags.boolean({
+    blind: Flags.boolean({
       char: 'b',
       description: 'execute in blind mode without prompt and progress bar',
     }),
-    extract: flags.string({
+    extract: Flags.string({
       char: 'e',
       description: 'extract subfields from object attributes',
       multiple: true,
       exclusive: ['raw'],
     }),
-    timeout: flags.integer({
+    timeout: Flags.integer({
       char: 'T',
       description: `set request timeout in milliseconds [${requestTimeout.min} - ${requestTimeout.max}]`,
       hidden: true,
@@ -175,7 +174,7 @@ export default class ResourcesAll extends Command {
       const accessToken = token?.accessToken || ''
 
       client.config({ organization, domain, accessToken })
-      jwtData = jwt.decode(accessToken) as any
+      jwtData = clToken.decodeAccessToken(accessToken) as any
 
     }
 
@@ -186,7 +185,7 @@ export default class ResourcesAll extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(ResourcesAll)
+    const { args, flags } = await this.parse(ResourcesAll)
 
     const accessToken = flags.accessToken
     this.checkApplication(accessToken, ['integration', 'cli'])
@@ -217,7 +216,7 @@ export default class ResourcesAll extends Command {
     try {
 
       const cl = commercelayer({ organization, domain, accessToken, timeout })
-      let jwtData = jwt.decode(accessToken) as any
+      let jwtData = clToken.decodeAccessToken(accessToken) as any
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
       const params: QueryParamsList = {}

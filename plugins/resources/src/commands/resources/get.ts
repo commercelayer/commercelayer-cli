@@ -27,7 +27,7 @@ export default class ResourcesGet extends Command {
 
   async run() {
 
-    const { args } = this.parse(ResourcesGet)
+    const { args } = await this.parse(ResourcesGet)
 
     const { id, singleton } = this.checkResourceId(args.resource, args.id, false)
 

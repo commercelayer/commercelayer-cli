@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command } from '@oclif/core'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 
@@ -71,6 +71,7 @@ export default class ResourcesFilters extends Command {
   }
 
   static args = []
+
 
   async run() {
 
