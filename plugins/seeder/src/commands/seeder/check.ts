@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { BusinessModel, getResource, modelIndex, ResourceData, SeederResource } from '../../data'
 import chalk from 'chalk'
 import Listr from 'listr'
@@ -27,7 +27,7 @@ export default class SeederCheck extends Command {
 
   static flags = {
     ...Command.flags,
-    relationships: flags.boolean({
+    relationships: Flags.boolean({
       char: 'r',
       description: 'check resource relationships',
     }),
@@ -36,7 +36,7 @@ export default class SeederCheck extends Command {
 
   async run() {
 
-    const { flags } = this.parse(SeederCheck)
+    const { flags } = await this.parse(SeederCheck)
 
     const businessModel = flags.businessModel
     const name = this.modelNameChack(flags)

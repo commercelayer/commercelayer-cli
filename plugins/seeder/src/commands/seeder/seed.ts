@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import { ResourceData, SeederResource } from '../../data'
 import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import chalk from 'chalk'
@@ -26,25 +26,25 @@ export default class SeederSeed extends Command {
 
   static flags = {
     ...Command.flags,
-    organization: flags.string({
+    organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
     }),
-    domain: flags.string({
+    domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
-    accessToken: flags.string({
+    accessToken: Flags.string({
       hidden: true,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
     }),
-    keep: flags.boolean({
+    keep: Flags.boolean({
       char: 'k',
       description: 'keep existing resources without updating them',
     }),
@@ -53,7 +53,7 @@ export default class SeederSeed extends Command {
 
   async run() {
 
-    const { flags } = this.parse(SeederSeed)
+    const { flags } = await this.parse(SeederSeed)
 
     const organization = flags.organization
     const businessModel = flags.businessModel

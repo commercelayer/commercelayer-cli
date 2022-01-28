@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import Listr from 'listr'
 import chalk from 'chalk'
 import { readResourceData, SeederResource } from '../../data'
@@ -13,20 +13,20 @@ export default class SeederClean extends Command {
 
   static flags = {
     ...Command.flags,
-    organization: flags.string({
+    organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
     }),
-    domain: flags.string({
+    domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
-    accessToken: flags.string({
+    accessToken: Flags.string({
       hidden: true,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
@@ -41,7 +41,7 @@ export default class SeederClean extends Command {
 
   async run() {
 
-    const { flags } = this.parse(SeederClean)
+    const { flags } = await this.parse(SeederClean)
 
     const organization = flags.organization
     const businessModel = flags.businessModel

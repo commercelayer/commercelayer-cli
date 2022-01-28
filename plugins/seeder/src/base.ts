@@ -1,4 +1,4 @@
-import Command, { flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import config from './config'
@@ -16,18 +16,18 @@ const pkg = require('../package.json')
 export default abstract class extends Command {
 
   static flags = {
-    businessModel: flags.string({
+    businessModel: Flags.string({
       char: 'b',
       description: 'the kind of business model you want to import',
       options: ['single_sku', 'custom'],
       default: 'single_sku',
     }),
-    url: flags.string({
+    url: Flags.string({
       char: 'u',
       description: 'seeder data URL',
       default: pathJoin(config.dataUrl, config.seederFolder),
     }),
-    name: flags.string({
+    name: Flags.string({
       char: 'n',
       description: 'the name of the business model file to use',
       dependsOn: ['url'],
@@ -122,4 +122,4 @@ export default abstract class extends Command {
 
 
 
-export { flags }
+export { Flags }
