@@ -21,7 +21,7 @@ export default class ReturnReject extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ReturnReject)
+    const { args, flags } = await this.parse(ReturnReject)
 
 		const res = await exec('returns', args.id, TRIGGER, flags)
 

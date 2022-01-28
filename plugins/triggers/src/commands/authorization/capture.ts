@@ -21,7 +21,7 @@ export default class AuthorizationCapture extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(AuthorizationCapture)
+    const { args, flags } = await this.parse(AuthorizationCapture)
 
 		const res = await exec('authorizations', args.id, TRIGGER, flags)
 

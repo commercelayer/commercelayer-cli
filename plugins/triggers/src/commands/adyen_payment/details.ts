@@ -21,7 +21,7 @@ export default class AdyenPaymentDetails extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(AdyenPaymentDetails)
+    const { args, flags } = await this.parse(AdyenPaymentDetails)
 
 		const res = await exec('adyen_payments', args.id, TRIGGER, flags)
 

@@ -34,7 +34,7 @@ export default class StripePaymentIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(StripePaymentIndex)
+    const { args, flags } = await this.parse(StripePaymentIndex)
 
     const id = args.id
 

@@ -34,7 +34,7 @@ export default class ShipmentIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(ShipmentIndex)
+    const { args, flags } = await this.parse(ShipmentIndex)
 
     const id = args.id
 

@@ -21,7 +21,7 @@ export default class ##__RESOURCE_CLASS__####__ACTION_NAME__## extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(##__RESOURCE_CLASS__####__ACTION_NAME__##)
+    const { args, flags } = await this.parse(##__RESOURCE_CLASS__####__ACTION_NAME__##)
 
 		const res = await exec('##__RESOURCE_TYPE__##', args.id, TRIGGER, flags)
 

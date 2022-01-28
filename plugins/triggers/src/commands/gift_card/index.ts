@@ -34,7 +34,7 @@ export default class GiftCardIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(GiftCardIndex)
+    const { args, flags } = await this.parse(GiftCardIndex)
 
     const id = args.id
 

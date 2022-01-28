@@ -21,7 +21,7 @@ export default class BundleComputePriceAmount extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(BundleComputePriceAmount)
+    const { args, flags } = await this.parse(BundleComputePriceAmount)
 
 		const res = await exec('bundles', args.id, TRIGGER, flags)
 

@@ -34,7 +34,7 @@ export default class ##__RESOURCE_CLASS__##Index extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(##__RESOURCE_CLASS__##Index)
+    const { args, flags } = await this.parse(##__RESOURCE_CLASS__##Index)
 
     const id = args.id
 

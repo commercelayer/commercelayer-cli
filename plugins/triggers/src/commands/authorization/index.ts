@@ -34,7 +34,7 @@ export default class AuthorizationIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(AuthorizationIndex)
+    const { args, flags } = await this.parse(AuthorizationIndex)
 
     const id = args.id
 

@@ -34,7 +34,7 @@ export default class KlarnaPaymentIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(KlarnaPaymentIndex)
+    const { args, flags } = await this.parse(KlarnaPaymentIndex)
 
     const id = args.id
 

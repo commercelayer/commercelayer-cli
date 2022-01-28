@@ -34,7 +34,7 @@ export default class ReturnIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(ReturnIndex)
+    const { args, flags } = await this.parse(ReturnIndex)
 
     const id = args.id
 

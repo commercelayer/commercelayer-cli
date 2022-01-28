@@ -21,7 +21,7 @@ export default class ReturnArchive extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ReturnArchive)
+    const { args, flags } = await this.parse(ReturnArchive)
 
 		const res = await exec('returns', args.id, TRIGGER, flags)
 

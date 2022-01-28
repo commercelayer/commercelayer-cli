@@ -21,7 +21,7 @@ export default class BundleComputeCompareAtAmount extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(BundleComputeCompareAtAmount)
+    const { args, flags } = await this.parse(BundleComputeCompareAtAmount)
 
 		const res = await exec('bundles', args.id, TRIGGER, flags)
 

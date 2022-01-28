@@ -34,7 +34,7 @@ export default class CaptureIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(CaptureIndex)
+    const { args, flags } = await this.parse(CaptureIndex)
 
     const id = args.id
 

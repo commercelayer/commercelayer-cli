@@ -21,7 +21,7 @@ export default class WebhookResetCircuit extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(WebhookResetCircuit)
+    const { args, flags } = await this.parse(WebhookResetCircuit)
 
 		const res = await exec('webhooks', args.id, TRIGGER, flags)
 

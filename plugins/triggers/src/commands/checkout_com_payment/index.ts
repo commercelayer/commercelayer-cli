@@ -34,7 +34,7 @@ export default class CheckoutComPaymentIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(CheckoutComPaymentIndex)
+    const { args, flags } = await this.parse(CheckoutComPaymentIndex)
 
     const id = args.id
 

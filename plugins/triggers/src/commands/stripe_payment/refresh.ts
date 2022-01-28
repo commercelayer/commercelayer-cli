@@ -21,7 +21,7 @@ export default class StripePaymentRefresh extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(StripePaymentRefresh)
+    const { args, flags } = await this.parse(StripePaymentRefresh)
 
 		const res = await exec('stripe_payments', args.id, TRIGGER, flags)
 

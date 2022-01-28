@@ -21,7 +21,7 @@ export default class OrderPlace extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrderPlace)
+    const { args, flags } = await this.parse(OrderPlace)
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 

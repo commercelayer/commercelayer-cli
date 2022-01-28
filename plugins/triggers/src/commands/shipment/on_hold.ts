@@ -21,7 +21,7 @@ export default class ShipmentOnHold extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ShipmentOnHold)
+    const { args, flags } = await this.parse(ShipmentOnHold)
 
 		const res = await exec('shipments', args.id, TRIGGER, flags)
 

@@ -21,7 +21,7 @@ export default class ReturnCancel extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ReturnCancel)
+    const { args, flags } = await this.parse(ReturnCancel)
 
 		const res = await exec('returns', args.id, TRIGGER, flags)
 

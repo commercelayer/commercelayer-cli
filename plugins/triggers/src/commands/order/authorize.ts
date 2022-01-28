@@ -21,7 +21,7 @@ export default class OrderAuthorize extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrderAuthorize)
+    const { args, flags } = await this.parse(OrderAuthorize)
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 

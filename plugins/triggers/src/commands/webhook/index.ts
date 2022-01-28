@@ -34,7 +34,7 @@ export default class WebhookIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(WebhookIndex)
+    const { args, flags } = await this.parse(WebhookIndex)
 
     const id = args.id
 

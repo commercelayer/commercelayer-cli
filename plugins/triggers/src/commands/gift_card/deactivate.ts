@@ -21,7 +21,7 @@ export default class GiftCardDeactivate extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(GiftCardDeactivate)
+    const { args, flags } = await this.parse(GiftCardDeactivate)
 
 		const res = await exec('gift_cards', args.id, TRIGGER, flags)
 

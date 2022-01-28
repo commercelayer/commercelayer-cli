@@ -21,7 +21,7 @@ export default class InStockSubscriptionActivate extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(InStockSubscriptionActivate)
+    const { args, flags } = await this.parse(InStockSubscriptionActivate)
 
 		const res = await exec('in_stock_subscriptions', args.id, TRIGGER, flags)
 

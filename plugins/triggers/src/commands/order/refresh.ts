@@ -21,7 +21,7 @@ export default class OrderRefresh extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrderRefresh)
+    const { args, flags } = await this.parse(OrderRefresh)
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 

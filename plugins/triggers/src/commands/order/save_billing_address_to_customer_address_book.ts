@@ -21,7 +21,7 @@ export default class OrderSaveBillingAddressToCustomerAddressBook extends Comman
 
 	async run() {
 
-    const { args, flags } = this.parse(OrderSaveBillingAddressToCustomerAddressBook)
+    const { args, flags } = await this.parse(OrderSaveBillingAddressToCustomerAddressBook)
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 

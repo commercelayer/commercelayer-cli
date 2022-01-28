@@ -21,7 +21,7 @@ export default class KlarnaPaymentUpdate extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(KlarnaPaymentUpdate)
+    const { args, flags } = await this.parse(KlarnaPaymentUpdate)
 
 		const res = await exec('klarna_payments', args.id, TRIGGER, flags)
 

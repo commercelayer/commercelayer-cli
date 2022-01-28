@@ -34,7 +34,7 @@ export default class CustomerPasswordResetIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(CustomerPasswordResetIndex)
+    const { args, flags } = await this.parse(CustomerPasswordResetIndex)
 
     const id = args.id
 

@@ -21,7 +21,7 @@ export default class CheckoutComPaymentRefresh extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(CheckoutComPaymentRefresh)
+    const { args, flags } = await this.parse(CheckoutComPaymentRefresh)
 
 		const res = await exec('checkout_com_payments', args.id, TRIGGER, flags)
 

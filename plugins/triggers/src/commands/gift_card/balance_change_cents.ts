@@ -21,7 +21,7 @@ export default class GiftCardBalanceChangeCents extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(GiftCardBalanceChangeCents)
+    const { args, flags } = await this.parse(GiftCardBalanceChangeCents)
 
 		const res = await exec('gift_cards', args.id, TRIGGER, flags)
 

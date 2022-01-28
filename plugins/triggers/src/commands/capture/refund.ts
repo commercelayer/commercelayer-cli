@@ -21,7 +21,7 @@ export default class CaptureRefund extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(CaptureRefund)
+    const { args, flags } = await this.parse(CaptureRefund)
 
 		const res = await exec('captures', args.id, TRIGGER, flags)
 

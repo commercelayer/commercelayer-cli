@@ -21,7 +21,7 @@ export default class ShipmentGetRates extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ShipmentGetRates)
+    const { args, flags } = await this.parse(ShipmentGetRates)
 
 		const res = await exec('shipments', args.id, TRIGGER, flags)
 

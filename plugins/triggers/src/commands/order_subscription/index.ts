@@ -34,7 +34,7 @@ export default class OrderSubscriptionIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(OrderSubscriptionIndex)
+    const { args, flags } = await this.parse(OrderSubscriptionIndex)
 
     const id = args.id
 

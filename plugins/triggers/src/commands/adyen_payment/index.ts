@@ -34,7 +34,7 @@ export default class AdyenPaymentIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(AdyenPaymentIndex)
+    const { args, flags } = await this.parse(AdyenPaymentIndex)
 
     const id = args.id
 

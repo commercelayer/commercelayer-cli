@@ -21,7 +21,7 @@ export default class ReturnRequest extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ReturnRequest)
+    const { args, flags } = await this.parse(ReturnRequest)
 
 		const res = await exec('returns', args.id, TRIGGER, flags)
 

@@ -21,7 +21,7 @@ export default class ShipmentShip extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ShipmentShip)
+    const { args, flags } = await this.parse(ShipmentShip)
 
 		const res = await exec('shipments', args.id, TRIGGER, flags)
 

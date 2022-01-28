@@ -21,7 +21,7 @@ export default class OrderShippingAddressSameAsBilling extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrderShippingAddressSameAsBilling)
+    const { args, flags } = await this.parse(OrderShippingAddressSameAsBilling)
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 

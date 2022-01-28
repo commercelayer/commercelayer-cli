@@ -21,7 +21,7 @@ export default class OrderCancel extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrderCancel)
+    const { args, flags } = await this.parse(OrderCancel)
 
 		const res = await exec('orders', args.id, TRIGGER, flags)
 

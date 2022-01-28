@@ -107,7 +107,7 @@ const updateTriggers = async (): Promise<{ [k: string]: any }> => {
 
 
 const FLAG_VALUE_STR = `
-    value: flags.string({
+    value: Flags.string({
       char: 'v',
       description: 'the trigger attribute value',
       multiple: false,
@@ -159,7 +159,7 @@ const generate = async () => {
 
       const flagValue = action.endsWith('_id') ? FLAG_VALUE_STR : ''
       command = command.replace(/##__FLAG_VALUE__##/, flagValue)
-      const flagsImport = action.endsWith('_id') ? ', { flags }' : ''
+      const flagsImport = action.endsWith('_id') ? ', { Flags }' : ''
       command = command.replace(/##__FLAGS_IMPORT__##/, flagsImport)
 
       const fileName = action + '.ts'

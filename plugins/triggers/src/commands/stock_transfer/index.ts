@@ -34,7 +34,7 @@ export default class StockTransferIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(StockTransferIndex)
+    const { args, flags } = await this.parse(StockTransferIndex)
 
     const id = args.id
 

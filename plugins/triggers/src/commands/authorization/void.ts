@@ -21,7 +21,7 @@ export default class AuthorizationVoid extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(AuthorizationVoid)
+    const { args, flags } = await this.parse(AuthorizationVoid)
 
 		const res = await exec('authorizations', args.id, TRIGGER, flags)
 

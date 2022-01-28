@@ -21,7 +21,7 @@ export default class CustomerPasswordResetResetPasswordToken extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(CustomerPasswordResetResetPasswordToken)
+    const { args, flags } = await this.parse(CustomerPasswordResetResetPasswordToken)
 
 		const res = await exec('customer_password_resets', args.id, TRIGGER, flags)
 

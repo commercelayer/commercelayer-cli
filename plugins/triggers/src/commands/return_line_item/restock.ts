@@ -21,7 +21,7 @@ export default class ReturnLineItemRestock extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(ReturnLineItemRestock)
+    const { args, flags } = await this.parse(ReturnLineItemRestock)
 
 		const res = await exec('return_line_items', args.id, TRIGGER, flags)
 

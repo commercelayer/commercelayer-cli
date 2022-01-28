@@ -21,7 +21,7 @@ export default class StockTransferInTransit extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(StockTransferInTransit)
+    const { args, flags } = await this.parse(StockTransferInTransit)
 
 		const res = await exec('stock_transfers', args.id, TRIGGER, flags)
 

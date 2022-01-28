@@ -34,7 +34,7 @@ export default class BundleIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(BundleIndex)
+    const { args, flags } = await this.parse(BundleIndex)
 
     const id = args.id
 

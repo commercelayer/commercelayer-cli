@@ -1,5 +1,5 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import Command, { flags } from '@oclif/command'
+import { Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
 import { clOutput, clUpdate } from '@commercelayer/cli-core'
 
@@ -10,34 +10,34 @@ const pkg = require('../package.json')
 export default abstract class extends Command {
 
   static flags = {
-    organization: flags.string({
+    organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
     }),
-    domain: flags.string({
+    domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
-    accessToken: flags.string({
+    accessToken: Flags.string({
       hidden: true,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
     }),
-    print: flags.boolean({
+    print: Flags.boolean({
       char: 'p',
       description: 'print out the modified resource',
     }),
-    json: flags.boolean({
+    json: Flags.boolean({
       char: 'j',
       description: 'print result in JSON format',
       dependsOn: ['print'],
     }),
-    unformatted: flags.boolean({
+    unformatted: Flags.boolean({
       char: 'u',
       description: 'print JSON output without indentation',
       dependsOn: ['json'],
@@ -88,4 +88,4 @@ export default abstract class extends Command {
 
 
 
-export { flags }
+export { Flags }
