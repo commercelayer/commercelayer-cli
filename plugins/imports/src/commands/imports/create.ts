@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
 import { generateInputs } from '../../input'
 import { SingleBar } from 'cli-progress'
@@ -47,33 +47,33 @@ export default class ImportsCreate extends Command {
 
 	static flags = {
 		...Command.flags,
-		type: flags.string({
+		type: Flags.string({
 			char: 't',
 			description: 'the type of resource being imported',
 			required: true,
 			options: clConfig.imports.types,
 			helpValue: clConfig.imports.types.slice(0, 4).join('|') + '|...',
 		}),
-		parent: flags.string({
+		parent: Flags.string({
 			char: 'p',
 			description: 'the id of the parent resource to be associated with imported data',
 		}),
-		inputs: flags.string({
+		inputs: Flags.string({
 			char: 'i',
 			description: 'the path of the file containing the data to import',
 			required: true,
 		}),
-		csv: flags.boolean({
+		csv: Flags.boolean({
 			char: 'C',
 			description: 'accept input file in CSV format',
 			dependsOn: ['inputs'],
 		}),
-		blind: flags.boolean({
+		blind: Flags.boolean({
 			char: 'b',
 			description: 'execute in blind mode without showing the progress monitor',
 			exclusive: ['quiet', 'silent'],
 		}),
-		quiet: flags.boolean({
+		quiet: Flags.boolean({
 			char: 'q',
 			description: 'execute command without showing warning messages',
 			exclusive: ['blind'],
@@ -90,7 +90,7 @@ export default class ImportsCreate extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(ImportsCreate)
+		const { flags } = await this.parse(ImportsCreate)
 
 		this.cl = this.commercelayerInit(flags)
 

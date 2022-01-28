@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import Table from 'cli-table3'
 import { clOutput } from '@commercelayer/cli-core'
@@ -19,11 +19,11 @@ export default class ImportsDetails extends Command {
 
 	static flags = {
 		...Command.flags,
-		inputs: flags.boolean({
+		inputs: Flags.boolean({
 			char: 'i',
 			description: 'show input items associated with the import',
 		}),
-		logs: flags.boolean({
+		logs: Flags.boolean({
 			char: 'l',
 			description: 'show warning and error logs related to the import process',
 		}),
@@ -36,7 +36,7 @@ export default class ImportsDetails extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(ImportsDetails)
+		const { args, flags } = await this.parse(ImportsDetails)
 
 		const id = args.id
 

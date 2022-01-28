@@ -25,7 +25,7 @@ export default class ImportsDelete extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(ImportsDelete)
+		const { args, flags } = await this.parse(ImportsDelete)
 
 		const id = args.id
 

@@ -28,7 +28,7 @@ export default class ImportsGroup extends Command {
 
 	async run() {
 
-		const { args, flags } = this.parse(ImportsGroup)
+		const { args, flags } = await this.parse(ImportsGroup)
 
 		const groupId = args.group_id
 

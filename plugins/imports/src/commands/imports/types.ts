@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command } from '@oclif/core'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
 import { clConfig } from '@commercelayer/cli-core'

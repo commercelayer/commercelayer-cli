@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
@@ -22,35 +22,35 @@ export default class ImportsList extends Command {
 
 	static flags = {
 		...Command.flags,
-		all: flags.boolean({
+		all: Flags.boolean({
 			char: 'A',
 			description: `show all imports instead of first ${clConfig.api.page_max_size} only`,
 			exclusive: ['limit'],
 		}),
-		type: flags.string({
+		type: Flags.string({
 			char: 't',
 			description: 'the type of resource imported',
 			options: clConfig.imports.types,
 		}),
-		group: flags.string({
+		group: Flags.string({
 			char: 'g',
 			description: 'the group ID associated to the import in case of multi-chunk imports',
 			exclusive: ['all, limit'],
 		}),
-		status: flags.string({
+		status: Flags.string({
 			char: 's',
 			description: 'the import job status',
 			options: clConfig.imports.statuses,
 		}),
-		errors: flags.boolean({
+		errors: Flags.boolean({
 			char: 'e',
 			description: 'show only imports with errors',
 		}),
-		warnings: flags.boolean({
+		warnings: Flags.boolean({
 			char: 'w',
 			description: 'show only import with warnings',
 		}),
-		limit: flags.integer({
+		limit: Flags.integer({
 			char: 'l',
 			description: 'limit number of imports in output',
 			exclusive: ['all'],
@@ -60,7 +60,7 @@ export default class ImportsList extends Command {
 
 	async run() {
 
-		const { flags } = this.parse(ImportsList)
+		const { flags } = await this.parse(ImportsList)
 
 		if (flags.limit && (flags.limit < 1)) this.error(chalk.italic('Limit') + ' must be a positive integer')
 

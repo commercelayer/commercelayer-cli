@@ -15,9 +15,10 @@ export default class ImportsIndex extends Command {
 
 	static args = [ ]
 
+
 	async run() {
 
-		const { args } = this.parse(ImportsIndex)
+		const { args } = await this.parse(ImportsIndex)
 
 		const command = args.id ? DetailsCommand : ListCommand
 		const result = command.run(this.argv, this.config)
