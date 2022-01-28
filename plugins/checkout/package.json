@@ -1,15 +1,13 @@
 {
   "name": "@commercelayer/cli-plugin-checkout",
   "description": "Commerce Layer CLI Checkout plugin",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "bin": {
-    "cl-checkout": "./bin/run"
-  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
     "@oclif/test": "^2.0.3",
+    "@oclif/plugin-help": "^5.1.10",
     "@types/chai": "^4.2.22",
     "@types/jsonwebtoken": "^8.5.5",
     "@types/mocha": "^5.2.7",
