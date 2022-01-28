@@ -1,14 +1,12 @@
 {
   "name": "@commercelayer/cli-plugin-token",
   "description": "Commerce Layer CLI Token plugin",
-  "version": "3.1.0",
+  "version": "3.1.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "bin": {
-    "cl-token": "./bin/run"
-  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-token/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@oclif/plugin-help": "^5.1.10",
     "@oclif/test": "^2.0.3",
     "@types/chai": "^4.2.22",
     "@types/inquirer": "^8.1.3",
