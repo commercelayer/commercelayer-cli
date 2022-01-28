@@ -1,4 +1,4 @@
-import Command, { flags } from '../../base'
+import Command, { Flags } from '../../base'
 import exec from '../../exec'
 import { triggers } from '../../triggers'
 
@@ -12,7 +12,7 @@ export default class OrdersCustomerPaymentSourceId extends Command {
 
   static flags = {
 		...Command.flags,
-    value: flags.string({
+    value: Flags.string({
       char: 'v',
       description: 'the trigger attribute value',
       multiple: false,
@@ -27,7 +27,7 @@ export default class OrdersCustomerPaymentSourceId extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersCustomerPaymentSourceId)
+    const { args, flags } = await this.parse(OrdersCustomerPaymentSourceId)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

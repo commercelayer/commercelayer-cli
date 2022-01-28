@@ -21,7 +21,7 @@ export default class OrdersSavePaymentSourceToCustomerWallet extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersSavePaymentSourceToCustomerWallet)
+    const { args, flags } = await this.parse(OrdersSavePaymentSourceToCustomerWallet)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

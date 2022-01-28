@@ -21,7 +21,7 @@ export default class OrdersApproveAndCapture extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersApproveAndCapture)
+    const { args, flags } = await this.parse(OrdersApproveAndCapture)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

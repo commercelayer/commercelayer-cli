@@ -21,7 +21,7 @@ export default class OrdersAuthorizationAmountCents extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersAuthorizationAmountCents)
+    const { args, flags } = await this.parse(OrdersAuthorizationAmountCents)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

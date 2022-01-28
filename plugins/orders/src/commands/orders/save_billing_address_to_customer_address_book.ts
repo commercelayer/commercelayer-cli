@@ -21,7 +21,7 @@ export default class OrdersSaveBillingAddressToCustomerAddressBook extends Comma
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersSaveBillingAddressToCustomerAddressBook)
+    const { args, flags } = await this.parse(OrdersSaveBillingAddressToCustomerAddressBook)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

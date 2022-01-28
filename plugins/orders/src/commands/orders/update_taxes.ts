@@ -21,7 +21,7 @@ export default class OrdersUpdateTaxes extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersUpdateTaxes)
+    const { args, flags } = await this.parse(OrdersUpdateTaxes)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

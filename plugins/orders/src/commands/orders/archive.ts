@@ -21,7 +21,7 @@ export default class OrdersArchive extends Command {
 
 	async run() {
 
-    const { args, flags } = this.parse(OrdersArchive)
+    const { args, flags } = await this.parse(OrdersArchive)
 
 		const res = await exec(args.id, TRIGGER, flags)
 

@@ -19,7 +19,7 @@ export default class OrdersIndex extends Command {
 
   async run() {
 
-    const { args, flags } = this.parse(OrdersIndex)
+    const { args, flags } = await this.parse(OrdersIndex)
 
     const id = args.id
 
