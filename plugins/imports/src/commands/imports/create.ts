@@ -160,7 +160,7 @@ export default class ImportsCreate extends Command {
         let withErrors = false
         for (const batch of batches) {
           if (multiBatch) this.log(`\nProcessing batch # ${chalk.yellowBright(String(batch.batch_number))} of ${chalk.yellowBright(String(batch.total_batches))}...`)
-          this.monitor = Monitor.create(batch.items_count, this)
+          this.monitor = Monitor.create(batch.items_count, clUtil.log)
           const impOk = await this.parallelizeImports(batch.chunks, monitor)
           withErrors ||= !impOk
         }

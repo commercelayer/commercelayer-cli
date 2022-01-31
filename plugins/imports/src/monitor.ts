@@ -2,7 +2,6 @@ import chalk from 'chalk'
 import cliProgress, { SingleBar, MultiBar } from 'cli-progress'
 import type { Chunk } from './chunk'
 import { clOutput, clConfig } from '@commercelayer/cli-core'
-import { Command } from '@oclif/core'
 
 
 const MAX_IMPORT_SIZE = clConfig.imports.max_size
@@ -73,12 +72,11 @@ class Monitor {
 	]
 
 
-	static create(totalItems: number, logger?: Function | Command) {
+	static create(totalItems: number, log?: Function) {
 		const monitor = new Monitor(totalItems)
-		if (logger) {
-      const msg = `\n${monitor.style.header}`
-      if (logger instanceof Command) logger.log(msg)
-			else logger(msg)
+		if (log) {
+      log()
+      log(monitor.style.header)
 		}
 		return monitor
 	}
