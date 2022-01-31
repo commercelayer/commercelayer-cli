@@ -10,6 +10,8 @@ const pkg = require('../package.json')
 
 export default abstract class extends Command {
 
+  static enableJsonFlag = false
+
 	static flags = {
 		organization: Flags.string({
 			char: 'o',

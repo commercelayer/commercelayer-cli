@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-imports/issues",
   "devDependencies": {
@@ -50,7 +50,7 @@
     "topics": {
       "imports": {
         "description": "Import resources in Commerce Layer",
-        "hidden": true
+        "hidden": false
       }
     },
     "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
