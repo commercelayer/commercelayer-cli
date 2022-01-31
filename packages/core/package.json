@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
@@ -29,7 +29,7 @@
     "lib/**/*"
   ],
   "engines": {
-    "node": ">=12.20"
+    "node": ">=14"
   },
   "dependencies": {
     "@commercelayer/js-auth": "^2.2.7",

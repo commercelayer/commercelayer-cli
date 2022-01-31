@@ -148,5 +148,19 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 
 }
 
+const isAccessTokenExpiring = (tokenData: { created_at: string }): boolean => {
 
-export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken }
+	const safetyInterval = 30 // secs
+  const maxExpiration = config.api.token_expiration_mins * 60 // secs
+
+
+	const createdAt = Number(tokenData.created_at)
+	const now = Math.floor(Date.now() / 1000) // secs
+	const time = now - createdAt
+  
+	return (time >= (maxExpiration - safetyInterval))
+
+}
+
+
+export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken, isAccessTokenExpiring }
