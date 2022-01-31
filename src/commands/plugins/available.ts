@@ -1,6 +1,7 @@
 import { Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
+import { clUtil } from '@commercelayer/cli-core'
 
 export default class PluginsAvailable extends Command {
 
@@ -34,7 +35,7 @@ export default class PluginsAvailable extends Command {
           key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? chalk.dim : chalk).blueBright(row.name) },
           description: { header: 'DESCRIPTION', get: row => (row.hidden ? chalk.dim(row.description) : row.description) },
         }, {
-          printLine: this.log,
+          printLine: clUtil.log,
       })
     } else this.log(chalk.italic('No available plugins'))
 

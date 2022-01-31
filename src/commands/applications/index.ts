@@ -3,7 +3,7 @@ import {configParam, ConfigParams } from '../../config'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
 import { printScope } from '../../common'
-import { AppInfo, clApplication, clOutput } from '@commercelayer/cli-core'
+import { AppInfo, clApplication, clOutput, clUtil } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsIndex extends Command {
@@ -60,7 +60,7 @@ export default class ApplicationsIndex extends Command {
 				alias: { header: 'ALIAS', get: row => chalk.cyanBright(row.alias || '') },
 				...extraColumns(flags),
 			}, {
-				printLine: this.log,
+				printLine: clUtil.log,
 			})
 
 			if (current && currentVisibile) this.log(chalk.italic.magentaBright(`\n(${currentChar}) Current application`))
