@@ -17,15 +17,21 @@ Show a list of all (logged in) available CLI applications.
 
 ```
 USAGE
-  $ commercelayer applications
+  $ commercelayer applications [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
+    <value>] [-a <value>]
 
-OPTIONS
-  -a, --alias=alias                         the alias associated to the application
-  -k, --kind=cli|sales_channel|integration  application kind
-  -m, --mode=test|live                      execution mode
-  -o, --organization=organization           organization slug
-  --id=id                                   application id
-  --live                                    live execution mode
+FLAGS
+  -a, --alias=<value>         the alias associated to the application
+  -k, --kind=<option>         application kind
+                              <options: cli|sales_channel|integration>
+  -m, --mode=<option>         execution mode
+                              <options: test|live>
+  -o, --organization=<value>  organization slug
+  --id=<value>                application id
+  --live                      live execution mode
+
+DESCRIPTION
+  show a list of all (logged in) available CLI applications
 
 ALIASES
   $ commercelayer app:list
@@ -36,6 +42,7 @@ ALIASES
 
 EXAMPLES
   $ commercelayer applications
+
   $ cl applications
 ```
 
@@ -47,21 +54,24 @@ Add a new Commerce Layer application to CLI config.
 
 ```
 USAGE
-  $ commercelayer applications:add
+  $ commercelayer applications:add -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value>] [-p <value>]
 
-OPTIONS
-  -S, --scope=scope                access token scope (market, stock location)
-  -a, --alias=alias                (required) the alias you want to associate to the application
-  -e, --email=email                customer email
-  -i, --clientId=clientId          (required) application client_id
-  -o, --organization=organization  (required) organization slug
-  -p, --password=password          customer secret password
-  -s, --clientSecret=clientSecret  application client_secret
+FLAGS
+  -S, --scope=<value>         access token scope (market, stock location)
+  -a, --alias=<value>         (required) the alias you want to associate to the application
+  -e, --email=<value>         customer email
+  -i, --clientId=<value>      (required) application client_id
+  -o, --organization=<value>  (required) organization slug
+  -p, --password=<value>      customer secret password
+  -s, --clientSecret=<value>  application client_secret
+
+DESCRIPTION
+  add a new Commerce Layer application to CLI config
 
 ALIASES
   $ commercelayer app:add
 
-EXAMPLE
+EXAMPLES
   $ commercelayer applications:add -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
@@ -73,16 +83,20 @@ Show the current application.
 
 ```
 USAGE
-  $ commercelayer applications:current
+  $ commercelayer applications:current [-j]
 
-OPTIONS
+FLAGS
   -j, --json  show info in JSON format
+
+DESCRIPTION
+  show the current application
 
 ALIASES
   $ commercelayer app:current
 
 EXAMPLES
   $ commercelayer applications:current
+
   $ commercelayer app:current --info
 ```
 
@@ -94,16 +108,22 @@ Show application details.
 
 ```
 USAGE
-  $ commercelayer applications:info
+  $ commercelayer applications:info [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
+    <value>] [-a <value>] [-j]
 
-OPTIONS
-  -a, --alias=alias                         the alias associated to the application
-  -j, --json                                show info in JSON format
-  -k, --kind=cli|sales_channel|integration  application kind
-  -m, --mode=test|live                      execution mode
-  -o, --organization=organization           organization slug
-  --id=id                                   application id
-  --live                                    live execution mode
+FLAGS
+  -a, --alias=<value>         the alias associated to the application
+  -j, --json                  show info in JSON format
+  -k, --kind=<option>         application kind
+                              <options: cli|sales_channel|integration>
+  -m, --mode=<option>         execution mode
+                              <options: test|live>
+  -o, --organization=<value>  organization slug
+  --id=<value>                application id
+  --live                      live execution mode
+
+DESCRIPTION
+  show application details
 
 ALIASES
   $ commercelayer app:info
@@ -117,21 +137,25 @@ Execute login to a Commerce Layer application.
 
 ```
 USAGE
-  $ commercelayer applications:login
+  $ commercelayer applications:login -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value>] [-p
+  <value>]
 
-OPTIONS
-  -S, --scope=scope                access token scope (market, stock location)
-  -a, --alias=alias                (required) the alias you want to associate to the application
-  -e, --email=email                customer email
-  -i, --clientId=clientId          (required) application client_id
-  -o, --organization=organization  (required) organization slug
-  -p, --password=password          customer secret password
-  -s, --clientSecret=clientSecret  application client_secret
+FLAGS
+  -S, --scope=<value>         access token scope (market, stock location)
+  -a, --alias=<value>         (required) the alias you want to associate to the application
+  -e, --email=<value>         customer email
+  -i, --clientId=<value>      (required) application client_id
+  -o, --organization=<value>  (required) organization slug
+  -p, --password=<value>      customer secret password
+  -s, --clientSecret=<value>  application client_secret
+
+DESCRIPTION
+  execute login to a Commerce Layer application
 
 ALIASES
   $ commercelayer app:login
 
-EXAMPLE
+EXAMPLES
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
@@ -143,16 +167,22 @@ Remove an application from CLI local configuration.
 
 ```
 USAGE
-  $ commercelayer applications:logout
+  $ commercelayer applications:logout [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
+    <value>] [-a <value>] [-r]
 
-OPTIONS
-  -a, --alias=alias                         the alias associated to the application
-  -k, --kind=cli|sales_channel|integration  application kind
-  -m, --mode=test|live                      execution mode
-  -o, --organization=organization           organization slug
-  -r, --revoke                              revoke current access token
-  --id=id                                   application id
-  --live                                    live execution mode
+FLAGS
+  -a, --alias=<value>         the alias associated to the application
+  -k, --kind=<option>         application kind
+                              <options: cli|sales_channel|integration>
+  -m, --mode=<option>         execution mode
+                              <options: test|live>
+  -o, --organization=<value>  organization slug
+  -r, --revoke                revoke current access token
+  --id=<value>                application id
+  --live                      live execution mode
+
+DESCRIPTION
+  remove an application from CLI local configuration
 
 ALIASES
   $ commercelayer app:logout
@@ -168,15 +198,21 @@ Switch applications.
 
 ```
 USAGE
-  $ commercelayer applications:switch
+  $ commercelayer applications:switch [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
+    <value>] [-a <value>]
 
-OPTIONS
-  -a, --alias=alias                         the alias associated to the application
-  -k, --kind=cli|sales_channel|integration  application kind
-  -m, --mode=test|live                      execution mode
-  -o, --organization=organization           organization slug
-  --id=id                                   application id
-  --live                                    live execution mode
+FLAGS
+  -a, --alias=<value>         the alias associated to the application
+  -k, --kind=<option>         application kind
+                              <options: cli|sales_channel|integration>
+  -m, --mode=<option>         execution mode
+                              <options: test|live>
+  -o, --organization=<value>  organization slug
+  --id=<value>                application id
+  --live                      live execution mode
+
+DESCRIPTION
+  switch applications
 
 ALIASES
   $ commercelayer app:switch

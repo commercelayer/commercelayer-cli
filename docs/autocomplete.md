@@ -11,19 +11,25 @@ Display autocomplete installation instructions.
 
 ```
 USAGE
-  $ commercelayer autocomplete [SHELL]
+  $ commercelayer autocomplete [SHELL] [-r]
 
 ARGUMENTS
   SHELL  shell type
 
-OPTIONS
+FLAGS
   -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+DESCRIPTION
+  display autocomplete installation instructions
 
 EXAMPLES
   $ commercelayer autocomplete
+
   $ commercelayer autocomplete bash
+
   $ commercelayer autocomplete zsh
+
   $ commercelayer autocomplete --refresh-cache
 ```
 
-_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v0.3.0/src/commands/autocomplete/index.ts)_
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.2.0/src/commands/autocomplete/index.ts)_

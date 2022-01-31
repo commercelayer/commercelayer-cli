@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-import Help from '@oclif/plugin-help'
-import Config, { Command/* , Topic */ } from '@oclif/config'
+import { Help, Interfaces } from '@oclif/core'
 import _ from 'lodash'
 
 /*
@@ -30,14 +29,13 @@ export default class MyHelpClass extends Help {
 	}
 */
 	// display help for a command
-	showCommandHelp(command: Command): void {
+	async showCommandHelp(command: Interfaces.Command): Promise<void> {
 		const name = command.id
-        const depth = name.split(':').length
+        const depth = name ? name.split(':').length : 1
         const subTopics = this.sortedTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
         const subCommands = this.sortedCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
         const title = command.description && this.render(command.description).split('\n')[0]
-        if (title)
-            console.log(title[0].toUpperCase() + title.substring(1) + '\n')
+        if (title) console.log(title[0].toUpperCase() + title.substring(1) + '\n')
         console.log(this.formatCommand(command))
         console.log('')
         if (subTopics.length > 0) {
@@ -69,9 +67,9 @@ export default class MyHelpClass extends Help {
 */
 
 	// the formatting for a list of topics
-	protected formatTopics(topics: Config.Topic[]): string {
-		const fixTopics = topics.map(t => {
-			t.description = _.capitalize(t.description)
+	protected formatTopics(topics: Interfaces.Topic[]): string {
+		const fixTopics = topics.filter(t => !t.hidden).map(t => {
+			t.description = _.capitalize(t.description) + 'xxx'
 			return t
 		})
 		return super.formatTopics(fixTopics)
@@ -79,10 +77,10 @@ export default class MyHelpClass extends Help {
 
 
 	// the formatting for a list of commands
-	formatCommands(commands: Config.Command[]): string {
-		return super.formatCommands(commands).split('\n').map(c => {
+	formatCommands(commands: Interfaces.Command[]): string {
+		return super.formatCommands(commands).split('\n').map((c: string) => {
 			let noSpaceCount = 0
-			return c.split(' ').map(t => ((t.trim() !== '') && (++noSpaceCount === 2)) ? _.capitalize(t) : t).join(' ')
+			return c.split(' ').map((t: string | undefined) => (((t || '').trim() !== '') && (++noSpaceCount === 2)) ? _.capitalize(t) : t).join(' ')
 		}).join('\n')
 	}
 
