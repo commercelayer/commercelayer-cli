@@ -8,9 +8,6 @@ const findIncluded = (rel: any, included: any[]): any => {
 
 const denormalizeResource = (res: any, included: any[]) => {
 
-	// console.log(res)
-	// console.log(included)
-
 	const resource = {
 		id: res.id,
 		type: res.type,
@@ -38,9 +35,6 @@ const denormalize = (response: any) => {
 
 	const data = response.data
 	const included = response.included
-
-	// console.log(data)
-	// console.log(included)
 
 	if (Array.isArray(data)) denormalizedResponse = data.map(res => denormalizeResource(res, included))
 	else denormalizedResponse = denormalizeResource(data, included)
