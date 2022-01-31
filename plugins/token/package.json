@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-token",
   "description": "Commerce Layer CLI Token plugin",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-token/issues",
   "devDependencies": {
@@ -51,7 +51,7 @@
     "topics": {
       "token": {
         "description": "Manage Commerce Layer access tokens",
-        "hidden": true
+        "hidden": false
       }
     },
     "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
