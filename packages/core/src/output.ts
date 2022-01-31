@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { inspect } from 'util'
 
+
 /** Print a formatted object */
 const printObject = (obj: any, options?: { color?: boolean, sort?: boolean, width?: number }): string => {
 	return inspect(obj, {

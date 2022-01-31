@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { resolve, join } from 'path'
+// import { resolve, join } from 'path'
 import updateNotifier from 'update-notifier'
 
 
@@ -18,7 +18,7 @@ const checkUpdate = (pkg: Package) => {
 
     if (notifier.update) {
 
-      const pluginMode = resolve(__dirname).includes(join('@commercelayer', 'cli', 'node_modules', pkg.name))
+      const pluginMode = true // resolve(__dirname).includes(join('@commercelayer', 'cli', 'node_modules', pkg.name))
       const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
 
       notifier.notify({
