@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "devDependencies": {
@@ -77,7 +77,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/cli-core": "^1.0.1",
+    "@commercelayer/cli-core": "^1.1.1",
     "@commercelayer/js-auth": "^2.2.4",
     "@commercelayer/sdk": "^4.3.0",
     "@oclif/core": "^1.1.2",

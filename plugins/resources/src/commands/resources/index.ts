@@ -2,6 +2,7 @@ import { Command, Flags } from '@oclif/core'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
 import { resourceList } from '../../util/resources'
+import { clUtil } from '@commercelayer/cli-core'
 
 
 export default class ResourcesIndex extends Command {
@@ -35,7 +36,7 @@ export default class ResourcesIndex extends Command {
 				key: { header: 'NAME', minWidth: 35, get: row => chalk.blueBright(row.name) },
 				description: { header: 'ONLINE DOCUMENTATION URL', get: row => row.url },
 			}, {
-				printLine: this.log,
+				printLine: clUtil.log,
 			})
 		this.log()
 

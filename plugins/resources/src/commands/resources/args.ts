@@ -5,7 +5,7 @@ import { deleteArgsFile, loadCommandData, readCommandArgs, ResourceOperation } f
 import { formatOutput } from '../../output'
 import cliux from 'cli-ux'
 import { QueryParamsList } from '@commercelayer/sdk'
-import { clOutput } from '@commercelayer/cli-core'
+import { clOutput, clUtil } from '@commercelayer/cli-core'
 
 
 export default class ResourcesArgs extends Command {
@@ -86,7 +86,7 @@ export default class ResourcesArgs extends Command {
             pageNumber: { header: 'PG. NUM.', get: row => (row.params as QueryParamsList).pageNumber || '' },
             savedAt: { header: 'SAVED AT', get: row => clOutput.cleanDate(row.saved_at) },
           }, {
-            printLine: this.log,
+            printLine: clUtil.log,
           })
         } else {
           this.log(this.flagsMessageSuffix('Saved command arguments', resource, operation) + chalk.blueBright(' with ') + chalk.cyanBright('alias'))

@@ -1,6 +1,7 @@
 import { Command } from '@oclif/core'
 import chalk from 'chalk'
 import cliux from 'cli-ux'
+import { clUtil } from '@commercelayer/cli-core'
 
 
 const filters: Filter[] = [
@@ -80,7 +81,7 @@ export default class ResourcesFilters extends Command {
       predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
       description: { header: 'DESCRIPTION' },
     }, {
-      printLine: this.log,
+      printLine: clUtil.log,
     })
 
     this.log()
