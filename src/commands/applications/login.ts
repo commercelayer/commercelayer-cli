@@ -1,11 +1,10 @@
 import { Command, Flags, Config } from '@oclif/core'
-import { AuthReturnType, AuthScope, ClientCredentials, clientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
+import { AuthScope  } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { ApiMode, AppAuth, AppInfo, clApplication, clApi } from '@commercelayer/cli-core'
+import { ApiMode, AppAuth, AppInfo, clApplication, clApi, clToken } from '@commercelayer/cli-core'
 import chalk from 'chalk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication } from '../../config'
 import { inspect } from 'util'
-import { decodeAccessToken } from './token'
 import { printCurrent } from './current'
 import { filterApplications } from '../../base'
 
@@ -99,7 +98,7 @@ export default class ApplicationsLogin extends Command {
 
 		try {
 
-			const token = await getAccessToken(config)
+			const token = await clToken.getAccessToken(config)
 
 			const app = await getApplicationInfo(config, token?.accessToken || '')
 
@@ -135,28 +134,6 @@ export default class ApplicationsLogin extends Command {
 
 
 
-const getAccessToken = async (auth: AppAuth): AuthReturnType => {
-
-	const credentials: ClientCredentials = {
-		clientId: auth.clientId,
-		clientSecret: auth.clientSecret,
-		endpoint: clApi.baseURL(auth.slug, auth.domain),
-		scope: auth.scope || '',
-	}
-
-	if (auth.email && auth.password) {
-		const user: User = {
-			username: auth.email,
-			password: auth.password,
-		}
-		return getCustomerToken(credentials, user)
-	}
-
-	return clientCredentials(credentials)
-
-}
-
-
 const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
 
 	const cl = commercelayer({
@@ -165,7 +142,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		accessToken,
 	})
 
-	const tokenInfo = decodeAccessToken(accessToken)
+	const tokenInfo = clToken.decodeAccessToken(accessToken)
 
 	// Organization info
 	const org = await cl.organization.retrieve().catch(() => {
@@ -241,4 +218,4 @@ const checkAlias = (alias: string, config?: Config, organization?: string): stri
 
 
 
-export { getAccessToken, getApplicationInfo, checkScope, checkAlias }
+export { getApplicationInfo, checkScope, checkAlias }

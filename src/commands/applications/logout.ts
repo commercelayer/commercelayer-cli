@@ -1,9 +1,8 @@
 import Command, { Flags } from '../../base'
 import chalk from 'chalk'
 import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, deleteConfigFile, deleteTokenFile, ConfigParams, currentApplication } from '../../config'
-import { clApplication } from '@commercelayer/cli-core'
+import { clApplication, clToken } from '@commercelayer/cli-core'
 import cliux from 'cli-ux'
-import { revokeAccessToken } from './token'
 
 
 export default class ApplicationsLogout extends Command {
@@ -40,7 +39,7 @@ export default class ApplicationsLogout extends Command {
           if (flags.revoke) {
             const configData = readConfigFile(this.config, app)
             const tokenData = readTokenFile(this.config, app)
-            await revokeAccessToken(configData, tokenData.access_token)
+            await clToken.revokeAccessToken(configData, tokenData.access_token)
             this.log('\nCurrent access token has been revoked')
           }
 

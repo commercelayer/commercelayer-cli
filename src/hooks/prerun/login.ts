@@ -1,7 +1,7 @@
 import { Hook, Parser, Flags } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { clApplication, AppKey } from '@commercelayer/cli-core'
-import { newAccessToken, isAccessTokenExpiring, revokeAccessToken } from '../../commands/applications/token'
+import { clApplication, AppKey, clToken } from '@commercelayer/cli-core'
+import { newAccessToken, isAccessTokenExpiring } from '../../commands/applications/token'
 import cliux from 'cli-ux'
 import chalk from 'chalk'
 
@@ -112,7 +112,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 				refresh = true
 				// If not overridden by saved current application, load configuration data
 				if (!configData) configData = readConfigFile(this.config, app)
-				await revokeAccessToken(configData, tokenData.access_token)
+				await clToken.revokeAccessToken(configData, tokenData.access_token)
 				tokenData = null
 			}
 		}

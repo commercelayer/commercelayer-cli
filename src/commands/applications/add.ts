@@ -3,8 +3,8 @@ import { CommerceLayerStatic } from '@commercelayer/sdk'
 import chalk from 'chalk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
-import ApplicationsLogin, { checkAlias, checkScope, getAccessToken, getApplicationInfo } from './login'
-import type { AppAuth } from '@commercelayer/cli-core'
+import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
+import { AppAuth, clToken } from '@commercelayer/cli-core'
 
 
 
@@ -54,7 +54,7 @@ export default class ApplicationsAdd extends Command {
 
     try {
 
-      const token = await getAccessToken(config)
+      const token = await clToken.getAccessToken(config)
 
       const app = await getApplicationInfo(config, token?.accessToken || '')
 
