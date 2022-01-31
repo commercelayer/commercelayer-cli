@@ -110,7 +110,7 @@ git clone https://github.com/<your username>/commercelayer-cli.git && cd commerc
 
 ## Need help?
 
-1. Request an invite to join [Commerce Layer's Slack community](https://commercelayer.io/developers) (kindly scroll down to the bottom of the page).
+1. Join [Commerce Layer's Slack community](https://slack.commercelayer.app).
 
 2. Create an [issue](https://github.com/commercelayer/commercelayer-cli/issues) in this repository.
 
