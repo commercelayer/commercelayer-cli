@@ -1,9 +1,8 @@
-import Command from '../../base'
-import chalk from 'chalk'
+import Command, { cliux } from '../../base'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
-import { clConfig, clOutput } from '@commercelayer/cli-core'
-import cliux from 'cli-ux'
+import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
+
 
 
 export default class ImportsGroup extends Command {
@@ -42,7 +41,7 @@ export default class ImportsGroup extends Command {
 			let currentPage = 0
 			let pageCount = 1
 
-			cliux.action.start('Fetching imports')
+			cliux.ux.action.start('Fetching imports')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -63,7 +62,7 @@ export default class ImportsGroup extends Command {
 				}
 
 			}
-			cliux.action.stop()
+			cliux.ux.action.stop()
 
 			this.log()
 
@@ -81,7 +80,7 @@ export default class ImportsGroup extends Command {
 				// let index = 0
 				table.push(...tableData.map(i => [
 					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
-					chalk.blueBright(i.id || ''),
+					clColor.blueBright(i.id || ''),
 					i.resource_type || '',
 					{ content: this.importStatus(i.status), hAlign: 'center' as HorizontalAlignment },
 					{ content: i.processed_count, hAlign: 'center' as HorizontalAlignment },
@@ -95,7 +94,7 @@ export default class ImportsGroup extends Command {
 
 				this.log()
 
-			} else this.log(chalk.italic(`Import group with id ${groupId} not found`))
+			} else this.log(clColor.italic(`Import group with id ${groupId} not found`))
 
 			this.log()
 

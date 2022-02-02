@@ -1,6 +1,5 @@
-import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
-import { clOutput, clUpdate } from '@commercelayer/cli-core'
+import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 
 
@@ -58,7 +57,7 @@ export default abstract class extends Command {
 		if (CommerceLayerStatic.isApiError(error)) {
 			if (error.status === 401) {
 				const err = error.first()
-				this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
+				this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
 					{ suggestions: ['Execute login to get access to the organization\'s imports'] }
 				)
 			} else this.error(clOutput.formatOutput(error, flags))
@@ -81,8 +80,8 @@ export default abstract class extends Command {
 	protected importStatus(status?: string): string {
 		if (!status) return ''
 		switch (status.toLowerCase()) {
-			case 'completed': return chalk.greenBright(status)
-			case 'interrupted': return chalk.redBright(status)
+			case 'completed': return clColor.msg.success(status)
+			case 'interrupted': return clColor.msg.error(status)
 			case 'pending':
 			case 'in_progress':
 			default: return status
@@ -107,4 +106,4 @@ export default abstract class extends Command {
 }
 
 
-export { Flags }
+export { Flags, cliux }

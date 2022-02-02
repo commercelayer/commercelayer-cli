@@ -1,5 +1,7 @@
 
-import fs from 'fs'
+import { writeFileSync } from 'fs'
+
+
 
 const generateImportCustomers = (size: number, format: string) => {
 
@@ -23,7 +25,7 @@ const generateImportCustomers = (size: number, format: string) => {
 	}
 
 	const filePath = '/users/pierlu/Desktop/test_import_customers.' + format
-	fs.writeFileSync(filePath, data)
+	writeFileSync(filePath, data)
 
 	// eslint-disable-next-line no-console
 	console.log(`Saved ${size} customer inputs to file ${filePath}`)

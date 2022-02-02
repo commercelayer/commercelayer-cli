@@ -1,9 +1,7 @@
-import Command, { Flags } from '../../base'
-import chalk from 'chalk'
+import Command, { Flags, cliux } from '../../base'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
-import { clConfig, clOutput } from '@commercelayer/cli-core'
-import cliux from 'cli-ux'
+import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
 
 
 const MAX_IMPORTS = 1000
@@ -62,7 +60,7 @@ export default class ImportsList extends Command {
 
 		const { flags } = await this.parse(ImportsList)
 
-		if (flags.limit && (flags.limit < 1)) this.error(chalk.italic('Limit') + ' must be a positive integer')
+		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		const cl = this.commercelayerInit(flags)
 
@@ -78,7 +76,7 @@ export default class ImportsList extends Command {
 
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-			cliux.action.start('Fetching imports')
+			cliux.ux.action.start('Fetching imports')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -110,7 +108,7 @@ export default class ImportsList extends Command {
 				}
 
 			}
-			cliux.action.stop()
+			cliux.ux.action.stop()
 
 			this.log()
 
@@ -128,7 +126,7 @@ export default class ImportsList extends Command {
 				// let index = 0
 				table.push(...tableData.map(i => [
 					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
-					chalk.blueBright(i.id || ''),
+					clColor.blueBright(i.id || ''),
 					i.resource_type || '',
 					{ content: this.importStatus(i.status), hAlign: 'center' as HorizontalAlignment },
 					{ content: i.processed_count, hAlign: 'center' as HorizontalAlignment },
@@ -142,7 +140,7 @@ export default class ImportsList extends Command {
 
 				this.footerMessage(flags, itemCount, totalItems)
 
-			} else this.log(chalk.italic('No imports found'))
+			} else this.log(clColor.italic('No imports found'))
 
 			this.log()
 
@@ -158,19 +156,19 @@ export default class ImportsList extends Command {
 	private footerMessage(flags: any, itemCount: number, totalItems: number) {
 
 		this.log()
-		this.log(`Total displayed imports: ${chalk.yellowBright(String(itemCount))}`)
-		this.log(`Total import count: ${chalk.yellowBright(String(totalItems))}`)
+		this.log(`Total displayed imports: ${clColor.yellowBright(String(itemCount))}`)
+		this.log(`Total import count: ${clColor.yellowBright(String(totalItems))}`)
 
 		if (itemCount < totalItems) {
 			if (flags.all || ((flags.limit || 0) > MAX_IMPORTS)) {
 				this.log()
-				this.warn(`The maximum number of imports that can be displayed is ${chalk.yellowBright(String(MAX_IMPORTS))}`)
+				this.warn(`The maximum number of imports that can be displayed is ${clColor.yellowBright(String(MAX_IMPORTS))}`)
 			} else
 				if (!flags.limit) {
 					this.log()
-					const displayedMsg = `Only ${chalk.yellowBright(String(itemCount))} of ${chalk.yellowBright(String(totalItems))} records are displayed`
-					if (totalItems < MAX_IMPORTS) this.warn(`${displayedMsg}, to see all existing items run the command with the ${chalk.italic.bold('--all')} flag enabled`)
-					else this.warn(`${displayedMsg}, to see more items (max ${MAX_IMPORTS}) run the command with the ${chalk.italic.bold('--limit')} flag enabled`)
+					const displayedMsg = `Only ${clColor.yellowBright(String(itemCount))} of ${clColor.yellowBright(String(totalItems))} records are displayed`
+					if (totalItems < MAX_IMPORTS) this.warn(`${displayedMsg}, to see all existing items run the command with the ${clColor.cli.flag('--all')} flag enabled`)
+					else this.warn(`${displayedMsg}, to see more items (max ${MAX_IMPORTS}) run the command with the ${clColor.cli.flag('--limit')} flag enabled`)
 				}
 		}
 

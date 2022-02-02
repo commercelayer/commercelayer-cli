@@ -1,13 +1,12 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
 import { generateInputs } from '../../input'
 import { SingleBar } from 'cli-progress'
-import { clUtil, clConfig } from '@commercelayer/cli-core'
+import { clUtil, clConfig, clColor } from '@commercelayer/cli-core'
 import { Monitor } from '../../monitor'
 import { Chunk, Batch, splitChunks, splitImports } from '../../chunk'
-import chalk from 'chalk'
-import cliux from 'cli-ux'
+
 
 
 const MAX_INPUTS = 0	// 0 = No Max
@@ -15,6 +14,7 @@ const MAX_CHUNKS = 10
 const MIN_DELAY = 1000
 const ERROR_429_DELAY = 10000
 const SECURITY_DELAY = 50
+
 
 
 const importsDelay = (parallelRequests: number): number => {
@@ -114,7 +114,7 @@ export default class ImportsCreate extends Command {
       const humanized = type.replace(/_/g, ' ')
       if (inputsLength === 0) this.error(`No ${humanized} to import`)
       else
-        if ((MAX_INPUTS > 0) && (inputsLength > MAX_INPUTS)) this.error(`You are trying to import ${chalk.yellowBright(String(inputsLength))} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
+        if ((MAX_INPUTS > 0) && (inputsLength > MAX_INPUTS)) this.error(`You are trying to import ${clColor.yellowBright(String(inputsLength))} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
           suggestions: [`Split your input file into multiple files containing each a maximum of ${MAX_INPUTS} items`],
         })
 
@@ -139,9 +139,9 @@ export default class ImportsCreate extends Command {
         // Multi chunk message
         if (multiChunk) {
           const groupId = chunks[0]?.group_id
-          const msg1 = `The input file contains ${chalk.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${clConfig.imports.max_size} elements allowed for each single import.`
-          const msg2 = `The import will be split into a set of ${chalk.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${chalk.underline.yellowBright(groupId)}.`
-          const msg3 = `Execute the command ${chalk.italic(`imports:group ${groupId}`)} to retrieve all the related imports`
+          const msg1 = `The input file contains ${clColor.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${clConfig.imports.max_size} elements allowed for each single import.`
+          const msg2 = `The import will be split into a set of ${clColor.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${clColor.underline.yellowBright(groupId)}.`
+          const msg3 = `Execute the command ${clColor.cli.command(`imports:group ${groupId}`)} to retrieve all the related imports`
           this.log(`\n${msg1} ${msg2} ${msg3}`)
         }
         // Multi batch message
@@ -151,7 +151,7 @@ export default class ImportsCreate extends Command {
         }
         if (multiChunk || multiBatch) {
           this.log()
-          await cliux.anykey()
+          await cliux.ux.anykey()
         }
       }
 
@@ -159,15 +159,15 @@ export default class ImportsCreate extends Command {
       if (monitor) {
         let withErrors = false
         for (const batch of batches) {
-          if (multiBatch) this.log(`\nProcessing batch # ${chalk.yellowBright(String(batch.batch_number))} of ${chalk.yellowBright(String(batch.total_batches))}...`)
+          if (multiBatch) this.log(`\nProcessing batch # ${clColor.yellowBright(String(batch.batch_number))} of ${clColor.yellowBright(String(batch.total_batches))}...`)
           this.monitor = Monitor.create(batch.items_count, clUtil.log)
           const impOk = await this.parallelizeImports(batch.chunks, monitor)
           withErrors ||= !impOk
         }
-        this.log(`\nImport of ${chalk.yellowBright(String(inputsLength))} ${humanized} completed${withErrors ? ' with errors' : ''}.`)
+        this.log(`\nImport of ${clColor.yellowBright(String(inputsLength))} ${humanized} completed${withErrors ? ' with errors' : ''}.`)
       } else {
         await this.parallelizeImports(chunks, monitor)
-        this.log(`\nThe import of ${chalk.yellowBright(String(inputsLength))} ${resource} has been started`)
+        this.log(`\nThe import of ${clColor.yellowBright(String(inputsLength))} ${resource} has been started`)
       }
 
       this.log()
@@ -250,7 +250,7 @@ export default class ImportsCreate extends Command {
           await clUtil.sleep(importsDelay(chunk.total_batch_chunks - this.completed))
           const tmp = await this.cl.imports.retrieve(imp.id).catch(async err => {
             if (this.cl.isApiError(err) && (err.status === 429)) {
-              if (imp && imp.status) barValue = this.monitor.updateBar(bar, barValue, { status: chalk.cyanBright(imp.status) })
+              if (imp && imp.status) barValue = this.monitor.updateBar(bar, barValue, { status: clColor.cyanBright(imp.status) })
               await clUtil.sleep(ERROR_429_DELAY)
             }
           })

@@ -1,6 +1,7 @@
+import { clColor } from '@commercelayer/cli-core'
 import Command from '../../base'
-import chalk from 'chalk'
 import ImportsDetails from './details'
+
 
 
 export default class ImportsDelete extends Command {
@@ -33,7 +34,7 @@ export default class ImportsDelete extends Command {
 
 
 		cl.imports.delete(id)
-			.then(() => this.log(`\n${chalk.greenBright('Successfully')} deleted import with id ${chalk.bold(id)}\n`))
+			.then(() => this.log(`\n${clColor.msg.success('Successfully')} deleted import with id ${clColor.api.id(id)}\n`))
 			.catch(error => this.handleError(error, flags))
 
 	}

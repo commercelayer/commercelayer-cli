@@ -1,7 +1,7 @@
-import chalk from 'chalk'
 import cliProgress, { SingleBar, MultiBar } from 'cli-progress'
 import type { Chunk } from './chunk'
-import { clOutput, clConfig } from '@commercelayer/cli-core'
+import { clOutput, clConfig, clColor } from '@commercelayer/cli-core'
+
 
 
 const MAX_IMPORT_SIZE = clConfig.imports.max_size
@@ -9,6 +9,7 @@ const MAX_IMPORT_SIZE = clConfig.imports.max_size
 const TERMINAL_SIZE = process.stdout.columns || 80
 
 export { TERMINAL_SIZE }
+
 
 
 type MonitorStyle = {
@@ -137,10 +138,10 @@ class Monitor {
 		if (style) switch (style.toLowerCase()) {
 			case 'w':
 			case 'warn':
-			case 'warning': return chalk.yellowBright(msg)
+			case 'warning': return clColor.msg.warning(msg)
 			case 'e':
 			case 'err':
-			case 'error': return chalk.redBright(msg)
+			case 'error': return clColor.msg.error(msg)
 			default: return ''
 		}
 		else return msg
@@ -154,16 +155,16 @@ class Monitor {
 		const maxImportsLength = String(MAX_IMPORT_SIZE).length
 
 		const columns: { [key: string]: HeaderColumn } = {
-			import: { title: 'ID', width: 10, pad: true, valueStyle: chalk.blueBright },
+			import: { title: 'ID', width: 10, pad: true, valueStyle: clColor.table.key },
 			range: { title: 'Items', width: (itemsLength * 2) + 1, pad: true },
-			bar: { title: 'Import progress', width: Monitor.BAR_SIZE, pad: true, valueStyle: chalk.greenBright },
-			percentage: { title: ' %', width: 4, pad: true, valueStyle: chalk.yellowBright },
+			bar: { title: 'Import progress', width: Monitor.BAR_SIZE, pad: true, valueStyle: clColor.greenBright },
+			percentage: { title: ' %', width: 4, pad: true, valueStyle: clColor.yellowBright },
 			status: { title: ' Status', width: 11, pad: true },
-			tbp: { title: 'TBP\u2193', width: maxImportsLength, pad: true, style: chalk.cyanBright },
-			processed: { title: 'Prc.', width: maxImportsLength, pad: true, style: chalk.greenBright },
-			warnings: { title: 'Wrn.', width: maxImportsLength, pad: true, style: chalk.yellowBright },
-			errors: { title: 'Err.', width: maxImportsLength, pad: true, style: chalk.redBright },
-			message: { title: '', hiddenHeader: true, width: 'Error'.length + 1, valueStyle: chalk.redBright },
+			tbp: { title: 'TBP\u2193', width: maxImportsLength, pad: true, style: clColor.cyanBright },
+			processed: { title: 'Prc.', width: maxImportsLength, pad: true, style: clColor.msg.success },
+			warnings: { title: 'Wrn.', width: maxImportsLength, pad: true, style: clColor.msg.warning },
+			errors: { title: 'Err.', width: maxImportsLength, pad: true, style: clColor.msg.error },
+			message: { title: '', hiddenHeader: true, width: 'Error'.length + 1, valueStyle: clColor.msg.error },
 		}
 
 		return columns
@@ -239,7 +240,7 @@ class Monitor {
 			const w = (h.width + (h.pad ? 2 : 0))
 			const label = clOutput.center(h.title, w)
 
-			let styled = chalk.bold(label)
+			let styled = clColor.bold(label)
 			if (style.colors && h.style) styled = h.style(styled)
 
 			return styled
@@ -267,11 +268,11 @@ class Monitor {
 		s = s.padEnd(11, ' ')
 
 		if (this.style.colors) {
-			if (s.includes('completed')) s = chalk.greenBright(s)
+			if (s.includes('completed')) s = clColor.msg.success.greenBright(s)
 			else
-			if (s.includes('waiting')) s = chalk.italic(s)
+			if (s.includes('waiting')) s = clColor.italic(s)
 			else
-			if (s.includes('interrupted')) s = chalk.redBright(s)
+			if (s.includes('interrupted')) s = clColor.msg.error(s)
 		}
 
 		return s

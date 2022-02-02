@@ -1,7 +1,7 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
 import Table from 'cli-table3'
-import { clOutput } from '@commercelayer/cli-core'
+import { clOutput, clColor } from '@commercelayer/cli-core'
+
 
 
 
@@ -61,12 +61,12 @@ export default class ImportsDetails extends Command {
 				.filter(([k]) => !exclude.includes(k))
 				.map(([k, v]) => {
 					return [
-						{ content: chalk.blueBright(k), hAlign: 'right', vAlign: 'center' },
+						{ content: clColor.table.key.blueBright(k), hAlign: 'right', vAlign: 'center' },
 						formatValue(k, v),
 					]
 				}))
 
-			if (imp.metadata?.group_id) table.splice(1, 0, [chalk.cyanBright('group_id'), chalk.bold(String(imp.metadata.group_id))])
+			if (imp.metadata?.group_id) table.splice(1, 0, [clColor.table.key.cyanBright('group_id'), clColor.api.id(String(imp.metadata.group_id))])
 
 			this.log()
 			this.log(table.toString())
@@ -89,7 +89,7 @@ export default class ImportsDetails extends Command {
 		const imp = inputs || []
 
 		this.log()
-		this.log(chalk.cyanBright(`${chalk.bold('INPUTS')}\t[ ${imp.length} record${imp.length === 1 ? '' : 's'} ]`))
+		this.log(clColor.cyanBright(`${clColor.bold('INPUTS')}\t[ ${imp.length} record${imp.length === 1 ? '' : 's'} ]`))
 
 		if (imp.length > 0) {
 			const table = new Table({ colWidths: [90], wordWrap: true })
@@ -119,7 +119,7 @@ export default class ImportsDetails extends Command {
 		const warnings = warningLog ? Object.keys(warningLog).length : 0
 
 		this.log()
-		this.log(chalk.yellowBright(`${chalk.bold('WARNING LOG')}\t[ ${warnings} warning${warnings === 1 ? '' : 's'} ]`))
+		this.log(clColor.msg.warning.yellowBright(`${clColor.bold('WARNING LOG')}\t[ ${warnings} warning${warnings === 1 ? '' : 's'} ]`))
 
 		if (warnings > 0) {
 			const table = new Table(tableOptions)
@@ -135,7 +135,7 @@ export default class ImportsDetails extends Command {
 		const errors = errorLog ? Object.keys(errorLog).length : 0
 
 		this.log()
-		this.log(chalk.redBright(`${chalk.bold('ERROR LOG')}\t[ ${errors} error${errors === 1 ? '' : 's'} ]`))
+		this.log(clColor.msg.error(`${clColor.bold('ERROR LOG')}\t[ ${errors} error${errors === 1 ? '' : 's'} ]`))
 
 		if (errors > 0) {
 			const table = new Table(tableOptions)
@@ -156,8 +156,8 @@ const statusColor = (status: string): string => {
 	if (!status) return ''
 
 	switch (status.trim()) {
-		case 'interrupted': return chalk.redBright(status)
-		case 'completed': return chalk.greenBright(status)
+		case 'interrupted': return clColor.msg.error(status)
+		case 'completed': return clColor.msg.success(status)
 		case 'pending':
 		case 'in_progress':
 		default: return status
@@ -172,20 +172,20 @@ const formatValue = (field: string, value: string): any => {
 
 	switch (field) {
 
-		case 'id': return chalk.bold(value)
-		case 'resource_type': return chalk.magentaBright(value)
-		case 'topic': return chalk.magenta(value)
+		case 'id': return clColor.api.id(value)
+		case 'resource_type': return clColor.magentaBright(value)
+		case 'topic': return clColor.magenta(value)
 		case 'status': return statusColor(value)
-		case 'warnings_count': return chalk.yellowBright(value)
-		case 'errors_count': return chalk.redBright(value)
-		case 'destroyed_count': return chalk.cyanBright(value)
-		case 'processed_count': return chalk.greenBright(value)
+		case 'warnings_count': return clColor.msg.warning(value)
+		case 'errors_count': return clColor.msg.error(value)
+		case 'destroyed_count': return clColor.cyanBright(value)
+		case 'processed_count': return clColor.msg.success(value)
 		case 'metadata': {
 			const t = new Table({ style: { compact: false } })
 			t.push(...Object.entries(value).map(([k, v]) => {
 				return [
-					{ content: chalk.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
-					{ content: chalk.italic((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
+					{ content: clColor.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
+					{ content: clColor.cli.value((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
 				]
 			}))
 			return t.toString()
