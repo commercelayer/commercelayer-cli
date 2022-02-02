@@ -1,7 +1,8 @@
 import { Command } from '@oclif/core'
 import { ConfigParams, configParam } from '../../config'
 import { inspect } from 'util'
-import chalk from 'chalk'
+import { clColor } from '@commercelayer/cli-core'
+
 
 export default class ConfigGet extends Command {
 
@@ -24,8 +25,8 @@ export default class ConfigGet extends Command {
     const param = args.param
 
     if (Object.keys(ConfigParams).includes(param)) {
-      this.log(`\n${chalk.blueBright(param)} = ${inspect(configParam(param), false, null, true)}\n`)
-    } else this.error(`Invalid configuration param: ${chalk.italic.redBright(param)}`)
+      this.log(`\n${clColor.table.key(param)} = ${inspect(configParam(param), false, null, true)}\n`)
+    } else this.error(`Invalid configuration param: ${clColor.msg.error(param)}`)
 
   }
 

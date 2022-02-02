@@ -1,6 +1,7 @@
+import { clColor } from '@commercelayer/cli-core'
 import { Command, Flags } from '@oclif/core'
 import clicfg, { ConfigParamsEditable, configParam, paramDefault, ConfigParams } from '../../config'
-import chalk from 'chalk'
+
 
 export default class ConfigDefault extends Command {
 
@@ -25,7 +26,7 @@ export default class ConfigDefault extends Command {
     const { flags } = await this.parse(ConfigDefault)
 
 
-    if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${chalk.italic('--force (-F)')} flag to force setting save`)
+    if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${clColor.cli.flag('--force (-F)')} flag to force setting save`)
 
 
     // Set default value for all editable properties
@@ -33,7 +34,7 @@ export default class ConfigDefault extends Command {
     // Delete all test params
     Object.keys(ConfigParamsEditable).filter(k => k.startsWith('test')).forEach(k => clicfg.delete(k))
 
-    this.log(chalk.yellowBright('\nSuccessfully restored default CLI configuration\n'))
+    this.log(clColor.yellowBright('\nSuccessfully restored default CLI configuration\n'))
 
   }
 

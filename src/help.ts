@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { Help, Interfaces } from '@oclif/core'
-import _ from 'lodash'
+import { capitalize } from 'lodash'
 
 /*
 const indent = (str: string, count = 1): string => {
@@ -69,7 +69,7 @@ export default class MyHelpClass extends Help {
 	// the formatting for a list of topics
 	protected formatTopics(topics: Interfaces.Topic[]): string {
 		const fixTopics = topics.filter(t => !t.hidden).map(t => {
-			t.description = _.capitalize(t.description) + 'xxx'
+			t.description = capitalize(t.description)
 			return t
 		})
 		return super.formatTopics(fixTopics)
@@ -80,7 +80,7 @@ export default class MyHelpClass extends Help {
 	formatCommands(commands: Interfaces.Command[]): string {
 		return super.formatCommands(commands).split('\n').map((c: string) => {
 			let noSpaceCount = 0
-			return c.split(' ').map((t: string | undefined) => (((t || '').trim() !== '') && (++noSpaceCount === 2)) ? _.capitalize(t) : t).join(' ')
+			return c.split(' ').map((t: string | undefined) => (((t || '').trim() !== '') && (++noSpaceCount === 2)) ? capitalize(t) : t).join(' ')
 		}).join('\n')
 	}
 

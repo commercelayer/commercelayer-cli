@@ -1,10 +1,9 @@
 import { Command } from '@oclif/core'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import chalk from 'chalk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
-import { AppAuth, clToken } from '@commercelayer/cli-core'
+import { AppAuth, clColor, clToken } from '@commercelayer/cli-core'
 
 
 
@@ -34,7 +33,7 @@ export default class ApplicationsAdd extends Command {
     const { flags } = await this.parse(ApplicationsAdd)
 
     if (!flags.clientSecret && !flags.scope)
-      this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)
+      this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
     const scope = checkScope(flags.scope)
     const alias = checkAlias(flags.alias, this.config, flags.organization)
@@ -60,8 +59,8 @@ export default class ApplicationsAdd extends Command {
 
       const typeCheck = configParam(ConfigParams.applicationTypeCheck)
       if (typeCheck) {
-        if (!typeCheck.includes(app.kind)) this.error(`The credentials provided are associated to an application of type ${chalk.red.italic(app.kind)} while the only allowed types are: ${chalk.green.italic(typeCheck.join(','))}`,
-          { suggestions: [`Double check your credentials or access the online dashboard of ${chalk.bold(app.organization)} and create a new valid application `] }
+        if (!typeCheck.includes(app.kind)) this.error(`The credentials provided are associated to an application of type ${clColor.msg.error(app.kind)} while the only allowed types are: ${clColor.api.kind(typeCheck.join(','))}`,
+          { suggestions: [`Double check your credentials or access the online dashboard of ${clColor.api.organization(app.organization)} and create a new valid application `] }
         )
       }
       app.alias = alias
@@ -72,10 +71,10 @@ export default class ApplicationsAdd extends Command {
 
       writeTokenFile(this.config, app, token?.data)
 
-      this.log(`\n${chalk.bold.greenBright('Login successful!')} The new application has been successfully added to the CLI\n`)
+      this.log(`\n${clColor.msg.success.bold('Login successful!')} The new application has been successfully added to the CLI\n`)
 
     } catch (error: any) {
-      this.log(chalk.bold.redBright('Login failed!'))
+      this.log(clColor.msg.error.bold('Login failed!'))
       if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
       else this.error(error)
     }

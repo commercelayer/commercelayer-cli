@@ -1,6 +1,7 @@
+import { clColor } from '@commercelayer/cli-core'
 import { Command, Flags } from '@oclif/core'
 import clicfg, { ConfigParams } from '../../config'
-import chalk from 'chalk'
+
 
 export default class ConfigDel extends Command {
 
@@ -29,10 +30,10 @@ export default class ConfigDel extends Command {
     const param = args.param
 
     if (Object.keys(ConfigParams).includes(param)) {
-      if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${chalk.italic('--force (-F)')} flag to force parameter deletion`)
+      if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${clColor.cli.flag('--force (-F)')} flag to force parameter deletion`)
       clicfg.delete(param)
-      this.log(`\nParameter ${chalk.yellowBright(param)} correctly deleted from configuration\n`)
-    } else this.error(`Invalid configuration param: ${chalk.italic.redBright(param)}`)
+      this.log(`\nParameter ${clColor.yellowBright(param)} correctly deleted from configuration\n`)
+    } else this.error(`Invalid configuration param: ${clColor.msg.error(param)}`)
 
   }
 

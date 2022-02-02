@@ -1,9 +1,8 @@
 import Command, { filterApplications, Flags } from '../../base'
 import {configParam, ConfigParams } from '../../config'
-import cliux from 'cli-ux'
-import chalk from 'chalk'
 import { printScope } from '../../common'
-import { AppInfo, clApplication, clOutput, clUtil } from '@commercelayer/cli-core'
+import { AppInfo, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
+import { CliUx as cliux } from '@oclif/core'
 
 
 export default class ApplicationsIndex extends Command {
@@ -47,25 +46,25 @@ export default class ApplicationsIndex extends Command {
 
 			const currentVisibile = configData.some(a => clApplication.appKeyMatch(current, a))
 
-			cliux.table(configData as any, {
-				current: { header: `[${currentChar}]`, minWidth: 3, get: row => clApplication.appKeyMatch(current, row as unknown as AppInfo) ? chalk.magentaBright(` ${currentChar} `) : '   ' },
+			cliux.Table.table(configData as any, {
+				current: { header: `[${currentChar}]`, minWidth: 3, get: row => clApplication.appKeyMatch(current, row as unknown as AppInfo) ? clColor.magentaBright(` ${currentChar} `) : '   ' },
 				organization: { header: 'ORGANIZATION', get: row => currentColor(row, current)(row.organization) },
 				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
 				name: { header: 'APPLICATION', get: row => currentColor(row, current)(row.name) },
 				id: { header: 'ID', get: row => currentColor(row, current)(row.id)},
 				kind: { header: 'KIND', get: row => currentColor(row, current)(row.kind) },
 				scope: { header: 'SCOPE', minWidth: 10, get: row => currentColor(row, current)(printScope(row.scope as string)) },
-				customer: { header: 'PWD', get: row => (row.email && row.password) ? chalk.cyanBright(clOutput.center('\u221A', 'PWD'.length)) : '' },
-				mode: { header: 'MODE', get: row => `${((row.mode === 'live') ? chalk.greenBright : chalk.yellowBright)(row.mode)}` },
-				alias: { header: 'ALIAS', get: row => chalk.cyanBright(row.alias || '') },
+				customer: { header: 'PWD', get: row => (row.email && row.password) ? clColor.cyanBright(clOutput.center('\u221A', 'PWD'.length)) : '' },
+				mode: { header: 'MODE', get: row => `${((row.mode === 'live') ? clColor.api.live : clColor.api.test)(row.mode)}` },
+				alias: { header: 'ALIAS', get: row => clColor.cli.alias(row.alias || '') },
 				...extraColumns(flags),
 			}, {
 				printLine: clUtil.log,
 			})
 
-			if (current && currentVisibile) this.log(chalk.italic.magentaBright(`\n(${currentChar}) Current application`))
+			if (current && currentVisibile) this.log(clColor.italic.magentaBright(`\n(${currentChar}) Current application`))
 
-		} else this.log(chalk.italic('No application found'))
+		} else this.log(clColor.italic('No application found'))
 
 		this.log()
 
@@ -77,14 +76,14 @@ export default class ApplicationsIndex extends Command {
 const extraColumns = (flags: any): any => {
 	const extra: any = {}
 	if (flags.extra) {
-		extra.appkey = { header: chalk.dim('APPKEY'), get: (row: { key: any }) => chalk.dim(row.key || '') }
-		extra.domain = { header: chalk.dim('   DOMAIN'), get: (row: { domain: any }) => chalk.dim(row.domain || '') }
+		extra.appkey = { header: clColor.dim('APPKEY'), get: (row: { key: any }) => clColor.dim(row.key || '') }
+		extra.domain = { header: clColor.dim('   DOMAIN'), get: (row: { domain: any }) => clColor.dim(row.domain || '') }
 	}
 	return extra
 }
 
 
 const currentColor = (app: any, current: any): Function => {
-	return (clApplication.appKeyMatch(current, app) ? chalk.magentaBright : chalk.visible)
+	return (clApplication.appKeyMatch(current, app) ? clColor.magentaBright : clColor.visible)
 }
 

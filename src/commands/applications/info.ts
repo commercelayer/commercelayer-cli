@@ -1,7 +1,8 @@
 import Command, { Flags } from '../../base'
 import { currentApplication, readConfigFile } from '../../config'
-import chalk from 'chalk'
 import { inspect } from 'util'
+import { clColor } from '@commercelayer/cli-core'
+
 
 
 export default class ApplicationsInfo extends Command {
@@ -31,7 +32,7 @@ export default class ApplicationsInfo extends Command {
       const info = readConfigFile(this.config, app)
 
       this.log()
-      this.log(chalk.blueBright('-= Application Info =-'))
+      this.log(clColor.style.title('-= Application Info =-'))
       this.log(flags.json ? JSON.stringify(info, null, 4) : inspect(info, false, null, true))
       this.log()
 

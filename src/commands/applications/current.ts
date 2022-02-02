@@ -1,9 +1,8 @@
 import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
 import { readConfigFile, currentApplication } from '../../config'
 import { inspect } from 'util'
 import { printScope } from '../../common'
-import type { AppInfo } from '@commercelayer/cli-core'
+import { AppInfo, clColor } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsCurrent extends Command {
@@ -40,12 +39,12 @@ export default class ApplicationsCurrent extends Command {
 			this.log(`\nCurrent application: ${printCurrent(info)}\n`)
 
 			if (flags.info) {
-				this.log(chalk.blueBright('-= Application Info =-'))
+				this.log(clColor.style.title('-= Application Info =-'))
 				this.log(flags.json ? JSON.stringify(info, null, 4) : inspect(info, false, null, true))
 				this.log()
 			}
 
-		} else this.warn(chalk.italic('\nNo current application defined\n'))
+		} else this.warn(clColor.italic('\nNo current application defined\n'))
 
 	}
 
@@ -53,7 +52,7 @@ export default class ApplicationsCurrent extends Command {
 
 
 export const printCurrent = (app?: AppInfo): string => {
-	if (!app || !app.key || (app.key === '')) return chalk.italic.dim('No current application')
-	const mode = `${((app.mode === 'live') ? chalk.greenBright : chalk.yellowBright)(app.mode)}`
-	return `${chalk.bold.yellowBright(app.name)}  [ ${app.organization} | ${app.kind} | ${mode} | ${app.alias} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
+	if (!app || !app.key || (app.key === '')) return clColor.italic.dim('No current application')
+	const mode = `${((app.mode === 'live') ? clColor.api.live.greenBright : clColor.api.test)(app.mode)}`
+	return `${clColor.api.application(app.name)}  [ ${app.organization} | ${app.kind} | ${mode} | ${app.alias} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
 }

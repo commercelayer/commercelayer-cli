@@ -1,9 +1,8 @@
-import { Hook, Parser, Flags } from '@oclif/core'
+import { Hook, Parser, Flags, CliUx as cliux } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { clApplication, AppKey, clToken } from '@commercelayer/cli-core'
+import { clApplication, AppKey, clToken, clColor } from '@commercelayer/cli-core'
 import { newAccessToken, isAccessTokenExpiring } from '../../commands/applications/token'
-import cliux from 'cli-ux'
-import chalk from 'chalk'
+
 
 
 const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete']
@@ -17,6 +16,7 @@ const exludedCommands: string[] = [
 	'webhooks:topics',
 	'autocomplete',
 	'applications',
+	'version',
 ]
 
 
@@ -73,7 +73,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 	const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 	if (typeCheck) {
 		if (!typeCheck.includes(configData.kind))
-			this.error(`The application (${chalk.redBright(configData.key)}) has an invalid type: ${chalk.red.italic(configData.kind)}, while the only accepted type are ${chalk.green.italic(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
+			this.error(`The application (${clColor.api.application(configData.key)}) has an invalid type: ${clColor.msg.error(configData.kind)}, while the only accepted type are ${clColor.api.kind(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
 	}
 
 
@@ -108,7 +108,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 		if (tokenFileExists(opts.config, app)) {
 			tokenData = readTokenFile(opts.config, app)
 			if (isAccessTokenExpiring(tokenData)) {
-				cliux.action.start('Refreshing access token ...')
+				cliux.ux.action.start('Refreshing access token ...')
 				refresh = true
 				// If not overridden by saved current application, load configuration data
 				if (!configData) configData = readConfigFile(this.config, app)
@@ -120,7 +120,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 		if (tokenData === null) {
 			const token = await newAccessToken(this.config, app, true)
 			tokenData = token?.data
-			if (refresh) cliux.action.stop()
+			if (refresh) cliux.ux.action.stop()
 		}
 
 		opts.argv.push('--accessToken=' + tokenData.access_token)

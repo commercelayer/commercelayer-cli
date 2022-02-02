@@ -1,8 +1,7 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
 import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, deleteConfigFile, deleteTokenFile, ConfigParams, currentApplication } from '../../config'
-import { clApplication, clToken } from '@commercelayer/cli-core'
-import cliux from 'cli-ux'
+import { clApplication, clColor, clToken } from '@commercelayer/cli-core'
+import { CliUx as cliux } from '@oclif/core'
 
 
 export default class ApplicationsLogout extends Command {
@@ -29,7 +28,7 @@ export default class ApplicationsLogout extends Command {
     if (app && configFileExists(this.config, app)) {
 
       this.log()
-      const ok = await cliux.confirm(`>> Do you really want to remove application ${chalk.bold.yellowBright(app.name)} of ${chalk.bold.yellowBright(app.organization)} from CLI configuration? ${chalk.dim('[Yy/Nn]')}`)
+      const ok = await cliux.ux.confirm(`>> Do you really want to remove application ${clColor.api.application(app.name)} of ${clColor.api.organization(app.organization)} from CLI configuration? ${clColor.dim('[Yy/Nn]')}`)
 
       if (ok) {
 
@@ -50,14 +49,14 @@ export default class ApplicationsLogout extends Command {
 
         deleteConfigFile(this.config, app)
 
-        this.log(`\n${chalk.greenBright('Successfully')} removed application ${chalk.bold(app.name)}`)
+        this.log(`\n${clColor.msg.success('Successfully')} removed application ${clColor.api.application(app.name)}`)
 
       }
 
       this.log()
 
     } else this.error('Unable to find application to logout', {
-      suggestions: [`Execute command ${chalk.italic(`${this.config.bin} applications`)} to get a list of all the available active applications`],
+      suggestions: [`Execute command ${clColor.cli.command(`${this.config.bin} applications`)} to get a list of all the available active applications`],
     })
 
   }

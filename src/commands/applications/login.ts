@@ -1,8 +1,7 @@
 import { Command, Flags, Config } from '@oclif/core'
 import { AuthScope  } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { ApiMode, AppAuth, AppInfo, clApplication, clApi, clToken } from '@commercelayer/cli-core'
-import chalk from 'chalk'
+import { ApiMode, AppAuth, AppInfo, clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication } from '../../config'
 import { inspect } from 'util'
 import { printCurrent } from './current'
@@ -78,7 +77,7 @@ export default class ApplicationsLogin extends Command {
 		const { flags } = await this.parse(ApplicationsLogin)
 
 		if (!flags.clientSecret && !flags.scope)
-			this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)
+			this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
 		const scope = checkScope(flags.scope)
 		const alias = await checkAlias(flags.alias, this.config, flags.organization)
@@ -104,8 +103,8 @@ export default class ApplicationsLogin extends Command {
 
 			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 			if (typeCheck) {
-				if (!typeCheck.includes(app.kind)) this.error(`The credentials provided are associated to an application of type ${chalk.red.italic(app.kind)} while the only allowed types are: ${chalk.green.italic(typeCheck.join(','))}`,
-					{ suggestions: [`Double check your credentials or access the online dashboard of ${chalk.bold(app.organization)} and create a new valid application `] }
+				if (!typeCheck.includes(app.kind)) this.error(`The credentials provided are associated to an application of type ${clColor.msg.error(app.kind)} while the only allowed types are: ${clColor.api.kind(typeCheck.join(','))}`,
+					{ suggestions: [`Double check your credentials or access the online dashboard of ${clColor.api.organization(app.organization)} and create a new valid application `] }
 				)
 			}
 			app.alias = alias
@@ -120,10 +119,10 @@ export default class ApplicationsLogin extends Command {
 			const current = currentApplication()
 			this.log(`\nCurrent application: ${printCurrent(current)}`)
 
-			this.log(`\n${chalk.bold.greenBright('Login successful!')} Your configuration has been stored locally. You can now interact with ${chalk.italic.bold(app.organization)} organization\n`)
+			this.log(`\n${clColor.msg.success.bold('Login successful!')} Your configuration has been stored locally. You can now interact with ${clColor.api.organization(app.organization)} organization\n`)
 
 		} catch (error: any) {
-			this.log(chalk.bold.redBright('Login failed!'))
+			this.log(clColor.msg.error.bold('Login failed!'))
 			if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
 			else this.error(error)
 		}
@@ -146,12 +145,12 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	// Organization info
 	const org = await cl.organization.retrieve().catch(() => {
-		throw new Error(`This application cannot access the ${chalk.italic('Organization')} resource`)
+		throw new Error(`This application cannot access the ${clColor.italic('Organization')} resource`)
 	})
 
 	// Application info
 	const app = await cl.application.retrieve().catch(() => {
-		throw new Error(`This application cannot access the ${chalk.italic('Application')} resource`)
+		throw new Error(`This application cannot access the ${clColor.italic('Application')} resource`)
 	})
 
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
@@ -183,9 +182,9 @@ const checkScope = (scopeFlags: string[]): AuthScope => {
 	if (scopeFlags) {
 		for (const s of scopeFlags) {
 			const colonIdx = s.indexOf(':')
-			if ((colonIdx < 0) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${chalk.red(s)}`)
+			if ((colonIdx < 0) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${clColor.msg.error(s)}`)
 			else
-				if (scope.includes(s)) throw new Error(`Duplicate login scope: ${chalk.red(s)}`)
+				if (scope.includes(s)) throw new Error(`Duplicate login scope: ${clColor.msg.error(s)}`)
 				else scope.push(s)
 		}
 	}
@@ -200,16 +199,16 @@ const checkScope = (scopeFlags: string[]): AuthScope => {
 const checkAlias = (alias: string, config?: Config, organization?: string): string => {
 
 	const match = alias.match(/^[a-z0-9_-]*$/)
-	if ((match === null) || (match.length > 1)) throw new Error(`Invalid alias: ${chalk.redBright(alias)}. Accepted characters are ${chalk.italic('[a-z0-9_-]')}`)
+	if ((match === null) || (match.length > 1)) throw new Error(`Invalid alias: ${clColor.msg.error(alias)}. Accepted characters are ${clColor.cli.value('[a-z0-9_-]')}`)
 
 	const ml = 15
 	const al = match[0]
-	if (al.length > ml) throw new Error(`Application alias must have a max length of ${chalk.yellowBright(String(ml))} characters`)
+	if (al.length > ml) throw new Error(`Application alias must have a max length of ${clColor.type.number(String(ml))} characters`)
 
 	if (config) {
 		const flags = { alias, organization }
 		const apps = filterApplications(config, flags)
-		if (apps.length > 0) throw new Error(`Alias ${chalk.redBright(alias)} has already been used for organization ${chalk.bold(apps[0].organization)}`)
+		if (apps.length > 0) throw new Error(`Alias ${clColor.msg.error(alias)} has already been used for organization ${clColor.api.organization(apps[0].organization)}`)
 	}
 
 	return al

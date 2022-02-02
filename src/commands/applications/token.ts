@@ -1,7 +1,6 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
 import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
-import { clOutput, AppKey, clToken, clConfig } from '@commercelayer/cli-core'
+import { clOutput, AppKey, clToken, clConfig, clColor } from '@commercelayer/cli-core'
 import type { Config } from '@oclif/core/lib/interfaces/config'
 import type { AuthReturnType } from '@commercelayer/js-auth'
 
@@ -56,7 +55,7 @@ export default class ApplicationsToken extends Command {
 
 		if (!app || !configFileExists(this.config, app))
 			this.error(`Unable to find configuration file for application${app ? ` ${app.name}` : ''}`,
-				{ suggestions: [`execute ${chalk.italic('applications:login')} command to initialize application and get the first access token`] }
+				{ suggestions: [`execute ${clColor.cli.command('applications:login')} command to initialize application and get the first access token`] }
 			)
 
 		try {
@@ -72,16 +71,16 @@ export default class ApplicationsToken extends Command {
 				expMinutes = token.expMinutes
 			} else {
 				const token = await newAccessToken(this.config, app, flags.save)
-				if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${chalk.italic.bold(app.name)}`)
+				if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${clColor.api.application(app.name)}`)
 				accessToken = token?.accessToken
 				returnData = token?.data
 			}
 
 			if (accessToken) {
-				this.log(`\nAccess token for application ${chalk.bold.yellowBright(app.name)} of organization ${chalk.bold.yellowBright(app.organization)}`)
-				this.log(`\n${chalk.blueBright(accessToken)}\n`)
+				this.log(`\nAccess token for application ${clColor.api.application(app.name)} of organization ${clColor.api.organization(app.organization)}`)
+				this.log(`\n${clColor.api.token(accessToken)}\n`)
 				if (flags.shared && expMinutes) {
-					this.warn(chalk.italic(`this access token will expire in ${expMinutes} minutes`))
+					this.warn(clColor.italic(`this access token will expire in ${expMinutes} minutes`))
 					this.log()
 				}
 			}
@@ -91,7 +90,7 @@ export default class ApplicationsToken extends Command {
 			return returnData
 
 		} catch (error: any) {
-			this.log(chalk.bold.redBright('FAILURE! ') + error.message)
+			this.log(clColor.msg.error.bold('FAILURE! ') + error.message)
 		}
 
 	}
@@ -100,7 +99,7 @@ export default class ApplicationsToken extends Command {
 	private printAccessToken(accessToken: any): void {
 		if (accessToken) {
 			const info = clToken.decodeAccessToken(accessToken)
-			this.log(chalk.blueBright('Token Info:'))
+			this.log(clColor.style.title.blueBright('Token Info:'))
 			this.log(clOutput.printObject(info))
 			this.log()
 		}
@@ -122,7 +121,7 @@ const newAccessToken = async (config: Config, app: AppKey, save: boolean = false
 		const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 		if (typeCheck) {
 			if (!typeCheck.includes(info.application.kind))
-				throw new Error(`The locally saved credentials are associated to an application of type ${chalk.red.italic(info.application.kind)} while the only allowed types are: ${chalk.green.italic(typeCheck.join(','))}`)
+				throw new Error(`The locally saved credentials are associated to an application of type ${clColor.msg.error(info.application.kind)} while the only allowed types are: ${clColor.api.kind(typeCheck.join(','))}`)
 		}
 
 		if (save) writeTokenFile(config, app, token?.data)

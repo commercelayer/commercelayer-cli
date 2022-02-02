@@ -1,6 +1,6 @@
 import Configstore from 'configstore'
-import path from 'path'
-import fs from 'fs'
+import { join } from 'path'
+import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs'
 import { Config } from '@oclif/core/lib/interfaces/config'
 import type { AppKey, AppInfo } from '@commercelayer/cli-core'
 
@@ -21,69 +21,69 @@ const fixed = {
 
 
 const configDir = (config: Config): string => {
-	return path.join(config.configDir, fixed.applicationsDir)
+	return join(config.configDir, fixed.applicationsDir)
 }
 
 const configDirExists = (config: Config): boolean => {
-	return fs.existsSync(configDir(config))
+	return existsSync(configDir(config))
 }
 
 const createConfigDir = (config: Config): void => {
-	fs.mkdirSync(configDir(config), { recursive: true })
+	mkdirSync(configDir(config), { recursive: true })
 }
 
 
 const configFilePath = (config: Config, { key }: AppKey): string => {
-	return path.join(configDir(config), `${key}.${fixed.configSuffix}`)
+	return join(configDir(config), `${key}.${fixed.configSuffix}`)
 }
 
 const tokenFilePath = (config: Config, { key }: AppKey): string => {
-	return path.join(configDir(config), `${key}.${fixed.tokenSuffix}`)
+	return join(configDir(config), `${key}.${fixed.tokenSuffix}`)
 }
 
 
 const configFileExists = (config: Config, app: AppKey): boolean => {
 	const filePath = configFilePath(config, app)
-	return fs.existsSync(filePath)
+	return existsSync(filePath)
 }
 
 const tokenFileExists = (config: Config, app: AppKey): boolean => {
 	const filePath = tokenFilePath(config, app)
-	return fs.existsSync(filePath)
+	return existsSync(filePath)
 }
 
 
 const writeConfigFile = (config: Config, app: AppInfo): void => {
 	const filePath = configFilePath(config, app)
-	fs.writeFileSync(filePath, JSON.stringify(app, null, 4))
+	writeFileSync(filePath, JSON.stringify(app, null, 4))
 }
 
 const writeTokenFile = (config: Config, app: AppKey, token: any): void => {
 	const filePath = tokenFilePath(config, app)
-	fs.writeFileSync(filePath, JSON.stringify(token, null, 4))
+	writeFileSync(filePath, JSON.stringify(token, null, 4))
 }
 
 const readConfigFile = (config: Config, app: AppKey): AppInfo => {
 	const filePath = configFilePath(config, app)
-	const cliConfig = fs.readFileSync(filePath, { encoding: fixed.encoding })
+	const cliConfig = readFileSync(filePath, { encoding: fixed.encoding })
 	return JSON.parse(cliConfig)
 }
 
 const readTokenFile = (config: Config, app: AppKey): any => {
 	const filePath = tokenFilePath(config, app)
-	const token = fs.readFileSync(filePath, { encoding: fixed.encoding })
+	const token = readFileSync(filePath, { encoding: fixed.encoding })
 	return JSON.parse(token)
 }
 
 const deleteConfigFile = (config: Config, app: AppKey): boolean => {
 	const filePath = configFilePath(config, app)
-	fs.unlinkSync(filePath)
+	unlinkSync(filePath)
 	return true
 }
 
 const deleteTokenFile = (config: Config, app: AppKey): boolean => {
 	const filePath = tokenFilePath(config, app)
-	fs.unlinkSync(filePath,)
+	unlinkSync(filePath,)
 	return true
 }
 
@@ -91,7 +91,7 @@ const readConfigDir = (config: Config, filter: { key?: string }): AppInfo[] => {
 
 	if (!configDirExists(config)) return []
 
-	const files = fs.readdirSync(configDir(config)).map(f => {
+	const files = readdirSync(configDir(config)).map(f => {
 
 		const fc = f.split('.')
 

@@ -1,6 +1,6 @@
+import { clColor } from '@commercelayer/cli-core'
 import { Hook } from '@oclif/core'
 import { getPluginInfo } from '../../commands/plugins/available'
-import chalk from 'chalk'
 
 
 
@@ -24,7 +24,7 @@ const hook: Hook<'prerun'> = async function (opts) {
       if (a.startsWith('-')) return false
 
       const p = getPluginInfo(a)
-      if (p === undefined) this.error(`Unknown Commerce Layer CLI plugin: ${chalk.redBright(a)}: execute command '${chalk.italic(`${this.config.bin} plugins:available`)}' to get a list of all available plugins`)
+      if (p === undefined) this.error(`Unknown Commerce Layer CLI plugin: ${clColor.msg.error(a)}: execute command '${clColor.italic(`${this.config.bin} plugins:available`)}' to get a list of all available plugins`)
       else plugin = p.plugin as string
 
       return true

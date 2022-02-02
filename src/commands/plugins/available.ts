@@ -1,7 +1,6 @@
-import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
-import cliux from 'cli-ux'
-import { clUtil } from '@commercelayer/cli-core'
+import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { clColor, clUtil } from '@commercelayer/cli-core'
+
 
 export default class PluginsAvailable extends Command {
 
@@ -26,18 +25,18 @@ export default class PluginsAvailable extends Command {
 
     const { flags } = await this.parse(PluginsAvailable)
 
-    this.log(chalk.blueBright('\n-= Commerce Layer CLI available plugins =-\n'))
+    this.log(clColor.style.title('\n-= Commerce Layer CLI available plugins =-\n'))
 
     const availablePlugins = AvailablePlugins.filter(p => ((!p.hidden || flags.hidden) && p.enabled))
 
     if (availablePlugins && (availablePlugins.length > 0)) {
-      cliux.table(availablePlugins, {
-          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? chalk.dim : chalk).blueBright(row.name) },
-          description: { header: 'DESCRIPTION', get: row => (row.hidden ? chalk.dim(row.description) : row.description) },
+      cliux.Table.table(availablePlugins, {
+          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? clColor.dim : clColor).blueBright(row.name) },
+          description: { header: 'DESCRIPTION', get: row => (row.hidden ? clColor.dim(row.description) : row.description) },
         }, {
           printLine: clUtil.log,
       })
-    } else this.log(chalk.italic('No available plugins'))
+    } else this.log(clColor.italic('No available plugins'))
 
     this.log()
 

@@ -1,7 +1,8 @@
 import { Command, Flags } from '@oclif/core'
 import { paramExists, paramEditable, configParam } from '../../config'
 import { inspect } from 'util'
-import chalk from 'chalk'
+import { clColor } from '@commercelayer/cli-core'
+
 
 export default class ConfigSet extends Command {
 
@@ -33,11 +34,11 @@ export default class ConfigSet extends Command {
 
     if (paramExists(param)) {
       if (paramEditable(param)) {
-        if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${chalk.italic('--force (-F)')} flag to force setting save`)
+        if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${clColor.cli.flag('--force (-F)')} flag to force setting save`)
         configParam(param, value)
-        this.log(`\n${chalk.blueBright(param)} = ${inspect(configParam(param), false, null, true)}\n`)
-      } else this.error(`Readonly configuration param: ${chalk.italic.redBright(param)}`)
-    } else this.error(`Invalid configuration param: ${chalk.italic.redBright(param)}`)
+        this.log(`\n${clColor.table.key.blueBright(param)} = ${inspect(configParam(param), false, null, true)}\n`)
+      } else this.error(`Readonly configuration param: ${clColor.msg.error(param)}`)
+    } else this.error(`Invalid configuration param: ${clColor.msg.error(param)}`)
 
   }
 
