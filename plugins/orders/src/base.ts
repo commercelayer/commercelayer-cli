@@ -1,7 +1,6 @@
 import { CommerceLayerStatic, Order } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
-import { clOutput, clUpdate } from '@commercelayer/cli-core'
+import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -66,7 +65,7 @@ export default abstract class extends Command {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
-        this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
+        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
           { suggestions: ['Execute login to get access to the organization\'s imports'] }
         )
       } else this.error(clOutput.formatError(error, flags))
@@ -80,7 +79,7 @@ export default abstract class extends Command {
 
 
   protected successMessage(action: string, id: string) {
-    this.log(`\nAction ${chalk.italic.cyanBright(action)} executed without errors on order ${chalk.yellowBright(id)}\n`)
+    this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on order ${clColor.api.id(id)}\n`)
   }
 
 }
