@@ -2,6 +2,7 @@ import Command from '../../base'
 import RetrieveCommand from './retrieve'
 import ListCommand from './list'
 
+
 export default class ResourcesGet extends Command {
 
   static description = 'retrieve a resource or list a set of resources'
@@ -24,6 +25,7 @@ export default class ResourcesGet extends Command {
   static args = [
     ...RetrieveCommand.args,
   ]
+
 
   async run() {
 

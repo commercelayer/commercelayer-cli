@@ -1,11 +1,9 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
-import Command, { Flags } from '../../base'
-import { clApi, clToken } from '@commercelayer/cli-core'
+import Command, { Flags, cliux } from '../../base'
+import { clApi, clToken, clColor } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
-import chalk from 'chalk'
-import cliux from 'cli-ux'
 import notifier from 'node-notifier'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 
@@ -158,7 +156,7 @@ export default class ResourcesAll extends Command {
 
     if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
 
-      await cliux.wait((securityInterval + 1) * 1000)
+      await cliux.ux.wait((securityInterval + 1) * 1000)
 
       const organization = flags.organization
       const domain = flags.domain
@@ -210,7 +208,7 @@ export default class ResourcesAll extends Command {
 
     const timeout = flags.timeout || 5000 // Icreased timeout (default 3 secs)
     if (timeout && ((timeout < 1000) || (timeout > 10000)))
-      this.error(`Invalid timeout: ${chalk.redBright(String(timeout))}. Timeout value must be in range [${requestTimeout.min} - ${requestTimeout.max}]`)
+      this.error(`Invalid timeout: ${clColor.style.error(String(timeout))}. Timeout value must be in range [${requestTimeout.min} - ${requestTimeout.max}]`)
 
 
     try {
@@ -235,8 +233,8 @@ export default class ResourcesAll extends Command {
 
       const itemsDesc = resource.api.replace(/_/g, ' ')
 
-      const progressBar = blindMode ? blindProgressBar : cliux.progress({
-        format: `Fetching ${itemsDesc} ... | ${chalk.greenBright('{bar}')} | ${chalk.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
+      const progressBar = blindMode ? blindProgressBar : cliux.ux.progress({
+        format: `Fetching ${itemsDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
         hideCursor: true,
@@ -252,7 +250,7 @@ export default class ResourcesAll extends Command {
          * 200ms  for pages within range 51 : 599
          * 500ms  for pages >= 600
         */
-        if ((page > 1) && (pages > 50)) await cliux.wait((pages < 600) ? 200 : 500)
+        if ((page > 1) && (pages > 50)) await cliux.ux.wait((pages < 600) ? 200 : 500)
 
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
 
@@ -266,8 +264,8 @@ export default class ResourcesAll extends Command {
 
           if (page === 1) {
             if ((recordCount > maxItemsWarning) && !blindMode) {
-              this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})\nThe process could be ${chalk.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
-              if (!await cliux.confirm(`>> Do you want to continue anyway? ${chalk.dim('[Yy/Nn]')}`)) return
+              this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})\nThe process could be ${clColor.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
+              if (!await cliux.ux.confirm(`>> Do you want to continue anyway? ${clColor.dim('[Yy/Nn]')}`)) return
               notification = true
             }
             this.log()
@@ -296,9 +294,9 @@ export default class ResourcesAll extends Command {
 
       // Print and save output
       if (out.length > 0) {
-        this.log(`\nFetched ${chalk.yellowBright(out.length)} ${itemsDesc}`)
+        this.log(`\nFetched ${clColor.yellowBright(out.length)} ${itemsDesc}`)
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
-      } else this.log(chalk.italic('\nNo records found\n'))
+      } else this.log(clColor.italic('\nNo records found\n'))
 
 
       // Notification

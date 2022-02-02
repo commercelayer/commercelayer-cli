@@ -1,8 +1,7 @@
 import Command from '../../base'
 import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
-import chalk from 'chalk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { clCommand } from '@commercelayer/cli-core'
+import { clCommand, clColor } from '@commercelayer/cli-core'
 
 export default class ResourcesDelete extends Command {
 
@@ -31,7 +30,7 @@ export default class ResourcesDelete extends Command {
 
 		const invalidFlags: string[] = ['fields', 'include']
 		invalidFlags.forEach(x => {
-			if (flags[x as keyof typeof flags]) this.error(`Flag non supported in ${chalk.italic('delete')} operation: ${chalk.red(x)}`)
+			if (flags[x as keyof typeof flags]) this.error(`Flag non supported in ${clColor.italic('delete')} operation: ${clColor.style.error(x)}`)
 		})
 
 
@@ -55,7 +54,7 @@ export default class ResourcesDelete extends Command {
 
 			await resSdk.delete(id)
 
-			this.log(`\n${chalk.greenBright('Successfully')} deleted resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(id)}\n`)
+			this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(id)}\n`)
 
 		} catch (error) {
 			if (isRequestInterrupted(error) && reqReader) {

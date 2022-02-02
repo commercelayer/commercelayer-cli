@@ -2,12 +2,12 @@
 import { Resource } from '../resources'
 import axios from 'axios'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import path from 'path'
+import { join } from 'path'
 import { writeFileSync } from 'fs'
 import { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
-const resFile = path.join(__dirname, 'schema.json')
+const resFile = join(__dirname, 'schema.json')
 
 
 const getResourcesJson = async (): Promise<any> => {
@@ -113,7 +113,7 @@ const exportResources = async ({ source = 'sdk', variable = false, name = 'resou
 
 	lines.push(`\n\nexport default ${name}\n`)
 
-	writeFileSync(path.join(__dirname, 'available.ts'), lines.join('\n'), { encoding: 'utf-8' })
+	writeFileSync(join(__dirname, 'available.ts'), lines.join('\n'), { encoding: 'utf-8' })
 
 	console.log('Generated resource list')
 

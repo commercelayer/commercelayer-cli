@@ -1,6 +1,7 @@
+import { clColor } from '@commercelayer/cli-core'
 import axios from 'axios'
-import fs from 'fs'
-import chalk from 'chalk'
+import { readFileSync } from 'fs'
+
 
 
 const rawRequest = async (
@@ -37,14 +38,14 @@ const readDataFile = (file: string): any => {
 	let dataJson: any
 
 	try {
-		dataFile = fs.readFileSync(file, 'utf-8')
+		dataFile = readFileSync(file, 'utf-8')
 	} catch (error) {
-		throw new Error(`Unable to find or open the data file ${chalk.redBright(file)}`)
+		throw new Error(`Unable to find or open the data file ${clColor.msg.error(file)}`)
 	}
 	try {
 		dataJson = JSON.parse(dataFile)
 	} catch (error) {
-		throw new Error(`Unable to parse the data file ${chalk.redBright(file)}: invalid JSON format`)
+		throw new Error(`Unable to parse the data file ${clColor.msg.error(file)}: invalid JSON format`)
 	}
 
 	const data = dataJson.data ? dataJson : { data: dataJson }
@@ -58,6 +59,7 @@ enum Operation {
 	Create = 'POST',
 	Update = 'PATCH',
 }
+
 
 
 export { readDataFile, rawRequest, Operation }

@@ -28,5 +28,4 @@ const fixType = (val: string): string | number | boolean | null | undefined => {
 
 
 
-
 export { fixType }

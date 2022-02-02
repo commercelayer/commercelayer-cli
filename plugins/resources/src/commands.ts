@@ -2,8 +2,7 @@ import { QueryParams, QueryParamsList } from '@commercelayer/sdk'
 import { Config } from '@oclif/core'
 import { join } from 'path'
 import fs from 'fs'
-import { clOutput } from '@commercelayer/cli-core'
-import chalk from 'chalk'
+import { clOutput, clColor } from '@commercelayer/cli-core'
 import { KeyValArray } from './common'
 
 
@@ -30,11 +29,11 @@ export type { ResourceOperation, CommandParams }
 const checkAlias = (alias: string): boolean => {
 
   const match = alias.match(/^[a-z0-9_-]*$/)
-  if ((match === null) || (match.length > 1)) throw new Error(`Invalid alias: ${chalk.redBright(alias)}. Accepted characters are ${chalk.italic('[a-z0-9_-]')}`)
+  if ((match === null) || (match.length > 1)) throw new Error(`Invalid alias: ${clColor.msg.error(alias)}. Accepted characters are ${clColor.cli.value('[a-z0-9_-]')}`)
 
   const ml = 15
   const al = match[0]
-  if (al.length > ml) throw new Error(`Alias must have a max length of ${chalk.yellowBright(String(ml))} characters`)
+  if (al.length > ml) throw new Error(`Alias must have a max length of ${clColor.yellowBright(String(ml))} characters`)
 
   return true
 
@@ -104,6 +103,7 @@ const deleteArgsFile = (alias: string, config: Config, resource: string, operati
   const fileName = commandFileName(resource, alias, operation)
   fs.unlinkSync(join(saveDir, fileName))
 }
+
 
 
 export { saveCommandData, loadCommandData, checkAlias, aliasExists, readCommandArgs, deleteArgsFile }

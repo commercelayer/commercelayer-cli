@@ -1,7 +1,5 @@
-import { Command } from '@oclif/core'
-import chalk from 'chalk'
-import cliux from 'cli-ux'
-import { clUtil } from '@commercelayer/cli-core'
+import { Command, CliUx as cliux } from '@oclif/core'
+import { clUtil, clColor } from '@commercelayer/cli-core'
 
 
 const filters: Filter[] = [
@@ -76,9 +74,9 @@ export default class ResourcesFilters extends Command {
 
   async run() {
 
-    this.log(chalk.blueBright('\n-= Commerce Layer API available resource filters =-\n'))
-    cliux.table(filters.sort((a, b) => a.predicate.localeCompare(b.predicate)), {
-      predicate: { header: 'PREDICATE', minWidth: 25, get: row => chalk.blueBright(row.predicate) },
+    this.log(clColor.style.title('\n-= Commerce Layer API available resource filters =-\n'))
+    cliux.Table.table(filters.sort((a, b) => a.predicate.localeCompare(b.predicate)), {
+      predicate: { header: 'PREDICATE', minWidth: 25, get: row => clColor.table.key(row.predicate) },
       description: { header: 'DESCRIPTION' },
     }, {
       printLine: clUtil.log,

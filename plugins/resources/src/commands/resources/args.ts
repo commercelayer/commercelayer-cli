@@ -1,11 +1,9 @@
-import { Command, Flags } from '@oclif/core'
+import { Command, Flags, CliUx as cliux } from '@oclif/core'
 import { findResource, Resource } from '../../util/resources'
-import chalk from 'chalk'
 import { deleteArgsFile, loadCommandData, readCommandArgs, ResourceOperation } from '../../commands'
 import { formatOutput } from '../../output'
-import cliux from 'cli-ux'
 import { QueryParamsList } from '@commercelayer/sdk'
-import { clOutput, clUtil } from '@commercelayer/cli-core'
+import { clOutput, clUtil, clColor } from '@commercelayer/cli-core'
 
 
 export default class ResourcesArgs extends Command {
@@ -57,15 +55,15 @@ export default class ResourcesArgs extends Command {
 
     if (alias) {
 
-      if (!resource) this.error(`Flag ${chalk.bold('alias')} must be used in combination with a resource type`)
+      if (!resource) this.error(`Flag ${clColor.style.flag('alias')} must be used in combination with a resource type`)
 
       const cmdData = loadCommandData(alias, this.config, resource, operation)
       if (cmdData) {
         if (flags.delete) {
           deleteArgsFile(cmdData.alias, this.config, cmdData.resource, cmdData.operation)
-          this.log(`Deleted args with alias ${chalk.yellowBright()} for resource type ${chalk.yellowBright(cmdData.resource)} and operation ${chalk.yellowBright(cmdData.operation)}`)
+          this.log(`Deleted args with alias ${clColor.yellowBright()} for resource type ${clColor.style.resource(cmdData.resource)} and operation ${clColor.yellowBright(cmdData.operation)}`)
         } else this.log(formatOutput(cmdData))
-      } else this.log(`No saved arguments found with alias ${chalk.yellowBright(alias)} for resource type ${chalk.yellowBright(resource)} and operation ${chalk.yellowBright(operation)}`)
+      } else this.log(`No saved arguments found with alias ${clColor.yellowBright(alias)} for resource type ${clColor.style.resource(resource)} and operation ${clColor.yellowBright(operation)}`)
 
     } else {
 
@@ -74,10 +72,10 @@ export default class ResourcesArgs extends Command {
       if (commands.length > 0) {
 
         if (flags.pretty) {
-          cliux.table(commands.sort((a, b) => (a.resource + a.operation + a.alias).localeCompare(b.resource + b.operation + b.alias)), {
-            resource: { header: 'RESOURCE', get: row => chalk.cyanBright(row.resource) },
-            operation: { header: 'OPERATION', get: row => chalk.cyanBright(row.operation) },
-            alias: { header: 'ALIAS', get: row => chalk.yellowBright(row.alias || '') },
+          cliux.Table.table(commands.sort((a, b) => (a.resource + a.operation + a.alias).localeCompare(b.resource + b.operation + b.alias)), {
+            resource: { header: 'RESOURCE', get: row => clColor.cyanBright(row.resource) },
+            operation: { header: 'OPERATION', get: row => clColor.cyanBright(row.operation) },
+            alias: { header: 'ALIAS', get: row => clColor.yellowBright(row.alias || '') },
             include: { header: 'INCLUDE', get: row => (row.params.include || []).sort().join('\n') },
             fields: { header: 'FIELDS', get: row => Object.keys((row.params.fields || {})).sort().join('\n') },
             filters: { header: 'FILTERS', get: row => Object.keys(((row.params as QueryParamsList).filters || {})).sort().join('\n') },
@@ -89,9 +87,9 @@ export default class ResourcesArgs extends Command {
             printLine: clUtil.log,
           })
         } else {
-          this.log(this.flagsMessageSuffix('Saved command arguments', resource, operation) + chalk.blueBright(' with ') + chalk.cyanBright('alias'))
+          this.log(this.flagsMessageSuffix('Saved command arguments', resource, operation) + clColor.style.title(' with alias'))
           commands.forEach(c => {
-            this.log(`\n${chalk.cyanBright(`\u002A  ${c.alias} [${c.operation}]`)}`)
+            this.log(`\n${clColor.cyanBright(`\u002A  ${c.alias} [${c.operation}]`)}`)
             this.log(`${c.operation} ${c.argv.join(' ')}`)
           })
         }
@@ -109,18 +107,18 @@ export default class ResourcesArgs extends Command {
 
     const f = resource || operation ? ' for ' : ''
     const a = resource && operation ? ' and ' : ''
-    const res = resource ? `resource type ${chalk.yellowBright(resource)}` : ''
-    const op = operation ? `operation ${chalk.yellowBright(operation)}` : ''
+    const res = resource ? `resource type ${clColor.style.resource.yellowBright(resource)}` : ''
+    const op = operation ? `operation ${clColor.yellowBright.bold(operation)}` : ''
 
-    return chalk.blueBright(`${message}${f}${res}${a}${op}`)
+    return clColor.style.title(`${message}${f}${res}${a}${op}`)
 
   }
 
 
   protected checkResource(res: string): Resource {
     const resource = findResource(res, { singular: false })
-    if (resource === undefined) this.error(`Invalid resource ${chalk.redBright(res)}`,
-      { suggestions: [`Execute command ${chalk.italic('resources')} to get a list of all available CLI resources`] }
+    if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
+      { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
     )
     return resource
   }

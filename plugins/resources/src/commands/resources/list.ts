@@ -1,9 +1,8 @@
-import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND, cliux } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
-import chalk from 'chalk'
-import cliux from 'cli-ux'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
+import { clColor } from '@commercelayer/cli-core'
 
 
 const OPERATION = 'list'
@@ -123,9 +122,9 @@ export default class ResourcesList extends Command {
       }
 
 
-			if (!flags.doc) cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
+			if (!flags.doc) cliux.ux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
 			const res = await resSdk.list(params)
-			cliux.action.stop()
+			cliux.ux.action.stop()
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : [...res]
 			const meta = res.meta
@@ -139,12 +138,12 @@ export default class ResourcesList extends Command {
         }
 
 				this.printOutput(out, flags)
-				this.log(`\nRecords: ${chalk.blueBright(res.length)} of ${meta.recordCount} | Page: ${chalk.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
+				this.log(`\nRecords: ${clColor.blueBright(res.length)} of ${meta.recordCount} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
 
         // Save command output
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
 
-			} else this.log(chalk.italic('\nNo records found\n'))
+			} else this.log(clColor.italic('\nNo records found\n'))
 
 
       // Save command arguments

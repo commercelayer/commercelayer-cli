@@ -1,8 +1,6 @@
-import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
-import cliux from 'cli-ux'
+import { Command, Flags, CliUx as cliux } from '@oclif/core'
 import { resourceList } from '../../util/resources'
-import { clUtil } from '@commercelayer/cli-core'
+import { clUtil, clColor } from '@commercelayer/cli-core'
 
 
 export default class ResourcesIndex extends Command {
@@ -26,14 +24,14 @@ export default class ResourcesIndex extends Command {
 
 		await this.parse(ResourcesIndex)
 
-		this.log(chalk.blueBright('\n-= Commerce Layer API available resources =-\n'))
+		this.log(clColor.style.title('\n-= Commerce Layer API available resources =-\n'))
 
 		const resourceArray = resourceList('api').map(r => {
 			return { name: r, url: `https://docs.commercelayer.io/api/resources/${r}` }
 		})
 
-		cliux.table(resourceArray, {
-				key: { header: 'NAME', minWidth: 35, get: row => chalk.blueBright(row.name) },
+		cliux.Table.table(resourceArray, {
+				key: { header: 'NAME', minWidth: 35, get: row => clColor.blueBright(row.name) },
 				description: { header: 'ONLINE DOCUMENTATION URL', get: row => row.url },
 			}, {
 				printLine: clUtil.log,

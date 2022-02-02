@@ -1,7 +1,6 @@
 import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
-import { clApi } from '@commercelayer/cli-core'
+import { clApi, clColor } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
-import chalk from 'chalk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
 import { denormalize } from '../../jsonapi'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
@@ -80,7 +79,7 @@ export default class ResourcesCreate extends Command {
 				const rawRes = await rawRequest({ operation: Operation.Create, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data))
 				const out = flags.raw ? rawRes : denormalize(rawRes)
 				this.printOutput(out, flags)
-				this.log(`\n${chalk.greenBright('Successfully')} created new resource of type ${chalk.bold(resource.api)} with id ${chalk.bold(rawRes.data.id)}\n`)
+				this.log(`\n${clColor.style.success('Successfully')} created new resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(rawRes.data.id)}\n`)
 				return out
 			} catch (error) {
 				this.printError(error)
@@ -116,7 +115,7 @@ export default class ResourcesCreate extends Command {
 
 		// Metadata
 		if (metadata && (Object.keys(metadata).length > 0)) {
-			if (attributes.metadata) this.warn(`Attribute ${chalk.italic('metadata')} will be overwritten by the content defined with the flag ${chalk.italic('-m')}`)
+			if (attributes.metadata) this.warn(`Attribute ${clColor.style.attribute('metadata')} will be overwritten by the content defined with the flag ${clColor.style.flag('-m')}`)
 			attributes.metadata = metadata
 		}
 
@@ -153,7 +152,7 @@ export default class ResourcesCreate extends Command {
 
 			this.printOutput(out, flags)
 
-			this.log(`\n${chalk.greenBright('Successfully')} created new resource of type ${chalk.bold(resource.api as string)} with id ${chalk.bold(res.id)}\n`)
+			this.log(`\n${clColor.style.success('Successfully')} created new resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(res.id)}\n`)
 
 
       // Save command arguments

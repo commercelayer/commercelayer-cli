@@ -1,8 +1,7 @@
-import { Command } from '@oclif/core'
+import { Command, CliUx as cliux } from '@oclif/core'
 import { findResource } from '../../util/resources'
 import axios from 'axios'
-import cliux from 'cli-ux'
-import chalk from 'chalk'
+import { clColor } from '@commercelayer/cli-core'
 
 
 export default class ResourcesDoc extends Command {
@@ -35,8 +34,8 @@ export default class ResourcesDoc extends Command {
 
     if (res) {
       const resourceUrl = `https://docs.commercelayer.io/api/resources/${res?.api}`
-      axios.get(resourceUrl).then(() => cliux.open(resourceUrl)).catch(() => this.warn(`No online documentation available for the resource ${chalk.italic.redBright(resource)}`))
-    } else this.warn(`Invalid resource ${chalk.italic.redBright(resource)}`)
+      axios.get(resourceUrl).then(() => cliux.ux.open(resourceUrl)).catch(() => this.warn(`No online documentation available for the resource ${clColor.style.error(resource)}`))
+    } else this.warn(`Invalid resource ${clColor.style.error(resource)}`)
 
   }
 

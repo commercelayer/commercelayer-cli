@@ -1,16 +1,15 @@
-import { Command, Flags, Config } from '@oclif/core'
+import { Command, Flags, Config, CliUx as cliux } from '@oclif/core'
 import { findResource, Resource } from './util/resources'
 import { filterAvailable } from './commands/resources/filters'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
-import chalk from 'chalk'
-import _ from 'lodash'
-import fs from 'fs'
-import path from 'path'
+import { capitalize } from 'lodash'
+import { existsSync, mkdirSync } from 'fs'
+import { dirname } from 'path'
 import { fixType, KeyValRel, KeyValArray, KeyValObj, KeyValString, KeyValSort, KeyVal } from './common'
 import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
-import { clToken, clUpdate } from '@commercelayer/cli-core'
+import { clToken, clUpdate, clColor } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, CommandParams, loadCommandData, ResourceOperation, saveCommandData } from './commands'
 import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 
@@ -121,8 +120,8 @@ export default abstract class extends Command {
   // CATCH (override)
   async catch(error: any) {
     if (error.message && error.message.match(/Missing 1 required arg:\nresource/))
-      this.error(`Missing argument ${chalk.redBright('resource')}`,
-        { suggestions: [`Execute command ${chalk.italic('resources')} to get a list of all available CLI resources`] }
+      this.error(`Missing argument ${clColor.style.error('resource')}`,
+        { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
       )
     // else throw error				// overwrite command catch method
     else return super.catch(error)	// extend command catch method
@@ -136,8 +135,8 @@ export default abstract class extends Command {
   checkResource(res: string, { required = true, singular = false } = {}): Resource {
     if (!res && required) this.error('Resource type not defined')
     const resource = findResource(res, { singular })
-    if (resource === undefined) this.error(`Invalid resource ${chalk.redBright(res)}`,
-      { suggestions: [`Execute command ${chalk.italic('resources')} to get a list of all available CLI resources`] }
+    if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
+      { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
     )
     return resource
   }
@@ -152,7 +151,7 @@ export default abstract class extends Command {
     if (si >= 0) {
       const rt = res.split('/')
       if (id && rt[1]) this.error(`Double definition of resource id: [${res}, ${id}]`,
-        { suggestions: [`Define resource id as command argument (${chalk.italic(id)}) or as part of the resource itself (${chalk.italic(res)}) but not both`] }
+        { suggestions: [`Define resource id as command argument (${clColor.italic(id)}) or as part of the resource itself (${clColor.italic(res)}) but not both`] }
       )
       else id = rt[1]
       res = rt[0]
@@ -162,7 +161,7 @@ export default abstract class extends Command {
     const singleton = res_ && res_.singleton
 
     if (id) {
-      if (singleton) this.error(`Singleton resource ${chalk.italic(res)} does not require id`)
+      if (singleton) this.error(`Singleton resource ${clColor.style.resource(res)} does not require id`)
     } else if (required && !singleton) this.error('Resource id not defined')
 
     return {
@@ -203,19 +202,19 @@ export default abstract class extends Command {
       flag.forEach(f => {
 
         const slashSep = f.indexOf('/')
-        if (slashSep < 0) this.error(`No name or fields defined in flag object${chalk.italic(f)}`)
+        if (slashSep < 0) this.error(`No name or fields defined in flag object${clColor.style.flag(f)}`)
 
         const name = f.substring(0, slashSep)
         if (name === '') this.error(`No name defined in flag object ${f}`)
         const fields = f.substring(slashSep + 1).split(/(?<!\\),/g).map(v => v.trim())  // escape ',' in value with \\ (double back slash)
-        if (fields[0].trim() === '') this.error(`No fields defined for object field ${chalk.italic(name)}`)
+        if (fields[0].trim() === '') this.error(`No fields defined for object field ${clColor.style.attribute(name)}`)
 
         const obj: KeyValObj = {}
 
         fields.forEach(f => {
 
           const eqi = f.indexOf('=')
-          if (eqi < 0) this.error(`No value defined for object field ${chalk.italic(f)} of object ${chalk.italic(name)}`)
+          if (eqi < 0) this.error(`No value defined for object field ${clColor.style.attribute(f)} of object ${clColor.style.attribute(name)}`)
 
           const n = f.substring(0, eqi)
           const v = f.substring(eqi + 1).replace(/\\,/g, ',')
@@ -250,7 +249,7 @@ export default abstract class extends Command {
           const kv = f.split('/')
 
           if (kv.length > 2) this.error('Can be defined only one resource for each fields flag',
-            { suggestions: [`Split the value ${chalk.italic(f)} into two fields flags`] }
+            { suggestions: [`Split the value ${clColor.style.attribute(f)} into two fields flags`] }
           )
 
           res = kv[0].replace('[', '').replace(']', '')
@@ -261,7 +260,7 @@ export default abstract class extends Command {
         }
 
         const values = val.split(',').map(v => v.trim())
-        if (values[0].trim() === '') this.error(`No fields defined for resource ${chalk.italic(res)}`)
+        if (values[0].trim() === '') this.error(`No fields defined for resource ${clColor.style.resource(res)}`)
 
         if (fields[res] === undefined) fields[res] = []
         fields[res].push(...values)
@@ -282,10 +281,10 @@ export default abstract class extends Command {
       flag.forEach(f => {
 
         const wt = f.split('=')
-        if (wt.length < 2) this.error(`Filter flag must be in the form ${chalk.italic('predicate=value')}`)
+        if (wt.length < 2) this.error(`Filter flag must be in the form ${clColor.style.attribute('predicate=value')}`)
         const w = wt[0]
-        if (!filterAvailable(w)) this.error(`Invalid query filter: ${chalk.redBright(w)}`, {
-          suggestions: [`Execute command ${chalk.italic('resources:filters')} to get a full list of all available filter predicates`],
+        if (!filterAvailable(w)) this.error(`Invalid query filter: ${clColor.style.error(w)}`, {
+          suggestions: [`Execute command ${clColor.style.command('resources:filters')} to get a full list of all available filter predicates`],
           ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
         })
 
@@ -315,16 +314,16 @@ export default abstract class extends Command {
 
           const ot = f.split(',')
           if (ot.length > 2) this.error('Can be defined only one field for each sort flag',
-            { suggestions: [`Split the value ${chalk.italic(f)} into two or more sort flags`] }
+            { suggestions: [`Split the value ${clColor.style.attribute(f)} into two or more sort flags`] }
           )
 
           const of = ot[0]
           if (of.startsWith('-')) this.error('You cannot mix two ordering syntaxes',
-            { suggestions: [`Choose between the style ${chalk.italic('<field>,<order>')} and the style ${chalk.italic('[-]<field>')}`] }
+            { suggestions: [`Choose between the style ${clColor.cli.value('<field>,<order>')} and the style ${clColor.cli.value('[-]<field>')}`] }
           )
           const sd = ot[1] || 'asc'
-          if (!['asc', 'desc'].includes(sd)) this.error(`Invalid sort flag: ${chalk.redBright(f)}`,
-            { suggestions: [`Sort direction can assume only the values ${chalk.italic('asc')} or ${chalk.italic('desc')}`] }
+          if (!['asc', 'desc'].includes(sd)) this.error(`Invalid sort flag: ${clColor.msg.error(f)}`,
+            { suggestions: [`Sort direction can assume only the values ${clColor.cli.value('asc')} or ${clColor.cli.value('desc')}`] }
           )
 
           sort[of] = sd as 'asc' | 'desc'
@@ -355,14 +354,14 @@ export default abstract class extends Command {
       flag.forEach(f => {
 
         const eqi = f.indexOf('=')
-        if (eqi < 1) this.error(`Invalid ${type.toLowerCase()} ${chalk.redBright(f)}`, {
-          suggestions: [`${_.capitalize(type)} flags must be defined using the format ${chalk.italic('name=value')}`],
+        if (eqi < 1) this.error(`Invalid ${type.toLowerCase()} ${clColor.msg.error(f)}`, {
+          suggestions: [`${capitalize(type)} flags must be defined using the format ${clColor.cli.value('name=value')}`],
         })
 
         const name = f.substr(0, eqi)
         const value = f.substr(eqi + 1)
 
-        if (param[name]) this.warn(`${_.capitalize(type)} ${chalk.yellow(name)} has already been defined`)
+        if (param[name]) this.warn(`${capitalize(type)} ${clColor.msg.warning(name)} has already been defined`)
 
         param[name] = value
 
@@ -410,8 +409,8 @@ export default abstract class extends Command {
         if (rt.length === 2) {
           if ((name = rt[0]) === '') this.error('Relationship attribute name is empty')
           if ((rel = rt[1]) === '') this.error('Relationship value is empty')
-        } else this.error(`Invalid relationship flag: ${chalk.redBright(f)}`,
-          { suggestions: [`Define the relationship using the format ${chalk.italic('attribute_name=resource_type/resource_id')}`] }
+        } else this.error(`Invalid relationship flag: ${clColor.msg.error(f)}`,
+          { suggestions: [`Define the relationship using the format ${clColor.cli.value('attribute_name=resource_type/resource_id')}`] }
         )
 
         const vt = rel.split('/')
@@ -427,7 +426,7 @@ export default abstract class extends Command {
 
         // const res = this.checkResource(type)
 
-        if (relationships[name]) this.warn(`Relationship ${chalk.yellow(name)} has already been defined`)
+        if (relationships[name]) this.warn(`Relationship ${clColor.yellow(name)} has already been defined`)
 
         relationships[name] = { id, type }
 
@@ -450,17 +449,17 @@ export default abstract class extends Command {
         const kv = f.split('/')
 
         if (kv.length > 2) this.error('Can be defined only one field for each extract flag',
-          { suggestions: [`Split the value ${chalk.italic(f)} into two extract flags`] }
+          { suggestions: [`Split the value ${clColor.cli.value(f)} into two extract flags`] }
         )
         else
-          if (kv.length === 1) this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
+          if (kv.length === 1) this.error(`No fields defined for object ${clColor.cli.value(kv[0])}`)
 
         const name = kv[0]
         if (name === '') this.error(`No name defined in flag extract ${f}`)
-        if (kv[1].trim() === '') this.error(`No fields defined for object ${chalk.italic(kv[0])}`)
+        if (kv[1].trim() === '') this.error(`No fields defined for object ${clColor.cli.value(kv[0])}`)
 
         const fields = kv[1].split(/(?<!\\),/g).map(v => v.trim())  // escape ',' in value with \\ (double back slash)
-        if (fields[0].trim() === '') this.error(`No fields defined for object field ${chalk.italic(name)}`)
+        if (fields[0].trim() === '') this.error(`No fields defined for object field ${clColor.cli.value(name)}`)
 
         if (extract[name] === undefined) extract[name] = []
         extract[name].push(...fields)
@@ -496,7 +495,7 @@ export default abstract class extends Command {
 
 
   protected checkOperation(sdk: any, name: string): boolean {
-    if (!sdk[name]) this.error(`Operation not supported for resource ${chalk.italic(sdk.type())}: ${chalk.redBright(name)}`)
+    if (!sdk[name]) this.error(`Operation not supported for resource ${clColor.style.resource(sdk.type())}: ${clColor.msg.error(name)}`)
     return true
   }
 
@@ -514,7 +513,7 @@ export default abstract class extends Command {
       err = err.errors
     } else
       if (error.response) {
-        if (error.response.status === 401) this.error(chalk.bgRed(`${error.response.statusText} [${error.response.status}]`),
+        if (error.response.status === 401) this.error(clColor.bg.red(`${error.response.statusText} [${error.response.status}]`),
           { suggestions: ['Execute login to get access to the selected resource'] }
         )
         else
@@ -545,21 +544,21 @@ export default abstract class extends Command {
         if (root === 'desktop') filePrefix += '/Desktop'
         filePath = filePath.replace(root, filePrefix)
       }
-      const fileDir = path.dirname(filePath)
-      if (flags['save-path'] && !fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true })
+      const fileDir = dirname(filePath)
+      if (flags['save-path'] && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
 
 
       const fileExport = flags.csv ? exportCsv : exportOutput
       fileExport(output, flags, filePath)
         .then(() => {
-          if (fs.existsSync(filePath)) this.log(`Command output saved to file ${chalk.italic(filePath)}\n`)
+          if (existsSync(filePath)) this.log(`Command output saved to file ${clColor.style.path(filePath)}\n`)
         })
-        .catch(() => this.error(`Unable to save command output to file ${filePath}`,
+        .catch(() => this.error(`Unable to save command output to file ${clColor.style.path(filePath)}`,
           { suggestions: ['Please check you have the right file system permissions'] }
         ))
 
     } catch (error: any) {
-      if (error.code === 'ENOENT') this.warn(`Path not found ${chalk.redBright(error.path)}: execute command with flag ${chalk.italic.bold('-X')} to force path creation`)
+      if (error.code === 'ENOENT') this.warn(`Path not found ${clColor.msg.error(error.path)}: execute command with flag ${clColor.cli.flag('-X')} to force path creation`)
       else throw error
     } finally {
       this.log()
@@ -582,7 +581,7 @@ export default abstract class extends Command {
     // const footer = header.replace(/./g, '-')
 
     this.log()
-    this.log(`${chalk.underline.cyan(header)}`)
+    this.log(`${clColor.underline.cyan(header)}`)
     // this.log(chalk.cyan(`------------------------------{ ${header} }------------------------------`))
     this.log()
     this.log(command)
@@ -600,7 +599,7 @@ export default abstract class extends Command {
     if (info === null) this.error('Invalid access token provided')
     else
       if (!kinds.includes(info.application.kind))
-        this.error(`Invalid application kind: ${chalk.redBright(info.application.kind)}. Application kind must be one of the following: ${chalk.cyanBright(kinds.join(', '))}`)
+        this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Application kind must be one of the following: ${clColor.cyanBright(kinds.join(', '))}`)
 
     return true
 
@@ -615,7 +614,7 @@ export default abstract class extends Command {
       this.printError(error)
     }
     if (ok && aliasExists(alias, config, resource, operation))
-      this.error(`Alias already used for resource type ${chalk.yellowBright(resource)} and operation ${chalk.yellowBright(operation)}: ${chalk.redBright(alias)}`)
+      this.error(`Alias already used for resource type ${clColor.yellowBright(resource)} and operation ${clColor.yellowBright(operation)}: ${clColor.msg.error(alias)}`)
   }
 
 
@@ -650,7 +649,7 @@ export default abstract class extends Command {
   protected loadParams(alias: string, resource: string, operation: ResourceOperation): QueryParams {
 
     const cmdData = loadCommandData(alias, this.config, resource, operation)
-    if (!cmdData) this.error(`No command arguments saved with alias ${chalk.redBright(alias)} for resource type ${chalk.yellowBright(resource)} and operation ${chalk.yellowBright(operation)}`)
+    if (!cmdData) this.error(`No command arguments saved with alias ${clColor.msg.error(alias)} for resource type ${clColor.yellowBright(resource)} and operation ${clColor.yellowBright(operation)}`)
 
     const queryParams: QueryParams = (operation && (operation === 'list')) ? cmdData.params : {
       include: cmdData.params.include,
@@ -664,4 +663,5 @@ export default abstract class extends Command {
 }
 
 
-export { Flags }
+
+export { Flags, cliux }
