@@ -9,6 +9,7 @@ export default class Update extends Command {
 
   public async run(): Promise<void> {
 
+    this.log()
     cliux.ux.action.start('Updating Commerce Layer CLI')
 
     const cp = exec('npm install -g @commercelayer/cli')
