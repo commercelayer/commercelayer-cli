@@ -1,8 +1,9 @@
 import Command, { Flags } from '../../base'
 import CheckoutOrder from './order'
-import chalk from 'chalk'
 import { LineItemCreate } from '@commercelayer/sdk'
 import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
+import { clColor } from '@commercelayer/cli-core'
+
 
 export default class CheckoutIndex extends Command {
 
@@ -81,7 +82,7 @@ export default class CheckoutIndex extends Command {
     }
 
 
-    if (!flags.sku && !flags.bundle) this.error(`One of the options ${chalk.cyanBright('--order (-O)')}, ${chalk.cyanBright('--sku (-S)')} or ${chalk.cyanBright('--bundle (-B)')} is required`)
+    if (!flags.sku && !flags.bundle) this.error(`One of the options ${clColor.cli.flag.cyanBright('--order (-O)')}, ${clColor.cli.flag.cyanBright('--sku (-S)')} or ${clColor.cli.flag.cyanBright('--bundle (-B)')} is required`)
 
     this.checkApplication(accessToken, 'sales_channel')
 
@@ -98,14 +99,14 @@ export default class CheckoutIndex extends Command {
     const liSkus = lineItems.filter(li => li.item_type === 'sku')
     const clSkus = await cl.skus.list({ filters: { code_matches_any: liSkus.map(li => li.sku_code).join(',') } })
     liSkus.forEach(li => {
-      if (!clSkus.some(cls => cls.code === li.sku_code)) this.error(`Inexistent ${this.itemName('sku')}: ${chalk.redBright(String(li.sku_code))}`)
+      if (!clSkus.some(cls => cls.code === li.sku_code)) this.error(`Inexistent ${this.itemName('sku')}: ${clColor.msg.error(String(li.sku_code))}`)
     })
 
     // Check bundles existence
     const liBundles = lineItems.filter(li => li.item_type === 'bundle')
     const clBundles = await cl.bundles.list({ filters: { code_matches_any: liBundles.map(li => li.bundle_code).join(',') } })
     liBundles.forEach(li => {
-      if (!clBundles.some(clb => clb.code === li.bundle_code)) this.error(`Inexistent ${this.itemName('bundle')}: ${chalk.redBright(String(li.bundle_code))}`)
+      if (!clBundles.some(clb => clb.code === li.bundle_code)) this.error(`Inexistent ${this.itemName('bundle')}: ${clColor.msg.error(String(li.bundle_code))}`)
     })
 
     // Create order
@@ -118,7 +119,7 @@ export default class CheckoutIndex extends Command {
       coupon_code: coupon,
       market: market ? cl.markets.relationship(market) : undefined,
     })
-    this.log(`\nCreated order ${chalk.bold(order.id)}`)
+    this.log(`\nCreated order ${clColor.api.id(order.id)}`)
 
 
     // Create line items
@@ -129,7 +130,7 @@ export default class CheckoutIndex extends Command {
       const lineItem = cl.line_items.create(li).then(lic => {
         const liName = this.itemName(li.item_type || '')
         const liCode = (['sku', 'skus'].includes(lic.item_type || '')) ? lic.sku_code : lic.bundle_code
-        this.log(`Created line item ${chalk.bold(lic.id)} for ${liName} ${chalk.italic(String(liCode))} and associated to order ${chalk.bold(order.id)}`)
+        this.log(`Created line item ${clColor.api.id(lic.id)} for ${liName} ${clColor.cli.value.italic(String(liCode))} and associated to order ${clColor.api.id(order.id)}`)
       })
       if (lineItem) lis.push(lineItem)
     })
@@ -138,8 +139,8 @@ export default class CheckoutIndex extends Command {
 
     const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken)
 
-    this.log(`\nCheckout URL for order ${chalk.yellowBright(order.id)}:\n`)
-    this.log(chalk.cyanBright(checkoutUrl))
+    this.log(`\nCheckout URL for order ${clColor.api.id(order.id)}:\n`)
+    this.log(clColor.cyanBright(checkoutUrl))
     this.log()
 
     if (flags.open) openCheckoutUrl(checkoutUrl)
@@ -157,11 +158,11 @@ export default class CheckoutIndex extends Command {
   private checkItem(item: string, type: string): { code: string; quantity: number; type: string } {
 
     const def = item.split(':')
-    if (def.length > 2) this.error(`Invalid ${this.itemName(type)} option: ${chalk.redBright(item)}`)
+    if (def.length > 2) this.error(`Invalid ${this.itemName(type)} option: ${clColor.msg.error(item)}`)
 
     const code = def[0]
     const quantity = Number((def.length > 1) ? def[1] : 1)
-    if (Number.isNaN(quantity) || (quantity < 0)) this.error(`Invalid ${this.itemName(type)} definition: ${chalk.redBright(item)}`)
+    if (Number.isNaN(quantity) || (quantity < 0)) this.error(`Invalid ${this.itemName(type)} definition: ${clColor.msg.error(item)}`)
 
     return {
       code,

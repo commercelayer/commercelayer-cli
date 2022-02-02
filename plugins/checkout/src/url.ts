@@ -1,5 +1,5 @@
 import { clApi } from '@commercelayer/cli-core'
-import cliux from 'cli-ux'
+import { CliUx as cliux } from '@oclif/core'
 
 
 const buildCheckoutUrl = (organization: string, id: string, accessToken: string): string => {
@@ -10,7 +10,7 @@ const buildCheckoutUrl = (organization: string, id: string, accessToken: string)
 
 
 const openCheckoutUrl = async (checkoutUrl: string) => {
-  await cliux.open(checkoutUrl)
+  await cliux.ux.open(checkoutUrl)
 }
 
 

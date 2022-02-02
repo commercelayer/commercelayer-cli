@@ -1,8 +1,7 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import Command from '../../base'
-import { clOutput } from '@commercelayer/cli-core'
+import { clColor, clOutput } from '@commercelayer/cli-core'
 import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
-import chalk from 'chalk'
 
 
 export default class CheckoutOrder extends Command {
@@ -36,8 +35,8 @@ export default class CheckoutOrder extends Command {
 
       const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken)
 
-      this.log(`\nCheckout URL for order ${chalk.yellowBright(order.id)}:\n`)
-      this.log(chalk.cyanBright(checkoutUrl))
+      this.log(`\nCheckout URL for order ${clColor.api.id(order.id)}:\n`)
+      this.log(clColor.cyanBright(checkoutUrl))
       this.log()
 
       if (flags.open) openCheckoutUrl(checkoutUrl)

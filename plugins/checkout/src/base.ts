@@ -1,7 +1,6 @@
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
-import { clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
+import { clColor, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -51,7 +50,7 @@ export default abstract class extends Command {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
-        this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
+        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
           { suggestions: ['Execute login to get access to the organization\'s resources'] }
         )
       } else this.error(clOutput.formatError(error, flags))
@@ -81,7 +80,7 @@ export default abstract class extends Command {
     if (info === null) this.error('Invalid access token provided')
     else
     if (info.application.kind !== kind)
-      this.error(`Invalid application kind: ${chalk.redBright(info.application.kind)}. Only ${chalk.cyanBright(kind)} access token can be used to generate a checkout URL`)
+      this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Only ${clColor.api.kind(kind)} access token can be used to generate a checkout URL`)
 
     return true
 
