@@ -1,4 +1,4 @@
-import { Command, Flags, Config } from '@oclif/core'
+import { Command, Flags, Config, CliUx as cliux } from '@oclif/core'
 import { configParam, ConfigParams, readConfigDir } from './config'
 import inquirer from 'inquirer'
 import { printScope } from './common'
@@ -78,7 +78,7 @@ export default abstract class extends Command {
 }
 
 
-export { Flags }
+export { Flags, cliux }
 
 
 

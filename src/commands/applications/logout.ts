@@ -1,7 +1,6 @@
-import Command, { Flags } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import clicfg, { configFileExists, readConfigFile, tokenFileExists, readTokenFile, deleteConfigFile, deleteTokenFile, ConfigParams, currentApplication } from '../../config'
 import { clApplication, clColor, clToken } from '@commercelayer/cli-core'
-import { CliUx as cliux } from '@oclif/core'
 
 
 export default class ApplicationsLogout extends Command {
