@@ -1,7 +1,6 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
-import { clOutput, clUpdate } from '@commercelayer/cli-core'
+import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -67,8 +66,8 @@ export default abstract class extends Command {
       if (error.status === 401) {
         const err = error.first()
         const res = error.code?.startsWith('RES_') ? error.code.replace('RES_', '') : ''
-        this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
-          { suggestions: [`Execute login with sufficient privileges to get access to the organization's resources${res ? ` of type ${chalk.bold(res)}` : ''}`] }
+        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
+          { suggestions: [`Execute login with sufficient privileges to get access to the organization's resources${res ? ` of type ${clColor.api.resource(res)}` : ''}`] }
         )
       } else this.error(clOutput.formatError(error, flags))
     } else throw error
@@ -81,7 +80,7 @@ export default abstract class extends Command {
 
 
   protected successMessage(resource: string, action: string, id: string) {
-    this.log(`\nAction ${chalk.italic.cyanBright(action)} executed without errors on ${resource.replace(/_/g, ' ')} ${chalk.yellowBright(id)}\n`)
+    this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on ${resource.replace(/_/g, ' ')} ${clColor.api.id(id)}\n`)
   }
 
 }
