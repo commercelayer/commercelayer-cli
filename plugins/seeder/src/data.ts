@@ -1,7 +1,7 @@
 
 import config from './config'
 import { getCommerceLayerDataFile, isRemotePath, pathJoin } from './common'
-import chalk from 'chalk'
+import { clColor } from '@commercelayer/cli-core'
 
 
 
@@ -62,16 +62,16 @@ const readModelData = async (url: string, model: string): Promise<BusinessModel>
 
   const fileName = model + '.json'
   const modelData = await readSeederFile(url, fileName).catch(() => {
-    throw new Error(`Unable to read data file ${chalk.yellowBright(fileName)} from ${isRemotePath(url) ? 'url' : 'path'} ${chalk.yellowBright(url)}`)
+    throw new Error(`Unable to read data file ${clColor.style.path(fileName)} from ${isRemotePath(url) ? 'url' : 'path'} ${clColor.style.path(url)}`)
   })
 
   // Validation
   let index = 0
   for (const md of modelData) {
     index++
-    if (!md.resourceType) throw new Error(`Missing field ${chalk.redBright('resourceType')} in business model item ${index}`)
-    if (!md.importAll && !md.referenceKeys) throw new Error(`Missing one of ${chalk.redBright('importAll')} and ${chalk.redBright('referenceKeys')} in business model item ${index}`)
-    if (!md.importAll && !Array.isArray(md.referenceKeys)) throw new Error(`Field ${chalk.redBright('referenceKeys')} in item ${index} must be an array`)
+    if (!md.resourceType) throw new Error(`Missing field ${clColor.msg.error('resourceType')} in business model item ${index}`)
+    if (!md.importAll && !md.referenceKeys) throw new Error(`Missing one of ${clColor.msg.error('importAll')} and ${clColor.msg.error('referenceKeys')} in business model item ${index}`)
+    if (!md.importAll && !Array.isArray(md.referenceKeys)) throw new Error(`Field ${clColor.msg.error('referenceKeys')} in item ${index} must be an array`)
   }
 
   return modelData as BusinessModel

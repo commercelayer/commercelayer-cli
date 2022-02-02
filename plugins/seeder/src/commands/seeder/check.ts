@@ -1,16 +1,16 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
 import { BusinessModel, getResource, modelIndex, ResourceData, SeederResource } from '../../data'
-import chalk from 'chalk'
 import Listr from 'listr'
 import { readResourceData } from '../../data'
 import { attributeType, relationshipType } from '../../schema'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
+import { clColor } from '@commercelayer/cli-core'
 
 
 
 export const checkResourceType = (type: string): boolean => {
-  if (!CommerceLayerStatic.resources().includes(type)) throw new Error(`Invalid resource type: ${chalk.redBright(type)}`)
+  if (!CommerceLayerStatic.resources().includes(type)) throw new Error(`Invalid resource type: ${clColor.msg.error(type)}`)
   return true
 }
 
@@ -54,7 +54,7 @@ export default class SeederCheck extends Command {
       // Create tasks
       const tasks = new Listr(model.map(res => {
         return {
-          title: `Check ${chalk.italic(res.resourceType)}`,
+          title: `Check ${clColor.cli.value(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
             const n = await this.checkResources(res, flags, task, model)
@@ -63,12 +63,12 @@ export default class SeederCheck extends Command {
         }
       }), { concurrent: true, exitOnError: false })
 
-      this.log(`Checking business model ${chalk.yellowBright(businessModel)} data...\n`)
+      this.log(`Checking business model ${clColor.yellowBright(businessModel)} data...\n`)
 
       // Execute tasks
       tasks.run()
-        .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data check completed! \u2705`))
-        .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data check completed with errors`))
+        .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! \u2705`))
+        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data check completed with errors`))
         .finally(() => this.log())
 
     } catch (error: any) {
@@ -99,7 +99,7 @@ export default class SeederCheck extends Command {
         if (Array.isArray(val)) throw new Error(`Relationship ${type}.${field} cannot be an array`)
         else if (flags.relationships) {
           const relRes = await getResource(flags.url, rel, val)
-          if (!relRes) throw new Error(`Resource of type ${chalk.yellowBright(rel)} and reference ${chalk.yellowBright(val)} not found`)
+          if (!relRes) throw new Error(`Resource of type ${clColor.api.resource(rel)} and reference ${clColor.api.resource(val)} not found`)
           if (modelIndex(model, type, res.reference) < modelIndex(model, rel, val)) throw new Error(`Resource ${rel}.${val} must be created before resource ${type}.${res.reference}`)
         }
       } else invalidFields.push(field)
@@ -117,21 +117,21 @@ export default class SeederCheck extends Command {
 
     // Read resource type data
     const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
-      throw new Error(`Error reading ${chalk.redBright(res.resourceType)} data file`)
+      throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 
     // Build reference keys list
     const referenceKeys = res.importAll ? Object.values(resourceData).map(v => v.reference) : res.referenceKeys
-    if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${chalk.redBright('referenceKeys')} of ${chalk.yellowBright(res.resourceType)} must be an array`)
+    if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
 
     for (const r of referenceKeys) {
 
-      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + chalk.italic(res.resourceType) + ': ' + r
+      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + r
 
       // Read resource data
       const resource = resourceData[r]
-      if (!resource) throw new Error(`Resource not found in ${res.resourceType} file: ${chalk.redBright(r)}`)
+      if (!resource) throw new Error(`Resource not found in ${res.resourceType} file: ${clColor.msg.error(r)}`)
 
       await this.checkResource(res.resourceType, resource, model, flags)
 

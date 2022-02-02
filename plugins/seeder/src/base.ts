@@ -1,11 +1,9 @@
-import { Command, Flags } from '@oclif/core'
+import { Command, Flags, CliUx as cliux } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
-import chalk from 'chalk'
 import config from './config'
-import { clUpdate } from '@commercelayer/cli-core'
+import { clUpdate, clColor } from '@commercelayer/cli-core'
 import { isRemotePath, pathJoin } from './common'
 import { BusinessModel, readModelData } from './data'
-import cliux from 'cli-ux'
 import { ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
 import { loadSchema } from './schema'
 
@@ -65,11 +63,11 @@ export default abstract class extends Command {
 
 
   protected async readOpenAPISchema() {
-    cliux.action.start(`Reading ${chalk.yellowBright('OpenAPI')} schema`)
+    cliux.ux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
     return loadSchema()
-      .then(() => cliux.action.stop(`done ${chalk.green('\u2714')}`))
+      .then(() => cliux.ux.action.stop(`done ${clColor.msg.success('\u2714')}`))
       .catch(() => {
-        cliux.action.stop(chalk.redBright('Error'))
+        cliux.ux.action.stop(clColor.msg.error('Error'))
         this.error('Error reading OpenAPI schema')
       })
       .finally(() => this.log())
@@ -77,14 +75,14 @@ export default abstract class extends Command {
 
 
   protected async readBusinessModelData(url: string, model: string): Promise<BusinessModel> {
-    cliux.action.start(`Reading business model ${chalk.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${chalk.yellowBright(url)}`)
+    cliux.ux.action.start(`Reading business model ${clColor.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${clColor.style.path(url)}`)
     return readModelData(url, model)
       .then(model => {
-        cliux.action.stop(`done ${chalk.green('\u2714')}`)
+        cliux.ux.action.stop(`done ${clColor.msg.success('\u2714')}`)
         return model
       })
       .catch(error => {
-        cliux.action.stop(chalk.redBright('Error'))
+        cliux.ux.action.stop(clColor.msg.error('Error'))
         this.error(error)
       })
       .finally(() => this.log())
@@ -114,7 +112,7 @@ export default abstract class extends Command {
 
 
   protected modelNameChack(flags: any): string {
-    if (flags.name && (flags.businessModel !== 'custom')) if (flags.businessModel !== 'custom') this.error(`Model name can be specified only using the ${chalk.bold('custom')} business model`)
+    if (flags.name && (flags.businessModel !== 'custom')) if (flags.businessModel !== 'custom') this.error(`Model name can be specified only using the ${clColor.bold('custom')} business model`)
     return flags.name || flags.businessModel
   }
 
@@ -122,4 +120,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags }
+export { Flags, cliux }

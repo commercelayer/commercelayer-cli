@@ -1,10 +1,10 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
 import Listr from 'listr'
-import chalk from 'chalk'
 import { readResourceData, SeederResource } from '../../data'
 import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { checkResourceType } from './check'
+import { clColor } from '@commercelayer/cli-core'
 
 
 export default class SeederClean extends Command {
@@ -62,7 +62,7 @@ export default class SeederClean extends Command {
       // Create tasks
       const tasks = new Listr(resources.map(res => {
         return {
-          title: `Delete ${chalk.italic(res.resourceType)}`,
+          title: `Delete ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
             const n = await this.deleteResources(res, flags, task)
@@ -71,12 +71,12 @@ export default class SeederClean extends Command {
         }
       }), { concurrent: false, exitOnError: true })
 
-      this.log(`Cleaning data for organization ${chalk.yellowBright(organization)} using business model ${chalk.yellowBright(businessModel)}...\n`)
+      this.log(`Cleaning data for organization ${clColor.api.organization(organization)} using business model ${clColor.yellowBright(businessModel)}...\n`)
 
       // Execute tasks
       tasks.run()
-        .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data cleaning completed! \u2705`))
-        .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data cleaning not completed, correct errors and rerun the ${chalk.bold('clean')} command`))
+        .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data cleaning completed! \u2705`))
+        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`))
         .finally(() => this.log())
 
     } catch (error: any) {
@@ -93,16 +93,16 @@ export default class SeederClean extends Command {
 
     // Read resource type data
     const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
-      throw new Error(`Error reading ${chalk.redBright(res.resourceType)} data file`)
+      throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 
     // Build reference keys list
     const referenceKeys = res.importAll ? Object.values(resourceData).map(v => v.reference) : res.referenceKeys
-    if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${chalk.redBright('referenceKeys')} of ${chalk.yellowBright(res.resourceType)} must be an array`)
+    if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
     for (const r of referenceKeys) {
 
-      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + chalk.italic(res.resourceType) + ': ' + r
+      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + r
 
       // Read resource data
       const resource = resourceData[r]

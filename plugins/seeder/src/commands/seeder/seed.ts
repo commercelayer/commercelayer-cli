@@ -2,14 +2,13 @@
 import Command, { Flags } from '../../base'
 import { ResourceData, SeederResource } from '../../data'
 import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import chalk from 'chalk'
 import config from '../../config'
 import Listr from 'listr'
 import { readResourceData } from '../../data'
 import { relationshipType } from '../../schema'
 import { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
-import { clToken } from '@commercelayer/cli-core'
+import { clToken, clColor } from '@commercelayer/cli-core'
 
 
 
@@ -64,8 +63,8 @@ export default class SeederSeed extends Command {
 
       const tokenInfo = clToken.decodeAccessToken(accessToken)
       if (tokenInfo.application.kind !== config.validApplicationKind)
-        this.error(`Invalid application type: ${chalk.redBright(tokenInfo.application.kind)}`, {
-          suggestions: [`To execute ${chalk.cyanBright('seeder')} you must use an application ok kind ${chalk.yellowBright(config.validApplicationKind)}`],
+        this.error(`Invalid application type: ${clColor.msg.error(tokenInfo.application.kind)}`, {
+          suggestions: [`To execute ${clColor.cyanBright('seeder')} you must use an application ok kind ${clColor.yellowBright(config.validApplicationKind)}`],
         })
 
       this.initCommerceLayer(flags)
@@ -81,7 +80,7 @@ export default class SeederSeed extends Command {
       // Create tasks
       const tasks = new Listr(model.map(res => {
         return {
-          title: `Create ${chalk.italic(res.resourceType)}`,
+          title: `Create ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
             const n = await this.createResources(res, flags, task)
@@ -90,12 +89,12 @@ export default class SeederSeed extends Command {
         }
       }), { concurrent: false, exitOnError: true })
 
-      this.log(`Seeding data for organization ${chalk.yellowBright(organization)} using business model ${chalk.yellowBright(businessModel)}...\n`)
+      this.log(`Seeding data for organization ${clColor.api.organization(organization)} using business model ${clColor.yellowBright(businessModel)}...\n`)
 
       // Execute tasks
       tasks.run()
-        .then(() => this.log(`\n${chalk.bold.greenBright('SUCCESS')} - Data seeding completed! \u2705`))
-        .catch(() => this.log(`\n${chalk.bold.redBright('ERROR')} - Data seeding not completed, correct errors and rerun the ${chalk.bold('seed')} command`))
+        .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data seeding completed! \u2705`))
+        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data seeding not completed, correct errors and rerun the ${clColor.cli.command('seed')} command`))
         .finally(() => this.log())
 
     } catch (error: any) {
@@ -117,7 +116,7 @@ export default class SeederSeed extends Command {
         else {
           const remoteRes = await this.findByReference(rel, res[field] as string)
           if (remoteRes) resourceMod[field] = { type: rel, id: remoteRes.id }
-          else throw new Error(`Unable to find resource of type ${rel} with reference ${chalk.redBright(res[field])}`)
+          else throw new Error(`Unable to find resource of type ${rel} with reference ${clColor.msg.error(res[field])}`)
         }
       } else resourceMod[field] = res[field]
     }
@@ -178,21 +177,21 @@ export default class SeederSeed extends Command {
 
     // Read resource type data
     const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
-      throw new Error(`Error reading ${chalk.redBright(res.resourceType)} data file`)
+      throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 
     // Build reference keys list
     const referenceKeys = res.importAll ? Object.values(resourceData).map(v => v.reference) : res.referenceKeys
-    if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${chalk.redBright('referenceKeys')} of ${chalk.yellowBright(res.resourceType)} must be an array`)
+    if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
 
     for (const r of referenceKeys) {
 
-      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + chalk.italic(res.resourceType) + ': ' + r
+      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + r
 
       // Read resource data
       const resource = resourceData[r]
-      if (!resource) throw new Error(`Resource not found in ${res.resourceType} file: ${chalk.redBright(r)}`)
+      if (!resource) throw new Error(`Resource not found in ${res.resourceType} file: ${clColor.msg.error(r)}`)
 
       // If resource exists in CL update it, otherwise create it
       const remoteRes = await this.findByReference(res.resourceType, resource.reference)
