@@ -11,6 +11,8 @@ export * as clOutput from './output'
 
 // export * as style from './style'
 
+export * as clColor from './color'
+
 export * as clToken from './token'
 
 export * as clUpdate from './update'
