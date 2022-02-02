@@ -1,8 +1,8 @@
 import Command, { Flags } from '../../base'
 import { URL } from 'url'
-import chalk from 'chalk'
 import WebhooksDetails from './details'
 import { WebhookUpdate } from '@commercelayer/sdk'
+import { clColor } from '@commercelayer/cli-core'
 
 
 export default class WebhooksUpdate extends Command {
@@ -84,7 +84,7 @@ export default class WebhooksUpdate extends Command {
 
 			const webhook = await cl.webhooks.update(attributes)
 
-			this.log(`\n${chalk.greenBright('Successfully')} updated webhook with id ${chalk.bold(webhook.id)}\n`)
+			this.log(`\n${clColor.msg.success('Successfully')} updated webhook with id ${clColor.api.id(webhook.id)}\n`)
 
 			return webhook
 

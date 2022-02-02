@@ -1,5 +1,5 @@
 import Command from '../../base'
-import chalk from 'chalk'
+import { clColor } from '@commercelayer/cli-core'
 
 
 export default class WebhooksReset extends Command {
@@ -31,7 +31,7 @@ export default class WebhooksReset extends Command {
     const cl = this.commercelayerInit(flags)
 
     cl.webhooks.update({ id, _reset_circuit: true })
-      .then(() => this.log(`\nThe circuit breaker associated to the webhook ${chalk.bold(id)} has been ${chalk.greenBright('successfully')} reset\n`))
+      .then(() => this.log(`\nThe circuit breaker associated to the webhook ${clColor.api.id(id)} has been ${clColor.msg.success('successfully')} reset\n`))
       .catch(error => this.handleError(error, flags))
 
   }

@@ -1,8 +1,6 @@
-import Command, { Flags } from '../../base'
-import chalk from 'chalk'
+import Command, { Flags, cliux } from '../../base'
 import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
-import { clConfig, clOutput } from '@commercelayer/cli-core'
-import cliux from 'cli-ux'
+import { clConfig, clOutput, clColor } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import { EventCallback, QueryParamsList } from '@commercelayer/sdk'
 
@@ -43,7 +41,7 @@ export default class WebhooksEvents extends Command {
 
 		const { args, flags } = await this.parse(WebhooksEvents)
 
-		if (flags.limit && (flags.limit < 1)) this.error(chalk.italic('Limit') + ' must be a positive integer')
+		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		const id = args.id
 
@@ -61,7 +59,7 @@ export default class WebhooksEvents extends Command {
 
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-			cliux.action.start('Fetching events')
+			cliux.ux.action.start('Fetching events')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -97,7 +95,7 @@ export default class WebhooksEvents extends Command {
 				}
 
 			}
-			cliux.action.stop()
+			cliux.ux.action.stop()
 
 			this.log()
 
@@ -105,7 +103,7 @@ export default class WebhooksEvents extends Command {
 				const table = buildEventsTableData(tableData)
 				this.log(table)
 				this.footerMessage(flags, itemCount, totalItems)
-			} else this.log(chalk.italic('No events found for webhook ' + chalk.blueBright(id)))
+			} else this.log(clColor.italic('No events found for webhook ' + clColor.api.resource(id)))
 
 			this.log()
 
@@ -121,19 +119,19 @@ export default class WebhooksEvents extends Command {
 	private footerMessage(flags: any, itemCount: number, totalItems: number) {
 
 		this.log()
-		this.log(`Total displayed events: ${chalk.yellowBright(String(itemCount))}`)
-		this.log(`Total event count: ${chalk.yellowBright(String(totalItems))}`)
+		this.log(`Total displayed events: ${clColor.yellowBright(String(itemCount))}`)
+		this.log(`Total event count: ${clColor.yellowBright(String(totalItems))}`)
 
 		if (itemCount < totalItems) {
 			if (flags.all || ((flags.limit || 0) > MAX_EVENTS)) {
 				this.log()
-				this.warn(`The maximum number of events that can be displayed is ${chalk.yellowBright(String(MAX_EVENTS))}`)
+				this.warn(`The maximum number of events that can be displayed is ${clColor.yellowBright(String(MAX_EVENTS))}`)
 			} else
 				if (!flags.limit) {
 					this.log()
-					const displayedMsg = `Only ${chalk.yellowBright(String(itemCount))} of ${chalk.yellowBright(String(totalItems))} records are displayed`
-					if (totalItems < MAX_EVENTS) this.warn(`${displayedMsg}, to see all existing items run the command with the ${chalk.italic.bold('--all')} flag enabled`)
-					else this.warn(`${displayedMsg}, to see more items (max ${MAX_EVENTS}) run the command with the ${chalk.italic.bold('--limit')} flag enabled`)
+					const displayedMsg = `Only ${clColor.yellowBright(String(itemCount))} of ${clColor.yellowBright(String(totalItems))} records are displayed`
+					if (totalItems < MAX_EVENTS) this.warn(`${displayedMsg}, to see all existing items run the command with the ${clColor.cli.flag('--all')} flag enabled`)
+					else this.warn(`${displayedMsg}, to see more items (max ${MAX_EVENTS}) run the command with the ${clColor.cli.flag('--limit')} flag enabled`)
 				}
 		}
 
@@ -173,7 +171,7 @@ const buildEventsTableData = (tableData: EventCallback[]): string => {
 	// let index = 0
 	table.push(...tableData.map(e => [
 		// { content: ++index, hAlign: 'right' as HorizontalAlignment },
-		{ content: chalk.blueBright(e.id || ''), vAlign: 'center' as VerticalAlignment },
+		{ content: clColor.table.key(e.id || ''), vAlign: 'center' as VerticalAlignment },
 		{ content: responseCodeColor(e.response_code, e.response_message), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },
 		e.response_message || '',
 		{ content: clOutput.localeDate(e.created_at), hAlign: 'center' as HorizontalAlignment, vAlign: 'center' as VerticalAlignment },

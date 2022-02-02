@@ -1,6 +1,5 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
-import { clOutput } from '@commercelayer/cli-core'
+import { clOutput, clColor } from '@commercelayer/cli-core'
 
 
 
@@ -42,7 +41,7 @@ export default class WebhooksPayload extends Command {
 
 			const events = await cl.event_callbacks.list({ filters: { id_eq: id } })
 			if (!events || (events.length === 0)) {
-				this.log(`Event with id ${chalk.yellowBright(id)} not found`)
+				this.log(`Event with id ${clColor.api.id(id)} not found`)
 				return
 			}
 			const event = events[0]

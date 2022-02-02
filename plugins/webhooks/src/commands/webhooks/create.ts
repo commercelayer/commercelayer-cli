@@ -1,6 +1,6 @@
 import Command, { Flags } from '../../base'
 import { URL } from 'url'
-import chalk from 'chalk'
+import { clColor } from '@commercelayer/cli-core'
 
 
 export default class WebhooksCreate extends Command {
@@ -60,7 +60,7 @@ export default class WebhooksCreate extends Command {
 				include_resources: include,
 			})
 
-			this.log(`\n${chalk.greenBright('Successfully')} created new webhook with topic ${chalk.bold(topic)} and id ${chalk.bold(webhook.id)}\n`)
+			this.log(`\n${clColor.msg.success('Successfully')} created new webhook with topic ${clColor.bold(topic)} and id ${clColor.api.id(webhook.id)}\n`)
 
 			return webhook
 

@@ -1,8 +1,7 @@
 /* eslint-disable unicorn/prefer-module */
-import { Command, Flags } from '@oclif/core'
-import chalk from 'chalk'
+import { Command, Flags, CliUx as cliux } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import { clOutput, clUpdate } from '@commercelayer/cli-core'
+import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -48,7 +47,7 @@ export default abstract class extends Command {
 		if (CommerceLayerStatic.isApiError(error)) {
 			if (error.status === 401) {
 				const err = error.first()
-				this.error(chalk.bgRed(`${err.title}:  ${err.detail}`),
+				this.error(clColor.bg.red(`${err.title}:  ${err.detail}`),
 					{ suggestions: ['Execute login to get access to the organization\'s webhooks'] }
 				)
 			} else this.error(clOutput.formatError(error, flags))
@@ -73,4 +72,4 @@ export default abstract class extends Command {
 }
 
 
-export { Flags }
+export { Flags, cliux }

@@ -1,8 +1,7 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
 import Table from 'cli-table3'
-import _ from 'lodash'
-import { clOutput } from '@commercelayer/cli-core'
+import { isEmpty } from 'lodash'
+import { clOutput, clColor } from '@commercelayer/cli-core'
 import { QueryParamsRetrieve } from '@commercelayer/sdk'
 import { buildEventsTableData } from './events'
 
@@ -59,10 +58,10 @@ export default class WebhooksDetails extends Command {
 
 			table.push(...Object.entries(webhook)
 				.filter(([k]) => !['type', 'last_event_callbacks'].includes(k))
-				.filter(([_k, v]) => !flags['hide-empty'] || !_.isEmpty(v) || (Array.isArray(v) && !(v.length === 0)))
+				.filter(([_k, v]) => !flags['hide-empty'] || isEmpty(v) || (Array.isArray(v) && !(v.length === 0)))
 				.map(([k, v]) => {
 					return [
-						{ content: chalk.blueBright(k), hAlign: 'right', vAlign: 'center' },
+						{ content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
 						formatValue(k, v),
 					]
 				}))
@@ -72,11 +71,11 @@ export default class WebhooksDetails extends Command {
 			this.log()
 
 			if (flags.events) {
-				this.log(chalk.blueBright('LAST EVENT CALLBACKS:'))
+				this.log(clColor.table.key('LAST EVENT CALLBACKS:'))
 				if (webhook.last_event_callbacks) {
 					const table = buildEventsTableData(webhook.last_event_callbacks)
 					this.log(table)
-				} else this.log(chalk.italic('No event fired for this webhook'))
+				} else this.log(clColor.italic('No event fired for this webhook'))
 				this.log()
 			}
 
@@ -98,17 +97,17 @@ const formatValue = (field: string, value: string): any => {
 
 	switch (field) {
 
-		case 'id': return chalk.bold(value)
-		case 'topic': return chalk.magentaBright(value)
-		case 'circuit_state': return ((value === 'closed') ? chalk.greenBright : chalk.redBright)(value || '')
-		case 'circuit_failure_count': return chalk.yellow(value || '')
+		case 'id': return clColor.api.id(value)
+		case 'topic': return clColor.magentaBright(value)
+		case 'circuit_state': return ((value === 'closed') ? clColor.msg.success : clColor.msg.error)(value || '')
+		case 'circuit_failure_count': return clColor.msg.warning(value || '')
 		case 'include_resources': return String(value || '').replace(/,/g, ' | ')
 		case 'metadata': {
 			const t = new Table({ style: { compact: false } })
 			t.push(...Object.entries(value).map(([k, v]) => {
 				return [
-					{ content: chalk.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
-					{ content: chalk.italic((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
+					{ content: clColor.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
+					{ content: clColor.italic((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
 				]
 			}))
 			return t.toString()

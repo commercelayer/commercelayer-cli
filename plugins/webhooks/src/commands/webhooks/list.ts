@@ -1,7 +1,7 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
+import { clColor } from '@commercelayer/cli-core'
 
 
 export default class WebhooksList extends Command {
@@ -82,16 +82,16 @@ export default class WebhooksList extends Command {
 				// let index = 0
 				table.push(...tableData.map(w => [
 					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
-					chalk.blueBright(w.id || ''),
+					clColor.table.key(w.id || ''),
 					w.name || '',
 					w.topic || '',
-					{ content: ((w.circuit_state === 'closed') ? chalk.green : chalk.red)(w.circuit_state || ''), hAlign: 'center' as HorizontalAlignment },
+					{ content: ((w.circuit_state === 'closed') ? clColor.msg.success : clColor.msg.error)(w.circuit_state || ''), hAlign: 'center' as HorizontalAlignment },
 					{ content: printFailures(w.circuit_failure_count), hAlign: 'center' as HorizontalAlignment },
 				]))
 
 				this.log(table.toString())
 
-			} else this.log(chalk.italic(`No webhooks found${flags.circuit ? (' with circuit state ' + chalk.white.bold(flags.circuit)) : ''}`))
+			} else this.log(clColor.italic(`No webhooks found${flags.circuit ? (' with circuit state ' + clColor.cli.flag(flags.circuit)) : ''}`))
 
 			this.log()
 
@@ -108,6 +108,6 @@ export default class WebhooksList extends Command {
 
 const printFailures = (failures?: number): string => {
 	if (!failures || (failures === 0)) return String(failures || 0)
-	if (failures >= 10) return chalk.redBright(String(failures))
-	return chalk.yellowBright(String(failures))
+	if (failures >= 10) return clColor.msg.error(String(failures))
+	return clColor.msg.warning(String(failures))
 }

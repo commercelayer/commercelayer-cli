@@ -1,7 +1,6 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
 import Table from 'cli-table3'
-import { clOutput } from '@commercelayer/cli-core'
+import { clOutput, clColor } from '@commercelayer/cli-core'
 import { EventCallback } from '@commercelayer/sdk'
 
 
@@ -48,7 +47,7 @@ export default class WebhooksEvent extends Command {
 			// const event = await cl.event_callbacks.retrieve(id)
 			const events = await cl.event_callbacks.list({ filters: { id_eq: id } })
 			if (!events || (events.length === 0)) {
-				this.log(`Event with id ${chalk.yellowBright(id)} not found`)
+				this.log(`Event with id ${clColor.api.id(id)} not found`)
 				return
 			}
 			const event = events[0]
@@ -65,7 +64,7 @@ export default class WebhooksEvent extends Command {
 				.filter(([k]) => !['type', 'payload'].includes(k))
 				.map(([k, v]) => {
 					return [
-						{ content: chalk.blueBright(k), hAlign: 'right', vAlign: 'center' },
+						{ content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
 						formatValue(k, v, event),
 					]
 				}))
@@ -84,7 +83,7 @@ export default class WebhooksEvent extends Command {
 
 					const t = new Table({
 						colWidths: [91],
-						head: [`EVENT CALLBACK PAYLOAD  ${chalk.italic(`(${hSuffix} payload)`)}`],
+						head: [`EVENT CALLBACK PAYLOAD  ${clColor.italic(`(${hSuffix} payload)`)}`],
 						style: { head: ['brightBlue'] },
 						wordWrap: true,
 					})
@@ -93,7 +92,7 @@ export default class WebhooksEvent extends Command {
 					t.push([ flags.format ? clOutput.printObject(payloadObject) : JSON.stringify(payloadObject, null, 2) ])
 					this.log(t.toString())
 
-				} else this.log(chalk.italic('No payload associated to this event'))
+				} else this.log(clColor.italic('No payload associated to this event'))
 
 			}
 
@@ -117,7 +116,7 @@ const formatValue = (field: string, value: string, obj?: EventCallback): any => 
 	if (field.endsWith('_date') || field.endsWith('_at')) return clOutput.localeDate(value)
 
 	switch (field) {
-		case 'id': return chalk.bold(value)
+		case 'id': return clColor.api.id(value)
 		case 'response_code': return responseCodeColor(value, obj?.response_message)
 		default: {
 			if ((typeof value === 'object') && (value !== null)) return JSON.stringify(value, undefined, 4)
@@ -136,12 +135,12 @@ const responseCodeColor = (code?: string, message?: string): string => {
 	if (code) {
 		if (!Number.isNaN(code)) {
 			const c = Number(code)
-			if (c < 300) styled = chalk.greenBright(code)
-			else styled = chalk.redBright(code)
+			if (c < 300) styled = clColor.msg.success(code)
+			else styled = clColor.msg.error(code)
 		} else
 			if (message) {
 				const msg = message.toLowerCase()
-				if (msg.includes('error') || msg.includes('failed')) styled = chalk.redBright(code)
+				if (msg.includes('error') || msg.includes('failed')) styled = clColor.msg.error(code)
 			}
 	}
 

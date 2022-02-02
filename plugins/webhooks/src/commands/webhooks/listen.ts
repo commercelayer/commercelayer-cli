@@ -1,9 +1,7 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags } from '../../base'
-import { clUtil } from '@commercelayer/cli-core'
+import Command, { Flags, cliux } from '../../base'
+import { clUtil, clColor } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
-import cliux from 'cli-ux'
-import chalk from 'chalk'
 import { EventCallback } from '@commercelayer/sdk'
 
 
@@ -49,8 +47,8 @@ export default class WebhooksListen extends Command {
 		let lastEvent = new Date()
 		let elapsedWithoutEvents = 0
 
-		this.log(`Listening webhook ${chalk.yellowBright(id)}...`)
-		cliux.action.start('Waiting for next event callback')
+		this.log(`Listening webhook ${clColor.api.id(id)}...`)
+		cliux.ux.action.start('Waiting for next event callback')
 
 		try {
 
@@ -76,8 +74,8 @@ export default class WebhooksListen extends Command {
 			}
 			while (elapsedWithoutEvents < listenTime)
 
-			cliux.action.stop('timed out')
-			this.log(`\nNo events received in the last ${chalk.bold(String(listenTime))} seconds\n`)
+			cliux.ux.action.stop('timed out')
+			this.log(`\nNo events received in the last ${clColor.bold(String(listenTime))} seconds\n`)
 
 		} catch (error) {
 			if (cl.isApiError(error) && (error.status === 401)) this.error('The current access token has expired')
@@ -92,7 +90,7 @@ export default class WebhooksListen extends Command {
 const eventMessage = (e: EventCallback): string => {
 	const tstamp = e.created_at.replace('T', ' ').replace('Z', '')
 	// const ok = (!Number.isNaN(e.response_code)) && (Number(e.response_code) < 300)
-	const arrow = chalk.cyanBright('-->')
+	const arrow = clColor.cyanBright('-->')
 	const code = responseCodeColor(e.response_code, e.response_message)
 	const msg = `${arrow}    ${tstamp}    ${e.id}    ${code}`
 	return msg
