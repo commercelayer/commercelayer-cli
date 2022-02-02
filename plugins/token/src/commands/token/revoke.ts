@@ -1,6 +1,6 @@
+import { clColor } from '@commercelayer/cli-core'
 import Command, { Flags } from '../../base'
 import { decodeAccessToken, revokeAccessToken } from '../../token'
-import chalk from 'chalk'
 
 
 export default class TokenRevoke extends Command {
@@ -43,8 +43,8 @@ export default class TokenRevoke extends Command {
 
     const tokenData = decodeAccessToken(accessToken)
 
-    if (tokenData.organization.slug !== organization) this.error(`You cannot revoke an access token for an application of another organization: ${chalk.redBright(tokenData.organization.slug)}`, {
-      suggestions: [`Execute ${chalk.italic('login')} or ${chalk.italic('switch')} to ${chalk.yellowBright(tokenData.organization.slug)} before trying revoking this token`],
+    if (tokenData.organization.slug !== organization) this.error(`You cannot revoke an access token for an application of another organization: ${clColor.msg.error(tokenData.organization.slug)}`, {
+      suggestions: [`Execute ${clColor.cli.command('login')} or ${clColor.cli.command('switch')} to ${clColor.api.slug(tokenData.organization.slug)} before trying revoking this token`],
     })
 
     await revokeAccessToken({

@@ -1,5 +1,5 @@
+import { clColor } from '@commercelayer/cli-core'
 import { VALIDITY_MIN, VALIDITY_MAX } from './token'
-import chalk from 'chalk'
 
 
 type Check = (input: any) => string | true
@@ -16,7 +16,7 @@ const checkList: Check = (input: any) => {
 const checkValidity: Check = (mins: string | number) => {
   const n = Number(mins)
   if (!Number.isFinite(n) || (n < 0)) return 'The value must be a positive integer'
-  return ((n >= VALIDITY_MIN) && (n <= VALIDITY_MAX)) || `Token expiration time must be between ${chalk.yellowBright(VALIDITY_MIN)} and ${chalk.yellowBright(VALIDITY_MAX)} minutes`
+  return ((n >= VALIDITY_MIN) && (n <= VALIDITY_MAX)) || `Token expiration time must be between ${clColor.style.number(VALIDITY_MIN)} and ${clColor.style.number(VALIDITY_MAX)} minutes`
 }
 
 

@@ -1,7 +1,7 @@
 import Command, { Flags } from '../../base'
-import chalk from 'chalk'
 import { decodeAccessToken, generateAccessToken, VALIDITY_MIN, VALIDITY_MAX, testAccessToken } from '../../token'
 import { checkValidity } from '../../check'
+import { clColor } from '@commercelayer/cli-core'
 
 
 
@@ -53,7 +53,7 @@ export default class TokenCreate extends Command {
 
         const accessToken = generated.accessToken
         const decodedAccessToken = decodeAccessToken(accessToken)
-        this.log(`\nAccess token for ${chalk.bold.yellowBright(decodedAccessToken.application.kind)} application of organization ${chalk.bold.yellowBright(decodedAccessToken.organization.slug)}:`)
+        this.log(`\nAccess token for ${clColor.api.kind(decodedAccessToken.application.kind)} application of organization ${clColor.api.slug(decodedAccessToken.organization.slug)}:`)
         this.printAccessToken(accessToken)
 
         if (flags.info) {

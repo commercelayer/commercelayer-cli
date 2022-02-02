@@ -1,7 +1,6 @@
 import Command, { Flags } from '../../base'
-import { clOutput, clCommand, clConfig, clToken, AccessTokenInfo } from '@commercelayer/cli-core'
+import { clOutput, clCommand, clConfig, clToken, AccessTokenInfo, clColor } from '@commercelayer/cli-core'
 import inquirer from 'inquirer'
-import chalk from 'chalk'
 import { testAccessToken, decodeAccessToken } from '../../token'
 import { checkMandatory, checkList, checkValidity } from '../../check'
 
@@ -115,7 +114,7 @@ export default class TokenGenerate extends Command {
       const accessToken = generated.accessToken
       const decodedAccessToken = decodeAccessToken(accessToken)
 
-      this.log(`\nAccess token for ${chalk.bold.yellowBright(decodedAccessToken.application.kind)} application of organization ${chalk.bold.yellowBright(decodedAccessToken.organization.slug)}:`)
+      this.log(`\nAccess token for ${clColor.api.kind(decodedAccessToken.application.kind)} application of organization ${clColor.api.slug(decodedAccessToken.organization.slug)}:`)
       this.printAccessToken(accessToken)
 
       if (flags.info) {

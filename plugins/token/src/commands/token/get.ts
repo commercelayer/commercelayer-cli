@@ -1,6 +1,5 @@
 import Command, { Flags } from '../../base'
-import { AppAuth, clCommand } from '@commercelayer/cli-core'
-import chalk from 'chalk'
+import { AppAuth, clCommand, clColor } from '@commercelayer/cli-core'
 import { decodeAccessToken, getAccessToken } from '../../token'
 import { AuthScope } from '@commercelayer/js-auth'
 
@@ -13,9 +12,9 @@ const checkScope = (scopeFlags: string[]): AuthScope => {
   if (scopeFlags) {
     for (const s of scopeFlags) {
       const colonIdx = s.indexOf(':')
-      if ((colonIdx < 0) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${chalk.red(s)}`)
+      if ((colonIdx < 0) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${clColor.msg.error(s)}`)
       else
-        if (scope.includes(s)) throw new Error(`Duplicate login scope: ${chalk.red(s)}`)
+        if (scope.includes(s)) throw new Error(`Duplicate login scope: ${clColor.msg.error(s)}`)
         else scope.push(s)
     }
   }
@@ -75,7 +74,7 @@ export default class TokenGet extends Command {
     const { flags } = await this.parse(TokenGet)
 
     if (!flags.clientSecret && !flags.scope)
-      this.error(`You must provide one of the arguments ${chalk.italic('clientSecret')} and ${chalk.italic('scope')}`)
+      this.error(`You must provide one of the arguments ${clColor.cli.arg('clientSecret')} and ${clColor.cli.arg('scope')}`)
 
     const scope = checkScope(flags.scope)
 
@@ -98,7 +97,7 @@ export default class TokenGet extends Command {
 
         const accessToken = token.accessToken
         const decodedAccessToken = decodeAccessToken(accessToken)
-        this.log(`\nAccess token for ${chalk.bold.yellowBright(decodedAccessToken.application.kind)} application of organization ${chalk.bold.yellowBright(decodedAccessToken.organization.slug)}:`)
+        this.log(`\nAccess token for ${clColor.api.kind(decodedAccessToken.application.kind)} application of organization ${clColor.api.slug(decodedAccessToken.organization.slug)}:`)
         this.printAccessToken(accessToken)
 
         if (flags.info) {

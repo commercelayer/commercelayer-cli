@@ -1,5 +1,5 @@
+import { clColor } from '@commercelayer/cli-core'
 import Command from '../../base'
-import chalk from 'chalk'
 import { decodeAccessToken } from '../../token'
 
 
@@ -33,8 +33,8 @@ export default class TokenDecode extends Command {
 
     const tokenData = decodeAccessToken(accessToken)
 
-    if (tokenData.organization.slug !== organization) this.error(`You cannot decode an access token for an application of another organization: ${chalk.redBright(tokenData.organization.slug)}`, {
-      suggestions: [`Execute ${chalk.italic('login')} or ${chalk.italic('switch')} to ${chalk.yellowBright(tokenData.organization.slug)} before trying decoding this token`],
+    if (tokenData.organization.slug !== organization) this.error(`You cannot decode an access token for an application of another organization: ${clColor.msg.error(tokenData.organization.slug)}`, {
+      suggestions: [`Execute ${clColor.cli.command('login')} or ${clColor.cli.command('switch')} to ${clColor.api.slug(tokenData.organization.slug)} before trying decoding this token`],
     })
 
 
