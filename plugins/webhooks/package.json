@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-webhooks",
   "description": "Commerce Layer CLI Webhooks plugin",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/issues",
   "devDependencies": {
@@ -72,7 +72,7 @@
     "@commercelayer/cli-core": "^1.3.3",
     "@commercelayer/js-auth": "^2.2.4",
     "@commercelayer/sdk": "^4.3.0",
-    "@oclif/core": "^1.1.2",
+    "@oclif/core": "^1.3.0",
     "cli-table3": "0.6.0",
     "lodash": "^4.17.21",
     "tslib": "^2.3.1"

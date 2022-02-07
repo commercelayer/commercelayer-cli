@@ -1,4 +1,4 @@
-import Command, { Flags, cliux } from '../../base'
+import Command, { Flags, CliUx } from '../../base'
 import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
 import { clConfig, clOutput, clColor } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
@@ -59,7 +59,7 @@ export default class WebhooksEvents extends Command {
 
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-			cliux.ux.action.start('Fetching events')
+			CliUx.ux.action.start('Fetching events')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -95,7 +95,7 @@ export default class WebhooksEvents extends Command {
 				}
 
 			}
-			cliux.ux.action.stop()
+			CliUx.ux.action.stop()
 
 			this.log()
 

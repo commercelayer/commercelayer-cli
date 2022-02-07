@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/prefer-module */
-import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { Command, Flags, CliUx } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
 
@@ -72,4 +72,4 @@ export default abstract class extends Command {
 }
 
 
-export { Flags, cliux }
+export { Flags, CliUx }
