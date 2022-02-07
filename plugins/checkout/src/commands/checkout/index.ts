@@ -143,7 +143,7 @@ export default class CheckoutIndex extends Command {
     this.log(clColor.cyanBright(checkoutUrl))
     this.log()
 
-    if (flags.open) openCheckoutUrl(checkoutUrl)
+    if (flags.open) await openCheckoutUrl(checkoutUrl)
 
   }
 

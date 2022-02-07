@@ -1,5 +1,6 @@
 import { clApi } from '@commercelayer/cli-core'
-import { CliUx as cliux } from '@oclif/core'
+import open from 'open'
+
 
 
 const buildCheckoutUrl = (organization: string, id: string, accessToken: string): string => {
@@ -10,7 +11,8 @@ const buildCheckoutUrl = (organization: string, id: string, accessToken: string)
 
 
 const openCheckoutUrl = async (checkoutUrl: string) => {
-  await cliux.ux.open(checkoutUrl)
+  // return CliUx.ux.open(checkoutUrl)  // BUG in CliUx 07-02-2022 @oclif/core@1.3.1
+  return open(checkoutUrl)
 }
 
 
