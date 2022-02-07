@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { Command, Flags, CliUx } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import config from './config'
 import { clUpdate, clColor } from '@commercelayer/cli-core'
@@ -63,11 +63,11 @@ export default abstract class extends Command {
 
 
   protected async readOpenAPISchema() {
-    cliux.ux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
+    CliUx.ux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
     return loadSchema()
-      .then(() => cliux.ux.action.stop(`done ${clColor.msg.success('\u2714')}`))
+      .then(() => CliUx.ux.action.stop(`done ${clColor.msg.success('\u2714')}`))
       .catch(() => {
-        cliux.ux.action.stop(clColor.msg.error('Error'))
+        CliUx.ux.action.stop(clColor.msg.error('Error'))
         this.error('Error reading OpenAPI schema')
       })
       .finally(() => this.log())
@@ -75,14 +75,14 @@ export default abstract class extends Command {
 
 
   protected async readBusinessModelData(url: string, model: string): Promise<BusinessModel> {
-    cliux.ux.action.start(`Reading business model ${clColor.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${clColor.style.path(url)}`)
+    CliUx.ux.action.start(`Reading business model ${clColor.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${clColor.style.path(url)}`)
     return readModelData(url, model)
       .then(model => {
-        cliux.ux.action.stop(`done ${clColor.msg.success('\u2714')}`)
+        CliUx.ux.action.stop(`done ${clColor.msg.success('\u2714')}`)
         return model
       })
       .catch(error => {
-        cliux.ux.action.stop(clColor.msg.error('Error'))
+        CliUx.ux.action.stop(clColor.msg.error('Error'))
         this.error(error)
       })
       .finally(() => this.log())
@@ -120,4 +120,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, cliux }
+export { Flags }
