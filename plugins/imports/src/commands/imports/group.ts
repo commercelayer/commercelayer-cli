@@ -1,4 +1,4 @@
-import Command, { cliux } from '../../base'
+import Command, { CliUx } from '../../base'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
 import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
@@ -41,7 +41,7 @@ export default class ImportsGroup extends Command {
 			let currentPage = 0
 			let pageCount = 1
 
-			cliux.ux.action.start('Fetching imports')
+			CliUx.ux.action.start('Fetching imports')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -62,7 +62,7 @@ export default class ImportsGroup extends Command {
 				}
 
 			}
-			cliux.ux.action.stop()
+			CliUx.ux.action.stop()
 
 			this.log()
 

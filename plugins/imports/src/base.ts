@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { Command, Flags, CliUx } from '@oclif/core'
 import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 
@@ -106,4 +106,4 @@ export default abstract class extends Command {
 }
 
 
-export { Flags, cliux }
+export { Flags, CliUx }

@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags, cliux } from '../../base'
+import Command, { Flags, CliUx } from '../../base'
 import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
 import { generateInputs } from '../../input'
 import { SingleBar } from 'cli-progress'
@@ -151,7 +151,7 @@ export default class ImportsCreate extends Command {
         }
         if (multiChunk || multiBatch) {
           this.log()
-          await cliux.ux.anykey()
+          await CliUx.ux.anykey()
         }
       }
 
