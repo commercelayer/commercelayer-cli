@@ -23,7 +23,7 @@ export default class Update extends Command {
 
     const { flags } = await this.parse(Update)
 
-    const version = `@${flags.version}` || ''
+    const version = flags.version ? `@${flags.version}` : ''
 
     this.log()
     cliux.ux.action.start('Updating Commerce Layer CLI')
