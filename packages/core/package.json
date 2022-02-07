@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "1.3.12",
+  "version": "1.3.13",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",

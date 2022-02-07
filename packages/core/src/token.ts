@@ -7,6 +7,7 @@ import { baseURL } from './api'
 import { AuthReturnType, clientCredentials, ClientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
 
 
+
 export type AccessTokenInfo = {
   organization: {
     id: string;
@@ -39,6 +40,7 @@ export type CustomToken = {
   info: AccessTokenInfo;
   expMinutes: number;
 }
+
 
 
 /** Decode a Commerce Layer access token */
@@ -148,10 +150,11 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 
 }
 
-const isAccessTokenExpiring = (tokenData: { created_at: string }): boolean => {
+
+const isAccessTokenExpiring = (tokenData: { created_at: string }, validityMins?: number): boolean => {
 
 	const safetyInterval = 30 // secs
-  const maxExpiration = config.api.token_expiration_mins * 60 // secs
+  const maxExpiration = (validityMins || config.api.token_expiration_mins) * 60 // secs
 
 
 	const createdAt = Number(tokenData.created_at)

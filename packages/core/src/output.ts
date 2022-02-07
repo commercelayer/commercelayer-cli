@@ -7,8 +7,8 @@ const printObject = (obj: any, options?: { color?: boolean, sort?: boolean, widt
 	return inspect(obj, {
 		showHidden: false,
 		depth: null,
-		colors: options?.color || true,
-		sorted: options?.sort || false,
+		colors: (options?.color === undefined) ? true : options.color,
+		sorted: (options?.sort === undefined) ? false : options?.sort,
 		maxArrayLength: Infinity,
 		breakLength: options?.width || 120,
 	})
