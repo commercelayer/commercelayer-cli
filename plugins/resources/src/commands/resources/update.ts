@@ -185,7 +185,7 @@ export default class ResourcesUpdate extends Command {
 			if (isRequestInterrupted(error) && reqReader) {
 				this.showLiveDocumentation(reqReader.request, undefined, flags)
 				cl.removeInterceptor('request', reqReader.id)
-			} else this.printError(error)
+			} else this.printError(error, flags, args)
 		}
 
 	}

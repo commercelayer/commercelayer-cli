@@ -1,4 +1,4 @@
-import { Command, Flags, Config, CliUx as cliux } from '@oclif/core'
+import { Command, Flags, Config, CliUx } from '@oclif/core'
 import { findResource, Resource } from './util/resources'
 import { filterAvailable } from './commands/resources/filters'
 import { formatOutput, exportOutput } from './output'
@@ -505,12 +505,12 @@ export default abstract class extends Command {
   }
 
 
-  printError(error: any, flags?: any): void {
+  printError(error: any, flags?: any, args?: any): void {
 
     let err = error
 
     if (CommerceLayerStatic.isApiError(err)) {
-      err = err.errors
+      err = err.errors || `Unable to find resource of type ${clColor.msg.error(args.resource)} and id ${clColor.msg.error(args.id)}`
     } else
       if (error.response) {
         if (error.response.status === 401) this.error(clColor.bg.red(`${error.response.statusText} [${error.response.status}]`),
@@ -664,4 +664,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, cliux }
+export { Flags, CliUx }

@@ -1,4 +1,4 @@
-import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND, cliux } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND, CliUx } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
@@ -122,9 +122,9 @@ export default class ResourcesList extends Command {
       }
 
 
-			if (!flags.doc) cliux.ux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
+			if (!flags.doc) CliUx.ux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
 			const res = await resSdk.list(params)
-			cliux.ux.action.stop()
+			CliUx.ux.action.stop()
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : [...res]
 			const meta = res.meta

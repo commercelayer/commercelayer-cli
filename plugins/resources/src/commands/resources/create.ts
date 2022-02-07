@@ -82,7 +82,7 @@ export default class ResourcesCreate extends Command {
 				this.log(`\n${clColor.style.success('Successfully')} created new resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(rawRes.data.id)}\n`)
 				return out
 			} catch (error) {
-				this.printError(error)
+				this.printError(error, flags, args)
 			}
 		}
 

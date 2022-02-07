@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
-import Command, { Flags, cliux } from '../../base'
+import Command, { Flags, CliUx } from '../../base'
 import { clApi, clToken, clColor } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
@@ -156,7 +156,7 @@ export default class ResourcesAll extends Command {
 
     if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
 
-      await cliux.ux.wait((securityInterval + 1) * 1000)
+      await CliUx.ux.wait((securityInterval + 1) * 1000)
 
       const organization = flags.organization
       const domain = flags.domain
@@ -233,7 +233,7 @@ export default class ResourcesAll extends Command {
 
       const itemsDesc = resource.api.replace(/_/g, ' ')
 
-      const progressBar = blindMode ? blindProgressBar : cliux.ux.progress({
+      const progressBar = blindMode ? blindProgressBar : CliUx.ux.progress({
         format: `Fetching ${itemsDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
@@ -250,7 +250,7 @@ export default class ResourcesAll extends Command {
          * 200ms  for pages within range 51 : 599
          * 500ms  for pages >= 600
         */
-        if ((page > 1) && (pages > 50)) await cliux.ux.wait((pages < 600) ? 200 : 500)
+        if ((page > 1) && (pages > 50)) await CliUx.ux.wait((pages < 600) ? 200 : 500)
 
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
 
@@ -265,7 +265,7 @@ export default class ResourcesAll extends Command {
           if (page === 1) {
             if ((recordCount > maxItemsWarning) && !blindMode) {
               this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})\nThe process could be ${clColor.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
-              if (!await cliux.ux.confirm(`>> Do you want to continue anyway? ${clColor.dim('[Yy/Nn]')}`)) return
+              if (!await CliUx.ux.confirm(`>> Do you want to continue anyway? ${clColor.dim('[Yy/Nn]')}`)) return
               notification = true
             }
             this.log()
