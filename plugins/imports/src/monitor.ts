@@ -1,6 +1,6 @@
 import cliProgress, { SingleBar, MultiBar } from 'cli-progress'
 import type { Chunk } from './chunk'
-import { clOutput, clConfig, clColor } from '@commercelayer/cli-core'
+import { clOutput, clConfig, clColor, clUtil } from '@commercelayer/cli-core'
 
 
 
@@ -310,26 +310,9 @@ export { Monitor }
 
 
 
-const resetConsole = () => {
-
-	// Cursor
-	// const showCursor = '\u001B[?25l'  // \x1B[?25l
-	const showCursor = '\u001B[?25h' // \x1B[?25h
-
-	// Line wrap
-	// const lineWrap = '\u001B[?7l'  // \x1B[?7l
-	const lineWrap = '\u001B[?7h' // \x1B[?7h
-
-	// eslint-disable-next-line no-console
-	// console.log(`${showCursor}${lineWrap}`)
-	process.stdout.write(`${showCursor}${lineWrap}`)
-
-}
-
-
 // Enable terminal cursor and line wrap in case of process interrupted
 process.on('SIGINT', () => {
-	resetConsole()
+	clUtil.resetConsole()
 	// eslint-disable-next-line no-process-exit
 	process.exit()
 })
