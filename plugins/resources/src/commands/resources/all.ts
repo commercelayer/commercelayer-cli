@@ -2,7 +2,7 @@
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
 import Command, { Flags, CliUx } from '../../base'
-import { clApi, clToken, clColor } from '@commercelayer/cli-core'
+import { clApi, clToken, clColor, clUtil } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
 import { getIntegrationToken } from '@commercelayer/js-auth'
@@ -33,30 +33,12 @@ const blindProgressBar = {
 /* eslint-enable no-console,@typescript-eslint/no-empty-function */
 
 
-const resetConsole = () => {
-
-  // Cursor
-  // const showCursor = '\u001B[?25l'  // \x1B[?25l
-  const showCursor = '\u001B[?25h' // \x1B[?25h
-
-  // Line wrap
-  // const lineWrap = '\u001B[?7l'  // \x1B[?7l
-  const lineWrap = '\u001B[?7h' // \x1B[?7h
-
-  // eslint-disable-next-line no-console
-  // console.log(`${showCursor}${lineWrap}`)
-  process.stdout.write(`${showCursor}${lineWrap}`)
-
-}
-
 
 export default class ResourcesAll extends Command {
 
   static description = 'fetch all resources'
 
   static aliases = ['all', 'ra', 'res:all']
-
-  static hidden = true
 
   static examples = [
     '$ commercelayer resources:all customers -f id,email -i customer_group -s updated_at',
@@ -312,7 +294,7 @@ export default class ResourcesAll extends Command {
       this.printError(error)
       this.log()
     } finally {
-      resetConsole()
+      clUtil.resetConsole()
     }
 
   }
@@ -322,7 +304,7 @@ export default class ResourcesAll extends Command {
 
 // Enable terminal cursor and line wrap in case of process interrupted
 process.on('SIGINT', () => {
-  resetConsole()
+  clUtil.resetConsole()
   // eslint-disable-next-line no-process-exit
   process.exit()
 })

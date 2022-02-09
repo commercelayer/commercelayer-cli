@@ -26,6 +26,7 @@ $ commercelayer plugins:install resources
 <!-- commands -->
 
 * [`commercelayer resources`](#commercelayer-resources)
+* [`commercelayer resources:all RESOURCE`](#commercelayer-resourcesall-resource)
 * [`commercelayer resources:args`](#commercelayer-resourcesargs)
 * [`commercelayer resources:create RESOURCE`](#commercelayer-resourcescreate-resource)
 * [`commercelayer resources:delete RESOURCE [ID]`](#commercelayer-resourcesdelete-resource-id)
@@ -55,6 +56,52 @@ EXAMPLES
 ```
 
 _See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/index.ts)_
+
+### `commercelayer resources:all RESOURCE`
+
+Fetch all resources.
+
+```
+USAGE
+  $ commercelayer resources:all RESOURCE
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+OPTIONS
+  -C, --csv                        export fields in csv format
+  -D, --doc                        shows the CLI command in a specific language
+  -H, --header=header              rename column headers defining a comma-separated list of values field:"renamed title"
+  -R, --raw                        print out the raw API response
+  -X, --save-path=save-path        save command output to file and create missing path directories
+  -b, --blind                      execute in blind mode without prompt and progress bar
+  -e, --extract=extract            extract subfields from object attributes
+  -f, --fields=fields              comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=include            comma separated resources to include
+  -j, --json                       convert output in standard JSON format
+  -l, --lang=curl|node             show the CLI command in the specified language syntax
+  -o, --organization=organization  (required) the slug of your organization
+  -s, --sort=sort                  defines results ordering
+  -u, --unformatted                print unformatted JSON output
+  -w, --where=where                comma separated list of query filters
+  -x, --save=save                  save command output to file
+  --curl                           show the equivalent cURL command of the CLI command
+  --load-args=load-args            load previously saved command arguments
+  --node                           show the equivalent Node SDK source code of the CLI command
+  --save-args=save-args            save command data to file for future use
+
+ALIASES
+  $ commercelayer all
+  $ commercelayer ra
+  $ commercelayer res:all
+
+EXAMPLES
+  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl all -s -created_at --json
+```
+
+_See code: [src/commands/resources/all.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/all.ts)_
 
 ### `commercelayer resources:args`
 
