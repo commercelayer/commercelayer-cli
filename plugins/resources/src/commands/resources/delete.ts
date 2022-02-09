@@ -3,11 +3,14 @@ import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { clCommand, clColor } from '@commercelayer/cli-core'
 
+
+const OPERATION = 'delete'
+
 export default class ResourcesDelete extends Command {
 
 	static description = 'delete an existing resource'
 
-	static aliases = ['delete', 'rd', 'res:delete']
+	static aliases = [OPERATION, 'rd', 'res:delete']
 
 	static examples = [
 		'$ commercelayer resources:delete customers/<customerId>',
@@ -30,7 +33,7 @@ export default class ResourcesDelete extends Command {
 
 		const invalidFlags: string[] = ['fields', 'include']
 		invalidFlags.forEach(x => {
-			if (flags[x as keyof typeof flags]) this.error(`Flag non supported in ${clColor.italic('delete')} operation: ${clColor.style.error(x)}`)
+			if (flags[x as keyof typeof flags]) this.error(`Flag non supported in ${clColor.cli.command(OPERATION)} operation: ${clColor.style.error(x)}`)
 		})
 
 
@@ -50,7 +53,7 @@ export default class ResourcesDelete extends Command {
 		try {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
-			this.checkOperation(resSdk, 'delete')
+			this.checkOperation(resSdk, OPERATION)
 
 			await resSdk.delete(id)
 
