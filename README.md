@@ -17,13 +17,13 @@ The official Commerce Layer CLI which helps you to manage your Commerce Layer ap
 
 <!-- toc -->
 
-* [ Installation](#-installation)
-* [ Usage](#-usage)
-* [ Commands](#-commands)
-* [ Plugins](#-plugins)
-* [ Contributors Guide](#-contributors-guide)
-* [ Need help?](#-need-help)
-* [ License](#-license)
+* [ Installation](#installation)
+* [ Usage](#usage)
+* [ Commands](#commands)
+* [ Plugins](#plugins)
+* [ Contributors Guide](#contributors-guide)
+* [ Need help?](#need-help)
+* [ License](#license)
 <!-- tocstop -->
 
 ## Installation
