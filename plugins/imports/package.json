@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-imports",
   "description": "Commerce Layer CLI Imports plugin",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-imports/issues",
   "devDependencies": {
@@ -57,7 +57,7 @@
     "additionalHelpFlags": [
       "-h"
     ],
-    "topicSeparator": " "
+    "topicSeparator": ":"
   },
   "repository": "commercelayer/commercelayer-cli-plugin-imports",
   "scripts": {
