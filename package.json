@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "4.4.5",
+  "version": "4.4.6",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -86,7 +86,7 @@
     "additionalHelpFlags": [
       "-h"
     ],
-    "topicSeparator": " "
+    "topicSeparator": ":"
   },
   "repository": "https://github.com/commercelayer/commercelayer-cli",
   "scripts": {
