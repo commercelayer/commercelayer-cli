@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
   "devDependencies": {
@@ -61,7 +61,7 @@
     "additionalHelpFlags": [
       "-h"
     ],
-    "topicSeparator": " "
+    "topicSeparator": ":"
   },
   "repository": "commercelayer/commercelayer-cli-plugin-triggers",
   "scripts": {
