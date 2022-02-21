@@ -8,7 +8,8 @@ import { readResourceData } from '../../data'
 import { relationshipType } from '../../schema'
 import { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
-import { clToken, clColor } from '@commercelayer/cli-core'
+import { clToken, clColor, clUtil } from '@commercelayer/cli-core'
+import { requestsDelay } from '../../common'
 
 
 
@@ -57,7 +58,7 @@ export default class SeederSeed extends Command {
     const organization = flags.organization
     const businessModel = flags.businessModel
     const accessToken = flags.accessToken
-    const name = this.modelNameChack(flags)
+    const name = this.modelNameCheck(flags)
 
     try {
 
@@ -138,9 +139,9 @@ export default class SeederSeed extends Command {
     const remoteRes = await resSdk.create(resourceCreate).catch((error: any) => {
       if (CommerceLayerStatic.isApiError(error)) {
         const err = error.first()
-        if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)
-        else throw new Error(`Error creating resource of type ${resType} and reference ${resourceCreate.reference}`)
-      }
+        if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${JSON.stringify(err.meta?.value)})` : ''}`)
+        else throw new Error(`Error creating resource of type ${resType} and reference ${resourceCreate.reference} [${error.code}]`)
+      } else throw error
     })
 
     return remoteRes
@@ -164,8 +165,8 @@ export default class SeederSeed extends Command {
       if (CommerceLayerStatic.isApiError(error)) {
         const err = error.first()
         if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)
-        else throw new Error(`Error creating resource of type ${resType} and reference ${resourceUpdate.reference}`)
-      }
+        else throw new Error(`Error creating resource of type ${resType} and reference ${resourceUpdate.reference} [${error.code}]`)
+      } else throw error
     })
 
     return remoteRes
@@ -185,6 +186,8 @@ export default class SeederSeed extends Command {
     if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
 
+    const delay = requestsDelay(referenceKeys.length, res.resourceType)
+
     for (const r of referenceKeys) {
 
       task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + r
@@ -199,6 +202,8 @@ export default class SeederSeed extends Command {
         if (flags.keep) continue
         else await this.updateResource(res.resourceType, remoteRes.id, resource)
       } else await this.createResource(res.resourceType, resource)
+
+      if (delay > 0) await clUtil.sleep(delay)
 
     }
 

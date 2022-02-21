@@ -17,7 +17,7 @@ export default abstract class extends Command {
     businessModel: Flags.string({
       char: 'b',
       description: 'the kind of business model you want to import',
-      options: ['single_sku', 'custom'],
+      options: ['single_sku', 'multi_market', 'custom'],
       default: 'single_sku',
     }),
     url: Flags.string({
@@ -91,7 +91,7 @@ export default abstract class extends Command {
 
   protected async findByReference(type: string, reference: string): Promise<ResourceId | undefined> {
 
-    const params: QueryParamsList & { fields: {[key: string]: string[] } } = {
+    const params: QueryParamsList & { fields: { [key: string]: string[] } } = {
       fields: {},
       filters: {
         reference_eq: reference,
@@ -104,15 +104,16 @@ export default abstract class extends Command {
       const resSdk = this.cl[type as keyof CommerceLayerClient] as any
       const list = await resSdk.list(params)
       return list[0] as ResourceId
-    } catch (error) {
+    } catch (error: any) {
       return undefined
     }
 
   }
 
 
-  protected modelNameChack(flags: any): string {
-    if (flags.name && (flags.businessModel !== 'custom')) if (flags.businessModel !== 'custom') this.error(`Model name can be specified only using the ${clColor.bold('custom')} business model`)
+  protected modelNameCheck(flags: any): string {
+    if (flags.name && (flags.businessModel !== 'custom'))
+      if (flags.businessModel !== 'custom') this.error(`Model name can be specified only using the ${clColor.bold('custom')} business model`)
     return flags.name || flags.businessModel
   }
 

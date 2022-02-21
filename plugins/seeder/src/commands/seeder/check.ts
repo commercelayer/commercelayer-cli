@@ -39,7 +39,7 @@ export default class SeederCheck extends Command {
     const { flags } = await this.parse(SeederCheck)
 
     const businessModel = flags.businessModel
-    const name = this.modelNameChack(flags)
+    const name = this.modelNameCheck(flags)
 
     this.log()
 

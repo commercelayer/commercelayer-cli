@@ -4,7 +4,8 @@ import Listr from 'listr'
 import { readResourceData, SeederResource } from '../../data'
 import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { checkResourceType } from './check'
-import { clColor } from '@commercelayer/cli-core'
+import { clColor, clUtil } from '@commercelayer/cli-core'
+import { requestsDelay } from '../../common'
 
 
 export default class SeederClean extends Command {
@@ -45,7 +46,7 @@ export default class SeederClean extends Command {
 
     const organization = flags.organization
     const businessModel = flags.businessModel
-    const name = this.modelNameChack(flags)
+    const name = this.modelNameCheck(flags)
 
     this.initCommerceLayer(flags)
 
@@ -76,7 +77,8 @@ export default class SeederClean extends Command {
       // Execute tasks
       tasks.run()
         .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data cleaning completed! \u2705`))
-        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`))
+        // .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`))
+        .catch(error => this.error(error))
         .finally(() => this.log())
 
     } catch (error: any) {
@@ -100,16 +102,21 @@ export default class SeederClean extends Command {
     const referenceKeys = res.importAll ? Object.values(resourceData).map(v => v.reference) : res.referenceKeys
     if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
-    for (const r of referenceKeys) {
 
-      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + r
+    const delay = requestsDelay(referenceKeys.length, res.resourceType)
+
+    for (const ref of referenceKeys) {
+
+      task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + ref
 
       // Read resource data
-      const resource = resourceData[r]
+      const resource = resourceData[ref]
       const type = resource?.type || res.resourceType
 
-      const remoteRes = await this.findByReference(type, r)
+      const remoteRes = await this.findByReference(type, ref)
       if (remoteRes) await this.deleteResource(remoteRes.type, remoteRes.id)
+
+      if (delay > 0) await clUtil.sleep(delay)
 
     }
 
@@ -128,7 +135,8 @@ export default class SeederClean extends Command {
       if (CommerceLayerStatic.isApiError(error)) {
         const err = error.first()
         if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)
-      }
+        else throw new Error(`Error deleting resource of type ${type} and id ${id} [${error.code}]`)
+      } else throw error
     })
 
   }
