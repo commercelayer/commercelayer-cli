@@ -90,17 +90,17 @@ export default class SeederCheck extends Command {
 
       if (['key', 'type'].includes(field)) continue
 
-      const attr = attributeType(type, field)
+      const attr = attributeType(resType, field)
       if (attr) continue
 
-      const rel = relationshipType(type, field)
+      const rel = relationshipType(resType, field)
       if (rel) {
         const val = res[field] as string
-        if (Array.isArray(val)) throw new Error(`Relationship ${type}.${field} cannot be an array`)
+        if (Array.isArray(val)) throw new Error(`Relationship ${resType}.${field} cannot be an array`)
         else if (flags.relationships) {
           const relRes = await getResource(flags.url, rel, val)
           if (!relRes) throw new Error(`Resource of type ${clColor.api.resource(rel)} and reference ${clColor.api.resource(val)} not found`)
-          if (modelIndex(model, type, res.reference) < modelIndex(model, rel, val)) throw new Error(`Resource ${rel}.${val} must be created before resource ${type}.${res.reference}`)
+          if (modelIndex(model, resType, res.reference) < modelIndex(model, rel, val)) throw new Error(`Resource ${rel}.${val} must be created before resource ${type}.${res.reference}`)
         }
       } else invalidFields.push(field)
 

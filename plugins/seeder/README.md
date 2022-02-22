@@ -37,10 +37,14 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
-  -b, --businessModel=single_sku|custom  [default: single_sku] the kind of business model you want to import
-  -n, --name=name                        the name of the business model file to use
-  -r, --relationships                    check resource relationships
-  -u, --url=url                          [default: https://data.commercelayer.app/seeder] seeder data URL
+  -b, --businessModel=single_sku|multi_market|custom  [default: single_sku] the kind of business model you want to
+                                                      import
+
+  -n, --name=name                                     the name of the business model file to use
+
+  -r, --relationships                                 check resource relationships
+
+  -u, --url=url                                       [default: https://data.commercelayer.app/seeder] seeder data URL
 
 EXAMPLES
   $ commercelayer seeder:check -u <seedUrl>
@@ -61,10 +65,14 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
-  -b, --businessModel=single_sku|custom  [default: single_sku] the kind of business model you want to import
-  -n, --name=name                        the name of the business model file to use
-  -o, --organization=organization        (required) the slug of your organization
-  -u, --url=url                          [default: https://data.commercelayer.app/seeder] seeder data URL
+  -b, --businessModel=single_sku|multi_market|custom  [default: single_sku] the kind of business model you want to
+                                                      import
+
+  -n, --name=name                                     the name of the business model file to use
+
+  -o, --organization=organization                     (required) the slug of your organization
+
+  -u, --url=url                                       [default: https://data.commercelayer.app/seeder] seeder data URL
 
 EXAMPLES
   $ commercelayer seeder:clean -u <seedUrl>
@@ -85,11 +93,16 @@ ARGUMENTS
   ID  the unique id of the order
 
 OPTIONS
-  -b, --businessModel=single_sku|custom  [default: single_sku] the kind of business model you want to import
-  -k, --keep                             keep existing resources without updating them
-  -n, --name=name                        the name of the business model file to use
-  -o, --organization=organization        (required) the slug of your organization
-  -u, --url=url                          [default: https://data.commercelayer.app/seeder] seeder data URL
+  -b, --businessModel=single_sku|multi_market|custom  [default: single_sku] the kind of business model you want to
+                                                      import
+
+  -k, --keep                                          keep existing resources without updating them
+
+  -n, --name=name                                     the name of the business model file to use
+
+  -o, --organization=organization                     (required) the slug of your organization
+
+  -u, --url=url                                       [default: https://data.commercelayer.app/seeder] seeder data URL
 
 ALIASES
   $ commercelayer seed
