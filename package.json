@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "4.4.6",
+  "version": "4.4.9",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -78,6 +78,10 @@
       },
       "config": {
         "description": "Manage CLI configuration",
+        "hidden": true
+      },
+      "cli": {
+        "description": "Core CLI commands",
         "hidden": true
       }
     },

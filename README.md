@@ -68,8 +68,6 @@ The Commerce Layer CLI supports the following commands:
 * [`commercelayer autocomplete`](docs/autocomplete.md) - Display autocomplete installation instructions.
 * [`commercelayer help`](docs/help.md) - Display help for commercelayer..
 * [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins.
-* [`commercelayer update`](docs/update.md) - Update Commerce Layer CLI.
-* [`commercelayer version`](docs/version.md) - Show installed version of Commerce Layer CLI.
 
 <!-- commandsstop -->
 

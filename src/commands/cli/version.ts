@@ -1,9 +1,11 @@
 import { clColor } from '@commercelayer/cli-core'
 import { Command } from '@oclif/core'
 
-export default class Version extends Command {
+export default class CliVersion extends Command {
 
   static description = 'Show installed version of Commerce Layer CLI'
+
+  static aliases = ['version']
 
   static examples = [
     '<%= config.bin %> <%= command.id %>',

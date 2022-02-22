@@ -2,9 +2,11 @@ import { Command, CliUx as cliux, Flags } from '@oclif/core'
 import { exec } from 'child_process'
 
 
-export default class Update extends Command {
+export default class CliUpdate extends Command {
 
   static description = 'Update Commerce Layer CLI'
+
+  static aliases = ['upgrade', 'latest']
 
   static examples = [
     '<%= config.bin %> <%= command.id %> --version=<version-or-tag>',
@@ -21,7 +23,7 @@ export default class Update extends Command {
 
   public async run(): Promise<void> {
 
-    const { flags } = await this.parse(Update)
+    const { flags } = await this.parse(CliUpdate)
 
     const version = flags.version ? `@${flags.version}` : ''
 
@@ -34,7 +36,7 @@ export default class Update extends Command {
 
       cliux.ux.action.stop()
 
-      const verCmd = await this.config.findCommand('version')?.load()
+      const verCmd = await this.config.findCommand('cli:version')?.load()
       await verCmd?.run()
 
       // eslint-disable-next-line no-process-exit, unicorn/no-process-exit
