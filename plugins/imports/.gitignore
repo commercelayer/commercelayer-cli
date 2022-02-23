@@ -9,3 +9,5 @@ node_modules
 .DS_Store
 .editorconfig
 tsconfig.tsbuildinfo
+.oclif.manifest.json
+/package-lock.json
