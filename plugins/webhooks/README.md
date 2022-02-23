@@ -34,17 +34,21 @@ List all the registered webhooks.
 
 ```
 USAGE
-  $ commercelayer webhooks [ID]
+  $ commercelayer webhooks [ID] -o <value> [-c open|closed] [-t <value>] [-H] [-e]
 
 ARGUMENTS
   ID  unique id of the webhook
 
-OPTIONS
-  -H, --hide-empty                 hide empty attributes
-  -c, --circuit=open|closed        show only webhooks with circuit in the declared state
-  -e, --events                     show the last event callbacks associated to the webhook
-  -o, --organization=organization  (required) the slug of your organization
-  -t, --topic=topic                the event that triggered the webhook
+FLAGS
+  -H, --hide-empty            hide empty attributes
+  -c, --circuit=<option>      show only webhooks with circuit in the declared state
+                              <options: open|closed>
+  -e, --events                show the last event callbacks associated to the webhook
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --topic=<value>         the event that triggered the webhook
+
+DESCRIPTION
+  list all the registered webhooks
 ```
 
 _See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/index.ts)_
@@ -55,20 +59,24 @@ Create a new webhook.
 
 ```
 USAGE
-  $ commercelayer webhooks:create
+  $ commercelayer webhooks:create [FAKE-ARG] -o <value> -t <value> -u <value> [-i <value>] [-n <value>]
 
-OPTIONS
-  -i, --include=include            a comma separated list of related resources to be included
-  -n, --name=name                  the webhook short name
-  -o, --organization=organization  (required) the slug of your organization
-  -t, --topic=topic                (required) the identifier of the event that will trigger the webhook
-  -u, --url=url                    (required) the callback URL used to POST data
+FLAGS
+  -i, --include=<value>...    a comma separated list of related resources to be included
+  -n, --name=<value>          the webhook short name
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --topic=<value>         (required) the identifier of the event that will trigger the webhook
+  -u, --url=<value>           (required) the callback URL used to POST data
+
+DESCRIPTION
+  create a new webhook
 
 ALIASES
   $ commercelayer wh:create
 
 EXAMPLES
   $ commercelayer webhooks:create -t customers.create -u https://callback.url.io
+
   $ cl wh:create -t orders.place -u http://myurl.com
 ```
 
@@ -80,13 +88,16 @@ Destroy an existing webhook.
 
 ```
 USAGE
-  $ commercelayer webhooks:destroy ID
+  $ commercelayer webhooks:destroy [ID] -o <value>
 
 ARGUMENTS
   ID  unique id of the webhook
 
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  destroy an existing webhook
 
 ALIASES
   $ commercelayer webhooks:delete
@@ -95,6 +106,7 @@ ALIASES
 
 EXAMPLES
   $ commercelayer webhooks:destroy <webhook-id>>
+
   $ cl wh:destroy <webhook-id>>
 ```
 
@@ -106,15 +118,18 @@ Show the details of an existing webhook.
 
 ```
 USAGE
-  $ commercelayer webhooks:details ID
+  $ commercelayer webhooks:details [ID] -o <value> [-H] [-e]
 
 ARGUMENTS
   ID  unique id of the webhook
 
-OPTIONS
-  -H, --hide-empty                 hide empty attributes
-  -e, --events                     show the last event callbacks associated to the webhook
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -H, --hide-empty            hide empty attributes
+  -e, --events                show the last event callbacks associated to the webhook
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  show the details of an existing webhook
 
 ALIASES
   $ commercelayer wh:details
@@ -122,7 +137,9 @@ ALIASES
 
 EXAMPLES
   $ commercelayer webhooks:details <webhook-id>
+
   $ cl webhooks:details <webhook-id> -H
+
   $ cl wh:details <webhook-id>
 ```
 
@@ -134,21 +151,25 @@ Show the details of a firedf webhook event.
 
 ```
 USAGE
-  $ commercelayer webhooks:event ID
+  $ commercelayer webhooks:event [ID] -o <value> [-f -p]
 
 ARGUMENTS
   ID  unique id of the webhook event
 
-OPTIONS
-  -f, --format                     format the payload output
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --payload                    show the event payload sent to the callback endpoint
+FLAGS
+  -f, --format                format the payload output
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --payload               show the event payload sent to the callback endpoint
+
+DESCRIPTION
+  show the details of a firedf webhook event
 
 ALIASES
   $ commercelayer wh:event
 
 EXAMPLES
   $ commercelayer webhooks:event <event-id>
+
   $ cl wh:event <event-id> -p
 ```
 
@@ -160,21 +181,25 @@ List all the events associated to the webhook.
 
 ```
 USAGE
-  $ commercelayer webhooks:events ID
+  $ commercelayer webhooks:events [ID] -o <value> [-A | -l <value>]
 
 ARGUMENTS
   ID  unique id of the webhook
 
-OPTIONS
-  -A, --all                        show all events instead of first 25 only
-  -l, --limit=limit                limit number of events in output
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -A, --all                   show all events instead of first 25 only
+  -l, --limit=<value>         limit number of events in output
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  list all the events associated to the webhook
 
 ALIASES
   $ commercelayer wh:events
 
 EXAMPLES
   $ commercelayer webhooks:events <webhook-id>
+
   $ cl wh:events <webhook-id>
 ```
 
@@ -186,19 +211,25 @@ List all the registered webhooks.
 
 ```
 USAGE
-  $ commercelayer webhooks:list
+  $ commercelayer webhooks:list [FAKE-ARG] -o <value> [-c open|closed] [-t <value>]
 
-OPTIONS
-  -c, --circuit=open|closed        show only webhooks with circuit in the declared state
-  -o, --organization=organization  (required) the slug of your organization
-  -t, --topic=topic                the event that triggered the webhook
+FLAGS
+  -c, --circuit=<option>      show only webhooks with circuit in the declared state
+                              <options: open|closed>
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --topic=<value>         the event that triggered the webhook
+
+DESCRIPTION
+  list all the registered webhooks
 
 ALIASES
   $ commercelayer wh:list
 
 EXAMPLES
   $ commercelayer webhooks
+
   $ cl webhooks:list -c open
+
   $ cl wh:list
 ```
 
@@ -210,20 +241,24 @@ Listen a webhook for outgoing callbacks.
 
 ```
 USAGE
-  $ commercelayer webhooks:listen ID
+  $ commercelayer webhooks:listen [ID] -o <value> [-t <value>]
 
 ARGUMENTS
   ID  unique id of the webhook
 
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
-  -t, --time=time                  [default: 120] waiting time for the first event
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --time=<value>          [default: 120] waiting time for the first event
+
+DESCRIPTION
+  listen a webhook for outgoing callbacks
 
 ALIASES
   $ commercelayer wh:listen
 
 EXAMPLES
   $ commercelayer webhooks:listen <webhook-id>
+
   $ cl wh:listen <webhook-id>
 ```
 
@@ -235,21 +270,26 @@ Show the payload associated to an event callback.
 
 ```
 USAGE
-  $ commercelayer webhooks:payload ID
+  $ commercelayer webhooks:payload [ID] -o <value> [-f]
 
 ARGUMENTS
   ID  unique id of the webhook event
 
-OPTIONS
-  -f, --format                     format the payload output
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -f, --format                format the payload output
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  show the payload associated to an event callback
 
 ALIASES
   $ commercelayer wh:payload
 
 EXAMPLES
   $ commercelayer webhooks:payload <event-id>
+
   $ cl webhook:payload <event-id>
+
   $ cl wh:payload <event-id> -f
 ```
 
@@ -261,19 +301,23 @@ Reset the circuit breaker associated to the webhook.
 
 ```
 USAGE
-  $ commercelayer webhooks:reset ID
+  $ commercelayer webhooks:reset [ID] -o <value>
 
 ARGUMENTS
   ID  unique id of the webhook
 
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  reset the circuit breaker associated to the webhook
 
 ALIASES
   $ commercelayer wh:reset
 
 EXAMPLES
   $ commercelayer webhooks:reset <webhook-id>
+
   $ cl wh:reset <webhook-id>
 ```
 
@@ -287,11 +331,15 @@ Show online documentation for supported events.
 USAGE
   $ commercelayer webhooks:topics
 
+DESCRIPTION
+  show online documentation for supported events
+
 ALIASES
   $ commercelayer wh:topics
 
 EXAMPLES
   $ commercelayer webhooks:topics
+
   $ cl wh:topics
 ```
 
@@ -303,23 +351,27 @@ Update an existing webhook.
 
 ```
 USAGE
-  $ commercelayer webhooks:update ID
+  $ commercelayer webhooks:update [ID] -o <value> [-t <value>] [-u <value>] [-i <value>] [-n <value>]
 
 ARGUMENTS
   ID  unique id of the webhook
 
-OPTIONS
-  -i, --include=include            a comma separated list of related resources to be included
-  -n, --name=name                  the webhook short name
-  -o, --organization=organization  (required) the slug of your organization
-  -t, --topic=topic                the identifier of the event that will trigger the webhook
-  -u, --url=url                    the callback URL used to POST data
+FLAGS
+  -i, --include=<value>...    a comma separated list of related resources to be included
+  -n, --name=<value>          the webhook short name
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --topic=<value>         the identifier of the event that will trigger the webhook
+  -u, --url=<value>           the callback URL used to POST data
+
+DESCRIPTION
+  update an existing webhook
 
 ALIASES
   $ commercelayer wh:update
 
 EXAMPLES
   $ commercelayer webhooks:update -t customers.create -u https://callback.url.io
+
   $ cl wh:update -i customer_group
 ```
 
