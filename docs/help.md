@@ -1,26 +1,26 @@
 `commercelayer help`
 ====================
 
-Display help for commercelayer..
+Display help for commercelayer.
 
 * [`commercelayer help [COMMAND]`](#commercelayer-help-command)
 
 ### `commercelayer help [COMMAND]`
 
-Display help for commercelayer..
+Display help for commercelayer.
 
 ```
 USAGE
-  $ commercelayer help [COMMAND] [-n]
+  $ commercelayer help [COMMAND] [--all]
 
 ARGUMENTS
-  COMMAND  Command to show help for.
+  COMMAND  command to show help for
 
 FLAGS
-  -n, --nested-commands  Include all nested commands in the output.
+  --all  see all commands in CLI
 
 DESCRIPTION
-  Display help for commercelayer.
+  display help for commercelayer
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.3.1/src/commands/help.ts)_
