@@ -1,7 +1,7 @@
 /* eslint-disable no-console, no-eval */
 import fs from 'fs'
 // import Manifest from '@oclif/dev-cli/lib/commands/manifest'
-import path from 'path'
+import { join } from 'path'
 import axios from 'axios'
 import { snakeCase } from 'lodash'
 
@@ -18,17 +18,17 @@ const clean = () => {
 
   // Clean triggers dir
   const triggers = fs.readdirSync(TRIGGERS_DIR)
-  triggers.forEach(f => fs.unlinkSync(path.join(TRIGGERS_DIR, f)))
+  triggers.forEach(f => fs.unlinkSync(join(TRIGGERS_DIR, f)))
   console.log('Deleted trigger files')
 
   // Clean commands dir
   const files = fs.readdirSync(COMMANDS_DIR)
-  files.forEach(f => fs.rmSync(path.join(COMMANDS_DIR, f), { recursive: true, force: true }))
+  files.forEach(f => fs.rmSync(join(COMMANDS_DIR, f), { recursive: true, force: true }))
   console.log('Deleted command files')
 
   // Clean specs dir
   const specs = fs.readdirSync(SPECS_DIR)
-  specs.forEach(f => fs.rmSync(path.join(SPECS_DIR, f), { recursive: true, force: true }))
+  specs.forEach(f => fs.rmSync(join(SPECS_DIR, f), { recursive: true, force: true }))
   console.log('Deleted spec files')
 
 }
@@ -37,7 +37,7 @@ const clean = () => {
 const readTemplate = (template: string): string => {
   let tpl = template
   if (!tpl.endsWith('.tpl')) tpl += '.tpl'
-  return fs.readFileSync(path.join(TEMPLATES_DIR, tpl), { encoding: 'utf-8' })
+  return fs.readFileSync(join(TEMPLATES_DIR, tpl), { encoding: 'utf-8' })
 }
 
 
@@ -92,7 +92,7 @@ const updateTriggers = async (): Promise<{ [k: string]: any }> => {
 
     const resType = Inflector.pluralize(r)
 
-    fs.writeFileSync(path.join(TRIGGERS_DIR, `${resType}.ts`), triggers, { encoding: 'utf-8' })
+    fs.writeFileSync(join(TRIGGERS_DIR, `${resType}.ts`), triggers, { encoding: 'utf-8' })
 
     generatedTriggers[r] = eval(`({${actionsObject}})`)
 
@@ -133,11 +133,11 @@ const generate = async () => {
     const resType = Inflector.pluralize(resource)
     const resClass = Inflector.camelize(resource)
 
-    const cmdDir = path.join(COMMANDS_DIR, resource)
+    const cmdDir = join(COMMANDS_DIR, resource)
     // fs.rmdirSync(cmdDir)
     fs.mkdirSync(cmdDir)
 
-    const spcDir = path.join(SPECS_DIR, resource)
+    const spcDir = join(SPECS_DIR, resource)
     // fs.rmdirSync(spcDir)
     fs.mkdirSync(spcDir)
 
@@ -146,7 +146,7 @@ const generate = async () => {
     index = index.replace(/##__RESOURCE_NAME__##/g, resource)
     index = index.replace(/##__RESOURCE_TYPE__##/g, resType)
     index = index.replace(/##__RESOURCE_CLASS__##/g, resClass)
-    fs.writeFileSync(path.join(cmdDir, 'index.ts'), index)
+    fs.writeFileSync(join(cmdDir, 'index.ts'), index)
 
 
     Object.keys(triggers).forEach(action => {
@@ -163,20 +163,20 @@ const generate = async () => {
       command = command.replace(/##__FLAGS_IMPORT__##/, flagsImport)
 
       const fileName = action + '.ts'
-      fs.writeFileSync(path.join(cmdDir, fileName), command)
+      fs.writeFileSync(join(cmdDir, fileName), command)
       console.log(`Created command: ${action} [${fileName}]`)
 
       let spec = specTpl.replace(/##__ACTION_ID__##/g, action)
       spec = spec.replace(/##__RESOURCE_TYPE__##/g, resType)
       const specName = fileName.replace(/.ts/g, '.test.ts')
-      fs.writeFileSync(path.join(spcDir, specName), spec)
+      fs.writeFileSync(join(spcDir, specName), spec)
       console.log(`Created spec: ${action} [${specName}]`)
 
     })
 
   })
 
-  fs.copyFileSync(path.join(TEMPLATES_DIR, 'noc.tpl'), path.join(COMMANDS_DIR, 'noc.ts'))
+  fs.copyFileSync(join(TEMPLATES_DIR, 'noc.tpl'), join(COMMANDS_DIR, 'noc.ts'))
 
   /*
   console.log('Generating commands manifest ...')
