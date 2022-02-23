@@ -32,16 +32,20 @@ Create a new custom access token for the current application.
 
 ```
 USAGE
-  $ commercelayer token:create
+  $ commercelayer token:create -o <value> -s <value> -m <value> [--info]
 
-OPTIONS
-  -m, --minutes=minutes            (required) minutes to token expiration [2, 120]
-  -o, --organization=organization  (required) the slug of your organization
-  -s, --shared=shared              (required) organization shared secret
-  --info                           show access token info
+FLAGS
+  -m, --minutes=<value>       (required) minutes to token expiration [2, 120]
+  -o, --organization=<value>  (required) the slug of your organization
+  -s, --shared=<value>        (required) organization shared secret
+  --info                      show access token info
+
+DESCRIPTION
+  create a new custom access token for the current application
 
 EXAMPLES
   $ commercelayer token:create -s <sharedSecret> -m 30
+
   $ cl token:create -s <sharedSecret> -m 15 --info
 ```
 
@@ -53,19 +57,23 @@ Decode a Commerce Layer access token.
 
 ```
 USAGE
-  $ commercelayer token:decode [TOKEN]
+  $ commercelayer token:decode [TOKEN] -o <value>
 
 ARGUMENTS
   TOKEN  the access token to decode
 
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  decode a Commerce Layer access token
 
 ALIASES
   $ commercelayer token:info
 
 EXAMPLES
   $ commercelayer token:decode
+
   $ cl token:info -a <accessToken>
 ```
 
@@ -77,14 +85,18 @@ Start a wizard to generate a custom access token.
 
 ```
 USAGE
-  $ commercelayer token:generate
+  $ commercelayer token:generate [-i] [-c]
 
-OPTIONS
+FLAGS
   -c, --check  check generated access token
   -i, --info   print generated token info
 
+DESCRIPTION
+  start a wizard to generate a custom access token
+
 EXAMPLES
   $ commercelayer token:generate
+
   $ cl token:generate
 ```
 
@@ -96,19 +108,23 @@ Get a new access token.
 
 ```
 USAGE
-  $ commercelayer token:get
+  $ commercelayer token:get -o <value> -i <value> [-s <value>] [-S <value>] [-e <value> -p <value>] [--info]
 
-OPTIONS
-  -S, --scope=scope                access token scope (market, stock location)
-  -e, --email=email                customer email
-  -i, --clientId=clientId          (required) application client_id
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --password=password          customer secret password
-  -s, --clientSecret=clientSecret  application client_secret
-  --info                           show access token info
+FLAGS
+  -S, --scope=<value>...      access token scope (market, stock location)
+  -e, --email=<value>         customer email
+  -i, --clientId=<value>      (required) application client_id
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --password=<value>      customer secret password
+  -s, --clientSecret=<value>  application client_secret
+  --info                      show access token info
+
+DESCRIPTION
+  get a new access token
 
 EXAMPLES
   $ commercelayer token:get
+
   $ cl token:get --info
 ```
 
@@ -120,18 +136,22 @@ Revoke a Commerce Layer access token.
 
 ```
 USAGE
-  $ commercelayer token:revoke [TOKEN]
+  $ commercelayer token:revoke [TOKEN] -o <value> -i <value> -s <value>
 
 ARGUMENTS
   TOKEN  access token to revoke
 
-OPTIONS
-  -i, --clientId=clientId          (required) application client_id
-  -o, --organization=organization  (required) the slug of your organization
-  -s, --clientSecret=clientSecret  (required) application client_secret
+FLAGS
+  -i, --clientId=<value>      (required) application client_id
+  -o, --organization=<value>  (required) the slug of your organization
+  -s, --clientSecret=<value>  (required) application client_secret
+
+DESCRIPTION
+  revoke a Commerce Layer access token
 
 EXAMPLES
   $ commercelayer token:revoke
+
   $ cl token:revoke -a <accessToken>
 ```
 
