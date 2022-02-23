@@ -1,7 +1,7 @@
 /* eslint-disable no-console, no-eval */
 import fs from 'fs'
 // import Manifest from '@oclif/dev-cli/lib/commands/manifest'
-import path from 'path'
+import { join } from 'path'
 import axios from 'axios'
 import { snakeCase } from 'lodash'
 
@@ -35,7 +35,7 @@ const clean = () => {
 const readTemplate = (template: string): string => {
   let tpl = template
   if (!tpl.endsWith('.tpl')) tpl += '.tpl'
-  return fs.readFileSync(path.join(TEMPLATES_DIR, tpl), { encoding: 'utf-8' })
+  return fs.readFileSync(join(TEMPLATES_DIR, tpl), { encoding: 'utf-8' })
 }
 
 
@@ -118,12 +118,12 @@ const generate = async () => {
     command = command.replace(/##__FLAGS_IMPORT__##/, flagsImport)
 
     const fileName = snakeCase(action) + '.ts'
-    fs.writeFileSync(path.join(COMMANDS_DIR, fileName), command)
+    fs.writeFileSync(join(COMMANDS_DIR, fileName), command)
     console.log(`Created command: ${action} [${fileName}]`)
 
     const spec = specTpl.replace(/##__ACTION_ID__##/g, action)
     const specName = fileName.replace(/.ts/g, '.test.ts')
-    fs.writeFileSync(path.join(SPECS_DIR, specName), spec)
+    fs.writeFileSync(join(SPECS_DIR, specName), spec)
     console.log(`Created spec: ${action} [${specName}]`)
 
   })
