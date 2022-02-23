@@ -1,21 +1,20 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "4.3.9",
+  "version": "5.0.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "devDependencies": {
     "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
     "@oclif/plugin-help": "^5.1.10",
     "@oclif/test": "^2.0.3",
-    "@types/chai": "^4.2.22",
-    "@types/inquirer": "^8.1.3",
+    "@types/chai": "^4.3.0",
+    "@types/inquirer": "^8.2.0",
     "@types/lodash": "^4.14.178",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^17.0.4",
+    "@types/node": "^17.0.14",
     "@types/node-notifier": "^8.0.2",
-    "@types/update-notifier": "^5.0.0",
-    "chai": "^4.3.4",
+    "chai": "^4.3.6",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
@@ -24,10 +23,10 @@
     "mocha": "^5.2.0",
     "nyc": "^14.1.1",
     "ts-node": "^10.4.0",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.5"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "files": [
     "/bin",
@@ -78,12 +77,12 @@
   "types": "lib/index.d.ts",
   "dependencies": {
     "@commercelayer/cli-core": "^1.3.13",
-    "@commercelayer/js-auth": "^2.2.4",
-    "@commercelayer/sdk": "^4.3.0",
+    "@commercelayer/js-auth": "^2.2.9",
+    "@commercelayer/sdk": "^4.4.0",
     "@oclif/core": "^1.3.0",
     "axios": "^0.25.0",
     "inquirer": "^8.2.0",
-    "json-2-csv": "^3.14.4",
+    "json-2-csv": "^3.17.0",
     "lodash": "^4.17.21",
     "node-notifier": "^9.0.1",
     "tslib": "^2.3.1"
