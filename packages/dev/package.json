@@ -63,7 +63,7 @@
     "lint": "eslint . --ext .ts --config .eslintrc",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "npx lint",
-    "prepack": "npm run build && oclif manifest",
+    "prepack": "npm run build && oclif manifest && npm run version",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "npm run changelog && oclif readme && git add README.md",
     "pretest": "npm run build --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
