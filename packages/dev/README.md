@@ -22,7 +22,7 @@ $ npm install -g @commercelayer/cli-dev
 $ cl-cli-dev COMMAND
 running command...
 $ cl-cli-dev (--version)
-@commercelayer/cli-dev/0.1.1 darwin-x64 node-v16.13.2
+@commercelayer/cli-dev/0.1.2 darwin-x64 node-v16.13.2
 $ cl-cli-dev --help [COMMAND]
 USAGE
   $ cl-cli-dev COMMAND

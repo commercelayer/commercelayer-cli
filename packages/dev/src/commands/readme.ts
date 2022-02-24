@@ -17,7 +17,9 @@ interface HelpBaseDerived {
 }
 
 const formatDescription = (d: string | undefined): string => {
-  return d ? `${d.charAt(0).toUpperCase()}${d.substring(1)}.` : ''
+  let desc = d ? `${d.charAt(0).toUpperCase()}${d.substring(1)}` : ''
+  if ((desc !== '') && !desc.endsWith('.')) desc += '.'
+  return desc
 }
 
 
