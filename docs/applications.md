@@ -17,8 +17,8 @@ Show a list of all (logged in) available CLI applications.
 
 ```
 USAGE
-  $ commercelayer applications [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
-    <value>] [-a <value>]
+  $ commercelayer applications [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
+    | --id <value>]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application
@@ -54,10 +54,10 @@ Add a new Commerce Layer application to CLI config.
 
 ```
 USAGE
-  $ commercelayer applications:add -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value>] [-p <value>]
+  $ commercelayer applications:add -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value> -p <value>]
 
 FLAGS
-  -S, --scope=<value>         access token scope (market, stock location)
+  -S, --scope=<value>...      access token scope (market, stock location)
   -a, --alias=<value>         (required) the alias you want to associate to the application
   -e, --email=<value>         customer email
   -i, --clientId=<value>      (required) application client_id
@@ -83,7 +83,7 @@ Show the current application.
 
 ```
 USAGE
-  $ commercelayer applications:current [-j]
+  $ commercelayer applications:current [-j ]
 
 FLAGS
   -j, --json  show info in JSON format
@@ -108,8 +108,8 @@ Show application details.
 
 ```
 USAGE
-  $ commercelayer applications:info [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
-    <value>] [-a <value>] [-j]
+  $ commercelayer applications:info [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
+    | --id <value>] [-j]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application
@@ -137,11 +137,10 @@ Execute login to a Commerce Layer application.
 
 ```
 USAGE
-  $ commercelayer applications:login -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value>] [-p
-  <value>]
+  $ commercelayer applications:login -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value> -p <value>]
 
 FLAGS
-  -S, --scope=<value>         access token scope (market, stock location)
+  -S, --scope=<value>...      access token scope (market, stock location)
   -a, --alias=<value>         (required) the alias you want to associate to the application
   -e, --email=<value>         customer email
   -i, --clientId=<value>      (required) application client_id
@@ -167,8 +166,8 @@ Remove an application from CLI local configuration.
 
 ```
 USAGE
-  $ commercelayer applications:logout [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
-    <value>] [-a <value>] [-r]
+  $ commercelayer applications:logout [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
+    | --id <value>] [-r]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application
@@ -198,8 +197,8 @@ Switch applications.
 
 ```
 USAGE
-  $ commercelayer applications:switch [-o <value>] [-k cli|sales_channel|integration] [-m test|live] [--live] [--id
-    <value>] [-a <value>]
+  $ commercelayer applications:switch [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
+    | --id <value>]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application

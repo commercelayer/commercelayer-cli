@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -10,7 +10,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "devDependencies": {
-    "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@commercelayer/cli-dev": "^0.1.1",
     "@oclif/test": "^2.1.0",
     "@types/chai": "^4.3.0",
     "@types/configstore": "^4.0.0",
@@ -95,9 +95,9 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && npm run readme",
+    "prepack": "rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "oclif-dev readme --multi && git add README.md && git add docs/*"
+    "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*"
   },
   "types": "lib/index.d.ts",
   "dependencies": {
