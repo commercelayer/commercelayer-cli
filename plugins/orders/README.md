@@ -53,16 +53,19 @@ Execute an action on an order.
 
 ```
 USAGE
-  $ commercelayer orders ID
+  $ commercelayer orders [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  execute an action on an order
 ```
 
 _See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/index.ts)_
@@ -73,16 +76,19 @@ Send this attribute if you want to approve a placed order..
 
 ```
 USAGE
-  $ commercelayer orders:approve ID
+  $ commercelayer orders:approve [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to approve a placed order.
 ```
 
 _See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve.ts)_
@@ -93,16 +99,19 @@ Send this attribute if you want to approve and capture a placed order..
 
 ```
 USAGE
-  $ commercelayer orders:approve_and_capture ID
+  $ commercelayer orders:approve_and_capture [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to approve and capture a placed order.
 ```
 
 _See code: [src/commands/orders/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve_and_capture.ts)_
@@ -113,16 +122,19 @@ Send this attribute if you want to archive the order..
 
 ```
 USAGE
-  $ commercelayer orders:archive ID
+  $ commercelayer orders:archive [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to archive the order.
 ```
 
 _See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/archive.ts)_
@@ -133,16 +145,19 @@ The authorization amount, in cents..
 
 ```
 USAGE
-  $ commercelayer orders:authorization_amount_cents ID
+  $ commercelayer orders:authorization_amount_cents [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  The authorization amount, in cents.
 ```
 
 _See code: [src/commands/orders/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorization_amount_cents.ts)_
@@ -153,16 +168,19 @@ Send this attribute if you want to authorize the order's payment source..
 
 ```
 USAGE
-  $ commercelayer orders:authorize ID
+  $ commercelayer orders:authorize [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to authorize the order's payment source.
 ```
 
 _See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorize.ts)_
@@ -173,17 +191,20 @@ The id of the address that you want to clone to create the order's billing addre
 
 ```
 USAGE
-  $ commercelayer orders:billing_address_clone_id ID
+  $ commercelayer orders:billing_address_clone_id [ID] -o <value> -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
-  -v, --value=value                (required) the trigger attribute value
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+  -v, --value=<value>         (required) the trigger attribute value
+
+DESCRIPTION
+  The id of the address that you want to clone to create the order's billing address.
 ```
 
 _See code: [src/commands/orders/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/billing_address_clone_id.ts)_
@@ -194,16 +215,19 @@ Send this attribute if you want the billing address to be cloned from the order'
 
 ```
 USAGE
-  $ commercelayer orders:billing_address_same_as_shipping ID
+  $ commercelayer orders:billing_address_same_as_shipping [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want the billing address to be cloned from the order's shipping address.
 ```
 
 _See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/billing_address_same_as_shipping.ts)_
@@ -214,16 +238,19 @@ Send this attribute if you want to cancel a placed order. The order's authorizat
 
 ```
 USAGE
-  $ commercelayer orders:cancel ID
+  $ commercelayer orders:cancel [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
 ```
 
 _See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/cancel.ts)_
@@ -234,16 +261,19 @@ Send this attribute if you want to capture an approved order..
 
 ```
 USAGE
-  $ commercelayer orders:capture ID
+  $ commercelayer orders:capture [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to capture an approved order.
 ```
 
 _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/capture.ts)_
@@ -254,17 +284,20 @@ The id of the customer payment source (i.e. credit card) that you want to use as
 
 ```
 USAGE
-  $ commercelayer orders:customer_payment_source_id ID
+  $ commercelayer orders:customer_payment_source_id [ID] -o <value> -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
-  -v, --value=value                (required) the trigger attribute value
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+  -v, --value=<value>         (required) the trigger attribute value
+
+DESCRIPTION
+  The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
 ```
 
 _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/customer_payment_source_id.ts)_
@@ -275,16 +308,19 @@ Send this attribute if you want to place the order..
 
 ```
 USAGE
-  $ commercelayer orders:place ID
+  $ commercelayer orders:place [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to place the order.
 ```
 
 _See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/place.ts)_
@@ -295,16 +331,19 @@ Send this attribute if you want to manually refresh the order..
 
 ```
 USAGE
-  $ commercelayer orders:refresh ID
+  $ commercelayer orders:refresh [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to manually refresh the order.
 ```
 
 _See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refresh.ts)_
@@ -315,16 +354,19 @@ Send this attribute if you want to refund a captured order..
 
 ```
 USAGE
-  $ commercelayer orders:refund ID
+  $ commercelayer orders:refund [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refund a captured order.
 ```
 
 _See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund.ts)_
@@ -335,16 +377,20 @@ Send this attribute if you want the order's billing address to be saved in the c
 
 ```
 USAGE
-  $ commercelayer orders:save_billing_address_to_customer_address_book ID
+  $ commercelayer orders:save_billing_address_to_customer_address_book [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer
+  address.
 ```
 
 _See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_billing_address_to_customer_address_book.ts)_
@@ -355,16 +401,20 @@ Send this attribute if you want the order's payment source to be saved in the cu
 
 ```
 USAGE
-  $ commercelayer orders:save_payment_source_to_customer_wallet ID
+  $ commercelayer orders:save_payment_source_to_customer_wallet [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment
+  source.
 ```
 
 _See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_payment_source_to_customer_wallet.ts)_
@@ -375,16 +425,20 @@ Send this attribute if you want the order's shipping address to be saved in the 
 
 ```
 USAGE
-  $ commercelayer orders:save_shipping_address_to_customer_address_book ID
+  $ commercelayer orders:save_shipping_address_to_customer_address_book [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer
+  address.
 ```
 
 _See code: [src/commands/orders/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_shipping_address_to_customer_address_book.ts)_
@@ -395,17 +449,20 @@ The id of the address that you want to clone to create the order's shipping addr
 
 ```
 USAGE
-  $ commercelayer orders:shipping_address_clone_id ID
+  $ commercelayer orders:shipping_address_clone_id [ID] -o <value> -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
-  -v, --value=value                (required) the trigger attribute value
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+  -v, --value=<value>         (required) the trigger attribute value
+
+DESCRIPTION
+  The id of the address that you want to clone to create the order's shipping address.
 ```
 
 _See code: [src/commands/orders/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_clone_id.ts)_
@@ -416,16 +473,19 @@ Send this attribute if you want the shipping address to be cloned from the order
 
 ```
 USAGE
-  $ commercelayer orders:shipping_address_same_as_billing ID
+  $ commercelayer orders:shipping_address_same_as_billing [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want the shipping address to be cloned from the order's billing address.
 ```
 
 _See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_same_as_billing.ts)_
@@ -436,16 +496,19 @@ Send this attribute if you want to unarchive the order..
 
 ```
 USAGE
-  $ commercelayer orders:unarchive ID
+  $ commercelayer orders:unarchive [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to unarchive the order.
 ```
 
 _See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/unarchive.ts)_
@@ -456,16 +519,20 @@ Send this attribute if you want to force tax calculation for this order (a tax c
 
 ```
 USAGE
-  $ commercelayer orders:update_taxes ID
+  $ commercelayer orders:update_taxes [ID] -o <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -j, --json                       print result in JSON format
-  -o, --organization=organization  (required) the slug of your organization
-  -p, --print                      print out the modified order
-  -u, --unformatted                print JSON output without indentation
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the
+  order's market).
 ```
 
 _See code: [src/commands/orders/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/update_taxes.ts)_
