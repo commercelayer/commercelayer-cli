@@ -34,33 +34,25 @@ List all the created imports.
 
 ```
 USAGE
-  $ commercelayer imports
+  $ commercelayer imports -o <value> [-A | -l <value>] [-t
+    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
+    gories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
-OPTIONS
-  -A, --all
-      show all imports instead of first 25 only
+FLAGS
+  -A, --all                   show all imports instead of first 25 only
+  -e, --errors                show only imports with errors
+  -g, --group=<value>         the group ID associated to the import in case of multi-chunk imports
+  -l, --limit=<value>         limit number of imports in output
+  -o, --organization=<value>  (required) the slug of your organization
+  -s, --status=<option>       the import job status
+                              <options: in_progress|pending|completed|interrupted>
+  -t, --type=<option>         the type of resource imported
+                              <options: orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|custo
+                              mers|customer_subscriptions|tax_categories>
+  -w, --warnings              show only import with warnings
 
-  -e, --errors
-      show only imports with errors
-
-  -g, --group=group
-      the group ID associated to the import in case of multi-chunk imports
-
-  -l, --limit=limit
-      limit number of imports in output
-
-  -o, --organization=organization
-      (required) the slug of your organization
-
-  -s, --status=in_progress|pending|completed|interrupted
-      the import job status
-
-  -t, --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions
-  |tax_categories
-      the type of resource imported
-
-  -w, --warnings
-      show only import with warnings
+DESCRIPTION
+  list all the created imports
 ```
 
 _See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/index.ts)_
@@ -71,16 +63,21 @@ Create a new import.
 
 ```
 USAGE
-  $ commercelayer imports:create
+  $ commercelayer imports:create [FAKE-ARG] -o <value> -t
+    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
+    gories [-p <value>] (-C -i <value>) [-b | -q | ]
 
-OPTIONS
+FLAGS
   -C, --csv                                     accept input file in CSV format
   -b, --blind                                   execute in blind mode without showing the progress monitor
-  -i, --inputs=inputs                           (required) the path of the file containing the data to import
-  -o, --organization=organization               (required) the slug of your organization
-  -p, --parent=parent                           the id of the parent resource to be associated with imported data
+  -i, --inputs=<value>                          (required) the path of the file containing the data to import
+  -o, --organization=<value>                    (required) the slug of your organization
+  -p, --parent=<value>                          the id of the parent resource to be associated with imported data
   -q, --quiet                                   execute command without showing warning messages
   -t, --type=orders|coupons|skus|sku_lists|...  (required) the type of resource being imported
+
+DESCRIPTION
+  create a new import
 
 ALIASES
   $ commercelayer imp:create
@@ -88,6 +85,7 @@ ALIASES
 
 EXAMPLES
   $ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>
+
   $ cl imp:create skus -i <input-file-path>
 ```
 
@@ -99,19 +97,23 @@ Delete an existing import.
 
 ```
 USAGE
-  $ commercelayer imports:delete ID
+  $ commercelayer imports:delete [ID] -o <value>
 
 ARGUMENTS
   ID  unique id of the import
 
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  delete an existing import
 
 ALIASES
   $ commercelayer imp:delete
 
 EXAMPLES
   $ commercelayer imports:delete <import-id>>
+
   $ cl imp:delete <import-id>>
 ```
 
@@ -123,22 +125,27 @@ Show the details of an existing import.
 
 ```
 USAGE
-  $ commercelayer imports:details ID
+  $ commercelayer imports:details [ID] -o <value> [-i] [-l]
 
 ARGUMENTS
   ID  unique id of the import
 
-OPTIONS
-  -i, --inputs                     show input items associated with the import
-  -l, --logs                       show warning and error logs related to the import process
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -i, --inputs                show input items associated with the import
+  -l, --logs                  show warning and error logs related to the import process
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  show the details of an existing import
 
 ALIASES
   $ commercelayer imp:details
 
 EXAMPLES
   $ commercelayer imports:details <import-id>
+
   $ cl imp:details <import-id> -i
+
   $ cl imp:details <import-id> -i -l
 ```
 
@@ -150,19 +157,23 @@ List all the imports related to an import group.
 
 ```
 USAGE
-  $ commercelayer imports:group GROUP_ID
+  $ commercelayer imports:group [GROUP_ID] -o <value>
 
 ARGUMENTS
   GROUP_ID  unique id of the group import
 
-OPTIONS
-  -o, --organization=organization  (required) the slug of your organization
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  list all the imports related to an import group
 
 ALIASES
   $ commercelayer imp:group
 
 EXAMPLES
   $ commercelayer imports:group <group-id>
+
   $ cl imp:group <group-id>
 ```
 
@@ -174,33 +185,25 @@ List all the created imports.
 
 ```
 USAGE
-  $ commercelayer imports:list
+  $ commercelayer imports:list [FAKE-ARG] -o <value> [-A | -l <value>] [-t
+    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
+    gories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
-OPTIONS
-  -A, --all
-      show all imports instead of first 25 only
+FLAGS
+  -A, --all                   show all imports instead of first 25 only
+  -e, --errors                show only imports with errors
+  -g, --group=<value>         the group ID associated to the import in case of multi-chunk imports
+  -l, --limit=<value>         limit number of imports in output
+  -o, --organization=<value>  (required) the slug of your organization
+  -s, --status=<option>       the import job status
+                              <options: in_progress|pending|completed|interrupted>
+  -t, --type=<option>         the type of resource imported
+                              <options: orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|custo
+                              mers|customer_subscriptions|tax_categories>
+  -w, --warnings              show only import with warnings
 
-  -e, --errors
-      show only imports with errors
-
-  -g, --group=group
-      the group ID associated to the import in case of multi-chunk imports
-
-  -l, --limit=limit
-      limit number of imports in output
-
-  -o, --organization=organization
-      (required) the slug of your organization
-
-  -s, --status=in_progress|pending|completed|interrupted
-      the import job status
-
-  -t, --type=orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions
-  |tax_categories
-      the type of resource imported
-
-  -w, --warnings
-      show only import with warnings
+DESCRIPTION
+  list all the created imports
 
 ALIASES
   $ commercelayer imports
@@ -208,7 +211,9 @@ ALIASES
 
 EXAMPLES
   $ commercelayer imports
+
   $ cl imports:list -A
+
   $ cl imp:list
 ```
 
@@ -222,11 +227,15 @@ Show online documentation for supported resources.
 USAGE
   $ commercelayer imports:types
 
+DESCRIPTION
+  show online documentation for supported resources
+
 ALIASES
   $ commercelayer imp:types
 
 EXAMPLES
   $ commercelayer imports:types
+
   $ cl imp:types
 ```
 
