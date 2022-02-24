@@ -29,22 +29,28 @@ Create checkout URLs.
 
 ```
 USAGE
-  $ cl-checkout checkout
+  $ cl-checkout checkout -o <value> -a <value> [--open] [-m <value> | [-O <value> | -S <value> | -B <value>]]
+    [-c <value> | ] [-e <value> | ]
 
-OPTIONS
-  -B, --bundle=bundle              a bundle code
-  -O, --order=order                an order id
-  -S, --sku=sku                    an SKU code
-  -a, --accessToken=accessToken    (required)
-  -c, --coupon=coupon              a promo code
-  -e, --email=email                a customer email
-  -m, --market=market              a market number
-  -o, --organization=organization  (required) the slug of your organization
-  --open                           open checkout URL in default browser
+FLAGS
+  -B, --bundle=<value>...     a bundle code
+  -O, --order=<value>         an order id
+  -S, --sku=<value>...        an SKU code
+  -a, --accessToken=<value>   (required)
+  -c, --coupon=<value>        a promo code
+  -e, --email=<value>         a customer email
+  -m, --market=<value>        a market number
+  -o, --organization=<value>  (required) the slug of your organization
+  --open                      open checkout URL in default browser
+
+DESCRIPTION
+  create checkout URLs
 
 EXAMPLES
   $ commercelayer checkout -O <order-id>
+
   $ cl checkout -S <sku-code> -m <market-id> -c <coupon-code> -e <email-address>
+
   $ cl checkout -S <sku-code-1> -S <sku-code-2> -m <market-id>
 ```
 
@@ -56,15 +62,18 @@ Create checkout URLs starting from an existing order.
 
 ```
 USAGE
-  $ cl-checkout checkout:order ID
+  $ cl-checkout checkout:order [ID] -o <value> -a <value> [--open]
 
 ARGUMENTS
   ID  unique id of the order
 
-OPTIONS
-  -a, --accessToken=accessToken    (required)
-  -o, --organization=organization  (required) the slug of your organization
-  --open                           open checkout URL in default browser
+FLAGS
+  -a, --accessToken=<value>   (required)
+  -o, --organization=<value>  (required) the slug of your organization
+  --open                      open checkout URL in default browser
+
+DESCRIPTION
+  create checkout URLs starting from an existing order
 ```
 
 _See code: [src/commands/checkout/order.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/src/commands/checkout/order.ts)_

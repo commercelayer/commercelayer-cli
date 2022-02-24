@@ -1,11 +1,11 @@
 {
   "name": "@commercelayer/cli-plugin-checkout",
   "description": "Commerce Layer CLI Checkout plugin",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout/issues",
   "devDependencies": {
-    "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@commercelayer/cli-dev": "^0.1.1",
     "@oclif/plugin-help": "^5.1.11",
     "@oclif/test": "^2.1.0",
     "@types/chai": "^4.3.0",
@@ -62,9 +62,9 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && npm run readme",
+    "prepack": "rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "oclif-dev readme --plugin  && git add README.md"
+    "readme": "cl-cli-dev readme --plugin  && git add README.md"
   },
   "types": "lib/index.d.ts",
   "dependencies": {
