@@ -77,8 +77,7 @@ export default class SeederClean extends Command {
       // Execute tasks
       tasks.run()
         .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data cleaning completed! \u2705`))
-        // .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`))
-        .catch(error => this.error(error))
+        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`))
         .finally(() => this.log())
 
     } catch (error: any) {

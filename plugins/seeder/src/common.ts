@@ -60,6 +60,9 @@ const requestsDelay = (requests: number, _type?: string): number => {
 
   if (type && noLimitResources.includes(type)) return 0
 */
+
+  if (requests < clConfig.api.requests_max_num_burst) return 10
+
   const delayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
   const delayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
 
