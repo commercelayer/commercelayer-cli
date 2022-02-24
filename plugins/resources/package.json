@@ -1,11 +1,11 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "5.0.2",
+  "version": "5.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "devDependencies": {
-    "@oclif/dev-cli": "git+https://github.com/pviti/dev-cli.git",
+    "@commercelayer/cli-dev": "0.1.1",
     "@oclif/plugin-help": "^5.1.10",
     "@oclif/test": "^2.0.3",
     "@types/chai": "^4.3.0",
@@ -69,9 +69,9 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "npm run resources && rm -rf lib && tsc -b && oclif-dev manifest && npm run readme",
+    "prepack": "npm run resources && rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "oclif-dev readme --plugin --bin=commercelayer && git add README.md",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "resources": "npm update @commercelayer/sdk && ts-node src/util/resources/build.ts "
   },
   "types": "lib/index.d.ts",
