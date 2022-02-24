@@ -19,42 +19,44 @@ helpers for oclif CLIs
 <!-- usage -->
 ```sh-session
 $ npm install -g @commercelayer/cli-dev
-$ cl-dev COMMAND
+$ cl-cli-dev COMMAND
 running command...
-$ cl-dev (--version)
-@commercelayer/cli-dev/0.0.1 darwin-x64 node-v16.13.2
-$ cl-dev --help [COMMAND]
+$ cl-cli-dev (--version)
+@commercelayer/cli-dev/0.1.0 darwin-x64 node-v16.13.2
+$ cl-cli-dev --help [COMMAND]
 USAGE
-  $ cl-dev COMMAND
+  $ cl-cli-dev COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`cl-dev readme`](#cl-dev-readme)
+* [`cl-cli-dev readme`](#cl-cli-dev-readme)
 
-## `cl-dev readme`
+## `cl-cli-dev readme`
 
 adds commands to README.md in current directory
 
 ```
 USAGE
-  $ cl-dev readme --dir <value> [--multi]
+  $ cl-cli-dev readme --dir <value> [--multi] [--bin <value> --plugin]
 
 FLAGS
+  --bin=<value>  optional main cli command
   --dir=<value>  (required) [default: docs] output directory for multi docs
   --multi        create a different markdown page for each topic
+  --plugin       create a plugin readme doc
 
 DESCRIPTION
   adds commands to README.md in current directory
 
   The readme must have any of the following tags inside of it for it to be replaced or else it will do nothing:
 
-  # Usage
+  ## Usage
 
   <!-- usage -->
 
-  # Commands
+  ## Commands
 
   <!-- commands -->
 
