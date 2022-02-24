@@ -31,23 +31,24 @@ Execute a check on seeder data.
 
 ```
 USAGE
-  $ commercelayer seeder:check ID
+  $ commercelayer seeder:check [ID] [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-r]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -b, --businessModel=single_sku|multi_market|custom  [default: single_sku] the kind of business model you want to
-                                                      import
+FLAGS
+  -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
+                                <options: single_sku|multi_market|custom>
+  -n, --name=<value>            the name of the business model file to use
+  -r, --relationships           check resource relationships
+  -u, --url=<value>             [default: https://data.commercelayer.app/seeder] seeder data URL
 
-  -n, --name=name                                     the name of the business model file to use
-
-  -r, --relationships                                 check resource relationships
-
-  -u, --url=url                                       [default: https://data.commercelayer.app/seeder] seeder data URL
+DESCRIPTION
+  execute a check on seeder data
 
 EXAMPLES
   $ commercelayer seeder:check -u <seedUrl>
+
   $ cl seeder:check -b single_sku
 ```
 
@@ -59,23 +60,24 @@ Clean previously imported seeder data.
 
 ```
 USAGE
-  $ commercelayer seeder:clean ID
+  $ commercelayer seeder:clean [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -b, --businessModel=single_sku|multi_market|custom  [default: single_sku] the kind of business model you want to
-                                                      import
+FLAGS
+  -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
+                                <options: single_sku|multi_market|custom>
+  -n, --name=<value>            the name of the business model file to use
+  -o, --organization=<value>    (required) the slug of your organization
+  -u, --url=<value>             [default: https://data.commercelayer.app/seeder] seeder data URL
 
-  -n, --name=name                                     the name of the business model file to use
-
-  -o, --organization=organization                     (required) the slug of your organization
-
-  -u, --url=url                                       [default: https://data.commercelayer.app/seeder] seeder data URL
+DESCRIPTION
+  clean previously imported seeder data
 
 EXAMPLES
   $ commercelayer seeder:clean -u <seedUrl>
+
   $ cl seeder:clean -b multi_market
 ```
 
@@ -87,28 +89,28 @@ Execute Commerce Layer seeder.
 
 ```
 USAGE
-  $ commercelayer seeder:seed ID
+  $ commercelayer seeder:seed [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
 
 ARGUMENTS
   ID  the unique id of the order
 
-OPTIONS
-  -b, --businessModel=single_sku|multi_market|custom  [default: single_sku] the kind of business model you want to
-                                                      import
+FLAGS
+  -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
+                                <options: single_sku|multi_market|custom>
+  -k, --keep                    keep existing resources without updating them
+  -n, --name=<value>            the name of the business model file to use
+  -o, --organization=<value>    (required) the slug of your organization
+  -u, --url=<value>             [default: https://data.commercelayer.app/seeder] seeder data URL
 
-  -k, --keep                                          keep existing resources without updating them
-
-  -n, --name=name                                     the name of the business model file to use
-
-  -o, --organization=organization                     (required) the slug of your organization
-
-  -u, --url=url                                       [default: https://data.commercelayer.app/seeder] seeder data URL
+DESCRIPTION
+  execute Commerce Layer seeder
 
 ALIASES
   $ commercelayer seed
 
 EXAMPLES
   $ commercelayer seeder:seed -u <seedUrl>
+
   $ cl seed -b multi_market
 ```
 
