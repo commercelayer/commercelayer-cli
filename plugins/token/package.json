@@ -1,11 +1,11 @@
 {
   "name": "@commercelayer/cli-plugin-token",
   "description": "Commerce Layer CLI Token plugin",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-token/issues",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^0.0.1",
+    "@commercelayer/cli-dev": "^0.1.1",
     "@oclif/plugin-help": "^5.1.10",
     "@oclif/test": "^2.1.0",
     "@types/chai": "^4.3.0",
@@ -63,7 +63,7 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && cl-cli-dev manifest && npm run readme",
+    "prepack": "rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
   },
