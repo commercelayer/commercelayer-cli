@@ -72,7 +72,7 @@ _See code: [src/commands/orders/index.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer orders:approve ID`
 
-Send this attribute if you want to approve a placed order..
+Send this attribute if you want to approve a placed order.
 
 ```
 USAGE
@@ -95,7 +95,7 @@ _See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/com
 
 ### `commercelayer orders:approve_and_capture ID`
 
-Send this attribute if you want to approve and capture a placed order..
+Send this attribute if you want to approve and capture a placed order.
 
 ```
 USAGE
@@ -118,7 +118,7 @@ _See code: [src/commands/orders/approve_and_capture.ts](https://github.com/comme
 
 ### `commercelayer orders:archive ID`
 
-Send this attribute if you want to archive the order..
+Send this attribute if you want to archive the order.
 
 ```
 USAGE
@@ -141,7 +141,7 @@ _See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/com
 
 ### `commercelayer orders:authorization_amount_cents ID`
 
-The authorization amount, in cents..
+The authorization amount, in cents.
 
 ```
 USAGE
@@ -164,7 +164,7 @@ _See code: [src/commands/orders/authorization_amount_cents.ts](https://github.co
 
 ### `commercelayer orders:authorize ID`
 
-Send this attribute if you want to authorize the order's payment source..
+Send this attribute if you want to authorize the order's payment source.
 
 ```
 USAGE
@@ -187,7 +187,7 @@ _See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/c
 
 ### `commercelayer orders:billing_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's billing address..
+The id of the address that you want to clone to create the order's billing address.
 
 ```
 USAGE
@@ -211,7 +211,7 @@ _See code: [src/commands/orders/billing_address_clone_id.ts](https://github.com/
 
 ### `commercelayer orders:billing_address_same_as_shipping ID`
 
-Send this attribute if you want the billing address to be cloned from the order's shipping address..
+Send this attribute if you want the billing address to be cloned from the order's shipping address.
 
 ```
 USAGE
@@ -234,7 +234,7 @@ _See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://git
 
 ### `commercelayer orders:cancel ID`
 
-Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided..
+Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
 
 ```
 USAGE
@@ -257,7 +257,7 @@ _See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer orders:capture ID`
 
-Send this attribute if you want to capture an approved order..
+Send this attribute if you want to capture an approved order.
 
 ```
 USAGE
@@ -280,7 +280,7 @@ _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/com
 
 ### `commercelayer orders:customer_payment_source_id ID`
 
-The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source..
+The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
 
 ```
 USAGE
@@ -304,7 +304,7 @@ _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.co
 
 ### `commercelayer orders:place ID`
 
-Send this attribute if you want to place the order..
+Send this attribute if you want to place the order.
 
 ```
 USAGE
@@ -327,7 +327,7 @@ _See code: [src/commands/orders/place.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer orders:refresh ID`
 
-Send this attribute if you want to manually refresh the order..
+Send this attribute if you want to manually refresh the order.
 
 ```
 USAGE
@@ -350,7 +350,7 @@ _See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/com
 
 ### `commercelayer orders:refund ID`
 
-Send this attribute if you want to refund a captured order..
+Send this attribute if you want to refund a captured order.
 
 ```
 USAGE
@@ -373,7 +373,7 @@ _See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer orders:save_billing_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address..
+Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address.
 
 ```
 USAGE
@@ -397,7 +397,7 @@ _See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts
 
 ### `commercelayer orders:save_payment_source_to_customer_wallet ID`
 
-Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source..
+Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source.
 
 ```
 USAGE
@@ -421,7 +421,7 @@ _See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https
 
 ### `commercelayer orders:save_shipping_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address..
+Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address.
 
 ```
 USAGE
@@ -445,7 +445,7 @@ _See code: [src/commands/orders/save_shipping_address_to_customer_address_book.t
 
 ### `commercelayer orders:shipping_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's shipping address..
+The id of the address that you want to clone to create the order's shipping address.
 
 ```
 USAGE
@@ -469,7 +469,7 @@ _See code: [src/commands/orders/shipping_address_clone_id.ts](https://github.com
 
 ### `commercelayer orders:shipping_address_same_as_billing ID`
 
-Send this attribute if you want the shipping address to be cloned from the order's billing address..
+Send this attribute if you want the shipping address to be cloned from the order's billing address.
 
 ```
 USAGE
@@ -492,7 +492,7 @@ _See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://git
 
 ### `commercelayer orders:unarchive ID`
 
-Send this attribute if you want to unarchive the order..
+Send this attribute if you want to unarchive the order.
 
 ```
 USAGE
@@ -515,7 +515,7 @@ _See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/c
 
 ### `commercelayer orders:update_taxes ID`
 
-Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market)..
+Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market).
 
 ```
 USAGE
