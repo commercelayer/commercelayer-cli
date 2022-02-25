@@ -20,7 +20,7 @@ export default class ResourcesUpdate extends Command {
 		'$ commercelayer resources:update customers/<customerId> -a reference=referenceId',
 		'$ commercelayer res:update customers <customerId> -a reference_origin="Ref Origin"',
 		'$ cl update customers/<customerId> -m meta_key="meta value"',
-		'$ cl ru customers <customerId> -M mete_keu="metadata overwrite',
+		'$ cl ru customers <customerId> -M meta_key="metadata overwrite',
 		'$ clayer update customers <customerId> -D /path/to/data/file/data.json',
 	]
 
