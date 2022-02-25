@@ -128,7 +128,7 @@ _See code: [src/commands/adyen_payment/index.ts](https://github.com/commercelaye
 
 ### `commercelayer adyen_payment:details ID`
 
-Send this attribute if you want to send additional details the payment request..
+Send this attribute if you want to send additional details the payment request.
 
 ```
 USAGE
@@ -174,7 +174,7 @@ _See code: [src/commands/authorization/index.ts](https://github.com/commercelaye
 
 ### `commercelayer authorization:capture ID`
 
-Send this attribute if you want to create a capture for this authorization..
+Send this attribute if you want to create a capture for this authorization.
 
 ```
 USAGE
@@ -197,7 +197,7 @@ _See code: [src/commands/authorization/capture.ts](https://github.com/commercela
 
 ### `commercelayer authorization:capture_amount_cents ID`
 
-The associated capture amount, in cents..
+The associated capture amount, in cents.
 
 ```
 USAGE
@@ -220,7 +220,7 @@ _See code: [src/commands/authorization/capture_amount_cents.ts](https://github.c
 
 ### `commercelayer authorization:void ID`
 
-Send this attribute if you want to create a void for this authorization..
+Send this attribute if you want to create a void for this authorization.
 
 ```
 USAGE
@@ -266,7 +266,7 @@ _See code: [src/commands/bundle/index.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer bundle:compute_compare_at_amount ID`
 
-Send this attribute if you want to compute the compare_at_amount_cents as the sum of the prices of the bundle SKUs for the market..
+Send this attribute if you want to compute the compare_at_amount_cents as the sum of the prices of the bundle SKUs for the market.
 
 ```
 USAGE
@@ -290,7 +290,7 @@ _See code: [src/commands/bundle/compute_compare_at_amount.ts](https://github.com
 
 ### `commercelayer bundle:compute_price_amount ID`
 
-Send this attribute if you want to compute the price_amount_cents as the sum of the prices of the bundle SKUs for the market..
+Send this attribute if you want to compute the price_amount_cents as the sum of the prices of the bundle SKUs for the market.
 
 ```
 USAGE
@@ -337,7 +337,7 @@ _See code: [src/commands/capture/index.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer capture:refund ID`
 
-Send this attribute if you want to create a refund for this capture..
+Send this attribute if you want to create a refund for this capture.
 
 ```
 USAGE
@@ -360,7 +360,7 @@ _See code: [src/commands/capture/refund.ts](https://github.com/commercelayer/com
 
 ### `commercelayer capture:refund_amount_cents ID`
 
-The associated refund amount, in cents..
+The associated refund amount, in cents.
 
 ```
 USAGE
@@ -406,7 +406,7 @@ _See code: [src/commands/checkout_com_payment/index.ts](https://github.com/comme
 
 ### `commercelayer checkout_com_payment:details ID`
 
-Send this attribute if you want to send additional details the payment request (i.e. upon 3DS check)..
+Send this attribute if you want to send additional details the payment request (i.e. upon 3DS check).
 
 ```
 USAGE
@@ -429,7 +429,7 @@ _See code: [src/commands/checkout_com_payment/details.ts](https://github.com/com
 
 ### `commercelayer checkout_com_payment:refresh ID`
 
-Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic..
+Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic.
 
 ```
 USAGE
@@ -475,7 +475,7 @@ _See code: [src/commands/customer_password_reset/index.ts](https://github.com/co
 
 ### `commercelayer customer_password_reset:reset_password_token ID`
 
-Send the 'reset_password_token' that you got on create when updating the customer password..
+Send the 'reset_password_token' that you got on create when updating the customer password.
 
 ```
 USAGE
@@ -521,7 +521,7 @@ _See code: [src/commands/gift_card/index.ts](https://github.com/commercelayer/co
 
 ### `commercelayer gift_card:activate ID`
 
-Send this attribute if you want to activate a gift card..
+Send this attribute if you want to activate a gift card.
 
 ```
 USAGE
@@ -544,7 +544,7 @@ _See code: [src/commands/gift_card/activate.ts](https://github.com/commercelayer
 
 ### `commercelayer gift_card:balance_change_cents ID`
 
-The balance change, in cents. Send a negative value to reduces the card balance by the specified amount. Send a positive value to recharge the gift card (if rechargeable)..
+The balance change, in cents. Send a negative value to reduces the card balance by the specified amount. Send a positive value to recharge the gift card (if rechargeable).
 
 ```
 USAGE
@@ -568,7 +568,7 @@ _See code: [src/commands/gift_card/balance_change_cents.ts](https://github.com/c
 
 ### `commercelayer gift_card:deactivate ID`
 
-Send this attribute if you want to deactivate a gift card..
+Send this attribute if you want to deactivate a gift card.
 
 ```
 USAGE
@@ -591,7 +591,7 @@ _See code: [src/commands/gift_card/deactivate.ts](https://github.com/commercelay
 
 ### `commercelayer gift_card:purchase ID`
 
-Send this attribute if you want to confirm a draft gift card. The gift card becomes 'inactive', waiting to be activated..
+Send this attribute if you want to confirm a draft gift card. The gift card becomes 'inactive', waiting to be activated.
 
 ```
 USAGE
@@ -638,7 +638,7 @@ _See code: [src/commands/in_stock_subscription/index.ts](https://github.com/comm
 
 ### `commercelayer in_stock_subscription:activate ID`
 
-Send this attribute if you want to activate an inactive subscription..
+Send this attribute if you want to activate an inactive subscription.
 
 ```
 USAGE
@@ -661,7 +661,7 @@ _See code: [src/commands/in_stock_subscription/activate.ts](https://github.com/c
 
 ### `commercelayer in_stock_subscription:deactivate ID`
 
-Send this attribute if you want to dactivate an active subscription..
+Send this attribute if you want to dactivate an active subscription.
 
 ```
 USAGE
@@ -707,7 +707,7 @@ _See code: [src/commands/klarna_payment/index.ts](https://github.com/commercelay
 
 ### `commercelayer klarna_payment:update ID`
 
-Send this attribute if you want to update the payment session with fresh order data..
+Send this attribute if you want to update the payment session with fresh order data.
 
 ```
 USAGE
@@ -753,7 +753,7 @@ _See code: [src/commands/order/index.ts](https://github.com/commercelayer/commer
 
 ### `commercelayer order:approve ID`
 
-Send this attribute if you want to approve a placed order..
+Send this attribute if you want to approve a placed order.
 
 ```
 USAGE
@@ -776,7 +776,7 @@ _See code: [src/commands/order/approve.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer order:approve_and_capture ID`
 
-Send this attribute if you want to approve and capture a placed order..
+Send this attribute if you want to approve and capture a placed order.
 
 ```
 USAGE
@@ -799,7 +799,7 @@ _See code: [src/commands/order/approve_and_capture.ts](https://github.com/commer
 
 ### `commercelayer order:archive ID`
 
-Send this attribute if you want to archive the order..
+Send this attribute if you want to archive the order.
 
 ```
 USAGE
@@ -822,7 +822,7 @@ _See code: [src/commands/order/archive.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer order:authorization_amount_cents ID`
 
-The authorization amount, in cents..
+The authorization amount, in cents.
 
 ```
 USAGE
@@ -845,7 +845,7 @@ _See code: [src/commands/order/authorization_amount_cents.ts](https://github.com
 
 ### `commercelayer order:authorize ID`
 
-Send this attribute if you want to authorize the order's payment source..
+Send this attribute if you want to authorize the order's payment source.
 
 ```
 USAGE
@@ -868,7 +868,7 @@ _See code: [src/commands/order/authorize.ts](https://github.com/commercelayer/co
 
 ### `commercelayer order:billing_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's billing address..
+The id of the address that you want to clone to create the order's billing address.
 
 ```
 USAGE
@@ -892,7 +892,7 @@ _See code: [src/commands/order/billing_address_clone_id.ts](https://github.com/c
 
 ### `commercelayer order:billing_address_same_as_shipping ID`
 
-Send this attribute if you want the billing address to be cloned from the order's shipping address..
+Send this attribute if you want the billing address to be cloned from the order's shipping address.
 
 ```
 USAGE
@@ -915,7 +915,7 @@ _See code: [src/commands/order/billing_address_same_as_shipping.ts](https://gith
 
 ### `commercelayer order:cancel ID`
 
-Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided..
+Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
 
 ```
 USAGE
@@ -938,7 +938,7 @@ _See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer order:capture ID`
 
-Send this attribute if you want to capture an approved order..
+Send this attribute if you want to capture an approved order.
 
 ```
 USAGE
@@ -961,7 +961,7 @@ _See code: [src/commands/order/capture.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer order:customer_payment_source_id ID`
 
-The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source..
+The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
 
 ```
 USAGE
@@ -985,7 +985,7 @@ _See code: [src/commands/order/customer_payment_source_id.ts](https://github.com
 
 ### `commercelayer order:place ID`
 
-Send this attribute if you want to place the order..
+Send this attribute if you want to place the order.
 
 ```
 USAGE
@@ -1008,7 +1008,7 @@ _See code: [src/commands/order/place.ts](https://github.com/commercelayer/commer
 
 ### `commercelayer order:refresh ID`
 
-Send this attribute if you want to manually refresh the order..
+Send this attribute if you want to manually refresh the order.
 
 ```
 USAGE
@@ -1031,7 +1031,7 @@ _See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer order:refund ID`
 
-Send this attribute if you want to refund a captured order..
+Send this attribute if you want to refund a captured order.
 
 ```
 USAGE
@@ -1054,7 +1054,7 @@ _See code: [src/commands/order/refund.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer order:save_billing_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address..
+Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address.
 
 ```
 USAGE
@@ -1078,7 +1078,7 @@ _See code: [src/commands/order/save_billing_address_to_customer_address_book.ts]
 
 ### `commercelayer order:save_payment_source_to_customer_wallet ID`
 
-Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source..
+Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source.
 
 ```
 USAGE
@@ -1102,7 +1102,7 @@ _See code: [src/commands/order/save_payment_source_to_customer_wallet.ts](https:
 
 ### `commercelayer order:save_shipping_address_to_customer_address_book ID`
 
-Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address..
+Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address.
 
 ```
 USAGE
@@ -1126,7 +1126,7 @@ _See code: [src/commands/order/save_shipping_address_to_customer_address_book.ts
 
 ### `commercelayer order:shipping_address_clone_id ID`
 
-The id of the address that you want to clone to create the order's shipping address..
+The id of the address that you want to clone to create the order's shipping address.
 
 ```
 USAGE
@@ -1150,7 +1150,7 @@ _See code: [src/commands/order/shipping_address_clone_id.ts](https://github.com/
 
 ### `commercelayer order:shipping_address_same_as_billing ID`
 
-Send this attribute if you want the shipping address to be cloned from the order's billing address..
+Send this attribute if you want the shipping address to be cloned from the order's billing address.
 
 ```
 USAGE
@@ -1173,7 +1173,7 @@ _See code: [src/commands/order/shipping_address_same_as_billing.ts](https://gith
 
 ### `commercelayer order:unarchive ID`
 
-Send this attribute if you want to unarchive the order..
+Send this attribute if you want to unarchive the order.
 
 ```
 USAGE
@@ -1196,7 +1196,7 @@ _See code: [src/commands/order/unarchive.ts](https://github.com/commercelayer/co
 
 ### `commercelayer order:update_taxes ID`
 
-Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market)..
+Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market).
 
 ```
 USAGE
@@ -1243,7 +1243,7 @@ _See code: [src/commands/order_subscription/index.ts](https://github.com/commerc
 
 ### `commercelayer order_subscription:activate ID`
 
-Send this attribute if you want to mark this subscription as active..
+Send this attribute if you want to mark this subscription as active.
 
 ```
 USAGE
@@ -1266,7 +1266,7 @@ _See code: [src/commands/order_subscription/activate.ts](https://github.com/comm
 
 ### `commercelayer order_subscription:cancel ID`
 
-Send this attribute if you want to mark this subscription as cancelled..
+Send this attribute if you want to mark this subscription as cancelled.
 
 ```
 USAGE
@@ -1289,7 +1289,7 @@ _See code: [src/commands/order_subscription/cancel.ts](https://github.com/commer
 
 ### `commercelayer order_subscription:deactivate ID`
 
-Send this attribute if you want to mark this subscription as inactive..
+Send this attribute if you want to mark this subscription as inactive.
 
 ```
 USAGE
@@ -1335,7 +1335,7 @@ _See code: [src/commands/return/index.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer return:approve ID`
 
-Send this attribute if you want to mark this return as approved..
+Send this attribute if you want to mark this return as approved.
 
 ```
 USAGE
@@ -1358,7 +1358,7 @@ _See code: [src/commands/return/approve.ts](https://github.com/commercelayer/com
 
 ### `commercelayer return:archive ID`
 
-Send this attribute if you want to archive the return..
+Send this attribute if you want to archive the return.
 
 ```
 USAGE
@@ -1381,7 +1381,7 @@ _See code: [src/commands/return/archive.ts](https://github.com/commercelayer/com
 
 ### `commercelayer return:cancel ID`
 
-Send this attribute if you want to mark this return as cancelled..
+Send this attribute if you want to mark this return as cancelled.
 
 ```
 USAGE
@@ -1404,7 +1404,7 @@ _See code: [src/commands/return/cancel.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer return:receive ID`
 
-Send this attribute if you want to mark this return as received..
+Send this attribute if you want to mark this return as received.
 
 ```
 USAGE
@@ -1427,7 +1427,7 @@ _See code: [src/commands/return/receive.ts](https://github.com/commercelayer/com
 
 ### `commercelayer return:reject ID`
 
-Send this attribute if you want to mark this return as rejected..
+Send this attribute if you want to mark this return as rejected.
 
 ```
 USAGE
@@ -1450,7 +1450,7 @@ _See code: [src/commands/return/reject.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer return:request ID`
 
-Send this attribute if you want to activate this return..
+Send this attribute if you want to activate this return.
 
 ```
 USAGE
@@ -1473,7 +1473,7 @@ _See code: [src/commands/return/request.ts](https://github.com/commercelayer/com
 
 ### `commercelayer return:restock ID`
 
-Send this attribute if you want to restock all of the return line items..
+Send this attribute if you want to restock all of the return line items.
 
 ```
 USAGE
@@ -1496,7 +1496,7 @@ _See code: [src/commands/return/restock.ts](https://github.com/commercelayer/com
 
 ### `commercelayer return:ship ID`
 
-Send this attribute if you want to mark this return as shipped..
+Send this attribute if you want to mark this return as shipped.
 
 ```
 USAGE
@@ -1519,7 +1519,7 @@ _See code: [src/commands/return/ship.ts](https://github.com/commercelayer/commer
 
 ### `commercelayer return:unarchive ID`
 
-Send this attribute if you want to unarchive the return..
+Send this attribute if you want to unarchive the return.
 
 ```
 USAGE
@@ -1565,7 +1565,7 @@ _See code: [src/commands/return_line_item/index.ts](https://github.com/commercel
 
 ### `commercelayer return_line_item:restock ID`
 
-Send this attribute if you want to restock the line item..
+Send this attribute if you want to restock the line item.
 
 ```
 USAGE
@@ -1611,7 +1611,7 @@ _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/com
 
 ### `commercelayer shipment:get_rates ID`
 
-Send this attribute if you want get the shipping rates from the associated carrier accounts..
+Send this attribute if you want get the shipping rates from the associated carrier accounts.
 
 ```
 USAGE
@@ -1634,7 +1634,7 @@ _See code: [src/commands/shipment/get_rates.ts](https://github.com/commercelayer
 
 ### `commercelayer shipment:on_hold ID`
 
-Send this attribute if you want to put this shipment on hold..
+Send this attribute if you want to put this shipment on hold.
 
 ```
 USAGE
@@ -1657,7 +1657,7 @@ _See code: [src/commands/shipment/on_hold.ts](https://github.com/commercelayer/c
 
 ### `commercelayer shipment:packing ID`
 
-Send this attribute if you want to start packing this shipment..
+Send this attribute if you want to start packing this shipment.
 
 ```
 USAGE
@@ -1680,7 +1680,7 @@ _See code: [src/commands/shipment/packing.ts](https://github.com/commercelayer/c
 
 ### `commercelayer shipment:picking ID`
 
-Send this attribute if you want to start picking this shipment..
+Send this attribute if you want to start picking this shipment.
 
 ```
 USAGE
@@ -1703,7 +1703,7 @@ _See code: [src/commands/shipment/picking.ts](https://github.com/commercelayer/c
 
 ### `commercelayer shipment:purchase ID`
 
-Send this attribute if you want to purchase this shipment with the selected rate..
+Send this attribute if you want to purchase this shipment with the selected rate.
 
 ```
 USAGE
@@ -1726,7 +1726,7 @@ _See code: [src/commands/shipment/purchase.ts](https://github.com/commercelayer/
 
 ### `commercelayer shipment:ready_to_ship ID`
 
-Send this attribute if you want to mark this shipment as ready to ship..
+Send this attribute if you want to mark this shipment as ready to ship.
 
 ```
 USAGE
@@ -1749,7 +1749,7 @@ _See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercel
 
 ### `commercelayer shipment:ship ID`
 
-Send this attribute if you want to mark this shipment as shipped..
+Send this attribute if you want to mark this shipment as shipped.
 
 ```
 USAGE
@@ -1795,7 +1795,7 @@ _See code: [src/commands/stock_transfer/index.ts](https://github.com/commercelay
 
 ### `commercelayer stock_transfer:cancel ID`
 
-Send this attribute if you want to cancel this stock transfer..
+Send this attribute if you want to cancel this stock transfer.
 
 ```
 USAGE
@@ -1818,7 +1818,7 @@ _See code: [src/commands/stock_transfer/cancel.ts](https://github.com/commercela
 
 ### `commercelayer stock_transfer:complete ID`
 
-Send this attribute if you want to complete this stock transfer..
+Send this attribute if you want to complete this stock transfer.
 
 ```
 USAGE
@@ -1841,7 +1841,7 @@ _See code: [src/commands/stock_transfer/complete.ts](https://github.com/commerce
 
 ### `commercelayer stock_transfer:in_transit ID`
 
-Send this attribute if you want to mark this stock transfer as in transit..
+Send this attribute if you want to mark this stock transfer as in transit.
 
 ```
 USAGE
@@ -1864,7 +1864,7 @@ _See code: [src/commands/stock_transfer/in_transit.ts](https://github.com/commer
 
 ### `commercelayer stock_transfer:picking ID`
 
-Send this attribute if you want to start picking this stock transfer..
+Send this attribute if you want to start picking this stock transfer.
 
 ```
 USAGE
@@ -1887,7 +1887,7 @@ _See code: [src/commands/stock_transfer/picking.ts](https://github.com/commercel
 
 ### `commercelayer stock_transfer:upcoming ID`
 
-Send this attribute if you want to mark this stock transfer as upcoming..
+Send this attribute if you want to mark this stock transfer as upcoming.
 
 ```
 USAGE
@@ -1933,7 +1933,7 @@ _See code: [src/commands/stripe_payment/index.ts](https://github.com/commercelay
 
 ### `commercelayer stripe_payment:refresh ID`
 
-Send this attribute if you want to refresh the payment status, can be used as webhooks fallback logic..
+Send this attribute if you want to refresh the payment status, can be used as webhooks fallback logic.
 
 ```
 USAGE
@@ -1979,7 +1979,7 @@ _See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer webhook:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero failures count..
+Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero failures count.
 
 ```
 USAGE
