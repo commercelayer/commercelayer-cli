@@ -18,9 +18,10 @@ Show a list of all (logged in) available CLI applications.
 ```
 USAGE
   $ commercelayer applications [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>]
+    | --id <value>] [-S]
 
 FLAGS
+  -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
                               <options: cli|sales_channel|integration>

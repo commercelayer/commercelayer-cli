@@ -22,6 +22,10 @@ export default class ApplicationsIndex extends Command {
 			description: 'show applications extra info',
 			hidden: true,
 		}),
+		sort: Flags.boolean({
+			char: 'S',
+			description: 'sort applications by Organization and Application name',
+		}),
 	}
 
 	static args = []
@@ -43,9 +47,14 @@ export default class ApplicationsIndex extends Command {
 		this.log()
 		if (configData.length > 0) {
 
-			const currentVisibile = configData.some(a => clApplication.appKeyMatch(current, a))
+			const currentVisible = configData.some(a => clApplication.appKeyMatch(current, a))
 
-			cliux.Table.table(configData as any, {
+			const sortedData = flags.sort ? configData.sort((a: AppInfo, b: AppInfo): number => {
+				const cmp = a.organization.localeCompare(b.organization)
+				return (cmp === 0) ? a.name.localeCompare(b.name) : cmp
+			}) : configData
+
+			cliux.Table.table(sortedData as any, {
 				current: { header: `[${currentChar}]`, minWidth: 3, get: row => clApplication.appKeyMatch(current, row as unknown as AppInfo) ? clColor.magentaBright(` ${currentChar} `) : '   ' },
 				organization: { header: 'ORGANIZATION', get: row => currentColor(row, current)(row.organization) },
 				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
@@ -61,7 +70,7 @@ export default class ApplicationsIndex extends Command {
 				printLine: clUtil.log,
 			})
 
-			if (current && currentVisibile) this.log(clColor.italic.magentaBright(`\n(${currentChar}) Current application`))
+			if (current && currentVisible) this.log(clColor.italic.magentaBright(`\n(${currentChar}) Current application`))
 
 		} else this.log(clColor.italic('No application found'))
 
