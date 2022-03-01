@@ -19,11 +19,11 @@ const checkUpdate = (pkg: Package) => {
     if (notifier.update) {
 
       const pluginMode = true // resolve(__dirname).includes(join('@commercelayer', 'cli', 'node_modules', pkg.name))
-      const command = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
+      const updateCommand = pluginMode ? 'commercelayer plugins:update' : '{updateCommand}'
 
       notifier.notify({
         isGlobal: !pluginMode,
-        message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.dim('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(command)} to update`,
+        message: `-= ${chalk.bgWhite.black.bold(` ${pkg.description} `)} =-\n\nNew version available: ${chalk.dim('{currentVersion}')} -> ${chalk.green('{latestVersion}')}\nRun ${chalk.cyanBright(updateCommand)} to update`,
       })
 
     }
