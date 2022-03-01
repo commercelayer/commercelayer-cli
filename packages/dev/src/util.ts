@@ -1,9 +1,11 @@
 import _ = require('lodash')
 
+
 export function castArray<T>(input?: T | T[]): T[] {
   if (input === undefined) return []
   return Array.isArray(input) ? input : [input]
 }
+
 
 export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
   return arr.filter((a, i) => {
@@ -12,11 +14,14 @@ export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
   })
 }
 
+
 export function compact<T>(a: (T | undefined)[]): T[] {
   return a.filter((a): a is T => Boolean(a))
 }
 
+
 export function sortBy<T>(arr: T[], fn: (i: T) => sort.Types | sort.Types[]): T[] {
+
   function compare(a: sort.Types | sort.Types[], b: sort.Types | sort.Types[]): number {
     a = a === undefined ? 0 : a
     b = b === undefined ? 0 : b
@@ -34,20 +39,26 @@ export function sortBy<T>(arr: T[], fn: (i: T) => sort.Types | sort.Types[]): T[
   }
 
   return arr.sort((a, b) => compare(fn(a), fn(b)))
+
 }
+
 
 export namespace sort {
   export type Types = string | number | undefined | boolean
 }
 
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const template = (context: any) => (t: string | undefined): string => _.template(t || '')(context)
+
 
 interface VersionsObject {
   [key: string]: string;
 }
 
+
 export const sortVersionsObjectByKeysDesc = (input: VersionsObject): VersionsObject => {
+
   const keys = Reflect.ownKeys(input).sort((a, b) => {
     const splitA = (a as string).split('.').map(part => Number.parseInt(part, 10))
     const splitB = (b as string).split('.').map(part => Number.parseInt(part, 10))
@@ -68,4 +79,5 @@ export const sortVersionsObjectByKeysDesc = (input: VersionsObject): VersionsObj
   }
 
   return result
+
 }

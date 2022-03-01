@@ -10,6 +10,7 @@ class IncompatibleHelpError extends Error {
 }
 
 export class HelpCompatibilityWrapper {
+
   inner: MaybeCompatibleHelp
 
   constructor(inner: MaybeCompatibleHelp) {
@@ -27,4 +28,5 @@ export class HelpCompatibilityWrapper {
 
     throw new IncompatibleHelpError()
   }
+
 }

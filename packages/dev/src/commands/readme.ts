@@ -8,6 +8,7 @@ import { URL } from 'url'
 import { castArray, compact, sortBy, template, uniqBy } from '../util'
 import { HelpCompatibilityWrapper } from '../help-compatibility'
 
+
 const normalize = require('normalize-package-data')
 const columns = Number.parseInt(process.env.COLUMNS!, 10) || 120
 const slugify = new (require('github-slugger') as any)()
@@ -15,6 +16,7 @@ const slugify = new (require('github-slugger') as any)()
 interface HelpBaseDerived {
   new(config: Interfaces.Config, opts?: Partial<Interfaces.HelpOptions>): HelpBase;
 }
+
 
 const formatDescription = (d: string | undefined): string => {
   let desc = d ? `${d.charAt(0).toUpperCase()}${d.substring(1)}` : ''
@@ -43,12 +45,14 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
 
   private HelpClass!: HelpBaseDerived
 
+
   async run(): Promise<void> {
+
     const { flags } = await this.parse(Readme)
+
     const cwd = process.cwd()
     const readmePath = path.resolve(cwd, 'README.md')
     const config = await Config.load({ root: cwd, devPlugins: false, userPlugins: false })
-
 
     if (flags.bin) config.bin = flags.bin
 
@@ -79,9 +83,12 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     readme += '\n'
 
     await fs.outputFile(readmePath, readme)
+
   }
 
+
   replaceTag(readme: string, tag: string, body: string): string {
+
     if (readme.includes(`<!-- ${tag} -->`)) {
       if (readme.includes(`<!-- ${tag}stop -->`)) {
         readme = readme.replace(new RegExp(`<!-- ${tag} -->(.|\n)*<!-- ${tag}stop -->`, 'm'), `<!-- ${tag} -->`)
@@ -92,7 +99,9 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
 
    // return readme.replace(`<!-- ${tag} -->`, `<!-- ${tag} -->\n${body}\n<!-- ${tag}stop -->`)
    return readme.replace(`<!-- ${tag} -->`, `<!-- ${tag} -->\n\n${body}\n<!-- ${tag}stop -->`)
+
   }
+
 
   toc(__: Interfaces.Config, readme: string): string {
     // return readme.split('\n').filter(l => l.startsWith('# '))
@@ -102,9 +111,14 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
       .join('\n')
   }
 
+
   usage(config: Interfaces.Config): string {
+
+    /*
     const versionFlags = ['--version', ...(config.pjson.oclif.additionalVersionFlags ?? []).sort()]
     const versionFlagsString = `(${versionFlags.join('|')})`
+    */
+
     return [
       `\`\`\`sh-session
       $ ${config.bin} COMMAND
@@ -114,9 +128,12 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
       $ ${config.bin} [COMMAND] (--help | -h) for detailed information about CLI commands.
 \`\`\`\n`,
     ].join('\n').trim()
+
   }
 
+
   multiCommands(config: Interfaces.Config, commands: Interfaces.Command[], dir: string): string {
+
     let topics = config.topics
     topics = topics.filter(t => !t.hidden && !t.name.includes(':'))
     topics = topics.filter(t => commands.find(c => c.id.startsWith(t.name)))
@@ -141,7 +158,9 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
         ]).join(' - ')
       }),
     ].join('\n').trim() + '\n'
+
   }
+
 
   createTopicFile(file: string, config: Interfaces.Config, topic: Interfaces.Topic, commands: Interfaces.Command[]): void {
     const bin = `\`${config.bin} ${topic.name}\``
@@ -157,6 +176,7 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     fs.outputFileSync(file, doc)
   }
 
+
   commands(config: Interfaces.Config, commands: Interfaces.Command[]): string {
     return [
       ...commands.map(c => {
@@ -168,7 +188,9 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     ].join('\n').trim()
   }
 
+
   renderCommand(config: Interfaces.Config, c: Interfaces.Command): string {
+
     this.debug('rendering command', c.id)
     const title = template({ config, command: c })(formatDescription(c.summary || c.description)).trim().split('\n')[0]
     const help = new this.HelpClass(config, { stripAnsi: true, maxWidth: columns })
@@ -187,9 +209,12 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     } catch (error: any) {
       this.error(error.message)
     }
+
   }
 
+
   commandCode(config: Interfaces.Config, c: Interfaces.Command): string | undefined {
+
     const pluginName = c.pluginName
     if (!pluginName) return
     const plugin = config.plugins.find(p => p.name === c.pluginName)
@@ -206,28 +231,38 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     }
 
     const template = plugin.pjson.oclif.repositoryPrefix || '<%- repo %>/blob/v<%- version %>/<%- commandPath %>'
+
     return `_See code: [${label}](${_.template(template)({ repo, version, commandPath, config, c })})_`
+
   }
 
+
   private repo(plugin: Interfaces.Plugin): string | undefined {
+
     const pjson = { ...plugin.pjson }
     normalize(pjson)
     const repo = pjson.repository && pjson.repository.url
     if (!repo) return
     const url = new URL(repo)
     if (!['github.com', 'gitlab.com'].includes(url.hostname) && !pjson.oclif.repositoryPrefix) return
+
     return `https://${url.hostname}${url.pathname.replace(/\.git$/, '')}`
+
   }
+
 
   // eslint-disable-next-line valid-jsdoc
   /**
    * fetches the path to a command
    */
   private commandPath(plugin: Interfaces.Plugin, c: Interfaces.Command): string | undefined {
+
     const commandsDir = plugin.pjson.oclif.commands
     if (!commandsDir) return
+
     let p = path.join(plugin.root, commandsDir, ...c.id.split(':'))
     const libRegex = new RegExp('^lib' + (path.sep === '\\' ? '\\\\' : path.sep))
+
     if (fs.pathExistsSync(path.join(p, 'index.js'))) {
       p = path.join(p, 'index.js')
     } else if (fs.pathExistsSync(p + '.js')) {
@@ -242,6 +277,7 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
         p += '.ts'
       } else return
     } else return
+
     p = p.replace(plugin.root + path.sep, '')
     if (plugin.pjson.devDependencies && plugin.pjson.devDependencies.typescript) {
       p = p.replace(libRegex, 'src' + path.sep)
@@ -249,10 +285,14 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     }
 
     p = p.replace(/\\/g, '/') // Replace windows '\' by '/'
+
     return p
+
   }
 
+
   private commandUsage(config: Interfaces.Config, command: Interfaces.Command): string {
+
     const arg = (arg: Interfaces.Arg) => {
       const name = arg.name.toUpperCase()
       if (arg.required) return `${name}`
@@ -270,6 +310,9 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     }
 
     const usages = castArray(command.usage)
+
     return template({ config, command })(usages.length === 0 ? defaultUsage() : usages[0])
+
   }
+
 }
