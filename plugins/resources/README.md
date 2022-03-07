@@ -31,6 +31,7 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources:create RESOURCE`](#commercelayer-resourcescreate-resource)
 * [`commercelayer resources:delete RESOURCE [ID]`](#commercelayer-resourcesdelete-resource-id)
 * [`commercelayer resources:doc RESOURCE`](#commercelayer-resourcesdoc-resource)
+* [`commercelayer resources:fetch PATH [ID]`](#commercelayer-resourcesfetch-path-id)
 * [`commercelayer resources:filters`](#commercelayer-resourcesfilters)
 * [`commercelayer resources:get RESOURCE [ID]`](#commercelayer-resourcesget-resource-id)
 * [`commercelayer resources:list RESOURCE`](#commercelayer-resourceslist-resource)
@@ -264,6 +265,64 @@ EXAMPLES
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/doc.ts)_
 
+### `commercelayer resources:fetch PATH [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```
+USAGE
+  $ commercelayer resources:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl
+    ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R] [-w <value>] [-p
+    <value>] [-n <value>] [-s <value>]
+
+ARGUMENTS
+  PATH  path (or URL) of the resource(s) to fetch
+  ID    resource id
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer fetch
+  $ commercelayer res:fetch
+  $ commercelayer rf
+
+EXAMPLES
+  $ commercelayer resources:fetch customers
+
+  $ commercelayer res:fetch customers
+
+  $ clayer res:fetch customers/<customerId>
+
+  $ cl fetch customers/<customerId>/<customerRelationship>
+
+  $ cl fetch customers/{customerId}/orders aBcdEkYWx
+```
+
+_See code: [src/commands/resources/fetch.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/fetch.ts)_
+
 ### `commercelayer resources:filters`
 
 Show a list of all available filter predicates.
@@ -328,6 +387,7 @@ DESCRIPTION
 ALIASES
   $ commercelayer get
   $ commercelayer res:get
+  $ commercelayer rg
 
 EXAMPLES
   $ commercelayer resources:get customers
@@ -498,7 +558,7 @@ EXAMPLES
 
   $ cl update customers/<customerId> -m meta_key="meta value"
 
-  $ cl ru customers <customerId> -M mete_keu="metadata overwrite
+  $ cl ru customers <customerId> -M meta_key="metadata overwrite
 
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```

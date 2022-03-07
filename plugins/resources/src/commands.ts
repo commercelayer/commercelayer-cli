@@ -9,7 +9,7 @@ import { KeyValArray } from './common'
 const COMMANDS_DIR = 'commands'
 
 
-type ResourceOperation = 'retrieve' | 'list' | 'create' | 'update' | 'delete'
+type ResourceOperation = 'retrieve' | 'list' | 'create' | 'update' | 'delete' | 'relationship'
 
 type CommandParams = {
   alias: string;

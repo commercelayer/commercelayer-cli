@@ -7,7 +7,7 @@ export default class ResourcesGet extends Command {
 
   static description = 'retrieve a resource or list a set of resources'
 
-  static aliases = ['get', 'res:get']
+  static aliases = ['get', 'res:get', 'rg']
 
   static examples = [
     '$ commercelayer resources:get customers',
