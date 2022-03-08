@@ -1,5 +1,4 @@
-@commercelayer/cli-plugin-checkout
-==================================
+# @commercelayer/cli-plugin-checkout
 
 Commerce Layer CLI Checkout plugin
 
@@ -10,9 +9,10 @@ Commerce Layer CLI Checkout plugin
 
 <!-- toc -->
 
-
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
 
 ```sh-session
@@ -21,7 +21,7 @@ $ cl-checkout COMMAND
 $ cl-checkout [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
-# Commands
+## Commands
 <!-- commands -->
 
 * [`cl-checkout checkout`](#cl-checkout-checkout)
