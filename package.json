@@ -103,7 +103,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^1.3.13",
     "@commercelayer/js-auth": "^2.2.9",
-    "@commercelayer/sdk": "4.7.5",
+    "@commercelayer/sdk": "4.7.6",
     "@oclif/core": "^1.3.4",
     "@oclif/plugin-autocomplete": "^1.2.0",
     "@oclif/plugin-help": "5.1.10",
