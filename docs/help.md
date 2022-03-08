@@ -1,15 +1,15 @@
 `commercelayer help`
 ====================
 
-Display help for commercelayer..
+Display help for commercelayer.
 
 * [`commercelayer help [COMMAND]`](#commercelayer-help-command)
 
 ### `commercelayer help [COMMAND]`
 
-Display help for commercelayer..
+Display help for commercelayer.
 
-```
+```sh-session
 USAGE
   $ commercelayer help [COMMAND] [-n]
 

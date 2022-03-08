@@ -13,9 +13,9 @@ Manage CLI plugins.
 
 ### `commercelayer plugins`
 
-List installed plugins..
+List installed plugins.
 
-```
+```sh-session
 USAGE
   $ commercelayer plugins [--core]
 
@@ -35,7 +35,7 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 Show all available Commerce Layer CLI plugins.
 
-```
+```sh-session
 USAGE
   $ commercelayer plugins:available
 
@@ -50,9 +50,9 @@ _See code: [src/commands/plugins/available.ts](https://github.com/commercelayer/
 
 ### `commercelayer plugins:inspect PLUGIN...`
 
-Displays installation properties of a plugin..
+Displays installation properties of a plugin.
 
-```
+```sh-session
 USAGE
   $ commercelayer plugins:inspect PLUGIN...
 
@@ -76,7 +76,7 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 Installs a plugin into the CLI.
 
-```
+```sh-session
 USAGE
   $ commercelayer plugins:install PLUGIN...
 
@@ -116,7 +116,7 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 Links a plugin into the CLI for development.
 
-```
+```sh-session
 USAGE
   $ commercelayer plugins:link PLUGIN
 
@@ -143,9 +143,9 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ### `commercelayer plugins:uninstall PLUGIN...`
 
-Removes a plugin from the CLI..
+Removes a plugin from the CLI.
 
-```
+```sh-session
 USAGE
   $ commercelayer plugins:uninstall PLUGIN...
 
@@ -168,9 +168,9 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ### `commercelayer plugins:update`
 
-Update installed plugins..
+Update installed plugins.
 
-```
+```sh-session
 USAGE
   $ commercelayer plugins:update [-h] [-v]
 

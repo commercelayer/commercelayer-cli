@@ -9,7 +9,7 @@ Display autocomplete installation instructions.
 
 Display autocomplete installation instructions.
 
-```
+```sh-session
 USAGE
   $ commercelayer autocomplete [SHELL] [-r]
 

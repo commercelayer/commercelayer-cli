@@ -15,7 +15,7 @@ Manage login to CLI applications.
 
 Show a list of all (logged in) available CLI applications.
 
-```
+```sh-session
 USAGE
   $ commercelayer applications [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
     | --id <value>] [-S]
@@ -53,7 +53,7 @@ _See code: [src/commands/applications/index.ts](https://github.com/commercelayer
 
 Add a new Commerce Layer application to CLI config.
 
-```
+```sh-session
 USAGE
   $ commercelayer applications:add -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value> -p <value>]
 
@@ -82,7 +82,7 @@ _See code: [src/commands/applications/add.ts](https://github.com/commercelayer/c
 
 Show the current application.
 
-```
+```sh-session
 USAGE
   $ commercelayer applications:current [-j ]
 
@@ -107,7 +107,7 @@ _See code: [src/commands/applications/current.ts](https://github.com/commercelay
 
 Show application details.
 
-```
+```sh-session
 USAGE
   $ commercelayer applications:info [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
     | --id <value>] [-j]
@@ -136,7 +136,7 @@ _See code: [src/commands/applications/info.ts](https://github.com/commercelayer/
 
 Execute login to a Commerce Layer application.
 
-```
+```sh-session
 USAGE
   $ commercelayer applications:login -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value> -p <value>]
 
@@ -165,7 +165,7 @@ _See code: [src/commands/applications/login.ts](https://github.com/commercelayer
 
 Remove an application from CLI local configuration.
 
-```
+```sh-session
 USAGE
   $ commercelayer applications:logout [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
     | --id <value>] [-r]
@@ -196,7 +196,7 @@ _See code: [src/commands/applications/logout.ts](https://github.com/commercelaye
 
 Switch applications.
 
-```
+```sh-session
 USAGE
   $ commercelayer applications:switch [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
     | --id <value>]
