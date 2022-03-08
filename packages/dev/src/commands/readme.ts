@@ -106,7 +106,7 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
   toc(__: Interfaces.Config, readme: string): string {
     // return readme.split('\n').filter(l => l.startsWith('# '))
     return readme.split('\n').filter(l => l.startsWith('## ') && !l.includes('Table of contents') && !l.includes('What is Commerce Layer'))
-      .map(l => l.trim().slice(2))
+      .map(l => l.slice(2).trim())
       .map(l => `* [${l}](#${slugify.slug(l)})`)
       .join('\n')
   }
@@ -203,7 +203,7 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
       return compact([
         header(),
         title,
-        '```\n' + wrapper.formatCommand(c).trim() + '\n```',
+        '```sh-session\n' + wrapper.formatCommand(c).trim() + '\n```',
         this.commandCode(config, c),
       ]).join('\n\n')
     } catch (error: any) {

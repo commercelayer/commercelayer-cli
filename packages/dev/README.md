@@ -1,5 +1,4 @@
-@oclif/dev-cli
-===============
+# @oclif/dev-cli
 
 helpers for oclif CLIs
 
@@ -12,32 +11,32 @@ helpers for oclif CLIs
 [![License](https://img.shields.io/npm/l/@oclif/dev-cli.svg)](https://github.com/oclif/dev-cli/blob/master/package.json)
 
 <!-- toc -->
+
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
-# Usage
+
+## Usage
 <!-- usage -->
+
 ```sh-session
-$ npm install -g @commercelayer/cli-dev
-$ cl-cli-dev COMMAND
-running command...
-$ cl-cli-dev (--version)
-@commercelayer/cli-dev/0.1.2 darwin-x64 node-v16.13.2
-$ cl-cli-dev --help [COMMAND]
-USAGE
-  $ cl-cli-dev COMMAND
-...
+      $ cl-cli-dev COMMAND
+
+      $ cl-cli-dev (-v | version | --version) to check the version of the CLI you have installed.
+
+      $ cl-cli-dev [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
-# Commands
+## Commands
 <!-- commands -->
+
 * [`cl-cli-dev readme`](#cl-cli-dev-readme)
 
-## `cl-cli-dev readme`
+### `cl-cli-dev readme`
 
-adds commands to README.md in current directory
+Adds commands to README.md in current directory
 
-```
+```sh-session
 USAGE
   $ cl-cli-dev readme --dir <value> [--multi] [--bin <value> --plugin]
 
