@@ -15,7 +15,11 @@ Commerce Layer CLI Checkout plugin
 # Usage
 <!-- usage -->
 
+```sh-session
+$ cl-checkout COMMAND
 
+$ cl-checkout [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
@@ -27,7 +31,7 @@ Commerce Layer CLI Checkout plugin
 
 Create checkout URLs.
 
-```
+```sh-session
 USAGE
   $ cl-checkout checkout -o <value> -a <value> [--open] [-m <value> | [-O <value> | -S <value> | -B <value>]]
     [-c <value> | ] [-e <value> | ]
@@ -60,7 +64,7 @@ _See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/com
 
 Create checkout URLs starting from an existing order.
 
-```
+```sh-session
 USAGE
   $ cl-checkout checkout:order [ID] -o <value> -a <value> [--open]
 
