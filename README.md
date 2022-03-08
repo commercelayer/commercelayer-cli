@@ -34,7 +34,7 @@ Run the command below to install the CLI using your favorite package manager:
 npm install -g @commercelayer/cli
 ```
 
-```
+```bash
 yarn global add @commercelayer/cli
 ```
 
@@ -88,6 +88,7 @@ You can run the command below to get a list of all available CLI plugins:
 ```sh-session
 commercelayer plugins:available
 ```
+
 You can run the command below to update all available CLI plugins:
 
 ```sh-session
@@ -100,9 +101,9 @@ commercelayer plugins:update
 
 2. Clone the forked repository like so:
 
-```bash
-git clone https://github.com/<your username>/commercelayer-cli.git && cd commercelayer-cli
-```
+    ```bash
+    git clone https://github.com/<your username>/commercelayer-cli.git && cd commercelayer-cli
+    ```
 
 3. Make your changes and create a pull request ([learn how to do this](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)).
 
