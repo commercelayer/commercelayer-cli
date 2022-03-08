@@ -17,7 +17,7 @@
     "chai": "^4.3.6",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
-    "eslint-config-oclif-typescript": "^0.2.0",
+    "eslint-config-oclif-typescript": "^1.0.2",
     "globby": "^10.0.2",
     "inflector-js": "^1.0.1",
     "lodash": "^4.17.21",
