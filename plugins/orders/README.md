@@ -1,5 +1,4 @@
-@commercelayer/cli-plugin-orders
-===================================
+# @commercelayer/cli-plugin-orders
 
 Commerce Layer CLI Orders plugin
 
@@ -10,18 +9,24 @@ Commerce Layer CLI Orders plugin
 
 <!-- toc -->
 
-* [ Usage](#-usage)
-* [ Commands](#-commands)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 ## Usage
 <!-- usage -->
 
+```sh-session
+$ commercelayer COMMAND
 
+$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
+
 ```sh-session
 $ commercelayer plugins:install orders
 ```
+
 ## Commands
 <!-- commands -->
 
@@ -51,7 +56,7 @@ $ commercelayer plugins:install orders
 
 Execute an action on an order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders [ID] -o <value> [-u [-j -p]]
 
@@ -74,7 +79,7 @@ _See code: [src/commands/orders/index.ts](https://github.com/commercelayer/comme
 
 Send this attribute if you want to approve a placed order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:approve [ID] -o <value> [-u [-j -p]]
 
@@ -97,7 +102,7 @@ _See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want to approve and capture a placed order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:approve_and_capture [ID] -o <value> [-u [-j -p]]
 
@@ -120,7 +125,7 @@ _See code: [src/commands/orders/approve_and_capture.ts](https://github.com/comme
 
 Send this attribute if you want to archive the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:archive [ID] -o <value> [-u [-j -p]]
 
@@ -143,7 +148,7 @@ _See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/com
 
 The authorization amount, in cents.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:authorization_amount_cents [ID] -o <value> [-u [-j -p]]
 
@@ -166,7 +171,7 @@ _See code: [src/commands/orders/authorization_amount_cents.ts](https://github.co
 
 Send this attribute if you want to authorize the order's payment source.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:authorize [ID] -o <value> [-u [-j -p]]
 
@@ -189,7 +194,7 @@ _See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/c
 
 The id of the address that you want to clone to create the order's billing address.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:billing_address_clone_id [ID] -o <value> -v <value> [-u [-j -p]]
 
@@ -213,7 +218,7 @@ _See code: [src/commands/orders/billing_address_clone_id.ts](https://github.com/
 
 Send this attribute if you want the billing address to be cloned from the order's shipping address.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:billing_address_same_as_shipping [ID] -o <value> [-u [-j -p]]
 
@@ -236,7 +241,7 @@ _See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://git
 
 Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:cancel [ID] -o <value> [-u [-j -p]]
 
@@ -259,7 +264,7 @@ _See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want to capture an approved order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:capture [ID] -o <value> [-u [-j -p]]
 
@@ -282,7 +287,7 @@ _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/com
 
 The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:customer_payment_source_id [ID] -o <value> -v <value> [-u [-j -p]]
 
@@ -306,7 +311,7 @@ _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.co
 
 Send this attribute if you want to place the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:place [ID] -o <value> [-u [-j -p]]
 
@@ -329,7 +334,7 @@ _See code: [src/commands/orders/place.ts](https://github.com/commercelayer/comme
 
 Send this attribute if you want to manually refresh the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:refresh [ID] -o <value> [-u [-j -p]]
 
@@ -352,7 +357,7 @@ _See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want to refund a captured order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:refund [ID] -o <value> [-u [-j -p]]
 
@@ -375,7 +380,7 @@ _See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:save_billing_address_to_customer_address_book [ID] -o <value> [-u [-j -p]]
 
@@ -399,7 +404,7 @@ _See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts
 
 Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:save_payment_source_to_customer_wallet [ID] -o <value> [-u [-j -p]]
 
@@ -423,7 +428,7 @@ _See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https
 
 Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:save_shipping_address_to_customer_address_book [ID] -o <value> [-u [-j -p]]
 
@@ -447,7 +452,7 @@ _See code: [src/commands/orders/save_shipping_address_to_customer_address_book.t
 
 The id of the address that you want to clone to create the order's shipping address.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:shipping_address_clone_id [ID] -o <value> -v <value> [-u [-j -p]]
 
@@ -471,7 +476,7 @@ _See code: [src/commands/orders/shipping_address_clone_id.ts](https://github.com
 
 Send this attribute if you want the shipping address to be cloned from the order's billing address.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:shipping_address_same_as_billing [ID] -o <value> [-u [-j -p]]
 
@@ -494,7 +499,7 @@ _See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://git
 
 Send this attribute if you want to unarchive the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:unarchive [ID] -o <value> [-u [-j -p]]
 
@@ -517,7 +522,7 @@ _See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/c
 
 Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market).
 
-```
+```sh-session
 USAGE
   $ commercelayer orders:update_taxes [ID] -o <value> [-u [-j -p]]
 
