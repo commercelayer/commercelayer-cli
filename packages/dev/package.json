@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-dev",
   "description": "Commerce Layer CLI development tools and helpers",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-dev/issues",
   "bin": {
@@ -59,13 +59,12 @@
   },
   "repository": "commercelayer/commercelayer-cli-dev",
   "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "npx lint",
-    "prepack": "npm run build && oclif manifest && npm run version",
+    "prepack": "npm run build && oclif manifest && npm run readme",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "npm run changelog && ./bin/run readme && git add README.md",
+    "readme": "./bin/run readme && git add README.md",
     "pretest": "npm run build --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
     "build": "rm -rf lib && tsc"
   },
