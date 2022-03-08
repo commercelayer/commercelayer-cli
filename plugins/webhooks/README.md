@@ -1,5 +1,4 @@
-cli-plugin-webhooks
-===================
+# cli-plugin-webhooks
 
 Commerce Layer CLI Webhooks plugin
 
@@ -10,9 +9,19 @@ Commerce Layer CLI Webhooks plugin
 
 <!-- toc -->
 
-
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
-# Commands
+## Usage
+<!-- usage -->
+
+```sh-session
+$ commercelayer COMMAND
+
+$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
+<!-- usagestop -->
+## Commands
 <!-- commands -->
 
 * [`commercelayer webhooks [ID]`](#commercelayer-webhooks-id)
@@ -32,7 +41,7 @@ Commerce Layer CLI Webhooks plugin
 
 List all the registered webhooks.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks [ID] -o <value> [-c open|closed] [-t <value>] [-H] [-e]
 
@@ -57,7 +66,7 @@ _See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/com
 
 Create a new webhook.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:create [FAKE-ARG] -o <value> -t <value> -u <value> [-i <value>] [-n <value>]
 
@@ -86,7 +95,7 @@ _See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/co
 
 Destroy an existing webhook.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:destroy [ID] -o <value>
 
@@ -116,7 +125,7 @@ _See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/c
 
 Show the details of an existing webhook.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:details [ID] -o <value> [-H] [-e]
 
@@ -149,7 +158,7 @@ _See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/c
 
 Show the details of a firedf webhook event.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:event [ID] -o <value> [-f -p]
 
@@ -179,7 +188,7 @@ _See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/com
 
 List all the events associated to the webhook.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:events [ID] -o <value> [-A | -l <value>]
 
@@ -209,7 +218,7 @@ _See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/co
 
 List all the registered webhooks.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:list [FAKE-ARG] -o <value> [-c open|closed] [-t <value>]
 
@@ -239,7 +248,7 @@ _See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/comm
 
 Listen a webhook for outgoing callbacks.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:listen [ID] -o <value> [-t <value>]
 
@@ -268,7 +277,7 @@ _See code: [src/commands/webhooks/listen.ts](https://github.com/commercelayer/co
 
 Show the payload associated to an event callback.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:payload [ID] -o <value> [-f]
 
@@ -299,7 +308,7 @@ _See code: [src/commands/webhooks/payload.ts](https://github.com/commercelayer/c
 
 Reset the circuit breaker associated to the webhook.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:reset [ID] -o <value>
 
@@ -327,7 +336,7 @@ _See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/com
 
 Show online documentation for supported events.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:topics
 
@@ -349,7 +358,7 @@ _See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/co
 
 Update an existing webhook.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhooks:update [ID] -o <value> [-t <value>] [-u <value>] [-i <value>] [-n <value>]
 
