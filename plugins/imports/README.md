@@ -1,4 +1,4 @@
-cli-plugin-imports
+# cli-plugin-imports
 
 Commerce Layer CLI Imports plugin
 
@@ -7,17 +7,21 @@ Commerce Layer CLI Imports plugin
 [![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-imports.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-imports)
 [![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-imports.svg)](https://github.com/commercelayer/cli-plugin-imports/blob/master/package.json)
 
-
 <!-- toc -->
 
-
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
 
+```sh-session
+$ commercelayer COMMAND
 
+$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
 <!-- usagestop -->
-# Commands
+## Commands
 <!-- commands -->
 
 * [`commercelayer imports`](#commercelayer-imports)
@@ -32,7 +36,7 @@ Commerce Layer CLI Imports plugin
 
 List all the created imports.
 
-```
+```sh-session
 USAGE
   $ commercelayer imports -o <value> [-A | -l <value>] [-t
     orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
@@ -61,7 +65,7 @@ _See code: [src/commands/imports/index.ts](https://github.com/commercelayer/comm
 
 Create a new import.
 
-```
+```sh-session
 USAGE
   $ commercelayer imports:create [FAKE-ARG] -o <value> -t
     orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
@@ -95,7 +99,7 @@ _See code: [src/commands/imports/create.ts](https://github.com/commercelayer/com
 
 Delete an existing import.
 
-```
+```sh-session
 USAGE
   $ commercelayer imports:delete [ID] -o <value>
 
@@ -123,7 +127,7 @@ _See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/com
 
 Show the details of an existing import.
 
-```
+```sh-session
 USAGE
   $ commercelayer imports:details [ID] -o <value> [-i] [-l]
 
@@ -155,7 +159,7 @@ _See code: [src/commands/imports/details.ts](https://github.com/commercelayer/co
 
 List all the imports related to an import group.
 
-```
+```sh-session
 USAGE
   $ commercelayer imports:group [GROUP_ID] -o <value>
 
@@ -183,7 +187,7 @@ _See code: [src/commands/imports/group.ts](https://github.com/commercelayer/comm
 
 List all the created imports.
 
-```
+```sh-session
 USAGE
   $ commercelayer imports:list [FAKE-ARG] -o <value> [-A | -l <value>] [-t
     orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
@@ -223,7 +227,7 @@ _See code: [src/commands/imports/list.ts](https://github.com/commercelayer/comme
 
 Show online documentation for supported resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer imports:types
 
