@@ -1,5 +1,4 @@
-@commercelayer/cli-plugin-resources
-===================================
+# @commercelayer/cli-plugin-resources
 
 Commerce Layer CLI Resources plugin
 
@@ -10,8 +9,8 @@ Commerce Layer CLI Resources plugin
 
 <!-- toc -->
 
-* [ Usage](#-usage)
-* [ Commands](#-commands)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 ## Usage
 <!-- usage -->
@@ -19,9 +18,11 @@ Commerce Layer CLI Resources plugin
 
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
+
 ```sh-session
 $ commercelayer plugins:install resources
 ```
+
 ## Commands
 <!-- commands -->
 
@@ -31,6 +32,7 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources:create RESOURCE`](#commercelayer-resourcescreate-resource)
 * [`commercelayer resources:delete RESOURCE [ID]`](#commercelayer-resourcesdelete-resource-id)
 * [`commercelayer resources:doc RESOURCE`](#commercelayer-resourcesdoc-resource)
+* [`commercelayer resources:fetch PATH [ID]`](#commercelayer-resourcesfetch-path-id)
 * [`commercelayer resources:filters`](#commercelayer-resourcesfilters)
 * [`commercelayer resources:get RESOURCE [ID]`](#commercelayer-resourcesget-resource-id)
 * [`commercelayer resources:list RESOURCE`](#commercelayer-resourceslist-resource)
@@ -41,7 +43,7 @@ $ commercelayer plugins:install resources
 
 List all the available Commerce Layer API resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources [-h]
 
@@ -67,7 +69,7 @@ _See code: [src/commands/resources/index.ts](https://github.com/commercelayer/co
 
 Fetch all resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node -D] [--curl ] [--node ]
     [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H <value> [-C -f
@@ -121,7 +123,7 @@ _See code: [src/commands/resources/all.ts](https://github.com/commercelayer/comm
 
 Show all the saved command arguments.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:args [-D [-a <value> -o list|retrieve|create|update -r <value>]]
 
@@ -145,7 +147,7 @@ _See code: [src/commands/resources/args.ts](https://github.com/commercelayer/com
 
 Create a new resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
     [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
@@ -199,7 +201,7 @@ _See code: [src/commands/resources/create.ts](https://github.com/commercelayer/c
 
 Delete an existing resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>]
@@ -243,7 +245,7 @@ _See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/c
 
 Open the default browser and show the online documentation for the resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:doc [RESOURCE]
 
@@ -264,11 +266,69 @@ EXAMPLES
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/doc.ts)_
 
+### `commercelayer resources:fetch PATH [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```sh-session
+USAGE
+  $ commercelayer resources:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl
+    ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R] [-w <value>] [-p
+    <value>] [-n <value>] [-s <value>]
+
+ARGUMENTS
+  PATH  path (or URL) of the resource(s) to fetch
+  ID    resource id
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer fetch
+  $ commercelayer res:fetch
+  $ commercelayer rf
+
+EXAMPLES
+  $ commercelayer resources:fetch customers
+
+  $ commercelayer res:fetch customers
+
+  $ clayer res:fetch customers/<customerId>
+
+  $ cl fetch customers/<customerId>/<customerRelationship>
+
+  $ cl fetch customers/{customerId}/orders aBcdEkYWx
+```
+
+_See code: [src/commands/resources/fetch.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/fetch.ts)_
+
 ### `commercelayer resources:filters`
 
 Show a list of all available filter predicates.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:filters
 
@@ -290,7 +350,7 @@ _See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/
 
 Retrieve a resource or list a set of resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
@@ -328,6 +388,7 @@ DESCRIPTION
 ALIASES
   $ commercelayer get
   $ commercelayer res:get
+  $ commercelayer rg
 
 EXAMPLES
   $ commercelayer resources:get customers
@@ -345,7 +406,7 @@ _See code: [src/commands/resources/get.ts](https://github.com/commercelayer/comm
 
 Fetch a collection of resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl ]
     [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>] [-x
@@ -398,7 +459,7 @@ _See code: [src/commands/resources/list.ts](https://github.com/commercelayer/com
 
 Fetch a single resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R]
@@ -449,7 +510,7 @@ _See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer
 
 Update an existing resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
     [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
@@ -498,7 +559,7 @@ EXAMPLES
 
   $ cl update customers/<customerId> -m meta_key="meta value"
 
-  $ cl ru customers <customerId> -M mete_keu="metadata overwrite
+  $ cl ru customers <customerId> -M meta_key="metadata overwrite
 
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
 ```

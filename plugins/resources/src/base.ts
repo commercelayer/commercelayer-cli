@@ -161,7 +161,7 @@ export default abstract class extends Command {
     const singleton = res_ && res_.singleton
 
     if (id) {
-      if (singleton) this.error(`Singleton resource ${clColor.style.resource(res)} does not require id`)
+      if (singleton) this.error(`Singleton resource ${clColor.api.resource(res)} does not require id`)
     } else if (required && !singleton) this.error('Resource id not defined')
 
     return {
@@ -260,7 +260,7 @@ export default abstract class extends Command {
         }
 
         const values = val.split(',').map(v => v.trim())
-        if (values[0].trim() === '') this.error(`No fields defined for resource ${clColor.style.resource(res)}`)
+        if (values[0].trim() === '') this.error(`No fields defined for resource ${clColor.api.resource(res)}`)
 
         if (fields[res] === undefined) fields[res] = []
         fields[res].push(...values)
@@ -495,7 +495,7 @@ export default abstract class extends Command {
 
 
   protected checkOperation(sdk: any, name: string): boolean {
-    if (!sdk[name]) this.error(`Operation not supported for resource ${clColor.style.resource(sdk.type())}: ${clColor.msg.error(name)}`)
+    if (!sdk[name]) this.error(`Operation not supported for resource ${clColor.api.resource(sdk.type())}: ${clColor.msg.error(name)}`)
     return true
   }
 
@@ -651,7 +651,7 @@ export default abstract class extends Command {
     const cmdData = loadCommandData(alias, this.config, resource, operation)
     if (!cmdData) this.error(`No command arguments saved with alias ${clColor.msg.error(alias)} for resource type ${clColor.yellowBright(resource)} and operation ${clColor.yellowBright(operation)}`)
 
-    const queryParams: QueryParams = (operation && (operation === 'list')) ? cmdData.params : {
+    const queryParams: QueryParams = (operation && ['list', 'relationship'].includes(operation)) ? cmdData.params : {
       include: cmdData.params.include,
       fields: cmdData.params.fields,
     } as QueryParamsRetrieve
