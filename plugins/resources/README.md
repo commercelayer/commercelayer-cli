@@ -10,8 +10,8 @@ Commerce Layer CLI Resources plugin
 
 <!-- toc -->
 
-* [ Usage](#-usage)
-* [ Commands](#-commands)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 ## Usage
 <!-- usage -->
@@ -42,7 +42,7 @@ $ commercelayer plugins:install resources
 
 List all the available Commerce Layer API resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources [-h]
 
@@ -68,7 +68,7 @@ _See code: [src/commands/resources/index.ts](https://github.com/commercelayer/co
 
 Fetch all resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node -D] [--curl ] [--node ]
     [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H <value> [-C -f
@@ -122,7 +122,7 @@ _See code: [src/commands/resources/all.ts](https://github.com/commercelayer/comm
 
 Show all the saved command arguments.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:args [-D [-a <value> -o list|retrieve|create|update -r <value>]]
 
@@ -146,7 +146,7 @@ _See code: [src/commands/resources/args.ts](https://github.com/commercelayer/com
 
 Create a new resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
     [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
@@ -200,7 +200,7 @@ _See code: [src/commands/resources/create.ts](https://github.com/commercelayer/c
 
 Delete an existing resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>]
@@ -244,7 +244,7 @@ _See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/c
 
 Open the default browser and show the online documentation for the resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:doc [RESOURCE]
 
@@ -269,7 +269,7 @@ _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/comm
 
 Retrieve a resource or list a set of resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl
     ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R] [-w <value>] [-p
@@ -327,7 +327,7 @@ _See code: [src/commands/resources/fetch.ts](https://github.com/commercelayer/co
 
 Show a list of all available filter predicates.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:filters
 
@@ -349,7 +349,7 @@ _See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/
 
 Retrieve a resource or list a set of resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
@@ -405,7 +405,7 @@ _See code: [src/commands/resources/get.ts](https://github.com/commercelayer/comm
 
 Fetch a collection of resources.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl ]
     [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>] [-x
@@ -458,7 +458,7 @@ _See code: [src/commands/resources/list.ts](https://github.com/commercelayer/com
 
 Fetch a single resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R]
@@ -509,7 +509,7 @@ _See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer
 
 Update an existing resource.
 
-```
+```sh-session
 USAGE
   $ commercelayer resources:update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
     [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
