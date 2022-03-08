@@ -75,7 +75,7 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     this.debug('commands:', commands.map(c => c.id).length)
     commands = uniqBy(commands, c => c.id)
     commands = sortBy(commands, c => c.id)
-    readme = this.replaceTag(readme, 'usage', flags.plugin ? '' : this.usage(config))
+    readme = this.replaceTag(readme, 'usage', flags.plugin ? this.usagePlugin(config) : this.usage(config))
     readme = this.replaceTag(readme, 'commands', flags.multi ? this.multiCommands(config, commands, flags.dir) : this.commands(config, commands))
     readme = this.replaceTag(readme, 'toc', this.toc(config, readme))
 
@@ -129,6 +129,17 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
 \`\`\`\n`,
     ].join('\n').trim()
 
+  }
+
+
+  usagePlugin(config: Interfaces.Config): string {
+    return [
+`\`\`\`sh-session
+$ ${config.bin} COMMAND
+
+$ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin commands.
+\`\`\`\n`,
+    ].join('\n').trim()
   }
 
 
