@@ -1,23 +1,25 @@
-commercelayer-cli-plugin-token
-==============================
-
-
+# commercelayer-cli-plugin-token
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/commercelayer-cli-plugin-token.svg)](https://npmjs.org/package/commercelayer-cli-plugin-token)
-[![Downloads/week](https://img.shields.io/npm/dw/commercelayer-cli-plugin-token.svg)](https://npmjs.org/package/commercelayer-cli-plugin-token)
-[![License](https://img.shields.io/npm/l/commercelayer-cli-plugin-token.svg)](https://github.com/pviti/commercelayer-cli-plugin-token/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-token.svg)](https://npmjs.org/package/commercelayer-cli-plugin-token)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-token.svg)](https://npmjs.org/package/@commercelayer-/li-plugin-token)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-token.svg)](https://github.com/pviti/@commercelayer/cli-plugin-token/blob/master/package.json)
 
 <!-- toc -->
 
-
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
 
+```sh-session
+$ commercelayer COMMAND
 
+$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
 <!-- usagestop -->
-# Commands
+## Commands
 <!-- commands -->
 
 * [`commercelayer token:create`](#commercelayer-tokencreate)
@@ -30,7 +32,7 @@ commercelayer-cli-plugin-token
 
 Create a new custom access token for the current application.
 
-```
+```sh-session
 USAGE
   $ commercelayer token:create -o <value> -s <value> -m <value> [--info]
 
@@ -55,7 +57,7 @@ _See code: [src/commands/token/create.ts](https://github.com/commercelayer/comme
 
 Decode a Commerce Layer access token.
 
-```
+```sh-session
 USAGE
   $ commercelayer token:decode [TOKEN] -o <value>
 
@@ -83,7 +85,7 @@ _See code: [src/commands/token/decode.ts](https://github.com/commercelayer/comme
 
 Start a wizard to generate a custom access token.
 
-```
+```sh-session
 USAGE
   $ commercelayer token:generate [-i] [-c]
 
@@ -106,7 +108,7 @@ _See code: [src/commands/token/generate.ts](https://github.com/commercelayer/com
 
 Get a new access token.
 
-```
+```sh-session
 USAGE
   $ commercelayer token:get -o <value> -i <value> [-s <value>] [-S <value>] [-e <value> -p <value>] [--info]
 
@@ -134,7 +136,7 @@ _See code: [src/commands/token/get.ts](https://github.com/commercelayer/commerce
 
 Revoke a Commerce Layer access token.
 
-```
+```sh-session
 USAGE
   $ commercelayer token:revoke [TOKEN] -o <value> -i <value> -s <value>
 
