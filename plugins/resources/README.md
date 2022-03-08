@@ -6,6 +6,7 @@ Commerce Layer CLI Resources plugin
 [![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-resources.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-resources)
 [![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-resources.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-resources)
 [![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-resources.svg)](https://github.com/commercelayer/cli-plugin-resources/blob/master/package.json)
+[![CodeQL](https://github.com/commercelayer/commercelayer-cli-plugin-resources/actions/workflows/codeql.yml/badge.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-resources/actions/workflows/codeql.yml)
 
 <!-- toc -->
 
