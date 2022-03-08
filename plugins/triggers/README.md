@@ -1,5 +1,4 @@
-commercelayer-cli-plugin-triggers
-=================================
+# commercelayer-cli-plugin-triggers
 
 Commerce Layer CLI Triggers plugin
 
@@ -10,14 +9,19 @@ Commerce Layer CLI Triggers plugin
 
 <!-- toc -->
 
-
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
 
+```sh-session
+$ commercelayer COMMAND
 
+$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
 <!-- usagestop -->
-# Commands
+## Commands
 <!-- commands -->
 
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
