@@ -1,5 +1,4 @@
-@commercelayer/cli-plugin-resources
-===================================
+# @commercelayer/cli-plugin-resources
 
 Commerce Layer CLI Resources plugin
 
@@ -19,9 +18,11 @@ Commerce Layer CLI Resources plugin
 
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
+
 ```sh-session
 $ commercelayer plugins:install resources
 ```
+
 ## Commands
 <!-- commands -->
 
