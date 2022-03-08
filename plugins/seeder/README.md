@@ -1,5 +1,4 @@
-@commercelayer/cli-plugin-seeder
-================================
+# @commercelayer/cli-plugin-seeder
 
 Commerce Layer CLI seeder plugin
 
