@@ -10,13 +10,17 @@ Commerce Layer CLI seeder plugin
 
 <!-- toc -->
 
-* [ Usage](#-usage)
-* [ Commands](#-commands)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 ## Usage
 <!-- usage -->
 
+```sh-session
+$ commercelayer COMMAND
 
+$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
 <!-- usagestop -->
 ## Commands
 <!-- commands -->
@@ -29,7 +33,7 @@ Commerce Layer CLI seeder plugin
 
 Execute a check on seeder data.
 
-```
+```sh-session
 USAGE
   $ commercelayer seeder:check [ID] [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-r]
 
@@ -58,7 +62,7 @@ _See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/comme
 
 Clean previously imported seeder data.
 
-```
+```sh-session
 USAGE
   $ commercelayer seeder:clean [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>]
 
@@ -87,7 +91,7 @@ _See code: [src/commands/seeder/clean.ts](https://github.com/commercelayer/comme
 
 Execute Commerce Layer seeder.
 
-```
+```sh-session
 USAGE
   $ commercelayer seeder:seed [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
 
