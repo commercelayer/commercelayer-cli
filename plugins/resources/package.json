@@ -84,7 +84,7 @@
     "inquirer": "^8.2.0",
     "json-2-csv": "^3.17.0",
     "lodash": "^4.17.21",
-    "node-notifier": "^9.0.1",
+    "node-notifier": "^10.0.1",
     "tslib": "^2.3.1"
   },
   "publishConfig": {
