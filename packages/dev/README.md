@@ -2,13 +2,10 @@
 
 helpers for oclif CLIs
 
-[![Version](https://img.shields.io/npm/v/@oclif/dev-cli.svg)](https://npmjs.org/package/@oclif/dev-cli)
-[![CircleCI](https://circleci.com/gh/oclif/dev-cli/tree/master.svg?style=shield)](https://circleci.com/gh/oclif/dev-cli/tree/master)
-[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/oclif/dev-cli?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/dev-cli/branch/master)
-[![Codecov](https://codecov.io/gh/oclif/dev-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/oclif/dev-cli)
-[![Known Vulnerabilities](https://snyk.io/test/npm/@oclif/dev-cli/badge.svg)](https://snyk.io/test/npm/@oclif/dev-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/@oclif/dev-cli.svg)](https://npmjs.org/package/@oclif/dev-cli)
-[![License](https://img.shields.io/npm/l/@oclif/dev-cli.svg)](https://github.com/oclif/dev-cli/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli-dev.svg)](https://npmjs.org/package/@commercelayer/cli-dev)
+[![Known Vulnerabilities](https://snyk.io/test/npm/@commercelayer/cli-dev/badge.svg)](https://snyk.io/test/npm/@commercelayer/cli-dev)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-dev.svg)](https://npmjs.org/package/@commercelayer/cli-dev)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-dev.svg)](https://github.com/commercelayer/cli-dev/blob/master/package.json)
 
 <!-- toc -->
 
