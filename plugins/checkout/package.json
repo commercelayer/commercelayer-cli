@@ -10,7 +10,7 @@
     "@oclif/test": "^2.1.0",
     "@types/chai": "^4.3.0",
     "@types/mocha": "^9.1.0",
-    "@types/node": "^16.11.25",
+    "@types/node": "^17.0.21",
     "chai": "^4.3.6",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
