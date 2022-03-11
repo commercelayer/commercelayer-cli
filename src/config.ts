@@ -4,6 +4,13 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdir
 import { Config } from '@oclif/core/lib/interfaces/config'
 import { AppKey, AppInfo, clApi } from '@commercelayer/cli-core'
 
+const packageJson = require('../package.json')
+
+
+
+const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
+export default clicfg
+
 
 const fixed = {
 	applicationsDir: 'applications',
@@ -11,14 +18,6 @@ const fixed = {
 	tokenSuffix: 'token.json',
 	encoding: 'utf-8' as BufferEncoding,
 }
-
-
-// const packageJson = require('../package.json')
-const packageJson = JSON.parse(readFileSync('./package.json', fixed.encoding))
-
-
-const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
-export default clicfg
 
 
 const configDir = (config: Config): string => {
