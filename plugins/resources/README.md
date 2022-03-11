@@ -272,6 +272,8 @@ EXAMPLES
   $ commercelayer resources:doc customers
 
   $ cl res:doc customers
+
+  $ cl doc customers -p create
 ```
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/doc.ts)_

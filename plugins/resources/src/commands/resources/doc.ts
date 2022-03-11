@@ -1,4 +1,4 @@
-import { Command, CliUx as cliux, Flags } from '@oclif/core'
+import { Command, CliUx, Flags } from '@oclif/core'
 import { findResource } from '../../util/resources'
 import axios from 'axios'
 import { clColor } from '@commercelayer/cli-core'
@@ -13,6 +13,7 @@ export default class ResourcesDoc extends Command {
   static examples = [
     '$ commercelayer resources:doc customers',
     '$ cl res:doc customers',
+    '$ cl doc customers -p create',
   ]
 
   static flags = {
@@ -40,7 +41,8 @@ export default class ResourcesDoc extends Command {
 
     if (res) {
       const resourceUrl = `https://docs.commercelayer.io/developers/v/api-reference/${res?.api}${page ? `/${page}` : ''}`
-      axios.get(resourceUrl).then(() => cliux.ux.open(resourceUrl)).catch(() => this.warn(`No online documentation available for the resource ${clColor.msg.error(resource)}${page ? ` (page ${clColor.cli.value(page)})` : ''}`))
+      axios.get(resourceUrl).then(() => CliUx.ux.open(resourceUrl))
+        .catch(() => this.warn(`No online documentation available for the resource ${clColor.msg.warning(resource)}${page ? ` (page ${clColor.cli.value(page)})` : ''}`))
     } else this.warn(`Invalid resource ${clColor.style.error(resource)}`)
 
   }

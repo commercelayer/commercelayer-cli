@@ -1,4 +1,4 @@
-import { Command, CliUx as cliux } from '@oclif/core'
+import { Command, CliUx } from '@oclif/core'
 import { clUtil, clColor } from '@commercelayer/cli-core'
 
 
@@ -75,7 +75,7 @@ export default class ResourcesFilters extends Command {
   async run() {
 
     this.log(clColor.style.title('\n-= Commerce Layer API available resource filters =-\n'))
-    cliux.Table.table(filters.sort((a, b) => a.predicate.localeCompare(b.predicate)), {
+    CliUx.Table.table(filters.sort((a, b) => a.predicate.localeCompare(b.predicate)), {
       predicate: { header: 'PREDICATE', minWidth: 25, get: row => clColor.table.key(row.predicate) },
       description: { header: 'DESCRIPTION' },
     }, {

@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { Command, Flags, CliUx } from '@oclif/core'
 import { resourceList } from '../../util/resources'
 import { clUtil, clColor } from '@commercelayer/cli-core'
 
@@ -30,7 +30,7 @@ export default class ResourcesIndex extends Command {
 			return { name: r, url: `https://docs.commercelayer.io/api/resources/${r}` }
 		})
 
-		cliux.Table.table(resourceArray, {
+		CliUx.Table.table(resourceArray, {
 				key: { header: 'NAME', minWidth: 35, get: row => clColor.blueBright(row.name) },
 				description: { header: 'ONLINE DOCUMENTATION URL', get: row => row.url },
 			}, {
