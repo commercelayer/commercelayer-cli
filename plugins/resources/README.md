@@ -252,21 +252,26 @@ Open the default browser and show the online documentation for the resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:doc [RESOURCE]
+  $ commercelayer resources:doc [RESOURCE] [-p object|create|retrieve|list|update|delete]
 
 ARGUMENTS
   RESOURCE  the resource for which you want to access the online documentation
+
+FLAGS
+  -p, --page=<option>  the doc page you want to access
+                       <options: object|create|retrieve|list|update|delete>
 
 DESCRIPTION
   open the default browser and show the online documentation for the resource
 
 ALIASES
   $ commercelayer res:doc
+  $ commercelayer doc
 
 EXAMPLES
-  $ commercelayer rdoc customers
+  $ commercelayer resources:doc customers
 
-  $ cl res:doc cusatomers
+  $ cl res:doc customers
 ```
 
 _See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/doc.ts)_
