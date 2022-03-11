@@ -8,7 +8,10 @@ const pkg = require('../../../package.json')
 
 
 
-const hook: Hook<'init'> = async function (_opts) {
+const hook: Hook<'init'> = async function (opts) {
+
+  // Do not check for updates if in invisible mode
+  if (opts.argv.includes('--blind') || opts.argv.includes('--silent')) return
 
   const notifier = updateNotifier({ pkg, updateCheckInterval: (process.env.CL_CLI_UPDATE_NOTIFY ? 0 : 1000 * 60 * 60) })
 

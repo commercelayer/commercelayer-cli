@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('applications:list', () => {
+describe('applications:logout', () => {
   test
     .stdout()
     .command(['noc'])

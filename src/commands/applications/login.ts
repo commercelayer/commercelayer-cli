@@ -2,10 +2,10 @@ import { Command, Flags, Config } from '@oclif/core'
 import { AuthScope  } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { ApiMode, AppAuth, AppInfo, clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
-import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication } from '../../config'
+import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
 import { inspect } from 'util'
 import { printCurrent } from './current'
-import { filterApplications } from '../../base'
+import { CLIError } from '@oclif/core/lib/errors'
 
 
 export default class ApplicationsLogin extends Command {
@@ -184,11 +184,19 @@ const checkScope = (scopeFlags: string[]): AuthScope => {
 
 	if (scopeFlags) {
 		for (const s of scopeFlags) {
+
 			const colonIdx = s.indexOf(':')
+			const scopePrefix = s.substring(0, colonIdx)
+
 			if ((colonIdx < 0) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${clColor.msg.error(s)}`)
-			else
-				if (scope.includes(s)) throw new Error(`Duplicate login scope: ${clColor.msg.error(s)}`)
-				else scope.push(s)
+			if (scope.includes(s)) throw new Error(`Duplicate login scope: ${clColor.msg.error(s)}`)
+
+			const scopeCheck = configParam(ConfigParams.scopeChek)
+			if (scopeCheck && !scopeCheck.includes(scopePrefix))
+				throw new CLIError(`Invalide scope prefix: ${clColor.msg.error(scopePrefix)}`)
+
+			scope.push(s)
+
 		}
 	}
 

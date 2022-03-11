@@ -1,5 +1,5 @@
-import Command, { filterApplications, Flags, cliux } from '../../base'
-import {configParam, ConfigParams } from '../../config'
+import Command, { Flags, cliux } from '../../base'
+import {configParam, ConfigParams, filterApplications } from '../../config'
 import { printScope } from '../../common'
 import { AppInfo, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
 

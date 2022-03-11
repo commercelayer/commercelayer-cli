@@ -36,7 +36,9 @@ export default class ApplicationsCurrent extends Command {
 		if (stored) {
 
 			const info = readConfigFile(this.config, stored)
-			this.log(`\nCurrent application: ${printCurrent(info)}\n`)
+			this.log()
+			this.log(`Current application: ${printCurrent(info)}`)
+			this.log()
 
 			if (flags.info) {
 				this.log(clColor.style.title('-= Application Info =-'))

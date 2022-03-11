@@ -1,8 +1,7 @@
-import { Command, Flags, Config, CliUx as cliux } from '@oclif/core'
-import { configParam, ConfigParams, readConfigDir } from './config'
-import inquirer from 'inquirer'
-import { printScope } from './common'
-import { clOutput, clApi, AppInfo } from '@commercelayer/cli-core'
+import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { configParam, ConfigParams, filterApplications } from './config'
+import { AppInfo } from '@commercelayer/cli-core'
+import { promptApplication } from './common'
 
 
 export default abstract class extends Command {
@@ -51,9 +50,11 @@ export default abstract class extends Command {
 
 
 	// CATCH (override)
+	/*
 	async catch(error: any) {
 		this.error(error.message)
 	}
+	*/
 
 
 	protected appFilterEnabled(flags: any): boolean {
@@ -79,49 +80,3 @@ export default abstract class extends Command {
 
 
 export { Flags, cliux }
-
-
-
-const promptApplication = async (apps: AppInfo[]) => {
-
-	const appMaxLength = clOutput.maxLength(apps, 'name') + 2
-	const details = ['organization', 'kind', 'mode', 'alias']
-
-	const answers = await inquirer.prompt([{
-		type: 'list',
-		name: 'application',
-		message: 'Select an application to switch to:',
-		choices: apps.map(a => {
-			return { name: `${a.name.padEnd(appMaxLength, ' ')} [ ${details.map(d => {
-				return String(a[d as keyof AppInfo]).padEnd(clOutput.maxLength(apps, d))
-			}).join(' | ')} ]${(a.scope && a.scope.length > 0) ? ` (${printScope(a.scope)})` : ''}`, value: a }
-		}),
-		loop: false,
-		pageSize: 10,
-	}])
-
-	return answers.application
-
-}
-
-
-export const filterApplications = (config: Config, flags: any): AppInfo[] => {
-
-	const mode = flags.mode || (flags.live ? clApi.execMode(flags.live) : undefined)
-
-	const applications = readConfigDir(config, { key: flags.key || flags.appkey }).filter(app => {
-
-		if (flags.organization && (flags.organization !== app.slug)) return false
-		if (flags.domain && (flags.domain !== app.domain)) return false
-		if (flags.kind && (flags.kind !== app.kind)) return false
-		if (mode && (mode !== app.mode)) return false
-		if (flags.id && (flags.id !== app.id)) return false
-		if (flags.alias && (flags.alias !== app.alias)) return false
-
-		return true
-
-	})
-
-	return applications
-
-}

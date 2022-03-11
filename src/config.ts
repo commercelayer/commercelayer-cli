@@ -2,7 +2,7 @@ import Configstore from 'configstore'
 import { join } from 'path'
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs'
 import { Config } from '@oclif/core/lib/interfaces/config'
-import type { AppKey, AppInfo } from '@commercelayer/cli-core'
+import { AppKey, AppInfo, clApi } from '@commercelayer/cli-core'
 
 const packageJson = require('../package.json')
 
@@ -105,7 +105,7 @@ const readConfigDir = (config: Config, filter: { key?: string }): AppInfo[] => {
 
 		return { key }
 
-	}).filter(f => f)
+	}).filter(f => f)	// not undefined applications
 
 	return files.map(f => {
 		return readConfigFile(config, f as AppKey)
@@ -142,8 +142,29 @@ const currentOrganization = (): string | undefined => {
 	return current?.slug
 }
 
+const filterApplications = (config: Config, flags: any): AppInfo[] => {
 
-export { currentApplication, currentOrganization }
+	const mode = flags.mode || (flags.live ? clApi.execMode(flags.live) : undefined)
+
+	const applications = readConfigDir(config, { key: flags.key || flags.appkey }).filter(app => {
+
+		if (flags.organization && (flags.organization !== app.slug)) return false
+		if (flags.domain && (flags.domain !== app.domain)) return false
+		if (flags.kind && (flags.kind !== app.kind)) return false
+		if (mode && (mode !== app.mode)) return false
+		if (flags.id && (flags.id !== app.id)) return false
+		if (flags.alias && (flags.alias !== app.alias)) return false
+
+		return true
+
+	})
+
+	return applications
+
+}
+
+
+export { currentApplication, currentOrganization, filterApplications }
 
 
 
@@ -151,6 +172,7 @@ enum ConfigParams {
 	currentApplication = 'currentApplication',
 	commandRetention = 'commandRetention',
 	applicationTypeCheck = 'applicationTypeCheck',
+	scopeChek = 'scopeCheck',
 	defaultDomain = 'defaultDomain',
 	test = 'test',
 }
@@ -165,6 +187,7 @@ const defaultConfig: any = {
 	commandRetention: 30,	// days of retention
 	defaultDomain: 'commercelayer.io',
 	applicationTypeCheck: ['cli', 'sales_channel', 'integration'],
+	scopeCheck: ['market', 'stock_location'],
 }
 
 
