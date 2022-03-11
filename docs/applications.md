@@ -9,6 +9,7 @@ Manage login to CLI applications.
 * [`commercelayer applications:info`](#commercelayer-applicationsinfo)
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:logout`](#commercelayer-applicationslogout)
+* [`commercelayer applications:scope SCOPE`](#commercelayer-applicationsscope-scope)
 * [`commercelayer applications:switch`](#commercelayer-applicationsswitch)
 
 ### `commercelayer applications`
@@ -191,6 +192,34 @@ ALIASES
 ```
 
 _See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/logout.ts)_
+
+### `commercelayer applications:scope SCOPE`
+
+Switch scope of current application.
+
+```sh-session
+USAGE
+  $ commercelayer applications:scope [SCOPE] [-a <value>]
+
+ARGUMENTS
+  SCOPE  the application scope
+
+FLAGS
+  -a, --alias=<value>  the alias you want to associate to the application
+
+DESCRIPTION
+  switch scope of current application
+
+ALIASES
+  $ commercelayer app:scope
+
+EXAMPLES
+  $ commercelayer applications:scope market:1234
+
+  $ cl app:scope market:1234
+```
+
+_See code: [src/commands/applications/scope.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/scope.ts)_
 
 ### `commercelayer applications:switch`
 
