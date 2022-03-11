@@ -112,7 +112,8 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init() {
-    clUpdate.checkUpdate(pkg)
+    // Check for plugin updates only if in visible mode
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent')) clUpdate.checkUpdate(pkg)
     return super.init()
   }
 

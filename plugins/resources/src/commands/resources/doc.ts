@@ -1,4 +1,4 @@
-import { Command, CliUx as cliux } from '@oclif/core'
+import { Command, CliUx as cliux, Flags } from '@oclif/core'
 import { findResource } from '../../util/resources'
 import axios from 'axios'
 import { clColor } from '@commercelayer/cli-core'
@@ -8,15 +8,20 @@ export default class ResourcesDoc extends Command {
 
   static description = 'open the default browser and show the online documentation for the resource'
 
-  static aliases = ['res:doc']
+  static aliases = ['res:doc', 'doc']
 
   static examples = [
-    '$ commercelayer rdoc customers',
-    '$ cl res:doc cusatomers',
+    '$ commercelayer resources:doc customers',
+    '$ cl res:doc customers',
   ]
 
   static flags = {
-    // help: flags.help({char: 'h'}),
+    page: Flags.string({
+      char: 'p',
+      description: 'the doc page you want to access',
+      options: ['object', 'create', 'retrieve', 'list', 'update', 'delete'],
+      required: false,
+    }),
   }
 
   static args = [
@@ -26,15 +31,16 @@ export default class ResourcesDoc extends Command {
 
   async run() {
 
-    const { args } = await this.parse(ResourcesDoc)
+    const { args, flags } = await this.parse(ResourcesDoc)
 
     const resource = args.resource
+    const page = flags.page
 
     const res = findResource(resource, { singular: true })
 
     if (res) {
-      const resourceUrl = `https://docs.commercelayer.io/api/resources/${res?.api}`
-      axios.get(resourceUrl).then(() => cliux.ux.open(resourceUrl)).catch(() => this.warn(`No online documentation available for the resource ${clColor.style.error(resource)}`))
+      const resourceUrl = `https://docs.commercelayer.io/developers/v/api-reference/${res?.api}${page ? `/${page}` : ''}`
+      axios.get(resourceUrl).then(() => cliux.ux.open(resourceUrl)).catch(() => this.warn(`No online documentation available for the resource ${clColor.msg.error(resource)}${page ? ` (page ${clColor.cli.value(page)})` : ''}`))
     } else this.warn(`Invalid resource ${clColor.style.error(resource)}`)
 
   }
