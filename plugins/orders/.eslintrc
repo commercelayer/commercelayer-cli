@@ -4,14 +4,13 @@
     "oclif-typescript"
   ],
   "rules": {
-    "__no-console": "off",
     "indent": "off",
     "object-curly-spacing": "off",
     "padded-blocks": "off",
+    "unicorn/filename-case": "off",
     "no-multiple-empty-lines": "off",
     "array-bracket-spacing": "off",
     "@typescript-eslint/no-use-before-define": "off",
-    "no-multi-assign": "off",
-    "unicorn/filename-case": "off"
+    "no-multi-assign": "off"
   }
 }
