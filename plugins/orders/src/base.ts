@@ -66,7 +66,7 @@ export default abstract class extends Command {
       if (error.status === 401) {
         const err = error.first()
         this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s imports'] }
+          { suggestions: ['Execute login to get access to the organization\'s imports'] },
         )
       } else this.error(clOutput.formatError(error, flags))
     } else throw error
