@@ -1,8 +1,8 @@
 import Command from '../../base'
 import exec from '../../exec'
 import inquirer from 'inquirer'
-import chalk from 'chalk'
 import { triggers } from '../../triggers'
+import { clColor } from '@commercelayer/cli-core'
 
 
 export default class OrdersIndex extends Command {
@@ -46,7 +46,7 @@ const promptAction = async (id: string) => {
   const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',
-    message: `Select an action to execute on order ${chalk.yellowBright(id)}:`,
+    message: `Select an action to execute on order ${clColor.yellowBright(id)}:`,
     choices: Object.keys(triggers).sort().map(a => {
       return { name: a, value: a }
     }),
