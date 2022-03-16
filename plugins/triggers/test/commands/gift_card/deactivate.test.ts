@@ -1,6 +1,9 @@
 import { expect, test } from '@oclif/test'
 
 describe('gift_cards:deactivate', () => {
+
+  test.timeout(3000)
+
   test
     .stdout()
     .command(['noc'])

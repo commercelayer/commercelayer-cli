@@ -1,6 +1,9 @@
 import { expect, test } from '@oclif/test'
 
 describe('authorizations:capture_amount_cents', () => {
+
+  test.timeout(3000)
+
   test
     .stdout()
     .command(['noc'])
