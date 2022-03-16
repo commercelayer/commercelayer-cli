@@ -1,23 +1,27 @@
-commercelayer-cli-plugin-triggers
-=================================
+# commercelayer-cli-plugin-triggers
 
 Commerce Layer CLI Triggers plugin
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/commercelayer-cli-plugin-triggers.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-triggers)
-[![Downloads/week](https://img.shields.io/npm/dw/commercelayer-cli-plugin-triggers.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-triggers)
-[![License](https://img.shields.io/npm/l/commercelayer-cli-plugin-triggers.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-triggers.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-triggers)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-triggers.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-triggers)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-triggers.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/master/package.json)
 
 <!-- toc -->
 
-
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
-# Usage
+## Usage
 <!-- usage -->
 
+```sh-session
+$ commercelayer COMMAND
 
+$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+```
 <!-- usagestop -->
-# Commands
+## Commands
 <!-- commands -->
 
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
@@ -107,7 +111,7 @@ Commerce Layer CLI Triggers plugin
 
 Execute an action on a resource of type adyen_payments.
 
-```
+```sh-session
 USAGE
   $ commercelayer adyen_payment [ID] -o <value> [-u [-j -p]]
 
@@ -130,7 +134,7 @@ _See code: [src/commands/adyen_payment/index.ts](https://github.com/commercelaye
 
 Send this attribute if you want to send additional details the payment request.
 
-```
+```sh-session
 USAGE
   $ commercelayer adyen_payment:details [ID] -o <value> [-u [-j -p]]
 
@@ -153,7 +157,7 @@ _See code: [src/commands/adyen_payment/details.ts](https://github.com/commercela
 
 Execute an action on a resource of type authorizations.
 
-```
+```sh-session
 USAGE
   $ commercelayer authorization [ID] -o <value> [-u [-j -p]]
 
@@ -176,7 +180,7 @@ _See code: [src/commands/authorization/index.ts](https://github.com/commercelaye
 
 Send this attribute if you want to create a capture for this authorization.
 
-```
+```sh-session
 USAGE
   $ commercelayer authorization:capture [ID] -o <value> [-u [-j -p]]
 
@@ -199,7 +203,7 @@ _See code: [src/commands/authorization/capture.ts](https://github.com/commercela
 
 The associated capture amount, in cents.
 
-```
+```sh-session
 USAGE
   $ commercelayer authorization:capture_amount_cents [ID] -o <value> [-u [-j -p]]
 
@@ -222,7 +226,7 @@ _See code: [src/commands/authorization/capture_amount_cents.ts](https://github.c
 
 Send this attribute if you want to create a void for this authorization.
 
-```
+```sh-session
 USAGE
   $ commercelayer authorization:void [ID] -o <value> [-u [-j -p]]
 
@@ -245,7 +249,7 @@ _See code: [src/commands/authorization/void.ts](https://github.com/commercelayer
 
 Execute an action on a resource of type bundles.
 
-```
+```sh-session
 USAGE
   $ commercelayer bundle [ID] -o <value> [-u [-j -p]]
 
@@ -268,7 +272,7 @@ _See code: [src/commands/bundle/index.ts](https://github.com/commercelayer/comme
 
 Send this attribute if you want to compute the compare_at_amount_cents as the sum of the prices of the bundle SKUs for the market.
 
-```
+```sh-session
 USAGE
   $ commercelayer bundle:compute_compare_at_amount [ID] -o <value> [-u [-j -p]]
 
@@ -292,7 +296,7 @@ _See code: [src/commands/bundle/compute_compare_at_amount.ts](https://github.com
 
 Send this attribute if you want to compute the price_amount_cents as the sum of the prices of the bundle SKUs for the market.
 
-```
+```sh-session
 USAGE
   $ commercelayer bundle:compute_price_amount [ID] -o <value> [-u [-j -p]]
 
@@ -316,7 +320,7 @@ _See code: [src/commands/bundle/compute_price_amount.ts](https://github.com/comm
 
 Execute an action on a resource of type captures.
 
-```
+```sh-session
 USAGE
   $ commercelayer capture [ID] -o <value> [-u [-j -p]]
 
@@ -339,7 +343,7 @@ _See code: [src/commands/capture/index.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want to create a refund for this capture.
 
-```
+```sh-session
 USAGE
   $ commercelayer capture:refund [ID] -o <value> [-u [-j -p]]
 
@@ -362,7 +366,7 @@ _See code: [src/commands/capture/refund.ts](https://github.com/commercelayer/com
 
 The associated refund amount, in cents.
 
-```
+```sh-session
 USAGE
   $ commercelayer capture:refund_amount_cents [ID] -o <value> [-u [-j -p]]
 
@@ -385,7 +389,7 @@ _See code: [src/commands/capture/refund_amount_cents.ts](https://github.com/comm
 
 Execute an action on a resource of type checkout_com_payments.
 
-```
+```sh-session
 USAGE
   $ commercelayer checkout_com_payment [ID] -o <value> [-u [-j -p]]
 
@@ -408,7 +412,7 @@ _See code: [src/commands/checkout_com_payment/index.ts](https://github.com/comme
 
 Send this attribute if you want to send additional details the payment request (i.e. upon 3DS check).
 
-```
+```sh-session
 USAGE
   $ commercelayer checkout_com_payment:details [ID] -o <value> [-u [-j -p]]
 
@@ -431,7 +435,7 @@ _See code: [src/commands/checkout_com_payment/details.ts](https://github.com/com
 
 Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic.
 
-```
+```sh-session
 USAGE
   $ commercelayer checkout_com_payment:refresh [ID] -o <value> [-u [-j -p]]
 
@@ -454,7 +458,7 @@ _See code: [src/commands/checkout_com_payment/refresh.ts](https://github.com/com
 
 Execute an action on a resource of type customer_password_resets.
 
-```
+```sh-session
 USAGE
   $ commercelayer customer_password_reset [ID] -o <value> [-u [-j -p]]
 
@@ -477,7 +481,7 @@ _See code: [src/commands/customer_password_reset/index.ts](https://github.com/co
 
 Send the 'reset_password_token' that you got on create when updating the customer password.
 
-```
+```sh-session
 USAGE
   $ commercelayer customer_password_reset:reset_password_token [ID] -o <value> [-u [-j -p]]
 
@@ -500,7 +504,7 @@ _See code: [src/commands/customer_password_reset/reset_password_token.ts](https:
 
 Execute an action on a resource of type gift_cards.
 
-```
+```sh-session
 USAGE
   $ commercelayer gift_card [ID] -o <value> [-u [-j -p]]
 
@@ -523,7 +527,7 @@ _See code: [src/commands/gift_card/index.ts](https://github.com/commercelayer/co
 
 Send this attribute if you want to activate a gift card.
 
-```
+```sh-session
 USAGE
   $ commercelayer gift_card:activate [ID] -o <value> [-u [-j -p]]
 
@@ -546,7 +550,7 @@ _See code: [src/commands/gift_card/activate.ts](https://github.com/commercelayer
 
 The balance change, in cents. Send a negative value to reduces the card balance by the specified amount. Send a positive value to recharge the gift card (if rechargeable).
 
-```
+```sh-session
 USAGE
   $ commercelayer gift_card:balance_change_cents [ID] -o <value> [-u [-j -p]]
 
@@ -570,7 +574,7 @@ _See code: [src/commands/gift_card/balance_change_cents.ts](https://github.com/c
 
 Send this attribute if you want to deactivate a gift card.
 
-```
+```sh-session
 USAGE
   $ commercelayer gift_card:deactivate [ID] -o <value> [-u [-j -p]]
 
@@ -593,7 +597,7 @@ _See code: [src/commands/gift_card/deactivate.ts](https://github.com/commercelay
 
 Send this attribute if you want to confirm a draft gift card. The gift card becomes 'inactive', waiting to be activated.
 
-```
+```sh-session
 USAGE
   $ commercelayer gift_card:purchase [ID] -o <value> [-u [-j -p]]
 
@@ -617,7 +621,7 @@ _See code: [src/commands/gift_card/purchase.ts](https://github.com/commercelayer
 
 Execute an action on a resource of type in_stock_subscriptions.
 
-```
+```sh-session
 USAGE
   $ commercelayer in_stock_subscription [ID] -o <value> [-u [-j -p]]
 
@@ -640,7 +644,7 @@ _See code: [src/commands/in_stock_subscription/index.ts](https://github.com/comm
 
 Send this attribute if you want to activate an inactive subscription.
 
-```
+```sh-session
 USAGE
   $ commercelayer in_stock_subscription:activate [ID] -o <value> [-u [-j -p]]
 
@@ -663,7 +667,7 @@ _See code: [src/commands/in_stock_subscription/activate.ts](https://github.com/c
 
 Send this attribute if you want to dactivate an active subscription.
 
-```
+```sh-session
 USAGE
   $ commercelayer in_stock_subscription:deactivate [ID] -o <value> [-u [-j -p]]
 
@@ -686,7 +690,7 @@ _See code: [src/commands/in_stock_subscription/deactivate.ts](https://github.com
 
 Execute an action on a resource of type klarna_payments.
 
-```
+```sh-session
 USAGE
   $ commercelayer klarna_payment [ID] -o <value> [-u [-j -p]]
 
@@ -709,7 +713,7 @@ _See code: [src/commands/klarna_payment/index.ts](https://github.com/commercelay
 
 Send this attribute if you want to update the payment session with fresh order data.
 
-```
+```sh-session
 USAGE
   $ commercelayer klarna_payment:update [ID] -o <value> [-u [-j -p]]
 
@@ -732,7 +736,7 @@ _See code: [src/commands/klarna_payment/update.ts](https://github.com/commercela
 
 Execute an action on a resource of type orders.
 
-```
+```sh-session
 USAGE
   $ commercelayer order [ID] -o <value> [-u [-j -p]]
 
@@ -755,7 +759,7 @@ _See code: [src/commands/order/index.ts](https://github.com/commercelayer/commer
 
 Send this attribute if you want to approve a placed order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:approve [ID] -o <value> [-u [-j -p]]
 
@@ -778,7 +782,7 @@ _See code: [src/commands/order/approve.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want to approve and capture a placed order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:approve_and_capture [ID] -o <value> [-u [-j -p]]
 
@@ -801,7 +805,7 @@ _See code: [src/commands/order/approve_and_capture.ts](https://github.com/commer
 
 Send this attribute if you want to archive the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:archive [ID] -o <value> [-u [-j -p]]
 
@@ -824,7 +828,7 @@ _See code: [src/commands/order/archive.ts](https://github.com/commercelayer/comm
 
 The authorization amount, in cents.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:authorization_amount_cents [ID] -o <value> [-u [-j -p]]
 
@@ -847,7 +851,7 @@ _See code: [src/commands/order/authorization_amount_cents.ts](https://github.com
 
 Send this attribute if you want to authorize the order's payment source.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:authorize [ID] -o <value> [-u [-j -p]]
 
@@ -870,7 +874,7 @@ _See code: [src/commands/order/authorize.ts](https://github.com/commercelayer/co
 
 The id of the address that you want to clone to create the order's billing address.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:billing_address_clone_id [ID] -o <value> -v <value> [-u [-j -p]]
 
@@ -894,7 +898,7 @@ _See code: [src/commands/order/billing_address_clone_id.ts](https://github.com/c
 
 Send this attribute if you want the billing address to be cloned from the order's shipping address.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:billing_address_same_as_shipping [ID] -o <value> [-u [-j -p]]
 
@@ -917,7 +921,7 @@ _See code: [src/commands/order/billing_address_same_as_shipping.ts](https://gith
 
 Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:cancel [ID] -o <value> [-u [-j -p]]
 
@@ -940,7 +944,7 @@ _See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/comme
 
 Send this attribute if you want to capture an approved order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:capture [ID] -o <value> [-u [-j -p]]
 
@@ -963,7 +967,7 @@ _See code: [src/commands/order/capture.ts](https://github.com/commercelayer/comm
 
 The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:customer_payment_source_id [ID] -o <value> -v <value> [-u [-j -p]]
 
@@ -987,7 +991,7 @@ _See code: [src/commands/order/customer_payment_source_id.ts](https://github.com
 
 Send this attribute if you want to place the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:place [ID] -o <value> [-u [-j -p]]
 
@@ -1010,7 +1014,7 @@ _See code: [src/commands/order/place.ts](https://github.com/commercelayer/commer
 
 Send this attribute if you want to manually refresh the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:refresh [ID] -o <value> [-u [-j -p]]
 
@@ -1033,7 +1037,7 @@ _See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want to refund a captured order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:refund [ID] -o <value> [-u [-j -p]]
 
@@ -1056,7 +1060,7 @@ _See code: [src/commands/order/refund.ts](https://github.com/commercelayer/comme
 
 Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer address.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:save_billing_address_to_customer_address_book [ID] -o <value> [-u [-j -p]]
 
@@ -1080,7 +1084,7 @@ _See code: [src/commands/order/save_billing_address_to_customer_address_book.ts]
 
 Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment source.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:save_payment_source_to_customer_wallet [ID] -o <value> [-u [-j -p]]
 
@@ -1104,7 +1108,7 @@ _See code: [src/commands/order/save_payment_source_to_customer_wallet.ts](https:
 
 Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer address.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:save_shipping_address_to_customer_address_book [ID] -o <value> [-u [-j -p]]
 
@@ -1128,7 +1132,7 @@ _See code: [src/commands/order/save_shipping_address_to_customer_address_book.ts
 
 The id of the address that you want to clone to create the order's shipping address.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:shipping_address_clone_id [ID] -o <value> -v <value> [-u [-j -p]]
 
@@ -1152,7 +1156,7 @@ _See code: [src/commands/order/shipping_address_clone_id.ts](https://github.com/
 
 Send this attribute if you want the shipping address to be cloned from the order's billing address.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:shipping_address_same_as_billing [ID] -o <value> [-u [-j -p]]
 
@@ -1175,7 +1179,7 @@ _See code: [src/commands/order/shipping_address_same_as_billing.ts](https://gith
 
 Send this attribute if you want to unarchive the order.
 
-```
+```sh-session
 USAGE
   $ commercelayer order:unarchive [ID] -o <value> [-u [-j -p]]
 
@@ -1198,7 +1202,7 @@ _See code: [src/commands/order/unarchive.ts](https://github.com/commercelayer/co
 
 Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order's market).
 
-```
+```sh-session
 USAGE
   $ commercelayer order:update_taxes [ID] -o <value> [-u [-j -p]]
 
@@ -1222,7 +1226,7 @@ _See code: [src/commands/order/update_taxes.ts](https://github.com/commercelayer
 
 Execute an action on a resource of type order_subscriptions.
 
-```
+```sh-session
 USAGE
   $ commercelayer order_subscription [ID] -o <value> [-u [-j -p]]
 
@@ -1245,7 +1249,7 @@ _See code: [src/commands/order_subscription/index.ts](https://github.com/commerc
 
 Send this attribute if you want to mark this subscription as active.
 
-```
+```sh-session
 USAGE
   $ commercelayer order_subscription:activate [ID] -o <value> [-u [-j -p]]
 
@@ -1268,7 +1272,7 @@ _See code: [src/commands/order_subscription/activate.ts](https://github.com/comm
 
 Send this attribute if you want to mark this subscription as cancelled.
 
-```
+```sh-session
 USAGE
   $ commercelayer order_subscription:cancel [ID] -o <value> [-u [-j -p]]
 
@@ -1291,7 +1295,7 @@ _See code: [src/commands/order_subscription/cancel.ts](https://github.com/commer
 
 Send this attribute if you want to mark this subscription as inactive.
 
-```
+```sh-session
 USAGE
   $ commercelayer order_subscription:deactivate [ID] -o <value> [-u [-j -p]]
 
@@ -1314,7 +1318,7 @@ _See code: [src/commands/order_subscription/deactivate.ts](https://github.com/co
 
 Execute an action on a resource of type returns.
 
-```
+```sh-session
 USAGE
   $ commercelayer return [ID] -o <value> [-u [-j -p]]
 
@@ -1337,7 +1341,7 @@ _See code: [src/commands/return/index.ts](https://github.com/commercelayer/comme
 
 Send this attribute if you want to mark this return as approved.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:approve [ID] -o <value> [-u [-j -p]]
 
@@ -1360,7 +1364,7 @@ _See code: [src/commands/return/approve.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want to archive the return.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:archive [ID] -o <value> [-u [-j -p]]
 
@@ -1383,7 +1387,7 @@ _See code: [src/commands/return/archive.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want to mark this return as cancelled.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:cancel [ID] -o <value> [-u [-j -p]]
 
@@ -1406,7 +1410,7 @@ _See code: [src/commands/return/cancel.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want to mark this return as received.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:receive [ID] -o <value> [-u [-j -p]]
 
@@ -1429,7 +1433,7 @@ _See code: [src/commands/return/receive.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want to mark this return as rejected.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:reject [ID] -o <value> [-u [-j -p]]
 
@@ -1452,7 +1456,7 @@ _See code: [src/commands/return/reject.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want to activate this return.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:request [ID] -o <value> [-u [-j -p]]
 
@@ -1475,7 +1479,7 @@ _See code: [src/commands/return/request.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want to restock all of the return line items.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:restock [ID] -o <value> [-u [-j -p]]
 
@@ -1498,7 +1502,7 @@ _See code: [src/commands/return/restock.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want to mark this return as shipped.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:ship [ID] -o <value> [-u [-j -p]]
 
@@ -1521,7 +1525,7 @@ _See code: [src/commands/return/ship.ts](https://github.com/commercelayer/commer
 
 Send this attribute if you want to unarchive the return.
 
-```
+```sh-session
 USAGE
   $ commercelayer return:unarchive [ID] -o <value> [-u [-j -p]]
 
@@ -1544,7 +1548,7 @@ _See code: [src/commands/return/unarchive.ts](https://github.com/commercelayer/c
 
 Execute an action on a resource of type return_line_items.
 
-```
+```sh-session
 USAGE
   $ commercelayer return_line_item [ID] -o <value> [-u [-j -p]]
 
@@ -1567,7 +1571,7 @@ _See code: [src/commands/return_line_item/index.ts](https://github.com/commercel
 
 Send this attribute if you want to restock the line item.
 
-```
+```sh-session
 USAGE
   $ commercelayer return_line_item:restock [ID] -o <value> [-u [-j -p]]
 
@@ -1590,7 +1594,7 @@ _See code: [src/commands/return_line_item/restock.ts](https://github.com/commerc
 
 Execute an action on a resource of type shipments.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment [ID] -o <value> [-u [-j -p]]
 
@@ -1613,7 +1617,7 @@ _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/com
 
 Send this attribute if you want get the shipping rates from the associated carrier accounts.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment:get_rates [ID] -o <value> [-u [-j -p]]
 
@@ -1636,7 +1640,7 @@ _See code: [src/commands/shipment/get_rates.ts](https://github.com/commercelayer
 
 Send this attribute if you want to put this shipment on hold.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment:on_hold [ID] -o <value> [-u [-j -p]]
 
@@ -1659,7 +1663,7 @@ _See code: [src/commands/shipment/on_hold.ts](https://github.com/commercelayer/c
 
 Send this attribute if you want to start packing this shipment.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment:packing [ID] -o <value> [-u [-j -p]]
 
@@ -1682,7 +1686,7 @@ _See code: [src/commands/shipment/packing.ts](https://github.com/commercelayer/c
 
 Send this attribute if you want to start picking this shipment.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment:picking [ID] -o <value> [-u [-j -p]]
 
@@ -1705,7 +1709,7 @@ _See code: [src/commands/shipment/picking.ts](https://github.com/commercelayer/c
 
 Send this attribute if you want to purchase this shipment with the selected rate.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment:purchase [ID] -o <value> [-u [-j -p]]
 
@@ -1728,7 +1732,7 @@ _See code: [src/commands/shipment/purchase.ts](https://github.com/commercelayer/
 
 Send this attribute if you want to mark this shipment as ready to ship.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment:ready_to_ship [ID] -o <value> [-u [-j -p]]
 
@@ -1751,7 +1755,7 @@ _See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercel
 
 Send this attribute if you want to mark this shipment as shipped.
 
-```
+```sh-session
 USAGE
   $ commercelayer shipment:ship [ID] -o <value> [-u [-j -p]]
 
@@ -1774,7 +1778,7 @@ _See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/comm
 
 Execute an action on a resource of type stock_transfers.
 
-```
+```sh-session
 USAGE
   $ commercelayer stock_transfer [ID] -o <value> [-u [-j -p]]
 
@@ -1797,7 +1801,7 @@ _See code: [src/commands/stock_transfer/index.ts](https://github.com/commercelay
 
 Send this attribute if you want to cancel this stock transfer.
 
-```
+```sh-session
 USAGE
   $ commercelayer stock_transfer:cancel [ID] -o <value> [-u [-j -p]]
 
@@ -1820,7 +1824,7 @@ _See code: [src/commands/stock_transfer/cancel.ts](https://github.com/commercela
 
 Send this attribute if you want to complete this stock transfer.
 
-```
+```sh-session
 USAGE
   $ commercelayer stock_transfer:complete [ID] -o <value> [-u [-j -p]]
 
@@ -1843,7 +1847,7 @@ _See code: [src/commands/stock_transfer/complete.ts](https://github.com/commerce
 
 Send this attribute if you want to mark this stock transfer as in transit.
 
-```
+```sh-session
 USAGE
   $ commercelayer stock_transfer:in_transit [ID] -o <value> [-u [-j -p]]
 
@@ -1866,7 +1870,7 @@ _See code: [src/commands/stock_transfer/in_transit.ts](https://github.com/commer
 
 Send this attribute if you want to start picking this stock transfer.
 
-```
+```sh-session
 USAGE
   $ commercelayer stock_transfer:picking [ID] -o <value> [-u [-j -p]]
 
@@ -1889,7 +1893,7 @@ _See code: [src/commands/stock_transfer/picking.ts](https://github.com/commercel
 
 Send this attribute if you want to mark this stock transfer as upcoming.
 
-```
+```sh-session
 USAGE
   $ commercelayer stock_transfer:upcoming [ID] -o <value> [-u [-j -p]]
 
@@ -1912,7 +1916,7 @@ _See code: [src/commands/stock_transfer/upcoming.ts](https://github.com/commerce
 
 Execute an action on a resource of type stripe_payments.
 
-```
+```sh-session
 USAGE
   $ commercelayer stripe_payment [ID] -o <value> [-u [-j -p]]
 
@@ -1935,7 +1939,7 @@ _See code: [src/commands/stripe_payment/index.ts](https://github.com/commercelay
 
 Send this attribute if you want to refresh the payment status, can be used as webhooks fallback logic.
 
-```
+```sh-session
 USAGE
   $ commercelayer stripe_payment:refresh [ID] -o <value> [-u [-j -p]]
 
@@ -1958,7 +1962,7 @@ _See code: [src/commands/stripe_payment/refresh.ts](https://github.com/commercel
 
 Execute an action on a resource of type webhooks.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhook [ID] -o <value> [-u [-j -p]]
 
@@ -1981,7 +1985,7 @@ _See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/comm
 
 Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero failures count.
 
-```
+```sh-session
 USAGE
   $ commercelayer webhook:reset_circuit [ID] -o <value> [-u [-j -p]]
 

@@ -1,6 +1,9 @@
 import { expect, test } from '@oclif/test'
 
 describe('##__RESOURCE_TYPE__##:##__ACTION_ID__##', () => {
+
+  test.timeout(3000)
+
   test
     .stdout()
     .command(['noc'])
