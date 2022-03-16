@@ -1,10 +1,8 @@
 import { expect, test } from '@oclif/test'
 
 describe('orders:billing_address_clone_id', () => {
-
-  test.timeout(5000)
-
   test
+    .timeout(5000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

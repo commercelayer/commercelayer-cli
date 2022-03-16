@@ -1,10 +1,8 @@
 import { expect, test } from '@oclif/test'
 
 describe('webhooks:reset_circuit', () => {
-
-  test.timeout(5000)
-
   test
+    .timeout(5000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

@@ -4,11 +4,11 @@
     "oclif-typescript"
   ],
   "rules": {
-    "object-curly-spacing": "off",
     "indent": "off",
+    "object-curly-spacing": "off",
+    "padded-blocks": "off",
     "unicorn/filename-case": "off",
     "no-multiple-empty-lines": "off",
-    "padded-blocks": "off",
     "max-params": "off"
   }
 }
