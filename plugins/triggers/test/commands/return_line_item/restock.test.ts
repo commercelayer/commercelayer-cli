@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('return_line_items:restock', () => {
 
-  test.timeout(3000)
+  test.timeout(5000)
 
   test
     .stdout()

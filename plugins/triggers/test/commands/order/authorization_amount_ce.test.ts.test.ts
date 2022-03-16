@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('orders:authorization_amount_cents', () => {
 
-  test.timeout(3000)
+  test.timeout(5000)
 
   test
     .stdout()

@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('shipments:purchase', () => {
 
-  test.timeout(3000)
+  test.timeout(5000)
 
   test
     .stdout()

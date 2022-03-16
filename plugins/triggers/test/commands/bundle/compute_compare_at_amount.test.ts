@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('bundles:compute_compare_at_amount', () => {
 
-  test.timeout(3000)
+  test.timeout(5000)
 
   test
     .stdout()
