@@ -62,8 +62,7 @@ export default class ApplicationsScope extends Command {
 
     let appInfo: AppInfo
 
-    // Application Switch
-    if (apps.length > 0) {
+    if (apps.length > 0) {   // Application Switch
 
       // ApplicationsSwitch command cannot filter by scope so it's necessary do "manually" show the list of applications
       const app = (apps.length === 1) ? apps[0] : await promptApplication(apps)
@@ -72,9 +71,8 @@ export default class ApplicationsScope extends Command {
 
       appInfo = app
 
-    } else {
+    } else {   // Application Login
 
-      // Application Login
       const app = readConfigFile(this.config, current)
 
       argv.push('-i', app.clientId)
