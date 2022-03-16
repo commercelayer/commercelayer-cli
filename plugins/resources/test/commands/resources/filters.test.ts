@@ -2,6 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('resources:filters', () => {
   test
+    .timeout(5000)
     .stdout()
     .command(['resources:filters'])
     .it('runs resources:filters', ctx => {
