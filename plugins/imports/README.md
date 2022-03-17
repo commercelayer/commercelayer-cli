@@ -90,7 +90,7 @@ ALIASES
 EXAMPLES
   $ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>
 
-  $ cl imp:create skus -i <input-file-path>
+  $ cl imp:create -t skus -i <input-file-path>
 ```
 
 _See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/create.ts)_

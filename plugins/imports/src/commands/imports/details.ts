@@ -78,7 +78,7 @@ export default class ImportsDetails extends Command {
 			return imp
 
 		} catch (error) {
-			this.handleError(error, flags)
+			this.handleError(error, flags, id)
 		}
 
 	}

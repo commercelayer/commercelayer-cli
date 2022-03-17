@@ -42,7 +42,7 @@ export default class ImportsCreate extends Command {
 
   static examples = [
     '$ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>',
-    '$ cl imp:create skus -i <input-file-path>',
+    '$ cl imp:create -t skus -i <input-file-path>',
   ]
 
   static flags = {

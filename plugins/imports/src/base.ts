@@ -3,7 +3,6 @@ import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 
 
-
 const pkg = require('../package.json')
 
 
@@ -52,13 +51,16 @@ export default abstract class extends Command {
   }
 
 
-  protected handleError(error: any, flags?: any): void {
+  protected handleError(error: any, flags?: any, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
         this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s imports'] }
+          { suggestions: ['Execute login to get access to the organization\'s imports'] },
         )
+      } else
+      if (error.status === 404) {
+        this.error(`Unable to find import${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
       } else this.error(clOutput.formatOutput(error, flags))
     } else throw error
   }
