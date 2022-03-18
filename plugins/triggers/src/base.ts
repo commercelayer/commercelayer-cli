@@ -57,19 +57,22 @@ export default abstract class extends Command {
 
 
   async catch(error: any) {
-    this.handleError(error)
+    this.handleError(error, undefined, this.argv[0])
   }
 
 
-  protected handleError(error: any, flags?: any): void {
+  protected handleError(error: any, flags?: any, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
+      const res = error.code?.startsWith('RES_') ? error.code.replace('RES_', '') : ''
       if (error.status === 401) {
         const err = error.first()
-        const res = error.code?.startsWith('RES_') ? error.code.replace('RES_', '') : ''
         this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
           { suggestions: [`Execute login with sufficient privileges to get access to the organization's resources${res ? ` of type ${clColor.api.resource(res)}` : ''}`] }
         )
-      } else this.error(clOutput.formatError(error, flags))
+      } else
+      if (error.status === 404) {
+        this.error(`Unable to find the resource of type ${clColor.api.resource(res)}${id ? ` and id ${clColor.msg.error(id)}` : ''}`)
+			} else this.error(clOutput.formatError(error, flags))
     } else throw error
   }
 
