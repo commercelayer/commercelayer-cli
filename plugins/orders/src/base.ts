@@ -57,18 +57,21 @@ export default abstract class extends Command {
 
 
   async catch(error: any) {
-    this.handleError(error)
+    this.handleError(error, undefined, this.argv[0])
   }
 
 
-  protected handleError(error: any, flags?: any): void {
+  protected handleError(error: any, flags?: any, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
         this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s imports'] },
+          { suggestions: ['Execute login to get access to the organization\'s orders'] },
         )
-      } else this.error(clOutput.formatError(error, flags))
+      } else
+      if (error.status === 404) {
+        this.error(`Unable to find order${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
+			} else this.error(clOutput.formatError(error, flags))
     } else throw error
   }
 
