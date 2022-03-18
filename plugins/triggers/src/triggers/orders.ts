@@ -58,6 +58,11 @@ export const triggers: { [key: string ]: Trigger } = {
       trigger: '_update_taxes',
       description: 'Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the order\'s market).',
     },
+	nullify_payment_source: {
+      action: 'nullify_payment_source',
+      trigger: '_nullify_payment_source',
+      description: 'Send this attribute if you want to nullify the payment source for this order.',
+    },
 	billing_address_clone_id: {
       action: 'billing_address_clone_id',
       trigger: '_billing_address_clone_id',
@@ -118,6 +123,7 @@ export type ActionType =
 	'capture' |
 	'refund' |
 	'update_taxes' |
+	'nullify_payment_source' |
 	'billing_address_clone_id' |
 	'shipping_address_clone_id' |
 	'customer_payment_source_id' |
