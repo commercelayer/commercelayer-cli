@@ -41,6 +41,7 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:cancel ID`](#commercelayer-orderscancel-id)
 * [`commercelayer orders:capture ID`](#commercelayer-orderscapture-id)
 * [`commercelayer orders:customer_payment_source_id ID`](#commercelayer-orderscustomer_payment_source_id-id)
+* [`commercelayer orders:nullify_payment_source ID`](#commercelayer-ordersnullify_payment_source-id)
 * [`commercelayer orders:place ID`](#commercelayer-ordersplace-id)
 * [`commercelayer orders:refresh ID`](#commercelayer-ordersrefresh-id)
 * [`commercelayer orders:refund ID`](#commercelayer-ordersrefund-id)
@@ -306,6 +307,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/customer_payment_source_id.ts)_
+
+### `commercelayer orders:nullify_payment_source ID`
+
+Send this attribute if you want to nullify the payment source for this order.
+
+```sh-session
+USAGE
+  $ commercelayer orders:nullify_payment_source [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to nullify the payment source for this order.
+```
+
+_See code: [src/commands/orders/nullify_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/nullify_payment_source.ts)_
 
 ### `commercelayer orders:place ID`
 
