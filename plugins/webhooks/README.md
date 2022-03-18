@@ -142,7 +142,6 @@ DESCRIPTION
 
 ALIASES
   $ commercelayer wh:details
-  $ commercelayer webhook:details
 
 EXAMPLES
   $ commercelayer webhooks:details <webhook-id>
