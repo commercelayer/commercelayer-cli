@@ -31,6 +31,29 @@ $ commercelayer plugins:install resources
 ## Commands
 <!-- commands -->
 
+* [`commercelayer all RESOURCE`](#commercelayer-all-resource)
+* [`commercelayer create RESOURCE`](#commercelayer-create-resource)
+* [`commercelayer delete RESOURCE [ID]`](#commercelayer-delete-resource-id)
+* [`commercelayer doc RESOURCE`](#commercelayer-doc-resource)
+* [`commercelayer fetch PATH [ID]`](#commercelayer-fetch-path-id)
+* [`commercelayer get RESOURCE [ID]`](#commercelayer-get-resource-id)
+* [`commercelayer list RESOURCE`](#commercelayer-list-resource)
+* [`commercelayer patch RESOURCE [ID]`](#commercelayer-patch-resource-id)
+* [`commercelayer post RESOURCE`](#commercelayer-post-resource)
+* [`commercelayer ra RESOURCE`](#commercelayer-ra-resource)
+* [`commercelayer rc RESOURCE`](#commercelayer-rc-resource)
+* [`commercelayer rd RESOURCE [ID]`](#commercelayer-rd-resource-id)
+* [`commercelayer res:all RESOURCE`](#commercelayer-resall-resource)
+* [`commercelayer res:args`](#commercelayer-resargs)
+* [`commercelayer res:create RESOURCE`](#commercelayer-rescreate-resource)
+* [`commercelayer res:delete RESOURCE [ID]`](#commercelayer-resdelete-resource-id)
+* [`commercelayer res:doc RESOURCE`](#commercelayer-resdoc-resource)
+* [`commercelayer res:fetch PATH [ID]`](#commercelayer-resfetch-path-id)
+* [`commercelayer res:filters`](#commercelayer-resfilters)
+* [`commercelayer res:get RESOURCE [ID]`](#commercelayer-resget-resource-id)
+* [`commercelayer res:list RESOURCE`](#commercelayer-reslist-resource)
+* [`commercelayer res:retrieve RESOURCE [ID]`](#commercelayer-resretrieve-resource-id)
+* [`commercelayer res:update RESOURCE [ID]`](#commercelayer-resupdate-resource-id)
 * [`commercelayer resources`](#commercelayer-resources)
 * [`commercelayer resources:all RESOURCE`](#commercelayer-resourcesall-resource)
 * [`commercelayer resources:args`](#commercelayer-resourcesargs)
@@ -43,6 +66,1092 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources:list RESOURCE`](#commercelayer-resourceslist-resource)
 * [`commercelayer resources:retrieve RESOURCE [ID]`](#commercelayer-resourcesretrieve-resource-id)
 * [`commercelayer resources:update RESOURCE [ID]`](#commercelayer-resourcesupdate-resource-id)
+* [`commercelayer retrieve RESOURCE [ID]`](#commercelayer-retrieve-resource-id)
+* [`commercelayer rf PATH [ID]`](#commercelayer-rf-path-id)
+* [`commercelayer rg RESOURCE [ID]`](#commercelayer-rg-resource-id)
+* [`commercelayer rl RESOURCE`](#commercelayer-rl-resource)
+* [`commercelayer rr RESOURCE [ID]`](#commercelayer-rr-resource-id)
+* [`commercelayer ru RESOURCE [ID]`](#commercelayer-ru-resource-id)
+* [`commercelayer update RESOURCE [ID]`](#commercelayer-update-resource-id)
+
+### `commercelayer all RESOURCE`
+
+Fetch all resources.
+
+```sh-session
+USAGE
+  $ commercelayer all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node -D] [--curl ] [--node ]
+    [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H <value> [-C -f
+    <value>]] [-b] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -C, --csv                   export fields in csv format
+  -D, --doc                   shows the CLI command in a specific language
+  -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -b, --blind                 execute in blind mode without prompt and progress bar
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch all resources
+
+ALIASES
+  $ commercelayer all
+  $ commercelayer ra
+  $ commercelayer res:all
+
+EXAMPLES
+  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+
+  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+
+  $ cl all -s -created_at --json
+```
+
+### `commercelayer create RESOURCE`
+
+Create a new resource.
+
+```sh-session
+USAGE
+  $ commercelayer create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
+    --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -D, --data=<value>             the data file to use as request body
+  -D, --doc                      shows the CLI command in a specific language
+  -O, --object=<value>...        define a resource object attribute
+  -R, --raw                      print out the raw API response
+  -a, --attribute=<value>...     define a resource attribute
+  -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...       comma separated resources to include
+  -j, --json                     convert output in standard JSON format
+  -l, --lang=<option>            show the CLI command in the specified language syntax
+                                 <options: curl|node>
+  -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
+  -o, --organization=<value>     (required) the slug of your organization
+  -r, --relationship=<value>...  define a relationship with another resource
+  -u, --unformatted              print unformatted JSON output
+  --curl                         show the equivalent cURL command of the CLI command
+  --load-args=<value>            load previously saved command arguments
+  --node                         show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>            save command data to file for future use
+
+DESCRIPTION
+  create a new resource
+
+ALIASES
+  $ commercelayer create
+  $ commercelayer rc
+  $ commercelayer res:create
+  $ commercelayer post
+
+EXAMPLES
+  $ commercelayer resources:create customers -a email=user@test.com
+
+  $ clayer res:create customers -a email="user@test-com" -r customer_group=customer_groups/<customerGroupId>
+
+  $ cl create customers -a email=user@test.com -m meta_key="meta value"
+
+  $ cl rc customers -D /path/to/data/file/data.json
+```
+
+### `commercelayer delete RESOURCE [ID]`
+
+Delete an existing resource.
+
+```sh-session
+USAGE
+  $ commercelayer delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -u, --unformatted           print unformatted JSON output
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  delete an existing resource
+
+ALIASES
+  $ commercelayer delete
+  $ commercelayer rd
+  $ commercelayer res:delete
+
+EXAMPLES
+  $ commercelayer resources:delete customers/<customerId>
+
+  $ cl delete customers <customerId>
+```
+
+### `commercelayer doc RESOURCE`
+
+Open the default browser and show the online documentation for the resource.
+
+```sh-session
+USAGE
+  $ commercelayer doc [RESOURCE] [-p object|create|retrieve|list|update|delete]
+
+ARGUMENTS
+  RESOURCE  the resource for which you want to access the online documentation
+
+FLAGS
+  -p, --page=<option>  the doc page you want to access
+                       <options: object|create|retrieve|list|update|delete>
+
+DESCRIPTION
+  open the default browser and show the online documentation for the resource
+
+ALIASES
+  $ commercelayer res:doc
+  $ commercelayer doc
+
+EXAMPLES
+  $ commercelayer resources:doc customers
+
+  $ cl res:doc customers
+
+  $ cl doc customers -p create
+```
+
+### `commercelayer fetch PATH [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```sh-session
+USAGE
+  $ commercelayer fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl
+    ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R] [-w <value>] [-p
+    <value>] [-n <value>] [-s <value>]
+
+ARGUMENTS
+  PATH  path (or URL) of the resource(s) to fetch
+  ID    resource id
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer fetch
+  $ commercelayer res:fetch
+  $ commercelayer rf
+
+EXAMPLES
+  $ commercelayer resources:fetch customers
+
+  $ commercelayer res:fetch customers
+
+  $ clayer res:fetch customers/<customerId>
+
+  $ cl fetch customers/<customerId>/<customerRelationship>
+
+  $ cl fetch customers/{customerId}/orders aBcdEkYWx
+```
+
+### `commercelayer get RESOURCE [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```sh-session
+USAGE
+  $ commercelayer get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+    [-x <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer get
+  $ commercelayer res:get
+  $ commercelayer rg
+
+EXAMPLES
+  $ commercelayer resources:get customers
+
+  $ commercelayer res:get customers
+
+  $ clayer res:get customers/<customerId>
+
+  $ cl get customers <customerId>
+```
+
+### `commercelayer list RESOURCE`
+
+Fetch a collection of resources.
+
+```sh-session
+USAGE
+  $ commercelayer list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl ]
+    [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>] [-x
+    <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch a collection of resources
+
+ALIASES
+  $ commercelayer list
+  $ commercelayer rl
+  $ commercelayer res:list
+
+EXAMPLES
+  $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
+
+  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+
+  $ cl list -p 5 -n 10 -s -created_at --raw
+```
+
+### `commercelayer patch RESOURCE [ID]`
+
+Update an existing resource.
+
+```sh-session
+USAGE
+  $ commercelayer patch [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
+    --load-args <value> | --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to update
+
+FLAGS
+  -D, --data=<value>                 the data file to use as request body
+  -D, --doc                          shows the CLI command in a specific language
+  -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
+                                     resource
+  -O, --object=<value>...            define a resource object attribute
+  -R, --raw                          print out the raw API response
+  -a, --attribute=<value>...         define a resource attribute
+  -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...           comma separated resources to include
+  -j, --json                         convert output in standard JSON format
+  -l, --lang=<option>                show the CLI command in the specified language syntax
+                                     <options: curl|node>
+  -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
+                                     remote resource
+  -o, --organization=<value>         (required) the slug of your organization
+  -r, --relationship=<value>...      define a relationship with another resource
+  -u, --unformatted                  print unformatted JSON output
+  --curl                             show the equivalent cURL command of the CLI command
+  --load-args=<value>                load previously saved command arguments
+  --node                             show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>                save command data to file for future use
+
+DESCRIPTION
+  update an existing resource
+
+ALIASES
+  $ commercelayer update
+  $ commercelayer ru
+  $ commercelayer res:update
+  $ commercelayer patch
+
+EXAMPLES
+  $ commercelayer resources:update customers/<customerId> -a reference=referenceId
+
+  $ commercelayer res:update customers <customerId> -a reference_origin="Ref Origin"
+
+  $ cl update customers/<customerId> -m meta_key="meta value"
+
+  $ cl ru customers <customerId> -M meta_key="metadata overwrite
+
+  $ clayer update customers <customerId> -D /path/to/data/file/data.json
+```
+
+### `commercelayer post RESOURCE`
+
+Create a new resource.
+
+```sh-session
+USAGE
+  $ commercelayer post [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
+    --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -D, --data=<value>             the data file to use as request body
+  -D, --doc                      shows the CLI command in a specific language
+  -O, --object=<value>...        define a resource object attribute
+  -R, --raw                      print out the raw API response
+  -a, --attribute=<value>...     define a resource attribute
+  -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...       comma separated resources to include
+  -j, --json                     convert output in standard JSON format
+  -l, --lang=<option>            show the CLI command in the specified language syntax
+                                 <options: curl|node>
+  -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
+  -o, --organization=<value>     (required) the slug of your organization
+  -r, --relationship=<value>...  define a relationship with another resource
+  -u, --unformatted              print unformatted JSON output
+  --curl                         show the equivalent cURL command of the CLI command
+  --load-args=<value>            load previously saved command arguments
+  --node                         show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>            save command data to file for future use
+
+DESCRIPTION
+  create a new resource
+
+ALIASES
+  $ commercelayer create
+  $ commercelayer rc
+  $ commercelayer res:create
+  $ commercelayer post
+
+EXAMPLES
+  $ commercelayer resources:create customers -a email=user@test.com
+
+  $ clayer res:create customers -a email="user@test-com" -r customer_group=customer_groups/<customerGroupId>
+
+  $ cl create customers -a email=user@test.com -m meta_key="meta value"
+
+  $ cl rc customers -D /path/to/data/file/data.json
+```
+
+### `commercelayer ra RESOURCE`
+
+Fetch all resources.
+
+```sh-session
+USAGE
+  $ commercelayer ra [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node -D] [--curl ] [--node ]
+    [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H <value> [-C -f
+    <value>]] [-b] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -C, --csv                   export fields in csv format
+  -D, --doc                   shows the CLI command in a specific language
+  -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -b, --blind                 execute in blind mode without prompt and progress bar
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch all resources
+
+ALIASES
+  $ commercelayer all
+  $ commercelayer ra
+  $ commercelayer res:all
+
+EXAMPLES
+  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+
+  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+
+  $ cl all -s -created_at --json
+```
+
+### `commercelayer rc RESOURCE`
+
+Create a new resource.
+
+```sh-session
+USAGE
+  $ commercelayer rc [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
+    --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -D, --data=<value>             the data file to use as request body
+  -D, --doc                      shows the CLI command in a specific language
+  -O, --object=<value>...        define a resource object attribute
+  -R, --raw                      print out the raw API response
+  -a, --attribute=<value>...     define a resource attribute
+  -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...       comma separated resources to include
+  -j, --json                     convert output in standard JSON format
+  -l, --lang=<option>            show the CLI command in the specified language syntax
+                                 <options: curl|node>
+  -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
+  -o, --organization=<value>     (required) the slug of your organization
+  -r, --relationship=<value>...  define a relationship with another resource
+  -u, --unformatted              print unformatted JSON output
+  --curl                         show the equivalent cURL command of the CLI command
+  --load-args=<value>            load previously saved command arguments
+  --node                         show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>            save command data to file for future use
+
+DESCRIPTION
+  create a new resource
+
+ALIASES
+  $ commercelayer create
+  $ commercelayer rc
+  $ commercelayer res:create
+  $ commercelayer post
+
+EXAMPLES
+  $ commercelayer resources:create customers -a email=user@test.com
+
+  $ clayer res:create customers -a email="user@test-com" -r customer_group=customer_groups/<customerGroupId>
+
+  $ cl create customers -a email=user@test.com -m meta_key="meta value"
+
+  $ cl rc customers -D /path/to/data/file/data.json
+```
+
+### `commercelayer rd RESOURCE [ID]`
+
+Delete an existing resource.
+
+```sh-session
+USAGE
+  $ commercelayer rd [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -u, --unformatted           print unformatted JSON output
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  delete an existing resource
+
+ALIASES
+  $ commercelayer delete
+  $ commercelayer rd
+  $ commercelayer res:delete
+
+EXAMPLES
+  $ commercelayer resources:delete customers/<customerId>
+
+  $ cl delete customers <customerId>
+```
+
+### `commercelayer res:all RESOURCE`
+
+Fetch all resources.
+
+```sh-session
+USAGE
+  $ commercelayer res:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node -D] [--curl ] [--node ]
+    [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H <value> [-C -f
+    <value>]] [-b] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -C, --csv                   export fields in csv format
+  -D, --doc                   shows the CLI command in a specific language
+  -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -b, --blind                 execute in blind mode without prompt and progress bar
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch all resources
+
+ALIASES
+  $ commercelayer all
+  $ commercelayer ra
+  $ commercelayer res:all
+
+EXAMPLES
+  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+
+  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+
+  $ cl all -s -created_at --json
+```
+
+### `commercelayer res:args`
+
+Show all the saved command arguments.
+
+```sh-session
+USAGE
+  $ commercelayer res:args [-D [-a <value> -o list|retrieve|create|update -r <value>]]
+
+FLAGS
+  -D, --delete              delete saved arguments associated to the alias
+  -a, --alias=<value>       the alias associated to saved command arguments
+  -o, --operation=<option>  the resource operation
+                            <options: list|retrieve|create|update>
+  -r, --resource=<value>    the resource type
+
+DESCRIPTION
+  show all the saved command arguments
+
+ALIASES
+  $ commercelayer res:args
+```
+
+### `commercelayer res:create RESOURCE`
+
+Create a new resource.
+
+```sh-session
+USAGE
+  $ commercelayer res:create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
+    --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -D, --data=<value>             the data file to use as request body
+  -D, --doc                      shows the CLI command in a specific language
+  -O, --object=<value>...        define a resource object attribute
+  -R, --raw                      print out the raw API response
+  -a, --attribute=<value>...     define a resource attribute
+  -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...       comma separated resources to include
+  -j, --json                     convert output in standard JSON format
+  -l, --lang=<option>            show the CLI command in the specified language syntax
+                                 <options: curl|node>
+  -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
+  -o, --organization=<value>     (required) the slug of your organization
+  -r, --relationship=<value>...  define a relationship with another resource
+  -u, --unformatted              print unformatted JSON output
+  --curl                         show the equivalent cURL command of the CLI command
+  --load-args=<value>            load previously saved command arguments
+  --node                         show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>            save command data to file for future use
+
+DESCRIPTION
+  create a new resource
+
+ALIASES
+  $ commercelayer create
+  $ commercelayer rc
+  $ commercelayer res:create
+  $ commercelayer post
+
+EXAMPLES
+  $ commercelayer resources:create customers -a email=user@test.com
+
+  $ clayer res:create customers -a email="user@test-com" -r customer_group=customer_groups/<customerGroupId>
+
+  $ cl create customers -a email=user@test.com -m meta_key="meta value"
+
+  $ cl rc customers -D /path/to/data/file/data.json
+```
+
+### `commercelayer res:delete RESOURCE [ID]`
+
+Delete an existing resource.
+
+```sh-session
+USAGE
+  $ commercelayer res:delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -u, --unformatted           print unformatted JSON output
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  delete an existing resource
+
+ALIASES
+  $ commercelayer delete
+  $ commercelayer rd
+  $ commercelayer res:delete
+
+EXAMPLES
+  $ commercelayer resources:delete customers/<customerId>
+
+  $ cl delete customers <customerId>
+```
+
+### `commercelayer res:doc RESOURCE`
+
+Open the default browser and show the online documentation for the resource.
+
+```sh-session
+USAGE
+  $ commercelayer res:doc [RESOURCE] [-p object|create|retrieve|list|update|delete]
+
+ARGUMENTS
+  RESOURCE  the resource for which you want to access the online documentation
+
+FLAGS
+  -p, --page=<option>  the doc page you want to access
+                       <options: object|create|retrieve|list|update|delete>
+
+DESCRIPTION
+  open the default browser and show the online documentation for the resource
+
+ALIASES
+  $ commercelayer res:doc
+  $ commercelayer doc
+
+EXAMPLES
+  $ commercelayer resources:doc customers
+
+  $ cl res:doc customers
+
+  $ cl doc customers -p create
+```
+
+### `commercelayer res:fetch PATH [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```sh-session
+USAGE
+  $ commercelayer res:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl
+    ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R] [-w <value>] [-p
+    <value>] [-n <value>] [-s <value>]
+
+ARGUMENTS
+  PATH  path (or URL) of the resource(s) to fetch
+  ID    resource id
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer fetch
+  $ commercelayer res:fetch
+  $ commercelayer rf
+
+EXAMPLES
+  $ commercelayer resources:fetch customers
+
+  $ commercelayer res:fetch customers
+
+  $ clayer res:fetch customers/<customerId>
+
+  $ cl fetch customers/<customerId>/<customerRelationship>
+
+  $ cl fetch customers/{customerId}/orders aBcdEkYWx
+```
+
+### `commercelayer res:filters`
+
+Show a list of all available filter predicates.
+
+```sh-session
+USAGE
+  $ commercelayer res:filters
+
+DESCRIPTION
+  show a list of all available filter predicates
+
+ALIASES
+  $ commercelayer res:filters
+
+EXAMPLES
+  $ commercelayer resources:filters
+
+  $ cl res:filters
+```
+
+### `commercelayer res:get RESOURCE [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```sh-session
+USAGE
+  $ commercelayer res:get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+    [-x <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer get
+  $ commercelayer res:get
+  $ commercelayer rg
+
+EXAMPLES
+  $ commercelayer resources:get customers
+
+  $ commercelayer res:get customers
+
+  $ clayer res:get customers/<customerId>
+
+  $ cl get customers <customerId>
+```
+
+### `commercelayer res:list RESOURCE`
+
+Fetch a collection of resources.
+
+```sh-session
+USAGE
+  $ commercelayer res:list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl ]
+    [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>] [-x
+    <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch a collection of resources
+
+ALIASES
+  $ commercelayer list
+  $ commercelayer rl
+  $ commercelayer res:list
+
+EXAMPLES
+  $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
+
+  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+
+  $ cl list -p 5 -n 10 -s -created_at --raw
+```
+
+### `commercelayer res:retrieve RESOURCE [ID]`
+
+Fetch a single resource.
+
+```sh-session
+USAGE
+  $ commercelayer res:retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -u, --unformatted           print unformatted JSON output
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch a single resource
+
+ALIASES
+  $ commercelayer retrieve
+  $ commercelayer rr
+  $ commercelayer res:retrieve
+
+EXAMPLES
+  $ commercelayer resources:retrieve customers/<customerId>
+
+  $ commercelayer retrieve customers <customerId>
+
+  $ cl res:retrieve customers <customerId>
+
+  $ clayer rr customers/<customerId>
+```
+
+### `commercelayer res:update RESOURCE [ID]`
+
+Update an existing resource.
+
+```sh-session
+USAGE
+  $ commercelayer res:update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
+    --load-args <value> | --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to update
+
+FLAGS
+  -D, --data=<value>                 the data file to use as request body
+  -D, --doc                          shows the CLI command in a specific language
+  -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
+                                     resource
+  -O, --object=<value>...            define a resource object attribute
+  -R, --raw                          print out the raw API response
+  -a, --attribute=<value>...         define a resource attribute
+  -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...           comma separated resources to include
+  -j, --json                         convert output in standard JSON format
+  -l, --lang=<option>                show the CLI command in the specified language syntax
+                                     <options: curl|node>
+  -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
+                                     remote resource
+  -o, --organization=<value>         (required) the slug of your organization
+  -r, --relationship=<value>...      define a relationship with another resource
+  -u, --unformatted                  print unformatted JSON output
+  --curl                             show the equivalent cURL command of the CLI command
+  --load-args=<value>                load previously saved command arguments
+  --node                             show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>                save command data to file for future use
+
+DESCRIPTION
+  update an existing resource
+
+ALIASES
+  $ commercelayer update
+  $ commercelayer ru
+  $ commercelayer res:update
+  $ commercelayer patch
+
+EXAMPLES
+  $ commercelayer resources:update customers/<customerId> -a reference=referenceId
+
+  $ commercelayer res:update customers <customerId> -a reference_origin="Ref Origin"
+
+  $ cl update customers/<customerId> -m meta_key="meta value"
+
+  $ cl ru customers <customerId> -M meta_key="metadata overwrite
+
+  $ clayer update customers <customerId> -D /path/to/data/file/data.json
+```
 
 ### `commercelayer resources`
 
@@ -577,4 +1686,379 @@ EXAMPLES
 ```
 
 _See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/update.ts)_
+
+### `commercelayer retrieve RESOURCE [ID]`
+
+Fetch a single resource.
+
+```sh-session
+USAGE
+  $ commercelayer retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -u, --unformatted           print unformatted JSON output
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch a single resource
+
+ALIASES
+  $ commercelayer retrieve
+  $ commercelayer rr
+  $ commercelayer res:retrieve
+
+EXAMPLES
+  $ commercelayer resources:retrieve customers/<customerId>
+
+  $ commercelayer retrieve customers <customerId>
+
+  $ cl res:retrieve customers <customerId>
+
+  $ clayer rr customers/<customerId>
+```
+
+### `commercelayer rf PATH [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```sh-session
+USAGE
+  $ commercelayer rf [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl
+    ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R] [-w <value>] [-p
+    <value>] [-n <value>] [-s <value>]
+
+ARGUMENTS
+  PATH  path (or URL) of the resource(s) to fetch
+  ID    resource id
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer fetch
+  $ commercelayer res:fetch
+  $ commercelayer rf
+
+EXAMPLES
+  $ commercelayer resources:fetch customers
+
+  $ commercelayer res:fetch customers
+
+  $ clayer res:fetch customers/<customerId>
+
+  $ cl fetch customers/<customerId>/<customerRelationship>
+
+  $ cl fetch customers/{customerId}/orders aBcdEkYWx
+```
+
+### `commercelayer rg RESOURCE [ID]`
+
+Retrieve a resource or list a set of resources.
+
+```sh-session
+USAGE
+  $ commercelayer rg [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+    [-x <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  retrieve a resource or list a set of resources
+
+ALIASES
+  $ commercelayer get
+  $ commercelayer res:get
+  $ commercelayer rg
+
+EXAMPLES
+  $ commercelayer resources:get customers
+
+  $ commercelayer res:get customers
+
+  $ clayer res:get customers/<customerId>
+
+  $ cl get customers <customerId>
+```
+
+### `commercelayer rl RESOURCE`
+
+Fetch a collection of resources.
+
+```sh-session
+USAGE
+  $ commercelayer rl [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D] [--curl ]
+    [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-p <value>] [-n <value>] [-s <value>] [-x
+    <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -n, --pageSize=<value>      number of elements per page
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --page=<value>          page number
+  -s, --sort=<value>...       defines results ordering
+  -u, --unformatted           print unformatted JSON output
+  -w, --where=<value>...      comma separated list of query filters
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch a collection of resources
+
+ALIASES
+  $ commercelayer list
+  $ commercelayer rl
+  $ commercelayer res:list
+
+EXAMPLES
+  $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
+
+  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+
+  $ cl list -p 5 -n 10 -s -created_at --raw
+```
+
+### `commercelayer rr RESOURCE [ID]`
+
+Fetch a single resource.
+
+```sh-session
+USAGE
+  $ commercelayer rr [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node -D]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-x <value> | -X <value>] [-e <value> | -R]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+FLAGS
+  -D, --doc                   shows the CLI command in a specific language
+  -R, --raw                   print out the raw API response
+  -X, --save-path=<value>     save command output to file and create missing path directories
+  -e, --extract=<value>...    extract subfields from object attributes
+  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...    comma separated resources to include
+  -j, --json                  convert output in standard JSON format
+  -l, --lang=<option>         show the CLI command in the specified language syntax
+                              <options: curl|node>
+  -o, --organization=<value>  (required) the slug of your organization
+  -u, --unformatted           print unformatted JSON output
+  -x, --save=<value>          save command output to file
+  --curl                      show the equivalent cURL command of the CLI command
+  --load-args=<value>         load previously saved command arguments
+  --node                      show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>         save command data to file for future use
+
+DESCRIPTION
+  fetch a single resource
+
+ALIASES
+  $ commercelayer retrieve
+  $ commercelayer rr
+  $ commercelayer res:retrieve
+
+EXAMPLES
+  $ commercelayer resources:retrieve customers/<customerId>
+
+  $ commercelayer retrieve customers <customerId>
+
+  $ cl res:retrieve customers <customerId>
+
+  $ clayer rr customers/<customerId>
+```
+
+### `commercelayer ru RESOURCE [ID]`
+
+Update an existing resource.
+
+```sh-session
+USAGE
+  $ commercelayer ru [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
+    --load-args <value> | --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to update
+
+FLAGS
+  -D, --data=<value>                 the data file to use as request body
+  -D, --doc                          shows the CLI command in a specific language
+  -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
+                                     resource
+  -O, --object=<value>...            define a resource object attribute
+  -R, --raw                          print out the raw API response
+  -a, --attribute=<value>...         define a resource attribute
+  -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...           comma separated resources to include
+  -j, --json                         convert output in standard JSON format
+  -l, --lang=<option>                show the CLI command in the specified language syntax
+                                     <options: curl|node>
+  -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
+                                     remote resource
+  -o, --organization=<value>         (required) the slug of your organization
+  -r, --relationship=<value>...      define a relationship with another resource
+  -u, --unformatted                  print unformatted JSON output
+  --curl                             show the equivalent cURL command of the CLI command
+  --load-args=<value>                load previously saved command arguments
+  --node                             show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>                save command data to file for future use
+
+DESCRIPTION
+  update an existing resource
+
+ALIASES
+  $ commercelayer update
+  $ commercelayer ru
+  $ commercelayer res:update
+  $ commercelayer patch
+
+EXAMPLES
+  $ commercelayer resources:update customers/<customerId> -a reference=referenceId
+
+  $ commercelayer res:update customers <customerId> -a reference_origin="Ref Origin"
+
+  $ cl update customers/<customerId> -m meta_key="meta value"
+
+  $ cl ru customers <customerId> -M meta_key="metadata overwrite
+
+  $ clayer update customers <customerId> -D /path/to/data/file/data.json
+```
+
+### `commercelayer update RESOURCE [ID]`
+
+Update an existing resource.
+
+```sh-session
+USAGE
+  $ commercelayer update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-R] [-l curl|node -D]
+    [--curl ] [--node ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
+    --load-args <value> | --save-args <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to update
+
+FLAGS
+  -D, --data=<value>                 the data file to use as request body
+  -D, --doc                          shows the CLI command in a specific language
+  -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
+                                     resource
+  -O, --object=<value>...            define a resource object attribute
+  -R, --raw                          print out the raw API response
+  -a, --attribute=<value>...         define a resource attribute
+  -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
+  -i, --include=<value>...           comma separated resources to include
+  -j, --json                         convert output in standard JSON format
+  -l, --lang=<option>                show the CLI command in the specified language syntax
+                                     <options: curl|node>
+  -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
+                                     remote resource
+  -o, --organization=<value>         (required) the slug of your organization
+  -r, --relationship=<value>...      define a relationship with another resource
+  -u, --unformatted                  print unformatted JSON output
+  --curl                             show the equivalent cURL command of the CLI command
+  --load-args=<value>                load previously saved command arguments
+  --node                             show the equivalent Node SDK source code of the CLI command
+  --save-args=<value>                save command data to file for future use
+
+DESCRIPTION
+  update an existing resource
+
+ALIASES
+  $ commercelayer update
+  $ commercelayer ru
+  $ commercelayer res:update
+  $ commercelayer patch
+
+EXAMPLES
+  $ commercelayer resources:update customers/<customerId> -a reference=referenceId
+
+  $ commercelayer res:update customers <customerId> -a reference_origin="Ref Origin"
+
+  $ cl update customers/<customerId> -m meta_key="meta value"
+
+  $ cl ru customers <customerId> -M meta_key="metadata overwrite
+
+  $ clayer update customers <customerId> -D /path/to/data/file/data.json
+```
 <!-- commandsstop -->
