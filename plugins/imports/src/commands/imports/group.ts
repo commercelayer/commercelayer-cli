@@ -101,7 +101,9 @@ export default class ImportsGroup extends Command {
 			return tableData
 
 		} catch (error) {
-			this.handleError(error, flags)
+      if (cl.isApiError(error) && (error.status === 404))
+        this.error(`Unable to find import group${groupId ? ` with id ${clColor.msg.error(groupId)}` : ''}`)
+			else this.handleError(error, flags)
 		}
 
 	}
