@@ -1,6 +1,5 @@
 import Command, { Flags } from '../../base'
 import { URL } from 'url'
-import WebhooksDetails from './details'
 import { WebhookUpdate } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
 
@@ -42,7 +41,7 @@ export default class WebhooksUpdate extends Command {
 
 
 	static args = [
-		...WebhooksDetails.args,
+		...Command.args,
 	]
 
 
@@ -89,7 +88,7 @@ export default class WebhooksUpdate extends Command {
 			return webhook
 
 		} catch (error) {
-			this.handleError(error, flags)
+			this.handleError(error, flags, id)
 		}
 
 	}

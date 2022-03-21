@@ -29,6 +29,8 @@ export default class WebhooksList extends Command {
 		}),
 	}
 
+  static args = []
+
 
 	async run() {
 

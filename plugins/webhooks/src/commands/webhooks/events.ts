@@ -33,7 +33,7 @@ export default class WebhooksEvents extends Command {
 	}
 
 	static args = [
-		{ name: 'id', description: 'unique id of the webhook', required: true, hidden: false },
+    ...Command.args,
 	]
 
 
@@ -110,7 +110,7 @@ export default class WebhooksEvents extends Command {
 			return tableData
 
 		} catch (error) {
-			this.handleError(error, flags)
+			this.handleError(error, flags, id)
 		}
 
 	}

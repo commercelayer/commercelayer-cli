@@ -38,6 +38,8 @@ export default class WebhooksCreate extends Command {
 		}),
 	}
 
+  static args = []
+
 
 	async run() {
 

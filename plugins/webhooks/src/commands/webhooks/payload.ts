@@ -24,7 +24,7 @@ export default class WebhooksPayload extends Command {
 	}
 
 	static args = [
-		{ name: 'id', description: 'unique id of the webhook event', required: true, hidden: false },
+    ...Command.args,
 	]
 
 
@@ -54,7 +54,7 @@ export default class WebhooksPayload extends Command {
 			return event
 
 		} catch (error) {
-			this.handleError(error, flags)
+			this.handleError(error, flags, id)
 		}
 
 	}

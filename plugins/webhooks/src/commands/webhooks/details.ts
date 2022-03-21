@@ -31,7 +31,7 @@ export default class WebhooksDetails extends Command {
   }
 
   static args = [
-    { name: 'id', description: 'unique id of the webhook', required: true, hidden: false },
+    ...Command.args,
   ]
 
 

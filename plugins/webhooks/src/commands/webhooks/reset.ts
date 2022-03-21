@@ -18,7 +18,7 @@ export default class WebhooksReset extends Command {
   }
 
 	static args = [
-		{ name: 'id', description: 'unique id of the webhook', required: true, hidden: false },
+    ...Command.args,
 	]
 
 
@@ -32,7 +32,7 @@ export default class WebhooksReset extends Command {
 
     cl.webhooks.update({ id, _reset_circuit: true })
       .then(() => this.log(`\nThe circuit breaker associated to the webhook ${clColor.api.id(id)} has been ${clColor.msg.success('successfully')} reset\n`))
-      .catch(error => this.handleError(error, flags))
+      .catch(error => this.handleError(error, flags, id))
 
   }
 

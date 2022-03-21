@@ -26,6 +26,7 @@ $ commercelayer [COMMAND] (--help | -h) for detailed information about plugin co
 
 * [`commercelayer webhooks [ID]`](#commercelayer-webhooks-id)
 * [`commercelayer webhooks:create`](#commercelayer-webhookscreate)
+* [`commercelayer webhooks:delete ID`](#commercelayer-webhooksdelete-id)
 * [`commercelayer webhooks:destroy ID`](#commercelayer-webhooksdestroy-id)
 * [`commercelayer webhooks:details ID`](#commercelayer-webhooksdetails-id)
 * [`commercelayer webhooks:event ID`](#commercelayer-webhooksevent-id)
@@ -36,6 +37,18 @@ $ commercelayer [COMMAND] (--help | -h) for detailed information about plugin co
 * [`commercelayer webhooks:reset ID`](#commercelayer-webhooksreset-id)
 * [`commercelayer webhooks:topics`](#commercelayer-webhookstopics)
 * [`commercelayer webhooks:update ID`](#commercelayer-webhooksupdate-id)
+* [`commercelayer wh:create`](#commercelayer-whcreate)
+* [`commercelayer wh:delete ID`](#commercelayer-whdelete-id)
+* [`commercelayer wh:destroy ID`](#commercelayer-whdestroy-id)
+* [`commercelayer wh:details ID`](#commercelayer-whdetails-id)
+* [`commercelayer wh:event ID`](#commercelayer-whevent-id)
+* [`commercelayer wh:events ID`](#commercelayer-whevents-id)
+* [`commercelayer wh:list`](#commercelayer-whlist)
+* [`commercelayer wh:listen ID`](#commercelayer-whlisten-id)
+* [`commercelayer wh:payload ID`](#commercelayer-whpayload-id)
+* [`commercelayer wh:reset ID`](#commercelayer-whreset-id)
+* [`commercelayer wh:topics`](#commercelayer-whtopics)
+* [`commercelayer wh:update ID`](#commercelayer-whupdate-id)
 
 ### `commercelayer webhooks [ID]`
 
@@ -68,7 +81,7 @@ Create a new webhook.
 
 ```sh-session
 USAGE
-  $ commercelayer webhooks:create [FAKE-ARG] -o <value> -t <value> -u <value> [-i <value>] [-n <value>]
+  $ commercelayer webhooks:create -o <value> -t <value> -u <value> [-i <value>] [-n <value>]
 
 FLAGS
   -i, --include=<value>...    a comma separated list of related resources to be included
@@ -90,6 +103,34 @@ EXAMPLES
 ```
 
 _See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/create.ts)_
+
+### `commercelayer webhooks:delete ID`
+
+Destroy an existing webhook.
+
+```sh-session
+USAGE
+  $ commercelayer webhooks:delete [ID] -o <value>
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  destroy an existing webhook
+
+ALIASES
+  $ commercelayer webhooks:delete
+  $ commercelayer wh:delete
+  $ commercelayer wh:destroy
+
+EXAMPLES
+  $ commercelayer webhooks:destroy <webhook-id>>
+
+  $ cl wh:destroy <webhook-id>>
+```
 
 ### `commercelayer webhooks:destroy ID`
 
@@ -162,7 +203,7 @@ USAGE
   $ commercelayer webhooks:event [ID] -o <value> [-f -p]
 
 ARGUMENTS
-  ID  unique id of the webhook event
+  ID  unique id of the webhook
 
 FLAGS
   -f, --format                format the payload output
@@ -219,7 +260,7 @@ List all the registered webhooks.
 
 ```sh-session
 USAGE
-  $ commercelayer webhooks:list [FAKE-ARG] -o <value> [-c open|closed] [-t <value>]
+  $ commercelayer webhooks:list -o <value> [-c open|closed] [-t <value>]
 
 FLAGS
   -c, --circuit=<option>      show only webhooks with circuit in the declared state
@@ -281,7 +322,7 @@ USAGE
   $ commercelayer webhooks:payload [ID] -o <value> [-f]
 
 ARGUMENTS
-  ID  unique id of the webhook event
+  ID  unique id of the webhook
 
 FLAGS
   -f, --format                format the payload output
@@ -384,4 +425,333 @@ EXAMPLES
 ```
 
 _See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/update.ts)_
+
+### `commercelayer wh:create`
+
+Create a new webhook.
+
+```sh-session
+USAGE
+  $ commercelayer wh:create -o <value> -t <value> -u <value> [-i <value>] [-n <value>]
+
+FLAGS
+  -i, --include=<value>...    a comma separated list of related resources to be included
+  -n, --name=<value>          the webhook short name
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --topic=<value>         (required) the identifier of the event that will trigger the webhook
+  -u, --url=<value>           (required) the callback URL used to POST data
+
+DESCRIPTION
+  create a new webhook
+
+ALIASES
+  $ commercelayer wh:create
+
+EXAMPLES
+  $ commercelayer webhooks:create -t customers.create -u https://callback.url.io
+
+  $ cl wh:create -t orders.place -u http://myurl.com
+```
+
+### `commercelayer wh:delete ID`
+
+Destroy an existing webhook.
+
+```sh-session
+USAGE
+  $ commercelayer wh:delete [ID] -o <value>
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  destroy an existing webhook
+
+ALIASES
+  $ commercelayer webhooks:delete
+  $ commercelayer wh:delete
+  $ commercelayer wh:destroy
+
+EXAMPLES
+  $ commercelayer webhooks:destroy <webhook-id>>
+
+  $ cl wh:destroy <webhook-id>>
+```
+
+### `commercelayer wh:destroy ID`
+
+Destroy an existing webhook.
+
+```sh-session
+USAGE
+  $ commercelayer wh:destroy [ID] -o <value>
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  destroy an existing webhook
+
+ALIASES
+  $ commercelayer webhooks:delete
+  $ commercelayer wh:delete
+  $ commercelayer wh:destroy
+
+EXAMPLES
+  $ commercelayer webhooks:destroy <webhook-id>>
+
+  $ cl wh:destroy <webhook-id>>
+```
+
+### `commercelayer wh:details ID`
+
+Show the details of an existing webhook.
+
+```sh-session
+USAGE
+  $ commercelayer wh:details [ID] -o <value> [-H] [-e]
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -H, --hide-empty            hide empty attributes
+  -e, --events                show the last event callbacks associated to the webhook
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  show the details of an existing webhook
+
+ALIASES
+  $ commercelayer wh:details
+
+EXAMPLES
+  $ commercelayer webhooks:details <webhook-id>
+
+  $ cl webhooks:details <webhook-id> -H
+
+  $ cl wh:details <webhook-id>
+```
+
+### `commercelayer wh:event ID`
+
+Show the details of a firedf webhook event.
+
+```sh-session
+USAGE
+  $ commercelayer wh:event [ID] -o <value> [-f -p]
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -f, --format                format the payload output
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --payload               show the event payload sent to the callback endpoint
+
+DESCRIPTION
+  show the details of a firedf webhook event
+
+ALIASES
+  $ commercelayer wh:event
+
+EXAMPLES
+  $ commercelayer webhooks:event <event-id>
+
+  $ cl wh:event <event-id> -p
+```
+
+### `commercelayer wh:events ID`
+
+List all the events associated to the webhook.
+
+```sh-session
+USAGE
+  $ commercelayer wh:events [ID] -o <value> [-A | -l <value>]
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -A, --all                   show all events instead of first 25 only
+  -l, --limit=<value>         limit number of events in output
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  list all the events associated to the webhook
+
+ALIASES
+  $ commercelayer wh:events
+
+EXAMPLES
+  $ commercelayer webhooks:events <webhook-id>
+
+  $ cl wh:events <webhook-id>
+```
+
+### `commercelayer wh:list`
+
+List all the registered webhooks.
+
+```sh-session
+USAGE
+  $ commercelayer wh:list -o <value> [-c open|closed] [-t <value>]
+
+FLAGS
+  -c, --circuit=<option>      show only webhooks with circuit in the declared state
+                              <options: open|closed>
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --topic=<value>         the event that triggered the webhook
+
+DESCRIPTION
+  list all the registered webhooks
+
+ALIASES
+  $ commercelayer wh:list
+
+EXAMPLES
+  $ commercelayer webhooks
+
+  $ cl webhooks:list -c open
+
+  $ cl wh:list
+```
+
+### `commercelayer wh:listen ID`
+
+Listen a webhook for outgoing callbacks.
+
+```sh-session
+USAGE
+  $ commercelayer wh:listen [ID] -o <value> [-t <value>]
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --time=<value>          [default: 120] waiting time for the first event
+
+DESCRIPTION
+  listen a webhook for outgoing callbacks
+
+ALIASES
+  $ commercelayer wh:listen
+
+EXAMPLES
+  $ commercelayer webhooks:listen <webhook-id>
+
+  $ cl wh:listen <webhook-id>
+```
+
+### `commercelayer wh:payload ID`
+
+Show the payload associated to an event callback.
+
+```sh-session
+USAGE
+  $ commercelayer wh:payload [ID] -o <value> [-f]
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -f, --format                format the payload output
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  show the payload associated to an event callback
+
+ALIASES
+  $ commercelayer wh:payload
+
+EXAMPLES
+  $ commercelayer webhooks:payload <event-id>
+
+  $ cl webhook:payload <event-id>
+
+  $ cl wh:payload <event-id> -f
+```
+
+### `commercelayer wh:reset ID`
+
+Reset the circuit breaker associated to the webhook.
+
+```sh-session
+USAGE
+  $ commercelayer wh:reset [ID] -o <value>
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -o, --organization=<value>  (required) the slug of your organization
+
+DESCRIPTION
+  reset the circuit breaker associated to the webhook
+
+ALIASES
+  $ commercelayer wh:reset
+
+EXAMPLES
+  $ commercelayer webhooks:reset <webhook-id>
+
+  $ cl wh:reset <webhook-id>
+```
+
+### `commercelayer wh:topics`
+
+Show online documentation for supported events.
+
+```sh-session
+USAGE
+  $ commercelayer wh:topics
+
+DESCRIPTION
+  show online documentation for supported events
+
+ALIASES
+  $ commercelayer wh:topics
+
+EXAMPLES
+  $ commercelayer webhooks:topics
+
+  $ cl wh:topics
+```
+
+### `commercelayer wh:update ID`
+
+Update an existing webhook.
+
+```sh-session
+USAGE
+  $ commercelayer wh:update [ID] -o <value> [-t <value>] [-u <value>] [-i <value>] [-n <value>]
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+FLAGS
+  -i, --include=<value>...    a comma separated list of related resources to be included
+  -n, --name=<value>          the webhook short name
+  -o, --organization=<value>  (required) the slug of your organization
+  -t, --topic=<value>         the identifier of the event that will trigger the webhook
+  -u, --url=<value>           the callback URL used to POST data
+
+DESCRIPTION
+  update an existing webhook
+
+ALIASES
+  $ commercelayer wh:update
+
+EXAMPLES
+  $ commercelayer webhooks:update -t customers.create -u https://callback.url.io
+
+  $ cl wh:update -i customer_group
+```
 <!-- commandsstop -->

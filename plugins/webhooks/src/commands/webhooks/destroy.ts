@@ -1,5 +1,4 @@
 import Command from '../../base'
-import WebhooksDetails from './details'
 import { clColor } from '@commercelayer/cli-core'
 
 
@@ -19,7 +18,7 @@ export default class WebhooksDestroy extends Command {
 	}
 
 	static args = [
-		...WebhooksDetails.args,
+		...Command.args,
 	]
 
 
@@ -33,7 +32,7 @@ export default class WebhooksDestroy extends Command {
 
 		cl.webhooks.delete(id)
 			.then(() => this.log(`\n${clColor.msg.success.greenBright('Successfully')} destroyed webhook with id ${clColor.api.id(id)}\n`))
-			.catch(error => this.handleError(error, flags))
+			.catch(error => this.handleError(error, flags, id))
 
 	}
 

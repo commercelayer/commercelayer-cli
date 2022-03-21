@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags, CliUx } from '../../base'
-import { clUtil, clColor } from '@commercelayer/cli-core'
+import { clUtil, clColor, clOutput } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import { EventCallback } from '@commercelayer/sdk'
 
@@ -31,7 +31,7 @@ export default class WebhooksListen extends Command {
 	}
 
 	static args = [
-		{ name: 'id', description: 'unique id of the webhook', required: true, hidden: false },
+		...Command.args,
 	]
 
 
@@ -78,8 +78,11 @@ export default class WebhooksListen extends Command {
 			this.log(`\nNo events received in the last ${clColor.bold(String(listenTime))} seconds\n`)
 
 		} catch (error) {
-			if (cl.isApiError(error) && (error.status === 401)) this.error('The current access token has expired')
-			else throw error
+			if (cl.isApiError(error) && [401, 404].includes(error.status || 0)) {
+        if (error.status === 401) this.error('The current access token has expired')
+        else
+        if (error.status === 404) this.error(`Unable to find webhook${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
+      } else this.error(clOutput.formatError(error, flags))
 		}
 
 	}

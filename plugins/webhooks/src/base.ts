@@ -32,8 +32,8 @@ export default abstract class extends Command {
 
 
 	static args = [
-		{ name: 'fake-arg', description: 'fake argument', required: false, hidden: true },
-	]
+    { name: 'id', description: 'unique id of the webhook', required: true, hidden: false },
+  ]
 
 
 	// INIT (override)
