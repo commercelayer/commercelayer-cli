@@ -1,5 +1,6 @@
 import { Command, Flags, CliUx as cliux } from '@oclif/core'
 import { clColor, clUtil } from '@commercelayer/cli-core'
+import { Config } from '@oclif/core/lib/interfaces'
 
 
 export default class PluginsAvailable extends Command {
@@ -69,16 +70,30 @@ const getPluginInfo = (pluginName: string): any => {
 
   let plugin
 
-  AvailablePlugins.filter(p => p.enabled).some(p => {
-    if ((pluginName === p.name) || (pluginName === p.plugin) || (`@commercelayer/${pluginName}` === p.plugin)) {
-      plugin = p
-      return true
-    }
-    return false
-  })
+  if (pluginName) {
+    AvailablePlugins.filter(p => p.enabled).some(p => {
+      if ((pluginName === p.name) || (pluginName === p.plugin) || (`@commercelayer/${pluginName}` === p.plugin)) {
+        plugin = p
+        return true
+      }
+      return false
+    })
+  }
 
   return plugin
 
 }
 
-export { getPluginInfo }
+
+const getAvailablePlugins = (): PluginRelease[] => {
+  return AvailablePlugins
+}
+
+
+const getInstalledPlugins = (config: Config): PluginRelease[] => {
+  const installed = config.plugins.filter(p => p.name.startsWith('@commercelayer/cli-plugin-')).map(p => p.name)
+  return AvailablePlugins.filter(p => installed.find(i => i === p.plugin) !== undefined)
+}
+
+
+export { getPluginInfo, getAvailablePlugins, PluginRelease, getInstalledPlugins }
