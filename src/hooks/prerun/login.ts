@@ -100,7 +100,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 		// Check if command requires accessToken
 		if (!_flags.accessToken) return                        // require an accessToken as input flag
-		if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
+		if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will receive the accessToken flag from command line
 
 		let tokenData = null
 		let refresh = false
@@ -118,10 +118,14 @@ const hook: Hook<'prerun'> = async function (opts) {
 		}
 
 		if (tokenData === null) {
-			const token = await newAccessToken(this.config, app, true)
-			tokenData = token?.data
+			const token = await newAccessToken(this.config, app, true).catch(() => {
+				if (refresh) cliux.ux.action.stop(clColor.msg.error('Error'))
+			})
+			if (token) tokenData = token?.data
 			if (refresh) cliux.ux.action.stop()
 		}
+
+		if (!tokenData?.access_token) this.error('Unable to refresh application access token')
 
 		opts.argv.push('--accessToken=' + tokenData.access_token)
 
