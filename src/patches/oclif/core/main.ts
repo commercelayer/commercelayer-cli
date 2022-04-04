@@ -1,11 +1,12 @@
-import {fileURLToPath} from 'url'
-
-import {format, inspect} from 'util'
-
+import { fileURLToPath } from 'url'
+import { format, inspect } from 'util'
 import * as Interfaces from '@oclif/core/lib/interfaces'
-import {URL} from 'url'
-import {Config} from './config'
-import {getHelpFlagAdditions, loadHelpClass, standardizeIDFromArgv} from '@oclif/core/lib/help'
+import { URL } from 'url'
+import { PatchedConfig } from './config'
+import { loadHelpClass, standardizeIDFromArgv } from '@oclif/core/lib/help'
+import { helpAddition, versionAddition } from '@oclif/core/lib/main'
+import { CLIError } from '@oclif/core/lib/errors'
+
 
 const log = (message = '', ...args: any[]) => {
   // tslint:disable-next-line strict-type-predicates
@@ -13,38 +14,24 @@ const log = (message = '', ...args: any[]) => {
   process.stdout.write(format(message, ...args) + '\n')
 }
 
-export const helpAddition = (argv: string[], config: Interfaces.Config): boolean => {
-  if (argv.length === 0 && !config.pjson.oclif.default) return true
-  const mergedHelpFlags = getHelpFlagAdditions(config)
-  for (const arg of argv) {
-    if (mergedHelpFlags.includes(arg)) return true
-    if (arg === '--') return false
-  }
-
-  return false
-}
-
-export const versionAddition = (argv: string[], config?: Interfaces.Config): boolean => {
-  const additionalVersionFlags = config?.pjson.oclif.additionalVersionFlags ?? []
-  const mergedVersionFlags = [...new Set(['--version', ...additionalVersionFlags]).values()]
-  if (mergedVersionFlags.includes(argv[0])) return true
-  return false
-}
 
 // eslint-disable-next-line default-param-last
 export async function run(argv = process.argv.slice(2), options?: Interfaces.LoadOptions) {
+
   // Handle the case when a file URL string or URL is passed in such as 'import.meta.url'; covert to file path.
   if (options && ((typeof options === 'string' && options.startsWith('file://')) || options instanceof URL)) {
     options = fileURLToPath(options)
   }
 
   // return Main.run(argv, options)
-  const config = await Config.load(options || (module.parent && module.parent.parent && module.parent.parent.filename) || __dirname) as Config
+  const config = await PatchedConfig.load(options || (module.parent && module.parent.parent && module.parent.parent.filename) || __dirname) as PatchedConfig
 
   if (config.topicSeparator !== ':' && !argv[0]?.includes(':')) argv = standardizeIDFromArgv(argv, config)
   let [id, ...argvSlice] = argv
+
   // run init hook
-  await config.runHook('init', {id, argv: argvSlice})
+  const initHook = await config.runHook('init', { id, argv: argvSlice })
+  if (initHook.failures[0]) throw new CLIError(initHook.failures[0].error)
 
   // display version if applicable
   if (versionAddition(argv, config)) {
@@ -72,4 +59,5 @@ export async function run(argv = process.argv.slice(2), options?: Interfaces.Loa
   }
 
   await config.runCommand(id, argvSlice, cmd)
+
 }

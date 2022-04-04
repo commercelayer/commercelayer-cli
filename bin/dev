@@ -16,4 +16,8 @@ oclif.settings.debug = true
 
 // Start the CLI
 // oclif.run().then(oclif.flush).catch(oclif.Errors.handle)
-require('../lib/patches/oclif/core/main').run().then(oclif.flush).catch(oclif.Errors.handle)
+require('../lib/patches/oclif/core/main').run()
+	.then(oclif.flush)
+	.catch(error => {
+		if (!error.message === 'HOOK_EXIT') return oclif.Errors.handle(error)
+	})
