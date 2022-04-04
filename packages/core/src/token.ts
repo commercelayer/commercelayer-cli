@@ -65,7 +65,7 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
   const algo = config.api.token_encoding_algorithm as jwt.Algorithm
 
   const accessToken = jwt.sign(payload, sharedSecret, { algorithm: algo, noTimestamp: true })
-  const info = jwt.verify(accessToken, sharedSecret, { algorithms: [ algo ] })
+  const info = jwt.verify(accessToken, sharedSecret, { algorithms: [algo] })
 
 
   return {
@@ -79,22 +79,22 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
 
 const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 
-	const credentials: ClientCredentials = {
-		clientId: auth.clientId,
-		clientSecret: auth.clientSecret,
-		endpoint: baseURL(auth.slug, auth.domain),
-		scope: auth.scope || '',
-	}
+  const credentials: ClientCredentials = {
+    clientId: auth.clientId,
+    clientSecret: auth.clientSecret,
+    endpoint: baseURL(auth.slug, auth.domain),
+    scope: auth.scope || '',
+  }
 
-	if (auth.email && auth.password) {
-		const user: User = {
-			username: auth.email,
-			password: auth.password,
-		}
-		return getCustomerToken(credentials, user)
-	}
+  if (auth.email && auth.password) {
+    const user: User = {
+      username: auth.email,
+      password: auth.password,
+    }
+    return getCustomerToken(credentials, user)
+  }
 
-	return clientCredentials(credentials)
+  return clientCredentials(credentials)
 
 }
 
@@ -129,7 +129,9 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
     },
   }
 
-  const req = https.request(options/* , res => {
+  try {
+    
+    const req = https.request(options/* , res => {
     console.log(`statusCode: ${res.statusCode}`)
 
     res.on('data', d => {
@@ -137,14 +139,17 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
     })
   } */)
 
-  /*
-  req.on('error', error => {
-    console.error(error)
-  })
-  */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    req.on('error', error => {
+      // console.error(error)
+    })
 
-  req.write(data)
-  req.end()
+    req.write(data)
+    req.end()
+
+  } catch (error) {
+    // console.log(error)
+  }
 
   await sleep(300)
 
@@ -153,15 +158,15 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 
 const isAccessTokenExpiring = (tokenData: { created_at: string }, validityMins?: number): boolean => {
 
-	const safetyInterval = 30 // secs
+  const safetyInterval = 30 // secs
   const maxExpiration = (validityMins || config.api.token_expiration_mins) * 60 // secs
 
 
-	const createdAt = Number(tokenData.created_at)
-	const now = Math.floor(Date.now() / 1000) // secs
-	const time = now - createdAt
-  
-	return (time >= (maxExpiration - safetyInterval))
+  const createdAt = Number(tokenData.created_at)
+  const now = Math.floor(Date.now() / 1000) // secs
+  const time = now - createdAt
+
+  return (time >= (maxExpiration - safetyInterval))
 
 }
 
