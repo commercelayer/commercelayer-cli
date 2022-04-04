@@ -43,7 +43,7 @@
     "@size-limit/preset-small-lib": "^6.0.3",
     "@types/jest": "^27.0.3",
     "@types/jsonwebtoken": "^8.5.6",
-    "@types/node": "^16.11.0",
+    "@types/node": "^17.0.21",
     "@types/update-notifier": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "eslint": "^8.1.0",
