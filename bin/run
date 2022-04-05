@@ -7,5 +7,5 @@ oclif.run()
 	.then(require('@oclif/core/flush'))
 	.catch(error => {
 		const oclifHandler = require('@oclif/core/handle')
-		if (!error.message === 'HOOK_EXIT') return oclifHandler(error)
+		if (error.message !== 'HOOK_EXIT') return oclifHandler(error)
 	})

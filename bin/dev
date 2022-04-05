@@ -19,5 +19,5 @@ oclif.settings.debug = true
 require('../lib/patches/oclif/core/main').run()
 	.then(oclif.flush)
 	.catch(error => {
-		if (!error.message === 'HOOK_EXIT') return oclif.Errors.handle(error)
+		if (error.message !== 'HOOK_EXIT') return oclif.Errors.handle(error)
 	})
