@@ -1,13 +1,33 @@
 import { CLIError } from '@oclif/core/lib/errors'
-import { Command } from '@oclif/core/lib/interfaces'
+import { Command, LoadOptions, Config as IConfig } from '@oclif/core/lib/interfaces'
 import { Debug } from '@oclif/core/lib/config/util'
 import { Config } from '@oclif/core'
+import { fileURLToPath } from 'url'
 
 // eslint-disable-next-line new-cap
 const debug = Debug()
 
 
+function isConfig(o: any): o is IConfig {
+  return o && Boolean(o._base)
+}
+
+
 export class PatchedConfig extends Config {
+
+  static async load(opts: LoadOptions = (module.parent && module.parent.parent && module.parent.parent.filename) || __dirname) {
+    // Handle the case when a file URL string is passed in such as 'import.meta.url'; covert to file path.
+    if (typeof opts === 'string' && opts.startsWith('file://')) {
+      opts = fileURLToPath(opts)
+    }
+
+    if (typeof opts === 'string') opts = { root: opts }
+    if (isConfig(opts)) return opts
+    const config = new PatchedConfig(opts)
+    await config.load()
+    return config
+  }
+
 
   // eslint-disable-next-line default-param-last
   async runCommand<T = unknown>(id: string, argv: string[] = [], cachedCommand?: Command.Plugin): Promise<T> {
