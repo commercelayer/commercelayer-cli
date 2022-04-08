@@ -41,6 +41,8 @@ export default class ResourcesDelete extends Command {
 
 		const resource = this.checkResource(res, { singular: true })
 
+    const showHeaders = flags.headers || flags['headers-only']
+
 		const organization = flags.organization
 		const domain = flags.domain
 		const accessToken = flags.accessToken
@@ -48,6 +50,7 @@ export default class ResourcesDelete extends Command {
 
 		const cl = commercelayer({ organization, domain, accessToken })
 
+    const rawReader = (flags.raw && showHeaders) ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
 		const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
 		try {
@@ -56,6 +59,8 @@ export default class ResourcesDelete extends Command {
 			this.checkOperation(resSdk, OPERATION)
 
 			await resSdk.delete(id)
+
+      if (showHeaders) this.printHeaders(rawReader?.headers, flags)
 
 			this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(id)}\n`)
 

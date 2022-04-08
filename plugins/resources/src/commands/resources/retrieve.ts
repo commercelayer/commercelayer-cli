@@ -57,6 +57,7 @@ export default class ResourcesRetrieve extends Command {
     const loadParams = flags[FLAG_LOAD_PARAMS]
     const saveCmd = flags[FLAG_SAVE_COMMAND]
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
+    const showHeaders = flags.headers || flags['headers-only']
 
 		const organization = flags.organization
 		const domain = flags.domain
@@ -71,7 +72,7 @@ export default class ResourcesRetrieve extends Command {
 
 		const cl = commercelayer({ organization, domain, accessToken })
 
-		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
+		const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders}) : undefined
 		const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
 		const params: QueryParamsRetrieve = {}
@@ -101,6 +102,7 @@ export default class ResourcesRetrieve extends Command {
         this.extractObjectFields(ext, out)
       }
 
+      this.printHeaders(rawReader?.headers, flags)
 			this.printOutput(out, flags)
 
 

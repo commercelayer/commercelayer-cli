@@ -66,6 +66,7 @@ export default class ResourcesCreate extends Command {
     const loadParams = flags[FLAG_LOAD_PARAMS]
     const saveCmd = flags[FLAG_SAVE_COMMAND]
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
+    const showHeaders = flags.headers || flags['headers-only']
 
 		const organization = flags.organization
 		const domain = flags.domain
@@ -125,7 +126,7 @@ export default class ResourcesCreate extends Command {
 		const fields = this.fieldsFlag(flags.fields, resource.api)
 
 
-		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
+		const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
 		const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
 		const params: QueryParamsRetrieve = {}
@@ -150,6 +151,7 @@ export default class ResourcesCreate extends Command {
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 
+      this.printHeaders(rawReader?.headers, flags)
 			this.printOutput(out, flags)
 
 			this.log(`\n${clColor.style.success('Successfully')} created new resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(res.id)}\n`)

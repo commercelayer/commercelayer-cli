@@ -71,7 +71,8 @@ export default abstract class extends Command {
     }),
     doc: Flags.boolean({
       char: 'D',
-      description: 'shows the CLI command in a specific language',
+      description: 'show the CLI command in a specific language',
+      exclusive: ['raw'],
     }),
     lang: Flags.string({
       char: 'l',
@@ -101,6 +102,18 @@ export default abstract class extends Command {
     'load-args': Flags.string({
       description: 'load previously saved command arguments',
       // exclusive: [FLAG_SAVE_COMMAND],
+    }),
+    headers: Flags.boolean({
+      char: 'H',
+      description: 'show response headers',
+      dependsOn: ['raw'],
+      exclusive: ['headers-only'],
+    }),
+    'headers-only': Flags.boolean({
+      char: 'O',
+      description: 'show only response headers',
+      dependsOn: ['raw'],
+      exclusive: ['headers', 'fields', 'include'],
     }),
   }
 
@@ -502,7 +515,19 @@ export default abstract class extends Command {
 
 
   printOutput(output: any, flags: any | undefined) {
-    if (output) this.log(formatOutput(output, flags))
+    if (output && !flags['headers-only']) this.log(formatOutput(output, flags))
+  }
+
+
+  printHeaders(headers: any, flags: any) {
+    if (headers) {
+      if (flags.headers || flags['headers-only']) {
+        this.log('---------- Response Headers ----------')
+        if (Object.keys(headers).length === 0) this.log(clColor.italic('No headers'))
+        else this.log(formatOutput(headers, flags))
+        this.log('---------- ---------------- ----------')
+      }
+    }
   }
 
 

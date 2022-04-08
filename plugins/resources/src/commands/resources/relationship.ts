@@ -45,10 +45,12 @@ export default class ResourcesRelationship extends Command {
 
     const relationship = args.relationship
     const multiRel = this.isRelationship1N(relationship)
+    const showHeaders = flags.headers || flags['headers-only']
 
     const organization = flags.organization
     const domain = flags.domain
     const accessToken = flags.accessToken
+
 
     const cl = commercelayer({ organization, domain, accessToken })
 
@@ -73,7 +75,7 @@ export default class ResourcesRelationship extends Command {
     const page = flags.page
     const perPage = flags.pageSize
 
-    const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
+    const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
     const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
     const params: QueryParamsList = {}
@@ -110,8 +112,9 @@ export default class ResourcesRelationship extends Command {
 
       if (!out || (out.length === 0)) this.log(clColor.italic(`\nRelationship ${clColor.api.resource(`${resName}.${relationship}`)} is empty\n`))
       else {
+        this.printHeaders(rawReader?.headers, flags)
         this.printOutput(out, flags)
-        if (multiRel) this.log(`\nRecords: ${clColor.blueBright(out.length)} of ${res.meta.recordCount} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${res.meta.pageCount}\n`)
+        if (multiRel && !flags['headers-only']) this.log(`\nRecords: ${clColor.blueBright(out.length)} of ${res.meta.recordCount} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${res.meta.pageCount}\n`)
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)
       }
 

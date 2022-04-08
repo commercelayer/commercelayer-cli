@@ -74,7 +74,7 @@ export default class ResourcesList extends Command {
     const loadParams = flags[FLAG_LOAD_PARAMS]
     const saveCmd = flags[FLAG_SAVE_COMMAND]
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
-
+    const showHeaders = flags.headers || flags['headers-only']
 
 		// const baseUrl = baseURL(flags.organization, flags.domain)
 		const organization = flags.organization
@@ -97,7 +97,7 @@ export default class ResourcesList extends Command {
 
 		const cl = commercelayer({ organization, domain, accessToken })
 
-		const rawReader = flags.raw ? cl.addRawResponseReader() : undefined
+		const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
 		const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
 		const params: QueryParamsList = {}
@@ -137,8 +137,9 @@ export default class ResourcesList extends Command {
           out.forEach(o => this.extractObjectFields(ext, o))
         }
 
+        this.printHeaders(rawReader?.headers, flags)
 				this.printOutput(out, flags)
-				this.log(`\nRecords: ${clColor.blueBright(res.length)} of ${meta.recordCount} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
+				if (!flags['headers-only']) this.log(`\nRecords: ${clColor.blueBright(res.length)} of ${meta.recordCount} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
 
         // Save command output
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)

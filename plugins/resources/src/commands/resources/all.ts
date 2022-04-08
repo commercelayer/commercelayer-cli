@@ -2,7 +2,7 @@
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
 import Command, { Flags, CliUx } from '../../base'
-import { clApi, clToken, clColor, clUtil } from '@commercelayer/cli-core'
+import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
 import { getIntegrationToken } from '@commercelayer/js-auth'
@@ -47,7 +47,7 @@ export default class ResourcesAll extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
+    ...clCommand.commandFlags<typeof Command.flags>(Command.flags, ['headers', 'headers-only']),
     include: Flags.string({
       char: 'i',
       multiple: true,
