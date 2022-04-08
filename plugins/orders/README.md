@@ -40,11 +40,13 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:billing_address_same_as_shipping ID`](#commercelayer-ordersbilling_address_same_as_shipping-id)
 * [`commercelayer orders:cancel ID`](#commercelayer-orderscancel-id)
 * [`commercelayer orders:capture ID`](#commercelayer-orderscapture-id)
+* [`commercelayer orders:commit_invoice ID`](#commercelayer-orderscommit_invoice-id)
 * [`commercelayer orders:customer_payment_source_id ID`](#commercelayer-orderscustomer_payment_source_id-id)
 * [`commercelayer orders:nullify_payment_source ID`](#commercelayer-ordersnullify_payment_source-id)
 * [`commercelayer orders:place ID`](#commercelayer-ordersplace-id)
 * [`commercelayer orders:refresh ID`](#commercelayer-ordersrefresh-id)
 * [`commercelayer orders:refund ID`](#commercelayer-ordersrefund-id)
+* [`commercelayer orders:refund_invoice ID`](#commercelayer-ordersrefund_invoice-id)
 * [`commercelayer orders:save_billing_address_to_customer_address_book ID`](#commercelayer-orderssave_billing_address_to_customer_address_book-id)
 * [`commercelayer orders:save_payment_source_to_customer_wallet ID`](#commercelayer-orderssave_payment_source_to_customer_wallet-id)
 * [`commercelayer orders:save_shipping_address_to_customer_address_book ID`](#commercelayer-orderssave_shipping_address_to_customer_address_book-id)
@@ -284,6 +286,30 @@ DESCRIPTION
 
 _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/capture.ts)_
 
+### `commercelayer orders:commit_invoice ID`
+
+Send this attribute if you want commit the sales tax invoice to the associated tax calculator (currently supported by Avalara).
+
+```sh-session
+USAGE
+  $ commercelayer orders:commit_invoice [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want commit the sales tax invoice to the associated tax calculator (currently supported by
+  Avalara).
+```
+
+_See code: [src/commands/orders/commit_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/commit_invoice.ts)_
+
 ### `commercelayer orders:customer_payment_source_id ID`
 
 The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
@@ -399,6 +425,30 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund.ts)_
+
+### `commercelayer orders:refund_invoice ID`
+
+Send this attribute if you want refund the sales tax invoice to the associated tax calculator (currently supported by Avalara).
+
+```sh-session
+USAGE
+  $ commercelayer orders:refund_invoice [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified order
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want refund the sales tax invoice to the associated tax calculator (currently supported by
+  Avalara).
+```
+
+_See code: [src/commands/orders/refund_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund_invoice.ts)_
 
 ### `commercelayer orders:save_billing_address_to_customer_address_book ID`
 
