@@ -88,6 +88,16 @@ export const triggers: { [key: string ]: Trigger } = {
       trigger: '_billing_address_same_as_shipping',
       description: 'Send this attribute if you want the billing address to be cloned from the order\'s shipping address.',
     },
+	commit_invoice: {
+      action: 'commit_invoice',
+      trigger: '_commit_invoice',
+      description: 'Send this attribute if you want commit the sales tax invoice to the associated tax calculator (currently supported by Avalara).',
+    },
+	refund_invoice: {
+      action: 'refund_invoice',
+      trigger: '_refund_invoice',
+      description: 'Send this attribute if you want refund the sales tax invoice to the associated tax calculator (currently supported by Avalara).',
+    },
 	save_payment_source_to_customer_wallet: {
       action: 'save_payment_source_to_customer_wallet',
       trigger: '_save_payment_source_to_customer_wallet',
@@ -129,6 +139,8 @@ export type ActionType =
 	'customer_payment_source_id' |
 	'shipping_address_same_as_billing' |
 	'billing_address_same_as_shipping' |
+	'commit_invoice' |
+	'refund_invoice' |
 	'save_payment_source_to_customer_wallet' |
 	'save_shipping_address_to_customer_address_book' |
 	'save_billing_address_to_customer_address_book' |
