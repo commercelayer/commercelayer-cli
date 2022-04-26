@@ -11,7 +11,6 @@ export default class WebhooksPayload extends Command {
 
 	static examples = [
 		'$ commercelayer webhooks:payload <event-id>',
-		'$ cl webhook:payload <event-id>',
 		'$ cl wh:payload <event-id> -f',
 	]
 
@@ -24,7 +23,7 @@ export default class WebhooksPayload extends Command {
 	}
 
 	static args = [
-    ...Command.args,
+		...Command.args,
 	]
 
 
@@ -47,9 +46,9 @@ export default class WebhooksPayload extends Command {
 			const event = events[0]
 
 			if (event.payload) {
-        const payload = JSON.parse((typeof event.payload === 'string') ? event.payload : String(event.payload))
-        this.log(flags.format ? clOutput.printObject(payload) : JSON.stringify(payload, null, 4))
-      }
+				const payload = (typeof event.payload === 'string') ? JSON.parse(event.payload) : event.payload
+				this.log(flags.format ? clOutput.printObject(payload) : JSON.stringify(payload, null, 4))
+			}
 
 			return event
 
