@@ -337,8 +337,6 @@ ALIASES
 EXAMPLES
   $ commercelayer webhooks:payload <event-id>
 
-  $ cl webhook:payload <event-id>
-
   $ cl wh:payload <event-id> -f
 ```
 
@@ -673,8 +671,6 @@ ALIASES
 
 EXAMPLES
   $ commercelayer webhooks:payload <event-id>
-
-  $ cl webhook:payload <event-id>
 
   $ cl wh:payload <event-id> -f
 ```
