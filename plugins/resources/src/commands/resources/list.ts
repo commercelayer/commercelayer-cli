@@ -62,6 +62,7 @@ export default class ResourcesList extends Command {
       char: 'I',
       description: 'force resources inclusion beyound the 3rd level',
       dependsOn: ['include'],
+      hidden: true,
     }),
 	}
 
