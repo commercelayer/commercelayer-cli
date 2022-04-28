@@ -187,14 +187,14 @@ export default abstract class extends Command {
   }
 
 
-  includeFlag(flag: string[], relationships?: KeyValRel): string[] {
+  includeFlag(flag: string[], relationships?: KeyValRel, force?: boolean): string[] {
 
     const values: string[] = []
 
     if (flag) {
       const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
       flagValues.forEach(a => values.push(...a))
-      if (values.some(f => f.split('.').length > 3)) this.error('Can be only included resources within the 3rd level of depth')
+      if (values.some(f => f.split('.').length > 3) && !force) this.error('Can be only included resources within the 3rd level of depth')
     }
 
     if (relationships) {

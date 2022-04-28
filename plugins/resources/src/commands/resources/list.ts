@@ -58,6 +58,11 @@ export default class ResourcesList extends Command {
       multiple: true,
       exclusive: ['raw'],
     }),
+    'force-include': Flags.boolean({
+      char: 'I',
+      description: 'force resources inclusion beyound the 3rd level',
+      dependsOn: ['include'],
+    }),
 	}
 
 	static args = [
@@ -83,7 +88,7 @@ export default class ResourcesList extends Command {
 
 
 		// Include flags
-		const include: string[] = this.includeFlag(flags.include)
+		const include: string[] = this.includeFlag(flags.include, undefined, flags['force-include'])
 		// Fields flags
 		const fields = this.fieldsFlag(flags.fields, resource.api)
 		// Where flags
