@@ -27,7 +27,7 @@ export default class ResourcesIndex extends Command {
 		this.log(clColor.style.title('\n-= Commerce Layer API available resources =-\n'))
 
 		const resourceArray = resourceList('api').map(r => {
-			return { name: r, url: `https://docs.commercelayer.io/api/resources/${r}` }
+			return { name: r, url: `https://docs.commercelayer.io/developers/v/api-reference/${r}` }
 		})
 
 		CliUx.Table.table(resourceArray, {
