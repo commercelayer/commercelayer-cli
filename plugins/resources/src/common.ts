@@ -1,3 +1,7 @@
+
+export const apiReferenceUrl = 'https://docs.commercelayer.io/developers/v/api-reference'
+
+
 export type KeyVal = { [key: string]: string | number | boolean | undefined | null }
 
 export type KeyValString = { [key: string]: string }

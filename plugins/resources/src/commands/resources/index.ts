@@ -1,6 +1,7 @@
 import { Command, Flags, CliUx } from '@oclif/core'
 import { resourceList } from '../../util/resources'
 import { clUtil, clColor } from '@commercelayer/cli-core'
+import { apiReferenceUrl } from '../../common'
 
 
 export default class ResourcesIndex extends Command {
@@ -27,7 +28,7 @@ export default class ResourcesIndex extends Command {
 		this.log(clColor.style.title('\n-= Commerce Layer API available resources =-\n'))
 
 		const resourceArray = resourceList('api').map(r => {
-			return { name: r, url: `https://docs.commercelayer.io/developers/v/api-reference/${r}` }
+			return { name: r, url: `${apiReferenceUrl}/${r}` }
 		})
 
 		CliUx.Table.table(resourceArray, {
