@@ -74,7 +74,7 @@
     "@fast-csv/parse": "^4.3.6",
     "@oclif/core": "^1.6.1",
     "cli-progress": "^3.10.0",
-    "cli-table3": "0.6.1",
+    "cli-table3": "0.6.2",
     "tslib": "^2.3.1"
   },
   "publishConfig": {
