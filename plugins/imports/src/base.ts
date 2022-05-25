@@ -1,5 +1,5 @@
 import { Command, Flags, CliUx } from '@oclif/core'
-import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
+import { clOutput, clUpdate, clColor, clToken } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 
 
@@ -87,6 +87,20 @@ export default abstract class extends Command {
       case 'in_progress':
       default: return status
     }
+  }
+
+
+  protected checkApplication(accessToken: string, kinds: string[]): boolean {
+
+    const info = clToken.decodeAccessToken(accessToken)
+
+    if (info === null) this.error('Invalid access token provided')
+    else
+      if (!kinds.includes(info.application.kind))
+        this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Application kind must be one of the following: ${clColor.cyanBright(kinds.join(', '))}`)
+
+    return true
+
   }
 
 

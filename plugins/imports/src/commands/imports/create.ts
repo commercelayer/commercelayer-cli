@@ -92,8 +92,10 @@ export default class ImportsCreate extends Command {
 
     const { flags } = await this.parse(ImportsCreate)
 
-    this.cl = this.commercelayerInit(flags)
+    // Check application kind
+    this.checkApplication(flags.accessToken, ['integration', 'cli'])
 
+    this.cl = this.commercelayerInit(flags)
 
     // Check access to API before executing the command
     await this.checkAccessToken()
