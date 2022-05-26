@@ -207,7 +207,7 @@ export default class ImportsCreate extends Command {
     if (monitor && this.monitor) {
       const results = await Promise.allSettled(imports)
       this.monitor.stop()
-      return !results.some((r: any) => r.value.status === 'interrupted')
+      return !results.some((r: any) => ((r.value === undefined) || (r.value.status === 'interrupted')))
     }
 
     return true
