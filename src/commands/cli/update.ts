@@ -31,7 +31,7 @@ export default class CliUpdate extends Command {
     cliux.ux.action.start('Updating Commerce Layer CLI')
 
 
-    const cp = exec(`npm install -g @commercelayer/cli${version}`, async (error, _stdout, stderr) => {
+    const cp = exec(`npm install --location=global @commercelayer/cli${version}`, async (error, _stdout, stderr) => {
 
       let errorMessage = ''
 
