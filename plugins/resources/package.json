@@ -79,7 +79,7 @@
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/sdk": "^4.14.0",
     "@oclif/core": "^1.6.4",
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "inquirer": "^8.2.2",
     "json-2-csv": "^3.17.0",
     "lodash": "^4.17.21",
