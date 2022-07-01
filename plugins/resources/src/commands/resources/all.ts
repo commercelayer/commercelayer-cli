@@ -12,7 +12,7 @@ import { getIntegrationToken } from '@commercelayer/js-auth'
 const maxItemsWarning = 20000
 const maxPageItems = 25
 const securityInterval = 2
-const requestTimeout = { min: 1000, max: 10000 }
+const requestTimeout = { min: 1000, max: 15000 }
 
 
 const notify = (message: string): void => {
@@ -188,8 +188,8 @@ export default class ResourcesAll extends Command {
     // Sort flags
     const sort = this.sortFlag(flags.sort)
 
-    const timeout = flags.timeout || 5000 // Icreased timeout (default 3 secs)
-    if (timeout && ((timeout < 1000) || (timeout > 10000)))
+    const timeout = flags.timeout || 5000
+    if (timeout && ((timeout < requestTimeout.min) || (timeout > requestTimeout.max)))
       this.error(`Invalid timeout: ${clColor.style.error(String(timeout))}. Timeout value must be in range [${requestTimeout.min} - ${requestTimeout.max}]`)
 
 
