@@ -21,6 +21,12 @@ $ cl-checkout COMMAND
 $ cl-checkout [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
+To install as a Commerce Layer CLI plugin run the following command:
+
+```sh-session
+$ commercelayer plugins:install checkout
+```
+
 ## Commands
 <!-- commands -->
 
