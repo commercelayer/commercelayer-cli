@@ -1,24 +1,24 @@
 {
   "name": "@commercelayer/cli-plugin-checkout",
   "description": "Commerce Layer CLI Checkout plugin",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout/issues",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^0.1.6",
+    "@commercelayer/cli-dev": "^0.1.7",
     "@oclif/plugin-help": "^5.1.11",
     "@oclif/test": "^2.1.0",
-    "@types/chai": "^4.3.0",
-    "@types/mocha": "^9.1.0",
-    "@types/node": "^17.0.21",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.0.4",
     "chai": "^4.3.6",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
     "eslint-config-oclif-typescript": "^0.2.0",
     "mocha": "^9.2.1",
     "nyc": "^15.1.0",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.2"
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   },
   "engines": {
     "node": ">=16"
@@ -63,16 +63,16 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "cl-cli-dev readme --plugin  && git add README.md"
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/cli-core": "^1.3.13",
+    "@commercelayer/cli-core": "^1.3.15",
     "@commercelayer/js-auth": "^2.2.9",
-    "@commercelayer/sdk": "^4.4.0",
-    "@oclif/core": "^1.3.4",
+    "@commercelayer/sdk": "^4.15.0",
+    "@oclif/core": "^1.9.9",
     "open": "^8.4.0",
-    "tslib": "^2.3.1"
+    "tslib": "^2.4.0"
   },
   "publishConfig": {
     "access": "public"

@@ -16,9 +16,9 @@ Commerce Layer CLI Checkout plugin
 <!-- usage -->
 
 ```sh-session
-$ cl-checkout COMMAND
+commercelayer COMMAND
 
-$ cl-checkout [COMMAND] (--help | -h) for detailed information about plugin commands.
+commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
@@ -30,17 +30,17 @@ $ commercelayer plugins:install checkout
 ## Commands
 <!-- commands -->
 
-* [`cl-checkout checkout`](#cl-checkout-checkout)
-* [`cl-checkout checkout:order ID`](#cl-checkout-checkoutorder-id)
+* [`commercelayer checkout`](#commercelayer-checkout)
+* [`commercelayer checkout:order ID`](#commercelayer-checkoutorder-id)
 
-### `cl-checkout checkout`
+### `commercelayer checkout`
 
 Create checkout URLs.
 
 ```sh-session
 USAGE
-  $ cl-checkout checkout -o <value> -a <value> [--open] [-m <value> | [-O <value> | -S <value> | -B <value>]]
-    [-c <value> | ] [-e <value> | ]
+  $ commercelayer checkout -o <value> -a <value> [--open] [-m <value> | [-O <value> | -S <value> | -B
+    <value>]] [-c <value> | ] [-e <value> | ]
 
 FLAGS
   -B, --bundle=<value>...     a bundle code
@@ -66,13 +66,13 @@ EXAMPLES
 
 _See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/src/commands/checkout/index.ts)_
 
-### `cl-checkout checkout:order ID`
+### `commercelayer checkout:order ID`
 
 Create checkout URLs starting from an existing order.
 
 ```sh-session
 USAGE
-  $ cl-checkout checkout:order [ID] -o <value> -a <value> [--open]
+  $ commercelayer checkout:order [ID] -o <value> -a <value> [--open]
 
 ARGUMENTS
   ID  unique id of the order
