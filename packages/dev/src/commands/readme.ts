@@ -121,11 +121,11 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
 
     return [
       `\`\`\`sh-session
-      $ ${config.bin} COMMAND
+${config.bin} COMMAND
 
-      $ ${config.bin} (-v | version | --version) to check the version of the CLI you have installed.
+${config.bin} (-v | version | --version) to check the version of the CLI you have installed.
 
-      $ ${config.bin} [COMMAND] (--help | -h) for detailed information about CLI commands.
+${config.bin} [COMMAND] (--help | -h) for detailed information about CLI commands.
 \`\`\`\n`,
     ].join('\n').trim()
 
@@ -135,9 +135,9 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
   usagePlugin(config: Interfaces.Config): string {
     return [
 `\`\`\`sh-session
-$ ${config.bin} COMMAND
+${config.bin} COMMAND
 
-$ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin commands.
+${config.bin} [COMMAND] (--help | -h) for detailed information about plugin commands.
 \`\`\`\n`,
     ].join('\n').trim()
   }
