@@ -17,11 +17,11 @@ helpers for oclif CLIs
 <!-- usage -->
 
 ```sh-session
-      $ cl-cli-dev COMMAND
+cl-cli-dev COMMAND
 
-      $ cl-cli-dev (-v | version | --version) to check the version of the CLI you have installed.
+cl-cli-dev (-v | version | --version) to check the version of the CLI you have installed.
 
-      $ cl-cli-dev [COMMAND] (--help | -h) for detailed information about CLI commands.
+cl-cli-dev [COMMAND] (--help | -h) for detailed information about CLI commands.
 ```
 <!-- usagestop -->
 ## Commands
