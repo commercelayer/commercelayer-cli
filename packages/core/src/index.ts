@@ -19,6 +19,8 @@ export * as clUpdate from './update'
 
 export * as clUtil from './util'
 
+export { default as clHelp } from './help'
+
 
 /** Types **/
 export type { ApiMode } from './api'
