@@ -16,9 +16,9 @@ Commerce Layer CLI Triggers plugin
 <!-- usage -->
 
 ```sh-session
-$ commercelayer COMMAND
+commercelayer COMMAND
 
-$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
@@ -85,6 +85,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order_subscription:activate ID`](#commercelayer-order_subscriptionactivate-id)
 * [`commercelayer order_subscription:cancel ID`](#commercelayer-order_subscriptioncancel-id)
 * [`commercelayer order_subscription:deactivate ID`](#commercelayer-order_subscriptiondeactivate-id)
+* [`commercelayer payment_method ID`](#commercelayer-payment_method-id)
+* [`commercelayer payment_method:disable ID`](#commercelayer-payment_methoddisable-id)
+* [`commercelayer payment_method:enable ID`](#commercelayer-payment_methodenable-id)
 * [`commercelayer return ID`](#commercelayer-return-id)
 * [`commercelayer return:approve ID`](#commercelayer-returnapprove-id)
 * [`commercelayer return:archive ID`](#commercelayer-returnarchive-id)
@@ -105,6 +108,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer shipment:purchase ID`](#commercelayer-shipmentpurchase-id)
 * [`commercelayer shipment:ready_to_ship ID`](#commercelayer-shipmentready_to_ship-id)
 * [`commercelayer shipment:ship ID`](#commercelayer-shipmentship-id)
+* [`commercelayer shipping_method ID`](#commercelayer-shipping_method-id)
+* [`commercelayer shipping_method:disable ID`](#commercelayer-shipping_methoddisable-id)
+* [`commercelayer shipping_method:enable ID`](#commercelayer-shipping_methodenable-id)
 * [`commercelayer stock_transfer ID`](#commercelayer-stock_transfer-id)
 * [`commercelayer stock_transfer:cancel ID`](#commercelayer-stock_transfercancel-id)
 * [`commercelayer stock_transfer:complete ID`](#commercelayer-stock_transfercomplete-id)
@@ -951,7 +957,7 @@ _See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer order:capture ID`
 
-Send this attribute if you want to capture an approved order.
+Send this attribute if you want to capture an authorized order.
 
 ```sh-session
 USAGE
@@ -967,7 +973,7 @@ FLAGS
   -u, --unformatted           print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to capture an approved order.
+  Send this attribute if you want to capture an authorized order.
 ```
 
 _See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/capture.ts)_
@@ -1393,6 +1399,75 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/order_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/deactivate.ts)_
+
+### `commercelayer payment_method ID`
+
+Execute an action on a resource of type payment_methods.
+
+```sh-session
+USAGE
+  $ commercelayer payment_method [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type payment_methods
+```
+
+_See code: [src/commands/payment_method/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/payment_method/index.ts)_
+
+### `commercelayer payment_method:disable ID`
+
+Send this attribute if you want to mark the payment method as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer payment_method:disable [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the payment method as disabled.
+```
+
+_See code: [src/commands/payment_method/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/payment_method/disable.ts)_
+
+### `commercelayer payment_method:enable ID`
+
+Send this attribute if you want to mark the payment method as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer payment_method:enable [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the payment method as enabled.
+```
+
+_See code: [src/commands/payment_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/payment_method/enable.ts)_
 
 ### `commercelayer return ID`
 
@@ -1853,6 +1928,75 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/ship.ts)_
+
+### `commercelayer shipping_method ID`
+
+Execute an action on a resource of type shipping_methods.
+
+```sh-session
+USAGE
+  $ commercelayer shipping_method [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type shipping_methods
+```
+
+_See code: [src/commands/shipping_method/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/index.ts)_
+
+### `commercelayer shipping_method:disable ID`
+
+Send this attribute if you want to mark the shipping method as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer shipping_method:disable [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the shipping method as disabled.
+```
+
+_See code: [src/commands/shipping_method/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/disable.ts)_
+
+### `commercelayer shipping_method:enable ID`
+
+Send this attribute if you want to mark the shipping method as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer shipping_method:enable [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the shipping method as enabled.
+```
+
+_See code: [src/commands/shipping_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/enable.ts)_
 
 ### `commercelayer stock_transfer ID`
 
