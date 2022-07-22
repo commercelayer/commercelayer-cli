@@ -50,7 +50,7 @@ const triggers: { [key: string ]: Trigger } = {
 	capture: {
     action: 'capture',
     trigger: '_capture',
-    description: 'Send this attribute if you want to capture an approved order.',
+    description: 'Send this attribute if you want to capture an authorized order.',
   },
 	refund: {
     action: 'refund',
