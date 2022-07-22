@@ -265,7 +265,7 @@ _See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer orders:capture ID`
 
-Send this attribute if you want to capture an approved order.
+Send this attribute if you want to capture an authorized order.
 
 ```sh-session
 USAGE
@@ -281,7 +281,7 @@ FLAGS
   -u, --unformatted           print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to capture an approved order.
+  Send this attribute if you want to capture an authorized order.
 ```
 
 _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/capture.ts)_
