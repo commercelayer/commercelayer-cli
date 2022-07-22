@@ -211,12 +211,16 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
    const header = () => `### \`${config.bin} ${this.commandUsage(config, c)}\``
 
     try {
+
+      const commandFormatted = wrapper.formatCommand(c).trim()//.replace(/\$ /g, '')
+
       return compact([
         header(),
         title,
-        '```sh-session\n' + wrapper.formatCommand(c).trim() + '\n```',
+        '```sh-session\n' + commandFormatted + '\n```',
         this.commandCode(config, c),
       ]).join('\n\n')
+
     } catch (error: any) {
       this.error(error.message)
     }
