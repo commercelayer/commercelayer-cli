@@ -73,6 +73,7 @@ export default abstract class extends Command {
       char: 'D',
       description: 'show the CLI command in a specific language',
       exclusive: ['raw'],
+      helpGroup: 'documentation',
     }),
     lang: Flags.string({
       char: 'l',
@@ -80,6 +81,7 @@ export default abstract class extends Command {
       exclusive: availableLanguages,
       options: availableLanguages,
       dependsOn: ['doc'],
+      helpGroup: 'documentation',
     }),
     curl: Flags.boolean({
       description: `show the equivalent ${languageInfo.curl.label} of the CLI command`,
@@ -87,6 +89,7 @@ export default abstract class extends Command {
       parse: () => Promise.resolve('curl'),
       hidden: !availableLanguages.includes('curl'),
       dependsOn: ['doc'],
+      helpGroup: 'documentation',
     }),
     node: Flags.boolean({
       description: `show the equivalent ${languageInfo.node.label} of the CLI command`,
@@ -94,6 +97,7 @@ export default abstract class extends Command {
       parse: () => Promise.resolve('node'),
       hidden: !availableLanguages.includes('node'),
       dependsOn: ['doc'],
+      helpGroup: 'documentation',
     }),
     'save-args': Flags.string({
       description: 'save command data to file for future use',

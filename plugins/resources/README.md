@@ -17,9 +17,9 @@ Commerce Layer CLI Resources plugin
 <!-- usage -->
 
 ```sh-session
-$ commercelayer COMMAND
+commercelayer COMMAND
 
-$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
 To install as a Commerce Layer CLI plugin run the following command:
@@ -89,7 +89,6 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                   export fields in csv format
-  -D, --doc                   show the CLI command in a specific language
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
@@ -98,17 +97,20 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -s, --sort=<value>...       defines results ordering
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch all resources
@@ -141,7 +143,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>             the data file to use as request body
-  -D, --doc                      show the CLI command in a specific language
   -H, --headers                  show response headers
   -O, --headers-only             show only response headers
   -O, --object=<value>...        define a resource object attribute
@@ -150,16 +151,19 @@ FLAGS
   -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format
-  -l, --lang=<option>            show the CLI command in the specified language syntax
-                                 <options: curl|node>
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
   -o, --organization=<value>     (required) the slug of your organization
   -r, --relationship=<value>...  define a relationship with another resource
   -u, --unformatted              print unformatted JSON output
-  --curl                         show the equivalent cURL command of the CLI command
   --load-args=<value>            load previously saved command arguments
-  --node                         show the equivalent Node SDK source code of the CLI command
   --save-args=<value>            save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   create a new resource
@@ -194,21 +198,23 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   delete an existing resource
@@ -269,7 +275,6 @@ ARGUMENTS
   ID    resource id
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -278,8 +283,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -287,10 +290,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -327,7 +335,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -336,8 +343,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -345,10 +350,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -382,7 +392,6 @@ ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -391,8 +400,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -400,10 +407,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a collection of resources
@@ -437,7 +449,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>                 the data file to use as request body
-  -D, --doc                          show the CLI command in a specific language
   -H, --headers                      show response headers
   -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
                                      resource
@@ -448,17 +459,20 @@ FLAGS
   -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...           comma separated resources to include
   -j, --json                         convert output in standard JSON format
-  -l, --lang=<option>                show the CLI command in the specified language syntax
-                                     <options: curl|node>
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
                                      remote resource
   -o, --organization=<value>         (required) the slug of your organization
   -r, --relationship=<value>...      define a relationship with another resource
   -u, --unformatted                  print unformatted JSON output
-  --curl                             show the equivalent cURL command of the CLI command
   --load-args=<value>                load previously saved command arguments
-  --node                             show the equivalent Node SDK source code of the CLI command
   --save-args=<value>                save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   update an existing resource
@@ -496,7 +510,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>             the data file to use as request body
-  -D, --doc                      show the CLI command in a specific language
   -H, --headers                  show response headers
   -O, --headers-only             show only response headers
   -O, --object=<value>...        define a resource object attribute
@@ -505,16 +518,19 @@ FLAGS
   -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format
-  -l, --lang=<option>            show the CLI command in the specified language syntax
-                                 <options: curl|node>
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
   -o, --organization=<value>     (required) the slug of your organization
   -r, --relationship=<value>...  define a relationship with another resource
   -u, --unformatted              print unformatted JSON output
-  --curl                         show the equivalent cURL command of the CLI command
   --load-args=<value>            load previously saved command arguments
-  --node                         show the equivalent Node SDK source code of the CLI command
   --save-args=<value>            save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   create a new resource
@@ -550,7 +566,6 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                   export fields in csv format
-  -D, --doc                   show the CLI command in a specific language
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
@@ -559,17 +574,20 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -s, --sort=<value>...       defines results ordering
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch all resources
@@ -602,7 +620,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>             the data file to use as request body
-  -D, --doc                      show the CLI command in a specific language
   -H, --headers                  show response headers
   -O, --headers-only             show only response headers
   -O, --object=<value>...        define a resource object attribute
@@ -611,16 +628,19 @@ FLAGS
   -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format
-  -l, --lang=<option>            show the CLI command in the specified language syntax
-                                 <options: curl|node>
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
   -o, --organization=<value>     (required) the slug of your organization
   -r, --relationship=<value>...  define a relationship with another resource
   -u, --unformatted              print unformatted JSON output
-  --curl                         show the equivalent cURL command of the CLI command
   --load-args=<value>            load previously saved command arguments
-  --node                         show the equivalent Node SDK source code of the CLI command
   --save-args=<value>            save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   create a new resource
@@ -655,21 +675,23 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   delete an existing resource
@@ -700,7 +722,6 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                   export fields in csv format
-  -D, --doc                   show the CLI command in a specific language
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
@@ -709,17 +730,20 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -s, --sort=<value>...       defines results ordering
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch all resources
@@ -774,7 +798,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>             the data file to use as request body
-  -D, --doc                      show the CLI command in a specific language
   -H, --headers                  show response headers
   -O, --headers-only             show only response headers
   -O, --object=<value>...        define a resource object attribute
@@ -783,16 +806,19 @@ FLAGS
   -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format
-  -l, --lang=<option>            show the CLI command in the specified language syntax
-                                 <options: curl|node>
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
   -o, --organization=<value>     (required) the slug of your organization
   -r, --relationship=<value>...  define a relationship with another resource
   -u, --unformatted              print unformatted JSON output
-  --curl                         show the equivalent cURL command of the CLI command
   --load-args=<value>            load previously saved command arguments
-  --node                         show the equivalent Node SDK source code of the CLI command
   --save-args=<value>            save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   create a new resource
@@ -827,21 +853,23 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   delete an existing resource
@@ -902,7 +930,6 @@ ARGUMENTS
   ID    resource id
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -911,8 +938,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -920,10 +945,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -980,7 +1010,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -989,8 +1018,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -998,10 +1025,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -1035,7 +1067,6 @@ ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1044,8 +1075,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -1053,10 +1082,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a collection of resources
@@ -1089,7 +1123,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1098,15 +1131,18 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a single resource
@@ -1142,7 +1178,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>                 the data file to use as request body
-  -D, --doc                          show the CLI command in a specific language
   -H, --headers                      show response headers
   -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
                                      resource
@@ -1153,17 +1188,20 @@ FLAGS
   -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...           comma separated resources to include
   -j, --json                         convert output in standard JSON format
-  -l, --lang=<option>                show the CLI command in the specified language syntax
-                                     <options: curl|node>
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
                                      remote resource
   -o, --organization=<value>         (required) the slug of your organization
   -r, --relationship=<value>...      define a relationship with another resource
   -u, --unformatted                  print unformatted JSON output
-  --curl                             show the equivalent cURL command of the CLI command
   --load-args=<value>                load previously saved command arguments
-  --node                             show the equivalent Node SDK source code of the CLI command
   --save-args=<value>                save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   update an existing resource
@@ -1227,7 +1265,6 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                   export fields in csv format
-  -D, --doc                   show the CLI command in a specific language
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
@@ -1236,17 +1273,20 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -s, --sort=<value>...       defines results ordering
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch all resources
@@ -1305,7 +1345,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>             the data file to use as request body
-  -D, --doc                      show the CLI command in a specific language
   -H, --headers                  show response headers
   -O, --headers-only             show only response headers
   -O, --object=<value>...        define a resource object attribute
@@ -1314,16 +1353,19 @@ FLAGS
   -f, --fields=<value>...        comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format
-  -l, --lang=<option>            show the CLI command in the specified language syntax
-                                 <options: curl|node>
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
   -o, --organization=<value>     (required) the slug of your organization
   -r, --relationship=<value>...  define a relationship with another resource
   -u, --unformatted              print unformatted JSON output
-  --curl                         show the equivalent cURL command of the CLI command
   --load-args=<value>            load previously saved command arguments
-  --node                         show the equivalent Node SDK source code of the CLI command
   --save-args=<value>            save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   create a new resource
@@ -1360,21 +1402,23 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   delete an existing resource
@@ -1439,7 +1483,6 @@ ARGUMENTS
   ID    resource id
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1448,8 +1491,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -1457,10 +1498,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -1521,7 +1567,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1530,8 +1575,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -1539,10 +1582,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -1578,7 +1626,6 @@ ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1587,8 +1634,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -1596,10 +1641,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a collection of resources
@@ -1634,7 +1684,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1643,15 +1692,18 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a single resource
@@ -1689,7 +1741,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>                 the data file to use as request body
-  -D, --doc                          show the CLI command in a specific language
   -H, --headers                      show response headers
   -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
                                      resource
@@ -1700,17 +1751,20 @@ FLAGS
   -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...           comma separated resources to include
   -j, --json                         convert output in standard JSON format
-  -l, --lang=<option>                show the CLI command in the specified language syntax
-                                     <options: curl|node>
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
                                      remote resource
   -o, --organization=<value>         (required) the slug of your organization
   -r, --relationship=<value>...      define a relationship with another resource
   -u, --unformatted                  print unformatted JSON output
-  --curl                             show the equivalent cURL command of the CLI command
   --load-args=<value>                load previously saved command arguments
-  --node                             show the equivalent Node SDK source code of the CLI command
   --save-args=<value>                save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   update an existing resource
@@ -1750,7 +1804,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1759,15 +1812,18 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a single resource
@@ -1802,7 +1858,6 @@ ARGUMENTS
   ID    resource id
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1811,8 +1866,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -1820,10 +1873,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -1860,7 +1918,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1869,8 +1926,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -1878,10 +1933,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -1915,7 +1975,6 @@ ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1924,8 +1983,6 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -n, --pageSize=<value>      number of elements per page
   -o, --organization=<value>  (required) the slug of your organization
   -p, --page=<value>          page number
@@ -1933,10 +1990,15 @@ FLAGS
   -u, --unformatted           print unformatted JSON output
   -w, --where=<value>...      comma separated list of query filters
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a collection of resources
@@ -1969,7 +2031,6 @@ ARGUMENTS
   ID        id of the resource to retrieve
 
 FLAGS
-  -D, --doc                   show the CLI command in a specific language
   -H, --headers               show response headers
   -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
@@ -1978,15 +2039,18 @@ FLAGS
   -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...    comma separated resources to include
   -j, --json                  convert output in standard JSON format
-  -l, --lang=<option>         show the CLI command in the specified language syntax
-                              <options: curl|node>
   -o, --organization=<value>  (required) the slug of your organization
   -u, --unformatted           print unformatted JSON output
   -x, --save=<value>          save command output to file
-  --curl                      show the equivalent cURL command of the CLI command
   --load-args=<value>         load previously saved command arguments
-  --node                      show the equivalent Node SDK source code of the CLI command
   --save-args=<value>         save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a single resource
@@ -2022,7 +2086,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>                 the data file to use as request body
-  -D, --doc                          show the CLI command in a specific language
   -H, --headers                      show response headers
   -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
                                      resource
@@ -2033,17 +2096,20 @@ FLAGS
   -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...           comma separated resources to include
   -j, --json                         convert output in standard JSON format
-  -l, --lang=<option>                show the CLI command in the specified language syntax
-                                     <options: curl|node>
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
                                      remote resource
   -o, --organization=<value>         (required) the slug of your organization
   -r, --relationship=<value>...      define a relationship with another resource
   -u, --unformatted                  print unformatted JSON output
-  --curl                             show the equivalent cURL command of the CLI command
   --load-args=<value>                load previously saved command arguments
-  --node                             show the equivalent Node SDK source code of the CLI command
   --save-args=<value>                save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   update an existing resource
@@ -2082,7 +2148,6 @@ ARGUMENTS
 
 FLAGS
   -D, --data=<value>                 the data file to use as request body
-  -D, --doc                          show the CLI command in a specific language
   -H, --headers                      show response headers
   -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
                                      resource
@@ -2093,17 +2158,20 @@ FLAGS
   -f, --fields=<value>...            comma separeted list of fields in the format [resource]=field1,field2...
   -i, --include=<value>...           comma separated resources to include
   -j, --json                         convert output in standard JSON format
-  -l, --lang=<option>                show the CLI command in the specified language syntax
-                                     <options: curl|node>
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
                                      remote resource
   -o, --organization=<value>         (required) the slug of your organization
   -r, --relationship=<value>...      define a relationship with another resource
   -u, --unformatted                  print unformatted JSON output
-  --curl                             show the equivalent cURL command of the CLI command
   --load-args=<value>                load previously saved command arguments
-  --node                             show the equivalent Node SDK source code of the CLI command
   --save-args=<value>                save command data to file for future use
+
+DOCUMENTATION FLAGS
+  -D, --doc            show the CLI command in a specific language
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+  --curl               show the equivalent cURL command of the CLI command
+  --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   update an existing resource

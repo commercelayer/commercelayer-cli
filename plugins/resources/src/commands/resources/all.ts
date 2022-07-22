@@ -283,9 +283,10 @@ export default class ResourcesAll extends Command {
 
       // Notification
       const finishMessage = `Export of ${resources.length} ${itemsDesc} is finished!`
-      if (notification && !blindMode) notify(finishMessage)
-      else
       if (blindMode) this.log(finishMessage)
+      else
+      if (notification) notify(finishMessage)
+
 
 
       return out
