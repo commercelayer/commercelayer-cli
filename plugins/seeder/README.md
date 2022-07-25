@@ -16,17 +16,49 @@ Commerce Layer CLI seeder plugin
 <!-- usage -->
 
 ```sh-session
-$ commercelayer COMMAND
+commercelayer COMMAND
 
-$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
 ## Commands
 <!-- commands -->
 
+* [`commercelayer seed ID`](#commercelayer-seed-id)
 * [`commercelayer seeder:check ID`](#commercelayer-seedercheck-id)
 * [`commercelayer seeder:clean ID`](#commercelayer-seederclean-id)
 * [`commercelayer seeder:seed ID`](#commercelayer-seederseed-id)
+
+### `commercelayer seed ID`
+
+Execute Commerce Layer seeder.
+
+```sh-session
+USAGE
+  $ commercelayer seed [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
+                                <options: single_sku|multi_market|custom>
+  -k, --keep                    keep existing resources without updating them
+  -n, --name=<value>            the name of the business model file to use
+  -o, --organization=<value>    (required) the slug of your organization
+  -u, --url=<value>             [default: https://data.commercelayer.app/seeder] seeder data URL
+
+DESCRIPTION
+  execute Commerce Layer seeder
+
+ALIASES
+  $ commercelayer seed
+
+EXAMPLES
+  $ commercelayer seeder:seed -u <seedUrl>
+
+  $ cl seed -b multi_market
+```
 
 ### `commercelayer seeder:check ID`
 
