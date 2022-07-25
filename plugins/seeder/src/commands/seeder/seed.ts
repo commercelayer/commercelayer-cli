@@ -48,6 +48,11 @@ export default class SeederSeed extends Command {
       char: 'k',
       description: 'keep existing resources without updating them',
     }),
+    delay: Flags.integer({
+      char: 'D',
+      description: 'add a delay in milliseconds between calls to different resources',
+      hidden: true,
+    }),
   }
 
 
@@ -59,6 +64,7 @@ export default class SeederSeed extends Command {
     const businessModel = flags.businessModel
     const accessToken = flags.accessToken
     const name = this.modelNameCheck(flags)
+
 
     try {
 
@@ -206,6 +212,8 @@ export default class SeederSeed extends Command {
       if (delay > 0) await clUtil.sleep(delay)
 
     }
+
+    if (flags.delay) await clUtil.sleep(flags.delay)
 
     return referenceKeys.length
 
