@@ -117,7 +117,7 @@
     "@oclif/plugin-not-found": "^2.3.1",
     "@oclif/plugin-plugins": "^2.1.0",
     "configstore": "^5.0.1",
-    "inquirer": "^8.2.0",
+    "inquirer": "^9.0.2",
     "lodash": "^4.17.21",
     "tslib": "^2.3.1",
     "update-notifier": "^5.1.0"
