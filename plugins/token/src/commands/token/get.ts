@@ -1,27 +1,6 @@
 import Command, { Flags } from '../../base'
 import { AppAuth, clCommand, clColor } from '@commercelayer/cli-core'
 import { decodeAccessToken, getAccessToken } from '../../token'
-import { AuthScope } from '@commercelayer/js-auth'
-
-
-
-const checkScope = (scopeFlags: string[]): AuthScope => {
-
-  const scope: string[] = []
-
-  if (scopeFlags) {
-    for (const s of scopeFlags) {
-      const colonIdx = s.indexOf(':')
-      if ((colonIdx < 0) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${clColor.msg.error(s)}`)
-      else
-        if (scope.includes(s)) throw new Error(`Duplicate login scope: ${clColor.msg.error(s)}`)
-        else scope.push(s)
-    }
-  }
-
-  return (scope.length === 1) ? scope[0] : scope
-
-}
 
 
 export default class TokenGet extends Command {
@@ -44,12 +23,14 @@ export default class TokenGet extends Command {
       char: 's',
       description: 'application client_secret',
       required: false,
+      dependsOn: ['clientId'],
     }),
     scope: Flags.string({
       char: 'S',
       description: 'access token scope (market, stock location)',
       required: false,
       multiple: true,
+      dependsOn: ['clientId'],
     }),
     email: Flags.string({
       char: 'e',
@@ -76,7 +57,7 @@ export default class TokenGet extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.arg('clientSecret')} and ${clColor.cli.arg('scope')}`)
 
-    const scope = checkScope(flags.scope)
+    const scope = this.checkScope(flags.scope)
 
     const config: AppAuth = {
       clientId: flags.clientId,

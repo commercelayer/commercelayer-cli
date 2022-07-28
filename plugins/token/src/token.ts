@@ -26,7 +26,6 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 
 const revokeAccessToken = async (app: AppAuth, accessToken: string) => {
   return clToken.revokeAccessToken(app, accessToken)
-
 }
 
 

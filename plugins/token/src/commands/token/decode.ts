@@ -31,10 +31,16 @@ export default class TokenDecode extends Command {
     // const domain = flags.domain
     const accessToken = args.token || flags.accessToken
 
+    // CHeck if the access token is related to the current organization
     const tokenData = decodeAccessToken(accessToken)
+    if (tokenData.organization.slug !== organization) this.error(`You cannot revoke an access token for an application of another organization: ${clColor.msg.error(tokenData.organization.slug)}`, {
+      suggestions: [`Execute ${clColor.cli.command('login')} or ${clColor.cli.command('switch')} to ${clColor.api.slug(tokenData.organization.slug)} before trying revoking this token`],
+    })
 
-    if (tokenData.organization.slug !== organization) this.error(`You cannot decode an access token for an application of another organization: ${clColor.msg.error(tokenData.organization.slug)}`, {
-      suggestions: [`Execute ${clColor.cli.command('login')} or ${clColor.cli.command('switch')} to ${clColor.api.slug(tokenData.organization.slug)} before trying decoding this token`],
+    // Check if the access token is related to the current application
+    const tokenLogin = decodeAccessToken(flags.accessToken)
+    if (tokenData.application.id !== tokenLogin.application.id) this.error('You cannot revoke an access token for an application you are not logged in', {
+      suggestions: [`Execute ${clColor.cli.command('login')} or ${clColor.cli.command('switch')} to ${clColor.api.slug(tokenData.organization.slug)} before trying revoking this token`],
     })
 
 
