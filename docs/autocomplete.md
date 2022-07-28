@@ -1,5 +1,4 @@
-`commercelayer autocomplete`
-============================
+# `commercelayer autocomplete`
 
 Display autocomplete installation instructions.
 

@@ -1,5 +1,4 @@
-`commercelayer cli`
-===================
+# `commercelayer cli`
 
 Update Commerce Layer CLI.
 
@@ -10,7 +9,7 @@ Update Commerce Layer CLI.
 
 Update Commerce Layer CLI.
 
-```
+```sh-session
 USAGE
   $ commercelayer cli:update [-v <value>]
 
@@ -34,7 +33,7 @@ _See code: [src/commands/cli/update.ts](https://github.com/commercelayer/commerc
 
 Show installed version of Commerce Layer CLI.
 
-```
+```sh-session
 USAGE
   $ commercelayer cli:version
 

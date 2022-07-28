@@ -1,5 +1,4 @@
-`commercelayer applications`
-============================
+# `commercelayer applications`
 
 Manage login to CLI applications.
 
@@ -21,14 +20,14 @@ Show a list of all (logged in) available CLI applications.
 
 ```sh-session
 USAGE
-  $ commercelayer applications [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>] [-S]
+  $ commercelayer applications [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
+    --id <value>] [-S]
 
 FLAGS
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: cli|sales_channel|integration>
+                              <options: integration|sales_channel>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
@@ -88,14 +87,14 @@ Show a list of all (logged in) available CLI applications.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:available [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>] [-S]
+  $ commercelayer applications:available [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
+    --id <value>] [-S]
 
 FLAGS
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: cli|sales_channel|integration>
+                              <options: integration|sales_channel>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
@@ -149,14 +148,14 @@ Show application details.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:info [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>] [-j]
+  $ commercelayer applications:info [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
+    --id <value>] [-j]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application
   -j, --json                  show info in JSON format
   -k, --kind=<option>         application kind
-                              <options: cli|sales_channel|integration>
+                              <options: integration|sales_channel>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
@@ -178,14 +177,14 @@ Show a list of all (logged in) available CLI applications.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:list [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>] [-S]
+  $ commercelayer applications:list [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
+    --id <value>] [-S]
 
 FLAGS
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: cli|sales_channel|integration>
+                              <options: integration|sales_channel>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
@@ -243,13 +242,13 @@ Remove an application from CLI local configuration.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:logout [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>] [-r]
+  $ commercelayer applications:logout [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
+    --id <value>] [-r]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: cli|sales_channel|integration>
+                              <options: integration|sales_channel>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
@@ -274,13 +273,13 @@ Remove an application from CLI local configuration.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:remove [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>] [-r]
+  $ commercelayer applications:remove [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
+    --id <value>] [-r]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: cli|sales_channel|integration>
+                              <options: integration|sales_channel>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
@@ -331,13 +330,13 @@ Switch applications.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:switch [-o <value>] [-k cli|sales_channel|integration] [--live | -m test|live] [-a <value>
-    | --id <value>]
+  $ commercelayer applications:switch [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
+    --id <value>]
 
 FLAGS
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: cli|sales_channel|integration>
+                              <options: integration|sales_channel>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug

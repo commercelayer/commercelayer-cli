@@ -1,5 +1,4 @@
-`commercelayer update`
-======================
+# `commercelayer update`
 
 Update Commerce Layer CLI.
 
@@ -9,7 +8,7 @@ Update Commerce Layer CLI.
 
 Update Commerce Layer CLI.
 
-```
+```sh-session
 USAGE
   $ commercelayer update [-v <value>]
 

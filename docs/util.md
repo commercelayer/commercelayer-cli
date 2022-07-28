@@ -1,5 +1,4 @@
-`commercelayer util`
-====================
+# `commercelayer util`
 
 Decode a Commerce Layer JWT.
 
@@ -9,7 +8,7 @@ Decode a Commerce Layer JWT.
 
 Decode a Commerce Layer JWT.
 
-```
+```sh-session
 USAGE
   $ commercelayer util:jwt TOKEN
 

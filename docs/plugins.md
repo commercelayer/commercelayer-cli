@@ -1,5 +1,4 @@
-`commercelayer plugins`
-=======================
+# `commercelayer plugins`
 
 Manage CLI plugins.
 

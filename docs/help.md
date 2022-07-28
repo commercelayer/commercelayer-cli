@@ -1,5 +1,4 @@
-`commercelayer help`
-====================
+# `commercelayer help`
 
 Display help for commercelayer.
 
