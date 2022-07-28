@@ -2,7 +2,7 @@ import Configstore from 'configstore'
 import { join } from 'path'
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs'
 import { Config } from '@oclif/core/lib/interfaces/config'
-import { AppKey, AppInfo, clApi } from '@commercelayer/cli-core'
+import { AppKey, AppInfo, clApi, clConfig } from '@commercelayer/cli-core'
 
 const packageJson = require('../package.json')
 
@@ -185,9 +185,9 @@ enum ConfigParamsEditable {
 const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
-	defaultDomain: 'commercelayer.io',
-	applicationTypeCheck: ['cli', 'sales_channel', 'integration'],
-	scopeCheck: ['market', 'stock_location'],
+	defaultDomain: clConfig.api.default_domain || 'commercelayer.io',
+	applicationTypeCheck: clConfig.cli.applications || ['cli', 'sales_channel', 'integration'],
+	scopeCheck: clConfig.application.login_scopes || ['market', 'stock_location'],
 }
 
 

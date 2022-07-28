@@ -87,6 +87,9 @@ const hook: Hook<'prerun'> = async function (opts) {
 	if (_flags.clientId && configData.clientId) opts.argv.push('--clientId=' + configData.clientId)
 	if (_flags.clientSecret && configData.clientSecret) opts.argv.push('--clientSecret=' + configData.clientSecret)
 
+	const scope = clApplication.arrayScope(configData.scope)
+	if (_flags.scope && (scope.length > 0)) opts.argv.push(scope.map(s => `--scope=${s}`).join(' '))
+
 	// If present remove --live flag option
 	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
 
