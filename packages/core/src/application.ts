@@ -1,3 +1,4 @@
+import { AuthScope } from "@commercelayer/js-auth";
 import { ApiMode } from "./api";
 
 interface AppKey {
@@ -49,4 +50,10 @@ const appKeyMatch = (app1?: AppKey, app2?: AppKey): boolean => {
 }
 
 
-export { appKey, appKeyValid, appKeyMatch }
+const arrayScope = (scope?: AuthScope): string[] => {
+	if (!scope) return []
+	else return Array.isArray(scope) ? scope : [ scope ]
+}
+
+
+export { appKey, appKeyValid, appKeyMatch, arrayScope }

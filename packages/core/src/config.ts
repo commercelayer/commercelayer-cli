@@ -1,16 +1,17 @@
-const APPLICATION_KINDS = ['integration', 'sales_channel', 'webapp']
 
 const IMPORTS_RESOURCE_TYPES: Array<string> = [
-	'orders',
+	'bundles',
 	'coupons',
-	'skus',
+	'customer_subscriptions',
+	'customers',
+	'gift_cards',
+	'orders',
+	'prices',
 	'sku_lists',
 	'sku_list_items',
-	'prices',
+	'sku_options',
+	'skus',
 	'stock_items',
-	'gift_cards',
-	'customers',
-	'customer_subscriptions',
 	'tax_categories',
 ]
 
@@ -30,18 +31,21 @@ type ApiConfig = {
   requests_max_secs_burst: number;
   requests_max_num_avg: number;
   requests_max_secs_avg: number;
+  requests_max_num_oauth: number;
+  requests_max_secs_oauth:number;
   page_max_size: number;
   page_default_size: number;
 }
 
 type ApplicationConfig = {
-	kinds: string[];
+	kinds: readonly string[];
+	login_scopes: readonly string[];
 }
 
 type ImportsConfig = {
     max_size: number;
-	statuses: string[];
-	types: string[];
+	statuses: readonly string[];
+	types: readonly string[];
 	max_queue_length: number;
 }
 
@@ -49,11 +53,16 @@ type WebhooksConfig = {
 	retry_number: number;
 }
 
+type CliConfig = {
+	applications: readonly string[];
+}
+
 type Config = {
   api: ApiConfig;
   application: ApplicationConfig;
   imports: ImportsConfig;
   webhooks: WebhooksConfig;
+  cli: CliConfig;
 }
 
 
@@ -64,13 +73,16 @@ const config: Config = {
 		token_encoding_algorithm: 'HS512',
 		requests_max_num_burst: 50,
 		requests_max_secs_burst: 10,
-		requests_max_num_avg: 600,
-		requests_max_secs_avg: 5 * 60,	// 5 min
+		requests_max_num_avg: 150,
+		requests_max_secs_avg: 60,	// 1 min
+		requests_max_num_oauth: 15,
+		requests_max_secs_oauth: 60,
 		page_max_size: 25,
 		page_default_size: 10,
 	},
 	application: {
-		kinds: APPLICATION_KINDS,
+		kinds: ['integration', 'sales_channel', 'webapp'],
+		login_scopes: ['market', 'stock_location'],
 	},
 	imports: {
 		max_size: 2000,
@@ -80,6 +92,9 @@ const config: Config = {
 	},
 	webhooks: {
 		retry_number: 5,
+	},
+	cli: {
+		applications: ['integration', 'sales_channel'],
 	}
 } as const
 

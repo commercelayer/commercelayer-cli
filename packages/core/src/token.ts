@@ -5,6 +5,7 @@ import { AppAuth } from './application'
 import { sleep } from './util'
 import { baseURL } from './api'
 import { AuthReturnType, clientCredentials, ClientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
+import { CLIError } from '@oclif/core/lib/errors'
 
 
 
@@ -130,7 +131,7 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
   }
 
   try {
-    
+
     const req = https.request(options/* , res => {
     console.log(`statusCode: ${res.statusCode}`)
 
@@ -141,14 +142,15 @@ const revokeAccessToken = async (app: AppAuth, token: string) => {
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     req.on('error', error => {
-      // console.error(error)
+      throw new CLIError(error.message || 'Error revoking access token')
     })
 
     req.write(data)
     req.end()
 
   } catch (error) {
-    // console.log(error)
+    if (error instanceof CLIError) throw error
+    else throw new CLIError((error as Error).message || 'Error revoking access token')
   }
 
   await sleep(300)
