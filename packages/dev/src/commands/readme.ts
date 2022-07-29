@@ -177,8 +177,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
     const bin = `\`${config.bin} ${topic.name}\``
     const t = topic
     const doc = [
-      bin,
-      '='.repeat(bin.length),
+      '# ' + bin,
       '',
       template({ config })(formatDescription(t.description)).trim(),
       '',
