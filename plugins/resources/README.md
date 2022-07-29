@@ -81,8 +81,8 @@ Fetch all resources.
 ```sh-session
 USAGE
   $ commercelayer all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
-    [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H
-    <value> [-C -f <value>]] [-b] [-e <value> | ]
+    [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
+    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -90,6 +90,8 @@ ARGUMENTS
 FLAGS
   -C, --csv                   export fields in csv format
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers               show response headers
+  -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
   -b, --blind                 execute in blind mode without prompt and progress bar
@@ -121,11 +123,11 @@ ALIASES
   $ commercelayer res:all
 
 EXAMPLES
-  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:all customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:all customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl all -s -created_at --json
+  $ cl all customers -s -created_at --json
 ```
 
 ### `commercelayer create RESOURCE`
@@ -426,11 +428,11 @@ ALIASES
   $ commercelayer res:list
 
 EXAMPLES
-  $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:list customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:list customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl list -p 5 -n 10 -s -created_at --raw
+  $ cl list customers -p 5 -n 10 -s -created_at --raw
 ```
 
 ### `commercelayer patch RESOURCE [ID]`
@@ -558,8 +560,8 @@ Fetch all resources.
 ```sh-session
 USAGE
   $ commercelayer ra [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
-    [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H
-    <value> [-C -f <value>]] [-b] [-e <value> | ]
+    [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
+    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -567,6 +569,8 @@ ARGUMENTS
 FLAGS
   -C, --csv                   export fields in csv format
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers               show response headers
+  -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
   -b, --blind                 execute in blind mode without prompt and progress bar
@@ -598,11 +602,11 @@ ALIASES
   $ commercelayer res:all
 
 EXAMPLES
-  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:all customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:all customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl all -s -created_at --json
+  $ cl all customers -s -created_at --json
 ```
 
 ### `commercelayer rc RESOURCE`
@@ -714,8 +718,8 @@ Fetch all resources.
 ```sh-session
 USAGE
   $ commercelayer res:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
-    [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H
-    <value> [-C -f <value>]] [-b] [-e <value> | ]
+    [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
+    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -723,6 +727,8 @@ ARGUMENTS
 FLAGS
   -C, --csv                   export fields in csv format
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers               show response headers
+  -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
   -b, --blind                 execute in blind mode without prompt and progress bar
@@ -754,11 +760,11 @@ ALIASES
   $ commercelayer res:all
 
 EXAMPLES
-  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:all customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:all customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl all -s -created_at --json
+  $ cl all customers -s -created_at --json
 ```
 
 ### `commercelayer res:args`
@@ -1101,11 +1107,11 @@ ALIASES
   $ commercelayer res:list
 
 EXAMPLES
-  $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:list customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:list customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl list -p 5 -n 10 -s -created_at --raw
+  $ cl list customers -p 5 -n 10 -s -created_at --raw
 ```
 
 ### `commercelayer res:retrieve RESOURCE [ID]`
@@ -1257,8 +1263,8 @@ Fetch all resources.
 ```sh-session
 USAGE
   $ commercelayer resources:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
-    [--node ] [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-H
-    <value> [-C -f <value>]] [-b] [-e <value> | ]
+    [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
+    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -1266,6 +1272,8 @@ ARGUMENTS
 FLAGS
   -C, --csv                   export fields in csv format
   -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers               show response headers
+  -O, --headers-only          show only response headers
   -R, --raw                   print out the raw API response
   -X, --save-path=<value>     save command output to file and create missing path directories
   -b, --blind                 execute in blind mode without prompt and progress bar
@@ -1297,11 +1305,11 @@ ALIASES
   $ commercelayer res:all
 
 EXAMPLES
-  $ commercelayer resources:all customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:all customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:all customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl all -s -created_at --json
+  $ cl all customers -s -created_at --json
 ```
 
 _See code: [src/commands/resources/all.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/all.ts)_
@@ -1660,11 +1668,11 @@ ALIASES
   $ commercelayer res:list
 
 EXAMPLES
-  $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:list customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:list customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl list -p 5 -n 10 -s -created_at --raw
+  $ cl list customers -p 5 -n 10 -s -created_at --raw
 ```
 
 _See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/list.ts)_
@@ -2009,11 +2017,11 @@ ALIASES
   $ commercelayer res:list
 
 EXAMPLES
-  $ commercelayer resources:list customers -f id,email -i customer_group -s updated_at
+  $ commercelayer resources:list customers -f id,email,customer_group -i customer_group -s updated_at
 
-  $ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
+  $ cl res:list customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"
 
-  $ cl list -p 5 -n 10 -s -created_at --raw
+  $ cl list customers -p 5 -n 10 -s -created_at --raw
 ```
 
 ### `commercelayer rr RESOURCE [ID]`

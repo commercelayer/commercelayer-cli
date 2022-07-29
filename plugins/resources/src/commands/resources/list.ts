@@ -15,9 +15,9 @@ export default class ResourcesList extends Command {
 	static aliases = [OPERATION, 'rl', 'res:list']
 
 	static examples = [
-		'$ commercelayer resources:list customers -f id,email -i customer_group -s updated_at',
-		'$ cl res:list -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
-		'$ cl list -p 5 -n 10 -s -created_at --raw',
+		'$ commercelayer resources:list customers -f id,email,customer_group -i customer_group -s updated_at',
+		'$ cl res:list customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
+		'$ cl list customers -p 5 -n 10 -s -created_at --raw',
 	]
 
 	static flags = {

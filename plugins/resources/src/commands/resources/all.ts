@@ -41,9 +41,9 @@ export default class ResourcesAll extends Command {
   static aliases = ['all', 'ra', 'res:all']
 
   static examples = [
-    '$ commercelayer resources:all customers -f id,email -i customer_group -s updated_at',
-    '$ cl res:all -i customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
-    '$ cl all -s -created_at --json',
+    '$ commercelayer resources:all customers -f id,email,customer_group -i customer_group -s updated_at',
+    '$ cl res:all customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
+    '$ cl all customers -s -created_at --json',
   ]
 
   static flags = {
