@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.5.0",
+  "version": "5.5.1-beta.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -108,7 +108,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@commercelayer/cli-core": "^1.5.2",
+    "@commercelayer/cli-core": "^1.5.3-beta.0",
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/sdk": "4.15.1",
     "@oclif/core": "^1.12.1",
