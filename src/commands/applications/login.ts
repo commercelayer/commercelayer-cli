@@ -178,7 +178,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 }
 
 
-const checkScope = (scopeFlags: string[]): AuthScope => {
+const checkScope = (scopeFlags: string[] | undefined): AuthScope => {
 
 	const scope: string[] = []
 

@@ -21,7 +21,7 @@ const hook: Hook<'postrun'> = async function (opts) {
           await runCmd.run(['--refresh-cache'], opts.config)
         }
       } catch (error: any) {
-        this.error(error.message)
+        if (error.message && !error.message.includes('is not a supported shell')) this.error(error.message)
       }
 
     } else if ((opts.Command.id === 'autocomplete') && !opts.argv.includes('-r') && !opts.argv.includes('--refresh-cache')) {
