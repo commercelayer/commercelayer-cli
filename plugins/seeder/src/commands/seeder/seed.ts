@@ -99,7 +99,7 @@ export default class SeederSeed extends Command {
       this.log(`Seeding data for organization ${clColor.api.organization(organization)} using business model ${clColor.yellowBright(businessModel)}...\n`)
 
       // Execute tasks
-      tasks.run()
+      await tasks.run()
         .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data seeding completed! \u2705`))
         .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data seeding not completed, correct errors and rerun the ${clColor.cli.command('seed')} command`))
         .finally(() => this.log())

@@ -66,7 +66,7 @@ export default class SeederCheck extends Command {
       this.log(`Checking business model ${clColor.yellowBright(businessModel)} data...\n`)
 
       // Execute tasks
-      tasks.run()
+      await tasks.run()
         .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! \u2705`))
         .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data check completed with errors`))
         .finally(() => this.log())
