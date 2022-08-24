@@ -1,5 +1,5 @@
 import { QueryParams } from '@commercelayer/sdk'
-import { getOperation, getResource } from '.'
+import { getOperation } from '.'
 import { clOutput } from '@commercelayer/cli-core'
 import { RequestData } from './request'
 
@@ -8,19 +8,24 @@ const buildTypescript = (request: RequestData, params?: QueryParams, flags?: any
 
 	const hasParams = params && (Object.keys(params).length > 0)
 	const operation = getOperation(request)
-  const qpSuffix = (operation === 'list') ? 'List' : 'Retrieve'
+  const qpSuffix = (operation.name === 'list') ? 'List' : 'Retrieve'
 	const paramsImport = hasParams ? `, { QueryParams${qpSuffix} }` : ''
 
 	let ts = `import commercelayer${paramsImport} from '@commercelayer/sdk'`
 
 	ts += `\n\nconst organization = '${flags.organization}'`
 	ts += `\nconst accessToken = '${flags.accessToken}'`
+	if (flags.domain) ts += `\nconst domain = '${flags.domain}'`
 
-	ts += '\n\nconst cl = commercelayer({ organization, accessToken })'
+	ts += `\n\nconst cl = commercelayer({ organization, accessToken${flags.domain ? ', domain' : ''} })`
 
 	if (hasParams) ts += `\n\nconst params: QueryParams${qpSuffix} = ${clOutput.printObject(params, { color: false })}`
 
-	ts += `\n\ncl.${getResource(request)}.${operation}(${hasParams ? 'params' : ''}).then(console.log)`
+  const args: string[] = []
+  if (operation.id) args.push(`'${operation.id}'`)
+  if (hasParams) args.push('params')
+
+	ts += `\n\ncl.${operation.resource}.${operation.name}(${args.join(', ')}).then(console.log)`
 
 	return ts
 

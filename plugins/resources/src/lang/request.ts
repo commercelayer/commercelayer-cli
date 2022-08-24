@@ -1,124 +1,156 @@
 import { CommerceLayerClient, CommerceLayerStatic, RequestObj } from '@commercelayer/sdk'
+import { pluralize } from '../inflector'
 
 
 type RequestData = {
-	baseUrl: string;
-	path: string;
-	method: string;
-	headers: any;
-	params?: any;
-	data?: any;
+  baseUrl: string;
+  path: string;
+  method: string;
+  headers: any;
+  params?: any;
+  data?: any;
+}
+
+type OperationData = {
+  name: string;
+  id?: string;
+  resource: string;
+  relationship?: string;
+  oneToMany?: boolean;
+  method: string;
 }
 
 type RequestReader = {
-	id: number;
-	request: RequestData;
+  id: number;
+  request: RequestData;
 }
 
 
 class RequestInterrupted extends Error {
 
-	readonly requestInterrupted = true
+  readonly requestInterrupted = true
 
-	constructor() {
-		super('REQUEST_INTERRUPT')
-	}
+  constructor() {
+    super('REQUEST_INTERRUPT')
+  }
 
 }
 
 
 const addRequestReader = (cl: CommerceLayerClient, interrupt = true): RequestReader => {
 
-	const reader: RequestReader = {
-		id: -1,
-		request: { baseUrl: '', path: '/', method: 'get', headers: {} },
-	}
+  const reader: RequestReader = {
+    id: -1,
+    request: { baseUrl: '', path: '/', method: 'get', headers: {} },
+  }
 
-	function requestInterceptor(request: RequestObj): RequestObj {
+  function requestInterceptor(request: RequestObj): RequestObj {
 
-		const c = request
-		const x = reader.request
+    const c = request
+    const x = reader.request
 
-		x.path = c.url || ''
-		x.method = c.method || 'get'
-		x.headers = c.headers
-		x.params = c.params
-		x.baseUrl = c.baseURL || ''
-		x.data = c.data
+    x.path = c.url || ''
+    x.method = c.method || 'get'
+    x.headers = c.headers
+    x.params = c.params
+    x.baseUrl = c.baseURL || ''
+    x.data = c.data
 
-		if (interrupt) throw new RequestInterrupted()
+    if (interrupt) throw new RequestInterrupted()
 
-		return request
+    return request
 
-	}
+  }
 
 
-	const interceptor = cl.addRequestInterceptor(requestInterceptor)
-	reader.id = interceptor
+  const interceptor = cl.addRequestInterceptor(requestInterceptor)
+  reader.id = interceptor
 
-	return reader
+  return reader
 
 }
 
 
 const isRequestInterrupted = (error: unknown): boolean => {
-	return (CommerceLayerStatic.isSdkError(error) && (error.source instanceof RequestInterrupted) && error.source.requestInterrupted)
+  return (CommerceLayerStatic.isSdkError(error) && (error.source instanceof RequestInterrupted) && error.source.requestInterrupted)
 }
 
 
-export { addRequestReader, RequestReader, RequestData, isRequestInterrupted }
+export { addRequestReader, RequestReader, RequestData, isRequestInterrupted, OperationData }
 
 
 export const getMethod = (request: RequestData): string => {
-	return request.method?.toUpperCase()
+  return request.method?.toUpperCase()
 }
 
 
 export const getFullUrl = (request: RequestData): string => {
-	let fullUrl = `${request.baseUrl}/${request.path}`
-	if (request.params && (Object.keys(request.params).length > 0)) {
-		const qs = Object.entries(request.params).map(([k, v]) => `${k}=${v}`).join('&')
-		fullUrl += `?${qs}`
-	}
-	return fullUrl
+  let fullUrl = `${request.baseUrl}/${request.path}`
+  if (request.params && (Object.keys(request.params).length > 0)) {
+    const qs = Object.entries(request.params).map(([k, v]) => `${k}=${v}`).join('&')
+    fullUrl += `?${qs}`
+  }
+  return fullUrl
 }
 
 
 export const getResource = (request: RequestData): string => {
-	const slashIdx = request.path.indexOf('/')
-	if (slashIdx < 0) return request.path
-	return request.path.substring(0, slashIdx)
+  const slashIdx = request.path.indexOf('/')
+  if (slashIdx < 0) return request.path
+  return request.path.substring(0, slashIdx)
+}
+
+
+export const getRelationship = (request: RequestData): string | undefined => {
+  const i1 = request.path.indexOf('/')
+  const il = request.path.lastIndexOf('/')
+  return (i1 === il) ? undefined : request.path.substring(il + 1)
 }
 
 
 export const getHeaders = (request: RequestData): { [h: string]: string } => {
-	/*
-	const headers = { ...request.headers }
-	for (const h of Object.keys(headers))
-		if (['User-Agent', 'Content-Length'].includes(h)) delete headers[h]
-	return headers
-	*/
-	return {
-		Accept: request.headers.Accept,
-		'Content-Type': request.headers['Content-Type'],
-		Authorization: request.headers.Authorization,
-	}
+  /*
+  const headers = { ...request.headers }
+  for (const h of Object.keys(headers))
+    if (['User-Agent', 'Content-Length'].includes(h)) delete headers[h]
+  return headers
+  */
+  return {
+    Accept: request.headers.Accept,
+    'Content-Type': request.headers['Content-Type'],
+    Authorization: request.headers.Authorization,
+  }
 }
 
 
-export const getOperation = (request: RequestData): string => {
+export const getOperation = (request: RequestData): OperationData => {
 
-	const res = getResource(request)
-	const id = !request.path.endsWith(res)
-	const method = request.method.toLowerCase()
-	const singleton = ['application', 'organization'].includes(res)
+  const res = getResource(request)
+  const rel = getRelationship(request)
+  const id = request.path.replace(res, '').replace(rel || '', '').replace(/\//g, '')
+  const method = request.method.toLowerCase()
+  const singleton = ['application', 'organization'].includes(res)
 
-	switch (method) {
-		case 'get': return (singleton || id) ? 'retrieve' : 'list'
-		case 'patch': return 'update'
-		case 'post': return 'create'
-		case 'delete': return 'delete'
-		default: return 'retrieve'
-	}
+  const op: OperationData = {
+    method,
+    name: 'retrieve',
+    resource: res,
+    relationship: rel,
+    id,
+  }
+
+  if (op.relationship) op.oneToMany = (pluralize(op.relationship) === op.relationship)
+
+  if (op.method === 'get') {
+    if (singleton || (op.id && !op.relationship)) op.name = 'retrieve'
+    else op.name = rel || 'list'
+  } else
+    if (method === 'patch') op.name = 'update'
+    else
+      if (method === 'post') op.name = 'create'
+      else
+        if (method === 'delete') op.name = 'delete'
+
+  return op
 
 }

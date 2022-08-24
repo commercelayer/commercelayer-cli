@@ -27,8 +27,8 @@ export default class ResourcesFetch extends Command {
   }
 
   static args = [
-   { name: 'path', description: 'path (or URL) of the resource(s) to fetch', required: true },
-   { name: 'id', description: 'resource id', required: false },
+    { name: 'path', description: 'path (or URL) of the resource(s) to fetch', required: true },
+    { name: 'id', description: 'resource id', required: false },
   ]
 
 
@@ -44,7 +44,7 @@ export default class ResourcesFetch extends Command {
     if (pathNodes.length < 3) return GetCommand.run(this.argv, this.config)
 
     // Build argv array to pass to Relationship command
-    const relArgs = [ ...this.argv ]
+    const relArgs = [...this.argv]
     relArgs.splice(0, id ? 2 : 1, ...pathNodes)
 
     return RelationshipCommand.run(relArgs, this.config)
