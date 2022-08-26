@@ -78,8 +78,6 @@ const relationshipType = (type: string, name: string, value: string): string | u
     return rt
   }
 
-  const idx = rel.indexOf('/')
-  if (idx >= 0) return rel.substring(0, idx)
   return rel
 }
 
