@@ -191,7 +191,7 @@ export default abstract class extends Command {
   }
 
 
-  includeFlag(flag: string[], relationships?: KeyValRel, force?: boolean): string[] {
+  includeFlag(flag: string[] | undefined, relationships?: KeyValRel, force?: boolean): string[] {
 
     const values: string[] = []
 
@@ -212,7 +212,7 @@ export default abstract class extends Command {
   }
 
 
-  objectFlag(flag: string[]): KeyValObj {
+  objectFlag(flag: string[] | undefined): KeyValObj {
 
     const objects: KeyValObj = {}
 
@@ -252,7 +252,7 @@ export default abstract class extends Command {
   }
 
 
-  fieldsFlag(flag: string[], type: string): KeyValArray {
+  fieldsFlag(flag: string[] | undefined, type: string): KeyValArray {
 
     const fields: KeyValArray = {}
 
@@ -291,7 +291,7 @@ export default abstract class extends Command {
   }
 
 
-  whereFlag(flag: string[]): KeyValString {
+  whereFlag(flag: string[] | undefined): KeyValString {
 
     const wheres: KeyValString = {}
 
@@ -318,7 +318,7 @@ export default abstract class extends Command {
   }
 
 
-  sortFlag(flag: string[]): KeyValSort {
+  sortFlag(flag: string[] | undefined): KeyValSort {
 
     const sort: KeyValSort = {}
 
@@ -364,7 +364,7 @@ export default abstract class extends Command {
   }
 
 
-  _keyvalFlag(flag: string[], type = 'attribute'): KeyValString {
+  _keyvalFlag(flag: string[] | undefined, type = 'attribute'): KeyValString {
 
     const param: KeyValString = {}
 
@@ -391,7 +391,7 @@ export default abstract class extends Command {
   }
 
 
-  attributeFlag(flag: string[]): KeyValObj {
+  attributeFlag(flag: string[] | undefined): KeyValObj {
     const attr = this._keyvalFlag(flag, 'attribute')
     const attributes: KeyValObj = {}
     Object.entries(attr).forEach(([k, v]) => {
@@ -401,7 +401,7 @@ export default abstract class extends Command {
   }
 
 
-  metadataFlag(flag: string[], { fixTypes = false } = {}): KeyVal {
+  metadataFlag(flag: string[] | undefined, { fixTypes = false } = {}): KeyVal {
     const md = this._keyvalFlag(flag, 'metadata')
     const metadata: KeyVal = {}
     Object.keys(md).forEach(k => {
@@ -411,7 +411,7 @@ export default abstract class extends Command {
   }
 
 
-  relationshipFlag(flag: string[]): KeyValRel {
+  relationshipFlag(flag: string[] | undefined): KeyValRel {
 
     const relationships: KeyValRel = {}
 
