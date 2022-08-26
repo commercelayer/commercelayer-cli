@@ -117,15 +117,17 @@ export default class SeederSeed extends Command {
 
     for (const field in res) {
       if (field === 'key') continue
-      const rel = relationshipType(type, field)
+      let val = res[field] as string
+      const rel = relationshipType(type, field, val)
       if (rel) {
-        if (Array.isArray(res[field])) throw new Error(`Relationship ${type}.${field} cannot be an array`)
+        if (Array.isArray(val)) throw new Error(`Relationship ${type}.${field} cannot be an array`)
         else {
-          const remoteRes = await this.findByReference(rel, res[field] as string)
+          if (val.indexOf('/') >= 0) val = val.substring(val.indexOf('/') + 1)
+          const remoteRes = await this.findByReference(rel, val)
           if (remoteRes) resourceMod[field] = { type: rel, id: remoteRes.id }
-          else throw new Error(`Unable to find resource of type ${rel} with reference ${clColor.msg.error(res[field])}`)
+          else throw new Error(`Unable to find resource of type ${rel} with reference ${clColor.msg.error(val)}`)
         }
-      } else resourceMod[field] = res[field]
+      } else resourceMod[field] = val
     }
 
     return resourceMod

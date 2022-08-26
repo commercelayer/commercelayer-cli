@@ -93,9 +93,9 @@ export default class SeederCheck extends Command {
       const attr = attributeType(resType, field)
       if (attr) continue
 
-      const rel = relationshipType(resType, field)
+      const val = res[field] as string
+      const rel = relationshipType(resType, field, val)
       if (rel) {
-        const val = res[field] as string
         if (Array.isArray(val)) throw new Error(`Relationship ${resType}.${field} cannot be an array`)
         else if (flags.relationships) {
           const relRes = await getResource(flags.url, rel, val)

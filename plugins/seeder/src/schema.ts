@@ -1,5 +1,6 @@
 import config from './config'
 import { getCommerceLayerDataFile, pathJoin } from './common'
+import { CLIError } from '@oclif/core/lib/errors'
 
 
 type SchemaModel = {
@@ -40,7 +41,7 @@ const loadSchema = async (): Promise<SchemaData> => {
 
       // Relationships
       Object.entries(val.relationships.properties).forEach(([k, v]) => {
-        createObjects[type].relationships[k] = (v as any).properties.type.default
+        createObjects[type].relationships[k] = (v as any).properties.type.enum || (v as any).properties.type.default
       })
 
     }
@@ -63,11 +64,22 @@ const attributeType = (type: string, name: string): string | undefined => {
   return attr
 }
 
-const relationshipType = (type: string, name: string): string | undefined => {
+const relationshipType = (type: string, name: string, value: string): string | undefined => {
   const res = schemaData[type as keyof SchemaModel]
   if (!res) return undefined
   const rel = res.relationships[name]
   if (!rel) return undefined
+
+  if (Array.isArray(rel)) { // type is an ENUM
+    const idx = value.indexOf('/')
+    if (idx < 0) throw new CLIError(`Field ${name} of ${type} is an ENUM, you must specify the related resource type`)
+    const rt = value.substring(0, idx)
+    if (!rel.includes(rt)) throw new CLIError(`Invalid resource type for field ${name}: ${rt}`)
+    return rt
+  }
+
+  const idx = rel.indexOf('/')
+  if (idx >= 0) return rel.substring(0, idx)
   return rel
 }
 
