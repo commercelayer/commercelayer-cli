@@ -2,8 +2,8 @@
 import fs from 'fs'
 // import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import { join } from 'path'
-import axios from 'axios'
 import { snakeCase } from 'lodash'
+import { clSchema } from '@commercelayer/cli-core'
 
 const Inflector = require('inflector-js')
 
@@ -41,12 +41,11 @@ const readTemplate = (template: string): string => {
 
 const getOrderActions = async (): Promise<any[]> => {
 
-  const schemaUrl = 'https://data.commercelayer.app/schemas/openapi.json'
-
   console.log('Downloading OpenAPI schema ...')
 
-  const response = await axios.get(schemaUrl)
-  const schema = await response.data
+  const schema = await clSchema.download()
+
+  console.log('Downloaded OpenAPI schema v' + schema.info.version)
 
   const triggers: any[] = []
 
