@@ -56,7 +56,7 @@ export default class ResourcesAll extends Command {
     fields: Flags.string({
       char: 'f',
       multiple: true,
-      description: 'comma separeted list of fields in the format [resource]=field1,field2...',
+      description: 'comma separeted list of fields in the format [resourceType/]field1,field2...',
     }),
     where: Flags.string({
       char: 'w',
