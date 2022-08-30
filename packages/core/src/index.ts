@@ -21,6 +21,8 @@ export * as clUtil from './util'
 
 export { default as clHelp } from './help'
 
+export * as clSchema from './schema'
+
 
 /** Types **/
 export type { ApiMode } from './api'
