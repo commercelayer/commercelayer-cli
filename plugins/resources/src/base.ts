@@ -70,7 +70,6 @@ export default abstract class extends Command {
       hidden: false,
     }),
     doc: Flags.boolean({
-      char: 'D',
       description: 'show the CLI command in a specific language',
       exclusive: ['raw'],
       helpGroup: 'documentation',

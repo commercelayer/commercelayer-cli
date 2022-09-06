@@ -80,6 +80,10 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
     })
   }
 
+  // Delimiter
+  let delimiter = flags.delimiter
+  if (delimiter && (delimiter === 'TAB')) delimiter = '\t'
+
 
   json2csvAsync(output, {
     excelBOM: true,
@@ -91,6 +95,9 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
     emptyFieldValue: '',
     // excludeKeys,
     keys: includeKeys,
+    delimiter: {
+      field: delimiter,
+    },
   }).then(csv => {
     writeFileSync(path, csv)
   }).catch(error => {

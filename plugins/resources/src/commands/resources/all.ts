@@ -105,6 +105,13 @@ export default class ResourcesAll extends Command {
       exclusive: ['raw', 'json'],
       dependsOn: ['fields'],
     }),
+    delimiter: Flags.enum({
+      char: 'D',
+      // eslint-disable-next-line quotes
+      description: `the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)`,
+      options: [',', ';', '|', 'TAB'],
+      dependsOn: ['csv'],
+    }),
     header: Flags.string({
       char: 'H',
       description: 'rename column headers defining a comma-separated list of values field:"renamed title"',
