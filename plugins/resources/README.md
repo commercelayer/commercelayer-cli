@@ -80,38 +80,39 @@ Fetch all resources.
 
 ```sh-session
 USAGE
-  $ commercelayer all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
+  $ commercelayer all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
     [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
-    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
+    <value>] [-D ,|;|||TAB [-C -f <value>]] [-H <value> ] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -C, --csv                   export fields in csv format
-  -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
-  -H, --headers               show response headers
-  -O, --headers-only          show only response headers
-  -R, --raw                   print out the raw API response
-  -X, --save-path=<value>     save command output to file and create missing path directories
-  -b, --blind                 execute in blind mode without prompt and progress bar
-  -e, --extract=<value>...    extract subfields from object attributes
-  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
-  -i, --include=<value>...    comma separated resources to include
-  -j, --json                  convert output in standard JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --sort=<value>...       defines results ordering
-  -u, --unformatted           print unformatted JSON output
-  -w, --where=<value>...      comma separated list of query filters
-  -x, --save=<value>          save command output to file
-  --load-args=<value>         load previously saved command arguments
-  --save-args=<value>         save command data to file for future use
+  -C, --csv                    export fields in csv format
+  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers                show response headers
+  -O, --headers-only           show only response headers
+  -R, --raw                    print out the raw API response
+  -X, --save-path=<value>      save command output to file and create missing path directories
+  -b, --blind                  execute in blind mode without prompt and progress bar
+  -e, --extract=<value>...     extract subfields from object attributes
+  -f, --fields=<value>...      comma separeted list of fields in the format [resourceType/]field1,field2...
+  -i, --include=<value>...     comma separated resources to include
+  -j, --json                   convert output in standard JSON format
+  -o, --organization=<value>   (required) the slug of your organization
+  -s, --sort=<value>...        defines results ordering
+  -u, --unformatted            print unformatted JSON output
+  -w, --where=<value>...       comma separated list of query filters
+  -x, --save=<value>           save command output to file
+  --load-args=<value>          load previously saved command arguments
+  --save-args=<value>          save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -136,7 +137,7 @@ Create a new resource.
 
 ```sh-session
 USAGE
-  $ commercelayer create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args
     <value> | --save-args <value>]
 
@@ -161,10 +162,10 @@ FLAGS
   --save-args=<value>            save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -192,7 +193,7 @@ Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ]
 
 ARGUMENTS
@@ -212,10 +213,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -268,9 +269,9 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
-    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e <value> |
-    ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
+    -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
+    <value> | ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
 
 ARGUMENTS
   PATH  path (or URL) of the resource(s) to fetch
@@ -296,10 +297,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -328,7 +329,7 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n
     <value>] [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -356,10 +357,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -386,7 +387,7 @@ Fetch a collection of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n <value>]
     [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -413,10 +414,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -441,7 +442,7 @@ Update an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer patch [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer patch [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>]
     |  |  | --load-args <value> | --save-args <value>]
 
@@ -470,10 +471,10 @@ FLAGS
   --save-args=<value>                save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -503,7 +504,7 @@ Create a new resource.
 
 ```sh-session
 USAGE
-  $ commercelayer post [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer post [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args
     <value> | --save-args <value>]
 
@@ -528,10 +529,10 @@ FLAGS
   --save-args=<value>            save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -559,38 +560,39 @@ Fetch all resources.
 
 ```sh-session
 USAGE
-  $ commercelayer ra [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
+  $ commercelayer ra [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
     [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
-    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
+    <value>] [-D ,|;|||TAB [-C -f <value>]] [-H <value> ] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -C, --csv                   export fields in csv format
-  -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
-  -H, --headers               show response headers
-  -O, --headers-only          show only response headers
-  -R, --raw                   print out the raw API response
-  -X, --save-path=<value>     save command output to file and create missing path directories
-  -b, --blind                 execute in blind mode without prompt and progress bar
-  -e, --extract=<value>...    extract subfields from object attributes
-  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
-  -i, --include=<value>...    comma separated resources to include
-  -j, --json                  convert output in standard JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --sort=<value>...       defines results ordering
-  -u, --unformatted           print unformatted JSON output
-  -w, --where=<value>...      comma separated list of query filters
-  -x, --save=<value>          save command output to file
-  --load-args=<value>         load previously saved command arguments
-  --save-args=<value>         save command data to file for future use
+  -C, --csv                    export fields in csv format
+  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers                show response headers
+  -O, --headers-only           show only response headers
+  -R, --raw                    print out the raw API response
+  -X, --save-path=<value>      save command output to file and create missing path directories
+  -b, --blind                  execute in blind mode without prompt and progress bar
+  -e, --extract=<value>...     extract subfields from object attributes
+  -f, --fields=<value>...      comma separeted list of fields in the format [resourceType/]field1,field2...
+  -i, --include=<value>...     comma separated resources to include
+  -j, --json                   convert output in standard JSON format
+  -o, --organization=<value>   (required) the slug of your organization
+  -s, --sort=<value>...        defines results ordering
+  -u, --unformatted            print unformatted JSON output
+  -w, --where=<value>...       comma separated list of query filters
+  -x, --save=<value>           save command output to file
+  --load-args=<value>          load previously saved command arguments
+  --save-args=<value>          save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -615,7 +617,7 @@ Create a new resource.
 
 ```sh-session
 USAGE
-  $ commercelayer rc [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer rc [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args
     <value> | --save-args <value>]
 
@@ -640,10 +642,10 @@ FLAGS
   --save-args=<value>            save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -671,7 +673,7 @@ Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer rd [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer rd [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ]
 
 ARGUMENTS
@@ -691,10 +693,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -717,38 +719,39 @@ Fetch all resources.
 
 ```sh-session
 USAGE
-  $ commercelayer res:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
+  $ commercelayer res:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
     [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
-    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
+    <value>] [-D ,|;|||TAB [-C -f <value>]] [-H <value> ] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -C, --csv                   export fields in csv format
-  -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
-  -H, --headers               show response headers
-  -O, --headers-only          show only response headers
-  -R, --raw                   print out the raw API response
-  -X, --save-path=<value>     save command output to file and create missing path directories
-  -b, --blind                 execute in blind mode without prompt and progress bar
-  -e, --extract=<value>...    extract subfields from object attributes
-  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
-  -i, --include=<value>...    comma separated resources to include
-  -j, --json                  convert output in standard JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --sort=<value>...       defines results ordering
-  -u, --unformatted           print unformatted JSON output
-  -w, --where=<value>...      comma separated list of query filters
-  -x, --save=<value>          save command output to file
-  --load-args=<value>         load previously saved command arguments
-  --save-args=<value>         save command data to file for future use
+  -C, --csv                    export fields in csv format
+  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers                show response headers
+  -O, --headers-only           show only response headers
+  -R, --raw                    print out the raw API response
+  -X, --save-path=<value>      save command output to file and create missing path directories
+  -b, --blind                  execute in blind mode without prompt and progress bar
+  -e, --extract=<value>...     extract subfields from object attributes
+  -f, --fields=<value>...      comma separeted list of fields in the format [resourceType/]field1,field2...
+  -i, --include=<value>...     comma separated resources to include
+  -j, --json                   convert output in standard JSON format
+  -o, --organization=<value>   (required) the slug of your organization
+  -s, --sort=<value>...        defines results ordering
+  -u, --unformatted            print unformatted JSON output
+  -w, --where=<value>...       comma separated list of query filters
+  -x, --save=<value>           save command output to file
+  --load-args=<value>          load previously saved command arguments
+  --save-args=<value>          save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -795,7 +798,7 @@ Create a new resource.
 
 ```sh-session
 USAGE
-  $ commercelayer res:create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer res:create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args
     <value> | --save-args <value>]
 
@@ -820,10 +823,10 @@ FLAGS
   --save-args=<value>            save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -851,7 +854,7 @@ Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer res:delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer res:delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ]
 
 ARGUMENTS
@@ -871,10 +874,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -927,9 +930,9 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer res:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
-    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e <value> |
-    ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer res:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
+    -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
+    <value> | ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
 
 ARGUMENTS
   PATH  path (or URL) of the resource(s) to fetch
@@ -955,10 +958,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1007,7 +1010,7 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer res:get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer res:get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n
     <value>] [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -1035,10 +1038,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1065,7 +1068,7 @@ Fetch a collection of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer res:list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer res:list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n <value>]
     [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -1092,10 +1095,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1120,7 +1123,7 @@ Fetch a single resource.
 
 ```sh-session
 USAGE
-  $ commercelayer res:retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer res:retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
     <value> | ]
 
@@ -1144,10 +1147,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1174,7 +1177,7 @@ Update an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer res:update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer res:update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>]
     |  |  | --load-args <value> | --save-args <value>]
 
@@ -1203,10 +1206,10 @@ FLAGS
   --save-args=<value>                save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1262,38 +1265,39 @@ Fetch all resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [-D | -R]] [--curl ]
+  $ commercelayer resources:all [RESOURCE] -o <value> [-i <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
     [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-s <value>] [-x <value> | -X
-    <value>] [-H <value> [-C -f <value>]] [-b] [-e <value> | ]
+    <value>] [-D ,|;|||TAB [-C -f <value>]] [-H <value> ] [-b] [-e <value> | ]
 
 ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -C, --csv                   export fields in csv format
-  -H, --header=<value>...     rename column headers defining a comma-separated list of values field:"renamed title"
-  -H, --headers               show response headers
-  -O, --headers-only          show only response headers
-  -R, --raw                   print out the raw API response
-  -X, --save-path=<value>     save command output to file and create missing path directories
-  -b, --blind                 execute in blind mode without prompt and progress bar
-  -e, --extract=<value>...    extract subfields from object attributes
-  -f, --fields=<value>...     comma separeted list of fields in the format [resource]=field1,field2...
-  -i, --include=<value>...    comma separated resources to include
-  -j, --json                  convert output in standard JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --sort=<value>...       defines results ordering
-  -u, --unformatted           print unformatted JSON output
-  -w, --where=<value>...      comma separated list of query filters
-  -x, --save=<value>          save command output to file
-  --load-args=<value>         load previously saved command arguments
-  --save-args=<value>         save command data to file for future use
+  -C, --csv                    export fields in csv format
+  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
+  -H, --headers                show response headers
+  -O, --headers-only           show only response headers
+  -R, --raw                    print out the raw API response
+  -X, --save-path=<value>      save command output to file and create missing path directories
+  -b, --blind                  execute in blind mode without prompt and progress bar
+  -e, --extract=<value>...     extract subfields from object attributes
+  -f, --fields=<value>...      comma separeted list of fields in the format [resourceType/]field1,field2...
+  -i, --include=<value>...     comma separated resources to include
+  -j, --json                   convert output in standard JSON format
+  -o, --organization=<value>   (required) the slug of your organization
+  -s, --sort=<value>...        defines results ordering
+  -u, --unformatted            print unformatted JSON output
+  -w, --where=<value>...       comma separated list of query filters
+  -x, --save=<value>           save command output to file
+  --load-args=<value>          load previously saved command arguments
+  --save-args=<value>          save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1344,7 +1348,7 @@ Create a new resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer resources:create [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args
     <value> | --save-args <value>]
 
@@ -1369,10 +1373,10 @@ FLAGS
   --save-args=<value>            save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1402,7 +1406,7 @@ Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer resources:delete [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ]
 
 ARGUMENTS
@@ -1422,10 +1426,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1482,9 +1486,9 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
-    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e <value> |
-    ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer resources:fetch [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
+    -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
+    <value> | ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
 
 ARGUMENTS
   PATH  path (or URL) of the resource(s) to fetch
@@ -1510,10 +1514,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1566,7 +1570,7 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer resources:get [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n
     <value>] [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -1594,10 +1598,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1626,7 +1630,7 @@ Fetch a collection of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer resources:list [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n <value>]
     [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -1653,10 +1657,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1683,7 +1687,7 @@ Fetch a single resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer resources:retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
     <value> | ]
 
@@ -1707,10 +1711,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1739,7 +1743,7 @@ Update an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer resources:update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>]
     |  |  | --load-args <value> | --save-args <value>]
 
@@ -1768,10 +1772,10 @@ FLAGS
   --save-args=<value>                save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1803,7 +1807,7 @@ Fetch a single resource.
 
 ```sh-session
 USAGE
-  $ commercelayer retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer retrieve [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
     <value> | ]
 
@@ -1827,10 +1831,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1857,9 +1861,9 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer rf [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
-    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e <value> |
-    ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer rf [PATH] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
+    -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
+    <value> | ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
 
 ARGUMENTS
   PATH  path (or URL) of the resource(s) to fetch
@@ -1885,10 +1889,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1917,7 +1921,7 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer rg [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer rg [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n
     <value>] [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -1945,10 +1949,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -1975,7 +1979,7 @@ Fetch a collection of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer rl [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D | -R]]
+  $ commercelayer rl [RESOURCE] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-w <value>] [-p <value>] [-n <value>]
     [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
@@ -2002,10 +2006,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -2030,7 +2034,7 @@ Fetch a single resource.
 
 ```sh-session
 USAGE
-  $ commercelayer rr [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer rr [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-O ] [-x <value> | -X <value>] [-e
     <value> | ]
 
@@ -2054,10 +2058,10 @@ FLAGS
   --save-args=<value>         save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -2084,7 +2088,7 @@ Update an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer ru [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer ru [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>]
     |  |  | --load-args <value> | --save-args <value>]
 
@@ -2113,10 +2117,10 @@ FLAGS
   --save-args=<value>                save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
@@ -2146,7 +2150,7 @@ Update an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [-D |
+  $ commercelayer update [RESOURCE] [ID] -o <value> [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [-H ] [-O ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>]
     |  |  | --load-args <value> | --save-args <value>]
 
@@ -2175,10 +2179,10 @@ FLAGS
   --save-args=<value>                save command data to file for future use
 
 DOCUMENTATION FLAGS
-  -D, --doc            show the CLI command in a specific language
   -l, --lang=<option>  show the CLI command in the specified language syntax
                        <options: curl|node>
   --curl               show the equivalent cURL command of the CLI command
+  --doc                show the CLI command in a specific language
   --node               show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
