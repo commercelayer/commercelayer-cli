@@ -148,7 +148,7 @@ export default class CheckoutIndex extends Command {
   }
 
 
-  private parseItems(itemsFlags: string[]): string[] {
+  private parseItems(itemsFlags?: string[]): string[] {
     const items: string[] = []
     if (itemsFlags) itemsFlags.forEach((i: string) => items.push(...i.split(',')))
     return items
