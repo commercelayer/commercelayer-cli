@@ -68,6 +68,12 @@ export default class ImportsCreate extends Command {
       description: 'accept input file in CSV format',
       dependsOn: ['inputs'],
     }),
+    delimiter: Flags.enum({
+      char: 'D',
+      description: `the delimiter character used in the CSV input file (one of ',', ';', '|', TAB)`,
+      options: [',', ';', '|', 'TAB'],
+      dependsOn: ['csv'],
+    }),
     blind: Flags.boolean({
       char: 'b',
       description: 'execute in blind mode without showing the progress monitor',

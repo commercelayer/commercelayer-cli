@@ -47,10 +47,12 @@ Create a new import.
 USAGE
   $ commercelayer imp:create [FAKE-ARG] -o <value> -t
     orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories [-p <value>] (-C -i <value>) [-b | -q | ]
+    gories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
 FLAGS
   -C, --csv                                     accept input file in CSV format
+  -D, --delimiter=(,|;|||TAB)                   the delimiter character used in the CSV input file (one of ',', ';',
+                                                '|', TAB)
   -b, --blind                                   execute in blind mode without showing the progress monitor
   -i, --inputs=<value>                          (required) the path of the file containing the data to import
   -o, --organization=<value>                    (required) the slug of your organization
@@ -219,10 +221,12 @@ Create a new import.
 USAGE
   $ commercelayer import [FAKE-ARG] -o <value> -t
     orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories [-p <value>] (-C -i <value>) [-b | -q | ]
+    gories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
 FLAGS
   -C, --csv                                     accept input file in CSV format
+  -D, --delimiter=(,|;|||TAB)                   the delimiter character used in the CSV input file (one of ',', ';',
+                                                '|', TAB)
   -b, --blind                                   execute in blind mode without showing the progress monitor
   -i, --inputs=<value>                          (required) the path of the file containing the data to import
   -o, --organization=<value>                    (required) the slug of your organization
@@ -280,10 +284,12 @@ Create a new import.
 USAGE
   $ commercelayer imports:create [FAKE-ARG] -o <value> -t
     orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories [-p <value>] (-C -i <value>) [-b | -q | ]
+    gories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
 FLAGS
   -C, --csv                                     accept input file in CSV format
+  -D, --delimiter=(,|;|||TAB)                   the delimiter character used in the CSV input file (one of ',', ';',
+                                                '|', TAB)
   -b, --blind                                   execute in blind mode without showing the progress monitor
   -i, --inputs=<value>                          (required) the path of the file containing the data to import
   -o, --organization=<value>                    (required) the slug of your organization
