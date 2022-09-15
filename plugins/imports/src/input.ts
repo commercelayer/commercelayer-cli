@@ -9,9 +9,12 @@ const generateInputsCSV = async (filePath: string, delimiter?: string): Promise<
 
   const inputs: Array<any> = []
 
+  const parseOptions: csv.ParserOptionsArgs = { headers: true, ignoreEmpty: true}
+  if (delimiter) parseOptions.delimiter = delimiter
+
   return new Promise((resolve, reject) => {
     createReadStream(filePath)
-      .pipe(csv.parse({ headers: true, ignoreEmpty: true, delimiter }))
+      .pipe(csv.parse(parseOptions))
       .on('error', error => reject(error))
       .on('data', row => inputs.push(row))
       .on('end', (_rowCount: number) => resolve(inputs))
