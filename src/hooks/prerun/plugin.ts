@@ -69,7 +69,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 const promptPlugin = async (config: Config, command: string): Promise<string> => {
 
   const installed = getInstalledPlugins(config)
-  const plugins = (command === 'install') ? getAvailablePlugins().filter(p => !installed.includes(p)) : installed
+  const plugins = (command === 'install') ? getAvailablePlugins().filter(p => !installed.includes(p) && !p.hidden) : installed
 
   if (plugins.length === 0) return ''
 

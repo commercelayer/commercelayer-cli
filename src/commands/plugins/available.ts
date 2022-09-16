@@ -63,6 +63,7 @@ const AvailablePlugins: PluginRelease[] = [
   { name: 'checkout',     plugin: '@commercelayer/cli-plugin-checkout',   description: 'Checkout URLs generation',            enabled: true },
   { name: 'triggers',     plugin: '@commercelayer/cli-plugin-triggers',   description: 'Execute actions on resources',        enabled: true },
   { name: 'token',        plugin: '@commercelayer/cli-plugin-token',      description: 'Manage Commerce Layer access tokens', enabled: true },
+  { name: 'microstore',   plugin: '@commercelayer/cli-plugin-microstore', description: 'Microstore URLs generation',          enabled: true, hidden: true },
 ]
 
 
