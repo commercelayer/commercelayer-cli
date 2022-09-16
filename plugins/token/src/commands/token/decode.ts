@@ -1,4 +1,3 @@
-import { clCommand } from '@commercelayer/cli-core'
 import Command from '../../base'
 import { decodeAccessToken } from '../../token'
 
@@ -14,9 +13,11 @@ export default class TokenDecode extends Command {
 		'$ cl token:info -a <accessToken>',
 	]
 
+  /*
   static flags = {
     ...clCommand.commandFlags<typeof Command.flags>(Command.flags, ['organization', 'domain', 'accessToken']),
   }
+  */
 
   static args = [
     { name: 'token', description: 'the access token to decode', required: false },
