@@ -5,7 +5,7 @@ import { newAccessToken, isAccessTokenExpiring } from '../../commands/applicatio
 
 
 
-const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete']
+const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete', 'token']
 const exludedCommands: string[] = [
 	'plugins',
 	'imports:types',
@@ -80,15 +80,15 @@ const hook: Hook<'prerun'> = async function (opts) {
 	const _flags = opts.Command.flags || {}
 
 	// Add to command line args application info read from config file
-	if (_flags.organization && configData.slug) opts.argv.push('--organization=' + configData.slug)
-	if (_flags.domain && configData.domain) opts.argv.push('--domain=' + configData.domain)
+	if (_flags.organization && configData.slug) opts.argv.unshift('--organization=' + configData.slug)
+	if (_flags.domain && configData.domain) opts.argv.unshift('--domain=' + configData.domain)
 
 	// If command requires clientId and clientSecret (or scope) add them to the command line arguments
-	if (_flags.clientId && configData.clientId) opts.argv.push('--clientId=' + configData.clientId)
-	if (_flags.clientSecret && configData.clientSecret) opts.argv.push('--clientSecret=' + configData.clientSecret)
+	if (_flags.clientId && configData.clientId) opts.argv.unshift('--clientId=' + configData.clientId)
+	if (_flags.clientSecret && configData.clientSecret) opts.argv.unshift('--clientSecret=' + configData.clientSecret)
 
 	const scope = clApplication.arrayScope(configData.scope)
-	if (_flags.scope && (scope.length > 0)) opts.argv.push(scope.map(s => `--scope=${s}`).join(' '))
+	if (_flags.scope && (scope.length > 0)) opts.argv.unshift(scope.map(s => `--scope=${s}`).join(' '))
 
 	// If present remove --live flag option
 	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
