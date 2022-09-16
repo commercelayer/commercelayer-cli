@@ -1,3 +1,4 @@
+import { clCommand } from '@commercelayer/cli-core'
 import Command from '../../base'
 import { decodeAccessToken } from '../../token'
 
@@ -14,7 +15,7 @@ export default class TokenDecode extends Command {
 	]
 
   static flags = {
-    ...Command.flags,
+    ...clCommand.commandFlags<typeof Command.flags>(Command.flags, ['organization', 'domain', 'accessToken']),
   }
 
   static args = [

@@ -107,7 +107,7 @@ Get a new access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:get -i <value> [-s <value>] [-S <value>] [-e <value> -p <value>] [--info]
+  $ commercelayer token:get (-s <value> -i <value>) [-S <value> ] [-e <value> -p <value>] [--info]
 
 FLAGS
   -S, --scope=<value>...      access token scope (market, stock location)
