@@ -1,6 +1,7 @@
 import Command, { Flags } from '../../base'
-import { AppAuth, clCommand, clColor } from '@commercelayer/cli-core'
+import { AppAuth, clColor } from '@commercelayer/cli-core'
 import { decodeAccessToken, getAccessToken } from '../../token'
+
 
 
 export default class TokenGet extends Command {
@@ -8,12 +9,24 @@ export default class TokenGet extends Command {
   static description = 'get a new access token'
 
   static examples = [
-		'$ commercelayer token:get',
-    '$ cl token:get --info',
+		'$ commercelayer token:get -o <organizationSlug> -i <clientId> -s <clientSecret>',
+    '$ cl token:get -o <organizationSlug> -i <clientId> -S <scope> --info',
 	]
 
   static flags = {
-    ...(clCommand.commandFlags<typeof Command.flags>(Command.flags, ['accessToken'])),
+    organization: Flags.string({
+      char: 'o',
+      description: 'the slug of your organization',
+      required: true,
+      env: 'CL_CLI_ORGANIZATION',
+    }),
+    domain: Flags.string({
+      char: 'd',
+      required: false,
+      hidden: true,
+      dependsOn: ['organization'],
+      env: 'CL_CLI_DOMAIN',
+    }),
     clientId: Flags.string({
       char: 'i',
       description: 'application client_id',

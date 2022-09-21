@@ -1,5 +1,5 @@
 import Command, { Flags } from '../../base'
-import { clOutput, clCommand, clConfig, clToken, AccessTokenInfo, clColor } from '@commercelayer/cli-core'
+import { clOutput, clConfig, clToken, AccessTokenInfo, clColor } from '@commercelayer/cli-core'
 import inquirer from 'inquirer'
 import { testAccessToken, decodeAccessToken } from '../../token'
 import { checkMandatory, checkList, checkValidity } from '../../check'
@@ -15,7 +15,6 @@ export default class TokenGenerate extends Command {
   ]
 
   static flags = {
-    ...clCommand.commandFlags<typeof Command.flags>(Command.flags, ['organization', 'domain', 'accessToken']),
     domain: Flags.string({
       char: 'd',
       required: false,
@@ -38,6 +37,7 @@ export default class TokenGenerate extends Command {
   }
 
   static args = []
+
 
 
   async run() {
