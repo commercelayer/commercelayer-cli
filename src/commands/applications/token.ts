@@ -9,6 +9,7 @@ import type { AuthReturnType } from '@commercelayer/js-auth'
 const defaultTokenExpiration = clConfig.api.token_expiration_mins
 
 
+
 export default class ApplicationsToken extends Command {
 
 	static description = 'get a new access token from Commerce Layer API'

@@ -5,7 +5,7 @@ import { newAccessToken, isAccessTokenExpiring } from '../../commands/applicatio
 
 
 
-const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete']
+const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete', 'token']
 const exludedCommands: string[] = [
 	'plugins',
 	'imports:types',
@@ -17,8 +17,6 @@ const exludedCommands: string[] = [
 	'autocomplete',
 	'applications',
 	'version',
-	'token:info',
-	'token:decode',
 ]
 
 
