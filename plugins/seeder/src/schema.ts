@@ -27,7 +27,7 @@ const loadSchema = async (): Promise<SchemaData> => {
     if (k.endsWith('Create')) {
 
       const val = (v as any).properties.data.properties
-      const type = val.type.default
+      const type = val.type.enum[0]
 
       createObjects[type] = {
         attributes: {},
@@ -41,7 +41,8 @@ const loadSchema = async (): Promise<SchemaData> => {
 
       // Relationships
       Object.entries(val.relationships.properties).forEach(([k, v]) => {
-        createObjects[type].relationships[k] = (v as any).properties.data.properties.type.enum
+        const types = (v as any).properties.data.properties.type.enum
+        createObjects[type].relationships[k] = (types.length > 1) ? types : types[0]
       })
 
     }
