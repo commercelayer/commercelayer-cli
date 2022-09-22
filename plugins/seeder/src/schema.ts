@@ -41,7 +41,7 @@ const loadSchema = async (): Promise<SchemaData> => {
 
       // Relationships
       Object.entries(val.relationships.properties).forEach(([k, v]) => {
-        createObjects[type].relationships[k] = (v as any).properties.type.enum || (v as any).properties.type.default
+        createObjects[type].relationships[k] = (v as any).properties.data.properties.type.enum
       })
 
     }
