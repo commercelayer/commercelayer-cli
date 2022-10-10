@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { CommandHelp, Help, Interfaces } from '@oclif/core'
-import { capitalize } from './util'
+import { capitalize } from './text'
 
 
 const PRINT_TRACE = false

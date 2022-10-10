@@ -23,6 +23,8 @@ export { default as clHelp } from './help'
 
 export * as clSchema from './schema'
 
+export * as clText from './text'
+
 
 /** Types **/
 export type { ApiMode } from './api'
