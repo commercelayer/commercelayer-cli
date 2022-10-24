@@ -15,6 +15,7 @@ specifiers:
   '@types/chai': ^4.3.3
   '@types/configstore': ^4.0.0
   '@types/inquirer': ^8.2.4
+  '@types/lodash': ^4.14.186
   '@types/mocha': ^9.1.1
   '@types/node': ^18.8.4
   '@types/update-notifier': ^5.1.0
@@ -54,6 +55,7 @@ devDependencies:
   '@types/chai': 4.3.3
   '@types/configstore': 4.0.0
   '@types/inquirer': 8.2.4
+  '@types/lodash': 4.14.186
   '@types/mocha': 9.1.1
   '@types/node': 18.8.4
   '@types/update-notifier': 5.1.0
