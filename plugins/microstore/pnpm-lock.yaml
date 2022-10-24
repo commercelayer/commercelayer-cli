@@ -3,15 +3,15 @@ lockfileVersion: 5.4
 specifiers:
   '@commercelayer/cli-core': ^1.6.1
   '@commercelayer/cli-dev': ^0.1.10
-  '@commercelayer/js-auth': ^2.2.9
+  '@commercelayer/js-auth': ^2.3.0
   '@commercelayer/sdk': ^4.16.0
-  '@oclif/core': ^1.16.5
-  '@oclif/plugin-help': ^5.1.15
-  '@oclif/test': ^2.2.3
+  '@oclif/core': ^1.19.1
+  '@oclif/plugin-help': ^5.1.16
+  '@oclif/test': ^2.2.6
   '@types/chai': ^4.3.3
   '@types/mocha': ^9.1.1
-  '@types/node': ^18.8.3
-  '@typescript-eslint/eslint-plugin': ^5.39.0
+  '@types/node': ^18.11.4
+  '@typescript-eslint/eslint-plugin': ^5.40.1
   chai: ^4.3.6
   eslint: ^7.32.0
   eslint-config-oclif: ^3.1.0
