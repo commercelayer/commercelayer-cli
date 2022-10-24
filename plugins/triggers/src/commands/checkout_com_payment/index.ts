@@ -1,7 +1,7 @@
 import Command from '../../base'
 import exec from '../../exec'
 import inquirer from 'inquirer'
-import chalk from 'chalk'
+import { clColor } from '@commercelayer/cli-core'
 import { triggers } from '../../triggers/checkout_com_payments'
 
 
@@ -9,7 +9,7 @@ const promptAction = async (id: string) => {
   const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',
-    message: `Select an action to execute on checkout com payment ${chalk.yellowBright(id)}:`,
+    message: `Select an action to execute on checkout com payment ${clColor.api.id(id)}:`,
     choices: Object.keys(triggers).sort().map(a => {
       return { name: a, value: a }
     }),

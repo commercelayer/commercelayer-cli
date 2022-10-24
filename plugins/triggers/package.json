@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
   "engines": {
@@ -48,18 +48,19 @@
     "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "generate": "ts-node gen/generator.ts"
+    "generate": "ts-node gen/generator.ts",
+    "preinstall": "npx only-allow pnpm"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "^0.1.10",
-    "@oclif/plugin-help": "^5.1.11",
-    "@oclif/test": "^2.1.1",
+    "@oclif/plugin-help": "^5.1.16",
+    "@oclif/test": "^2.2.6",
     "@types/chai": "^4.3.3",
-    "@types/inquirer": "^8.2.3",
-    "@types/lodash": "^4.14.184",
+    "@types/inquirer": "^8.2.4",
+    "@types/lodash": "^4.14.186",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^18.7.14",
+    "@types/node": "^18.11.4",
     "chai": "^4.3.6",
     "eslint": "^5.16.0",
     "eslint-config-oclif": "^3.1.0",
@@ -69,14 +70,14 @@
     "mocha": "^9.2.2",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "4.7.4"
+    "typescript": "4.8.4"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^1.6.1",
-    "@commercelayer/js-auth": "^2.2.9",
-    "@commercelayer/sdk": "^4.15.1",
-    "@oclif/core": "^1.12.1",
-    "inquirer": "^8.2.4",
+    "@commercelayer/js-auth": "^2.3.0",
+    "@commercelayer/sdk": "^4.16.0",
+    "@oclif/core": "^1.19.1",
+    "inquirer": "^8.2.5",
     "tslib": "^2.4.0"
   },
   "publishConfig": {
