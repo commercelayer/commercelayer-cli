@@ -81,7 +81,7 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
   }
 
   // Delimiter
-  let delimiter = flags.delimiter
+  let delimiter = flags.delimiter || ','
   if (delimiter && (delimiter === 'TAB')) delimiter = '\t'
 
 

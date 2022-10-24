@@ -29,6 +29,7 @@ const RESOURCES = [
 	{ name: 'delivery_lead_time', api: 'delivery_lead_times', model: 'DeliveryLeadTime' },
 	{ name: 'event_callback', api: 'event_callbacks', model: 'EventCallback' },
 	{ name: 'event', api: 'events', model: 'Event' },
+	{ name: 'export', api: 'exports', model: 'Export' },
 	{ name: 'external_gateway', api: 'external_gateways', model: 'ExternalGateway' },
 	{ name: 'external_payment', api: 'external_payments', model: 'ExternalPayment' },
 	{ name: 'external_promotion', api: 'external_promotions', model: 'ExternalPromotion' },

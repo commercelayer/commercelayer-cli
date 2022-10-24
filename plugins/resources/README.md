@@ -89,7 +89,8 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                    export fields in csv format
-  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -D, --delimiter=(,|;|||TAB)  [default: ,] the delimiter character to use in the CSV output file (one of ',', ';', '|',
+                               TAB)
   -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
   -H, --headers                show response headers
   -O, --headers-only           show only response headers
@@ -569,7 +570,8 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                    export fields in csv format
-  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -D, --delimiter=(,|;|||TAB)  [default: ,] the delimiter character to use in the CSV output file (one of ',', ';', '|',
+                               TAB)
   -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
   -H, --headers                show response headers
   -O, --headers-only           show only response headers
@@ -728,7 +730,8 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                    export fields in csv format
-  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -D, --delimiter=(,|;|||TAB)  [default: ,] the delimiter character to use in the CSV output file (one of ',', ';', '|',
+                               TAB)
   -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
   -H, --headers                show response headers
   -O, --headers-only           show only response headers
@@ -1274,7 +1277,8 @@ ARGUMENTS
 
 FLAGS
   -C, --csv                    export fields in csv format
-  -D, --delimiter=(,|;|||TAB)  the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)
+  -D, --delimiter=(,|;|||TAB)  [default: ,] the delimiter character to use in the CSV output file (one of ',', ';', '|',
+                               TAB)
   -H, --header=<value>...      rename column headers defining a comma-separated list of values field:"renamed title"
   -H, --headers                show response headers
   -O, --headers-only           show only response headers
