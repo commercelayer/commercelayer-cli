@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.6.1",
+  "version": "5.6.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -85,8 +85,7 @@
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*",
-    "preinstall": "npx only-allow pnpm"
+    "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
