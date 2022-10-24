@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "5.7.1",
+  "version": "5.7.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "engines": {
@@ -51,8 +51,7 @@
     "prepack": "npm run resources && rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "resources": "npm update @commercelayer/sdk && ts-node src/util/resources/build.ts",
-    "preinstall": "npx only-allow pnpm"
+    "resources": "npm update @commercelayer/sdk && ts-node src/util/resources/build.ts"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
