@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-microstore",
   "description": "Commerce Layer CLI microstore plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-microstore/issues",
   "engines": {
@@ -45,10 +45,9 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif manifest && pnpm readme",
+    "prepack": "rm -rf lib && tsc -b && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "preinstall": "npx only-allow pnpm"
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
