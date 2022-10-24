@@ -83,6 +83,8 @@ The Commerce Layer CLI currently supports the following plugins:
 * [`orders`](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/README.md) - Execute actions on orders in Commerce Layer.
 * [`checkout`](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/README.md) - Generate checkout URLs.
 * [`triggers`](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/README.md) - Execute actions on resources in Commerce Layer.
+* [`token`](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/README.md) - Manage Commerce Layer access tokens.
+* [`microstore`](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/blob/main/README.md) - Generate Microstore URLs.
 
 You can run the command below to get a list of all available CLI plugins:
 
