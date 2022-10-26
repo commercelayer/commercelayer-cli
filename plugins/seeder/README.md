@@ -24,21 +24,18 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 ## Commands
 <!-- commands -->
 
-* [`commercelayer seed ID`](#commercelayer-seed-id)
-* [`commercelayer seeder:check ID`](#commercelayer-seedercheck-id)
-* [`commercelayer seeder:clean ID`](#commercelayer-seederclean-id)
-* [`commercelayer seeder:seed ID`](#commercelayer-seederseed-id)
+* [`commercelayer seed`](#commercelayer-seed)
+* [`commercelayer seeder:check`](#commercelayer-seedercheck)
+* [`commercelayer seeder:clean`](#commercelayer-seederclean)
+* [`commercelayer seeder:seed`](#commercelayer-seederseed)
 
-### `commercelayer seed ID`
+### `commercelayer seed`
 
 Execute Commerce Layer seeder.
 
 ```sh-session
 USAGE
-  $ commercelayer seed [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
-
-ARGUMENTS
-  ID  the unique id of the order
+  $ commercelayer seed -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
 
 FLAGS
   -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
@@ -60,16 +57,13 @@ EXAMPLES
   $ cl seed -b multi_market
 ```
 
-### `commercelayer seeder:check ID`
+### `commercelayer seeder:check`
 
 Execute a check on seeder data.
 
 ```sh-session
 USAGE
-  $ commercelayer seeder:check [ID] [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-r]
-
-ARGUMENTS
-  ID  the unique id of the order
+  $ commercelayer seeder:check [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-r]
 
 FLAGS
   -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
@@ -89,16 +83,13 @@ EXAMPLES
 
 _See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/check.ts)_
 
-### `commercelayer seeder:clean ID`
+### `commercelayer seeder:clean`
 
 Clean previously imported seeder data.
 
 ```sh-session
 USAGE
-  $ commercelayer seeder:clean [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>]
-
-ARGUMENTS
-  ID  the unique id of the order
+  $ commercelayer seeder:clean -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>]
 
 FLAGS
   -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
@@ -118,16 +109,13 @@ EXAMPLES
 
 _See code: [src/commands/seeder/clean.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/clean.ts)_
 
-### `commercelayer seeder:seed ID`
+### `commercelayer seeder:seed`
 
 Execute Commerce Layer seeder.
 
 ```sh-session
 USAGE
-  $ commercelayer seeder:seed [ID] -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
-
-ARGUMENTS
-  ID  the unique id of the order
+  $ commercelayer seeder:seed -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
 
 FLAGS
   -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import

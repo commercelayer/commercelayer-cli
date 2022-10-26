@@ -34,7 +34,7 @@ export default class SeederCheck extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(SeederCheck)
 

@@ -33,9 +33,7 @@ export default abstract class extends Command {
   }
 
 
-  static args = [
-    { name: 'id', description: 'the unique id of the order', required: true },
-  ]
+  static args = []
 
 
   protected cl!: CommerceLayerClient
