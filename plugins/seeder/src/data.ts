@@ -9,14 +9,14 @@ type SeederResource = {
   resourceType: string;
 } & (
     {
-      referenceKeys: Array<string>;
+      referenceKeys: string[];
       importAll?: false;
     } | {
       importAll: true;
     }
   )
 
-type BusinessModel = Array<SeederResource>
+type BusinessModel = SeederResource[]
 
 type ResourceData= Omit<{
   [key: string]: string | boolean | number | object;
@@ -26,7 +26,7 @@ type ResourceData= Omit<{
   reference_origin?: string;
 }
 
-type ResourceDataCollection = Array<ResourceData>
+type ResourceDataCollection = ResourceData[]
 
 type ResourceMap = { [reference: string]: ResourceData }
 

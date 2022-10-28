@@ -39,15 +39,15 @@ export default abstract class extends Command {
   protected cl!: CommerceLayerClient
 
 
-  async init() {
+  async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
-    return super.init()
+    return await super.init()
   }
 
 
-  async catch(error: any) {
+  async catch(error: any): Promise<any> {
     if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
-    return super.catch(error)
+    return await super.catch(error)
   }
 
 
@@ -60,9 +60,9 @@ export default abstract class extends Command {
   }
 
 
-  protected async readOpenAPISchema() {
+  protected async readOpenAPISchema(): Promise<any> {
     CliUx.ux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
-    return loadSchema()
+    return await loadSchema()
       .then(() => CliUx.ux.action.stop(`done ${clColor.msg.success('\u2714')}`))
       .catch(() => {
         CliUx.ux.action.stop(clColor.msg.error('Error'))
@@ -74,7 +74,7 @@ export default abstract class extends Command {
 
   protected async readBusinessModelData(url: string, model: string): Promise<BusinessModel> {
     CliUx.ux.action.start(`Reading business model ${clColor.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${clColor.style.path(url)}`)
-    return readModelData(url, model)
+    return await readModelData(url, model)
       .then(model => {
         CliUx.ux.action.stop(`done ${clColor.msg.success('\u2714')}`)
         return model

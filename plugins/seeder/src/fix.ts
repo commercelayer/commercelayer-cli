@@ -1,4 +1,5 @@
-/* eslint-disable array-element-newline, no-console,  @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable prefer-regex-literals */
 
 import commercelayer from '@commercelayer/sdk'
 
@@ -81,11 +82,11 @@ const InflectorConfig = {
 }
 
 
-const applyRules = (str: string, rules: string | any[], skip: string | any[], override?: any) => {
+const applyRules = (str: string, rules: string | any[], skip: string | any[], override?: any): string => {
   if (override) {
     str = override
   } else {
-    const ignore = (skip.indexOf(str.toLowerCase()) > -1)
+    const ignore = (skip.includes(str.toLowerCase()))
     if (!ignore) {
       for (let x = 0; x < rules.length; x++) {
         if (str.match(rules[x][0])) {
@@ -99,7 +100,8 @@ const applyRules = (str: string, rules: string | any[], skip: string | any[], ov
 }
 
 
-const pluralize = (str: any, plural?: any) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const pluralize = (str: any, plural?: any): string => {
   return applyRules(
     str,
     InflectorConfig.pluralRules,
@@ -109,7 +111,7 @@ const pluralize = (str: any, plural?: any) => {
 }
 
 
-const singularize = (str: any, singular?: any) => {
+const singularize = (str: any, singular?: any): string => {
   return applyRules(
     str,
     InflectorConfig.singularRules,
@@ -120,10 +122,10 @@ const singularize = (str: any, singular?: any) => {
 
 
 
-async function fix() {
+async function fix(): Promise<void> {
 
   const page = Number(process.argv[2] || 1)
-  console.log('Fixing page ' + page)
+  console.log(`Fixing page ${page}`)
 
 
   const cl = commercelayer({
@@ -143,7 +145,7 @@ async function fix() {
 
   const fixed = items.map(s => {
     const n = { ...s }
-    n.reference = singularize(resources) + '_' + index++
+    n.reference = singularize(resources) + '_' + String(index++)
     return n
   })
 
@@ -160,4 +162,4 @@ async function fix() {
 }
 
 
-fix()
+void fix()

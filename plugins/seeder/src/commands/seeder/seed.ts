@@ -1,10 +1,9 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
-import { ResourceData, SeederResource } from '../../data'
+import { ResourceData, SeederResource, readResourceData } from '../../data'
 import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import config from '../../config'
 import Listr from 'listr'
-import { readResourceData } from '../../data'
 import { relationshipType } from '../../schema'
 import { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
@@ -56,7 +55,7 @@ export default class SeederSeed extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(SeederSeed)
 
@@ -122,7 +121,8 @@ export default class SeederSeed extends Command {
       if (rel) {
         if (Array.isArray(val)) throw new Error(`Relationship ${type}.${field} cannot be an array`)
         else {
-          if (val.indexOf('/') >= 0) val = val.substring(val.indexOf('/') + 1)
+          const slashIdx = val.indexOf('/')
+          if (slashIdx >= 0) val = val.substring(slashIdx + 1)
           const remoteRes = await this.findByReference(rel, val)
           if (remoteRes) resourceMod[field] = { type: rel, id: remoteRes.id }
           else throw new Error(`Unable to find resource of type ${rel} with reference ${clColor.msg.error(val)}`)

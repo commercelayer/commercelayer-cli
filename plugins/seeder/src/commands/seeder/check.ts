@@ -1,8 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
-import { BusinessModel, getResource, modelIndex, ResourceData, SeederResource } from '../../data'
+import { BusinessModel, getResource, modelIndex, ResourceData, SeederResource, readResourceData } from '../../data'
 import Listr from 'listr'
-import { readResourceData } from '../../data'
 import { attributeType, relationshipType } from '../../schema'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
@@ -79,7 +78,7 @@ export default class SeederCheck extends Command {
 
 
 
-  private async checkResource(type: string, res: ResourceData, model: BusinessModel, flags: any) {
+  private async checkResource(type: string, res: ResourceData, model: BusinessModel, flags: any): Promise<void> {
 
     const resType = res.type || type
     checkResourceType(resType)

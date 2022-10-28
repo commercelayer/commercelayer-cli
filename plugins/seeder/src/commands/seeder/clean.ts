@@ -40,7 +40,7 @@ export default class SeederClean extends Command {
   ]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(SeederClean)
 

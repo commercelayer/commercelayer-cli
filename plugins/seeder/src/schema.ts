@@ -18,7 +18,7 @@ const loadSchema = async (): Promise<SchemaData> => {
 
   const schemaUrl = pathJoin(config.dataUrl, config.schemaFolder)
 
-  const schema = await getCommerceLayerDataFile(schemaUrl, 'openapi.json') as any
+  const schema = await getCommerceLayerDataFile(schemaUrl, 'openapi.json')
 
   const createObjects: SchemaData = {}
 
@@ -32,7 +32,7 @@ const loadSchema = async (): Promise<SchemaData> => {
       createObjects[type] = {
         attributes: {},
         relationships: {},
-      } as SchemaModel
+      }// as SchemaModel
 
       // Attributes
       Object.entries(val.attributes.properties).forEach(([k, v]) => {
