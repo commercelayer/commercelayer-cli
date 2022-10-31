@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-orders",
   "description": "Commerce Layer CLI Orders plugin",
-  "version": "4.3.3",
+  "version": "4.4.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-orders/issues",
   "engines": {
@@ -45,38 +45,40 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "ts-node gen/generator.ts && rm -rf lib && tsc -b && oclif manifest && npm run readme",
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "npm run generate && npm run build && oclif manifest && npm run readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "generate": "ts-node gen/generator.ts"
+    "generate": "ts-node gen/generator.ts",
+    "lint": "eslint src --ext .ts --config .eslintrc",
+    "lint:fix": "eslint src --fix"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "^0.1.10",
-    "@oclif/plugin-help": "^5.1.11",
-    "@oclif/test": "^2.1.1",
+    "@commercelayer/eslint-config-ts": "^0.1.3",
+    "@oclif/plugin-help": "^5.1.17",
+    "@oclif/test": "^2.2.8",
     "@types/chai": "^4.3.3",
-    "@types/inquirer": "^8.2.3",
-    "@types/lodash": "^4.14.184",
-    "@types/mocha": "^9.1.1",
-    "@types/node": "^18.7.14",
+    "@types/inquirer": "^8.2.4",
+    "@types/lodash": "^4.14.186",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^18.11.8",
     "chai": "^4.3.6",
-    "eslint": "^5.16.0",
-    "eslint-config-oclif": "^3.1.0",
-    "eslint-config-oclif-typescript": "^0.2.0",
+    "eslint": "^8.26.0",
     "inflector-js": "^1.0.1",
     "lodash": "^4.17.21",
-    "mocha": "^9.2.2",
+    "mocha": "^10.1.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "4.7.4"
+    "typescript": "4.8.4"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^1.6.1",
-    "@commercelayer/js-auth": "^2.2.9",
-    "@commercelayer/sdk": "^4.15.1",
-    "@oclif/core": "^1.6.4",
-    "inquirer": "^8.2.4",
+    "@commercelayer/js-auth": "^2.3.0",
+    "@commercelayer/sdk": "^4.17.0",
+    "@oclif/core": "^1.20.0",
+    "inquirer": "^8.2.5",
     "tslib": "^2.4.0"
   },
   "publishConfig": {

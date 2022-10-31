@@ -1,6 +1,7 @@
 import { CommerceLayerStatic, Order } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
 import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
+import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -50,18 +51,18 @@ export default abstract class extends Command {
 
 
   // INIT (override)
-  async init() {
+  async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
 
-  async catch(error: any) {
-    this.handleError(error, undefined, this.argv[0])
+  async catch(error: any): Promise<any> {
+    this.handleError(error)
   }
 
 
-  protected handleError(error: any, flags?: any, id?: string): void {
+  protected handleError(error: CommandError, flags?: OutputFlags<any>): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -70,18 +71,19 @@ export default abstract class extends Command {
         )
       } else
       if (error.status === 404) {
+        const id = (error as any).id || ''
         this.error(`Unable to find order${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
 			} else this.error(clOutput.formatError(error, flags))
     } else throw error
   }
 
 
-  protected printOutput(order: Order, flags: any): void {
+  protected printOutput(order: Order, flags: OutputFlags<any>): void {
     this.log(clOutput.formatOutput(order, flags))
   }
 
 
-  protected successMessage(action: string, id: string) {
+  protected successMessage(action: string, id: string): void {
     this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on order ${clColor.api.id(id)}\n`)
   }
 

@@ -19,7 +19,7 @@ export default class Orders##__ACTION_NAME__## extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(Orders##__ACTION_NAME__##)
 

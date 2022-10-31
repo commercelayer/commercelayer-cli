@@ -1,4 +1,5 @@
 import commercelayer, { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
+import { OutputFlags } from '@oclif/core/lib/interfaces'
 import type { ActionType } from './triggers'
 
 
@@ -18,7 +19,7 @@ const commercelayerInit = (flags: any): CommerceLayerClient => {
 }
 
 
-const executeAction = (id: string, action: ActionType, flags: any, fields?: string[]): Promise<Order> => {
+const executeAction = async (id: string, action: ActionType, flags: OutputFlags<any>, fields?: string[]): Promise<Order> => {
 
   const cl = commercelayerInit(flags)
 
@@ -28,9 +29,13 @@ const executeAction = (id: string, action: ActionType, flags: any, fields?: stri
   const params: QueryParamsRetrieve = {}
   if (fields && (fields.length > 0)) params.fields = { orders: fields }
 
-  const result = cl.orders.update(res, params)
-
-  return result
+  try {
+    const result = await cl.orders.update(res, params)
+    return result
+  } catch (error: any) {
+    error.id = id
+    throw error
+  }
 
 }
 
