@@ -19,7 +19,7 @@ export default class ReturnShip extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ReturnShip)
 

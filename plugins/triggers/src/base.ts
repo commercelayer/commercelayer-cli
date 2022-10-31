@@ -1,6 +1,9 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
 import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
+import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
+import { Resource } from '@commercelayer/sdk/lib/cjs/resource'
+import { CLIError } from '@oclif/core/lib/errors'
 
 
 const pkg = require('../package.json')
@@ -50,24 +53,31 @@ export default abstract class extends Command {
 
 
   // INIT (override)
-  async init() {
+  async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
-    return super.init()
+    return await super.init()
   }
 
 
-  async catch(error: any) {
-    this.handleError(error, undefined, this.argv[0])
+  async catch(error: CLIError): Promise<any> {
+    this.handleError(error)
   }
 
 
-  protected handleError(error: any, flags?: any, id?: string): void {
+  protected handleError(error: CommandError, flags?: OutputFlags<any>): void {
     if (CommerceLayerStatic.isApiError(error)) {
-      const res = error.code?.startsWith('RES_') ? error.code.replace('RES_', '') : ''
+      let res = ''
+      let id = ''
+      if (error.code?.startsWith('RES_')) {
+        const tokens = error.code.replace('RES_', '').split('_')
+        if (tokens.length > 0) res = tokens[0]
+        if (tokens.length > 1) id = tokens[1]
+      }
+
       if (error.status === 401) {
         const err = error.first()
         this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: [`Execute login with sufficient privileges to get access to the organization's resources${res ? ` of type ${clColor.api.resource(res)}` : ''}`] }
+          { suggestions: [`Execute login with sufficient privileges to get access to the organization's resources${res ? ` of type ${clColor.api.resource(res)}` : ''}`] },
         )
       } else
       if (error.status === 404) {
@@ -77,12 +87,12 @@ export default abstract class extends Command {
   }
 
 
-  protected printOutput(res: any, flags: any): void {
+  protected printOutput(res: Resource, flags: OutputFlags<any>): void {
     this.log(clOutput.formatOutput(res, flags))
   }
 
 
-  protected successMessage(resource: string, action: string, id: string) {
+  protected successMessage(resource: string, action: string, id: string): void {
     this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on ${resource.replace(/_/g, ' ')} ${clColor.api.id(id)}\n`)
   }
 

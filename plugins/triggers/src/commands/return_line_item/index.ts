@@ -5,7 +5,7 @@ import { clColor } from '@commercelayer/cli-core'
 import { triggers } from '../../triggers/return_line_items'
 
 
-const promptAction = async (id: string) => {
+const promptAction = async (id: string): Promise<any> => {
   const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',
@@ -32,7 +32,7 @@ export default class ReturnLineItemIndex extends Command {
     ...Command.args,
   ]
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ReturnLineItemIndex)
 

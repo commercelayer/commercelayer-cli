@@ -25,7 +25,7 @@ export default class OrderBillingAddressCloneId extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(OrderBillingAddressCloneId)
 

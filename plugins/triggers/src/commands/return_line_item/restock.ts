@@ -19,7 +19,7 @@ export default class ReturnLineItemRestock extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ReturnLineItemRestock)
 

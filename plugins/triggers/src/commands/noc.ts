@@ -6,7 +6,7 @@ export default class Noc extends Command {
 
   static flags = { }
 
-  async run() {
+  async run(): Promise<any> {
 
     const output = '-= NoC =-'
 

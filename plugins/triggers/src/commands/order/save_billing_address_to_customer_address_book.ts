@@ -19,7 +19,7 @@ export default class OrderSaveBillingAddressToCustomerAddressBook extends Comman
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(OrderSaveBillingAddressToCustomerAddressBook)
 

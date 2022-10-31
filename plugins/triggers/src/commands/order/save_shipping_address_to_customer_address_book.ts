@@ -19,7 +19,7 @@ export default class OrderSaveShippingAddressToCustomerAddressBook extends Comma
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(OrderSaveShippingAddressToCustomerAddressBook)
 

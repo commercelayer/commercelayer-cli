@@ -19,7 +19,7 @@ export default class ##__RESOURCE_CLASS__####__ACTION_NAME__## extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(##__RESOURCE_CLASS__####__ACTION_NAME__##)
 

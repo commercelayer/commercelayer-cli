@@ -1,14 +1,13 @@
 {
   "extends": [
-    "oclif",
-    "oclif-typescript"
+    "@commercelayer/eslint-config-ts"
   ],
   "rules": {
-    "indent": "off",
-    "object-curly-spacing": "off",
-    "padded-blocks": "off",
-    "unicorn/filename-case": "off",
-    "no-multiple-empty-lines": "off",
-    "max-params": "off"
+    "prettier/prettier": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/consistent-type-definitions": "off"
   }
 }

@@ -17,7 +17,7 @@ const commercelayerInit = (flags: any): CommerceLayerClient => {
 }
 
 
-const executeAction = (resourceType: string, id: string, action: string, flags: any, fields?: string[]): Promise<any> => {
+const executeAction = async (resourceType: string, id: string, action: string, flags: any, fields?: string[]): Promise<any> => {
 
   const cl = commercelayerInit(flags)
 
@@ -27,13 +27,14 @@ const executeAction = (resourceType: string, id: string, action: string, flags: 
 
   const params: QueryParamsRetrieve = {}
   if (fields && (fields.length > 0)) {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     params.fields = {} as { [key: string]: string[] }
     params.fields[resourceType] = fields
   }
 
   const resSdk: any = cl[resourceType as keyof CommerceLayerClient]
   const result = resSdk.update(res, params).catch((error: unknown) => {
-    if (CommerceLayerStatic.isApiError(error)) error.code = 'RES_' + resourceType
+    if (CommerceLayerStatic.isApiError(error)) error.code = `RES_${resourceType}_${id}`
     throw error
   })
 

@@ -19,7 +19,7 @@ export default class CheckoutComPaymentRefresh extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(CheckoutComPaymentRefresh)
 

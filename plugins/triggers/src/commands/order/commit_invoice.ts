@@ -19,7 +19,7 @@ export default class OrderCommitInvoice extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
     const { args, flags } = await this.parse(OrderCommitInvoice)
 

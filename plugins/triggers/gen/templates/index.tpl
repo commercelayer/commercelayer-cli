@@ -5,7 +5,7 @@ import { clColor } from '@commercelayer/cli-core'
 import { triggers } from '../../triggers/##__RESOURCE_TYPE__##'
 
 
-const promptAction = async (id: string) => {
+const promptAction = async (id: string): Promise<any> => {
   const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',
@@ -32,7 +32,7 @@ export default class ##__RESOURCE_CLASS__##Index extends Command {
     ...Command.args,
   ]
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(##__RESOURCE_CLASS__##Index)
 
