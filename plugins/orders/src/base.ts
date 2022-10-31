@@ -53,7 +53,7 @@ export default abstract class extends Command {
   // INIT (override)
   async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
-    return super.init()
+    return await super.init()
   }
 
 

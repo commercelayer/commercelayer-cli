@@ -17,7 +17,7 @@ export default class OrdersIndex extends Command {
     ...Command.args,
   ]
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(OrdersIndex)
 
@@ -42,7 +42,7 @@ export default class OrdersIndex extends Command {
 }
 
 
-const promptAction = async (id: string) => {
+const promptAction = async (id: string): Promise<any> => {
   const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',
