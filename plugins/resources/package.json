@@ -57,13 +57,13 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "0.1.10",
-    "@oclif/plugin-help": "^5.1.16",
-    "@oclif/test": "^2.2.6",
+    "@oclif/plugin-help": "^5.1.17",
+    "@oclif/test": "^2.2.8",
     "@types/chai": "^4.3.3",
     "@types/inquirer": "^8.2.4",
-    "@types/lodash": "^4.14.186",
+    "@types/lodash": "^4.14.187",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^18.11.4",
+    "@types/node": "^18.11.9",
     "@types/node-notifier": "^8.0.2",
     "chai": "^4.3.6",
     "eslint": "^5.16.0",
@@ -78,14 +78,14 @@
   "dependencies": {
     "@commercelayer/cli-core": "^1.6.1",
     "@commercelayer/js-auth": "^2.3.0",
-    "@commercelayer/sdk": "^4.16.0",
-    "@oclif/core": "^1.19.1",
+    "@commercelayer/sdk": "^4.17.0",
+    "@oclif/core": "^1.20.2",
     "axios": "^0.27.2",
     "inquirer": "^8.2.5",
     "json-2-csv": "^3.17.2",
     "lodash": "^4.17.21",
     "node-notifier": "^10.0.1",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.1"
   },
   "publishConfig": {
     "access": "public"
