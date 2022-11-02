@@ -111,7 +111,6 @@ export default class ResourcesAll extends Command {
       description: `the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)`,
       options: [',', ';', '|', 'TAB'],
       dependsOn: ['csv'],
-      default: ',',
     }),
     header: Flags.string({
       char: 'H',
