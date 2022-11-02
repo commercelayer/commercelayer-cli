@@ -8,3 +8,4 @@
 node_modules
 .oclif.manifest.json
 /package-lock.json
+.DS_Store

@@ -2,6 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('token:generate', () => {
   test
+    .timeout(5000)
     .stdout()
     .command(['token:noc'])
     .it('runs NoC', ctx => {

@@ -179,6 +179,7 @@ export default class TokenGenerate extends Command {
         name: 'ownerType',
         message: 'Owner type:',
         choices: ['Customer', 'User'],
+        // choices: ['customers', 'users']
         when: input => input.ownerId,
         validate: checkMandatory,
       },
