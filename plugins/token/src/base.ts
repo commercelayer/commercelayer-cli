@@ -10,9 +10,9 @@ const pkg = require('../package.json')
 export default abstract class extends Command {
 
   // INIT (override)
-  async init() {
+  async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
-    return super.init()
+    return await super.init()
   }
 
 
@@ -35,7 +35,7 @@ export default abstract class extends Command {
   }
 
 
-  protected printAccessToken(accessToken?: string, expMinutes?: number) {
+  protected printAccessToken(accessToken?: string, expMinutes?: number): void {
     if (accessToken) {
       this.log(`\n${clColor.api.token(accessToken)}\n`)
       if (expMinutes) this.warn(clColor.italic(`This access token will expire in ${clColor.style.number(expMinutes)} minutes\n`))

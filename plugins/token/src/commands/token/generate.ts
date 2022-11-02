@@ -40,7 +40,7 @@ export default class TokenGenerate extends Command {
 
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const answers = await inquirer.prompt(this.tokenQuestions(), this.defaultAnswers())
       .then(answers => {
@@ -109,7 +109,7 @@ export default class TokenGenerate extends Command {
 
     if (generated) {
 
-      if (flags.check && !testAccessToken(generated, flags)) this.error('Unable to generate a valid access token with the provided input data')
+      if (flags.check && !await testAccessToken(generated, flags)) this.error('Unable to generate a valid access token with the provided input data')
 
       const accessToken = generated.accessToken
       const decodedAccessToken = decodeAccessToken(accessToken)

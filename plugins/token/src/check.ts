@@ -10,6 +10,7 @@ const checkMandatory: Check = (input: any) => {
 }
 
 const checkList: Check = (input: any) => {
+  // eslint-disable-next-line prefer-regex-literals
   return !input || new RegExp(/^([a-z]+)(,\s*[a-z]+)*$/i).test(input) || 'The value must be a comma separated list of strings'
 }
 

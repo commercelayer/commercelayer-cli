@@ -55,7 +55,7 @@ export default class TokenRevoke extends Command {
   ]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(TokenRevoke)
 

@@ -19,13 +19,13 @@ const generateAccessToken = (accessToken: string | AccessTokenInfo, sharedSecret
 
 
 const getAccessToken = async (auth: AppAuth): AuthReturnType => {
-  return clToken.getAccessToken(auth)
+  return await clToken.getAccessToken(auth)
 
 }
 
 
-const revokeAccessToken = async (app: AppAuth, accessToken: string) => {
-  return clToken.revokeAccessToken(app, accessToken)
+const revokeAccessToken = async (app: AppAuth, accessToken: string): Promise<void> => {
+  return await clToken.revokeAccessToken(app, accessToken)
 }
 
 
@@ -41,7 +41,7 @@ const testAccessToken = async (token: CustomToken | string, flags: any): Promise
     accessToken,
   })
 
-  return cl.organization.retrieve()
+  return await cl.organization.retrieve()
     .then(org => org.slug === organization)
     .catch(() => false)
 
