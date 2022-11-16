@@ -4,9 +4,9 @@ export default class Noc extends Command {
 
   static hidden = true
 
-  static flags = { }
+  static flags = {}
 
-  async run() {
+  async run(): Promise<any> {
 
     const output = '-= NoC =-'
 

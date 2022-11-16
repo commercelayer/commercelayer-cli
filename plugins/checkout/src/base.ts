@@ -1,6 +1,7 @@
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
 import { clColor, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
+import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -35,30 +36,30 @@ export default abstract class extends Command {
 
 
   // INIT (override)
-  async init() {
+  async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
 
-  async catch(error: any) {
+  async catch(error: CommandError): Promise<any> {
     return this.handleError(error)
   }
 
 
-  protected handleError(error: any, flags?: any) {
+  protected handleError(error: CommandError, flags?: OutputFlags<any>): Promise<any> {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
         this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s resources'] }
+          { suggestions: ['Execute login to get access to the organization\'s resources'] },
         )
       } else this.error(clOutput.formatError(error, flags))
     } else return super.catch(error)
   }
 
 
-  protected commercelayerInit(flags: any): CommerceLayerClient {
+  protected commercelayerInit(flags: OutputFlags<any>): CommerceLayerClient {
 
     const organization = flags.organization
     const domain = flags.domain

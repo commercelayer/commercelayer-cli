@@ -8,5 +8,5 @@
 /tmp
 /yarn.lock
 node_modules
-.oclif.manifest.json
+oclif.manifest.json
 /package-lock.json

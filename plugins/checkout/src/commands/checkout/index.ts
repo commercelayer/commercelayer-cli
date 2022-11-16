@@ -65,7 +65,7 @@ export default class CheckoutIndex extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(CheckoutIndex)
 
