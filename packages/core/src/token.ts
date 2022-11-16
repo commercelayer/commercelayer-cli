@@ -100,7 +100,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 }
 
 
-const revokeAccessToken = async (app: AppAuth, token: string) => {
+const revokeAccessToken = async (app: AppAuth, token: string): Promise<void> => {
 
   /*
   return axios

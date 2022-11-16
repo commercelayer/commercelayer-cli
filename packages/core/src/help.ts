@@ -27,32 +27,32 @@ class CLICommandHelp extends CommandHelp {
 // Global help formatter
 export default class CLIBaseHelp extends Help {
 
-	async showHelp(args: string[]) {
+	async showHelp(args: string[]): Promise<void> {
 		if (PRINT_TRACE) console.log('---------- showHelp')
 		return super.showHelp(args)
 	}
 
 	// display the root help of a CLI
-	async showRootHelp() {
+	async showRootHelp(): Promise<void> {
 		if (PRINT_TRACE) console.log('---------- showRootHelp')
 		return super.showRootHelp()
 	}
 
 	// display help for a topic
-	async showTopicHelp(topic: Interfaces.Topic) {
+	async showTopicHelp(topic: Interfaces.Topic): Promise<void> {
 		if (PRINT_TRACE) console.log('---------- showTopicHelp')
 		return super.showTopicHelp(topic)
 	}
 
 	// display help for a command
-	async showCommandHelp(command: Interfaces.Command) {
+	async showCommandHelp(command: Interfaces.Command): Promise<void> {
 		if (PRINT_TRACE) console.log('---------- showCommandHelp')
 		const name = command.id
         const depth = name ? name.split(':').length : 1
         const subTopics = this.sortedTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
         const subCommands = this.sortedCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
         const title = command.description && this.render(command.description).split('\n')[0]
-        if (title) console.log(capitalize(title) + '\n')
+        if (title) console.log(`${capitalize(title)}\n`)
         console.log(this.formatCommand(command))
         console.log('')
         if (subTopics.length > 0) {
@@ -107,7 +107,7 @@ export default class CLIBaseHelp extends Help {
 	}
 
 
-	getCommandHelpClass(command: Interfaces.Command) {
+	getCommandHelpClass(command: Interfaces.Command): CLICommandHelp {
 		if (PRINT_TRACE) console.log('---------- getCommandHelpClass')
 		return new CLICommandHelp(command, this.config, this.opts)
 	}

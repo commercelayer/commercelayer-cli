@@ -6,7 +6,7 @@ export type { ApiMode }
 
 /** Build base URL */
 const baseURL = (slug: string, domain: string | undefined): string => {
-	return `https://${slug.toLowerCase()}.${domain ? domain : config.api.default_domain}`
+	return `https://${slug.toLowerCase()}.${domain || config.api.default_domain}`
 }
 
 

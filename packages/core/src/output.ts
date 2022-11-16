@@ -22,10 +22,10 @@ const printJSON = (obj: any, options?: { unformatted?: boolean; tabSize?: number
 
 
 /** Print object in CSV format */
-const printCSV = (obj: Array<object>, flags?: any): string => {
+const printCSV = (obj: object[], flags?: any): string => {
 	if (!obj || (obj.length === 0)) return ''
 	const fields = Object.keys(obj[0]).filter(f => {
-		if (['id', 'type'].includes(f)) return (flags && flags.fields.includes(f))
+		if (['id', 'type'].includes(f)) return flags?.fields.includes(f)
 		return true
 	})
 	let csv = fields.map(f => f.toUpperCase().replace(/_/g, ' ')).join(';') + '\n'

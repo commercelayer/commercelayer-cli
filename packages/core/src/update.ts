@@ -12,7 +12,7 @@ interface Package {
 const UPDATE_CHECK_INTERVAL_HOURS = 1
 
 
-const checkUpdate = (pkg: Package) => {
+const checkUpdate = (pkg: Package): void => {
 
 	const notifier = updateNotifier({ pkg, updateCheckInterval: 1000 * 60 * 60 * UPDATE_CHECK_INTERVAL_HOURS })
 

@@ -7,7 +7,7 @@ const sleep = async (ms: number): Promise<void> => {
 
 
 // Reset terminal style after use of colors and text styles
-const resetConsole = () => {
+const resetConsole = (): void => {
 
 	// Cursor
 	// const showCursor = '\u001B[?25l'  // \x1B[?25l
@@ -24,7 +24,7 @@ const resetConsole = () => {
 }
 
 
-const log = (message = '', ...args: unknown[]) => {
+const log = (message = '', ...args: unknown[]): void => {
 	// tslint:disable-next-line strict-type-predicates
 	message = (typeof message === 'string') ? message : inspect(message)
 	process.stdout.write(format(message, ...args) + '\n')

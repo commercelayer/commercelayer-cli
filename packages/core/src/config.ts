@@ -1,5 +1,5 @@
 
-const IMPORTS_RESOURCE_TYPES: Array<string> = [
+const IMPORTS_RESOURCE_TYPES: string[] = [
 	'bundles',
 	'coupons',
 	'customer_subscriptions',
@@ -15,7 +15,7 @@ const IMPORTS_RESOURCE_TYPES: Array<string> = [
 	'tax_categories',
 ]
 
-const IMPORTS_STATUSES: Array<string> = [
+const IMPORTS_STATUSES: string[] = [
 	'in_progress',
 	'pending',
 	'completed',
