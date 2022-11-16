@@ -33,7 +33,7 @@ export default class WebhooksEvent extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(WebhooksEvent)
 
@@ -50,6 +50,7 @@ export default class WebhooksEvent extends Command {
 				this.log(`Event with id ${clColor.api.id(id)} not found`)
 				return
 			}
+
 			const event = events[0]
 
 			const table = new Table({
@@ -101,7 +102,7 @@ export default class WebhooksEvent extends Command {
 
 			return event
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags, id)
 		}
 
@@ -135,8 +136,7 @@ const responseCodeColor = (code?: string, message?: string): string => {
 	if (code) {
 		if (!Number.isNaN(code)) {
 			const c = Number(code)
-			if (c < 300) styled = clColor.msg.success(code)
-			else styled = clColor.msg.error(code)
+			styled = (c < 300) ? clColor.msg.success(code) : clColor.msg.error(code)
 		} else
 			if (message) {
 				const msg = message.toLowerCase()

@@ -19,7 +19,7 @@ export default class WebhooksIndex extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args } = await this.parse(WebhooksIndex)
 

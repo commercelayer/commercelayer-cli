@@ -32,7 +32,7 @@ export default class WebhooksList extends Command {
   static args = []
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { flags } = await this.parse(WebhooksList)
 
@@ -99,7 +99,7 @@ export default class WebhooksList extends Command {
 
 			return tableData
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags)
 		}
 

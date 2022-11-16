@@ -22,7 +22,7 @@ export default class WebhooksReset extends Command {
 	]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(WebhooksReset)
 

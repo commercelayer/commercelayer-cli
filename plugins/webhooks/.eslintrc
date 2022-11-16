@@ -12,6 +12,7 @@
     "array-bracket-spacing": "off",
     "@typescript-eslint/no-use-before-define": "off",
     "no-multi-assign": "off",
-    "unicorn/prefer-module": "off"
+    "unicorn/prefer-module": "off",
+    "camelcase": "off"
   }
 }

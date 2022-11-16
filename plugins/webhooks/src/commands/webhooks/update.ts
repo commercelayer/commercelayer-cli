@@ -1,5 +1,5 @@
 import Command, { Flags } from '../../base'
-import { URL } from 'url'
+import { URL } from 'node:url'
 import { WebhookUpdate } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
 
@@ -45,7 +45,7 @@ export default class WebhooksUpdate extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(WebhooksUpdate)
 
@@ -67,8 +67,7 @@ export default class WebhooksUpdate extends Command {
 		let include: Array<string> | undefined
 		if (flags.include) {
 			const inc = flags.include.join(',')
-			if (inc === 'null') include = []
-			else include = inc.split(',')
+			include = (inc === 'null') ? [] : inc.split(',')
 		}
 
 
@@ -87,7 +86,7 @@ export default class WebhooksUpdate extends Command {
 
 			return webhook
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags, id)
 		}
 

@@ -16,9 +16,9 @@ Commerce Layer CLI Webhooks plugin
 <!-- usage -->
 
 ```sh-session
-$ commercelayer COMMAND
+commercelayer COMMAND
 
-$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
 ## Commands

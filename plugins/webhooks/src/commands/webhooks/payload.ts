@@ -27,7 +27,7 @@ export default class WebhooksPayload extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(WebhooksPayload)
 
@@ -43,6 +43,7 @@ export default class WebhooksPayload extends Command {
 				this.log(`Event with id ${clColor.api.id(id)} not found`)
 				return
 			}
+
 			const event = events[0]
 
 			if (event.payload) {
@@ -52,7 +53,7 @@ export default class WebhooksPayload extends Command {
 
 			return event
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags, id)
 		}
 

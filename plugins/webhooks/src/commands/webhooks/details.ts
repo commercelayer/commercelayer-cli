@@ -35,7 +35,7 @@ export default class WebhooksDetails extends Command {
   ]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(WebhooksDetails)
 
@@ -58,7 +58,7 @@ export default class WebhooksDetails extends Command {
 
       table.push(...Object.entries(webhook)
         .filter(([k]) => !['type', 'last_event_callbacks'].includes(k))
-        .filter(([_k, v]) => !flags['hide-empty'] || isEmpty(v) || (Array.isArray(v) && !(v.length === 0)))
+        .filter(([_k, v]) => !flags['hide-empty'] || isEmpty(v) || (Array.isArray(v) && (v.length > 0)))
         .map(([k, v]) => {
           return [
             { content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
@@ -81,7 +81,7 @@ export default class WebhooksDetails extends Command {
 
       return webhook
 
-    } catch (error) {
+    } catch (error: any) {
       this.handleError(error, flags, id)
     }
 
@@ -112,6 +112,7 @@ const formatValue = (field: string, value: string): any => {
       }))
       return t.toString()
     }
+
     default: {
       if ((typeof value === 'object') && (value !== null)) return JSON.stringify(value, undefined, 4)
       return String(value)

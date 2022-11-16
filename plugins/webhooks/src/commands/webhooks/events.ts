@@ -37,7 +37,7 @@ export default class WebhooksEvents extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(WebhooksEvents)
 
@@ -91,10 +91,12 @@ export default class WebhooksEvents extends Command {
 						pageCount = this.computeNumPages(flags, events.meta)
 						totalItems = events.meta.recordCount
 					}
+
 					itemCount += events.length
 				}
 
 			}
+
 			CliUx.ux.action.stop()
 
 			this.log()
@@ -109,7 +111,7 @@ export default class WebhooksEvents extends Command {
 
 			return tableData
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags, id)
 		}
 

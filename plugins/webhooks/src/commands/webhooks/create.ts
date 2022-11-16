@@ -1,5 +1,5 @@
 import Command, { Flags } from '../../base'
-import { URL } from 'url'
+import { URL } from 'node:url'
 import { clColor } from '@commercelayer/cli-core'
 
 
@@ -41,7 +41,7 @@ export default class WebhooksCreate extends Command {
   static args = []
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { flags } = await this.parse(WebhooksCreate)
 
@@ -66,7 +66,7 @@ export default class WebhooksCreate extends Command {
 
 			return webhook
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags)
 		}
 

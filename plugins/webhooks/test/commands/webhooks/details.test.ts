@@ -2,6 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('webhooks:details', () => {
   test
+    .timeout(5000)
     .stdout()
     .command(['webhooks:noc'])
     .it('runs NoC', ctx => {

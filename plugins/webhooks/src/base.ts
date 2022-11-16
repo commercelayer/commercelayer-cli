@@ -2,6 +2,7 @@
 import { Command, Flags, CliUx } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
+import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -37,18 +38,18 @@ export default abstract class extends Command {
 
 
 	// INIT (override)
-	async init() {
+	async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
 		return super.init()
 	}
 
 
-	protected handleError(error: any, flags?: any, id?: string): void {
+	protected handleError(error: CommandError, flags?: OutputFlags<any>, id?: string): void {
 		if (CommerceLayerStatic.isApiError(error)) {
 			if (error.status === 401) {
 				const err = error.first()
 				this.error(clColor.bg.red(`${err.title}:  ${err.detail}`),
-					{ suggestions: ['Execute login to get access to the organization\'s webhooks'] }
+					{ suggestions: ['Execute login to get access to the organization\'s webhooks'] },
 				)
       } else
       if (error.status === 404) {
@@ -58,7 +59,7 @@ export default abstract class extends Command {
 	}
 
 
-	protected commercelayerInit(flags: any): CommerceLayerClient {
+	protected commercelayerInit(flags: OutputFlags<any>): CommerceLayerClient {
 
 		const organization = flags.organization
 		const domain = flags.domain

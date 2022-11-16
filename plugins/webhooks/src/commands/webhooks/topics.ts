@@ -13,7 +13,7 @@ export default class WebhooksTopics extends Command {
 	]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     await CliUx.ux.open('https://docs.commercelayer.io/api/real-time-webhooks#supported-events')
 
