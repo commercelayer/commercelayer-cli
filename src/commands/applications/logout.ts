@@ -18,7 +18,7 @@ export default class ApplicationsLogout extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(ApplicationsLogout)
 

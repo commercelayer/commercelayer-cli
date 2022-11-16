@@ -66,13 +66,13 @@ export default class ApplicationsLogin extends Command {
 	}
 
 
-	async catch(error: any) {
+	async catch(error: any): Promise<any> {
 		this.error(error.message)
 	}
 
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { flags } = await this.parse(ApplicationsLogin)
 
@@ -162,7 +162,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		organization: org.name || '',
 		key: clApplication.appKey(),
 		slug: org.slug || '',
-		mode: mode,
+		mode,
 		kind: app.kind || '',
 		name: app.name || '',
 		baseUrl: clApi.baseURL(auth.slug, auth.domain),

@@ -15,7 +15,7 @@ function isConfig(o: any): o is IConfig {
 
 export class PatchedConfig extends Config {
 
-  static async load(opts: LoadOptions = (module.parent && module.parent.parent && module.parent.parent.filename) || __dirname) {
+  static async load(opts: LoadOptions = (module.parent?.parent?.filename) || __dirname): Promise<IConfig> {
     // Handle the case when a file URL string is passed in such as 'import.meta.url'; covert to file path.
     if (typeof opts === 'string' && opts.startsWith('file://')) {
       opts = fileURLToPath(opts)
@@ -51,7 +51,7 @@ export class PatchedConfig extends Config {
     const prerunHook = await this.runHook('prerun', { Command: command, argv })
     if (prerunHook.failures[0]) throw new CLIError(prerunHook.failures[0].error)
     const result = (await command.run(argv, this)) as T
-    const postrunHook = await this.runHook('postrun', { Command: command, result: result, argv })
+    const postrunHook = await this.runHook('postrun', { Command: command, result, argv })
     if (postrunHook.failures[0]) throw new CLIError(postrunHook.failures[0].error)
     return result
   }

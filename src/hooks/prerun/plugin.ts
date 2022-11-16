@@ -22,7 +22,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
     if (opts.argv.length === 0) {
       const arg = await promptPlugin(this.config, command).catch(this.error)
-      if (arg) opts.argv[0] = arg as string
+      if (arg) opts.argv[0] = arg
       else {
         this.log(`\nAll Commerce Layer CLI plugins have already been ${command}ed\n`)
         throw new CLIError('HOOK_EXIT')
@@ -52,7 +52,7 @@ const hook: Hook<'prerun'> = async function (opts) {
        // Check tag flag
       const tgIndex = opts.argv.indexOf('--tag')
       if (tgIndex > -1) {
-        plugin = plugin + '@' + opts.argv[tgIndex + 1]
+        plugin =`${plugin}@${opts.argv[tgIndex + 1]}`
         opts.argv.splice(tgIndex, 2)
       }
 

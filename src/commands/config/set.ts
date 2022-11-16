@@ -25,7 +25,7 @@ export default class ConfigSet extends Command {
     { name: 'value', required: true, description: 'value to be saved in configuration file'  },
   ]
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ConfigSet)
 

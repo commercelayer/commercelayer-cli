@@ -1,6 +1,6 @@
 # `commercelayer cli`
 
-Update Commerce Layer CLI.
+Core CLI commands.
 
 * [`commercelayer cli:update`](#commercelayer-cliupdate)
 * [`commercelayer cli:version`](#commercelayer-cliversion)

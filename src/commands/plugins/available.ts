@@ -22,7 +22,7 @@ export default class PluginsAvailable extends Command {
   static args = []
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(PluginsAvailable)
 

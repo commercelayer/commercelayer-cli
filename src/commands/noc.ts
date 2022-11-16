@@ -15,7 +15,7 @@ export default class Noc extends Command {
     }),
   }
 
-  async run() {
+  async run(): Promise<any> {
 
     const output = '-= NoC =-'
 

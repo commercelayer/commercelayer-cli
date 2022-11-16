@@ -18,7 +18,7 @@ export default class ConfigGet extends Command {
     { name: 'param', required: true, description: 'configuration parameter name' },
   ]
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args } = await this.parse(ConfigGet)
 

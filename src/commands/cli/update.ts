@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Command, CliUx as cliux, Flags } from '@oclif/core'
 import { exec } from 'child_process'
 
@@ -21,7 +22,7 @@ export default class CliUpdate extends Command {
   }
 
 
-  public async run(): Promise<void> {
+  public async run(): Promise<any> {
 
     const { flags } = await this.parse(CliUpdate)
 
@@ -54,10 +55,9 @@ export default class CliUpdate extends Command {
     cp.on('exit', async (code, signal) => {
       if (code || signal) {
         this.log()
-        this.log('Code: ' + code)
-        this.log('Signal: ' + signal)
+        this.log(`Code: ${code}`)
+        this.log(`Signal: ${signal}`)
         this.log()
-        // eslint-disable-next-line no-process-exit, unicorn/no-process-exit
         process.exit()
       }
     })

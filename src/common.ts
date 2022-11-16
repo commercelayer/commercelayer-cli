@@ -6,7 +6,7 @@ const printScope = (scope: string | string[] | undefined): string => {
 	if (scope) {
 		if (Array.isArray(scope)) {
 			if (scope.length === 0) return ''
-			return scope[0] + ((scope.length > 1) ? ` ${clColor.italic.dim('+' + (scope.length - 1))}` : '')
+			return scope[0] + ((scope.length > 1) ? ` ${clColor.italic.dim('+' + String(scope.length - 1))}` : '')
 		}
 		return scope
 	}
@@ -14,7 +14,7 @@ const printScope = (scope: string | string[] | undefined): string => {
 }
 
 
-const promptApplication = async (apps: AppInfo[]) => {
+const promptApplication = async (apps: AppInfo[]): Promise<any> => {
 
 	const appMaxLength = clOutput.maxLength(apps, 'name') + 2
 	const details = ['organization', 'kind', 'mode', 'alias']

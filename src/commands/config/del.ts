@@ -23,7 +23,7 @@ export default class ConfigDel extends Command {
     { name: 'param', required: true, description: 'configuration parameter name' },
   ]
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ConfigDel)
 

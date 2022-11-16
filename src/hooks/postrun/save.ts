@@ -8,8 +8,8 @@ import { configParam, ConfigParams } from '../../config'
 const hook: Hook<'postrun'> = async function (opts) {
 
   // Do not save fake commands output
-  if (opts.Command.id && (opts.Command.id.toLowerCase().endsWith('noc'))) return
-  if (opts.Command.name && (opts.Command.name.toLowerCase().endsWith('noc'))) return
+  if (opts.Command.id?.toLowerCase().endsWith('noc')) return
+  if (opts.Command.name?.toLowerCase().endsWith('noc')) return
 
   // Save last results
   if (opts.result) {
@@ -53,7 +53,7 @@ export default hook
 
 
 
-const deleteOldFiles = (dir: string) => {
+const deleteOldFiles = (dir: string): void => {
 
   const files = readdirSync(dir).filter((f: string) => {
 

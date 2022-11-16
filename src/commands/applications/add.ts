@@ -22,13 +22,13 @@ export default class ApplicationsAdd extends Command {
   }
 
 
-  async catch(error: any) {
+  async catch(error: any): Promise<any> {
 		this.error(error.message)
 	}
 
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(ApplicationsAdd)
 

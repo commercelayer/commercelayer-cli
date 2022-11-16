@@ -4,7 +4,7 @@
 const oclif = /* require('@oclif/core') */ require('../lib/patches/oclif/core/main')
 
 oclif.run()
-	.then(require('@oclif/core/flush'))
+	.then(require('@oclif/core/flush')(60000))
 	.catch(error => {
 		const oclifHandler = require('@oclif/core/handle')
 		if (error.message !== 'HOOK_EXIT') return oclifHandler(error)

@@ -16,7 +16,7 @@ export default class ApplicationsSwitch extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(ApplicationsSwitch)
 

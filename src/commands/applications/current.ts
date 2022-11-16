@@ -28,7 +28,7 @@ export default class ApplicationsCurrent extends Command {
 		}),
 	}
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { flags } = await this.parse(ApplicationsCurrent)
 
@@ -54,7 +54,7 @@ export default class ApplicationsCurrent extends Command {
 
 
 export const printCurrent = (app?: AppInfo): string => {
-	if (!app || !app.key || (app.key === '')) return clColor.italic.dim('No current application')
+	if (!app?.key || (app.key === '')) return clColor.italic.dim('No current application')
 	const mode = `${((app.mode === 'live') ? clColor.api.live.greenBright : clColor.api.test)(app.mode)}`
 	return `${clColor.api.application(app.name)} (${clColor.api.slug(app.slug)}) [ ${app.organization} | ${app.kind} | ${mode} | ${app.alias} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
 }

@@ -16,7 +16,7 @@ export default class ConfigShow extends Command {
 
   static args = []
 
-  async run() {
+  async run(): Promise<any> {
 
     const config = clicfg.all
 

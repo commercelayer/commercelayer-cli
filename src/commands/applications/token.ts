@@ -48,7 +48,7 @@ export default class ApplicationsToken extends Command {
 	}
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { flags } = await this.parse(ApplicationsToken)
 
@@ -91,7 +91,7 @@ export default class ApplicationsToken extends Command {
 			return returnData
 
 		} catch (error: any) {
-			this.log(clColor.msg.error.bold('FAILURE! ') + error.message)
+			this.log(clColor.msg.error.bold('FAILURE! ') + String(error.message))
 		}
 
 	}

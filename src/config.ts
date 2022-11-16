@@ -200,7 +200,7 @@ const paramExists = (param: string): boolean => {
 	return (Object.keys(ConfigParams).includes(param))
 }
 
-const paramDefault = (param: ConfigParamsEditable) => {
+const paramDefault = (param: ConfigParamsEditable): any => {
 	return defaultConfig[param]
 }
 

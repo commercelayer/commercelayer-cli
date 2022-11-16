@@ -20,7 +20,7 @@ export default class ApplicationsInfo extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(ApplicationsInfo)
 
