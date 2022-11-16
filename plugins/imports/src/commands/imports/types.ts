@@ -15,12 +15,12 @@ export default class ImportsTopics extends Command {
 	]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     this.log()
     this.log(clColor.style.title('Supported import types'))
     this.log()
-    this.log(clConfig.imports.types.sort().join(' | '))
+    this.log((clConfig.imports.types as string[]).sort().join(' | '))
     this.log()
 
     await cliux.ux.open('https://docs.commercelayer.io/api/importing-resources#supported-resources')

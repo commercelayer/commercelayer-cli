@@ -12,7 +12,7 @@ import { Chunk, Batch, splitChunks, splitImports } from '../../chunk'
 const MAX_INPUTS = 0	// 0 = No Max
 const MAX_CHUNKS = 10
 const MIN_DELAY = 1000
-const ERROR_429_DELAY = 10000
+const ERROR_429_DELAY = 10_000
 const SECURITY_DELAY = 50
 
 
@@ -51,8 +51,9 @@ export default class ImportsCreate extends Command {
       char: 't',
       description: 'the type of resource being imported',
       required: true,
-      options: clConfig.imports.types,
+      options: clConfig.imports.types as string[],
       helpValue: clConfig.imports.types.slice(0, 4).join('|') + '|...',
+      multiple: false,
     }),
     parent: Flags.string({
       char: 'p',
@@ -70,9 +71,10 @@ export default class ImportsCreate extends Command {
     }),
     delimiter: Flags.enum({
       char: 'D',
-      description: `the delimiter character used in the CSV input file (one of ',', ';', '|', TAB)`,
+      description: 'the delimiter character used in the CSV input file (one of \',\', \';\', \'|\', TAB)',
       options: [',', ';', '|', 'TAB'],
       dependsOn: ['csv'],
+      default: ',',
     }),
     blind: Flags.boolean({
       char: 'b',
@@ -94,7 +96,7 @@ export default class ImportsCreate extends Command {
   private completed = 0
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(ImportsCreate)
 
@@ -115,7 +117,7 @@ export default class ImportsCreate extends Command {
 
       const monitor = !flags.blind
 
-      const inputs: Array<any> = await generateInputs(inputFile, flags).catch(error => this.error(error.message))
+      const inputs: any[] = await generateInputs(inputFile, flags).catch(error => this.error(error.message))
       const inputsLength = inputs.length
 
       // Check import size
@@ -127,7 +129,7 @@ export default class ImportsCreate extends Command {
         })
 
       // Split input
-      const chunks: Array<Chunk> = splitImports({
+      const chunks: Chunk[] = splitImports({
         resource_type: type,
         parent_resource_id: parentId,
         cleanup_records: false,
@@ -135,7 +137,7 @@ export default class ImportsCreate extends Command {
       })
 
       // Split chunks
-      const batches: Array<Batch> = splitChunks(chunks, MAX_CHUNKS)
+      const batches: Batch[] = splitChunks(chunks, MAX_CHUNKS)
 
 
       const resource = type.replace(/_/g, ' ')
@@ -152,11 +154,13 @@ export default class ImportsCreate extends Command {
           const msg3 = `Execute the command ${clColor.cli.command(`imports:group ${groupId}`)} to retrieve all the related imports`
           this.log(`\n${msg1} ${msg2} ${msg3}`)
         }
+
         // Multi batch message
         if (multiBatch) {
           const msg1 = `The ${chunks.length} generated chunks will be elaborated in batches of ${MAX_CHUNKS}`
           this.log(`\n${msg1}`)
         }
+
         if (multiChunk || multiBatch) {
           this.log()
           await CliUx.ux.anykey()
@@ -172,6 +176,7 @@ export default class ImportsCreate extends Command {
           const impOk = await this.parallelizeImports(batch.chunks, monitor)
           withErrors ||= !impOk
         }
+
         this.log(`\nImport of ${clColor.yellowBright(String(inputsLength))} ${humanized} completed${withErrors ? ' with errors' : ''}.`)
       } else {
         await this.parallelizeImports(chunks, monitor)
@@ -181,14 +186,14 @@ export default class ImportsCreate extends Command {
       this.log()
 
 
-    } catch (error) {
+    } catch (error: any) {
       this.handleError(error, flags)
     }
 
   }
 
 
-  private async checkAccessToken() {
+  private async checkAccessToken(): Promise<void> {
     try {
       await this.cl.application.retrieve()
     } catch (error) {
@@ -207,6 +212,7 @@ export default class ImportsCreate extends Command {
     this.completed = 0
     for (const chunk of chunks) {
       const imp = this.createParallelImport(chunk, monitor)
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       if (imp) imports.push(imp)
     }
 
@@ -256,9 +262,9 @@ export default class ImportsCreate extends Command {
         do {
 
           await clUtil.sleep(importsDelay(chunk.total_batch_chunks - this.completed))
-          const tmp = await this.cl.imports.retrieve(imp.id).catch(async err => {
-            if (this.cl.isApiError(err) && (err.status === 429)) {
-              if (imp && imp.status) barValue = this.monitor.updateBar(bar, barValue, { status: clColor.cyanBright(imp.status) })
+          const tmp = await this.cl.imports.retrieve(imp.id).catch(async error => {
+            if (this.cl.isApiError(error) && (error.status === 429)) {
+              if (imp?.status) barValue = this.monitor.updateBar(bar, barValue, { status: clColor.cyanBright(imp.status) })
               await clUtil.sleep(ERROR_429_DELAY)
             }
           })
@@ -283,6 +289,7 @@ export default class ImportsCreate extends Command {
 
       return imp
 
+    // eslint-disable-next-line @typescript-eslint/promise-function-async
     }).catch(error => {
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
       return Promise.reject(error)

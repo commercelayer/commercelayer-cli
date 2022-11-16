@@ -22,10 +22,10 @@ type Batch = {
 }
 
 
-const splitImports = (imp: ImportCreate, size?: number): Array<Chunk> => {
+const splitImports = (imp: ImportCreate, size?: number): Chunk[] => {
 
-	const chunks: Array<Chunk> = []
-	if (!imp || !imp.inputs || (imp.inputs.length === 0)) return chunks
+	const chunks: Chunk[] = []
+	if (!imp?.inputs || (imp.inputs.length === 0)) return chunks
 
 	const chunkSize = size || clConfig.imports.max_size
 
@@ -34,7 +34,7 @@ const splitImports = (imp: ImportCreate, size?: number): Array<Chunk> => {
 	const groupId = generateGroupUID()
 
 	let chunkNum = 0
-	while (allInputs.length) chunks.push({
+	while (allInputs.length > 0) chunks.push({
 		resource_type: imp.resource_type,
 		parent_resource_id: imp.parent_resource_id,
 		cleanup_records: false,
@@ -103,10 +103,10 @@ const splitChunks = (chunks: Chunk[], size: number): Batch[] => {
 }
 
 
-const generateGroupUID = () => {
+const generateGroupUID = (): string => {
 
-	const firstPart = (Math.random() * 46656) | 0
-	const secondPart = (Math.random() * 46656) | 0
+	const firstPart = Math.trunc(Math.random() * 46_656)
+	const secondPart = Math.trunc(Math.random() * 46_656)
 	const firstPartStr = ('000' + firstPart.toString(36)).slice(-3)
 	const secondPartStr = ('000' + secondPart.toString(36)).slice(-3)
 

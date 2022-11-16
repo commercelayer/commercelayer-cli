@@ -34,7 +34,7 @@ export default class ImportsDetails extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(ImportsDetails)
 
@@ -54,11 +54,11 @@ export default class ImportsDetails extends Command {
 				wordWrap: true,
 			})
 
-			const exclude = ['type', 'reference', 'reference_origin', 'metadata', 'inputs', 'warnings_log', 'errors_log']
+			const exclude = new Set(['type', 'reference', 'reference_origin', 'metadata', 'inputs', 'warnings_log', 'errors_log'])
 
 			// let index = 0
 			table.push(...Object.entries(imp)
-				.filter(([k]) => !exclude.includes(k))
+				.filter(([k]) => !exclude.has(k))
 				.map(([k, v]) => {
 					return [
 						{ content: clColor.table.key.blueBright(k), hAlign: 'right', vAlign: 'center' },
@@ -77,14 +77,14 @@ export default class ImportsDetails extends Command {
 
 			return imp
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags, id)
 		}
 
 	}
 
 
-	showInputs(inputs?: Array<object>): void {
+	showInputs(inputs?: object[]): void {
 
 		const imp = inputs || []
 
@@ -190,6 +190,7 @@ const formatValue = (field: string, value: string): any => {
 			}))
 			return t.toString()
 		}
+
 		default: {
 			if ((typeof value === 'object') && (value !== null)) return JSON.stringify(value, undefined, 4)
 			return String(value)

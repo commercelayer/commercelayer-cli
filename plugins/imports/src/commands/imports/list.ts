@@ -28,7 +28,8 @@ export default class ImportsList extends Command {
 		type: Flags.string({
 			char: 't',
 			description: 'the type of resource imported',
-			options: clConfig.imports.types,
+			options: clConfig.imports.types as string[],
+      multiple: false,
 		}),
 		group: Flags.string({
 			char: 'g',
@@ -38,7 +39,8 @@ export default class ImportsList extends Command {
 		status: Flags.string({
 			char: 's',
 			description: 'the import job status',
-			options: clConfig.imports.statuses,
+			options: clConfig.imports.statuses as string[],
+      multiple: false,
 		}),
 		errors: Flags.boolean({
 			char: 'e',
@@ -56,7 +58,7 @@ export default class ImportsList extends Command {
 	}
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { flags } = await this.parse(ImportsList)
 
@@ -86,7 +88,7 @@ export default class ImportsList extends Command {
 					filters: {},
 				}
 
-				if (params && params.filters) {
+				if (params?.filters) {
 					if (flags.type) params.filters.resource_type_eq = flags.type
 					if (flags.group) params.filters.reference_start = flags.group + '-'
 					if (flags.status) params.filters.status_eq = flags.status
@@ -104,10 +106,12 @@ export default class ImportsList extends Command {
 						pageCount = this.computeNumPages(flags, imports.meta)
 						totalItems = imports.meta.recordCount
 					}
+
 					itemCount += imports.length
 				}
 
 			}
+
 			CliUx.ux.action.stop()
 
 			this.log()
@@ -146,14 +150,14 @@ export default class ImportsList extends Command {
 
 			return tableData
 
-		} catch (error) {
+		} catch (error: any) {
 			this.handleError(error, flags)
 		}
 
 	}
 
 
-	private footerMessage(flags: any, itemCount: number, totalItems: number) {
+	private footerMessage(flags: any, itemCount: number, totalItems: number): void {
 
 		this.log()
 		this.log(`Total displayed imports: ${clColor.yellowBright(String(itemCount))}`)

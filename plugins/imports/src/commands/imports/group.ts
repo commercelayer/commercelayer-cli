@@ -25,7 +25,7 @@ export default class ImportsGroup extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(ImportsGroup)
 
@@ -62,6 +62,7 @@ export default class ImportsGroup extends Command {
 				}
 
 			}
+
 			CliUx.ux.action.stop()
 
 			this.log()
@@ -100,7 +101,7 @@ export default class ImportsGroup extends Command {
 
 			return tableData
 
-		} catch (error) {
+		} catch (error: any) {
       if (cl.isApiError(error) && (error.status === 404))
         this.error(`Unable to find import group${groupId ? ` with id ${clColor.msg.error(groupId)}` : ''}`)
 			else this.handleError(error, flags)

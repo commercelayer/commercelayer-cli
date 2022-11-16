@@ -16,7 +16,7 @@ export default class ImportsIndex extends Command {
 	static args = [ ]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args } = await this.parse(ImportsIndex)
 

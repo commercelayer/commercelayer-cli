@@ -1,6 +1,7 @@
 import { Command, Flags, CliUx } from '@oclif/core'
 import { clOutput, clUpdate, clColor, clToken } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -38,20 +39,20 @@ export default abstract class extends Command {
 
 
   // INIT (override)
-  async init() {
+  async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
     if (!this.argv.includes('--blind') && !this.argv.includes('--silent')) clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
 
-  async catch(error: any) {
-    if (error.message && error.message.match(/quit/)) this.exit()
+  async catch(error: CommandError): Promise<any> {
+    if (error.message?.includes('quit')) this.exit()
     else return super.catch(error)
   }
 
 
-  protected handleError(error: any, flags?: any, id?: string): void {
+  protected handleError(error: CommandError, flags?: OutputFlags<any>, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -74,6 +75,7 @@ export default abstract class extends Command {
       if (root === 'desktop') filePrefix += '/Desktop'
       filePath = filePath.replace(root, filePrefix)
     }
+
     return filePath
   }
 
@@ -104,7 +106,7 @@ export default abstract class extends Command {
   }
 
 
-  protected commercelayerInit(flags: any): CommerceLayerClient {
+  protected commercelayerInit(flags: OutputFlags<any>): CommerceLayerClient {
 
     const organization = flags.organization
     const domain = flags.domain

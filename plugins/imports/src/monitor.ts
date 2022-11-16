@@ -38,11 +38,11 @@ type Payload = {
 
 class Monitor {
 
-	private multibar: MultiBar
+	private readonly multibar: MultiBar
 
-	private totalItems: number
+	private readonly totalItems: number
 
-	private style: MonitorStyle
+	private readonly style: MonitorStyle
 
 
 	constructor(totalItems: number, colors?: boolean) {
@@ -62,7 +62,7 @@ class Monitor {
 
 	static readonly BAR_SIZE = 25
 
-	static readonly FORMATS: Array<string> = [
+	static readonly FORMATS: string[] = [
 		'| {import} | {range} | {bar} | {percentage}% | {status} | {tbp} | {processed} | {warnings} | {errors} | {message}',
 		'| {import} | {range} | {bar} | {percentage}% | {status} | {tbp} | {processed} | {warnings} | {errors} |',
 		'| {import} | {range} | {percentage}% | {status} | {tbp} | {processed} | {warnings} | {errors} | {message}',
@@ -73,12 +73,13 @@ class Monitor {
 	]
 
 
-	static create(totalItems: number, log?: Function) {
+	static create(totalItems: number, log?: Function): Monitor {
 		const monitor = new Monitor(totalItems)
 		if (log) {
       log()
       log(monitor.style.header)
 		}
+
 		return monitor
 	}
 
@@ -179,15 +180,15 @@ class Monitor {
 		for (const f of Monitor.FORMATS) {
 
 			// Extract column name from format
-			const cols: Array<string> = []
+			const cols: string[] = []
 			f.split('|').forEach(p => {
-				const col = p.trim().replace(/[^a-zA-Z_]/g, '').trim()
+				const col = p.trim().replace(/[^A-Z_a-z]/g, '').trim()
 				if (col) cols.push(col)
 			})
 
 			// Calculate maximum row size
 			let totalSize = cols.length
-			cols.forEach(c => {
+			for (const c of cols) {
 				const col = allColumns[c]
 				let size = col.width || 0
 				if (c === 'percentage') size++
@@ -195,18 +196,20 @@ class Monitor {
 				if (col.pad) size += 2
 				if (colors && col.valueStyle) size += 10
 				totalSize += size
-			})
+			}
 
 			// If total size fits console width select the format
 			if (totalSize <= (process.stderr.columns || 80)) {
 				let format = f
 				if (colors) {
-					cols.forEach(c => {
+					for (const c of cols) {
 						const style = allColumns[c].valueStyle
 						const perc = (c === 'percentage') ? '%' : ''
+						// eslint-disable-next-line max-depth
 						if (style) format = format.replace(new RegExp(`{${c}}${perc}`), style(`{${c}}${perc}`))
-					})
+					}
 				}
+
 				return {
 					format,
 					columns: cols.map(c => allColumns[c]).filter(c => !c.hiddenHeader),
@@ -249,9 +252,9 @@ class Monitor {
 
 		// Write header lower border
 		let tableWidth = header.length + 1
-		header.forEach(h => {
+		for (const h of header) {
 			tableWidth += h.width + (h.pad ? 2 : 0)
-		})
+		}
 
 		style.header = `|${labels.join('|')}|\n` + ''.padStart(tableWidth, '-')
 
@@ -280,14 +283,14 @@ class Monitor {
 	}
 
 
-	stop() {
+	stop(): void {
 		this.multibar.stop()
 	}
 
 }
 
 
-const barFormatValue = (v: any, _options: any, type: string) => {
+const barFormatValue = (v: any, _options: any, type: string): any => {
 
 	const chunkLength = String(MAX_IMPORT_SIZE).length
 
@@ -299,6 +302,7 @@ const barFormatValue = (v: any, _options: any, type: string) => {
 			// if (v === '100') vf = chalk.greenBright(vf)
 			return vf
 		}
+
 		default: return v
 	}
 

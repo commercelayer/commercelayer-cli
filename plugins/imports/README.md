@@ -16,9 +16,9 @@ Commerce Layer CLI Imports plugin
 <!-- usage -->
 
 ```sh-session
-$ commercelayer COMMAND
+commercelayer COMMAND
 
-$ commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
+commercelayer [COMMAND] (--help | -h) for detailed information about plugin commands.
 ```
 <!-- usagestop -->
 ## Commands
@@ -46,19 +46,22 @@ Create a new import.
 ```sh-session
 USAGE
   $ commercelayer imp:create [FAKE-ARG] -o <value> -t
-    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
+    bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
+    stock_items|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
 FLAGS
-  -C, --csv                                     accept input file in CSV format
-  -D, --delimiter=(,|;|||TAB)                   the delimiter character used in the CSV input file (one of ',', ';',
-                                                '|', TAB)
-  -b, --blind                                   execute in blind mode without showing the progress monitor
-  -i, --inputs=<value>                          (required) the path of the file containing the data to import
-  -o, --organization=<value>                    (required) the slug of your organization
-  -p, --parent=<value>                          the id of the parent resource to be associated with imported data
-  -q, --quiet                                   execute command without showing warning messages
-  -t, --type=orders|coupons|skus|sku_lists|...  (required) the type of resource being imported
+  -C, --csv                                                        accept input file in CSV format
+  -D, --delimiter=(,|;|||TAB)                                      [default: ,] the delimiter character used in the CSV
+                                                                   input file (one of ',', ';', '|', TAB)
+  -b, --blind                                                      execute in blind mode without showing the progress
+                                                                   monitor
+  -i, --inputs=<value>                                             (required) the path of the file containing the data
+                                                                   to import
+  -o, --organization=<value>                                       (required) the slug of your organization
+  -p, --parent=<value>                                             the id of the parent resource to be associated with
+                                                                   imported data
+  -q, --quiet                                                      execute command without showing warning messages
+  -t, --type=bundles|coupons|customer_subscriptions|customers|...  (required) the type of resource being imported
 
 DESCRIPTION
   create a new import
@@ -162,8 +165,8 @@ List all the created imports.
 ```sh-session
 USAGE
   $ commercelayer imp:list [FAKE-ARG] -o <value> [-A | -l <value>] [-t
-    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
+    bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
+    stock_items|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
 FLAGS
   -A, --all                   show all imports instead of first 25 only
@@ -174,8 +177,8 @@ FLAGS
   -s, --status=<option>       the import job status
                               <options: in_progress|pending|completed|interrupted>
   -t, --type=<option>         the type of resource imported
-                              <options: orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|custo
-                              mers|customer_subscriptions|tax_categories>
+                              <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_li
+                              sts|sku_list_items|sku_options|skus|stock_items|tax_categories>
   -w, --warnings              show only import with warnings
 
 DESCRIPTION
@@ -220,19 +223,22 @@ Create a new import.
 ```sh-session
 USAGE
   $ commercelayer import [FAKE-ARG] -o <value> -t
-    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
+    bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
+    stock_items|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
 FLAGS
-  -C, --csv                                     accept input file in CSV format
-  -D, --delimiter=(,|;|||TAB)                   the delimiter character used in the CSV input file (one of ',', ';',
-                                                '|', TAB)
-  -b, --blind                                   execute in blind mode without showing the progress monitor
-  -i, --inputs=<value>                          (required) the path of the file containing the data to import
-  -o, --organization=<value>                    (required) the slug of your organization
-  -p, --parent=<value>                          the id of the parent resource to be associated with imported data
-  -q, --quiet                                   execute command without showing warning messages
-  -t, --type=orders|coupons|skus|sku_lists|...  (required) the type of resource being imported
+  -C, --csv                                                        accept input file in CSV format
+  -D, --delimiter=(,|;|||TAB)                                      [default: ,] the delimiter character used in the CSV
+                                                                   input file (one of ',', ';', '|', TAB)
+  -b, --blind                                                      execute in blind mode without showing the progress
+                                                                   monitor
+  -i, --inputs=<value>                                             (required) the path of the file containing the data
+                                                                   to import
+  -o, --organization=<value>                                       (required) the slug of your organization
+  -p, --parent=<value>                                             the id of the parent resource to be associated with
+                                                                   imported data
+  -q, --quiet                                                      execute command without showing warning messages
+  -t, --type=bundles|coupons|customer_subscriptions|customers|...  (required) the type of resource being imported
 
 DESCRIPTION
   create a new import
@@ -254,8 +260,8 @@ List all the created imports.
 ```sh-session
 USAGE
   $ commercelayer imports -o <value> [-A | -l <value>] [-t
-    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
+    bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
+    stock_items|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
 FLAGS
   -A, --all                   show all imports instead of first 25 only
@@ -266,8 +272,8 @@ FLAGS
   -s, --status=<option>       the import job status
                               <options: in_progress|pending|completed|interrupted>
   -t, --type=<option>         the type of resource imported
-                              <options: orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|custo
-                              mers|customer_subscriptions|tax_categories>
+                              <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_li
+                              sts|sku_list_items|sku_options|skus|stock_items|tax_categories>
   -w, --warnings              show only import with warnings
 
 DESCRIPTION
@@ -283,19 +289,22 @@ Create a new import.
 ```sh-session
 USAGE
   $ commercelayer imports:create [FAKE-ARG] -o <value> -t
-    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
+    bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
+    stock_items|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
 FLAGS
-  -C, --csv                                     accept input file in CSV format
-  -D, --delimiter=(,|;|||TAB)                   the delimiter character used in the CSV input file (one of ',', ';',
-                                                '|', TAB)
-  -b, --blind                                   execute in blind mode without showing the progress monitor
-  -i, --inputs=<value>                          (required) the path of the file containing the data to import
-  -o, --organization=<value>                    (required) the slug of your organization
-  -p, --parent=<value>                          the id of the parent resource to be associated with imported data
-  -q, --quiet                                   execute command without showing warning messages
-  -t, --type=orders|coupons|skus|sku_lists|...  (required) the type of resource being imported
+  -C, --csv                                                        accept input file in CSV format
+  -D, --delimiter=(,|;|||TAB)                                      [default: ,] the delimiter character used in the CSV
+                                                                   input file (one of ',', ';', '|', TAB)
+  -b, --blind                                                      execute in blind mode without showing the progress
+                                                                   monitor
+  -i, --inputs=<value>                                             (required) the path of the file containing the data
+                                                                   to import
+  -o, --organization=<value>                                       (required) the slug of your organization
+  -p, --parent=<value>                                             the id of the parent resource to be associated with
+                                                                   imported data
+  -q, --quiet                                                      execute command without showing warning messages
+  -t, --type=bundles|coupons|customer_subscriptions|customers|...  (required) the type of resource being imported
 
 DESCRIPTION
   create a new import
@@ -407,8 +416,8 @@ List all the created imports.
 ```sh-session
 USAGE
   $ commercelayer imports:list [FAKE-ARG] -o <value> [-A | -l <value>] [-t
-    orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|customers|customer_subscriptions|tax_cate
-    gories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
+    bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
+    stock_items|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
 FLAGS
   -A, --all                   show all imports instead of first 25 only
@@ -419,8 +428,8 @@ FLAGS
   -s, --status=<option>       the import job status
                               <options: in_progress|pending|completed|interrupted>
   -t, --type=<option>         the type of resource imported
-                              <options: orders|coupons|skus|sku_lists|sku_list_items|prices|stock_items|gift_cards|custo
-                              mers|customer_subscriptions|tax_categories>
+                              <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_li
+                              sts|sku_list_items|sku_options|skus|stock_items|tax_categories>
   -w, --warnings              show only import with warnings
 
 DESCRIPTION
