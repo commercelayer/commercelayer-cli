@@ -15,6 +15,7 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',
@@ -25,6 +26,7 @@ export default abstract class extends Command {
     }),
     accessToken: Flags.string({
       char: 'a',
+      description: 'custom access token to use instead of the one used for login',
       hidden: false,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
