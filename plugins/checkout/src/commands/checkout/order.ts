@@ -8,6 +8,10 @@ export default class CheckoutOrder extends Command {
 
   static description = 'create checkout URLs starting from an existing order'
 
+  static examples = [
+    '$ commercelayer checkout:order <order-id>',
+  ]
+
   static flags = {
     ...Command.flags,
   }
