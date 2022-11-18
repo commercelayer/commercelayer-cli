@@ -17,6 +17,7 @@ const RESOURCES = [
 	{ name: 'carrier_account', api: 'carrier_accounts', model: 'CarrierAccount' },
 	{ name: 'checkout_com_gateway', api: 'checkout_com_gateways', model: 'CheckoutComGateway' },
 	{ name: 'checkout_com_payment', api: 'checkout_com_payments', model: 'CheckoutComPayment' },
+	{ name: 'cleanup', api: 'cleanups', model: 'Cleanup' },
 	{ name: 'coupon_codes_promotion_rule', api: 'coupon_codes_promotion_rules', model: 'CouponCodesPromotionRule' },
 	{ name: 'coupon_recipient', api: 'coupon_recipients', model: 'CouponRecipient' },
 	{ name: 'coupon', api: 'coupons', model: 'Coupon' },
