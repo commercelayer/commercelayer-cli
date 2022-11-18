@@ -36,6 +36,7 @@ export default abstract class extends Command {
     }),
     staging: Flags.boolean({
       description: 'connect to Checkout application in Staging environment',
+      hidden: true,
     }),
   }
 
