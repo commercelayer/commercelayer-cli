@@ -32,6 +32,10 @@ export default abstract class extends Command {
     open: Flags.boolean({
       description: 'open checkout URL in default browser',
     }),
+    staging: Flags.boolean({
+      description: 'connect to Checkout application in Staging environment',
+      hidden: true,
+    }),
   }
 
 
@@ -47,7 +51,7 @@ export default abstract class extends Command {
   }
 
 
-  protected handleError(error: CommandError, flags?: OutputFlags<any>): Promise<any> {
+  protected async handleError(error: CommandError, flags?: OutputFlags<any>): Promise<any> {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()

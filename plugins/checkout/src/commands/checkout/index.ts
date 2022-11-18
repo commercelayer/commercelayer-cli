@@ -98,16 +98,16 @@ export default class CheckoutIndex extends Command {
     // Check SKUs existence
     const liSkus = lineItems.filter(li => li.item_type === 'sku')
     const clSkus = await cl.skus.list({ filters: { code_matches_any: liSkus.map(li => li.sku_code).join(',') } })
-    liSkus.forEach(li => {
+    for (const li of liSkus) {
       if (!clSkus.some(cls => cls.code === li.sku_code)) this.error(`Inexistent ${this.itemName('sku')}: ${clColor.msg.error(String(li.sku_code))}`)
-    })
+    }
 
     // Check bundles existence
     const liBundles = lineItems.filter(li => li.item_type === 'bundle')
     const clBundles = await cl.bundles.list({ filters: { code_matches_any: liBundles.map(li => li.bundle_code).join(',') } })
-    liBundles.forEach(li => {
+    for (const li of liBundles) {
       if (!clBundles.some(clb => clb.code === li.bundle_code)) this.error(`Inexistent ${this.itemName('bundle')}: ${clColor.msg.error(String(li.bundle_code))}`)
-    })
+    }
 
     // Create order
     const market = flags.market
@@ -123,21 +123,22 @@ export default class CheckoutIndex extends Command {
 
 
     // Create line items
-    const lis: Promise<LineItemCreate | void>[] = []
+    const lis: Array<Promise<LineItemCreate> | Promise<void>> = []
 
-    lineItems.forEach(async li => {
+    lineItems.forEach((li): void => {
       li.order = cl.orders.relationship(order)
       const lineItem = cl.line_items.create(li).then(lic => {
         const liName = this.itemName(li.item_type || '')
         const liCode = (['sku', 'skus'].includes(lic.item_type || '')) ? lic.sku_code : lic.bundle_code
         this.log(`Created line item ${clColor.api.id(lic.id)} for ${liName} ${clColor.cli.value.italic(String(liCode))} and associated to order ${clColor.api.id(order.id)}`)
       })
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       if (lineItem) lis.push(lineItem)
     })
 
     await Promise.all(lis)
 
-    const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken)
+    const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, flags.staging)
 
     this.log(`\nCheckout URL for order ${clColor.api.id(order.id)}:\n`)
     this.log(clColor.cyanBright(checkoutUrl))

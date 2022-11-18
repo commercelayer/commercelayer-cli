@@ -33,13 +33,13 @@ export default class CheckoutOrder extends Command {
 
       this.checkApplication(accessToken, 'sales_channel')
 
-      const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken)
+      const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, flags.staging)
 
       this.log(`\nCheckout URL for order ${clColor.api.id(order.id)}:\n`)
       this.log(clColor.cyanBright(checkoutUrl))
       this.log()
 
-      if (flags.open) openCheckoutUrl(checkoutUrl)
+      if (flags.open) await openCheckoutUrl(checkoutUrl)
 
     } catch (error) {
       if (CommerceLayerStatic.isApiError(error)) {

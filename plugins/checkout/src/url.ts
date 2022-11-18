@@ -1,11 +1,12 @@
-import { clApi } from '@commercelayer/cli-core'
+import { clApi, clConfig } from '@commercelayer/cli-core'
 import { ChildProcess } from 'node:child_process'
 import open from 'open'
 
 
 
-const buildCheckoutUrl = (organization: string, id: string, accessToken: string): string => {
-  const baseUrl = clApi.baseURL(organization, 'checkout.commercelayer.app')
+const buildCheckoutUrl = (organization: string, id: string, accessToken: string, staging = false): string => {
+  const subdomain = staging ? 'checkout-stg' : 'checkout'
+  const baseUrl = clApi.baseURL(organization, `${subdomain}.${clConfig.api.default_app_domain}`)
   const checkoutUrl = `${baseUrl}/${id}?accessToken=${accessToken}`
   return checkoutUrl
 }
