@@ -39,19 +39,18 @@ Create checkout URLs.
 
 ```sh-session
 USAGE
-  $ commercelayer checkout -o <value> -a <value> [--open] [-m <value> | [-O <value> | -S <value> | -B
-    <value>]] [-c <value> | ] [-e <value> | ]
+  $ commercelayer checkout -a <value> [--open] [-m <value> | [-O <value> | -S <value> | -B <value>]] [-c
+    <value> | ] [-e <value> | ]
 
 FLAGS
-  -B, --bundle=<value>...     a bundle code
-  -O, --order=<value>         an order id
-  -S, --sku=<value>...        an SKU code
-  -a, --accessToken=<value>   (required)
-  -c, --coupon=<value>        a promo code
-  -e, --email=<value>         a customer email
-  -m, --market=<value>        a market number
-  -o, --organization=<value>  (required) the slug of your organization
-  --open                      open checkout URL in default browser
+  -B, --bundle=<value>...    a bundle code
+  -O, --order=<value>        an order id
+  -S, --sku=<value>...       an SKU code
+  -a, --accessToken=<value>  (required) custom access token to use instead of the one used for login
+  -c, --coupon=<value>       a promo code
+  -e, --email=<value>        a customer email
+  -m, --market=<value>       a market number
+  --open                     open checkout URL in default browser
 
 DESCRIPTION
   create checkout URLs
@@ -72,15 +71,14 @@ Create checkout URLs starting from an existing order.
 
 ```sh-session
 USAGE
-  $ commercelayer checkout:order [ID] -o <value> -a <value> [--open]
+  $ commercelayer checkout:order [ID] -a <value> [--open]
 
 ARGUMENTS
   ID  unique id of the order
 
 FLAGS
-  -a, --accessToken=<value>   (required)
-  -o, --organization=<value>  (required) the slug of your organization
-  --open                      open checkout URL in default browser
+  -a, --accessToken=<value>  (required) custom access token to use instead of the one used for login
+  --open                     open checkout URL in default browser
 
 DESCRIPTION
   create checkout URLs starting from an existing order

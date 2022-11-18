@@ -75,9 +75,12 @@ export default class CheckoutIndex extends Command {
 
     // Checkout URL by order id
     if (flags.order) {
-      const args = [flags.order, '-o', organization, '-a', accessToken]
-      if (flags.open) args.push('--open')
-      if (flags.domain) args.push('-d', flags.domain)
+      const args = [flags.order]
+      for (const flag of Object.values(Command.flags)) {
+        if (flags[flag.name])
+          if (flag.type === 'boolean') args.push(`--${flag.name}`)
+          else args.push(`-${flag.char}`, flags[flag.name])
+      }
       return CheckoutOrder.run(args, this.config)
     }
 
