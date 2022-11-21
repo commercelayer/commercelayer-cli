@@ -45,7 +45,7 @@ Create a new import.
 
 ```sh-session
 USAGE
-  $ commercelayer imp:create [FAKE-ARG] -o <value> -t
+  $ commercelayer imp:create [FAKE-ARG] -t
     bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
     stock_items|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
@@ -57,7 +57,6 @@ FLAGS
                                                                    monitor
   -i, --inputs=<value>                                             (required) the path of the file containing the data
                                                                    to import
-  -o, --organization=<value>                                       (required) the slug of your organization
   -p, --parent=<value>                                             the id of the parent resource to be associated with
                                                                    imported data
   -q, --quiet                                                      execute command without showing warning messages
@@ -82,13 +81,10 @@ Delete an existing import.
 
 ```sh-session
 USAGE
-  $ commercelayer imp:delete [ID] -o <value>
+  $ commercelayer imp:delete [ID]
 
 ARGUMENTS
   ID  unique id of the import
-
-FLAGS
-  -o, --organization=<value>  (required) the slug of your organization
 
 DESCRIPTION
   delete an existing import
@@ -108,15 +104,15 @@ Show the details of an existing import.
 
 ```sh-session
 USAGE
-  $ commercelayer imp:details [ID] -o <value> [-i] [-l]
+  $ commercelayer imp:details [ID] [-l] [-S <value> -i]
 
 ARGUMENTS
   ID  unique id of the import
 
 FLAGS
-  -i, --inputs                show input items associated with the import
-  -l, --logs                  show warning and error logs related to the import process
-  -o, --organization=<value>  (required) the slug of your organization
+  -S, --save-inputs=<value>  save import inputs to local file
+  -i, --inputs               show input items associated with the import
+  -l, --logs                 show warning and error logs related to the import process
 
 DESCRIPTION
   show the details of an existing import
@@ -138,13 +134,10 @@ List all the imports related to an import group.
 
 ```sh-session
 USAGE
-  $ commercelayer imp:group [GROUP_ID] -o <value>
+  $ commercelayer imp:group [GROUP_ID]
 
 ARGUMENTS
   GROUP_ID  unique id of the group import
-
-FLAGS
-  -o, --organization=<value>  (required) the slug of your organization
 
 DESCRIPTION
   list all the imports related to an import group
@@ -164,22 +157,21 @@ List all the created imports.
 
 ```sh-session
 USAGE
-  $ commercelayer imp:list [FAKE-ARG] -o <value> [-A | -l <value>] [-t
+  $ commercelayer imp:list [FAKE-ARG] [-A | -l <value>] [-t
     bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
     stock_items|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
 FLAGS
-  -A, --all                   show all imports instead of first 25 only
-  -e, --errors                show only imports with errors
-  -g, --group=<value>         the group ID associated to the import in case of multi-chunk imports
-  -l, --limit=<value>         limit number of imports in output
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --status=<option>       the import job status
-                              <options: in_progress|pending|completed|interrupted>
-  -t, --type=<option>         the type of resource imported
-                              <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_li
-                              sts|sku_list_items|sku_options|skus|stock_items|tax_categories>
-  -w, --warnings              show only import with warnings
+  -A, --all              show all imports instead of first 25 only
+  -e, --errors           show only imports with errors
+  -g, --group=<value>    the group ID associated to the import in case of multi-chunk imports
+  -l, --limit=<value>    limit number of imports in output
+  -s, --status=<option>  the import job status
+                         <options: in_progress|pending|completed|interrupted>
+  -t, --type=<option>    the type of resource imported
+                         <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|s
+                         ku_list_items|sku_options|skus|stock_items|tax_categories>
+  -w, --warnings         show only import with warnings
 
 DESCRIPTION
   list all the created imports
@@ -222,7 +214,7 @@ Create a new import.
 
 ```sh-session
 USAGE
-  $ commercelayer import [FAKE-ARG] -o <value> -t
+  $ commercelayer import [FAKE-ARG] -t
     bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
     stock_items|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
@@ -234,7 +226,6 @@ FLAGS
                                                                    monitor
   -i, --inputs=<value>                                             (required) the path of the file containing the data
                                                                    to import
-  -o, --organization=<value>                                       (required) the slug of your organization
   -p, --parent=<value>                                             the id of the parent resource to be associated with
                                                                    imported data
   -q, --quiet                                                      execute command without showing warning messages
@@ -259,22 +250,21 @@ List all the created imports.
 
 ```sh-session
 USAGE
-  $ commercelayer imports -o <value> [-A | -l <value>] [-t
+  $ commercelayer imports [-A | -l <value>] [-t
     bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
     stock_items|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
 FLAGS
-  -A, --all                   show all imports instead of first 25 only
-  -e, --errors                show only imports with errors
-  -g, --group=<value>         the group ID associated to the import in case of multi-chunk imports
-  -l, --limit=<value>         limit number of imports in output
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --status=<option>       the import job status
-                              <options: in_progress|pending|completed|interrupted>
-  -t, --type=<option>         the type of resource imported
-                              <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_li
-                              sts|sku_list_items|sku_options|skus|stock_items|tax_categories>
-  -w, --warnings              show only import with warnings
+  -A, --all              show all imports instead of first 25 only
+  -e, --errors           show only imports with errors
+  -g, --group=<value>    the group ID associated to the import in case of multi-chunk imports
+  -l, --limit=<value>    limit number of imports in output
+  -s, --status=<option>  the import job status
+                         <options: in_progress|pending|completed|interrupted>
+  -t, --type=<option>    the type of resource imported
+                         <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|s
+                         ku_list_items|sku_options|skus|stock_items|tax_categories>
+  -w, --warnings         show only import with warnings
 
 DESCRIPTION
   list all the created imports
@@ -288,7 +278,7 @@ Create a new import.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:create [FAKE-ARG] -o <value> -t
+  $ commercelayer imports:create [FAKE-ARG] -t
     bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
     stock_items|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
 
@@ -300,7 +290,6 @@ FLAGS
                                                                    monitor
   -i, --inputs=<value>                                             (required) the path of the file containing the data
                                                                    to import
-  -o, --organization=<value>                                       (required) the slug of your organization
   -p, --parent=<value>                                             the id of the parent resource to be associated with
                                                                    imported data
   -q, --quiet                                                      execute command without showing warning messages
@@ -327,13 +316,10 @@ Delete an existing import.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:delete [ID] -o <value>
+  $ commercelayer imports:delete [ID]
 
 ARGUMENTS
   ID  unique id of the import
-
-FLAGS
-  -o, --organization=<value>  (required) the slug of your organization
 
 DESCRIPTION
   delete an existing import
@@ -355,15 +341,15 @@ Show the details of an existing import.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:details [ID] -o <value> [-i] [-l]
+  $ commercelayer imports:details [ID] [-l] [-S <value> -i]
 
 ARGUMENTS
   ID  unique id of the import
 
 FLAGS
-  -i, --inputs                show input items associated with the import
-  -l, --logs                  show warning and error logs related to the import process
-  -o, --organization=<value>  (required) the slug of your organization
+  -S, --save-inputs=<value>  save import inputs to local file
+  -i, --inputs               show input items associated with the import
+  -l, --logs                 show warning and error logs related to the import process
 
 DESCRIPTION
   show the details of an existing import
@@ -387,13 +373,10 @@ List all the imports related to an import group.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:group [GROUP_ID] -o <value>
+  $ commercelayer imports:group [GROUP_ID]
 
 ARGUMENTS
   GROUP_ID  unique id of the group import
-
-FLAGS
-  -o, --organization=<value>  (required) the slug of your organization
 
 DESCRIPTION
   list all the imports related to an import group
@@ -415,22 +398,21 @@ List all the created imports.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:list [FAKE-ARG] -o <value> [-A | -l <value>] [-t
+  $ commercelayer imports:list [FAKE-ARG] [-A | -l <value>] [-t
     bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|sku_list_items|sku_options|skus|
     stock_items|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e] [-w]
 
 FLAGS
-  -A, --all                   show all imports instead of first 25 only
-  -e, --errors                show only imports with errors
-  -g, --group=<value>         the group ID associated to the import in case of multi-chunk imports
-  -l, --limit=<value>         limit number of imports in output
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --status=<option>       the import job status
-                              <options: in_progress|pending|completed|interrupted>
-  -t, --type=<option>         the type of resource imported
-                              <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_li
-                              sts|sku_list_items|sku_options|skus|stock_items|tax_categories>
-  -w, --warnings              show only import with warnings
+  -A, --all              show all imports instead of first 25 only
+  -e, --errors           show only imports with errors
+  -g, --group=<value>    the group ID associated to the import in case of multi-chunk imports
+  -l, --limit=<value>    limit number of imports in output
+  -s, --status=<option>  the import job status
+                         <options: in_progress|pending|completed|interrupted>
+  -t, --type=<option>    the type of resource imported
+                         <options: bundles|coupons|customer_subscriptions|customers|gift_cards|orders|prices|sku_lists|s
+                         ku_list_items|sku_options|skus|stock_items|tax_categories>
+  -w, --warnings         show only import with warnings
 
 DESCRIPTION
   list all the created imports
