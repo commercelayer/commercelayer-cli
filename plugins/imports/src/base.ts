@@ -17,6 +17,7 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',
@@ -41,7 +42,7 @@ export default abstract class extends Command {
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent')) clUpdate.checkUpdate(pkg)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent')&& !this.argv.includes('--silent')) clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
