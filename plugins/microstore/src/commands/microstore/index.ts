@@ -37,7 +37,7 @@ export default class MicrostoreIndex extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(MicrostoreIndex)
 

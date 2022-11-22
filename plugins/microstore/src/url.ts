@@ -1,4 +1,5 @@
 import { clApi } from '@commercelayer/cli-core'
+import { ChildProcess } from 'child_process';
 import open from 'open'
 
 
@@ -31,7 +32,7 @@ const buildMicrostoreUrl = (organization: string, domain: string | undefined, sk
 }
 
 
-const openMicrostoreUrl = async (microstoreUrl: string) => {
+const openMicrostoreUrl = async (microstoreUrl: string): Promise<ChildProcess> => {
   // return CliUx.ux.open(checkoutUrl)  // BUG in CliUx 07-02-2022 @oclif/core@1.3.1
   return open(microstoreUrl)
 }

@@ -35,18 +35,18 @@ export default abstract class extends Command {
 
 
   // INIT (override)
-  async init() {
+  async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
 
-  async catch(error: any) {
+  async catch(error: any): Promise<any> {
     return this.handleError(error)
   }
 
 
-  protected handleError(error: any, flags?: any) {
+  protected async handleError(error: any, flags?: any): Promise<any> {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
