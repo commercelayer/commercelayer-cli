@@ -45,15 +45,10 @@ FLAGS
 
 DESCRIPTION
   adds commands to README.md in current directory
-
   The readme must have any of the following tags inside of it for it to be replaced or else it will do nothing:
-
   ## Usage
-
   <!-- usage -->
-
   ## Commands
-
   <!-- commands -->
 
   Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
