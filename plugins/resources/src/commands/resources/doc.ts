@@ -31,7 +31,7 @@ export default class ResourcesDoc extends Command {
   ]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ResourcesDoc)
 
@@ -42,7 +42,7 @@ export default class ResourcesDoc extends Command {
 
     if (res) {
       const resourceUrl = `${apiReferenceUrl}/${res?.api}${page ? `/${page}` : ''}`
-      axios.get(resourceUrl).then(() => CliUx.ux.open(resourceUrl))
+      axios.get(resourceUrl).then(async () => await CliUx.ux.open(resourceUrl))
         .catch(() => this.warn(`No online documentation available for the resource ${clColor.msg.warning(resource)}${page ? ` (page ${clColor.cli.value(page)})` : ''}`))
     } else this.warn(`Invalid resource ${clColor.style.error(resource)}`)
 

@@ -43,7 +43,7 @@ const getLanguageArg = (flags: any): string => {
 
 
 const promptLanguage = async (): Promise<string> => {
-	return inquirer.prompt([{
+	return await inquirer.prompt([{
 		type: 'list',
 		name: 'language',
 		message: 'Select a format to show the command live documentation:',

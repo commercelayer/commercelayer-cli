@@ -32,7 +32,7 @@ export default class ResourcesFetch extends Command {
   ]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args } = await this.parse(ResourcesFetch)
 
@@ -40,14 +40,14 @@ export default class ResourcesFetch extends Command {
     const id = args.id
 
     // If no relationship is defined then run retrieve/list command
-    const pathNodes = path.split('/') as string[]
-    if (pathNodes.length < 3) return GetCommand.run(this.argv, this.config)
+    const pathNodes = path.split('/')
+    if (pathNodes.length < 3) return await GetCommand.run(this.argv, this.config)
 
     // Build argv array to pass to Relationship command
     const relArgs = [...this.argv]
     relArgs.splice(0, id ? 2 : 1, ...pathNodes)
 
-    return RelationshipCommand.run(relArgs, this.config)
+    return await RelationshipCommand.run(relArgs, this.config)
 
   }
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable prefer-regex-literals */
 /* eslint-disable array-element-newline,  @typescript-eslint/no-unused-vars */
 
 
@@ -81,7 +83,7 @@ const applyRules = (str: string, rules: any[], skip: string[], override?: string
   if (override) {
     str = override
   } else {
-    const ignore = (skip.indexOf(str.toLowerCase()) > -1)
+    const ignore = (skip.includes(str.toLowerCase()))
     if (!ignore) {
       for (let x = 0; x < rules.length; x++) {
         if (str.match(rules[x][0])) {
@@ -149,7 +151,7 @@ const camelize = (str: string, lowFirstLetter: boolean): string => {
   str = str_path.join('::')
 
   // fix
-  if (lowFirstLetter === true) {
+  if (lowFirstLetter) {
     const first = str.charAt(0).toLowerCase()
     const last = str.slice(1)
     str = first + last

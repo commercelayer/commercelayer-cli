@@ -41,7 +41,7 @@ export default class ResourcesArgs extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { flags } = await this.parse(ResourcesArgs)
 
@@ -103,7 +103,7 @@ export default class ResourcesArgs extends Command {
   }
 
 
-  private flagsMessageSuffix(message: string, resource?: string, operation?: ResourceOperation) {
+  private flagsMessageSuffix(message: string, resource?: string, operation?: ResourceOperation): string {
 
     const f = resource || operation ? ' for ' : ''
     const a = resource && operation ? ' and ' : ''

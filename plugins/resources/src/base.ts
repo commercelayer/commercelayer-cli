@@ -85,7 +85,7 @@ export default abstract class extends Command {
     curl: Flags.boolean({
       description: `show the equivalent ${languageInfo.curl.label} of the CLI command`,
       exclusive: ['lang', ...availableLanguages.filter(l => l !== 'curl')],
-      parse: () => Promise.resolve('curl'),
+      parse: async (): Promise<string> => await Promise.resolve('curl'),
       hidden: !availableLanguages.includes('curl'),
       dependsOn: ['doc'],
       helpGroup: 'documentation',
@@ -93,7 +93,7 @@ export default abstract class extends Command {
     node: Flags.boolean({
       description: `show the equivalent ${languageInfo.node.label} of the CLI command`,
       exclusive: ['lang', ...availableLanguages.filter(l => l !== 'node')],
-      parse: () => Promise.resolve('node'),
+      parse: async (): Promise<string> => await Promise.resolve('node'),
       hidden: !availableLanguages.includes('node'),
       dependsOn: ['doc'],
       helpGroup: 'documentation',
@@ -127,21 +127,21 @@ export default abstract class extends Command {
 
 
   // INIT (override)
-  async init() {
+  async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
     if (!this.argv.includes('--blind') && !this.argv.includes('--silent')) clUpdate.checkUpdate(pkg)
-    return super.init()
+    return await super.init()
   }
 
 
   // CATCH (override)
-  async catch(error: any) {
-    if (error.message && error.message.match(/Missing 1 required arg:\nresource/))
+  async catch(error: any): Promise<any> {
+    if (error.message?.match(/Missing 1 required arg:\nresource/))
       this.error(`Missing argument ${clColor.style.error('resource')}`,
         { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
       )
     // else throw error				// overwrite command catch method
-    else return super.catch(error)	// extend command catch method
+    else return await super.catch(error)	// extend command catch method
   }
 
 
@@ -175,7 +175,7 @@ export default abstract class extends Command {
     }
 
     const res_ = findResource(res, { singular: true })
-    const singleton = res_ && res_.singleton
+    const singleton = res_?.singleton
 
     if (id) {
       if (singleton) this.error(`Singleton resource ${clColor.api.resource(res)} does not require id`)
@@ -261,7 +261,7 @@ export default abstract class extends Command {
         let res = type
         let val = f
 
-        if (f.indexOf('/') > -1) {
+        if (f.includes('/')) {
 
           const kv = f.split('/')
 
@@ -504,6 +504,7 @@ export default abstract class extends Command {
 
       // if leaf field is an object and it is not a relationship then extract its fields
       if (curObj && (typeof curObj === 'object') && !curObj.id && !curObj.type)
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         for (const k of Object.keys(curObj)) if (!extFields.includes(k)) delete curObj[k]
 
     })
@@ -517,12 +518,12 @@ export default abstract class extends Command {
   }
 
 
-  printOutput(output: any, flags: any | undefined) {
+  printOutput(output: any, flags: any | undefined): void {
     if (output && !flags['headers-only']) this.log(formatOutput(output, flags))
   }
 
 
-  printHeaders(headers: any, flags: any) {
+  printHeaders(headers: any, flags: any): void {
     if (headers) {
       if (flags.headers || flags['headers-only']) {
         this.log('---------- Response Headers ----------')
@@ -559,7 +560,7 @@ export default abstract class extends Command {
   }
 
 
-  saveOutput(output: any, flags: any) {
+  saveOutput(output: any, flags: any): void {
 
     try {
 
@@ -604,7 +605,7 @@ export default abstract class extends Command {
   }
 
 
-  protected printCommand(lang: string, command: string) {
+  protected printCommand(lang: string, command: string): void {
 
     const header = languageInfo[lang as keyof typeof languageInfo].label
     // const footer = header.replace(/./g, '-')
@@ -635,7 +636,7 @@ export default abstract class extends Command {
   }
 
 
-  protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: Config) {
+  protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: Config): void {
     let ok = false
     try {
       ok = checkAlias(alias)
@@ -647,7 +648,7 @@ export default abstract class extends Command {
   }
 
 
-  protected saveParams = (alias: string, resource: ResourceType | ResourceId, operation: ResourceOperation, params: QueryParams) => {
+  protected saveParams = (alias: string, resource: ResourceType | ResourceId, operation: ResourceOperation, params: QueryParams): void => {
 
     const toBeRemoved = ['--save-args', '--load-args', '--accessToken', '-o', '--organization', '-d', '--domain']
 
@@ -680,6 +681,7 @@ export default abstract class extends Command {
     const cmdData = loadCommandData(alias, this.config, resource, operation)
     if (!cmdData) this.error(`No command arguments saved with alias ${clColor.msg.error(alias)} for resource type ${clColor.yellowBright(resource)} and operation ${clColor.yellowBright(operation)}`)
 
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const queryParams: QueryParams = (operation && ['list', 'relationship'].includes(operation)) ? cmdData.params : {
       include: cmdData.params.include,
       fields: cmdData.params.fields,

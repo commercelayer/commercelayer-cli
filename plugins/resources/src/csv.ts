@@ -5,7 +5,7 @@ import { clOutput } from '@commercelayer/cli-core'
 
 
 
-const formatCsv = (obj: Array<object>, flags?: any) => {
+const formatCsv = (obj: object[], flags?: any): string => {
   return clOutput.printCSV(obj, flags)
 }
 
@@ -25,7 +25,7 @@ const analyzeItem = (name: string | undefined, item: object, flags: any): Set<st
       const type = (item as { type: string }).type
       const fields: string[] = []
       flags.fields.forEach((f: string) => {
-        if (!name && (f.indexOf('/') < 0)) fields.push(...f.split(','))
+        if (!name && (!f.includes('/'))) fields.push(...f.split(','))
         else if (type && f.startsWith(type + '/')) fields.push(...f.substring(f.indexOf('/') + 1).split(','))
       })
 
@@ -104,7 +104,7 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
     throw error
   })
 
-  return Promise.resolve(true)
+  return await Promise.resolve(true)
 
 }
 

@@ -6,7 +6,7 @@ const findIncluded = (rel: any, included: any[]): any => {
 }
 
 
-const denormalizeResource = (res: any, included: any[]) => {
+const denormalizeResource = (res: any, included: any[]): any => {
 
 	const resource = {
 		id: res.id,
@@ -27,7 +27,7 @@ const denormalizeResource = (res: any, included: any[]) => {
 }
 
 
-const denormalize = (response: any) => {
+const denormalize = (response: any): any => {
 
 	let denormalizedResponse
 

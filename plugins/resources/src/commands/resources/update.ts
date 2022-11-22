@@ -67,7 +67,7 @@ export default class ResourcesUpdate extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(ResourcesUpdate)
 
@@ -185,7 +185,7 @@ export default class ResourcesUpdate extends Command {
 
 		} catch (error) {
 			if (isRequestInterrupted(error) && reqReader) {
-				this.showLiveDocumentation(reqReader.request, undefined, flags)
+				await this.showLiveDocumentation(reqReader.request, undefined, flags)
 				cl.removeInterceptor('request', reqReader.id)
 			} else this.printError(error, flags, args)
 		}

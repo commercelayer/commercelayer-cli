@@ -43,7 +43,7 @@ const commandFileName = (resource: string, alias: string, operation: ResourceOpe
   return `${resource}.${operation}.${alias}.json`
 }
 
-const commandSaveDir = (config: Config) => {
+const commandSaveDir = (config: Config): string => {
   return join(config.configDir, COMMANDS_DIR)
 }
 
@@ -62,7 +62,7 @@ const readCommandArgs = (config: Config, resource?: string, operation?: Resource
 }
 
 
-const saveCommandData = (alias: string, config: Config, params: CommandParams) => {
+const saveCommandData = (alias: string, config: Config, params: CommandParams): void => {
 
   checkAlias(alias)
 
@@ -110,7 +110,7 @@ export { saveCommandData, loadCommandData, checkAlias, aliasExists, readCommandA
 
 
 
-export const mergeCommandParams = (params: QueryParams, saved: QueryParams) => {
+export const mergeCommandParams = (params: QueryParams, saved: QueryParams): void => {
 
   const include = saved.include || []
   if (params.include) params.include.forEach(i => {

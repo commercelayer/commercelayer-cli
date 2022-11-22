@@ -36,7 +36,7 @@ export default class ResourcesRelationship extends Command {
   ]
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ResourcesRelationship)
 
@@ -127,7 +127,7 @@ export default class ResourcesRelationship extends Command {
 
     } catch (error) {
       if (isRequestInterrupted(error) && reqReader) {
-        this.showLiveDocumentation(reqReader.request, params, flags)
+        await this.showLiveDocumentation(reqReader.request, params, flags)
         cl.removeInterceptor('request', reqReader.id)
       } else this.printError(error, flags, args)
     }

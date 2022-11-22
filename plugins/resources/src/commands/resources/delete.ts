@@ -27,7 +27,7 @@ export default class ResourcesDelete extends Command {
 	]
 
 
-	async run() {
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(ResourcesDelete)
 
@@ -66,7 +66,7 @@ export default class ResourcesDelete extends Command {
 
 		} catch (error) {
 			if (isRequestInterrupted(error) && reqReader) {
-				this.showLiveDocumentation(reqReader.request, undefined, flags)
+				await this.showLiveDocumentation(reqReader.request, undefined, flags)
 				cl.removeInterceptor('request', reqReader.id)
 			} else this.printError(error, flags, args)
 		}

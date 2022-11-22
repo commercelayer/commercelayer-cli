@@ -72,7 +72,7 @@ export default class ResourcesFilters extends Command {
   static args = []
 
 
-  async run() {
+  async run(): Promise<any> {
 
     this.log(clColor.style.title('\n-= Commerce Layer API available resource filters =-\n'))
     CliUx.Table.table(filters.sort((a, b) => a.predicate.localeCompare(b.predicate)), {

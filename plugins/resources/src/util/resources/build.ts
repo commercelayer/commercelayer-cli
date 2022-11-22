@@ -122,4 +122,4 @@ const exportResources = async ({ source = 'sdk', variable = false, name = 'resou
 
 const source = (process.argv.length > 2) ? (['sdk', 'online'].includes(process.argv[2]) ? process.argv[2] : 'sdk') : undefined
 
-exportResources({ source, variable: true, name: 'RESOURCES', array: true, tab: true, immutable: true })
+void exportResources({ source, variable: true, name: 'RESOURCES', array: true, tab: true, immutable: true })

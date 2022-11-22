@@ -47,7 +47,8 @@ export default class ResourcesRetrieve extends Command {
 		{ name: 'id', description: 'id of the resource to retrieve', required: false },
 	]
 
-	async run() {
+
+	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(ResourcesRetrieve)
 
@@ -116,7 +117,7 @@ export default class ResourcesRetrieve extends Command {
 
 		} catch (error: any) {
 			if (isRequestInterrupted(error) && reqReader) {
-				this.showLiveDocumentation(reqReader.request, params, flags)
+				await this.showLiveDocumentation(reqReader.request, params, flags)
 				cl.removeInterceptor('request', reqReader.id)
 			} else this.printError(error, flags, args)
 		}

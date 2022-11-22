@@ -155,7 +155,7 @@ export default class ResourcesAll extends Command {
         clientSecret: flags.clientSecret || '',
         endpoint: clApi.baseURL(organization, domain),
       })?.catch(error => {
-        this.error('Unable to refresh access token: ' + error.message)
+        this.error('Unable to refresh access token: ' + String(error.message))
       })
 
       const accessToken = token?.accessToken || ''
@@ -170,7 +170,7 @@ export default class ResourcesAll extends Command {
   }
 
 
-  async run() {
+  async run(): Promise<any> {
 
     const { args, flags } = await this.parse(ResourcesAll)
 

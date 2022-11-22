@@ -21,7 +21,8 @@ export default class ResourcesIndex extends Command {
 
 	static args = []
 
-	async run() {
+
+	async run(): Promise<any> {
 
 		await this.parse(ResourcesIndex)
 
@@ -42,9 +43,9 @@ export default class ResourcesIndex extends Command {
 	}
 
 
-	async catch(error: any) {
+	async catch(error: any): Promise<any> {
 		if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
-		return super.catch(error)
+		return await super.catch(error)
 	}
 
 

@@ -15,7 +15,7 @@ const rawRequest = async (
 	id?: string,
 ): Promise<any> => {
 
-	return axios.request({
+	return await axios.request({
 		method: config.operation,
 		baseURL: config.baseUrl,
 		url: `/api/${config.resource}` + (id ? `/${id}` : ''),
