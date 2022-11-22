@@ -15,7 +15,7 @@ export function uniqBy<T>(arr: T[], fn: (cur: T) => any): T[] {
 }
 
 
-export function compact<T>(a: (T | undefined)[]): T[] {
+export function compact<T>(a: Array<T | undefined>): T[] {
   return a.filter((a): a is T => Boolean(a))
 }
 
@@ -43,6 +43,7 @@ export function sortBy<T>(arr: T[], fn: (i: T) => sort.Types | sort.Types[]): T[
 }
 
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace sort {
   export type Types = string | number | undefined | boolean
 }

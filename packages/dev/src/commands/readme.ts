@@ -10,10 +10,13 @@ import { HelpCompatibilityWrapper } from '../help-compatibility'
 
 
 const normalize = require('normalize-package-data')
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const columns = Number.parseInt(process.env.COLUMNS!, 10) || 120
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 const slugify = new (require('github-slugger') as any)()
 
 interface HelpBaseDerived {
+  // eslint-disable-next-line @typescript-eslint/prefer-function-type
   new(config: Interfaces.Config, opts?: Partial<Interfaces.HelpOptions>): HelpBase;
 }
 
@@ -207,11 +210,11 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
     const wrapper = new HelpCompatibilityWrapper(help)
 
    // const header = () => `## \`${config.bin} ${this.commandUsage(config, c)}\``
-   const header = () => `### \`${config.bin} ${this.commandUsage(config, c)}\``
+   const header = (): string => `### \`${config.bin} ${this.commandUsage(config, c)}\``
 
     try {
 
-      const commandFormatted = wrapper.formatCommand(c).trim()//.replace(/\$ /g, '')
+      const commandFormatted = wrapper.formatCommand(c).trim()// .replace(/\$ /g, '')
 
       return compact([
         header(),
@@ -255,7 +258,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
 
     const pjson = { ...plugin.pjson }
     normalize(pjson)
-    const repo = pjson.repository && pjson.repository.url
+    const repo = pjson.repository?.url
     if (!repo) return
     const url = new URL(repo)
     if (!['github.com', 'gitlab.com'].includes(url.hostname) && !pjson.oclif.repositoryPrefix) return
@@ -281,7 +284,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
       p = path.join(p, 'index.js')
     } else if (fs.pathExistsSync(p + '.js')) {
       p += '.js'
-    } else if (plugin.pjson.devDependencies && plugin.pjson.devDependencies.typescript) {
+    } else if (plugin.pjson.devDependencies?.typescript) {
       // check if non-compiled scripts are available
       const base = p.replace(plugin.root + path.sep, '')
       p = path.join(plugin.root, base.replace(libRegex, 'src' + path.sep))
@@ -293,7 +296,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
     } else return
 
     p = p.replace(plugin.root + path.sep, '')
-    if (plugin.pjson.devDependencies && plugin.pjson.devDependencies.typescript) {
+    if (plugin.pjson.devDependencies?.typescript) {
       p = p.replace(libRegex, 'src' + path.sep)
       p = p.replace(/\.js$/, '.ts')
     }
@@ -307,14 +310,14 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
 
   private commandUsage(config: Interfaces.Config, command: Interfaces.Command): string {
 
-    const arg = (arg: Interfaces.Arg) => {
+    const arg = (arg: Interfaces.Arg): string => {
       const name = arg.name.toUpperCase()
       if (arg.required) return `${name}`
       return `[${name}]`
     }
 
     const id = config.topicSeparator ? command.id.replace(/:/g, config.topicSeparator) : command.id
-    const defaultUsage = () => {
+    const defaultUsage = (): string => {
        // const flags = Object.entries(command.flags)
       // .filter(([, v]) => !v.hidden)
       return compact([

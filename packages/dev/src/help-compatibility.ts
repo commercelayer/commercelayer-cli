@@ -23,7 +23,7 @@ export class HelpCompatibilityWrapper {
     }
 
     if (this.inner.command) {
-      return command.description + '\n\n' + this.inner.command(command)
+      return `${command.description}\n\n${this.inner.command(command)}`
     }
 
     throw new IncompatibleHelpError()
