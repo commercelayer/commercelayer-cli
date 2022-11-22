@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('orders:capture', () => {
+describe('markets:enable', () => {
   test
     .timeout(15000)
     .stdout()

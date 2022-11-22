@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('stock_transfers:in_transit', () => {
   test
-    .timeout(5000)
+    .timeout(15000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {
