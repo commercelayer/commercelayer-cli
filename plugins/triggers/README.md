@@ -57,6 +57,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer in_stock_subscription:deactivate ID`](#commercelayer-in_stock_subscriptiondeactivate-id)
 * [`commercelayer klarna_payment ID`](#commercelayer-klarna_payment-id)
 * [`commercelayer klarna_payment:update ID`](#commercelayer-klarna_paymentupdate-id)
+* [`commercelayer market ID`](#commercelayer-market-id)
+* [`commercelayer market:disable ID`](#commercelayer-marketdisable-id)
+* [`commercelayer market:enable ID`](#commercelayer-marketenable-id)
 * [`commercelayer order ID`](#commercelayer-order-id)
 * [`commercelayer order:approve ID`](#commercelayer-orderapprove-id)
 * [`commercelayer order:approve_and_capture ID`](#commercelayer-orderapprove_and_capture-id)
@@ -746,6 +749,75 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/klarna_payment/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/klarna_payment/update.ts)_
+
+### `commercelayer market ID`
+
+Execute an action on a resource of type markets.
+
+```sh-session
+USAGE
+  $ commercelayer market [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type markets
+```
+
+_See code: [src/commands/market/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/market/index.ts)_
+
+### `commercelayer market:disable ID`
+
+Send this attribute if you want to mark the market as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer market:disable [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the market as disabled.
+```
+
+_See code: [src/commands/market/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/market/disable.ts)_
+
+### `commercelayer market:enable ID`
+
+Send this attribute if you want to mark the market as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer market:enable [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the market as enabled.
+```
+
+_See code: [src/commands/market/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/market/enable.ts)_
 
 ### `commercelayer order ID`
 
