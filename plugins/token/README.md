@@ -133,21 +133,24 @@ Revoke a Commerce Layer access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:revoke [TOKEN] -o <value>
+  $ commercelayer token:revoke [TOKEN] -o <value> (-s <value> -i <value>) [-S <value> ]
 
 ARGUMENTS
   TOKEN  access token to revoke
 
 FLAGS
+  -S, --scope=<value>...      access token scope
+  -i, --clientId=<value>      (required) application client_id
   -o, --organization=<value>  (required) the slug of your organization
+  -s, --clientSecret=<value>  application client_secret
 
 DESCRIPTION
   revoke a Commerce Layer access token
 
 EXAMPLES
-  $ commercelayer token:revoke -o <organizationSlug> <accessToken>
+  $ commercelayer token:revoke -o <organizationSlug> <accessToken> -i <clientId>
 
-  $ cl token:revoke -o <organizationSlug> <accessToken>
+  $ cl token:revoke -o <organizationSlug> <accessToken> -i <clientId>
 ```
 
 _See code: [src/commands/token/revoke.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/revoke.ts)_
