@@ -100,7 +100,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 }
 
 
-const revokeAccessToken = async (app: AppAuth, token: string, logErrors?: boolean): Promise<void> => {
+const revokeAccessToken = async (app: AppAuth, token: string, logger?: { log: (msg: any) => void }): Promise<void> => {
 
   /*
   return axios
@@ -111,12 +111,13 @@ const revokeAccessToken = async (app: AppAuth, token: string, logErrors?: boolea
     token,
     })
   */
+ const scope = Array.isArray(app.scope) ? app.scope.join(';') : app.scope
 
   const data = JSON.stringify({
     grant_type: 'client_credentials',
     client_id: app.clientId,
     client_secret: app.clientSecret,
-    scope: app.scope,
+    scope,
     token,
   })
 
@@ -131,6 +132,11 @@ const revokeAccessToken = async (app: AppAuth, token: string, logErrors?: boolea
     },
   }
 
+  if (logger) logger.log(options)
+  if (logger) logger.log(data)
+
+  let err = false
+
   try {
 
     const req = https.request(options/* , res => {
@@ -143,6 +149,7 @@ const revokeAccessToken = async (app: AppAuth, token: string, logErrors?: boolea
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     req.on('error', error => {
+      err = true
       throw new CLIError(error.message || 'Error revoking access token')
     })
 
@@ -150,12 +157,14 @@ const revokeAccessToken = async (app: AppAuth, token: string, logErrors?: boolea
     req.end()
 
   } catch (error) {
-    if (logErrors) console.log((error as Error).message)
+    err = true
+    if (logger) logger.log((error as Error).message)
     if (error instanceof CLIError) throw error
     else throw new CLIError((error as Error).message || 'Error revoking access token')
   }
 
   await sleep(300)
+  if (!err && logger) logger.log('Access token revoked')
 
 }
 
