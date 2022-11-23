@@ -100,7 +100,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 }
 
 
-const revokeAccessToken = async (app: AppAuth, token: string): Promise<void> => {
+const revokeAccessToken = async (app: AppAuth, token: string, logErrors?: boolean): Promise<void> => {
 
   /*
   return axios
@@ -116,6 +116,7 @@ const revokeAccessToken = async (app: AppAuth, token: string): Promise<void> => 
     grant_type: 'client_credentials',
     client_id: app.clientId,
     client_secret: app.clientSecret,
+    scope: app.scope,
     token,
   })
 
@@ -149,6 +150,7 @@ const revokeAccessToken = async (app: AppAuth, token: string): Promise<void> => 
     req.end()
 
   } catch (error) {
+    if (logErrors) console.log((error as Error).message)
     if (error instanceof CLIError) throw error
     else throw new CLIError((error as Error).message || 'Error revoking access token')
   }
