@@ -9,8 +9,8 @@ export default class TokenRevoke extends Command {
   static description = 'revoke a Commerce Layer access token'
 
   static examples = [
-    '$ commercelayer token:revoke -o <organizationSlug> <accessToken>',
-    '$ cl token:revoke -o <organizationSlug> <accessToken>',
+    '$ commercelayer token:revoke -o <organizationSlug> <accessToken> -i <clientId>',
+    '$ cl token:revoke -o <organizationSlug> <accessToken> -i <clientId>',
   ]
 
   static flags = {
@@ -18,7 +18,7 @@ export default class TokenRevoke extends Command {
       char: 'o',
       description: 'the slug of your organization',
       required: true,
-      env: 'CL_CLI_ORGANIZATION',
+      // env: 'CL_CLI_ORGANIZATION',
     }),
     domain: Flags.string({
       char: 'd',
@@ -31,14 +31,12 @@ export default class TokenRevoke extends Command {
       char: 'i',
       description: 'application client_id',
       required: true,
-      hidden: true,
     }),
     clientSecret: Flags.string({
       char: 's',
       description: 'application client_secret',
       required: false,
       dependsOn: ['clientId'],
-      hidden: true,
     }),
     scope: Flags.string({
       char: 'S',
@@ -46,7 +44,6 @@ export default class TokenRevoke extends Command {
       required: false,
       multiple: true,
       dependsOn: ['clientId'],
-      hidden: true,
     }),
   }
 
