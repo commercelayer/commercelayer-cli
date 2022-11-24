@@ -123,7 +123,7 @@
     "inquirer": "^8.2.5",
     "lodash": "^4.17.21",
     "tslib": "^2.4.1",
-    "update-notifier": "^5.1.0"
+    "update-notifier": "^6.0.2"
   },
   "publishConfig": {
     "access": "public"
