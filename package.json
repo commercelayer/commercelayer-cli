@@ -99,7 +99,7 @@
     "@types/chai": "^4.3.4",
     "@types/configstore": "^4.0.0",
     "@types/inquirer": "^8.2.5",
-    "@types/lodash": "^4.14.189",
+    "@types/lodash": "^4.14.190",
     "@types/mocha": "^10.0.0",
     "@types/node": "^18.11.9",
     "@types/update-notifier": "^5.1.0",
@@ -111,7 +111,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^2.0.1",
+    "@commercelayer/cli-core": "^2.0.3",
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/sdk": "^4.19.0",
     "@oclif/core": "^1.20.4",

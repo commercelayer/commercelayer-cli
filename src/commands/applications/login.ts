@@ -1,5 +1,5 @@
 import { Command, Flags, Config } from '@oclif/core'
-import { AuthScope  } from '@commercelayer/js-auth'
+import { AuthScope } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { ApiMode, AppAuth, AppInfo, clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
