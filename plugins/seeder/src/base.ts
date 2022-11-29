@@ -64,8 +64,9 @@ export default abstract class extends Command {
     CliUx.ux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
     return await loadSchema()
       .then(() => CliUx.ux.action.stop(`done ${clColor.msg.success('\u2714')}`))
-      .catch(() => {
+      .catch(error => {
         CliUx.ux.action.stop(clColor.msg.error('Error'))
+        console.log(error)
         this.error('Error reading OpenAPI schema')
       })
       .finally(() => this.log())
