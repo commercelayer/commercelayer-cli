@@ -19,7 +19,7 @@ const loadSchema = async (): Promise<SchemaData> => {
   const schemaUrl = pathJoin(config.dataUrl, config.schemaFolder)
 
   const schema = await getCommerceLayerDataFile(schemaUrl, 'openapi.json')
-console.log(schema)
+
   const createObjects: SchemaData = {}
 
   Object.entries(schema.components.schemas).forEach(([k, v]) => {
