@@ -51,8 +51,8 @@ USAGE
 
 FLAGS
   -C, --csv                                                        accept input file in CSV format
-  -D, --delimiter=(,|;|||TAB)                                      [default: ,] the delimiter character used in the CSV
-                                                                   input file (one of ',', ';', '|', TAB)
+  -D, --delimiter=(,|;|||TAB)                                      the delimiter character used in the CSV input file
+                                                                   (one of ',', ';', '|', TAB)
   -b, --blind                                                      execute in blind mode without showing the progress
                                                                    monitor
   -i, --inputs=<value>                                             (required) the path of the file containing the data
@@ -220,8 +220,8 @@ USAGE
 
 FLAGS
   -C, --csv                                                        accept input file in CSV format
-  -D, --delimiter=(,|;|||TAB)                                      [default: ,] the delimiter character used in the CSV
-                                                                   input file (one of ',', ';', '|', TAB)
+  -D, --delimiter=(,|;|||TAB)                                      the delimiter character used in the CSV input file
+                                                                   (one of ',', ';', '|', TAB)
   -b, --blind                                                      execute in blind mode without showing the progress
                                                                    monitor
   -i, --inputs=<value>                                             (required) the path of the file containing the data
@@ -284,8 +284,8 @@ USAGE
 
 FLAGS
   -C, --csv                                                        accept input file in CSV format
-  -D, --delimiter=(,|;|||TAB)                                      [default: ,] the delimiter character used in the CSV
-                                                                   input file (one of ',', ';', '|', TAB)
+  -D, --delimiter=(,|;|||TAB)                                      the delimiter character used in the CSV input file
+                                                                   (one of ',', ';', '|', TAB)
   -b, --blind                                                      execute in blind mode without showing the progress
                                                                    monitor
   -i, --inputs=<value>                                             (required) the path of the file containing the data
