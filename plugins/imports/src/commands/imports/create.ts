@@ -59,6 +59,12 @@ export default class ImportsCreate extends Command {
       char: 'p',
       description: 'the id of the parent resource to be associated with imported data',
     }),
+    /*
+    cleanup: flags.boolean({
+			char: 'c',
+			description: 'delete all other existing items',
+		}),
+    */
     inputs: Flags.string({
       char: 'i',
       description: 'the path of the file containing the data to import',
@@ -74,7 +80,6 @@ export default class ImportsCreate extends Command {
       description: 'the delimiter character used in the CSV input file (one of \',\', \';\', \'|\', TAB)',
       options: [',', ';', '|', 'TAB'],
       dependsOn: ['csv'],
-      default: ',',
     }),
     blind: Flags.boolean({
       char: 'b',
