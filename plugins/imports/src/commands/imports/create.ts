@@ -59,12 +59,10 @@ export default class ImportsCreate extends Command {
       char: 'p',
       description: 'the id of the parent resource to be associated with imported data',
     }),
-    /*
-    cleanup: flags.boolean({
-			char: 'c',
-			description: 'delete all other existing items',
-		}),
-    */
+    cleanup: Flags.boolean({
+      char: 'c',
+      description: 'delete all other existing items',
+    }),
     inputs: Flags.string({
       char: 'i',
       description: 'the path of the file containing the data to import',
@@ -128,16 +126,21 @@ export default class ImportsCreate extends Command {
       // Check import size
       const humanized = type.replace(/_/g, ' ')
       if (inputsLength === 0) this.error(`No ${humanized} to import`)
-      else
-        if ((MAX_INPUTS > 0) && (inputsLength > MAX_INPUTS)) this.error(`You are trying to import ${clColor.yellowBright(String(inputsLength))} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
+      else {
+        if ((MAX_INPUTS > 0) && (inputsLength > MAX_INPUTS)) this.error(`You are trying to import ${clColor.yellowBright(inputsLength)} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
           suggestions: [`Split your input file into multiple files containing each a maximum of ${MAX_INPUTS} items`],
         })
+        if (flags.cleanup && (inputsLength > clConfig.imports.max_size))
+          this.error(`You can use the ${clColor.cli.flag('cleanup')} flag only with imports that contains less than ${clColor.yellowBright(clConfig.imports.max_size)} items. Currently you are trying to import ${clColor.cli.value(inputsLength)} items.`, {
+            suggestions: [`If you need to cleanup execute a first import with less items (even just one) or use the ${clColor.api.resource('cleanups')} resource to have the job done.`],
+          })
+      }
 
       // Split input
       const chunks: Chunk[] = splitImports({
         resource_type: type,
         parent_resource_id: parentId,
-        cleanup_records: false,
+        cleanup_records: flags.cleanup,
         inputs,
       })
 
@@ -294,7 +297,7 @@ export default class ImportsCreate extends Command {
 
       return imp
 
-    // eslint-disable-next-line @typescript-eslint/promise-function-async
+      // eslint-disable-next-line @typescript-eslint/promise-function-async
     }).catch(error => {
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
       return Promise.reject(error)
