@@ -57,6 +57,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer in_stock_subscription:deactivate ID`](#commercelayer-in_stock_subscriptiondeactivate-id)
 * [`commercelayer klarna_payment ID`](#commercelayer-klarna_payment-id)
 * [`commercelayer klarna_payment:update ID`](#commercelayer-klarna_paymentupdate-id)
+* [`commercelayer line_item ID`](#commercelayer-line_item-id)
+* [`commercelayer line_item:external_price ID`](#commercelayer-line_itemexternal_price-id)
 * [`commercelayer market ID`](#commercelayer-market-id)
 * [`commercelayer market:disable ID`](#commercelayer-marketdisable-id)
 * [`commercelayer market:enable ID`](#commercelayer-marketenable-id)
@@ -749,6 +751,53 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/klarna_payment/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/klarna_payment/update.ts)_
+
+### `commercelayer line_item ID`
+
+Execute an action on a resource of type line_items.
+
+```sh-session
+USAGE
+  $ commercelayer line_item [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type line_items
+```
+
+_See code: [src/commands/line_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/index.ts)_
+
+### `commercelayer line_item:external_price ID`
+
+When creating or updating a new line item, set this attribute to '1' if you want to inject the unit_amount_cents price from an external source.
+
+```sh-session
+USAGE
+  $ commercelayer line_item:external_price [ID] -o <value> [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json                  print result in JSON format
+  -o, --organization=<value>  (required) the slug of your organization
+  -p, --print                 print out the modified resource
+  -u, --unformatted           print JSON output without indentation
+
+DESCRIPTION
+  When creating or updating a new line item, set this attribute to '1' if you want to inject the unit_amount_cents price
+  from an external source.
+```
+
+_See code: [src/commands/line_item/external_price.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/external_price.ts)_
 
 ### `commercelayer market ID`
 
