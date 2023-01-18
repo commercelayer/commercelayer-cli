@@ -35,14 +35,10 @@ const splitImports = (imp: ImportCreate, size?: number): Chunk[] => {
 
 	let chunkNum = 0
 	while (allInputs.length > 0) chunks.push({
+    chunk_number: ++chunkNum,
 		resource_type: imp.resource_type,
 		parent_resource_id: imp.parent_resource_id,
-    /*
-    cleanup_records: (++chunkNum === 1) ? imp.cleanup_records : false,
-		chunk_number: chunkNum,
-    */
-		cleanup_records: false,
-		chunk_number: ++chunkNum,
+    cleanup_records: (chunkNum === 1) ? imp.cleanup_records : false,
 		start_item: 0,
 		end_item: 0,
 		total_chunks: 0,
