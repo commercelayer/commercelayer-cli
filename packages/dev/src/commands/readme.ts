@@ -322,7 +322,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
       // .filter(([, v]) => !v.hidden)
       return compact([
         id,
-        command.args.filter(a => !a.hidden).map(a => arg(a)).join(' '),
+        Object.values(command.args).filter(a => !a.hidden).map(a => arg(a)).join(' '),
       ]).join(' ')
     }
 
