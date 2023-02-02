@@ -15,6 +15,9 @@ export type KeyValObj = { [key: string]: any }
 export type KeyValSort = { [key: string]: 'asc' | 'desc' }
 
 
+export type ResAttributes = KeyValObj
+
+
 
 const fixType = (val: string): string | number | boolean | null | undefined => {
 

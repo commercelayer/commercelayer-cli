@@ -6,7 +6,7 @@ import { exportCsv } from './csv'
 import { capitalize } from 'lodash'
 import { existsSync, mkdirSync } from 'fs'
 import { dirname } from 'path'
-import { fixType, KeyValRel, KeyValArray, KeyValObj, KeyValString, KeyValSort, KeyVal } from './common'
+import { fixType, KeyValRel, KeyValArray, KeyValObj, KeyValString, KeyValSort, KeyVal, ResAttributes } from './common'
 import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
 import { clToken, clUpdate, clColor } from '@commercelayer/cli-core'
@@ -390,9 +390,9 @@ export default abstract class extends Command {
   }
 
 
-  attributeFlag(flag: string[] | undefined): KeyValObj {
+  attributeFlag(flag: string[] | undefined): ResAttributes {
     const attr = this._keyvalFlag(flag, 'attribute')
-    const attributes: KeyValObj = {}
+    const attributes: ResAttributes = {}
     Object.entries(attr).forEach(([k, v]) => {
       attributes[k] = (v === 'null') ? null : v
     })
@@ -512,8 +512,14 @@ export default abstract class extends Command {
   }
 
 
-  protected checkOperation(sdk: any, name: string): boolean {
-    if (!sdk[name]) this.error(`Operation not supported for resource ${clColor.api.resource(sdk.type())}: ${clColor.msg.error(name)}`)
+  protected checkOperation(sdk: any, name: string, attributes?: ResAttributes): boolean {
+    if (!sdk[name]) {
+      // resource attributes reference, reference_origin and metadata are always updatable
+      if ((name === 'update') && attributes) {
+        if (!Object.keys(attributes).some(attr => !['reference', 'reference_origin', 'metadata'].includes(attr))) return true
+      }
+      this.error(`Operation not supported for resource ${clColor.api.resource(sdk.type())}: ${clColor.msg.error(name)}`)
+    }
     return true
   }
 

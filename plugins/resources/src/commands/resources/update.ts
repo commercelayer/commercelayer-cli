@@ -144,7 +144,7 @@ export default class ResourcesUpdate extends Command {
 		try {
 
 			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
-			this.checkOperation(resSdk, OPERATION)
+			this.checkOperation(resSdk, OPERATION, attributes)
 
 			if (include && (include.length > 0)) params.include = include
 			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
