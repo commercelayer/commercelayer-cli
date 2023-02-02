@@ -514,12 +514,11 @@ export default abstract class extends Command {
 
   protected checkOperation(sdk: any, name: string, attributes?: ResAttributes): boolean {
     if (!sdk[name]) {
+      // resource attributes reference, reference_origin and metadata are always updatable
+      if ((name === 'update') && attributes) {
+        if (!Object.keys(attributes).some(attr => !['reference', 'reference_origin', 'metadata'].includes(attr))) return true
+      }
       this.error(`Operation not supported for resource ${clColor.api.resource(sdk.type())}: ${clColor.msg.error(name)}`)
-    }
-    else
-    // resource attributes reference, reference_origin and metadata are always updatable
-    if ((name === 'update') && attributes) {
-      if (!Object.keys(attributes).some(attr => !['reference', 'reference_origin', 'metadata'].includes(attr))) return true
     }
     return true
   }
