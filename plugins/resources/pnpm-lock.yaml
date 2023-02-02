@@ -5,7 +5,7 @@ specifiers:
   '@commercelayer/cli-dev': 1.0.1
   '@commercelayer/eslint-config-ts': ^0.1.4
   '@commercelayer/js-auth': ^2.3.0
-  '@commercelayer/sdk': ^4.22.0
+  '@commercelayer/sdk': ^4.24.0
   '@oclif/core': ^1.26.1
   '@oclif/plugin-help': ^5.2.2
   '@oclif/test': ^2.3.4
@@ -32,7 +32,7 @@ specifiers:
 dependencies:
   '@commercelayer/cli-core': 2.0.4
   '@commercelayer/js-auth': 2.3.0
-  '@commercelayer/sdk': 4.22.0
+  '@commercelayer/sdk': 4.24.0
   '@oclif/core': 1.26.1
   axios: 1.3.1
   inquirer: 8.2.5
@@ -320,11 +320,11 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@commercelayer/sdk/4.22.0:
-    resolution: {integrity: sha512-ufNZG0kxrdoB26yGNlMH+ISozlR28BoBtE7UXQEHl5ArF9jp6Ouibkfwe3jVSL74pbTMdMN/xbNgsm+KUqYcJg==}
+  /@commercelayer/sdk/4.24.0:
+    resolution: {integrity: sha512-fwolX+FwmtmkjtikPBINE0k2msbx8dRdF8cE7wDIeArTP8lzlELJFNnHrhOPezbuiTh32HeAvie4+f1lzhjlJw==}
     engines: {node: '>=16 || ^14.17'}
     dependencies:
-      axios: 1.1.3
+      axios: 1.3.1
     transitivePeerDependencies:
       - debug
     dev: false

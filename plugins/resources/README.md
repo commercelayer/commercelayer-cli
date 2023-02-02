@@ -53,6 +53,7 @@ $ commercelayer plugins:install resources
 * [`commercelayer res:get RESOURCE [ID]`](#commercelayer-resget-resource-id)
 * [`commercelayer res:list RESOURCE`](#commercelayer-reslist-resource)
 * [`commercelayer res:retrieve RESOURCE [ID]`](#commercelayer-resretrieve-resource-id)
+* [`commercelayer res:schema`](#commercelayer-resschema)
 * [`commercelayer res:update RESOURCE [ID]`](#commercelayer-resupdate-resource-id)
 * [`commercelayer resources`](#commercelayer-resources)
 * [`commercelayer resources:all RESOURCE`](#commercelayer-resourcesall-resource)
@@ -65,13 +66,16 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources:get RESOURCE [ID]`](#commercelayer-resourcesget-resource-id)
 * [`commercelayer resources:list RESOURCE`](#commercelayer-resourceslist-resource)
 * [`commercelayer resources:retrieve RESOURCE [ID]`](#commercelayer-resourcesretrieve-resource-id)
+* [`commercelayer resources:schema`](#commercelayer-resourcesschema)
 * [`commercelayer resources:update RESOURCE [ID]`](#commercelayer-resourcesupdate-resource-id)
 * [`commercelayer retrieve RESOURCE [ID]`](#commercelayer-retrieve-resource-id)
 * [`commercelayer rf PATH [ID]`](#commercelayer-rf-path-id)
 * [`commercelayer rg RESOURCE [ID]`](#commercelayer-rg-resource-id)
 * [`commercelayer rl RESOURCE`](#commercelayer-rl-resource)
 * [`commercelayer rr RESOURCE [ID]`](#commercelayer-rr-resource-id)
+* [`commercelayer rs`](#commercelayer-rs)
 * [`commercelayer ru RESOURCE [ID]`](#commercelayer-ru-resource-id)
+* [`commercelayer schema`](#commercelayer-schema)
 * [`commercelayer update RESOURCE [ID]`](#commercelayer-update-resource-id)
 
 ### `commercelayer all RESOURCE`
@@ -1171,6 +1175,26 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
+### `commercelayer res:schema`
+
+Show the current CommerceLayer OpenAPI schema version currently used by the plugin.
+
+```sh-session
+USAGE
+  $ commercelayer res:schema
+
+DESCRIPTION
+  show the current CommerceLayer OpenAPI schema version currently used by the plugin
+
+ALIASES
+  $ commercelayer res:schema
+  $ commercelayer rs
+  $ commercelayer schema
+
+EXAMPLES
+  $ commercelayer res:schema
+```
+
 ### `commercelayer res:update RESOURCE [ID]`
 
 Update an existing resource.
@@ -1737,6 +1761,28 @@ EXAMPLES
 
 _See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/retrieve.ts)_
 
+### `commercelayer resources:schema`
+
+Show the current CommerceLayer OpenAPI schema version currently used by the plugin.
+
+```sh-session
+USAGE
+  $ commercelayer resources:schema
+
+DESCRIPTION
+  show the current CommerceLayer OpenAPI schema version currently used by the plugin
+
+ALIASES
+  $ commercelayer res:schema
+  $ commercelayer rs
+  $ commercelayer schema
+
+EXAMPLES
+  $ commercelayer resources:schema
+```
+
+_See code: [src/commands/resources/schema.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/schema.ts)_
+
 ### `commercelayer resources:update RESOURCE [ID]`
 
 Update an existing resource.
@@ -2082,6 +2128,26 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
+### `commercelayer rs`
+
+Show the current CommerceLayer OpenAPI schema version currently used by the plugin.
+
+```sh-session
+USAGE
+  $ commercelayer rs
+
+DESCRIPTION
+  show the current CommerceLayer OpenAPI schema version currently used by the plugin
+
+ALIASES
+  $ commercelayer res:schema
+  $ commercelayer rs
+  $ commercelayer schema
+
+EXAMPLES
+  $ commercelayer rs
+```
+
 ### `commercelayer ru RESOURCE [ID]`
 
 Update an existing resource.
@@ -2142,6 +2208,26 @@ EXAMPLES
   $ cl ru customers <customerId> -M meta_key="metadata overwrite
 
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
+```
+
+### `commercelayer schema`
+
+Show the current CommerceLayer OpenAPI schema version currently used by the plugin.
+
+```sh-session
+USAGE
+  $ commercelayer schema
+
+DESCRIPTION
+  show the current CommerceLayer OpenAPI schema version currently used by the plugin
+
+ALIASES
+  $ commercelayer res:schema
+  $ commercelayer rs
+  $ commercelayer schema
+
+EXAMPLES
+  $ commercelayer schema
 ```
 
 ### `commercelayer update RESOURCE [ID]`
