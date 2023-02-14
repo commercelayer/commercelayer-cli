@@ -169,6 +169,35 @@ const revokeAccessToken = async (app: AppAuth, token: string, logger?: { log: (m
 }
 
 
+/*
+const revokeAccessTokenAxios = async (app: AppAuth, token: string, logger?: { log: (msg: any) => void }): Promise<void> => {
+
+  const scope = Array.isArray(app.scope) ? app.scope.join(';') : app.scope
+
+  const data = {
+    grant_type: 'client_credentials',
+    client_id: app.clientId,
+    client_secret: app.clientSecret,
+    scope,
+    token,
+  }
+  if (logger) logger.log(data)
+ 
+  try {
+    await axios.post(`${baseURL(app.slug, app.domain)}/oauth/revoke`, data, { headers: { 'Content-Type': 'application/json' }})
+  } catch (error) {
+    if (logger) logger.log((error as Error).message)
+    if (error instanceof CLIError) throw error
+    else throw new CLIError((error as Error).message || 'Error revoking access token')
+  }
+
+  await sleep(300)
+  if (logger) logger.log('Access token revoked')
+
+}
+*/
+
+
 const isAccessTokenExpiring = (tokenData: { created_at: string }, validityMins?: number): boolean => {
 
   const safetyInterval = 30 // secs

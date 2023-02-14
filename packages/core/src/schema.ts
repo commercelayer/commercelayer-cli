@@ -1,10 +1,13 @@
 import axios from 'axios'
+import clConfig from './config'
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const downloadSchema = async (version?: string): Promise<any> => {
 
-	const baseUrl = 'https://data.commercelayer.app/schemas/'
+	const domain = clConfig.api.default_app_domain
+
+	const baseUrl = `https://data.${domain}/schemas/`
 	const schemaVersion = version ? ('_' + version.replace(/\./g, '-')) : ''
 	const fileName = `openapi${schemaVersion}.json`
 

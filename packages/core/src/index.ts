@@ -25,6 +25,8 @@ export * as clSchema from './schema'
 
 export * as clText from './text'
 
+export * as clSymbol from './symbol'
+
 
 /** Types **/
 export type { ApiMode } from './api'

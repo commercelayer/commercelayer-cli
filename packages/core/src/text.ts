@@ -1,3 +1,5 @@
+import Inflector from './inflector'
+
 
 const capitalize = (str: string | undefined): string | undefined => {
 	if (!str) return str
@@ -6,5 +8,8 @@ const capitalize = (str: string | undefined): string | undefined => {
 	return s
 }
 
+const pluralize = Inflector.pluralize
+const singularize = Inflector.singularize
 
-export { capitalize }
+
+export { capitalize, pluralize, singularize }
