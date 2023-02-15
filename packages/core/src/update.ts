@@ -1,6 +1,8 @@
+
+
 import chalk from 'chalk'
 // import { resolve, join } from 'path'
-import updateNotifier from 'update-notifier'
+import updateNotifier from 'update-notifier-cjs'
 
 
 interface Package {
