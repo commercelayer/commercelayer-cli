@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-token",
   "description": "Commerce Layer CLI Token plugin",
-  "version": "5.1.1",
+  "version": "5.2.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-token/issues",
   "engines": {
@@ -54,28 +54,28 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^1.0.0",
+    "@commercelayer/cli-dev": "^1.0.1",
     "@commercelayer/eslint-config-ts": "^0.1.4",
-    "@oclif/plugin-help": "^5.1.19",
-    "@oclif/test": "^2.2.12",
+    "@oclif/plugin-help": "^5.2.4",
+    "@oclif/test": "^2.3.6",
     "@types/chai": "^4.3.4",
-    "@types/inquirer": "^8.2.5",
-    "@types/mocha": "^10.0.0",
-    "@types/node": "^18.11.9",
+    "@types/inquirer": "^8.2.6",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.13.0",
     "chai": "^4.3.7",
-    "eslint": "^8.28.0",
-    "mocha": "^10.1.0",
+    "eslint": "^8.34.0",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^2.0.3",
+    "@commercelayer/cli-core": "^2.0.7",
     "@commercelayer/js-auth": "^2.3.0",
-    "@commercelayer/sdk": "^4.19.0",
-    "@oclif/core": "^1.20.4",
+    "@commercelayer/sdk": "^4.24.1",
+    "@oclif/core": "^2.1.4",
     "inquirer": "^8.2.5",
-    "tslib": "^2.4.1"
+    "tslib": "^2.5.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1,5 +1,5 @@
 import { clColor } from '@commercelayer/cli-core'
-import Command, { Flags } from '../../base'
+import Command, { Flags, Args, cliux } from '../../base'
 import { revokeAccessToken } from '../../token'
 
 
@@ -47,9 +47,9 @@ export default class TokenRevoke extends Command {
     }),
   }
 
-  static args = [
-    { name: 'token', description: 'access token to revoke', required: true },
-  ]
+  static args = {
+    token: Args.string({ name: 'token', description: 'access token to revoke', required: true })
+  }
 
 
   async run(): Promise<any> {
@@ -64,23 +64,27 @@ export default class TokenRevoke extends Command {
     const accessToken = args.token
 
 
-    try {
 
-      const scope = this.checkScope(flags.scope)
 
-      await revokeAccessToken({
-        domain,
-        slug: organization,
-        clientId: flags.clientId,
-        clientSecret: flags.clientSecret,
-        scope,
-      }, accessToken).then(() => {
+    const scope = this.checkScope(flags.scope)
+
+    this.log()
+    cliux.action.start('Revoking access token')
+    await revokeAccessToken({
+      domain,
+      slug: organization,
+      clientId: flags.clientId,
+      clientSecret: flags.clientSecret,
+      scope,
+    }, accessToken)
+      .then(() => {
+        cliux.action.stop(`done ${clColor.msg.success('\u2714')}`)
         this.log('\nThe access token has been successfully revoked')
       })
-
-    } catch (error: any) {
-      this.error(error.message)
-    }
+      .catch((error) => {
+        cliux.action.stop()
+        this.error(error.message)
+      })
 
   }
 

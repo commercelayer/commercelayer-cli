@@ -1,4 +1,4 @@
-import Command from '../../base'
+import Command, { Args } from '../../base'
 import { decodeAccessToken } from '../../token'
 
 
@@ -14,9 +14,9 @@ export default class TokenDecode extends Command {
 	]
 
 
-  static args = [
-    { name: 'token', description: 'the access token to be decoded', required: true },
-  ]
+  static args = {
+    token: Args.string({ name: 'token', description: 'the access token to be decoded', required: true })
+  }
 
 
   async run(): Promise<any> {

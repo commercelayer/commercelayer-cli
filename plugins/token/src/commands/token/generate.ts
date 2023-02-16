@@ -36,7 +36,7 @@ export default class TokenGenerate extends Command {
     }),
   }
 
-  static args = []
+  static args = {}
 
 
 

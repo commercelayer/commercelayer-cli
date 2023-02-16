@@ -60,7 +60,7 @@ export default class TokenGet extends Command {
     }),
   }
 
-  static args = []
+  static args = {}
 
 
   async run(): Promise<any> {
