@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { CommandHelp, Help, Interfaces } from '@oclif/core'
+import { Command, CommandHelp, Help, Interfaces } from '@oclif/core'
 import { capitalize } from './text'
 
 
@@ -15,7 +15,7 @@ const indent = (str: string, count = 1): string => {
 // Command formatter class
 class CLICommandHelp extends CommandHelp {
 
-	examples(examples: Interfaces.Example[] | undefined | string): string | undefined {
+	examples(examples: Command.Example[] | undefined | string): string | undefined {
 		if (PRINT_TRACE) console.log('---------- command.examples')
 		return super.examples(examples)
 	}
@@ -45,7 +45,7 @@ export default class CLIBaseHelp extends Help {
 	}
 
 	// display help for a command
-	async showCommandHelp(command: Interfaces.Command): Promise<void> {
+	async showCommandHelp(command: Command.Cached): Promise<void> {
 		if (PRINT_TRACE) console.log('---------- showCommandHelp')
 		const name = command.id
         const depth = name ? name.split(':').length : 1
@@ -91,7 +91,7 @@ export default class CLIBaseHelp extends Help {
 
 
 	// the formatting for a list of commands
-	formatCommands(commands: Interfaces.Command[]): string {
+	formatCommands(commands: Command.Cached[]): string {
 		if (PRINT_TRACE) console.log('---------- formatCommands')
 		return super.formatCommands(commands).split('\n').map((c: string) => {
 			let noSpaceCount = 0
@@ -101,13 +101,13 @@ export default class CLIBaseHelp extends Help {
 
 
 	// the formatting for an individual command
-	formatCommand(command: Interfaces.Command): string {
+	formatCommand(command: Command.Cached): string {
 		if (PRINT_TRACE) console.log('---------- formatCommand')
 		return super.formatCommand(command)
 	}
 
 
-	getCommandHelpClass(command: Interfaces.Command): CLICommandHelp {
+	getCommandHelpClass(command: Command.Cached): CLICommandHelp {
 		if (PRINT_TRACE) console.log('---------- getCommandHelpClass')
 		return new CLICommandHelp(command, this.config, this.opts)
 	}

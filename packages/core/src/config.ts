@@ -1,12 +1,22 @@
+const JOB_STATUSES: string[] = [
+	'in_progress',
+	'pending',
+	'completed',
+	'interrupted',
+]
 
-const IMPORTS_RESOURCE_TYPES: string[] = [
+const IMPORT_RESOURCE_TYPES: string[] = [
+	'addresses',
 	'bundles',
 	'coupons',
 	'customer_subscriptions',
 	'customers',
 	'gift_cards',
+	'line_items',
 	'orders',
+	'price_tiers',
 	'prices',
+	'shipping_categories',
 	'sku_lists',
 	'sku_list_items',
 	'sku_options',
@@ -15,11 +25,33 @@ const IMPORTS_RESOURCE_TYPES: string[] = [
 	'tax_categories',
 ]
 
-const IMPORTS_STATUSES: string[] = [
-	'in_progress',
-	'pending',
-	'completed',
-	'interrupted',
+
+const EXPORT_RESOURCE_TYPES: string[] = [
+	'addresses',
+	'bundles',
+	'coupons',
+	'customer_subscriptions',
+	'customers',
+	'gift_cards',
+	'line_items',
+	'orders',
+	'payment_methods',
+	'price_tiers',
+	'prices',
+	'shipments',
+	'shipping_categories',
+	'shipping_methods',
+	'sku_lists',
+	'sku_list_items',
+	'sku_options',
+	'skus',
+	'stock_items',
+	'tax_categories',
+	'transactions',
+	'authorizations',
+	'captures',
+	'voids',
+	'refunds'
 ]
 
 
@@ -50,6 +82,13 @@ type ImportsConfig = {
 	max_queue_length: number;
 }
 
+type ExportsConfig = {
+    max_size: number;
+	statuses: readonly string[];
+	types: readonly string[];
+	max_queue_length: number;
+}
+
 type WebhooksConfig = {
 	retry_number: number;
 }
@@ -62,6 +101,7 @@ type Config = {
   api: ApiConfig;
   application: ApplicationConfig;
   imports: ImportsConfig;
+  exports: ExportsConfig;
   webhooks: WebhooksConfig;
   cli: CliConfig;
 }
@@ -88,8 +128,14 @@ const config: Config = {
 	},
 	imports: {
 		max_size: 2000,
-		statuses: IMPORTS_STATUSES,
-		types: IMPORTS_RESOURCE_TYPES,
+		statuses: JOB_STATUSES,
+		types: IMPORT_RESOURCE_TYPES,
+		max_queue_length: 10,
+	},
+	exports: {
+		max_size: 10000,
+		statuses: JOB_STATUSES,
+		types: EXPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
 	},
 	webhooks: {
