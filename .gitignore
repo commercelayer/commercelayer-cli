@@ -10,3 +10,5 @@ node_modules
 .editorconfig
 .oclif.manifest.json
 /package-lock.json
+# TypeScript v1 declaration files
+typings/

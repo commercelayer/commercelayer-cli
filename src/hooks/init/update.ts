@@ -1,7 +1,7 @@
 
 import { clColor } from '@commercelayer/cli-core'
 import { Hook } from '@oclif/core'
-import updateNotifier from 'update-notifier'
+import updateNotifier from 'update-notifier-cjs'
 
 
 const pkg = require('../../../package.json')
