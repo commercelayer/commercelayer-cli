@@ -97,6 +97,16 @@ type CliConfig = {
 	applications: readonly string[];
 }
 
+type DocConfig = {
+	core: string;
+	core_api_reference: string;
+	core_how_tos: string;
+	metrics: string;
+	metrics_api_reference: string;
+	imports_resources: string;
+	exports_resources: string;
+}
+
 type Config = {
   api: ApiConfig;
   application: ApplicationConfig;
@@ -104,6 +114,7 @@ type Config = {
   exports: ExportsConfig;
   webhooks: WebhooksConfig;
   cli: CliConfig;
+  doc: DocConfig;
 }
 
 
@@ -111,7 +122,7 @@ const config: Config = {
 	api: {
 		default_domain: 'commercelayer.io',
 		default_app_domain: 'commercelayer.app',
-		token_expiration_mins: 60 * 2,
+		token_expiration_mins: 60 * 2,	// 2 hours
 		token_encoding_algorithm: 'HS512',
 		requests_max_num_burst: 50,
 		requests_max_secs_burst: 10,
@@ -143,6 +154,15 @@ const config: Config = {
 	},
 	cli: {
 		applications: ['integration', 'sales_channel'],
+	},
+	doc: {
+		core: 'https://docs.commercelayer.io/core/',
+		core_api_reference: 'https://docs.commercelayer.io/developers/v/api-reference',
+		core_how_tos: 'https://docs.commercelayer.io/core/v/how-tos/',
+		metrics: 'https://docs.commercelayer.io/metrics/',
+		metrics_api_reference: 'https://docs.commercelayer.io/metrics/v/api-reference-m/',
+		imports_resources: 'https://docs.commercelayer.io/api/importing-resources#supported-resources',
+		exports_resources: 'https://docs.commercelayer.io/core/exporting-resources#supported-resources'
 	}
 } as const
 

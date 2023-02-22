@@ -5,7 +5,7 @@ specifiers:
   '@babel/preset-typescript': ^7.21.0
   '@commercelayer/eslint-config-ts': ^0.1.4
   '@commercelayer/js-auth': ^2.3.0
-  '@oclif/core': ^2.2.1
+  '@oclif/core': ^2.3.0
   '@size-limit/preset-small-lib': ^6.0.4
   '@types/jest': ^29.4.0
   '@types/jsonwebtoken': ^8.5.9
@@ -23,7 +23,7 @@ specifiers:
 
 dependencies:
   '@commercelayer/js-auth': 2.3.0
-  '@oclif/core': 2.2.1
+  '@oclif/core': 2.3.0
   axios: 1.3.3
   chalk: 4.1.2
   jsonwebtoken: 8.5.1
@@ -1851,8 +1851,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oclif/core/2.2.1:
-    resolution: {integrity: sha512-TxIFfccAwb8SiVADZWxIS/GG2bcw0yBDBBxzqBQl7jurfG0wQtdu6jLfHHdVGYaYyMKw1UVZTFFLtX8iwRTW/Q==}
+  /@oclif/core/2.3.0:
+    resolution: {integrity: sha512-xA53NIZDqz9nuxyCMA5Pz5b1RSgyTNWbtOdwbUJeZa/ajtVrVO9yA8k/4vJRsffUuLyP8tNbh4cH3DDZKwIFnw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.0
@@ -2856,7 +2856,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001457
-      electron-to-chromium: 1.4.304
+      electron-to-chromium: 1.4.305
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -3464,8 +3464,8 @@ packages:
       jake: 10.8.5
     dev: false
 
-  /electron-to-chromium/1.4.304:
-    resolution: {integrity: sha512-6c8M+ojPgDIXN2NyfGn8oHASXYnayj+gSEnGeLMKb9zjsySeVB/j7KkNAAG9yDcv8gNlhvFg5REa1N/kQU6pgA==}
+  /electron-to-chromium/1.4.305:
+    resolution: {integrity: sha512-WETy6tG0CT5gm1O+xCbyapWNsCcmIvrn4NHViIGYo2AT8FV2qUCXdaB+WqYxSv/vS5mFqhBYnfZAAkVArjBmUg==}
     dev: true
 
   /emittery/0.13.1:
@@ -4694,7 +4694,7 @@ packages:
       jest-util: 29.4.3
       jest-validate: 29.4.3
       prompts: 2.4.2
-      yargs: 17.7.0
+      yargs: 17.7.1
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
@@ -7027,8 +7027,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /yargs/17.7.0:
-    resolution: {integrity: sha512-dwqOPg5trmrre9+v8SUo2q/hAwyKoVfu8OC1xPHKJGNdxAvPl4sKxL4vBnh3bQz/ZvvGAFeA5H3ou2kcOY8sQQ==}
+  /yargs/17.7.1:
+    resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1
