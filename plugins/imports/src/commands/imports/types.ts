@@ -1,9 +1,9 @@
-import { Command, CliUx as cliux } from '@oclif/core'
+import { Command, CliUx as cliux, Flags } from '@oclif/core'
 import { clColor, clConfig } from '@commercelayer/cli-core'
 
 
 
-export default class ImportsTopics extends Command {
+export default class ImportsTypes extends Command {
 
   static description = 'show online documentation for supported resources'
 
@@ -15,7 +15,17 @@ export default class ImportsTopics extends Command {
 	]
 
 
+  static flags = {
+    open: Flags.boolean({
+      char: 'O',
+      description: 'open online documentation page',
+    }),
+  }
+
+
   async run(): Promise<any> {
+
+    const { flags } = await this.parse(ImportsTypes)
 
     this.log()
     this.log(clColor.style.title('Supported import types'))
@@ -23,7 +33,7 @@ export default class ImportsTopics extends Command {
     this.log((clConfig.imports.types as string[]).sort().join(' | '))
     this.log()
 
-    await cliux.ux.open('https://docs.commercelayer.io/api/importing-resources#supported-resources')
+    if (flags.open) await cliux.ux.open(clConfig.doc.imports_resources)
 
   }
 
