@@ -27,6 +27,8 @@ export * as clText from './text'
 
 export * as clSymbol from './symbol'
 
+export * as clFilter from './filter'
+
 
 /** Types **/
 export type { ApiMode } from './api'
