@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
@@ -39,7 +39,7 @@
     "@size-limit/preset-small-lib": "^6.0.4",
     "@types/jest": "^29.4.0",
     "@types/jsonwebtoken": "^8.5.9",
-    "@types/node": "^18.14.0",
+    "@types/node": "^18.14.1",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "eslint": "^8.34.0",
     "jest": "^29.4.3",
