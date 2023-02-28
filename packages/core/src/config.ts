@@ -80,6 +80,7 @@ type ImportsConfig = {
 	statuses: readonly string[];
 	types: readonly string[];
 	max_queue_length: number;
+	attachment_expiration: number;
 }
 
 type ExportsConfig = {
@@ -87,6 +88,7 @@ type ExportsConfig = {
 	statuses: readonly string[];
 	types: readonly string[];
 	max_queue_length: number;
+	attachment_expiration: number;
 }
 
 type WebhooksConfig = {
@@ -142,12 +144,14 @@ const config: Config = {
 		statuses: JOB_STATUSES,
 		types: IMPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
+		attachment_expiration: 5
 	},
 	exports: {
 		max_size: 10000,
 		statuses: JOB_STATUSES,
 		types: EXPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
+		attachment_expiration: 5
 	},
 	webhooks: {
 		retry_number: 5,

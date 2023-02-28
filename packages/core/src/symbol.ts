@@ -1,14 +1,15 @@
 
-const checkSmall = '\u2714'
-const checkGreenBkg = '\u2705'
-
 const symbols = {
 	check: {
-		small: checkSmall,
-		bkgGreen: checkGreenBkg
+		small: '\u2714',	// ✔
+		bkgGreen: '\u2705'	// ✅
 	},
 	cross: {
-
+		small: '\u2718',	// ✘
+		red: '\u274C'		// ❌
+	},
+	clock: {
+		stopwatch: '\u23F1'	// ⏱
 	}
 }
 
