@@ -1,4 +1,7 @@
 import { format, inspect } from 'util'
+import { sep, dirname } from 'path'
+import { homedir } from 'os'
+import { existsSync, mkdirSync } from 'fs'
 
 /** Await ms milliseconds */
 const sleep = async (ms: number): Promise<void> => {
@@ -31,4 +34,23 @@ const log = (message = '', ...args: unknown[]): void => {
 }
 
 
-export { sleep, resetConsole, log }
+const specialFolder = (filePath: string, create: boolean = false): string => {
+
+	const specialFolders = ['desktop', 'home']
+
+	 // Special directory (home / desktop)
+	 const root = filePath.toLowerCase().split(sep)[0]
+	 if (specialFolders.includes(root)) {
+	   let filePrefix = homedir()
+	   if (root === 'desktop') filePrefix += `${sep}Desktop`
+	   filePath = filePath.replace(root, filePrefix)
+	 }
+	 const fileDir = dirname(filePath)
+	 if (create && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
+
+	 return filePath
+
+}
+
+
+export { sleep, resetConsole, log, specialFolder }
