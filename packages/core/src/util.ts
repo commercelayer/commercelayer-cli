@@ -34,19 +34,20 @@ const log = (message = '', ...args: unknown[]): void => {
 }
 
 
-const specialFolder = (filePath: string, create: boolean = false): string => {
+const specialFolder = (filePath: string, createIfNotExists: boolean = false): string => {
 
 	const specialFolders = ['desktop', 'home']
 
 	 // Special directory (home / desktop)
-	 const root = filePath.toLowerCase().split(sep)[0]
+	 // eslint-disable-next-line no-useless-escape
+	 const root = filePath.toLowerCase().split(/[\\\/]/g)[0]
 	 if (specialFolders.includes(root)) {
 	   let filePrefix = homedir()
 	   if (root === 'desktop') filePrefix += `${sep}Desktop`
 	   filePath = filePath.replace(root, filePrefix)
 	 }
 	 const fileDir = dirname(filePath)
-	 if (create && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
+	 if (createIfNotExists && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
 
 	 return filePath
 
