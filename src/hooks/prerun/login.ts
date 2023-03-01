@@ -9,6 +9,7 @@ const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', '
 const exludedCommands: string[] = [
 	'plugins',
 	'imports:types',
+	'exports:types',
 	'resources',
 	'resources:doc',
 	'resources:filters',
