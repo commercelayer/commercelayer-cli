@@ -69,6 +69,11 @@ DESCRIPTION
 ALIASES
   $ commercelayer exp:create
   $ commercelayer export
+
+EXAMPLES
+  $ commercelayer exports:create -t cusorderstomers -X <output-file-path>
+
+  $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org
 ```
 
 ### `commercelayer exp:details ID`
@@ -192,6 +197,11 @@ DESCRIPTION
 ALIASES
   $ commercelayer exp:create
   $ commercelayer export
+
+EXAMPLES
+  $ commercelayer exports:create -t cusorderstomers -X <output-file-path>
+
+  $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org
 ```
 
 ### `commercelayer exports`
@@ -266,6 +276,11 @@ DESCRIPTION
 ALIASES
   $ commercelayer exp:create
   $ commercelayer export
+
+EXAMPLES
+  $ commercelayer exports:create -t cusorderstomers -X <output-file-path>
+
+  $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org
 ```
 
 _See code: [src/commands/exports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/create.ts)_

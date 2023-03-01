@@ -40,7 +40,8 @@ export default class ExportsCreate extends Command {
   static aliases = ['exp:create', 'export']
 
   static examples = [
-
+    '$ commercelayer exports:create -t cusorderstomers -X <output-file-path>',
+    '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org',
   ]
 
   static flags = {
@@ -213,6 +214,16 @@ export default class ExportsCreate extends Command {
       if (notification) notify(finishMessage)
 
     } catch (error: any) {
+      if (cl.isApiError(error) && (error.status === 422)) {
+        const err = error.first()?.meta
+        if (err.error === 'less_than_or_equal_to') this.error(`Too many ${resDesc} to export: ${clColor.msg.error(err.value)}`, {
+          suggestions: [`The maximum number of exportable records is ${clColor.yellowBright(err?.count)}, add more filters and re-run the command`]
+        })
+        else if (err.error === 'greater_than') {
+          this.log(clColor.italic(`\nNo ${resDesc} found\n`))
+          this.exit()
+        }
+      }
       this.error(clOutput.formatError(error, flags))
     }
 

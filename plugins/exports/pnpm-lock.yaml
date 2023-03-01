@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@commercelayer/cli-core': ^3.3.2
+  '@commercelayer/cli-core': ^3.3.3-beta.0
   '@commercelayer/cli-dev': ^1.0.1
   '@commercelayer/eslint-config-ts': ^0.1.4
   '@commercelayer/js-auth': ^2.3.0
@@ -27,7 +27,7 @@ specifiers:
   typescript: ^4.9.5
 
 dependencies:
-  '@commercelayer/cli-core': 3.3.2
+  '@commercelayer/cli-core': 3.3.3-beta.0
   '@commercelayer/js-auth': 2.3.0
   '@commercelayer/sdk': 4.25.0
   '@oclif/core': 1.26.2
@@ -266,8 +266,8 @@ packages:
     dev: false
     optional: true
 
-  /@commercelayer/cli-core/3.3.2:
-    resolution: {integrity: sha512-6YUjQkDvTs1WmMFB0FTTuYKLBHnV1JiiugDy77EPOhNCsXD6BPZiiRFapc5XQlZV6818ir1oxtTF1hk/KBqqPA==}
+  /@commercelayer/cli-core/3.3.3-beta.0:
+    resolution: {integrity: sha512-RKFrnEAPD4PGzosDHRxlWH7o/mp+H49+XJ6zVCdX+ZOm6M4/vheB7wNI01GqwGBLB9jjfIY5+gK1Xqxu9l3tag==}
     engines: {node: '>=14'}
     dependencies:
       '@commercelayer/js-auth': 2.3.0

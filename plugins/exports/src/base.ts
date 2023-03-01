@@ -1,7 +1,6 @@
-import { clColor, clToken, clUpdate, clFilter, KeyValRel, KeyValString, clOutput } from '@commercelayer/cli-core'
+import { clColor, clToken, clUpdate, clFilter, KeyValRel, KeyValString, clOutput, clUtil } from '@commercelayer/cli-core'
 import { Command, Flags, CliUx } from '@oclif/core'
-import { existsSync, mkdirSync } from 'fs'
-import { dirname } from 'path'
+import { existsSync } from 'fs'
 import axios from 'axios'
 import { gunzipSync } from 'zlib'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic, Export } from '@commercelayer/sdk'
@@ -105,16 +104,7 @@ export default abstract class extends Command {
       let filePath = flags.save || flags['save-path']
       if (!filePath) this.warn('Undefined output save path')
 
-      // Special directory (home / desktop)
-      const root = filePath.toLowerCase().split('/')[0]
-      if (['desktop', 'home'].includes(root)) {
-        let filePrefix = this.config.home
-        if (root === 'desktop') filePrefix += '/Desktop'
-        filePath = filePath.replace(root, filePrefix)
-      }
-      const fileDir = dirname(filePath)
-      if (flags['save-path'] && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
-
+      filePath = clUtil.specialFolder(filePath, flags['save-path'] as boolean)
 
       const fileExport = await this.getExportedFile(exp.attachment_url, flags)
 
