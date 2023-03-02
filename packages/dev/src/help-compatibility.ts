@@ -1,8 +1,8 @@
-import {Interfaces, HelpBase} from '@oclif/core'
+import { HelpBase, Command } from '@oclif/core'
 
 interface MaybeCompatibleHelp extends HelpBase {
-  formatCommand?: (command: Interfaces.Command) => string;
-  command?: (command: Interfaces.Command) => string;
+  formatCommand?: (command: Command.Cached) => string;
+  command?: (command: Command.Cached) => string;
 }
 
 class IncompatibleHelpError extends Error {
@@ -17,7 +17,7 @@ export class HelpCompatibilityWrapper {
     this.inner = inner
   }
 
-  formatCommand(command: Interfaces.Command): string {
+  formatCommand(command: Command.Cached): string {
     if (this.inner.formatCommand) {
       return this.inner.formatCommand(command)
     }

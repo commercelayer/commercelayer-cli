@@ -66,7 +66,7 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
       config.plugins.push(plugin)
     } catch { }
 
-    await (config as Config).runHook('init', { id: 'readme', argv: this.argv })
+    await (config).runHook('init', { id: 'readme', argv: this.argv })
 
     this.HelpClass = await loadHelpClass(config)
 
@@ -146,7 +146,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
   }
 
 
-  multiCommands(config: Interfaces.Config, commands: Interfaces.Command[], dir: string): string {
+  multiCommands(config: Interfaces.Config, commands: Command.Cached[], dir: string): string {
 
     let topics = config.topics
     topics = topics.filter(t => !t.hidden && !t.name.includes(':'))
@@ -176,7 +176,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
   }
 
 
-  createTopicFile(file: string, config: Interfaces.Config, topic: Interfaces.Topic, commands: Interfaces.Command[]): void {
+  createTopicFile(file: string, config: Interfaces.Config, topic: Interfaces.Topic, commands: Command.Cached[]): void {
     const bin = `\`${config.bin} ${topic.name}\``
     const t = topic
     const doc = [
@@ -190,7 +190,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
   }
 
 
-  commands(config: Interfaces.Config, commands: Interfaces.Command[]): string {
+  commands(config: Interfaces.Config, commands: Command.Cached[]): string {
     return [
       ...commands.map(c => {
         const usage = this.commandUsage(config, c)
@@ -202,7 +202,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
   }
 
 
-  renderCommand(config: Interfaces.Config, c: Interfaces.Command): string {
+  renderCommand(config: Interfaces.Config, c: Command.Cached): string {
 
     this.debug('rendering command', c.id)
     const title = template({ config, command: c })(formatDescription(c.summary || c.description)).trim().split('\n')[0]
@@ -230,7 +230,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
   }
 
 
-  commandCode(config: Interfaces.Config, c: Interfaces.Command): string | undefined {
+  commandCode(config: Interfaces.Config, c: Command.Cached): string | undefined {
 
     const pluginName = c.pluginName
     if (!pluginName) return
@@ -272,7 +272,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
   /**
    * fetches the path to a command
    */
-  private commandPath(plugin: Interfaces.Plugin, c: Interfaces.Command): string | undefined {
+  private commandPath(plugin: Interfaces.Plugin, c: Command.Cached): string | undefined {
 
     const commandsDir = plugin.pjson.oclif.commands
     if (!commandsDir) return
@@ -308,9 +308,9 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
   }
 
 
-  private commandUsage(config: Interfaces.Config, command: Interfaces.Command): string {
+  private commandUsage(config: Interfaces.Config, command: Command.Cached): string {
 
-    const arg = (arg: Interfaces.Arg): string => {
+    const arg = (arg: any): string => {
       const name = arg.name.toUpperCase()
       if (arg.required) return `${name}`
       return `[${name}]`
