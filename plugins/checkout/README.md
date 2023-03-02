@@ -82,6 +82,9 @@ FLAGS
 
 DESCRIPTION
   create checkout URLs starting from an existing order
+
+EXAMPLES
+  $ commercelayer checkout:order <order-id>
 ```
 
 _See code: [src/commands/checkout/order.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/src/commands/checkout/order.ts)_
