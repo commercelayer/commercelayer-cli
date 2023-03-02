@@ -102,7 +102,8 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     }
 
    // return readme.replace(`<!-- ${tag} -->`, `<!-- ${tag} -->\n${body}\n<!-- ${tag}stop -->`)
-   return readme.replace(`<!-- ${tag} -->`, `<!-- ${tag} -->\n\n${body}\n<!-- ${tag}stop -->`)
+   const fixedBody = (body.trim().length === 0)? body : `\n${body}\n`
+   return readme.replace(`<!-- ${tag} -->`, `<!-- ${tag} -->\n${fixedBody}<!-- ${tag}stop -->`)
 
   }
 
@@ -172,7 +173,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
           template({ config })(formatDescription(t.description)).trim().split('\n')[0],
         ]).join(' - ')
       }),
-    ].join('\n').trim()
+    ].join('\n').trim() + '\n'
 
   }
 
@@ -186,7 +187,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
       template({ config })(formatDescription(t.description)).trim(),
       '',
       this.commands(config, commands),
-    ].join('\n').trim()
+    ].join('\n').trim() + '\n'
     fs.outputFileSync(file, doc)
   }
 
