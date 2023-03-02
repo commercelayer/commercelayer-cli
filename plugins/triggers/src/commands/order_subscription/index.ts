@@ -25,12 +25,12 @@ export default class OrderSubscriptionIndex extends Command {
   static description = 'execute an action on a resource of type order_subscriptions'
 
   static flags = {
-    ...Command.flags,
+
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-  ]
+  }
 
   async run(): Promise<any> {
 

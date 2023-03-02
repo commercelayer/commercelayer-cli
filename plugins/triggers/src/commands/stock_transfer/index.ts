@@ -25,12 +25,12 @@ export default class StockTransferIndex extends Command {
   static description = 'execute an action on a resource of type stock_transfers'
 
   static flags = {
-    ...Command.flags,
+
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-  ]
+  }
 
   async run(): Promise<any> {
 

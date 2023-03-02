@@ -25,12 +25,12 @@ export default class CheckoutComPaymentIndex extends Command {
   static description = 'execute an action on a resource of type checkout_com_payments'
 
   static flags = {
-    ...Command.flags,
+
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-  ]
+  }
 
   async run(): Promise<any> {
 

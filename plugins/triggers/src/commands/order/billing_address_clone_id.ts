@@ -11,8 +11,7 @@ export default class OrderBillingAddressCloneId extends Command {
 	static description = triggers[TRIGGER].description
 
   static flags = {
-		...Command.flags,
-    value: Flags.string({
+		value: Flags.string({
       char: 'v',
       description: 'the trigger attribute value',
       multiple: false,
@@ -20,9 +19,9 @@ export default class OrderBillingAddressCloneId extends Command {
     }),
 	}
 
-	static args = [
+	static args = {
 		...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {

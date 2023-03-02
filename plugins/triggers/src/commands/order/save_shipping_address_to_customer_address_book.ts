@@ -11,12 +11,12 @@ export default class OrderSaveShippingAddressToCustomerAddressBook extends Comma
 	static description = triggers[TRIGGER].description
 
   static flags = {
-		...Command.flags,
+		
 	}
 
-	static args = [
+	static args = {
 		...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {

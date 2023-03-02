@@ -25,12 +25,12 @@ export default class ##__RESOURCE_CLASS__##Index extends Command {
   static description = 'execute an action on a resource of type ##__RESOURCE_TYPE__##'
 
   static flags = {
-    ...Command.flags,
+
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-  ]
+  }
 
   async run(): Promise<any> {
 

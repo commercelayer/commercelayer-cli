@@ -11,12 +11,12 @@ export default class ##__RESOURCE_CLASS__####__ACTION_NAME__## extends Command {
 	static description = triggers[TRIGGER].description
 
   static flags = {
-		...Command.flags,##__FLAG_VALUE__##
+		##__FLAG_VALUE__##
 	}
 
-	static args = [
+	static args = {
 		...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {

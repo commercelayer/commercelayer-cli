@@ -25,12 +25,12 @@ export default class AdyenPaymentIndex extends Command {
   static description = 'execute an action on a resource of type adyen_payments'
 
   static flags = {
-    ...Command.flags,
+
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-  ]
+  }
 
   async run(): Promise<any> {
 

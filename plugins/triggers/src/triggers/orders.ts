@@ -118,6 +118,11 @@ export const triggers: { [key: string ]: Trigger } = {
       trigger: '_refresh',
       description: 'Send this attribute if you want to manually refresh the order.',
     },
+	validate: {
+      action: 'validate',
+      trigger: '_validate',
+      description: 'Send this attribute if you want to trigger the external validation for the order.',
+    },
 }
 
 
@@ -144,4 +149,5 @@ export type ActionType =
 	'save_payment_source_to_customer_wallet' |
 	'save_shipping_address_to_customer_address_book' |
 	'save_billing_address_to_customer_address_book' |
-	'refresh'
+	'refresh' |
+	'validate'

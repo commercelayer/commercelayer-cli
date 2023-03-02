@@ -25,12 +25,12 @@ export default class WebhookIndex extends Command {
   static description = 'execute an action on a resource of type webhooks'
 
   static flags = {
-    ...Command.flags,
+
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-  ]
+  }
 
   async run(): Promise<any> {
 

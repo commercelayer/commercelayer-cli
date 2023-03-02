@@ -1,12 +1,12 @@
 import Command from '../../base'
 import exec from '../../exec'
-import { triggers } from '../../triggers/klarna_payments'
+import { triggers } from '../../triggers/axerve_payments'
 
 
 const TRIGGER = 'update'
 
 
-export default class KlarnaPaymentUpdate extends Command {
+export default class AxervePaymentUpdate extends Command {
 
 	static description = triggers[TRIGGER].description
 
@@ -21,13 +21,13 @@ export default class KlarnaPaymentUpdate extends Command {
 
 	async run(): Promise<any> {
 
-    const { args, flags } = await this.parse(KlarnaPaymentUpdate)
+    const { args, flags } = await this.parse(AxervePaymentUpdate)
 
-		const res = await exec('klarna_payments', args.id, TRIGGER, flags)
+		const res = await exec('axerve_payments', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 
-    this.successMessage('klarna_payment', TRIGGER, res.id)
+    this.successMessage('axerve_payment', TRIGGER, res.id)
 
     return res
 
