@@ -172,7 +172,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
           template({ config })(formatDescription(t.description)).trim().split('\n')[0],
         ]).join(' - ')
       }),
-    ].join('\n').trim() + '\n'
+    ].join('\n').trim()
 
   }
 
