@@ -186,7 +186,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
       template({ config })(formatDescription(t.description)).trim(),
       '',
       this.commands(config, commands),
-    ].join('\n').trim() + '\n'
+    ].join('\n').trim()
     fs.outputFileSync(file, doc)
   }
 
