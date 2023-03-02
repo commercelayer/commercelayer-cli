@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
-import Command, { Flags, CliUx } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import { clToken, clColor, clConfig, clOutput } from '@commercelayer/cli-core'
 import { CommerceLayerClient, ExportCreate } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
@@ -45,7 +45,6 @@ export default class ExportsCreate extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
     type: Flags.string({
       char: 't',
       description: 'the type of resource being exported',
@@ -115,7 +114,7 @@ export default class ExportsCreate extends Command {
 
     if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
 
-      await CliUx.ux.wait((securityInterval + 1) * 1000)
+      await cliux.wait((securityInterval + 1) * 1000)
 
       const organization = flags.organization
       const domain = flags.domain
@@ -154,7 +153,7 @@ export default class ExportsCreate extends Command {
     if (flags.pretty && ((flags.format === 'csv') || flags.csv)) this.error(`Flag ${clColor.cli.flag('Pretty')} can only be used with ${clColor.cli.value('JSON')} format`)
 
     const resType = flags.type
-    if (!clConfig.exports.types.includes(flags.type)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
+    if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
     const resDesc = resType.replace(/_/g, ' ')
 
     const notification = flags.notify || false
@@ -193,13 +192,13 @@ export default class ExportsCreate extends Command {
 
       const delay = computeDelay()
 
-      if (!blindMode) CliUx.ux.action.start(`Exporting ${resDesc}`, exp.status?.replace(/_/g, ' ') || 'waiting')
+      if (!blindMode) cliux.action.start(`Exporting ${resDesc}`, exp.status?.replace(/_/g, ' ') || 'waiting')
       while (!['completed', 'interrupted'].includes(exp.status || '')) {
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
         exp = await cl.exports.retrieve(exp.id)
-        await CliUx.ux.wait(delay)
+        await cliux.wait(delay)
       }
-      if (!blindMode) CliUx.ux.action.stop((exp.status === 'completed' ? clColor.style.success : clColor.style.error)(exp.status))
+      if (!blindMode) cliux.action.stop((exp.status === 'completed' ? clColor.style.success : clColor.style.error)(exp.status))
 
 
       if (exp.status === 'completed') this.log(`\nExported ${clColor.yellowBright(exp.records_count || 0)} ${resDesc}`)

@@ -1,4 +1,4 @@
-import Command from '../../base'
+import Command, { Args } from '../../base'
 import Table from 'cli-table3'
 import { clOutput, clColor, clSymbol } from '@commercelayer/cli-core'
 
@@ -17,13 +17,10 @@ export default class ExportsDetails extends Command {
     '$ cl exp:details <export-id>',
   ]
 
-  static flags = {
-    ...Command.flags,
-  }
 
-  static args = [
-    { name: 'id', description: 'unique id of the export', required: true, hidden: false },
-  ]
+  static args = {
+    id: Args.string({ name: 'id', description: 'unique id of the export', required: true, hidden: false }),
+  }
 
 
 

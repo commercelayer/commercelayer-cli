@@ -1,4 +1,4 @@
-import Command, { Flags, CliUx } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
 import { clColor, clConfig, clOutput, clSymbol } from '@commercelayer/cli-core'
@@ -19,7 +19,6 @@ export default class ExportsList extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		all: Flags.boolean({
 			char: 'A',
 			description: `show all exports instead of first ${clConfig.api.page_max_size} only`,
@@ -65,7 +64,7 @@ export default class ExportsList extends Command {
 
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-			CliUx.ux.action.start('Fetching exports')
+			cliux.action.start('Fetching exports')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -78,8 +77,6 @@ export default class ExportsList extends Command {
 				if (params?.filters) {
 					if (flags.type) params.filters.resource_type_eq = flags.type
 					if (flags.status) params.filters.status_eq = flags.status
-					if (flags.warnings) params.filters.warnings_count_gt = 0
-					if (flags.warnings) params.filters.errors_count_gt = 0
 				}
 
 				// eslint-disable-next-line no-await-in-loop
@@ -97,8 +94,7 @@ export default class ExportsList extends Command {
 				}
 
 			}
-
-			CliUx.ux.action.stop()
+			cliux.action.stop()
 
 			this.log()
 

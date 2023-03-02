@@ -1,11 +1,11 @@
 import { clColor, clToken, clUpdate, clFilter, KeyValRel, KeyValString, clOutput, clUtil } from '@commercelayer/cli-core'
-import { Command, Flags, CliUx } from '@oclif/core'
+import { Command, Flags, Args, ux } from '@oclif/core'
 import { existsSync } from 'fs'
 import axios from 'axios'
 import { gunzipSync } from 'zlib'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic, Export } from '@commercelayer/sdk'
 import { writeFile } from 'fs/promises'
-import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
+import { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -13,12 +13,13 @@ const pkg = require('../package.json')
 
 export default abstract class extends Command {
 
-  static flags = {
+  static baseFlags = {
     organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',
@@ -126,7 +127,7 @@ export default abstract class extends Command {
   }
 
 
-  private async getExportedFile(attachmentUrl?: string, flags?: OutputFlags<any>): Promise<string> {
+  private async getExportedFile(attachmentUrl?: string, flags?: any): Promise<string> {
     if (!attachmentUrl) return ''
     const expFile = await axios.get(attachmentUrl, { responseType: 'arraybuffer' })
     let output = expFile ? gunzipSync(expFile.data).toString() : ''
@@ -149,7 +150,7 @@ export default abstract class extends Command {
   }
 
 
-  protected commercelayerInit(flags: OutputFlags<any>): CommerceLayerClient {
+  protected commercelayerInit(flags: any): CommerceLayerClient {
 
     const organization = flags.organization
     const domain = flags.domain
@@ -176,7 +177,7 @@ export default abstract class extends Command {
   }
 
 
-  protected handleError(error: CommandError, flags?: OutputFlags<any>, id?: string): void {
+  protected handleError(error: CommandError, flags?: any, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -194,4 +195,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, CliUx }
+export { Flags, Args, ux as cliux }
