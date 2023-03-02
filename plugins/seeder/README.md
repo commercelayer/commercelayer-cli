@@ -24,38 +24,9 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 ## Commands
 <!-- commands -->
 
-* [`commercelayer seed`](#commercelayer-seed)
 * [`commercelayer seeder:check`](#commercelayer-seedercheck)
 * [`commercelayer seeder:clean`](#commercelayer-seederclean)
 * [`commercelayer seeder:seed`](#commercelayer-seederseed)
-
-### `commercelayer seed`
-
-Execute Commerce Layer seeder.
-
-```sh-session
-USAGE
-  $ commercelayer seed -o <value> [-b single_sku|multi_market|custom] [-n <value> -u <value>] [-k]
-
-FLAGS
-  -b, --businessModel=<option>  [default: single_sku] the kind of business model you want to import
-                                <options: single_sku|multi_market|custom>
-  -k, --keep                    keep existing resources without updating them
-  -n, --name=<value>            the name of the business model file to use
-  -o, --organization=<value>    (required) the slug of your organization
-  -u, --url=<value>             [default: https://data.commercelayer.app/seeder] seeder data URL
-
-DESCRIPTION
-  execute Commerce Layer seeder
-
-ALIASES
-  $ commercelayer seed
-
-EXAMPLES
-  $ commercelayer seeder:seed -u <seedUrl>
-
-  $ cl seed -b multi_market
-```
 
 ### `commercelayer seeder:check`
 

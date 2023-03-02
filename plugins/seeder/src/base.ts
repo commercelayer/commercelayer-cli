@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx } from '@oclif/core'
+import { Command, Flags, ux as cliux } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import config from './config'
 import { clUpdate, clColor } from '@commercelayer/cli-core'
@@ -13,7 +13,7 @@ const pkg = require('../package.json')
 
 export default abstract class extends Command {
 
-  static flags = {
+  static baseFlags = {
     businessModel: Flags.string({
       char: 'b',
       description: 'the kind of business model you want to import',
@@ -33,7 +33,7 @@ export default abstract class extends Command {
   }
 
 
-  static args = []
+  static args = {}
 
 
   protected cl!: CommerceLayerClient
@@ -61,11 +61,11 @@ export default abstract class extends Command {
 
 
   protected async readOpenAPISchema(): Promise<any> {
-    CliUx.ux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
+    cliux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
     return await loadSchema()
-      .then(() => CliUx.ux.action.stop(`done ${clColor.msg.success('\u2714')}`))
+      .then(() => cliux.action.stop(`done ${clColor.msg.success('\u2714')}`))
       .catch(error => {
-        CliUx.ux.action.stop(clColor.msg.error('Error'))
+        cliux.action.stop(clColor.msg.error('Error'))
         console.log(error)
         this.error('Error reading OpenAPI schema')
       })
@@ -74,14 +74,14 @@ export default abstract class extends Command {
 
 
   protected async readBusinessModelData(url: string, model: string): Promise<BusinessModel> {
-    CliUx.ux.action.start(`Reading business model ${clColor.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${clColor.style.path(url)}`)
+    cliux.action.start(`Reading business model ${clColor.yellowBright(model)} from ${isRemotePath(url) ? 'url' : 'path'} ${clColor.style.path(url)}`)
     return await readModelData(url, model)
       .then(model => {
-        CliUx.ux.action.stop(`done ${clColor.msg.success('\u2714')}`)
+        cliux.action.stop(`done ${clColor.msg.success('\u2714')}`)
         return model
       })
       .catch(error => {
-        CliUx.ux.action.stop(clColor.msg.error('Error'))
+        cliux.action.stop(clColor.msg.error('Error'))
         this.error(error)
       })
       .finally(() => this.log())

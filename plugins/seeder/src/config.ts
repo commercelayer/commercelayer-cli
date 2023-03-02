@@ -1,8 +1,7 @@
+import { clConfig } from "@commercelayer/cli-core"
 
 export default {
-  // dataUrl: '../commercelayer-data/dist',
-  dataUrl: 'https://data.commercelayer.app',
-  // dataUrl: 'https://commercelayer-data.pages.dev',
+  dataUrl: `https://data.${clConfig.api.default_app_domain}`,
   seederFolder: 'seeder',
   dataFolder: 'data',
   schemaFolder: 'schemas',
