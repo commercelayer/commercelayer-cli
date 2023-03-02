@@ -84,8 +84,7 @@ const updateTriggers = async (): Promise<any> => {
 
 
 
-const FLAG_VALUE_STR = `
-    value: Flags.string({
+const FLAG_VALUE_STR = `value: Flags.string({
       char: 'v',
       description: 'the trigger attribute value',
       multiple: false,

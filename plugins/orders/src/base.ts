@@ -1,7 +1,7 @@
 import { CommerceLayerStatic, Order } from '@commercelayer/sdk'
-import { Command, Flags } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
-import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
+import { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -9,7 +9,7 @@ const pkg = require('../package.json')
 
 export default abstract class extends Command {
 
-  static flags = {
+  static baseFlags = {
     organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
@@ -45,9 +45,9 @@ export default abstract class extends Command {
   }
 
 
-  static args = [
-    { name: 'id', description: 'the unique id of the order', required: true },
-  ]
+  static args = {
+    id: Args.string({ name: 'id', description: 'the unique id of the order', required: true }),
+  }
 
 
   // INIT (override)
@@ -62,7 +62,7 @@ export default abstract class extends Command {
   }
 
 
-  protected handleError(error: CommandError, flags?: OutputFlags<any>): void {
+  protected handleError(error: CommandError, flags?: any): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -78,7 +78,7 @@ export default abstract class extends Command {
   }
 
 
-  protected printOutput(order: Order, flags: OutputFlags<any>): void {
+  protected printOutput(order: Order, flags: any): void {
     this.log(clOutput.formatOutput(order, flags))
   }
 

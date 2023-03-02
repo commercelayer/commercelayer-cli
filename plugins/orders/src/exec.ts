@@ -1,5 +1,4 @@
 import commercelayer, { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
-import { OutputFlags } from '@oclif/core/lib/interfaces'
 import type { ActionType } from './triggers'
 
 
@@ -19,7 +18,7 @@ const commercelayerInit = (flags: any): CommerceLayerClient => {
 }
 
 
-const executeAction = async (id: string, action: ActionType, flags: OutputFlags<any>, fields?: string[]): Promise<Order> => {
+const executeAction = async (id: string, action: ActionType, flags: any, fields?: string[]): Promise<Order> => {
 
   const cl = commercelayerInit(flags)
 

@@ -3,10 +3,10 @@ import exec from '../../exec'
 import { triggers } from '../../triggers'
 
 
-const TRIGGER = 'approve'
+const TRIGGER = 'validate'
 
 
-export default class OrdersApprove extends Command {
+export default class OrdersValidate extends Command {
 
 	static description = triggers[TRIGGER].description
 
@@ -21,7 +21,7 @@ export default class OrdersApprove extends Command {
 
 	async run(): Promise<any> {
 
-    const { args, flags } = await this.parse(OrdersApprove)
+    const { args, flags } = await this.parse(OrdersValidate)
 
 		const res = await exec(args.id, TRIGGER, flags)
 
