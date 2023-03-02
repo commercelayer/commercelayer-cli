@@ -13,7 +13,7 @@ const buildCheckoutUrl = (organization: string, id: string, accessToken: string,
 
 
 const openCheckoutUrl = async (checkoutUrl: string): Promise<ChildProcess> => {
-  // return CliUx.ux.open(checkoutUrl)  // BUG in CliUx 07-02-2022 @oclif/core@1.3.1
+  // return CliUx.open(checkoutUrl)  // BUG in CliUx 07-02-2022 @oclif/core@1.3.1
   return open(checkoutUrl)
 }
 
