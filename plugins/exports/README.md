@@ -35,7 +35,7 @@ Create a new export.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:create -o <value> -t
+  $ commercelayer exports:create -t
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
     prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
     gories|transactions|authorizations|captures|voids|refunds [-i <value>] [-w <value>] [-D] [-F csv|json | -C | ] [-x
@@ -52,7 +52,6 @@ FLAGS
   -b, --blind                                                      execute in blind mode without showing the progress
                                                                    monitor
   -i, --include=<value>...                                         comma separated resources to include
-  -o, --organization=<value>                                       (required) the slug of your organization
   -t, --type=addresses|bundles|coupons|customer_subscriptions|...  (required) the type of resource being exported
   -w, --where=<value>...                                           comma separated list of query filters
   -x, --save=<value>                                               save command output to file
@@ -78,13 +77,10 @@ Show the details of an existing export.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:details ID -o <value>
+  $ commercelayer exports:details ID
 
 ARGUMENTS
   ID  unique id of the export
-
-FLAGS
-  -o, --organization=<value>  (required) the slug of your organization
 
 DESCRIPTION
   show the details of an existing export
@@ -106,22 +102,21 @@ List all the created exports.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:list -o <value> [-A | -l <value>] [-t
+  $ commercelayer exports:list [-A | -l <value>] [-t
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
     prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
     gories|transactions|authorizations|captures|voids|refunds] [-s in_progress|pending|completed|interrupted]
 
 FLAGS
-  -A, --all                   show all exports instead of first 25 only
-  -l, --limit=<value>         limit number of exports in output
-  -o, --organization=<value>  (required) the slug of your organization
-  -s, --status=<option>       the export job status
-                              <options: in_progress|pending|completed|interrupted>
-  -t, --type=<option>         the type of resource exported
-                              <options: addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items
-                              |orders|payment_methods|price_tiers|prices|shipments|shipping_categories|shipping_methods|
-                              sku_lists|sku_list_items|sku_options|skus|stock_items|tax_categories|transactions|authoriz
-                              ations|captures|voids|refunds>
+  -A, --all              show all exports instead of first 25 only
+  -l, --limit=<value>    limit number of exports in output
+  -s, --status=<option>  the export job status
+                         <options: in_progress|pending|completed|interrupted>
+  -t, --type=<option>    the type of resource exported
+                         <options: addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orde
+                         rs|payment_methods|price_tiers|prices|shipments|shipping_categories|shipping_methods|sku_lists|
+                         sku_list_items|sku_options|skus|stock_items|tax_categories|transactions|authorizations|captures
+                         |voids|refunds>
 
 DESCRIPTION
   list all the created exports
