@@ -75,6 +75,7 @@ Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
     let commands = config.commands
     commands = commands.filter(c => !c.hidden)
     commands = commands.filter(c => c.pluginType === 'core')
+    commands = commands.filter(c => !c.aliases.includes(c.id))
     this.debug('commands:', commands.map(c => c.id).length)
     commands = uniqBy(commands, c => c.id)
     commands = sortBy(commands, c => c.id)
