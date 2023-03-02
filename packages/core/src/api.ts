@@ -23,4 +23,9 @@ const execMode = (liveFlag: string | boolean | undefined): ApiMode => {
 }
 
 
-export { baseURL, extractDomain, execMode }
+const humanizeResource = (type: string): string => {
+	return type.replace(/_/g, ' ')
+}
+
+
+export { baseURL, extractDomain, execMode, humanizeResource }
