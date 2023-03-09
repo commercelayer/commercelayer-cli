@@ -107,6 +107,7 @@ type DocConfig = {
 	metrics_api_reference: string;
 	imports_resources: string;
 	exports_resources: string;
+	webhooks_events:string;
 }
 
 type Config = {
@@ -166,7 +167,8 @@ const config: Config = {
 		metrics: 'https://docs.commercelayer.io/metrics/',
 		metrics_api_reference: 'https://docs.commercelayer.io/metrics/v/api-reference-m/',
 		imports_resources: 'https://docs.commercelayer.io/api/importing-resources#supported-resources',
-		exports_resources: 'https://docs.commercelayer.io/core/exporting-resources#supported-resources'
+		exports_resources: 'https://docs.commercelayer.io/core/exporting-resources#supported-resources',
+		webhooks_events: 'https://docs.commercelayer.io/api/real-time-webhooks#supported-events'
 	}
 } as const
 
