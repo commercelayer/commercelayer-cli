@@ -75,19 +75,24 @@ export default class CheckoutIndex extends Command {
 
     // Checkout URL by order id
     if (flags.order) {
+
       const args = [flags.order]
+
       for (const flag of Object.values(Command.flags)) {
-        if (flags[flag.name])
+        const flagValue = flags[flag.name as keyof typeof flags]
+        if (flagValue)
           if (flag.type === 'boolean') args.push(`--${flag.name}`)
-          else args.push(`-${flag.char}`, flags[flag.name])
+          else args.push(`-${flag.char}`, String(flagValue))
       }
+
       return CheckoutOrder.run(args, this.config)
+
     }
 
 
     if (!flags.sku && !flags.bundle) this.error(`One of the options ${clColor.cli.flag.cyanBright('--order (-O)')}, ${clColor.cli.flag.cyanBright('--sku (-S)')} or ${clColor.cli.flag.cyanBright('--bundle (-B)')} is required`)
 
-    this.checkApplication(accessToken, 'sales_channel')
+    this.checkAcessTokenData(accessToken, flags)
 
     // Parse SKU and Bundle options
     const skus: string[] = this.parseItems(flags.sku)

@@ -1,5 +1,5 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import Command from '../../base'
+import Command, { Args } from '../../base'
 import { clColor, clOutput } from '@commercelayer/cli-core'
 import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
 
@@ -12,13 +12,11 @@ export default class CheckoutOrder extends Command {
     '$ commercelayer checkout:order <order-id>',
   ]
 
-  static flags = {
-    ...Command.flags,
-  }
 
-  static args = [
-    { name: 'id', description: 'unique id of the order', required: true },
-  ]
+
+  static args = {
+    id: Args.string({ name: 'id', description: 'unique id of the order', required: true }),
+  }
 
 
   async run(): Promise<any> {
@@ -33,9 +31,9 @@ export default class CheckoutOrder extends Command {
 
     try {
 
-      const order = await cl.orders.retrieve(id, { fields: { orders: ['id', 'number'] } })
+      this.checkAcessTokenData(accessToken, flags)
 
-      this.checkApplication(accessToken, 'sales_channel')
+      const order = await cl.orders.retrieve(id, { fields: { orders: ['id', 'number'] } })
 
       const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, flags.staging)
 
