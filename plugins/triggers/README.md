@@ -108,6 +108,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer return:unarchive ID`](#commercelayer-returnunarchive-id)
 * [`commercelayer return_line_item ID`](#commercelayer-return_line_item-id)
 * [`commercelayer return_line_item:restock ID`](#commercelayer-return_line_itemrestock-id)
+* [`commercelayer satispay_payment ID`](#commercelayer-satispay_payment-id)
+* [`commercelayer satispay_payment:refresh ID`](#commercelayer-satispay_paymentrefresh-id)
 * [`commercelayer shipment ID`](#commercelayer-shipment-id)
 * [`commercelayer shipment:get_rates ID`](#commercelayer-shipmentget_rates-id)
 * [`commercelayer shipment:on_hold ID`](#commercelayer-shipmenton_hold-id)
@@ -136,16 +138,15 @@ Execute an action on a resource of type adyen_payments.
 
 ```sh-session
 USAGE
-  $ commercelayer adyen_payment ID -o <value> [-u [-j -p]]
+  $ commercelayer adyen_payment ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type adyen_payments
@@ -159,16 +160,15 @@ Send this attribute if you want to send additional details the payment request.
 
 ```sh-session
 USAGE
-  $ commercelayer adyen_payment:details ID -o <value> [-u [-j -p]]
+  $ commercelayer adyen_payment:details ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to send additional details the payment request.
@@ -182,16 +182,15 @@ Execute an action on a resource of type authorizations.
 
 ```sh-session
 USAGE
-  $ commercelayer authorization ID -o <value> [-u [-j -p]]
+  $ commercelayer authorization ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type authorizations
@@ -205,16 +204,15 @@ Send this attribute if you want to create a capture for this authorization.
 
 ```sh-session
 USAGE
-  $ commercelayer authorization:capture ID -o <value> [-u [-j -p]]
+  $ commercelayer authorization:capture ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to create a capture for this authorization.
@@ -228,16 +226,15 @@ The associated capture amount, in cents.
 
 ```sh-session
 USAGE
-  $ commercelayer authorization:capture_amount_cents ID -o <value> [-u [-j -p]]
+  $ commercelayer authorization:capture_amount_cents ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   The associated capture amount, in cents.
@@ -251,16 +248,15 @@ Send this attribute if you want to create a void for this authorization.
 
 ```sh-session
 USAGE
-  $ commercelayer authorization:void ID -o <value> [-u [-j -p]]
+  $ commercelayer authorization:void ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to create a void for this authorization.
@@ -274,16 +270,15 @@ Execute an action on a resource of type axerve_payments.
 
 ```sh-session
 USAGE
-  $ commercelayer axerve_payment ID -o <value> [-u [-j -p]]
+  $ commercelayer axerve_payment ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type axerve_payments
@@ -297,16 +292,15 @@ Send this attribute if you want to update the payment with fresh order data.
 
 ```sh-session
 USAGE
-  $ commercelayer axerve_payment:update ID -o <value> [-u [-j -p]]
+  $ commercelayer axerve_payment:update ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to update the payment with fresh order data.
@@ -320,16 +314,15 @@ Execute an action on a resource of type bundles.
 
 ```sh-session
 USAGE
-  $ commercelayer bundle ID -o <value> [-u [-j -p]]
+  $ commercelayer bundle ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type bundles
@@ -343,16 +336,15 @@ Send this attribute if you want to compute the compare_at_amount_cents as the su
 
 ```sh-session
 USAGE
-  $ commercelayer bundle:compute_compare_at_amount ID -o <value> [-u [-j -p]]
+  $ commercelayer bundle:compute_compare_at_amount ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to compute the compare_at_amount_cents as the sum of the prices of the bundle SKUs for
@@ -367,16 +359,15 @@ Send this attribute if you want to compute the price_amount_cents as the sum of 
 
 ```sh-session
 USAGE
-  $ commercelayer bundle:compute_price_amount ID -o <value> [-u [-j -p]]
+  $ commercelayer bundle:compute_price_amount ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to compute the price_amount_cents as the sum of the prices of the bundle SKUs for the
@@ -391,16 +382,15 @@ Execute an action on a resource of type captures.
 
 ```sh-session
 USAGE
-  $ commercelayer capture ID -o <value> [-u [-j -p]]
+  $ commercelayer capture ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type captures
@@ -414,16 +404,15 @@ Send this attribute if you want to create a refund for this capture.
 
 ```sh-session
 USAGE
-  $ commercelayer capture:refund ID -o <value> [-u [-j -p]]
+  $ commercelayer capture:refund ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to create a refund for this capture.
@@ -437,16 +426,15 @@ The associated refund amount, in cents.
 
 ```sh-session
 USAGE
-  $ commercelayer capture:refund_amount_cents ID -o <value> [-u [-j -p]]
+  $ commercelayer capture:refund_amount_cents ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   The associated refund amount, in cents.
@@ -460,16 +448,15 @@ Execute an action on a resource of type checkout_com_payments.
 
 ```sh-session
 USAGE
-  $ commercelayer checkout_com_payment ID -o <value> [-u [-j -p]]
+  $ commercelayer checkout_com_payment ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type checkout_com_payments
@@ -483,16 +470,15 @@ Send this attribute if you want to send additional details the payment request (
 
 ```sh-session
 USAGE
-  $ commercelayer checkout_com_payment:details ID -o <value> [-u [-j -p]]
+  $ commercelayer checkout_com_payment:details ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to send additional details the payment request (i.e. upon 3DS check).
@@ -506,16 +492,15 @@ Send this attribute if you want to refresh all the pending transactions, can be 
 
 ```sh-session
 USAGE
-  $ commercelayer checkout_com_payment:refresh ID -o <value> [-u [-j -p]]
+  $ commercelayer checkout_com_payment:refresh ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic.
@@ -529,16 +514,15 @@ Execute an action on a resource of type customer_password_resets.
 
 ```sh-session
 USAGE
-  $ commercelayer customer_password_reset ID -o <value> [-u [-j -p]]
+  $ commercelayer customer_password_reset ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type customer_password_resets
@@ -552,16 +536,15 @@ Send the 'reset_password_token' that you got on create when updating the custome
 
 ```sh-session
 USAGE
-  $ commercelayer customer_password_reset:reset_password_token ID -o <value> [-u [-j -p]]
+  $ commercelayer customer_password_reset:reset_password_token ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send the 'reset_password_token' that you got on create when updating the customer password.
@@ -575,16 +558,15 @@ Execute an action on a resource of type gift_cards.
 
 ```sh-session
 USAGE
-  $ commercelayer gift_card ID -o <value> [-u [-j -p]]
+  $ commercelayer gift_card ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type gift_cards
@@ -598,16 +580,15 @@ Send this attribute if you want to activate a gift card.
 
 ```sh-session
 USAGE
-  $ commercelayer gift_card:activate ID -o <value> [-u [-j -p]]
+  $ commercelayer gift_card:activate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to activate a gift card.
@@ -621,16 +602,15 @@ The balance change, in cents. Send a negative value to reduces the card balance 
 
 ```sh-session
 USAGE
-  $ commercelayer gift_card:balance_change_cents ID -o <value> [-u [-j -p]]
+  $ commercelayer gift_card:balance_change_cents ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   The balance change, in cents. Send a negative value to reduces the card balance by the specified amount. Send a
@@ -645,16 +625,15 @@ Send this attribute if you want to deactivate a gift card.
 
 ```sh-session
 USAGE
-  $ commercelayer gift_card:deactivate ID -o <value> [-u [-j -p]]
+  $ commercelayer gift_card:deactivate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to deactivate a gift card.
@@ -668,16 +647,15 @@ Send this attribute if you want to confirm a draft gift card. The gift card beco
 
 ```sh-session
 USAGE
-  $ commercelayer gift_card:purchase ID -o <value> [-u [-j -p]]
+  $ commercelayer gift_card:purchase ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to confirm a draft gift card. The gift card becomes 'inactive', waiting to be
@@ -692,16 +670,15 @@ Execute an action on a resource of type in_stock_subscriptions.
 
 ```sh-session
 USAGE
-  $ commercelayer in_stock_subscription ID -o <value> [-u [-j -p]]
+  $ commercelayer in_stock_subscription ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type in_stock_subscriptions
@@ -715,16 +692,15 @@ Send this attribute if you want to activate an inactive subscription.
 
 ```sh-session
 USAGE
-  $ commercelayer in_stock_subscription:activate ID -o <value> [-u [-j -p]]
+  $ commercelayer in_stock_subscription:activate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to activate an inactive subscription.
@@ -738,16 +714,15 @@ Send this attribute if you want to dactivate an active subscription.
 
 ```sh-session
 USAGE
-  $ commercelayer in_stock_subscription:deactivate ID -o <value> [-u [-j -p]]
+  $ commercelayer in_stock_subscription:deactivate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to dactivate an active subscription.
@@ -761,16 +736,15 @@ Execute an action on a resource of type klarna_payments.
 
 ```sh-session
 USAGE
-  $ commercelayer klarna_payment ID -o <value> [-u [-j -p]]
+  $ commercelayer klarna_payment ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type klarna_payments
@@ -784,16 +758,15 @@ Send this attribute if you want to update the payment session with fresh order d
 
 ```sh-session
 USAGE
-  $ commercelayer klarna_payment:update ID -o <value> [-u [-j -p]]
+  $ commercelayer klarna_payment:update ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to update the payment session with fresh order data.
@@ -807,16 +780,15 @@ Execute an action on a resource of type line_items.
 
 ```sh-session
 USAGE
-  $ commercelayer line_item ID -o <value> [-u [-j -p]]
+  $ commercelayer line_item ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type line_items
@@ -830,16 +802,15 @@ When creating or updating a new line item, set this attribute to '1' if you want
 
 ```sh-session
 USAGE
-  $ commercelayer line_item:external_price ID -o <value> [-u [-j -p]]
+  $ commercelayer line_item:external_price ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   When creating or updating a new line item, set this attribute to '1' if you want to inject the unit_amount_cents price
@@ -854,16 +825,15 @@ Execute an action on a resource of type markets.
 
 ```sh-session
 USAGE
-  $ commercelayer market ID -o <value> [-u [-j -p]]
+  $ commercelayer market ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type markets
@@ -877,16 +847,15 @@ Send this attribute if you want to mark the market as disabled.
 
 ```sh-session
 USAGE
-  $ commercelayer market:disable ID -o <value> [-u [-j -p]]
+  $ commercelayer market:disable ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark the market as disabled.
@@ -900,16 +869,15 @@ Send this attribute if you want to mark the market as enabled.
 
 ```sh-session
 USAGE
-  $ commercelayer market:enable ID -o <value> [-u [-j -p]]
+  $ commercelayer market:enable ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark the market as enabled.
@@ -923,16 +891,15 @@ Execute an action on a resource of type orders.
 
 ```sh-session
 USAGE
-  $ commercelayer order ID -o <value> [-u [-j -p]]
+  $ commercelayer order ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type orders
@@ -946,16 +913,15 @@ Send this attribute if you want to approve a placed order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:approve ID -o <value> [-u [-j -p]]
+  $ commercelayer order:approve ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to approve a placed order.
@@ -969,16 +935,15 @@ Send this attribute if you want to approve and capture a placed order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:approve_and_capture ID -o <value> [-u [-j -p]]
+  $ commercelayer order:approve_and_capture ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to approve and capture a placed order.
@@ -992,16 +957,15 @@ Send this attribute if you want to archive the order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:archive ID -o <value> [-u [-j -p]]
+  $ commercelayer order:archive ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to archive the order.
@@ -1015,16 +979,15 @@ The authorization amount, in cents.
 
 ```sh-session
 USAGE
-  $ commercelayer order:authorization_amount_cents ID -o <value> [-u [-j -p]]
+  $ commercelayer order:authorization_amount_cents ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   The authorization amount, in cents.
@@ -1038,16 +1001,15 @@ Send this attribute if you want to authorize the order's payment source.
 
 ```sh-session
 USAGE
-  $ commercelayer order:authorize ID -o <value> [-u [-j -p]]
+  $ commercelayer order:authorize ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to authorize the order's payment source.
@@ -1061,17 +1023,16 @@ The id of the address that you want to clone to create the order's billing addre
 
 ```sh-session
 USAGE
-  $ commercelayer order:billing_address_clone_id ID -o <value> -v <value> [-u [-j -p]]
+  $ commercelayer order:billing_address_clone_id ID -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
-  -v, --value=<value>         (required) the trigger attribute value
+  -j, --json           print result in JSON format
+  -p, --print          print out the modified resource
+  -u, --unformatted    print JSON output without indentation
+  -v, --value=<value>  (required) the trigger attribute value
 
 DESCRIPTION
   The id of the address that you want to clone to create the order's billing address.
@@ -1085,16 +1046,15 @@ Send this attribute if you want the billing address to be cloned from the order'
 
 ```sh-session
 USAGE
-  $ commercelayer order:billing_address_same_as_shipping ID -o <value> [-u [-j -p]]
+  $ commercelayer order:billing_address_same_as_shipping ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the billing address to be cloned from the order's shipping address.
@@ -1108,16 +1068,15 @@ Send this attribute if you want to cancel a placed order. The order's authorizat
 
 ```sh-session
 USAGE
-  $ commercelayer order:cancel ID -o <value> [-u [-j -p]]
+  $ commercelayer order:cancel ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
@@ -1131,16 +1090,15 @@ Send this attribute if you want to capture an authorized order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:capture ID -o <value> [-u [-j -p]]
+  $ commercelayer order:capture ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to capture an authorized order.
@@ -1154,16 +1112,15 @@ Send this attribute if you want commit the sales tax invoice to the associated t
 
 ```sh-session
 USAGE
-  $ commercelayer order:commit_invoice ID -o <value> [-u [-j -p]]
+  $ commercelayer order:commit_invoice ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want commit the sales tax invoice to the associated tax calculator (currently supported by
@@ -1178,17 +1135,16 @@ The id of the customer payment source (i.e. credit card) that you want to use as
 
 ```sh-session
 USAGE
-  $ commercelayer order:customer_payment_source_id ID -o <value> -v <value> [-u [-j -p]]
+  $ commercelayer order:customer_payment_source_id ID -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
-  -v, --value=<value>         (required) the trigger attribute value
+  -j, --json           print result in JSON format
+  -p, --print          print out the modified resource
+  -u, --unformatted    print JSON output without indentation
+  -v, --value=<value>  (required) the trigger attribute value
 
 DESCRIPTION
   The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
@@ -1202,16 +1158,15 @@ Send this attribute if you want to nullify the payment source for this order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:nullify_payment_source ID -o <value> [-u [-j -p]]
+  $ commercelayer order:nullify_payment_source ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to nullify the payment source for this order.
@@ -1225,16 +1180,15 @@ Send this attribute if you want to place the order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:place ID -o <value> [-u [-j -p]]
+  $ commercelayer order:place ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to place the order.
@@ -1248,16 +1202,15 @@ Send this attribute if you want to manually refresh the order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:refresh ID -o <value> [-u [-j -p]]
+  $ commercelayer order:refresh ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to manually refresh the order.
@@ -1271,16 +1224,15 @@ Send this attribute if you want to refund a captured order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:refund ID -o <value> [-u [-j -p]]
+  $ commercelayer order:refund ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to refund a captured order.
@@ -1294,16 +1246,15 @@ Send this attribute if you want refund the sales tax invoice to the associated t
 
 ```sh-session
 USAGE
-  $ commercelayer order:refund_invoice ID -o <value> [-u [-j -p]]
+  $ commercelayer order:refund_invoice ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want refund the sales tax invoice to the associated tax calculator (currently supported by
@@ -1318,16 +1269,15 @@ Send this attribute if you want the order's billing address to be saved in the c
 
 ```sh-session
 USAGE
-  $ commercelayer order:save_billing_address_to_customer_address_book ID -o <value> [-u [-j -p]]
+  $ commercelayer order:save_billing_address_to_customer_address_book ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer
@@ -1342,16 +1292,15 @@ Send this attribute if you want the order's payment source to be saved in the cu
 
 ```sh-session
 USAGE
-  $ commercelayer order:save_payment_source_to_customer_wallet ID -o <value> [-u [-j -p]]
+  $ commercelayer order:save_payment_source_to_customer_wallet ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment
@@ -1366,16 +1315,15 @@ Send this attribute if you want the order's shipping address to be saved in the 
 
 ```sh-session
 USAGE
-  $ commercelayer order:save_shipping_address_to_customer_address_book ID -o <value> [-u [-j -p]]
+  $ commercelayer order:save_shipping_address_to_customer_address_book ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer
@@ -1390,17 +1338,16 @@ The id of the address that you want to clone to create the order's shipping addr
 
 ```sh-session
 USAGE
-  $ commercelayer order:shipping_address_clone_id ID -o <value> -v <value> [-u [-j -p]]
+  $ commercelayer order:shipping_address_clone_id ID -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
-  -v, --value=<value>         (required) the trigger attribute value
+  -j, --json           print result in JSON format
+  -p, --print          print out the modified resource
+  -u, --unformatted    print JSON output without indentation
+  -v, --value=<value>  (required) the trigger attribute value
 
 DESCRIPTION
   The id of the address that you want to clone to create the order's shipping address.
@@ -1414,16 +1361,15 @@ Send this attribute if you want the shipping address to be cloned from the order
 
 ```sh-session
 USAGE
-  $ commercelayer order:shipping_address_same_as_billing ID -o <value> [-u [-j -p]]
+  $ commercelayer order:shipping_address_same_as_billing ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the shipping address to be cloned from the order's billing address.
@@ -1437,16 +1383,15 @@ Send this attribute if you want to unarchive the order.
 
 ```sh-session
 USAGE
-  $ commercelayer order:unarchive ID -o <value> [-u [-j -p]]
+  $ commercelayer order:unarchive ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to unarchive the order.
@@ -1460,16 +1405,15 @@ Send this attribute if you want to force tax calculation for this order (a tax c
 
 ```sh-session
 USAGE
-  $ commercelayer order:update_taxes ID -o <value> [-u [-j -p]]
+  $ commercelayer order:update_taxes ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the
@@ -1484,16 +1428,15 @@ Send this attribute if you want to trigger the external validation for the order
 
 ```sh-session
 USAGE
-  $ commercelayer order:validate ID -o <value> [-u [-j -p]]
+  $ commercelayer order:validate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to trigger the external validation for the order.
@@ -1507,16 +1450,15 @@ Execute an action on a resource of type order_subscriptions.
 
 ```sh-session
 USAGE
-  $ commercelayer order_subscription ID -o <value> [-u [-j -p]]
+  $ commercelayer order_subscription ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type order_subscriptions
@@ -1530,16 +1472,15 @@ Send this attribute if you want to mark this subscription as active.
 
 ```sh-session
 USAGE
-  $ commercelayer order_subscription:activate ID -o <value> [-u [-j -p]]
+  $ commercelayer order_subscription:activate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this subscription as active.
@@ -1553,16 +1494,15 @@ Send this attribute if you want to mark this subscription as cancelled.
 
 ```sh-session
 USAGE
-  $ commercelayer order_subscription:cancel ID -o <value> [-u [-j -p]]
+  $ commercelayer order_subscription:cancel ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this subscription as cancelled.
@@ -1576,16 +1516,15 @@ Send this attribute if you want to mark this subscription as inactive.
 
 ```sh-session
 USAGE
-  $ commercelayer order_subscription:deactivate ID -o <value> [-u [-j -p]]
+  $ commercelayer order_subscription:deactivate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this subscription as inactive.
@@ -1599,16 +1538,15 @@ Execute an action on a resource of type payment_methods.
 
 ```sh-session
 USAGE
-  $ commercelayer payment_method ID -o <value> [-u [-j -p]]
+  $ commercelayer payment_method ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type payment_methods
@@ -1622,16 +1560,15 @@ Send this attribute if you want to mark the payment method as disabled.
 
 ```sh-session
 USAGE
-  $ commercelayer payment_method:disable ID -o <value> [-u [-j -p]]
+  $ commercelayer payment_method:disable ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark the payment method as disabled.
@@ -1645,16 +1582,15 @@ Send this attribute if you want to mark the payment method as enabled.
 
 ```sh-session
 USAGE
-  $ commercelayer payment_method:enable ID -o <value> [-u [-j -p]]
+  $ commercelayer payment_method:enable ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark the payment method as enabled.
@@ -1668,16 +1604,15 @@ Execute an action on a resource of type returns.
 
 ```sh-session
 USAGE
-  $ commercelayer return ID -o <value> [-u [-j -p]]
+  $ commercelayer return ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type returns
@@ -1691,16 +1626,15 @@ Send this attribute if you want to mark this return as approved.
 
 ```sh-session
 USAGE
-  $ commercelayer return:approve ID -o <value> [-u [-j -p]]
+  $ commercelayer return:approve ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this return as approved.
@@ -1714,16 +1648,15 @@ Send this attribute if you want to archive the return.
 
 ```sh-session
 USAGE
-  $ commercelayer return:archive ID -o <value> [-u [-j -p]]
+  $ commercelayer return:archive ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to archive the return.
@@ -1737,16 +1670,15 @@ Send this attribute if you want to mark this return as cancelled.
 
 ```sh-session
 USAGE
-  $ commercelayer return:cancel ID -o <value> [-u [-j -p]]
+  $ commercelayer return:cancel ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this return as cancelled.
@@ -1760,16 +1692,15 @@ Send this attribute if you want to mark this return as received.
 
 ```sh-session
 USAGE
-  $ commercelayer return:receive ID -o <value> [-u [-j -p]]
+  $ commercelayer return:receive ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this return as received.
@@ -1783,16 +1714,15 @@ Send this attribute if you want to mark this return as rejected.
 
 ```sh-session
 USAGE
-  $ commercelayer return:reject ID -o <value> [-u [-j -p]]
+  $ commercelayer return:reject ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this return as rejected.
@@ -1806,16 +1736,15 @@ Send this attribute if you want to activate this return.
 
 ```sh-session
 USAGE
-  $ commercelayer return:request ID -o <value> [-u [-j -p]]
+  $ commercelayer return:request ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to activate this return.
@@ -1829,16 +1758,15 @@ Send this attribute if you want to restock all of the return line items.
 
 ```sh-session
 USAGE
-  $ commercelayer return:restock ID -o <value> [-u [-j -p]]
+  $ commercelayer return:restock ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to restock all of the return line items.
@@ -1852,16 +1780,15 @@ Send this attribute if you want to mark this return as shipped.
 
 ```sh-session
 USAGE
-  $ commercelayer return:ship ID -o <value> [-u [-j -p]]
+  $ commercelayer return:ship ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this return as shipped.
@@ -1875,16 +1802,15 @@ Send this attribute if you want to unarchive the return.
 
 ```sh-session
 USAGE
-  $ commercelayer return:unarchive ID -o <value> [-u [-j -p]]
+  $ commercelayer return:unarchive ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to unarchive the return.
@@ -1898,16 +1824,15 @@ Execute an action on a resource of type return_line_items.
 
 ```sh-session
 USAGE
-  $ commercelayer return_line_item ID -o <value> [-u [-j -p]]
+  $ commercelayer return_line_item ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type return_line_items
@@ -1921,16 +1846,15 @@ Send this attribute if you want to restock the line item.
 
 ```sh-session
 USAGE
-  $ commercelayer return_line_item:restock ID -o <value> [-u [-j -p]]
+  $ commercelayer return_line_item:restock ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to restock the line item.
@@ -1938,22 +1862,65 @@ DESCRIPTION
 
 _See code: [src/commands/return_line_item/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return_line_item/restock.ts)_
 
+### `commercelayer satispay_payment ID`
+
+Execute an action on a resource of type satispay_payments.
+
+```sh-session
+USAGE
+  $ commercelayer satispay_payment ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type satispay_payments
+```
+
+_See code: [src/commands/satispay_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/satispay_payment/index.ts)_
+
+### `commercelayer satispay_payment:refresh ID`
+
+Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic.
+
+```sh-session
+USAGE
+  $ commercelayer satispay_payment:refresh ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refresh all the pending transactions, can be used as webhooks fallback logic.
+```
+
+_See code: [src/commands/satispay_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/satispay_payment/refresh.ts)_
+
 ### `commercelayer shipment ID`
 
 Execute an action on a resource of type shipments.
 
 ```sh-session
 USAGE
-  $ commercelayer shipment ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type shipments
@@ -1967,16 +1934,15 @@ Send this attribute if you want get the shipping rates from the associated carri
 
 ```sh-session
 USAGE
-  $ commercelayer shipment:get_rates ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment:get_rates ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want get the shipping rates from the associated carrier accounts.
@@ -1990,16 +1956,15 @@ Send this attribute if you want to put this shipment on hold.
 
 ```sh-session
 USAGE
-  $ commercelayer shipment:on_hold ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment:on_hold ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to put this shipment on hold.
@@ -2013,16 +1978,15 @@ Send this attribute if you want to start packing this shipment.
 
 ```sh-session
 USAGE
-  $ commercelayer shipment:packing ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment:packing ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to start packing this shipment.
@@ -2036,16 +2000,15 @@ Send this attribute if you want to start picking this shipment.
 
 ```sh-session
 USAGE
-  $ commercelayer shipment:picking ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment:picking ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to start picking this shipment.
@@ -2059,16 +2022,15 @@ Send this attribute if you want to purchase this shipment with the selected rate
 
 ```sh-session
 USAGE
-  $ commercelayer shipment:purchase ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment:purchase ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to purchase this shipment with the selected rate.
@@ -2082,16 +2044,15 @@ Send this attribute if you want to mark this shipment as ready to ship.
 
 ```sh-session
 USAGE
-  $ commercelayer shipment:ready_to_ship ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment:ready_to_ship ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this shipment as ready to ship.
@@ -2105,16 +2066,15 @@ Send this attribute if you want to mark this shipment as shipped.
 
 ```sh-session
 USAGE
-  $ commercelayer shipment:ship ID -o <value> [-u [-j -p]]
+  $ commercelayer shipment:ship ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this shipment as shipped.
@@ -2128,16 +2088,15 @@ Execute an action on a resource of type shipping_methods.
 
 ```sh-session
 USAGE
-  $ commercelayer shipping_method ID -o <value> [-u [-j -p]]
+  $ commercelayer shipping_method ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type shipping_methods
@@ -2151,16 +2110,15 @@ Send this attribute if you want to mark the shipping method as disabled.
 
 ```sh-session
 USAGE
-  $ commercelayer shipping_method:disable ID -o <value> [-u [-j -p]]
+  $ commercelayer shipping_method:disable ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark the shipping method as disabled.
@@ -2174,16 +2132,15 @@ Send this attribute if you want to mark the shipping method as enabled.
 
 ```sh-session
 USAGE
-  $ commercelayer shipping_method:enable ID -o <value> [-u [-j -p]]
+  $ commercelayer shipping_method:enable ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark the shipping method as enabled.
@@ -2197,16 +2154,15 @@ Execute an action on a resource of type stock_transfers.
 
 ```sh-session
 USAGE
-  $ commercelayer stock_transfer ID -o <value> [-u [-j -p]]
+  $ commercelayer stock_transfer ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type stock_transfers
@@ -2220,16 +2176,15 @@ Send this attribute if you want to cancel this stock transfer.
 
 ```sh-session
 USAGE
-  $ commercelayer stock_transfer:cancel ID -o <value> [-u [-j -p]]
+  $ commercelayer stock_transfer:cancel ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to cancel this stock transfer.
@@ -2243,16 +2198,15 @@ Send this attribute if you want to complete this stock transfer.
 
 ```sh-session
 USAGE
-  $ commercelayer stock_transfer:complete ID -o <value> [-u [-j -p]]
+  $ commercelayer stock_transfer:complete ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to complete this stock transfer.
@@ -2266,16 +2220,15 @@ Send this attribute if you want to mark this stock transfer as in transit.
 
 ```sh-session
 USAGE
-  $ commercelayer stock_transfer:in_transit ID -o <value> [-u [-j -p]]
+  $ commercelayer stock_transfer:in_transit ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this stock transfer as in transit.
@@ -2289,16 +2242,15 @@ Send this attribute if you want to start picking this stock transfer.
 
 ```sh-session
 USAGE
-  $ commercelayer stock_transfer:picking ID -o <value> [-u [-j -p]]
+  $ commercelayer stock_transfer:picking ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to start picking this stock transfer.
@@ -2312,16 +2264,15 @@ Send this attribute if you want to mark this stock transfer as upcoming.
 
 ```sh-session
 USAGE
-  $ commercelayer stock_transfer:upcoming ID -o <value> [-u [-j -p]]
+  $ commercelayer stock_transfer:upcoming ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to mark this stock transfer as upcoming.
@@ -2335,16 +2286,15 @@ Execute an action on a resource of type stripe_payments.
 
 ```sh-session
 USAGE
-  $ commercelayer stripe_payment ID -o <value> [-u [-j -p]]
+  $ commercelayer stripe_payment ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type stripe_payments
@@ -2358,16 +2308,15 @@ Send this attribute if you want to refresh the payment status, can be used as we
 
 ```sh-session
 USAGE
-  $ commercelayer stripe_payment:refresh ID -o <value> [-u [-j -p]]
+  $ commercelayer stripe_payment:refresh ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to refresh the payment status, can be used as webhooks fallback logic.
@@ -2381,16 +2330,15 @@ Execute an action on a resource of type webhooks.
 
 ```sh-session
 USAGE
-  $ commercelayer webhook ID -o <value> [-u [-j -p]]
+  $ commercelayer webhook ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on a resource of type webhooks
@@ -2404,16 +2352,15 @@ Send this attribute if you want to reset the circuit breaker associated to this 
 
 ```sh-session
 USAGE
-  $ commercelayer webhook:reset_circuit ID -o <value> [-u [-j -p]]
+  $ commercelayer webhook:reset_circuit ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the resource
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified resource
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero

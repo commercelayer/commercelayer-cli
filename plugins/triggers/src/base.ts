@@ -17,6 +17,7 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',
@@ -65,7 +66,14 @@ export default abstract class extends Command {
 
 
   protected handleError(error: CommandError, flags?: any): void {
+
+    if (error.message?.match(/Missing \d required args?:\nid/)) {
+      const resName = ((error as any).parse.input.context.id).split(':')[0].replace(/_/g, ' ')
+      this.error(`Missing the required unique ${clColor.style.error('id')} of the ${clColor.cli.command(resName)}`)
+    }
+    else
     if (CommerceLayerStatic.isApiError(error)) {
+
       let res = ''
       let id = ''
       if (error.code?.startsWith('RES_')) {
@@ -84,6 +92,7 @@ export default abstract class extends Command {
         this.error(`Unable to find the resource of type ${clColor.api.resource(res)}${id ? ` and id ${clColor.msg.error(id)}` : ''}`)
 			} else this.error(clOutput.formatError(error, flags))
     } else throw error
+
   }
 
 
