@@ -1,4 +1,6 @@
-import { Command, CliUx } from '@oclif/core'
+import { clConfig } from '@commercelayer/cli-core'
+import { Command } from '@oclif/core'
+import open from 'open'
 
 
 export default class WebhooksTopics extends Command {
@@ -15,7 +17,7 @@ export default class WebhooksTopics extends Command {
 
   async run(): Promise<any> {
 
-    await CliUx.ux.open('https://docs.commercelayer.io/api/real-time-webhooks#supported-events')
+    await open(clConfig.doc.webhooks_events)
 
   }
 

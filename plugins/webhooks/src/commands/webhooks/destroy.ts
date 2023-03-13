@@ -13,13 +13,10 @@ export default class WebhooksDestroy extends Command {
 		'$ cl wh:destroy <webhook-id>>',
 	]
 
-	static flags = {
-		...Command.flags,
-	}
 
-	static args = [
+	static args = {
 		...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {

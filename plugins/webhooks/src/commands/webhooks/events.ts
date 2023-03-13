@@ -1,4 +1,4 @@
-import Command, { Flags, CliUx } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
 import { clConfig, clOutput, clColor } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
@@ -19,7 +19,6 @@ export default class WebhooksEvents extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		all: Flags.boolean({
 			char: 'A',
 			description: `show all events instead of first ${clConfig.api.page_max_size} only `,
@@ -32,9 +31,9 @@ export default class WebhooksEvents extends Command {
 		}),
 	}
 
-	static args = [
+	static args = {
     ...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {
@@ -59,7 +58,7 @@ export default class WebhooksEvents extends Command {
 
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-			CliUx.ux.action.start('Fetching events')
+			cliux.action.start('Fetching events')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -71,7 +70,7 @@ export default class WebhooksEvents extends Command {
 					},
 				}
 
-				if (params && params.filters) {
+				if (params?.filters) {
 					/*
 				  if (flags.type) params.filters.resource_type_eq = flags.type
 				  if (flags.group) params.filters.reference_start = flags.group + '-'
@@ -97,7 +96,7 @@ export default class WebhooksEvents extends Command {
 
 			}
 
-			CliUx.ux.action.stop()
+			cliux.action.stop()
 
 			this.log()
 
@@ -118,7 +117,7 @@ export default class WebhooksEvents extends Command {
 	}
 
 
-	private footerMessage(flags: any, itemCount: number, totalItems: number) {
+	private footerMessage(flags: any, itemCount: number, totalItems: number): void {
 
 		this.log()
 		this.log(`Total displayed events: ${clColor.yellowBright(String(itemCount))}`)

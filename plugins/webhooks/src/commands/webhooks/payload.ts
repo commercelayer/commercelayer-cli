@@ -15,16 +15,15 @@ export default class WebhooksPayload extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		format: Flags.boolean({
 			char: 'f',
 			description: 'format the payload output',
 		}),
 	}
 
-	static args = [
+	static args = {
 		...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {

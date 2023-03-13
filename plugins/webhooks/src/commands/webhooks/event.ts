@@ -16,7 +16,6 @@ export default class WebhooksEvent extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		payload: Flags.boolean({
 			char: 'p',
 			description: 'show the event payload sent to the callback endpoint',
@@ -28,9 +27,9 @@ export default class WebhooksEvent extends Command {
 		}),
 	}
 
-	static args = [
+	static args = {
     ...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {

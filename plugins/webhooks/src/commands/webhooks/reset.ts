@@ -13,13 +13,10 @@ export default class WebhooksReset extends Command {
 		'$ cl wh:reset <webhook-id>',
 	]
 
-  static flags = {
-		...Command.flags,
-  }
 
-	static args = [
+	static args = {
     ...Command.args,
-	]
+  }
 
 
   async run(): Promise<any> {

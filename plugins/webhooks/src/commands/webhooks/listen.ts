@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags, CliUx } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import { clUtil, clColor, clOutput } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import { EventCallback } from '@commercelayer/sdk'
@@ -21,7 +21,6 @@ export default class WebhooksListen extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		time: Flags.integer({
 			char: 't',
 			description: 'waiting time for the first event',
@@ -30,9 +29,9 @@ export default class WebhooksListen extends Command {
 		}),
 	}
 
-	static args = [
+	static args = {
 		...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {
@@ -48,7 +47,7 @@ export default class WebhooksListen extends Command {
 		let elapsedWithoutEvents = 0
 
 		this.log(`Listening webhook ${clColor.api.id(id)}...`)
-		CliUx.ux.action.start('Waiting for next event callback')
+		cliux.action.start('Waiting for next event callback')
 
 		try {
 
@@ -74,7 +73,7 @@ export default class WebhooksListen extends Command {
 			}
 			while (elapsedWithoutEvents < listenTime)
 
-			CliUx.ux.action.stop('timed out')
+			cliux.action.stop('timed out')
 			this.log(`\nNo events received in the last ${clColor.bold(String(listenTime))} seconds\n`)
 
 		} catch (error) {

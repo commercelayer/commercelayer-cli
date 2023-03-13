@@ -1,22 +1,21 @@
-/* eslint-disable new-cap */
-import Command from '../../base'
+import {BaseCommand, Args } from '../../base'
 import ListCommand from './list'
 import DetailsCommand from './details'
 
 
-export default class WebhooksIndex extends Command {
+export default class WebhooksIndex extends BaseCommand {
 
-	static description = 'list all the registered webhooks'
+	static description = 'list all the registered webhooks or the details of a single webhook'
 
 	static flags = {
-		...Command.flags,
+		...BaseCommand.flags,
 		...ListCommand.flags,
 		...DetailsCommand.flags,
 	}
 
-	static args = [
-		Object.assign({ ...DetailsCommand.args[0] }, { required: false }),
-	]
+	static args = {
+		id: Args.string({ name: 'id', description: 'unique id of the webhook to get a single webhook', required: false, hidden: false }),
+  }
 
 
 	async run(): Promise<any> {
@@ -26,7 +25,7 @@ export default class WebhooksIndex extends Command {
 		const command = args.id ? DetailsCommand : ListCommand
 		const result = command.run(this.argv, this.config)
 
-		return result
+		return await result
 
 	}
 

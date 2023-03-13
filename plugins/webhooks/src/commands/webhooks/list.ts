@@ -1,10 +1,10 @@
-import Command, { Flags } from '../../base'
+import { BaseCommand, Flags } from '../../base'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
 
 
-export default class WebhooksList extends Command {
+export default class WebhooksList extends BaseCommand {
 
 	static description = 'list all the registered webhooks'
 
@@ -17,7 +17,6 @@ export default class WebhooksList extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		circuit: Flags.string({
 			char: 'c',
 			description: 'show only webhooks with circuit in the declared state',
@@ -28,8 +27,6 @@ export default class WebhooksList extends Command {
 			description: 'the event that triggered the webhook',
 		}),
 	}
-
-  static args = []
 
 
 	async run(): Promise<any> {

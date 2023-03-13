@@ -1,9 +1,9 @@
-import Command, { Flags } from '../../base'
+import { BaseCommand, Flags } from '../../base'
 import { URL } from 'node:url'
 import { clColor } from '@commercelayer/cli-core'
 
 
-export default class WebhooksCreate extends Command {
+export default class WebhooksCreate extends BaseCommand {
 
 	static description = 'create a new webhook'
 
@@ -15,7 +15,7 @@ export default class WebhooksCreate extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
+    ...BaseCommand.flags,
 		topic: Flags.string({
 			char: 't',
 			description: 'the identifier of the event that will trigger the webhook',
@@ -37,8 +37,6 @@ export default class WebhooksCreate extends Command {
 			default: '',	// TEMP: the sdk currently consider this field as mandatory
 		}),
 	}
-
-  static args = []
 
 
 	async run(): Promise<any> {

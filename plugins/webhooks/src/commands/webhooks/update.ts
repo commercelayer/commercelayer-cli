@@ -16,7 +16,6 @@ export default class WebhooksUpdate extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		topic: Flags.string({
 			char: 't',
 			description: 'the identifier of the event that will trigger the webhook',
@@ -40,9 +39,9 @@ export default class WebhooksUpdate extends Command {
 	}
 
 
-	static args = [
+	static args = {
 		...Command.args,
-	]
+  }
 
 
 	async run(): Promise<any> {
@@ -64,7 +63,7 @@ export default class WebhooksUpdate extends Command {
 		const topic = flags.topic
 		const url = flags.url ? new URL(flags.url).toString() : undefined
 
-		let include: Array<string> | undefined
+		let include: string[] | undefined
 		if (flags.include) {
 			const inc = flags.include.join(',')
 			include = (inc === 'null') ? [] : inc.split(',')

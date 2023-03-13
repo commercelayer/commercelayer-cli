@@ -19,7 +19,6 @@ export default class WebhooksDetails extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
     'hide-empty': Flags.boolean({
       char: 'H',
       description: 'hide empty attributes',
@@ -30,9 +29,9 @@ export default class WebhooksDetails extends Command {
     }),
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-  ]
+  }
 
 
   async run(): Promise<any> {
