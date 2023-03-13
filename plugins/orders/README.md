@@ -62,16 +62,15 @@ Execute an action on an order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders ID -o <value> [-u [-j -p]]
+  $ commercelayer orders ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   execute an action on an order
@@ -85,16 +84,15 @@ Send this attribute if you want to approve a placed order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:approve ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:approve ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to approve a placed order.
@@ -108,16 +106,15 @@ Send this attribute if you want to approve and capture a placed order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:approve_and_capture ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:approve_and_capture ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to approve and capture a placed order.
@@ -131,16 +128,15 @@ Send this attribute if you want to archive the order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:archive ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:archive ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to archive the order.
@@ -154,16 +150,15 @@ The authorization amount, in cents.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:authorization_amount_cents ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:authorization_amount_cents ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   The authorization amount, in cents.
@@ -177,16 +172,15 @@ Send this attribute if you want to authorize the order's payment source.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:authorize ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:authorize ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to authorize the order's payment source.
@@ -200,17 +194,16 @@ The id of the address that you want to clone to create the order's billing addre
 
 ```sh-session
 USAGE
-  $ commercelayer orders:billing_address_clone_id ID -o <value> -v <value> [-u [-j -p]]
+  $ commercelayer orders:billing_address_clone_id ID -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
-  -v, --value=<value>         (required) the trigger attribute value
+  -j, --json           print result in JSON format
+  -p, --print          print out the modified order
+  -u, --unformatted    print JSON output without indentation
+  -v, --value=<value>  (required) the trigger attribute value
 
 DESCRIPTION
   The id of the address that you want to clone to create the order's billing address.
@@ -224,16 +217,15 @@ Send this attribute if you want the billing address to be cloned from the order'
 
 ```sh-session
 USAGE
-  $ commercelayer orders:billing_address_same_as_shipping ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:billing_address_same_as_shipping ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the billing address to be cloned from the order's shipping address.
@@ -247,16 +239,15 @@ Send this attribute if you want to cancel a placed order. The order's authorizat
 
 ```sh-session
 USAGE
-  $ commercelayer orders:cancel ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:cancel ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
@@ -270,16 +261,15 @@ Send this attribute if you want to capture an authorized order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:capture ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:capture ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to capture an authorized order.
@@ -293,16 +283,15 @@ Send this attribute if you want commit the sales tax invoice to the associated t
 
 ```sh-session
 USAGE
-  $ commercelayer orders:commit_invoice ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:commit_invoice ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want commit the sales tax invoice to the associated tax calculator (currently supported by
@@ -317,17 +306,16 @@ The id of the customer payment source (i.e. credit card) that you want to use as
 
 ```sh-session
 USAGE
-  $ commercelayer orders:customer_payment_source_id ID -o <value> -v <value> [-u [-j -p]]
+  $ commercelayer orders:customer_payment_source_id ID -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
-  -v, --value=<value>         (required) the trigger attribute value
+  -j, --json           print result in JSON format
+  -p, --print          print out the modified order
+  -u, --unformatted    print JSON output without indentation
+  -v, --value=<value>  (required) the trigger attribute value
 
 DESCRIPTION
   The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
@@ -341,16 +329,15 @@ Send this attribute if you want to nullify the payment source for this order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:nullify_payment_source ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:nullify_payment_source ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to nullify the payment source for this order.
@@ -364,16 +351,15 @@ Send this attribute if you want to place the order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:place ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:place ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to place the order.
@@ -387,16 +373,15 @@ Send this attribute if you want to manually refresh the order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:refresh ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:refresh ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to manually refresh the order.
@@ -410,16 +395,15 @@ Send this attribute if you want to refund a captured order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:refund ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:refund ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to refund a captured order.
@@ -433,16 +417,15 @@ Send this attribute if you want refund the sales tax invoice to the associated t
 
 ```sh-session
 USAGE
-  $ commercelayer orders:refund_invoice ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:refund_invoice ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want refund the sales tax invoice to the associated tax calculator (currently supported by
@@ -457,16 +440,15 @@ Send this attribute if you want the order's billing address to be saved in the c
 
 ```sh-session
 USAGE
-  $ commercelayer orders:save_billing_address_to_customer_address_book ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:save_billing_address_to_customer_address_book ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the order's billing address to be saved in the customer's address book as a customer
@@ -481,16 +463,15 @@ Send this attribute if you want the order's payment source to be saved in the cu
 
 ```sh-session
 USAGE
-  $ commercelayer orders:save_payment_source_to_customer_wallet ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:save_payment_source_to_customer_wallet ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the order's payment source to be saved in the customer's wallet as a customer payment
@@ -505,16 +486,15 @@ Send this attribute if you want the order's shipping address to be saved in the 
 
 ```sh-session
 USAGE
-  $ commercelayer orders:save_shipping_address_to_customer_address_book ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:save_shipping_address_to_customer_address_book ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the order's shipping address to be saved in the customer's address book as a customer
@@ -529,17 +509,16 @@ The id of the address that you want to clone to create the order's shipping addr
 
 ```sh-session
 USAGE
-  $ commercelayer orders:shipping_address_clone_id ID -o <value> -v <value> [-u [-j -p]]
+  $ commercelayer orders:shipping_address_clone_id ID -v <value> [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
-  -v, --value=<value>         (required) the trigger attribute value
+  -j, --json           print result in JSON format
+  -p, --print          print out the modified order
+  -u, --unformatted    print JSON output without indentation
+  -v, --value=<value>  (required) the trigger attribute value
 
 DESCRIPTION
   The id of the address that you want to clone to create the order's shipping address.
@@ -553,16 +532,15 @@ Send this attribute if you want the shipping address to be cloned from the order
 
 ```sh-session
 USAGE
-  $ commercelayer orders:shipping_address_same_as_billing ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:shipping_address_same_as_billing ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want the shipping address to be cloned from the order's billing address.
@@ -576,16 +554,15 @@ Send this attribute if you want to unarchive the order.
 
 ```sh-session
 USAGE
-  $ commercelayer orders:unarchive ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:unarchive ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to unarchive the order.
@@ -599,16 +576,15 @@ Send this attribute if you want to force tax calculation for this order (a tax c
 
 ```sh-session
 USAGE
-  $ commercelayer orders:update_taxes ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:update_taxes ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to force tax calculation for this order (a tax calculator must be associated to the
@@ -623,16 +599,15 @@ Send this attribute if you want to trigger the external validation for the order
 
 ```sh-session
 USAGE
-  $ commercelayer orders:validate ID -o <value> [-u [-j -p]]
+  $ commercelayer orders:validate ID [-u [-j -p]]
 
 ARGUMENTS
   ID  the unique id of the order
 
 FLAGS
-  -j, --json                  print result in JSON format
-  -o, --organization=<value>  (required) the slug of your organization
-  -p, --print                 print out the modified order
-  -u, --unformatted           print JSON output without indentation
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
   Send this attribute if you want to trigger the external validation for the order.
