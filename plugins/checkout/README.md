@@ -39,7 +39,7 @@ Create checkout URLs.
 
 ```sh-session
 USAGE
-  $ commercelayer checkout -a <value> [--open] [-m <value> | [-O <value> | -S <value> | -B <value>]] [-c
+  $ commercelayer checkout (-a <value> ) [--open] [-m <value> | [-O <value> | -S <value> | -B <value>]] [-c
     <value> | ] [-e <value> | ]
 
 FLAGS
@@ -71,7 +71,7 @@ Create checkout URLs starting from an existing order.
 
 ```sh-session
 USAGE
-  $ commercelayer checkout:order [ID] -a <value> [--open]
+  $ commercelayer checkout:order [ID] (-a <value> ) [--open]
 
 ARGUMENTS
   ID  unique id of the order
