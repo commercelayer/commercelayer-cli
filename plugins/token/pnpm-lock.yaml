@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@commercelayer/cli-core': ^3.3.5
-  '@commercelayer/cli-dev': ^1.0.1
+  '@commercelayer/cli-dev': ^2.0.4
   '@commercelayer/eslint-config-ts': ^0.1.4
   '@commercelayer/js-auth': ^2.3.0
   '@commercelayer/sdk': ^4.25.0
@@ -31,7 +31,7 @@ dependencies:
   tslib: 2.5.0
 
 devDependencies:
-  '@commercelayer/cli-dev': 1.0.1
+  '@commercelayer/cli-dev': 2.0.4_r2vohjtqb453xa4ljp4dw3sqb4
   '@commercelayer/eslint-config-ts': 0.1.4_vgl77cfdswitgr47lm5swmv43m
   '@oclif/plugin-help': 5.2.8_r2vohjtqb453xa4ljp4dw3sqb4
   '@oclif/test': 2.3.10_r2vohjtqb453xa4ljp4dw3sqb4
@@ -270,16 +270,21 @@ packages:
       - typescript
     dev: false
 
-  /@commercelayer/cli-dev/1.0.1:
-    resolution: {integrity: sha512-6k9Sq3VxTQ1/o6kv/ITbJs8lGaZeyX5KaDLPmSigiObRIhRQrqpsC7YlzfN9nMH5HExh7AXGesLMqxXJJWsu0w==}
+  /@commercelayer/cli-dev/2.0.4_r2vohjtqb453xa4ljp4dw3sqb4:
+    resolution: {integrity: sha512-mGIcTcLpDytMAMkmdGGoc8LehUUGa1+1jt9aP7tL482xiC94a81ywKlpBAiVNWZzdFIKiyb9qim4Q0DpehEBzw==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@oclif/core': 1.26.2
+      '@oclif/core': 2.6.2_r2vohjtqb453xa4ljp4dw3sqb4
       fs-extra: 10.1.0
       github-slugger: 1.5.0
       normalize-package-data: 5.0.0
       tslib: 2.5.0
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - typescript
     dev: true
 
   /@commercelayer/eslint-config-ts/0.1.4_vgl77cfdswitgr47lm5swmv43m:
@@ -460,40 +465,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oclif/core/1.26.2:
-    resolution: {integrity: sha512-6jYuZgXvHfOIc9GIaS4T3CIKGTjPmfAxuMcbCbMRKJJl4aq/4xeRlEz0E8/hz8HxvxZBGvN2GwAUHlrGWQVrVw==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@oclif/linewrap': 1.0.0
-      '@oclif/screen': 3.0.4
-      ansi-escapes: 4.3.2
-      ansi-styles: 4.3.0
-      cardinal: 2.1.1
-      chalk: 4.1.2
-      clean-stack: 3.0.1
-      cli-progress: 3.12.0
-      debug: 4.3.4_supports-color@8.1.1
-      ejs: 3.1.9
-      fs-extra: 9.1.0
-      get-package-type: 0.1.0
-      globby: 11.1.0
-      hyperlinker: 1.0.0
-      indent-string: 4.0.0
-      is-wsl: 2.2.0
-      js-yaml: 3.14.1
-      natural-orderby: 2.0.3
-      object-treeify: 1.1.33
-      password-prompt: 1.1.2
-      semver: 7.3.8
-      string-width: 4.2.3
-      strip-ansi: 6.0.1
-      supports-color: 8.1.1
-      supports-hyperlinks: 2.3.0
-      tslib: 2.5.0
-      widest-line: 3.1.0
-      wrap-ansi: 7.0.0
-    dev: true
-
   /@oclif/core/2.6.2_r2vohjtqb453xa4ljp4dw3sqb4:
     resolution: {integrity: sha512-roxcBLr4BuoOEDEkMQk4Yy0Tolr39n6i+A63qPLa19vrgxjZZJygh2HpThsn69/UPuEzMq051FnvJ9tNln3Y5g==}
     engines: {node: '>=14.0.0'}
@@ -533,10 +504,6 @@ packages:
       - '@types/node'
       - typescript
 
-  /@oclif/linewrap/1.0.0:
-    resolution: {integrity: sha512-Ups2dShK52xXa8w6iBWLgcjPJWjais6KPJQq3gQ/88AY6BXoTX+MIGFPrWQO1KLMiQfoTpcLnUwloN4brrVUHw==}
-    dev: true
-
   /@oclif/plugin-help/5.2.8_r2vohjtqb453xa4ljp4dw3sqb4:
     resolution: {integrity: sha512-Fl1DD6Hm7USG/BYqcUmc/hMXK6Bnd3HvkZsRG+qi0dbYaNtY9zJ58C5b3lgPn69bXJlyi1eWX4S8djSUWD8VYg==}
     engines: {node: '>=12.0.0'}
@@ -547,12 +514,6 @@ packages:
       - '@swc/wasm'
       - '@types/node'
       - typescript
-    dev: true
-
-  /@oclif/screen/3.0.4:
-    resolution: {integrity: sha512-IMsTN1dXEXaOSre27j/ywGbBjrzx0FNd1XmuhCWCB9NTPrhWI1Ifbz+YLSEcstfQfocYsrbrIessxXb2oon4lA==}
-    engines: {node: '>=12.0.0'}
-    deprecated: Deprecated in favor of @oclif/core
     dev: true
 
   /@oclif/test/2.3.10_r2vohjtqb453xa4ljp4dw3sqb4:

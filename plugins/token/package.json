@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-token",
   "description": "Commerce Layer CLI Token plugin",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-token/issues",
   "engines": {
@@ -54,7 +54,7 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^1.0.1",
+    "@commercelayer/cli-dev": "^2.0.4",
     "@commercelayer/eslint-config-ts": "^0.1.4",
     "@oclif/plugin-help": "^5.2.8",
     "@oclif/test": "^2.3.10",
