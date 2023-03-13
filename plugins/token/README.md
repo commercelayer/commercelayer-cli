@@ -25,7 +25,6 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer token:decode TOKEN`](#commercelayer-tokendecode-token)
 * [`commercelayer token:generate`](#commercelayer-tokengenerate)
 * [`commercelayer token:get`](#commercelayer-tokenget)
-* [`commercelayer token:info TOKEN`](#commercelayer-tokeninfo-token)
 * [`commercelayer token:revoke TOKEN`](#commercelayer-tokenrevoke-token)
 
 ### `commercelayer token:decode TOKEN`
@@ -34,7 +33,7 @@ Decode a Commerce Layer access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:decode [TOKEN]
+  $ commercelayer token:decode TOKEN
 
 ARGUMENTS
   TOKEN  the access token to be decoded
@@ -104,36 +103,13 @@ EXAMPLES
 
 _See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/get.ts)_
 
-### `commercelayer token:info TOKEN`
-
-Decode a Commerce Layer access token.
-
-```sh-session
-USAGE
-  $ commercelayer token:info [TOKEN]
-
-ARGUMENTS
-  TOKEN  the access token to be decoded
-
-DESCRIPTION
-  decode a Commerce Layer access token
-
-ALIASES
-  $ commercelayer token:info
-
-EXAMPLES
-  $ commercelayer token:decode <accessToken>
-
-  $ cl token:info <accessToken>
-```
-
 ### `commercelayer token:revoke TOKEN`
 
 Revoke a Commerce Layer access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:revoke [TOKEN] -o <value> (-s <value> -i <value>) [-S <value> ]
+  $ commercelayer token:revoke TOKEN -o <value> (-s <value> -i <value>) [-S <value> ]
 
 ARGUMENTS
   TOKEN  access token to revoke
