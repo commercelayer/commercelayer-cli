@@ -38,16 +38,15 @@ Create Microstore URLs.
 
 ```sh-session
 USAGE
-  $ commercelayer microstore -o <value> -a <value> -S <value> [--open] [-A] [-I -C]
+  $ commercelayer microstore (-a <value> ) -S <value> [--open] [-A] [-I -C]
 
 FLAGS
-  -A, --all                   activate the Buy All button
-  -C, --cart                  activate the Cart application
-  -I, --inline                disable redirect to Cart application
-  -S, --skuListId=<value>     (required) the sku list id
-  -a, --accessToken=<value>   (required)
-  -o, --organization=<value>  (required) the slug of your organization
-  --open                      open microstore URL in default browser
+  -A, --all                  activate the Buy All button
+  -C, --cart                 activate the Cart application
+  -I, --inline               disable redirect to Cart application
+  -S, --skuListId=<value>    (required) the sku list id
+  -a, --accessToken=<value>  (required)
+  --open                     open microstore URL in default browser
 
 DESCRIPTION
   create Microstore URLs

@@ -6,6 +6,9 @@ import { clColor, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
 const pkg = require('../package.json')
 
 
+const REQUIRED_APP_KIND = 'sales_channel'
+
+
 export default abstract class extends Command {
 
   static flags = {
@@ -14,6 +17,7 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',
@@ -27,6 +31,7 @@ export default abstract class extends Command {
       hidden: false,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
+      dependsOn: ['organization']
     }),
     open: Flags.boolean({
       description: 'open microstore URL in default browser',
@@ -73,14 +78,17 @@ export default abstract class extends Command {
   }
 
 
-  protected checkApplication(accessToken: string, kind: string): boolean {
+  protected checkAcessTokenData(accessToken: string, flags?: any): boolean {
 
     const info = clToken.decodeAccessToken(accessToken)
 
     if (info === null) this.error('Invalid access token provided')
     else
-    if (info.application.kind !== kind)
-      this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Only ${clColor.api.kind(kind)} access token can be used to generate a microstore URL`)
+    if (info.application.kind !== REQUIRED_APP_KIND) // Application
+      this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Only ${clColor.api.kind(REQUIRED_APP_KIND)} access token can be used to generate a checkout URL`)
+    else
+    if (info.organization.slug !== flags.organization) // Organization
+      this.error(`The access token provided belongs to a wrong organization: ${clColor.msg.error(info.organization.slug)} instead of ${clColor.style.organization(flags.organization)}`)
 
     return true
 

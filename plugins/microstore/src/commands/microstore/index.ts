@@ -46,7 +46,7 @@ export default class MicrostoreIndex extends Command {
     const accessToken = flags.accessToken
     const skuListId = flags.skuListId
 
-    this.checkApplication(accessToken, 'sales_channel')
+    this.checkAcessTokenData(accessToken, flags)
 
 
     const cl = this.commercelayerInit(flags)
