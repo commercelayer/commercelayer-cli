@@ -15,6 +15,7 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',
@@ -63,18 +64,21 @@ export default abstract class extends Command {
 
 
   protected handleError(error: CommandError, flags?: any): void {
-    if (CommerceLayerStatic.isApiError(error)) {
-      if (error.status === 401) {
-        const err = error.first()
-        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s orders'] },
-        )
-      } else
-      if (error.status === 404) {
-        const id = (error as any).id || ''
-        this.error(`Unable to find order${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
-			} else this.error(clOutput.formatError(error, flags))
-    } else throw error
+    if (error.message?.match(/Missing \d required args?:\nid/))
+      this.error(`Missing the required unique ${clColor.style.error('id')} of the order`)
+    else
+      if (CommerceLayerStatic.isApiError(error)) {
+        if (error.status === 401) {
+          const err = error.first()
+          this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
+            { suggestions: ['Execute login to get access to the organization\'s orders'] },
+          )
+        } else
+          if (error.status === 404) {
+            const id = (error as any).id || ''
+            this.error(`Unable to find order${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
+          } else this.error(clOutput.formatError(error, flags))
+      } else throw error
   }
 
 
