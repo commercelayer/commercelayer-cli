@@ -1,6 +1,6 @@
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags, Args } from '@oclif/core'
-import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
+import { clApi, clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 import { CommandError } from '@oclif/core/lib/interfaces'
 import { Resource } from '@commercelayer/sdk/lib/cjs/resource'
 import { CLIError } from '@oclif/core/lib/errors'
@@ -68,7 +68,7 @@ export default abstract class extends Command {
   protected handleError(error: CommandError, flags?: any): void {
 
     if (error.message?.match(/Missing \d required args?:\nid/)) {
-      const resName = ((error as any).parse.input.context.id).split(':')[0].replace(/_/g, ' ')
+      const resName = clApi.humanizeResource(((error as any).parse.input.context.id).split(':')[0])
       this.error(`Missing the required unique ${clColor.style.error('id')} of the ${clColor.cli.command(resName)}`)
     }
     else
