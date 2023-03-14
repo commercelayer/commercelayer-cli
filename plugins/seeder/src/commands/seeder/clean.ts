@@ -13,12 +13,12 @@ export default class SeederClean extends Command {
   static description = 'clean previously imported seeder data'
 
   static flags = {
-    ...Command.flags,
     organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',

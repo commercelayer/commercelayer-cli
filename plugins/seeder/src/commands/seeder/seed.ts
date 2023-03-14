@@ -24,12 +24,12 @@ export default class SeederSeed extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
     organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',

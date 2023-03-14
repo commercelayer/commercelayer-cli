@@ -25,7 +25,6 @@ export default class SeederCheck extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
     relationships: Flags.boolean({
       char: 'r',
       description: 'check resource relationships',
