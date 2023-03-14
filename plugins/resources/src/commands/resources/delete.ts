@@ -1,4 +1,4 @@
-import Command from '../../base'
+import Command, { Args } from '../../base'
 import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { clCommand, clColor } from '@commercelayer/cli-core'
@@ -21,10 +21,10 @@ export default class ResourcesDelete extends Command {
 		...(clCommand.commandFlags<typeof Command.flags>(Command.flags, ['save-params', 'load-params'])),
 	}
 
-	static args = [
-		...Command.args,
-		{ name: 'id', description: 'id of the resource to retrieve', required: false },
-	]
+	static args = {
+    ...Command.args,
+		id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: true }),
+  }
 
 
 	async run(): Promise<any> {

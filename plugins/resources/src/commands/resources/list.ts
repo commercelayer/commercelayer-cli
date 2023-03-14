@@ -1,4 +1,4 @@
-import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND, CliUx } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, cliux } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
@@ -66,9 +66,6 @@ export default class ResourcesList extends Command {
     }),
 	}
 
-	static args = [
-		...Command.args,
-	]
 
 
 	async run(): Promise<any> {
@@ -78,7 +75,7 @@ export default class ResourcesList extends Command {
 		const resource = this.checkResource(args.resource)
 
     const loadParams = flags[FLAG_LOAD_PARAMS]
-    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    const saveCmd = flags[FLAG_SAVE_PARAMS]
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
     const showHeaders = flags.headers || flags['headers-only']
 
@@ -128,9 +125,9 @@ export default class ResourcesList extends Command {
       }
 
 
-			if (!flags.doc) CliUx.ux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
+			if (!flags.doc) cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}`)
 			const res = await resSdk.list(params)
-			CliUx.ux.action.stop()
+			cliux.action.stop()
 
 			const out = (flags.raw && rawReader) ? rawReader.rawResponse : [...res]
 			const meta = res.meta

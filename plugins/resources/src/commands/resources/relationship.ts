@@ -1,4 +1,4 @@
-import Command, { FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND, CliUx } from '../../base'
+import Command, { Args, cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
@@ -29,11 +29,11 @@ export default class ResourcesRelationship extends Command {
     ...ResourcesList.flags,
   }
 
-  static args = [
+  static args = {
     ...Command.args,
-    { name: 'id', description: 'id of the resource to retrieve', required: true },
-    { name: 'relationship', description: 'name of the relationship field', required: true },
-  ]
+    id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: true }),
+    relationship: Args.string({ name: 'relationship', description: 'name of the relationship field', required: true }),
+  }
 
 
   async run(): Promise<any> {
@@ -59,7 +59,7 @@ export default class ResourcesRelationship extends Command {
 
     // Load saved args
     const loadParams = flags[FLAG_LOAD_PARAMS]
-    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    const saveCmd = flags[FLAG_SAVE_PARAMS]
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
 
 
@@ -97,10 +97,10 @@ export default class ResourcesRelationship extends Command {
       }
 
 
-      if (!flags.doc && multiRel) CliUx.ux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}.${relationship} for id ${id}`)
+      if (!flags.doc && multiRel) cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}.${relationship} for id ${id}`)
 
       const res = await resSdk[relationship](id, params)
-      if (multiRel)  CliUx.ux.action.stop()
+      if (multiRel)  cliux.action.stop()
 
       const out = (flags.raw && rawReader) ? rawReader.rawResponse : (multiRel ? [...res] : res)
 

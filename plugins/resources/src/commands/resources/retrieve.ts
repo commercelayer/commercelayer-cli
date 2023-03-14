@@ -1,4 +1,4 @@
-import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
+import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve} from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
@@ -42,21 +42,21 @@ export default class ResourcesRetrieve extends Command {
     }),
 	}
 
-	static args = [
+	static args = {
 		...Command.args,
-		{ name: 'id', description: 'id of the resource to retrieve', required: false },
-	]
+		id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: false }),
+  }
 
 
 	async run(): Promise<any> {
 
 		const { args, flags } = await this.parse(ResourcesRetrieve)
 
-		const { res, id } = this.checkResourceId(args.resource, args.id)
+		const { res, id } = this.checkResourceId(args.resource, args.id as string)
 		const resource = this.checkResource(res, { singular: true })
 
     const loadParams = flags[FLAG_LOAD_PARAMS]
-    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    const saveCmd = flags[FLAG_SAVE_PARAMS]
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
     const showHeaders = flags.headers || flags['headers-only']
 

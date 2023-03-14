@@ -1,8 +1,9 @@
-import { Command, CliUx, Flags } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import { findResource } from '../../util/resources'
 import axios from 'axios'
 import { clColor } from '@commercelayer/cli-core'
 import { apiReferenceUrl } from '../../common'
+import open from 'open'
 
 
 export default class ResourcesDoc extends Command {
@@ -26,12 +27,12 @@ export default class ResourcesDoc extends Command {
     }),
   }
 
-  static args = [
-    { name: 'resource', required: true, description: 'the resource for which you want to access the online documentation' },
-  ]
+  static args = {
+    resource: Args.string({ name: 'resource', required: true, description: 'the resource for which you want to access the online documentation' }),
+  }
 
 
-  async run(): Promise<any> {
+  async run(): Promise<void> {
 
     const { args, flags } = await this.parse(ResourcesDoc)
 
@@ -42,7 +43,8 @@ export default class ResourcesDoc extends Command {
 
     if (res) {
       const resourceUrl = `${apiReferenceUrl}/${res?.api}${page ? `/${page}` : ''}`
-      axios.get(resourceUrl).then(async () => await CliUx.ux.open(resourceUrl))
+      axios.get(resourceUrl)
+        .then(async () => { await open(resourceUrl) })
         .catch(() => this.warn(`No online documentation available for the resource ${clColor.msg.warning(resource)}${page ? ` (page ${clColor.cli.value(page)})` : ''}`))
     } else this.warn(`Invalid resource ${clColor.style.error(resource)}`)
 

@@ -22,16 +22,16 @@ export default class ResourcesGet extends Command {
     ...ListCommand.flags,
   }
 
-  static args = [
+  static args = {
     ...RetrieveCommand.args,
-  ]
+  }
 
 
   async run(): Promise<any> {
 
     const { args } = await this.parse(ResourcesGet)
 
-    const { id, singleton } = this.checkResourceId(args.resource, args.id, false)
+    const { id, singleton } = this.checkResourceId(args.resource, args.id as string, false)
 
     const command = (id || singleton) ? RetrieveCommand : ListCommand
     const result = await command.run(this.argv, this.config)

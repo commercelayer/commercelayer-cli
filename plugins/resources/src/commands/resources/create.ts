@@ -1,4 +1,4 @@
-import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND } from '../../base'
+import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
@@ -48,13 +48,10 @@ export default class ResourcesCreate extends Command {
 			char: 'D',
 			description: 'the data file to use as request body',
 			multiple: false,
-			exclusive: ['attribute', 'relationship', 'metadata', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_COMMAND],
+			exclusive: ['attribute', 'relationship', 'metadata', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS],
 		}),
 	}
 
-	static args = [
-		...Command.args,
-	]
 
 
 	async run(): Promise<any> {
@@ -64,7 +61,7 @@ export default class ResourcesCreate extends Command {
 		const resource = this.checkResource(args.resource, { singular: true })
 
     const loadParams = flags[FLAG_LOAD_PARAMS]
-    const saveCmd = flags[FLAG_SAVE_COMMAND]
+    const saveCmd = flags[FLAG_SAVE_PARAMS]
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
     const showHeaders = flags.headers || flags['headers-only']
 

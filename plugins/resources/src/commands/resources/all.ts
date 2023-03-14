@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable max-depth */
 /* eslint-disable complexity */
-import Command, { Flags, CliUx } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
@@ -48,16 +48,6 @@ export default class ResourcesAll extends Command {
 
   static flags = {
     ...clCommand.commandFlags<typeof Command.flags>(Command.flags, ['headers', 'headers-only']),
-    include: Flags.string({
-      char: 'i',
-      multiple: true,
-      description: 'comma separated resources to include',
-    }),
-    fields: Flags.string({
-      char: 'f',
-      multiple: true,
-      description: 'comma separeted list of fields in the format [resourceType/]field1,field2...',
-    }),
     where: Flags.string({
       char: 'w',
       multiple: true,
@@ -105,7 +95,7 @@ export default class ResourcesAll extends Command {
       exclusive: ['raw', 'json'],
       dependsOn: ['fields'],
     }),
-    delimiter: Flags.enum({
+    delimiter: Flags.string({
       char: 'D',
       // eslint-disable-next-line quotes
       description: `the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)`,
@@ -135,17 +125,13 @@ export default class ResourcesAll extends Command {
     }),
   }
 
-  static args = [
-    ...Command.args,
-  ]
-
 
 
   async checkAccessToken(jwtData: any, flags: any, client: CommerceLayerClient): Promise<any> {
 
     if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
 
-      await CliUx.ux.wait((securityInterval + 1) * 1000)
+      await cliux.wait((securityInterval + 1) * 1000)
 
       const organization = flags.organization
       const domain = flags.domain
@@ -222,7 +208,7 @@ export default class ResourcesAll extends Command {
 
       const itemsDesc = resource.api.replace(/_/g, ' ')
 
-      const progressBar = blindMode ? blindProgressBar : CliUx.ux.progress({
+      const progressBar = blindMode ? blindProgressBar : cliux.progress({
         format: `Fetching ${itemsDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
@@ -239,7 +225,7 @@ export default class ResourcesAll extends Command {
          * 200ms  for pages within range 51 : 599
          * 500ms  for pages >= 600
         */
-        if ((page > 1) && (pages > 50)) await CliUx.ux.wait((pages < 600) ? 200 : 500)
+        if ((page > 1) && (pages > 50)) await cliux.wait((pages < 600) ? 200 : 500)
 
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
 
@@ -254,7 +240,7 @@ export default class ResourcesAll extends Command {
           if (page === 1) {
             if ((recordCount > maxItemsWarning) && !blindMode) {
               this.warn(`You have requested to export more than ${maxItemsWarning} ${itemsDesc} (${recordCount})\nThe process could be ${clColor.underline('very')} slow, we suggest you to add more filters to your request to reduce the number of output ${itemsDesc}`)
-              if (!await CliUx.ux.confirm(`>> Do you want to continue anyway? ${clColor.dim('[Yy/Nn]')}`)) return
+              if (!await cliux.confirm(`>> Do you want to continue anyway? ${clColor.dim('[Yy/Nn]')}`)) return
               notification = true
             }
             this.log()

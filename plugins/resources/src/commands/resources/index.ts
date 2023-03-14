@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx } from '@oclif/core'
+import { Command, Flags, ux as cliux } from '@oclif/core'
 import { resourceList } from '../../util/resources'
 import { clUtil, clColor } from '@commercelayer/cli-core'
 import { apiReferenceUrl } from '../../common'
@@ -19,7 +19,6 @@ export default class ResourcesIndex extends Command {
 		help: Flags.help({ char: 'h' }),
 	}
 
-	static args = []
 
 
 	async run(): Promise<any> {
@@ -32,7 +31,7 @@ export default class ResourcesIndex extends Command {
 			return { name: r, url: `${apiReferenceUrl}/${r}` }
 		})
 
-		CliUx.Table.table(resourceArray, {
+		cliux.Table.table(resourceArray, {
 				key: { header: 'NAME', minWidth: 35, get: row => clColor.blueBright(row.name) },
 				description: { header: 'ONLINE DOCUMENTATION URL', get: row => row.url },
 			}, {

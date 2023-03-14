@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "5.11.0",
+  "version": "5.12.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "engines": {
@@ -15,7 +15,6 @@
   ],
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-resources",
   "keywords": [
-    "oclif",
     "ecommerce",
     "cli",
     "commercelayer"
@@ -58,18 +57,18 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "1.0.1",
+    "@commercelayer/cli-dev": "2.0.4",
     "@commercelayer/eslint-config-ts": "^0.1.4",
-    "@oclif/plugin-help": "^5.2.2",
-    "@oclif/test": "^2.3.4",
+    "@oclif/plugin-help": "^5.2.8",
+    "@oclif/test": "^2.3.10",
     "@types/chai": "^4.3.4",
-    "@types/inquirer": "^8.2.5",
+    "@types/inquirer": "^8.2.6",
     "@types/lodash": "^4.14.191",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.15.3",
     "@types/node-notifier": "^8.0.2",
     "chai": "^4.3.7",
-    "eslint": "^8.33.0",
+    "eslint": "^8.36.0",
     "inflector-js": "^1.0.1",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
@@ -77,15 +76,16 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^2.0.4",
+    "@commercelayer/cli-core": "^3.3.6",
     "@commercelayer/js-auth": "^2.3.0",
-    "@commercelayer/sdk": "^4.24.0",
-    "@oclif/core": "^1.26.1",
-    "axios": "^1.3.1",
+    "@commercelayer/sdk": "^4.25.0",
+    "@oclif/core": "^2.6.3",
+    "axios": "^1.3.4",
     "inquirer": "^8.2.5",
-    "json-2-csv": "^3.18.0",
+    "json-2-csv": "^3.20.0",
     "lodash": "^4.17.21",
     "node-notifier": "^10.0.1",
+    "open": "^8.4.2",
     "tslib": "^2.5.0"
   },
   "publishConfig": {

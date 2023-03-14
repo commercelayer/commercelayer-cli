@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx } from '@oclif/core'
+import { Command, Flags, ux as cliux } from '@oclif/core'
 import { findResource, Resource } from '../../util/resources'
 import { deleteArgsFile, loadCommandData, readCommandArgs, ResourceOperation } from '../../commands'
 import { formatOutput } from '../../output'
@@ -72,7 +72,7 @@ export default class ResourcesArgs extends Command {
       if (commands.length > 0) {
 
         if (flags.pretty) {
-          CliUx.Table.table(commands.sort((a, b) => (a.resource + a.operation + a.alias).localeCompare(b.resource + b.operation + b.alias)), {
+          cliux.Table.table(commands.sort((a, b) => (a.resource + a.operation + a.alias).localeCompare(b.resource + b.operation + b.alias)), {
             resource: { header: 'RESOURCE', get: row => clColor.cyanBright(row.resource) },
             operation: { header: 'OPERATION', get: row => clColor.cyanBright(row.operation) },
             alias: { header: 'ALIAS', get: row => clColor.yellowBright(row.alias || '') },

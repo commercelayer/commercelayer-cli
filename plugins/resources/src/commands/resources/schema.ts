@@ -7,15 +7,12 @@ export default class ResourcesSchema extends Command {
 
   static description = 'show the current CommerceLayer OpenAPI schema version currently used by the plugin'
 
-  static aliases = ['res:schema', 'rs', 'schema']
+  static aliases = ['schema', 'res:schema', 'rs']
 
   static examples = [
     'commercelayer <%= command.id %>',
   ]
 
-  static flags = {}
-
-  static args = []
 
 
   public async run(): Promise<void> {

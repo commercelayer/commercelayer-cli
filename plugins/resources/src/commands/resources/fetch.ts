@@ -1,11 +1,11 @@
-import Command from '../../base'
+import { BaseCommand, Args } from '../../base'
 import RetrieveCommand from './retrieve'
 import ListCommand from './list'
 import RelationshipCommand from './relationship'
 import GetCommand from './get'
 
 
-export default class ResourcesFetch extends Command {
+export default class ResourcesFetch extends BaseCommand {
 
   static description = 'retrieve a resource or list a set of resources'
 
@@ -26,17 +26,17 @@ export default class ResourcesFetch extends Command {
     ...ListCommand.flags,
   }
 
-  static args = [
-    { name: 'path', description: 'path (or URL) of the resource(s) to fetch', required: true },
-    { name: 'id', description: 'resource id', required: false },
-  ]
+  static args = {
+    path: Args.string({ name: 'path', description: 'path (or URL) of the resource(s) to fetch', required: true }),
+    id: Args.string({ name: 'id', description: 'resource id', required: false }),
+  }
 
 
   async run(): Promise<any> {
 
     const { args } = await this.parse(ResourcesFetch)
 
-    const path = this.fixPath(args.path as string, args)
+    const path = this.fixPath(args.path, args)
     const id = args.id
 
     // If no relationship is defined then run retrieve/list command

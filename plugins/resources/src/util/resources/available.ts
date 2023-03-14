@@ -8,6 +8,8 @@ const RESOURCES = [
 	{ name: 'attachment', api: 'attachments', model: 'Attachment' },
 	{ name: 'authorization', api: 'authorizations', model: 'Authorization' },
 	{ name: 'avalara_account', api: 'avalara_accounts', model: 'AvalaraAccount' },
+	{ name: 'axerve_gateway', api: 'axerve_gateways', model: 'AxerveGateway' },
+	{ name: 'axerve_payment', api: 'axerve_payments', model: 'AxervePayment' },
 	{ name: 'billing_info_validation_rule', api: 'billing_info_validation_rules', model: 'BillingInfoValidationRule' },
 	{ name: 'bing_geocoder', api: 'bing_geocoders', model: 'BingGeocoder' },
 	{ name: 'braintree_gateway', api: 'braintree_gateways', model: 'BraintreeGateway' },

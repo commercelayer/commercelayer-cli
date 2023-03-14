@@ -1,15 +1,14 @@
-import { Command, Flags, Config, CliUx } from '@oclif/core'
+import { Command, Flags, Args, Config, ux as cliux } from '@oclif/core'
 import { findResource, Resource } from './util/resources'
 import { filterAvailable } from './commands/resources/filters'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { capitalize } from 'lodash'
-import { existsSync, mkdirSync } from 'fs'
-import { dirname } from 'path'
+import { existsSync } from 'fs'
 import { fixType, KeyValRel, KeyValArray, KeyValObj, KeyValString, KeyValSort, KeyVal, ResAttributes } from './common'
 import { CommerceLayerStatic, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, RequestData } from './lang'
-import { clToken, clUpdate, clColor } from '@commercelayer/cli-core'
+import { clToken, clUpdate, clColor, clUtil } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, CommandParams, loadCommandData, ResourceOperation, saveCommandData } from './commands'
 import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 
@@ -18,11 +17,11 @@ import { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 const pkg = require('../package.json')
 
 
-export const FLAG_SAVE_COMMAND = 'save-args'
+export const FLAG_SAVE_PARAMS = 'save-args'
 export const FLAG_LOAD_PARAMS = 'load-args'
 
 
-export default abstract class extends Command {
+export abstract class BaseCommand extends Command {
 
   static flags = {
     organization: Flags.string({
@@ -30,6 +29,7 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
+      hidden: true,
     }),
     domain: Flags.string({
       char: 'd',
@@ -51,18 +51,16 @@ export default abstract class extends Command {
     fields: Flags.string({
       char: 'f',
       multiple: true,
-      description: 'comma separeted list of fields in the format [resource]=field1,field2...',
+      description: 'comma separeted list of fields in the format [resourceType/]field1,field2...',
     }),
     json: Flags.boolean({
       char: 'j',
       description: 'convert output in standard JSON format',
-      // hidden: true,
     }),
     unformatted: Flags.boolean({
       char: 'u',
       description: 'print unformatted JSON output',
       dependsOn: ['json'],
-      // hidden: true,
     }),
     raw: Flags.boolean({
       char: 'R',
@@ -100,11 +98,9 @@ export default abstract class extends Command {
     }),
     'save-args': Flags.string({
       description: 'save command data to file for future use',
-      // exclusive: [FLAG_LOAD_PARAMS],
     }),
     'load-args': Flags.string({
       description: 'load previously saved command arguments',
-      // exclusive: [FLAG_SAVE_COMMAND],
     }),
     headers: Flags.boolean({
       char: 'H',
@@ -113,7 +109,7 @@ export default abstract class extends Command {
       exclusive: ['headers-only'],
     }),
     'headers-only': Flags.boolean({
-      char: 'O',
+      char: 'Y',
       description: 'show only response headers',
       dependsOn: ['raw'],
       exclusive: ['headers', 'fields', 'include'],
@@ -121,22 +117,17 @@ export default abstract class extends Command {
   }
 
 
-  static args = [
-    { name: 'resource', description: 'the resource type', required: true },
-  ]
-
-
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent')) clUpdate.checkUpdate(pkg)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
 
   // CATCH (override)
   async catch(error: any): Promise<any> {
-    if (error.message?.match(/Missing 1 required arg:\nresource/))
+    if (error.message?.match(/Missing \d required args?:\nresource/))
       this.error(`Missing argument ${clColor.style.error('resource')}`,
         { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
       )
@@ -573,16 +564,7 @@ export default abstract class extends Command {
       let filePath = flags.save || flags['save-path']
       if (!filePath) this.warn('Undefined output save path')
 
-      // Special directory (home / desktop)
-      const root = filePath.toLowerCase().split('/')[0]
-      if (['desktop', 'home'].includes(root)) {
-        let filePrefix = this.config.home
-        if (root === 'desktop') filePrefix += '/Desktop'
-        filePath = filePath.replace(root, filePrefix)
-      }
-      const fileDir = dirname(filePath)
-      if (flags['save-path'] && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
-
+      filePath = clUtil.specialFolder(filePath, flags['save-path'] as boolean)
 
       const fileExport = flags.csv ? exportCsv : exportOutput
       fileExport(output, flags, filePath)
@@ -656,7 +638,7 @@ export default abstract class extends Command {
 
   protected saveParams = (alias: string, resource: ResourceType | ResourceId, operation: ResourceOperation, params: QueryParams): void => {
 
-    const toBeRemoved = ['--save-args', '--load-args', '--accessToken', '-o', '--organization', '-d', '--domain']
+    const toBeRemoved = [`--${FLAG_SAVE_PARAMS}`, `--${FLAG_LOAD_PARAMS}`, '--accessToken', '-o', '--organization', '-d', '--domain']
 
     const argvList = [...this.argv].filter(a => !toBeRemoved.some(r => a.startsWith(`${r}=`)))
 
@@ -700,5 +682,14 @@ export default abstract class extends Command {
 }
 
 
+export default abstract class extends BaseCommand {
 
-export { Flags, CliUx }
+  static args = {
+    resource: Args.string({ name: 'resource', description: 'the resource type', required: true }),
+  }
+
+}
+
+
+
+export { Flags, Args, cliux }
