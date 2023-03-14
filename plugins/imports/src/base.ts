@@ -1,7 +1,7 @@
-import { Command, Flags, CliUx } from '@oclif/core'
+import { Command, Flags, Args, ux as cliux } from '@oclif/core'
 import { clOutput, clUpdate, clColor, clToken } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import { CommandError, OutputFlags } from '@oclif/core/lib/interfaces'
+import { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -11,7 +11,7 @@ export default abstract class extends Command {
 
   static enableJsonFlag = false
 
-  static flags = {
+  static baseFlags = {
     organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
@@ -34,15 +34,11 @@ export default abstract class extends Command {
   }
 
 
-  static args = [
-    { name: 'fake-arg', description: 'fake argument', required: false, hidden: true },
-  ]
-
 
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent')&& !this.argv.includes('--silent')) clUpdate.checkUpdate(pkg)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
     return super.init()
   }
 
@@ -53,7 +49,7 @@ export default abstract class extends Command {
   }
 
 
-  protected handleError(error: CommandError, flags?: OutputFlags<any>, id?: string): void {
+  protected handleError(error: CommandError, flags?: any, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -67,18 +63,6 @@ export default abstract class extends Command {
     } else throw error
   }
 
-
-  protected specialFolder(filePath: string): string {
-    // Special directory (home / desktop)
-    const root = filePath.toLowerCase().split('/')[0]
-    if (['desktop', 'home'].includes(root)) {
-      let filePrefix = this.config.home
-      if (root === 'desktop') filePrefix += '/Desktop'
-      filePath = filePath.replace(root, filePrefix)
-    }
-
-    return filePath
-  }
 
 
   protected importStatus(status?: string): string {
@@ -107,7 +91,7 @@ export default abstract class extends Command {
   }
 
 
-  protected commercelayerInit(flags: OutputFlags<any>): CommerceLayerClient {
+  protected commercelayerInit(flags: any): CommerceLayerClient {
 
     const organization = flags.organization
     const domain = flags.domain
@@ -124,4 +108,4 @@ export default abstract class extends Command {
 }
 
 
-export { Flags, CliUx }
+export { Flags, Args, cliux }

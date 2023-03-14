@@ -1,11 +1,10 @@
-import Command, { Flags } from '../../base'
+import Command, { Flags, Args } from '../../base'
 import Table from 'cli-table3'
-import { clOutput, clColor } from '@commercelayer/cli-core'
+import { clOutput, clColor, clUtil } from '@commercelayer/cli-core'
 import axios from 'axios'
 import { gunzipSync } from 'node:zlib'
 import { dirname } from 'node:path'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
-import { OutputFlags } from '@oclif/core/lib/interfaces'
 
 
 
@@ -23,7 +22,6 @@ export default class ImportsDetails extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
     inputs: Flags.boolean({
       char: 'i',
       description: 'show input items associated with the import',
@@ -39,9 +37,9 @@ export default class ImportsDetails extends Command {
     })
   }
 
-  static args = [
-    { name: 'id', description: 'unique id of the import', required: true, hidden: false },
-  ]
+  static args = {
+    id: Args.string({ name: 'id', description: 'unique id of the import', required: true, hidden: false }),
+  }
 
 
 
@@ -73,7 +71,7 @@ export default class ImportsDetails extends Command {
         .map(([k, v]) => {
           return [
             { content: clColor.table.key.blueBright(k), hAlign: 'right', vAlign: 'center' },
-            formatValue(k, v),
+            this.formatValue(k, v),
           ]
         }))
 
@@ -105,12 +103,12 @@ export default class ImportsDetails extends Command {
   }
 
 
-  private saveInputs(flags: OutputFlags<any>, inputs: object[]): void {
+  private saveInputs(flags: any, inputs: object[]): void {
 
     let filePath = flags['save-inputs']
     if (!filePath) this.warn('Undefined output save path')
 
-    filePath = this.specialFolder(filePath)
+    filePath = clUtil.specialFolder(filePath)
     const fileDir = dirname(filePath)
     if (flags['save-path'] && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
 
@@ -183,53 +181,37 @@ export default class ImportsDetails extends Command {
 
   }
 
-}
 
+  private formatValue(field: string, value: string): any {
 
+    if (field.endsWith('_date') || field.endsWith('_at')) return clOutput.localeDate(value)
 
-const statusColor = (status: string): string => {
+    switch (field) {
 
-  if (!status) return ''
+      case 'id': return clColor.api.id(value)
+      case 'resource_type': return clColor.magentaBright(value)
+      case 'topic': return clColor.magenta(value)
+      case 'status': return this.importStatus(value)
+      case 'warnings_count': return clColor.msg.warning(value)
+      case 'errors_count': return clColor.msg.error(value)
+      case 'destroyed_count': return clColor.cyanBright(value)
+      case 'processed_count': return clColor.msg.success(value)
+      case 'metadata': {
+        const t = new Table({ style: { compact: false } })
+        t.push(...Object.entries(value).map(([k, v]) => {
+          return [
+            { content: clColor.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
+            { content: clColor.cli.value((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
+          ]
+        }))
+        return t.toString()
+      }
 
-  switch (status.trim()) {
-    case 'interrupted': return clColor.msg.error(status)
-    case 'completed': return clColor.msg.success(status)
-    case 'pending':
-    case 'in_progress':
-    default: return status
-  }
+      default: {
+        if ((typeof value === 'object') && (value !== null)) return JSON.stringify(value, undefined, 4)
+        return String(value)
+      }
 
-}
-
-
-const formatValue = (field: string, value: string): any => {
-
-  if (field.endsWith('_date') || field.endsWith('_at')) return clOutput.localeDate(value)
-
-  switch (field) {
-
-    case 'id': return clColor.api.id(value)
-    case 'resource_type': return clColor.magentaBright(value)
-    case 'topic': return clColor.magenta(value)
-    case 'status': return statusColor(value)
-    case 'warnings_count': return clColor.msg.warning(value)
-    case 'errors_count': return clColor.msg.error(value)
-    case 'destroyed_count': return clColor.cyanBright(value)
-    case 'processed_count': return clColor.msg.success(value)
-    case 'metadata': {
-      const t = new Table({ style: { compact: false } })
-      t.push(...Object.entries(value).map(([k, v]) => {
-        return [
-          { content: clColor.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
-          { content: clColor.cli.value((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
-        ]
-      }))
-      return t.toString()
-    }
-
-    default: {
-      if ((typeof value === 'object') && (value !== null)) return JSON.stringify(value, undefined, 4)
-      return String(value)
     }
 
   }

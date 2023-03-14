@@ -2,7 +2,6 @@
 import { createReadStream, readFileSync, existsSync } from 'node:fs'
 import * as csv from '@fast-csv/parse'
 import { clColor } from '@commercelayer/cli-core'
-import { OutputFlags } from '@oclif/core/lib/interfaces'
 
 
 
@@ -38,7 +37,7 @@ const generateInputJSON = async (filePath: string): Promise<any[]> => {
 }
 
 
-const generateInputs = async (filePath: string, flags?: OutputFlags<any>): Promise<any[]> => {
+const generateInputs = async (filePath: string, flags?: any): Promise<any[]> => {
 
   if (!existsSync(filePath)) return Promise.reject(new Error('Unable to find file ' + clColor.style.path(filePath)))
 

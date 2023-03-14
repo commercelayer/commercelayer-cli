@@ -1,4 +1,4 @@
-import Command, { Flags, CliUx } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
 import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
@@ -19,7 +19,6 @@ export default class ImportsList extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		all: Flags.boolean({
 			char: 'A',
 			description: `show all imports instead of first ${clConfig.api.page_max_size} only`,
@@ -78,7 +77,7 @@ export default class ImportsList extends Command {
 
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
-			CliUx.ux.action.start('Fetching imports')
+			cliux.action.start('Fetching imports')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -112,7 +111,7 @@ export default class ImportsList extends Command {
 
 			}
 
-			CliUx.ux.action.stop()
+			cliux.action.stop()
 
 			this.log()
 

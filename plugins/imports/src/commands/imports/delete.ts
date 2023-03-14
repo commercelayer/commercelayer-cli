@@ -15,13 +15,10 @@ export default class ImportsDelete extends Command {
 		'$ cl imp:delete <import-id>>',
 	]
 
-	static flags = {
-		...Command.flags,
-	}
 
-	static args = [
+	static args = {
 		...ImportsDetails.args,
-	]
+  }
 
 
 	async run(): Promise<any> {

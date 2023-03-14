@@ -1,4 +1,4 @@
-import Command, { CliUx } from '../../base'
+import Command, { Args, cliux } from '../../base'
 import Table, { HorizontalAlignment } from 'cli-table3'
 import { QueryParamsList } from '@commercelayer/sdk'
 import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
@@ -14,15 +14,12 @@ export default class ImportsGroup extends Command {
 	static examples = [
 		'$ commercelayer imports:group <group-id>',
 		'$ cl imp:group <group-id>',
-	]
+  ]
 
-	static flags = {
-		...Command.flags,
-	}
 
-	static args = [
-		{ name: 'group_id', description: 'unique id of the group import', required: true, hidden: false },
-	]
+	static args = {
+		group_id: Args.string({ name: 'group_id', description: 'unique id of the group import', required: true, hidden: false }),
+  }
 
 
 	async run(): Promise<any> {
@@ -41,7 +38,7 @@ export default class ImportsGroup extends Command {
 			let currentPage = 0
 			let pageCount = 1
 
-			CliUx.ux.action.start('Fetching imports')
+			cliux.action.start('Fetching imports')
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -63,7 +60,7 @@ export default class ImportsGroup extends Command {
 
 			}
 
-			CliUx.ux.action.stop()
+			cliux.action.stop()
 
 			this.log()
 

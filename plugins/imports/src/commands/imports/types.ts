@@ -1,5 +1,6 @@
-import { Command, CliUx as cliux, Flags } from '@oclif/core'
+import { Command, Flags } from '@oclif/core'
 import { clColor, clConfig } from '@commercelayer/cli-core'
+import open from 'open'
 
 
 
@@ -33,7 +34,7 @@ export default class ImportsTypes extends Command {
     this.log((clConfig.imports.types as string[]).sort().join(' | '))
     this.log()
 
-    if (flags.open) await cliux.ux.open(clConfig.doc.imports_resources)
+    if (flags.open) await open(clConfig.doc.imports_resources)
 
   }
 

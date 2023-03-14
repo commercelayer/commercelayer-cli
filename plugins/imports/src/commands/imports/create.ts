@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags, CliUx } from '../../base'
+import Command, { Flags, cliux } from '../../base'
 import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
 import { generateInputs } from '../../input'
 import { SingleBar } from 'cli-progress'
@@ -46,7 +46,6 @@ export default class ImportsCreate extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
     type: Flags.string({
       char: 't',
       description: 'the type of resource being imported',
@@ -73,7 +72,7 @@ export default class ImportsCreate extends Command {
       description: 'accept input file in CSV format',
       dependsOn: ['inputs'],
     }),
-    delimiter: Flags.enum({
+    delimiter: Flags.string({
       char: 'D',
       description: 'the delimiter character used in the CSV input file (one of \',\', \';\', \'|\', TAB)',
       options: [',', ';', '|', 'TAB'],
@@ -115,8 +114,10 @@ export default class ImportsCreate extends Command {
     try {
 
       const type = flags.type
+      if (!clConfig.imports.types.includes(type)) this.error(`Unsupported resource type: ${clColor.style.error(type)}`)
+
       const parentId = flags.parent
-      const inputFile = this.specialFolder(flags.inputs)
+      const inputFile = clUtil.specialFolder(flags.inputs)
 
       const monitor = !flags.blind
 
@@ -171,7 +172,7 @@ export default class ImportsCreate extends Command {
 
         if (multiChunk || multiBatch) {
           this.log()
-          await CliUx.ux.anykey()
+          await cliux.anykey()
         }
       }
 
