@@ -19,7 +19,6 @@ export default class ConfigDefault extends Command {
     }),
   }
 
-  static args = []
 
   async run(): Promise<any> {
 

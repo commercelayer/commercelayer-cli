@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { Command, Flags, ux as cliux } from '@oclif/core'
 import { configParam, ConfigParams, filterApplications } from './config'
 import { AppInfo } from '@commercelayer/cli-core'
 import { promptApplication } from './common'
@@ -6,7 +6,7 @@ import { promptApplication } from './common'
 
 export default abstract class extends Command {
 
-	static flags = {
+	static baseFlags = {
 		organization: Flags.string({
 			char: 'o',
 			description: 'organization slug',
@@ -47,14 +47,6 @@ export default abstract class extends Command {
 			exclusive: ['alias', 'id', 'mode', 'kind'],
 		}),
 	}
-
-
-	// CATCH (override)
-	/*
-	async catch(error: any) {
-		this.error(error.message)
-	}
-	*/
 
 
 	protected appFilterEnabled(flags: any): boolean {

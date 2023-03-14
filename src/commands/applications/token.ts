@@ -24,7 +24,6 @@ export default class ApplicationsToken extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		save: Flags.boolean({
 			char: 's',
 			description: 'save access token',

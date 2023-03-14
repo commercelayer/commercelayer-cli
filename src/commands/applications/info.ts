@@ -12,7 +12,6 @@ export default class ApplicationsInfo extends Command {
   static aliases = ['app:info']
 
   static flags = {
-    ...Command.flags,
     json: Flags.boolean({
       char: 'j',
       description: 'show info in JSON format',

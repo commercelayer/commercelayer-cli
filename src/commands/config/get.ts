@@ -1,4 +1,4 @@
-import { Command } from '@oclif/core'
+import { Command, Args } from '@oclif/core'
 import { ConfigParams, configParam } from '../../config'
 import { inspect } from 'util'
 import { clColor } from '@commercelayer/cli-core'
@@ -10,13 +10,11 @@ export default class ConfigGet extends Command {
 
   static hidden: true
 
-  static flags = {
-    // help: flags.help({char: 'h'}),
+
+  static args = {
+    param: Args.string({ name: 'param', required: true, description: 'configuration parameter name' }),
   }
 
-  static args = [
-    { name: 'param', required: true, description: 'configuration parameter name' },
-  ]
 
   async run(): Promise<any> {
 
@@ -25,7 +23,7 @@ export default class ConfigGet extends Command {
     const param = args.param
 
     if (Object.keys(ConfigParams).includes(param)) {
-      this.log(`\n${clColor.table.key(param)} = ${inspect(configParam(param), false, null, true)}\n`)
+      this.log(`\n${clColor.table.key(param)} = ${inspect(configParam(ConfigParams[param as keyof typeof ConfigParams]), false, null, true)}\n`)
     } else this.error(`Invalid configuration param: ${clColor.msg.error(param)}`)
 
   }

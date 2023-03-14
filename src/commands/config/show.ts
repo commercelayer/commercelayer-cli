@@ -10,11 +10,6 @@ export default class ConfigShow extends Command {
 
   static hidden: true
 
-  static flags = {
-    // help: flags.help({char: 'h'}),
-  }
-
-  static args = []
 
   async run(): Promise<any> {
 

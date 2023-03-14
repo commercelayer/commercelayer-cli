@@ -11,10 +11,6 @@ export default class ApplicationsSwitch extends Command {
 
   static aliases = ['app:switch']
 
-  static flags = {
-    ...Command.flags,
-  }
-
 
   async run(): Promise<any> {
 

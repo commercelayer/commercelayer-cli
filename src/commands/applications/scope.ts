@@ -1,5 +1,5 @@
 import { AppInfo, clColor } from '@commercelayer/cli-core'
-import { Command, Flags } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import { currentApplication, filterApplications, readConfigFile } from '../../config'
 import ApplicationsLogin, { checkScope } from './login'
 import { promptApplication } from '../../common'
@@ -26,9 +26,9 @@ export default class ApplicationsScope extends Command {
     }),
   }
 
-  static args = [
-    { name: 'scope', required: true, description: 'the application scope' },
-  ]
+  static args = {
+    scope: Args.string({ name: 'scope', required: true, description: 'the application scope' }),
+  }
 
 
   public async run(): Promise<AppInfo> {

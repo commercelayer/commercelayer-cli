@@ -1,5 +1,5 @@
 import Command, { Flags, cliux } from '../../base'
-import {configParam, ConfigParams, filterApplications } from '../../config'
+import { configParam, ConfigParams, filterApplications } from '../../config'
 import { printScope } from '../../common'
 import { AppInfo, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
 
@@ -16,7 +16,6 @@ export default class ApplicationsIndex extends Command {
 	]
 
 	static flags = {
-		...Command.flags,
 		extra: Flags.boolean({
 			char: 'X',
 			description: 'show applications extra info',
@@ -28,7 +27,6 @@ export default class ApplicationsIndex extends Command {
 		}),
 	}
 
-	static args = []
 
 	async run(): Promise<any> {
 
@@ -59,7 +57,7 @@ export default class ApplicationsIndex extends Command {
 				organization: { header: 'ORGANIZATION', get: row => currentColor(row, current)(row.organization) },
 				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
 				name: { header: 'APPLICATION', get: row => currentColor(row, current)(row.name) },
-				id: { header: 'ID', get: row => currentColor(row, current)(row.id)},
+				id: { header: 'ID', get: row => currentColor(row, current)(row.id) },
 				kind: { header: 'KIND', get: row => currentColor(row, current)(row.kind) },
 				scope: { header: 'SCOPE', minWidth: 10, get: row => currentColor(row, current)(printScope(row.scope as string)) },
 				customer: { header: 'PWD', get: row => (row.email && row.password) ? clColor.cyanBright(clOutput.center('\u221A', 'PWD'.length)) : '' },

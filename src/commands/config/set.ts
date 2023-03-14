@@ -1,5 +1,5 @@
-import { Command, Flags } from '@oclif/core'
-import { paramExists, paramEditable, configParam } from '../../config'
+import { Command, Flags, Args } from '@oclif/core'
+import { paramExists, paramEditable, configParam, ConfigParams } from '../../config'
 import { inspect } from 'util'
 import { clColor } from '@commercelayer/cli-core'
 
@@ -20,10 +20,10 @@ export default class ConfigSet extends Command {
     }),
   }
 
-  static args = [
-    { name: 'param', required: true, description: 'configuration parameter name' },
-    { name: 'value', required: true, description: 'value to be saved in configuration file'  },
-  ]
+  static args = {
+    param: Args.string({ name: 'param', required: true, description: 'configuration parameter name' }),
+    value: Args.string({ name: 'value', required: true, description: 'value to be saved in configuration file'  }),
+  }
 
   async run(): Promise<any> {
 
@@ -33,10 +33,11 @@ export default class ConfigSet extends Command {
     const value = args.value
 
     if (paramExists(param)) {
-      if (paramEditable(param)) {
+      const paramKey = ConfigParams[param as keyof typeof ConfigParams]
+      if (paramEditable(paramKey)) {
         if (!flags.force) this.error(`To avoid unintentional changes to CLI configuration, please use the ${clColor.cli.flag('--force (-F)')} flag to force setting save`)
-        configParam(param, value)
-        this.log(`\n${clColor.table.key.blueBright(param)} = ${inspect(configParam(param), false, null, true)}\n`)
+        configParam(paramKey, value)
+        this.log(`\n${clColor.table.key.blueBright(param)} = ${inspect(configParam(paramKey), false, null, true)}\n`)
       } else this.error(`Readonly configuration param: ${clColor.msg.error(param)}`)
     } else this.error(`Invalid configuration param: ${clColor.msg.error(param)}`)
 

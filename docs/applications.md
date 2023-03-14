@@ -4,13 +4,10 @@ Manage login to CLI applications.
 
 * [`commercelayer applications`](#commercelayer-applications)
 * [`commercelayer applications:add`](#commercelayer-applicationsadd)
-* [`commercelayer applications:available`](#commercelayer-applicationsavailable)
 * [`commercelayer applications:current`](#commercelayer-applicationscurrent)
 * [`commercelayer applications:info`](#commercelayer-applicationsinfo)
-* [`commercelayer applications:list`](#commercelayer-applicationslist)
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:logout`](#commercelayer-applicationslogout)
-* [`commercelayer applications:remove`](#commercelayer-applicationsremove)
 * [`commercelayer applications:scope SCOPE`](#commercelayer-applicationsscope-scope)
 * [`commercelayer applications:switch`](#commercelayer-applicationsswitch)
 
@@ -81,42 +78,6 @@ EXAMPLES
 
 _See code: [src/commands/applications/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/add.ts)_
 
-### `commercelayer applications:available`
-
-Show a list of all (logged in) available CLI applications.
-
-```sh-session
-USAGE
-  $ commercelayer applications:available [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
-    --id <value>] [-S]
-
-FLAGS
-  -S, --sort                  sort applications by Organization and Application name
-  -a, --alias=<value>         the alias associated to the application
-  -k, --kind=<option>         application kind
-                              <options: integration|sales_channel>
-  -m, --mode=<option>         execution mode
-                              <options: test|live>
-  -o, --organization=<value>  organization slug
-  --id=<value>                application id
-  --live                      live execution mode
-
-DESCRIPTION
-  show a list of all (logged in) available CLI applications
-
-ALIASES
-  $ commercelayer app:list
-  $ commercelayer applications:list
-  $ commercelayer app:available
-  $ commercelayer applications:available
-  $ commercelayer apps
-
-EXAMPLES
-  $ commercelayer applications
-
-  $ cl applications
-```
-
 ### `commercelayer applications:current`
 
 Show the current application.
@@ -170,42 +131,6 @@ ALIASES
 ```
 
 _See code: [src/commands/applications/info.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/info.ts)_
-
-### `commercelayer applications:list`
-
-Show a list of all (logged in) available CLI applications.
-
-```sh-session
-USAGE
-  $ commercelayer applications:list [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
-    --id <value>] [-S]
-
-FLAGS
-  -S, --sort                  sort applications by Organization and Application name
-  -a, --alias=<value>         the alias associated to the application
-  -k, --kind=<option>         application kind
-                              <options: integration|sales_channel>
-  -m, --mode=<option>         execution mode
-                              <options: test|live>
-  -o, --organization=<value>  organization slug
-  --id=<value>                application id
-  --live                      live execution mode
-
-DESCRIPTION
-  show a list of all (logged in) available CLI applications
-
-ALIASES
-  $ commercelayer app:list
-  $ commercelayer applications:list
-  $ commercelayer app:available
-  $ commercelayer applications:available
-  $ commercelayer apps
-
-EXAMPLES
-  $ commercelayer applications
-
-  $ cl applications
-```
 
 ### `commercelayer applications:login`
 
@@ -267,42 +192,13 @@ ALIASES
 
 _See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/logout.ts)_
 
-### `commercelayer applications:remove`
-
-Remove an application from CLI local configuration.
-
-```sh-session
-USAGE
-  $ commercelayer applications:remove [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
-    --id <value>] [-r]
-
-FLAGS
-  -a, --alias=<value>         the alias associated to the application
-  -k, --kind=<option>         application kind
-                              <options: integration|sales_channel>
-  -m, --mode=<option>         execution mode
-                              <options: test|live>
-  -o, --organization=<value>  organization slug
-  -r, --revoke                revoke current access token
-  --id=<value>                application id
-  --live                      live execution mode
-
-DESCRIPTION
-  remove an application from CLI local configuration
-
-ALIASES
-  $ commercelayer app:logout
-  $ commercelayer app:remove
-  $ commercelayer applications:remove
-```
-
 ### `commercelayer applications:scope SCOPE`
 
 Switch scope of current application.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:scope [SCOPE] [-a <value>]
+  $ commercelayer applications:scope SCOPE [-a <value>]
 
 ARGUMENTS
   SCOPE  the application scope

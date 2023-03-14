@@ -1,4 +1,4 @@
-import { Command, Flags, CliUx as cliux } from '@oclif/core'
+import { Command, Flags, ux as cliux } from '@oclif/core'
 import { clColor, clUtil } from '@commercelayer/cli-core'
 import { Config } from '@oclif/core/lib/interfaces'
 
@@ -19,7 +19,6 @@ export default class PluginsAvailable extends Command {
     }),
   }
 
-  static args = []
 
 
   async run(): Promise<any> {

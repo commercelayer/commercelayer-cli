@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-/* eslint-disable node/no-unpublished-bin */
 
-const oclif = /* require('@oclif/core') */ require('../lib/patches/oclif/core/main')
+const PATCH = false
+
+const oclif = PATCH? require('../lib/patches/oclif/core/main') : require('@oclif/core')
 
 oclif.run()
 	.then(require('@oclif/core/flush')(60000))

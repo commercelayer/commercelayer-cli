@@ -1,4 +1,4 @@
-import { Hook, Parser, Flags, CliUx as cliux } from '@oclif/core'
+import { Hook, Parser, Flags, ux as cliux } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
 import { clApplication, AppKey, clToken, clColor } from '@commercelayer/cli-core'
 import { newAccessToken, isAccessTokenExpiring } from '../../commands/applications/token'
@@ -112,7 +112,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 		if (tokenFileExists(opts.config, app)) {
 			tokenData = readTokenFile(opts.config, app)
 			if (isAccessTokenExpiring(tokenData)) {
-				cliux.ux.action.start('Refreshing access token ...')
+				cliux.action.start('Refreshing access token ...')
 				refresh = true
 				// If not overridden by saved current application, load configuration data
 				if (!configData) configData = readConfigFile(this.config, app)
@@ -123,10 +123,10 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 		if (tokenData === null) {
 			const token = await newAccessToken(this.config, app, true).catch(() => {
-				if (refresh) cliux.ux.action.stop(clColor.msg.error('Error'))
+				if (refresh) cliux.action.stop(clColor.msg.error('Error'))
 			})
 			if (token) tokenData = token?.data
-			if (refresh) cliux.ux.action.stop()
+			if (refresh) cliux.action.stop()
 		}
 
 		if (!tokenData?.access_token) this.error('Unable to refresh application access token')

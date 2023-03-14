@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { Command, CliUx as cliux, Flags } from '@oclif/core'
+import { Command, ux as cliux, Flags } from '@oclif/core'
 import { exec } from 'child_process'
 
 
@@ -29,7 +29,7 @@ export default class CliUpdate extends Command {
     const version = flags.version ? `@${flags.version}` : ''
 
     this.log()
-    cliux.ux.action.start('Updating Commerce Layer CLI')
+    cliux.action.start('Updating Commerce Layer CLI')
 
 
     const cp = exec(`npm install --location=global @commercelayer/cli${version}`, async (error, _stdout, stderr) => {
@@ -40,11 +40,11 @@ export default class CliUpdate extends Command {
       if (stderr && !stderr.includes('Reshimming asdf nodejs') && !stderr.includes('WARN')) errorMessage = String(stderr)
 
       if (errorMessage) {
-        cliux.ux.action.stop('failed')
+        cliux.action.stop('failed')
         this.log(errorMessage)
         this.error('CLI update failed.')
       } else {
-        cliux.ux.action.stop()
+        cliux.action.stop()
         const verCmd = await this.config.findCommand('cli:version')?.load()
         await verCmd?.run()
       }

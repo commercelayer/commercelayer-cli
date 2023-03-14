@@ -1,40 +1,52 @@
-import { fileURLToPath, URL } from 'url'
-import { format, inspect } from 'util'
-import * as Interfaces from '@oclif/core/lib/interfaces'
-import { PatchedConfig } from './config'
-import { loadHelpClass, standardizeIDFromArgv } from '@oclif/core/lib/help'
-import { helpAddition, versionAddition } from '@oclif/core/lib/main'
-import { CLIError } from '@oclif/core/lib/errors'
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
+import { Performance, stdout } from "@oclif/core"
+import { CLIError } from "@oclif/core/lib/errors"
+import { loadHelpClass, normalizeArgv } from "@oclif/core/lib/help"
+import { LoadOptions } from "@oclif/core/lib/interfaces"
+import { helpAddition, versionAddition } from "@oclif/core/lib/main"
+import { fileURLToPath } from "url"
+import { format, inspect } from "util"
+import { PatchedConfig } from "./config"
+
 
 
 const log = (message = '', ...args: any[]): void => {
-  // tslint:disable-next-line strict-type-predicates
-  message = typeof message === 'string' ? message : inspect(message)
-  process.stdout.write(format(message, ...args) + '\n')
-}
+	message = typeof message === 'string' ? message : inspect(message)
+	stdout.write(format(message, ...args) + '\n')
+  }
 
 
-// eslint-disable-next-line default-param-last
-export async function run(argv = process.argv.slice(2), options?: Interfaces.LoadOptions): Promise<void> {
 
+export async function run(argv?: string[], options?: LoadOptions): Promise<unknown> {
+  const marker = Performance.mark('main.run')
+
+  const initMarker = Performance.mark('main.run#init')
+
+  const collectPerf = async (): Promise<void> => {
+    marker?.stop()
+    initMarker?.stop()
+    await Performance.collect()
+    Performance.debug()
+  }
+
+  argv = argv ?? process.argv.slice(2)
   // Handle the case when a file URL string or URL is passed in such as 'import.meta.url'; covert to file path.
   if (options && ((typeof options === 'string' && options.startsWith('file://')) || options instanceof URL)) {
     options = fileURLToPath(options)
   }
 
-  // return Main.run(argv, options)
-  const config = await PatchedConfig.load(options || (module.parent?.parent?.filename) || __dirname) as PatchedConfig
+  const config = await PatchedConfig.load(options ?? require.main?.filename ?? __dirname)
 
-  if (config.topicSeparator !== ':' && !argv[0]?.includes(':')) argv = standardizeIDFromArgv(argv, config)
-  let [id, ...argvSlice] = argv
+  let [id, ...argvSlice] = normalizeArgv(config, argv)
 
   // run init hook
-  const initHook = await config.runHook('init', { id, argv: argvSlice })
-  if (initHook.failures[0]) throw new CLIError(initHook.failures[0].error)
+  const initHook = await config.runHook('init', {id, argv: argvSlice})
+  if (initHook.failures[0]) throw new CLIError(initHook.failures[0].error + ' CATCHATOOOOO')
 
   // display version if applicable
   if (versionAddition(argv, config)) {
     log(config.userAgent)
+    await collectPerf()
     return
   }
 
@@ -43,6 +55,7 @@ export async function run(argv = process.argv.slice(2), options?: Interfaces.Loa
     const Help = await loadHelpClass(config)
     const help = new Help(config, config.pjson.helpOptions)
     await help.showHelp(argv)
+    await collectPerf()
     return
   }
 
@@ -57,6 +70,16 @@ export async function run(argv = process.argv.slice(2), options?: Interfaces.Loa
     }
   }
 
-  await config.runCommand(id, argvSlice, cmd)
+  initMarker?.stop()
 
+  // If the the default command is '.' (signifying that the CLI is a single command CLI) and '.' is provided
+  // as an argument, we need to add back the '.' to argv since it was stripped out earlier as part of the
+  // command id.
+  if (config.pjson.oclif.default === '.' && id === '.' && argv[0] === '.') argvSlice = ['.', ...argvSlice]
+
+  try {
+    return await config.runCommand(id, argvSlice, cmd)
+  } finally {
+    await collectPerf()
+  }
 }

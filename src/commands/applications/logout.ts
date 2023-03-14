@@ -10,7 +10,6 @@ export default class ApplicationsLogout extends Command {
   static aliases = ['app:logout', 'app:remove', 'applications:remove']
 
   static flags = {
-    ...Command.flags,
     revoke: Flags.boolean({
       char: 'r',
       description: 'revoke current access token',

@@ -1,21 +1,23 @@
-import { CLIError } from '@oclif/core/lib/errors'
-import { Command, LoadOptions, Config as IConfig } from '@oclif/core/lib/interfaces'
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { Command, Config, Performance } from '@oclif/core'
 import { Debug } from '@oclif/core/lib/config/util'
-import { Config } from '@oclif/core'
+import { CLIError } from '@oclif/core/lib/errors'
+import { LoadOptions } from '@oclif/core/lib/interfaces'
+
 import { fileURLToPath } from 'url'
 
 // eslint-disable-next-line new-cap
 const debug = Debug()
 
 
-function isConfig(o: any): o is IConfig {
+function isConfig(o: any): o is Config {
   return o && Boolean(o._base)
 }
 
 
 export class PatchedConfig extends Config {
 
-  static async load(opts: LoadOptions = (module.parent?.parent?.filename) || __dirname): Promise<IConfig> {
+  static async load(opts: LoadOptions = module.filename || __dirname): Promise<Config> {
     // Handle the case when a file URL string is passed in such as 'import.meta.url'; covert to file path.
     if (typeof opts === 'string' && opts.startsWith('file://')) {
       opts = fileURLToPath(opts)
@@ -23,37 +25,65 @@ export class PatchedConfig extends Config {
 
     if (typeof opts === 'string') opts = { root: opts }
     if (isConfig(opts)) return opts
+
     const config = new PatchedConfig(opts)
     await config.load()
     return config
   }
 
 
-  // eslint-disable-next-line default-param-last
-  async runCommand<T = unknown>(id: string, argv: string[] = [], cachedCommand?: Command.Plugin): Promise<T> {
+  public async runCommand<T = unknown>(id: string, argv: string[] = [], cachedCommand: Command.Loadable | null = null): Promise<T> {
+    const marker = Performance.mark(`config.runCommand#${id}`)
     debug('runCommand %s %o', id, argv)
-    const c = cachedCommand || this.findCommand(id)
+    let c = cachedCommand ?? this.findCommand(id)
     if (!c) {
       const matches = this.flexibleTaxonomy ? this.findMatches(id, argv) : []
       const hookResult = this.flexibleTaxonomy && matches.length > 0 ?
         await this.runHook('command_incomplete', { id, argv, matches }) :
         await this.runHook('command_not_found', { id, argv })
 
-      if (hookResult.successes[0]) {
-        const cmdResult = hookResult.successes[0].result
-        return cmdResult as T
-      }
-
+      if (hookResult.successes[0]) return hookResult.successes[0].result as T
+      if (hookResult.failures[0]) throw hookResult.failures[0].error
       throw new CLIError(`command ${id} not found`)
     }
 
+    if (this.isJitPluginCommandPatched(c)) {
+      const pluginName = c.pluginName!
+      const pluginVersion = this.pjson.oclif.jitPlugins![pluginName]
+      const jitResult = await this.runHook('jit_plugin_not_installed', {
+        id,
+        argv,
+        command: c,
+        pluginName,
+        pluginVersion,
+      })
+      if (jitResult.failures[0]) throw jitResult.failures[0].error
+      if (jitResult.successes[0]) {
+        await this.loadPluginsAndCommands()
+        c = this.findCommand(id) ?? c
+      } else {
+        // this means that no jit_plugin_not_installed hook exists, so we should run the default behavior
+        const result = await this.runHook('command_not_found', { id, argv })
+        if (result.successes[0]) return result.successes[0].result as T
+        if (result.failures[0]) throw result.failures[0].error
+        throw new CLIError(`command ${id} not found`)
+      }
+    }
+
     const command = await c.load()
-    const prerunHook = await this.runHook('prerun', { Command: command, argv })
-    if (prerunHook.failures[0]) throw new CLIError(prerunHook.failures[0].error)
+    await this.runHook('prerun', { Command: command, argv })
+
     const result = (await command.run(argv, this)) as T
-    const postrunHook = await this.runHook('postrun', { Command: command, result, argv })
-    if (postrunHook.failures[0]) throw new CLIError(postrunHook.failures[0].error)
+    await this.runHook('postrun', { Command: command, result, argv })
+
+    marker?.addDetails({ command: id, plugin: c.pluginName! })
+    marker?.stop()
     return result
+  }
+
+
+  private isJitPluginCommandPatched(c: Command.Loadable): boolean {
+    return Object.keys(this.pjson.oclif.jitPlugins ?? {}).includes(c.pluginName ?? '') && !this.plugins.find(p => p.name === c?.pluginName)
   }
 
 }

@@ -1,5 +1,5 @@
 import { clColor } from '@commercelayer/cli-core'
-import { Command, Flags } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import clicfg, { ConfigParams } from '../../config'
 
 
@@ -19,9 +19,10 @@ export default class ConfigDel extends Command {
     }),
   }
 
-  static args = [
-    { name: 'param', required: true, description: 'configuration parameter name' },
-  ]
+  static args = {
+    param: Args.string({ name: 'param', required: true, description: 'configuration parameter name' }),
+  }
+
 
   async run(): Promise<any> {
 

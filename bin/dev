@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+const PATCH = false
+
 const oclif = require('@oclif/core')
 
 const path = require('path')
@@ -8,15 +10,14 @@ const project = path.join(__dirname, '..', 'tsconfig.json')
 // In dev mode -> use ts-node and dev plugins
 process.env.NODE_ENV = 'development'
 
-// eslint-disable-next-line node/no-unpublished-require
-require('ts-node').register({project})
+require('ts-node').register({ project, files: ['../src/typings/*'] })
 
 // In dev mode, always show stack traces
 oclif.settings.debug = true
 
 // Start the CLI
-// oclif.run().then(oclif.flush).catch(oclif.Errors.handle)
-require('../lib/patches/oclif/core/main').run()
+const mainModule = PATCH? require('../src/patches/oclif/core/main') : oclif
+mainModule.run()
 	.then(oclif.flush(60000))
 	.catch(error => {
 		if (error.message !== 'HOOK_EXIT') return oclif.Errors.handle(error)
