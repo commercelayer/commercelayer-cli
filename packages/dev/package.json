@@ -18,7 +18,6 @@
   ],
   "homepage": "https://github.com/commercelayer/commercelayer-cli-dev",
   "keywords": [
-    "oclif",
     "ecommerce",
     "cli",
     "commercelayer"
@@ -54,15 +53,15 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/eslint-config-ts": "^0.1.4",
-    "@oclif/plugin-help": "^5.2.6",
-    "@oclif/test": "^2.3.8",
+    "@oclif/plugin-help": "^5.2.8",
+    "@oclif/test": "^2.3.10",
     "@types/chai": "^4.3.4",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.191",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^18.14.4",
+    "@types/node": "^18.15.3",
     "chai": "^4.3.7",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "globby": "^10.0.2",
     "lodash": "^4.17.21",
     "mocha": "^10.2.0",
@@ -71,7 +70,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@oclif/core": "^2.4.0",
+    "@oclif/core": "^2.6.3",
     "fs-extra": "^10.1.0",
     "github-slugger": "^1.5.0",
     "normalize-package-data": "^5.0.0",
