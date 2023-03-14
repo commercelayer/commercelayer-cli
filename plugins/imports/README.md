@@ -24,7 +24,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 ## Commands
 <!-- commands -->
 
-* [`commercelayer imports`](#commercelayer-imports)
+* [`commercelayer imports [ID]`](#commercelayer-imports-id)
 * [`commercelayer imports:create`](#commercelayer-importscreate)
 * [`commercelayer imports:delete ID`](#commercelayer-importsdelete-id)
 * [`commercelayer imports:details ID`](#commercelayer-importsdetails-id)
@@ -32,16 +32,19 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer imports:list`](#commercelayer-importslist)
 * [`commercelayer imports:types`](#commercelayer-importstypes)
 
-### `commercelayer imports`
+### `commercelayer imports [ID]`
 
-List all the created imports.
+List all the created imports or show details of a single import.
 
 ```sh-session
 USAGE
-  $ commercelayer imports [-A | -l <value>] [-t
+  $ commercelayer imports [ID] [-A | -l <value>] [-t
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|price_tiers|prices|shipping_
     categories|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_categories] [-g <value> | ] [-s
     in_progress|pending|completed|interrupted] [-e] [-w]
+
+ARGUMENTS
+  ID  unique id of the import to be retrieved
 
 FLAGS
   -A, --all              show all imports instead of first 25 only
@@ -57,7 +60,7 @@ FLAGS
   -w, --warnings         show only import with warnings
 
 DESCRIPTION
-  list all the created imports
+  list all the created imports or show details of a single import
 ```
 
 _See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/index.ts)_
@@ -68,15 +71,16 @@ Create a new import.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:create [FAKE-ARG] -t
+  $ commercelayer imports:create -t
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|price_tiers|prices|shipping_
     categories|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_categories [-p <value>] [-c] [-D ,|;|||TAB (-C
     -i <value>)] [-b | -q | ]
 
 FLAGS
   -C, --csv                                                        accept input file in CSV format
-  -D, --delimiter=(,|;|||TAB)                                      the delimiter character used in the CSV input file
+  -D, --delimiter=<option>                                         the delimiter character used in the CSV input file
                                                                    (one of ',', ';', '|', TAB)
+                                                                   <options: ,|;|||TAB>
   -b, --blind                                                      execute in blind mode without showing the progress
                                                                    monitor
   -c, --cleanup                                                    delete all other existing items
@@ -190,7 +194,7 @@ List all the created imports.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:list [FAKE-ARG] [-A | -l <value>] [-t
+  $ commercelayer imports:list [-A | -l <value>] [-t
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|price_tiers|prices|shipping_
     categories|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_categories] [-g <value> | ] [-s
     in_progress|pending|completed|interrupted] [-e] [-w]
