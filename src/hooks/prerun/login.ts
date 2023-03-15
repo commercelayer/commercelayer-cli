@@ -1,6 +1,6 @@
 import { Hook, ux as cliux } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { clApplication, AppKey, clToken, clColor } from '@commercelayer/cli-core'
+import { clApplication, AppKey, clToken, clColor, clCommand } from '@commercelayer/cli-core'
 import { newAccessToken, isAccessTokenExpiring } from '../../commands/applications/token'
 
 
@@ -27,28 +27,6 @@ const isCommandExcluded = (cmd: string): boolean => {
 }
 
 
-const findLongStringFlag = (args: string[], name: string): { value: string; index: number, single: boolean } | undefined => {
-
-	const flag = name.startsWith('--')? name : `--${name}`
-
-	let value: string
-	const index = args.findIndex(arg => arg.startsWith(flag))
-	let single = false
-
-	if (index > -1) {
-		const val = args[index]
-		if (val.includes('=')) {
-			const vals = val.split('=')
-			value = (vals.length === 2)? vals[1] : ''
-			single = true
-		} else value = args[index + 1]
-		return { value, index, single }
-	}
-	else return undefined
-
-}
-
-
 
 // eslint-disable-next-line complexity
 const hook: Hook<'prerun'> = async function (opts) {
@@ -59,7 +37,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 	// Check excluded topics and commands
 	if (isCommandExcluded(opts.Command.id)) return
 	
-	const keyFlag = findLongStringFlag(opts.argv, 'appkey')
+	const keyFlag = clCommand.findLongStringFlag(opts.argv, 'appkey')
 
 	const app: AppKey = {
 		key: keyFlag?.value || '',
@@ -109,7 +87,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 	if (_flags.scope && (scope.length > 0)) opts.argv.splice(ffIdx, 0, scope.map(s => `--scope=${s}`).join(' '))
 
 
-	const atFlag = findLongStringFlag(opts.argv, 'accessToken')
+	const atFlag = clCommand.findLongStringFlag(opts.argv, 'accessToken')
 
 	if (!atFlag && _flags.accessToken) { // accessToken not passed in comman line but required by the command
 
