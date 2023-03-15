@@ -1,4 +1,4 @@
-import { Hook, Parser, Flags, ux as cliux } from '@oclif/core'
+import { Hook, ux as cliux } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
 import { clApplication, AppKey, clToken, clColor } from '@commercelayer/cli-core'
 import { newAccessToken, isAccessTokenExpiring } from '../../commands/applications/token'
@@ -27,29 +27,42 @@ const isCommandExcluded = (cmd: string): boolean => {
 }
 
 
+const findLongStringFlag = (args: string[], name: string): { value: string; index: number, single: boolean } | undefined => {
+
+	const flag = name.startsWith('--')? name : `--${name}`
+
+	let value: string
+	const index = args.findIndex(arg => arg.startsWith(flag))
+	let single = false
+
+	if (index > -1) {
+		const val = args[index]
+		if (val.includes('=')) {
+			const vals = val.split('=')
+			value = (vals.length === 2)? vals[1] : ''
+			single = true
+		} else value = args[index + 1]
+		return { value, index, single }
+	}
+	else return undefined
+
+}
+
+
+
 // eslint-disable-next-line complexity
 const hook: Hook<'prerun'> = async function (opts) {
 
 	// Only for test purpouses to avoid an error of undefined object
 	if (!opts.Command || !opts.argv) return
 
-	// Continue and check authentication only for command that:
-	if (isCommandExcluded(opts.Command.id)) return                      // are not explicitly excluded from check
-	// if (!opts.Command.flags?.accessToken) return                        // require an accessToken as input flag
-	// if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
-
-	const flagConfig = {
-		// organization: flagUtil.string({ char: 'o', hidden: true }),
-		appkey: Flags.string({ hidden: true }),
-		// live: flagUtil.boolean({ hidden: true/* , dependsOn: ['organization'] */ }),
-		// domain: flagUtil.string({ char: 'd', hidden: true, dependsOn: ['organization'] }),
-		accessToken: Flags.string({ hidden: true }),
-	}
-
-	const { flags } = await Parser.parse(opts.argv, { strict: false, flags: flagConfig })
+	// Check excluded topics and commands
+	if (isCommandExcluded(opts.Command.id)) return
+	
+	const keyFlag = findLongStringFlag(opts.argv, 'appkey')
 
 	const app: AppKey = {
-		key: flags.appkey || '',
+		key: keyFlag?.value || '',
 		mode: 'test', // execMode(flags.live),
 	}
 
@@ -68,6 +81,9 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 	if (!configData) return
 
+	// If present remove application key flag option (needed only to load application info)
+	if (keyFlag) opts.argv.splice(keyFlag.index, keyFlag.single? 1 : 2)
+
 	// If config file exists check application type
 	const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 	if (typeCheck) {
@@ -76,40 +92,26 @@ const hook: Hook<'prerun'> = async function (opts) {
 	}
 
 
+	// Check command flags
 	const _flags = opts.Command.flags || {}
 
+	const ffIdx = Math.max(0, opts.argv.findIndex(arg => arg.startsWith('-')))
+
 	// Add to command line args application info read from config file
-	if (_flags.organization && configData.slug) opts.argv.unshift('--organization=' + configData.slug)
-	if (_flags.domain && configData.domain) opts.argv.unshift('--domain=' + configData.domain)
+	if (_flags.organization && configData.slug) opts.argv.splice(ffIdx, 0, '--organization=' + configData.slug)
+	if (_flags.domain && configData.domain) opts.argv.splice(ffIdx, 0, '--domain=' + configData.domain)
 
 	// If command requires clientId and clientSecret (or scope) add them to the command line arguments
-	if (_flags.clientId && configData.clientId) opts.argv.unshift('--clientId=' + configData.clientId)
-	if (_flags.clientSecret && configData.clientSecret) opts.argv.unshift('--clientSecret=' + configData.clientSecret)
+	if (_flags.clientId && configData.clientId) opts.argv.splice(ffIdx, 0, '--clientId=' + configData.clientId)
+	if (_flags.clientSecret && configData.clientSecret) opts.argv.splice(ffIdx, 0, '--clientSecret=' + configData.clientSecret)
 
 	const scope = clApplication.arrayScope(configData.scope)
-	if (_flags.scope && (scope.length > 0)) opts.argv.unshift(scope.map(s => `--scope=${s}`).join(' '))
-
-	// If present remove --live flag option
-	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
-
-	// If present remove application key flag option (needed only to load application info)
-	const akIdx = opts.argv.findIndex(arg => arg.startsWith('--appkey'))
-	if (akIdx > -1) {
-		const ak = opts.argv[akIdx]
-		let spliceLength = 0
-		if (ak ==='--appkey') spliceLength = 2
-		else
-		if (ak.includes('=')) spliceLength = 1
-		if (spliceLength) opts.argv.splice(akIdx, spliceLength)
-	}
+	if (_flags.scope && (scope.length > 0)) opts.argv.splice(ffIdx, 0, scope.map(s => `--scope=${s}`).join(' '))
 
 
-	// If accessToken flag has not ben passed in command line
-	if (!flags.accessToken) {
+	const atFlag = findLongStringFlag(opts.argv, 'accessToken')
 
-		// Check if command requires accessToken
-		if (!_flags.accessToken) return                        // require an accessToken as input flag
-		if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will receive the accessToken flag from command line
+	if (!atFlag && _flags.accessToken) { // accessToken not passed in comman line but required by the command
 
 		let tokenData = null
 		let refresh = false
