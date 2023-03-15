@@ -38,7 +38,7 @@ export default class CliUpdate extends Command {
       let errorMessage = ''
 
       if (error) errorMessage = error.message
-      if (stderr && !stderr.includes('Reshimming asdf nodejs') && !stderr.includes('WARN')) errorMessage = String(stderr)
+      if (stderr && !stderr.includes('Reshimming asdf nodejs') && !stderr.includes('WARN') && !stderr.includes('warn')) errorMessage = String(stderr)
 
       if (errorMessage) {
         cliux.action.stop('failed')
