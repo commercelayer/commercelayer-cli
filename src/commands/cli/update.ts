@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { Command, ux as cliux, Flags } from '@oclif/core'
+import { clColor } from '@commercelayer/cli-core'
+import { Command, Flags, ux as cliux } from '@oclif/core'
 import { exec } from 'child_process'
 
 
@@ -54,6 +55,7 @@ export default class CliUpdate extends Command {
 
     cp.on('exit', async (code, signal) => {
       if (code || signal) {
+        this.log(clColor.msg.error('Unexpected error occurred'))
         this.log()
         this.log(`Code: ${code}`)
         this.log(`Signal: ${signal}`)

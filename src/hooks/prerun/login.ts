@@ -5,7 +5,7 @@ import { newAccessToken, isAccessTokenExpiring } from '../../commands/applicatio
 
 
 
-const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete', 'token']
+const excludedTopics: string[] = ['applications', 'config', 'plugins', 'util', 'autocomplete', 'token', 'cli']
 const exludedCommands: string[] = [
 	'plugins',
 	'imports:types',
@@ -17,7 +17,6 @@ const exludedCommands: string[] = [
 	'webhooks:topics',
 	'autocomplete',
 	'applications',
-	'version',
 ]
 
 
@@ -38,7 +37,6 @@ const hook: Hook<'prerun'> = async function (opts) {
 	if (isCommandExcluded(opts.Command.id)) return                      // are not explicitly excluded from check
 	// if (!opts.Command.flags?.accessToken) return                        // require an accessToken as input flag
 	// if (opts.argv.some(arg => arg.startsWith('--accessToken'))) return  // will not receive the accessToken flag from command line
-
 
 	const flagConfig = {
 		// organization: flagUtil.string({ char: 'o', hidden: true }),
@@ -95,8 +93,15 @@ const hook: Hook<'prerun'> = async function (opts) {
 	// if (opts.argv.includes('--live')) opts.argv.splice(opts.argv.indexOf('--live'), 1)
 
 	// If present remove application key flag option (needed only to load application info)
-	if (opts.argv.includes('--appkey')) opts.argv.splice(opts.argv.indexOf('--appkey'), 2)
-
+	const akIdx = opts.argv.findIndex(arg => arg.startsWith('--appkey'))
+	if (akIdx > -1) {
+		const ak = opts.argv[akIdx]
+		let spliceLength = 0
+		if (ak ==='--appkey') spliceLength = 2
+		else
+		if (ak.includes('=')) spliceLength = 1
+		if (spliceLength) opts.argv.splice(akIdx, spliceLength)
+	}
 
 
 	// If accessToken flag has not ben passed in command line
