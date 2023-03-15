@@ -44,5 +44,27 @@ const fixValueType = (val: string): string | number | boolean | null | undefined
 }
 
 
-export { fixValueType }
+const findLongStringFlag = (args: string[], name: string): { value: string; index: number, single: boolean } | undefined => {
+
+	const flag = name.startsWith('--')? name : `--${name}`
+
+	let value: string
+	const index = args.findIndex(arg => arg.startsWith(flag))
+	let single = false
+
+	if (index > -1) {
+		const val = args[index]
+		if (val.includes('=')) {
+			const vals = val.split('=')
+			value = (vals.length === 2)? vals[1] : ''
+			single = true
+		} else value = args[index + 1]
+		return { value, index, single }
+	}
+	else return undefined
+
+}
+
+
+export { fixValueType, findLongStringFlag }
 
