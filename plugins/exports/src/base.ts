@@ -98,7 +98,7 @@ export default abstract class extends Command {
   }
 
 
-  protected async saveOutput(exp: Export, flags: any): Promise<void> {
+  protected async saveOutput(exp: Export, flags: any): Promise<string | undefined> {
 
     try {
 
@@ -109,9 +109,10 @@ export default abstract class extends Command {
 
       const fileExport = await this.getExportedFile(exp.attachment_url, flags)
 
-      writeFile(filePath, fileExport)
+      return writeFile(filePath, fileExport)
         .then(() => {
           if (existsSync(filePath)) this.log(`Exported file saved to ${clColor.style.path(filePath)}\n`)
+          return filePath
         })
         .catch(() => this.error(`Unable to save export file ${clColor.style.path(filePath)}`,
           { suggestions: ['Please check you have the right file system permissions'] }

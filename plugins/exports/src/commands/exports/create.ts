@@ -1,10 +1,9 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable max-depth */
-/* eslint-disable complexity */
+
 import Command, { Flags, cliux } from '../../base'
 import { clToken, clColor, clConfig, clOutput } from '@commercelayer/cli-core'
 import { CommerceLayerClient, ExportCreate } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
+import open from 'open'
 
 
 const securityInterval = 2
@@ -70,7 +69,7 @@ export default class ExportsCreate extends Command {
     }),
     format: Flags.string({
       char: 'F',
-      description: 'export file format [csv|json]',
+      description: 'export file format',
       options: ['csv', 'json'],
       default: 'json',
       exclusive: ['csv', 'json']
@@ -106,6 +105,10 @@ export default class ExportsCreate extends Command {
       char: 'P',
       description: 'prettify json output format',
       exclusive: ['csv']
+    }),
+    open: Flags.boolean({
+      char: 'O',
+      description: 'open automatically the file after a successful export'
     })
   }
 
@@ -192,25 +195,28 @@ export default class ExportsCreate extends Command {
 
       const delay = computeDelay()
 
-      if (!blindMode) cliux.action.start(`Exporting ${resDesc}`, exp.status?.replace(/_/g, ' ') || 'waiting')
+      if (!blindMode) cliux.action.start(`Exporting ${resDesc}`, this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting'))
       while (!['completed', 'interrupted'].includes(exp.status || '')) {
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
         exp = await cl.exports.retrieve(exp.id)
+        cliux.action.status = this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting')
         await cliux.wait(delay)
       }
-      if (!blindMode) cliux.action.stop((exp.status === 'completed' ? clColor.style.success : clColor.style.error)(exp.status))
+      if (!blindMode) cliux.action.stop(this.exportStatus(exp.status))
 
 
       if (exp.status === 'completed') this.log(`\nExported ${clColor.yellowBright(exp.records_count || 0)} ${resDesc}`)
       else this.error(`Export ${exp?.id} ended with errors`)
 
-      await this.saveOutput(exp, flags)
+      const outputFile = await this.saveOutput(exp, flags)
 
       // Notification
       const finishMessage = `Export of ${exp.records_count} ${resDesc} is finished!`
       if (blindMode) this.log(finishMessage)
-      else
-      if (notification) notify(finishMessage)
+      else {
+        if (notification) notify(finishMessage)
+        if (flags.open && outputFile) await open(outputFile)
+      }
 
     } catch (error: any) {
       if (cl.isApiError(error) && (error.status === 422)) {
