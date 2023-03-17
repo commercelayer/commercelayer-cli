@@ -119,7 +119,7 @@
     "@oclif/plugin-not-found": "^2.3.22",
     "@oclif/plugin-plugins": "^2.4.2",
     "configstore": "^5.0.1",
-    "inquirer": "^8.2.5",
+    "inquirer": "^9.1.4",
     "lodash": "^4.17.21",
     "tslib": "^2.5.0",
     "update-notifier-cjs": "^5.1.6"
