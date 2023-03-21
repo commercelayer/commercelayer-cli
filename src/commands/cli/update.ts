@@ -17,9 +17,9 @@ export default class CliUpdate extends Command {
   static flags = {
     version: Flags.string({
       char: 'v',
-      description: 'Update CLI to a specific version or tag',
+      description: 'update CLI to a specific version or tag',
       required: false,
-    }),
+    })
   }
 
 
@@ -28,7 +28,7 @@ export default class CliUpdate extends Command {
     const { flags } = await this.parse(CliUpdate)
 
     const version = flags.version ? `@${flags.version}` : ''
-
+   
     this.log()
     cliux.action.start('Updating Commerce Layer CLI')
 
@@ -38,7 +38,7 @@ export default class CliUpdate extends Command {
       let errorMessage = ''
 
       if (error) errorMessage = error.message
-      if (stderr && !stderr.includes('Reshimming asdf nodejs') && !stderr.includes('WARN') && !stderr.includes('warn')) errorMessage = String(stderr)
+      if (stderr && !['Reshimming asdf nodejs', 'WARN', 'warn', 'npm'].some(str => stderr.includes(str))) errorMessage = String(stderr)
 
       if (errorMessage) {
         cliux.action.stop('failed')
