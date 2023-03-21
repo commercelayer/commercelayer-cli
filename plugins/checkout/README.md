@@ -71,7 +71,7 @@ Create checkout URLs starting from an existing order.
 
 ```sh-session
 USAGE
-  $ commercelayer checkout:order [ID] (-a <value> ) [--open]
+  $ commercelayer checkout:order ID (-a <value> ) [--open]
 
 ARGUMENTS
   ID  unique id of the order
