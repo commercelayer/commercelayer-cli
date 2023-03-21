@@ -1,11 +1,11 @@
-const JOB_STATUSES: string[] = [
+const JOB_STATUSES: readonly string[] = [
 	'in_progress',
 	'pending',
 	'completed',
 	'interrupted',
-]
+] as const
 
-const IMPORT_RESOURCE_TYPES: string[] = [
+const IMPORT_RESOURCE_TYPES: readonly string[] = [
 	'addresses',
 	'bundles',
 	'coupons',
@@ -23,10 +23,10 @@ const IMPORT_RESOURCE_TYPES: string[] = [
 	'skus',
 	'stock_items',
 	'tax_categories',
-]
+] as const
 
 
-const EXPORT_RESOURCE_TYPES: string[] = [
+const EXPORT_RESOURCE_TYPES: readonly string[] = [
 	'addresses',
 	'bundles',
 	'coupons',
@@ -52,7 +52,19 @@ const EXPORT_RESOURCE_TYPES: string[] = [
 	'captures',
 	'voids',
 	'refunds'
-]
+] as const
+
+
+const CLEANUP_RESOURCE_TYPES: readonly string[] = [
+	'bundles',
+	'gift_cards',
+	'prices',
+	'promotions',
+	'sku_lists',
+	'sku_options',
+	'skus',
+	'stock_items'
+] as const
 
 
 type ApiConfig = {
@@ -91,6 +103,13 @@ type ExportsConfig = {
 	attachment_expiration: number;
 }
 
+type CleanupsConfig = {
+    max_size: number;
+	statuses: readonly string[];
+	types: readonly string[];
+	max_queue_length: number;
+}
+
 type WebhooksConfig = {
 	retry_number: number;
 }
@@ -107,6 +126,7 @@ type DocConfig = {
 	metrics_api_reference: string;
 	imports_resources: string;
 	exports_resources: string;
+	cleanups_resources: string;
 	webhooks_events:string;
 }
 
@@ -115,6 +135,7 @@ type Config = {
   application: ApplicationConfig;
   imports: ImportsConfig;
   exports: ExportsConfig;
+  cleanups: CleanupsConfig;
   webhooks: WebhooksConfig;
   cli: CliConfig;
   doc: DocConfig;
@@ -154,6 +175,12 @@ const config: Config = {
 		max_queue_length: 10,
 		attachment_expiration: 5
 	},
+	cleanups: {
+		max_size: 10000,
+		statuses: JOB_STATUSES,
+		types: CLEANUP_RESOURCE_TYPES,
+		max_queue_length: 10
+	},
 	webhooks: {
 		retry_number: 5,
 	},
@@ -168,6 +195,7 @@ const config: Config = {
 		metrics_api_reference: 'https://docs.commercelayer.io/metrics/v/api-reference-m/',
 		imports_resources: 'https://docs.commercelayer.io/api/importing-resources#supported-resources',
 		exports_resources: 'https://docs.commercelayer.io/core/exporting-resources#supported-resources',
+		cleanups_resources: 'https://docs.commercelayer.io/core/cleaning-resources#supported-resources',
 		webhooks_events: 'https://docs.commercelayer.io/api/real-time-webhooks#supported-events'
 	}
 } as const
