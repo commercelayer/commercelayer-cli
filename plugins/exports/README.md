@@ -24,10 +24,42 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 ## Commands
 <!-- commands -->
 
+* [`commercelayer exports [ID]`](#commercelayer-exports-id)
 * [`commercelayer exports:create`](#commercelayer-exportscreate)
 * [`commercelayer exports:details ID`](#commercelayer-exportsdetails-id)
 * [`commercelayer exports:list`](#commercelayer-exportslist)
 * [`commercelayer exports:types`](#commercelayer-exportstypes)
+
+### `commercelayer exports [ID]`
+
+List all the created exports or show details of a single export.
+
+```sh-session
+USAGE
+  $ commercelayer exports [ID] [-A | -l <value>] [-t
+    addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
+    prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
+    gories|transactions|authorizations|captures|voids|refunds] [-s in_progress|pending|completed|interrupted]
+
+ARGUMENTS
+  ID  unique id of the export to be retrieved
+
+FLAGS
+  -A, --all              show all exports instead of first 25 only
+  -l, --limit=<value>    limit number of exports in output
+  -s, --status=<option>  the export job status
+                         <options: in_progress|pending|completed|interrupted>
+  -t, --type=<option>    the type of resource exported
+                         <options: addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orde
+                         rs|payment_methods|price_tiers|prices|shipments|shipping_categories|shipping_methods|sku_lists|
+                         sku_list_items|sku_options|skus|stock_items|tax_categories|transactions|authorizations|captures
+                         |voids|refunds>
+
+DESCRIPTION
+  list all the created exports or show details of a single export
+```
+
+_See code: [src/commands/exports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/index.ts)_
 
 ### `commercelayer exports:create`
 
@@ -123,7 +155,6 @@ DESCRIPTION
   list all the created exports
 
 ALIASES
-  $ commercelayer exports
   $ commercelayer exp:list
 
 EXAMPLES
