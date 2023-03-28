@@ -46,12 +46,13 @@ export default class CliUpdate extends Command {
         this.error('CLI update failed.')
       } else {
         cliux.action.stop()
-        const verCmd = await this.config.findCommand('cli:version')?.load()
-        await verCmd?.run()
+        try {
+          const verCmd = await this.config.findCommand('cli:version')?.load()
+          await verCmd?.run([]) // without [] the command uses args of command 'version' and it fails
+        } catch (err) { this.log() }
       }
 
     })
-
 
     cp.on('exit', async (code, signal) => {
       if (code || signal) {

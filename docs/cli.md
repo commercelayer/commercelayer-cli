@@ -14,7 +14,7 @@ USAGE
   $ commercelayer cli:update [-v <value>]
 
 FLAGS
-  -v, --version=<value>  Update CLI to a specific version or tag
+  -v, --version=<value>  update CLI to a specific version or tag
 
 DESCRIPTION
   Update Commerce Layer CLI
@@ -35,7 +35,10 @@ Show installed version of Commerce Layer CLI.
 
 ```sh-session
 USAGE
-  $ commercelayer cli:version
+  $ commercelayer cli:version [-p]
+
+FLAGS
+  -p, --plugins  show version of installed plugins
 
 DESCRIPTION
   Show installed version of Commerce Layer CLI
