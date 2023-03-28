@@ -9,7 +9,7 @@ import open from 'open'
 const securityInterval = 2
 
 
-const notify = (message: string): void => {
+export const notify = (message: string): void => {
   notifier.notify({
     title: 'Commerce Layer CLI',
     message,
@@ -19,7 +19,7 @@ const notify = (message: string): void => {
 
 
 
-const computeDelay = (): number => {
+export const computeDelay = (): number => {
 
   const delayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
   const delayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
@@ -101,7 +101,7 @@ export default class ExportsCreate extends Command {
       description: 'execute in blind mode without showing the progress monitor',
       exclusive: ['quiet', 'silent'],
     }),
-    pretty: Flags.boolean({
+    prettify: Flags.boolean({
       char: 'P',
       description: 'prettify json output format',
       exclusive: ['csv']
@@ -153,7 +153,7 @@ export default class ExportsCreate extends Command {
     const outputPath = flags.save || flags['save-path']
     if (!outputPath) this.error('Undefined output file path')
 
-    if (flags.pretty && ((flags.format === 'csv') || flags.csv)) this.error(`Flag ${clColor.cli.flag('Pretty')} can only be used with ${clColor.cli.value('JSON')} format`)
+    if (flags.prettify && ((flags.format === 'csv') || flags.csv)) this.error(`Flag ${clColor.cli.flag('Pretty')} can only be used with ${clColor.cli.value('JSON')} format`)
 
     const resType = flags.type
     if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
