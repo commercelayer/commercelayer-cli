@@ -39,14 +39,15 @@ USAGE
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
     prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
     gories|transactions|authorizations|captures|voids|refunds [-i <value>] [-w <value>] [-D] [-F csv|json | -C | ] [-x
-    <value> | -X <value>] [-b |  | ] [-P | ]
+    <value> | -X <value>] [-b |  | ] [-P | ] [-O]
 
 FLAGS
   -C, --csv                                                        export data in CSV format
   -D, --dry-data                                                   skip redundant attributes
-  -F, --format=<option>                                            [default: json] export file format [csv|json]
+  -F, --format=<option>                                            [default: json] export file format
                                                                    <options: csv|json>
-  -P, --pretty                                                     prettify json output format
+  -O, --open                                                       open automatically the file after a successful export
+  -P, --prettify                                                   prettify json output format
   -X, --save-path=<value>                                          save command output to file and create missing path
                                                                    directories
   -b, --blind                                                      execute in blind mode without showing the progress

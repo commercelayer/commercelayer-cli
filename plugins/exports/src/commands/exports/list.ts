@@ -10,7 +10,7 @@ export default class ExportsList extends Command {
 
 	static description = 'list all the created exports'
 
-	static aliases = ['exports', 'exp:list']
+	static aliases = ['exp:list']
 
 	static examples = [
 		'$ commercelayer exports',
