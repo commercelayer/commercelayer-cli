@@ -216,7 +216,6 @@ DESCRIPTION
   list all the created imports
 
 ALIASES
-  $ commercelayer imports
   $ commercelayer imp:list
 
 EXAMPLES
