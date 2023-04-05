@@ -100,7 +100,7 @@
     "@oclif/test": "^2.3.14",
     "@types/chai": "^4.3.4",
     "@types/configstore": "^4.0.0",
-    "@types/inquirer": "^8.2.6",
+    "@types/inquirer": "^9.0.3",
     "@types/lodash": "^4.14.192",
     "@types/mocha": "^10.0.1",
     "@types/node": "^18.15.11",
