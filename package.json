@@ -121,7 +121,7 @@
     "@oclif/plugin-help": "5.2.8",
     "@oclif/plugin-not-found": "^2.3.23",
     "@oclif/plugin-plugins": "^2.4.4",
-    "configstore": "^5.0.1",
+    "configstore": "^6.0.0",
     "inquirer": "^8.2.5",
     "lodash": "^4.17.21",
     "tslib": "^2.5.0",
