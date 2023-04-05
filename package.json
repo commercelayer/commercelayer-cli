@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.9.1",
+  "version": "5.9.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -76,6 +76,9 @@
     "additionalHelpFlags": [
       "-h"
     ],
+    "additionalVersionFlags": [
+      "-v"
+    ],
     "topicSeparator": ":"
   },
   "repository": "https://github.com/commercelayer/commercelayer-cli",
@@ -94,16 +97,16 @@
     "@commercelayer/cli-dev": "^2.0.5",
     "@commercelayer/eslint-config-ts": "^0.1.4",
     "@fig/complete-oclif": "^3.0.0",
-    "@oclif/test": "^2.3.13",
+    "@oclif/test": "^2.3.14",
     "@types/chai": "^4.3.4",
     "@types/configstore": "^4.0.0",
     "@types/inquirer": "^8.2.6",
     "@types/lodash": "^4.14.192",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^18.15.10",
+    "@types/node": "^18.15.11",
     "@types/update-notifier": "^5.1.0",
     "chai": "^4.3.7",
-    "eslint": "^8.36.0",
+    "eslint": "^8.37.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
@@ -113,11 +116,11 @@
     "@commercelayer/cli-core": "^3.4.0",
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/sdk": "^4.27.0",
-    "@oclif/core": "^2.7.1",
-    "@oclif/plugin-autocomplete": "^2.1.7",
+    "@oclif/core": "^2.8.0",
+    "@oclif/plugin-autocomplete": "^2.1.8",
     "@oclif/plugin-help": "5.2.8",
-    "@oclif/plugin-not-found": "^2.3.22",
-    "@oclif/plugin-plugins": "^2.4.3",
+    "@oclif/plugin-not-found": "^2.3.23",
+    "@oclif/plugin-plugins": "^2.4.4",
     "configstore": "^5.0.1",
     "inquirer": "^8.2.5",
     "lodash": "^4.17.21",

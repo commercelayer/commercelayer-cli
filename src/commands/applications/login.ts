@@ -80,7 +80,7 @@ export default class ApplicationsLogin extends Command {
 			this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
 		const scope = checkScope(flags.scope)
-		const alias = await checkAlias(flags.alias, this.config, flags.organization)
+		const alias = checkAlias(flags.alias, this.config, flags.organization)
 
 		const config: AppAuth = {
 			clientId: flags.clientId,
