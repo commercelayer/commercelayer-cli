@@ -99,7 +99,7 @@
     "@fig/complete-oclif": "^3.0.0",
     "@oclif/test": "^2.3.14",
     "@types/chai": "^4.3.4",
-    "@types/configstore": "^4.0.0",
+    "@types/configstore": "^6.0.0",
     "@types/inquirer": "^8.2.6",
     "@types/lodash": "^4.14.192",
     "@types/mocha": "^10.0.1",
