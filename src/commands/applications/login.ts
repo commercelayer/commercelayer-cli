@@ -40,6 +40,7 @@ export default class ApplicationsLogin extends Command {
 			char: 's',
 			description: 'application client_secret',
 			required: false,
+			exclusive: ['email', 'password']
 		}),
 		scope: Flags.string({
 			char: 'S',
@@ -51,11 +52,13 @@ export default class ApplicationsLogin extends Command {
 			char: 'e',
 			description: 'customer email',
 			dependsOn: ['password'],
+			exclusive: ['clientSecret']
 		}),
 		password: Flags.string({
 			char: 'p',
 			description: 'customer secret password',
 			dependsOn: ['email'],
+			exclusive: ['clientSecret']
 		}),
 		alias: Flags.string({
 			char: 'a',
