@@ -55,7 +55,7 @@ Add a new Commerce Layer application to CLI config.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:add -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value> -p <value>]
+  $ commercelayer applications:add -o <value> -i <value> -a <value> [-s <value> | -e <value> | -p <value>] [-S <value>]
 
 FLAGS
   -S, --scope=<value>...      access token scope (market, stock location)
@@ -138,7 +138,8 @@ Execute login to a Commerce Layer application.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:login -o <value> -i <value> -a <value> [-s <value>] [-S <value>] [-e <value> -p <value>]
+  $ commercelayer applications:login -o <value> -i <value> -a <value> [-s <value> | -e <value> | -p <value>] [-S
+  <value>]
 
 FLAGS
   -S, --scope=<value>...      access token scope (market, stock location)
