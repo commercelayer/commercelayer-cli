@@ -2,7 +2,7 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@commercelayer/cli-core':
-    specifier: ^3.5.1
+    specifier: ^3.5.2
     version: 3.5.2(@types/node@18.16.1)(typescript@4.9.5)
   '@commercelayer/js-auth':
     specifier: ^2.3.0
@@ -300,7 +300,7 @@ packages:
     dev: true
 
   /@commercelayer/cli-core@3.5.2(@types/node@18.16.1)(typescript@4.9.5):
-    resolution: {integrity: sha512-Cq/GVK81eqUyu1JAhEU+Xl1JbcWWFmix0qQVyI6JW+RGsNfe62lx2wWngAhJ5xrNEzAsLT2++YMrenpAnrfSqQ==}
+    resolution: {integrity: sha512-BP537TG65No/xdQg7rdULmDF6izXGwna61jSkY3EKQv8kZdkdRrUSVUDYO4TGoCYYO54SuG9uFrG4BpPtC1QnA==}
     engines: {node: '>=16'}
     dependencies:
       '@commercelayer/js-auth': 2.3.0
