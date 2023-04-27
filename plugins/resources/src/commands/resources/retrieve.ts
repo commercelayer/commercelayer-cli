@@ -52,7 +52,7 @@ export default class ResourcesRetrieve extends Command {
 
 		const { args, flags } = await this.parse(ResourcesRetrieve)
 
-		const { res, id } = this.checkResourceId(args.resource, args.id as string)
+		const { res, id } = this.checkResourceId(args.resource, args.id)
 		const resource = this.checkResource(res, { singular: true })
 
     const loadParams = flags[FLAG_LOAD_PARAMS]

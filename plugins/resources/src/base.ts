@@ -150,7 +150,7 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  checkResourceId(resource: string, resourceId: string, required = true): any {
+  checkResourceId(resource: string, resourceId?: string, required = true): any {
 
     let res = resource
     let id = resourceId

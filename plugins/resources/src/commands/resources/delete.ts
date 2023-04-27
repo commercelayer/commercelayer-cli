@@ -23,7 +23,7 @@ export default class ResourcesDelete extends Command {
 
 	static args = {
     ...Command.args,
-		id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: true }),
+		id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: false }),
   }
 
 
