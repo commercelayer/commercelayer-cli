@@ -86,7 +86,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
     endpoint: baseURL(auth.slug, auth.domain),
     scope: auth.scope || '',
   }
-
+console.log(credentials)
   if (auth.email && auth.password) {
     const user: User = {
       username: auth.email,
