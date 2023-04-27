@@ -35,7 +35,7 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources:all RESOURCE`](#commercelayer-resourcesall-resource)
 * [`commercelayer resources:args`](#commercelayer-resourcesargs)
 * [`commercelayer resources:create RESOURCE`](#commercelayer-resourcescreate-resource)
-* [`commercelayer resources:delete RESOURCE ID`](#commercelayer-resourcesdelete-resource-id)
+* [`commercelayer resources:delete RESOURCE [ID]`](#commercelayer-resourcesdelete-resource-id)
 * [`commercelayer resources:doc RESOURCE`](#commercelayer-resourcesdoc-resource)
 * [`commercelayer resources:fetch PATH [ID]`](#commercelayer-resourcesfetch-path-id)
 * [`commercelayer resources:filters`](#commercelayer-resourcesfilters)
@@ -211,14 +211,14 @@ EXAMPLES
 
 _See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/create.ts)_
 
-### `commercelayer resources:delete RESOURCE ID`
+### `commercelayer resources:delete RESOURCE [ID]`
 
 Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:delete RESOURCE ID [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
-    [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ]
+  $ commercelayer resources:delete RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl
+    ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ]
 
 ARGUMENTS
   RESOURCE  the resource type
