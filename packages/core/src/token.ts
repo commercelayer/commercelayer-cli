@@ -3,7 +3,7 @@ import config from './config'
 import https from 'https'
 import type { AppAuth } from './application'
 import { sleep } from './util'
-import { baseURL } from './api'
+import { ApiMode, baseURL } from './api'
 import { AuthReturnType, clientCredentials, ClientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
 import { CLIError } from '@oclif/core/lib/errors'
 
@@ -213,4 +213,10 @@ const isAccessTokenExpiring = (tokenData: { created_at: string }, validityMins?:
 }
 
 
-export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken, isAccessTokenExpiring }
+const getTokenEnvironment = (token: string | AccessTokenInfo): ApiMode => {
+  const decodedToken = ((typeof token === 'string')? decodeAccessToken(token) : token) as AccessTokenInfo
+  return decodedToken.test? 'test' : 'live'
+}
+
+
+export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken, isAccessTokenExpiring, getTokenEnvironment }
