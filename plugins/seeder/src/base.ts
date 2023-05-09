@@ -1,7 +1,7 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
 import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import config from './config'
-import { clUpdate, clColor } from '@commercelayer/cli-core'
+import { clUpdate, clColor, clToken, ApiMode } from '@commercelayer/cli-core'
 import { isRemotePath, pathJoin } from './common'
 import { BusinessModel, readModelData } from './data'
 import { ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
@@ -38,6 +38,8 @@ export default abstract class extends Command {
 
   protected cl!: CommerceLayerClient
 
+  protected environment!: ApiMode
+
 
   async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
@@ -57,6 +59,7 @@ export default abstract class extends Command {
     const domain = flags.domain
     const accessToken = flags.accessToken
     this.cl = commercelayer({ organization, domain, accessToken })
+    this.environment = clToken.getTokenEnvironment(accessToken)
   }
 
 

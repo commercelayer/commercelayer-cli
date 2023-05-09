@@ -1,7 +1,7 @@
 import { join, resolve } from 'path'
 import axios from 'axios'
 import { readFileSync } from 'fs'
-import { clConfig } from '@commercelayer/cli-core'
+import { ApiMode, clConfig } from '@commercelayer/cli-core'
 
 
 const isRemotePath = (path: string): boolean => {
@@ -36,35 +36,14 @@ const getCommerceLayerDataFile = async (url: string, file: string): Promise<any>
 
 
 
-const requestsDelay = (requests: number, _type?: string): number => {
-/*
-  const noLimitResources = [
-    'bundles',
-    'external_promotions',
-    'fixed_amount_promotions',
-    'fixed_price_promotions',
-    'free_gift_promotions',
-    'free_shipping_promotions',
-    'inventory_models',
-    'markets',
-    'percentage_discount_promotions',
-    'price_lists',
-    'prices',
-    'sku_lists',
-    'sku_list_items',
-    'sku_options',
-    'skus',
-    'stock_items',
-    'stock_locations',
-  ]
-
-  if (type && noLimitResources.includes(type)) return 0
-*/
+const requestsDelay = (requests: number, _type?: string, env?: ApiMode): number => {
 
   if (requests < clConfig.api.requests_max_num_burst) return 10
 
-  const delayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
-  const delayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
+  const corrFact = (env === 'live')? 1 : 2
+
+  const delayBurst = clConfig.api.requests_max_secs_burst / (clConfig.api.requests_max_num_burst / corrFact)
+  const delayAvg = clConfig.api.requests_max_secs_avg / (clConfig.api.requests_max_num_avg / corrFact)
 
   const delay = (requests < clConfig.api.requests_max_num_avg) ? delayBurst : delayAvg
 
