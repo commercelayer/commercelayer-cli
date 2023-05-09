@@ -29,3 +29,28 @@ const humanizeResource = (type: string): string => {
 
 
 export { baseURL, extractDomain, execMode, humanizeResource }
+
+
+const CACHABLE_RESOURCES = [
+	'bundles',
+	'imports',
+	'markets',
+	'prices',
+	'price_lists',
+	'promotions',
+	'external_promotions',
+	'fixed_amount_promotions',
+	'fixed_price_promotions',
+	'free_gift_promotions',
+	'free_shipping_promotions',
+	'percentage_discount_promotions',
+	'skus',
+	'sku_options',
+	'stock_items',
+	'stock_locations'
+]
+
+
+export const isCachable = (resource: string): boolean => {
+	return (resource !== undefined) && CACHABLE_RESOURCES.includes(resource)
+}

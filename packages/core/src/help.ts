@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Command, CommandHelp, Help, Interfaces } from '@oclif/core'
 import { capitalize } from './text'
 

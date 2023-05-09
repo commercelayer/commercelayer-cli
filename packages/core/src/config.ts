@@ -68,18 +68,23 @@ const CLEANUP_RESOURCE_TYPES: readonly string[] = [
 
 
 type ApiConfig = {
-  default_domain: string;
-  default_app_domain: string;
-  token_expiration_mins: number;
-  token_encoding_algorithm: string;
-  requests_max_num_burst: number;
-  requests_max_secs_burst: number;
-  requests_max_num_avg: number;
-  requests_max_secs_avg: number;
-  requests_max_num_oauth: number;
-  requests_max_secs_oauth:number;
-  page_max_size: number;
-  page_default_size: number;
+	default_domain: string;
+	default_app_domain: string;
+	default_stg_domain: string;
+	token_expiration_mins: number;
+	token_encoding_algorithm: string;
+	requests_max_num_burst: number;
+	requests_max_num_burst_test: number;
+	requests_max_secs_burst: number;
+	requests_max_num_avg: number;
+	requests_max_num_avg_test: number;
+	requests_max_secs_avg: number;
+	requests_max_num_oauth: number;
+	requests_max_secs_oauth: number;
+	requests_max_num_env_ratio: number;
+	requests_max_num_cache_ratio: number;
+	page_max_size: number;
+	page_default_size: number;
 }
 
 type ApplicationConfig = {
@@ -88,7 +93,7 @@ type ApplicationConfig = {
 }
 
 type ImportsConfig = {
-    max_size: number;
+	max_size: number;
 	statuses: readonly string[];
 	types: readonly string[];
 	max_queue_length: number;
@@ -96,7 +101,7 @@ type ImportsConfig = {
 }
 
 type ExportsConfig = {
-    max_size: number;
+	max_size: number;
 	statuses: readonly string[];
 	types: readonly string[];
 	max_queue_length: number;
@@ -104,7 +109,7 @@ type ExportsConfig = {
 }
 
 type CleanupsConfig = {
-    max_size: number;
+	max_size: number;
 	statuses: readonly string[];
 	types: readonly string[];
 	max_queue_length: number;
@@ -122,23 +127,24 @@ type DocConfig = {
 	core: string;
 	core_api_reference: string;
 	core_how_tos: string;
+	core_raste_limits: string;
 	metrics: string;
 	metrics_api_reference: string;
 	imports_resources: string;
 	exports_resources: string;
 	cleanups_resources: string;
-	webhooks_events:string;
+	webhooks_events: string;
 }
 
 type Config = {
-  api: ApiConfig;
-  application: ApplicationConfig;
-  imports: ImportsConfig;
-  exports: ExportsConfig;
-  cleanups: CleanupsConfig;
-  webhooks: WebhooksConfig;
-  cli: CliConfig;
-  doc: DocConfig;
+	api: ApiConfig;
+	application: ApplicationConfig;
+	imports: ImportsConfig;
+	exports: ExportsConfig;
+	cleanups: CleanupsConfig;
+	webhooks: WebhooksConfig;
+	cli: CliConfig;
+	doc: DocConfig;
 }
 
 
@@ -146,14 +152,19 @@ const config: Config = {
 	api: {
 		default_domain: 'commercelayer.io',
 		default_app_domain: 'commercelayer.app',
+		default_stg_domain: 'commercelayer.co',
 		token_expiration_mins: 60 * 2,	// 2 hours
 		token_encoding_algorithm: 'HS512',
 		requests_max_num_burst: 50,
+		requests_max_num_burst_test: 25,
 		requests_max_secs_burst: 10,
 		requests_max_num_avg: 150,
+		requests_max_num_avg_test: 75,
 		requests_max_secs_avg: 60,	// 1 min
-		requests_max_num_oauth: 15,
+		requests_max_num_oauth: 20,
 		requests_max_secs_oauth: 60,
+		requests_max_num_env_ratio: 2,		// Live/Test
+		requests_max_num_cache_ratio: 5,	// Cachable/Uncachable
 		page_max_size: 25,
 		page_default_size: 10,
 	},
@@ -191,6 +202,7 @@ const config: Config = {
 		core: 'https://docs.commercelayer.io/core/',
 		core_api_reference: 'https://docs.commercelayer.io/developers/v/api-reference',
 		core_how_tos: 'https://docs.commercelayer.io/core/v/how-tos/',
+		core_raste_limits: 'https://docs.commercelayer.io/core/rate-limits',
 		metrics: 'https://docs.commercelayer.io/metrics/',
 		metrics_api_reference: 'https://docs.commercelayer.io/metrics/v/api-reference-m/',
 		imports_resources: 'https://docs.commercelayer.io/api/importing-resources#supported-resources',

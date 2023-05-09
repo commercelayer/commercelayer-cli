@@ -1,5 +1,5 @@
-import { AuthScope } from "@commercelayer/js-auth";
-import { ApiMode } from "./api";
+import type { AuthScope } from "@commercelayer/js-auth";
+import type { ApiMode } from "./api";
 
 interface AppKey {
 	key: string;

@@ -28,7 +28,6 @@ const resetConsole = (): void => {
 
 
 const log = (message = '', ...args: unknown[]): void => {
-	// tslint:disable-next-line strict-type-predicates
 	message = (typeof message === 'string') ? message : inspect(message)
 	process.stdout.write(format(message, ...args) + '\n')
 }

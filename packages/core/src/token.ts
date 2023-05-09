@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import config from './config'
 import https from 'https'
-import { AppAuth } from './application'
+import type { AppAuth } from './application'
 import { sleep } from './util'
 import { baseURL } from './api'
 import { AuthReturnType, clientCredentials, ClientCredentials, getCustomerToken, User } from '@commercelayer/js-auth'
@@ -94,7 +94,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
     }
     return getCustomerToken(credentials, user)
   }
-
+console.log(credentials)
   return clientCredentials(credentials)
 
 }
