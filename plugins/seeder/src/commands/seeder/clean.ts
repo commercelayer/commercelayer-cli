@@ -102,7 +102,7 @@ export default class SeederClean extends Command {
     if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
 
-    const delay = requestsDelay(referenceKeys.length, res.resourceType)
+    const delay = requestsDelay(referenceKeys.length, res.resourceType, this.environment)
 
     for (const ref of referenceKeys) {
 
