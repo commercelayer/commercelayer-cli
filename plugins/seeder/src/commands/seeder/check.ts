@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
-import { BusinessModel, getResource, modelIndex, ResourceData, SeederResource, readResourceData } from '../../data'
+import { type BusinessModel, getResource, modelIndex, type ResourceData, type SeederResource, readResourceData } from '../../data'
 import Listr from 'listr'
 import { attributeType, relationshipType } from '../../schema'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
@@ -65,9 +65,9 @@ export default class SeederCheck extends Command {
 
       // Execute tasks
       await tasks.run()
-        .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! \u2705`))
-        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data check completed with errors`))
-        .finally(() => this.log())
+        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! \u2705`) })
+        .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data check completed with errors`) })
+        .finally(() => { this.log() })
 
     } catch (error: any) {
       this.error(error.message)

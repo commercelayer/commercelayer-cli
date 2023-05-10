@@ -1,10 +1,10 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
 import Listr from 'listr'
-import { readResourceData, SeederResource } from '../../data'
-import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { readResourceData, type SeederResource } from '../../data'
+import { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { checkResourceType } from './check'
-import { clColor, clUtil } from '@commercelayer/cli-core'
+import { clColor, clSymbol, clUtil } from '@commercelayer/cli-core'
 import { requestsDelay } from '../../common'
 
 
@@ -76,9 +76,9 @@ export default class SeederClean extends Command {
 
       // Execute tasks
       await tasks.run()
-        .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data cleaning completed! \u2705`))
-        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`))
-        .finally(() => this.log())
+        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data cleaning completed! ${clSymbol.symbols.check.bkgGreen}`) })
+        .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`) })
+        .finally(() => { this.log() })
 
     } catch (error: any) {
       this.error(error.message)

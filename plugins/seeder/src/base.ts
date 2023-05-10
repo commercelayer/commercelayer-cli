@@ -1,10 +1,10 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
-import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import config from './config'
-import { clUpdate, clColor, clToken, ApiMode } from '@commercelayer/cli-core'
+import { clUpdate, clColor, clToken, type ApiMode } from '@commercelayer/cli-core'
 import { isRemotePath, pathJoin } from './common'
-import { BusinessModel, readModelData } from './data'
-import { ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
+import { type BusinessModel, readModelData } from './data'
+import type { ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
 import { loadSchema } from './schema'
 
 
@@ -65,14 +65,15 @@ export default abstract class extends Command {
 
   protected async readOpenAPISchema(): Promise<any> {
     cliux.action.start(`Reading ${clColor.yellowBright('OpenAPI')} schema`)
+    // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
     return await loadSchema()
-      .then(() => cliux.action.stop(`done ${clColor.msg.success('\u2714')}`))
+      .then(() => { cliux.action.stop(`done ${clColor.msg.success('\u2714')}`) })
       .catch(error => {
         cliux.action.stop(clColor.msg.error('Error'))
         console.log(error)
         this.error('Error reading OpenAPI schema')
       })
-      .finally(() => this.log())
+      .finally(() => { this.log() })
   }
 
 
@@ -87,13 +88,13 @@ export default abstract class extends Command {
         cliux.action.stop(clColor.msg.error('Error'))
         this.error(error)
       })
-      .finally(() => this.log())
+      .finally(() => { this.log() })
   }
 
 
   protected async findByReference(type: string, reference: string): Promise<ResourceId | undefined> {
 
-    const params: QueryParamsList & { fields: { [key: string]: string[] } } = {
+    const params: QueryParamsList & { fields: Record<string, string[]> } = {
       fields: {},
       filters: {
         reference_eq: reference,

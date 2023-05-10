@@ -4,11 +4,11 @@ import { CLIError } from '@oclif/core/lib/errors'
 
 
 type SchemaModel = {
-  attributes: { [key: string]: string };
-  relationships: { [key: string]: string };
+  attributes: Record<string, string>;
+  relationships: Record<string, string>;
 }
 
-type SchemaData = { [key: string]: SchemaModel }
+type SchemaData = Record<string, SchemaModel>
 
 
 const schemaData: SchemaData = {}

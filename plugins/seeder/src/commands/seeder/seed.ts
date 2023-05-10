@@ -1,13 +1,13 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
-import { ResourceData, SeederResource, readResourceData } from '../../data'
-import { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { type ResourceData, type SeederResource, readResourceData } from '../../data'
+import { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import config from '../../config'
 import Listr from 'listr'
 import { relationshipType } from '../../schema'
-import { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
+import type { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
-import { clToken, clColor, clUtil } from '@commercelayer/cli-core'
+import { clToken, clColor, clUtil, clSymbol } from '@commercelayer/cli-core'
 import { requestsDelay } from '../../common'
 
 
@@ -99,9 +99,9 @@ export default class SeederSeed extends Command {
 
       // Execute tasks
       await tasks.run()
-        .then(() => this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data seeding completed! \u2705`))
-        .catch(() => this.log(`\n${clColor.msg.error.bold('ERROR')} - Data seeding not completed, correct errors and rerun the ${clColor.cli.command('seed')} command`))
-        .finally(() => this.log())
+        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data seeding completed! ${clSymbol.symbols.check.bkgGreen}`) })
+        .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data seeding not completed, correct errors and rerun the ${clColor.cli.command('seed')} command`) })
+        .finally(() => { this.log() })
 
     } catch (error: any) {
       this.error(error.message)

@@ -1,7 +1,7 @@
 import { join, resolve } from 'path'
 import axios from 'axios'
 import { readFileSync } from 'fs'
-import { ApiMode, clConfig } from '@commercelayer/cli-core'
+import { type ApiMode, clConfig } from '@commercelayer/cli-core'
 
 
 const isRemotePath = (path: string): boolean => {

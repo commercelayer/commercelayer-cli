@@ -18,22 +18,21 @@ type SeederResource = {
 
 type BusinessModel = SeederResource[]
 
-type ResourceData= Omit<{
-  [key: string]: string | boolean | number | object;
-}, 'reference' | 'reference_origin' | 'type'> & {
-  type?: string;
-  reference: string;
-  reference_origin?: string;
-}
+type ResourceData = Omit<Record<string, string | boolean | number | object>, 'reference' | 'reference_origin' | 'type'>
+  & {
+    type?: string;
+    reference: string;
+    reference_origin?: string;
+  }
 
 type ResourceDataCollection = ResourceData[]
 
-type ResourceMap = { [reference: string]: ResourceData }
+type ResourceMap = Record<string, ResourceData>
 
-type ResourceCache = { [resourceType: string]: ResourceMap }
+type ResourceCache = Record<string, ResourceMap>
 
 
-export { SeederResource, ResourceData, BusinessModel }
+export type { SeederResource, ResourceData, BusinessModel }
 
 
 const fileCache: ResourceCache = {}
