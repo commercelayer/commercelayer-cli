@@ -56,8 +56,7 @@ export const isResourceCacheable = (resource?: string): boolean => {
 	return (resource !== undefined) && CACHEABLE_RESOURCES.includes(resource)
 }
 
-
-// Note: Times in seconds
+// Note: times in milliseconds
 export type DelayOptions = {
 	environment?: ApiMode;
 	parallelRequests: number;
@@ -106,11 +105,14 @@ export const requestRateLimitDelay = (options: DelayOptions = {
 		}
 	} else delay = Math.max(delayBurst, delayAvg)
 
+	// Msec delay
+	delay = delay * 1000
+
 	if (options.minimumDelay) delay = Math.max(options.minimumDelay, delay)
 	if (options.securityDelay) delay += options.securityDelay
 
-	const msecDelay = Math.ceil(delay * 1000)
+	delay = Math.ceil(delay)
 
-	return msecDelay
+	return delay
 
 }

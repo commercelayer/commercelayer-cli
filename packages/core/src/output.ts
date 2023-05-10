@@ -1,4 +1,5 @@
 import { inspect } from 'util'
+import type { KeyValObj } from './command';
 
 
 /** Print a formatted object */
@@ -28,7 +29,7 @@ const printCSV = (obj: object[], flags?: any): string => {
 		return true
 	})
 	let csv = fields.map(f => f.toUpperCase().replace(/_/g, ' ')).join(';') + '\n'
-	obj.forEach((o: { [x: string]: any }) => {
+	obj.forEach((o: KeyValObj) => {
 		csv += fields.map(f => o[f]).join(';') + '\n'
 	})
 	return csv

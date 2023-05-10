@@ -76,7 +76,7 @@ const applyFilter = (predicate: string, ...fields: string[]): string => {
 }
 
 
-export { Filter, documentation,
+export { type Filter, documentation,
 	filterAvailable as available,
 	filterList as list,
 	applyFilter as apply
