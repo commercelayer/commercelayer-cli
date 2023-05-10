@@ -1,7 +1,7 @@
 
 import Command, { Flags, cliux } from '../../base'
-import { clToken, clColor, clConfig, clOutput } from '@commercelayer/cli-core'
-import { CommerceLayerClient, ExportCreate } from '@commercelayer/sdk'
+import { clToken, clColor, clConfig, clOutput, clApi } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, ExportCreate } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
 import open from 'open'
 
@@ -21,12 +21,16 @@ export const notify = (message: string): void => {
 
 export const computeDelay = (): number => {
 
+  /*
   const delayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
   const delayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
 
   const delay = Math.ceil(Math.max(delayBurst, delayAvg) * 1000)
 
   return delay
+  */
+
+  return clApi.requestRateLimitDelay()
 
 }
 

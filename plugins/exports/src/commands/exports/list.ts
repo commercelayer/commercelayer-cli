@@ -1,6 +1,6 @@
 import Command, { Flags, cliux } from '../../base'
-import Table, { HorizontalAlignment } from 'cli-table3'
-import { QueryParamsList } from '@commercelayer/sdk'
+import Table, { type HorizontalAlignment } from 'cli-table3'
+import type { QueryParamsList } from '@commercelayer/sdk'
 import { clColor, clConfig, clOutput, clSymbol } from '@commercelayer/cli-core'
 
 

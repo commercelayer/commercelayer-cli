@@ -1,11 +1,12 @@
-import { clColor, clToken, clUpdate, clFilter, KeyValRel, KeyValString, clOutput, clUtil } from '@commercelayer/cli-core'
+import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil } from '@commercelayer/cli-core'
+import type { KeyValRel, KeyValString }  from '@commercelayer/cli-core'
 import { Command, Flags, Args, ux } from '@oclif/core'
 import { existsSync } from 'fs'
 import axios from 'axios'
 import { gunzipSync } from 'zlib'
-import commercelayer, { CommerceLayerClient, CommerceLayerStatic, Export } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Export } from '@commercelayer/sdk'
 import { writeFile } from 'fs/promises'
-import { CommandError } from '@oclif/core/lib/interfaces'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')

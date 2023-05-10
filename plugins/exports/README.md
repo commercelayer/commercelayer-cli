@@ -1,4 +1,4 @@
-# @commercelayer/cli-plugin-exporter
+# @commercelayer/cli-plugin-exports
 
 Commerce Layer CLI Exports plugin
 
