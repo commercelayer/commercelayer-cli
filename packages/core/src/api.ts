@@ -59,7 +59,7 @@ export const isResourceCacheable = (resource?: string): boolean => {
 // Note: times in milliseconds
 export type DelayOptions = {
 	environment?: ApiMode;
-	parallelRequests: number;
+	parallelRequests?: number;
 	totalRequests?: number;
 	minimumDelay?: number;
 	securityDelay?: number;
@@ -67,24 +67,22 @@ export type DelayOptions = {
 }
 
 
-export const requestRateLimitDelay = (options: DelayOptions = {
-	environment: 'test',
-	parallelRequests: 1,
-	minimumDelay: 0,
-	securityDelay: 0
-}): number => {
+export const requestRateLimitDelay = (options?: DelayOptions): number => {
+
+	const env = options?.environment || 'test'
+	const parallelRequests = options?.parallelRequests || 1
 
 	let requestsMaxNumBurst = config.api.requests_max_num_burst
 	let requestsMaxNumAvg = config.api.requests_max_num_avg
 
 	// Test env allows half numbner of requests than live
-	if (options.environment !== 'live') {
+	if (env !== 'live') {
 		requestsMaxNumBurst = Math.floor(requestsMaxNumBurst / config.api.requests_max_num_env_ratio)
 		requestsMaxNumAvg = Math.floor(requestsMaxNumAvg / config.api.requests_max_num_env_ratio)
 	}
 
 	// If the resource is cacheable the number of requests can be five times that of the standard resources
-	if (isResourceCacheable(options.resourceType)) {
+	if (isResourceCacheable(options?.resourceType)) {
 		requestsMaxNumBurst = requestsMaxNumBurst * config.api.requests_max_num_cache_ratio
 		requestsMaxNumAvg = requestsMaxNumAvg * config.api.requests_max_num_cache_ratio
 	}
@@ -92,11 +90,11 @@ export const requestRateLimitDelay = (options: DelayOptions = {
 	const unitDelayBurst = config.api.requests_max_secs_burst / requestsMaxNumBurst
 	const unitDelayAvg = config.api.requests_max_secs_avg / requestsMaxNumAvg
 
-	const delayBurst = options.parallelRequests * unitDelayBurst
-	const delayAvg = options.parallelRequests * unitDelayAvg
+	const delayBurst = parallelRequests * unitDelayBurst
+	const delayAvg = parallelRequests * unitDelayAvg
 
 	// If the total number of requests is known the delay can be optimized
-	const totalRequests = options.totalRequests
+	const totalRequests = options?.totalRequests
 	let delay = 0
 	if (totalRequests) {
 		if (totalRequests > requestsMaxNumBurst) {
@@ -108,8 +106,8 @@ export const requestRateLimitDelay = (options: DelayOptions = {
 	// Msec delay
 	delay = delay * 1000
 
-	if (options.minimumDelay) delay = Math.max(options.minimumDelay, delay)
-	if (options.securityDelay) delay += options.securityDelay
+	if (options?.minimumDelay) delay = Math.max(options.minimumDelay, delay)
+	if (options?.securityDelay) delay += options.securityDelay
 
 	delay = Math.ceil(delay)
 
