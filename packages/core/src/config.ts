@@ -164,7 +164,7 @@ const config: Config = {
 		requests_max_num_oauth: 20,
 		requests_max_secs_oauth: 60,
 		requests_max_num_env_ratio: 2,		// Live/Test
-		requests_max_num_cache_ratio: 5,	// Cachable/Uncachable
+		requests_max_num_cache_ratio: 5,	// Cacheable/Uncacheable
 		page_max_size: 25,
 		page_default_size: 10,
 	},
