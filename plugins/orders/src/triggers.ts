@@ -6,7 +6,7 @@ type Trigger = {
 }
 
 
-const triggers: { [key: string ]: Trigger } = {
+const triggers: Record<string, Trigger> = {
   archive: {
     action: 'archive',
     trigger: '_archive',
@@ -135,7 +135,7 @@ const triggers: { [key: string ]: Trigger } = {
 }
 
 
-export { triggers, Trigger }
+export { triggers, type Trigger }
 
 
 
