@@ -75,6 +75,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order:cancel ID`](#commercelayer-ordercancel-id)
 * [`commercelayer order:capture ID`](#commercelayer-ordercapture-id)
 * [`commercelayer order:commit_invoice ID`](#commercelayer-ordercommit_invoice-id)
+* [`commercelayer order:create_subscriptions ID`](#commercelayer-ordercreate_subscriptions-id)
 * [`commercelayer order:customer_payment_source_id ID`](#commercelayer-ordercustomer_payment_source_id-id)
 * [`commercelayer order:nullify_payment_source ID`](#commercelayer-ordernullify_payment_source-id)
 * [`commercelayer order:place ID`](#commercelayer-orderplace-id)
@@ -1128,6 +1129,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/order/commit_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/commit_invoice.ts)_
+
+### `commercelayer order:create_subscriptions ID`
+
+Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the order. Subscriptions are generated according to associated subscription model strategy.
+
+```sh-session
+USAGE
+  $ commercelayer order:create_subscriptions ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the
+  order. Subscriptions are generated according to associated subscription model strategy.
+```
+
+_See code: [src/commands/order/create_subscriptions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/create_subscriptions.ts)_
 
 ### `commercelayer order:customer_payment_source_id ID`
 
