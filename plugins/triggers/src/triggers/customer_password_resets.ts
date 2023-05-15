@@ -2,7 +2,7 @@
 import type { Trigger } from '../common'
 
 
-export const triggers: { [key: string ]: Trigger } = {
+export const triggers: Record<string, Trigger> = {
   reset_password_token: {
       action: 'reset_password_token',
       trigger: '_reset_password_token',

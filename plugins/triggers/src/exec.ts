@@ -1,4 +1,4 @@
-import commercelayer, { CommerceLayerClient, CommerceLayerStatic, QueryParamsRetrieve } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParamsRetrieve } from '@commercelayer/sdk'
 
 
 
@@ -28,7 +28,7 @@ const executeAction = async (resourceType: string, id: string, action: string, f
   const params: QueryParamsRetrieve = {}
   if (fields && (fields.length > 0)) {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    params.fields = {} as { [key: string]: string[] }
+    params.fields = {} as Record<string, string[]>
     params.fields[resourceType] = fields
   }
 

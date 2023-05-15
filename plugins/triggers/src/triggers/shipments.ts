@@ -2,7 +2,7 @@
 import type { Trigger } from '../common'
 
 
-export const triggers: { [key: string ]: Trigger } = {
+export const triggers: Record<string, Trigger> = {
   on_hold: {
       action: 'on_hold',
       trigger: '_on_hold',
