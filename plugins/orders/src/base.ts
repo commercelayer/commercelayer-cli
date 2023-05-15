@@ -1,7 +1,7 @@
-import { CommerceLayerStatic, Order } from '@commercelayer/sdk'
+import { CommerceLayerStatic, type Order } from '@commercelayer/sdk'
 import { Command, Flags, Args } from '@oclif/core'
 import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
-import { CommandError } from '@oclif/core/lib/interfaces'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')

@@ -1,4 +1,5 @@
-import commercelayer, { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
+import commercelayer from '@commercelayer/sdk'
+import type { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
 import type { ActionType } from './triggers'
 
 
