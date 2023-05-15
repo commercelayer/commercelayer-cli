@@ -1,7 +1,7 @@
 import { Command, Flags, Args, ux as cliux } from '@oclif/core'
-import { clOutput, clUpdate, clColor, clToken } from '@commercelayer/cli-core'
-import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import { CommandError } from '@oclif/core/lib/interfaces'
+import { clOutput, clUpdate, clColor, clToken, type ApiMode } from '@commercelayer/cli-core'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')
@@ -34,6 +34,10 @@ export default abstract class extends Command {
   }
 
 
+  protected environment: ApiMode = 'test'
+
+
+
 
   // INIT (override)
   async init(): Promise<any> {
@@ -49,7 +53,7 @@ export default abstract class extends Command {
   }
 
 
-  protected handleError(error: CommandError, flags?: any, id?: string): void {
+  protected handleError(error: CommandError, flags?: any, id?: string): never {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -96,6 +100,8 @@ export default abstract class extends Command {
     const organization = flags.organization
     const domain = flags.domain
     const accessToken = flags.accessToken
+
+    this.environment = clToken.getTokenEnvironment(accessToken)
 
     return commercelayer({
       organization,

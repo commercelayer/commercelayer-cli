@@ -15,9 +15,9 @@ const generateInputsCSV = async (filePath: string, delimiter?: string): Promise<
   return new Promise((resolve, reject) => {
     createReadStream(filePath)
       .pipe(csv.parse(parseOptions))
-      .on('error', error => reject(error))
+      .on('error', error => { reject(error) })
       .on('data', row => inputs.push(row))
-      .on('end', (_rowCount: number) => resolve(inputs))
+      .on('end', (_rowCount: number) => { resolve(inputs) })
   })
 
 }
