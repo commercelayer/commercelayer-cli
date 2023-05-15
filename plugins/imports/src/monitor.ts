@@ -1,4 +1,4 @@
-import cliProgress, { SingleBar, MultiBar } from 'cli-progress'
+import cliProgress, { type SingleBar, type MultiBar } from 'cli-progress'
 import type { Chunk } from './chunk'
 import { clOutput, clConfig, clColor, clUtil } from '@commercelayer/cli-core'
 
@@ -22,8 +22,8 @@ type HeaderColumn = {
 	title: string;
 	width: number;
 	pad?: boolean;
-	style?: Function;
-	valueStyle?: Function;
+	style?: (str: string) => string;
+	valueStyle?: (str: string) => string;
 	hiddenHeader?: boolean;
 }
 
@@ -73,11 +73,11 @@ class Monitor {
 	]
 
 
-	static create(totalItems: number, log?: Function): Monitor {
+	static create(totalItems: number, log?: (txt?: string) => void): Monitor {
 		const monitor = new Monitor(totalItems)
 		if (log) {
-      log()
-      log(monitor.style.header)
+			log()
+			log(monitor.style.header)
 		}
 
 		return monitor
@@ -150,12 +150,12 @@ class Monitor {
 	}
 
 
-	private availableColumns(): { [key: string]: HeaderColumn } {
+	private availableColumns(): Record<string, HeaderColumn> {
 
 		const itemsLength = String(this.totalItems).length
 		const maxImportsLength = String(MAX_IMPORT_SIZE).length
 
-		const columns: { [key: string]: HeaderColumn } = {
+		const columns: Record<string, HeaderColumn> = {
 			import: { title: 'ID', width: 10, pad: true, valueStyle: clColor.table.key },
 			range: { title: 'Items', width: (itemsLength * 2) + 1, pad: true },
 			bar: { title: 'Import progress', width: Monitor.BAR_SIZE, pad: true, valueStyle: clColor.greenBright },
@@ -273,9 +273,9 @@ class Monitor {
 		if (this.style.colors) {
 			if (s.includes('completed')) s = clColor.msg.success.greenBright(s)
 			else
-			if (s.includes('waiting')) s = clColor.italic(s)
-			else
-			if (s.includes('interrupted')) s = clColor.msg.error(s)
+				if (s.includes('waiting')) s = clColor.italic(s)
+				else
+					if (s.includes('interrupted')) s = clColor.msg.error(s)
 		}
 
 		return s

@@ -2,25 +2,28 @@
 import Command, { Flags, cliux } from '../../base'
 import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
 import { generateInputs } from '../../input'
-import { SingleBar } from 'cli-progress'
-import { clUtil, clConfig, clColor } from '@commercelayer/cli-core'
+import type { SingleBar } from 'cli-progress'
+import { clUtil, clConfig, clColor, type ApiMode, clApi } from '@commercelayer/cli-core'
 import { Monitor } from '../../monitor'
-import { Chunk, Batch, splitChunks, splitImports } from '../../chunk'
+import { type Chunk, type Batch, splitChunks, splitImports } from '../../chunk'
 
 
 
 const MAX_INPUTS = 0	// 0 = No Max
-const MAX_CHUNKS = 10
+const MAX_CHUNKS = clConfig.imports.max_queue_length || 10
 const MIN_DELAY = 1000
 const ERROR_429_DELAY = 10_000
 const SECURITY_DELAY = 50
 
 
 
-const importsDelay = (parallelRequests: number): number => {
+const importsDelay = (parallelRequests: number, env?: ApiMode): number => {
 
-  const unitDelayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
-  const unitDelayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
+  /*
+  const corrFact = (env === 'live')? 1 : 2
+
+  const unitDelayBurst = clConfig.api.requests_max_secs_burst / (clConfig.api.requests_max_num_burst / corrFact)
+  const unitDelayAvg = clConfig.api.requests_max_secs_avg / (clConfig.api.requests_max_num_avg / corrFact)
 
   const delayBurst = parallelRequests * unitDelayBurst
   const delayAvg = parallelRequests * unitDelayAvg
@@ -30,6 +33,13 @@ const importsDelay = (parallelRequests: number): number => {
   const secDelay = Math.max(MIN_DELAY, delay + SECURITY_DELAY)
 
   return secDelay
+  */
+
+  return clApi.requestRateLimitDelay({
+    minimumDelay: MIN_DELAY,
+    securityDelay: SECURITY_DELAY,
+    environment: env
+  })
 
 }
 
@@ -270,7 +280,7 @@ export default class ImportsCreate extends Command {
 
         do {
 
-          await clUtil.sleep(importsDelay(chunk.total_batch_chunks - this.completed))
+          await clUtil.sleep(importsDelay(chunk.total_batch_chunks - this.completed, this.environment))
           const tmp = await this.cl.imports.retrieve(imp.id).catch(async error => {
             if (this.cl.isApiError(error) && (error.status === 429)) {
               if (imp?.status) barValue = this.monitor.updateBar(bar, barValue, { status: clColor.cyanBright(imp.status) })

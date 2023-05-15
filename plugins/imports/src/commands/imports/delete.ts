@@ -31,7 +31,7 @@ export default class ImportsDelete extends Command {
 
 
 		cl.imports.delete(id)
-			.then(() => this.log(`\n${clColor.msg.success('Successfully')} deleted import with id ${clColor.api.id(id)}\n`))
+			.then(() => { this.log(`\n${clColor.msg.success('Successfully')} deleted import with id ${clColor.api.id(id)}\n`) })
 			.catch(error => this.handleError(error, flags, id))
 
 	}
