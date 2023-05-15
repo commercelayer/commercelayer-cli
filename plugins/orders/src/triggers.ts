@@ -6,7 +6,7 @@ type Trigger = {
 }
 
 
-const triggers: Record<string, Trigger> = {
+const triggers: { [key: string ]: Trigger } = {
   archive: {
     action: 'archive',
     trigger: '_archive',
@@ -127,10 +127,15 @@ const triggers: Record<string, Trigger> = {
     trigger: '_validate',
     description: 'Send this attribute if you want to trigger the external validation for the order.',
   },
+	create_subscriptions: {
+    action: 'create_subscriptions',
+    trigger: '_create_subscriptions',
+    description: 'Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the order. Subscriptions are generated according to associated subscription model strategy.',
+  },
 }
 
 
-export { triggers, type Trigger }
+export { triggers, Trigger }
 
 
 
@@ -158,4 +163,5 @@ export type ActionType =
 	'save_shipping_address_to_customer_address_book' |
 	'save_billing_address_to_customer_address_book' |
 	'refresh' |
-	'validate'
+	'validate' |
+	'create_subscriptions'
