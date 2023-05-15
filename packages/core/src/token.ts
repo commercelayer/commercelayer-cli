@@ -94,7 +94,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
     }
     return getCustomerToken(credentials, user)
   }
-console.log(credentials)
+
   return clientCredentials(credentials)
 
 }
