@@ -13,7 +13,7 @@ USAGE
   $ commercelayer autocomplete [SHELL] [-r]
 
 ARGUMENTS
-  SHELL  shell type
+  SHELL  (zsh|bash|powershell) Shell type
 
 FLAGS
   -r, --refresh-cache  Refresh cache (ignores displaying instructions)
@@ -28,7 +28,9 @@ EXAMPLES
 
   $ commercelayer autocomplete zsh
 
+  $ commercelayer autocomplete powershell
+
   $ commercelayer autocomplete --refresh-cache
 ```
 
-_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v2.1.9/src/commands/autocomplete/index.ts)_
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v2.2.0/src/commands/autocomplete/index.ts)_
