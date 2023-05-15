@@ -1,5 +1,6 @@
-import { AuthReturnType } from '@commercelayer/js-auth'
-import { AppAuth, AccessTokenInfo, CustomToken, clToken, clConfig } from '@commercelayer/cli-core'
+import type { AuthReturnType } from '@commercelayer/js-auth'
+import type { AppAuth, AccessTokenInfo, CustomToken } from '@commercelayer/cli-core'
+import { clToken, clConfig } from '@commercelayer/cli-core'
 import commercelayer from '@commercelayer/sdk'
 
 
@@ -25,7 +26,7 @@ const getAccessToken = async (auth: AppAuth): AuthReturnType => {
 
 
 const revokeAccessToken = async (app: AppAuth, accessToken: string): Promise<void> => {
-  return await clToken.revokeAccessToken(app, accessToken)
+   await clToken.revokeAccessToken(app, accessToken)
 }
 
 

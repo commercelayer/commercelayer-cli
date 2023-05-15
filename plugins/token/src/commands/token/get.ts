@@ -1,5 +1,5 @@
 import Command, { Flags } from '../../base'
-import { AppAuth, clColor } from '@commercelayer/cli-core'
+import {type AppAuth, clColor } from '@commercelayer/cli-core'
 import { decodeAccessToken, getAccessToken } from '../../token'
 
 

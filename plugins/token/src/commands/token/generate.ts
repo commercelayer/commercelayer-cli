@@ -1,5 +1,5 @@
 import Command, { Flags } from '../../base'
-import { clOutput, clConfig, clToken, AccessTokenInfo, clColor } from '@commercelayer/cli-core'
+import { clOutput, clConfig, clToken, type AccessTokenInfo, clColor } from '@commercelayer/cli-core'
 import inquirer from 'inquirer'
 import { testAccessToken, decodeAccessToken } from '../../token'
 import { checkMandatory, checkList, checkValidity } from '../../check'
