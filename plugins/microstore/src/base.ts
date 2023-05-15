@@ -1,4 +1,4 @@
-import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
 import { clColor, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
 
