@@ -75,7 +75,7 @@ export const requestRateLimitDelay = (options?: DelayOptions): number => {
 	let requestsMaxNumBurst = config.api.requests_max_num_burst
 	let requestsMaxNumAvg = config.api.requests_max_num_avg
 
-	// Test env allows half numbner of requests than live
+	// Test env allows half number of requests than live
 	if (env !== 'live') {
 		requestsMaxNumBurst = Math.floor(requestsMaxNumBurst / config.api.requests_max_num_env_ratio)
 		requestsMaxNumAvg = Math.floor(requestsMaxNumAvg / config.api.requests_max_num_env_ratio)
