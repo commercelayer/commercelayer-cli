@@ -1,11 +1,13 @@
 import { Command, Flags, Config } from '@oclif/core'
-import { AuthScope } from '@commercelayer/js-auth'
+// import { AuthScope } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { ApiMode, AppAuth, AppInfo, clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
 import { inspect } from 'util'
 import { printCurrent } from './current'
 import { CLIError } from '@oclif/core/lib/errors'
+import { AuthScope } from '@commercelayer/js-auth'
+
 
 
 export default class ApplicationsLogin extends Command {
@@ -66,6 +68,10 @@ export default class ApplicationsLogin extends Command {
 			multiple: false,
 			required: true,
 		}),
+		debug: Flags.boolean({
+			description: 'show more verbose error messages',
+			hidden: true
+		})
 	}
 
 
@@ -126,11 +132,10 @@ export default class ApplicationsLogin extends Command {
 
 		} catch (error: any) {
 			this.log(clColor.msg.error.bold('Login failed!'))
+			if (flags.debug) this.error(inspect(error, false, null, true))
+			else
 			if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
-			else {
-				const msg = String(error.message).endsWith(':443') ? 'Invalid organization slug: ' + clColor.msg.error(config.slug) : error.message as string
-				this.error(msg)
-			}
+			else this.error(`Unable to connect to organization ${clColor.msg.error(config.slug)}: ${clColor.italic(error.message)}`)
 		}
 
 	}
