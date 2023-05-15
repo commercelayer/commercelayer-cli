@@ -1,8 +1,8 @@
 import Command, { Flags, cliux } from '../../base'
-import Table, { HorizontalAlignment, VerticalAlignment } from 'cli-table3'
+import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
 import { clConfig, clOutput, clColor } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
-import { EventCallback, QueryParamsList } from '@commercelayer/sdk'
+import type { EventCallback, QueryParamsList } from '@commercelayer/sdk'
 
 
 const MAX_EVENTS = 1000

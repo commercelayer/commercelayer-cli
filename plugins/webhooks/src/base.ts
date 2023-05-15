@@ -1,8 +1,8 @@
 
 import { Command, Flags, Args, ux as cliux } from '@oclif/core'
-import commercelayer, { CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
-import { CommandError } from '@oclif/core/lib/interfaces'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg = require('../package.json')

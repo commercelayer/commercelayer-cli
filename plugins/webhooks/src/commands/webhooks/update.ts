@@ -1,6 +1,6 @@
 import Command, { Flags } from '../../base'
 import { URL } from 'node:url'
-import { WebhookUpdate } from '@commercelayer/sdk'
+import type { WebhookUpdate } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
 
 

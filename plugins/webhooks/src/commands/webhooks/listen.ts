@@ -2,7 +2,7 @@
 import Command, { Flags, cliux } from '../../base'
 import { clUtil, clColor, clOutput } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
-import { EventCallback } from '@commercelayer/sdk'
+import type { EventCallback } from '@commercelayer/sdk'
 
 
 const MAX_LISTEN_TIME = 60 * 2	// 2 minutes

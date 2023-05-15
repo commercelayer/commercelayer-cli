@@ -1,7 +1,7 @@
 import Command, { Flags } from '../../base'
 import Table from 'cli-table3'
 import { clOutput, clColor } from '@commercelayer/cli-core'
-import { EventCallback } from '@commercelayer/sdk'
+import type { EventCallback } from '@commercelayer/sdk'
 
 
 export default class WebhooksEvent extends Command {

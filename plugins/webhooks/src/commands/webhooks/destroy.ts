@@ -28,8 +28,8 @@ export default class WebhooksDestroy extends Command {
 		const cl = this.commercelayerInit(flags)
 
 		cl.webhooks.delete(id)
-			.then(() => this.log(`\n${clColor.msg.success.greenBright('Successfully')} destroyed webhook with id ${clColor.api.id(id)}\n`))
-			.catch(error => this.handleError(error, flags, id))
+			.then(() => { this.log(`\n${clColor.msg.success.greenBright('Successfully')} destroyed webhook with id ${clColor.api.id(id)}\n`) })
+			.catch(error => { this.handleError(error, flags, id) })
 
 	}
 
