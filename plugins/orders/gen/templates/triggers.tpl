@@ -6,12 +6,12 @@ type Trigger = {
 }
 
 
-const triggers: { [key: string ]: Trigger } = {
+const triggers: Record<string, Trigger> = {
   ##__TRIGGERS__##
 }
 
 
-export { triggers, Trigger }
+export { triggers, type Trigger }
 
 
 
