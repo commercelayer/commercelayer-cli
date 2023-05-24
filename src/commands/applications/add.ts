@@ -75,11 +75,10 @@ export default class ApplicationsAdd extends Command {
 
     } catch (error: any) {
       this.log(clColor.msg.error.bold('Login failed!'))
+      if (flags.debug) this.error(inspect(error, false, null, true))
+      else
       if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
-      else {
-				const msg = String(error.message).endsWith(':443') ? 'Invalid organization slug: ' + clColor.msg.error(config.slug) : error.message as string
-				this.error(msg)
-			}
+      else this.error(`Unable to connect to organization ${clColor.msg.error(config.slug)}: ${clColor.italic(error.message)}`)
     }
 
   }
