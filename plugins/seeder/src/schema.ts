@@ -66,6 +66,7 @@ const attributeType = (type: string, name: string): string | undefined => {
 }
 
 const relationshipType = (type: string, name: string, value: string): string | undefined => {
+
   const res = schemaData[type as keyof SchemaModel]
   if (!res) return undefined
   const rel = res.relationships[name]
@@ -80,6 +81,8 @@ const relationshipType = (type: string, name: string, value: string): string | u
   }
 
   return rel
+
 }
+
 
 export { attributeType, relationshipType }

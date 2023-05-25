@@ -1,11 +1,11 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
-import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic, type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import config from './config'
-import { clUpdate, clColor, clToken, type ApiMode } from '@commercelayer/cli-core'
+import { clUpdate, clColor, clToken, type ApiMode, clUtil, clApi } from '@commercelayer/cli-core'
 import { isRemotePath, pathJoin } from './common'
 import { type BusinessModel, readModelData } from './data'
-import type { ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
 import { loadSchema } from './schema'
+import type { ListResponse, ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
 
 
 const pkg = require('../package.json')
@@ -39,6 +39,17 @@ export default abstract class extends Command {
   protected cl!: CommerceLayerClient
 
   protected environment!: ApiMode
+
+  protected delay!: {
+    cacheable: number;
+    uncacheable: number;
+  }
+
+
+  protected async applyRequestDelay(resourceType: string): Promise<void> {
+      const delay = (clApi.isResourceCacheable(resourceType)? this.delay.cacheable : this.delay.uncacheable) || 0
+      if (delay > 0) await clUtil.sleep(delay)
+  }
 
 
   async init(): Promise<any> {
@@ -103,13 +114,15 @@ export default abstract class extends Command {
     }
     if (params.fields) params.fields[type] = ['id', 'reference']
 
-    try {
+    await this.applyRequestDelay(type)
+    // try {
       const resSdk = this.cl[type as keyof CommerceLayerClient] as any
-      const list = await resSdk.list(params)
-      return list[0] as ResourceId
-    } catch (error: any) {
+      const list = await resSdk.list(params) as ListResponse<ResourceId>
+
+      return list.first()
+    /* } catch (error: any) {
       return undefined
-    }
+    } */
 
   }
 
@@ -118,6 +131,16 @@ export default abstract class extends Command {
     if (flags.name && (flags.businessModel !== 'custom'))
       if (flags.businessModel !== 'custom') this.error(`Model name can be specified only using the ${clColor.bold('custom')} business model`)
     return flags.name || flags.businessModel
+  }
+
+
+  protected handleCommonError(error: Error): never {
+    console.error(error)
+    if (CommerceLayerStatic.isApiError(error)) {
+      const err = error.first()
+      if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)
+      else throw new Error(`Error executing task [${error.code}]`)
+    } else throw error
   }
 
 }

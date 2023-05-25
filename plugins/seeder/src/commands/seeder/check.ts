@@ -4,7 +4,7 @@ import { type BusinessModel, getResource, modelIndex, type ResourceData, type Se
 import Listr from 'listr'
 import { attributeType, relationshipType } from '../../schema'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import { clColor } from '@commercelayer/cli-core'
+import { clColor, clSymbol } from '@commercelayer/cli-core'
 
 
 
@@ -55,7 +55,7 @@ export default class SeederCheck extends Command {
           title: `Check ${clColor.cli.value(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.checkResources(res, flags, task, model)
+            const n = await this.checkResources(res, flags, task, model).catch(this.handleCommonError)
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -65,7 +65,7 @@ export default class SeederCheck extends Command {
 
       // Execute tasks
       await tasks.run()
-        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! \u2705`) })
+        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! ${clSymbol.symbols.check.bkgGreen}`) })
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data check completed with errors`) })
         .finally(() => { this.log() })
 

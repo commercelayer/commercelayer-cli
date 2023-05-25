@@ -1,7 +1,7 @@
 import { join, resolve } from 'path'
 import axios from 'axios'
 import { readFileSync } from 'fs'
-import { type ApiMode, clConfig } from '@commercelayer/cli-core'
+import { type ApiMode, clApi } from '@commercelayer/cli-core'
 
 
 const isRemotePath = (path: string): boolean => {
@@ -36,20 +36,37 @@ const getCommerceLayerDataFile = async (url: string, file: string): Promise<any>
 
 
 
-const requestsDelay = (requests: number, _type?: string, env?: ApiMode): number => {
+type ResourceTypeNumber= {
+  cacheableTypes?: string[];
+  cacheable: number;
+  uncacheableTypes?: string[]
+  uncacheable: number;
+}
 
-  if (requests < clConfig.api.requests_max_num_burst) return 10
 
-  const corrFact = (env === 'live')? 1 : 2
+const requestsDelay = (resources: ResourceTypeNumber, env?: ApiMode): ResourceTypeNumber => {
 
-  const delayBurst = clConfig.api.requests_max_secs_burst / (clConfig.api.requests_max_num_burst / corrFact)
-  const delayAvg = clConfig.api.requests_max_secs_avg / (clConfig.api.requests_max_num_avg / corrFact)
+  const cacheableDelay = clApi.requestRateLimitDelay({
+    totalRequests: resources.cacheable,
+    resourceType: (resources.cacheableTypes && (resources.cacheableTypes.length > 0)) ? resources.cacheableTypes[0] : undefined,
+    environment: env,
+  })
 
-  const delay = (requests < clConfig.api.requests_max_num_avg) ? delayBurst : delayAvg
+  const uncacheableDelay = clApi.requestRateLimitDelay({
+    totalRequests: resources.uncacheable,
+    resourceType: (resources.uncacheableTypes && (resources.uncacheableTypes.length > 0)) ? resources.uncacheableTypes[0] : undefined,
+    environment: env,
+  })
 
-  return Math.ceil(delay) * 1000
+  return {
+    cacheable: cacheableDelay,
+    cacheableTypes: resources.cacheableTypes,
+    uncacheable: uncacheableDelay,
+    uncacheableTypes: resources.uncacheableTypes
+  }
 
 }
 
 
 export { getCommerceLayerDataFile, isRemotePath, pathJoin, requestsDelay }
+export type { ResourceTypeNumber }

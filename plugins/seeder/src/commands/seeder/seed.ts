@@ -1,14 +1,14 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
-import { type ResourceData, type SeederResource, readResourceData } from '../../data'
-import { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { type ResourceData, type SeederResource, readResourceData, type BusinessModel } from '../../data'
+import { type CommerceLayerClient } from '@commercelayer/sdk'
 import config from '../../config'
 import Listr from 'listr'
 import { relationshipType } from '../../schema'
 import type { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
-import { clToken, clColor, clUtil, clSymbol } from '@commercelayer/cli-core'
-import { requestsDelay } from '../../common'
+import { clToken, clColor, clUtil, clSymbol, clApi } from '@commercelayer/cli-core'
+import { type ResourceTypeNumber, requestsDelay } from '../../common'
 
 
 
@@ -52,7 +52,13 @@ export default class SeederSeed extends Command {
       description: 'add a delay in milliseconds between calls to different resources',
       hidden: true,
     }),
+    debug: Flags.boolean({
+      description: 'Show debug information',
+      hidden: true
+    })
   }
+
+
 
 
   async run(): Promise<any> {
@@ -83,13 +89,28 @@ export default class SeederSeed extends Command {
       // Read business model data
       const model = await this.readBusinessModelData(flags.url, name)
 
+
+      const numRequests = await this.computeRequestsNumber(model, flags.url)
+      this.delay = requestsDelay(numRequests, this.environment)
+
+      if (flags.debug) {
+        this.log(clColor.style.title('Debug information'))
+        this.log('Execution environment: ' + clColor.cli.value(this.environment))
+        this.log('Estimated total number of requests: ' + clColor.cli.value(`${numRequests.cacheable} (cacheable) / ${numRequests.uncacheable} (uncacheable)`))
+        this.log('Computed delay between requests (ms): ' + clColor.cli.value(String(`${this.delay.cacheable} (cacheable) / ${this.delay.uncacheable} (uncacheable)`)))
+        this.log('Cacheable resources: ' +  clColor.cli.value((numRequests.cacheableTypes || []).join(',')))
+        this.log('Uncacheable resources: ' +  clColor.cli.value((numRequests.uncacheableTypes || []).join(',')))
+        this.log()
+      }
+
+
       // Create tasks
       const tasks = new Listr(model.map(res => {
         return {
           title: `Create ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.createResources(res, flags, task)
+            const n = await this.createResources(res, flags, task).catch(this.handleCommonError)
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -110,6 +131,61 @@ export default class SeederSeed extends Command {
   }
 
 
+
+  private async computeRequestsNumber(model: BusinessModel, dataFilesUrl: string): Promise<ResourceTypeNumber> {
+
+    let resources: ResourceTypeNumber = {
+      cacheable: 0,
+      uncacheable: 0
+    }
+
+    try {
+      for (const res of model) {
+
+       let requests = 0
+
+        const resourceData = await readResourceData(dataFilesUrl, res.resourceType)
+        const referenceKeys = res.importAll ? Object.keys(resourceData) : res.referenceKeys
+
+        for (const r of referenceKeys) {
+
+          requests++  // find resource by reference
+          requests++  // create or update the resource
+
+          const resource = resourceData[r]
+
+          for (const field in resource) {
+            if (['key', 'type'].includes(field)) continue
+            const val = resource[field] as string
+            const rel = relationshipType(res.resourceType, field, val)
+            if (rel) requests++ // find related resource by reference
+          }
+
+        }
+
+        if (clApi.isResourceCacheable(res.resourceType)) {
+          resources.cacheable += requests
+          if (!resources.cacheableTypes) resources.cacheableTypes = []
+          resources.cacheableTypes.push(res.resourceType)
+        } else {
+          resources.uncacheable += requests
+          if (!resources.uncacheableTypes) resources.uncacheableTypes = []
+          resources.uncacheableTypes.push(res.resourceType)
+        }
+
+      }
+    } catch (error) {
+      resources = {
+        cacheable: 0,
+        uncacheable: 0
+      }
+    }
+
+    return resources
+
+  }
+
+
   private async resolveRelationships(type: string, res: ResourceData): Promise<any> {
 
     const resourceMod: any = {}
@@ -123,7 +199,13 @@ export default class SeederSeed extends Command {
         else {
           const slashIdx = val.indexOf('/')
           if (slashIdx >= 0) val = val.substring(slashIdx + 1)
-          const remoteRes = await this.findByReference(rel, val)
+          const remoteRes = await this.findByReference(rel, val).catch(error => {
+            if (this.cl.isApiError(error)) {
+              const err = error.first()
+              if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${JSON.stringify(err.meta?.value)})` : ''}`)
+              else throw new Error(`Unable to find resource of type ${rel} with reference ${clColor.msg.error(val)} [${error.code}]`)
+            }
+          })
           if (remoteRes) resourceMod[field] = { type: rel, id: remoteRes.id }
           else throw new Error(`Unable to find resource of type ${rel} with reference ${clColor.msg.error(val)}`)
         }
@@ -144,8 +226,11 @@ export default class SeederSeed extends Command {
 
     const resSdk: any = this.cl[resType as keyof CommerceLayerClient]
     resourceCreate.reference_origin = config.referenceOrigin
+
+    await this.applyRequestDelay(type)
+
     const remoteRes = await resSdk.create(resourceCreate).catch((error: any) => {
-      if (CommerceLayerStatic.isApiError(error)) {
+      if (this.cl.isApiError(error)) {
         const err = error.first()
         if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${JSON.stringify(err.meta?.value)})` : ''}`)
         else throw new Error(`Error creating resource of type ${resType} and reference ${resourceCreate.reference} [${error.code}]`)
@@ -165,12 +250,13 @@ export default class SeederSeed extends Command {
     checkResourceType(resType)
 
     const resSdk: any = this.cl[resType as keyof CommerceLayerClient]
-
     resourceUpdate.id = id
     resourceUpdate.reference_origin = config.referenceOrigin
 
+    await this.applyRequestDelay(type)
+
     const remoteRes = await resSdk.update(resourceUpdate).catch((error: any) => {
-      if (CommerceLayerStatic.isApiError(error)) {
+      if (this.cl.isApiError(error)) {
         const err = error.first()
         if (err) throw new Error(`${err.code}: ${err.detail}${err.meta?.value ? ` (${err.meta?.value})` : ''}`)
         else throw new Error(`Error creating resource of type ${resType} and reference ${resourceUpdate.reference} [${error.code}]`)
@@ -193,9 +279,6 @@ export default class SeederSeed extends Command {
     const referenceKeys = res.importAll ? Object.values(resourceData).map(v => v.reference) : res.referenceKeys
     if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
-
-    const delay = requestsDelay(referenceKeys.length, res.resourceType, this.environment)
-
     for (const r of referenceKeys) {
 
       task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + r
@@ -210,8 +293,6 @@ export default class SeederSeed extends Command {
         if (flags.keep) continue
         else await this.updateResource(res.resourceType, remoteRes.id, resource)
       } else await this.createResource(res.resourceType, resource)
-
-      if (delay > 0) await clUtil.sleep(delay)
 
     }
 

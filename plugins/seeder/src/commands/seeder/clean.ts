@@ -1,11 +1,11 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
 import Listr from 'listr'
-import { readResourceData, type SeederResource } from '../../data'
+import { type BusinessModel, readResourceData, type SeederResource } from '../../data'
 import { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { checkResourceType } from './check'
-import { clColor, clSymbol, clUtil } from '@commercelayer/cli-core'
-import { requestsDelay } from '../../common'
+import { clApi, clColor, clSymbol } from '@commercelayer/cli-core'
+import { type ResourceTypeNumber, requestsDelay } from '../../common'
 
 
 export default class SeederClean extends Command {
@@ -32,12 +32,17 @@ export default class SeederClean extends Command {
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
     }),
+    debug: Flags.boolean({
+      description: 'Show debug information',
+      hidden: true
+    })
   }
 
   static examples = [
     '$ commercelayer seeder:clean -u <seedUrl>',
     '$ cl seeder:clean -b multi_market',
   ]
+
 
 
   async run(): Promise<any> {
@@ -57,6 +62,17 @@ export default class SeederClean extends Command {
       // Read business model data
       const model = await this.readBusinessModelData(flags.url, name)
 
+      const numRequests = await this.computeRequestsNumber(model, flags.url)
+      this.delay = requestsDelay(numRequests, this.environment)
+
+      if (flags.debug) {
+        this.log(clColor.style.title('Debug information'))
+        this.log('Execution environment: ' + clColor.cli.value(this.environment))
+        this.log('Estimated total number of requests: ' + clColor.cli.value(`${numRequests.cacheable} (cacheable) / ${numRequests.uncacheable} (uncacheable)`))
+        this.log('Computed delay between requests: ' + clColor.cli.value(String(`${this.delay.cacheable} (cacheable) / ${this.delay.uncacheable} (uncacheable)`)))
+        this.log()
+      }
+
       // Delete resource in reverse order
       const resources = model.reverse()
 
@@ -66,7 +82,7 @@ export default class SeederClean extends Command {
           title: `Delete ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.deleteResources(res, flags, task)
+            const n = await this.deleteResources(res, flags, task).catch(this.handleCommonError)
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -102,8 +118,6 @@ export default class SeederClean extends Command {
     if (!Array.isArray(referenceKeys)) throw new Error(`Attribute ${clColor.msg.error('referenceKeys')} of ${clColor.api.resource(res.resourceType)} must be an array`)
 
 
-    const delay = requestsDelay(referenceKeys.length, res.resourceType, this.environment)
-
     for (const ref of referenceKeys) {
 
       task.title = task.title.substring(0, task.title.indexOf(res.resourceType)) + clColor.italic(res.resourceType) + ': ' + ref
@@ -114,8 +128,6 @@ export default class SeederClean extends Command {
 
       const remoteRes = await this.findByReference(type, ref)
       if (remoteRes) await this.deleteResource(remoteRes.type, remoteRes.id)
-
-      if (delay > 0) await clUtil.sleep(delay)
 
     }
 
@@ -130,6 +142,8 @@ export default class SeederClean extends Command {
 
     const resSdk: any = this.cl[type as keyof CommerceLayerClient]
 
+    await this.applyRequestDelay(type)
+
     await resSdk.delete(id).catch((error: any) => {
       if (CommerceLayerStatic.isApiError(error)) {
         const err = error.first()
@@ -137,6 +151,42 @@ export default class SeederClean extends Command {
         else throw new Error(`Error deleting resource of type ${type} and id ${id} [${error.code}]`)
       } else throw error
     })
+
+  }
+
+
+  private async computeRequestsNumber(model: BusinessModel, dataFilesUrl: string): Promise<ResourceTypeNumber> {
+
+    let resources: ResourceTypeNumber = {
+      cacheable: 0,
+      uncacheable: 0
+    }
+
+    try {
+      for (const res of model) {
+
+        const resourceData = await readResourceData(dataFilesUrl, res.resourceType)
+        const referenceKeys = res.importAll ? Object.keys(resourceData): res.referenceKeys
+
+        if (clApi.isResourceCacheable(res.resourceType)) {
+          resources.cacheable += referenceKeys.length
+          if (!resources.cacheableTypes) resources.cacheableTypes = []
+          resources.cacheableTypes.push(res.resourceType)
+        } else {
+          resources.uncacheable += referenceKeys.length
+          if (!resources.uncacheableTypes) resources.uncacheableTypes = []
+          resources.uncacheableTypes.push(res.resourceType)
+        }
+
+      }
+    } catch (error) {
+      resources = {
+        cacheable: 0,
+        uncacheable: 0
+      }
+    }
+
+    return resources
 
   }
 
