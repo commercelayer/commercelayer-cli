@@ -130,6 +130,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer stock_transfer:upcoming ID`](#commercelayer-stock_transferupcoming-id)
 * [`commercelayer stripe_payment ID`](#commercelayer-stripe_payment-id)
 * [`commercelayer stripe_payment:refresh ID`](#commercelayer-stripe_paymentrefresh-id)
+* [`commercelayer stripe_payment:update ID`](#commercelayer-stripe_paymentupdate-id)
 * [`commercelayer webhook ID`](#commercelayer-webhook-id)
 * [`commercelayer webhook:reset_circuit ID`](#commercelayer-webhookreset_circuit-id)
 
@@ -2347,6 +2348,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/stripe_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_payment/refresh.ts)_
+
+### `commercelayer stripe_payment:update ID`
+
+Send this attribute if you want to update the created payment intent with fresh order data.
+
+```sh-session
+USAGE
+  $ commercelayer stripe_payment:update ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to update the created payment intent with fresh order data.
+```
+
+_See code: [src/commands/stripe_payment/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_payment/update.ts)_
 
 ### `commercelayer webhook ID`
 
