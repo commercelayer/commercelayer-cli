@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "3.9.0",
+  "version": "3.10.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
   "engines": {
@@ -57,14 +57,14 @@
     "@commercelayer/cli-dev": "^2.0.5",
     "@commercelayer/eslint-config-ts": "^1.0.0",
     "@oclif/plugin-help": "^5.2.9",
-    "@oclif/test": "^2.3.20",
+    "@oclif/test": "^2.3.21",
     "@types/chai": "^4.3.5",
     "@types/inquirer": "^8.2.6",
-    "@types/lodash": "^4.14.194",
+    "@types/lodash": "^4.14.195",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^20.1.4",
+    "@types/node": "^20.2.4",
     "chai": "^4.3.7",
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "inflector-js": "^1.0.1",
     "lodash": "^4.17.21",
     "mocha": "^10.2.0",
@@ -78,7 +78,7 @@
     "@commercelayer/sdk": "^4.27.1",
     "@oclif/core": "^2.8.5",
     "inquirer": "^8.2.5",
-    "tslib": "^2.5.0"
+    "tslib": "^2.5.2"
   },
   "publishConfig": {
     "access": "public"
