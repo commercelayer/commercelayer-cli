@@ -147,7 +147,7 @@ export default class ExportsList extends Command {
 		if (itemCount < totalItems) {
 			if (flags.all || ((flags.limit || 0) > MAX_EXPORTS)) {
 				this.log()
-				this.warn(`The maximum number of imports that can be displayed is ${clColor.yellowBright(String(MAX_EXPORTS))}`)
+				this.warn(`The maximum number of exports that can be displayed is ${clColor.yellowBright(String(MAX_EXPORTS))}`)
 			} else
 				if (!flags.limit) {
 					this.log()
