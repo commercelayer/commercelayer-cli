@@ -10,6 +10,9 @@ const symbols = {
 	},
 	clock: {
 		stopwatch: '\u23F1'	// ⏱
+	},
+	arrow: {
+		down: '\u2193'		// ↓
 	}
 }
 
