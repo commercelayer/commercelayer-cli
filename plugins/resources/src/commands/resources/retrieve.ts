@@ -1,5 +1,5 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import commercelayer, { CommerceLayerClient, QueryParamsRetrieve} from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, type QueryParamsRetrieve} from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 

@@ -2,6 +2,7 @@
 import { json2csvAsync } from 'json-2-csv'
 import { writeFileSync } from 'fs'
 import { clOutput } from '@commercelayer/cli-core'
+import type { KeyValString } from './common'
 
 
 
@@ -12,7 +13,7 @@ const formatCsv = (obj: object[], flags?: any): string => {
 
 const analyzeItem = (name: string | undefined, item: object, flags: any): Set<string> => {
 
-  const keys: Set<string> = new Set()
+  const keys = new Set<string>()
 
   if (item)
     if (Array.isArray(item)) {
@@ -51,7 +52,7 @@ const analyzeItem = (name: string | undefined, item: object, flags: any): Set<st
 const exportCsv = async (output: any, flags: any, path: string): Promise<boolean> => {
 
   // Rename header fields
-  const header: { [field: string]: string } = {}
+  const header: KeyValString = {}
   if (flags.header) {
     flags.header.join(',').split(',').forEach((h: string) => {
       const ft = h.split(':')

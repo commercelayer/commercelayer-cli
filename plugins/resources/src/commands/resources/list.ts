@@ -1,5 +1,5 @@
 import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, cliux } from '../../base'
-import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 import { clColor } from '@commercelayer/cli-core'
@@ -137,7 +137,7 @@ export default class ResourcesList extends Command {
 
         if (flags.extract && Array.isArray(out)) {
           const ext = this.extractFlag(flags.extract)
-          out.forEach(o => this.extractObjectFields(ext, o))
+          out.forEach(o => { this.extractObjectFields(ext, o) })
         }
 
         this.printHeaders(rawReader?.headers, flags)

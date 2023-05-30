@@ -1,6 +1,6 @@
-import { QueryParams } from '@commercelayer/sdk'
+import type { QueryParams } from '@commercelayer/sdk'
 import { buildCurl } from './curl'
-import { RequestData } from './request'
+import type { RequestData } from './request'
 import { buildRuby } from './ruby'
 import { buildTypescript } from './node'
 import inquirer from 'inquirer'

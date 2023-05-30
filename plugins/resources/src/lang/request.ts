@@ -1,5 +1,6 @@
-import { CommerceLayerClient, CommerceLayerStatic, RequestObj } from '@commercelayer/sdk'
+import { type CommerceLayerClient, CommerceLayerStatic, type RequestObj } from '@commercelayer/sdk'
 import { pluralize } from '../inflector'
+import type { KeyValString } from '../common';
 
 
 type RequestData = {
@@ -76,7 +77,8 @@ const isRequestInterrupted = (error: unknown): boolean => {
 }
 
 
-export { addRequestReader, RequestReader, RequestData, isRequestInterrupted, OperationData }
+export { addRequestReader, isRequestInterrupted }
+export type { RequestReader, RequestData, OperationData }
 
 
 export const getMethod = (request: RequestData): string => {
@@ -108,7 +110,7 @@ export const getRelationship = (request: RequestData): string | undefined => {
 }
 
 
-export const getHeaders = (request: RequestData): { [h: string]: string } => {
+export const getHeaders = (request: RequestData): KeyValString => {
   /*
   const headers = { ...request.headers }
   for (const h of Object.keys(headers))

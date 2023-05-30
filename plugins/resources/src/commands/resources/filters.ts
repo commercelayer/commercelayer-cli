@@ -98,4 +98,4 @@ const filterAvailable = (filter: string): boolean => {
 }
 
 
-export { Filter, filterAvailable }
+export { type Filter, filterAvailable }

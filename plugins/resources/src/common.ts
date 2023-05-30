@@ -2,17 +2,17 @@
 export const apiReferenceUrl = 'https://docs.commercelayer.io/developers/v/api-reference'
 
 
-export type KeyVal = { [key: string]: string | number | boolean | undefined | null }
+export type KeyVal = Record<string, string | number | boolean | undefined | null>
 
-export type KeyValString = { [key: string]: string }
+export type KeyValString = Record<string, string>
 
-export type KeyValArray = { [key: string]: string[] }
+export type KeyValArray = Record<string, string[]>
 
-export type KeyValRel = { [key: string]: { readonly id: string; readonly type: string } }
+export type KeyValRel = Record<string, { readonly id: string; readonly type: string }>
 
-export type KeyValObj = { [key: string]: any }
+export type KeyValObj = Record<string, any>
 
-export type KeyValSort = { [key: string]: 'asc' | 'desc' }
+export type KeyValSort = Record<string, 'asc' | 'desc'>
 
 
 export type ResAttributes = KeyValObj

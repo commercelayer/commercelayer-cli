@@ -1,4 +1,4 @@
-import { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
+import type { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
 import RESOURCES from './available'
 
 
@@ -28,4 +28,4 @@ const resourceList = (field: 'name' | 'api' | 'model'): string[] => {
 }
 
 
-export { findResource, resourceList, Resource }
+export { findResource, resourceList, type Resource }

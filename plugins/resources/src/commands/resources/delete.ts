@@ -1,5 +1,5 @@
 import Command, { Args } from '../../base'
-import commercelayer, { CommerceLayerClient } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { clCommand, clColor } from '@commercelayer/cli-core'
 

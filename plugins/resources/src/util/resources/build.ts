@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import { Resource } from '../resources'
+import type { Resource } from '../resources'
 import axios from 'axios'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { join } from 'path'
 import { writeFileSync } from 'fs'
-import { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
+import type { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
 const resFile = join(__dirname, 'schema.json')

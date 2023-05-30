@@ -1,5 +1,5 @@
 import Command, { Args, cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 import ResourcesList from './list'
@@ -106,7 +106,7 @@ export default class ResourcesRelationship extends Command {
 
       if (out && flags.extract) {
         const ext = this.extractFlag(flags.extract)
-        if (Array.isArray(out))  out.forEach(o => this.extractObjectFields(ext, o))
+        if (Array.isArray(out))  out.forEach(o => { this.extractObjectFields(ext, o) })
         else this.extractObjectFields(ext, out)
       }
 

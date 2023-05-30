@@ -1,9 +1,9 @@
-import { QueryParams, QueryParamsList } from '@commercelayer/sdk'
-import { Config } from '@oclif/core'
+import type { QueryParams, QueryParamsList } from '@commercelayer/sdk'
+import type { Config } from '@oclif/core'
 import { join } from 'path'
 import fs from 'fs'
-import { clOutput, clColor } from '@commercelayer/cli-core'
-import { KeyValArray } from './common'
+import { clOutput, clColor, type KeyValSort } from '@commercelayer/cli-core'
+import type { KeyValArray } from './common'
 
 
 const COMMANDS_DIR = 'commands'
@@ -123,7 +123,7 @@ export const mergeCommandParams = (params: QueryParams, saved: QueryParams): voi
   const sl = saved as QueryParamsList
   const pl = params as QueryParamsList
 
-  const sort = (sl.sort || {}) as { [key: string]: 'asc' | 'desc' }
+  const sort = (sl.sort || {}) as KeyValSort
   if (pl.sort) Object.entries(pl.sort).forEach(([k, v]) => Object.assign(sort[k] || {}, v))
 
   const filters = sl.filters || {}

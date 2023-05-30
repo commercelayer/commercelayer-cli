@@ -3,7 +3,7 @@
 /* eslint-disable complexity */
 import Command, { Flags, cliux } from '../../base'
 import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
-import commercelayer, { CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
 import { getIntegrationToken } from '@commercelayer/js-auth'
 
@@ -250,7 +250,7 @@ export default class ResourcesAll extends Command {
 
           if (flags.extract) {
             const ext = this.extractFlag(flags.extract)
-            res.forEach((r: any) => this.extractObjectFields(ext, r))
+            res.forEach((r: any) => { this.extractObjectFields(ext, r) })
           }
 
           resources.push(...res)

@@ -1,6 +1,6 @@
 import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
-import commercelayer, { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
 import { denormalize } from '../../jsonapi'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
