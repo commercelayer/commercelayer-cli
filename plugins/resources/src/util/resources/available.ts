@@ -105,6 +105,7 @@ const RESOURCES = [
 	{ name: 'stripe_gateway', api: 'stripe_gateways', model: 'StripeGateway' },
 	{ name: 'stripe_payment', api: 'stripe_payments', model: 'StripePayment' },
 	{ name: 'subscription_model', api: 'subscription_models', model: 'SubscriptionModel' },
+	{ name: 'tag', api: 'tags', model: 'Tag' },
 	{ name: 'tax_calculator', api: 'tax_calculators', model: 'TaxCalculator' },
 	{ name: 'tax_category', api: 'tax_categories', model: 'TaxCategory' },
 	{ name: 'tax_rule', api: 'tax_rules', model: 'TaxRule' },
