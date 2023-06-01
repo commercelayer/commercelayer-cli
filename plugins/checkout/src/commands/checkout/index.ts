@@ -1,6 +1,6 @@
 import Command, { Flags } from '../../base'
 import CheckoutOrder from './order'
-import { LineItemCreate } from '@commercelayer/sdk'
+import type { LineItemCreate } from '@commercelayer/sdk'
 import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
 import { clColor } from '@commercelayer/cli-core'
 
