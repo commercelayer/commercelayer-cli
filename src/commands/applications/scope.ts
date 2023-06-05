@@ -1,4 +1,4 @@
-import { AppInfo, clColor } from '@commercelayer/cli-core'
+import { type AppInfo, clColor } from '@commercelayer/cli-core'
 import { Command, Flags, Args } from '@oclif/core'
 import { currentApplication, filterApplications, readConfigFile } from '../../config'
 import ApplicationsLogin, { checkScope } from './login'

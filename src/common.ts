@@ -1,4 +1,4 @@
-import { AppInfo, clColor, clOutput } from '@commercelayer/cli-core'
+import { type AppInfo, clColor, clOutput } from '@commercelayer/cli-core'
 import inquirer from 'inquirer'
 
 

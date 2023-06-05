@@ -1,5 +1,5 @@
 import { clColor } from '@commercelayer/cli-core'
-import { Hook } from '@oclif/core'
+import type { Hook } from '@oclif/core'
 
 
 

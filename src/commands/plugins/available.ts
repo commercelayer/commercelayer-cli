@@ -1,6 +1,6 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
 import { clColor, clUtil } from '@commercelayer/cli-core'
-import { Config } from '@oclif/core/lib/interfaces'
+import type { Config } from '@oclif/core/lib/interfaces'
 
 
 export default class PluginsAvailable extends Command {
@@ -97,4 +97,5 @@ const getInstalledPlugins = (config: Config): PluginRelease[] => {
 }
 
 
-export { getPluginInfo, getAvailablePlugins, PluginRelease, getInstalledPlugins }
+export { getPluginInfo, getAvailablePlugins, getInstalledPlugins }
+export type { PluginRelease }

@@ -1,8 +1,8 @@
 import Configstore from 'configstore'
 import { join } from 'path'
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs'
-import { Config } from '@oclif/core/lib/interfaces/config'
-import { AppKey, AppInfo, clApi, clConfig } from '@commercelayer/cli-core'
+import type { Config } from '@oclif/core/lib/interfaces/config'
+import { type AppKey, type AppInfo, clApi, clConfig } from '@commercelayer/cli-core'
 
 const packageJson = require('../package.json')
 

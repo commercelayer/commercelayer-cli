@@ -1,6 +1,6 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
 import { configParam, ConfigParams, filterApplications } from './config'
-import { AppInfo } from '@commercelayer/cli-core'
+import type { AppInfo } from '@commercelayer/cli-core'
 import { promptApplication } from './common'
 
 

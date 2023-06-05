@@ -1,12 +1,13 @@
-import { Command, Flags, Config } from '@oclif/core'
+import { Command, Flags, type Config } from '@oclif/core'
 // import { AuthScope } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { ApiMode, AppAuth, AppInfo, clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
+import { clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
+import type { ApiMode, AppAuth, AppInfo } from '@commercelayer/cli-core'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
 import { inspect } from 'util'
 import { printCurrent } from './current'
 import { CLIError } from '@oclif/core/lib/errors'
-import { AuthScope } from '@commercelayer/js-auth'
+import type { AuthScope } from '@commercelayer/js-auth'
 
 
 

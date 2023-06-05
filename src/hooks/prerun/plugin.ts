@@ -1,8 +1,8 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
-import { Hook } from '@oclif/core'
+import type { Hook } from '@oclif/core'
 import { getAvailablePlugins, getInstalledPlugins, getPluginInfo } from '../../commands/plugins/available'
 import inquirer from 'inquirer'
-import { Config } from '@oclif/core/lib/interfaces'
+import type { Config } from '@oclif/core/lib/interfaces'
 import { CLIError } from '@oclif/core/lib/errors'
 
 

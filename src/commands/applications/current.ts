@@ -2,7 +2,7 @@ import { Command, Flags } from '@oclif/core'
 import { readConfigFile, currentApplication } from '../../config'
 import { inspect } from 'util'
 import { printScope } from '../../common'
-import { AppInfo, clColor } from '@commercelayer/cli-core'
+import { type AppInfo, clColor } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsCurrent extends Command {

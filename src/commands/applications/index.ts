@@ -1,7 +1,7 @@
 import Command, { Flags, cliux } from '../../base'
 import { configParam, ConfigParams, filterApplications } from '../../config'
 import { printScope } from '../../common'
-import { AppInfo, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
+import { type AppInfo, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsIndex extends Command {
@@ -89,7 +89,7 @@ const extraColumns = (flags: any): any => {
 }
 
 
-const currentColor = (app: any, current: any): Function => {
+const currentColor = (app: any, current: any): ((s: unknown) => string) => {
 	return (clApplication.appKeyMatch(current, app) ? clColor.magentaBright : clColor.visible)
 }
 

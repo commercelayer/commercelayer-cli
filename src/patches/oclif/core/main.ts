@@ -2,7 +2,7 @@
 import { Performance, stdout } from "@oclif/core"
 import { CLIError } from "@oclif/core/lib/errors"
 import { loadHelpClass, normalizeArgv } from "@oclif/core/lib/help"
-import { LoadOptions } from "@oclif/core/lib/interfaces"
+import type { LoadOptions } from "@oclif/core/lib/interfaces"
 import { helpAddition, versionAddition } from "@oclif/core/lib/main"
 import { fileURLToPath } from "url"
 import { format, inspect } from "util"

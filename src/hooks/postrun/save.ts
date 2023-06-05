@@ -1,4 +1,4 @@
-import { Hook } from '@oclif/core'
+import type { Hook } from '@oclif/core'
 import { existsSync, mkdirSync, readdirSync, writeFileSync, appendFileSync, unlinkSync } from 'fs'
 import { join } from 'path'
 import { kebabCase } from 'lodash'
@@ -65,6 +65,6 @@ const deleteOldFiles = (dir: string): void => {
 
   })
 
-  if (files && (files.length > 0)) files.forEach(f => unlinkSync(join(dir, f)))
+  if (files && (files.length > 0)) files.forEach(f => { unlinkSync(join(dir, f)) })
 
 }

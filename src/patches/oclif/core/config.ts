@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Command, Config, Performance } from '@oclif/core'
+import { type Command, Config, Performance } from '@oclif/core'
 import { Debug } from '@oclif/core/lib/config/util'
 import { CLIError } from '@oclif/core/lib/errors'
-import { LoadOptions } from '@oclif/core/lib/interfaces'
+import type { LoadOptions } from '@oclif/core/lib/interfaces'
 
 import { fileURLToPath } from 'url'
 

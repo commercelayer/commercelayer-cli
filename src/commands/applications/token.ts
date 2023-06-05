@@ -1,6 +1,6 @@
 import Command, { Flags } from '../../base'
 import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
-import { clOutput, AppKey, clToken, clConfig, clColor } from '@commercelayer/cli-core'
+import { clOutput, type AppKey, clToken, clConfig, clColor } from '@commercelayer/cli-core'
 import type { Config } from '@oclif/core/lib/interfaces/config'
 import type { AuthReturnType } from '@commercelayer/js-auth'
 

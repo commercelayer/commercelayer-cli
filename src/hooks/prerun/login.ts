@@ -1,6 +1,6 @@
-import { Hook, ux as cliux } from '@oclif/core'
+import { type Hook, ux as cliux } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { clApplication, AppKey, clToken, clColor, clCommand } from '@commercelayer/cli-core'
+import { clApplication, type AppKey, clToken, clColor, clCommand } from '@commercelayer/cli-core'
 import { newAccessToken, isAccessTokenExpiring } from '../../commands/applications/token'
 
 

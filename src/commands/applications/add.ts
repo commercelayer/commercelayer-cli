@@ -3,7 +3,7 @@ import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
-import { AppAuth, clColor, clToken } from '@commercelayer/cli-core'
+import { type AppAuth, clColor, clToken } from '@commercelayer/cli-core'
 
 
 
