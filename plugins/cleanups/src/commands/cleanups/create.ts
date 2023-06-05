@@ -119,8 +119,6 @@ export default class CleanupsCreate extends Command {
       const clp = await resSdk.list({ filters: wheres, pageSize: clConfig.api.page_max_size })
       const cleanupsLength = clp.meta.recordCount
 
-  console.log(clp)
-
       // Check cleanup size
       const humanized = type.replace(/_/g, ' ')
       if (cleanupsLength === 0) this.error(`No ${clColor.cli.value(humanized)} to cleanup`)
