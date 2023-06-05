@@ -24,156 +24,138 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 ## Commands
 <!-- commands -->
 
-* [`commercelayer exports [ID]`](#commercelayer-exports-id)
-* [`commercelayer exports:create`](#commercelayer-exportscreate)
-* [`commercelayer exports:details ID`](#commercelayer-exportsdetails-id)
-* [`commercelayer exports:list`](#commercelayer-exportslist)
-* [`commercelayer exports:types`](#commercelayer-exportstypes)
+* [`commercelayer cleanups [ID]`](#commercelayer-cleanups-id)
+* [`commercelayer cleanups:create`](#commercelayer-cleanupscreate)
+* [`commercelayer cleanups:details ID`](#commercelayer-cleanupsdetails-id)
+* [`commercelayer cleanups:list`](#commercelayer-cleanupslist)
+* [`commercelayer cleanups:types`](#commercelayer-cleanupstypes)
 
-### `commercelayer exports [ID]`
+### `commercelayer cleanups [ID]`
 
-List all the created exports or show details of a single export.
+List all the created cleanups or show details of a single cleanup.
 
 ```sh-session
 USAGE
-  $ commercelayer exports [ID] [-A | -l <value>] [-t
-    addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
-    prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
-    gories|transactions|authorizations|captures|voids|refunds] [-s in_progress|pending|completed|interrupted]
+  $ commercelayer cleanups [ID] [-A | -l <value>] [-t
+    bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items] [-s
+    in_progress|pending|completed|interrupted]
 
 ARGUMENTS
-  ID  unique id of the export to be retrieved
+  ID  unique id of the cleanup to be retrieved
 
 FLAGS
-  -A, --all              show all exports instead of first 25 only
-  -l, --limit=<value>    limit number of exports in output
-  -s, --status=<option>  the export job status
+  -A, --all              show all cleanups instead of first 25 only
+  -l, --limit=<value>    limit number of cleanups in output
+  -s, --status=<option>  the cleanup job status
                          <options: in_progress|pending|completed|interrupted>
-  -t, --type=<option>    the type of resource exported
-                         <options: addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orde
-                         rs|payment_methods|price_tiers|prices|shipments|shipping_categories|shipping_methods|sku_lists|
-                         sku_list_items|sku_options|skus|stock_items|tax_categories|transactions|authorizations|captures
-                         |voids|refunds>
+  -t, --type=<option>    the type of resource cleaned
+                         <options: bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items>
 
 DESCRIPTION
-  list all the created exports or show details of a single export
+  list all the created cleanups or show details of a single cleanup
 ```
 
-_See code: [src/commands/exports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/index.ts)_
+_See code: [src/commands/cleanups/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/index.ts)_
 
-### `commercelayer exports:create`
+### `commercelayer cleanups:create`
 
-Create a new export.
+Create a new cleanup.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:create -t
-    addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
-    prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
-    gories|transactions|authorizations|captures|voids|refunds [-i <value>] [-w <value>] [-D] [-F csv|json | -C | ] [-x
-    <value> | -X <value>] [-b |  | ] [-P | ] [-O]
+  $ commercelayer cleanups:create -t bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items [-w
+    <value>] [-b | -q | ]
 
 FLAGS
-  -C, --csv                                                        export data in CSV format
-  -D, --dry-data                                                   skip redundant attributes
-  -F, --format=<option>                                            [default: json] export file format
-                                                                   <options: csv|json>
-  -O, --open                                                       open automatically the file after a successful export
-  -P, --prettify                                                   prettify json output format
-  -X, --save-path=<value>                                          save command output to file and create missing path
-                                                                   directories
-  -b, --blind                                                      execute in blind mode without showing the progress
-                                                                   monitor
-  -i, --include=<value>...                                         comma separated resources to include
-  -t, --type=addresses|bundles|coupons|customer_subscriptions|...  (required) the type of resource being exported
-  -w, --where=<value>...                                           comma separated list of query filters
-  -x, --save=<value>                                               save command output to file
+  -b, --blind                                          execute in blind mode without showing the progress monitor
+  -q, --quiet                                          execute command without showing warning messages
+  -t, --type=bundles|gift_cards|prices|promotions|...  (required) the type of resource to clean up
+  -w, --where=<value>...                               comma separated list of query filters
 
 DESCRIPTION
-  create a new export
+  create a new cleanup
 
 ALIASES
-  $ commercelayer exp:create
-  $ commercelayer export
+  $ commercelayer clp:create
+  $ commercelayer cleanup
 
 EXAMPLES
-  $ commercelayer exports:create -t cusorderstomers -X <output-file-path>
+  $ commercelayer cleanups:create -t skus
 
-  $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org
+  $ cl clp:create -t stock_items
 ```
 
-_See code: [src/commands/exports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/create.ts)_
+_See code: [src/commands/cleanups/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/create.ts)_
 
-### `commercelayer exports:details ID`
+### `commercelayer cleanups:details ID`
 
-Show the details of an existing export.
+Show the details of an existing cleanup.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:details ID
+  $ commercelayer cleanups:details ID [-l]
 
 ARGUMENTS
-  ID  unique id of the export
+  ID  unique id of the cleanup
+
+FLAGS
+  -l, --logs  show error logs related to the cleanup process
 
 DESCRIPTION
-  show the details of an existing export
+  show the details of an existing cleanup
 
 ALIASES
-  $ commercelayer exp:details
+  $ commercelayer clp:details
 
 EXAMPLES
-  $ commercelayer exports:details <export-id>
+  $ commercelayer cleanups:details cleanup-id>
 
-  $ cl exp:details <export-id>
+  $ cl clp:details <cleanup-id>
 ```
 
-_See code: [src/commands/exports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/details.ts)_
+_See code: [src/commands/cleanups/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/details.ts)_
 
-### `commercelayer exports:list`
+### `commercelayer cleanups:list`
 
-List all the created exports.
+List all the created cleanups.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:list [-A | -l <value>] [-t
-    addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
-    prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
-    gories|transactions|authorizations|captures|voids|refunds] [-s in_progress|pending|completed|interrupted]
+  $ commercelayer cleanups:list [-A | -l <value>] [-t
+    bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items] [-s
+    in_progress|pending|completed|interrupted]
 
 FLAGS
-  -A, --all              show all exports instead of first 25 only
-  -l, --limit=<value>    limit number of exports in output
-  -s, --status=<option>  the export job status
+  -A, --all              show all cleanups instead of first 25 only
+  -l, --limit=<value>    limit number of cleanups in output
+  -s, --status=<option>  the cleanup job status
                          <options: in_progress|pending|completed|interrupted>
-  -t, --type=<option>    the type of resource exported
-                         <options: addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orde
-                         rs|payment_methods|price_tiers|prices|shipments|shipping_categories|shipping_methods|sku_lists|
-                         sku_list_items|sku_options|skus|stock_items|tax_categories|transactions|authorizations|captures
-                         |voids|refunds>
+  -t, --type=<option>    the type of resource cleaned
+                         <options: bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items>
 
 DESCRIPTION
-  list all the created exports
+  list all the created cleanups
 
 ALIASES
-  $ commercelayer exp:list
+  $ commercelayer clp:list
 
 EXAMPLES
-  $ commercelayer exports
+  $ commercelayer cleanups
 
-  $ cl exports:list -A
+  $ cl cleanups:list -A
 
-  $ cl exp:list
+  $ cl clp:list
 ```
 
-_See code: [src/commands/exports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/list.ts)_
+_See code: [src/commands/cleanups/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/list.ts)_
 
-### `commercelayer exports:types`
+### `commercelayer cleanups:types`
 
 Show online documentation for supported resources.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:types [-O]
+  $ commercelayer cleanups:types [-O]
 
 FLAGS
   -O, --open  open online documentation page
@@ -182,13 +164,13 @@ DESCRIPTION
   show online documentation for supported resources
 
 ALIASES
-  $ commercelayer exp:types
+  $ commercelayer clp:types
 
 EXAMPLES
-  $ commercelayer exports:types
+  $ commercelayer cleanups:types
 
   $ cl exp:types
 ```
 
-_See code: [src/commands/exports/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/types.ts)_
+_See code: [src/commands/cleanups/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/types.ts)_
 <!-- commandsstop -->
