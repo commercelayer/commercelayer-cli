@@ -101,6 +101,7 @@ const RESOURCES = [
 	{ name: 'stock_item', api: 'stock_items', model: 'StockItem' },
 	{ name: 'stock_line_item', api: 'stock_line_items', model: 'StockLineItem' },
 	{ name: 'stock_location', api: 'stock_locations', model: 'StockLocation' },
+	{ name: 'stock_reservation', api: 'stock_reservations', model: 'StockReservation' },
 	{ name: 'stock_transfer', api: 'stock_transfers', model: 'StockTransfer' },
 	{ name: 'stripe_gateway', api: 'stripe_gateways', model: 'StripeGateway' },
 	{ name: 'stripe_payment', api: 'stripe_payments', model: 'StripePayment' },

@@ -8,7 +8,7 @@ export type KeyValString = Record<string, string>
 
 export type KeyValArray = Record<string, string[]>
 
-export type KeyValRel = Record<string, { readonly id: string; readonly type: string }>
+export type KeyValRel = Record<string, { readonly id: string; readonly type: string | string[] }>
 
 export type KeyValObj = Record<string, any>
 
