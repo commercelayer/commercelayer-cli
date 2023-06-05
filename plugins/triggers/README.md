@@ -61,6 +61,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer klarna_payment:update ID`](#commercelayer-klarna_paymentupdate-id)
 * [`commercelayer line_item ID`](#commercelayer-line_item-id)
 * [`commercelayer line_item:external_price ID`](#commercelayer-line_itemexternal_price-id)
+* [`commercelayer line_item:reserve_stock ID`](#commercelayer-line_itemreserve_stock-id)
 * [`commercelayer market ID`](#commercelayer-market-id)
 * [`commercelayer market:disable ID`](#commercelayer-marketdisable-id)
 * [`commercelayer market:enable ID`](#commercelayer-marketenable-id)
@@ -820,6 +821,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/line_item/external_price.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/external_price.ts)_
+
+### `commercelayer line_item:reserve_stock ID`
+
+Send this attribute if you want to reserve the stock for the line item's SKUs quantity. Stock reservations expiration depends on the inventory model's cutoff. When used on update the existing active stock reservations are renewed.
+
+```sh-session
+USAGE
+  $ commercelayer line_item:reserve_stock ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reserve the stock for the line item's SKUs quantity. Stock reservations expiration
+  depends on the inventory model's cutoff. When used on update the existing active stock reservations are renewed.
+```
+
+_See code: [src/commands/line_item/reserve_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reserve_stock.ts)_
 
 ### `commercelayer market ID`
 
