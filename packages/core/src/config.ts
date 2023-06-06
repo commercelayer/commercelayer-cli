@@ -67,6 +67,29 @@ const CLEANUP_RESOURCE_TYPES: readonly string[] = [
 ] as const
 
 
+const TAG_RESOURCE_TYPES: readonly string[] = [
+	'addresses',
+	'bundles',
+	'customers',
+	'coupons',
+	'gift_cards',
+	'line_items',
+	'line_item_options',
+	'orders',
+	'returns',
+	'skus',
+	'sku_options',
+	'promotions',
+	'external_promotions',
+	'fixed_amount_promotions',
+	'fixed_price_promotions',
+	'free_gift_promotions',
+	'free_shipping_promotions',
+	'percentage_discount_promotions'
+] as const
+
+
+
 type ApiConfig = {
 	default_domain: string;
 	default_app_domain: string;
@@ -119,6 +142,11 @@ type WebhooksConfig = {
 	retry_number: number;
 }
 
+type TagsConfig = {
+	max_resource_tags: number;
+	taggable_resources: readonly string[];
+}
+
 type CliConfig = {
 	applications: readonly string[];
 }
@@ -134,6 +162,7 @@ type DocConfig = {
 	exports_resources: string;
 	cleanups_resources: string;
 	webhooks_events: string;
+	tags_resources: string;
 }
 
 type Config = {
@@ -145,6 +174,7 @@ type Config = {
 	webhooks: WebhooksConfig;
 	cli: CliConfig;
 	doc: DocConfig;
+	tags: TagsConfig;
 }
 
 
@@ -208,7 +238,12 @@ const config: Config = {
 		imports_resources: 'https://docs.commercelayer.io/api/importing-resources#supported-resources',
 		exports_resources: 'https://docs.commercelayer.io/core/exporting-resources#supported-resources',
 		cleanups_resources: 'https://docs.commercelayer.io/core/cleaning-resources#supported-resources',
-		webhooks_events: 'https://docs.commercelayer.io/api/real-time-webhooks#supported-events'
+		webhooks_events: 'https://docs.commercelayer.io/api/real-time-webhooks#supported-events',
+		tags_resources: 'https://docs.commercelayer.io/core/v/api-reference/tags#taggable-resources'
+	},
+	tags: {
+		max_resource_tags: 10,
+		taggable_resources: TAG_RESOURCE_TYPES
 	}
 } as const
 
