@@ -128,7 +128,7 @@ const formatValue = (field: string, value: string, obj?: EventCallback): any => 
 }
 
 
-const responseCodeColor = (code?: string, message?: string): string => {
+const responseCodeColor = (code?: string | null, message?: string | null): string => {
 
 	let styled = code || ''
 

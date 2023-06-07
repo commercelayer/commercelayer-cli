@@ -105,7 +105,7 @@ export default class WebhooksList extends BaseCommand {
 }
 
 
-const printFailures = (failures?: number): string => {
+const printFailures = (failures?: number | null): string => {
 	if (!failures || (failures === 0)) return String(failures || 0)
 	if (failures >= 10) return clColor.msg.error(String(failures))
 	return clColor.msg.warning(String(failures))
