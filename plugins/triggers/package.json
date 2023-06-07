@@ -45,7 +45,7 @@
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "build": "rm -rf lib && tsc -b",
-    "prepack": "npm run generate && npm run build && oclif manifest && npm run readme",
+    "prepack": "pnpm generate && pnpm build && oclif manifest && pnpm readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "generate": "ts-node gen/generator.ts",
@@ -73,9 +73,9 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^3.7.3",
+    "@commercelayer/cli-core": "^3.8.2",
     "@commercelayer/js-auth": "^2.3.0",
-    "@commercelayer/sdk": "^4.29.0",
+    "@commercelayer/sdk": "^5.4.1",
     "@oclif/core": "^2.8.5",
     "inquirer": "^8.2.5",
     "tslib": "^2.5.3"
