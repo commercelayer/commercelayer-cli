@@ -5,6 +5,9 @@ import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
 import { clColor } from '@commercelayer/cli-core'
 
 
+type LineItemType = 'skus' | 'bundles'
+
+
 export default class CheckoutIndex extends Command {
 
   static description = 'create checkout URLs'
@@ -104,14 +107,14 @@ export default class CheckoutIndex extends Command {
     const cl = this.commercelayerInit(flags)
 
     // Check SKUs existence
-    const liSkus = lineItems.filter(li => li.item_type === 'sku')
+    const liSkus = lineItems.filter(li => li.item_type === 'skus')
     const clSkus = await cl.skus.list({ filters: { code_matches_any: liSkus.map(li => li.sku_code).join(',') } })
     for (const li of liSkus) {
       if (!clSkus.some(cls => cls.code === li.sku_code)) this.error(`Inexistent ${this.itemName('sku')}: ${clColor.msg.error(String(li.sku_code))}`)
     }
 
     // Check bundles existence
-    const liBundles = lineItems.filter(li => li.item_type === 'bundle')
+    const liBundles = lineItems.filter(li => li.item_type === 'bundles')
     const clBundles = await cl.bundles.list({ filters: { code_matches_any: liBundles.map(li => li.bundle_code).join(',') } })
     for (const li of liBundles) {
       if (!clBundles.some(clb => clb.code === li.bundle_code)) this.error(`Inexistent ${this.itemName('bundle')}: ${clColor.msg.error(String(li.bundle_code))}`)
@@ -164,7 +167,7 @@ export default class CheckoutIndex extends Command {
   }
 
 
-  private checkItem(item: string, type: string): { code: string; quantity: number; type: string } {
+  private checkItem(item: string, type: LineItemType): { code: string; quantity: number; type: LineItemType } {
 
     const def = item.split(':')
     if (def.length > 2) this.error(`Invalid ${this.itemName(type)} option: ${clColor.msg.error(item)}`)
@@ -199,7 +202,7 @@ export default class CheckoutIndex extends Command {
 
     // SKUs
     if (skus && (skus.length > 0)) skus.forEach(s => {
-      const checkSku = this.checkItem(s, 'sku')
+      const checkSku = this.checkItem(s, 'skus')
       lineItems.push({
         item_type: checkSku.type,
         sku_code: checkSku.code,
@@ -211,7 +214,7 @@ export default class CheckoutIndex extends Command {
 
     // Bundles
     if (bundles && (bundles.length > 0)) bundles.forEach(b => {
-      const checkBundle = this.checkItem(b, 'bundle')
+      const checkBundle = this.checkItem(b, 'bundles')
       lineItems.push({
         item_type: checkBundle.type,
         bundle_code: checkBundle.code,
