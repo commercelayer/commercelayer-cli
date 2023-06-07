@@ -13,3 +13,4 @@ const singularize = Inflector.singularize
 
 
 export { capitalize, pluralize, singularize }
+export { symbols } from './symbol'
