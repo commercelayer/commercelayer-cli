@@ -1,7 +1,7 @@
 import Command, { Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import type { QueryParamsList } from '@commercelayer/sdk'
-import { clColor, clConfig, clOutput, clSymbol } from '@commercelayer/cli-core'
+import { clColor, clConfig, clOutput, clText } from '@commercelayer/cli-core'
 
 
 const MAX_EXPORTS = 1000
@@ -117,7 +117,7 @@ export default class ExportsList extends Command {
 					{ content: this.exportStatus(e.status), hAlign: 'center' as HorizontalAlignment },
 					{ content: e.records_count, hAlign: 'center' as HorizontalAlignment },
 					{ content: e.format, hAlign: 'center' as HorizontalAlignment },
-					{ content: (e.dry_data? clSymbol.symbols.check.small : ''), hAlign: 'center' as HorizontalAlignment },
+					{ content: (e.dry_data? clText.symbols.check.small : ''), hAlign: 'center' as HorizontalAlignment },
 					clOutput.localeDate(e.started_at || ''),
 				]))
 

@@ -1,8 +1,6 @@
 import Command, { Args } from '../../base'
 import Table from 'cli-table3'
-import { clOutput, clColor, clSymbol } from '@commercelayer/cli-core'
-
-
+import { clOutput, clColor, clText } from '@commercelayer/cli-core'
 
 
 
@@ -66,7 +64,7 @@ export default class ExportsDetails extends Command {
         const availableTime = new Date(exp.completed_at as string)
         availableTime.setMinutes(availableTime.getMinutes() + 5)
         const clfun = (availableTime < new Date()) ? clColor.msg.error : clColor.msg.success
-        this.log(`${clColor.style.title('Attachment URL')} (${clSymbol.symbols.clock.stopwatch} Available until ${clfun(clOutput.localeDate(availableTime.toISOString()))})`)
+        this.log(`${clColor.style.title('Attachment URL')} (${clText.symbols.clock.stopwatch} Available until ${clfun(clOutput.localeDate(availableTime.toISOString()))})`)
         this.log(clColor.cli.value(exp.attachment_url))
         this.log()
       }
@@ -120,7 +118,7 @@ export default class ExportsDetails extends Command {
       case 'status': return this.exportStatus(value)
       case 'records_count': return clColor.yellowBright(value)
       case 'errors_count': return clColor.msg.error(value)
-      case 'dry_data': return (value ? clSymbol.symbols.check.small : '')
+      case 'dry_data': return (value ? clText.symbols.check.small : '')
       case 'includes': return (value as string[]).join(', ')
       case 'filters':
       case 'metadata': {

@@ -129,7 +129,7 @@ export default abstract class extends Command {
   }
 
 
-  private async getExportedFile(attachmentUrl?: string, flags?: any): Promise<string> {
+  private async getExportedFile(attachmentUrl?: string | null, flags?: any): Promise<string> {
     if (!attachmentUrl) return ''
     const expFile = await axios.get(attachmentUrl, { responseType: 'arraybuffer' })
     let output = expFile ? gunzipSync(expFile.data).toString() : ''
