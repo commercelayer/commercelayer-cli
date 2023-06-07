@@ -17,3 +17,4 @@ const symbols = {
 }
 
 export { symbols }
+export default symbols

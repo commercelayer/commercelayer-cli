@@ -80,6 +80,7 @@ export const style = {
 	command: italic,
 	value: italic,
 	alias: cyanBright,
+	plugin: blueBright,
 
 	title: blueBright,
 
@@ -129,6 +130,7 @@ export const cli = {
 	command: style.command,
 	value: style.value,
 	alias: style.alias,
+	plugin: style.plugin
 }
 
 
