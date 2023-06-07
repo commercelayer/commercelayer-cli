@@ -71,6 +71,7 @@ export default class ImportsCreate extends Command {
     cleanup: Flags.boolean({
       char: 'c',
       description: 'delete all other existing items',
+      deprecated: { message: `The ${clColor.msg.error('cleanup')} flag has been deprecated. Use the ${clColor.blueBright('cleanups')} plugin instead.` }
     }),
     inputs: Flags.string({
       char: 'i',

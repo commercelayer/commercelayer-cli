@@ -135,7 +135,7 @@ export default class ImportsDetails extends Command {
   }
 
 
-  private showLogs(warningLog?: object, errorLog?: object): void {
+  private showLogs(warningLog?: Record<string, any> | null, errorLog?: Record<string, any> | null): void {
 
     const tableOptions: Table.TableConstructorOptions = {
       head: ['Code', 'Message'],
