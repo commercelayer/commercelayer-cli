@@ -1,6 +1,6 @@
 import Command, { Flags, Args } from '../../base'
 import Table from 'cli-table3'
-import { clOutput, clColor, clSymbol } from '@commercelayer/cli-core'
+import { clOutput, clColor, clText } from '@commercelayer/cli-core'
 
 
 
@@ -94,7 +94,7 @@ export default class CleanupsDetails extends Command {
       case 'status': return this.cleanupStatus(value)
       case 'records_count': return clColor.yellowBright(value)
       case 'errors_count': return clColor.msg.error(value)
-      case 'dry_data': return (value ? clSymbol.symbols.check.small : '')
+      case 'dry_data': return (value ? clText.symbols.check.small : '')
       case 'includes': return (value as string[]).join(', ')
       case 'filters':
       case 'metadata': {
@@ -133,7 +133,7 @@ export default class CleanupsDetails extends Command {
 
 
     // Errors
-    const errors = (errorLog && (errorLog !== null)) ? Object.keys(errorLog).length : 0
+    const errors = errorLog ? Object.keys(errorLog).length : 0
 
     this.log()
     this.log(clColor.msg.error(`${clColor.bold('ERROR LOG')}\t[ ${errors} error${errors === 1 ? '' : 's'} ]`))
