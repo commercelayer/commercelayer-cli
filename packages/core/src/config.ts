@@ -183,7 +183,7 @@ const config: Config = {
 		default_domain: 'commercelayer.io',
 		default_app_domain: 'commercelayer.app',
 		default_stg_domain: 'commercelayer.co',
-		token_expiration_mins: 60 * 2,	// 2 hours
+		token_expiration_mins: 60 * 4,	// 4 hours (14400 secs)
 		token_encoding_algorithm: 'HS512',
 		requests_max_num_burst: 50,
 		requests_max_num_burst_test: 25,
