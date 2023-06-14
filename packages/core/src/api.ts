@@ -54,7 +54,7 @@ const CACHEABLE_RESOURCES = [
 
 
 export const isResourceCacheable = (resource?: string, method?: Method): boolean => {
-	return CACHEABLE_RESOURCES.includes(resource || '') && ((method || '').toLowerCase() === 'get')
+	return CACHEABLE_RESOURCES.includes(resource || '') && ((method || 'get').toLowerCase() === 'get')
 }
 
 // Note: times in milliseconds
@@ -65,7 +65,7 @@ export type DelayOptions = {
 	minimumDelay?: number;
 	securityDelay?: number;
 	resourceType?: string;
-	methodType?: Method
+	method?: Method
 }
 
 
@@ -84,7 +84,7 @@ export const requestRateLimitDelay = (options?: DelayOptions): number => {
 	}
 
 	// If the resource is cacheable the number of requests can be five times that of the standard resources
-	if (isResourceCacheable(options?.resourceType)) {
+	if (isResourceCacheable(options?.resourceType, options?.method)) {
 		requestsMaxNumBurst = requestsMaxNumBurst * config.api.requests_max_num_cache_ratio
 		requestsMaxNumAvg = requestsMaxNumAvg * config.api.requests_max_num_cache_ratio
 	}
