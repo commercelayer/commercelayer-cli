@@ -9,7 +9,7 @@ import type { KeyValRel, KeyValArray, KeyValObj, KeyValString, KeyValSort, KeyVa
 import { fixType } from './common'
 import { CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
-import { clToken, clUpdate, clColor, clUtil } from '@commercelayer/cli-core'
+import { clToken, clUpdate, clColor, clUtil, clConfig } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import type { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 
@@ -167,10 +167,11 @@ export abstract class BaseCommand extends Command {
     }
 
     const res_ = findResource(res, { singular: true })
-    const singleton = res_?.singleton
+    const singleton = res_?.singleton || false
 
     if (id) {
       if (singleton) this.error(`Singleton resource ${clColor.api.resource(res)} does not require id`)
+      if (id.includes('/')) this.error(`Invalid resourde id: ${clColor.msg.error(id)}`)
     } else if (required && !singleton) this.error('Resource id not defined')
 
     return {
@@ -178,6 +179,39 @@ export abstract class BaseCommand extends Command {
       id,
       singleton,
     }
+
+  }
+
+
+  checkTag(resource: string): boolean {
+    if (!clConfig.tags.taggable_resources.includes(resource)) {
+      this.error(`Resource ${clColor.msg.error(resource)} not taggable`, {
+        suggestions: [
+          'Only the following resources are taggable: ' + clConfig.tags.taggable_resources.join(', ')
+        ]
+      })
+    }
+    return true;
+  }
+
+
+  tagFlag(flag: string[] | undefined): Array<string | null> {
+
+    const values: Array<string | null> = []
+
+    if (flag) {
+        const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
+        flagValues.forEach(a => {
+          a.forEach(v => {
+            if (values.includes(v)) this.warn(`Tag ${clColor.msg.warning(v)} already defined`)
+            values.push(v)
+          })
+        })
+    }
+
+    if ((values.length === 1) && (values[0] === 'null')) values[0] = null
+
+    return values
 
   }
 

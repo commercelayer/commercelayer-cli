@@ -162,7 +162,7 @@ Create a new resource.
 USAGE
   $ commercelayer resources:create RESOURCE [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
     [--node ] [-H ] [-Y ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
-    --save-args <value>]
+    --save-args <value>] [-t <value>]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -179,6 +179,7 @@ FLAGS
   -j, --json                     convert output in standard JSON format
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
   -r, --relationship=<value>...  define a relationship with another resource
+  -t, --tags=<value>...          list of tags associated with the resource
   -u, --unformatted              print unformatted JSON output
   --load-args=<value>            load previously saved command arguments
   --save-args=<value>            save command data to file for future use
@@ -572,7 +573,7 @@ Update an existing resource.
 USAGE
   $ commercelayer resources:update RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl
     ] [--node ] [-H ] [-Y ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
-    --load-args <value> | --save-args <value>]
+    --load-args <value> | --save-args <value>] [-t <value>]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -581,7 +582,7 @@ ARGUMENTS
 FLAGS
   -D, --data=<value>                 the data file to use as request body
   -H, --headers                      show response headers
-  -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already presente in the remote
+  -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already present in the remote
                                      resource
   -O, --object=<value>...            define a resource object attribute
   -R, --raw                          print out the raw API response
@@ -593,6 +594,7 @@ FLAGS
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
                                      remote resource
   -r, --relationship=<value>...      define a relationship with another resource
+  -t, --tags=<value>...              list of tags associated with the resource
   -u, --unformatted                  print unformatted JSON output
   --load-args=<value>                load previously saved command arguments
   --save-args=<value>                save command data to file for future use

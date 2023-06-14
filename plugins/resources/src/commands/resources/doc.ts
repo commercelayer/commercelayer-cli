@@ -1,8 +1,7 @@
 import { Command, Flags, Args } from '@oclif/core'
 import { findResource } from '../../util/resources'
 import axios from 'axios'
-import { clColor } from '@commercelayer/cli-core'
-import { apiReferenceUrl } from '../../common'
+import { clColor, clConfig } from '@commercelayer/cli-core'
 import open from 'open'
 
 
@@ -42,7 +41,7 @@ export default class ResourcesDoc extends Command {
     const res = findResource(resource, { singular: true })
 
     if (res) {
-      const resourceUrl = `${apiReferenceUrl}/${res?.api}${page ? `/${page}` : ''}`
+      const resourceUrl = `${clConfig.doc.core_api_reference}/${res?.api}${page ? `/${page}` : ''}`
       axios.get(resourceUrl)
         .then(async () => { await open(resourceUrl) })
         .catch(() => this.warn(`No online documentation available for the resource ${clColor.msg.warning(resource)}${page ? ` (page ${clColor.cli.value(page)})` : ''}`))

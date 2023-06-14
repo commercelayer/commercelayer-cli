@@ -1,5 +1,4 @@
-
-export const apiReferenceUrl = 'https://docs.commercelayer.io/developers/v/api-reference'
+import { clCommand } from "@commercelayer/cli-core"
 
 
 export type KeyVal = Record<string, string | number | boolean | undefined | null>
@@ -8,7 +7,7 @@ export type KeyValString = Record<string, string>
 
 export type KeyValArray = Record<string, string[]>
 
-export type KeyValRel = Record<string, { readonly id: string; readonly type: string | string[] }>
+export type KeyValRel = Record<string, { readonly type: string; readonly id: string }>
 
 export type KeyValObj = Record<string, any>
 
@@ -21,6 +20,7 @@ export type ResAttributes = KeyValObj
 
 const fixType = (val: string): string | number | boolean | null | undefined => {
 
+  /*
   let v: any = val
 
   if (v === 'null') v = null
@@ -30,6 +30,9 @@ const fixType = (val: string): string | number | boolean | null | undefined => {
     else v = (v === 'true') ? true : (v === 'false') ? false : v
 
   return v
+  */
+
+  return clCommand.fixValueType(val)
 
 }
 
