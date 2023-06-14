@@ -6,6 +6,7 @@ import { isRemotePath, pathJoin } from './common'
 import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
 import type { ListResponse, ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
+import type { Method } from 'axios'
 
 
 const pkg = require('../package.json')
@@ -46,8 +47,8 @@ export default abstract class extends Command {
   }
 
 
-  protected async applyRequestDelay(resourceType: string): Promise<void> {
-      const delay = (clApi.isResourceCacheable(resourceType)? this.delay.cacheable : this.delay.uncacheable) || 0
+  protected async applyRequestDelay(resourceType: string, method: Method = 'get'): Promise<void> {
+      const delay = (clApi.isResourceCacheable(resourceType, method)? this.delay.cacheable : this.delay.uncacheable) || 0
       if (delay > 0) await clUtil.sleep(delay)
   }
 
@@ -114,15 +115,12 @@ export default abstract class extends Command {
     }
     if (params.fields) params.fields[type] = ['id', 'reference']
 
-    await this.applyRequestDelay(type)
-    // try {
-      const resSdk = this.cl[type as keyof CommerceLayerClient] as any
-      const list = await resSdk.list(params) as ListResponse<ResourceId>
+    await this.applyRequestDelay(type, 'get')
 
-      return list.first()
-    /* } catch (error: any) {
-      return undefined
-    } */
+    const resSdk = this.cl[type as keyof CommerceLayerClient] as any
+    const list = await resSdk.list(params) as ListResponse<ResourceId>
+
+    return list.first()
 
   }
 

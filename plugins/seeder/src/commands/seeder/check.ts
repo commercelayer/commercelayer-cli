@@ -4,7 +4,7 @@ import { type BusinessModel, getResource, modelIndex, type ResourceData, type Se
 import Listr from 'listr'
 import { attributeType, relationshipType } from '../../schema'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import { clColor, clSymbol } from '@commercelayer/cli-core'
+import { clColor, clText } from '@commercelayer/cli-core'
 
 
 
@@ -65,7 +65,7 @@ export default class SeederCheck extends Command {
 
       // Execute tasks
       await tasks.run()
-        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! ${clSymbol.symbols.check.bkgGreen}`) })
+        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data check completed! ${clText.symbols.check.bkgGreen}`) })
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data check completed with errors`) })
         .finally(() => { this.log() })
 

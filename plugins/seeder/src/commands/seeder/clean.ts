@@ -4,7 +4,7 @@ import Listr from 'listr'
 import { type BusinessModel, readResourceData, type SeederResource } from '../../data'
 import { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { checkResourceType } from './check'
-import { clApi, clColor, clSymbol } from '@commercelayer/cli-core'
+import { clApi, clColor, clText } from '@commercelayer/cli-core'
 import { type ResourceTypeNumber, requestsDelay } from '../../common'
 
 
@@ -92,7 +92,7 @@ export default class SeederClean extends Command {
 
       // Execute tasks
       await tasks.run()
-        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data cleaning completed! ${clSymbol.symbols.check.bkgGreen}`) })
+        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data cleaning completed! ${clText.symbols.check.bkgGreen}`) })
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`) })
         .finally(() => { this.log() })
 
@@ -142,7 +142,7 @@ export default class SeederClean extends Command {
 
     const resSdk: any = this.cl[type as keyof CommerceLayerClient]
 
-    await this.applyRequestDelay(type)
+    await this.applyRequestDelay(type, 'delete')
 
     await resSdk.delete(id).catch((error: any) => {
       if (CommerceLayerStatic.isApiError(error)) {
@@ -168,14 +168,14 @@ export default class SeederClean extends Command {
         const resourceData = await readResourceData(dataFilesUrl, res.resourceType)
         const referenceKeys = res.importAll ? Object.keys(resourceData): res.referenceKeys
 
-        if (clApi.isResourceCacheable(res.resourceType)) {
+        if (clApi.isResourceCacheable(res.resourceType, 'delete')) {
           resources.cacheable += referenceKeys.length
           if (!resources.cacheableTypes) resources.cacheableTypes = []
-          resources.cacheableTypes.push(res.resourceType)
+          if (!resources.cacheableTypes.includes(res.resourceType)) resources.cacheableTypes.push(res.resourceType)
         } else {
           resources.uncacheable += referenceKeys.length
           if (!resources.uncacheableTypes) resources.uncacheableTypes = []
-          resources.uncacheableTypes.push(res.resourceType)
+          if (!resources.uncacheableTypes.includes(res.resourceType)) resources.uncacheableTypes.push(res.resourceType)
         }
 
       }

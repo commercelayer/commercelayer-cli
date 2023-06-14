@@ -7,7 +7,7 @@ import Listr from 'listr'
 import { relationshipType } from '../../schema'
 import type { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
-import { clToken, clColor, clUtil, clSymbol, clApi } from '@commercelayer/cli-core'
+import { clToken, clColor, clUtil, clApi, clText } from '@commercelayer/cli-core'
 import { type ResourceTypeNumber, requestsDelay } from '../../common'
 
 
@@ -120,7 +120,7 @@ export default class SeederSeed extends Command {
 
       // Execute tasks
       await tasks.run()
-        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data seeding completed! ${clSymbol.symbols.check.bkgGreen}`) })
+        .then(() => { this.log(`\n${clColor.msg.success.bold('SUCCESS')} - Data seeding completed! ${clText.symbols.check.bkgGreen}`) })
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data seeding not completed, correct errors and rerun the ${clColor.cli.command('seed')} command`) })
         .finally(() => { this.log() })
 
@@ -136,21 +136,24 @@ export default class SeederSeed extends Command {
 
     let resources: ResourceTypeNumber = {
       cacheable: 0,
-      uncacheable: 0
+      cacheableTypes: [],
+      uncacheable: 0,
+      uncacheableTypes: []
     }
 
     try {
       for (const res of model) {
 
-       let requests = 0
+       let gets = 0 // get requests
+       let paps = 0 // post and patch requests
 
         const resourceData = await readResourceData(dataFilesUrl, res.resourceType)
         const referenceKeys = res.importAll ? Object.keys(resourceData) : res.referenceKeys
 
         for (const r of referenceKeys) {
 
-          requests++  // find resource by reference
-          requests++  // create or update the resource
+          gets++  // find resource by reference
+          paps++  // create or update the resource
 
           const resource = resourceData[r]
 
@@ -158,20 +161,28 @@ export default class SeederSeed extends Command {
             if (['key', 'type'].includes(field)) continue
             const val = resource[field] as string
             const rel = relationshipType(res.resourceType, field, val)
-            if (rel) requests++ // find related resource by reference
+            if (rel) {
+              if (clApi.isResourceCacheable(rel, 'get')) {
+                resources.cacheable++ // find related resource by reference
+                if (!resources.cacheableTypes?.includes(rel)) resources.cacheableTypes?.push(rel)
+              } else {
+                resources.uncacheable++
+                if (!resources.uncacheableTypes?.includes(rel)) resources.uncacheableTypes?.push(rel)
+              }
+            }
           }
 
         }
 
-        if (clApi.isResourceCacheable(res.resourceType)) {
-          resources.cacheable += requests
-          if (!resources.cacheableTypes) resources.cacheableTypes = []
-          resources.cacheableTypes.push(res.resourceType)
+        if (clApi.isResourceCacheable(res.resourceType, 'get')) {
+          resources.cacheable += gets
+          if (!resources.cacheableTypes?.includes(res.resourceType)) resources.cacheableTypes?.push(res.resourceType)
         } else {
-          resources.uncacheable += requests
-          if (!resources.uncacheableTypes) resources.uncacheableTypes = []
-          resources.uncacheableTypes.push(res.resourceType)
+          resources.uncacheable += gets
+          if (resources.uncacheableTypes?.includes(res.resourceType)) resources.uncacheableTypes?.push(res.resourceType)
         }
+        // Posts and patches are always uncacheable
+        resources.uncacheable += paps
 
       }
     } catch (error) {
@@ -227,7 +238,7 @@ export default class SeederSeed extends Command {
     const resSdk: any = this.cl[resType as keyof CommerceLayerClient]
     resourceCreate.reference_origin = config.referenceOrigin
 
-    await this.applyRequestDelay(type)
+    await this.applyRequestDelay(type, 'post')
 
     const remoteRes = await resSdk.create(resourceCreate).catch((error: any) => {
       if (this.cl.isApiError(error)) {
@@ -253,7 +264,7 @@ export default class SeederSeed extends Command {
     resourceUpdate.id = id
     resourceUpdate.reference_origin = config.referenceOrigin
 
-    await this.applyRequestDelay(type)
+    await this.applyRequestDelay(type, 'patch')
 
     const remoteRes = await resSdk.update(resourceUpdate).catch((error: any) => {
       if (this.cl.isApiError(error)) {
