@@ -1,4 +1,5 @@
 
+import type { Method } from 'axios'
 import config from './config'
 
 type ApiMode = 'test' | 'live'
@@ -52,8 +53,8 @@ const CACHEABLE_RESOURCES = [
 ]
 
 
-export const isResourceCacheable = (resource?: string): boolean => {
-	return (resource !== undefined) && CACHEABLE_RESOURCES.includes(resource)
+export const isResourceCacheable = (resource?: string, method?: Method): boolean => {
+	return CACHEABLE_RESOURCES.includes(resource || '') && ((method || '').toLowerCase() === 'get')
 }
 
 // Note: times in milliseconds
@@ -64,6 +65,7 @@ export type DelayOptions = {
 	minimumDelay?: number;
 	securityDelay?: number;
 	resourceType?: string;
+	methodType?: Method
 }
 
 

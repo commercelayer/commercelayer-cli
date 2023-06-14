@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import type { ApiMode } from './api'
 
 
 export const reset = chalk.reset
@@ -70,6 +71,7 @@ export const style = {
 	kind: cyanBright,
 	live: greenBright,
 	test: yellowBright,
+	execMode: (mode: ApiMode) => { return (mode === 'live') ? style.live : style.test },
 
 	success: greenBright,
 	warning: yellowBright,
