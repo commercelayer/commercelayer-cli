@@ -1,0 +1,3002 @@
+[
+	{
+		"reference": "stock_item_1",
+		"sku_code": "5PANECAP000000FFFFFFXXXX",
+		"quantity": 392,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_2",
+		"sku_code": "5PANECAP9D9CA1FFFFFFXXXX",
+		"quantity": 125,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_3",
+		"sku_code": "APRONXXX000000FFFFFFXXXX",
+		"quantity": 133,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_4",
+		"sku_code": "APRONXXXFFFFFF000000XXXX",
+		"quantity": 943,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_5",
+		"sku_code": "BABYBIBXA19D9D000000XXXX",
+		"quantity": 250,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_6",
+		"sku_code": "BACKPACK000000FFFFFFXXXX",
+		"quantity": 113,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_7",
+		"sku_code": "BACKPACK818488000000XXXX",
+		"quantity": 277,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_8",
+		"sku_code": "BACKPACKFFFFFF000000XXXX",
+		"quantity": 432,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_9",
+		"sku_code": "BASEBHAT000000FFFFFFXXXX",
+		"quantity": 961,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_10",
+		"sku_code": "BASEBHATFFFFFF000000XXXX",
+		"quantity": 731,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_11",
+		"sku_code": "BEACHAIR000000FFFFFFXXXX",
+		"quantity": 874,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_12",
+		"sku_code": "BEACHAIRFFFFFF000000XXXX",
+		"quantity": 152,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_13",
+		"sku_code": "BEACHBAG000000FFFFFFXXXX",
+		"quantity": 721,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_14",
+		"sku_code": "BEACHBAGFFFFFF000000XXXX",
+		"quantity": 146,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_15",
+		"sku_code": "BEANIEXX000000FFFFFFXXXX",
+		"quantity": 630,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_16",
+		"sku_code": "BEANIEXXFFFFFF000000XXXX",
+		"quantity": 199,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_17",
+		"sku_code": "BODYBSSS000000FFFFFF12MX",
+		"quantity": 928,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_18",
+		"sku_code": "BODYBSSS000000FFFFFF6MXX",
+		"quantity": 306,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_19",
+		"sku_code": "BODYBSSSFFFFFF00000012MX",
+		"quantity": 500,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_20",
+		"sku_code": "BODYBSSSFFFFFF0000006MXX",
+		"quantity": 741,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_21",
+		"sku_code": "BOTT17OZFFFFFF000000XXXX",
+		"quantity": 324,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_22",
+		"sku_code": "BTOW3060000000FFFFFFXXXX",
+		"quantity": 576,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_23",
+		"sku_code": "BTOW3060FFFFFF000000XXXX",
+		"quantity": 660,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_24",
+		"sku_code": "CROPTOPW000000FFFFFFLXXX",
+		"quantity": 376,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_25",
+		"sku_code": "CROPTOPW000000FFFFFFMXXX",
+		"quantity": 829,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_26",
+		"sku_code": "CROPTOPW000000FFFFFFSXXX",
+		"quantity": 595,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_27",
+		"sku_code": "CROPTOPW000000FFFFFFXSXX",
+		"quantity": 353,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_28",
+		"sku_code": "CROPTOPWE8E8E8000000LXXX",
+		"quantity": 857,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_29",
+		"sku_code": "CROPTOPWE8E8E8000000MXXX",
+		"quantity": 780,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_30",
+		"sku_code": "CROPTOPWE8E8E8000000SXXX",
+		"quantity": 286,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_31",
+		"sku_code": "CROPTOPWE8E8E8000000XSXX",
+		"quantity": 946,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_32",
+		"sku_code": "CROPTOPWFFFFFF000000LXXX",
+		"quantity": 72,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_33",
+		"sku_code": "CROPTOPWFFFFFF000000MXXX",
+		"quantity": 819,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_34",
+		"sku_code": "CROPTOPWFFFFFF000000SXXX",
+		"quantity": 517,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_35",
+		"sku_code": "CROPTOPWFFFFFF000000XSXX",
+		"quantity": 877,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_36",
+		"sku_code": "CUFFBEAN000000FFFFFFXXXX",
+		"quantity": 457,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_37",
+		"sku_code": "CUFFBEANA6A5A0000000XXXX",
+		"quantity": 664,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_38",
+		"sku_code": "CUFFBEANFFFFFF000000XXXX",
+		"quantity": 414,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_39",
+		"sku_code": "DRAWSBAG000000FFFFFFXXXX",
+		"quantity": 353,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_40",
+		"sku_code": "DRAWSBAGFFFFFF000000XXXX",
+		"quantity": 954,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_41",
+		"sku_code": "DUFFLBAG000000FFFFFFXXXX",
+		"quantity": 319,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_42",
+		"sku_code": "DUFFLBAGFFFFFF000000XXXX",
+		"quantity": 553,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_43",
+		"sku_code": "EMUG12OZFFFFFF000000XXXX",
+		"quantity": 185,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_44",
+		"sku_code": "FACEMASK000000FFFFFFXXXX",
+		"quantity": 688,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_45",
+		"sku_code": "FACEMASKFFFFFF000000XXXX",
+		"quantity": 840,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_46",
+		"sku_code": "FANNPACK000000FFFFFFXXXX",
+		"quantity": 993,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_47",
+		"sku_code": "FANNPACKFFFFFF000000XXXX",
+		"quantity": 777,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_48",
+		"sku_code": "FLIPFLOP000000FFFFFF75XX",
+		"quantity": 191,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_49",
+		"sku_code": "FLIPFLOP000000FFFFFF7XXX",
+		"quantity": 941,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_50",
+		"sku_code": "FLIPFLOP000000FFFFFF85XX",
+		"quantity": 672,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_51",
+		"sku_code": "FLIPFLOP000000FFFFFF8XXX",
+		"quantity": 501,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_52",
+		"sku_code": "FLIPFLOP000000FFFFFF9XXX",
+		"quantity": 967,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_53",
+		"sku_code": "FLIPFLOPFFFFFF00000075XX",
+		"quantity": 629,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_54",
+		"sku_code": "FLIPFLOPFFFFFF0000007XXX",
+		"quantity": 179,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_55",
+		"sku_code": "FLIPFLOPFFFFFF00000085XX",
+		"quantity": 121,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_56",
+		"sku_code": "FLIPFLOPFFFFFF0000008XXX",
+		"quantity": 380,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_57",
+		"sku_code": "FLIPFLOPFFFFFF0000009XXX",
+		"quantity": 489,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_58",
+		"sku_code": "GLCS21PXXXXXXXFFFFFFXXXX",
+		"quantity": 432,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_59",
+		"sku_code": "GLCS21UXXXXXXXFFFFFFXXXX",
+		"quantity": 830,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_60",
+		"sku_code": "GMUG11OZFFFFFF000000XXXX",
+		"quantity": 82,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_61",
+		"sku_code": "GMUG15OZFFFFFF000000XXXX",
+		"quantity": 222,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_62",
+		"sku_code": "HDRESSWX000000FFFFFFLXXX",
+		"quantity": 71,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_63",
+		"sku_code": "HDRESSWX000000FFFFFFMXXX",
+		"quantity": 477,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_64",
+		"sku_code": "HDRESSWX000000FFFFFFSXXX",
+		"quantity": 133,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_65",
+		"sku_code": "HOODIEMX000000FFFFFFLXXX",
+		"quantity": 349,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_66",
+		"sku_code": "HOODIEMX000000FFFFFFMXXX",
+		"quantity": 652,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_67",
+		"sku_code": "HOODIEMX000000FFFFFFSXXX",
+		"quantity": 126,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_68",
+		"sku_code": "HOODIEMX000000FFFFFFXLXX",
+		"quantity": 280,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_69",
+		"sku_code": "HOODIEMX7F7F7F000000LXXX",
+		"quantity": 363,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_70",
+		"sku_code": "HOODIEMX7F7F7F000000MXXX",
+		"quantity": 562,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_71",
+		"sku_code": "HOODIEMX7F7F7F000000SXXX",
+		"quantity": 746,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_72",
+		"sku_code": "HOODIEMX7F7F7F000000XLXX",
+		"quantity": 536,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_73",
+		"sku_code": "HOODIEMXFFFFFF000000LXXX",
+		"quantity": 282,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_74",
+		"sku_code": "HOODIEMXFFFFFF000000MXXX",
+		"quantity": 546,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_75",
+		"sku_code": "HOODIEMXFFFFFF000000SXXX",
+		"quantity": 248,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_76",
+		"sku_code": "HOODIEMXFFFFFF000000XLXX",
+		"quantity": 233,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_77",
+		"sku_code": "HOODIEUL000000FFFFFFLXXX",
+		"quantity": 91,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_78",
+		"sku_code": "HOODIEUL000000FFFFFFMXXX",
+		"quantity": 916,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_79",
+		"sku_code": "HOODIEUL000000FFFFFFSXXX",
+		"quantity": 193,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_80",
+		"sku_code": "HOODIEUL000000FFFFFFXLXX",
+		"quantity": 172,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_81",
+		"sku_code": "HOODIEUL000000FFFFFFXSXX",
+		"quantity": 546,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_82",
+		"sku_code": "HOODIEUZ000000FFFFFFLXXX",
+		"quantity": 648,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_83",
+		"sku_code": "HOODIEUZ000000FFFFFFMXXX",
+		"quantity": 163,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_84",
+		"sku_code": "HOODIEUZ000000FFFFFFSXXX",
+		"quantity": 94,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_85",
+		"sku_code": "HOODIEUZ000000FFFFFFXLXX",
+		"quantity": 190,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_86",
+		"sku_code": "HOODIEUZ000000FFFFFFXSXX",
+		"quantity": 503,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_87",
+		"sku_code": "HOODIEWC000000FFFFFFLXXX",
+		"quantity": 703,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_88",
+		"sku_code": "HOODIEWC000000FFFFFFMXXX",
+		"quantity": 141,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_89",
+		"sku_code": "HOODIEWC000000FFFFFFSXXX",
+		"quantity": 104,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_90",
+		"sku_code": "HOODIEWC000000FFFFFFXSXX",
+		"quantity": 217,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_91",
+		"sku_code": "HOODIEWC575C51000000LXXX",
+		"quantity": 643,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_92",
+		"sku_code": "HOODIEWC575C51000000MXXX",
+		"quantity": 250,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_93",
+		"sku_code": "HOODIEWC575C51000000SXXX",
+		"quantity": 311,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_94",
+		"sku_code": "HOODIEWC575C51000000XSXX",
+		"quantity": 786,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_95",
+		"sku_code": "IPC11PXX000000FFFFFFXXXX",
+		"quantity": 496,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_96",
+		"sku_code": "IPC11XXX000000FFFFFFXXXX",
+		"quantity": 807,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_97",
+		"sku_code": "IPC12PMXXXXXXX000000XXXX",
+		"quantity": 868,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_98",
+		"sku_code": "LAPTSL13000000FFFFFFXXXX",
+		"quantity": 837,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_99",
+		"sku_code": "LAPTSL15000000FFFFFFXXXX",
+		"quantity": 931,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_100",
+		"sku_code": "MESHBACK323230FFFFFFXXXX",
+		"quantity": 348,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_101",
+		"sku_code": "NOTEBOOK000000FFFFFFXXXX",
+		"quantity": 744,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_102",
+		"sku_code": "NOTEBOOKFFFFFF000000XXXX",
+		"quantity": 470,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_103",
+		"sku_code": "PILL1818000000FFFFFFXXXX",
+		"quantity": 811,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_104",
+		"sku_code": "PILL1818FFFFFF000000XXXX",
+		"quantity": 760,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_105",
+		"sku_code": "PILL2012000000FFFFFFXXXX",
+		"quantity": 548,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_106",
+		"sku_code": "PILL2012FFFFFF000000XXXX",
+		"quantity": 645,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_107",
+		"sku_code": "POLOMXXX000000FFFFFFLXXX",
+		"quantity": 439,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_108",
+		"sku_code": "POLOMXXX000000FFFFFFMXXX",
+		"quantity": 635,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_109",
+		"sku_code": "POLOMXXX000000FFFFFFSXXX",
+		"quantity": 122,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_110",
+		"sku_code": "POLOMXXXC2C2C2000000LXXX",
+		"quantity": 650,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_111",
+		"sku_code": "POLOMXXXC2C2C2000000MXXX",
+		"quantity": 727,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_112",
+		"sku_code": "POLOMXXXC2C2C2000000SXXX",
+		"quantity": 164,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_113",
+		"sku_code": "POLOMXXXFFFFFF000000LXXX",
+		"quantity": 684,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_114",
+		"sku_code": "POLOMXXXFFFFFF000000MXXX",
+		"quantity": 894,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_115",
+		"sku_code": "POLOMXXXFFFFFF000000SXXX",
+		"quantity": 744,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_116",
+		"sku_code": "POLOWXXX000000FFFFFFLXXX",
+		"quantity": 320,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_117",
+		"sku_code": "POLOWXXX000000FFFFFFMXXX",
+		"quantity": 522,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_118",
+		"sku_code": "POLOWXXX000000FFFFFFSXXX",
+		"quantity": 928,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_119",
+		"sku_code": "POLOWXXXFFFFFF000000LXXX",
+		"quantity": 200,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_120",
+		"sku_code": "POLOWXXXFFFFFF000000MXXX",
+		"quantity": 459,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_121",
+		"sku_code": "POLOWXXXFFFFFF000000SXXX",
+		"quantity": 571,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_122",
+		"sku_code": "POST2130000000000000XXXX",
+		"quantity": 224,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_123",
+		"sku_code": "POST2130FFFFFF000000XXXX",
+		"quantity": 499,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_124",
+		"sku_code": "POST6191000000000000XXXX",
+		"quantity": 215,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_125",
+		"sku_code": "POST6191FFFFFF000000XXXX",
+		"quantity": 295,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_126",
+		"sku_code": "PPOMBEAN000000FFFFFFXXXX",
+		"quantity": 958,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_127",
+		"sku_code": "PPOMBEAN74736EFFFFFFXXXX",
+		"quantity": 290,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_128",
+		"sku_code": "SHIRT34S000000FFFFFFLXXX",
+		"quantity": 184,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_129",
+		"sku_code": "SHIRT34S000000FFFFFFMXXX",
+		"quantity": 309,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_130",
+		"sku_code": "SHIRT34S000000FFFFFFSXXX",
+		"quantity": 752,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_131",
+		"sku_code": "SHIRT34S000000FFFFFFXLXX",
+		"quantity": 870,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_132",
+		"sku_code": "SHIRT34S000000FFFFFFXSXX",
+		"quantity": 82,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_133",
+		"sku_code": "SHIRT34SFFFFFF000000LXXX",
+		"quantity": 846,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_134",
+		"sku_code": "SHIRT34SFFFFFF000000MXXX",
+		"quantity": 280,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_135",
+		"sku_code": "SHIRT34SFFFFFF000000SXXX",
+		"quantity": 195,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_136",
+		"sku_code": "SHIRT34SFFFFFF000000XLXX",
+		"quantity": 297,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_137",
+		"sku_code": "SHIRT34SFFFFFF000000XSXX",
+		"quantity": 329,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_138",
+		"sku_code": "SHIRTMLS000000FFFFFFLXXX",
+		"quantity": 864,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_139",
+		"sku_code": "SHIRTMLS000000FFFFFFMXXX",
+		"quantity": 333,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_140",
+		"sku_code": "SHIRTMLS000000FFFFFFSXXX",
+		"quantity": 336,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_141",
+		"sku_code": "SHIRTMLS000000FFFFFFXLXX",
+		"quantity": 552,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_142",
+		"sku_code": "SHIRTMLS9B969C000000LXXX",
+		"quantity": 915,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_143",
+		"sku_code": "SHIRTMLS9B969C000000MXXX",
+		"quantity": 512,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_144",
+		"sku_code": "SHIRTMLS9B969C000000SXXX",
+		"quantity": 223,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_145",
+		"sku_code": "SHIRTMLS9B969C000000XLXX",
+		"quantity": 185,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_146",
+		"sku_code": "SHIRTMLSFFFFFF000000LXXX",
+		"quantity": 241,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_147",
+		"sku_code": "SHIRTMLSFFFFFF000000MXXX",
+		"quantity": 712,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_148",
+		"sku_code": "SHIRTMLSFFFFFF000000SXXX",
+		"quantity": 890,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_149",
+		"sku_code": "SHIRTMLSFFFFFF000000XLXX",
+		"quantity": 621,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_150",
+		"sku_code": "SHIRTMMX000000FFFFFFLXXX",
+		"quantity": 353,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_151",
+		"sku_code": "SHIRTMMX000000FFFFFFMXXX",
+		"quantity": 465,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_152",
+		"sku_code": "SHIRTMMX000000FFFFFFSXXX",
+		"quantity": 364,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_153",
+		"sku_code": "SHIRTMMX8E8C8D000000LXXX",
+		"quantity": 607,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_154",
+		"sku_code": "SHIRTMMX8E8C8D000000MXXX",
+		"quantity": 108,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_155",
+		"sku_code": "SHIRTMMX8E8C8D000000SXXX",
+		"quantity": 930,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_156",
+		"sku_code": "SHIRTMMXFFFFFF000000LXXX",
+		"quantity": 622,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_157",
+		"sku_code": "SHIRTMMXFFFFFF000000MXXX",
+		"quantity": 352,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_158",
+		"sku_code": "SHIRTMMXFFFFFF000000SXXX",
+		"quantity": 798,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_159",
+		"sku_code": "SHIRTWLS000000FFFFFFLXXX",
+		"quantity": 891,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_160",
+		"sku_code": "SHIRTWLS000000FFFFFFMXXX",
+		"quantity": 405,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_161",
+		"sku_code": "SHIRTWLS000000FFFFFFSXXX",
+		"quantity": 673,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_162",
+		"sku_code": "SHIRTWLS000000FFFFFFXSXX",
+		"quantity": 919,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_163",
+		"sku_code": "SHIRTWLS9397A0000000LXXX",
+		"quantity": 808,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_164",
+		"sku_code": "SHIRTWLS9397A0000000MXXX",
+		"quantity": 230,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_165",
+		"sku_code": "SHIRTWLS9397A0000000SXXX",
+		"quantity": 416,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_166",
+		"sku_code": "SHIRTWLS9397A0000000XSXX",
+		"quantity": 904,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_167",
+		"sku_code": "SHIRTWLSFFFFFF000000LXXX",
+		"quantity": 248,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_168",
+		"sku_code": "SHIRTWLSFFFFFF000000MXXX",
+		"quantity": 102,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_169",
+		"sku_code": "SHIRTWLSFFFFFF000000SXXX",
+		"quantity": 257,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_170",
+		"sku_code": "SHIRTWLSFFFFFF000000XSXX",
+		"quantity": 910,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_171",
+		"sku_code": "SOCKSXXX000000FFFFFFLXXX",
+		"quantity": 439,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_172",
+		"sku_code": "SOCKSXXX000000FFFFFFMXXX",
+		"quantity": 76,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_173",
+		"sku_code": "SOCKSXXX000000FFFFFFSXXX",
+		"quantity": 667,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_174",
+		"sku_code": "SOCKSXXXFFFFFF000000LXXX",
+		"quantity": 165,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_175",
+		"sku_code": "SOCKSXXXFFFFFF000000MXXX",
+		"quantity": 667,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_176",
+		"sku_code": "SOCKSXXXFFFFFF000000SXXX",
+		"quantity": 929,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_177",
+		"sku_code": "SWEATMXX000000FFFFFFLXXX",
+		"quantity": 107,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_178",
+		"sku_code": "SWEATMXX000000FFFFFFMXXX",
+		"quantity": 134,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_179",
+		"sku_code": "SWEATMXX000000FFFFFFSXXX",
+		"quantity": 818,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_180",
+		"sku_code": "SWEATMXX000000FFFFFFXLXX",
+		"quantity": 55,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_181",
+		"sku_code": "SWEATMXX9B969C000000LXXX",
+		"quantity": 146,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_182",
+		"sku_code": "SWEATMXX9B969C000000MXXX",
+		"quantity": 711,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_183",
+		"sku_code": "SWEATMXX9B969C000000SXXX",
+		"quantity": 383,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_184",
+		"sku_code": "SWEATMXX9B969C000000XLXX",
+		"quantity": 528,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_185",
+		"sku_code": "SWEATMXXFFFFFF000000LXXX",
+		"quantity": 678,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_186",
+		"sku_code": "SWEATMXXFFFFFF000000MXXX",
+		"quantity": 547,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_187",
+		"sku_code": "SWEATMXXFFFFFF000000SXXX",
+		"quantity": 285,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_188",
+		"sku_code": "SWEATMXXFFFFFF000000XLXX",
+		"quantity": 221,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_189",
+		"sku_code": "SWEATWCX000000FFFFFFLXXX",
+		"quantity": 549,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_190",
+		"sku_code": "SWEATWCX000000FFFFFFMXXX",
+		"quantity": 65,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_191",
+		"sku_code": "SWEATWCX000000FFFFFFSXXX",
+		"quantity": 486,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_192",
+		"sku_code": "SWEATWCX000000FFFFFFXSXX",
+		"quantity": 676,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_193",
+		"sku_code": "SWEATWCX9B9A9F000000LXXX",
+		"quantity": 128,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_194",
+		"sku_code": "SWEATWCX9B9A9F000000MXXX",
+		"quantity": 592,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_195",
+		"sku_code": "SWEATWCX9B9A9F000000SXXX",
+		"quantity": 568,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_196",
+		"sku_code": "SWEATWCX9B9A9F000000XSXX",
+		"quantity": 181,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_197",
+		"sku_code": "TANKTOPM000000FFFFFFLXXX",
+		"quantity": 357,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_198",
+		"sku_code": "TANKTOPM000000FFFFFFMXXX",
+		"quantity": 51,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_199",
+		"sku_code": "TANKTOPM000000FFFFFFSXXX",
+		"quantity": 921,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_200",
+		"sku_code": "TANKTOPM000000FFFFFFXLXX",
+		"quantity": 286,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_201",
+		"sku_code": "TANKTOPM7E7F84000000LXXX",
+		"quantity": 716,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_202",
+		"sku_code": "TANKTOPM7E7F84000000MXXX",
+		"quantity": 999,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_203",
+		"sku_code": "TANKTOPM7E7F84000000SXXX",
+		"quantity": 313,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_204",
+		"sku_code": "TANKTOPM7E7F84000000XLXX",
+		"quantity": 267,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_205",
+		"sku_code": "TANKTOPW000000FFFFFFMXXX",
+		"quantity": 400,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_206",
+		"sku_code": "TANKTOPW000000FFFFFFSXXX",
+		"quantity": 183,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_207",
+		"sku_code": "TANKTOPW000000FFFFFFXSXX",
+		"quantity": 827,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_208",
+		"sku_code": "TANKTOPWFFFFFF000000MXXX",
+		"quantity": 327,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_209",
+		"sku_code": "TANKTOPWFFFFFF000000SXXX",
+		"quantity": 707,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_210",
+		"sku_code": "TANKTOPWFFFFFF000000XSXX",
+		"quantity": 741,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_211",
+		"sku_code": "TOTEBAGL000000FFFFFFXXXX",
+		"quantity": 838,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_212",
+		"sku_code": "TOTEBAGLE7DDC7000000XXXX",
+		"quantity": 111,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_213",
+		"sku_code": "TOTEBAGX000000FFFFFFXXXX",
+		"quantity": 934,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_214",
+		"sku_code": "TOTEBAGXE7DDC7000000XXXX",
+		"quantity": 258,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_215",
+		"sku_code": "TSHIRTMS000000FFFFFFLXXX",
+		"quantity": 491,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_216",
+		"sku_code": "TSHIRTMS000000FFFFFFMXXX",
+		"quantity": 255,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_217",
+		"sku_code": "TSHIRTMS000000FFFFFFSXXX",
+		"quantity": 496,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_218",
+		"sku_code": "TSHIRTMS000000FFFFFFXLXX",
+		"quantity": 367,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_219",
+		"sku_code": "TSHIRTMSB0B0B2000000LXXX",
+		"quantity": 575,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_220",
+		"sku_code": "TSHIRTMSB0B0B2000000MXXX",
+		"quantity": 968,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_221",
+		"sku_code": "TSHIRTMSB0B0B2000000SXXX",
+		"quantity": 990,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_222",
+		"sku_code": "TSHIRTMSB0B0B2000000XLXX",
+		"quantity": 934,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_223",
+		"sku_code": "TSHIRTMSFFFFFF000000LXXX",
+		"quantity": 524,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_224",
+		"sku_code": "TSHIRTMSFFFFFF000000MXXX",
+		"quantity": 975,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_225",
+		"sku_code": "TSHIRTMSFFFFFF000000SXXX",
+		"quantity": 557,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_226",
+		"sku_code": "TSHIRTMSFFFFFF000000XLXX",
+		"quantity": 658,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_227",
+		"sku_code": "TSHIRTWK000000FFFFFFMXXX",
+		"quantity": 552,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_228",
+		"sku_code": "TSHIRTWK000000FFFFFFSXXX",
+		"quantity": 280,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_229",
+		"sku_code": "TSHIRTWK000000FFFFFFXSXX",
+		"quantity": 551,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_230",
+		"sku_code": "TSHIRTWKFFFFFF000000MXXX",
+		"quantity": 853,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_231",
+		"sku_code": "TSHIRTWKFFFFFF000000SXXX",
+		"quantity": 751,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_232",
+		"sku_code": "TSHIRTWKFFFFFF000000XSXX",
+		"quantity": 82,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_233",
+		"sku_code": "TSHIRTWS000000FFFFFFLXXX",
+		"quantity": 423,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_234",
+		"sku_code": "TSHIRTWS000000FFFFFFMXXX",
+		"quantity": 999,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_235",
+		"sku_code": "TSHIRTWS000000FFFFFFSXXX",
+		"quantity": 709,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_236",
+		"sku_code": "TSHIRTWS000000FFFFFFXSXX",
+		"quantity": 514,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_237",
+		"sku_code": "TSHIRTWSB5B1B2000000LXXX",
+		"quantity": 604,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_238",
+		"sku_code": "TSHIRTWSB5B1B2000000MXXX",
+		"quantity": 503,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_239",
+		"sku_code": "TSHIRTWSB5B1B2000000SXXX",
+		"quantity": 612,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_240",
+		"sku_code": "TSHIRTWSB5B1B2000000XSXX",
+		"quantity": 600,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_241",
+		"sku_code": "TSHIRTWSFFFFFF000000LXXX",
+		"quantity": 546,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_242",
+		"sku_code": "TSHIRTWSFFFFFF000000MXXX",
+		"quantity": 165,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_243",
+		"sku_code": "TSHIRTWSFFFFFF000000SXXX",
+		"quantity": 365,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_244",
+		"sku_code": "TSHIRTWSFFFFFF000000XSXX",
+		"quantity": 324,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_245",
+		"sku_code": "TSHIRTWV000000FFFFFFMXXX",
+		"quantity": 197,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_246",
+		"sku_code": "TSHIRTWV000000FFFFFFSXXX",
+		"quantity": 421,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_247",
+		"sku_code": "TSHIRTWVCDCDCD000000MXXX",
+		"quantity": 234,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_248",
+		"sku_code": "TSHIRTWVCDCDCD000000SXXX",
+		"quantity": 420,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_249",
+		"sku_code": "VFLEXFIT000000FFFFFFXXXX",
+		"quantity": 571,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_250",
+		"sku_code": "VFLEXFITFFFFFF000000XXXX",
+		"quantity": 563,
+		"stock_location": "stock_location_1"
+	},
+	{
+		"reference": "stock_item_251",
+		"sku_code": "5PANECAP000000FFFFFFXXXX",
+		"quantity": 236,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_252",
+		"sku_code": "5PANECAP9D9CA1FFFFFFXXXX",
+		"quantity": 56,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_253",
+		"sku_code": "APRONXXX000000FFFFFFXXXX",
+		"quantity": 308,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_254",
+		"sku_code": "APRONXXXFFFFFF000000XXXX",
+		"quantity": 627,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_255",
+		"sku_code": "BABYBIBXA19D9D000000XXXX",
+		"quantity": 651,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_256",
+		"sku_code": "BACKPACK000000FFFFFFXXXX",
+		"quantity": 290,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_257",
+		"sku_code": "BACKPACK818488000000XXXX",
+		"quantity": 130,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_258",
+		"sku_code": "BACKPACKFFFFFF000000XXXX",
+		"quantity": 98,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_259",
+		"sku_code": "BASEBHAT000000FFFFFFXXXX",
+		"quantity": 752,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_260",
+		"sku_code": "BASEBHATFFFFFF000000XXXX",
+		"quantity": 571,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_261",
+		"sku_code": "BEACHAIR000000FFFFFFXXXX",
+		"quantity": 792,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_262",
+		"sku_code": "BEACHAIRFFFFFF000000XXXX",
+		"quantity": 761,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_263",
+		"sku_code": "BEACHBAG000000FFFFFFXXXX",
+		"quantity": 889,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_264",
+		"sku_code": "BEACHBAGFFFFFF000000XXXX",
+		"quantity": 896,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_265",
+		"sku_code": "BEANIEXX000000FFFFFFXXXX",
+		"quantity": 938,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_266",
+		"sku_code": "BEANIEXXFFFFFF000000XXXX",
+		"quantity": 769,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_267",
+		"sku_code": "BODYBSSS000000FFFFFF12MX",
+		"quantity": 271,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_268",
+		"sku_code": "BODYBSSS000000FFFFFF6MXX",
+		"quantity": 320,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_269",
+		"sku_code": "BODYBSSSFFFFFF00000012MX",
+		"quantity": 697,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_270",
+		"sku_code": "BODYBSSSFFFFFF0000006MXX",
+		"quantity": 676,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_271",
+		"sku_code": "BOTT17OZFFFFFF000000XXXX",
+		"quantity": 387,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_272",
+		"sku_code": "BTOW3060000000FFFFFFXXXX",
+		"quantity": 727,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_273",
+		"sku_code": "BTOW3060FFFFFF000000XXXX",
+		"quantity": 597,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_274",
+		"sku_code": "CROPTOPW000000FFFFFFLXXX",
+		"quantity": 541,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_275",
+		"sku_code": "CROPTOPW000000FFFFFFMXXX",
+		"quantity": 786,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_276",
+		"sku_code": "CROPTOPW000000FFFFFFSXXX",
+		"quantity": 550,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_277",
+		"sku_code": "CROPTOPW000000FFFFFFXSXX",
+		"quantity": 122,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_278",
+		"sku_code": "CROPTOPWE8E8E8000000LXXX",
+		"quantity": 515,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_279",
+		"sku_code": "CROPTOPWE8E8E8000000MXXX",
+		"quantity": 206,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_280",
+		"sku_code": "CROPTOPWE8E8E8000000SXXX",
+		"quantity": 932,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_281",
+		"sku_code": "CROPTOPWE8E8E8000000XSXX",
+		"quantity": 189,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_282",
+		"sku_code": "CROPTOPWFFFFFF000000LXXX",
+		"quantity": 949,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_283",
+		"sku_code": "CROPTOPWFFFFFF000000MXXX",
+		"quantity": 442,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_284",
+		"sku_code": "CROPTOPWFFFFFF000000SXXX",
+		"quantity": 249,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_285",
+		"sku_code": "CROPTOPWFFFFFF000000XSXX",
+		"quantity": 88,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_286",
+		"sku_code": "CUFFBEAN000000FFFFFFXXXX",
+		"quantity": 464,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_287",
+		"sku_code": "CUFFBEANA6A5A0000000XXXX",
+		"quantity": 537,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_288",
+		"sku_code": "CUFFBEANFFFFFF000000XXXX",
+		"quantity": 806,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_289",
+		"sku_code": "DRAWSBAG000000FFFFFFXXXX",
+		"quantity": 378,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_290",
+		"sku_code": "DRAWSBAGFFFFFF000000XXXX",
+		"quantity": 316,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_291",
+		"sku_code": "DUFFLBAG000000FFFFFFXXXX",
+		"quantity": 935,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_292",
+		"sku_code": "DUFFLBAGFFFFFF000000XXXX",
+		"quantity": 732,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_293",
+		"sku_code": "EMUG12OZFFFFFF000000XXXX",
+		"quantity": 986,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_294",
+		"sku_code": "FACEMASK000000FFFFFFXXXX",
+		"quantity": 642,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_295",
+		"sku_code": "FACEMASKFFFFFF000000XXXX",
+		"quantity": 803,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_296",
+		"sku_code": "FANNPACK000000FFFFFFXXXX",
+		"quantity": 93,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_297",
+		"sku_code": "FANNPACKFFFFFF000000XXXX",
+		"quantity": 967,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_298",
+		"sku_code": "FLIPFLOP000000FFFFFF75XX",
+		"quantity": 727,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_299",
+		"sku_code": "FLIPFLOP000000FFFFFF7XXX",
+		"quantity": 66,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_300",
+		"sku_code": "FLIPFLOP000000FFFFFF85XX",
+		"quantity": 985,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_301",
+		"sku_code": "FLIPFLOP000000FFFFFF8XXX",
+		"quantity": 366,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_302",
+		"sku_code": "FLIPFLOP000000FFFFFF9XXX",
+		"quantity": 876,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_303",
+		"sku_code": "FLIPFLOPFFFFFF00000075XX",
+		"quantity": 357,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_304",
+		"sku_code": "FLIPFLOPFFFFFF0000007XXX",
+		"quantity": 784,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_305",
+		"sku_code": "FLIPFLOPFFFFFF00000085XX",
+		"quantity": 973,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_306",
+		"sku_code": "FLIPFLOPFFFFFF0000008XXX",
+		"quantity": 107,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_307",
+		"sku_code": "FLIPFLOPFFFFFF0000009XXX",
+		"quantity": 836,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_308",
+		"sku_code": "GLCS21PXXXXXXXFFFFFFXXXX",
+		"quantity": 333,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_309",
+		"sku_code": "GLCS21UXXXXXXXFFFFFFXXXX",
+		"quantity": 589,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_310",
+		"sku_code": "GMUG11OZFFFFFF000000XXXX",
+		"quantity": 306,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_311",
+		"sku_code": "GMUG15OZFFFFFF000000XXXX",
+		"quantity": 831,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_312",
+		"sku_code": "HDRESSWX000000FFFFFFLXXX",
+		"quantity": 345,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_313",
+		"sku_code": "HDRESSWX000000FFFFFFMXXX",
+		"quantity": 385,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_314",
+		"sku_code": "HDRESSWX000000FFFFFFSXXX",
+		"quantity": 852,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_315",
+		"sku_code": "HOODIEMX000000FFFFFFLXXX",
+		"quantity": 251,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_316",
+		"sku_code": "HOODIEMX000000FFFFFFMXXX",
+		"quantity": 486,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_317",
+		"sku_code": "HOODIEMX000000FFFFFFSXXX",
+		"quantity": 974,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_318",
+		"sku_code": "HOODIEMX000000FFFFFFXLXX",
+		"quantity": 868,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_319",
+		"sku_code": "HOODIEMX7F7F7F000000LXXX",
+		"quantity": 994,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_320",
+		"sku_code": "HOODIEMX7F7F7F000000MXXX",
+		"quantity": 911,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_321",
+		"sku_code": "HOODIEMX7F7F7F000000SXXX",
+		"quantity": 189,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_322",
+		"sku_code": "HOODIEMX7F7F7F000000XLXX",
+		"quantity": 173,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_323",
+		"sku_code": "HOODIEMXFFFFFF000000LXXX",
+		"quantity": 134,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_324",
+		"sku_code": "HOODIEMXFFFFFF000000MXXX",
+		"quantity": 247,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_325",
+		"sku_code": "HOODIEMXFFFFFF000000SXXX",
+		"quantity": 653,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_326",
+		"sku_code": "HOODIEMXFFFFFF000000XLXX",
+		"quantity": 812,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_327",
+		"sku_code": "HOODIEUL000000FFFFFFLXXX",
+		"quantity": 888,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_328",
+		"sku_code": "HOODIEUL000000FFFFFFMXXX",
+		"quantity": 230,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_329",
+		"sku_code": "HOODIEUL000000FFFFFFSXXX",
+		"quantity": 397,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_330",
+		"sku_code": "HOODIEUL000000FFFFFFXLXX",
+		"quantity": 765,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_331",
+		"sku_code": "HOODIEUL000000FFFFFFXSXX",
+		"quantity": 743,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_332",
+		"sku_code": "HOODIEUZ000000FFFFFFLXXX",
+		"quantity": 126,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_333",
+		"sku_code": "HOODIEUZ000000FFFFFFMXXX",
+		"quantity": 541,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_334",
+		"sku_code": "HOODIEUZ000000FFFFFFSXXX",
+		"quantity": 833,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_335",
+		"sku_code": "HOODIEUZ000000FFFFFFXLXX",
+		"quantity": 853,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_336",
+		"sku_code": "HOODIEUZ000000FFFFFFXSXX",
+		"quantity": 779,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_337",
+		"sku_code": "HOODIEWC000000FFFFFFLXXX",
+		"quantity": 750,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_338",
+		"sku_code": "HOODIEWC000000FFFFFFMXXX",
+		"quantity": 739,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_339",
+		"sku_code": "HOODIEWC000000FFFFFFSXXX",
+		"quantity": 960,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_340",
+		"sku_code": "HOODIEWC000000FFFFFFXSXX",
+		"quantity": 149,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_341",
+		"sku_code": "HOODIEWC575C51000000LXXX",
+		"quantity": 689,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_342",
+		"sku_code": "HOODIEWC575C51000000MXXX",
+		"quantity": 911,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_343",
+		"sku_code": "HOODIEWC575C51000000SXXX",
+		"quantity": 325,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_344",
+		"sku_code": "HOODIEWC575C51000000XSXX",
+		"quantity": 457,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_345",
+		"sku_code": "IPC11PXX000000FFFFFFXXXX",
+		"quantity": 496,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_346",
+		"sku_code": "IPC11XXX000000FFFFFFXXXX",
+		"quantity": 987,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_347",
+		"sku_code": "IPC12PMXXXXXXX000000XXXX",
+		"quantity": 543,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_348",
+		"sku_code": "LAPTSL13000000FFFFFFXXXX",
+		"quantity": 984,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_349",
+		"sku_code": "LAPTSL15000000FFFFFFXXXX",
+		"quantity": 923,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_350",
+		"sku_code": "MESHBACK323230FFFFFFXXXX",
+		"quantity": 434,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_351",
+		"sku_code": "NOTEBOOK000000FFFFFFXXXX",
+		"quantity": 570,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_352",
+		"sku_code": "NOTEBOOKFFFFFF000000XXXX",
+		"quantity": 811,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_353",
+		"sku_code": "PILL1818000000FFFFFFXXXX",
+		"quantity": 508,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_354",
+		"sku_code": "PILL1818FFFFFF000000XXXX",
+		"quantity": 791,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_355",
+		"sku_code": "PILL2012000000FFFFFFXXXX",
+		"quantity": 162,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_356",
+		"sku_code": "PILL2012FFFFFF000000XXXX",
+		"quantity": 717,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_357",
+		"sku_code": "POLOMXXX000000FFFFFFLXXX",
+		"quantity": 560,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_358",
+		"sku_code": "POLOMXXX000000FFFFFFMXXX",
+		"quantity": 147,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_359",
+		"sku_code": "POLOMXXX000000FFFFFFSXXX",
+		"quantity": 539,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_360",
+		"sku_code": "POLOMXXXC2C2C2000000LXXX",
+		"quantity": 464,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_361",
+		"sku_code": "POLOMXXXC2C2C2000000MXXX",
+		"quantity": 781,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_362",
+		"sku_code": "POLOMXXXC2C2C2000000SXXX",
+		"quantity": 339,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_363",
+		"sku_code": "POLOMXXXFFFFFF000000LXXX",
+		"quantity": 888,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_364",
+		"sku_code": "POLOMXXXFFFFFF000000MXXX",
+		"quantity": 708,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_365",
+		"sku_code": "POLOMXXXFFFFFF000000SXXX",
+		"quantity": 816,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_366",
+		"sku_code": "POLOWXXX000000FFFFFFLXXX",
+		"quantity": 915,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_367",
+		"sku_code": "POLOWXXX000000FFFFFFMXXX",
+		"quantity": 943,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_368",
+		"sku_code": "POLOWXXX000000FFFFFFSXXX",
+		"quantity": 672,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_369",
+		"sku_code": "POLOWXXXFFFFFF000000LXXX",
+		"quantity": 882,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_370",
+		"sku_code": "POLOWXXXFFFFFF000000MXXX",
+		"quantity": 493,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_371",
+		"sku_code": "POLOWXXXFFFFFF000000SXXX",
+		"quantity": 289,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_372",
+		"sku_code": "POST2130000000000000XXXX",
+		"quantity": 984,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_373",
+		"sku_code": "POST2130FFFFFF000000XXXX",
+		"quantity": 479,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_374",
+		"sku_code": "POST6191000000000000XXXX",
+		"quantity": 231,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_375",
+		"sku_code": "POST6191FFFFFF000000XXXX",
+		"quantity": 512,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_376",
+		"sku_code": "PPOMBEAN000000FFFFFFXXXX",
+		"quantity": 685,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_377",
+		"sku_code": "PPOMBEAN74736EFFFFFFXXXX",
+		"quantity": 662,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_378",
+		"sku_code": "SHIRT34S000000FFFFFFLXXX",
+		"quantity": 828,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_379",
+		"sku_code": "SHIRT34S000000FFFFFFMXXX",
+		"quantity": 585,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_380",
+		"sku_code": "SHIRT34S000000FFFFFFSXXX",
+		"quantity": 977,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_381",
+		"sku_code": "SHIRT34S000000FFFFFFXLXX",
+		"quantity": 341,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_382",
+		"sku_code": "SHIRT34S000000FFFFFFXSXX",
+		"quantity": 922,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_383",
+		"sku_code": "SHIRT34SFFFFFF000000LXXX",
+		"quantity": 951,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_384",
+		"sku_code": "SHIRT34SFFFFFF000000MXXX",
+		"quantity": 765,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_385",
+		"sku_code": "SHIRT34SFFFFFF000000SXXX",
+		"quantity": 707,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_386",
+		"sku_code": "SHIRT34SFFFFFF000000XLXX",
+		"quantity": 112,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_387",
+		"sku_code": "SHIRT34SFFFFFF000000XSXX",
+		"quantity": 817,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_388",
+		"sku_code": "SHIRTMLS000000FFFFFFLXXX",
+		"quantity": 802,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_389",
+		"sku_code": "SHIRTMLS000000FFFFFFMXXX",
+		"quantity": 788,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_390",
+		"sku_code": "SHIRTMLS000000FFFFFFSXXX",
+		"quantity": 195,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_391",
+		"sku_code": "SHIRTMLS000000FFFFFFXLXX",
+		"quantity": 287,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_392",
+		"sku_code": "SHIRTMLS9B969C000000LXXX",
+		"quantity": 552,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_393",
+		"sku_code": "SHIRTMLS9B969C000000MXXX",
+		"quantity": 337,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_394",
+		"sku_code": "SHIRTMLS9B969C000000SXXX",
+		"quantity": 715,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_395",
+		"sku_code": "SHIRTMLS9B969C000000XLXX",
+		"quantity": 366,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_396",
+		"sku_code": "SHIRTMLSFFFFFF000000LXXX",
+		"quantity": 339,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_397",
+		"sku_code": "SHIRTMLSFFFFFF000000MXXX",
+		"quantity": 903,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_398",
+		"sku_code": "SHIRTMLSFFFFFF000000SXXX",
+		"quantity": 593,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_399",
+		"sku_code": "SHIRTMLSFFFFFF000000XLXX",
+		"quantity": 152,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_400",
+		"sku_code": "SHIRTMMX000000FFFFFFLXXX",
+		"quantity": 643,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_401",
+		"sku_code": "SHIRTMMX000000FFFFFFMXXX",
+		"quantity": 693,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_402",
+		"sku_code": "SHIRTMMX000000FFFFFFSXXX",
+		"quantity": 658,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_403",
+		"sku_code": "SHIRTMMX8E8C8D000000LXXX",
+		"quantity": 525,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_404",
+		"sku_code": "SHIRTMMX8E8C8D000000MXXX",
+		"quantity": 344,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_405",
+		"sku_code": "SHIRTMMX8E8C8D000000SXXX",
+		"quantity": 119,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_406",
+		"sku_code": "SHIRTMMXFFFFFF000000LXXX",
+		"quantity": 983,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_407",
+		"sku_code": "SHIRTMMXFFFFFF000000MXXX",
+		"quantity": 504,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_408",
+		"sku_code": "SHIRTMMXFFFFFF000000SXXX",
+		"quantity": 289,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_409",
+		"sku_code": "SHIRTWLS000000FFFFFFLXXX",
+		"quantity": 749,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_410",
+		"sku_code": "SHIRTWLS000000FFFFFFMXXX",
+		"quantity": 958,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_411",
+		"sku_code": "SHIRTWLS000000FFFFFFSXXX",
+		"quantity": 549,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_412",
+		"sku_code": "SHIRTWLS000000FFFFFFXSXX",
+		"quantity": 488,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_413",
+		"sku_code": "SHIRTWLS9397A0000000LXXX",
+		"quantity": 809,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_414",
+		"sku_code": "SHIRTWLS9397A0000000MXXX",
+		"quantity": 134,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_415",
+		"sku_code": "SHIRTWLS9397A0000000SXXX",
+		"quantity": 221,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_416",
+		"sku_code": "SHIRTWLS9397A0000000XSXX",
+		"quantity": 517,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_417",
+		"sku_code": "SHIRTWLSFFFFFF000000LXXX",
+		"quantity": 910,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_418",
+		"sku_code": "SHIRTWLSFFFFFF000000MXXX",
+		"quantity": 79,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_419",
+		"sku_code": "SHIRTWLSFFFFFF000000SXXX",
+		"quantity": 79,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_420",
+		"sku_code": "SHIRTWLSFFFFFF000000XSXX",
+		"quantity": 910,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_421",
+		"sku_code": "SOCKSXXX000000FFFFFFLXXX",
+		"quantity": 946,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_422",
+		"sku_code": "SOCKSXXX000000FFFFFFMXXX",
+		"quantity": 965,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_423",
+		"sku_code": "SOCKSXXX000000FFFFFFSXXX",
+		"quantity": 351,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_424",
+		"sku_code": "SOCKSXXXFFFFFF000000LXXX",
+		"quantity": 346,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_425",
+		"sku_code": "SOCKSXXXFFFFFF000000MXXX",
+		"quantity": 613,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_426",
+		"sku_code": "SOCKSXXXFFFFFF000000SXXX",
+		"quantity": 779,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_427",
+		"sku_code": "SWEATMXX000000FFFFFFLXXX",
+		"quantity": 104,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_428",
+		"sku_code": "SWEATMXX000000FFFFFFMXXX",
+		"quantity": 772,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_429",
+		"sku_code": "SWEATMXX000000FFFFFFSXXX",
+		"quantity": 426,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_430",
+		"sku_code": "SWEATMXX000000FFFFFFXLXX",
+		"quantity": 939,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_431",
+		"sku_code": "SWEATMXX9B969C000000LXXX",
+		"quantity": 400,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_432",
+		"sku_code": "SWEATMXX9B969C000000MXXX",
+		"quantity": 630,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_433",
+		"sku_code": "SWEATMXX9B969C000000SXXX",
+		"quantity": 318,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_434",
+		"sku_code": "SWEATMXX9B969C000000XLXX",
+		"quantity": 686,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_435",
+		"sku_code": "SWEATMXXFFFFFF000000LXXX",
+		"quantity": 549,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_436",
+		"sku_code": "SWEATMXXFFFFFF000000MXXX",
+		"quantity": 868,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_437",
+		"sku_code": "SWEATMXXFFFFFF000000SXXX",
+		"quantity": 203,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_438",
+		"sku_code": "SWEATMXXFFFFFF000000XLXX",
+		"quantity": 900,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_439",
+		"sku_code": "SWEATWCX000000FFFFFFLXXX",
+		"quantity": 139,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_440",
+		"sku_code": "SWEATWCX000000FFFFFFMXXX",
+		"quantity": 831,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_441",
+		"sku_code": "SWEATWCX000000FFFFFFSXXX",
+		"quantity": 478,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_442",
+		"sku_code": "SWEATWCX000000FFFFFFXSXX",
+		"quantity": 910,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_443",
+		"sku_code": "SWEATWCX9B9A9F000000LXXX",
+		"quantity": 451,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_444",
+		"sku_code": "SWEATWCX9B9A9F000000MXXX",
+		"quantity": 441,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_445",
+		"sku_code": "SWEATWCX9B9A9F000000SXXX",
+		"quantity": 239,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_446",
+		"sku_code": "SWEATWCX9B9A9F000000XSXX",
+		"quantity": 247,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_447",
+		"sku_code": "TANKTOPM000000FFFFFFLXXX",
+		"quantity": 644,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_448",
+		"sku_code": "TANKTOPM000000FFFFFFMXXX",
+		"quantity": 865,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_449",
+		"sku_code": "TANKTOPM000000FFFFFFSXXX",
+		"quantity": 742,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_450",
+		"sku_code": "TANKTOPM000000FFFFFFXLXX",
+		"quantity": 721,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_451",
+		"sku_code": "TANKTOPM7E7F84000000LXXX",
+		"quantity": 241,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_452",
+		"sku_code": "TANKTOPM7E7F84000000MXXX",
+		"quantity": 513,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_453",
+		"sku_code": "TANKTOPM7E7F84000000SXXX",
+		"quantity": 613,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_454",
+		"sku_code": "TANKTOPM7E7F84000000XLXX",
+		"quantity": 756,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_455",
+		"sku_code": "TANKTOPW000000FFFFFFMXXX",
+		"quantity": 391,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_456",
+		"sku_code": "TANKTOPW000000FFFFFFSXXX",
+		"quantity": 467,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_457",
+		"sku_code": "TANKTOPW000000FFFFFFXSXX",
+		"quantity": 65,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_458",
+		"sku_code": "TANKTOPWFFFFFF000000MXXX",
+		"quantity": 707,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_459",
+		"sku_code": "TANKTOPWFFFFFF000000SXXX",
+		"quantity": 195,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_460",
+		"sku_code": "TANKTOPWFFFFFF000000XSXX",
+		"quantity": 530,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_461",
+		"sku_code": "TOTEBAGL000000FFFFFFXXXX",
+		"quantity": 852,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_462",
+		"sku_code": "TOTEBAGLE7DDC7000000XXXX",
+		"quantity": 717,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_463",
+		"sku_code": "TOTEBAGX000000FFFFFFXXXX",
+		"quantity": 586,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_464",
+		"sku_code": "TOTEBAGXE7DDC7000000XXXX",
+		"quantity": 125,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_465",
+		"sku_code": "TSHIRTMS000000FFFFFFLXXX",
+		"quantity": 522,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_466",
+		"sku_code": "TSHIRTMS000000FFFFFFMXXX",
+		"quantity": 959,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_467",
+		"sku_code": "TSHIRTMS000000FFFFFFSXXX",
+		"quantity": 768,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_468",
+		"sku_code": "TSHIRTMS000000FFFFFFXLXX",
+		"quantity": 156,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_469",
+		"sku_code": "TSHIRTMSB0B0B2000000LXXX",
+		"quantity": 418,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_470",
+		"sku_code": "TSHIRTMSB0B0B2000000MXXX",
+		"quantity": 289,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_471",
+		"sku_code": "TSHIRTMSB0B0B2000000SXXX",
+		"quantity": 797,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_472",
+		"sku_code": "TSHIRTMSB0B0B2000000XLXX",
+		"quantity": 315,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_473",
+		"sku_code": "TSHIRTMSFFFFFF000000LXXX",
+		"quantity": 728,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_474",
+		"sku_code": "TSHIRTMSFFFFFF000000MXXX",
+		"quantity": 97,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_475",
+		"sku_code": "TSHIRTMSFFFFFF000000SXXX",
+		"quantity": 292,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_476",
+		"sku_code": "TSHIRTMSFFFFFF000000XLXX",
+		"quantity": 166,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_477",
+		"sku_code": "TSHIRTWK000000FFFFFFMXXX",
+		"quantity": 632,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_478",
+		"sku_code": "TSHIRTWK000000FFFFFFSXXX",
+		"quantity": 212,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_479",
+		"sku_code": "TSHIRTWK000000FFFFFFXSXX",
+		"quantity": 499,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_480",
+		"sku_code": "TSHIRTWKFFFFFF000000MXXX",
+		"quantity": 710,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_481",
+		"sku_code": "TSHIRTWKFFFFFF000000SXXX",
+		"quantity": 221,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_482",
+		"sku_code": "TSHIRTWKFFFFFF000000XSXX",
+		"quantity": 199,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_483",
+		"sku_code": "TSHIRTWS000000FFFFFFLXXX",
+		"quantity": 976,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_484",
+		"sku_code": "TSHIRTWS000000FFFFFFMXXX",
+		"quantity": 465,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_485",
+		"sku_code": "TSHIRTWS000000FFFFFFSXXX",
+		"quantity": 975,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_486",
+		"sku_code": "TSHIRTWS000000FFFFFFXSXX",
+		"quantity": 979,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_487",
+		"sku_code": "TSHIRTWSB5B1B2000000LXXX",
+		"quantity": 443,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_488",
+		"sku_code": "TSHIRTWSB5B1B2000000MXXX",
+		"quantity": 365,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_489",
+		"sku_code": "TSHIRTWSB5B1B2000000SXXX",
+		"quantity": 242,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_490",
+		"sku_code": "TSHIRTWSB5B1B2000000XSXX",
+		"quantity": 153,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_491",
+		"sku_code": "TSHIRTWSFFFFFF000000LXXX",
+		"quantity": 162,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_492",
+		"sku_code": "TSHIRTWSFFFFFF000000MXXX",
+		"quantity": 129,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_493",
+		"sku_code": "TSHIRTWSFFFFFF000000SXXX",
+		"quantity": 56,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_494",
+		"sku_code": "TSHIRTWSFFFFFF000000XSXX",
+		"quantity": 313,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_495",
+		"sku_code": "TSHIRTWV000000FFFFFFMXXX",
+		"quantity": 911,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_496",
+		"sku_code": "TSHIRTWV000000FFFFFFSXXX",
+		"quantity": 91,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_497",
+		"sku_code": "TSHIRTWVCDCDCD000000MXXX",
+		"quantity": 860,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_498",
+		"sku_code": "TSHIRTWVCDCDCD000000SXXX",
+		"quantity": 97,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_499",
+		"sku_code": "VFLEXFIT000000FFFFFFXXXX",
+		"quantity": 110,
+		"stock_location": "stock_location_2"
+	},
+	{
+		"reference": "stock_item_500",
+		"sku_code": "VFLEXFITFFFFFF000000XXXX",
+		"quantity": 808,
+		"stock_location": "stock_location_2"
+	}
+]
