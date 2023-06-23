@@ -76,7 +76,7 @@ const formatOutput = (output: any, flags?: any, { color = true } = {}): string =
 
 
 /** Format error message */
-const formatError = (error: any, flags: any): string => {
+const formatError = (error: any, flags?: any): string => {
 	return formatOutput(error.errors || error, flags)
 }
 
