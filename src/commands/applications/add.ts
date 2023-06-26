@@ -9,7 +9,7 @@ import { type AppAuth, clColor, clToken } from '@commercelayer/cli-core'
 
 export default class ApplicationsAdd extends Command {
 
-  static description = 'add a new Commerce Layer application to CLI config'
+  static description = `add a new Commerce Layer application to CLI config (application must be of kind ${clColor.italic.yellowBright('integration')} or ${clColor.italic.yellowBright('sales_channel')})`
 
   static aliases = ['app:add']
 

@@ -46,7 +46,11 @@ export default class ApplicationsCurrent extends Command {
 				this.log()
 			}
 
-		} else this.warn(clColor.italic('\nNo current application defined\n'))
+		} else {
+			this.log()
+			this.warn(clColor.italic('No current application defined'))
+			this.log()
+		}
 
 	}
 
