@@ -88,6 +88,7 @@ export default class ImportsCreate extends Command {
       description: 'the delimiter character used in the CSV input file (one of \',\', \';\', \'|\', TAB)',
       options: [',', ';', '|', 'TAB'],
       dependsOn: ['csv'],
+      multiple: false
     }),
     blind: Flags.boolean({
       char: 'b',
