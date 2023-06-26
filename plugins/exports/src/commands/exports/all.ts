@@ -14,8 +14,9 @@ const MAX_QUEUE_LENGTH = clConfig.exports.max_queue_length
 const MAX_EXPORT_SIZE = clConfig.exports.max_size
 
 
-const exportCompleted = (exports: Export[]): boolean => {
-  return !exports.some(exp => exp.status !== 'completed')
+const exportCompleted = (exports: Export[] | Export): boolean => {
+  if (Array.isArray(exports)) return !exports.some(exp => exp.status !== 'completed')
+  else return exports.status === 'completed'
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -192,6 +193,8 @@ export default class ExportsAll extends ExportCommand {
       while (!exportCompleted(exports)) {
         for (const exp of exports) {
 
+          if (exportCompleted(exp)) continue
+
           const expUpd = await cl.exports.retrieve(exp.id)
           expUpd.metadata = exp.metadata
           Object.assign(exp, expUpd)
@@ -200,7 +203,7 @@ export default class ExportsAll extends ExportCommand {
             const exportName = exp.metadata?.exportName
             if (spinners.pick(exportName)) {
               spinners.update(exportName, { text: `${exportName} ${exp.status}`.replace(/_/g, ' ') })
-              if (exp.status === 'completed') spinners.succeed(exportName)
+              if (exportCompleted(exp)) spinners.succeed(exportName)
             }
           }
 
@@ -240,10 +243,7 @@ export default class ExportsAll extends ExportCommand {
       if (blindMode) this.log(finishMessage)
       else {
         if (notification) notify(finishMessage)
-        if (flags.open && outputFile){
-          this.log('APERTO!!')
-          await open(outputFile)
-        }
+        if (flags.open && outputFile) await open(outputFile)
       }
 
     } catch (error: any) {
