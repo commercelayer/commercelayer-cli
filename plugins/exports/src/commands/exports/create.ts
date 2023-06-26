@@ -1,49 +1,19 @@
 
-import Command, { Flags, cliux } from '../../base'
-import { clToken, clColor, clConfig, clOutput, clApi } from '@commercelayer/cli-core'
-import type { CommerceLayerClient, ExportCreate } from '@commercelayer/sdk'
-import notifier from 'node-notifier'
+import { ExportCommand, Flags, cliux, computeDelay, notify } from '../../base'
+import { clToken, clColor, clConfig } from '@commercelayer/cli-core'
+import type { ExportCreate } from '@commercelayer/sdk'
 import open from 'open'
 
 
-const securityInterval = 2
 
-
-export const notify = (message: string): void => {
-  notifier.notify({
-    title: 'Commerce Layer CLI',
-    message,
-    wait: true,
-  })
-}
-
-
-
-export const computeDelay = (): number => {
-
-  /*
-  const delayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
-  const delayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
-
-  const delay = Math.ceil(Math.max(delayBurst, delayAvg) * 1000)
-
-  return delay
-  */
-
-  return clApi.requestRateLimitDelay()
-
-}
-
-
-
-export default class ExportsCreate extends Command {
+export default class ExportsCreate extends ExportCommand {
 
   static description = 'create a new export'
 
-  static aliases = ['exp:create', 'export']
+  static aliases = ['exp:create']
 
   static examples = [
-    '$ commercelayer exports:create -t cusorderstomers -X <output-file-path>',
+    '$ commercelayer exports:create -t orders -X <output-file-path>',
     '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org',
   ]
 
@@ -81,7 +51,7 @@ export default class ExportsCreate extends Command {
     csv: Flags.boolean({
       char: 'C',
       description: 'export data in CSV format',
-      exclusive: ['format']
+      exclusive: ['format', 'prettify']
     }),
     save: Flags.string({
       char: 'x',
@@ -103,7 +73,6 @@ export default class ExportsCreate extends Command {
     blind: Flags.boolean({
       char: 'b',
       description: 'execute in blind mode without showing the progress monitor',
-      exclusive: ['quiet', 'silent'],
     }),
     prettify: Flags.boolean({
       char: 'P',
@@ -117,35 +86,6 @@ export default class ExportsCreate extends Command {
   }
 
 
-  async checkAccessToken(jwtData: any, flags: any, client: CommerceLayerClient): Promise<any> {
-
-    if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
-
-      await cliux.wait((securityInterval + 1) * 1000)
-
-      const organization = flags.organization
-      const domain = flags.domain
-
-      const token = await clToken.getAccessToken({
-        clientId: flags.clientId || '',
-        clientSecret: flags.clientSecret || '',
-        slug: organization,
-        domain
-      }).catch(error => {
-        this.error('Unable to refresh access token: ' + String(error.message))
-      })
-
-      const accessToken = token?.accessToken || ''
-
-      client.config({ organization, domain, accessToken })
-      jwtData = clToken.decodeAccessToken(accessToken) as any
-
-    }
-
-    return jwtData
-
-  }
-
 
   async run(): Promise<any> {
 
@@ -157,7 +97,7 @@ export default class ExportsCreate extends Command {
     const outputPath = flags.save || flags['save-path']
     if (!outputPath) this.error('Undefined output file path')
 
-    if (flags.prettify && ((flags.format === 'csv') || flags.csv)) this.error(`Flag ${clColor.cli.flag('Pretty')} can only be used with ${clColor.cli.value('JSON')} format`)
+    if (flags.prettify && ((flags.format === 'csv') || flags.csv)) this.error(`Flag ${clColor.cli.flag('Prettify')} can only be used with ${clColor.cli.value('JSON')} format`)
 
     const resType = flags.type
     if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
@@ -166,7 +106,7 @@ export default class ExportsCreate extends Command {
     const notification = flags.notify || false
     const blindMode = flags.blind || false
 
-    const format = flags.csv ? 'csv' : flags.format
+    const format = this.getFileFormat(flags)
 
     // Include flags
     const include: string[] = this.includeFlag(flags.include)
@@ -223,17 +163,8 @@ export default class ExportsCreate extends Command {
       }
 
     } catch (error: any) {
-      if (cl.isApiError(error) && (error.status === 422)) {
-        const err = error.first()?.meta
-        if (err.error === 'less_than_or_equal_to') this.error(`Too many ${resDesc} to export: ${clColor.msg.error(err.value)}`, {
-          suggestions: [`The maximum number of exportable records is ${clColor.yellowBright(err?.count)}, add more filters and re-run the command`]
-        })
-        else if (err.error === 'greater_than') {
-          this.log(clColor.italic(`\nNo ${resDesc} found\n`))
-          this.exit()
-        }
-      }
-      this.error(clOutput.formatError(error, flags))
+      if (cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
+      else this.handleError(error)
     }
 
   }

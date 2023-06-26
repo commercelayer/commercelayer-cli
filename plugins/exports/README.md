@@ -27,6 +27,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer exports [ID]`](#commercelayer-exports-id)
 * [`commercelayer exports:create`](#commercelayer-exportscreate)
 * [`commercelayer exports:details ID`](#commercelayer-exportsdetails-id)
+* [`commercelayer exports:group GROUP_ID`](#commercelayer-exportsgroup-group_id)
 * [`commercelayer exports:list`](#commercelayer-exportslist)
 * [`commercelayer exports:types`](#commercelayer-exportstypes)
 
@@ -71,7 +72,7 @@ USAGE
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|payment_methods|price_tiers|
     prices|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_cate
     gories|transactions|authorizations|captures|voids|refunds [-i <value>] [-w <value>] [-D] [-F csv|json | -C | ] [-x
-    <value> | -X <value>] [-b |  | ] [-P | ] [-O]
+    <value> | -X <value>] [-b] [-P | ] [-O]
 
 FLAGS
   -C, --csv                                                        export data in CSV format
@@ -94,10 +95,9 @@ DESCRIPTION
 
 ALIASES
   $ commercelayer exp:create
-  $ commercelayer export
 
 EXAMPLES
-  $ commercelayer exports:create -t cusorderstomers -X <output-file-path>
+  $ commercelayer exports:create -t orders -X <output-file-path>
 
   $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org
 ```
@@ -128,6 +128,31 @@ EXAMPLES
 ```
 
 _See code: [src/commands/exports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/details.ts)_
+
+### `commercelayer exports:group GROUP_ID`
+
+List all the exports related to an export group.
+
+```sh-session
+USAGE
+  $ commercelayer exports:group GROUP_ID
+
+ARGUMENTS
+  GROUP_ID  unique id of the group export
+
+DESCRIPTION
+  list all the exports related to an export group
+
+ALIASES
+  $ commercelayer exp:group
+
+EXAMPLES
+  $ commercelayer exports:group <group-id>
+
+  $ cl exp:group <group-id>
+```
+
+_See code: [src/commands/exports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/group.ts)_
 
 ### `commercelayer exports:list`
 
