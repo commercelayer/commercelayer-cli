@@ -68,11 +68,13 @@ export default class ImportsCreate extends Command {
       char: 'p',
       description: 'the id of the parent resource to be associated with imported data',
     }),
+    /*
     cleanup: Flags.boolean({
       char: 'c',
       description: 'delete all other existing items',
       deprecated: { message: `The ${clColor.msg.error('cleanup')} flag has been deprecated. Use the ${clColor.blueBright('cleanups')} plugin instead.` }
     }),
+    */
     inputs: Flags.string({
       char: 'i',
       description: 'the path of the file containing the data to import',
@@ -143,17 +145,19 @@ export default class ImportsCreate extends Command {
         if ((MAX_INPUTS > 0) && (inputsLength > MAX_INPUTS)) this.error(`You are trying to import ${clColor.yellowBright(inputsLength)} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
           suggestions: [`Split your input file into multiple files containing each a maximum of ${MAX_INPUTS} items`],
         })
+        /*
         if (flags.cleanup && (inputsLength > clConfig.imports.max_size))
           this.error(`You can use the ${clColor.cli.flag('cleanup')} flag only with imports that contains less than ${clColor.yellowBright(clConfig.imports.max_size)} items. Currently you are trying to import ${clColor.cli.value(inputsLength)} items.`, {
             suggestions: [`If you need to cleanup execute a first import with less items (even just one) or use the ${clColor.api.resource('cleanups')} resource to have the job done.`],
           })
+        */
       }
 
       // Split input
       const chunks: Chunk[] = splitImports({
         resource_type: type,
         parent_resource_id: parentId,
-        cleanup_records: flags.cleanup,
+        // cleanup_records: flags.cleanup,
         inputs,
       })
 
@@ -252,7 +256,7 @@ export default class ImportsCreate extends Command {
     return this.cl.imports.create({
       resource_type: chunk.resource_type,
       parent_resource_id: chunk.parent_resource_id,
-      cleanup_records: chunk.cleanup_records,
+      // cleanup_records: chunk.cleanup_records,
       inputs: chunk.inputs,
       reference: `${chunk.group_id}-${String(chunk.chunk_number).padStart(4, '0')}`,
       reference_origin: 'cli-plugin-imports',

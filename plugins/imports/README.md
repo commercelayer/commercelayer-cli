@@ -73,8 +73,8 @@ Create a new import.
 USAGE
   $ commercelayer imports:create -t
     addresses|bundles|coupons|customer_subscriptions|customers|gift_cards|line_items|orders|price_tiers|prices|shipping_
-    categories|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_categories [-p <value>] [-c] [-D ,|;|||TAB (-C
-    -i <value>)] [-b | -q | ]
+    categories|sku_lists|sku_list_items|sku_options|skus|stock_items|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i
+    <value>)] [-b | -q | ]
 
 FLAGS
   -C, --csv                                                        accept input file in CSV format
@@ -83,7 +83,6 @@ FLAGS
                                                                    <options: ,|;|||TAB>
   -b, --blind                                                      execute in blind mode without showing the progress
                                                                    monitor
-  -c, --cleanup                                                    delete all other existing items
   -i, --inputs=<value>                                             (required) the path of the file containing the data
                                                                    to import
   -p, --parent=<value>                                             the id of the parent resource to be associated with

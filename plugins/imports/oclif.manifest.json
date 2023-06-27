@@ -1,0 +1,616 @@
+{
+  "version": "3.6.2",
+  "commands": {
+    "imports:create": {
+      "id": "imports:create",
+      "description": "create a new import",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "aliases": [
+        "imp:create",
+        "import"
+      ],
+      "examples": [
+        "$ commercelayer imports:create -t stock_items -p <stock_location-id> -i <input-file-path>",
+        "$ cl imp:create -t skus -i <input-file-path>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "type": {
+          "name": "type",
+          "type": "option",
+          "char": "t",
+          "description": "the type of resource being imported",
+          "required": true,
+          "helpValue": "addresses|bundles|coupons|customer_subscriptions|...",
+          "multiple": false,
+          "options": [
+            "addresses",
+            "bundles",
+            "coupons",
+            "customer_subscriptions",
+            "customers",
+            "gift_cards",
+            "line_items",
+            "orders",
+            "price_tiers",
+            "prices",
+            "shipping_categories",
+            "sku_lists",
+            "sku_list_items",
+            "sku_options",
+            "skus",
+            "stock_items",
+            "tax_categories"
+          ]
+        },
+        "parent": {
+          "name": "parent",
+          "type": "option",
+          "char": "p",
+          "description": "the id of the parent resource to be associated with imported data",
+          "multiple": false
+        },
+        "inputs": {
+          "name": "inputs",
+          "type": "option",
+          "char": "i",
+          "description": "the path of the file containing the data to import",
+          "required": true,
+          "multiple": false
+        },
+        "csv": {
+          "name": "csv",
+          "type": "boolean",
+          "char": "C",
+          "description": "accept input file in CSV format",
+          "allowNo": false,
+          "dependsOn": [
+            "inputs"
+          ]
+        },
+        "delimiter": {
+          "name": "delimiter",
+          "type": "option",
+          "char": "D",
+          "description": "the delimiter character used in the CSV input file (one of ',', ';', '|', TAB)",
+          "multiple": false,
+          "options": [
+            ",",
+            ";",
+            "|",
+            "TAB"
+          ],
+          "dependsOn": [
+            "csv"
+          ]
+        },
+        "blind": {
+          "name": "blind",
+          "type": "boolean",
+          "char": "b",
+          "description": "execute in blind mode without showing the progress monitor",
+          "allowNo": false,
+          "exclusive": [
+            "quiet",
+            "silent"
+          ]
+        },
+        "quiet": {
+          "name": "quiet",
+          "type": "boolean",
+          "char": "q",
+          "description": "execute command without showing warning messages",
+          "allowNo": false,
+          "exclusive": [
+            "blind"
+          ]
+        }
+      },
+      "args": {}
+    },
+    "imports:delete": {
+      "id": "imports:delete",
+      "description": "delete an existing import",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "aliases": [
+        "imp:delete"
+      ],
+      "examples": [
+        "$ commercelayer imports:delete <import-id>>",
+        "$ cl imp:delete <import-id>>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        }
+      },
+      "args": {
+        "id": {
+          "name": "id",
+          "description": "unique id of the import",
+          "required": true,
+          "hidden": false
+        }
+      }
+    },
+    "imports:details": {
+      "id": "imports:details",
+      "description": "show the details of an existing import",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "aliases": [
+        "imp:details"
+      ],
+      "examples": [
+        "$ commercelayer imports:details <import-id>",
+        "$ cl imp:details <import-id> -i",
+        "$ cl imp:details <import-id> -i -l"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "inputs": {
+          "name": "inputs",
+          "type": "boolean",
+          "char": "i",
+          "description": "show input items associated with the import",
+          "allowNo": false
+        },
+        "logs": {
+          "name": "logs",
+          "type": "boolean",
+          "char": "l",
+          "description": "show warning and error logs related to the import process",
+          "allowNo": false
+        },
+        "save-inputs": {
+          "name": "save-inputs",
+          "type": "option",
+          "char": "S",
+          "description": "save import inputs to local file",
+          "multiple": false,
+          "dependsOn": [
+            "inputs"
+          ]
+        }
+      },
+      "args": {
+        "id": {
+          "name": "id",
+          "description": "unique id of the import",
+          "required": true,
+          "hidden": false
+        }
+      }
+    },
+    "imports:group": {
+      "id": "imports:group",
+      "description": "list all the imports related to an import group",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "aliases": [
+        "imp:group"
+      ],
+      "examples": [
+        "$ commercelayer imports:group <group-id>",
+        "$ cl imp:group <group-id>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        }
+      },
+      "args": {
+        "group_id": {
+          "name": "group_id",
+          "description": "unique id of the group import",
+          "required": true,
+          "hidden": false
+        }
+      }
+    },
+    "imports": {
+      "id": "imports",
+      "description": "list all the created imports or show details of a single import",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "aliases": [],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "all": {
+          "name": "all",
+          "type": "boolean",
+          "char": "A",
+          "description": "show all imports instead of first 25 only",
+          "allowNo": false,
+          "exclusive": [
+            "limit"
+          ]
+        },
+        "type": {
+          "name": "type",
+          "type": "option",
+          "char": "t",
+          "description": "the type of resource imported",
+          "multiple": false,
+          "options": [
+            "addresses",
+            "bundles",
+            "coupons",
+            "customer_subscriptions",
+            "customers",
+            "gift_cards",
+            "line_items",
+            "orders",
+            "price_tiers",
+            "prices",
+            "shipping_categories",
+            "sku_lists",
+            "sku_list_items",
+            "sku_options",
+            "skus",
+            "stock_items",
+            "tax_categories"
+          ]
+        },
+        "group": {
+          "name": "group",
+          "type": "option",
+          "char": "g",
+          "description": "the group ID associated to the import in case of multi-chunk imports",
+          "multiple": false,
+          "exclusive": [
+            "all, limit"
+          ]
+        },
+        "status": {
+          "name": "status",
+          "type": "option",
+          "char": "s",
+          "description": "the import job status",
+          "multiple": false,
+          "options": [
+            "in_progress",
+            "pending",
+            "completed",
+            "interrupted"
+          ]
+        },
+        "errors": {
+          "name": "errors",
+          "type": "boolean",
+          "char": "e",
+          "description": "show only imports with errors",
+          "allowNo": false
+        },
+        "warnings": {
+          "name": "warnings",
+          "type": "boolean",
+          "char": "w",
+          "description": "show only import with warnings",
+          "allowNo": false
+        },
+        "limit": {
+          "name": "limit",
+          "type": "option",
+          "char": "l",
+          "description": "limit number of imports in output",
+          "multiple": false,
+          "exclusive": [
+            "all"
+          ]
+        }
+      },
+      "args": {
+        "id": {
+          "name": "id",
+          "description": "unique id of the import to be retrieved",
+          "required": false,
+          "hidden": false
+        }
+      }
+    },
+    "imports:list": {
+      "id": "imports:list",
+      "description": "list all the created imports",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "aliases": [
+        "imp:list"
+      ],
+      "examples": [
+        "$ commercelayer imports",
+        "$ cl imports:list -A",
+        "$ cl imp:list"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "all": {
+          "name": "all",
+          "type": "boolean",
+          "char": "A",
+          "description": "show all imports instead of first 25 only",
+          "allowNo": false,
+          "exclusive": [
+            "limit"
+          ]
+        },
+        "type": {
+          "name": "type",
+          "type": "option",
+          "char": "t",
+          "description": "the type of resource imported",
+          "multiple": false,
+          "options": [
+            "addresses",
+            "bundles",
+            "coupons",
+            "customer_subscriptions",
+            "customers",
+            "gift_cards",
+            "line_items",
+            "orders",
+            "price_tiers",
+            "prices",
+            "shipping_categories",
+            "sku_lists",
+            "sku_list_items",
+            "sku_options",
+            "skus",
+            "stock_items",
+            "tax_categories"
+          ]
+        },
+        "group": {
+          "name": "group",
+          "type": "option",
+          "char": "g",
+          "description": "the group ID associated to the import in case of multi-chunk imports",
+          "multiple": false,
+          "exclusive": [
+            "all, limit"
+          ]
+        },
+        "status": {
+          "name": "status",
+          "type": "option",
+          "char": "s",
+          "description": "the import job status",
+          "multiple": false,
+          "options": [
+            "in_progress",
+            "pending",
+            "completed",
+            "interrupted"
+          ]
+        },
+        "errors": {
+          "name": "errors",
+          "type": "boolean",
+          "char": "e",
+          "description": "show only imports with errors",
+          "allowNo": false
+        },
+        "warnings": {
+          "name": "warnings",
+          "type": "boolean",
+          "char": "w",
+          "description": "show only import with warnings",
+          "allowNo": false
+        },
+        "limit": {
+          "name": "limit",
+          "type": "option",
+          "char": "l",
+          "description": "limit number of imports in output",
+          "multiple": false,
+          "exclusive": [
+            "all"
+          ]
+        }
+      },
+      "args": {}
+    },
+    "imports:noc": {
+      "id": "imports:noc",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "hidden": true,
+      "aliases": [],
+      "flags": {},
+      "args": {}
+    },
+    "imports:types": {
+      "id": "imports:types",
+      "description": "show online documentation for supported resources",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-imports",
+      "pluginAlias": "@commercelayer/cli-plugin-imports",
+      "pluginType": "core",
+      "aliases": [
+        "imp:types"
+      ],
+      "examples": [
+        "$ commercelayer imports:types",
+        "$ cl imp:types"
+      ],
+      "flags": {
+        "open": {
+          "name": "open",
+          "type": "boolean",
+          "char": "O",
+          "description": "open online documentation page",
+          "allowNo": false
+        }
+      },
+      "args": {}
+    }
+  }
+}
