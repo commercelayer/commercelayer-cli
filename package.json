@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.11.3",
+  "version": "5.12.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -52,7 +52,8 @@
       ],
       "postrun": [
         "./lib/hooks/postrun/save",
-        "./lib/hooks/postrun/autocomplete"
+        "./lib/hooks/postrun/autocomplete",
+        "./lib/hooks/postrun/plugins_update"
       ]
     },
     "topics": {
