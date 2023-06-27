@@ -117,7 +117,7 @@
     "@commercelayer/cli-core": "^3.8.6",
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/sdk": "^5.6.0",
-    "@oclif/core": "2.8.6",
+    "@oclif/core": "2.8.7",
     "@oclif/plugin-autocomplete": "^2.3.1",
     "@oclif/plugin-help": "5.2.9",
     "@oclif/plugin-not-found": "^2.3.26",
