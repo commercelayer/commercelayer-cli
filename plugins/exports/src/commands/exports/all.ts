@@ -1,7 +1,7 @@
 import ExportsCreate from './create'
 import { ExportCommand, cliux, notify, Flags, encoding } from '../../base'
 import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
-import type { Export, ExportCreate, Sku } from '@commercelayer/sdk'
+import type { Export, ExportCreate } from '@commercelayer/sdk'
 import type { ListableResourceType } from '@commercelayer/sdk/lib/cjs/api'
 import Spinnies from 'spinnies'
 import open from 'open'
@@ -164,12 +164,12 @@ export default class ExportsAll extends ExportCommand {
         const curExpPages = Math.ceil(curExpRecords / clConfig.api.page_max_size)
         expPage += curExpPages
 
-        const curExpLastPage = await resSdk.list({ filters: wheres, pageSize: clConfig.api.page_max_size, pageNumber: expPage, sort: { code: 'asc' } })
+        const curExpLastPage = await resSdk.list({ filters: wheres, pageSize: clConfig.api.page_max_size, pageNumber: expPage, sort: { id: 'asc' } })
 
-        stopId = (curExpLastPage.last() as Sku)?.code
+        stopId = curExpLastPage.last()?.id
 
-        if (startId) expCreate.filters.code_gt = startId
-        expCreate.filters.code_lteq = stopId
+        if (startId) expCreate.filters.id_gt = startId
+        expCreate.filters.id_lteq = stopId
 
         const exp = await cl.exports.create(expCreate)
 
