@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-exports",
   "description": "Commerce Layer CLI Exports plugin",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-exports/issues",
   "engines": {
