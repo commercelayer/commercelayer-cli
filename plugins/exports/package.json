@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-exports",
   "description": "Commerce Layer CLI Exports plugin",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-exports/issues",
   "engines": {
@@ -59,7 +59,7 @@
     "@oclif/test": "^2.3.25",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^20.3.1",
+    "@types/node": "^20.3.2",
     "@types/node-notifier": "^8.0.2",
     "chai": "^4.3.7",
     "eslint": "^8.43.0",
@@ -71,14 +71,14 @@
   "dependencies": {
     "@commercelayer/cli-core": "^3.8.6",
     "@commercelayer/js-auth": "^2.3.0",
-    "@commercelayer/sdk": "^5.4.1",
-    "@oclif/core": "2.8.7",
+    "@commercelayer/sdk": "^5.6.0",
+    "@oclif/core": "^2.8.10",
     "axios": "^1.4.0",
     "cli-table3": "^0.6.3",
     "node-notifier": "^10.0.1",
     "open": "^8.4.2",
     "spinnies": "^0.5.1",
-    "tslib": "^2.5.3"
+    "tslib": "^2.6.0"
   },
   "publishConfig": {
     "access": "public"
