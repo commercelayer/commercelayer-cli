@@ -64,7 +64,7 @@ const AvailablePlugins: PluginRelease[] = [
   { name: 'token',        plugin: '@commercelayer/cli-plugin-token',      description: 'Manage Commerce Layer access tokens', enabled: true },
   { name: 'microstore',   plugin: '@commercelayer/cli-plugin-microstore', description: 'Microstore URLs generation',          enabled: true },
   { name: 'exports',      plugin: '@commercelayer/cli-plugin-exports',    description: 'Organization exports manager',        enabled: true },
-  { name: 'cleanups',     plugin: '@commercelayer/cli-plugin-cleanups',   description: 'Organization exports manager',        enabled: true },
+  { name: 'cleanups',     plugin: '@commercelayer/cli-plugin-cleanups',   description: 'Organization cleanups manager',       enabled: true },
 ]
 
 
