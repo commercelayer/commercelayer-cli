@@ -31,6 +31,11 @@ export default abstract class extends Command {
       description: 'the name of the business model file to use',
       dependsOn: ['url'],
     }),
+    debug: Flags.boolean({
+      description: 'show command debug information',
+      hidden: true,
+      required: false,
+    })
   }
 
 

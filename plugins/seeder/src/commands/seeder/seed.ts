@@ -63,7 +63,11 @@ export default class SeederSeed extends Command {
 
   async run(): Promise<any> {
 
+    if (this.argv.includes('--debug')) this.log(this.argv.join())
+
     const { flags } = await this.parse(SeederSeed)
+
+    if (flags.debug) this.log(JSON.stringify(flags))
 
     const organization = flags.organization
     const businessModel = flags.businessModel
