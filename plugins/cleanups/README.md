@@ -1,11 +1,11 @@
-# @commercelayer/cli-plugin-exports
+# @commercelayer/cli-plugin-cleanups
 
-Commerce Layer CLI Exports plugin
+Commerce Layer CLI Cleanups plugin
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-exports.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-exports)
-[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-exports.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-exports)
-[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-exports.svg)](https://github.com/@commercelayer/cli-plugin-exports/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-cleanups.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-cleanups)
+[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-cleanups.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-cleanups)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-cleanups.svg)](https://github.com/@commercelayer/cli-plugin-cleanups/blob/master/package.json)
 
 <!-- toc -->
 
@@ -169,7 +169,7 @@ ALIASES
 EXAMPLES
   $ commercelayer cleanups:types
 
-  $ cl exp:types
+  $ cl clp:types
 ```
 
 _See code: [src/commands/cleanups/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/types.ts)_

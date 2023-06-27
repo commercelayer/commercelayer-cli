@@ -12,7 +12,7 @@ export default class ExportsTypes extends Command {
 
   static examples = [
 		'$ commercelayer cleanups:types',
-		'$ cl exp:types',
+		'$ cl clp:types',
 	]
 
 
@@ -31,7 +31,7 @@ export default class ExportsTypes extends Command {
     this.log()
     this.log(clColor.style.title('Supported cleanup types'))
     this.log()
-    this.log((clConfig.exports.types as string[]).sort().join(' | '))
+    this.log((clConfig.cleanups.types as string[]).sort().join(' | '))
     this.log()
 
     if (flags.open) await open(clConfig.doc.cleanups_resources)
