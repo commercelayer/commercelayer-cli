@@ -1,8 +1,0 @@
-
-query per contare gli elementi da esportare
-dividere i record in gruppi di 10000 paginando per 1 e chiedendo la pagina 10000,20000,30000 ....
-creare gli n export (con groupid) usando i filtri sulla data di creazione ottenuti dallo step di paginazione
-ciclare e controllare gli n export fino a che non sono tutti completati
-se un export va in errore abortire il processo altrimenti scaricare i file e salvarli in cache
-rimuovere header per i cvs e parentesi di apertura e chiousura per i json
-concatenare i file e salvarli nel path di output

@@ -50,7 +50,7 @@ export default class ExportsList extends Command {
 
 		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
-		const cl = this.commercelayerInit(flags)
+		this.commercelayerInit(flags)
 
 
 		try {
@@ -80,7 +80,7 @@ export default class ExportsList extends Command {
 				}
 
 				// eslint-disable-next-line no-await-in-loop
-				const exports = await cl.exports.list(params)
+				const exports = await this.cl.exports.list(params)
 
 				if (exports?.length) {
 					tableData.push(...exports)

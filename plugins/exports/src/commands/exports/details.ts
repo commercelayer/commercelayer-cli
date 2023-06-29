@@ -28,12 +28,12 @@ export default class ExportsDetails extends Command {
 
     const id = args.id
 
-    const cl = this.commercelayerInit(flags)
+    this.commercelayerInit(flags)
 
 
     try {
 
-      const exp = await cl.exports.retrieve(id)
+      const exp = await this.cl.exports.retrieve(id)
 
       const table = new Table({
         // head: ['ID', 'Topic', 'Circuit state', 'Failures'],
@@ -69,14 +69,6 @@ export default class ExportsDetails extends Command {
         this.log()
       }
 
-      /*
-        if (flags.inputs) {
-          const inputs = (!imp.inputs && imp.attachment_url) ? await this.getInputs(imp.attachment_url) : imp.inputs
-          this.showInputs(inputs)
-          if (flags['save-inputs'] && inputs) this.saveInputs(flags, inputs)
-        }
-      */
-
       return exp
 
     } catch (error: any) {
@@ -85,26 +77,7 @@ export default class ExportsDetails extends Command {
 
   }
 
-  /*
-    private async getInputs(attachmentUrl: string): Promise<object[]> {
-      const inputs = await axios.get(attachmentUrl, { responseType: 'arraybuffer' })
-      return inputs ? JSON.parse(gunzipSync(inputs.data).toString()) as object[] : []
-    }
-  
-  
-    private saveInputs(flags: OutputFlags<any>, inputs: object[]): void {
-  
-      let filePath = flags['save-inputs']
-      if (!filePath) this.warn('Undefined output save path')
-  
-      filePath = this.specialFolder(filePath)
-      const fileDir = dirname(filePath)
-      if (flags['save-path'] && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
-  
-      writeFileSync(filePath, clOutput.printJSON(inputs, { tabSize: 4 }), { encoding: 'utf-8' })
-  
-    }
-  */
+
 
   private formatValue(field: string, value: any): any {
 

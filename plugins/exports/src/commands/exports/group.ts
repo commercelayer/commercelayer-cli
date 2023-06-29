@@ -28,7 +28,7 @@ export default class ExportsGroup extends Command {
 
 		const groupId = args.group_id
 
-		const cl = this.commercelayerInit(flags)
+		this.commercelayerInit(flags)
 
 
 		try {
@@ -50,7 +50,7 @@ export default class ExportsGroup extends Command {
 
 
 				// eslint-disable-next-line no-await-in-loop
-				const exports = await cl.exports.list(params)
+				const exports = await this.cl.exports.list(params)
 
 				if (exports?.length) {
 					tableData.push(...exports)
@@ -97,7 +97,7 @@ export default class ExportsGroup extends Command {
 			return tableData
 
 		} catch (error: any) {
-      if (cl.isApiError(error) && (error.status === 404))
+      if (this.cl.isApiError(error) && (error.status === 404))
         this.error(`Unable to find export group${groupId ? ` with id ${clColor.msg.error(groupId)}` : ''}`)
 			else this.handleError(error, flags)
 		}

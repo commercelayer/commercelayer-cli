@@ -97,7 +97,8 @@ export default class ExportsCreate extends ExportCommand {
     const outputPath = flags.save || flags['save-path']
     if (!outputPath) this.error('Undefined output file path')
 
-    if (flags.prettify && ((flags.format === 'csv') || flags.csv)) this.error(`Flag ${clColor.cli.flag('Prettify')} can only be used with ${clColor.cli.value('JSON')} format`)
+    const format = this.getFileFormat(flags)
+    if (flags.prettify && (format === 'csv')) this.error(`Flag ${clColor.cli.flag('Prettify')} can only be used with ${clColor.cli.value('JSON')} format`)
 
     const resType = flags.type
     if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
@@ -106,15 +107,10 @@ export default class ExportsCreate extends ExportCommand {
     const notification = flags.notify || false
     const blindMode = flags.blind || false
 
-    const format = this.getFileFormat(flags)
-
     // Include flags
     const include: string[] = this.includeFlag(flags.include)
     // Where flags
     const wheres = this.whereFlag(flags.where)
-
-
-    const cl = this.commercelayerInit(flags)
 
     const expCreate: ExportCreate = {
       resource_type: resType,
@@ -128,7 +124,9 @@ export default class ExportsCreate extends ExportCommand {
 
     try {
 
-      let exp = await cl.exports.create(expCreate)
+      this.commercelayerInit(flags)
+
+      let exp = await this.cl.exports.create(expCreate)
 
       if (!exp.records_count) {
         this.log(clColor.italic('\nNo records found\n'))
@@ -141,8 +139,8 @@ export default class ExportsCreate extends ExportCommand {
 
       if (!blindMode) cliux.action.start(`Exporting ${resDesc}`, this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting'))
       while (!['completed', 'interrupted'].includes(exp.status || '')) {
-        jwtData = await this.checkAccessToken(jwtData, flags, cl)
-        exp = await cl.exports.retrieve(exp.id)
+        jwtData = await this.checkAccessToken(jwtData, flags)
+        exp = await this.cl.exports.retrieve(exp.id)
         cliux.action.status = this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting')
         await cliux.wait(delay)
       }
@@ -163,7 +161,7 @@ export default class ExportsCreate extends ExportCommand {
       }
 
     } catch (error: any) {
-      if (cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
+      if (this.cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
       else this.handleError(error)
     }
 

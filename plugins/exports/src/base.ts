@@ -67,6 +67,7 @@ export default abstract class BaseCommand extends Command {
 
 
   protected environment: ApiMode = 'test'
+  protected cl!: CommerceLayerClient
 
 
 
@@ -107,11 +108,13 @@ export default abstract class BaseCommand extends Command {
 
     this.environment = clToken.getTokenEnvironment(accessToken)
 
-    return commercelayer({
+    this.cl = commercelayer({
       organization,
       domain,
       accessToken,
     })
+
+    return this.cl
 
   }
 
@@ -204,7 +207,7 @@ export abstract class ExportCommand extends BaseCommand {
   }
 
 
-  protected async checkAccessToken(jwtData: any, flags: any, client: CommerceLayerClient): Promise<any> {
+  protected async checkAccessToken(jwtData: any, flags: any): Promise<any> {
 
     const securityInterval = 2
 
@@ -226,7 +229,7 @@ export abstract class ExportCommand extends BaseCommand {
 
       const accessToken = token?.accessToken || ''
 
-      client.config({ organization, domain, accessToken })
+      this.cl.config({ organization, domain, accessToken })
       jwtData = clToken.decodeAccessToken(accessToken) as any
 
     }
@@ -285,7 +288,7 @@ export abstract class ExportCommand extends BaseCommand {
   }
 
 
-  protected getFileFormat(flags: any): string {
+  protected getFileFormat(flags: any): ExportFormat {
     return flags.csv ? 'csv' : flags.format
   }
 
@@ -307,3 +310,6 @@ export abstract class ExportCommand extends BaseCommand {
 
 
 export { Flags, Args, ux as cliux }
+
+export type ExportFormat = 'json' | 'csv'
+

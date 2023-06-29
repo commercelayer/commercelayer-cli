@@ -1,6 +1,6 @@
 import ExportsCreate from './create'
-import { ExportCommand, cliux, notify, Flags, encoding } from '../../base'
-import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
+import { ExportCommand, cliux, notify, Flags, encoding, type ExportFormat } from '../../base'
+import { type KeyValString, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 import type { Export, ExportCreate } from '@commercelayer/sdk'
 import type { ListableResourceType } from '@commercelayer/sdk/lib/cjs/api'
 import Spinnies from 'spinnies'
@@ -9,9 +9,27 @@ import { readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 
-const ALLOW_OVERQUEUING = false // Allow to bypass the limit of concurrent exports
-const MAX_QUEUE_LENGTH = clConfig.exports.max_queue_length
+const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports
+const MAX_QUEUE_LENGTH = Math.floor(clConfig.exports.max_queue_length / 2) - 1
 const MAX_EXPORT_SIZE = clConfig.exports.max_size
+
+
+type Spinners = typeof Spinnies
+
+type ExportJob = {
+  groupId: string,
+  totalRecords: number,
+  totalExports: number,
+  exports: Export[],
+  spinners?: Spinners,
+  format: ExportFormat
+  resourceType: string,
+  resourceDesc: string,
+  include?: string[],
+  filter?: KeyValString,
+  dryData: boolean,
+  blindMode: boolean
+}
 
 
 const exportCompleted = (exports: Export[] | Export): boolean => {
@@ -20,10 +38,25 @@ const exportCompleted = (exports: Export[] | Export): boolean => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const countCompleted = (exports: Export[]): number => {
+const countCompleted = (exports: Export[] | ExportJob): number => {
   let completed = 0
-  for (const e of exports) if (e.status === 'completed') completed++
+  for (const e of (Array.isArray(exports) ? exports : exports.exports)) if (e.status === 'completed') completed++
   return completed
+}
+
+const countRunning = (exports: Export[] | ExportJob): number => {
+  let running = 0
+  for (const e of (Array.isArray(exports) ? exports : exports.exports)) if (e.id && ['pending', 'in_progress'].includes(e.status)) running++
+  return running
+}
+
+
+const spinnerText = (exp: Export | string): string => {
+  if (typeof exp === 'string') return exp
+  else {
+    const details = '' // ` [${exp.id}, ${String(exp.metadata?.exportRecords).padEnd(String(MAX_EXPORT_SIZE).length, ' ')} ${exp.resource_type}]`
+    return `${exp.metadata?.exportName} ${exp.status}${details}`.replace(/_/g, ' ')
+  }
 }
 
 
@@ -66,6 +99,7 @@ export default class ExportsAll extends ExportCommand {
   }
 
 
+
   public async run(): Promise<void> {
 
     const { flags } = await this.parse(ExportsAll)
@@ -76,15 +110,14 @@ export default class ExportsAll extends ExportCommand {
     const outputPath = flags.save || flags['save-path']
     if (!outputPath) this.error('Undefined output file path')
 
-    if (flags.prettify && ((flags.format === 'csv') || flags.csv)) this.error(`Flag ${clColor.cli.flag('Prettify')} can only be used with ${clColor.cli.value('JSON')} format`)
+    const format = this.getFileFormat(flags)
+    if (flags.prettify && (format === 'csv')) this.error(`Flag ${clColor.cli.flag('Prettify')} can only be used with ${clColor.cli.value('JSON')} format`)
 
     const resType = flags.type
     if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
     const resDesc = resType.replace(/_/g, ' ')
 
-    const notification = flags.notify || false
     const blindMode = flags.blind || false
-    const format = this.getFileFormat(flags)
 
     // Include flags
     const include: string[] = this.includeFlag(flags.include)
@@ -92,166 +125,248 @@ export default class ExportsAll extends ExportCommand {
     const wheres = this.whereFlag(flags.where)
 
 
-    const cl = this.commercelayerInit(flags)
-
-    const expCreate: ExportCreate = {
-      resource_type: resType,
+    const exportJob: ExportJob = {
+      groupId: '',
+      totalRecords: 0,
+      totalExports: 0,
+      exports: [],
       format,
-      dry_data: flags['dry-data']
+      resourceType: resType,
+      resourceDesc: resDesc,
+      include,
+      filter: wheres,
+      dryData: flags['dry-data'],
+      blindMode
     }
 
-    if (include && (include.length > 0)) expCreate.includes = include
-    if (wheres && (Object.keys(wheres).length > 0)) expCreate.filters = wheres
-    else expCreate.filters = {}
 
+    if (include && (include.length > 0)) exportJob.include = include
+    if (wheres && (Object.keys(wheres).length > 0)) exportJob.filter = wheres
+    else exportJob.filter = {}
 
-    const resSdk = cl[resType as ListableResourceType]
 
     try {
 
+      this.commercelayerInit(flags)
+      const resSdk = this.cl[resType as ListableResourceType]
+
       const totRecords = await resSdk.count({ filters: wheres, pageSize: 1, pageNumber: 1 })
+      exportJob.totalRecords = totRecords
+
       const totExports = Math.ceil(totRecords / MAX_EXPORT_SIZE)
+      exportJob.totalExports = totExports
 
-      if ((totExports > MAX_QUEUE_LENGTH) && !ALLOW_OVERQUEUING)
-        this.error(`The number of exports (${clColor.msg.error(totExports)}) exceeds the maximum allowed (${clColor.yellowBright(MAX_QUEUE_LENGTH)})`, {
-          suggestions: ['Add more filters to reduce the number of export that will be created']
-        })
+      // Check if export needs to be split
+      await this.checkMultiExport(exportJob, flags)
 
-
-      if (totExports > 1) {
-
-        const groupId = generateGroupUID()
-        expCreate.reference = groupId
-        expCreate.reference_origin = 'cli-plugin-exports'
-
-        if (!flags.quiet) {
-          const msg1 = `You have requested to export ${clColor.yellowBright(totRecords)} ${resDesc}, more than the maximun ${MAX_EXPORT_SIZE} elements allowed for each single export.`
-          const msg2 = `The export will be split into a set of ${clColor.yellowBright(totExports)} distinct exports with the same unique group ID ${clColor.underline.yellowBright(groupId)}.`
-          const msg3 = `Execute the command ${clColor.cli.command(`exports:group ${groupId}`)} to retrieve all the related exports`
-          this.log(`\n${msg1} ${msg2} ${msg3}`)
-          this.log()
-          await cliux.anykey()
-        }
-
-      }
-
-      this.log(`\nExporting ${clColor.yellowBright(totRecords)} ${resDesc} ...`)
-
-      const exports: Export[] = []
-      let startId = null
-      let stopId = null
-      let expPage = 0
-
-      // Export split simulation ...
-      // 1500  --> 1: 1500,  2: x
-      // 10000 --> 1: 10000, 2: x
-      // 15000 --> 1: 10000, 2: 5000,  3: x
-      // 20000 --> 1: 10000, 2: 10000, 3: x
-      // 25000 --> 1: 10000, 2: 10000, 3: 5000, 4: x
-
-      let spinners: typeof Spinnies
-      if (!blindMode) spinners = new Spinnies()
-
-      for (let curExp = 0; curExp < totExports; curExp++) {
-
-        const curIdx = curExp + 1
-        const exportName = `Export_${curIdx}`
-        if (totExports > 1) expCreate.reference = `${expCreate.reference}-${curIdx}`
-
-        if (!blindMode) spinners.add(exportName)
-
-        const curExpRecords = Math.min(MAX_EXPORT_SIZE, totRecords - (MAX_EXPORT_SIZE * curExp))
-        const curExpPages = Math.ceil(curExpRecords / clConfig.api.page_max_size)
-        expPage += curExpPages
-
-        const curExpLastPage = await resSdk.list({ filters: wheres, pageSize: clConfig.api.page_max_size, pageNumber: expPage, sort: { id: 'asc' } })
-
-        stopId = curExpLastPage.last()?.id
-
-        if (startId) expCreate.filters.id_gt = startId
-        expCreate.filters.id_lteq = stopId
-
-        const exp = await cl.exports.create(expCreate)
-
-        exp.metadata = { exportName, exportRecords: exp.records_count || 0 }
-        if (!blindMode) spinners.update(exportName, { text: `${exportName} ${exp.status}`.replace(/_/g, ' ') })
-
-        exports.push(exp)
-
-        startId = stopId
-
-      }
-
-
-      const checkDelay = clApi.requestRateLimitDelay({
-        resourceType: 'exports',
-        parallelRequests: Math.min(totExports, MAX_QUEUE_LENGTH),
-        environment: this.environment,
-        minimumDelay: 1000
-      })
-
-      while (!exportCompleted(exports)) {
-        for (const exp of exports) {
-
-          if (exportCompleted(exp)) continue
-
-          const expUpd = await cl.exports.retrieve(exp.id)
-          expUpd.metadata = exp.metadata
-          Object.assign(exp, expUpd)
-
-          if (!blindMode) {
-            const exportName = exp.metadata?.exportName
-            if (spinners.pick(exportName)) {
-              spinners.update(exportName, { text: `${exportName} ${exp.status}`.replace(/_/g, ' ') })
-              if (exportCompleted(exp)) spinners.succeed(exportName)
-            }
-          }
-
-        }
-        await clUtil.sleep(checkDelay)
-      }
-
-      this.log(`\nExport of ${clColor.yellowBright(String(totRecords))} ${resDesc} ${this.exportStatus('completed')}.\n`)
-
+      // Create export resources
+      const exports = await this.createExports(exportJob)
       if (exports.some(e => !e.attachment_url)) this.error('Something went wrong creating export files')
 
-      let outputFile: string | undefined
-      let exportOk = false
-      if (totExports === 1) {
-        outputFile = await this.saveOutput(exports[0], flags)
-        exportOk = true
-      }
-      else {
-
-        if (!blindMode && !flags.quiet) cliux.action.start('Checking and merging exported files')
-        const tmpOutputFile = await this.mergeExportFiles(exports, flags)
-        const checkOk = this.checkExportedFile(totRecords, readFileSync(tmpOutputFile, { encoding }), format)
-        if (!checkOk) this.error('Check of generated merged file failed')
-        if (!blindMode) cliux.action.stop()
-
-        outputFile = await this.saveOutput(tmpOutputFile, flags)
-        unlinkSync(tmpOutputFile)
-        exportOk = true
-
-      }
-  
-
-      if (!exportOk) this.error('Something went wrong saving the export file on disk')
+      const outputFile = await this.saveExportOutput(exportJob, flags)
+      if (!outputFile) this.error('Something went wrong saving the export file')
 
       // Notification
       const finishMessage = `Export of ${totRecords} ${resDesc} is finished!`
       if (blindMode) this.log(finishMessage)
       else {
-        if (notification) notify(finishMessage)
+        if (flags.notify) notify(finishMessage)
         if (flags.open && outputFile) await open(outputFile)
       }
 
     } catch (error: any) {
-      if (cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
+      if (this.cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
       else this.handleError(error)
     }
 
   }
+
+
+  private async saveExportOutput(expJob: ExportJob, flags: any): Promise<string | undefined> {
+
+    const exports = expJob.exports
+
+    let outputFile: string | undefined
+    let exportOk = false
+    if (expJob.totalExports === 1) {
+      outputFile = await this.saveOutput(exports[0], flags)
+      exportOk = true
+    }
+    else {
+
+      if (!expJob.blindMode && !flags.quiet) cliux.action.start('Checking and merging exported files')
+      const tmpOutputFile = await this.mergeExportFiles(exports, flags)
+      const checkOk = this.checkExportedFile(expJob.totalRecords, readFileSync(tmpOutputFile, { encoding }), expJob.format)
+      if (!checkOk) this.error('Check of generated merged file failed')
+      if (!expJob.blindMode) cliux.action.stop()
+
+      outputFile = await this.saveOutput(tmpOutputFile, flags)
+      unlinkSync(tmpOutputFile)
+      exportOk = true
+
+      return exportOk ? outputFile : undefined
+
+    }
+
+  }
+
+
+  private async monitorExports(expJob: ExportJob): Promise<void> {
+
+    const exports = expJob.exports
+    const spinners = expJob.spinners
+
+    for (const exp of exports) {
+
+      if (!exp.id || exportCompleted(exp)) continue
+
+      const expUpd = await this.cl.exports.retrieve(exp.id)
+
+      expUpd.metadata = exp.metadata
+      Object.assign(exp, expUpd)
+
+      if (!expJob.blindMode) {
+        const exportName = exp.metadata?.exportName
+        if (spinners.pick(exportName)) {
+          spinners.update(exportName, { text: spinnerText(exp) })
+          if (exportCompleted(exp)) spinners.succeed(exportName)
+        }
+      }
+
+    }
+
+  }
+
+
+  private async createExports(expJob: ExportJob): Promise<Export[]> {
+
+    this.log(`\nExporting ${clColor.yellowBright(expJob.totalRecords)} ${expJob.resourceDesc} ...`)
+
+    const resSdk = this.cl[expJob.resourceType as ListableResourceType]
+
+    const expCreate: ExportCreate = {
+      resource_type: expJob.resourceType,
+      format: expJob.format,
+      dry_data: expJob.dryData,
+      reference: expJob.groupId,
+      reference_origin: 'cli-plugin-exports',
+      includes: expJob.include,
+      filters: { ...expJob.filter }
+    }
+
+    if (!expCreate.filters) expCreate.filters = {}
+
+
+    const exports: Export[] = []
+    let startId = null
+    let stopId = null
+    let expPage = 0
+
+    // Export split simulation ...
+    // 1500  --> 1: 1500,  2: x
+    // 10000 --> 1: 10000, 2: x
+    // 15000 --> 1: 10000, 2: 5000,  3: x
+    // 20000 --> 1: 10000, 2: 10000, 3: x
+    // 25000 --> 1: 10000, 2: 10000, 3: 5000, 4: x
+
+    // Initialize local export queue
+    for (let curExp = 0; curExp < expJob.totalExports; curExp++) {
+      exports.push({ type: 'exports', id: '', resource_type: expJob.resourceType, status: 'pending', created_at: '', updated_at: '' })
+    }
+    expJob.exports = exports
+
+    // Initialize spinners if not in blind mode
+    let spinners: Spinners
+    if (!expJob.blindMode) {
+      spinners = new Spinnies()
+      expJob.spinners = spinners
+    }
+
+    // Compute requests delay
+    const checkDelay = clApi.requestRateLimitDelay({
+      resourceType: 'exports',
+      parallelRequests: Math.min(expJob.totalExports, MAX_QUEUE_LENGTH),
+      environment: this.environment,
+      minimumDelay: 1000
+    })
+
+
+    while (!exportCompleted(exports)) {
+
+      for (let curExp = 0; curExp < exports.length; curExp++) {
+
+        if ((countRunning(exports) < MAX_QUEUE_LENGTH) && !exports[curExp].id) {
+
+          const curIdx = curExp + 1
+          const exportName = `Export_${curIdx}`
+          if (expJob.totalExports > 1) expCreate.reference = `${expCreate.reference}-${curIdx}`
+
+          if (!expJob.blindMode) spinners.add(spinnerText(exportName))
+
+          const curExpRecords = Math.min(MAX_EXPORT_SIZE, expJob.totalRecords - (MAX_EXPORT_SIZE * curExp))
+          const curExpPages = Math.ceil(curExpRecords / clConfig.api.page_max_size)
+          expPage += curExpPages
+
+          const curExpLastPage = await resSdk.list({ filters: expJob.filter, pageSize: clConfig.api.page_max_size, pageNumber: expPage, sort: { id: 'asc' } })
+
+          stopId = curExpLastPage.last()?.id
+
+          if (startId) expCreate.filters.id_gt = startId
+          expCreate.filters.id_lteq = stopId
+
+          const exp = await this.cl.exports.create(expCreate)
+
+          exp.metadata = { exportName, exportRecords: exp.records_count || 0 }
+          if (!expJob.blindMode) spinners.update(exportName, { text: spinnerText(exp) })
+
+          exports[curExp] = exp
+
+          startId = stopId
+
+        }
+
+      }
+
+      await clUtil.sleep(checkDelay)
+      await this.monitorExports(expJob)
+      await clUtil.sleep(checkDelay)
+
+    }
+
+
+    this.log(`\nExport of ${clColor.yellowBright(String(expJob.totalRecords))} ${expJob.resourceDesc} ${this.exportStatus('completed')}.\n`)
+
+    return exports
+
+  }
+
+
+
+  private async checkMultiExport(expJob: ExportJob, flags: any): Promise<void> {
+
+    if ((expJob.totalExports > MAX_QUEUE_LENGTH) && !ALLOW_OVERQUEUING)
+      this.error(`The number of exports (${clColor.msg.error(expJob.totalExports)}) exceeds the maximum allowed (${clColor.yellowBright(MAX_QUEUE_LENGTH)})`, {
+        suggestions: ['Add more filters to reduce the number of export that will be created']
+      })
+
+    if (expJob.totalExports > 1) {
+
+      const groupId = generateGroupUID()
+      expJob.groupId = groupId
+
+      if (!flags.quiet) {
+        const msg1 = `You have requested to export ${clColor.yellowBright(expJob.totalRecords)} ${expJob.resourceDesc}, more than the maximun ${MAX_EXPORT_SIZE} elements allowed for each single export.`
+        const msg2 = `The export will be split into a set of ${clColor.yellowBright(expJob.totalExports)} distinct exports with the same unique group ID ${clColor.underline.yellowBright(groupId)}.`
+        const msg3 = `Execute the command ${clColor.cli.command(`exports:group ${groupId}`)} to retrieve all the related exports`
+        this.log(`\n${msg1} ${msg2} ${msg3}`)
+        this.log()
+        await cliux.anykey()
+      }
+
+    }
+
+  }
+
 
 
   private cleanExportFile(exportFile: string, format: string): string {
@@ -273,7 +388,7 @@ export default class ExportsAll extends ExportCommand {
     }
 
     return cleaned
-    
+
   }
 
 
@@ -293,7 +408,6 @@ export default class ExportsAll extends ExportCommand {
       }
     }
 
-    // this.log(`records: ${numRecords} - exported: ${expRecords}`)
 
     return numRecords === expRecords
 
@@ -302,8 +416,7 @@ export default class ExportsAll extends ExportCommand {
 
   private async mergeExportFiles(exports: Export[], flags: any): Promise<string> {
 
-    // const tmpDir = this.config.cacheDir
-    const tmpDir = join(this.config.home, 'desktop')
+    const tmpDir = this.config.cacheDir
     const format = this.getFileFormat(flags)
 
     const mergedFile = join(tmpDir, `${exports[0].reference?.split('-')[0] as string}.${format}`)
@@ -323,7 +436,7 @@ export default class ExportsAll extends ExportCommand {
         }
       } else {
         if (format === 'json') {  // Add comma between exported files
-          writeFileSync(mergedFile, `,${flags.prettify ? '\n\t' : ''}`, { flag: 'a', encoding })
+          writeFileSync(mergedFile, `,\n${flags.prettify ? '\t' : ''}`, { flag: 'a', encoding })
         }
       }
 
