@@ -2,6 +2,7 @@
 import { clColor } from '@commercelayer/cli-core'
 import { Command, Flags, ux as cliux } from '@oclif/core'
 import { exec } from 'child_process'
+// import { detect as detectPackageManager } from 'detect-package-manager'
 
 
 export default class CliUpdate extends Command {
@@ -28,17 +29,14 @@ export default class CliUpdate extends Command {
     const { flags } = await this.parse(CliUpdate)
 
     const version = flags.version ? `@${flags.version}` : ''
-   
+    // await detectPackageManager().then(pm => this.log)
+
     this.log()
     cliux.action.start('Updating Commerce Layer CLI')
 
+    const cp = exec(`npm install --location=global @commercelayer/cli${version}`, async (error, stdout, stderr) => {
 
-    const cp = exec(`npm install --location=global @commercelayer/cli${version}`, async (error, _stdout, stderr) => {
-
-      let errorMessage = ''
-
-      if (error) errorMessage = error.message
-      if (stderr && !['Reshimming asdf nodejs', 'WARN', 'warn', 'npm'].some(str => stderr.includes(str))) errorMessage = String(stderr)
+      const errorMessage = this.getErrorMessage(error, stdout, stderr)
 
       if (errorMessage) {
         cliux.action.stop('failed')
@@ -46,10 +44,7 @@ export default class CliUpdate extends Command {
         this.error('CLI update failed.')
       } else {
         cliux.action.stop()
-        try {
-          const verCmd = await this.config.findCommand('cli:version')?.load()
-          await verCmd?.run([]) // without [] the command uses args of command 'version' and it fails
-        } catch (err) { this.log() }
+        await this.showCliVersion()
       }
 
     })
@@ -66,6 +61,22 @@ export default class CliUpdate extends Command {
     })
 
 
+  }
+
+
+  private getErrorMessage(error: Error | null, stdout: string, stderr: string): string {
+    let errorMessage = ''
+    if (error) errorMessage = error.message
+    if (stderr && !['Reshimming asdf nodejs', 'WARN', 'warn', 'npm'].some(str => stderr.includes(str))) errorMessage = String(stderr)
+    return errorMessage
+  }
+
+
+  private async showCliVersion(): Promise<void> {
+    try {
+      const verCmd = await this.config.findCommand('cli:version')?.load()
+      await verCmd?.run([]) // without [] the command uses args of command 'version' and it fails
+    } catch (err) { this.log() }
   }
 
 }

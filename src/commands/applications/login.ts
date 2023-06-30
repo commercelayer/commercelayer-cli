@@ -13,7 +13,7 @@ import type { AuthScope } from '@commercelayer/js-auth'
 
 export default class ApplicationsLogin extends Command {
 
-	static description = `execute login to a Commerce Layer application (application must be of kind ${clColor.italic.yellowBright('integration')} or ${clColor.italic.yellowBright('sales_channel')})`
+	static description = `execute login to a Commerce Layer application (application must be of kind 'integration' or 'sales_channel')`
 
 	static aliases = ['app:login']
 

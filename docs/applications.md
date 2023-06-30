@@ -51,7 +51,7 @@ _See code: [src/commands/applications/index.ts](https://github.com/commercelayer
 
 ### `commercelayer applications:add`
 
-Add a new Commerce Layer application to CLI config (application must be of kind [3m[93mintegration[39m[23m or [3m[93msales_channel[39m[23m).
+Add a new Commerce Layer application to CLI config (application must be of kind 'integration' or 'sales_channel').
 
 ```sh-session
 USAGE
@@ -67,7 +67,7 @@ FLAGS
   -s, --clientSecret=<value>  application client_secret
 
 DESCRIPTION
-  add a new Commerce Layer application to CLI config (application must be of kind integration or sales_channel)
+  add a new Commerce Layer application to CLI config (application must be of kind 'integration' or 'sales_channel')
 
 ALIASES
   $ commercelayer app:add
@@ -134,7 +134,7 @@ _See code: [src/commands/applications/info.ts](https://github.com/commercelayer/
 
 ### `commercelayer applications:login`
 
-Execute login to a Commerce Layer application (application must be of kind [3m[93mintegration[39m[23m or [3m[93msales_channel[39m[23m).
+Execute login to a Commerce Layer application (application must be of kind 'integration' or 'sales_channel').
 
 ```sh-session
 USAGE
@@ -151,7 +151,7 @@ FLAGS
   -s, --clientSecret=<value>  application client_secret
 
 DESCRIPTION
-  execute login to a Commerce Layer application (application must be of kind integration or sales_channel)
+  execute login to a Commerce Layer application (application must be of kind 'integration' or 'sales_channel')
 
 ALIASES
   $ commercelayer app:login
