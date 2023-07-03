@@ -1,8 +1,7 @@
 
 import { json2csvAsync } from 'json-2-csv'
 import { writeFileSync } from 'fs'
-import { clOutput } from '@commercelayer/cli-core'
-import type { KeyValString } from './common'
+import { type KeyValString, clOutput } from '@commercelayer/cli-core'
 
 
 

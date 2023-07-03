@@ -34,6 +34,7 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources`](#commercelayer-resources)
 * [`commercelayer resources:all RESOURCE`](#commercelayer-resourcesall-resource)
 * [`commercelayer resources:args`](#commercelayer-resourcesargs)
+* [`commercelayer resources:count RESOURCE`](#commercelayer-resourcescount-resource)
 * [`commercelayer resources:create RESOURCE`](#commercelayer-resourcescreate-resource)
 * [`commercelayer resources:delete RESOURCE [ID]`](#commercelayer-resourcesdelete-resource-id)
 * [`commercelayer resources:doc RESOURCE`](#commercelayer-resourcesdoc-resource)
@@ -153,6 +154,31 @@ ALIASES
 ```
 
 _See code: [src/commands/resources/args.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/args.ts)_
+
+### `commercelayer resources:count RESOURCE`
+
+Count the number of existent resources.
+
+```sh-session
+USAGE
+  $ commercelayer resources:count RESOURCE [-w <value>]
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+FLAGS
+  -w, --where=<value>...  comma separated list of query filters
+
+DESCRIPTION
+  count the number of existent resources
+
+EXAMPLES
+  $ commercelayer resources:count customers
+
+  cl count customers -w customer_group_name_eq=<customer-group-name>
+```
+
+_See code: [src/commands/resources/count.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/count.ts)_
 
 ### `commercelayer resources:create RESOURCE`
 
@@ -545,14 +571,14 @@ _See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer
 
 ### `commercelayer resources:schema`
 
-Show the current CommerceLayer OpenAPI schema version currently used by the plugin.
+Show the current CommerceLayer OpenAPI schema version used by the plugin.
 
 ```sh-session
 USAGE
   $ commercelayer resources:schema
 
 DESCRIPTION
-  show the current CommerceLayer OpenAPI schema version currently used by the plugin
+  show the current CommerceLayer OpenAPI schema version used by the plugin
 
 ALIASES
   $ commercelayer schema
@@ -560,7 +586,9 @@ ALIASES
   $ commercelayer rs
 
 EXAMPLES
-  $ commercelayer resources:schema
+  $ commercelayer scghema
+
+  cl res:schema
 ```
 
 _See code: [src/commands/resources/schema.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/schema.ts)_

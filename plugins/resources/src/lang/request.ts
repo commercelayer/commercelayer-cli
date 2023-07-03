@@ -1,6 +1,6 @@
 import { type CommerceLayerClient, CommerceLayerStatic, type RequestObj } from '@commercelayer/sdk'
 import { pluralize } from '../inflector'
-import type { KeyValString } from '../common';
+import type { KeyValString } from '@commercelayer/cli-core';
 
 
 type RequestData = {

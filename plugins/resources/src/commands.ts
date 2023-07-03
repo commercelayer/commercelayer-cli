@@ -2,8 +2,7 @@ import type { QueryParams, QueryParamsList } from '@commercelayer/sdk'
 import type { Config } from '@oclif/core'
 import { join } from 'path'
 import fs from 'fs'
-import { clOutput, clColor, type KeyValSort } from '@commercelayer/cli-core'
-import type { KeyValArray } from './common'
+import { clOutput, clColor, type KeyValSort, type KeyValArray } from '@commercelayer/cli-core'
 
 
 const COMMANDS_DIR = 'commands'

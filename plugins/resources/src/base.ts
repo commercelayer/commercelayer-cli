@@ -5,11 +5,10 @@ import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { capitalize } from 'lodash'
 import { existsSync } from 'fs'
-import type { KeyValRel, KeyValArray, KeyValObj, KeyValString, KeyValSort, KeyVal, ResAttributes } from './common'
-import { fixType } from './common'
 import { CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
-import { clToken, clUpdate, clColor, clUtil, clConfig } from '@commercelayer/cli-core'
+import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand } from '@commercelayer/cli-core'
+import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import type { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
 
@@ -97,10 +96,10 @@ export abstract class BaseCommand extends Command {
       dependsOn: ['doc'],
       helpGroup: 'documentation',
     }),
-    'save-args': Flags.string({
+    [FLAG_SAVE_PARAMS]: Flags.string({
       description: 'save command data to file for future use',
     }),
-    'load-args': Flags.string({
+    [FLAG_LOAD_PARAMS]: Flags.string({
       description: 'load previously saved command arguments',
     }),
     headers: Flags.boolean({
@@ -262,7 +261,7 @@ export abstract class BaseCommand extends Command {
           const n = f.substring(0, eqi)
           const v = f.substring(eqi + 1).replace(/\\,/g, ',')
 
-          obj[n] = fixType(v)
+          obj[n] = clCommand.fixValueType(v)
 
         })
 
@@ -430,7 +429,7 @@ export abstract class BaseCommand extends Command {
     const md = this._keyvalFlag(flag, 'metadata')
     const metadata: KeyVal = {}
     Object.keys(md).forEach(k => {
-      metadata[k] = fixTypes ? fixType(md[k]) : md[k]
+      metadata[k] = fixTypes ? clCommand.fixValueType(md[k]) : md[k]
     })
     return metadata
   }
