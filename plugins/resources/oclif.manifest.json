@@ -1,0 +1,2561 @@
+{
+  "version": "5.17.0",
+  "commands": {
+    "resources:all": {
+      "id": "resources:all",
+      "description": "fetch all resources",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "all",
+        "ra",
+        "res:all"
+      ],
+      "examples": [
+        "$ commercelayer resources:all customers -f id,email,customer_group -i customer_group -s updated_at",
+        "$ cl res:all customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq=\"GROUP NAME\"",
+        "$ cl all customers -s -created_at --json"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "where": {
+          "name": "where",
+          "type": "option",
+          "char": "w",
+          "description": "comma separated list of query filters",
+          "multiple": true
+        },
+        "sort": {
+          "name": "sort",
+          "type": "option",
+          "char": "s",
+          "description": "defines results ordering",
+          "multiple": true
+        },
+        "save": {
+          "name": "save",
+          "type": "option",
+          "char": "x",
+          "description": "save command output to file",
+          "multiple": false,
+          "exclusive": [
+            "save-path"
+          ]
+        },
+        "save-path": {
+          "name": "save-path",
+          "type": "option",
+          "char": "X",
+          "description": "save command output to file and create missing path directories",
+          "multiple": false,
+          "exclusive": [
+            "save"
+          ]
+        },
+        "notify": {
+          "name": "notify",
+          "type": "boolean",
+          "char": "N",
+          "description": "force system notification when export has finished",
+          "hidden": true,
+          "allowNo": false
+        },
+        "clientId": {
+          "name": "clientId",
+          "type": "option",
+          "char": "i",
+          "description": "organization client_id",
+          "hidden": true,
+          "required": false,
+          "multiple": false
+        },
+        "clientSecret": {
+          "name": "clientSecret",
+          "type": "option",
+          "char": "s",
+          "description": "organization client_secret",
+          "hidden": true,
+          "required": false,
+          "multiple": false
+        },
+        "csv": {
+          "name": "csv",
+          "type": "boolean",
+          "char": "C",
+          "description": "export fields in csv format",
+          "allowNo": false,
+          "dependsOn": [
+            "fields"
+          ],
+          "exclusive": [
+            "raw",
+            "json"
+          ]
+        },
+        "delimiter": {
+          "name": "delimiter",
+          "type": "option",
+          "char": "D",
+          "description": "the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)",
+          "multiple": false,
+          "options": [
+            ",",
+            ";",
+            "|",
+            "TAB"
+          ],
+          "dependsOn": [
+            "csv"
+          ]
+        },
+        "header": {
+          "name": "header",
+          "type": "option",
+          "char": "H",
+          "description": "rename column headers defining a comma-separated list of values field:\"renamed title\"",
+          "multiple": true,
+          "dependsOn": [
+            "csv"
+          ]
+        },
+        "blind": {
+          "name": "blind",
+          "type": "boolean",
+          "char": "b",
+          "description": "execute in blind mode without prompt and progress bar",
+          "allowNo": false
+        },
+        "extract": {
+          "name": "extract",
+          "type": "option",
+          "char": "e",
+          "description": "extract subfields from object attributes",
+          "multiple": true,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "timeout": {
+          "name": "timeout",
+          "type": "option",
+          "char": "T",
+          "description": "set request timeout in milliseconds [1000 - 15000]",
+          "hidden": true,
+          "multiple": false
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        }
+      }
+    },
+    "resources:args": {
+      "id": "resources:args",
+      "description": "show all the saved command arguments",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "res:args"
+      ],
+      "flags": {
+        "alias": {
+          "name": "alias",
+          "type": "option",
+          "char": "a",
+          "description": "the alias associated to saved command arguments",
+          "multiple": false,
+          "dependsOn": [
+            "operation",
+            "resource"
+          ]
+        },
+        "resource": {
+          "name": "resource",
+          "type": "option",
+          "char": "r",
+          "description": "the resource type",
+          "multiple": false
+        },
+        "operation": {
+          "name": "operation",
+          "type": "option",
+          "char": "o",
+          "description": "the resource operation",
+          "multiple": false,
+          "options": [
+            "list",
+            "retrieve",
+            "create",
+            "update"
+          ]
+        },
+        "delete": {
+          "name": "delete",
+          "type": "boolean",
+          "char": "D",
+          "description": "delete saved arguments associated to the alias",
+          "allowNo": false,
+          "dependsOn": [
+            "alias"
+          ]
+        },
+        "pretty": {
+          "name": "pretty",
+          "type": "boolean",
+          "char": "P",
+          "description": "show saved arguments in table format",
+          "hidden": true,
+          "allowNo": false,
+          "exclusive": [
+            "alias"
+          ]
+        }
+      },
+      "args": {}
+    },
+    "resources:count": {
+      "id": "resources:count",
+      "description": "count the number of existent resources",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [],
+      "examples": [
+        "commercelayer resources:count customers",
+        "cl count customers -w customer_group_name_eq=<customer-group-name>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "where": {
+          "name": "where",
+          "type": "option",
+          "char": "w",
+          "description": "comma separated list of query filters",
+          "multiple": true
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        }
+      }
+    },
+    "resources:create": {
+      "id": "resources:create",
+      "description": "create a new resource",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "create",
+        "rc",
+        "res:create",
+        "post"
+      ],
+      "examples": [
+        "$ commercelayer resources:create customers -a email=user@test.com",
+        "$ clayer res:create customers -a email=\"user@test-com\" -r customer_group=customer_groups/<customerGroupId>",
+        "$ cl create customers -a email=user@test.com -m meta_key=\"meta value\"",
+        "$ cl rc customers -D /path/to/data/file/data.json"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "attribute": {
+          "name": "attribute",
+          "type": "option",
+          "char": "a",
+          "description": "define a resource attribute",
+          "multiple": true
+        },
+        "object": {
+          "name": "object",
+          "type": "option",
+          "char": "O",
+          "description": "define a resource object attribute",
+          "multiple": true
+        },
+        "relationship": {
+          "name": "relationship",
+          "type": "option",
+          "char": "r",
+          "description": "define a relationship with another resource",
+          "multiple": true
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "option",
+          "char": "m",
+          "description": "define a metadata attribute or a set of metadata attributes",
+          "multiple": true
+        },
+        "data": {
+          "name": "data",
+          "type": "option",
+          "char": "D",
+          "description": "the data file to use as request body",
+          "multiple": false,
+          "exclusive": [
+            "attribute",
+            "relationship",
+            "metadata",
+            "doc",
+            "load-args",
+            "save-args"
+          ]
+        },
+        "tags": {
+          "name": "tags",
+          "type": "option",
+          "char": "t",
+          "description": "list of tags associated with the resource",
+          "multiple": true
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        }
+      }
+    },
+    "resources:delete": {
+      "id": "resources:delete",
+      "description": "delete an existing resource",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "delete",
+        "rd",
+        "res:delete"
+      ],
+      "examples": [
+        "$ commercelayer resources:delete customers/<customerId>",
+        "$ cl delete customers <customerId>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        },
+        "id": {
+          "name": "id",
+          "description": "id of the resource to retrieve",
+          "required": false
+        }
+      }
+    },
+    "resources:doc": {
+      "id": "resources:doc",
+      "description": "open the default browser and show the online documentation for the resource",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "res:doc",
+        "doc"
+      ],
+      "examples": [
+        "$ commercelayer resources:doc customers",
+        "$ cl res:doc customers",
+        "$ cl doc customers -p create"
+      ],
+      "flags": {
+        "page": {
+          "name": "page",
+          "type": "option",
+          "char": "p",
+          "description": "the doc page you want to access",
+          "required": false,
+          "multiple": false,
+          "options": [
+            "object",
+            "create",
+            "retrieve",
+            "list",
+            "update",
+            "delete"
+          ]
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource for which you want to access the online documentation",
+          "required": true
+        }
+      }
+    },
+    "resources:fetch": {
+      "id": "resources:fetch",
+      "description": "retrieve a resource or list a set of resources",
+      "strict": false,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "fetch",
+        "res:fetch",
+        "rf"
+      ],
+      "examples": [
+        "$ commercelayer resources:fetch customers",
+        "$ commercelayer res:fetch customers",
+        "$ clayer res:fetch customers/<customerId>",
+        "$ cl fetch customers/<customerId>/<customerRelationship>",
+        "$ cl fetch customers/{customerId}/orders aBcdEkYWx"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "save": {
+          "name": "save",
+          "type": "option",
+          "char": "x",
+          "description": "save command output to file",
+          "multiple": false,
+          "exclusive": [
+            "save-path"
+          ]
+        },
+        "save-path": {
+          "name": "save-path",
+          "type": "option",
+          "char": "X",
+          "description": "save command output to file and create missing path directories",
+          "multiple": false,
+          "exclusive": [
+            "save"
+          ]
+        },
+        "extract": {
+          "name": "extract",
+          "type": "option",
+          "char": "e",
+          "description": "extract subfields from object attributes",
+          "multiple": true,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "where": {
+          "name": "where",
+          "type": "option",
+          "char": "w",
+          "description": "comma separated list of query filters",
+          "multiple": true
+        },
+        "page": {
+          "name": "page",
+          "type": "option",
+          "char": "p",
+          "description": "page number",
+          "multiple": false
+        },
+        "pageSize": {
+          "name": "pageSize",
+          "type": "option",
+          "char": "n",
+          "description": "number of elements per page",
+          "multiple": false
+        },
+        "sort": {
+          "name": "sort",
+          "type": "option",
+          "char": "s",
+          "description": "defines results ordering",
+          "multiple": true
+        },
+        "force-include": {
+          "name": "force-include",
+          "type": "boolean",
+          "char": "I",
+          "description": "force resources inclusion beyound the 3rd level",
+          "hidden": true,
+          "allowNo": false,
+          "dependsOn": [
+            "include"
+          ]
+        }
+      },
+      "args": {
+        "path": {
+          "name": "path",
+          "description": "path (or URL) of the resource(s) to fetch",
+          "required": true
+        },
+        "id": {
+          "name": "id",
+          "description": "resource id",
+          "required": false
+        }
+      }
+    },
+    "resources:filters": {
+      "id": "resources:filters",
+      "description": "show a list of all available filter predicates",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "res:filters"
+      ],
+      "examples": [
+        "$ commercelayer resources:filters",
+        "$ cl res:filters"
+      ],
+      "flags": {},
+      "args": {}
+    },
+    "resources:get": {
+      "id": "resources:get",
+      "description": "retrieve a resource or list a set of resources",
+      "strict": false,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "get",
+        "res:get",
+        "rg"
+      ],
+      "examples": [
+        "$ commercelayer resources:get customers",
+        "$ commercelayer res:get customers",
+        "$ clayer res:get customers/<customerId>",
+        "$ cl get customers <customerId>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "where": {
+          "name": "where",
+          "type": "option",
+          "char": "w",
+          "description": "comma separated list of query filters",
+          "multiple": true
+        },
+        "page": {
+          "name": "page",
+          "type": "option",
+          "char": "p",
+          "description": "page number",
+          "multiple": false
+        },
+        "pageSize": {
+          "name": "pageSize",
+          "type": "option",
+          "char": "n",
+          "description": "number of elements per page",
+          "multiple": false
+        },
+        "sort": {
+          "name": "sort",
+          "type": "option",
+          "char": "s",
+          "description": "defines results ordering",
+          "multiple": true
+        },
+        "save": {
+          "name": "save",
+          "type": "option",
+          "char": "x",
+          "description": "save command output to file",
+          "multiple": false,
+          "exclusive": [
+            "save-path"
+          ]
+        },
+        "save-path": {
+          "name": "save-path",
+          "type": "option",
+          "char": "X",
+          "description": "save command output to file and create missing path directories",
+          "multiple": false,
+          "exclusive": [
+            "save"
+          ]
+        },
+        "extract": {
+          "name": "extract",
+          "type": "option",
+          "char": "e",
+          "description": "extract subfields from object attributes",
+          "multiple": true,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "force-include": {
+          "name": "force-include",
+          "type": "boolean",
+          "char": "I",
+          "description": "force resources inclusion beyound the 3rd level",
+          "hidden": true,
+          "allowNo": false,
+          "dependsOn": [
+            "include"
+          ]
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        },
+        "id": {
+          "name": "id",
+          "description": "id of the resource to retrieve",
+          "required": false
+        }
+      }
+    },
+    "resources": {
+      "id": "resources",
+      "description": "list all the available Commerce Layer API resources",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [],
+      "examples": [
+        "$ cl-resources resources",
+        "$ cl-res resources",
+        "$ commercelayer resources",
+        "$ cl resources"
+      ],
+      "flags": {
+        "help": {
+          "name": "help",
+          "type": "boolean",
+          "char": "h",
+          "description": "Show CLI help.",
+          "allowNo": false
+        }
+      },
+      "args": {}
+    },
+    "resources:list": {
+      "id": "resources:list",
+      "description": "fetch a collection of resources",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "list",
+        "rl",
+        "res:list"
+      ],
+      "examples": [
+        "$ commercelayer resources:list customers -f id,email,customer_group -i customer_group -s updated_at",
+        "$ cl res:list customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq=\"GROUP NAME\"",
+        "$ cl list customers -p 5 -n 10 -s -created_at --raw"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "where": {
+          "name": "where",
+          "type": "option",
+          "char": "w",
+          "description": "comma separated list of query filters",
+          "multiple": true
+        },
+        "page": {
+          "name": "page",
+          "type": "option",
+          "char": "p",
+          "description": "page number",
+          "multiple": false
+        },
+        "pageSize": {
+          "name": "pageSize",
+          "type": "option",
+          "char": "n",
+          "description": "number of elements per page",
+          "multiple": false
+        },
+        "sort": {
+          "name": "sort",
+          "type": "option",
+          "char": "s",
+          "description": "defines results ordering",
+          "multiple": true
+        },
+        "save": {
+          "name": "save",
+          "type": "option",
+          "char": "x",
+          "description": "save command output to file",
+          "multiple": false,
+          "exclusive": [
+            "save-path"
+          ]
+        },
+        "save-path": {
+          "name": "save-path",
+          "type": "option",
+          "char": "X",
+          "description": "save command output to file and create missing path directories",
+          "multiple": false,
+          "exclusive": [
+            "save"
+          ]
+        },
+        "extract": {
+          "name": "extract",
+          "type": "option",
+          "char": "e",
+          "description": "extract subfields from object attributes",
+          "multiple": true,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "force-include": {
+          "name": "force-include",
+          "type": "boolean",
+          "char": "I",
+          "description": "force resources inclusion beyound the 3rd level",
+          "hidden": true,
+          "allowNo": false,
+          "dependsOn": [
+            "include"
+          ]
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        }
+      }
+    },
+    "resources:noc": {
+      "id": "resources:noc",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "hidden": true,
+      "aliases": [],
+      "flags": {},
+      "args": {}
+    },
+    "resources:relationship": {
+      "id": "resources:relationship",
+      "description": "fetch a resource relationship",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "hidden": true,
+      "aliases": [
+        "relationship",
+        "resources:rel",
+        "res:rel",
+        "res:relationship",
+        "relationship"
+      ],
+      "examples": [
+        "$ commercelayer resources:relationship customers <customerId> customer_group",
+        "$ clayer res:relationship customers <customerId> orders",
+        "$ cl res:rel customers <customerId> orders -w status_eq=pending",
+        "$ cl relationship customers <customerId> <customerRelationship>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "where": {
+          "name": "where",
+          "type": "option",
+          "char": "w",
+          "description": "comma separated list of query filters",
+          "multiple": true
+        },
+        "page": {
+          "name": "page",
+          "type": "option",
+          "char": "p",
+          "description": "page number",
+          "multiple": false
+        },
+        "pageSize": {
+          "name": "pageSize",
+          "type": "option",
+          "char": "n",
+          "description": "number of elements per page",
+          "multiple": false
+        },
+        "sort": {
+          "name": "sort",
+          "type": "option",
+          "char": "s",
+          "description": "defines results ordering",
+          "multiple": true
+        },
+        "save": {
+          "name": "save",
+          "type": "option",
+          "char": "x",
+          "description": "save command output to file",
+          "multiple": false,
+          "exclusive": [
+            "save-path"
+          ]
+        },
+        "save-path": {
+          "name": "save-path",
+          "type": "option",
+          "char": "X",
+          "description": "save command output to file and create missing path directories",
+          "multiple": false,
+          "exclusive": [
+            "save"
+          ]
+        },
+        "extract": {
+          "name": "extract",
+          "type": "option",
+          "char": "e",
+          "description": "extract subfields from object attributes",
+          "multiple": true,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "force-include": {
+          "name": "force-include",
+          "type": "boolean",
+          "char": "I",
+          "description": "force resources inclusion beyound the 3rd level",
+          "hidden": true,
+          "allowNo": false,
+          "dependsOn": [
+            "include"
+          ]
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        },
+        "id": {
+          "name": "id",
+          "description": "id of the resource to retrieve",
+          "required": true
+        },
+        "relationship": {
+          "name": "relationship",
+          "description": "name of the relationship field",
+          "required": true
+        }
+      }
+    },
+    "resources:retrieve": {
+      "id": "resources:retrieve",
+      "description": "fetch a single resource",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "retrieve",
+        "rr",
+        "res:retrieve"
+      ],
+      "examples": [
+        "$ commercelayer resources:retrieve customers/<customerId>",
+        "$ commercelayer retrieve customers <customerId>",
+        "$ cl res:retrieve customers <customerId>",
+        "$ clayer rr customers/<customerId>"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "save": {
+          "name": "save",
+          "type": "option",
+          "char": "x",
+          "description": "save command output to file",
+          "multiple": false,
+          "exclusive": [
+            "save-path"
+          ]
+        },
+        "save-path": {
+          "name": "save-path",
+          "type": "option",
+          "char": "X",
+          "description": "save command output to file and create missing path directories",
+          "multiple": false,
+          "exclusive": [
+            "save"
+          ]
+        },
+        "extract": {
+          "name": "extract",
+          "type": "option",
+          "char": "e",
+          "description": "extract subfields from object attributes",
+          "multiple": true,
+          "exclusive": [
+            "raw"
+          ]
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        },
+        "id": {
+          "name": "id",
+          "description": "id of the resource to retrieve",
+          "required": false
+        }
+      }
+    },
+    "resources:schema": {
+      "id": "resources:schema",
+      "description": "show the current CommerceLayer OpenAPI schema version used by the plugin",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "schema",
+        "res:schema",
+        "rs"
+      ],
+      "examples": [
+        "commercelayer scghema",
+        "cl res:schema"
+      ],
+      "flags": {},
+      "args": {}
+    },
+    "resources:update": {
+      "id": "resources:update",
+      "description": "update an existing resource",
+      "strict": true,
+      "pluginName": "@commercelayer/cli-plugin-resources",
+      "pluginAlias": "@commercelayer/cli-plugin-resources",
+      "pluginType": "core",
+      "aliases": [
+        "update",
+        "ru",
+        "res:update",
+        "patch"
+      ],
+      "examples": [
+        "$ commercelayer resources:update customers/<customerId> -a reference=referenceId",
+        "$ commercelayer res:update customers <customerId> -a reference_origin=\"Ref Origin\"",
+        "$ cl update customers/<customerId> -m meta_key=\"meta value\"",
+        "$ cl ru customers <customerId> -M meta_key=\"metadata overwrite",
+        "$ clayer update customers <customerId> -D /path/to/data/file/data.json"
+      ],
+      "flags": {
+        "organization": {
+          "name": "organization",
+          "type": "option",
+          "char": "o",
+          "description": "the slug of your organization",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "domain": {
+          "name": "domain",
+          "type": "option",
+          "char": "d",
+          "hidden": true,
+          "required": false,
+          "multiple": false,
+          "dependsOn": [
+            "organization"
+          ]
+        },
+        "accessToken": {
+          "name": "accessToken",
+          "type": "option",
+          "hidden": true,
+          "required": true,
+          "multiple": false
+        },
+        "include": {
+          "name": "include",
+          "type": "option",
+          "char": "i",
+          "description": "comma separated resources to include",
+          "multiple": true
+        },
+        "fields": {
+          "name": "fields",
+          "type": "option",
+          "char": "f",
+          "description": "comma separeted list of fields in the format [resourceType/]field1,field2...",
+          "multiple": true
+        },
+        "json": {
+          "name": "json",
+          "type": "boolean",
+          "char": "j",
+          "description": "convert output in standard JSON format",
+          "allowNo": false
+        },
+        "unformatted": {
+          "name": "unformatted",
+          "type": "boolean",
+          "char": "u",
+          "description": "print unformatted JSON output",
+          "allowNo": false,
+          "dependsOn": [
+            "json"
+          ]
+        },
+        "raw": {
+          "name": "raw",
+          "type": "boolean",
+          "char": "R",
+          "description": "print out the raw API response",
+          "hidden": false,
+          "allowNo": false
+        },
+        "doc": {
+          "name": "doc",
+          "type": "boolean",
+          "description": "show the CLI command in a specific language",
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "exclusive": [
+            "raw"
+          ]
+        },
+        "lang": {
+          "name": "lang",
+          "type": "option",
+          "char": "l",
+          "description": "show the CLI command in the specified language syntax",
+          "helpGroup": "documentation",
+          "multiple": false,
+          "options": [
+            "curl",
+            "node"
+          ],
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "curl",
+            "node"
+          ]
+        },
+        "curl": {
+          "name": "curl",
+          "type": "boolean",
+          "description": "show the equivalent cURL command of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "node"
+          ]
+        },
+        "node": {
+          "name": "node",
+          "type": "boolean",
+          "description": "show the equivalent Node SDK source code of the CLI command",
+          "hidden": false,
+          "helpGroup": "documentation",
+          "allowNo": false,
+          "dependsOn": [
+            "doc"
+          ],
+          "exclusive": [
+            "lang",
+            "curl"
+          ]
+        },
+        "save-args": {
+          "name": "save-args",
+          "type": "option",
+          "description": "save command data to file for future use",
+          "multiple": false
+        },
+        "load-args": {
+          "name": "load-args",
+          "type": "option",
+          "description": "load previously saved command arguments",
+          "multiple": false
+        },
+        "headers": {
+          "name": "headers",
+          "type": "boolean",
+          "char": "H",
+          "description": "show response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers-only"
+          ]
+        },
+        "headers-only": {
+          "name": "headers-only",
+          "type": "boolean",
+          "char": "Y",
+          "description": "show only response headers",
+          "allowNo": false,
+          "dependsOn": [
+            "raw"
+          ],
+          "exclusive": [
+            "headers",
+            "fields",
+            "include"
+          ]
+        },
+        "attribute": {
+          "name": "attribute",
+          "type": "option",
+          "char": "a",
+          "description": "define a resource attribute",
+          "multiple": true
+        },
+        "object": {
+          "name": "object",
+          "type": "option",
+          "char": "O",
+          "description": "define a resource object attribute",
+          "multiple": true
+        },
+        "relationship": {
+          "name": "relationship",
+          "type": "option",
+          "char": "r",
+          "description": "define a relationship with another resource",
+          "multiple": true
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "option",
+          "char": "m",
+          "description": "define a metadata attribute and merge it with the metadata already present in the remote resource",
+          "multiple": true,
+          "exclusive": [
+            "metadata-replace"
+          ]
+        },
+        "metadata-replace": {
+          "name": "metadata-replace",
+          "type": "option",
+          "char": "M",
+          "description": "define a metadata attribute and replace every item already present in the remote resource",
+          "multiple": true,
+          "exclusive": [
+            "metadata"
+          ]
+        },
+        "data": {
+          "name": "data",
+          "type": "option",
+          "char": "D",
+          "description": "the data file to use as request body",
+          "multiple": false,
+          "exclusive": [
+            "attribute",
+            "relationship",
+            "metadata",
+            "metadata-replace",
+            "doc",
+            "load-args",
+            "save-args"
+          ]
+        },
+        "tags": {
+          "name": "tags",
+          "type": "option",
+          "char": "t",
+          "description": "list of tags associated with the resource",
+          "multiple": true
+        }
+      },
+      "args": {
+        "resource": {
+          "name": "resource",
+          "description": "the resource type",
+          "required": true
+        },
+        "id": {
+          "name": "id",
+          "description": "id of the resource to update",
+          "required": false
+        }
+      }
+    }
+  }
+}

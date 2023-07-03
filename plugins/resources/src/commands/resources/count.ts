@@ -10,7 +10,7 @@ export default class ResourcesCount extends Command {
 
   static description = 'count the number of existent resources'
 
-  static aliases: ['count', 'res:count', 'rs:count']
+  static aliases = ['count', 'res:count', 'rs:count']
 
   static examples = [
     'commercelayer resources:count customers',
