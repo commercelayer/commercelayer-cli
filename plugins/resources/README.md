@@ -172,6 +172,11 @@ FLAGS
 DESCRIPTION
   count the number of existent resources
 
+ALIASES
+  $ commercelayer count
+  $ commercelayer res:count
+  $ commercelayer rs:count
+
 EXAMPLES
   $ commercelayer resources:count customers
 
