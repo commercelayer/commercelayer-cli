@@ -75,8 +75,8 @@ class Monitor {
 	static create(totalItems: number, log?: (str?: string) => void): Monitor {
 		const monitor = new Monitor(totalItems)
 		if (log) {
-      log()
-      log(monitor.style.header)
+			log()
+			log(monitor.style.header)
 		}
 
 		return monitor
@@ -89,13 +89,13 @@ class Monitor {
 		// const range = `${chunk.start_item}-${chunk.end_item}`.padStart((ml * 2) + 1, ' ')
 		const maxCleanupLength = String(MAX_CLEANUP_SIZE).length
 
-		const bar: SingleBar = this.multibar.create(chunk.items_count, 0, {
+		const bar: SingleBar = this.multibar.create(chunk.chunkItems, 0, {
 			// range,
 			cleanup: '   ----   ',
 			processed: '0'.padStart(maxCleanupLength, ' '),
 			errors: '0'.padStart(maxCleanupLength, ' '),
 			message: '',
-			tbp: chunk.items_count,
+			tbp: chunk.chunkItems,
 			status: '   -----   ',
 		})
 
@@ -268,9 +268,9 @@ class Monitor {
 		if (this.style.colors) {
 			if (s.includes('completed')) s = clColor.msg.success.greenBright(s)
 			else
-			if (s.includes('waiting')) s = clColor.italic(s)
-			else
-			if (s.includes('interrupted')) s = clColor.msg.error(s)
+				if (s.includes('waiting')) s = clColor.italic(s)
+				else
+					if (s.includes('interrupted')) s = clColor.msg.error(s)
 		}
 
 		return s

@@ -1,87 +1,75 @@
 import type { CleanupCreate } from '@commercelayer/sdk'
 import { clConfig } from '@commercelayer/cli-core'
-import type { QueryFilter } from '@commercelayer/sdk/lib/cjs/query';
+
+
+const MAX_QUEUE_LENGTH = clConfig.cleanups.max_queue_length
+const MAX_CLEANUP_SIZE = clConfig.cleanups.max_size
+export { MAX_QUEUE_LENGTH, MAX_CLEANUP_SIZE }
 
 
 type Chunk = CleanupCreate & {
-  chunk_number: number;
-  total_chunks: number;
-  start_item: number;
-  end_item: number;
-  total_items: number;
-  group_id: string;
-  items_count: number;
-  total_batch_chunks: number;
-  total_batch_items: number;
+  groupId: string,
+  chunkNumber: number,
+  startId: string,
+  endId: string,
+  chunkItems: number
 }
 
 type Batch = {
-  batch_number: number;
-  total_batches: number;
-  chunks: Chunk[];
-  items_count: number;
+  batchNumber: number,
+  chunks: Chunk[],
+  batchItems: number
 }
 
 
-const splitRecords = async (resSdk: any, clp: CleanupCreate, size?: number): Promise<Chunk[]> => {
+const splitRecords = async (resSdk: any, clp: CleanupCreate, totalRecords: number): Promise<Chunk[]> => {
 
   const chunks: Chunk[] = []
 
-  const chunkSize = size || clConfig.cleanups.max_size
-
-
-  const totalItems = await resSdk.count(clp.filters as QueryFilter)
+  const totChunks = Math.ceil(totalRecords / MAX_CLEANUP_SIZE)
 
   const groupId = generateGroupUID()
 
-  if (totalItems <= chunkSize) {
-    chunks.push({
-      chunk_number: 1,
-      resource_type: clp.resource_type,
-      filters: clp.filters,
-      start_item: 1,
-      end_item: totalItems,
-      total_chunks: 1,
-      total_items: totalItems,
-      group_id: groupId,
-      items_count: totalItems,
-      total_batch_chunks: 0,
-      total_batch_items: totalItems
-    })
+  let startId = null
+  let stopId = null
+  let chunkPage = 0
+
+  for (let chunkNum = 0; chunkNum < totChunks; chunkNum++) {
+
+    const chunkRecords = Math.min(MAX_CLEANUP_SIZE, totalRecords - (MAX_CLEANUP_SIZE * chunkNum))
+    const chunkPages = Math.ceil(chunkRecords / clConfig.api.page_max_size)
+    chunkPage += chunkPages
+
+    const chunkLastPage = await resSdk.list({ filters: clp.filters, pageSize: clConfig.api.page_max_size, pageNumber: chunkPage, sort: { id: 'asc' } })
+
+    stopId = chunkLastPage.last()?.id
+
+    const chunk: Chunk = {
+      ...clp,
+      chunkNumber: chunkNum + 1,
+      groupId,
+      startId,
+      endId: stopId,
+      chunkItems: chunkRecords
+    }
+
+    chunks[chunkNum] = chunk
+
+    startId = stopId
+
   }
-
-
-  /*
-  const totalItems = clp.inputs.length
-  const groupId = generateGroupUID()
-
-  let chunkNum = 0
-  while (allInputs.length > 0) chunks.push({
-    chunk_number: ++chunkNum,
-    resource_type: clp.resource_type,
-    filters: clp.filters,
-    start_item: 0,
-    end_item: 0,
-    total_chunks: 0,
-    total_items: totalItems,
-    group_id: groupId,
-    items_count: 0,
-    total_batch_chunks: 0,
-    total_batch_items: totalItems,
-  })
-  */
 
   return chunks
 
 }
 
 
-const splitChunks = (chunks: Chunk[], size: number): Batch[] => {
+const splitChunks = (chunks: Chunk[]): Batch[] => {
 
   const totalChunks = chunks.length
-  const totalBatches = Math.ceil(totalChunks / size)
+  // const totalBatches = Math.ceil(totalChunks / size)
   const batches: Batch[] = []
-  let batch: Batch = { batch_number: 0, total_batches: 0, chunks: [], items_count: 0 }
+  let batch: Batch = { batchNumber: 0, chunks: [], batchItems: 0 }
 
   let bc = 0	// Batch count
   let cc = 0	// Chunk count
@@ -94,21 +82,23 @@ const splitChunks = (chunks: Chunk[], size: number): Batch[] => {
 
     if (cc === 1) batches.push(
       batch = {
-        batch_number: ++bc,
-        total_batches: totalBatches,
+        batchNumber: ++bc,
+        // total_batches: totalBatches,
         chunks: [],
-        items_count: 0,
+        batchItems: 0,
       })
 
     batch.chunks.push(chunk)
-    batch.items_count += chunk.items_count
+    batch.batchItems += chunk.chunkItems
 
-    if ((cc === size) || (tc === totalChunks)) {
+    if ((cc === MAX_QUEUE_LENGTH) || (tc === totalChunks)) {
       cc = 0
+      /*
       for (const c of batch.chunks) {
         c.total_batch_chunks = batch.chunks.length
         c.total_batch_items = batch.items_count
       }
+      */
     }
 
   }

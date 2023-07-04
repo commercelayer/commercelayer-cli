@@ -3,12 +3,11 @@ import type { Cleanup, CommerceLayerClient } from '@commercelayer/sdk'
 import type { SingleBar } from 'cli-progress'
 import { clUtil, clConfig, clColor, clApi } from '@commercelayer/cli-core'
 import { Monitor } from '../../monitor'
-import { type Chunk, type Batch, splitChunks, splitRecords } from '../../chunk'
+import { type Chunk, type Batch, splitChunks, splitRecords, MAX_QUEUE_LENGTH } from '../../chunk'
 
 
 
-const MAX_RECORDS = 10_000	// 0 = No Max
-const MAX_CHUNKS = 10
+const MAX_RECORDS = 0	// 0 = No Max
 const MIN_DELAY = 1000
 const ERROR_429_DELAY = 10_000
 const SECURITY_DELAY = 50
@@ -16,19 +15,19 @@ const SECURITY_DELAY = 50
 
 
 const requestDelay = (parallelRequests: number): number => {
-/*
-  const unitDelayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
-  const unitDelayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
-
-  const delayBurst = parallelRequests * unitDelayBurst
-  const delayAvg = parallelRequests * unitDelayAvg
-
-  const delay = Math.ceil(Math.max(delayBurst, delayAvg) * 1000)
-
-  const secDelay = Math.max(MIN_DELAY, delay + SECURITY_DELAY)
-
-  return secDelay
-  */
+  /*
+    const unitDelayBurst = clConfig.api.requests_max_secs_burst / clConfig.api.requests_max_num_burst
+    const unitDelayAvg = clConfig.api.requests_max_secs_avg / clConfig.api.requests_max_num_avg
+  
+    const delayBurst = parallelRequests * unitDelayBurst
+    const delayAvg = parallelRequests * unitDelayAvg
+  
+    const delay = Math.ceil(Math.max(delayBurst, delayAvg) * 1000)
+  
+    const secDelay = Math.max(MIN_DELAY, delay + SECURITY_DELAY)
+  
+    return secDelay
+    */
 
   const delay = clApi.requestRateLimitDelay({
     resourceType: 'cleanups',
@@ -116,8 +115,8 @@ export default class CleanupsCreate extends Command {
       const wheres = this.whereFlag(flags.where)
 
       const resSdk: any = this.cl[type as keyof CommerceLayerClient]
-      const clp = await resSdk.list({ filters: wheres, pageSize: clConfig.api.page_max_size })
-      const cleanupsLength = clp.meta.recordCount
+      const clpRecords = await resSdk.list({ filters: wheres, pageSize: 1 })
+      const cleanupsLength = clpRecords.meta.recordCount
 
       // Check cleanup size
       const humanized = type.replace(/_/g, ' ')
@@ -128,26 +127,23 @@ export default class CleanupsCreate extends Command {
         })
       }
 
+
       // Split input
-      const chunks: Chunk[] = await splitRecords(resSdk, {
-        resource_type: type,
-        filters: wheres
-      })
+      const chunks: Chunk[] = await splitRecords(resSdk, { resource_type: type, filters: wheres }, cleanupsLength)
 
       // Split chunks
-      const batches: Batch[] = splitChunks(chunks, MAX_CHUNKS)
+      const batches: Batch[] = splitChunks(chunks)
 
-
-      const resource = type.replace(/_/g, ' ')
       const multiChunk = chunks.length > 1
       const multiBatch = batches.length > 1
+
 
       // Show multi chunk/batch messages
       if (!flags.quiet && !flags.blind) {
         // Multi chunk message
         if (multiChunk) {
-          const groupId = chunks[0]?.group_id
-          const msg1 = `You are trying to cleanup ${clColor.yellowBright(String(cleanupsLength))} ${resource}, more than the maximun ${clConfig.cleanups.max_size} elements allowed for each single cleanup.`
+          const groupId = chunks[0].groupId
+          const msg1 = `You are trying to cleanup ${clColor.yellowBright(String(cleanupsLength))} ${humanized}, more than the maximun ${clConfig.cleanups.max_size} elements allowed for each single cleanup.`
           const msg2 = `The cleanup will be split into a set of ${clColor.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${clColor.underline.yellowBright(groupId)}.`
           const msg3 = `Execute the command ${clColor.cli.command(`cleanups:group ${groupId}`)} to retrieve all the related cleanups`
           this.log(`\n${msg1} ${msg2} ${msg3}`)
@@ -155,7 +151,7 @@ export default class CleanupsCreate extends Command {
 
         // Multi batch message
         if (multiBatch) {
-          const msg1 = `The ${chunks.length} generated chunks will be elaborated in batches of ${MAX_CHUNKS}`
+          const msg1 = `The ${chunks.length} generated chunks will be elaborated in batches of ${MAX_QUEUE_LENGTH}`
           this.log(`\n${msg1}`)
         }
 
@@ -169,16 +165,16 @@ export default class CleanupsCreate extends Command {
       if (monitor) {
         let withErrors = false
         for (const batch of batches) {
-          if (multiBatch) this.log(`\nProcessing batch # ${clColor.yellowBright(String(batch.batch_number))} of ${clColor.yellowBright(String(batch.total_batches))}...`)
-          this.monitor = Monitor.create(batch.items_count, clUtil.log)
-          const impOk = await this.parallelizeImports(batch.chunks, monitor)
-          withErrors ||= !impOk
+          if (multiBatch) this.log(`\nProcessing batch # ${clColor.yellowBright(String(batch.batchNumber))} of ${clColor.yellowBright(String(batches.length))}...`)
+          this.monitor = Monitor.create(batch.batchItems, clUtil.log)
+          const clpOk = await this.parallelizeCleanups(batch.chunks, monitor)
+          withErrors ||= !clpOk
         }
 
         this.log(`\nCleanup of ${clColor.yellowBright(String(cleanupsLength))} ${humanized} completed${withErrors ? ' with errors' : ''}.`)
       } else {
-        await this.parallelizeImports(chunks, monitor)
-        this.log(`\nThe cleanup of ${clColor.yellowBright(String(cleanupsLength))} ${resource} has been started`)
+        await this.parallelizeCleanups(chunks, monitor)
+        this.log(`\nThe cleanup of ${clColor.yellowBright(String(cleanupsLength))} ${humanized} has been started`)
       }
 
       this.log()
@@ -203,44 +199,44 @@ export default class CleanupsCreate extends Command {
   }
 
 
-  private async parallelizeImports(chunks: Chunk[], monitor: boolean): Promise<boolean> {
+  private async parallelizeCleanups(chunks: Chunk[], monitor: boolean): Promise<boolean> {
 
     const cleanups: Array<Promise<Cleanup>> = []
 
     this.completed = 0
     for (const chunk of chunks) {
-      const clp = this.createParallelCleanup(chunk, monitor)
+      const chunksDelay = requestDelay(chunks.length - this.completed)
+      const clp = this.createParallelCleanup(chunk, chunksDelay, monitor)
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       if (clp) cleanups.push(clp)
     }
 
-    if (monitor && this.monitor) {
-      const results = await Promise.allSettled(cleanups)
-      this.monitor.stop()
-      return !results.some((r: any) => ((r.value === undefined) || (r.value.status === 'interrupted') || (r.value.errors_count > 0)))
-    }
-
-    return true
+    const results = await Promise.allSettled(cleanups)
+    if (monitor && this.monitor) this.monitor.stop()
+    return !results.some((r: any) => ((r.value === undefined) || (r.value.status === 'interrupted') || (r.value.errors_count > 0)))
 
   }
 
 
   private async createCleanup(chunk: Chunk): Promise<Cleanup> {
+
+    const filters = { ...chunk.filters }
+    if (chunk.startId) filters.id_gt = chunk.startId
+    if (chunk.endId) filters.id_lteq = chunk.endId
+
     return this.cl.cleanups.create({
       resource_type: chunk.resource_type,
-      filters: chunk.filters,
-      reference: `${chunk.group_id}-${String(chunk.chunk_number).padStart(4, '0')}`,
+      filters,
+      reference: `${chunk.groupId}-${String(chunk.chunkNumber).padStart(4, '0')}`,
       reference_origin: 'cli-plugin-cleanups',
       metadata: {
-        chunk_number: `${chunk.chunk_number}/${chunk.total_chunks}`,
-        chunk_items: `${chunk.start_item}-${chunk.end_item}`,
-        group_id: chunk.group_id,
+        group_id: chunk.groupId,
       },
     })
   }
 
 
-  private async createParallelCleanup(chunk: Chunk, monitor?: boolean): Promise<Cleanup> {
+  private async createParallelCleanup(chunk: Chunk, delay: number, monitor?: boolean): Promise<Cleanup> {
 
     let bar: SingleBar
 
@@ -257,7 +253,7 @@ export default class CleanupsCreate extends Command {
 
         do {
 
-          await clUtil.sleep(requestDelay(chunk.total_batch_chunks - this.completed))
+          await clUtil.sleep(delay)
           const tmp = await this.cl.cleanups.retrieve(clp.id).catch(async error => {
             if (this.cl.isApiError(error) && (error.status === 429)) {
               if (clp?.status) barValue = this.monitor.updateBar(bar, barValue, { status: clColor.cyanBright(clp.status) })
@@ -286,6 +282,7 @@ export default class CleanupsCreate extends Command {
 
       // eslint-disable-next-line @typescript-eslint/promise-function-async
     }).catch(error => {
+      this.handleError(error)
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
       return Promise.reject(error)
     })
