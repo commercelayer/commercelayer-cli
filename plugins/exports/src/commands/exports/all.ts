@@ -54,7 +54,7 @@ const countRunning = (exports: Export[] | ExportJob): number => {
 const spinnerText = (exp: Export | string): string => {
   if (typeof exp === 'string') return exp
   else {
-    const details = '' // ` [${exp.id}, ${String(exp.metadata?.exportRecords).padEnd(String(MAX_EXPORT_SIZE).length, ' ')} ${exp.resource_type}]`
+    const details = ` [${exp.id}, ${String(exp.metadata?.exportRecords).padEnd(String(MAX_EXPORT_SIZE).length, ' ')} ${exp.resource_type}]`
     return `${exp.metadata?.exportName} ${exp.status}${details}`.replace(/_/g, ' ')
   }
 }
@@ -262,13 +262,6 @@ export default class ExportsAll extends ExportCommand {
     let stopId = null
     let expPage = 0
 
-    // Export split simulation ...
-    // 1500  --> 1: 1500,  2: x
-    // 10000 --> 1: 10000, 2: x
-    // 15000 --> 1: 10000, 2: 5000,  3: x
-    // 20000 --> 1: 10000, 2: 10000, 3: x
-    // 25000 --> 1: 10000, 2: 10000, 3: 5000, 4: x
-
     // Initialize local export queue
     for (let curExp = 0; curExp < expJob.totalExports; curExp++) {
       exports.push({ type: 'exports', id: '', resource_type: expJob.resourceType, status: 'pending', created_at: '', updated_at: '' })
@@ -302,6 +295,13 @@ export default class ExportsAll extends ExportCommand {
           if (expJob.totalExports > 1) expCreate.reference = `${expCreate.reference}-${curIdx}`
 
           if (!expJob.blindMode) spinners.add(spinnerText(exportName))
+
+          // Export split simulation ...
+          // 1500  --> 1: 1500,  2: x
+          // 10000 --> 1: 10000, 2: x
+          // 15000 --> 1: 10000, 2: 5000,  3: x
+          // 20000 --> 1: 10000, 2: 10000, 3: x
+          // 25000 --> 1: 10000, 2: 10000, 3: 5000, 4: x
 
           const curExpRecords = Math.min(MAX_EXPORT_SIZE, expJob.totalRecords - (MAX_EXPORT_SIZE * curExp))
           const curExpPages = Math.ceil(curExpRecords / clConfig.api.page_max_size)
