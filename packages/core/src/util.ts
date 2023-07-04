@@ -37,20 +37,32 @@ const specialFolder = (filePath: string, createIfNotExists: boolean = false): st
 
 	const specialFolders = ['desktop', 'home']
 
-	 // Special directory (home / desktop)
-	 // eslint-disable-next-line no-useless-escape
-	 const root = filePath.toLowerCase().split(/[\\\/]/g)[0]
-	 if (specialFolders.includes(root)) {
-	   let filePrefix = homedir()
-	   if (root === 'desktop') filePrefix += `${sep}Desktop`
-	   filePath = filePath.replace(root, filePrefix)
-	 }
-	 const fileDir = dirname(filePath)
-	 if (createIfNotExists && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
+	// Special directory (home / desktop)
+	// eslint-disable-next-line no-useless-escape
+	const root = filePath.toLowerCase().split(/[\\\/]/g)[0]
+	if (specialFolders.includes(root)) {
+		let filePrefix = homedir()
+		if (root === 'desktop') filePrefix += `${sep}Desktop`
+		filePath = filePath.replace(root, filePrefix)
+	}
+	const fileDir = dirname(filePath)
+	if (createIfNotExists && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
 
-	 return filePath
+	return filePath
 
 }
 
 
-export { sleep, resetConsole, log, specialFolder }
+const generateGroupUID = (): string => {
+
+	const firstPart = Math.trunc(Math.random() * 46_656)
+	const secondPart = Math.trunc(Math.random() * 46_656)
+	const firstPartStr = ('000' + firstPart.toString(36)).slice(-3)
+	const secondPartStr = ('000' + secondPart.toString(36)).slice(-3)
+
+	return firstPartStr + secondPartStr
+
+}
+
+
+export { sleep, resetConsole, log, specialFolder, generateGroupUID }

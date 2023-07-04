@@ -203,21 +203,21 @@ const config: Config = {
 		login_scopes: ['market', 'stock_location'],
 	},
 	imports: {
-		max_size: 2000,
+		max_size: 10_000,
 		statuses: JOB_STATUSES,
 		types: IMPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
 		attachment_expiration: 5
 	},
 	exports: {
-		max_size: 10000,
+		max_size: 10_000,
 		statuses: JOB_STATUSES,
 		types: EXPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
 		attachment_expiration: 5
 	},
 	cleanups: {
-		max_size: 10000,
+		max_size: 10_000,
 		statuses: JOB_STATUSES,
 		types: CLEANUP_RESOURCE_TYPES,
 		max_queue_length: 10
