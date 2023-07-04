@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "3.9.1",
+  "version": "3.10.0",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
@@ -29,7 +29,7 @@
     "lib/**/*"
   ],
   "engines": {
-    "node": ">=16"
+    "node": "^16.13.0 || >=18.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.6",
