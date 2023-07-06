@@ -53,6 +53,8 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:save_shipping_address_to_customer_address_book ID`](#commercelayer-orderssave_shipping_address_to_customer_address_book-id)
 * [`commercelayer orders:shipping_address_clone_id ID`](#commercelayer-ordersshipping_address_clone_id-id)
 * [`commercelayer orders:shipping_address_same_as_billing ID`](#commercelayer-ordersshipping_address_same_as_billing-id)
+* [`commercelayer orders:start_editing ID`](#commercelayer-ordersstart_editing-id)
+* [`commercelayer orders:stop_editing ID`](#commercelayer-ordersstop_editing-id)
 * [`commercelayer orders:unarchive ID`](#commercelayer-ordersunarchive-id)
 * [`commercelayer orders:update_taxes ID`](#commercelayer-ordersupdate_taxes-id)
 * [`commercelayer orders:validate ID`](#commercelayer-ordersvalidate-id)
@@ -571,6 +573,51 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_same_as_billing.ts)_
+
+### `commercelayer orders:start_editing ID`
+
+Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount.
+
+```sh-session
+USAGE
+  $ commercelayer orders:start_editing ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total
+  amount.
+```
+
+_See code: [src/commands/orders/start_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/start_editing.ts)_
+
+### `commercelayer orders:stop_editing ID`
+
+Send this attribute to stop the editing for the order and return back to placed status.
+
+```sh-session
+USAGE
+  $ commercelayer orders:stop_editing ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute to stop the editing for the order and return back to placed status.
+```
+
+_See code: [src/commands/orders/stop_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/stop_editing.ts)_
 
 ### `commercelayer orders:unarchive ID`
 
