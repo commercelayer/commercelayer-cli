@@ -128,6 +128,16 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_create_subscriptions',
       description: 'Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the order. Subscriptions are generated according to associated subscription model strategy.',
     },
+	start_editing: {
+      action: 'start_editing',
+      trigger: '_start_editing',
+      description: 'Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount.',
+    },
+	stop_editing: {
+      action: 'stop_editing',
+      trigger: '_stop_editing',
+      description: 'Send this attribute to stop the editing for the order and return back to placed status.',
+    },
 }
 
 
@@ -156,4 +166,6 @@ export type ActionType =
 	'save_billing_address_to_customer_address_book' |
 	'refresh' |
 	'validate' |
-	'create_subscriptions'
+	'create_subscriptions' |
+	'start_editing' |
+	'stop_editing'
