@@ -1,5 +1,4 @@
 import { Command, Flags, type Config } from '@oclif/core'
-// import { AuthScope } from '@commercelayer/js-auth'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
 import type { ApiMode, AppAuth, AppInfo } from '@commercelayer/cli-core'
