@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.10.0
     version: 3.10.0(@types/node@20.4.0)(typescript@5.1.6)
   '@commercelayer/js-auth':
-    specifier: ^2.3.0
-    version: 2.3.0
+    specifier: ^4.1.1
+    version: 4.1.1
   '@commercelayer/sdk':
     specifier: ^5.7.0
     version: 5.7.0
@@ -372,6 +372,11 @@ packages:
     dependencies:
       client-oauth2: 4.3.3
       tslib: 2.6.0
+    dev: false
+
+  /@commercelayer/js-auth@4.1.1:
+    resolution: {integrity: sha512-fjsyBApTqwUEYq4zyTd5Uq59VaQEA4prNV9Fyvkq4v0E03eHdkbtte6LqNkl3GzGo3Z5qkEXnPiWGK2jT2wYpg==}
+    engines: {node: '>=18.0.0'}
     dev: false
 
   /@commercelayer/sdk@5.7.0:
