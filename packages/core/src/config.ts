@@ -145,6 +145,8 @@ type WebhooksConfig = {
 type TagsConfig = {
 	max_resource_tags: number;
 	taggable_resources: readonly string[];
+	tag_name_max_length: number;
+	tag_name_pattern: RegExp
 }
 
 type CliConfig = {
@@ -243,7 +245,9 @@ const config: Config = {
 	},
 	tags: {
 		max_resource_tags: 10,
-		taggable_resources: TAG_RESOURCE_TYPES
+		taggable_resources: TAG_RESOURCE_TYPES,
+		tag_name_max_length: 25,
+		tag_name_pattern: /^[0-9A-Za-z_-]{1,25}$/
 	}
 } as const
 
