@@ -21,8 +21,8 @@ dependencies:
     specifier: ^2.3.1
     version: 2.3.1(@types/node@20.4.0)(typescript@5.1.6)
   '@oclif/plugin-help':
-    specifier: 5.2.9
-    version: 5.2.9(@types/node@20.4.0)(typescript@5.1.6)
+    specifier: 5.2.12
+    version: 5.2.12(@types/node@20.4.0)(typescript@5.1.6)
   '@oclif/plugin-not-found':
     specifier: ^2.3.26
     version: 2.3.26(@types/node@20.4.0)(typescript@5.1.6)
@@ -691,8 +691,8 @@ packages:
       - typescript
     dev: false
 
-  /@oclif/plugin-help@5.2.9(@types/node@20.4.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-0J3oowPURZJ4Dn1p1WpQ46E4+CoV20KTn1cvsNiDl6Hmbw+qoljKQnArJJzNFeZQxWo4R7/S42PrzKJTVYh68Q==}
+  /@oclif/plugin-help@5.2.12(@types/node@20.4.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-WtYy/lmbSG+YA6PzFohunIAp1peL/gumYqgpOgC/7CL7adWpquZiRS+digglenY3i4F+ScMURg6KKFuTTIwa1Q==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@oclif/core': 2.8.11(@types/node@20.4.0)(typescript@5.1.6)
