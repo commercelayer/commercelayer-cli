@@ -97,15 +97,17 @@ type ApiConfig = {
 	token_expiration_mins: number;
 	token_encoding_algorithm: string;
 	requests_max_num_burst: number;
+	requests_max_num_burst_cacheable: number;
 	requests_max_num_burst_test: number;
+	requests_max_num_burst_test_cacheable: number;
 	requests_max_secs_burst: number;
 	requests_max_num_avg: number;
+	requests_max_num_avg_cacheable: number;
 	requests_max_num_avg_test: number;
+	requests_max_num_avg_test_cacheable: number;
 	requests_max_secs_avg: number;
 	requests_max_num_oauth: number;
 	requests_max_secs_oauth: number;
-	requests_max_num_env_ratio: number;
-	requests_max_num_cache_ratio: number;
 	page_max_size: number;
 	page_default_size: number;
 }
@@ -188,15 +190,17 @@ const config: Config = {
 		token_expiration_mins: 60 * 4,	// 4 hours (14400 secs)
 		token_encoding_algorithm: 'HS512',
 		requests_max_num_burst: 50,
+		requests_max_num_burst_cacheable: 250,
 		requests_max_num_burst_test: 25,
+		requests_max_num_burst_test_cacheable: 125,
 		requests_max_secs_burst: 10,
 		requests_max_num_avg: 150,
+		requests_max_num_avg_cacheable: 1000,
 		requests_max_num_avg_test: 75,
+		requests_max_num_avg_test_cacheable: 375,
 		requests_max_secs_avg: 60,	// 1 min
-		requests_max_num_oauth: 20,
+		requests_max_num_oauth: 30,
 		requests_max_secs_oauth: 60,
-		requests_max_num_env_ratio: 2,		// Live/Test
-		requests_max_num_cache_ratio: 5,	// Cacheable/Uncacheable
 		page_max_size: 25,
 		page_default_size: 10,
 	},

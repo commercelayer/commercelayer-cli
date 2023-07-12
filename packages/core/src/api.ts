@@ -69,24 +69,24 @@ export type DelayOptions = {
 }
 
 
+export const liveEnvironment = (env: ApiMode): boolean => {
+	return (env === 'live')
+}
+
+
 export const requestRateLimitDelay = (options?: DelayOptions): number => {
 
 	const env = options?.environment || 'test'
 	const parallelRequests = options?.parallelRequests || 1
+	const resourceCacheable = isResourceCacheable(options?.resourceType, options?.method)
 
-	let requestsMaxNumBurst = config.api.requests_max_num_burst
-	let requestsMaxNumAvg = config.api.requests_max_num_avg
+	let requestsMaxNumBurst = resourceCacheable ? config.api.requests_max_num_burst_cacheable : config.api.requests_max_num_burst
+	let requestsMaxNumAvg = resourceCacheable? config.api.requests_max_num_avg_cacheable : config.api.requests_max_num_avg
 
 	// Test env allows half number of requests than live
 	if (env !== 'live') {
-		requestsMaxNumBurst = Math.floor(requestsMaxNumBurst / config.api.requests_max_num_env_ratio)
-		requestsMaxNumAvg = Math.floor(requestsMaxNumAvg / config.api.requests_max_num_env_ratio)
-	}
-
-	// If the resource is cacheable the number of requests can be five times that of the standard resources
-	if (isResourceCacheable(options?.resourceType, options?.method)) {
-		requestsMaxNumBurst = requestsMaxNumBurst * config.api.requests_max_num_cache_ratio
-		requestsMaxNumAvg = requestsMaxNumAvg * config.api.requests_max_num_cache_ratio
+		requestsMaxNumBurst = resourceCacheable? config.api.requests_max_num_burst_test_cacheable : config.api.requests_max_num_burst_test
+		requestsMaxNumAvg = resourceCacheable? config.api.requests_max_num_avg_test_cacheable : config.api.requests_max_num_avg_test
 	}
 
 	const unitDelayBurst = config.api.requests_max_secs_burst / requestsMaxNumBurst
