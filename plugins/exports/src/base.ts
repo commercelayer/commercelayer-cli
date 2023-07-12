@@ -312,4 +312,3 @@ export abstract class ExportCommand extends BaseCommand {
 export { Flags, Args, ux as cliux }
 
 export type ExportFormat = 'json' | 'csv'
-
