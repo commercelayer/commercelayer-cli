@@ -204,9 +204,10 @@ export default class ExportsAll extends ExportCommand {
       unlinkSync(tmpOutputFile)
       exportOk = true
 
-      return exportOk ? outputFile : undefined
-
     }
+
+
+    return exportOk ? outputFile : undefined
 
   }
 
