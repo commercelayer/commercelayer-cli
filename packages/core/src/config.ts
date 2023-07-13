@@ -209,7 +209,7 @@ const config: Config = {
 		login_scopes: ['market', 'stock_location'],
 	},
 	imports: {
-		max_size: 10_000,
+		max_size: 2_000,
 		statuses: JOB_STATUSES,
 		types: IMPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
