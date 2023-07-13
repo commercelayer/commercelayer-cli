@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@commercelayer/cli-core':
-    specifier: ^3.12.0
-    version: 3.12.0(@types/node@20.4.2)(typescript@5.1.6)
+    specifier: ^3.12.1
+    version: 3.12.1(@types/node@20.4.2)(typescript@5.1.6)
   '@commercelayer/js-auth':
     specifier: ^2.3.0
     version: 2.3.0
@@ -300,8 +300,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@commercelayer/cli-core@3.12.0(@types/node@20.4.2)(typescript@5.1.6):
-    resolution: {integrity: sha512-j6HwxAyYa6pNp9P8yn1ExH+PHyNPsjHVEUnwubRe6vP+XBeGwRa73Q2g/4N3utbK97BT1evS03g4QW+6Q8tLAQ==}
+  /@commercelayer/cli-core@3.12.1(@types/node@20.4.2)(typescript@5.1.6):
+    resolution: {integrity: sha512-4+yPJxnPq7az3ag13CN2vM0iUhIoikiB/9rlhGOg86/usI69drpuHQLQc2jNe2gXJXcXfaRwuagrpx8y/0uh/Q==}
     engines: {node: ^16.13.0 || >=18.0.0}
     dependencies:
       '@commercelayer/js-auth': 2.3.0
