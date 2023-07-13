@@ -189,7 +189,7 @@ export default class ResourcesAll extends Command {
     try {
 
       const cl = commercelayer({ organization, domain, accessToken, timeout })
-      let jwtData = clToken.decodeAccessToken(accessToken) as any
+      let jwtData = clToken.decodeAccessToken(accessToken)
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
       const params: QueryParamsList = {}
@@ -216,16 +216,17 @@ export default class ResourcesAll extends Command {
       })
 
 
+      const delay = clApi.requestRateLimitDelay({
+        environment: clApi.execMode(!jwtData.test),
+        resourceType: resource.api,
+      })
+
+
       do {
 
         page++
 
-        /* Insert a delay after the first call:
-         * 0ms    for  pages <= 50
-         * 200ms  for pages within range 51 : 599
-         * 500ms  for pages >= 600
-        */
-        if ((page > 1) && (pages > 50)) await cliux.wait((pages < 600) ? 200 : 500)
+        if ((page > 1) && (pages > 50)) await cliux.wait(delay)
 
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
 
