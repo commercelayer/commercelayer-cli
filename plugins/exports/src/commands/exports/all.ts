@@ -189,6 +189,7 @@ export default class ExportsAll extends ExportCommand {
     let outputFile: string | undefined
     let exportOk = false
     if (expJob.totalExports === 1) {
+      if (!expJob.blindMode && !flags.quiet) this.log('Single file export')
       outputFile = await this.saveOutput(exports[0], flags)
       exportOk = true
     }
