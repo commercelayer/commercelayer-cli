@@ -57,7 +57,7 @@ devDependencies:
     version: 3.0.0
   '@oclif/test':
     specifier: ^2.3.26
-    version: 2.3.26(@types/node@20.4.0)(typescript@5.1.6)
+    version: 2.3.30(@types/node@20.4.0)(typescript@5.1.6)
   '@types/chai':
     specifier: ^4.3.5
     version: 4.3.5
@@ -633,6 +633,47 @@ packages:
       - '@types/node'
       - typescript
 
+  /@oclif/core@2.9.3(@types/node@20.4.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-0KLiVpXCJivAjLoj/LAXQf85MtGzyforyPkgNJQEP6QQugnuq2kHcG+DojWEQYz0sADXT2259EdPibslEThUMg==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@types/cli-progress': 3.11.0
+      ansi-escapes: 4.3.2
+      ansi-styles: 4.3.0
+      cardinal: 2.1.1
+      chalk: 4.1.2
+      clean-stack: 3.0.1
+      cli-progress: 3.12.0
+      debug: 4.3.4(supports-color@8.1.1)
+      ejs: 3.1.9
+      fs-extra: 9.1.0
+      get-package-type: 0.1.0
+      globby: 11.1.0
+      hyperlinker: 1.0.0
+      indent-string: 4.0.0
+      is-wsl: 2.2.0
+      js-yaml: 3.14.1
+      natural-orderby: 2.0.3
+      object-treeify: 1.1.33
+      password-prompt: 1.1.2
+      semver: 7.5.3
+      slice-ansi: 4.0.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      supports-color: 8.1.1
+      supports-hyperlinks: 2.3.0
+      ts-node: 10.9.1(@types/node@20.4.0)(typescript@5.1.6)
+      tslib: 2.6.0
+      widest-line: 3.1.0
+      wordwrap: 1.0.0
+      wrap-ansi: 7.0.0
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - typescript
+    dev: true
+
   /@oclif/errors@1.3.6:
     resolution: {integrity: sha512-fYaU4aDceETd89KXP+3cLyg9EHZsLD3RxF2IU9yxahhBpspWjkWi3Dy3bTgcwZ3V47BgxQaGapzJWDM33XIVDQ==}
     engines: {node: '>=8.0.0'}
@@ -743,12 +784,12 @@ packages:
       - typescript
     dev: false
 
-  /@oclif/test@2.3.26(@types/node@20.4.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-oGvfgtreGcr5EIOGHv00PKO3eGpyJt2G6kqzuCH9NkJq4c/RngOmG8DEk/wXRN0gb3Y8AH+bQ6edJcW5/3jwKQ==}
+  /@oclif/test@2.3.30(@types/node@20.4.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-zuOv23wiF+H7cRGMjcKx/91qhdcNMcZnr+1TCpbyDeQBIvRs/nGWyuwfrmoF2fXs+HtNZsNFvwbjg7Ue5JfAug==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.8.11(@types/node@20.4.0)(typescript@5.1.6)
-      fancy-test: 2.0.28
+      '@oclif/core': 2.9.3(@types/node@20.4.0)(typescript@5.1.6)
+      fancy-test: 2.0.30
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -1143,6 +1184,11 @@ packages:
 
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
+    dev: true
+
+  /astral-regex@2.0.0:
+    resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
+    engines: {node: '>=8'}
     dev: true
 
   /async@3.2.4:
@@ -2047,8 +2093,8 @@ packages:
       tmp: 0.0.33
     dev: false
 
-  /fancy-test@2.0.28:
-    resolution: {integrity: sha512-UjTjYRlfdUEkvjIMKZlpqALjkgC3GzjUgWDg9KRv/ulxIqppvQUWMt5mOUmqlrSRlGF/Wj7HyFkWKzz5RujpFg==}
+  /fancy-test@2.0.30:
+    resolution: {integrity: sha512-bDQnAXYYODKwjb/6VEwAovEN0uJ1iRMTahEqOpQCRxIX7rIqoFHCy0LEqWYAU3kVw4ERgK4HQSn6GISEA1ipxg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@types/chai': 4.3.5
@@ -2057,7 +2103,7 @@ packages:
       '@types/sinon': 10.0.15
       lodash: 4.17.21
       mock-stdin: 1.0.0
-      nock: 13.3.1
+      nock: 13.3.2
       stdout-stderr: 0.1.13
     transitivePeerDependencies:
       - supports-color
@@ -3185,8 +3231,8 @@ packages:
   /nice-try@1.0.5:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
 
-  /nock@13.3.1:
-    resolution: {integrity: sha512-vHnopocZuI93p2ccivFyGuUfzjq2fxNyNurp7816mlT5V5HF4SzXu8lvLrVzBbNqzs+ODooZ6OksuSUNM7Njkw==}
+  /nock@13.3.2:
+    resolution: {integrity: sha512-CwbljitiWJhF1gL83NbanhoKs1l23TDlRioNraPTZrzZIEooPemrHRj5m0FZCPkB1ecdYCSWWGcHysJgX/ngnQ==}
     engines: {node: '>= 10.13'}
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
@@ -3902,6 +3948,15 @@ packages:
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+
+  /slice-ansi@4.0.0:
+    resolution: {integrity: sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      ansi-styles: 4.3.0
+      astral-regex: 2.0.0
+      is-fullwidth-code-point: 3.0.0
+    dev: true
 
   /source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
