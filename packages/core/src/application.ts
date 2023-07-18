@@ -1,5 +1,8 @@
-import type { AuthScope } from "@commercelayer/js-auth";
 import type { ApiMode } from "./api";
+
+
+export type AuthScope = string[] | string
+
 
 interface AppKey {
 	key: string;
@@ -14,7 +17,7 @@ interface AppAuth {
 	domain?: string;
 	clientId: string;
 	clientSecret?: string;
-	scope?: string[] | string;
+	scope?: AuthScope;
 	email?: string;
 	password?: string;
 }

@@ -4,8 +4,20 @@ import https from 'https'
 import type { AppAuth } from './application'
 import { sleep } from './util'
 import { type ApiMode, baseURL } from './api'
-import { type AuthReturnType, clientCredentials, type ClientCredentials, getCustomerToken, type User } from '@commercelayer/js-auth'
 import { CLIError } from '@oclif/core/lib/errors'
+import authentication from '@commercelayer/js-auth'
+
+
+export type AuthInfo = {
+  accessToken: string
+  tokenType: 'bearer'
+  expiresIn: number
+  expires: Date
+  scope: string
+  createdAt: number
+  error?: string
+  errorDescription?: string
+}
 
 
 
@@ -78,24 +90,25 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
 }
 
 
-const getAccessToken = async (auth: AppAuth): AuthReturnType => {
+const getAccessToken = async (auth: AppAuth): Promise<AuthInfo> => {
 
-  const credentials: ClientCredentials = {
+  const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.join(',') : auth.scope) : ''
+
+  const credentials: any = {
     clientId: auth.clientId,
     clientSecret: auth.clientSecret,
-    endpoint: baseURL(auth.slug, auth.domain),
-    scope: auth.scope || '',
+    slug: auth.slug,
+    domain: auth.domain,
+    scope
   }
 
   if (auth.email && auth.password) {
-    const user: User = {
-      username: auth.email,
-      password: auth.password,
-    }
-    return getCustomerToken(credentials, user)
+    credentials.username = auth.email
+    credentials.password = auth.password
+    return authentication('password', credentials)
   }
 
-  return clientCredentials(credentials)
+  return authentication('client_credentials', credentials)
 
 }
 
@@ -111,7 +124,7 @@ const revokeAccessToken = async (app: AppAuth, token: string, logger?: { log: (m
     token,
     })
   */
- const scope = Array.isArray(app.scope) ? app.scope.join(';') : app.scope
+  const scope = Array.isArray(app.scope) ? app.scope.join(';') : app.scope
 
   const data = JSON.stringify({
     grant_type: 'client_credentials',
@@ -214,8 +227,8 @@ const isAccessTokenExpiring = (tokenData: { created_at: string }, validityMins?:
 
 
 const getTokenEnvironment = (token: string | AccessTokenInfo): ApiMode => {
-  const decodedToken = ((typeof token === 'string')? decodeAccessToken(token) : token)
-  return decodedToken.test? 'test' : 'live'
+  const decodedToken = ((typeof token === 'string') ? decodeAccessToken(token) : token)
+  return decodedToken.test ? 'test' : 'live'
 }
 
 
