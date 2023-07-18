@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@commercelayer/cli-core':
-    specifier: ^3.10.0
-    version: 3.10.0(@types/node@20.4.0)(typescript@5.1.6)
+    specifier: ^4.0.0
+    version: 4.0.0(@types/node@20.4.0)(typescript@5.1.6)
   '@commercelayer/js-auth':
     specifier: ^2.3.0
     version: 2.3.0
@@ -308,12 +308,12 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@commercelayer/cli-core@3.10.0(@types/node@20.4.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-CVmZHNL46Biji0oe3AGETR7OEVZyuVaR0c3YIgVThBbC1cy+GmFrY4egBU8eLtEse5piO2U9pBPM5xjVWKcUZA==}
+  /@commercelayer/cli-core@4.0.0(@types/node@20.4.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-/bPVLJNYTtS0uect6kt1Wm405/9aUKtIhQmt+n1M8UdIHg3xS/8hd2LhLlxWeGKsYt58Ru/OZxMRp17XlEMlpg==}
     engines: {node: ^16.13.0 || >=18.0.0}
     dependencies:
-      '@commercelayer/js-auth': 2.3.0
-      '@oclif/core': 2.8.11(@types/node@20.4.0)(typescript@5.1.6)
+      '@commercelayer/js-auth': 4.1.1
+      '@oclif/core': 2.9.3(@types/node@20.4.0)(typescript@5.1.6)
       axios: 1.4.0
       chalk: 4.1.2
       jsonwebtoken: 8.5.1
@@ -372,6 +372,11 @@ packages:
     dependencies:
       client-oauth2: 4.3.3
       tslib: 2.6.0
+    dev: false
+
+  /@commercelayer/js-auth@4.1.1:
+    resolution: {integrity: sha512-fjsyBApTqwUEYq4zyTd5Uq59VaQEA4prNV9Fyvkq4v0E03eHdkbtte6LqNkl3GzGo3Z5qkEXnPiWGK2jT2wYpg==}
+    engines: {node: '>=18.0.0'}
     dev: false
 
   /@commercelayer/sdk@5.7.0:
@@ -632,6 +637,47 @@ packages:
       - '@swc/wasm'
       - '@types/node'
       - typescript
+
+  /@oclif/core@2.9.3(@types/node@20.4.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-0KLiVpXCJivAjLoj/LAXQf85MtGzyforyPkgNJQEP6QQugnuq2kHcG+DojWEQYz0sADXT2259EdPibslEThUMg==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@types/cli-progress': 3.11.0
+      ansi-escapes: 4.3.2
+      ansi-styles: 4.3.0
+      cardinal: 2.1.1
+      chalk: 4.1.2
+      clean-stack: 3.0.1
+      cli-progress: 3.12.0
+      debug: 4.3.4(supports-color@8.1.1)
+      ejs: 3.1.9
+      fs-extra: 9.1.0
+      get-package-type: 0.1.0
+      globby: 11.1.0
+      hyperlinker: 1.0.0
+      indent-string: 4.0.0
+      is-wsl: 2.2.0
+      js-yaml: 3.14.1
+      natural-orderby: 2.0.3
+      object-treeify: 1.1.33
+      password-prompt: 1.1.2
+      semver: 7.5.3
+      slice-ansi: 4.0.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      supports-color: 8.1.1
+      supports-hyperlinks: 2.3.0
+      ts-node: 10.9.1(@types/node@20.4.0)(typescript@5.1.6)
+      tslib: 2.6.0
+      widest-line: 3.1.0
+      wordwrap: 1.0.0
+      wrap-ansi: 7.0.0
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - typescript
+    dev: false
 
   /@oclif/errors@1.3.6:
     resolution: {integrity: sha512-fYaU4aDceETd89KXP+3cLyg9EHZsLD3RxF2IU9yxahhBpspWjkWi3Dy3bTgcwZ3V47BgxQaGapzJWDM33XIVDQ==}
@@ -1144,6 +1190,11 @@ packages:
   /assertion-error@1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
+
+  /astral-regex@2.0.0:
+    resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
+    engines: {node: '>=8'}
+    dev: false
 
   /async@3.2.4:
     resolution: {integrity: sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==}
@@ -3902,6 +3953,15 @@ packages:
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+
+  /slice-ansi@4.0.0:
+    resolution: {integrity: sha512-qMCMfhY040cVHT43K9BFygqYbUPFZKHOg7K73mtTWJRb8pyP3fzf4Ixd5SzdEJQ6MRUg/WBnOLxghZtKKurENQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      ansi-styles: 4.3.0
+      astral-regex: 2.0.0
+      is-fullwidth-code-point: 3.0.0
+    dev: false
 
   /source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
