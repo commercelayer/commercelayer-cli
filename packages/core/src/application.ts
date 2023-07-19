@@ -1,7 +1,6 @@
 import type { ApiMode } from "./api";
+import type { AuthScope } from "./token";
 
-
-export type AuthScope = string[] | string
 
 
 interface AppKey {
