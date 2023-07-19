@@ -114,7 +114,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^4.0.3",
+    "@commercelayer/cli-core": "^4.0.4",
     "@commercelayer/sdk": "^5.7.0",
     "@oclif/core": "^2.9.4",
     "@oclif/plugin-autocomplete": "^2.3.3",
