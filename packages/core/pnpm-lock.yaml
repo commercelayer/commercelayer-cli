@@ -9,8 +9,8 @@ dependencies:
     specifier: ^4.1.1
     version: 4.1.1
   '@oclif/core':
-    specifier: ^2.9.3
-    version: 2.9.3(@types/node@20.4.2)(typescript@5.1.6)
+    specifier: ^2.9.4
+    version: 2.9.4(@types/node@20.4.2)(typescript@5.1.6)
   axios:
     specifier: 1.4.0
     version: 1.4.0
@@ -1910,8 +1910,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oclif/core@2.9.3(@types/node@20.4.2)(typescript@5.1.6):
-    resolution: {integrity: sha512-0KLiVpXCJivAjLoj/LAXQf85MtGzyforyPkgNJQEP6QQugnuq2kHcG+DojWEQYz0sADXT2259EdPibslEThUMg==}
+  /@oclif/core@2.9.4(@types/node@20.4.2)(typescript@5.1.6):
+    resolution: {integrity: sha512-eFRRpV+tJ6nMkhay2M9IppjSF3atRrgj6Qo83qUslaFSAW3NAl4mIhx1mKmTwQx5rgSrar03xICtSAWJ6gZtag==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.0
@@ -2936,8 +2936,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001516
-      electron-to-chromium: 1.4.463
+      caniuse-lite: 1.0.30001517
+      electron-to-chromium: 1.4.464
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
     dev: true
@@ -2992,13 +2992,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001516
+      caniuse-lite: 1.0.30001517
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite@1.0.30001516:
-    resolution: {integrity: sha512-Wmec9pCBY8CWbmI4HsjBeQLqDTqV91nFVR83DnZpYyRnPI1wePDsTg0bGLPC5VU/3OIZV1fmxEea1b+tFKe86g==}
+  /caniuse-lite@1.0.30001517:
+    resolution: {integrity: sha512-Vdhm5S11DaFVLlyiKu4hiUTkpZu+y1KA/rZZqVQfOD5YdDT/eQKlkt7NaE0WGOFgX32diqt9MiP9CAiFeRklaA==}
     dev: true
 
   /cardinal@2.1.1:
@@ -3518,8 +3518,8 @@ packages:
       jake: 10.8.7
     dev: false
 
-  /electron-to-chromium@1.4.463:
-    resolution: {integrity: sha512-fT3hvdUWLjDbaTGzyOjng/CQhQJSQP8ThO3XZAoaxHvHo2kUXiRQVMj9M235l8uDFiNPsPa6KHT1p3RaR6ugRw==}
+  /electron-to-chromium@1.4.464:
+    resolution: {integrity: sha512-guZ84yoou4+ILNdj0XEbmGs6DEWj6zpVOWYpY09GU66yEb0DSYvP/biBPzHn0GuW/3RC/pnaYNUWlQE1fJYtgA==}
     dev: true
 
   /emittery@0.13.1:

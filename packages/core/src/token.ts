@@ -8,15 +8,15 @@ import { CLIError } from '@oclif/core/lib/errors'
 import authentication from '@commercelayer/js-auth'
 
 
-export type AuthInfo = {
-  accessToken: string
-  tokenType: 'bearer'
-  expiresIn: number
-  expires: Date
-  scope: string
-  createdAt: number
-  error?: string
-  errorDescription?: string
+export type AccessToken = {
+  accessToken: string;
+  tokenType: 'bearer';
+  expiresIn: number;
+  expires: Date;
+  scope: string;
+  createdAt: number;
+  error?: string;
+  errorDescription?: string;
 }
 
 
@@ -90,7 +90,7 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
 }
 
 
-const getAccessToken = async (auth: AppAuth): Promise<AuthInfo> => {
+const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
   const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.join(',') : auth.scope) : ''
 
