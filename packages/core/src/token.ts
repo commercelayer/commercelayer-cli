@@ -8,12 +8,15 @@ import { CLIError } from '@oclif/core/lib/errors'
 import authentication from '@commercelayer/js-auth'
 
 
+export type AuthScope = string | string[]
+
+
 export type AccessToken = {
   accessToken: string;
   tokenType: 'bearer';
   expiresIn: number;
   expires: Date;
-  scope: string;
+  scope: AuthScope;
   createdAt: number;
   error?: string;
   errorDescription?: string;
