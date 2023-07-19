@@ -33,5 +33,5 @@ export * as clFilter from './filter'
 /** Types **/
 export type { ApiMode } from './api'
 export type { AppKey, AppAuth, AppInfo } from './application'
-export type { AccessTokenInfo, CustomToken } from './token'
+export type { AccessTokenInfo, AccessToken, CustomToken } from './token'
 export type { KeyVal, KeyValString, KeyValArray, KeyValObj, KeyValRel, KeyValSort, ResAttributes } from './command'
