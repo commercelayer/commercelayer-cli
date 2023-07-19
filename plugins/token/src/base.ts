@@ -1,6 +1,5 @@
 import { Command, Flags, Args, ux } from '@oclif/core'
-import { type AccessTokenInfo, clColor, clConfig, clOutput, clUpdate} from '@commercelayer/cli-core'
-import type { AuthScope } from '@commercelayer/js-auth'
+import { type AccessTokenInfo, clColor, clConfig, clOutput, clUpdate, type AuthScope } from '@commercelayer/cli-core'
 import { CLIError } from '@oclif/core/lib/errors'
 
 

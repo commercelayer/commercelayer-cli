@@ -1,5 +1,4 @@
-import type { AuthReturnType } from '@commercelayer/js-auth'
-import type { AppAuth, AccessTokenInfo, CustomToken } from '@commercelayer/cli-core'
+import type { AppAuth, AccessTokenInfo, CustomToken, AccessToken } from '@commercelayer/cli-core'
 import { clToken, clConfig } from '@commercelayer/cli-core'
 import commercelayer from '@commercelayer/sdk'
 
@@ -19,7 +18,7 @@ const generateAccessToken = (accessToken: string | AccessTokenInfo, sharedSecret
 }
 
 
-const getAccessToken = async (auth: AppAuth): AuthReturnType => {
+const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
   return await clToken.getAccessToken(auth)
 
 }
