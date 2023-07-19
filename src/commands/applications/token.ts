@@ -1,8 +1,8 @@
+import type { AccessToken, CustomToken } from '@commercelayer/cli-core/lib/cjs/token'
 import Command, { Flags } from '../../base'
 import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
 import { clOutput, type AppKey, clToken, clConfig, clColor } from '@commercelayer/cli-core'
 import type { Config } from '@oclif/core/lib/interfaces/config'
-import type { AuthReturnType } from '@commercelayer/js-auth'
 
 
 
@@ -73,7 +73,7 @@ export default class ApplicationsToken extends Command {
 				const token = await newAccessToken(this.config, app, flags.save)
 				if (flags.save) this.log(`The new ${app.mode} access token has been locally saved for application ${clColor.api.application(app.name)}`)
 				accessToken = token?.accessToken
-				returnData = token?.data
+				returnData = token
 			}
 
 			if (accessToken) {
@@ -109,7 +109,7 @@ export default class ApplicationsToken extends Command {
 
 
 
-const newAccessToken = async (config: Config, app: AppKey, save: boolean = false): Promise<AuthReturnType> => {
+const newAccessToken = async (config: Config, app: AppKey, save: boolean = false): Promise<AccessToken> => {
 
 	const cfg = readConfigFile(config, app)
 	const token = await clToken.getAccessToken(cfg)
@@ -124,7 +124,7 @@ const newAccessToken = async (config: Config, app: AppKey, save: boolean = false
 				throw new Error(`The locally saved credentials are associated to an application of type ${clColor.msg.error(info.application.kind)} while the only allowed types are: ${clColor.api.kind(typeCheck.join(','))}`)
 		}
 
-		if (save) writeTokenFile(config, app, token?.data)
+		if (save) writeTokenFile(config, app, token)
 
 	}
 
@@ -146,7 +146,7 @@ const isAccessTokenExpiring = (tokenData: any): boolean => {
 }
 
 
-const generateAccessToken = (config: Config, app: AppKey, sharedSecret: string, valMinutes?: number): any => {
+const generateAccessToken = (config: Config, app: AppKey, sharedSecret: string, valMinutes?: number): CustomToken => {
 
 	const savedToken = readTokenFile(config, app)
 	const tokenData = clToken.decodeAccessToken(savedToken.access_token)

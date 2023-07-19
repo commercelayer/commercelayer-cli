@@ -155,6 +155,7 @@ DESCRIPTION
 
 ALIASES
   $ commercelayer app:login
+  $ commercelayer login
 
 EXAMPLES
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
@@ -189,6 +190,7 @@ ALIASES
   $ commercelayer app:logout
   $ commercelayer app:remove
   $ commercelayer applications:remove
+  $ commercelayer logout
 ```
 
 _See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/logout.ts)_

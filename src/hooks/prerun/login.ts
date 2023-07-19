@@ -110,7 +110,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 			const token = await newAccessToken(this.config, app, true).catch(() => {
 				if (refresh) cliux.action.stop(clColor.msg.error('Error'))
 			})
-			if (token) tokenData = token?.data
+			if (token) tokenData = token
 			if (refresh) cliux.action.stop()
 		}
 

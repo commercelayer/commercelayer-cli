@@ -6,7 +6,7 @@ import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configP
 import { inspect } from 'util'
 import { printCurrent } from './current'
 import { CLIError } from '@oclif/core/lib/errors'
-import type { AuthScope } from '@commercelayer/js-auth'
+import type { AuthScope } from '@commercelayer/cli-core/lib/cjs/application'
 
 
 
@@ -14,7 +14,7 @@ export default class ApplicationsLogin extends Command {
 
 	static description = `execute login to a Commerce Layer application (application must be of kind 'integration' or 'sales_channel')`
 
-	static aliases = ['app:login']
+	static aliases = ['app:login', 'login']
 
 	static examples = [
 		'$ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>',
@@ -122,7 +122,7 @@ export default class ApplicationsLogin extends Command {
 
 			writeConfigFile(this.config, app)
 
-			writeTokenFile(this.config, app, token?.data)
+			writeTokenFile(this.config, app, token)
 
 			currentApplication(app)
 			const current = currentApplication()

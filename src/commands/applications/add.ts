@@ -69,7 +69,7 @@ export default class ApplicationsAdd extends Command {
 
       writeConfigFile(this.config, app)
 
-      writeTokenFile(this.config, app, token?.data)
+      writeTokenFile(this.config, app, token)
 
       this.log(`\n${clColor.msg.success.bold('Login successful!')} The new application has been successfully added to the CLI\n`)
 

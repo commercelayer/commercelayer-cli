@@ -7,7 +7,7 @@ export default class ApplicationsLogout extends Command {
 
   static description = 'remove an application from CLI local configuration'
 
-  static aliases = ['app:logout', 'app:remove', 'applications:remove']
+  static aliases = ['app:logout', 'app:remove', 'applications:remove', 'logout']
 
   static flags = {
     revoke: Flags.boolean({
