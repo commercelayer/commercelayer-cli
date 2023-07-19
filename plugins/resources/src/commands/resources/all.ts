@@ -3,9 +3,9 @@
 /* eslint-disable complexity */
 import Command, { Flags, cliux } from '../../base'
 import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
+import { getAccessToken } from '@commercelayer/cli-core/lib/cjs/token'
 import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
-import { getIntegrationToken } from '@commercelayer/js-auth'
 
 
 // const maxPagesWarning = 1000
@@ -136,11 +136,12 @@ export default class ResourcesAll extends Command {
       const organization = flags.organization
       const domain = flags.domain
 
-      const token = await getIntegrationToken({
+      const token = await getAccessToken({
         clientId: flags.clientId || '',
         clientSecret: flags.clientSecret || '',
-        endpoint: clApi.baseURL(organization, domain),
-      })?.catch(error => {
+        slug: organization,
+        domain
+      })?.catch((error: any) => {
         this.error('Unable to refresh access token: ' + String(error.message))
       })
 

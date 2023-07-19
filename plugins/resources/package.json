@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "5.17.5",
+  "version": "5.17.6",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "engines": {
@@ -60,8 +60,8 @@
   "devDependencies": {
     "@commercelayer/cli-dev": "2.0.5",
     "@commercelayer/eslint-config-ts": "^1.0.1",
-    "@oclif/plugin-help": "^5.2.12",
-    "@oclif/test": "^2.3.28",
+    "@oclif/plugin-help": "^5.2.14",
+    "@oclif/test": "^2.3.31",
     "@types/chai": "^4.3.5",
     "@types/inquirer": "^8.2.6",
     "@types/lodash": "^4.14.195",
@@ -69,7 +69,7 @@
     "@types/node": "^20.4.2",
     "@types/node-notifier": "^8.0.2",
     "chai": "^4.3.7",
-    "eslint": "^8.44.0",
+    "eslint": "^8.45.0",
     "inflector-js": "^1.0.1",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
@@ -78,9 +78,8 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^3.12.1",
-    "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/sdk": "^5.7.0",
-    "@oclif/core": "^2.9.2",
+    "@oclif/core": "^2.9.4",
     "axios": "^1.4.0",
     "inquirer": "^8.2.5",
     "json-2-csv": "^3.20.0",
