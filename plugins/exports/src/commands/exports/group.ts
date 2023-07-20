@@ -76,14 +76,14 @@ export default class ExportsGroup extends Command {
 				})
 
 				// let index = 0
-				table.push(...tableData.map(i => [
+				table.push(...tableData.map(e => [
 					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
-					clColor.blueBright(i.id || ''),
-					i.resource_type || '',
-					{ content: this.exportStatus(i.status), hAlign: 'center' as HorizontalAlignment },
-					{ content: i.records_count, hAlign: 'center' as HorizontalAlignment },
-					clOutput.localeDate(i.started_at || ''),
-					clOutput.localeDate(i.completed_at || ''),
+					clColor.blueBright(e.id || ''),
+					e.resource_type || '',
+					{ content: this.exportStatus(e.status), hAlign: 'center' as HorizontalAlignment },
+					{ content: e.records_count, hAlign: 'center' as HorizontalAlignment },
+					clOutput.localeDate(e.started_at || ''),
+					clOutput.localeDate(e.completed_at || ''),
 				]))
 
 				this.log(table.toString())

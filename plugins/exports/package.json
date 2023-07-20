@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-exports",
   "description": "Commerce Layer CLI Exports plugin",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-exports/issues",
   "engines": {
@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^3.12.1",
-    "@commercelayer/sdk": "^5.7.0",
+    "@commercelayer/sdk": "^5.8.0",
     "@oclif/core": "^2.9.4",
     "axios": "^1.4.0",
     "cli-table3": "^0.6.3",
