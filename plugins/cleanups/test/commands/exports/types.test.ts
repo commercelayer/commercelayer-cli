@@ -1,10 +1,10 @@
 import { expect, test } from '@oclif/test'
 
-describe('exports:types', () => {
+describe('cleanups:types', () => {
   test
     .timeout(15000)
     .stdout()
-    .command(['exports:noc'])
+    .command(['cleanups:noc'])
     .it('runs NoC', ctx => {
       expect(ctx.stdout).to.contain('-= NoC =-')
     })

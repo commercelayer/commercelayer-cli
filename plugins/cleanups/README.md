@@ -27,6 +27,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer cleanups [ID]`](#commercelayer-cleanups-id)
 * [`commercelayer cleanups:create`](#commercelayer-cleanupscreate)
 * [`commercelayer cleanups:details ID`](#commercelayer-cleanupsdetails-id)
+* [`commercelayer cleanups:group GROUP_ID`](#commercelayer-cleanupsgroup-group_id)
 * [`commercelayer cleanups:list`](#commercelayer-cleanupslist)
 * [`commercelayer cleanups:types`](#commercelayer-cleanupstypes)
 
@@ -114,6 +115,31 @@ EXAMPLES
 ```
 
 _See code: [src/commands/cleanups/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/details.ts)_
+
+### `commercelayer cleanups:group GROUP_ID`
+
+List all the cleanups related to a cleanup group.
+
+```sh-session
+USAGE
+  $ commercelayer cleanups:group GROUP_ID
+
+ARGUMENTS
+  GROUP_ID  unique id of the group cleanup
+
+DESCRIPTION
+  list all the cleanups related to a cleanup group
+
+ALIASES
+  $ commercelayer clp:group
+
+EXAMPLES
+  $ commercelayer cleanups:group <group-id>
+
+  $ cl clp:group <group-id>
+```
+
+_See code: [src/commands/cleanups/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/group.ts)_
 
 ### `commercelayer cleanups:list`
 

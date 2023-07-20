@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-cleanups",
   "description": "Commerce Layer CLI Cleanups plugin",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/issues",
   "engines": {
@@ -71,7 +71,7 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^3.12.1",
-    "@commercelayer/sdk": "^5.7.0",
+    "@commercelayer/sdk": "^5.8.0",
     "@oclif/core": "^2.9.4",
     "cli-progress": "^3.12.0",
     "cli-table3": "^0.6.3",
