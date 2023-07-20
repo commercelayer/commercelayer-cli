@@ -9,8 +9,8 @@ dependencies:
     specifier: ^4.0.4
     version: 4.0.4(@types/node@20.4.2)(typescript@5.1.6)
   '@commercelayer/sdk':
-    specifier: ^5.7.0
-    version: 5.7.0
+    specifier: ^5.8.0
+    version: 5.8.0
   '@oclif/core':
     specifier: ^2.9.4
     version: 2.9.4(@types/node@20.4.2)(typescript@5.1.6)
@@ -367,8 +367,8 @@ packages:
     engines: {node: '>=18.0.0'}
     dev: false
 
-  /@commercelayer/sdk@5.7.0:
-    resolution: {integrity: sha512-0SLwI9PKg9dNedy7SABL0KT+QYT25ZBq37TjzU/IQukifuHdEVLnDA5R+9eDQdOoeAO4PbCFDAyxwotLsaCM2w==}
+  /@commercelayer/sdk@5.8.0:
+    resolution: {integrity: sha512-Kxb1OfXwtpSj02NejhRc0G98MSyYp4sElIqA2OPob73XxCG4QZgz+RVGI6Gq/z8F7da+BHFSxqHvVjBlmDkslQ==}
     engines: {node: '>=16 || ^14.17'}
     dependencies:
       axios: 1.4.0
@@ -717,7 +717,7 @@ packages:
       fs-extra: 9.1.0
       http-call: 5.3.0
       load-json-file: 5.3.0
-      npm: 9.8.0
+      npm: 9.8.1
       npm-run-path: 4.0.1
       semver: 7.5.4
       shelljs: 0.8.5
@@ -1243,7 +1243,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001517
-      electron-to-chromium: 1.4.464
+      electron-to-chromium: 1.4.466
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
     dev: true
@@ -1641,8 +1641,8 @@ packages:
     dependencies:
       jake: 10.8.7
 
-  /electron-to-chromium@1.4.464:
-    resolution: {integrity: sha512-guZ84yoou4+ILNdj0XEbmGs6DEWj6zpVOWYpY09GU66yEb0DSYvP/biBPzHn0GuW/3RC/pnaYNUWlQE1fJYtgA==}
+  /electron-to-chromium@1.4.466:
+    resolution: {integrity: sha512-TSkRvbXRXD8BwhcGlZXDsbI2lRoP8dvqR7LQnqQNk9KxXBc4tG8O+rTuXgTyIpEdiqSGKEBSqrxdqEntnjNncA==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -3219,8 +3219,8 @@ packages:
       path-key: 3.1.1
     dev: false
 
-  /npm@9.8.0:
-    resolution: {integrity: sha512-AXeiBAdfM5K2jvBwA7EGLKeYyt0VnhmJRnlq4k2+M0Ao9v7yKJBqF8xFPzQL8kAybzwlfpTPCZwM4uTIszb3xA==}
+  /npm@9.8.1:
+    resolution: {integrity: sha512-AfDvThQzsIXhYgk9zhbk5R+lh811lKkLAeQMMhSypf1BM7zUafeIIBzMzespeuVEJ0+LvY36oRQYf7IKLzU3rw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     hasBin: true
     dev: false
@@ -3228,8 +3228,10 @@ packages:
       - '@isaacs/string-locale-compare'
       - '@npmcli/arborist'
       - '@npmcli/config'
+      - '@npmcli/fs'
       - '@npmcli/map-workspaces'
       - '@npmcli/package-json'
+      - '@npmcli/promise-spawn'
       - '@npmcli/run-script'
       - abbrev
       - archy
