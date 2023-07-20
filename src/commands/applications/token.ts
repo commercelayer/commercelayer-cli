@@ -149,7 +149,7 @@ const isAccessTokenExpiring = (tokenData: any): boolean => {
 const generateAccessToken = (config: Config, app: AppKey, sharedSecret: string, valMinutes?: number): CustomToken => {
 
 	const savedToken = readTokenFile(config, app)
-	const tokenData = clToken.decodeAccessToken(savedToken.access_token)
+	const tokenData = clToken.decodeAccessToken(savedToken.accessToken)
 
 	let minutes = (valMinutes === undefined) ? defaultTokenExpiration : valMinutes
 	if (minutes < 2) minutes = 2

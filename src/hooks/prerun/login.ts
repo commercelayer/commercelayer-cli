@@ -101,7 +101,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 				refresh = true
 				// If not overridden by saved current application, load configuration data
 				if (!configData) configData = readConfigFile(this.config, app)
-				await clToken.revokeAccessToken(configData, tokenData.access_token)
+				await clToken.revokeAccessToken(configData, tokenData.accessToken)
 				tokenData = null
 			}
 		}
@@ -114,9 +114,9 @@ const hook: Hook<'prerun'> = async function (opts) {
 			if (refresh) cliux.action.stop()
 		}
 
-		if (!tokenData?.access_token) this.error('Unable to refresh application access token')
+		if (!tokenData?.accessToken) this.error('Unable to refresh application access token')
 
-		opts.argv.push('--accessToken=' + String(tokenData.access_token))
+		opts.argv.push('--accessToken=' + String(tokenData.accessToken))
 
 	}
 

@@ -36,7 +36,7 @@ export default class ApplicationsLogout extends Command {
           if (flags.revoke) {
             const configData = readConfigFile(this.config, app)
             const tokenData = readTokenFile(this.config, app)
-            await clToken.revokeAccessToken(configData, tokenData.access_token)
+            await clToken.revokeAccessToken(configData, tokenData.accessToken)
             this.log('\nCurrent access token has been revoked')
           }
 
