@@ -54,7 +54,7 @@ devDependencies:
     version: 3.0.0
   '@oclif/test':
     specifier: ^2.3.31
-    version: 2.3.31(@types/node@20.4.2)(typescript@5.1.6)
+    version: 2.3.33(@types/node@20.4.2)(typescript@5.1.6)
   '@types/chai':
     specifier: ^4.3.5
     version: 4.3.5
@@ -732,8 +732,8 @@ packages:
       - typescript
     dev: false
 
-  /@oclif/test@2.3.31(@types/node@20.4.2)(typescript@5.1.6):
-    resolution: {integrity: sha512-dTWCni+Zv9aSuzyamS95+GJaIub6EAI+CT+pA1MP10RZF54mF7CKaas7t8dvNvDp1Y194hi64cqe+cNwZlR5ng==}
+  /@oclif/test@2.3.33(@types/node@20.4.2)(typescript@5.1.6):
+    resolution: {integrity: sha512-AmhsxZRDDqJHTk1mDQ+Rl3mNUvb7GIXNcNdP7G7r5l3fRYBUsbzflSy3M760WZfAW4r85rnB+SNG5OBvmajWow==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@oclif/core': 2.9.4(@types/node@20.4.2)(typescript@5.1.6)
