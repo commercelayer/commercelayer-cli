@@ -25,7 +25,7 @@ dependencies:
     version: 2.3.32(@types/node@20.4.2)(typescript@5.1.6)
   '@oclif/plugin-plugins':
     specifier: ^3.1.7
-    version: 3.1.7(@types/node@20.4.2)(typescript@5.1.6)
+    version: 3.1.8(@types/node@20.4.2)(typescript@5.1.6)
   configstore:
     specifier: ^5.0.1
     version: 5.0.1
@@ -706,8 +706,8 @@ packages:
       - typescript
     dev: false
 
-  /@oclif/plugin-plugins@3.1.7(@types/node@20.4.2)(typescript@5.1.6):
-    resolution: {integrity: sha512-rGH3unndc5bY73b63K9IrGnXM6XeB7vOALKVHbbiia3fPIf4oG2ybjo1MBHyUsfwZYifRc/GK2RAZ8cle0GqDA==}
+  /@oclif/plugin-plugins@3.1.8(@types/node@20.4.2)(typescript@5.1.6):
+    resolution: {integrity: sha512-514sFBzLcR9QCSMWCHt/1XntfjJEZvb637b9YuV4kwq749pKEPF7fjCxSV1gYQCCP4TjMB5gB4AwPL4cCbe+/A==}
     engines: {node: '>=16'}
     dependencies:
       '@oclif/color': 1.0.9
