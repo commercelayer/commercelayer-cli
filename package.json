@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.13.3",
+  "version": "5.13.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -115,10 +115,10 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^4.0.4",
-    "@commercelayer/sdk": "^5.9.1",
+    "@commercelayer/sdk": "^5.10.0",
     "@oclif/core": "^2.10.0",
     "@oclif/plugin-autocomplete": "^2.3.3",
-    "@oclif/plugin-help": "5.2.13",
+    "@oclif/plugin-help": "5.2.14",
     "@oclif/plugin-not-found": "^2.3.34",
     "@oclif/plugin-plugins": "^3.1.8",
     "configstore": "^5.0.1",

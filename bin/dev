@@ -20,9 +20,10 @@ const mainModule = PATCH? require('../src/patches/oclif/core/main') : oclif
 mainModule.run()
 	.then(oclif.flush(60000))
 	.catch(error => {
+		console.log(error)
 		if (error.code === 'EEXIT' && error.oclif.exit === 0) { /* command exit (quit) */ }
 		else
-		if (error.message !== 'HOOK_EXIT') { /* hook exit */ }
+		if (error.message === 'HOOK_EXIT') { /* hook exit */ }
 		else
 		return oclif.Errors.handle(error)
 	})
