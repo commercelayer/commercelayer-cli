@@ -1,22 +1,27 @@
 
-import { getAccessToken } from '../src/token'
+import { AccessToken, AccessTokenInfo, isAccessTokenExpiring } from '../src/token'
 
 
 
-const TOKEN = process.env.CL_CLI_ACCESS_TOKEN || 'eyJhbGciOiJIUzUxMiJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJPWE5NV0Z4UXB5Iiwic2x1ZyI6ImNsaS10ZXN0LW9yZyIsImVudGVycHJpc2UiOmZhbHNlfSwiYXBwbGljYXRpb24iOnsiaWQiOiJvTUtWUmlsZ0pHIiwia2luZCI6InNhbGVzX2NoYW5uZWwiLCJwdWJsaWMiOnRydWV9LCJ0ZXN0Ijp0cnVlLCJleHAiOjE2NjkyMzA2ODgsIm1hcmtldCI6eyJpZCI6WyJBb25FVmhiTnZsIl0sInByaWNlX2xpc3RfaWQiOiJHa2FReUNSZ3JrIiwic3RvY2tfbG9jYXRpb25faWRzIjpbIkpuVlBndXBQRGsiLCJCbmFKUXVPVmRHIl0sImdlb2NvZGVyX2lkIjpudWxsLCJhbGxvd3NfZXh0ZXJuYWxfcHJpY2VzIjpmYWxzZX0sInJhbmQiOjAuNzEyMjYxNjkxMjQ0Mjg1NX0.DIPGpIZko7ezx3jP859RLwwYbsPkCZ9N2G5I2qJPByLeboK3wv9l0CnnuW-vlyaaVwv4TKeYuIM_Ou5wT1WF9w'
+const TOKEN = process.env.CL_CLI_ACCESS_TOKEN || 'eyJhbGciOiJIUzUxMiJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJPUkttVkZsd2FYIiwic2x1ZyI6ImJyaW9uaSIsImVudGVycHJpc2UiOnRydWV9LCJhcHBsaWNhdGlvbiI6eyJpZCI6IkxHbWdPaVFnRHAiLCJraW5kIjoiaW50ZWdyYXRpb24iLCJwdWJsaWMiOmZhbHNlfSwidGVzdCI6dHJ1ZSwiZXhwIjoxNjkwNDg0ODAzLCJyYW5kIjowLjc5MTgzODA3ODExNDc5NH0.rq4c-D8cNzr8wbViaSTxmWcIcB6MIpXupo_B6qbRrhu12kjR44IJK-z2Lew8M8g1UmKUdQbqTiSIrk6JyW8o0w'
 
 const SCOPE = 'market:4426'
 
+const tokenData: AccessToken = JSON.parse(
+	`{
+		"accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJvcmdhbml6YXRpb24iOnsiaWQiOiJPWE5NV0Z4UXB5Iiwic2x1ZyI6ImNsaS10ZXN0LW9yZyIsImVudGVycHJpc2UiOmZhbHNlfSwiYXBwbGljYXRpb24iOnsiaWQiOiJkTW5XbWlSZ0pwIiwia2luZCI6ImludGVncmF0aW9uIiwicHVibGljIjpmYWxzZX0sInRlc3QiOnRydWUsImV4cCI6MTY5MDQ2ODMwMCwicmFuZCI6MC45NDkxMDU1MjIyMjc1ODc0fQ.Wlv5kQ9afr2P3SZk74dGcvKVWL9zaPp8n81eaTOBZtQ-Dz8Md8gPOyUMDq9SiIMqAg1iCcqjF69nZ6BqQv0OFA",
+		"tokenType": "Bearer",
+		"expiresIn": 7200,
+		"scope": "market:all",
+		"createdAt": 1690461100,
+		"expires": "2023-07-27T14:31:40.306Z"
+	}`
+)
+
 async function test() {
-	return getAccessToken({
-		slug: process.env.CL_CLI_ORGANIZATION || '',
-		clientId: process.env.CL_CLI_CLIENT_ID || '',
-		clientSecret: process.env.CL_CLI_CLIENT_SECRET || '',
-		domain: process.env.CL_CLI_DOMAIN,
-		scope: SCOPE,
-		email: 'testpwd@cli-test.org',
-		password: 'password'
-	})
+
+	console.log(tokenData)
+	return isAccessTokenExpiring(tokenData)
 }
 
 

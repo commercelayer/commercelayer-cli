@@ -13,7 +13,7 @@ export type AuthScope = string | string[]
 
 export type AccessToken = {
   accessToken: string;
-  tokenType: 'bearer';
+  tokenType: 'bearer' | 'Bearer';
   expiresIn: number;
   expires: Date;
   scope: AuthScope;
@@ -214,15 +214,14 @@ const revokeAccessTokenAxios = async (app: AppAuth, token: string, logger?: { lo
 */
 
 
-const isAccessTokenExpiring = (tokenData: { createdAt: number }, validityMins?: number): boolean => {
+const isAccessTokenExpiring = (tokenData: AccessToken): boolean => {
 
   const safetyInterval = 30 // secs
-  const maxExpiration = (validityMins || config.api.token_expiration_mins) * 60 // secs
 
   const now = Math.floor(Date.now() / 1000) // secs
-  const time = now - tokenData.createdAt
+  const expiration = Math.floor(new Date(tokenData.expires).getTime() / 1000) // secs
 
-  return (time >= (maxExpiration - safetyInterval))
+  return (now >= (expiration - safetyInterval))
 
 }
 

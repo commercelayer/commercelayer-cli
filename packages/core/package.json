@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
@@ -12,6 +12,7 @@
     "start": "ts-node src/index.ts",
     "prepare": "npm run build",
     "test": "jest",
+    "test-local": "ts-node test/token.ts",
     "coverage": "jest --coverage",
     "size": "size-limit",
     "analyze": "size-limit --why",
