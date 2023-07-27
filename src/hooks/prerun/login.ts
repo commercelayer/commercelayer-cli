@@ -96,9 +96,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 		if (tokenFileExists(opts.config, app)) {
 			tokenData = readTokenFile(opts.config, app)
-console.log(tokenData)
 			if (clToken.isAccessTokenExpiring(tokenData)) {
-console.log('EXPIRING!!!!')
 				cliux.action.start('Refreshing access token ...')
 				refresh = true
 				// If not overridden by saved current application, load configuration data
