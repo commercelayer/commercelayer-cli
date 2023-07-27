@@ -1,7 +1,7 @@
 import { type Hook, ux as cliux } from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
 import { clApplication, type AppKey, clToken, clColor, clCommand } from '@commercelayer/cli-core'
-import { newAccessToken, isAccessTokenExpiring } from '../../commands/applications/token'
+import { newAccessToken } from '../../commands/applications/token'
 
 
 
@@ -96,7 +96,9 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 		if (tokenFileExists(opts.config, app)) {
 			tokenData = readTokenFile(opts.config, app)
-			if (isAccessTokenExpiring(tokenData)) {
+console.log(tokenData)
+			if (clToken.isAccessTokenExpiring(tokenData)) {
+console.log('EXPIRING!!!!')
 				cliux.action.start('Refreshing access token ...')
 				refresh = true
 				// If not overridden by saved current application, load configuration data

@@ -133,19 +133,6 @@ const newAccessToken = async (config: Config, app: AppKey, save: boolean = false
 }
 
 
-const isAccessTokenExpiring = (tokenData: any): boolean => {
-
-	const safetyInterval = 30 // secs
-
-	const createdAt = Number(tokenData.created_at)
-	const now = Math.floor(Date.now() / 1000)
-	const time = now - createdAt
-
-	return (time >= (7200 - safetyInterval))
-
-}
-
-
 const generateAccessToken = (config: Config, app: AppKey, sharedSecret: string, valMinutes?: number): CustomToken => {
 
 	const savedToken = readTokenFile(config, app)
@@ -169,4 +156,4 @@ const generateAccessToken = (config: Config, app: AppKey, sharedSecret: string, 
 
 
 
-export { newAccessToken, isAccessTokenExpiring }
+export { newAccessToken }
