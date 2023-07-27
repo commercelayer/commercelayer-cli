@@ -8,5 +8,9 @@ oclif.run()
 	.then(require('@oclif/core/flush')(60000))
 	.catch(error => {
 		const oclifHandler = require('@oclif/core/handle')
-		if (error.message !== 'HOOK_EXIT') return oclifHandler(error)
+		if (error.code === 'EEXIT' && error.oclif.exit === 0) { /* command exit (quit) */ }
+		else
+		if (error.message !== 'HOOK_EXIT') { /* hook exit */ }
+		else
+		return oclifHandler(error)
 	})
