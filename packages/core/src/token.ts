@@ -214,13 +214,13 @@ const revokeAccessTokenAxios = async (app: AppAuth, token: string, logger?: { lo
 */
 
 
-const isAccessTokenExpiring = (tokenData: { created_at: string }, validityMins?: number): boolean => {
+const isAccessTokenExpiring = (tokenData: { createdAt: string } | { created_at: string }, validityMins?: number): boolean => {
 
   const safetyInterval = 30 // secs
   const maxExpiration = (validityMins || config.api.token_expiration_mins) * 60 // secs
 
 
-  const createdAt = Number(tokenData.created_at)
+  const createdAt = Number((tokenData as { created_at: string }).created_at || (tokenData as { createdAt: string }).createdAt)
   const now = Math.floor(Date.now() / 1000) // secs
   const time = now - createdAt
 
