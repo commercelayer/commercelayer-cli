@@ -10,7 +10,7 @@ dependencies:
     version: 4.0.4(@types/node@20.4.5)(typescript@5.1.6)
   '@commercelayer/sdk':
     specifier: ^5.9.1
-    version: 5.9.1
+    version: 5.10.0
   '@oclif/core':
     specifier: ^2.10.0
     version: 2.10.0(@types/node@20.4.5)(typescript@5.1.6)
@@ -367,8 +367,8 @@ packages:
     engines: {node: '>=18.0.0'}
     dev: false
 
-  /@commercelayer/sdk@5.9.1:
-    resolution: {integrity: sha512-gjj0AtQ7MtKE/1FHaqbYXefiAyGjGhw4gb9jBhEv4DH7CK/gp1A+f4LD3ZVoZhJTWdPxadl3TRc/KD9nGBiJ8A==}
+  /@commercelayer/sdk@5.10.0:
+    resolution: {integrity: sha512-XUUyzDqbXsWYGfqoDrRDN01CMMJVvsDusrRltQF4RGvR/lyGIYB7oFbuJrrftpW3IGOhSvmzfrqtKf3//E0T4g==}
     engines: {node: '>=16 || ^14.17'}
     dependencies:
       axios: 1.4.0
