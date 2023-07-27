@@ -19,8 +19,6 @@ const tokenData: AccessToken = JSON.parse(
 )
 
 async function test() {
-
-	console.log(tokenData)
 	return isAccessTokenExpiring(tokenData)
 }
 
