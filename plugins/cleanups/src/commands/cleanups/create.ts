@@ -50,6 +50,7 @@ export default class CleanupsCreate extends Command {
   static examples = [
     '$ commercelayer cleanups:create -t skus',
     '$ cl clp:create -t stock_items',
+    '$ cl cleanup -t skus -w reference_origin_eq=<ref-id>'
   ]
 
   static flags = {
@@ -280,8 +281,8 @@ export default class CleanupsCreate extends Command {
 
       return clp
 
-      // eslint-disable-next-line @typescript-eslint/promise-function-async
-    }).catch(error => {
+      
+    }).catch(async error => {
       this.handleError(error)
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
       return Promise.reject(error)

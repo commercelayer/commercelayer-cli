@@ -4,8 +4,6 @@ import { clOutput, clColor, clText } from '@commercelayer/cli-core'
 
 
 
-
-
 export default class CleanupsDetails extends Command {
 
   static description = 'show the details of an existing cleanup'
@@ -13,7 +11,7 @@ export default class CleanupsDetails extends Command {
   static aliases = ['clp:details']
 
   static examples = [
-    '$ commercelayer cleanups:details cleanup-id>',
+    '$ commercelayer cleanups:details <cleanup-id>',
     '$ cl clp:details <cleanup-id>',
   ]
 
