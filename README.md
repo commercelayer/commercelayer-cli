@@ -88,6 +88,7 @@ The Commerce Layer CLI currently supports the following plugins:
 * [`microstore`](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/blob/main/README.md) - Generate Microstore URLs.
 * [`exports`](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/README.md) - Export resources from Commerce Layer.
 * [`cleanups`](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/README.md) - Cleanup resources from Commerce Layer.
+* [`tags`](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/README.md) - Manage resources tags in Commerce Layer.
 
 You can run the command below to get a list of all available CLI plugins:
 
