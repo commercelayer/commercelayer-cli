@@ -1,7 +1,7 @@
 import Command, { Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import type { QueryParamsList } from '@commercelayer/sdk'
-import { clColor, clConfig, clOutput, clText } from '@commercelayer/cli-core'
+import { clApi, clColor, clConfig, clOutput, clText, clUtil } from '@commercelayer/cli-core'
 
 
 const MAX_EXPORTS = 1000
@@ -65,6 +65,7 @@ export default class ExportsList extends Command {
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
 			cliux.action.start('Fetching exports')
+			let delay = 0
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -88,9 +89,10 @@ export default class ExportsList extends Command {
 					if (currentPage === 1) {
 						pageCount = this.computeNumPages(flags, exports.meta)
 						totalItems = exports.meta.recordCount
+						delay = clApi.requestRateLimitDelay({ resourceType: this.cl.exports.type(), totalRequests: pageCount })
 					}
-
 					itemCount += exports.length
+					if (delay > 0) await clUtil.sleep(delay)
 				}
 
 			}

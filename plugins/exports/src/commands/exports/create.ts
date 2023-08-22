@@ -14,7 +14,7 @@ export default class ExportsCreate extends ExportCommand {
 
   static examples = [
     '$ commercelayer exports:create -t orders -X <output-file-path>',
-    '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org',
+    '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv',
   ]
 
   static flags = {
