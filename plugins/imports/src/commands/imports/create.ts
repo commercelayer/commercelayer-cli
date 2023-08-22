@@ -317,7 +317,7 @@ export default class ImportsCreate extends Command {
       // eslint-disable-next-line @typescript-eslint/promise-function-async
     }).catch(error => {
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
-      console.log(error)
+      // console.log(error)
       return Promise.reject(error)
     })
 
