@@ -1,6 +1,6 @@
 import Command, { Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
-import { clConfig, clOutput, clColor } from '@commercelayer/cli-core'
+import { clConfig, clOutput, clColor, clApi, clUtil } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import type { EventCallback, QueryParamsList } from '@commercelayer/sdk'
 
@@ -59,6 +59,7 @@ export default class WebhooksEvents extends Command {
 			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
 
 			cliux.action.start('Fetching events')
+      let delay = 0
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
@@ -80,7 +81,6 @@ export default class WebhooksEvents extends Command {
 				  */
 				}
 
-				// eslint-disable-next-line no-await-in-loop
 				const events = await cl.event_callbacks.list(params)
 
 				if (events?.length) {
@@ -89,13 +89,13 @@ export default class WebhooksEvents extends Command {
 					if (currentPage === 1) {
 						pageCount = this.computeNumPages(flags, events.meta)
 						totalItems = events.meta.recordCount
+            delay = clApi.requestRateLimitDelay({ resourceType: cl.event_callbacks.type(), totalRequests: pageCount })
 					}
-
 					itemCount += events.length
+          if (delay > 0) await clUtil.sleep(delay)
 				}
 
 			}
-
 			cliux.action.stop()
 
 			this.log()

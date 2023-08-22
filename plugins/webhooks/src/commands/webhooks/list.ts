@@ -1,7 +1,7 @@
-import { BaseCommand, Flags } from '../../base'
+import { BaseCommand, Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import type { QueryParamsList } from '@commercelayer/sdk'
-import { clColor } from '@commercelayer/cli-core'
+import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 
 
 export default class WebhooksList extends BaseCommand {
@@ -42,25 +42,30 @@ export default class WebhooksList extends BaseCommand {
 			let currentPage = 0
 			let pageCount = 1
 
+      cliux.action.start('Fetching imports')
+      let delay = 0
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
-					pageSize: 25,
+					pageSize: clConfig.api.page_max_size,
 					pageNumber: ++currentPage,
 				}
 
 				if (flags.topic) params.filters = { topic_eq: flags.topic }
 
-				// eslint-disable-next-line no-await-in-loop
+
 				const webhooks = await cl.webhooks.list(params)
 
 				if (webhooks?.length) {
 					tableData.push(...webhooks)
 					currentPage = webhooks.meta.currentPage
 					pageCount = webhooks.meta.pageCount
+          if (currentPage === 1) delay = clApi.requestRateLimitDelay({ resourceType: cl.webhooks.type(), totalRequests: pageCount })
+          if (delay > 0) await clUtil.sleep(delay)
 				}
 
 			}
+      cliux.action.stop()
 
 
 			if (flags.circuit && tableData?.length) tableData = tableData.filter(w => (w.circuit_state === flags.circuit))
