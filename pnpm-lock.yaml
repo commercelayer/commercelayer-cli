@@ -54,7 +54,7 @@ devDependencies:
     version: 3.0.0
   '@oclif/test':
     specifier: ^2.4.6
-    version: 2.4.6(@types/node@20.5.3)(typescript@5.1.6)
+    version: 2.4.7(@types/node@20.5.3)(typescript@5.1.6)
   '@types/chai':
     specifier: ^4.3.5
     version: 4.3.5
@@ -574,6 +574,47 @@ packages:
       - supports-color
     dev: true
 
+  /@oclif/core@2.11.10(@types/node@20.5.3)(typescript@5.1.6):
+    resolution: {integrity: sha512-/7Umij3OU++6o+z4U+waJ5nP6IvK9KKEVzz+xsla68YoECLQwz43boUKqYizlNMtTfiwNkiYb5QE+OU/q5qEtA==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@types/cli-progress': 3.11.0
+      ansi-escapes: 4.3.2
+      ansi-styles: 4.3.0
+      cardinal: 2.1.1
+      chalk: 4.1.2
+      clean-stack: 3.0.1
+      cli-progress: 3.12.0
+      debug: 4.3.4(supports-color@8.1.1)
+      ejs: 3.1.9
+      fs-extra: 9.1.0
+      get-package-type: 0.1.0
+      globby: 11.1.0
+      hyperlinker: 1.0.0
+      indent-string: 4.0.0
+      is-wsl: 2.2.0
+      js-yaml: 3.14.1
+      natural-orderby: 2.0.3
+      object-treeify: 1.1.33
+      password-prompt: 1.1.3
+      semver: 7.5.4
+      slice-ansi: 4.0.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      supports-color: 8.1.1
+      supports-hyperlinks: 2.3.0
+      ts-node: 10.9.1(@types/node@20.5.3)(typescript@5.1.6)
+      tslib: 2.6.2
+      widest-line: 3.1.0
+      wordwrap: 1.0.0
+      wrap-ansi: 7.0.0
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - typescript
+    dev: true
+
   /@oclif/core@2.11.8(@types/node@20.5.3)(typescript@5.1.6):
     resolution: {integrity: sha512-GILmztcHBzze45GvxRpUvqQI5nM26kSE/Q21Y+6DtMR+C8etM/hFW26D3uqIAbGlGtg5QEZZ6pjA/Fqgz+gl3A==}
     engines: {node: '>=14.0.0'}
@@ -727,11 +768,11 @@ packages:
       - typescript
     dev: false
 
-  /@oclif/test@2.4.6(@types/node@20.5.3)(typescript@5.1.6):
-    resolution: {integrity: sha512-lI3I+gqCzkY0yXWCyaIPhVoYJXyBhH7dHq9BkLeBtiaMTMlUsjOIYrO8azfUmFI58Qa1sgsrpbuuo5PBO2RFew==}
+  /@oclif/test@2.4.7(@types/node@20.5.3)(typescript@5.1.6):
+    resolution: {integrity: sha512-r18sKGNUm/VGQ8BkSF9Kn7QeMGjGMDUrLxTDPzL5ERaBF5YSi+O9CT3mKhcFdrMwGnCqPVvlAdX4U/6gtYPy1A==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.10(@types/node@20.5.3)(typescript@5.1.6)
       fancy-test: 2.0.35
     transitivePeerDependencies:
       - '@swc/core'
