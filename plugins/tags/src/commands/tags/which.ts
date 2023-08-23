@@ -50,12 +50,12 @@ export default class TagsWhich extends BaseIdCommand {
 
 		const idOrName = args.id_name
 		const tag = await this.checkTag(idOrName, true)
+		if (!tag) this.exit()
 
 
 		try {
 
 			const client: ApiResource<TaggableResource> = this.cl[resType as keyof CommerceLayerClient] as ApiResource<TaggableResource>
-			if (!tag) this.exit()
 
 			let pageSize = clConfig.api.page_max_size
 			const tableData = []

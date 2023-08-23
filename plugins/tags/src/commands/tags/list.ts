@@ -25,7 +25,7 @@ export default class TagsList extends Command {
 			char: 'l',
 			description: 'limit number of tags in output',
 			exclusive: ['all'],
-		}),
+		})
 	}
 
 

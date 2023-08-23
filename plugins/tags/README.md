@@ -26,6 +26,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 
 * [`commercelayer tags [ID]`](#commercelayer-tags-id)
 * [`commercelayer tags:add`](#commercelayer-tagsadd)
+* [`commercelayer tags:count ID_NAME`](#commercelayer-tagscount-id_name)
 * [`commercelayer tags:create`](#commercelayer-tagscreate)
 * [`commercelayer tags:delete`](#commercelayer-tagsdelete)
 * [`commercelayer tags:details ID_NAME`](#commercelayer-tagsdetails-id_name)
@@ -84,6 +85,32 @@ EXAMPLES
 ```
 
 _See code: [src/commands/tags/add.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/add.ts)_
+
+### `commercelayer tags:count ID_NAME`
+
+Count resources tagged with a specific tag.
+
+```sh-session
+USAGE
+  $ commercelayer tags:count ID_NAME [-t <value> | -z]
+
+ARGUMENTS
+  ID_NAME  unique id or name of the tag
+
+FLAGS
+  -t, --type=<value>  the type of the tagged resources
+  -z, --zero          show also resources without tags
+
+DESCRIPTION
+  count resources tagged with a specific tag
+
+EXAMPLES
+  $ commercelayer tags:count
+
+  $ cl tags:count -t <resource-type>
+```
+
+_See code: [src/commands/tags/count.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/count.ts)_
 
 ### `commercelayer tags:create`
 
