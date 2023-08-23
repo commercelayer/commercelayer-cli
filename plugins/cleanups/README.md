@@ -84,6 +84,8 @@ EXAMPLES
   $ commercelayer cleanups:create -t skus
 
   $ cl clp:create -t stock_items
+
+  $ cl cleanup -t skus -w reference_origin_eq=<ref-id>
 ```
 
 _See code: [src/commands/cleanups/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/create.ts)_
@@ -109,7 +111,7 @@ ALIASES
   $ commercelayer clp:details
 
 EXAMPLES
-  $ commercelayer cleanups:details cleanup-id>
+  $ commercelayer cleanups:details <cleanup-id>
 
   $ cl clp:details <cleanup-id>
 ```

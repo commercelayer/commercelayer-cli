@@ -7,13 +7,13 @@ settings:
 dependencies:
   '@commercelayer/cli-core':
     specifier: ^3.12.1
-    version: 3.12.1(@types/node@20.5.2)(typescript@5.1.6)
+    version: 3.12.1(@types/node@20.5.3)(typescript@5.1.6)
   '@commercelayer/sdk':
     specifier: ^5.12.5
     version: 5.12.5
   '@oclif/core':
     specifier: ^2.11.8
-    version: 2.11.8(@types/node@20.5.2)(typescript@5.1.6)
+    version: 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
   cli-progress:
     specifier: ^3.12.0
     version: 3.12.0
@@ -33,16 +33,16 @@ dependencies:
 devDependencies:
   '@commercelayer/cli-dev':
     specifier: ^2.0.5
-    version: 2.0.5(@types/node@20.5.2)(typescript@5.1.6)
+    version: 2.0.5(@types/node@20.5.3)(typescript@5.1.6)
   '@commercelayer/eslint-config-ts':
     specifier: ^1.0.1
     version: 1.0.1(eslint@8.47.0)(typescript@5.1.6)
   '@oclif/plugin-help':
     specifier: ^5.2.17
-    version: 5.2.17(@types/node@20.5.2)(typescript@5.1.6)
+    version: 5.2.17(@types/node@20.5.3)(typescript@5.1.6)
   '@oclif/test':
     specifier: ^2.4.6
-    version: 2.4.6(@types/node@20.5.2)(typescript@5.1.6)
+    version: 2.4.6(@types/node@20.5.3)(typescript@5.1.6)
   '@types/chai':
     specifier: ^4.3.5
     version: 4.3.5
@@ -53,8 +53,8 @@ devDependencies:
     specifier: ^10.0.1
     version: 10.0.1
   '@types/node':
-    specifier: ^20.5.2
-    version: 20.5.2
+    specifier: ^20.5.3
+    version: 20.5.3
   '@types/node-notifier':
     specifier: ^8.0.2
     version: 8.0.2
@@ -72,7 +72,7 @@ devDependencies:
     version: 15.1.0
   ts-node:
     specifier: ^10.9.1
-    version: 10.9.1(@types/node@20.5.2)(typescript@5.1.6)
+    version: 10.9.1(@types/node@20.5.3)(typescript@5.1.6)
   typescript:
     specifier: ^5.1.6
     version: 5.1.6
@@ -290,12 +290,12 @@ packages:
     dev: false
     optional: true
 
-  /@commercelayer/cli-core@3.12.1(@types/node@20.5.2)(typescript@5.1.6):
+  /@commercelayer/cli-core@3.12.1(@types/node@20.5.3)(typescript@5.1.6):
     resolution: {integrity: sha512-4+yPJxnPq7az3ag13CN2vM0iUhIoikiB/9rlhGOg86/usI69drpuHQLQc2jNe2gXJXcXfaRwuagrpx8y/0uh/Q==}
     engines: {node: ^16.13.0 || >=18.0.0}
     dependencies:
       '@commercelayer/js-auth': 2.3.0
-      '@oclif/core': 2.11.8(@types/node@20.5.2)(typescript@5.1.6)
+      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
       axios: 1.4.0
       chalk: 4.1.2
       jsonwebtoken: 8.5.1
@@ -309,12 +309,12 @@ packages:
       - typescript
     dev: false
 
-  /@commercelayer/cli-dev@2.0.5(@types/node@20.5.2)(typescript@5.1.6):
+  /@commercelayer/cli-dev@2.0.5(@types/node@20.5.3)(typescript@5.1.6):
     resolution: {integrity: sha512-pavZ/3aff5u11XLvSq0PEN/zAB3tCDDe3ltnpFShpGMEme8MxPQ5dsVLu7/+u8gip9ifPi/ek+ECE0CDWyUMng==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.2)(typescript@5.1.6)
+      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
       fs-extra: 10.1.0
       github-slugger: 1.5.0
       normalize-package-data: 5.0.0
@@ -496,7 +496,7 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oclif/core@2.11.8(@types/node@20.5.2)(typescript@5.1.6):
+  /@oclif/core@2.11.8(@types/node@20.5.3)(typescript@5.1.6):
     resolution: {integrity: sha512-GILmztcHBzze45GvxRpUvqQI5nM26kSE/Q21Y+6DtMR+C8etM/hFW26D3uqIAbGlGtg5QEZZ6pjA/Fqgz+gl3A==}
     engines: {node: '>=14.0.0'}
     dependencies:
@@ -525,7 +525,7 @@ packages:
       strip-ansi: 6.0.1
       supports-color: 8.1.1
       supports-hyperlinks: 2.3.0
-      ts-node: 10.9.1(@types/node@20.5.2)(typescript@5.1.6)
+      ts-node: 10.9.1(@types/node@20.5.3)(typescript@5.1.6)
       tslib: 2.6.2
       widest-line: 3.1.0
       wordwrap: 1.0.0
@@ -536,11 +536,11 @@ packages:
       - '@types/node'
       - typescript
 
-  /@oclif/plugin-help@5.2.17(@types/node@20.5.2)(typescript@5.1.6):
+  /@oclif/plugin-help@5.2.17(@types/node@20.5.3)(typescript@5.1.6):
     resolution: {integrity: sha512-8dhvATZZnkD8uq3etsvbVjjpdxiTqXTPjkMlU8ToQz09DL5BBzYApm65iTHFE0Vn9DPbKcNxX1d8YiF3ilgMOQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.2)(typescript@5.1.6)
+      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -548,11 +548,11 @@ packages:
       - typescript
     dev: true
 
-  /@oclif/test@2.4.6(@types/node@20.5.2)(typescript@5.1.6):
+  /@oclif/test@2.4.6(@types/node@20.5.3)(typescript@5.1.6):
     resolution: {integrity: sha512-lI3I+gqCzkY0yXWCyaIPhVoYJXyBhH7dHq9BkLeBtiaMTMlUsjOIYrO8azfUmFI58Qa1sgsrpbuuo5PBO2RFew==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.2)(typescript@5.1.6)
+      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
       fancy-test: 2.0.35
     transitivePeerDependencies:
       - '@swc/core'
@@ -606,7 +606,7 @@ packages:
   /@types/cli-progress@3.11.0:
     resolution: {integrity: sha512-XhXhBv1R/q2ahF3BM7qT5HLzJNlIL0wbcGyZVjqOTqAybAnsLisd7gy1UCyIqpL+5Iv6XhlSyzjLCnI2sIdbCg==}
     dependencies:
-      '@types/node': 20.5.2
+      '@types/node': 20.5.3
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
@@ -627,11 +627,11 @@ packages:
   /@types/node-notifier@8.0.2:
     resolution: {integrity: sha512-5v0PhPv0AManpxT7W25Zipmj/Lxp1WqfkcpZHyqSloB+gGoAHRBuzhrCelFKrPvNF5ki3gAcO4kxaGO2/21u8g==}
     dependencies:
-      '@types/node': 20.5.2
+      '@types/node': 20.5.3
     dev: true
 
-  /@types/node@20.5.2:
-    resolution: {integrity: sha512-5j/lXt7unfPOUlrKC34HIaedONleyLtwkKggiD/0uuMfT8gg2EOpg0dz4lCD15Ga7muC+1WzJZAjIB9simWd6Q==}
+  /@types/node@20.5.3:
+    resolution: {integrity: sha512-ITI7rbWczR8a/S6qjAW7DMqxqFMjjTo61qZVWJ1ubPvbIQsL5D/TvwjYEalM8Kthpe3hTzOGrF2TGbAu2uyqeA==}
 
   /@types/semver@7.5.0:
     resolution: {integrity: sha512-G8hZ6XJiHnuhQKR7ZmysCeJWE08o8T0AXtk5darsCaTVsYZhhgUrq53jizaR2FvsoeCwJhlmwTjkXBY5Pn/ZHw==}
@@ -1031,7 +1031,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001522
-      electron-to-chromium: 1.4.498
+      electron-to-chromium: 1.4.499
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
     dev: true
@@ -1394,8 +1394,8 @@ packages:
     dependencies:
       jake: 10.8.7
 
-  /electron-to-chromium@1.4.498:
-    resolution: {integrity: sha512-4LODxAzKGVy7CJyhhN5mebwe7U2L29P+0G+HUriHnabm0d7LSff8Yn7t+Wq+2/9ze2Fu1dhX7mww090xfv7qXQ==}
+  /electron-to-chromium@1.4.499:
+    resolution: {integrity: sha512-0NmjlYBLKVHva4GABWAaHuPJolnDuL0AhV3h1hES6rcLCWEIbRL6/8TghfsVwkx6TEroQVdliX7+aLysUpKvjw==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -1782,7 +1782,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/lodash': 4.14.197
-      '@types/node': 20.5.2
+      '@types/node': 20.5.3
       '@types/sinon': 10.0.16
       lodash: 4.17.21
       mock-stdin: 1.0.0
@@ -3597,7 +3597,7 @@ packages:
     resolution: {integrity: sha512-e4g0EJtAjk64xgnFPD6kTBUtpnMVzDrMb12N1YZV0VvSlhnVT3SGxiYTLdGy8Q5cYHOIC/FAHmZ10eGrAguicQ==}
     dev: false
 
-  /ts-node@10.9.1(@types/node@20.5.2)(typescript@5.1.6):
+  /ts-node@10.9.1(@types/node@20.5.3)(typescript@5.1.6):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -3616,7 +3616,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.5.2
+      '@types/node': 20.5.3
       acorn: 8.10.0
       acorn-walk: 8.2.0
       arg: 4.1.3

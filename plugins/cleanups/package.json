@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-cleanups",
   "description": "Commerce Layer CLI Cleanups plugin",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/issues",
   "engines": {
@@ -60,7 +60,7 @@
     "@types/chai": "^4.3.5",
     "@types/cli-progress": "^3.11.0",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^20.5.2",
+    "@types/node": "^20.5.3",
     "@types/node-notifier": "^8.0.2",
     "chai": "^4.3.7",
     "eslint": "^8.47.0",
