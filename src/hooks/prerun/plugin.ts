@@ -40,7 +40,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
       const p = getPluginInfo(a)
       if (p === undefined) this.error(`Unknown Commerce Layer CLI plugin: ${clColor.msg.error(a)}. Run '${clColor.italic(`${this.config.bin} plugins:available`)}' to get a list of all available plugins`)
-      else plugin = p.plugin as string
+      else plugin = p.plugin
 
       return true
 

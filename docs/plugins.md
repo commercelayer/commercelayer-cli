@@ -6,6 +6,7 @@ Manage CLI plugins.
 * [`commercelayer plugins:available`](#commercelayer-pluginsavailable)
 * [`commercelayer plugins:inspect PLUGIN...`](#commercelayer-pluginsinspect-plugin)
 * [`commercelayer plugins:install PLUGIN...`](#commercelayer-pluginsinstall-plugin)
+* [`commercelayer plugins:latest [PLUGIN]`](#commercelayer-pluginslatest-plugin)
 * [`commercelayer plugins:link PLUGIN`](#commercelayer-pluginslink-plugin)
 * [`commercelayer plugins:uninstall PLUGIN...`](#commercelayer-pluginsuninstall-plugin)
 * [`commercelayer plugins:update`](#commercelayer-pluginsupdate)
@@ -116,6 +117,28 @@ EXAMPLES
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v3.2.7/src/commands/plugins/install.ts)_
+
+### `commercelayer plugins:latest [PLUGIN]`
+
+Show latest version of available plugins.
+
+```sh-session
+USAGE
+  $ commercelayer plugins:latest [PLUGIN]
+
+ARGUMENTS
+  PLUGIN  the name of the plugin
+
+DESCRIPTION
+  show latest version of available plugins
+
+EXAMPLES
+  $ commercelayer plugins:latest
+
+  $ cl plugins:latest resources
+```
+
+_See code: [src/commands/plugins/latest.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/plugins/latest.ts)_
 
 ### `commercelayer plugins:link PLUGIN`
 

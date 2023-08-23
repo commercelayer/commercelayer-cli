@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.14.0",
+  "version": "5.15.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -104,7 +104,7 @@
     "@types/inquirer": "^8.2.6",
     "@types/lodash": "^4.14.197",
     "@types/mocha": "^10.0.1",
-    "@types/node": "^20.5.2",
+    "@types/node": "^20.5.3",
     "@types/update-notifier": "^5.1.0",
     "chai": "^4.3.7",
     "eslint": "^8.47.0",

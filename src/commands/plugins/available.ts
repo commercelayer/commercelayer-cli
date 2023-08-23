@@ -51,6 +51,7 @@ type PluginRelease = {
   description: string;
   enabled: boolean;
   hidden?: boolean;
+  version?: string;
 }
 
 const AvailablePlugins: PluginRelease[] = [
@@ -69,7 +70,7 @@ const AvailablePlugins: PluginRelease[] = [
 ]
 
 
-const getPluginInfo = (pluginName: string): any => {
+const getPluginInfo = (pluginName?: string): PluginRelease | undefined => {
 
   let plugin
 
