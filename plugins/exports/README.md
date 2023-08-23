@@ -99,7 +99,7 @@ ALIASES
 EXAMPLES
   $ commercelayer exports:create -t orders -X <output-file-path>
 
-  $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org
+  $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv
 ```
 
 _See code: [src/commands/exports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/create.ts)_
