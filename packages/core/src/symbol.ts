@@ -13,6 +13,9 @@ const symbols = {
 	},
 	arrow: {
 		down: '\u2193'		// ↓
+	},
+	selection: {
+		fisheye: '\u25C9'	// ◉
 	}
 }
 
