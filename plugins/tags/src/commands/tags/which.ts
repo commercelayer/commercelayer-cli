@@ -114,7 +114,11 @@ export default class TagsWhich extends BaseIdCommand {
 				table.push(...tableData.map(e => [
 					// { content: ++index, hAlign: 'right' as HorizontalAlignment },
 					clColor.blueBright(e.id || ''),
-					e.tags?.map(t => (t as Tag).name).join(', '),
+					e.tags?.map(t => {
+						let tn = (t as Tag).name
+						if (((e.tags || []).length > 1) && (tn === tag.name)) tn = clColor.cyanBright(tn)
+						return tn
+					}).join(', '),
 					clOutput.localeDate(e.created_at || ''),
 					clOutput.localeDate(e.updated_at || ''),
 				]))

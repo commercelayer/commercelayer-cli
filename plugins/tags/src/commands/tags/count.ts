@@ -72,13 +72,22 @@ export default class TagsCount extends BaseIdCommand {
         },
       })
 
-      table.push(...Object.entries(taggedResources).filter(([key, val]) => ((val !== 0) || flags.zero || resType)).map(([key, val]) => [
-        // { content: ++index, hAlign: 'right' as HorizontalAlignment },
-        key,
-        (val < 0)? clColor.msg.error('Error') : String(val)
-      ]))
 
-      const output = table.toString()
+      let output = ''
+
+      const rows = Object.entries(taggedResources).filter(([key, val]) => ((val !== 0) || flags.zero || resType))
+      if (rows.length === 0) {
+        output = 'No resources found with this tag'
+      }
+      else {
+        table.push(...rows.map(([key, val]) => [
+              // { content: ++index, hAlign: 'right' as HorizontalAlignment },
+              key,
+              (val < 0)? clColor.msg.error('Error') : (((val === 0) || !flags.zero)? String(val) : clColor.cyanBright(String(val)))
+            ])
+        )
+        output = table.toString()
+      }
 
       this.log()
       this.log(`${clColor.style.title('Tag name:')} ${tag.name}\t\t${clColor.style.title('Tag ID:')} ${tag.id}`)
