@@ -13,7 +13,7 @@ dependencies:
     version: 5.12.5
   '@oclif/core':
     specifier: ^2.11.8
-    version: 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+    version: 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
   '@oclif/plugin-autocomplete':
     specifier: ^2.3.6
     version: 2.3.6(@types/node@20.5.3)(typescript@5.1.6)
@@ -306,7 +306,7 @@ packages:
     engines: {node: ^16.13.0 || >=18.0.0}
     dependencies:
       '@commercelayer/js-auth': 4.1.1
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
       axios: 1.4.0
       chalk: 4.1.2
       jsonwebtoken: 8.5.1
@@ -325,7 +325,7 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
       fs-extra: 10.1.0
       github-slugger: 1.5.0
       normalize-package-data: 5.0.0
@@ -574,8 +574,8 @@ packages:
       - supports-color
     dev: true
 
-  /@oclif/core@2.11.8(@types/node@20.5.3)(typescript@5.1.6):
-    resolution: {integrity: sha512-GILmztcHBzze45GvxRpUvqQI5nM26kSE/Q21Y+6DtMR+C8etM/hFW26D3uqIAbGlGtg5QEZZ6pjA/Fqgz+gl3A==}
+  /@oclif/core@2.11.11(@types/node@20.5.3)(typescript@5.1.6):
+    resolution: {integrity: sha512-B0yaeJhdaLlPU0i95mHItV6C7xtoGFBNZrrd0IQzxKhdMhRxzmCmJyoVh8YaZVlsdsT/cjVAZ/6Aoctg3G4MmQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.0
@@ -663,7 +663,7 @@ packages:
     resolution: {integrity: sha512-h969Vc9pzwJ87Z79PXjt67uUZm99zj8pD4zSX3pjc2xOf4ZNslLHNtvb3AjuU01mTM6FYJTsJcwjhPvXzxsqEg==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
       chalk: 4.1.2
       debug: 4.3.4(supports-color@8.1.1)
       fs-extra: 9.1.0
@@ -679,7 +679,7 @@ packages:
     resolution: {integrity: sha512-7hMLc6zqxeRfG4nvHHQPpbaBj60efM3ULFkCpHZkdLms/ezIkNo40F661QuraIjMP/NN+U6VSfBCGuPkRyxVkA==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -692,7 +692,7 @@ packages:
     engines: {node: '>=12.0.0'}
     dependencies:
       '@oclif/color': 1.0.11
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
       - '@swc/core'
@@ -706,7 +706,7 @@ packages:
     engines: {node: '>=16'}
     dependencies:
       '@oclif/color': 1.0.11
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
       chalk: 4.1.2
       debug: 4.3.4(supports-color@8.1.1)
       fs-extra: 9.1.0
@@ -731,7 +731,7 @@ packages:
     resolution: {integrity: sha512-lI3I+gqCzkY0yXWCyaIPhVoYJXyBhH7dHq9BkLeBtiaMTMlUsjOIYrO8azfUmFI58Qa1sgsrpbuuo5PBO2RFew==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@oclif/core': 2.11.8(@types/node@20.5.3)(typescript@5.1.6)
+      '@oclif/core': 2.11.11(@types/node@20.5.3)(typescript@5.1.6)
       fancy-test: 2.0.35
     transitivePeerDependencies:
       - '@swc/core'
