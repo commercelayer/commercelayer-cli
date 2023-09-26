@@ -95,7 +95,7 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
 
 const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
-  const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.join(',') : auth.scope) : ''
+  const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
 
   const credentials: any = {
     clientId: auth.clientId,
