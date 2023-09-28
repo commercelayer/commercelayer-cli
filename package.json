@@ -118,7 +118,7 @@
     "@commercelayer/sdk": "^5.12.5",
     "@oclif/core": "^2.11.8",
     "@oclif/plugin-autocomplete": "^2.3.6",
-    "@oclif/plugin-help": "5.2.14",
+    "@oclif/plugin-help": "5.2.20",
     "@oclif/plugin-not-found": "^2.3.37",
     "@oclif/plugin-plugins": "^3.2.7",
     "configstore": "^5.0.1",
