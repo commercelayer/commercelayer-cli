@@ -98,7 +98,7 @@
     "@commercelayer/cli-dev": "^2.0.5",
     "@commercelayer/eslint-config-ts": "^1.0.1",
     "@fig/complete-oclif": "^3.0.0",
-    "@oclif/test": "^2.4.6",
+    "@oclif/test": "^3.0.2",
     "@types/chai": "^4.3.5",
     "@types/configstore": "^4.0.0",
     "@types/inquirer": "^8.2.6",
