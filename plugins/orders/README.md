@@ -305,7 +305,7 @@ _See code: [src/commands/orders/commit_invoice.ts](https://github.com/commercela
 
 ### `commercelayer orders:create_subscriptions ID`
 
-Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the order. Subscriptions are generated according to associated subscription model strategy.
+Send this attribute upon/after placing the order if you want to create order subscriptions from the line items that have a frequency.
 
 ```sh-session
 USAGE
@@ -320,8 +320,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the
-  order. Subscriptions are generated according to associated subscription model strategy.
+  Send this attribute upon/after placing the order if you want to create order subscriptions from the line items that
+  have a frequency.
 ```
 
 _See code: [src/commands/orders/create_subscriptions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/create_subscriptions.ts)_
