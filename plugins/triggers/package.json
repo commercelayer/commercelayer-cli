@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "3.13.1",
+  "version": "3.14.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
   "engines": {
@@ -55,16 +55,16 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "^2.0.5",
-    "@commercelayer/eslint-config-ts": "^1.0.1",
-    "@oclif/plugin-help": "^5.2.14",
-    "@oclif/test": "^2.3.31",
-    "@types/chai": "^4.3.5",
-    "@types/inquirer": "^8.2.6",
-    "@types/lodash": "^4.14.195",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "^20.4.2",
-    "chai": "^4.3.7",
-    "eslint": "^8.45.0",
+    "@commercelayer/eslint-config-ts": "^1.1.0",
+    "@oclif/plugin-help": "^5.2.20",
+    "@oclif/test": "^2.5.6",
+    "@types/chai": "^4.3.7",
+    "@types/inquirer": "^8.2.7",
+    "@types/lodash": "^4.14.199",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "^20.8.4",
+    "chai": "^4.3.10",
+    "eslint": "^8.51.0",
     "inflector-js": "^1.0.1",
     "lodash": "^4.17.21",
     "mocha": "^10.2.0",
@@ -74,10 +74,10 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^3.12.1",
-    "@commercelayer/sdk": "^5.7.0",
-    "@oclif/core": "^2.9.4",
-    "inquirer": "^8.2.5",
-    "tslib": "^2.6.0"
+    "@commercelayer/sdk": "^5.16.0",
+    "@oclif/core": "^2.15.0",
+    "inquirer": "^8.2.6",
+    "tslib": "^2.6.2"
   },
   "publishConfig": {
     "access": "public"

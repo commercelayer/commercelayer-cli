@@ -126,7 +126,7 @@ export const triggers: Record<string, Trigger> = {
 	create_subscriptions: {
       action: 'create_subscriptions',
       trigger: '_create_subscriptions',
-      description: 'Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the order. Subscriptions are generated according to associated subscription model strategy.',
+      description: 'Send this attribute upon/after placing the order if you want to create order subscriptions from the line items that have a frequency.',
     },
 	start_editing: {
       action: 'start_editing',
