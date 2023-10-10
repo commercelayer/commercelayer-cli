@@ -74,7 +74,7 @@ const generateGroupUID = (): string => {
 
 export default class ExportsAll extends ExportCommand {
 
-  static hidden = true
+  static hidden = false
 
   static description = 'export all the records'
 
