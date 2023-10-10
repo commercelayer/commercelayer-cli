@@ -41,6 +41,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer bundle ID`](#commercelayer-bundle-id)
 * [`commercelayer bundle:compute_compare_at_amount ID`](#commercelayer-bundlecompute_compare_at_amount-id)
 * [`commercelayer bundle:compute_price_amount ID`](#commercelayer-bundlecompute_price_amount-id)
+* [`commercelayer buy_x_pay_y_promotion ID`](#commercelayer-buy_x_pay_y_promotion-id)
+* [`commercelayer buy_x_pay_y_promotion:disable ID`](#commercelayer-buy_x_pay_y_promotiondisable-id)
+* [`commercelayer buy_x_pay_y_promotion:enable ID`](#commercelayer-buy_x_pay_y_promotionenable-id)
 * [`commercelayer capture ID`](#commercelayer-capture-id)
 * [`commercelayer capture:refund ID`](#commercelayer-capturerefund-id)
 * [`commercelayer capture:refund_amount_cents ID`](#commercelayer-capturerefund_amount_cents-id)
@@ -49,6 +52,21 @@ $ commercelayer plugins:install triggers
 * [`commercelayer checkout_com_payment:refresh ID`](#commercelayer-checkout_com_paymentrefresh-id)
 * [`commercelayer customer_password_reset ID`](#commercelayer-customer_password_reset-id)
 * [`commercelayer customer_password_reset:reset_password_token ID`](#commercelayer-customer_password_resetreset_password_token-id)
+* [`commercelayer external_promotion ID`](#commercelayer-external_promotion-id)
+* [`commercelayer external_promotion:disable ID`](#commercelayer-external_promotiondisable-id)
+* [`commercelayer external_promotion:enable ID`](#commercelayer-external_promotionenable-id)
+* [`commercelayer fixed_amount_promotion ID`](#commercelayer-fixed_amount_promotion-id)
+* [`commercelayer fixed_amount_promotion:disable ID`](#commercelayer-fixed_amount_promotiondisable-id)
+* [`commercelayer fixed_amount_promotion:enable ID`](#commercelayer-fixed_amount_promotionenable-id)
+* [`commercelayer fixed_price_promotion ID`](#commercelayer-fixed_price_promotion-id)
+* [`commercelayer fixed_price_promotion:disable ID`](#commercelayer-fixed_price_promotiondisable-id)
+* [`commercelayer fixed_price_promotion:enable ID`](#commercelayer-fixed_price_promotionenable-id)
+* [`commercelayer free_gift_promotion ID`](#commercelayer-free_gift_promotion-id)
+* [`commercelayer free_gift_promotion:disable ID`](#commercelayer-free_gift_promotiondisable-id)
+* [`commercelayer free_gift_promotion:enable ID`](#commercelayer-free_gift_promotionenable-id)
+* [`commercelayer free_shipping_promotion ID`](#commercelayer-free_shipping_promotion-id)
+* [`commercelayer free_shipping_promotion:disable ID`](#commercelayer-free_shipping_promotiondisable-id)
+* [`commercelayer free_shipping_promotion:enable ID`](#commercelayer-free_shipping_promotionenable-id)
 * [`commercelayer gift_card ID`](#commercelayer-gift_card-id)
 * [`commercelayer gift_card:activate ID`](#commercelayer-gift_cardactivate-id)
 * [`commercelayer gift_card:balance_change_cents ID`](#commercelayer-gift_cardbalance_change_cents-id)
@@ -100,6 +118,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer payment_method ID`](#commercelayer-payment_method-id)
 * [`commercelayer payment_method:disable ID`](#commercelayer-payment_methoddisable-id)
 * [`commercelayer payment_method:enable ID`](#commercelayer-payment_methodenable-id)
+* [`commercelayer percentage_discount_promotion ID`](#commercelayer-percentage_discount_promotion-id)
+* [`commercelayer percentage_discount_promotion:disable ID`](#commercelayer-percentage_discount_promotiondisable-id)
+* [`commercelayer percentage_discount_promotion:enable ID`](#commercelayer-percentage_discount_promotionenable-id)
 * [`commercelayer return ID`](#commercelayer-return-id)
 * [`commercelayer return:approve ID`](#commercelayer-returnapprove-id)
 * [`commercelayer return:archive ID`](#commercelayer-returnarchive-id)
@@ -381,6 +402,72 @@ DESCRIPTION
 
 _See code: [src/commands/bundle/compute_price_amount.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/compute_price_amount.ts)_
 
+### `commercelayer buy_x_pay_y_promotion ID`
+
+Execute an action on a resource of type buy_x_pay_y_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer buy_x_pay_y_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type buy_x_pay_y_promotions
+```
+
+_See code: [src/commands/buy_x_pay_y_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/index.ts)_
+
+### `commercelayer buy_x_pay_y_promotion:disable ID`
+
+Send this attribute if you want to mark the promotion as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer buy_x_pay_y_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as disabled.
+```
+
+_See code: [src/commands/buy_x_pay_y_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/disable.ts)_
+
+### `commercelayer buy_x_pay_y_promotion:enable ID`
+
+Send this attribute if you want to mark the promotion as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer buy_x_pay_y_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as enabled.
+```
+
+_See code: [src/commands/buy_x_pay_y_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/enable.ts)_
+
 ### `commercelayer capture ID`
 
 Execute an action on a resource of type captures.
@@ -556,6 +643,336 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/customer_password_reset/reset_password_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer_password_reset/reset_password_token.ts)_
+
+### `commercelayer external_promotion ID`
+
+Execute an action on a resource of type external_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer external_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type external_promotions
+```
+
+_See code: [src/commands/external_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/index.ts)_
+
+### `commercelayer external_promotion:disable ID`
+
+Send this attribute if you want to mark the promotion as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer external_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as disabled.
+```
+
+_See code: [src/commands/external_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/disable.ts)_
+
+### `commercelayer external_promotion:enable ID`
+
+Send this attribute if you want to mark the promotion as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer external_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as enabled.
+```
+
+_See code: [src/commands/external_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/enable.ts)_
+
+### `commercelayer fixed_amount_promotion ID`
+
+Execute an action on a resource of type fixed_amount_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_amount_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type fixed_amount_promotions
+```
+
+_See code: [src/commands/fixed_amount_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/index.ts)_
+
+### `commercelayer fixed_amount_promotion:disable ID`
+
+Send this attribute if you want to mark the promotion as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_amount_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as disabled.
+```
+
+_See code: [src/commands/fixed_amount_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/disable.ts)_
+
+### `commercelayer fixed_amount_promotion:enable ID`
+
+Send this attribute if you want to mark the promotion as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_amount_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as enabled.
+```
+
+_See code: [src/commands/fixed_amount_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/enable.ts)_
+
+### `commercelayer fixed_price_promotion ID`
+
+Execute an action on a resource of type fixed_price_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_price_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type fixed_price_promotions
+```
+
+_See code: [src/commands/fixed_price_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/index.ts)_
+
+### `commercelayer fixed_price_promotion:disable ID`
+
+Send this attribute if you want to mark the promotion as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_price_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as disabled.
+```
+
+_See code: [src/commands/fixed_price_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/disable.ts)_
+
+### `commercelayer fixed_price_promotion:enable ID`
+
+Send this attribute if you want to mark the promotion as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_price_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as enabled.
+```
+
+_See code: [src/commands/fixed_price_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/enable.ts)_
+
+### `commercelayer free_gift_promotion ID`
+
+Execute an action on a resource of type free_gift_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer free_gift_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type free_gift_promotions
+```
+
+_See code: [src/commands/free_gift_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/index.ts)_
+
+### `commercelayer free_gift_promotion:disable ID`
+
+Send this attribute if you want to mark the promotion as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer free_gift_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as disabled.
+```
+
+_See code: [src/commands/free_gift_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/disable.ts)_
+
+### `commercelayer free_gift_promotion:enable ID`
+
+Send this attribute if you want to mark the promotion as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer free_gift_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as enabled.
+```
+
+_See code: [src/commands/free_gift_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/enable.ts)_
+
+### `commercelayer free_shipping_promotion ID`
+
+Execute an action on a resource of type free_shipping_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer free_shipping_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type free_shipping_promotions
+```
+
+_See code: [src/commands/free_shipping_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/index.ts)_
+
+### `commercelayer free_shipping_promotion:disable ID`
+
+Send this attribute if you want to mark the promotion as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer free_shipping_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as disabled.
+```
+
+_See code: [src/commands/free_shipping_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/disable.ts)_
+
+### `commercelayer free_shipping_promotion:enable ID`
+
+Send this attribute if you want to mark the promotion as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer free_shipping_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as enabled.
+```
+
+_See code: [src/commands/free_shipping_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/enable.ts)_
 
 ### `commercelayer gift_card ID`
 
@@ -1159,7 +1576,7 @@ _See code: [src/commands/order/commit_invoice.ts](https://github.com/commercelay
 
 ### `commercelayer order:create_subscriptions ID`
 
-Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the order. Subscriptions are generated according to associated subscription model strategy.
+Send this attribute upon/after placing the order if you want to create order subscriptions from the line items that have a frequency.
 
 ```sh-session
 USAGE
@@ -1174,8 +1591,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to create order subscriptions from the recurring line items upon/after placing the
-  order. Subscriptions are generated according to associated subscription model strategy.
+  Send this attribute upon/after placing the order if you want to create order subscriptions from the line items that
+  have a frequency.
 ```
 
 _See code: [src/commands/order/create_subscriptions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/create_subscriptions.ts)_
@@ -1693,6 +2110,72 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/payment_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/payment_method/enable.ts)_
+
+### `commercelayer percentage_discount_promotion ID`
+
+Execute an action on a resource of type percentage_discount_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer percentage_discount_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type percentage_discount_promotions
+```
+
+_See code: [src/commands/percentage_discount_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/index.ts)_
+
+### `commercelayer percentage_discount_promotion:disable ID`
+
+Send this attribute if you want to mark the promotion as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer percentage_discount_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as disabled.
+```
+
+_See code: [src/commands/percentage_discount_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/disable.ts)_
+
+### `commercelayer percentage_discount_promotion:enable ID`
+
+Send this attribute if you want to mark the promotion as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer percentage_discount_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the promotion as enabled.
+```
+
+_See code: [src/commands/percentage_discount_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/enable.ts)_
 
 ### `commercelayer return ID`
 
