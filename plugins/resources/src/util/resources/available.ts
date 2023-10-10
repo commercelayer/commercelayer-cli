@@ -73,6 +73,7 @@ const RESOURCES = [
 	{ name: 'parcel', api: 'parcels', model: 'Parcel' },
 	{ name: 'payment_gateway', api: 'payment_gateways', model: 'PaymentGateway' },
 	{ name: 'payment_method', api: 'payment_methods', model: 'PaymentMethod' },
+	{ name: 'payment_option', api: 'payment_options', model: 'PaymentOption' },
 	{ name: 'paypal_gateway', api: 'paypal_gateways', model: 'PaypalGateway' },
 	{ name: 'paypal_payment', api: 'paypal_payments', model: 'PaypalPayment' },
 	{ name: 'percentage_discount_promotion', api: 'percentage_discount_promotions', model: 'PercentageDiscountPromotion' },
