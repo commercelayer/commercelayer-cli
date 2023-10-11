@@ -182,6 +182,18 @@ type Config = {
 }
 
 
+const RATE_LIMIT = {
+	erl_oauth_limit_live: 30,
+	erl_burst_limit_uncachable_live: 50,
+	erl_burst_limit_uncachable_test: 25,
+	erl_burst_limit_cachable_live: 250,
+	erl_burst_limit_cachable_test: 125,
+	erl_average_limit_uncachable_live: 200,
+	erl_average_limit_uncachable_test: 100,
+	erl_average_limit_cachable_live: 1000,
+	erl_average_limit_cachable_test: 500
+} as const
+
 const config: Config = {
 	api: {
 		default_domain: 'commercelayer.io',
@@ -189,18 +201,18 @@ const config: Config = {
 		default_stg_domain: 'commercelayer.co',
 		token_expiration_mins: 60 * 4,	// 4 hours (14400 secs)
 		token_encoding_algorithm: 'HS512',
-		requests_max_num_burst: 50,
-		requests_max_num_burst_cacheable: 250,
-		requests_max_num_burst_test: 25,
-		requests_max_num_burst_test_cacheable: 125,
+		requests_max_num_burst: RATE_LIMIT.erl_burst_limit_uncachable_live,					// 50
+		requests_max_num_burst_cacheable: RATE_LIMIT.erl_burst_limit_cachable_live,			// 250
+		requests_max_num_burst_test: RATE_LIMIT.erl_burst_limit_uncachable_test,			// 25
+		requests_max_num_burst_test_cacheable: RATE_LIMIT.erl_burst_limit_cachable_test,	// 125
+		requests_max_num_avg: RATE_LIMIT.erl_average_limit_uncachable_live,					// 200
+		requests_max_num_avg_cacheable: RATE_LIMIT.erl_average_limit_cachable_live ,		// 1000
+		requests_max_num_avg_test: RATE_LIMIT.erl_average_limit_uncachable_test,			// 100
+		requests_max_num_avg_test_cacheable: RATE_LIMIT.erl_average_limit_cachable_test,	// 500
+		requests_max_num_oauth: RATE_LIMIT.erl_oauth_limit_live,							// 30
 		requests_max_secs_burst: 10,
-		requests_max_num_avg: 150,
-		requests_max_num_avg_cacheable: 1000,
-		requests_max_num_avg_test: 75,
-		requests_max_num_avg_test_cacheable: 375,
-		requests_max_secs_avg: 60,	// 1 min
-		requests_max_num_oauth: 30,
 		requests_max_secs_oauth: 60,
+		requests_max_secs_avg: 60,
 		page_max_size: 25,
 		page_default_size: 10,
 	},
