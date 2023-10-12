@@ -47,6 +47,7 @@ const filters: Filter[] = [
   { predicate: '*_cont_any', description: 'The attribute contains any of the filter values (comma-separated)' },
   { predicate: '*_cont_all', description: 'The attribute contains all of the filter values (comma-separated)' },
   { predicate: '*_not_cont_all', description: 'The attribute contains none of the filter values (comma-separated)' },
+  { predicate: '*_jcont', description: 'The attribute contains a portion of the JSON used as  filter value (works with object only)' },
   { predicate: '*_true', description: 'The attribute is true' },
   { predicate: '*_false', description: 'The attribute is false' },
 ]
