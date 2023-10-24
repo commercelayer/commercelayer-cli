@@ -30,6 +30,7 @@ const splitRecords = async (resSdk: any, clp: CleanupCreate, totalRecords: numbe
 
   const groupId = generateGroupUID()
 
+  const pageSize = 1  // clConfig.api.page_max_size
   let startId = null
   let stopId = null
   let chunkPage = 0
@@ -37,10 +38,10 @@ const splitRecords = async (resSdk: any, clp: CleanupCreate, totalRecords: numbe
   for (let chunkNum = 0; chunkNum < totChunks; chunkNum++) {
 
     const chunkRecords = Math.min(MAX_CLEANUP_SIZE, totalRecords - (MAX_CLEANUP_SIZE * chunkNum))
-    const chunkPages = Math.ceil(chunkRecords / clConfig.api.page_max_size)
+    const chunkPages = Math.ceil(chunkRecords / pageSize)
     chunkPage += chunkPages
 
-    const chunkLastPage = await resSdk.list({ filters: clp.filters, pageSize: clConfig.api.page_max_size, pageNumber: chunkPage, sort: { id: 'asc' } })
+    const chunkLastPage = await resSdk.list({ filters: clp.filters, pageSize, pageNumber: chunkPage, sort: { id: 'asc' } })
 
     stopId = chunkLastPage.last()?.id
 
