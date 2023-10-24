@@ -306,11 +306,12 @@ export default class ExportsAll extends ExportCommand {
           // 20000 --> 1: 10000, 2: 10000, 3: x
           // 25000 --> 1: 10000, 2: 10000, 3: 5000, 4: x
 
+          const pageSize = 1  // clConfig.api.page_max_size
           const curExpRecords = Math.min(MAX_EXPORT_SIZE, expJob.totalRecords - (MAX_EXPORT_SIZE * curExp))
-          const curExpPages = Math.ceil(curExpRecords / clConfig.api.page_max_size)
+          const curExpPages = Math.ceil(curExpRecords / pageSize)
           expPage += curExpPages
 
-          const curExpLastPage = await resSdk.list({ filters: expJob.filter, pageSize: clConfig.api.page_max_size, pageNumber: expPage, sort: { id: 'asc' } })
+          const curExpLastPage = await resSdk.list({ filters: expJob.filter, pageSize, pageNumber: expPage, sort: { id: 'asc' } })
 
           stopId = curExpLastPage.last()?.id
 
