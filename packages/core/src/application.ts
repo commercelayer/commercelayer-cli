@@ -1,4 +1,5 @@
-import type { ApiMode } from "./api";
+import type { ApiMode, ApiType } from "./api";
+import config from "./config";
 import type { AuthScope } from "./token";
 
 
@@ -19,6 +20,7 @@ interface AppAuth {
 	scope?: AuthScope;
 	email?: string;
 	password?: string;
+	api?: ApiType;
 }
 
 interface AppInfo extends AppKey, AppAuth {
@@ -58,4 +60,10 @@ const arrayScope = (scope?: AuthScope): string[] => {
 }
 
 
-export { appKey, appKeyValid, appKeyMatch, arrayScope }
+const isProvisioningApp = (app: AppAuth): boolean => {
+	const scope = arrayScope(app.scope)
+	return scope.includes(config.provisioning.scope) || (app.api === 'provisioning')
+}
+
+
+export { appKey, appKeyValid, appKeyMatch, arrayScope, isProvisioningApp }
