@@ -3,7 +3,8 @@ import type { Method } from 'axios'
 import config from './config'
 
 type ApiMode = 'test' | 'live'
-export type { ApiMode }
+type ApiType = 'core' | 'provisioning' | 'metrics'
+export type { ApiMode, ApiType }
 
 
 /** Build base URL */

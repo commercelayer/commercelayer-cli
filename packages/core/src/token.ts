@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken'
 import config from './config'
 import https from 'https'
-import type { AppAuth } from './application'
+import { isProvisioningApp, type AppAuth } from './application'
 import { sleep } from './util'
 import { type ApiMode, baseURL } from './api'
 import { CLIError } from '@oclif/core/lib/errors'
-import authentication from '@commercelayer/js-auth'
+import authentication, { provisioning } from '@commercelayer/js-auth'
 
 
 export type AuthScope = string | string[]
@@ -25,13 +25,13 @@ export type AccessToken = {
 
 
 export type AccessTokenInfo = {
-  organization: {
+  organization?: {
     id: string;
     slug: string;
   };
   application: {
     id: string;
-    kind: 'integration' | 'sales_channel';
+    kind: 'integration' | 'sales_channel' | 'user';
     public: boolean;
   };
   test: boolean;
@@ -48,6 +48,8 @@ export type AccessTokenInfo = {
     geocoder_id?: string;
     allows_external_prices: boolean;
   };
+  scope?: AuthScope,
+  user?: { id: string }
 }
 
 
@@ -95,6 +97,8 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
 
 const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
+  if (isProvisioningApp(auth)) return getAccessTokenProvisioning(auth)
+
   const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
 
   const credentials: any = {
@@ -112,6 +116,19 @@ const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
   }
 
   return authentication('client_credentials', credentials)
+
+}
+
+
+const getAccessTokenProvisioning = async (auth: AppAuth): Promise<AccessToken> => {
+
+  const credentials: any = {
+    clientId: auth.clientId,
+    clientSecret: auth.clientSecret,
+    domain: auth.domain
+  }
+
+  return provisioning.authentication(credentials)
 
 }
 
@@ -137,13 +154,17 @@ const revokeAccessToken = async (app: AppAuth, token: string, logger?: { log: (m
     token,
   })
 
+  const provisioning = isProvisioningApp(app)
+  const contentType = provisioning ? 'application/vnd.api+json' : 'application/json'
+  const slug = provisioning ? 'auth' : app.slug
+
   const options = {
-    hostname: baseURL(app.slug, app.domain).replace('https://', '').replace('http://', ''),
+    hostname: baseURL(slug, app.domain).replace('https://', '').replace('http://', ''),
     port: 443,
     path: '/oauth/revoke',
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': contentType,
       'Content-Length': data.length,
     },
   }

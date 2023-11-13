@@ -144,13 +144,6 @@ type WebhooksConfig = {
 	retry_number: number;
 }
 
-type TagsConfig = {
-	max_resource_tags: number;
-	taggable_resources: readonly string[];
-	tag_name_max_length: number;
-	tag_name_pattern: RegExp
-}
-
 type CliConfig = {
 	applications: readonly string[];
 }
@@ -162,11 +155,25 @@ type DocConfig = {
 	core_raste_limits: string;
 	metrics: string;
 	metrics_api_reference: string;
+	provisioning: string;
+	provisioning_api_reference: string;
 	imports_resources: string;
 	exports_resources: string;
 	cleanups_resources: string;
 	webhooks_events: string;
 	tags_resources: string;
+}
+
+type TagsConfig = {
+	max_resource_tags: number;
+	taggable_resources: readonly string[];
+	tag_name_max_length: number;
+	tag_name_pattern: RegExp
+}
+
+type ProvisioningConfig = {
+	default_subdomain: string;
+	scope: string;
 }
 
 type Config = {
@@ -179,6 +186,7 @@ type Config = {
 	cli: CliConfig;
 	doc: DocConfig;
 	tags: TagsConfig;
+	provisioning: ProvisioningConfig;
 }
 
 
@@ -217,7 +225,7 @@ const config: Config = {
 		page_default_size: 10,
 	},
 	application: {
-		kinds: ['integration', 'sales_channel', 'webapp'],
+		kinds: ['integration', 'sales_channel', 'webapp', 'user'],
 		login_scopes: ['market', 'stock_location'],
 	},
 	imports: {
@@ -244,7 +252,7 @@ const config: Config = {
 		retry_number: 5,
 	},
 	cli: {
-		applications: ['integration', 'sales_channel'],
+		applications: ['integration', 'sales_channel', 'user'],
 	},
 	doc: {
 		core: 'https://docs.commercelayer.io/core/',
@@ -253,6 +261,8 @@ const config: Config = {
 		core_raste_limits: 'https://docs.commercelayer.io/core/rate-limits',
 		metrics: 'https://docs.commercelayer.io/metrics/',
 		metrics_api_reference: 'https://docs.commercelayer.io/metrics/v/api-reference-m/',
+		provisioning: 'https://docs.commercelayer.io/provisioning/',
+		provisioning_api_reference: 'https://docs.commercelayer.io/provisioning/v/api-reference-p/',
 		imports_resources: 'https://docs.commercelayer.io/api/importing-resources#supported-resources',
 		exports_resources: 'https://docs.commercelayer.io/core/exporting-resources#supported-resources',
 		cleanups_resources: 'https://docs.commercelayer.io/core/cleaning-resources#supported-resources',
@@ -264,6 +274,10 @@ const config: Config = {
 		taggable_resources: TAG_RESOURCE_TYPES,
 		tag_name_max_length: 25,
 		tag_name_pattern: /^[0-9A-Za-z_-]{1,25}$/
+	},
+	provisioning: {
+		default_subdomain: 'provisioning',
+		scope: 'provisioning-api'
 	}
 } as const
 
