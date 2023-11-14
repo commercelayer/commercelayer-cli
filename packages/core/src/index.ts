@@ -29,8 +29,6 @@ export * as clSymbol from './symbol'
 
 export * as clFilter from './filter'
 
-export * as clPlugin from './plugin'
-
 
 /** Types **/
 export type { ApiMode, ApiType } from './api'

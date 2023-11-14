@@ -2,6 +2,7 @@ import { format, inspect } from 'util'
 import { sep, dirname } from 'path'
 import { homedir } from 'os'
 import { existsSync, mkdirSync } from 'fs'
+import type { Config } from '@oclif/core'
 
 /** Await ms milliseconds */
 const sleep = async (ms: number): Promise<void> => {
@@ -65,4 +66,9 @@ const generateGroupUID = (): string => {
 }
 
 
-export { sleep, resetConsole, log, specialFolder, generateGroupUID }
+const userAgent = (config: Config): string => {
+	return `${config.name.replace(/@commercelayer\/cli-plugin/, 'CLI')}/${config.version}`
+}
+
+
+export { sleep, resetConsole, log, specialFolder, generateGroupUID, userAgent }
