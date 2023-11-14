@@ -97,25 +97,35 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
 
 const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
-  if (isProvisioningApp(auth)) return getAccessTokenProvisioning(auth)
+  let accessToken
 
-  const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
+  if (isProvisioningApp(auth)) accessToken = await getAccessTokenProvisioning(auth)
+  else {
 
-  const credentials: any = {
-    clientId: auth.clientId,
-    clientSecret: auth.clientSecret,
-    slug: auth.slug,
-    domain: auth.domain,
-    scope
+    const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
+
+    const credentials: any = {
+      clientId: auth.clientId,
+      clientSecret: auth.clientSecret,
+      slug: auth.slug,
+      domain: auth.domain,
+      scope
+    }
+
+    if (auth.email && auth.password) {
+      credentials.username = auth.email
+      credentials.password = auth.password
+      accessToken = await authentication('password', credentials)
+    }
+    else accessToken = await authentication('client_credentials', credentials)
+
   }
 
-  if (auth.email && auth.password) {
-    credentials.username = auth.email
-    credentials.password = auth.password
-    return authentication('password', credentials)
-  }
+  if (!accessToken) throw new Error('Unable to get access token')
+  else
+  if (accessToken.error) throw new Error(`Unable to get access token: ${accessToken.error}`)
 
-  return authentication('client_credentials', credentials)
+  return accessToken
 
 }
 
@@ -156,7 +166,7 @@ const revokeAccessToken = async (app: AppAuth, token: string, logger?: { log: (m
 
   const provisioning = isProvisioningApp(app)
   const contentType = provisioning ? 'application/vnd.api+json' : 'application/json'
-  const slug = provisioning ? 'auth' : app.slug
+  const slug = provisioning ? 'auth' : app.slug || ''
 
   const options = {
     hostname: baseURL(slug, app.domain).replace('https://', '').replace('http://', ''),

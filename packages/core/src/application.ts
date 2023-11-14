@@ -13,7 +13,7 @@ interface AppKey {
 
 
 interface AppAuth {
-	slug: string;
+	slug?: string;
 	domain?: string;
 	clientId: string;
 	clientSecret?: string;
