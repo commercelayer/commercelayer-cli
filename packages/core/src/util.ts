@@ -2,7 +2,7 @@ import { format, inspect } from 'util'
 import { sep, dirname } from 'path'
 import { homedir } from 'os'
 import { existsSync, mkdirSync } from 'fs'
-import type { Config } from '@oclif/core'
+import type { Config } from '@oclif/core/lib/interfaces'
 
 /** Await ms milliseconds */
 const sleep = async (ms: number): Promise<void> => {
