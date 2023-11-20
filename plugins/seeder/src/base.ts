@@ -72,11 +72,16 @@ export default abstract class extends Command {
 
 
   protected initCommerceLayer(flags: any): void {
+
     const organization = flags.organization
     const domain = flags.domain
     const accessToken = flags.accessToken
-    this.cl = commercelayer({ organization, domain, accessToken })
+    const userAgent = clUtil.userAgent(this.config)
+
+    this.cl = commercelayer({ organization, domain, accessToken, userAgent })
+
     this.environment = clToken.getTokenEnvironment(accessToken)
+
   }
 
 
