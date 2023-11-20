@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/shipping_methods'
+import { type ShippingMethod } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'
@@ -23,7 +23,7 @@ export default class ShippingMethodEnable extends Command {
 
     const { args, flags } = await this.parse(ShippingMethodEnable)
 
-		const res = await exec('shipping_methods', args.id, TRIGGER, flags)
+		const res = await this.executeAction<ShippingMethod>('shipping_methods', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

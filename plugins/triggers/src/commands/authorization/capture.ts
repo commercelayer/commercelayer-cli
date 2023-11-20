@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/authorizations'
+import { type Authorization } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'capture'
@@ -23,7 +23,7 @@ export default class AuthorizationCapture extends Command {
 
     const { args, flags } = await this.parse(AuthorizationCapture)
 
-		const res = await exec('authorizations', args.id, TRIGGER, flags)
+		const res = await this.executeAction<Authorization>('authorizations', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

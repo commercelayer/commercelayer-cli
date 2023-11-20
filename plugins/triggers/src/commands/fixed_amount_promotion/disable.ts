@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/fixed_amount_promotions'
+import { type FixedAmountPromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'
@@ -23,7 +23,7 @@ export default class FixedAmountPromotionDisable extends Command {
 
     const { args, flags } = await this.parse(FixedAmountPromotionDisable)
 
-		const res = await exec('fixed_amount_promotions', args.id, TRIGGER, flags)
+		const res = await this.executeAction<FixedAmountPromotion>('fixed_amount_promotions', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

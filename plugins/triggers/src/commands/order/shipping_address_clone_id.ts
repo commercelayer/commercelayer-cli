@@ -1,6 +1,6 @@
 import Command, { Flags } from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/orders'
+import { type Order } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'shipping_address_clone_id'
@@ -28,7 +28,7 @@ export default class OrderShippingAddressCloneId extends Command {
 
     const { args, flags } = await this.parse(OrderShippingAddressCloneId)
 
-		const res = await exec('orders', args.id, TRIGGER, flags)
+		const res = await this.executeAction<Order>('orders', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

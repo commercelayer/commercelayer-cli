@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/gift_cards'
+import { type GiftCard } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'activate'
@@ -23,7 +23,7 @@ export default class GiftCardActivate extends Command {
 
     const { args, flags } = await this.parse(GiftCardActivate)
 
-		const res = await exec('gift_cards', args.id, TRIGGER, flags)
+		const res = await this.executeAction<GiftCard>('gift_cards', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

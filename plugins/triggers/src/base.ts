@@ -4,6 +4,7 @@ import { clApi, clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import type { Resource } from '@commercelayer/sdk/lib/cjs/resource'
 import type { CLIError } from '@oclif/core/lib/errors'
+import exec from './exec'
 
 
 const pkg = require('../package.json')
@@ -103,6 +104,11 @@ export default abstract class extends Command {
 
   protected successMessage(resource: string, action: string, id: string): void {
     this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on ${resource.replace(/_/g, ' ')} ${clColor.api.id(id)}\n`)
+  }
+
+
+  protected async executeAction<R extends Resource>(resourceType: string, id: string, action: string, flags: any, fields?: string[]): Promise<R> {
+    return await exec(resourceType, id, action, flags, fields, this.config)
   }
 
 }
