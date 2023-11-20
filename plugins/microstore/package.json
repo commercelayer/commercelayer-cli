@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-microstore",
   "description": "Commerce Layer CLI microstore plugin",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-microstore/issues",
   "engines": {
@@ -54,22 +54,22 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "^2.0.5",
-    "@commercelayer/eslint-config-ts": "^1.1.0",
+    "@commercelayer/eslint-config-ts": "^1.2.0",
     "@oclif/plugin-help": "^5.2.20",
     "@oclif/test": "^2.5.6",
-    "@types/chai": "^4.3.6",
-    "@types/mocha": "^10.0.2",
-    "@types/node": "^20.8.0",
+    "@types/chai": "^4.3.10",
+    "@types/mocha": "^10.0.4",
+    "@types/node": "^20.9.2",
     "chai": "^4.3.10",
-    "eslint": "^8.50.0",
+    "eslint": "^8.54.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^3.12.1",
-    "@commercelayer/sdk": "^5.15.0",
+    "@commercelayer/cli-core": "^4.3.3",
+    "@commercelayer/sdk": "^5.22.1",
     "@oclif/core": "^2.15.0",
     "open": "^8.4.2",
     "tslib": "^2.6.2"
