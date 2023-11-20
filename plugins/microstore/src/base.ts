@@ -1,6 +1,6 @@
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
-import { clColor, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
+import { clColor, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 
 
 const pkg = require('../package.json')
@@ -68,11 +68,13 @@ export default abstract class extends Command {
     const organization = flags.organization
     const domain = flags.domain
     const accessToken = flags.accessToken
+    const userAgent = clUtil.userAgent(this.config)
 
     return commercelayer({
       organization,
       domain,
       accessToken,
+      userAgent
     })
 
   }
@@ -87,8 +89,8 @@ export default abstract class extends Command {
     if (info.application.kind !== REQUIRED_APP_KIND) // Application
       this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Only ${clColor.api.kind(REQUIRED_APP_KIND)} access token can be used to generate a microstore URL`)
     else
-    if (info.organization.slug !== flags.organization) // Organization
-      this.error(`The access token provided belongs to a wrong organization: ${clColor.msg.error(info.organization.slug)} instead of ${clColor.style.organization(flags.organization)}`)
+    if (info.organization?.slug !== flags.organization) // Organization
+      this.error(`The access token provided belongs to a wrong organization: ${clColor.msg.error(info.organization?.slug)} instead of ${clColor.style.organization(flags.organization)}`)
 
     return true
 
