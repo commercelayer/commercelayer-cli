@@ -5,7 +5,7 @@ import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { capitalize } from 'lodash'
 import { existsSync } from 'fs'
-import { CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
@@ -139,6 +139,22 @@ export abstract class BaseCommand extends Command {
 
   // -- CUSTOM METHODS -- //
 
+  protected initCommerceLayer(flags: any, ...options: any[]): CommerceLayerClient {
+
+    const organization = flags.organization
+    const domain = flags.domain
+    const accessToken = flags.accessToken
+    const userAgent = clUtil.userAgent(this.config)
+
+
+    const cl = commercelayer({ organization, domain, accessToken, userAgent, ...options })
+
+    if ('cl' in this) this.cl = cl
+
+    return cl
+
+  }
+
 
   checkResource(res: string, { required = true, singular = false } = {}): Resource {
     if (!res && required) this.error('Resource type not defined')
@@ -199,13 +215,13 @@ export abstract class BaseCommand extends Command {
     const values: Array<string | null> = []
 
     if (flag) {
-        const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
-        flagValues.forEach(a => {
-          a.forEach(v => {
-            if (values.includes(v)) this.warn(`Tag ${clColor.msg.warning(v)} already defined`)
-            values.push(v)
-          })
+      const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
+      flagValues.forEach(a => {
+        a.forEach(v => {
+          if (values.includes(v)) this.warn(`Tag ${clColor.msg.warning(v)} already defined`)
+          values.push(v)
         })
+      })
     }
 
     if ((values.length === 1) && (values[0] === 'null')) values[0] = null
