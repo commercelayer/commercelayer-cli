@@ -15,7 +15,6 @@ export default abstract class extends Command {
   }
 
 
-
   protected printAccessTokenInfo(data: AccessTokenInfo): string {
 
     this.log(`\n${clColor.style.title('-= Access token info =-')}\n`)
@@ -42,7 +41,7 @@ export default abstract class extends Command {
   }
 
 
-  protected checkScope(scopeFlags: string[] | undefined): AuthScope {
+  protected checkScope(scopeFlags: string[] | undefined, provisioning?: boolean): AuthScope {
 
     const scope: string[] = []
 
@@ -63,6 +62,7 @@ export default abstract class extends Command {
 
       }
     }
+    else if (provisioning) scope.push(clConfig.provisioning.scope)
 
     const _scope = (scope.length === 1) ? scope[0] : scope
 

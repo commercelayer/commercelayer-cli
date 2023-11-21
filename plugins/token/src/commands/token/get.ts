@@ -1,5 +1,5 @@
 import Command, { Flags } from '../../base'
-import {type AppAuth, clColor } from '@commercelayer/cli-core'
+import {type AppAuth, clColor, clConfig } from '@commercelayer/cli-core'
 import { decodeAccessToken, getAccessToken } from '../../token'
 
 
@@ -17,14 +17,14 @@ export default class TokenGet extends Command {
     organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
-      required: true,
+      required: false,
+      exactlyOne: ['organization', 'provisioning'],
       env: 'CL_CLI_ORGANIZATION',
     }),
     domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
-      dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
     clientId: Flags.string({
@@ -37,6 +37,7 @@ export default class TokenGet extends Command {
       description: 'application client_secret',
       required: false,
       dependsOn: ['clientId'],
+      exclusive: ['email', 'password']
     }),
     scope: Flags.string({
       char: 'S',
@@ -58,9 +59,24 @@ export default class TokenGet extends Command {
     info: Flags.boolean({
       description: 'show access token info',
     }),
+    provisioning: Flags.boolean({
+			char: 'P',
+			description: 'execute login to Provisioning API',
+			required: false,
+			exclusive: ['scope', 'organization', 'email', 'password', 'api'],
+			dependsOn: ['clientId', 'clientSecret']
+		})
+    /*,
+		api: Flags.string({
+			char: 'A',
+			description: 'the API you want to excute login for',
+			required: false,
+			options: ['core', 'provisioning'],
+			exclusive: ['provisioning']
+		})
+    */
   }
 
-  static args = {}
 
 
   async run(): Promise<any> {
@@ -70,16 +86,19 @@ export default class TokenGet extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.arg('clientSecret')} and ${clColor.cli.arg('scope')}`)
 
-    const scope = this.checkScope(flags.scope)
+    const scope = this.checkScope(flags.scope, flags.provisioning)
+		const api = /* (flags.api as ApiType) || */(flags.provisioning? 'provisioning' : 'core')
+		const slug = flags.organization || clConfig.provisioning.default_subdomain
 
     const config: AppAuth = {
       clientId: flags.clientId,
       clientSecret: flags.clientSecret,
-      slug: flags.organization,
+      slug,
       domain: flags.domain,
       scope,
       email: flags.email,
       password: flags.password,
+      api
     }
 
 
@@ -94,6 +113,7 @@ export default class TokenGet extends Command {
 
         let msg = `Access token for ${clColor.api.kind(decodedAccessToken.application.kind)} application`
         if (decodedAccessToken.organization) msg += ` of organization ${clColor.api.slug(decodedAccessToken.organization.slug)}`
+        if (flags.provisioning) msg += ' [provisioning]'
 
         this.log(`\n${msg}:`)
         this.printAccessToken(accessToken)

@@ -56,7 +56,9 @@
     "@commercelayer/cli-dev": "^2.0.5",
     "@commercelayer/eslint-config-ts": "^1.2.0",
     "@oclif/plugin-help": "^5.2.20",
-    "@oclif/test": "^2.5.6",
+    "@oclif/test": "^3.1.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.11",
     "@types/inquirer": "^8.2.10",
     "@types/mocha": "^10.0.5",
@@ -65,6 +67,7 @@
     "eslint": "^8.54.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
+    "semantic-release": "^22.0.8",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
   },

@@ -17,14 +17,14 @@ export default class TokenRevoke extends Command {
     organization: Flags.string({
       char: 'o',
       description: 'the slug of your organization',
-      required: true,
-      // env: 'CL_CLI_ORGANIZATION',
+      required: false,
+      exactlyOne: ['organization', 'provisioning'],
+      env: 'CL_CLI_ORGANIZATION',
     }),
     domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
-      dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
     clientId: Flags.string({
@@ -45,6 +45,13 @@ export default class TokenRevoke extends Command {
       multiple: true,
       dependsOn: ['clientId'],
     }),
+    provisioning: Flags.boolean({
+      char: 'P',
+      description: 'execute login to Provisioning API',
+      required: false,
+      exclusive: ['scope', 'organization', 'email', 'password', 'api'],
+      dependsOn: ['clientId', 'clientSecret']
+    })
   }
 
   static args = {
@@ -59,25 +66,24 @@ export default class TokenRevoke extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
-    const organization = flags.organization
-    const domain = flags.domain
     const accessToken = args.token
+    const scope = this.checkScope(flags.scope, flags.provisioning)
+    const slug = flags.provisioning? undefined : flags.organization
+    const api = flags.provisioning? 'provisioning' : 'core'
 
-
-    const scope = this.checkScope(flags.scope)
 
     this.log()
-    cliux.action.start('Revoking access token')
+    cliux.action.start(`Revoking ${api} access token`)
     await revokeAccessToken({
-      domain,
-      slug: organization,
+      domain: flags.domain,
+      slug,
       clientId: flags.clientId,
       clientSecret: flags.clientSecret,
       scope,
     }, accessToken)
       .then(() => {
         cliux.action.stop(`done ${clColor.msg.success('\u2714')}`)
-        this.log('\nThe access token has been successfully revoked')
+        this.log('\nThe access token has been successfully revoked\n')
       })
       .catch((error) => {
         cliux.action.stop()
