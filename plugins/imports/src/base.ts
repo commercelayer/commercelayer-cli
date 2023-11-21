@@ -1,5 +1,5 @@
 import { Command, Flags, Args, ux as cliux } from '@oclif/core'
-import { clOutput, clUpdate, clColor, clToken, type ApiMode } from '@commercelayer/cli-core'
+import { clOutput, clUpdate, clColor, clToken, type ApiMode, clUtil } from '@commercelayer/cli-core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
@@ -100,6 +100,7 @@ export default abstract class extends Command {
     const organization = flags.organization
     const domain = flags.domain
     const accessToken = flags.accessToken
+    const userAgent = clUtil.userAgent(this.config)
 
     this.environment = clToken.getTokenEnvironment(accessToken)
 
@@ -107,6 +108,7 @@ export default abstract class extends Command {
       organization,
       domain,
       accessToken,
+      userAgent
     })
 
   }
