@@ -1,7 +1,7 @@
 
 import { Command, Flags, Args, ux as cliux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import { clOutput, clUpdate, clColor } from '@commercelayer/cli-core'
+import { clOutput, clUpdate, clColor, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
@@ -67,10 +67,13 @@ export abstract class BaseCommand extends Command {
     const domain = flags.domain
     const accessToken = flags.accessToken
 
+    const userAgent = clUtil.userAgent(this.config)
+
     return commercelayer({
       organization,
       domain,
       accessToken,
+      userAgent
     })
 
   }
