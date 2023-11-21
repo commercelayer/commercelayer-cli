@@ -11,6 +11,7 @@ export default class TokenGet extends Command {
   static examples = [
 		'$ commercelayer token:get -o <organizationSlug> -i <clientId> -s <clientSecret>',
     '$ cl token:get -o <organizationSlug> -i <clientId> -S <scope> --info',
+    '$ cl token:get -i <clientId> -s <clientSecret> --provisioning',
 	]
 
   static flags = {
