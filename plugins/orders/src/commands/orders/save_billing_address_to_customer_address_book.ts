@@ -1,5 +1,4 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers'
 
 
@@ -23,7 +22,7 @@ export default class OrdersSaveBillingAddressToCustomerAddressBook extends Comma
 
     const { args, flags } = await this.parse(OrdersSaveBillingAddressToCustomerAddressBook)
 
-		const res = await exec(args.id, TRIGGER, flags)
+		const res = await this.executeAction(args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

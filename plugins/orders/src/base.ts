@@ -2,6 +2,8 @@ import { CommerceLayerStatic, type Order } from '@commercelayer/sdk'
 import { Command, Flags, Args } from '@oclif/core'
 import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { ActionType } from './triggers'
+import exec from './exec'
 
 
 const pkg = require('../package.json')
@@ -89,6 +91,10 @@ export default abstract class extends Command {
 
   protected successMessage(action: string, id: string): void {
     this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on order ${clColor.api.id(id)}\n`)
+  }
+
+  protected async executeAction(id: string, action: ActionType, flags: any, fields?: string[]): Promise<Order> {
+    return await exec(id, action, flags, fields, this.config)
   }
 
 }
