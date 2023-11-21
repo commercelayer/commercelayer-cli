@@ -1,3 +1,10 @@
+## [5.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.1...v5.6.2) (2023-11-21)
+
+
+### Bug Fixes
+
+* add provisioning tojen example ([010ff6d](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/010ff6d42da978e133220267d061f82e595a5d97))
+
 ## [1.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v1.0.0...v1.0.1) (2023-11-21)
 
 
