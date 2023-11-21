@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v1.0.0...v1.0.1) (2023-11-21)
+
+
+### Bug Fixes
+
+* fix latest version ([fcc69b2](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/fcc69b2806defec39122ec66bb9cfe74c5503d74))
+
 # 1.0.0 (2023-11-21)
 
 
