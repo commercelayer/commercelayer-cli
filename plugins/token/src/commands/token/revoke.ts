@@ -64,8 +64,6 @@ export default class TokenRevoke extends Command {
     const accessToken = args.token
 
 
-
-
     const scope = this.checkScope(flags.scope)
 
     this.log()
