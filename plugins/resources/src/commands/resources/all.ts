@@ -1,10 +1,8 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable max-depth */
-/* eslint-disable complexity */
+
 import Command, { Flags, cliux } from '../../base'
 import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
 import { getAccessToken } from '@commercelayer/cli-core/lib/cjs/token'
-import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
 
 
@@ -168,8 +166,6 @@ export default class ResourcesAll extends Command {
 
     const resource = this.checkResource(args.resource)
 
-    const organization = flags.organization
-    const domain = flags.domain
     let notification = flags.notify
     const blindMode = flags.blind || false
 
@@ -189,7 +185,7 @@ export default class ResourcesAll extends Command {
 
     try {
 
-      const cl = commercelayer({ organization, domain, accessToken, timeout })
+      const cl = this.initCommerceLayer(flags, timeout)
       let jwtData = clToken.decodeAccessToken(accessToken)
 
       const resSdk: any = cl[resource.api as keyof CommerceLayerClient]

@@ -1,5 +1,5 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import commercelayer, { type CommerceLayerClient, type QueryParamsRetrieve} from '@commercelayer/sdk'
+import { type CommerceLayerClient, type QueryParamsRetrieve} from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 
@@ -60,10 +60,6 @@ export default class ResourcesRetrieve extends Command {
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
     const showHeaders = flags.headers || flags['headers-only']
 
-		const organization = flags.organization
-		const domain = flags.domain
-		const accessToken = flags.accessToken
-
 
 		// Include flags
 		const include: string[] = this.includeFlag(flags.include)
@@ -71,7 +67,7 @@ export default class ResourcesRetrieve extends Command {
 		const fields = this.fieldsFlag(flags.fields, resource.api)
 
 
-		const cl = commercelayer({ organization, domain, accessToken })
+		const cl = this.initCommerceLayer(flags)
 
 		const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders}) : undefined
 		const reqReader = flags.doc ? addRequestReader(cl) : undefined

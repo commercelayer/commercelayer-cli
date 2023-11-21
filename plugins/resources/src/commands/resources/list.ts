@@ -1,5 +1,5 @@
 import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, cliux } from '../../base'
-import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 import { clColor } from '@commercelayer/cli-core'
@@ -79,11 +79,6 @@ export default class ResourcesList extends Command {
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
     const showHeaders = flags.headers || flags['headers-only']
 
-		// const baseUrl = baseURL(flags.organization, flags.domain)
-		const organization = flags.organization
-		const domain = flags.domain
-		const accessToken = flags.accessToken
-
 
 		// Include flags
 		const include: string[] = this.includeFlag(flags.include, undefined, flags['force-include'])
@@ -98,7 +93,7 @@ export default class ResourcesList extends Command {
 		const perPage = flags.pageSize
 
 
-		const cl = commercelayer({ organization, domain, accessToken })
+		const cl = this.initCommerceLayer(flags)
 
 		const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
 		const reqReader = flags.doc ? addRequestReader(cl) : undefined

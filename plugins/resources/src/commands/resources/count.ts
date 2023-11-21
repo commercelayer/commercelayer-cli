@@ -1,6 +1,6 @@
 import { Args, Command, Flags, ux as cliux } from '@oclif/core'
 import { type Resource, findResource } from '../../util/resources'
-import { type KeyValString, clColor, clApi } from '@commercelayer/cli-core'
+import { type KeyValString, clColor, clApi, clUtil } from '@commercelayer/cli-core'
 import { filterAvailable } from './filters'
 import { CommerceLayer, type CommerceLayerClient } from '@commercelayer/sdk'
 import type { ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
@@ -62,7 +62,7 @@ export default class ResourcesCount extends Command {
     const accessToken = flags.accessToken
 
 
-    const cl = CommerceLayer({ organization, domain, accessToken })
+    const cl = CommerceLayer({ organization, domain, accessToken, userAgent: clUtil.userAgent(this.config) })
     const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
     this.checkOperation(resSdk)
 

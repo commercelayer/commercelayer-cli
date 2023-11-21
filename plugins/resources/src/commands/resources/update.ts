@@ -1,6 +1,6 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
-import commercelayer, { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { readDataFile, rawRequest, Operation } from '../../raw'
 import { denormalize } from '../../jsonapi'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
@@ -84,15 +84,12 @@ export default class ResourcesUpdate extends Command {
     if (saveCmd) this.checkAlias(saveCmd, resource.api, OPERATION, this.config)
     const showHeaders = flags.headers || flags['headers-only']
 
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken = flags.accessToken
-
 
     // Raw request
     if (flags.data) {
       try {
         const baseUrl = clApi.baseURL(flags.organization, flags.domain)
+        const accessToken = flags.accessToken
         const rawRes = await rawRequest({ operation: Operation.Update, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data), id)
         const out = flags.raw ? rawRes : denormalize(rawRes)
         this.printOutput(out, flags)
@@ -103,7 +100,7 @@ export default class ResourcesUpdate extends Command {
       }
     }
 
-    const cl = commercelayer({ organization, domain, accessToken })
+    const cl = this.initCommerceLayer(flags)
 
     // Attributes flags
     const attributes = this.attributeFlag(flags.attribute)

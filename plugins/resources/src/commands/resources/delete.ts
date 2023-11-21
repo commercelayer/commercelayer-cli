@@ -1,5 +1,5 @@
 import Command, { Args } from '../../base'
-import commercelayer, { type CommerceLayerClient } from '@commercelayer/sdk'
+import { type CommerceLayerClient } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { clCommand, clColor } from '@commercelayer/cli-core'
 
@@ -43,12 +43,8 @@ export default class ResourcesDelete extends Command {
 
     const showHeaders = flags.headers || flags['headers-only']
 
-		const organization = flags.organization
-		const domain = flags.domain
-		const accessToken = flags.accessToken
 
-
-		const cl = commercelayer({ organization, domain, accessToken })
+		const cl = this.initCommerceLayer(flags)
 
     const rawReader = (flags.raw && showHeaders) ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
 		const reqReader = flags.doc ? addRequestReader(cl) : undefined

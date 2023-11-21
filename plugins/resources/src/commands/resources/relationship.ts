@@ -1,5 +1,5 @@
 import Command, { Args, cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import commercelayer, { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 import ResourcesList from './list'
@@ -47,12 +47,8 @@ export default class ResourcesRelationship extends Command {
     const multiRel = this.isRelationship1N(relationship)
     const showHeaders = flags.headers || flags['headers-only']
 
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken = flags.accessToken
 
-
-    const cl = commercelayer({ organization, domain, accessToken })
+    const cl = this.initCommerceLayer(flags)
 
     const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
     this.checkRelationship(resSdk, relationship)
