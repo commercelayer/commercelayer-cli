@@ -1,4 +1,4 @@
-import { clColor, clToken, clUpdate, clFilter, type KeyValRel, type KeyValString, clOutput } from '@commercelayer/cli-core'
+import { clColor, clToken, clUpdate, clFilter, type KeyValRel, type KeyValString, clOutput, clUtil } from '@commercelayer/cli-core'
 import { Command, Flags, Args, ux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
@@ -114,10 +114,13 @@ export default abstract class extends Command {
     const domain = flags.domain
     const accessToken = flags.accessToken
 
+    const userAgent = clUtil.userAgent(this.config)
+
     return commercelayer({
       organization,
       domain,
       accessToken,
+      userAgent
     })
 
   }
