@@ -114,13 +114,17 @@ export default class TokenGenerate extends Command {
       const accessToken = generated.accessToken
       const decodedAccessToken = decodeAccessToken(accessToken)
 
-      this.log(`\nAccess token for ${clColor.api.kind(decodedAccessToken.application.kind)} application of organization ${clColor.api.slug(decodedAccessToken.organization.slug)}:`)
+      let msg = `Access token for ${clColor.api.kind(decodedAccessToken.application.kind)} application`
+      if (decodedAccessToken.organization) msg += ` of organization ${clColor.api.slug(decodedAccessToken.organization.slug)}`
+
+      this.log(`\n${msg}:`)
       this.printAccessToken(accessToken)
 
       if (flags.info) {
         const tokenInfo = this.printAccessTokenInfo(decodedAccessToken)
         return `${accessToken}\n${tokenInfo}`
       }
+
       return accessToken
 
     }
