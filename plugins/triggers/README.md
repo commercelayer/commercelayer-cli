@@ -1227,7 +1227,7 @@ _See code: [src/commands/line_item/index.ts](https://github.com/commercelayer/co
 
 ### `commercelayer line_item:external_price ID`
 
-When creating or updating a new line item, set this attribute to '1' if you want to inject the unit_amount_cents price from an external source.
+When creating or updating a new line item, set this attribute to '1' if you want to inject the unit_amount_cents price from an external source. Any successive price computation will be done externally, until the attribute is reset to '0'.
 
 ```sh-session
 USAGE
@@ -1243,7 +1243,8 @@ FLAGS
 
 DESCRIPTION
   When creating or updating a new line item, set this attribute to '1' if you want to inject the unit_amount_cents price
-  from an external source.
+  from an external source. Any successive price computation will be done externally, until the attribute is reset to
+  '0'.
 ```
 
 _See code: [src/commands/line_item/external_price.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/external_price.ts)_

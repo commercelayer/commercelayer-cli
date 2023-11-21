@@ -6,7 +6,7 @@ export const triggers: Record<string, Trigger> = {
   external_price: {
       action: 'external_price',
       trigger: '_external_price',
-      description: 'When creating or updating a new line item, set this attribute to \'1\' if you want to inject the unit_amount_cents price from an external source.',
+      description: 'When creating or updating a new line item, set this attribute to \'1\' if you want to inject the unit_amount_cents price from an external source. Any successive price computation will be done externally, until the attribute is reset to \'0\'.',
     },
 	reserve_stock: {
       action: 'reserve_stock',
