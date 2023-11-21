@@ -106,12 +106,15 @@ export default abstract class BaseCommand extends Command {
     const domain = flags.domain
     const accessToken = flags.accessToken
 
+    const userAgent = clUtil.userAgent(this.config)
+
     this.environment = clToken.getTokenEnvironment(accessToken)
 
     this.cl = commercelayer({
       organization,
       domain,
       accessToken,
+      userAgent
     })
 
     return this.cl
