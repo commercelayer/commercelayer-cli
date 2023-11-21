@@ -1,5 +1,4 @@
 import Command, { Flags } from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers'
 
 
@@ -28,7 +27,7 @@ export default class OrdersBillingAddressCloneId extends Command {
 
     const { args, flags } = await this.parse(OrdersBillingAddressCloneId)
 
-		const res = await exec(args.id, TRIGGER, flags)
+		const res = await this.executeAction(args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 
