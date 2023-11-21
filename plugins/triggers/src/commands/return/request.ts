@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/returns'
+import { type Return } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'request'
@@ -23,7 +23,7 @@ export default class ReturnRequest extends Command {
 
     const { args, flags } = await this.parse(ReturnRequest)
 
-		const res = await exec('returns', args.id, TRIGGER, flags)
+		const res = await this.executeAction<Return>('returns', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

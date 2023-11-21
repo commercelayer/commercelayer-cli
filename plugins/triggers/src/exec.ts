@@ -1,25 +1,30 @@
+import { clUtil } from '@commercelayer/cli-core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import { type Config } from '@oclif/core/lib/interfaces'
 
 
 
-const commercelayerInit = (flags: any): CommerceLayerClient => {
+const commercelayerInit = (flags: any, config?: Config): CommerceLayerClient => {
 
   const organization = flags.organization
   const domain = flags.domain
   const accessToken = flags.accessToken
 
+  const userAgent = config? clUtil.userAgent(config) : undefined
+
   return commercelayer({
     organization,
     domain,
     accessToken,
+    userAgent
   })
 
 }
 
 
-const executeAction = async (resourceType: string, id: string, action: string, flags: any, fields?: string[]): Promise<any> => {
+const exec = async (resourceType: string, id: string, action: string, flags: any, fields?: string[], config?: Config): Promise<any> => {
 
-  const cl = commercelayerInit(flags)
+  const cl = commercelayerInit(flags, config)
 
   const res: any = { id }
   const trigger = `_${action}`
@@ -43,4 +48,4 @@ const executeAction = async (resourceType: string, id: string, action: string, f
 }
 
 
-export default executeAction
+export default exec

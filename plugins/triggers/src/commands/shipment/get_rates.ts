@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/shipments'
+import { type Shipment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'get_rates'
@@ -23,7 +23,7 @@ export default class ShipmentGetRates extends Command {
 
     const { args, flags } = await this.parse(ShipmentGetRates)
 
-		const res = await exec('shipments', args.id, TRIGGER, flags)
+		const res = await this.executeAction<Shipment>('shipments', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

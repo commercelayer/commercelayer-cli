@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/stock_transfers'
+import { type StockTransfer } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'upcoming'
@@ -23,7 +23,7 @@ export default class StockTransferUpcoming extends Command {
 
     const { args, flags } = await this.parse(StockTransferUpcoming)
 
-		const res = await exec('stock_transfers', args.id, TRIGGER, flags)
+		const res = await this.executeAction<StockTransfer>('stock_transfers', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

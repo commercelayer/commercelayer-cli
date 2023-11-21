@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/markets'
+import { type Market } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'
@@ -23,7 +23,7 @@ export default class MarketDisable extends Command {
 
     const { args, flags } = await this.parse(MarketDisable)
 
-		const res = await exec('markets', args.id, TRIGGER, flags)
+		const res = await this.executeAction<Market>('markets', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

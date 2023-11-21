@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/order_subscriptions'
+import { type OrderSubscription } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'activate'
@@ -23,7 +23,7 @@ export default class OrderSubscriptionActivate extends Command {
 
     const { args, flags } = await this.parse(OrderSubscriptionActivate)
 
-		const res = await exec('order_subscriptions', args.id, TRIGGER, flags)
+		const res = await this.executeAction<OrderSubscription>('order_subscriptions', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

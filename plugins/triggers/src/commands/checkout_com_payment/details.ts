@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/checkout_com_payments'
+import { type CheckoutComPayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'details'
@@ -23,7 +23,7 @@ export default class CheckoutComPaymentDetails extends Command {
 
     const { args, flags } = await this.parse(CheckoutComPaymentDetails)
 
-		const res = await exec('checkout_com_payments', args.id, TRIGGER, flags)
+		const res = await this.executeAction<CheckoutComPayment>('checkout_com_payments', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

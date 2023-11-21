@@ -136,20 +136,27 @@ $ commercelayer plugins:install triggers
 * [`commercelayer satispay_payment ID`](#commercelayer-satispay_payment-id)
 * [`commercelayer satispay_payment:refresh ID`](#commercelayer-satispay_paymentrefresh-id)
 * [`commercelayer shipment ID`](#commercelayer-shipment-id)
+* [`commercelayer shipment:decrement_stock ID`](#commercelayer-shipmentdecrement_stock-id)
 * [`commercelayer shipment:get_rates ID`](#commercelayer-shipmentget_rates-id)
 * [`commercelayer shipment:on_hold ID`](#commercelayer-shipmenton_hold-id)
 * [`commercelayer shipment:packing ID`](#commercelayer-shipmentpacking-id)
 * [`commercelayer shipment:picking ID`](#commercelayer-shipmentpicking-id)
 * [`commercelayer shipment:purchase ID`](#commercelayer-shipmentpurchase-id)
 * [`commercelayer shipment:ready_to_ship ID`](#commercelayer-shipmentready_to_ship-id)
+* [`commercelayer shipment:release_stock ID`](#commercelayer-shipmentrelease_stock-id)
+* [`commercelayer shipment:reserve_stock ID`](#commercelayer-shipmentreserve_stock-id)
 * [`commercelayer shipment:ship ID`](#commercelayer-shipmentship-id)
+* [`commercelayer shipment:upcoming ID`](#commercelayer-shipmentupcoming-id)
 * [`commercelayer shipping_method ID`](#commercelayer-shipping_method-id)
 * [`commercelayer shipping_method:disable ID`](#commercelayer-shipping_methoddisable-id)
 * [`commercelayer shipping_method:enable ID`](#commercelayer-shipping_methodenable-id)
+* [`commercelayer stock_reservation ID`](#commercelayer-stock_reservation-id)
+* [`commercelayer stock_reservation:pending ID`](#commercelayer-stock_reservationpending-id)
 * [`commercelayer stock_transfer ID`](#commercelayer-stock_transfer-id)
 * [`commercelayer stock_transfer:cancel ID`](#commercelayer-stock_transfercancel-id)
 * [`commercelayer stock_transfer:complete ID`](#commercelayer-stock_transfercomplete-id)
 * [`commercelayer stock_transfer:in_transit ID`](#commercelayer-stock_transferin_transit-id)
+* [`commercelayer stock_transfer:on_hold ID`](#commercelayer-stock_transferon_hold-id)
 * [`commercelayer stock_transfer:picking ID`](#commercelayer-stock_transferpicking-id)
 * [`commercelayer stock_transfer:upcoming ID`](#commercelayer-stock_transferupcoming-id)
 * [`commercelayer stripe_payment ID`](#commercelayer-stripe_payment-id)
@@ -2507,6 +2514,29 @@ DESCRIPTION
 
 _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/index.ts)_
 
+### `commercelayer shipment:decrement_stock ID`
+
+Send this attribute if you want to automatically decrement and release the stock for each of the associated stock line item. Can be done only when fulfillment is in progress.
+
+```sh-session
+USAGE
+  $ commercelayer shipment:decrement_stock ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to automatically decrement and release the stock for each of the associated stock line
+  item. Can be done only when fulfillment is in progress.
+```
+
+_See code: [src/commands/shipment/decrement_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/decrement_stock.ts)_
+
 ### `commercelayer shipment:get_rates ID`
 
 Send this attribute if you want get the shipping rates from the associated carrier accounts.
@@ -2639,6 +2669,52 @@ DESCRIPTION
 
 _See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/ready_to_ship.ts)_
 
+### `commercelayer shipment:release_stock ID`
+
+Send this attribute if you want to automatically release the stock for each of the associated stock line item. Can be done only when fulfillment is in progress.
+
+```sh-session
+USAGE
+  $ commercelayer shipment:release_stock ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to automatically release the stock for each of the associated stock line item. Can be
+  done only when fulfillment is in progress.
+```
+
+_See code: [src/commands/shipment/release_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/release_stock.ts)_
+
+### `commercelayer shipment:reserve_stock ID`
+
+Send this attribute if you want to automatically reserve the stock for each of the associated stock line item. Can be done only when fulfillment is in progress.
+
+```sh-session
+USAGE
+  $ commercelayer shipment:reserve_stock ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to automatically reserve the stock for each of the associated stock line item. Can be
+  done only when fulfillment is in progress.
+```
+
+_See code: [src/commands/shipment/reserve_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/reserve_stock.ts)_
+
 ### `commercelayer shipment:ship ID`
 
 Send this attribute if you want to mark this shipment as shipped.
@@ -2660,6 +2736,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/ship.ts)_
+
+### `commercelayer shipment:upcoming ID`
+
+Send this attribute if you want to mark this shipment as upcoming.
+
+```sh-session
+USAGE
+  $ commercelayer shipment:upcoming ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this shipment as upcoming.
+```
+
+_See code: [src/commands/shipment/upcoming.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/upcoming.ts)_
 
 ### `commercelayer shipping_method ID`
 
@@ -2726,6 +2824,50 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/shipping_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/enable.ts)_
+
+### `commercelayer stock_reservation ID`
+
+Execute an action on a resource of type stock_reservations.
+
+```sh-session
+USAGE
+  $ commercelayer stock_reservation ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type stock_reservations
+```
+
+_See code: [src/commands/stock_reservation/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_reservation/index.ts)_
+
+### `commercelayer stock_reservation:pending ID`
+
+Send this attribute if you want to mark this stock reservation as pending.
+
+```sh-session
+USAGE
+  $ commercelayer stock_reservation:pending ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this stock reservation as pending.
+```
+
+_See code: [src/commands/stock_reservation/pending.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_reservation/pending.ts)_
 
 ### `commercelayer stock_transfer ID`
 
@@ -2814,6 +2956,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/stock_transfer/in_transit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/in_transit.ts)_
+
+### `commercelayer stock_transfer:on_hold ID`
+
+Send this attribute if you want to put this stock transfer on hold.
+
+```sh-session
+USAGE
+  $ commercelayer stock_transfer:on_hold ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to put this stock transfer on hold.
+```
+
+_See code: [src/commands/stock_transfer/on_hold.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/on_hold.ts)_
 
 ### `commercelayer stock_transfer:picking ID`
 

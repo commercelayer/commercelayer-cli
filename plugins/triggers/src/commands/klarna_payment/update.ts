@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/klarna_payments'
+import { type KlarnaPayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'update'
@@ -23,7 +23,7 @@ export default class KlarnaPaymentUpdate extends Command {
 
     const { args, flags } = await this.parse(KlarnaPaymentUpdate)
 
-		const res = await exec('klarna_payments', args.id, TRIGGER, flags)
+		const res = await this.executeAction<KlarnaPayment>('klarna_payments', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

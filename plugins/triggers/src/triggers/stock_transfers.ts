@@ -8,6 +8,11 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_upcoming',
       description: 'Send this attribute if you want to mark this stock transfer as upcoming.',
     },
+	on_hold: {
+      action: 'on_hold',
+      trigger: '_on_hold',
+      description: 'Send this attribute if you want to put this stock transfer on hold.',
+    },
 	picking: {
       action: 'picking',
       trigger: '_picking',
@@ -33,6 +38,7 @@ export const triggers: Record<string, Trigger> = {
 
 export type ActionType =
   'upcoming' |
+	'on_hold' |
 	'picking' |
 	'in_transit' |
 	'complete' |

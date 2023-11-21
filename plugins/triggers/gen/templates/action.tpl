@@ -1,6 +1,6 @@
 import Command##__FLAGS_IMPORT__## from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/##__RESOURCE_TYPE__##'
+import { type ##__RESOURCE_CLASS__## } from '@commercelayer/sdk'
 
 
 const TRIGGER = '##__ACTION_ID__##'
@@ -23,7 +23,7 @@ export default class ##__RESOURCE_CLASS__####__ACTION_NAME__## extends Command {
 
     const { args, flags } = await this.parse(##__RESOURCE_CLASS__####__ACTION_NAME__##)
 
-		const res = await exec('##__RESOURCE_TYPE__##', args.id, TRIGGER, flags)
+		const res = await this.executeAction<##__RESOURCE_CLASS__##>('##__RESOURCE_TYPE__##', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

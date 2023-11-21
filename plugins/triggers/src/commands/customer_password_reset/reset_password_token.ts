@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/customer_password_resets'
+import { type CustomerPasswordReset } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'reset_password_token'
@@ -23,7 +23,7 @@ export default class CustomerPasswordResetResetPasswordToken extends Command {
 
     const { args, flags } = await this.parse(CustomerPasswordResetResetPasswordToken)
 
-		const res = await exec('customer_password_resets', args.id, TRIGGER, flags)
+		const res = await this.executeAction<CustomerPasswordReset>('customer_password_resets', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

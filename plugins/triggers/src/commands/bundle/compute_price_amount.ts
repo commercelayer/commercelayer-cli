@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/bundles'
+import { type Bundle } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'compute_price_amount'
@@ -23,7 +23,7 @@ export default class BundleComputePriceAmount extends Command {
 
     const { args, flags } = await this.parse(BundleComputePriceAmount)
 
-		const res = await exec('bundles', args.id, TRIGGER, flags)
+		const res = await this.executeAction<Bundle>('bundles', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

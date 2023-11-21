@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/adyen_payments'
+import { type AdyenPayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'details'
@@ -23,7 +23,7 @@ export default class AdyenPaymentDetails extends Command {
 
     const { args, flags } = await this.parse(AdyenPaymentDetails)
 
-		const res = await exec('adyen_payments', args.id, TRIGGER, flags)
+		const res = await this.executeAction<AdyenPayment>('adyen_payments', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 

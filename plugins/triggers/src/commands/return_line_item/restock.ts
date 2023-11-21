@@ -1,6 +1,6 @@
 import Command from '../../base'
-import exec from '../../exec'
 import { triggers } from '../../triggers/return_line_items'
+import { type ReturnLineItem } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'restock'
@@ -23,7 +23,7 @@ export default class ReturnLineItemRestock extends Command {
 
     const { args, flags } = await this.parse(ReturnLineItemRestock)
 
-		const res = await exec('return_line_items', args.id, TRIGGER, flags)
+		const res = await this.executeAction<ReturnLineItem>('return_line_items', args.id, TRIGGER, flags)
 
     if (flags.print) this.printOutput(res, flags)
 
