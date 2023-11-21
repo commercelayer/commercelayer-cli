@@ -1,4 +1,4 @@
-import { clColor, clToken, clUpdate, clOutput, clConfig } from '@commercelayer/cli-core'
+import { clColor, clToken, clUpdate, clOutput, clConfig, clUtil } from '@commercelayer/cli-core'
 import { Command, Flags, Args, ux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Tag } from '@commercelayer/sdk'
 
@@ -84,10 +84,13 @@ export default abstract class BaseCommand extends Command {
     const domain = flags.domain
     const accessToken = flags.accessToken
 
+    const userAgent = clUtil.userAgent(this.config)
+
     this.cl = commercelayer({
       organization,
       domain,
       accessToken,
+      userAgent
     })
 
     return this.cl
