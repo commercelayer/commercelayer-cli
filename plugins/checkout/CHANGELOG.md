@@ -1,3 +1,10 @@
+## [4.7.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.0...v4.7.1) (2023-11-22)
+
+
+### Bug Fixes
+
+* update typescript ([1cd4838](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/1cd4838750982029541d67ecf6ad002db837f57d))
+
 # [4.7.0](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.6.0...v4.7.0) (2023-11-22)
 
 
