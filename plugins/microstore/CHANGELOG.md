@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.0...v1.6.1) (2023-11-22)
+
+
+### Bug Fixes
+
+* update typescript ([acca955](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/acca955716104e55d0c51d65b1b4ca546c66eec6))
+
 # [1.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.5.0...v1.6.0) (2023-11-22)
 
 
