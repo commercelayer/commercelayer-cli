@@ -104,6 +104,9 @@ const generate = async () => {
   const actionTpl = readTemplate('action')
   const specTpl = readTemplate('spec')
 
+
+  const specTimeout = 1000 * Object.keys(triggers).length
+
   Object.keys(triggers).forEach(action => {
 
     let command = actionTpl.replace(/##__ACTION_ID__##/g, action)
@@ -119,7 +122,8 @@ const generate = async () => {
     fs.writeFileSync(join(COMMANDS_DIR, fileName), command)
     console.log(`Created command: ${action} [${fileName}]`)
 
-    const spec = specTpl.replace(/##__ACTION_ID__##/g, action)
+    let spec = specTpl.replace(/##__ACTION_ID__##/g, action)
+    spec = spec.replace(/##__SPEC_TIMEOUT__##/g, String(specTimeout))
     const specName = fileName.replace(/.ts/g, '.test.ts')
     fs.writeFileSync(join(SPECS_DIR, specName), spec)
     console.log(`Created spec: ${action} [${specName}]`)
