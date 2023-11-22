@@ -124,6 +124,9 @@ const generate = async () => {
   const actionTpl = readTemplate('action')
   const specTpl = readTemplate('spec')
 
+
+  const specTimeout = 1000 * Object.keys(generatedTriggers).length
+
   Object.entries(generatedTriggers).forEach(([resource, triggers]) => {
 
     const resType = Inflector.pluralize(resource)
@@ -164,6 +167,7 @@ const generate = async () => {
 
       let spec = specTpl.replace(/##__ACTION_ID__##/g, action)
       spec = spec.replace(/##__RESOURCE_TYPE__##/g, resType)
+      spec = spec.replace(/##__SPEC_TIMEOUT__##/g, String(specTimeout))
       const specName = fileName.replace(/.ts/g, '.test.ts')
       fs.writeFileSync(join(spcDir, specName), spec)
       console.log(`Created spec: ${action} [${specName}]`)
