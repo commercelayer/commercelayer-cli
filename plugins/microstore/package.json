@@ -57,6 +57,8 @@
     "@commercelayer/eslint-config-ts": "^1.2.0",
     "@oclif/plugin-help": "^5.2.20",
     "@oclif/test": "^2.5.6",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.9.4",
