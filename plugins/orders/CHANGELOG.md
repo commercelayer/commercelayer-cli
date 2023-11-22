@@ -1,3 +1,10 @@
+## [4.9.2](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v4.9.1...v4.9.2) (2023-11-22)
+
+
+### Bug Fixes
+
+* fix specs timeout ([6f699cf](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/6f699cf8379322029723c6ca1a8264c493dd270b))
+
 ## [4.9.1](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v4.9.0...v4.9.1) (2023-11-22)
 
 
