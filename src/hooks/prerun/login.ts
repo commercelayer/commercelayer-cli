@@ -66,7 +66,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 	const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 	if (typeCheck) {
 		if (!typeCheck.includes(configData.kind))
-			this.error(`The application (${clColor.api.application(configData.key)}) has an invalid type: ${clColor.msg.error(configData.kind)}, while the only accepted type are ${clColor.api.kind(typeCheck.join(','))}\nPlease use a correct one or access the online dashboard of ${configData.organization} and create a new valid application`)
+			this.error(`The application (${clColor.api.application(configData.key)}) has an invalid type: ${clColor.msg.error(configData.kind)}, while the only accepted type are ${clColor.api.kind(typeCheck.join(','))}\nPlease use a correct one or access the online organization's dashboard and create a new valid application`)
 	}
 
 

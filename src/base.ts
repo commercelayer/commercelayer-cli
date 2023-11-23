@@ -46,6 +46,12 @@ export default abstract class extends Command {
 			hidden: true,
 			exclusive: ['alias', 'id', 'mode', 'kind'],
 		}),
+		provisioning: Flags.boolean({
+			char: 'P',
+			description: 'Provisioning applications',
+			required: false,
+			exclusive: ['scope', 'organization', 'email', 'password'],
+		})
 	}
 
 
