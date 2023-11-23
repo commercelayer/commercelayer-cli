@@ -8,8 +8,9 @@ export type { ApiMode, ApiType }
 
 
 /** Build base URL */
-const baseURL = (slug: string, domain: string | undefined): string => {
-	return `https://${slug.toLowerCase()}.${domain || config.api.default_domain}`
+const baseURL = (slug?: string, domain?: string, provisioning?: boolean): string => {
+	const subdomain = provisioning? 'provisioning' : (slug || '')
+	return `https://${subdomain.toLowerCase()}.${domain || config.api.default_domain}`
 }
 
 

@@ -5,6 +5,7 @@ const JOB_STATUSES: readonly string[] = [
 	'interrupted',
 ] as const
 
+
 const IMPORT_RESOURCE_TYPES: readonly string[] = [
 	'addresses',
 	'bundles',
@@ -174,6 +175,7 @@ type TagsConfig = {
 type ProvisioningConfig = {
 	default_subdomain: string;
 	scope: string;
+	applications: readonly string[]
 }
 
 type Config = {
@@ -229,7 +231,7 @@ const config: Config = {
 		login_scopes: ['market', 'stock_location'],
 	},
 	imports: {
-		max_size: 2_000,
+		max_size: 5_000,
 		statuses: JOB_STATUSES,
 		types: IMPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
@@ -277,7 +279,8 @@ const config: Config = {
 	},
 	provisioning: {
 		default_subdomain: 'provisioning',
-		scope: 'provisioning-api'
+		scope: 'provisioning-api',
+		applications: ['user']
 	}
 } as const
 

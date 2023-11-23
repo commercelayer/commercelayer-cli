@@ -24,7 +24,7 @@ interface AppAuth {
 }
 
 interface AppInfo extends AppKey, AppAuth {
-	organization: string;
+	organization?: string;
 	kind: string;
 	name: string;
 	baseUrl?: string;
