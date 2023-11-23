@@ -48,7 +48,7 @@ export default class ApplicationsIndex extends Command {
 			const currentVisible = configData.some(a => clApplication.appKeyMatch(current, a))
 
 			const sortedData = flags.sort ? configData.sort((a: AppInfo, b: AppInfo): number => {
-				const cmp = a.organization.localeCompare(b.organization)
+				const cmp = (a.organization || '').localeCompare(b.organization || '')
 				return (cmp === 0) ? a.name.localeCompare(b.name) : cmp
 			}) : configData
 

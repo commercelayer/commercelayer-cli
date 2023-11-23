@@ -172,29 +172,25 @@ export default class ApplicationsLogin extends Command {
 
 const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
 
-	const cl = commercelayer({
-		organization: auth.slug,
-		domain: auth.domain,
-		accessToken,
-	})
-
 	const tokenInfo = clToken.decodeAccessToken(accessToken)
 
 	const provisioning = clApplication.isProvisioningApp(auth)
 
-	// Organization info
-	let org
-	if (provisioning) org = { name: 'Provisioning API', slug: 'provisioning' }
-	else org = await cl.organization.retrieve().catch(() => {
+	let org, app
+	if (provisioning) {
+		org = { name: 'Provisioning API', slug: 'provisioning' }
+		app = { name: 'Provisioning App' }
+	} else { // core
+		const cl = commercelayer({ organization: auth.slug || '', domain: auth.domain, accessToken })
+		// Organization info
+		org = await cl.organization.retrieve().catch(() => {
 			throw new Error(`This application cannot access the ${clColor.italic('Organization')} resource`)
 		})
-
-	// Application info
-	let app
-	if (provisioning) app = { name: 'Provisioning App' }
-	else app = await cl.application.retrieve().catch(() => {
+		// Application info
+		app = await cl.application.retrieve().catch(() => {
 			throw new Error(`This application cannot access the ${clColor.italic('Application')} resource`)
 		})
+	}
 
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
 
@@ -205,7 +201,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		mode,
 		kind: tokenInfo.application.kind,
 		name: app.name || '',
-		baseUrl: clApi.baseURL(auth.slug, auth.domain),
+		baseUrl: clApi.baseURL(auth.slug, auth.domain, provisioning),
 		id: tokenInfo.application.id,
 		alias: '',
 		scope: tokenInfo.scope
