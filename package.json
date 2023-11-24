@@ -105,7 +105,7 @@
     "@types/lodash": "^4.14.200",
     "@types/mocha": "^10.0.3",
     "@types/node": "^20.8.8",
-    "@types/update-notifier": "^5.1.0",
+    "@types/update-notifier": "^6.0.8",
     "chai": "^4.3.10",
     "eslint": "^8.52.0",
     "mocha": "^10.2.0",
