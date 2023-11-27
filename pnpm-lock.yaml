@@ -57,7 +57,7 @@ devDependencies:
     version: 2.5.6(@types/node@20.8.8)(typescript@5.2.2)
   '@types/chai':
     specifier: ^4.3.9
-    version: 4.3.9
+    version: 4.3.11
   '@types/configstore':
     specifier: ^4.0.0
     version: 4.0.0
@@ -771,8 +771,8 @@ packages:
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
 
-  /@types/chai@4.3.9:
-    resolution: {integrity: sha512-69TtiDzu0bcmKQv3yg1Zx409/Kd7r0b5F1PfpYJfSHzLGtB53547V4u+9iqKYsTu/O2ai6KTb0TInNpvuQ3qmg==}
+  /@types/chai@4.3.11:
+    resolution: {integrity: sha512-qQR1dr2rGIHYlJulmr8Ioq3De0Le9E4MJ5AiaeAETJJpndT1uUNHsGFK3L/UIu+rbkQSdj8J/w2bCsBZc/Y5fQ==}
     dev: true
 
   /@types/cli-progress@3.11.4:
@@ -2126,7 +2126,7 @@ packages:
     resolution: {integrity: sha512-TX8YTALYAmExny+f+G24MFxWry3Pk09+9uykwRjfwjibRxJ9ZjJzrnHYVBZK46XQdyli7d+rQc5U/KK7V6uLsw==}
     engines: {node: '>=12.0.0'}
     dependencies:
-      '@types/chai': 4.3.9
+      '@types/chai': 4.3.11
       '@types/lodash': 4.14.200
       '@types/node': 20.8.8
       '@types/sinon': 10.0.20
