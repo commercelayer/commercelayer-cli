@@ -1,5 +1,5 @@
 import Command, { Flags } from '../../base'
-import {type AppAuth, clColor, clConfig } from '@commercelayer/cli-core'
+import {type AppAuth, clColor, clConfig, clCommand } from '@commercelayer/cli-core'
 import { decodeAccessToken, getAccessToken } from '../../token'
 
 
@@ -29,6 +29,7 @@ export default class TokenGet extends Command {
       env: 'CL_CLI_DOMAIN',
     }),
     clientId: Flags.string({
+      name: 'clientId',
       char: 'i',
       description: 'application client_id',
       required: true,
@@ -78,6 +79,14 @@ export default class TokenGet extends Command {
     */
   }
 
+
+
+  async parse(c: any): Promise<any> {
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		const parsed = await super.parse(c)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		return parsed
+	}
 
 
   async run(): Promise<any> {

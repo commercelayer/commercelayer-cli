@@ -1,4 +1,4 @@
-import { clColor } from '@commercelayer/cli-core'
+import { clColor, clCommand } from '@commercelayer/cli-core'
 import Command, { Flags, Args, cliux } from '../../base'
 import { revokeAccessToken } from '../../token'
 
@@ -28,6 +28,7 @@ export default class TokenRevoke extends Command {
       env: 'CL_CLI_DOMAIN',
     }),
     clientId: Flags.string({
+      name: 'clientId',
       char: 'i',
       description: 'application client_id',
       required: true,
@@ -57,6 +58,15 @@ export default class TokenRevoke extends Command {
   static args = {
     token: Args.string({ name: 'token', description: 'access token to revoke', required: true })
   }
+
+
+
+  async parse(c: any): Promise<any> {
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		const parsed = await super.parse(c)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		return parsed
+	}
 
 
   async run(): Promise<any> {
