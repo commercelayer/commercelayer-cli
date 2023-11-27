@@ -106,7 +106,7 @@
     "@types/inquirer": "^8.2.10",
     "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.9.4",
+    "@types/node": "^20.10.0",
     "@types/update-notifier": "^5.1.0",
     "chai": "^4.3.10",
     "dotenv": "^16.3.1",
