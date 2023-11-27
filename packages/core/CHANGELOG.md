@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.4.0...v4.5.0) (2023-11-27)
+
+
+### Features
+
+* add fixDashedFlagValue function ([f2b8243](https://github.com/commercelayer/commercelayer-cli-core/commit/f2b82439fc69d721caea872da99e170d0135afa0))
+
 # [4.4.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.3.3...v4.4.0) (2023-11-23)
 
 
