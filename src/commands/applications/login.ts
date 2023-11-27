@@ -1,6 +1,6 @@
 import { Command, Flags, type Config } from '@oclif/core'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { clApplication, clApi, clToken, clColor, clConfig } from '@commercelayer/cli-core'
+import { clApplication, clApi, clToken, clColor, clConfig, clCommand } from '@commercelayer/cli-core'
 import type { ApiMode,/* ApiType, */AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
 import { inspect } from 'util'
@@ -33,9 +33,10 @@ export default class ApplicationsLogin extends Command {
 			hidden: true
 		}),
 		clientId: Flags.string({
+			name: 'clientId',
 			char: 'i',
 			description: 'application client_id',
-			required: true,
+			required: true
 		}),
 		clientSecret: Flags.string({
 			char: 's',
@@ -94,6 +95,14 @@ export default class ApplicationsLogin extends Command {
 		this.error(error.message)
 	}
 
+	
+	async parse(c: any): Promise<any> {
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		const parsed = await super.parse(c)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		return parsed
+	}
+
 
 
 	async run(): Promise<any> {
@@ -103,11 +112,11 @@ export default class ApplicationsLogin extends Command {
 		if (!flags.clientSecret && !flags.scope)
 			this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
-    
+
 
 		const scope = checkScope(flags.scope, flags.provisioning)
 		const alias = checkAlias(flags.alias, this.config, flags.organization)
-		const api = /* (flags.api as ApiType) || */(flags.provisioning? 'provisioning' : 'core')
+		const api = /* (flags.api as ApiType) || */(flags.provisioning ? 'provisioning' : 'core')
 		const slug = flags.organization || clConfig.provisioning.default_subdomain
 
 		const config: AppAuth = {
@@ -134,7 +143,7 @@ export default class ApplicationsLogin extends Command {
 			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
 			if (typeCheck) {
 				if (!typeCheck.includes(app.kind)) this.error(`The credentials provided are associated to an application of type ${clColor.msg.error(app.kind)} while the only allowed types are: ${clColor.api.kind(typeCheck.join(','))}`
-				// , { suggestions: [`Double check your credentials or access the online dashboard of ${clColor.api.organization(app.organization)} and create a new valid application `] }
+					// , { suggestions: [`Double check your credentials or access the online dashboard of ${clColor.api.organization(app.organization)} and create a new valid application `] }
 				)
 			}
 			app.alias = alias
@@ -149,7 +158,7 @@ export default class ApplicationsLogin extends Command {
 			const current = currentApplication()
 			this.log(`\nCurrent application: ${printCurrent(current)}`)
 
-			const interactMsg = clApplication.isProvisioningApp(app)? `the ${clColor.api.application('Provisioning API')}` : `${clColor.api.organization(app.organization)} organization`
+			const interactMsg = clApplication.isProvisioningApp(app) ? `the ${clColor.api.application('Provisioning API')}` : `${clColor.api.organization(app.organization)} organization`
 			this.log(`\n${clColor.msg.success.bold('Login successful!')} Your configuration has been stored locally. You can now interact with ${interactMsg}\n`)
 
 		} catch (error: any) {
@@ -157,11 +166,11 @@ export default class ApplicationsLogin extends Command {
 			this.log(clColor.msg.error.bold('Login failed!'))
 			if (flags.debug) this.error(inspect(error, false, null, true))
 			else
-			if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
-			else {
-				const connectMsg = clApplication.isProvisioningApp(config)? clColor.msg.error('Provisioning API') : `organization ${clColor.msg.error(config.slug)}`
-				this.error(`Unable to connect to ${connectMsg}: ${clColor.italic(error.message)}`)
-			}
+				if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
+				else {
+					const connectMsg = clApplication.isProvisioningApp(config) ? clColor.msg.error('Provisioning API') : `organization ${clColor.msg.error(config.slug)}`
+					this.error(`Unable to connect to ${connectMsg}: ${clColor.italic(error.message)}`)
+				}
 		}
 
 	}
@@ -257,7 +266,7 @@ const checkAlias = (alias: string, config?: Config, organization?: string): stri
 	if (config) {
 		const flags = { alias, organization }
 		const apps = filterApplications(config, flags)
-		if (apps.length > 0) throw new Error(`Alias ${clColor.msg.error(alias)} has already been used for ${organization? `organization ${clColor.api.organization(apps[0].organization)}` : clColor.api.application('Provisioning')}`)
+		if (apps.length > 0) throw new Error(`Alias ${clColor.msg.error(alias)} has already been used for ${organization ? `organization ${clColor.api.organization(apps[0].organization)}` : clColor.api.application('Provisioning')}`)
 	}
 
 	return al

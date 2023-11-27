@@ -3,7 +3,7 @@ import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
-import { type AppAuth, clColor, clToken, clConfig, clApplication } from '@commercelayer/cli-core'
+import { type AppAuth, clColor, clToken, clConfig, clApplication, clCommand } from '@commercelayer/cli-core'
 
 
 
@@ -25,6 +25,14 @@ export default class ApplicationsAdd extends Command {
   async catch(error: any): Promise<any> {
     this.error(error.message)
   }
+
+
+  async parse(c: any): Promise<any> {
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		const parsed = await super.parse(c)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		return parsed
+	}
 
 
 
