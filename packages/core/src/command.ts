@@ -66,5 +66,48 @@ const findLongStringFlag = (args: string[], name: string): { value: string; inde
 }
 
 
-export { fixValueType, findLongStringFlag }
+const fixDashedFlagValue = (argv: string[], flag: any, name?: string): string[] => {
+
+	const TEMP_PREFIX = '____'
+
+	const name_ = flag.name || name
+	const char_ = flag.char
+	if (!name_ && !char_) return argv
+
+	const n = name_? (name_.startsWith('--')? name_ : `--${name_}`) : undefined
+	const c = char_? (flag.char.startsWith('-')? char_ : `-${char_}`) : undefined
+
+	let cidIdx = argv.findIndex(a => {
+		return ((c && a.startsWith(c)) || (n && a.startsWith(n)))
+	})
+	if (cidIdx < 0) return argv
+	
+	let flagKey = argv[cidIdx]
+	let flagValue = ''
+	let prefix = ''
+	
+	if (c && flagKey.startsWith(c)) {
+		flagValue = flagKey.replace(c, '').trim()
+		flagKey = c
+	} else if (n && flagKey.startsWith(n)) {
+		flagValue = flagKey.replace(n, '').trim()
+		flagKey = n
+	} else return argv
+	
+	if (flagValue.startsWith('=')) {
+		flagValue = flagValue.slice(1)
+		prefix = flagKey + '='
+	}
+	else flagValue = argv[++cidIdx]
+
+	const val = flagValue.startsWith(`${TEMP_PREFIX}-`)? flagValue.replace(`${TEMP_PREFIX}-`, '-') : flagValue.replace('-', `${TEMP_PREFIX}-`)
+	
+	argv[cidIdx] = prefix + val
+
+	return argv
+
+}
+
+
+export { fixValueType, findLongStringFlag, fixDashedFlagValue }
 
