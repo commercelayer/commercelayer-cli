@@ -74,6 +74,7 @@ export default class ResourcesAll extends Command {
       hidden: true,
     }),
     clientId: Flags.string({
+      name: 'clientId',
       char: 'i',
       description: 'organization client_id',
       hidden: true,
@@ -153,6 +154,14 @@ export default class ResourcesAll extends Command {
     return jwtData
 
   }
+
+
+  async parse(c: any): Promise<any> {
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		const parsed = await super.parse(c)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		return parsed
+	}
 
 
   async run(): Promise<any> {

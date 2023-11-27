@@ -68,7 +68,7 @@
     "@types/inquirer": "^8.2.10",
     "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.9.4",
+    "@types/node": "^20.10.0",
     "@types/node-notifier": "^8.0.5",
     "chai": "^4.3.10",
     "eslint": "^8.54.0",
@@ -81,7 +81,7 @@
     "typescript": "^5.3.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^4.3.3",
+    "@commercelayer/cli-core": "^4.5.0",
     "@commercelayer/sdk": "^5.22.1",
     "@oclif/core": "^2.15.0",
     "axios": "^1.6.2",
