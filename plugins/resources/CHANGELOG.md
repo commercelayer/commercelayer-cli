@@ -1,3 +1,10 @@
+## [5.20.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.0...v5.20.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* fix clientId parsing when it starts with - ([8073205](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/807320521a57bff714f18c2afe8f4993db131931))
+
 # [5.20.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.19.0...v5.20.0) (2023-11-22)
 
 
