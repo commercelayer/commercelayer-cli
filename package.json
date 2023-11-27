@@ -120,7 +120,7 @@
     "@oclif/plugin-autocomplete": "^2.3.10",
     "@oclif/plugin-help": "5.2.14",
     "@oclif/plugin-not-found": "^2.4.3",
-    "@oclif/plugin-plugins": "^3.9.4",
+    "@oclif/plugin-plugins": "^4.1.8",
     "configstore": "^5.0.1",
     "inquirer": "^8.2.6",
     "lodash": "^4.17.21",
