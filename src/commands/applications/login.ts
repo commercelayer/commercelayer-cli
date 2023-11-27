@@ -77,7 +77,8 @@ export default class ApplicationsLogin extends Command {
 			description: 'execute login to Provisioning API',
 			required: false,
 			exclusive: ['scope', 'organization', 'email', 'password', 'api'],
-			dependsOn: ['clientId', 'clientSecret']
+			dependsOn: ['clientId', 'clientSecret'],
+			hidden: true
 		})
 		/*,
 		api: Flags.string({
