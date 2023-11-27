@@ -1,3 +1,10 @@
+## [5.6.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.2...v5.6.3) (2023-11-27)
+
+
+### Bug Fixes
+
+* fix clientId parsing when it starts with - ([9046111](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/90461117618001c95b0cf8414191c22f38112746))
+
 ## [5.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.1...v5.6.2) (2023-11-21)
 
 
