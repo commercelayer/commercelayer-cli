@@ -1,3 +1,11 @@
+## [5.17.2](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.1...v5.17.2) (2023-11-28)
+
+
+### Bug Fixes
+
+* fix clientId flag with - ([f63eb31](https://github.com/commercelayer/commercelayer-cli/commit/f63eb31d92c5397abecab6035971a911dadc48ee))
+* update dependencies ([92a1f3e](https://github.com/commercelayer/commercelayer-cli/commit/92a1f3ec7c1fcb6ef0332c835acd5f63ad30811a))
+
 ## [5.17.1](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.0...v5.17.1) (2023-11-28)
 
 
