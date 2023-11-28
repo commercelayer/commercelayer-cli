@@ -14,6 +14,11 @@ export default class ApplicationsLogout extends Command {
       char: 'r',
       description: 'revoke current access token',
     }),
+    force: Flags.boolean({
+      char: 'F',
+      description: 'force application removal without user confirmation',
+      hidden: true
+    })
   }
 
 
@@ -26,7 +31,7 @@ export default class ApplicationsLogout extends Command {
     if (app && configFileExists(this.config, app)) {
 
       this.log()
-      const ok = await cliux.ux.confirm(`>> Do you really want to remove application ${clColor.api.application(app.name)} of ${clColor.api.organization(app.organization)} from CLI configuration? ${clColor.dim('[Yy/Nn]')}`)
+      const ok = flags.force || await cliux.ux.confirm(`>> Do you really want to remove application ${clColor.api.application(app.name)} of ${clColor.api.organization(app.organization)} from CLI configuration? ${clColor.dim('[Yy/Nn]')}`)
 
       if (ok) {
 

@@ -48,16 +48,15 @@ export default class ApplicationsIndex extends Command {
 			const currentVisible = configData.some(a => clApplication.appKeyMatch(current, a))
 
 			const sortedData = flags.sort ? configData.sort((a: AppInfo, b: AppInfo): number => {
-				const cmp = a.organization.localeCompare(b.organization)
+				const cmp = (a.organization || '').localeCompare(b.organization || '')
 				return (cmp === 0) ? a.name.localeCompare(b.name) : cmp
 			}) : configData
 
 			cliux.Table.table(sortedData as any, {
 				current: { header: `[${currentChar}]`, minWidth: 3, get: row => clApplication.appKeyMatch(current, row as unknown as AppInfo) ? clColor.magentaBright(` ${currentChar} `) : '   ' },
-				organization: { header: 'ORGANIZATION', get: row => currentColor(row, current)(row.organization) },
+				organization: { header: 'ORGANIZATION / API', get: row => currentColor(row, current)(row.organization) },
 				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
 				name: { header: 'APPLICATION', get: row => currentColor(row, current)(row.name) },
-				id: { header: 'ID', get: row => currentColor(row, current)(row.id) },
 				kind: { header: 'KIND', get: row => currentColor(row, current)(row.kind) },
 				scope: { header: 'SCOPE', minWidth: 10, get: row => currentColor(row, current)(printScope(row.scope as string)) },
 				customer: { header: 'PWD', get: row => (row.email && row.password) ? clColor.cyanBright(clOutput.center('\u221A', 'PWD'.length)) : '' },
@@ -82,8 +81,9 @@ export default class ApplicationsIndex extends Command {
 const extraColumns = (flags: any): any => {
 	const extra: any = {}
 	if (flags.extra) {
-		extra.appkey = { header: clColor.dim('APPKEY'), get: (row: { key: any }) => clColor.dim(row.key || '') }
-		extra.domain = { header: clColor.dim('   DOMAIN'), get: (row: { domain: any }) => clColor.dim(row.domain || '') }
+		extra.id = { header: 'ID', get: (row: { id: any }) => clColor.dim(row.id || '')  }
+		extra.appkey = { header: 'APPKEY', get: (row: { key: any }) => clColor.dim(row.key || '') }
+		extra.domain = { header: 'DOMAIN', get: (row: { domain: any }) => clColor.dim(row.domain || '') }
 	}
 	return extra
 }

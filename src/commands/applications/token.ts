@@ -57,7 +57,7 @@ export default class ApplicationsToken extends Command {
 			this.error(`Unable to find configuration file for application${app ? ` ${app.name}` : ''}`,
 				{ suggestions: [`execute ${clColor.cli.command('applications:login')} command to initialize application and get the first access token`] }
 			)
-
+console.log(app)
 		try {
 
 			let expMinutes
@@ -77,7 +77,7 @@ export default class ApplicationsToken extends Command {
 			}
 
 			if (accessToken) {
-				this.log(`\nAccess token for application ${clColor.api.application(app.name)} of organization ${clColor.api.organization(app.organization)}`)
+				this.log(`\nAccess token for application ${clColor.api.application(app.name)}`)
 				this.log(`\n${clColor.api.token(accessToken)}\n`)
 				if (flags.shared && expMinutes) {
 					this.warn(clColor.italic(`this access token will expire in ${expMinutes} minutes`))
@@ -115,6 +115,8 @@ const newAccessToken = async (config: Config, app: AppKey, save: boolean = false
 	const token = await clToken.getAccessToken(cfg)
 
 	if (token) {
+
+		if (token.error) throw new Error(`Error getting new access token: ${token.error}`)
 
 		// Check application type on each token refresh
 		const info = clToken.decodeAccessToken(token.accessToken)

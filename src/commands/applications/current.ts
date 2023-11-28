@@ -2,7 +2,7 @@ import { Command, Flags } from '@oclif/core'
 import { readConfigFile, currentApplication } from '../../config'
 import { inspect } from 'util'
 import { printScope } from '../../common'
-import { type AppInfo, clColor } from '@commercelayer/cli-core'
+import { type AppInfo, clColor, clApplication } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsCurrent extends Command {
@@ -60,5 +60,6 @@ export default class ApplicationsCurrent extends Command {
 export const printCurrent = (app?: AppInfo): string => {
 	if (!app?.key || (app.key === '')) return clColor.italic.dim('No current application')
 	const mode = `${((app.mode === 'live') ? clColor.api.live.greenBright : clColor.api.test)(app.mode)}`
-	return `${clColor.api.application(app.name)} (${clColor.api.slug(app.slug)}) [ ${app.organization} | ${app.kind} | ${mode} | ${app.alias} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
+	if (clApplication.isProvisioningApp(app)) return `${clColor.api.application(app.name)} [ ${app.kind} | ${mode} | ${app.alias} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
+	else return `${clColor.api.application(app.name)} (${clColor.api.slug(app.slug)}) [ ${app.organization} | ${app.kind} | ${mode} | ${app.alias} ]${app.scope?.length ? ` (Scope: ${printScope(app.scope)})` : ''}`
 }
