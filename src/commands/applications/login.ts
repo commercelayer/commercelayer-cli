@@ -135,7 +135,7 @@ export default class ApplicationsLogin extends Command {
 
 
 		try {
-
+console.log(config)
 			const token = await clToken.getAccessToken(config)
 			if (!token?.accessToken) this.error('Unable to get access token')
 
