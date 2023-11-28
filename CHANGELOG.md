@@ -1,3 +1,10 @@
+## [5.17.4](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.3...v5.17.4) (2023-11-28)
+
+
+### Bug Fixes
+
+* remove debug info ([cfca13a](https://github.com/commercelayer/commercelayer-cli/commit/cfca13a5252f6bafaae02677914bdbbd08c7c2f4))
+
 ## [5.17.3](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.2...v5.17.3) (2023-11-28)
 
 
