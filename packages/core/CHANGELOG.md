@@ -1,3 +1,10 @@
+## [4.5.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.5.1...v4.5.2) (2023-11-28)
+
+
+### Bug Fixes
+
+* fix parsed flag value when starts with - ([8cd2738](https://github.com/commercelayer/commercelayer-cli-core/commit/8cd2738209b48d401174aaefe8e360f1f6a0e4f3))
+
 ## [4.5.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.5.0...v4.5.1) (2023-11-28)
 
 
