@@ -1,3 +1,10 @@
+## [5.6.4](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.3...v5.6.4) (2023-11-28)
+
+
+### Bug Fixes
+
+* fix flag clientId with initial - ([7803103](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/7803103c30b92b9a30a0f46cd23578565c3b631c))
+
 ## [5.6.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.2...v5.6.3) (2023-11-27)
 
 
