@@ -1,6 +1,6 @@
 import { Command, Flags, type Config } from '@oclif/core'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { clApplication, clApi, clToken, clColor } from '@commercelayer/cli-core'
+import { clApplication, clApi, clToken, clColor, clCommand } from '@commercelayer/cli-core'
 import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
 import { inspect } from 'util'
@@ -76,6 +76,14 @@ export default class ApplicationsLogin extends Command {
 
 	async catch(error: any): Promise<any> {
 		this.error(error.message)
+	}
+
+
+	async parse(c: any): Promise<any> {
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		const parsed = await super.parse(c)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		return parsed
 	}
 
 
