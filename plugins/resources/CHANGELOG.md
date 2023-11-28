@@ -1,3 +1,10 @@
+## [5.20.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.1...v5.20.2) (2023-11-28)
+
+
+### Bug Fixes
+
+* fix flag clientId with initial - ([e54673f](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/e54673ffa794ec2a050eab6c660470e482f4fd35))
+
 ## [5.20.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.0...v5.20.1) (2023-11-27)
 
 
