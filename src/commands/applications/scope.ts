@@ -54,9 +54,9 @@ export default class ApplicationsScope extends Command {
     })
 
 
-    // Always use current organization and (optional) domain
+    // Always use current organization (for core apps) and (optional) domain
     const argv: string[] = []
-    argv.push('-o', current.slug)
+    if (current.slug) argv.push('-o', current.slug)
     if (current.domain) argv.push('-d', current.domain)
 
     let appInfo: AppInfo

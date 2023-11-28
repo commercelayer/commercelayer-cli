@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "5.15.1",
+  "version": "5.16.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bin": {
     "commercelayer": "./bin/run",
@@ -37,7 +37,7 @@
       "@oclif/plugin-autocomplete"
     ],
     "devPlugins": [
-      "@fig/complete-oclif"
+      
     ],
     "aliases": {
       "blocked": null
@@ -48,7 +48,8 @@
       ],
       "prerun": [
         "./lib/hooks/prerun/login",
-        "./lib/hooks/prerun/plugin"
+        "./lib/hooks/prerun/plugin",
+        "./lib/hooks/prerun/application"
       ],
       "postrun": [
         "./lib/hooks/postrun/save",
@@ -87,7 +88,7 @@
     "build": "rm -rf lib && tsc -b",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --require dotenv/config",
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*",
     "lint": "eslint src --ext .ts --config .eslintrc",
@@ -96,26 +97,30 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "^2.0.5",
-    "@commercelayer/eslint-config-ts": "^1.1.0",
-    "@fig/complete-oclif": "^3.0.0",
+    "@commercelayer/eslint-config-ts": "^1.2.0",
     "@oclif/test": "^2.5.6",
-    "@types/chai": "^4.3.9",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^4.3.11",
     "@types/configstore": "^4.0.0",
-    "@types/inquirer": "^8.2.9",
-    "@types/lodash": "^4.14.200",
-    "@types/mocha": "^10.0.3",
-    "@types/node": "^20.8.8",
+    "@types/inquirer": "^8.2.10",
+    "@types/lodash": "^4.14.202",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.0",
     "@types/update-notifier": "^5.1.0",
     "chai": "^4.3.10",
-    "eslint": "^8.52.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.54.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
+    "oclif": "^4.0.4",
+    "semantic-release": "^22.0.8",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^4.1.2",
-    "@commercelayer/sdk": "^5.19.0",
+    "@commercelayer/cli-core": "^4.5.0",
+    "@commercelayer/sdk": "^5.22.1",
     "@oclif/core": "^2.15.0",
     "@oclif/plugin-autocomplete": "^2.3.10",
     "@oclif/plugin-help": "5.2.14",
