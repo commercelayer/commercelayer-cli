@@ -98,11 +98,12 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string): string[] 
 		flagValue = flagValue.slice(1)
 		prefix = flagKey + '='
 	}
-	else flagValue = argv[++cidIdx]
+	else if (!flagValue) flagValue = argv[++cidIdx]
 
-	const val = flagValue.startsWith(`${TEMP_PREFIX}-`)? flagValue.replace(`${TEMP_PREFIX}-`, '-') : flagValue.replace('-', `${TEMP_PREFIX}-`)
-	
-	argv[cidIdx] = prefix + val
+	if (flagValue.startsWith('-') || flagValue.startsWith(TEMP_PREFIX)) {
+		const val = flagValue.startsWith(`${TEMP_PREFIX}-`)? flagValue.replace(`${TEMP_PREFIX}-`, '-') : flagValue.replace('-', `${TEMP_PREFIX}-`)
+		argv[cidIdx] = prefix + val
+	}
 
 	return argv
 
