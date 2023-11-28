@@ -133,6 +133,7 @@ const currentApplication = (app?: AppInfo): AppInfo | undefined => {
 		scope: app.scope,
 		email: app.email,
 		alias: app.alias,
+		api: app.api
 	})
 	return clicfg.get(ConfigParams.currentApplication)
 }
@@ -154,10 +155,15 @@ const filterApplications = (config: Config, flags: any): AppInfo[] => {
 		if (mode && (mode !== app.mode)) return false
 		if (flags.id && (flags.id !== app.id)) return false
 		if (flags.alias && (flags.alias !== app.alias)) return false
+		if (flags.provisioning && (app.api !== 'provisioning')) return false
+		if (flags.api && (flags.api !== app.api)) return false
 
 		return true
 
 	})
+
+	// Fix scope
+	applications.forEach(a => { a.api = a.api || 'core' } )
 
 	return applications
 
@@ -186,7 +192,7 @@ const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
 	defaultDomain: clConfig.api.default_domain || 'commercelayer.io',
-	applicationTypeCheck: clConfig.cli.applications || ['cli', 'sales_channel', 'integration'],
+	applicationTypeCheck: clConfig.cli.applications || ['sales_channel', 'integration'],
 	scopeCheck: clConfig.application.login_scopes || ['market', 'stock_location'],
 }
 

@@ -14,10 +14,10 @@ const printScope = (scope: string | string[] | undefined): string => {
 }
 
 
-const promptApplication = async (apps: AppInfo[]): Promise<any> => {
+const promptApplication = async (apps: AppInfo[], fields?: string[]): Promise<any> => {
 
 	const appMaxLength = clOutput.maxLength(apps, 'name') + 2
-	const details = ['organization', 'kind', 'mode', 'alias']
+	const details = fields || ['organization', 'kind', 'mode', 'alias'/*, 'api' */]
 
 	const answers = await inquirer.prompt([{
 		type: 'list',

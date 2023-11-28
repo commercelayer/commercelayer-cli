@@ -1,6 +1,6 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
 import { configParam, ConfigParams, filterApplications } from './config'
-import type { AppInfo } from '@commercelayer/cli-core'
+import { type AppInfo } from '@commercelayer/cli-core'
 import { promptApplication } from './common'
 
 
@@ -46,7 +46,14 @@ export default abstract class extends Command {
 			hidden: true,
 			exclusive: ['alias', 'id', 'mode', 'kind'],
 		}),
+		provisioning: Flags.boolean({
+			char: 'P',
+			description: 'Provisioning applications',
+			required: false,
+			exclusive: ['scope', 'organization', 'email', 'password'],
+		})
 	}
+
 
 
 	protected appFilterEnabled(flags: any): boolean {
