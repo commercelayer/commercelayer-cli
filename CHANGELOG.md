@@ -1,3 +1,10 @@
+## [5.17.3](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.2...v5.17.3) (2023-11-28)
+
+
+### Bug Fixes
+
+* fix parsed clientId value ([909ae17](https://github.com/commercelayer/commercelayer-cli/commit/909ae171541c2c195a4c1f196ecde5145b8810fa))
+
 ## [5.17.2](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.1...v5.17.2) (2023-11-28)
 
 
