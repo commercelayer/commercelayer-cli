@@ -66,7 +66,7 @@ const findLongStringFlag = (args: string[], name: string): { value: string; inde
 }
 
 
-const fixDashedFlagValue = (argv: string[], flag: any, name?: string): string[] => {
+const fixDashedFlagValue = (argv: string[], flag: any, name?: string, parsed?: any): string[] => {
 
 	const TEMP_PREFIX = '____'
 
@@ -101,8 +101,18 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string): string[] 
 	else if (!flagValue) flagValue = argv[++cidIdx]
 
 	if (flagValue.startsWith('-') || flagValue.startsWith(TEMP_PREFIX)) {
-		const val = flagValue.startsWith(`${TEMP_PREFIX}-`)? flagValue.replace(`${TEMP_PREFIX}-`, '-') : flagValue.replace('-', `${TEMP_PREFIX}-`)
+
+		const val = flagValue.startsWith(`${TEMP_PREFIX}`)? flagValue.replace(`${TEMP_PREFIX}`, '') : flagValue.replace('-', `${TEMP_PREFIX}-`)
 		argv[cidIdx] = prefix + val
+
+		if (flagValue.startsWith(TEMP_PREFIX) && parsed) {
+			const nameKey = name_? name_.replace('--', '') : undefined
+			const parsedFlag = Object.entries(parsed.flags).find(([k, v]) => v === flagValue)
+			if (parsedFlag && (!nameKey || nameKey === parsedFlag[0])) parsed.flags[parsedFlag[0]] = val
+			const parsedRawFlag = Object.values(parsed.raw).find((f: any) => (f.type === 'flag') && (f.input === flagValue)) as any
+			if (parsedRawFlag && (!nameKey || nameKey === parsedRawFlag.flag)) parsedRawFlag.input = val
+		}
+
 	}
 
 	return argv

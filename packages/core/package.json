@@ -12,7 +12,7 @@
     "start": "ts-node src/index.ts",
     "prepare": "npm run build",
     "test": "jest --passWithNoTests",
-    "test-local": "ts-node test/token.ts",
+    "test-local": "ts-node test/spot.ts",
     "coverage": "jest --coverage",
     "size": "size-limit",
     "analyze": "size-limit --why",
