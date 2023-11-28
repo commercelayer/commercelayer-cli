@@ -97,6 +97,15 @@ export default class ApplicationsLogin extends Command {
 	}
 
 
+	async parse(c: any): Promise<any> {
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		const parsed = await super.parse(c)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		return parsed
+	}
+
+  
+  
 	async run(): Promise<any> {
 
 		const { flags } = await this.parse(ApplicationsLogin)
