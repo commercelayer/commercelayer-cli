@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.5.0...v4.5.1) (2023-11-28)
+
+
+### Bug Fixes
+
+* fix clientId value fixer ([b212a1a](https://github.com/commercelayer/commercelayer-cli-core/commit/b212a1a827e0db99128f56c76f8b2fde219238b9))
+
 # [4.5.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.4.0...v4.5.0) (2023-11-27)
 
 
