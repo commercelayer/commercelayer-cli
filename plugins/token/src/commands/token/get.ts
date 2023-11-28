@@ -84,7 +84,7 @@ export default class TokenGet extends Command {
   async parse(c: any): Promise<any> {
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
 		const parsed = await super.parse(c)
-		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
 		return parsed
 	}
 
