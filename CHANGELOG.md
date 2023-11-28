@@ -1,3 +1,10 @@
+## [5.17.1](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.0...v5.17.1) (2023-11-28)
+
+
+### Bug Fixes
+
+* login error handler ([0254fdb](https://github.com/commercelayer/commercelayer-cli/commit/0254fdbc72a852484948cc6dc39e4b150fb7531e))
+
 # [5.17.0](https://github.com/commercelayer/commercelayer-cli/compare/v5.16.0...v5.17.0) (2023-11-28)
 
 
