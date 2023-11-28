@@ -163,7 +163,6 @@ export default class ApplicationsLogin extends Command {
 			this.log(`\n${clColor.msg.success.bold('Login successful!')} Your configuration has been stored locally. You can now interact with ${interactMsg}\n`)
 
 		} catch (error: any) {
-			console.log(error)
 			this.log(clColor.msg.error.bold('Login failed!'))
 			if (flags.debug) this.error(inspect(error, false, null, true))
 			else
