@@ -10,7 +10,8 @@ const capitalize = (str: string | undefined): string | undefined => {
 
 const pluralize = Inflector.pluralize
 const singularize = Inflector.singularize
+const camelize = Inflector.camelize
 
 
-export { capitalize, pluralize, singularize }
+export { capitalize, pluralize, singularize, camelize }
 export { symbols } from './symbol'
