@@ -75,7 +75,7 @@ const applyFilter = (predicate: string, ...fields: string[]): string => {
 	return out
 }
 
-const filters = (): readonly Filter[] => {
+const filters = (): Filter[] => {
 	return FILTERS
 }
 
