@@ -41,7 +41,7 @@ export async function run(argv?: string[], options?: LoadOptions): Promise<unkno
 
   // run init hook
   const initHook = await config.runHook('init', {id, argv: argvSlice})
-  if (initHook.failures[0]) throw new CLIError(initHook.failures[0].error + ' CATCHATOOOOO')
+  if (initHook.failures[0]) throw new CLIError(initHook.failures[0].error)
 
   // display version if applicable
   if (versionAddition(argv, config)) {

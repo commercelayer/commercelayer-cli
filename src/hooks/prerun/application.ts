@@ -13,7 +13,7 @@ const applicationsCheck = {
 	triggers: 		['integration', 'sales_chasnnel'],
 	token: 			['integration'],
 	microstore: 	['sales_channel'],
-	exports:		['integrtation'],
+	exports:		['integration'],
 	cleanups: 		['integration'],
 	tags: 			['integration', 'sales_channel'],
 	provisioning: 	['user']
