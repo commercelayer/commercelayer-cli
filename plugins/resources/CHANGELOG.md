@@ -1,3 +1,10 @@
+## [5.20.3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.2...v5.20.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* remove inflector-js dependency ([6d059e6](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/6d059e67be73973c2fa3e0bd897fe356e00ed6d7))
+
 ## [5.20.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.1...v5.20.2) (2023-11-28)
 
 
