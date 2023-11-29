@@ -1,3 +1,10 @@
+# [4.7.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.6.0...v4.7.0) (2023-11-29)
+
+
+### Features
+
+* export filter list ([0e1a3fa](https://github.com/commercelayer/commercelayer-cli-core/commit/0e1a3fa9ec7152d65ecf32f9b321d0833467c574))
+
 # [4.6.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.5.2...v4.6.0) (2023-11-29)
 
 
