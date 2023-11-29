@@ -1,3 +1,10 @@
+## [4.7.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.7.1...v4.7.2) (2023-11-29)
+
+
+### Bug Fixes
+
+* fix filter list ([912d72f](https://github.com/commercelayer/commercelayer-cli-core/commit/912d72fff5cc3e39f60a50b9bd428a43d47c133a))
+
 ## [4.7.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.7.0...v4.7.1) (2023-11-29)
 
 
