@@ -1,5 +1,5 @@
 
-const filters: Filter[] = [
+const FILTERS: readonly Filter[] = [
 	{ predicate: '*_eq', description: 'The attribute is equal to the filter value' },
 	{ predicate: '*_not_eq', description: 'The attribute is not equal to the filter value' },
 	{ predicate: '*_matches', description: 'The attribute matches the filter value with "LIKE" operator' },
@@ -46,7 +46,7 @@ const filters: Filter[] = [
 	{ predicate: '*_not_cont_all', description: 'The attribute contains none of the filter values (comma-separated)' },
 	{ predicate: '*_true', description: 'The attribute is true' },
 	{ predicate: '*_false', description: 'The attribute is false' },
-]
+] as const
 
 
 const documentation = 'https://docs.commercelayer.io/core/filtering-data#list-of-predicates'
@@ -59,7 +59,7 @@ interface Filter extends Record<string, unknown> {
 
 
 const filterList = (): string[] => {
-	return filters.map(f => f.predicate.replace('*', ''))
+	return FILTERS.map(f => f.predicate.replace('*', ''))
 }
 
 const filterAvailable = (filter: string): boolean => {
@@ -75,9 +75,14 @@ const applyFilter = (predicate: string, ...fields: string[]): string => {
 	return out
 }
 
+const filters = (): readonly Filter[] => {
+	return FILTERS
+}
+
 
 export { type Filter, documentation,
 	filterAvailable as available,
 	filterList as list,
-	applyFilter as apply
+	applyFilter as apply,
+	filters
 }
