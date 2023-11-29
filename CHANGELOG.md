@@ -1,3 +1,10 @@
+## [5.17.5](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.4...v5.17.5) (2023-11-29)
+
+
+### Bug Fixes
+
+* fix application kinds enabled for exports ([7b19e8f](https://github.com/commercelayer/commercelayer-cli/commit/7b19e8f09d0e55e8d9aac478f1f984f9120b0bd8))
+
 ## [5.17.4](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.3...v5.17.4) (2023-11-28)
 
 
