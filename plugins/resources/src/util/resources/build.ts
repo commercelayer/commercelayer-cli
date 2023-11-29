@@ -5,6 +5,7 @@ import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { join } from 'path'
 import { writeFileSync } from 'fs'
 import type { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
+import { clText } from '@commercelayer/cli-core'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
 const resFile = join(__dirname, 'schema.json')
@@ -38,7 +39,7 @@ const getResourcesJson = async (): Promise<any> => {
 
 
 const isSingleton = (res: string): boolean => {
-	return ['organization', 'application'].includes(res)
+	return (clText.singularize(res) === res)
 }
 
 
@@ -48,13 +49,11 @@ const parseResourcesSchema = async (): Promise<Resource[]> => {
 
 	if (resJson) {
 
-		const Inflector = require('inflector-js')
-
 		const resList = resJson.data.map((r: { id: string; attributes: { singleton: boolean } }) => {
 			const item = {
 				name: r.id,
-				api: r.attributes.singleton ? r.id : Inflector.pluralize(r.id),
-				model: Inflector.camelize(r.id),
+				api: r.attributes.singleton ? r.id : clText.pluralize(r.id),
+				model: clText.camelize(r.id),
 				singleton: r.attributes.singleton,
 			}
 			return item
@@ -71,14 +70,12 @@ const parseResourcesSchema = async (): Promise<Resource[]> => {
 
 const parseResourcesSdk = async (): Promise<Resource[]> => {
 
-	const Inflector = require('inflector-js')
-
 	const resList = CommerceLayerStatic.resources().map(r => {
-		const singular = Inflector.singularize(r)
+		const singular = clText.singularize(r)
 		const item = {
 			name: singular,
 			api: r as ResourceTypeLock,
-			model: Inflector.camelize(singular),
+			model: clText.camelize(singular),
 			singleton: isSingleton(r),
 		}
 		return item
