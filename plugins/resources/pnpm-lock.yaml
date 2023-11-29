@@ -9,8 +9,8 @@ dependencies:
     specifier: ^4.5.2
     version: 4.5.2(@types/node@20.10.0)(typescript@5.3.2)
   '@commercelayer/sdk':
-    specifier: ^5.22.1
-    version: 5.22.1
+    specifier: ^5.23.0
+    version: 5.23.0
   '@oclif/core':
     specifier: ^2.15.0
     version: 2.15.0(@types/node@20.10.0)(typescript@5.3.2)
@@ -379,8 +379,8 @@ packages:
     engines: {node: '>=18.0.0'}
     dev: false
 
-  /@commercelayer/sdk@5.22.1:
-    resolution: {integrity: sha512-eF3vlF1sK45tMRydbMg+bQGx6yZWnjg1B+PKwxtFNmsfcURvazBqQtRMv9Tab/3PX2lEFvAFrxkjoxafRUFV8Q==}
+  /@commercelayer/sdk@5.23.0:
+    resolution: {integrity: sha512-uRPjht4O0Jbc5B4+8vSoE5b4e+yZKf86j8w2l1RUPv16e1taV3oIbC9r7SwlL3xQi4JGQU67dMEAukp6R7EgjA==}
     engines: {node: '>=16 || ^14.17'}
     dependencies:
       axios: 1.6.1
