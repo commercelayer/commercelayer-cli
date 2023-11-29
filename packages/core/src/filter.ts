@@ -1,5 +1,5 @@
 
-const FILTERS: readonly Filter[] = [
+const FILTERS: Filter[] = [
 	{ predicate: '*_eq', description: 'The attribute is equal to the filter value' },
 	{ predicate: '*_not_eq', description: 'The attribute is not equal to the filter value' },
 	{ predicate: '*_matches', description: 'The attribute matches the filter value with "LIKE" operator' },
@@ -46,7 +46,7 @@ const FILTERS: readonly Filter[] = [
 	{ predicate: '*_not_cont_all', description: 'The attribute contains none of the filter values (comma-separated)' },
 	{ predicate: '*_true', description: 'The attribute is true' },
 	{ predicate: '*_false', description: 'The attribute is false' },
-] as const
+]
 
 
 const documentation = 'https://docs.commercelayer.io/core/filtering-data#list-of-predicates'
