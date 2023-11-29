@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.5.2...v4.6.0) (2023-11-29)
+
+
+### Features
+
+* add camelize text function ([466403b](https://github.com/commercelayer/commercelayer-cli-core/commit/466403b4a77bb0f37a6171956cd3dbe736201d4c))
+
 ## [4.5.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.5.1...v4.5.2) (2023-11-28)
 
 
