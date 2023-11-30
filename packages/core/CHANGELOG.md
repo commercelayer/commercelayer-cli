@@ -1,3 +1,10 @@
+# [4.8.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.7.2...v4.8.0) (2023-11-30)
+
+
+### Features
+
+* add denormalize function ([967c4f7](https://github.com/commercelayer/commercelayer-cli-core/commit/967c4f7d07cacdcccf16df3144bd4c9ad9b9a0b1))
+
 ## [4.7.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.7.1...v4.7.2) (2023-11-29)
 
 
