@@ -29,8 +29,6 @@ export * as clSymbol from './symbol'
 
 export * as clFilter from './filter'
 
-export * as clParser from './jsonapi'
-
 
 /** Types **/
 export type { ApiMode, ApiType } from './api'

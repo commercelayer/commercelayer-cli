@@ -2,6 +2,10 @@
 import type { Method } from 'axios'
 import config from './config'
 
+import { rawRequest, readDataFile } from './raw'
+import { denormalize } from './jsonapi'
+
+
 type ApiMode = 'test' | 'live'
 type ApiType = 'core' | 'provisioning' | 'metrics'
 export type { ApiMode, ApiType }
@@ -117,4 +121,20 @@ export const requestRateLimitDelay = (options?: DelayOptions): number => {
 
 	return delay
 
+}
+
+
+export { rawRequest as requestRaw, readDataFile as requestDataFile }
+export { denormalize as responseDenormalize }
+
+
+export const request = {
+	raw: rawRequest,
+	readDataFile,
+	rateLimitDelay: requestRateLimitDelay
+}
+
+
+export const response = {
+	denormalize
 }
