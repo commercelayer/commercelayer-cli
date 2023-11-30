@@ -2,7 +2,7 @@
 import type { Method } from 'axios'
 import config from './config'
 
-import { rawRequest, readDataFile } from './raw'
+import { rawRequest, readDataFile, Operation } from './raw'
 import { denormalize } from './jsonapi'
 
 
@@ -124,7 +124,7 @@ export const requestRateLimitDelay = (options?: DelayOptions): number => {
 }
 
 
-export { rawRequest as requestRaw, readDataFile as requestDataFile }
+export { rawRequest as requestRaw, readDataFile as requestDataFile, Operation }
 export { denormalize as responseDenormalize }
 
 
