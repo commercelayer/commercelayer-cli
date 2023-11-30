@@ -1,3 +1,10 @@
+## [4.9.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.9.0...v4.9.1) (2023-11-30)
+
+
+### Bug Fixes
+
+* fix api exports ([94a2a99](https://github.com/commercelayer/commercelayer-cli-core/commit/94a2a99a862308944cc86684f587ba8bb72741e7))
+
 # [4.9.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.8.0...v4.9.0) (2023-11-30)
 
 
