@@ -1,3 +1,10 @@
+# [4.9.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.8.0...v4.9.0) (2023-11-30)
+
+
+### Features
+
+* add raw and jsonapi functions ([67c4876](https://github.com/commercelayer/commercelayer-cli-core/commit/67c48764744668b01542d8ed4339ed793be01dbb))
+
 # [4.8.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.7.2...v4.8.0) (2023-11-30)
 
 
