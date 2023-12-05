@@ -1,3 +1,10 @@
+## [5.20.4](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.3...v5.20.4) (2023-12-05)
+
+
+### Bug Fixes
+
+* fix data argument in curl command ([a331f28](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/a331f28ec30de364f8bc7a44e931c4aab9d26e79))
+
 ## [5.20.3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.2...v5.20.3) (2023-11-29)
 
 
