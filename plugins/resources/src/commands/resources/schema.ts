@@ -10,7 +10,7 @@ export default class ResourcesSchema extends Command {
   static aliases = ['schema', 'res:schema', 'rs']
 
   static examples = [
-    'commercelayer scghema',
+    'commercelayer schema',
     'cl res:schema'
   ]
 

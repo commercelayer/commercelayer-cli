@@ -1,8 +1,6 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
 import { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
-import { readDataFile, rawRequest, Operation } from '../../raw'
-import { denormalize } from '../../jsonapi'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 
@@ -90,8 +88,8 @@ export default class ResourcesUpdate extends Command {
       try {
         const baseUrl = clApi.baseURL(flags.organization, flags.domain)
         const accessToken = flags.accessToken
-        const rawRes = await rawRequest({ operation: Operation.Update, baseUrl, accessToken, resource: resource.api }, readDataFile(flags.data), id)
-        const out = flags.raw ? rawRes : denormalize(rawRes)
+        const rawRes = await clApi.request.raw({ operation: clApi.Operation.Update, baseUrl, accessToken, resource: resource.api }, clApi.request.readDataFile(flags.data), id)
+        const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
         this.printOutput(out, flags)
         this.log(`\n${clColor.style.success('Successfully')} updated resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(rawRes.id)}\n`)
         return out

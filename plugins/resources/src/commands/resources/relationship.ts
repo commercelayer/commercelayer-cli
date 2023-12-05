@@ -3,8 +3,7 @@ import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/s
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 import ResourcesList from './list'
-import { clColor } from '@commercelayer/cli-core'
-import { pluralize } from '../../inflector'
+import { clColor, clText } from '@commercelayer/cli-core'
 
 
 const OPERATION = 'relationship'
@@ -137,7 +136,7 @@ export default class ResourcesRelationship extends Command {
   }
 
   private isRelationship1N(name: string): boolean {
-    return (name === pluralize(name))
+    return (name === clText.pluralize(name))
   }
 
 }

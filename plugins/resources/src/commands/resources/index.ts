@@ -46,5 +46,4 @@ export default class ResourcesIndex extends Command {
 		return await super.catch(error)
 	}
 
-
 }

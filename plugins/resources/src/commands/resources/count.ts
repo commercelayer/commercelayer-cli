@@ -1,7 +1,6 @@
 import { Args, Command, Flags, ux as cliux } from '@oclif/core'
 import { type Resource, findResource } from '../../util/resources'
-import { type KeyValString, clColor, clApi, clUtil } from '@commercelayer/cli-core'
-import { filterAvailable } from './filters'
+import { type KeyValString, clColor, clApi, clUtil, clFilter } from '@commercelayer/cli-core'
 import { CommerceLayer, type CommerceLayerClient } from '@commercelayer/sdk'
 import type { ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
 
@@ -114,7 +113,7 @@ export default class ResourcesCount extends Command {
         const wt = f.split('=')
         if (wt.length < 2) this.error(`Filter flag must be in the form ${clColor.style.attribute('predicate=value')}`)
         const w = wt[0]
-        if (!filterAvailable(w)) this.error(`Invalid query filter: ${clColor.style.error(w)}`, {
+        if (!clFilter.available(w)) this.error(`Invalid query filter: ${clColor.style.error(w)}`, {
           suggestions: [`Execute command ${clColor.style.command('resources:filters')} to get a full list of all available filter predicates`],
           ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
         })

@@ -1,5 +1,5 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import { type CommerceLayerClient, type QueryParamsRetrieve} from '@commercelayer/sdk'
+import { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 
@@ -9,51 +9,51 @@ const OPERATION = 'retrieve'
 
 export default class ResourcesRetrieve extends Command {
 
-	static description = 'fetch a single resource'
+  static description = 'fetch a single resource'
 
-	static aliases = [OPERATION, 'rr', 'res:retrieve']
+  static aliases = [OPERATION, 'rr', 'res:retrieve']
 
-	static examples = [
-		'$ commercelayer resources:retrieve customers/<customerId>',
-		'$ commercelayer retrieve customers <customerId>',
-		'$ cl res:retrieve customers <customerId>',
-		'$ clayer rr customers/<customerId>',
-	]
+  static examples = [
+    '$ commercelayer resources:retrieve customers/<customerId>',
+    '$ commercelayer retrieve customers <customerId>',
+    '$ cl res:retrieve customers <customerId>',
+    '$ clayer rr customers/<customerId>',
+  ]
 
-	static flags = {
-		...Command.flags,
-		save: Flags.string({
-			char: 'x',
-			description: 'save command output to file',
-			multiple: false,
-			exclusive: ['save-path'],
-		}),
-		'save-path': Flags.string({
-			char: 'X',
-			description: 'save command output to file and create missing path directories',
-			multiple: false,
-			exclusive: ['save'],
-		}),
+  static flags = {
+    ...Command.flags,
+    save: Flags.string({
+      char: 'x',
+      description: 'save command output to file',
+      multiple: false,
+      exclusive: ['save-path'],
+    }),
+    'save-path': Flags.string({
+      char: 'X',
+      description: 'save command output to file and create missing path directories',
+      multiple: false,
+      exclusive: ['save'],
+    }),
     extract: Flags.string({
       char: 'e',
       description: 'extract subfields from object attributes',
       multiple: true,
       exclusive: ['raw'],
     }),
-	}
+  }
 
-	static args = {
-		...Command.args,
-		id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: false }),
+  static args = {
+    ...Command.args,
+    id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: false }),
   }
 
 
-	async run(): Promise<any> {
+  async run(): Promise<any> {
 
-		const { args, flags } = await this.parse(ResourcesRetrieve)
+    const { args, flags } = await this.parse(ResourcesRetrieve)
 
-		const { res, id } = this.checkResourceId(args.resource, args.id)
-		const resource = this.checkResource(res, { singular: true })
+    const { res, id } = this.checkResourceId(args.resource, args.id)
+    const resource = this.checkResource(res, { singular: true })
 
     const loadParams = flags[FLAG_LOAD_PARAMS]
     const saveCmd = flags[FLAG_SAVE_PARAMS]
@@ -61,27 +61,27 @@ export default class ResourcesRetrieve extends Command {
     const showHeaders = flags.headers || flags['headers-only']
 
 
-		// Include flags
-		const include: string[] = this.includeFlag(flags.include)
-		// Fields flags
-		const fields = this.fieldsFlag(flags.fields, resource.api)
+    // Include flags
+    const include: string[] = this.includeFlag(flags.include)
+    // Fields flags
+    const fields = this.fieldsFlag(flags.fields, resource.api)
 
 
-		const cl = this.initCommerceLayer(flags)
+    const cl = this.initCommerceLayer(flags)
 
-		const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders}) : undefined
-		const reqReader = flags.doc ? addRequestReader(cl) : undefined
+    const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
+    const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
-		const params: QueryParamsRetrieve = {}
+    const params: QueryParamsRetrieve = {}
 
-		try {
+    try {
 
-			const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
+      const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
 
-			this.checkOperation(resSdk, OPERATION)
+      this.checkOperation(resSdk, OPERATION)
 
-			if (include && (include.length > 0)) params.include = include
-			if (fields && (Object.keys(fields).length > 0)) params.fields = fields
+      if (include && (include.length > 0)) params.include = include
+      if (fields && (Object.keys(fields).length > 0)) params.fields = fields
 
 
       // Load saved command arguments
@@ -90,9 +90,9 @@ export default class ResourcesRetrieve extends Command {
         if (savedParams) mergeCommandParams(params, savedParams)
       }
 
-			const res = await resSdk.retrieve(id, params)
+      const res = await resSdk.retrieve(id, params)
 
-			const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
+      const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 
       if (flags.extract) {
         const ext = this.extractFlag(flags.extract)
@@ -100,24 +100,24 @@ export default class ResourcesRetrieve extends Command {
       }
 
       this.printHeaders(rawReader?.headers, flags)
-			this.printOutput(out, flags)
+      this.printOutput(out, flags)
 
 
       // Save command output
-			if (flags.save || flags['save-path']) this.saveOutput(out, flags)
+      if (flags.save || flags['save-path']) this.saveOutput(out, flags)
       // Save command srguments
       if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
 
 
-			return out
+      return out
 
-		} catch (error: any) {
-			if (isRequestInterrupted(error) && reqReader) {
-				await this.showLiveDocumentation(reqReader.request, params, flags)
-				cl.removeInterceptor('request', reqReader.id)
-			} else this.printError(error, flags, args)
-		}
+    } catch (error: any) {
+      if (isRequestInterrupted(error) && reqReader) {
+        await this.showLiveDocumentation(reqReader.request, params, flags)
+        cl.removeInterceptor('request', reqReader.id)
+      } else this.printError(error, flags, args)
+    }
 
-	}
+  }
 
 }

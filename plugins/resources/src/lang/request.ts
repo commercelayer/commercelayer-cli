@@ -1,6 +1,5 @@
 import { type CommerceLayerClient, CommerceLayerStatic, type RequestObj } from '@commercelayer/sdk'
-import { pluralize } from '../inflector'
-import type { KeyValString } from '@commercelayer/cli-core';
+import { clText, type KeyValString } from '@commercelayer/cli-core'
 
 
 type RequestData = {
@@ -141,7 +140,7 @@ export const getOperation = (request: RequestData): OperationData => {
     id,
   }
 
-  if (op.relationship) op.oneToMany = (pluralize(op.relationship) === op.relationship)
+  if (op.relationship) op.oneToMany = (clText.pluralize(op.relationship) === op.relationship)
 
   if (op.method === 'get') {
     if (singleton || (op.id && !op.relationship)) op.name = 'retrieve'

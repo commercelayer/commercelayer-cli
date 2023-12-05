@@ -1,13 +1,12 @@
 import { Command, Flags, Args, type Config, ux as cliux } from '@oclif/core'
 import { findResource, type Resource } from './util/resources'
-import { filterAvailable } from './commands/resources/filters'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { capitalize } from 'lodash'
 import { existsSync } from 'fs'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
-import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand } from '@commercelayer/cli-core'
+import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import type { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
@@ -341,7 +340,7 @@ export abstract class BaseCommand extends Command {
         const wt = f.split('=')
         if (wt.length < 2) this.error(`Filter flag must be in the form ${clColor.style.attribute('predicate=value')}`)
         const w = wt[0]
-        if (!filterAvailable(w)) this.error(`Invalid query filter: ${clColor.style.error(w)}`, {
+        if (!clFilter.available(w)) this.error(`Invalid query filter: ${clColor.style.error(w)}`, {
           suggestions: [`Execute command ${clColor.style.command('resources:filters')} to get a full list of all available filter predicates`],
           ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
         })
