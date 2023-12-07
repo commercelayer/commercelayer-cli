@@ -185,10 +185,11 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	const provisioning = clApplication.isProvisioningApp(auth)
 
-	let org, app
+	let org, app, scope
 	if (provisioning) {
 		org = { name: 'Provisioning API', slug: 'provisioning' }
 		app = { name: 'Provisioning App' }
+		scope: tokenInfo.scope
 	} else { // core
 		const cl = commercelayer({ organization: auth.slug || '', domain: auth.domain, accessToken })
 		// Organization info
@@ -199,6 +200,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		app = await cl.application.retrieve().catch(() => {
 			throw new Error(`This application cannot access the ${clColor.italic('Application')} resource`)
 		})
+		scope = auth.scope
 	}
 
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
@@ -213,7 +215,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		baseUrl: clApi.baseURL(auth.slug, auth.domain, provisioning),
 		id: tokenInfo.application.id,
 		alias: '',
-		scope: tokenInfo.scope || auth.scope
+		scope
 	})
 
 	// if (Array.isArray(appInfo.scope) && (appInfo.scope.length === 0)) appInfo.scope = undefined
