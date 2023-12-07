@@ -213,7 +213,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		baseUrl: clApi.baseURL(auth.slug, auth.domain, provisioning),
 		id: tokenInfo.application.id,
 		alias: '',
-		scope: tokenInfo.scope
+		scope: tokenInfo.scope // || auth.scope
 	})
 
 	// if (Array.isArray(appInfo.scope) && (appInfo.scope.length === 0)) appInfo.scope = undefined

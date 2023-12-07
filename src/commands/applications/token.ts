@@ -57,7 +57,7 @@ export default class ApplicationsToken extends Command {
 			this.error(`Unable to find configuration file for application${app ? ` ${app.name}` : ''}`,
 				{ suggestions: [`execute ${clColor.cli.command('applications:login')} command to initialize application and get the first access token`] }
 			)
-console.log(app)
+
 		try {
 
 			let expMinutes

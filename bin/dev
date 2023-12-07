@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const PATCH = false
+const PROVISIONING = false
 
 const oclif = require('@oclif/core')
 
@@ -14,6 +15,9 @@ require('ts-node').register({ project, files: ['../src/typings/*'] })
 
 // In dev mode, always show stack traces
 oclif.settings.debug = true
+
+// Check Provisioning commands
+if (PROVISIONING) require('../src/patches/provisioning').checkProvisioningCommand(process.argv)
 
 // Start the CLI
 const mainModule = PATCH? require('../src/patches/oclif/core/main') : oclif
