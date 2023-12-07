@@ -189,7 +189,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 	if (provisioning) {
 		org = { name: 'Provisioning API', slug: 'provisioning' }
 		app = { name: 'Provisioning App' }
-		scope: tokenInfo.scope
+		scope = tokenInfo.scope
 	} else { // core
 		const cl = commercelayer({ organization: auth.slug || '', domain: auth.domain, accessToken })
 		// Organization info
