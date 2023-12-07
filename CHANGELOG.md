@@ -1,3 +1,10 @@
+## [5.17.6](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.5...v5.17.6) (2023-12-07)
+
+
+### Bug Fixes
+
+* fix auth scope ([4d8836f](https://github.com/commercelayer/commercelayer-cli/commit/4d8836f5603c22c68b93a89390cf05ca78f9d01f))
+
 ## [5.17.5](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.4...v5.17.5) (2023-11-29)
 
 
