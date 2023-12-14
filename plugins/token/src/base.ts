@@ -1,6 +1,7 @@
 import { Command, Flags, Args, ux } from '@oclif/core'
 import { type AccessTokenInfo, clColor, clConfig, clOutput, clUpdate, type AuthScope } from '@commercelayer/cli-core'
 import { CLIError } from '@oclif/core/lib/errors'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
 const pkg = require('../package.json')
@@ -10,7 +11,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg as Package)
     return await super.init()
   }
 

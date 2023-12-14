@@ -48,7 +48,7 @@ export default class TokenGenerate extends Command {
         return answers
       })
       .catch(error => {
-        const errorMessage = error.isTtyError ? 'The token generation wizard cannot be rendered in the current environment' : error.message
+        const errorMessage = error.isTtyError ? 'The token generation wizard cannot be rendered in the current environment' : error.message as string
         this.error(errorMessage)
       })
 
@@ -101,8 +101,8 @@ export default class TokenGenerate extends Command {
     }
 
 
-    const sharedSecret = answers.sharedSecret
-    const minutes = answers.validity
+    const sharedSecret: string = answers.sharedSecret
+    const minutes: number = answers.validity
 
     const generated = clToken.generateAccessToken(payload, sharedSecret, minutes)
 

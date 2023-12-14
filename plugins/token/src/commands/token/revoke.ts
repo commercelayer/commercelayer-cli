@@ -1,6 +1,7 @@
 import { clColor, clCommand } from '@commercelayer/cli-core'
 import Command, { Flags, Args, cliux } from '../../base'
 import { revokeAccessToken } from '../../token'
+import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 
 
 
@@ -62,9 +63,9 @@ export default class TokenRevoke extends Command {
 
 
   async parse(c: any): Promise<any> {
-		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c)
-		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
+		clCommand.fixDashedFlagValue(this.argv, c.flags?.clientId)
+		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
+		clCommand.fixDashedFlagValue(this.argv, c.flags?.clientId, 'i', parsed)
 		return parsed
 	}
 
@@ -76,8 +77,8 @@ export default class TokenRevoke extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
-    const accessToken = args.token
-    const scope = this.checkScope(flags.scope, flags.provisioning)
+    const accessToken: string = args.token
+    const scope = this.checkScope(flags.scope as string[], flags.provisioning as boolean)
     const slug = flags.provisioning? undefined : flags.organization
     const api = flags.provisioning? 'provisioning' : 'core'
 
@@ -97,7 +98,7 @@ export default class TokenRevoke extends Command {
       })
       .catch((error) => {
         cliux.action.stop()
-        this.error(error.message)
+        this.error(error.message as string)
       })
 
   }

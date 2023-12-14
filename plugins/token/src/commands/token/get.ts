@@ -1,6 +1,7 @@
 import Command, { Flags } from '../../base'
 import {type AppAuth, clColor, clConfig, clCommand } from '@commercelayer/cli-core'
 import { decodeAccessToken, getAccessToken } from '../../token'
+import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 
 
 
@@ -83,7 +84,7 @@ export default class TokenGet extends Command {
 
   async parse(c: any): Promise<any> {
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c)
+		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
 		return parsed
 	}
@@ -96,7 +97,7 @@ export default class TokenGet extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.arg('clientSecret')} and ${clColor.cli.arg('scope')}`)
 
-    const scope = this.checkScope(flags.scope, flags.provisioning)
+    const scope = this.checkScope(flags.scope as string[], flags.provisioning as boolean)
 		const api = /* (flags.api as ApiType) || */(flags.provisioning? 'provisioning' : 'core')
 		const slug = flags.organization || clConfig.provisioning.default_subdomain
 
@@ -112,7 +113,7 @@ export default class TokenGet extends Command {
     }
 
 
-    const token = await getAccessToken(config).catch(error => this.error(error.message))
+    const token = await getAccessToken(config).catch(error => this.error(error.message as string))
 
     if (token) {
 
@@ -136,7 +137,7 @@ export default class TokenGet extends Command {
         return accessToken
 
       } catch (error: any) {
-        this.error(error.message)
+        this.error(error.message as string)
       }
 
     }
