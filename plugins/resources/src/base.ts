@@ -10,6 +10,8 @@ import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter } fro
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import type { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 
@@ -119,7 +121,7 @@ export abstract class BaseCommand extends Command {
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
     return await super.init()
   }
 
@@ -131,7 +133,7 @@ export abstract class BaseCommand extends Command {
         { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
       )
     // else throw error				// overwrite command catch method
-    else return await super.catch(error)	// extend command catch method
+    else return await super.catch(error as CommandError)	// extend command catch method
   }
 
 
@@ -165,7 +167,11 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  checkResourceId(resource: string, resourceId?: string, required = true): any {
+  checkResourceId(resource: string, resourceId?: string, required = true): {
+      res: string,
+      id?: string,
+      singleton: boolean
+    } {
 
     let res = resource
     let id = resourceId
@@ -545,7 +551,7 @@ export abstract class BaseCommand extends Command {
       // if leaf field is an object and it is not a relationship then extract its fields
       if (curObj && (typeof curObj === 'object') && !curObj.id && !curObj.type)
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-        for (const k of Object.keys(curObj)) if (!extFields.includes(k)) delete curObj[k]
+        for (const k of Object.keys(curObj as object)) if (!extFields.includes(k)) delete curObj[k]
 
     })
 
@@ -573,7 +579,7 @@ export abstract class BaseCommand extends Command {
     if (headers) {
       if (flags.headers || flags['headers-only']) {
         this.log('---------- Response Headers ----------')
-        if (Object.keys(headers).length === 0) this.log(clColor.italic('No headers'))
+        if (Object.keys(headers as object).length === 0) this.log(clColor.italic('No headers'))
         else this.log(formatOutput(headers, flags))
         this.log('---------- ---------------- ----------')
       }
@@ -610,7 +616,7 @@ export abstract class BaseCommand extends Command {
 
     try {
 
-      let filePath = flags.save || flags['save-path']
+      let filePath: string = flags.save || flags['save-path']
       if (!filePath) this.warn('Undefined output save path')
 
       filePath = clUtil.specialFolder(filePath, flags['save-path'] as boolean)

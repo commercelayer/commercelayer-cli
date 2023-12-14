@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 
 import { json2csvAsync } from 'json-2-csv'
 import { writeFileSync } from 'fs'

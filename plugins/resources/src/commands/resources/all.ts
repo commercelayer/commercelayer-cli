@@ -3,6 +3,7 @@ import Command, { Flags, cliux } from '../../base'
 import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
 import { getAccessToken } from '@commercelayer/cli-core/lib/cjs/token'
 import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 import notifier from 'node-notifier'
 
 
@@ -158,7 +159,7 @@ export default class ResourcesAll extends Command {
 
   async parse(c: any): Promise<any> {
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c)
+		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
 		return parsed
 	}
@@ -168,24 +169,24 @@ export default class ResourcesAll extends Command {
 
     const { args, flags } = await this.parse(ResourcesAll)
 
-    const accessToken = flags.accessToken
+    const accessToken: string = flags.accessToken
     this.checkApplication(accessToken, ['integration', 'cli'])
 
     if (!flags.save && !flags['save-path']) this.error('Undefined output file path')
 
-    const resource = this.checkResource(args.resource)
+    const resource = this.checkResource(args.resource as string)
 
     let notification = flags.notify
     const blindMode = flags.blind || false
 
     // Include flags
-    const include: string[] = this.includeFlag(flags.include)
+    const include: string[] = this.includeFlag(flags.include as string[])
     // Fields flags
-    const fields = this.fieldsFlag(flags.fields, resource.api)
+    const fields = this.fieldsFlag(flags.fields as string[], resource.api)
     // Where flags
-    const wheres = this.whereFlag(flags.where)
+    const wheres = this.whereFlag(flags.where as string[])
     // Sort flags
-    const sort = this.sortFlag(flags.sort)
+    const sort = this.sortFlag(flags.sort as string[])
 
     const timeout = flags.timeout || 5000
     if (timeout && ((timeout < requestTimeout.min) || (timeout > requestTimeout.max)))
@@ -240,7 +241,7 @@ export default class ResourcesAll extends Command {
 
         const res = await resSdk.list(params)
         pages = res.meta.pageCount // pages count can change during extraction
-        const recordCount = res.meta.recordCount
+        const recordCount: number = res.meta.recordCount
 
         if (recordCount > 0) {
 
@@ -256,12 +257,12 @@ export default class ResourcesAll extends Command {
           } else progressBar.setTotal(recordCount)
 
           if (flags.extract) {
-            const ext = this.extractFlag(flags.extract)
+            const ext = this.extractFlag(flags.extract as string[])
             res.forEach((r: any) => { this.extractObjectFields(ext, r) })
           }
 
           resources.push(...res)
-          progressBar.increment(res.length)
+          progressBar.increment(res.length as number)
 
         }
 

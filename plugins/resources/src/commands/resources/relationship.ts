@@ -114,7 +114,7 @@ export default class ResourcesRelationship extends Command {
       }
 
 
-       // Save command srguments
+       // Save command arguments
        if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
 
 

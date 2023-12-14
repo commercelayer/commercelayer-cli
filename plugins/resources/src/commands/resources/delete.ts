@@ -23,7 +23,7 @@ export default class ResourcesDelete extends Command {
 
   static args = {
     ...Command.args,
-    id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: false }),
+    id: Args.string({ name: 'id', description: 'id of the resource to delete', required: false }),
   }
 
 
@@ -33,7 +33,7 @@ export default class ResourcesDelete extends Command {
 
     const invalidFlags: string[] = ['fields', 'include']
     invalidFlags.forEach(x => {
-      if (flags[x as keyof typeof flags]) this.error(`Flag non supported in ${clColor.cli.command(OPERATION)} operation: ${clColor.style.error(x)}`)
+      if (flags[x as keyof typeof flags]) this.error(`Flag not supported in ${clColor.cli.command(OPERATION)} operation: ${clColor.style.error(x)}`)
     })
 
 

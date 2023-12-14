@@ -61,7 +61,7 @@ export default class ResourcesFetch extends BaseCommand {
     // Remove leading slash
     if (path.startsWith('/')) path = path.substring(1)
     // Replace {resourceId} placeholder with actual resource id
-    if (args.id) path = path.replace(/\{.*\}/g, args.id)
+    if (args.id) path = path.replace(/\{.*\}/g, args.id as string)
 
     return path
 

@@ -143,7 +143,7 @@ export const mergeCommandParams = (params: QueryParams, saved: QueryParams): voi
 
   // Remove empty params
   Object.entries(params).forEach(([p, v]) => {
-    if (v && (typeof v === 'object') && (Object.keys(v).length === 0)) params[p as keyof QueryParams] = undefined
+    if (v && (typeof v === 'object') && (Object.keys(v as object).length === 0)) params[p as keyof QueryParams] = undefined
   })
 
 }

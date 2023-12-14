@@ -31,7 +31,7 @@ export default class ResourcesGet extends Command {
 
     const { args } = await this.parse(ResourcesGet)
 
-    const { id, singleton } = this.checkResourceId(args.resource, args.id as string, false)
+    const { id, singleton } = this.checkResourceId(args.resource, args.id, false)
 
     const command = (id || singleton) ? RetrieveCommand : ListCommand
     const result = await command.run(this.argv, this.config)

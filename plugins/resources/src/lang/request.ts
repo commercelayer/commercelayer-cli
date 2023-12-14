@@ -87,8 +87,8 @@ export const getMethod = (request: RequestData): string => {
 
 export const getFullUrl = (request: RequestData): string => {
   let fullUrl = `${request.baseUrl}/${request.path}`
-  if (request.params && (Object.keys(request.params).length > 0)) {
-    const qs = Object.entries(request.params).map(([k, v]) => `${k}=${v}`).join('&')
+  if (request.params && (Object.keys(request.params as object).length > 0)) {
+    const qs = Object.entries(request.params as object).map(([k, v]) => `${k}=${v}`).join('&')
     fullUrl += `?${qs}`
   }
   return fullUrl
