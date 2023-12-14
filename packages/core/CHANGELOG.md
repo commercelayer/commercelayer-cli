@@ -1,3 +1,10 @@
+## [4.9.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.9.1...v4.9.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix lint errors ([d55b1d9](https://github.com/commercelayer/commercelayer-cli-core/commit/d55b1d98537010784d4feb6e7ac2cc9fdfdf5985))
+
 ## [4.9.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.9.0...v4.9.1) (2023-11-30)
 
 
