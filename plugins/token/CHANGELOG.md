@@ -1,3 +1,10 @@
+## [5.6.5](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.4...v5.6.5) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix lint errors ([dcc4c7e](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/dcc4c7e0d3e4b3a28bc5bb5abe9d9628085f7c05))
+
 ## [5.6.4](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.3...v5.6.4) (2023-11-28)
 
 
