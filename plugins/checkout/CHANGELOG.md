@@ -1,3 +1,10 @@
+## [4.7.2](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.1...v4.7.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix lint errors ([471e29f](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/471e29f4710268c554bb81b5027357bc1f268459))
+
 ## [4.7.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.0...v4.7.1) (2023-11-22)
 
 
