@@ -1,6 +1,8 @@
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
 import { clColor, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
 const pkg = require('../package.json')
@@ -41,7 +43,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg as Package)
     return super.init()
   }
 
@@ -59,7 +61,7 @@ export default abstract class extends Command {
           { suggestions: ['Execute login to get access to the organization\'s resources'] },
         )
       } else this.error(clOutput.formatError(error, flags))
-    } else return super.catch(error)
+    } else return super.catch(error as CommandError)
   }
 
 
