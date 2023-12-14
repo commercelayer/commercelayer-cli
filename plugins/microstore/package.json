@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-microstore",
   "description": "Commerce Layer CLI microstore plugin",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-microstore/issues",
   "engines": {

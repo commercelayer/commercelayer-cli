@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.1...v1.6.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix lint errors ([81c7fc2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/81c7fc2109669c27c89e002b27fb987aa083dda2))
+
 ## [1.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.0...v1.6.1) (2023-11-22)
 
 
