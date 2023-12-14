@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 
 /** Copy command flags excluding a subset */
 const commandFlags = <T extends object>(flags: T, exclude?: string[]): T => {
@@ -74,8 +75,8 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string, parsed?: a
 	const char_ = flag.char
 	if (!name_ && !char_) return argv
 
-	const n = name_? (name_.startsWith('--')? name_ : `--${name_}`) : undefined
-	const c = char_? (flag.char.startsWith('-')? char_ : `-${char_}`) : undefined
+	const n: string = name_? (name_.startsWith('--')? name_ : `--${name_}`) : undefined
+	const c: string = char_? (flag.char.startsWith('-')? char_ : `-${char_}`) : undefined
 
 	let cidIdx = argv.findIndex(a => {
 		return ((c && a.startsWith(c)) || (n && a.startsWith(n)))

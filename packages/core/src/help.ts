@@ -1,5 +1,6 @@
 import { type Command, CommandHelp, Help, type Interfaces } from '@oclif/core'
 import { capitalize } from './text'
+import type { Topic } from '@oclif/core/lib/interfaces'
 
 
 const PRINT_TRACE = false
@@ -48,8 +49,8 @@ export default class CLIBaseHelp extends Help {
 		if (PRINT_TRACE) console.log('---------- showCommandHelp')
 		const name = command.id
         const depth = name ? name.split(':').length : 1
-        const subTopics = this.sortedTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-        const subCommands = this.sortedCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
+        const subTopics = this.sortedTopics.filter((t: Topic) => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+        const subCommands = this.sortedCommands.filter((c: Command.Loadable) => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
         const title = command.description && this.render(command.description).split('\n')[0]
         if (title) console.log(`${capitalize(title)}\n`)
         console.log(this.formatCommand(command))

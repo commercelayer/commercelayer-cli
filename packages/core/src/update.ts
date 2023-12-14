@@ -33,4 +33,4 @@ const checkUpdate = (pkg: Package): void => {
 }
 
 
-export { checkUpdate }
+export { checkUpdate, type Package }

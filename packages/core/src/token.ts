@@ -6,6 +6,9 @@ import { sleep } from './util'
 import { type ApiMode, baseURL } from './api'
 import { CLIError } from '@oclif/core/lib/errors'
 import authentication, { provisioning } from '@commercelayer/js-auth'
+import type { TProvisioningOptions } from '@commercelayer/js-auth/lib/esm/provisioning'
+import type { TPassword } from '@commercelayer/js-auth/lib/esm/types/password'
+import type { TClientCredentials } from '@commercelayer/js-auth/lib/esm/types/clientCredentials'
 
 
 export type AuthScope = string | string[]
@@ -115,9 +118,9 @@ const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
     if (auth.email && auth.password) {
       credentials.username = auth.email
       credentials.password = auth.password
-      accessToken = await authentication('password', credentials)
+      accessToken = await authentication('password', credentials as TPassword)
     }
-    else accessToken = await authentication('client_credentials', credentials)
+    else accessToken = await authentication('client_credentials', credentials as TClientCredentials)
 
   }
 
@@ -132,7 +135,7 @@ const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
 const getAccessTokenProvisioning = async (auth: AppAuth): Promise<AccessToken> => {
 
-  const credentials: any = {
+  const credentials: TProvisioningOptions = {
     clientId: auth.clientId,
     clientSecret: auth.clientSecret,
     domain: auth.domain
