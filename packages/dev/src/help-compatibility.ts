@@ -1,4 +1,4 @@
-import { HelpBase, Command } from '@oclif/core'
+import type { HelpBase, Command } from '@oclif/core'
 
 interface MaybeCompatibleHelp extends HelpBase {
   formatCommand?: (command: Command.Cached) => string;

@@ -1,5 +1,5 @@
-// tslint:disable no-implicit-dependencies
-import { Command, Config, Flags, HelpBase, Interfaces, loadHelpClass, Plugin } from '@oclif/core'
+
+import { Command, Config, Flags, type HelpBase, type Interfaces, loadHelpClass, Plugin } from '@oclif/core'
 import * as fs from 'fs-extra'
 import * as _ from 'lodash'
 import * as path from 'path'
@@ -226,7 +226,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
       ]).join('\n\n')
 
     } catch (error: any) {
-      this.error(error.message)
+      this.error(error.message as string)
     }
 
   }
@@ -260,7 +260,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
 
     const pjson = { ...plugin.pjson }
     normalize(pjson)
-    const repo = pjson.repository?.url
+    const repo: string = pjson.repository?.url
     if (!repo) return
     const url = new URL(repo)
     if (!['github.com', 'gitlab.com'].includes(url.hostname) && !pjson.oclif.repositoryPrefix) return

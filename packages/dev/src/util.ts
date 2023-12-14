@@ -49,10 +49,11 @@ export namespace sort {
 }
 
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const template = (context: any) => (t: string | undefined): string => _.template(t || '')(context)
+
+export const template = (context: object) => (t: string | undefined): string => _.template(t || '')(context)
 
 
+// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 interface VersionsObject {
   [key: string]: string;
 }
