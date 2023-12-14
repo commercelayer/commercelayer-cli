@@ -1,3 +1,10 @@
+## [5.20.5](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.4...v5.20.5) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix lint errors ([b1e867f](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/b1e867f65e26186c07396834763c02872530b5c0))
+
 ## [5.20.4](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.3...v5.20.4) (2023-12-05)
 
 
