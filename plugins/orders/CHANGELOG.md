@@ -1,3 +1,10 @@
+## [4.9.3](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v4.9.2...v4.9.3) (2023-12-18)
+
+
+### Bug Fixes
+
+* fix lint errors ([fb3ccea](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/fb3cceac95cecc672cae1f4933501960e4e68677))
+
 ## [4.9.2](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v4.9.1...v4.9.2) (2023-11-22)
 
 
