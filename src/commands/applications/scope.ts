@@ -64,7 +64,7 @@ export default class ApplicationsScope extends Command {
     if (apps.length > 0) {   // Application Switch
 
       // ApplicationsSwitch command cannot filter by scope so it's necessary do "manually" show the list of applications
-      const app = (apps.length === 1) ? apps[0] : await promptApplication(apps)
+      const app: AppInfo = (apps.length === 1) ? apps[0] : await promptApplication(apps)
       const cApp = currentApplication(app)
       this.log(`\nCurrent application: ${printCurrent(cApp)}\n`)
 

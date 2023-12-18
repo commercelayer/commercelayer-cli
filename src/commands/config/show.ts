@@ -13,7 +13,7 @@ export default class ConfigShow extends Command {
 
   async run(): Promise<any> {
 
-    const config = clicfg.all
+    const config: object = clicfg.all
 
     if (!config || (Object.keys(config).length === 0)) this.warn(clColor.italic('CLI configuration is empty'))
     else {

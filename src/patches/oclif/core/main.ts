@@ -2,7 +2,7 @@
 import { Performance, stdout } from "@oclif/core"
 import { CLIError } from "@oclif/core/lib/errors"
 import { loadHelpClass, normalizeArgv } from "@oclif/core/lib/help"
-import type { LoadOptions } from "@oclif/core/lib/interfaces"
+import type { HelpOptions, LoadOptions } from "@oclif/core/lib/interfaces"
 import { helpAddition, versionAddition } from "@oclif/core/lib/main"
 import { fileURLToPath } from "url"
 import { format, inspect } from "util"
@@ -12,6 +12,7 @@ import { PatchedConfig } from "./config"
 
 const log = (message = '', ...args: any[]): void => {
 	message = typeof message === 'string' ? message : inspect(message)
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 	stdout.write(format(message, ...args) + '\n')
   }
 
@@ -53,7 +54,7 @@ export async function run(argv?: string[], options?: LoadOptions): Promise<unkno
   // display help version if applicable
   if (helpAddition(argv, config)) {
     const Help = await loadHelpClass(config)
-    const help = new Help(config, config.pjson.helpOptions)
+    const help = new Help(config, config.pjson.helpOptions as Partial<HelpOptions>)
     await help.showHelp(argv)
     await collectPerf()
     return

@@ -21,7 +21,8 @@ const hook: Hook<'prerun'> = async function (opts) {
     const command = opts.Command.id.replace('plugins:', '')
 
     if (opts.argv.length === 0) {
-      const arg = await promptPlugin(this.config, command).catch(this.error)
+      const arg = await promptPlugin(this.config, command)
+        .catch((error: Error) => { this.error(error) })
       if (arg) opts.argv[0] = arg
       else {
         this.log(`\nAll Commerce Layer CLI plugins have already been ${command}ed\n`)

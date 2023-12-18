@@ -4,6 +4,7 @@ import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configP
 import { inspect } from 'util'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
 import { type AppAuth, clColor, clToken, clConfig, clApplication, clCommand } from '@commercelayer/cli-core'
+import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 
 
 
@@ -23,13 +24,13 @@ export default class ApplicationsAdd extends Command {
 
 
   async catch(error: any): Promise<any> {
-    this.error(error.message)
+    this.error(error.message as string)
   }
 
 
   async parse(c: any): Promise<any> {
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c)
+		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
 		return parsed
 	}
@@ -43,8 +44,8 @@ export default class ApplicationsAdd extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
-    const scope = checkScope(flags.scope, flags.provisioning)
-    const alias = checkAlias(flags.alias, this.config, flags.organization)
+    const scope = checkScope(flags.scope as string[], flags.provisioning as boolean)
+    const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
     const api = flags.provisioning? 'provisioning' : 'core'
 		const slug = flags.organization || clConfig.provisioning.default_subdomain
     const config: AppAuth = {

@@ -2,13 +2,13 @@ import Configstore from 'configstore'
 import { join } from 'path'
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs'
 import type { Config } from '@oclif/core/lib/interfaces/config'
-import { type AppKey, type AppInfo, clApi, clConfig } from '@commercelayer/cli-core'
+import { type AppKey, type AppInfo, clApi, clConfig, type AccessToken } from '@commercelayer/cli-core'
 
 const packageJson = require('../package.json')
 
 
 
-const clicfg = new Configstore(packageJson.name, null, { globalConfigPath: true })
+const clicfg = new Configstore(packageJson.name as string, null, { globalConfigPath: true })
 export default clicfg
 
 
@@ -69,7 +69,7 @@ const readConfigFile = (config: Config, app: AppKey): AppInfo => {
 	return JSON.parse(cliConfig)
 }
 
-const readTokenFile = (config: Config, app: AppKey): any => {
+const readTokenFile = (config: Config, app: AppKey): AccessToken => {
 	const filePath = tokenFilePath(config, app)
 	const token = readFileSync(filePath, { encoding: fixed.encoding })
 	return JSON.parse(token)
@@ -145,7 +145,7 @@ const currentOrganization = (): string | undefined => {
 
 const filterApplications = (config: Config, flags: any): AppInfo[] => {
 
-	const mode = flags.mode || (flags.live ? clApi.execMode(flags.live) : undefined)
+	const mode = flags.mode || (flags.live ? clApi.execMode(flags.live as boolean) : undefined)
 
 	const applications = readConfigDir(config, { key: flags.key || flags.appkey }).filter(app => {
 

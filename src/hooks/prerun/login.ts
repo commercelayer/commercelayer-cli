@@ -116,7 +116,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 		if (!tokenData?.accessToken) this.error('Unable to refresh application access token')
 
-		opts.argv.push('--accessToken=' + String(tokenData.accessToken))
+		opts.argv.push('--accessToken=' + String(tokenData?.accessToken))
 
 	}
 

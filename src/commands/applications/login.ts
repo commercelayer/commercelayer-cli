@@ -6,6 +6,7 @@ import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configP
 import { inspect } from 'util'
 import { printCurrent } from './current'
 import { CLIError } from '@oclif/core/lib/errors'
+import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 
 
 
@@ -93,13 +94,13 @@ export default class ApplicationsLogin extends Command {
 
 
 	async catch(error: any): Promise<any> {
-		this.error(error.message)
+		this.error(error.message as string)
 	}
 
 
 	async parse(c: any): Promise<any> {
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c)
+		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
 		return parsed
 	}
@@ -115,8 +116,8 @@ export default class ApplicationsLogin extends Command {
 
 
 
-		const scope = checkScope(flags.scope, flags.provisioning)
-		const alias = checkAlias(flags.alias, this.config, flags.organization)
+		const scope = checkScope(flags.scope as string[], flags.provisioning as boolean)
+		const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
 		const api = /* (flags.api as ApiType) || */(flags.provisioning ? 'provisioning' : 'core')
 		const slug = flags.organization || clConfig.provisioning.default_subdomain
 

@@ -96,7 +96,7 @@ export default class ApplicationsToken extends Command {
 	}
 
 
-	private printAccessToken(accessToken: any): void {
+	private printAccessToken(accessToken: string): void {
 		if (accessToken) {
 			const info = clToken.decodeAccessToken(accessToken)
 			this.log(clColor.style.title('Token Info:'))

@@ -1,7 +1,7 @@
 import Command, { Flags, cliux } from '../../base'
 import { configParam, ConfigParams, filterApplications } from '../../config'
 import { printScope } from '../../common'
-import { type AppInfo, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
+import { type AppInfo, type AppKey, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
 
 
 export default class ApplicationsIndex extends Command {
@@ -39,7 +39,7 @@ export default class ApplicationsIndex extends Command {
 			this.error('No application config file found', { suggestions: ['Execute first login to at least one Commerce Layer application'] })
 		}
 
-		const current = configParam(ConfigParams.currentApplication)
+		const current: AppInfo = configParam(ConfigParams.currentApplication)
 		const currentChar = '\u25C9'
 
 		this.log()
@@ -52,7 +52,8 @@ export default class ApplicationsIndex extends Command {
 				return (cmp === 0) ? a.name.localeCompare(b.name) : cmp
 			}) : configData
 
-			cliux.Table.table(sortedData as any, {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+			cliux.Table.table(sortedData as any, {	
 				current: { header: `[${currentChar}]`, minWidth: 3, get: row => clApplication.appKeyMatch(current, row as unknown as AppInfo) ? clColor.magentaBright(` ${currentChar} `) : '   ' },
 				organization: { header: 'ORGANIZATION / API', get: row => currentColor(row, current)(row.organization) },
 				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
@@ -89,7 +90,7 @@ const extraColumns = (flags: any): any => {
 }
 
 
-const currentColor = (app: any, current: any): ((s: unknown) => string) => {
-	return (clApplication.appKeyMatch(current, app) ? clColor.magentaBright : clColor.visible)
+const currentColor = (app: any, current: AppKey): ((s: unknown) => string) => {
+	return (clApplication.appKeyMatch(current, app as AppKey) ? clColor.magentaBright : clColor.visible)
 }
 
