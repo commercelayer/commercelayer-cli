@@ -1,3 +1,10 @@
+## [3.16.1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v3.16.0...v3.16.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* fix lint errors ([26e9c8b](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/26e9c8b05d7d1062976eda6a1c9cfe92ff2bab8e))
+
 # [3.16.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v3.15.0...v3.16.0) (2023-11-22)
 
 
