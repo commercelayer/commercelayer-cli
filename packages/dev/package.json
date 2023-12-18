@@ -8,7 +8,7 @@
     "cl-cli-dev": "./bin/run"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "files": [
     "/bin",
@@ -44,7 +44,7 @@
     "build": "rm -rf lib && tsc",
     "prepack": "npm run build && oclif manifest && npm run readme",
     "postpack": "rm -f oclif.manifest.json",
-    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "./bin/run readme && git add README.md",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "lintspec": "eslint ./specs/ --ext .spec.ts",
@@ -61,9 +61,9 @@
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.10.5",
     "chai": "^4.3.10",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "globby": "^10.0.2",
     "lodash": "^4.17.21",
     "mocha": "^10.2.0",
