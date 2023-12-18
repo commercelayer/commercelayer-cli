@@ -1,3 +1,10 @@
+## [3.9.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.9.0...v3.9.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* fix lint errors ([178e8ff](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/178e8fff1cdf0400cc87da4514d79ea0e67d824c))
+
 # [3.9.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.8.0...v3.9.0) (2023-11-22)
 
 
