@@ -135,7 +135,7 @@ export default class ImportsCreate extends Command {
 
       const monitor = !flags.blind
 
-      const inputs: any[] = await generateInputs(inputFile, flags).catch(error => this.error(error.message))
+      const inputs: any[] = await generateInputs(inputFile, flags).catch(error => this.error(error.message as string))
       const inputsLength = inputs.length
 
       // Check import size
@@ -212,7 +212,7 @@ export default class ImportsCreate extends Command {
 
 
     } catch (error: any) {
-      this.handleError(error, flags)
+      this.handleError(error as Error, flags)
     }
 
   }

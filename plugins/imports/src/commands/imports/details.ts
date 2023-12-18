@@ -71,7 +71,7 @@ export default class ImportsDetails extends Command {
         .map(([k, v]) => {
           return [
             { content: clColor.table.key.blueBright(k), hAlign: 'right', vAlign: 'center' },
-            this.formatValue(k, v),
+            this.formatValue(k, v as string),
           ]
         }))
 
@@ -91,7 +91,7 @@ export default class ImportsDetails extends Command {
       return imp
 
     } catch (error: any) {
-      this.handleError(error, flags, id)
+      this.handleError(error as Error, flags, id)
     }
 
   }
@@ -99,13 +99,13 @@ export default class ImportsDetails extends Command {
 
   private async getInputs(attachmentUrl: string): Promise<object[]> {
     const inputs = await axios.get(attachmentUrl, { responseType: 'arraybuffer' })
-    return inputs ? JSON.parse(gunzipSync(inputs.data).toString()) as object[] : []
+    return inputs ? JSON.parse(gunzipSync(inputs.data as ArrayBuffer).toString()) as object[] : []
   }
 
 
   private saveInputs(flags: any, inputs: object[]): void {
 
-    let filePath = flags['save-inputs']
+    let filePath: string = flags['save-inputs']
     if (!filePath) this.warn('Undefined output save path')
 
     filePath = clUtil.specialFolder(filePath)

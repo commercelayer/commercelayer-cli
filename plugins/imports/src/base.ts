@@ -2,6 +2,7 @@ import { Command, Flags, Args, ux as cliux } from '@oclif/core'
 import { clOutput, clUpdate, clColor, clToken, type ApiMode, clUtil } from '@commercelayer/cli-core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
 const pkg = require('../package.json')
@@ -42,7 +43,7 @@ export default abstract class extends Command {
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
     return super.init()
   }
 
@@ -99,7 +100,7 @@ export default abstract class extends Command {
 
     const organization = flags.organization
     const domain = flags.domain
-    const accessToken = flags.accessToken
+    const accessToken: string = flags.accessToken
     const userAgent = clUtil.userAgent(this.config)
 
     this.environment = clToken.getTokenEnvironment(accessToken)

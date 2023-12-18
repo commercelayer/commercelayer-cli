@@ -151,7 +151,7 @@ export default class ImportsList extends Command {
 			return tableData
 
 		} catch (error: any) {
-			this.handleError(error, flags)
+			this.handleError(error as Error, flags)
 		}
 
 	}

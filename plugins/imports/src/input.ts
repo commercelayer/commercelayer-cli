@@ -42,7 +42,7 @@ const generateInputs = async (filePath: string, flags?: any): Promise<any[]> => 
   if (!existsSync(filePath)) return Promise.reject(new Error('Unable to find file ' + clColor.style.path(filePath)))
 
   if (flags?.csv) {
-    let delimiter = flags.delimiter || ','
+    let delimiter: string = flags.delimiter || ','
     if (delimiter && (delimiter === 'TAB')) delimiter = '\t'
     return generateInputsCSV(filePath, delimiter)
   }
