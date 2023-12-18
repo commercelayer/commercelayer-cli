@@ -1,5 +1,6 @@
 import { clUtil } from '@commercelayer/cli-core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import type { Resource } from '@commercelayer/sdk/lib/cjs/resource'
 import { type Config } from '@oclif/core/lib/interfaces'
 
 
@@ -22,7 +23,7 @@ const commercelayerInit = (flags: any, config?: Config): CommerceLayerClient => 
 }
 
 
-const exec = async (resourceType: string, id: string, action: string, flags: any, fields?: string[], config?: Config): Promise<any> => {
+const exec = async <R extends Resource>(resourceType: string, id: string, action: string, flags: any, fields?: string[], config?: Config): Promise<R> => {
 
   const cl = commercelayerInit(flags, config)
 

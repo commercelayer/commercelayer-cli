@@ -5,6 +5,7 @@ import type { CommandError } from '@oclif/core/lib/interfaces'
 import type { Resource } from '@commercelayer/sdk/lib/cjs/resource'
 import type { CLIError } from '@oclif/core/lib/errors'
 import exec from './exec'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
 const pkg = require('../package.json')
@@ -56,7 +57,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg as Package)
     return await super.init()
   }
 
@@ -69,6 +70,7 @@ export default abstract class extends Command {
   protected handleError(error: CommandError, flags?: any): void {
 
     if (error.message?.match(/Missing \d required args?:\nid/)) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       const resName = clApi.humanizeResource(((error as any).parse.input.context.id).split(':')[0])
       this.error(`Missing the required unique ${clColor.style.error('id')} of the ${clColor.cli.command(resName)}`)
     }
@@ -108,7 +110,7 @@ export default abstract class extends Command {
 
 
   protected async executeAction<R extends Resource>(resourceType: string, id: string, action: string, flags: any, fields?: string[]): Promise<R> {
-    return await exec(resourceType, id, action, flags, fields, this.config)
+    return await exec<R>(resourceType, id, action, flags, fields, this.config)
   }
 
 }

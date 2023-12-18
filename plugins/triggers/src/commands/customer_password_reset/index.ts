@@ -5,7 +5,7 @@ import { clColor } from '@commercelayer/cli-core'
 import { triggers } from '../../triggers/customer_password_resets'
 
 
-const promptAction = async (id: string): Promise<any> => {
+const promptAction = async (id: string): Promise<string> => {
   const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',
