@@ -1,3 +1,10 @@
+## [5.17.8](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.7...v5.17.8) (2023-12-07)
+
+
+### Bug Fixes
+
+* missing scope value in provisioning app config ([bf70cb4](https://github.com/commercelayer/commercelayer-cli/commit/bf70cb44f07aac4b95ee202b4d8eb50d04a196d2))
+
 ## [5.17.7](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.6...v5.17.7) (2023-12-07)
 
 
