@@ -1,7 +1,7 @@
 import Command from '../../base'
 import exec from '../../exec'
 import inquirer from 'inquirer'
-import { triggers } from '../../triggers'
+import { type ActionType, triggers } from '../../triggers'
 import { clColor } from '@commercelayer/cli-core'
 
 
@@ -42,7 +42,7 @@ export default class OrdersIndex extends Command {
 }
 
 
-const promptAction = async (id: string): Promise<any> => {
+const promptAction = async (id: string): Promise<ActionType> => {
   const answers = await inquirer.prompt([{
     type: 'list',
     name: 'trigger',

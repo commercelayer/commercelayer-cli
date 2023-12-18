@@ -4,6 +4,7 @@ import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import type { ActionType } from './triggers'
 import exec from './exec'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
 const pkg = require('../package.json')
@@ -55,13 +56,13 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg as Package)
     return await super.init()
   }
 
 
   async catch(error: any): Promise<any> {
-    this.handleError(error)
+    this.handleError(error as Error)
   }
 
 
