@@ -3,6 +3,9 @@ import { clColor, clUtil } from '@commercelayer/cli-core'
 import type { Config } from '@oclif/core/lib/interfaces'
 
 
+const PLUGIN_PREFIX = '@commercelayer/cli-plugin-'
+
+
 export default class PluginsAvailable extends Command {
 
   static description = 'show all available Commerce Layer CLI plugins'
@@ -96,10 +99,15 @@ const getAvailablePlugins = (): PluginRelease[] => {
 
 
 const getInstalledPlugins = (config: Config): PluginRelease[] => {
-  const installed = config.plugins.filter(p => p.name.startsWith('@commercelayer/cli-plugin-')).map(p => p.name)
+  const installed = config.plugins.filter(p => (p.type === 'user') && p.name.startsWith(PLUGIN_PREFIX)).map(p => p.name)
   return AvailablePlugins.filter(p => installed.find(i => i === p.plugin) !== undefined)
 }
 
+const isPluginInstalled = (name: string, config: Config): boolean => {
+  const plugin = name.startsWith(PLUGIN_PREFIX)? name : `${PLUGIN_PREFIX}${name}`
+  return (getInstalledPlugins(config).findIndex(p => (p.name === name) || (p.name === plugin)) > -1) 
+}
 
-export { getPluginInfo, getAvailablePlugins, getInstalledPlugins }
+
+export { getPluginInfo, getAvailablePlugins, getInstalledPlugins, isPluginInstalled }
 export type { PluginRelease }
