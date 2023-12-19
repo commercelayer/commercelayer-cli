@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.1...v2.1.2) (2023-12-19)
+
+
+### Bug Fixes
+
+* remove branch master ([2703338](https://github.com/commercelayer/commercelayer-cli-dev/commit/2703338ef59eac875c29e6fef3b6e2a5e5c5e811))
+
 ## [2.1.1](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.0...v2.1.1) (2023-12-18)
 
 
