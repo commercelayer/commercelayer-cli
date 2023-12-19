@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.2...v2.1.3) (2023-12-19)
+
+
+### Bug Fixes
+
+* remove codeql ([7fb2ac8](https://github.com/commercelayer/commercelayer-cli-dev/commit/7fb2ac80467d1ffcbeb80b4e14b1efe747892ca7))
+
 ## [2.1.2](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.1...v2.1.2) (2023-12-19)
 
 
