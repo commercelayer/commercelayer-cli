@@ -1,3 +1,10 @@
+# [5.18.0](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.9...v5.18.0) (2023-12-19)
+
+
+### Features
+
+* add provisioning apps list ([4150473](https://github.com/commercelayer/commercelayer-cli/commit/41504738ed63eef22c076a6c135f39f9b75ec87e))
+
 ## [5.17.9](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.8...v5.17.9) (2023-12-18)
 
 
