@@ -2,11 +2,10 @@ import { Command, Flags, Args, type Config, ux as cliux } from '@oclif/core'
 import { findResource, type Resource } from './util/resources'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
-import { capitalize } from 'lodash'
 import { existsSync } from 'fs'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
-import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter } from '@commercelayer/cli-core'
+import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter, clText } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import type { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
@@ -418,13 +417,13 @@ export abstract class BaseCommand extends Command {
 
         const eqi = f.indexOf('=')
         if (eqi < 1) this.error(`Invalid ${type.toLowerCase()} ${clColor.msg.error(f)}`, {
-          suggestions: [`${capitalize(type)} flags must be defined using the format ${clColor.cli.value('name=value')}`],
+          suggestions: [`${clText.capitalize(type)} flags must be defined using the format ${clColor.cli.value('name=value')}`],
         })
 
         const name = f.substr(0, eqi)
         const value = f.substr(eqi + 1)
 
-        if (param[name]) this.warn(`${capitalize(type)} ${clColor.msg.warning(name)} has already been defined`)
+        if (param[name]) this.warn(`${clText.capitalize(type)} ${clColor.msg.warning(name)} has already been defined`)
 
         param[name] = value
 
@@ -622,13 +621,20 @@ export abstract class BaseCommand extends Command {
       filePath = clUtil.specialFolder(filePath, flags['save-path'] as boolean)
 
       const fileExport = flags.csv ? exportCsv : exportOutput
+      cliux.action.start('Saving output file')
       fileExport(output, flags, filePath)
         .then(() => {
-          if (existsSync(filePath)) this.log(`Command output saved to file ${clColor.style.path(filePath)}\n`)
+          if (existsSync(filePath)) {
+            cliux.action.stop()
+            this.log(`\nCommand output saved to file ${clColor.style.path(filePath)}\n`)
+          }
         })
-        .catch(() => this.error(`Unable to save command output to file ${clColor.style.path(filePath)}`,
-          { suggestions: ['Please check you have the right file system permissions'] }
-        ))
+        .catch(() => {
+          cliux.action.stop(clColor.msg.error('failed'))
+          this.error(`Unable to save command output to file ${clColor.style.path(filePath)}`,
+            { suggestions: ['Please check you have the right file system permissions'] }
+          )
+        })
 
     } catch (error: any) {
       if (error.code === 'ENOENT') this.warn(`Path not found ${clColor.msg.error(error.path)}: execute command with flag ${clColor.cli.flag('-X')} to force path creation`)

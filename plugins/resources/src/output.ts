@@ -11,7 +11,7 @@ const formatOutput = (out: any, flags?: any, { color = true } = {}): string => {
 const exportOutput = async (output: any, flags: any, filePath: string): Promise<boolean> => {
 	const out = formatOutput(output, flags, { color: false })
 	writeFileSync(filePath, out)
-	return await Promise.resolve(true)
+  return await Promise.resolve(true)
 }
 
 
