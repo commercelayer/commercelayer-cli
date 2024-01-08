@@ -1,3 +1,10 @@
+## [5.20.6](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.5...v5.20.6) (2024-01-08)
+
+
+### Bug Fixes
+
+* fix message on large files save ([1321ae9](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/1321ae995760b77652686fa7372304e0f45d647a))
+
 ## [5.20.5](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.4...v5.20.5) (2023-12-14)
 
 
