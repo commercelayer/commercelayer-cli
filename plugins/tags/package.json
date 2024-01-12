@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-tags",
   "description": "Commerce Layer CLI Tags plugin",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-tags/issues",
   "engines": {
