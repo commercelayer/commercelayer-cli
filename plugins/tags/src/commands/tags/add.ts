@@ -12,8 +12,8 @@ export default class TagsAdd extends BaseCommand {
   static aliases = ['tag']
 
   static examples = [
-    '$ commercelayer tags:add -t <resource-type> -n <tag-names> -r <resources-id>',
-    '$ cl tag -t customers -r aBcDeFghIL mnOPqRstUV -n groupA'
+    '$ commercelayer tags:add -t <resource-type> -n <tag-names> -i <resources-id>',
+    '$ cl tag -t customers -i aBcDeFghIL mnOPqRstUV -n groupA'
   ]
 
 
