@@ -81,8 +81,8 @@ const applyFilter = (predicate: string, ...fields: string[]): string => {
 }
 
 
-const filters = (): readonly Filter[] => {
-	return FILTERS
+const filters = (): Filter[] => {
+	return { ...FILTERS }
 }
 
 
