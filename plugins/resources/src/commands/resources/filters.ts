@@ -20,6 +20,7 @@ export default class ResourcesFilters extends Command {
   async run(): Promise<any> {
 
     this.log(clColor.style.title('\n-= Commerce Layer API available resource filters =-\n'))
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     cliux.Table.table(clFilter.filters().sort((a, b) => a.predicate.localeCompare(b.predicate)), {
       predicate: { header: 'PREDICATE', minWidth: 25, get: row => clColor.table.key(row.predicate) },
       description: { header: 'DESCRIPTION' },
