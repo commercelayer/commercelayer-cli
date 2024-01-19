@@ -2,7 +2,7 @@ const JOB_STATUSES: readonly string[] = [
 	'in_progress',
 	'pending',
 	'completed',
-	'interrupted',
+	'interrupted'
 ] as const
 
 
@@ -10,10 +10,13 @@ const IMPORT_RESOURCE_TYPES: readonly string[] = [
 	'addresses',
 	'bundles',
 	'coupons',
+	'customer_addresses',
+	'customer_payment_sources',
 	'customer_subscriptions',
 	'customers',
 	'gift_cards',
 	'line_items',
+	'line_item_options',
 	'orders',
 	'price_tiers',
 	'prices',
@@ -23,7 +26,8 @@ const IMPORT_RESOURCE_TYPES: readonly string[] = [
 	'sku_options',
 	'skus',
 	'stock_items',
-	'tax_categories',
+	'tags',
+	'tax_categories'
 ] as const
 
 
