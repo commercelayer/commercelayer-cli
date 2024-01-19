@@ -1,3 +1,10 @@
+# [4.10.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.9.2...v4.10.0) (2024-01-19)
+
+
+### Features
+
+* add support for new resources ([ecdc2f6](https://github.com/commercelayer/commercelayer-cli-core/commit/ecdc2f6aeddd1c155c37f5dd28d60e002e70c422))
+
 ## [4.9.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.9.1...v4.9.2) (2023-12-14)
 
 
