@@ -1,3 +1,5 @@
+import config from "./config";
+
 
 const FILTERS: Filter[] = [
 	{ predicate: '*_eq', description: 'The attribute is equal to the filter value' },
@@ -44,12 +46,13 @@ const FILTERS: Filter[] = [
 	{ predicate: '*_cont_any', description: 'The attribute contains any of the filter values (comma-separated)' },
 	{ predicate: '*_cont_all', description: 'The attribute contains all of the filter values (comma-separated)' },
 	{ predicate: '*_not_cont_all', description: 'The attribute contains none of the filter values (comma-separated)' },
+	{ predicate: '*_jcont', description: 'The attribute contains a portion of the JSON used as  filter value (works with object only)' },
 	{ predicate: '*_true', description: 'The attribute is true' },
 	{ predicate: '*_false', description: 'The attribute is false' },
-]
+] as const
 
 
-const documentation = 'https://docs.commercelayer.io/core/filtering-data#list-of-predicates'
+const documentation = config.doc.core_filtering_data
 
 
 interface Filter extends Record<string, unknown> {
@@ -62,10 +65,12 @@ const filterList = (): string[] => {
 	return FILTERS.map(f => f.predicate.replace('*', ''))
 }
 
+
 const filterAvailable = (filter: string): boolean => {
 	const filter_ = filter.startsWith('_') ? filter : `_${filter}`
 	return filterList().some(f => filter_.endsWith(f))
 }
+
 
 const applyFilter = (predicate: string, ...fields: string[]): string => {
 	if (!filterAvailable(predicate)) throw new Error('Unknown filter: ' + predicate)
@@ -75,9 +80,11 @@ const applyFilter = (predicate: string, ...fields: string[]): string => {
 	return out
 }
 
-const filters = (): Filter[] => {
+
+const filters = (): readonly Filter[] => {
 	return FILTERS
 }
+
 
 
 export { type Filter, documentation,
