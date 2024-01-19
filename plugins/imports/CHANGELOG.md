@@ -1,3 +1,10 @@
+# [3.10.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.9.1...v3.10.0) (2024-01-19)
+
+
+### Features
+
+* add support for new resources ([d3562a9](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/d3562a9859bee461bcf969bb6360a7a173897ad4))
+
 ## [3.9.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.9.0...v3.9.1) (2023-12-18)
 
 
