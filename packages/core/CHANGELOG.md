@@ -1,3 +1,10 @@
+## [4.11.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.11.0...v4.11.1) (2024-01-19)
+
+
+### Bug Fixes
+
+* fix filters list issue ([8ed3108](https://github.com/commercelayer/commercelayer-cli-core/commit/8ed3108512f91d61ab270a864c8f42ebd2a6a6a7))
+
 # [4.11.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.10.0...v4.11.0) (2024-01-19)
 
 
