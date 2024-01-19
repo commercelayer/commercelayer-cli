@@ -1,3 +1,10 @@
+# [4.11.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.10.0...v4.11.0) (2024-01-19)
+
+
+### Features
+
+* add support for jcont filter ([3dd29b4](https://github.com/commercelayer/commercelayer-cli-core/commit/3dd29b40178fe34d728f05e69d5a599c1fcc6784))
+
 # [4.10.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.9.2...v4.10.0) (2024-01-19)
 
 
