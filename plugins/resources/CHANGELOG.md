@@ -1,3 +1,10 @@
+# [5.21.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.6...v5.21.0) (2024-01-19)
+
+
+### Features
+
+* add support for jcont filter ([#105](https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues/105)) ([23e487d](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/23e487df8b4f9944320cdf4d9423b517b4bfe0c7))
+
 ## [5.20.6](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.5...v5.20.6) (2024-01-08)
 
 
