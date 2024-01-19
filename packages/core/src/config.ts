@@ -154,6 +154,7 @@ type DocConfig = {
 	core_api_reference: string;
 	core_how_tos: string;
 	core_raste_limits: string;
+	core_filtering_data: string;
 	metrics: string;
 	metrics_api_reference: string;
 	provisioning: string;
@@ -261,6 +262,7 @@ const config: Config = {
 		core_api_reference: 'https://docs.commercelayer.io/developers/v/api-reference',
 		core_how_tos: 'https://docs.commercelayer.io/core/v/how-tos/',
 		core_raste_limits: 'https://docs.commercelayer.io/core/rate-limits',
+		core_filtering_data: 'https://docs.commercelayer.io/core/filtering-data#list-of-predicates',
 		metrics: 'https://docs.commercelayer.io/metrics/',
 		metrics_api_reference: 'https://docs.commercelayer.io/metrics/v/api-reference-m/',
 		provisioning: 'https://docs.commercelayer.io/provisioning/',
