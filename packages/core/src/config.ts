@@ -210,7 +210,7 @@ const RATE_LIMIT = {
 } as const
 
 const config: Config = {
-	api: {
+	api: {	// CORE
 		default_domain: 'commercelayer.io',
 		default_app_domain: 'commercelayer.app',
 		default_stg_domain: 'commercelayer.co',
@@ -258,7 +258,7 @@ const config: Config = {
 	webhooks: {
 		retry_number: 5,
 	},
-	cli: {
+	cli: {	// Including Provisioning
 		applications: ['integration', 'sales_channel', 'user'],
 	},
 	doc: {
