@@ -62,7 +62,7 @@ interface Filter extends Record<string, unknown> {
 
 
 const filterList = (): string[] => {
-	return filters().map(f => f.predicate.replace(/\*/, ''))
+	return filters().map(f => f.predicate.replace(/^\*/g, ''))
 }
 
 
