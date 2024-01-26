@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const PATCH = false
-const PROVISIONING = false
+const PROVISIONING = true
 
 const oclif = require('@oclif/core')
 

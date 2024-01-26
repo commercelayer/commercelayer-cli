@@ -11,3 +11,5 @@ node_modules
 .oclif.manifest.json
 /package-lock.json
 test_data*
+*.env
+

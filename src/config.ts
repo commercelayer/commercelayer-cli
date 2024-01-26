@@ -191,9 +191,9 @@ enum ConfigParamsEditable {
 const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
-	defaultDomain: clConfig.api.default_domain || 'commercelayer.io',
-	applicationTypeCheck: clConfig.cli.applications || ['sales_channel', 'integration'],
-	scopeCheck: clConfig.application.login_scopes || ['market', 'stock_location'],
+	defaultDomain: clConfig.api.default_domain,
+	applicationTypeCheck: clConfig.cli.applications,
+	scopeCheck: clConfig.application.login_scopes,
 }
 
 
