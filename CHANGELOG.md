@@ -1,3 +1,10 @@
+# [5.19.0](https://github.com/commercelayer/commercelayer-cli/compare/v5.18.0...v5.19.0) (2024-01-26)
+
+
+### Features
+
+* enable provisioning plugin ([97f2340](https://github.com/commercelayer/commercelayer-cli/commit/97f2340ad7f6f96c8d459831994853c9ea719ccb))
+
 # [5.18.0](https://github.com/commercelayer/commercelayer-cli/compare/v5.17.9...v5.18.0) (2023-12-19)
 
 
