@@ -1,3 +1,10 @@
+## [5.19.1](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.0...v5.19.1) (2024-01-31)
+
+
+### Bug Fixes
+
+* fix provisioning application check error message ([7f897af](https://github.com/commercelayer/commercelayer-cli/commit/7f897af203f030781bfbb2905cc6b965aa4f94be))
+
 # [5.19.0](https://github.com/commercelayer/commercelayer-cli/compare/v5.18.0...v5.19.0) (2024-01-26)
 
 
