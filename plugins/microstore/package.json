@@ -61,19 +61,19 @@
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.13",
     "chai": "^4.4.1",
     "eslint": "^8.56.0",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.3.9",
+    "oclif": "^4.4.2",
     "semantic-release": "^22.0.12",
     "ts-node": "^10.9.2",
     "typescript": "5.3.3"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^4.11.4",
-    "@commercelayer/sdk": "^5.29.0",
+    "@commercelayer/sdk": "^5.31.0",
     "@oclif/core": "^2.15.0",
     "open": "^8.4.2",
     "tslib": "^2.6.2"
