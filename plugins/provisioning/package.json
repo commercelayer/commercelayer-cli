@@ -5,7 +5,7 @@
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/issues",
   "engines": {
-    "node": ">=18.0.0"
+    "node": "^16.13.0 || >=18.0.0"
   },
   "files": [
     "/bin",
