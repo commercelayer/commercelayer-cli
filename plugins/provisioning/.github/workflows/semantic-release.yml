@@ -29,9 +29,9 @@ jobs:
         run: pnpm build
       - name: Run specs
         env:
-          CL_SDK_ORGANIZATION: cli-test-org
-          CL_SDK_CLIENT_ID: SQWYt6tF8bx9uWzxGbrPxEMCEP5dCZbu93r56KRTLPY
-          CL_SDK_CLIENT_SECRET: DKMUFKTxqjfEc9SMNeG2FKPLqKOdMHYwz1BysAJcObw
+          CL_CLI_ORGANIZATION: cli-test-org
+          CL_CLI_CLIENT_ID: SQWYt6tF8bx9uWzxGbrPxEMCEP5dCZbu93r56KRTLPY
+          CL_CLI_CLIENT_SECRET: DKMUFKTxqjfEc9SMNeG2FKPLqKOdMHYwz1BysAJcObw
         run: pnpm test
       - name: Release
         env:
