@@ -1,3 +1,10 @@
+## [5.19.2](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.1...v5.19.2) (2024-02-06)
+
+
+### Bug Fixes
+
+* fix shared resource types ([9613963](https://github.com/commercelayer/commercelayer-cli/commit/9613963b95fc4805bbc98e1f8ac2cb4b54421b3f))
+
 ## [5.19.1](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.0...v5.19.1) (2024-01-31)
 
 
