@@ -1,3 +1,10 @@
+## [5.19.3](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.2...v5.19.3) (2024-02-08)
+
+
+### Bug Fixes
+
+* add provisioning plugin to readme ([e97684e](https://github.com/commercelayer/commercelayer-cli/commit/e97684e443bf4a38cd32eac029e435a692bea864))
+
 ## [5.19.2](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.1...v5.19.2) (2024-02-06)
 
 
