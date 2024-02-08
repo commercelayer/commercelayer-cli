@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v1.0.0...v1.0.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* add commnads documentation to readme ([3a91b23](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/3a91b23663c3a7093bcac393faafe4e453413f5d))
+
 # 1.0.0 (2024-01-31)
 
 

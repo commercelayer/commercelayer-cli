@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-provisioning",
   "description": "Commerce Layer CLI Provisioning plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/issues",
   "engines": {
