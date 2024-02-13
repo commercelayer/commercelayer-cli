@@ -1,3 +1,25 @@
+# [4.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v3.16.1...v4.0.0-oclif3.1) (2024-02-13)
+
+
+### Bug Fixes
+
+* fix dependencies ([2627cc7](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/2627cc74a42b6cc62e594f6f044fca172e52ebb4))
+
+
+### Features
+
+* update triggers ([2c6e6c1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/2c6e6c161c964dc941201e2ea07191161c7ebae8))
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([a967bc0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/a967bc06c4fba5e02cea711b26a20ca49ded4363))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 ## [3.16.1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v3.16.0...v3.16.1) (2023-12-18)
 
 
