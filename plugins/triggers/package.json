@@ -56,7 +56,7 @@
   "devDependencies": {
     "@commercelayer/cli-dev": "beta",
     "@commercelayer/eslint-config-ts": "^1.3.0",
-    "@oclif/plugin-help": "^60",
+    "@oclif/plugin-help": "^6",
     "@oclif/test": "^3",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
