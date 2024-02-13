@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.2...v2.0.0) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([7a64c49](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7a64c496c8c6645251299a853d5280837d577a3d))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 ## [1.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.1...v1.6.2) (2023-12-14)
 
 
