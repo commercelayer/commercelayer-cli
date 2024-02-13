@@ -7,7 +7,7 @@
   "repository": "commercelayer/commercelayer-cli-plugin-checkout",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout/issues",
   "engines": {
-    "node": "^16.13.0 || >=18.0.0"
+    "node": ">=20.0.0"
   },
   "files": [
     "/bin",
