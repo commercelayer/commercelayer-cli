@@ -45,7 +45,7 @@ export default class CLIBaseHelp extends Help {
 	}
 
 	// display help for a command
-	async showCommandHelp(command: Command.Cached): Promise<void> {
+	async showCommandHelp(command: Command.Loadable): Promise<void> {
 		if (PRINT_TRACE) console.log('---------- showCommandHelp')
 		const name = command.id
         const depth = name ? name.split(':').length : 1
@@ -91,7 +91,7 @@ export default class CLIBaseHelp extends Help {
 
 
 	// the formatting for a list of commands
-	formatCommands(commands: Command.Cached[]): string {
+	formatCommands(commands: Command.Loadable[]): string {
 		if (PRINT_TRACE) console.log('---------- formatCommands')
 		return super.formatCommands(commands).split('\n').map((c: string) => {
 			let noSpaceCount = 0
@@ -101,13 +101,13 @@ export default class CLIBaseHelp extends Help {
 
 
 	// the formatting for an individual command
-	formatCommand(command: Command.Cached): string {
+	formatCommand(command: Command.Loadable): string {
 		if (PRINT_TRACE) console.log('---------- formatCommand')
 		return super.formatCommand(command)
 	}
 
 
-	getCommandHelpClass(command: Command.Cached): CLICommandHelp {
+	getCommandHelpClass(command: Command.Loadable): CLICommandHelp {
 		if (PRINT_TRACE) console.log('---------- getCommandHelpClass')
 		return new CLICommandHelp(command, this.config, this.opts)
 	}
