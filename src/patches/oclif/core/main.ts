@@ -19,9 +19,9 @@ const log = (message = '', ...args: any[]): void => {
 
 
 export async function run(argv?: string[], options?: LoadOptions): Promise<unknown> {
-  const marker = Performance.mark('main.run')
+  const marker = Performance.mark('@oclif/core', 'main.run')
 
-  const initMarker = Performance.mark('main.run#init')
+  const initMarker = Performance.mark('@oclif/core', 'main.run#init')
 
   const collectPerf = async (): Promise<void> => {
     marker?.stop()

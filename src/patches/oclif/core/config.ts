@@ -33,7 +33,7 @@ export class PatchedConfig extends Config {
 
 
   public async runCommand<T = unknown>(id: string, argv: string[] = [], cachedCommand: Command.Loadable | null = null): Promise<T> {
-    const marker = Performance.mark(`config.runCommand#${id}`)
+    const marker = Performance.mark('@oclif/core', `config.runCommand#${id}`)
     debug('runCommand %s %o', id, argv)
     let c = cachedCommand ?? this.findCommand(id)
     if (!c) {
@@ -83,7 +83,7 @@ export class PatchedConfig extends Config {
 
 
   private isJitPluginCommandPatched(c: Command.Loadable): boolean {
-    return Object.keys(this.pjson.oclif.jitPlugins ?? {}).includes(c.pluginName ?? '') && !this.plugins.find(p => p.name === c?.pluginName)
+    return Object.keys(this.pjson.oclif.jitPlugins ?? {}).includes(c.pluginName ?? '') && !this.plugins.get(c?.pluginName || '')
   }
 
 }
