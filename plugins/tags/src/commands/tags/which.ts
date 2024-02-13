@@ -4,6 +4,7 @@ import type { CommerceLayerClient, QueryParamsList, Tag } from '@commercelayer/s
 import { clApi, clColor, clConfig, clOutput, clText, clUtil } from '@commercelayer/cli-core'
 import type { ApiResource, ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
 import type { TaggableResource } from '@commercelayer/sdk/lib/cjs/api'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const MAX_RESOURCES = 1000
@@ -133,8 +134,8 @@ export default class TagsWhich extends BaseIdCommand {
 
 			return tableData
 
-		} catch (error: any) {
-			this.handleError(error, flags)
+		} catch (error) {
+			this.handleError(error as CommandError, flags)
 		}
 
 	}
@@ -142,7 +143,7 @@ export default class TagsWhich extends BaseIdCommand {
 
 	private footerMessage(flags: any, itemCount: number, totalItems: number): void {
 
-		const humanized = clApi.humanizeResource(flags.type)
+		const humanized = clApi.humanizeResource(flags.type as string)
 
 		this.log()
 		this.log(`Total displayed ${humanized}: ${clColor.yellowBright(String(itemCount))}`)

@@ -4,6 +4,7 @@ import type { CommerceLayerClient } from '@commercelayer/sdk'
 import { clColor, clConfig } from '@commercelayer/cli-core'
 import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
 import type { ApiResource } from '@commercelayer/sdk/lib/cjs/resource'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 
@@ -99,8 +100,8 @@ export default class TagsCount extends BaseIdCommand {
 
       return output
 
-		} catch (error: any) {
-			this.handleError(error, flags)
+		} catch (error) {
+			this.handleError(error as CommandError, flags)
 		}
 
 	}
