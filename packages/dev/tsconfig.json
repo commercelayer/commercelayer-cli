@@ -10,7 +10,7 @@
       "./src"
     ],
     "strict": true,
-    "target": "ES2023",
+    "target": "ES2022",
     "esModuleInterop": true,
     "resolveJsonModule": true,
   },
