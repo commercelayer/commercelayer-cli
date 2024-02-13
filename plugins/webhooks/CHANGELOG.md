@@ -1,3 +1,15 @@
+# [4.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v3.7.1...v4.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([e998b96](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/e998b96d6dda6f50aa992d176be34c88a21c29bc))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 ## [3.7.1](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v3.7.0...v3.7.1) (2023-11-22)
 
 
