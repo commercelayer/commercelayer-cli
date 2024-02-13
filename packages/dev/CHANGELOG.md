@@ -1,3 +1,10 @@
+## [2.1.4-oclif3.1](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.3...v2.1.4-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([d7ceae0](https://github.com/commercelayer/commercelayer-cli-dev/commit/d7ceae04861b38aa971f409a99d5b75815a59b0d))
+
 ## [2.1.3](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.2...v2.1.3) (2023-12-19)
 
 
