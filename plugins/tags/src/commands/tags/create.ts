@@ -1,4 +1,5 @@
 
+import type { CommandError } from '@oclif/core/lib/interfaces'
 import Command, { Flags } from '../../base'
 import { clColor, clApi, clUtil } from '@commercelayer/cli-core'
 
@@ -62,8 +63,8 @@ export default class TagsCreate extends Command {
 
       return newTags
 
-    } catch (error: any) {
-      this.handleError(error)
+    } catch (error) {
+      this.handleError(error as CommandError)
     }
 
   }

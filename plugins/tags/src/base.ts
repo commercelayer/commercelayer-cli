@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { clColor, clToken, clUpdate, clOutput, clConfig, clUtil } from '@commercelayer/cli-core'
 import { Command, Flags, Args, ux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Tag } from '@commercelayer/sdk'
-
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
+import { Bundles, BuyXPayYPromotions, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk/lib/cjs/api'
+import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
+import type { ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
 
 
 
@@ -43,7 +47,7 @@ export default abstract class BaseCommand extends Command {
   async init(): Promise<any> {
 
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
 
     // Application check
     const atFlag = this.argv.find(a => a.startsWith('--accessToken='))
@@ -159,6 +163,45 @@ export default abstract class BaseCommand extends Command {
   protected checkResourceType(type: string): boolean {
     if (!CommerceLayerStatic.resources().includes(type)) this.error(`Invalid resource type: ${clColor.msg.error(type)}`)
     return true
+  }
+
+
+  protected async findByFriendlyAttribute(value: string, type: TaggableResourceType): Promise<TaggableResource | undefined> {
+
+    let attribute
+
+    // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
+    switch (type) {
+      case Returns.TYPE:
+      case Shipments.TYPE:
+      case Orders.TYPE: { attribute = 'number'; break }
+      case Bundles.TYPE:
+      case Coupons.TYPE:
+      case GiftCards.TYPE:
+      case Skus.TYPE: { attribute = 'code'; break }
+      case BuyXPayYPromotions.TYPE:
+      case ExternalPromotions.TYPE:
+      case FixedAmountPromotions.TYPE:
+      case FixedPricePromotions.TYPE:
+      case FreeGiftPromotions.TYPE:
+      case FreeShippingPromotions.TYPE:
+      case PercentageDiscountPromotions.TYPE:
+      case Promotions.TYPE:
+      case LineItemOptions.TYPE:
+      case SkuOptions.TYPE: { attribute = 'name'; break }
+      case Customers.TYPE: { attribute = 'email'; break }
+
+    }
+
+    let resource
+    if (attribute) {
+      const client: any = this.cl[type as keyof CommerceLayerClient]
+      const resources = await client.list({ filters: { [`${attribute}_eq`]: value }, include: ['tags'] })
+      resource = (resources as ListResponse<TaggableResource>).first()
+    }
+
+    return resource
+
   }
 
 }

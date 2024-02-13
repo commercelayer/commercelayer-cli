@@ -1,4 +1,4 @@
-import type { TaggableResource } from '@commercelayer/sdk/lib/cjs/api'
+import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
 import BaseCommand, { Flags } from '../../base'
 import type { CommerceLayerClient, Tag } from '@commercelayer/sdk'
 import { clApi, clColor, clText } from '@commercelayer/cli-core'
@@ -72,11 +72,13 @@ export default class TagsRemove extends BaseCommand {
     const humanizedAndSingularizedResource = clApi.humanizeResource(clText.singularize(resType))
     for (const res of resources) {
 
-      const resource: TaggableResource = await client.retrieve(res, { include: ['tags'] }).catch((err: unknown) => {
+      const resource: TaggableResource = await client.retrieve(res, { include: ['tags'] }).catch(async (err: unknown) => {
         if (this.cl.isApiError(err) && (err.status === 404)) {
-          this.warn(`Resource of type ${clColor.api.resource(resType)} not found: ${clColor.msg.error(res)}`)
-        }
+          if (flags.verbose) this.log(`Resource ${clColor.style.id(res)} not found by ID`)
+          return this.findByFriendlyAttribute(res, resType as TaggableResourceType)
+        } else throw err
       })
+
 
       if (resource) { // Found resource to de-tag
 
@@ -95,10 +97,11 @@ export default class TagsRemove extends BaseCommand {
           }
           else if (flags.verbose) this.log(`${clText.capitalize(humanizedAndSingularizedResource)} ${clColor.style.id(resource.id)} not tagged with tag ${clColor.cli.value(tag.name)}`)
         }
-        const newTags = tagIds.map(t => this.cl.tags.relationship(t))
+        const newTags = (tagIds.length === 0)? [this.cl.tags.relationship(null)] : tagIds.map(t => this.cl.tags.relationship(t))
 
         // Update resource tags
         const taggedResource = await client.update({ id: resource.id, tags: newTags }).catch((err: unknown) => {
+          console.log(err)
           if (this.cl.isApiError(err)) {
             this.warn(`Unable to update tags of ${humanizedAndSingularizedResource} with ID ${clColor.msg.error(resource.id)}`)
           }
@@ -107,6 +110,7 @@ export default class TagsRemove extends BaseCommand {
         if (taggedResource) updatedResources.push(taggedResource.id)
 
       }
+      else this.warn(`Resource of type ${clColor.api.resource(resType)} not found: ${clColor.msg.error(res)}`)
 
     }
 
