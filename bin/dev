@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const PATCH = false
 const PROVISIONING = true
 
 const oclif = require('@oclif/core')
@@ -20,8 +19,7 @@ oclif.settings.debug = true
 if (PROVISIONING) require('../src/patches/provisioning').checkProvisioningCommand(process.argv)
 
 // Start the CLI
-const mainModule = PATCH? require('../src/patches/oclif/core/main') : oclif
-mainModule.run()
+oclif.run()
 	.then(oclif.flush(60000))
 	.catch(error => {
 		if (error.code === 'EEXIT' && error.oclif.exit === 0) { /* command exit (quit) */ }
