@@ -1,3 +1,15 @@
+# [6.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.5...v6.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([382392c](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/382392c7875dac0bcadaa24aab1da864d5b8b311))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 ## [5.6.5](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.4...v5.6.5) (2023-12-14)
 
 
