@@ -8,7 +8,7 @@
     "cl-cli-dev": "./bin/run"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.0.0"
   },
   "files": [
     "/bin",
@@ -61,21 +61,21 @@
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.13",
+    "@types/node": "^20.11.17",
     "chai": "^4.4.1",
     "eslint": "^8.56.0",
     "globby": "^10.0.2",
     "lodash": "^4.17.21",
-    "mocha": "^10.2.0",
+    "mocha": "^10.3.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.4.2",
-    "pnpm": "^8.15.1",
-    "semantic-release": "^22.0.12",
+    "oclif": "^4.4.11",
+    "pnpm": "^8.15.2",
+    "semantic-release": "^23.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@oclif/core": "^2.15.0",
+    "@oclif/core": "^3.19.1",
     "fs-extra": "^10.1.0",
     "github-slugger": "^1.5.0",
     "normalize-package-data": "^5.0.0",
