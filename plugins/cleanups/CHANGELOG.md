@@ -1,3 +1,15 @@
+# [3.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.3.0...v3.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([dd4b1d2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/dd4b1d213c3ba93ed8ade4ef29b8e870fbcf8c8b))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 # [2.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.2.0...v2.3.0) (2023-11-22)
 
 
