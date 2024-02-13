@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "4.11.4",
+  "version": "5.0.0-oclif3.1",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
