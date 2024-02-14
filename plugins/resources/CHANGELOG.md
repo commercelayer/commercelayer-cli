@@ -1,3 +1,10 @@
+## [5.21.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.21.0...v5.21.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* update sdk ([ca0215a](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/ca0215ac2536694a643cd4ff3ac4bfb4d5cdc071))
+
 # [5.21.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.6...v5.21.0) (2024-01-19)
 
 
