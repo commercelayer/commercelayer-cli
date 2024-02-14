@@ -1,3 +1,24 @@
+# [6.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.21.0...v6.0.0-oclif3.1) (2024-02-13)
+
+
+### Bug Fixes
+
+* fix dependencies ([9d617bc](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/9d617bc829fb885a1db9a64038a602a9cf629cd5))
+* fix ts-node dependency ([224d648](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/224d6480fb3c5724a2e3e6ba61910b0a42a8c87f))
+
+
+* perf upgrade to oclif 3 ([0c76f90](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/0c76f904abdc4ba2de4132fa20ba048b354023cb))
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([54beb69](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/54beb69391efa2af728d88cdf703a132380b7358))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 # [5.21.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.20.6...v5.21.0) (2024-01-19)
 
 
