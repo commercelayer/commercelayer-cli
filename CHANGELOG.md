@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.1...v6.0.0-oclif3.2) (2024-02-13)
+
+
+### Bug Fixes
+
+* remove patched command runner ([85e33c6](https://github.com/commercelayer/commercelayer-cli/commit/85e33c68ab81d017db52530fb5e9ebcefc908434))
+
 # [6.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.3...v6.0.0-oclif3.1) (2024-02-13)
 
 
