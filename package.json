@@ -107,7 +107,7 @@
     "@types/node": "^20.11.17",
     "@types/update-notifier": "^5.1.0",
     "chai": "^4.4.1",
-    "dotenv": "^16.4.3",
+    "dotenv": "^16.4.4",
     "eslint": "^8.56.0",
     "mocha": "^10.3.0",
     "nyc": "^15.1.0",
@@ -119,7 +119,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "beta",
     "@commercelayer/provisioning-sdk": "^1.0.0",
-    "@commercelayer/sdk": "^5.31.1",
+    "@commercelayer/sdk": "^5.32.0",
     "@oclif/core": "^3.19.1",
     "@oclif/plugin-autocomplete": "^3.0.8",
     "@oclif/plugin-help": "6.0.12",
