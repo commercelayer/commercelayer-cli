@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.2...v6.0.0-oclif3.3) (2024-02-15)
+
+
+### Bug Fixes
+
+* fix order of args passed to plugin commands ([cec5f4a](https://github.com/commercelayer/commercelayer-cli/commit/cec5f4ac65f737c018fd91e9a87f51926fe4ceda))
+
 # [6.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.1...v6.0.0-oclif3.2) (2024-02-13)
 
 
