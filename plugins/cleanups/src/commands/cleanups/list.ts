@@ -2,6 +2,7 @@ import Command, { Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import type { QueryParamsList } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const MAX_EXPORTS = 1000
@@ -131,8 +132,8 @@ export default class CleanupsList extends Command {
 
 			return tableData
 
-		} catch (error: any) {
-			this.handleError(error, flags)
+		} catch (error) {
+			this.handleError(error as CommandError, flags)
 		}
 
 	}
