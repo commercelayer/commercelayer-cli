@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.1...v3.0.0-oclif3.2) (2024-02-15)
+
+
+### Bug Fixes
+
+* fix linter errors ([21aafee](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/21aafee214e590d360548ffb9da458ec78debbbc))
+
 # [3.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.3.0...v3.0.0-oclif3.1) (2024-02-13)
 
 
