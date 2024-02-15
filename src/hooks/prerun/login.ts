@@ -73,7 +73,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 	// Check command flags
 	const _flags = opts.Command.flags || {}
 
-	const ffIdx = Math.max(0, opts.argv.findIndex(arg => arg.startsWith('-')))
+	const ffIdx = Math.max(opts.argv.findIndex(arg => !arg.startsWith('-'))+1, opts.argv.findIndex(arg => arg.startsWith('-')))
 
 	// Add to command line args application info read from config file
 	if (_flags.organization && configData.slug) opts.argv.splice(ffIdx, 0, '--organization=' + configData.slug)
