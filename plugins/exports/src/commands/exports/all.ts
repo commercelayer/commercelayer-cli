@@ -7,6 +7,7 @@ import Spinnies from 'spinnies'
 import open from 'open'
 import { readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports
@@ -175,9 +176,9 @@ export default class ExportsAll extends ExportCommand {
         if (flags.open && outputFile) await open(outputFile)
       }
 
-    } catch (error: any) {
+    } catch (error) {
       if (this.cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
-      else this.handleError(error)
+      else this.handleError(error as CommandError)
     }
 
   }
@@ -423,7 +424,7 @@ export default class ExportsAll extends ExportCommand {
     const tmpDir = this.config.cacheDir
     const format = this.getFileFormat(flags)
 
-    const mergedFile = join(tmpDir, `${exports[0].reference?.split('-')[0] as string}.${format}`)
+    const mergedFile = join(tmpDir, `${exports[0].reference?.split('-')[0] ?? ''}.${format}`)
     if (format === 'json') writeFileSync(mergedFile, `[${flags.prettify ? '\n\t' : ''}`, { flag: 'a', encoding })
 
     let exportCounter = 0
@@ -444,7 +445,7 @@ export default class ExportsAll extends ExportCommand {
         }
       }
 
-      const checkOk = this.checkExportedFile(e.metadata?.exportRecords || 0, fileExport, format)
+      const checkOk = this.checkExportedFile(e.metadata?.exportRecords as number || 0, fileExport, format)
       if (!checkOk) this.error(`Check of exported file n.${exportCounter} failed`)
 
       const fileText = this.cleanExportFile(fileExport, format)
