@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.0.0-oclif3.1...v3.0.0-oclif3.2) (2024-02-15)
+
+
+### Bug Fixes
+
+* fix linter errors ([e30639e](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/e30639e2c83284034c5fae70d99aa0419cd9376c))
+
 # [3.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v2.4.0...v3.0.0-oclif3.1) (2024-02-13)
 
 
