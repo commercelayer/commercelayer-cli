@@ -746,7 +746,7 @@ export abstract class BaseCommand extends Command {
 export default abstract class extends BaseCommand {
 
   static args = {
-    resource: Args.string({ name: 'resource', description: 'the resource type', required: true }),
+    resource: Args.string({ name: 'resource', description: 'the resource type', required: true })
   }
 
 }
