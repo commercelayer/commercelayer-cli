@@ -54,8 +54,8 @@ export default class PluginsLatest extends Command {
 
     const formattedOutput = output.sort().join('\n')
 
+    this.log()
     this.log(formattedOutput)
-
     this.log()
 
     return formattedOutput

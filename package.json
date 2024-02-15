@@ -3,12 +3,14 @@
   "description": "Commerce Layer CLI",
   "version": "6.0.0-oclif3.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "bin": {
-    "commercelayer": "./bin/run",
-    "cl": "./bin/run",
-    "clayer": "./bin/run"
-  },
+  "homepage": "https://github.com/commercelayer/commercelayer-cli",
+  "repository": "https://github.com/commercelayer/commercelayer-cli",
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "bin": {
+    "commercelayer": "./bin/run.js",
+    "cl": "./bin/run.js",
+    "clayer": "./bin/run.js"
+  },
   "engines": {
     "node": ">=20.0.0"
   },
@@ -16,10 +18,8 @@
     "/bin/run.*",
     "/lib",
     "/npm-shrinkwrap.json",
-    "/oclif.manifest.json",
-    "/.fig/autocomplete/build/*.js"
+    "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/commercelayer/commercelayer-cli",
   "keywords": [
     "ecommerce",
     "cli",
@@ -81,7 +81,6 @@
     ],
     "topicSeparator": ":"
   },
-  "repository": "https://github.com/commercelayer/commercelayer-cli",
   "scripts": {
     "build": "rm -rf lib && tsc -b",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
