@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-oclif3.1...v6.0.0-oclif3.2) (2024-02-15)
+
+
+### Bug Fixes
+
+* fix arg parser ([0e19c3b](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/0e19c3b0ea78f5eb175883b7ce63caaf5b56d750))
+
 # [6.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.21.0...v6.0.0-oclif3.1) (2024-02-13)
 
 
