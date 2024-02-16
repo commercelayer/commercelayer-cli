@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash'
 import { clOutput, clColor } from '@commercelayer/cli-core'
 import type { QueryParamsRetrieve } from '@commercelayer/sdk'
 import { buildEventsTableData } from './events'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 export default class WebhooksDetails extends Command {
@@ -58,7 +59,7 @@ export default class WebhooksDetails extends Command {
       table.push(...Object.entries(webhook)
         .filter(([k]) => !['type', 'last_event_callbacks'].includes(k))
         .filter(([_k, v]) => !flags['hide-empty'] || isEmpty(v) || (Array.isArray(v) && (v.length > 0)))
-        .map(([k, v]) => {
+        .map(([k, v]: [string, string]) => {
           return [
             { content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
             formatValue(k, v),
@@ -80,8 +81,8 @@ export default class WebhooksDetails extends Command {
 
       return webhook
 
-    } catch (error: any) {
-      this.handleError(error, flags, id)
+    } catch (error) {
+      this.handleError(error as CommandError, flags, id)
     }
 
   }

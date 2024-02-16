@@ -2,6 +2,7 @@ import Command, { Flags } from '../../base'
 import { URL } from 'node:url'
 import type { WebhookUpdate } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 export default class WebhooksUpdate extends Command {
@@ -85,8 +86,8 @@ export default class WebhooksUpdate extends Command {
 
 			return webhook
 
-		} catch (error: any) {
-			this.handleError(error, flags, id)
+		} catch (error) {
+			this.handleError(error as CommandError, flags, id)
 		}
 
 	}

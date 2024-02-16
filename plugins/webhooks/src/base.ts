@@ -3,6 +3,7 @@ import { Command, Flags, Args, ux as cliux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { clOutput, clUpdate, clColor, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
 const pkg = require('../package.json')
@@ -36,13 +37,13 @@ export abstract class BaseCommand extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg as Package)
     return await super.init()
   }
 
 
   async catch(error: any): Promise<any> {
-    this.handleError(error)
+    this.handleError(error as CommandError)
   }
 
 

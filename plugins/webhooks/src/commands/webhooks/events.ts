@@ -3,6 +3,7 @@ import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-tab
 import { clConfig, clOutput, clColor, clApi, clUtil } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import type { EventCallback, QueryParamsList } from '@commercelayer/sdk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const MAX_EVENTS = 1000
@@ -110,8 +111,8 @@ export default class WebhooksEvents extends Command {
 
 			return tableData
 
-		} catch (error: any) {
-			this.handleError(error, flags, id)
+		} catch (error) {
+			this.handleError(error as CommandError, flags, id)
 		}
 
 	}

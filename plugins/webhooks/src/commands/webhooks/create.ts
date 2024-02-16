@@ -1,6 +1,7 @@
 import { BaseCommand, Flags } from '../../base'
 import { URL } from 'node:url'
 import { clColor } from '@commercelayer/cli-core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 export default class WebhooksCreate extends BaseCommand {
@@ -64,8 +65,8 @@ export default class WebhooksCreate extends BaseCommand {
 
 			return webhook
 
-		} catch (error: any) {
-			this.handleError(error, flags)
+		} catch (error) {
+			this.handleError(error as CommandError, flags)
 		}
 
 	}
