@@ -51,6 +51,8 @@ export default class SeederSeed extends Command {
       char: 'D',
       description: 'add a delay in milliseconds between calls to different resources',
       hidden: true,
+      multiple: false,
+      min: 0
     }),
     debug: Flags.boolean({
       description: 'Show debug information',
@@ -114,7 +116,7 @@ export default class SeederSeed extends Command {
           title: `Create ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.createResources(res, flags, task).catch(this.handleCommonError)
+            const n = await this.createResources(res, flags, task).catch(err => { this.handleCommonError(err as Error) })
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -128,8 +130,8 @@ export default class SeederSeed extends Command {
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data seeding not completed, correct errors and rerun the ${clColor.cli.command('seed')} command`) })
         .finally(() => { this.log() })
 
-    } catch (error: any) {
-      this.error(error.message)
+    } catch (error) {
+      this.error((error as Error).message)
     }
 
   }
@@ -286,7 +288,7 @@ export default class SeederSeed extends Command {
   private async createResources(res: SeederResource, flags: any, task: Listr.ListrTaskWrapper): Promise<number> {
 
     // Read resource type data
-    const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
+    const resourceData = await readResourceData(flags.url as string, res.resourceType).catch(() => {
       throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 
@@ -311,7 +313,7 @@ export default class SeederSeed extends Command {
 
     }
 
-    if (flags.delay) await clUtil.sleep(flags.delay)
+    if (flags.delay) await clUtil.sleep(flags.delay as number)
 
     return referenceKeys.length
 

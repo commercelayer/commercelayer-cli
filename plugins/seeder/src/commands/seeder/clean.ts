@@ -82,7 +82,7 @@ export default class SeederClean extends Command {
           title: `Delete ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.deleteResources(res, flags, task).catch(this.handleCommonError)
+            const n = await this.deleteResources(res, flags, task).catch(err => { this.handleCommonError(err as Error) })
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -96,8 +96,8 @@ export default class SeederClean extends Command {
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`) })
         .finally(() => { this.log() })
 
-    } catch (error: any) {
-      this.error(error.message)
+    } catch (error) {
+      this.error((error as Error).message)
     }
 
   }
@@ -109,7 +109,7 @@ export default class SeederClean extends Command {
 
 
     // Read resource type data
-    const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
+    const resourceData = await readResourceData(flags.url as string, res.resourceType).catch(() => {
       throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 

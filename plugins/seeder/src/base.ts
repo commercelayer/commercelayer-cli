@@ -7,6 +7,9 @@ import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
 import type { ListResponse, ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
 import type { Method } from 'axios'
+import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
+import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { CLIError } from '@oclif/core/lib/errors'
 
 
 const pkg = require('../package.json')
@@ -59,12 +62,12 @@ export default abstract class extends Command {
 
 
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
+    clUpdate.checkUpdate(pkg as Package)
     return await super.init()
   }
 
 
-  async catch(error: any): Promise<any> {
+  async catch(error: CLIError): Promise<any> {
     if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
     return await super.catch(error)
   }
@@ -75,7 +78,7 @@ export default abstract class extends Command {
 
     const organization = flags.organization
     const domain = flags.domain
-    const accessToken = flags.accessToken
+    const accessToken: string = flags.accessToken
     const userAgent = clUtil.userAgent(this.config)
 
     this.cl = commercelayer({ organization, domain, accessToken, userAgent })
@@ -108,7 +111,7 @@ export default abstract class extends Command {
       })
       .catch(error => {
         cliux.action.stop(clColor.msg.error('Error'))
-        this.error(error)
+        this.error(error as CommandError)
       })
       .finally(() => { this.log() })
   }
