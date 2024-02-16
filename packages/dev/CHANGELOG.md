@@ -1,3 +1,20 @@
+# [3.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.4-oclif3.1...v3.0.0-oclif3.1) (2024-02-13)
+
+
+### Bug Fixes
+
+* fix tsconfig ([6ec412b](https://github.com/commercelayer/commercelayer-cli-dev/commit/6ec412b88788c761a72658a1ef5f8aa2fa3e1a4d))
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([09e8497](https://github.com/commercelayer/commercelayer-cli-dev/commit/09e84974d9636ede8a72edc418bc7b65eb4d0944))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 ## [2.1.4-oclif3.1](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.3...v2.1.4-oclif3.1) (2024-02-13)
 
 
