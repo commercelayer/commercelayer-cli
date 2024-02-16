@@ -1,3 +1,10 @@
+# [2.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.0-oclif3.1...v2.0.0-oclif3.2) (2024-02-16)
+
+
+### Bug Fixes
+
+* fix lint errors and update resources ([ae8eb57](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/ae8eb574750bca661c81584cdcf433f324503463))
+
 # [2.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v1.0.1...v2.0.0-oclif3.1) (2024-02-13)
 
 
