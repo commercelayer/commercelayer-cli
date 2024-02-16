@@ -709,6 +709,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
 export default abstract class extends BaseFilterCommand {
 
   static args = {
+    ...BaseFilterCommand.args,
     resource: Args.string({ name: 'resource', description: 'the resource type', required: true }),
   }
 

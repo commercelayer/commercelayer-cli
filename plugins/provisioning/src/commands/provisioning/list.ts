@@ -69,6 +69,11 @@ export default class ProvisioningList extends Command {
 	}
 
 
+	static args = {
+		...Command.args
+	}
+
+
 
 	async run(): Promise<any> {
 

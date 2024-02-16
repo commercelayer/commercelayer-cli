@@ -28,7 +28,7 @@ export default class ResourcesRelationship extends Command {
   }
 
   static args = {
-    ...Command.args,
+    ...ResourcesList.args,
     id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: true }),
     relationship: Args.string({ name: 'relationship', description: 'name of the relationship field', required: true }),
   }
