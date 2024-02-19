@@ -126,6 +126,11 @@ export default class ResourcesAll extends Command {
   }
 
 
+  static args = {
+    ...Command.args
+  }
+
+
 
   async checkAccessToken(jwtData: any, flags: any, client: CommerceLayerClient): Promise<any> {
 
