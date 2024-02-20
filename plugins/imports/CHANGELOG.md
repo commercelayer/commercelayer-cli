@@ -1,3 +1,10 @@
+## [3.10.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.10.0...v3.10.1) (2024-02-20)
+
+
+### Bug Fixes
+
+* fix imports with tags ([c0f72fb](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/c0f72fbf739f74edf3c3c7fb24a7acb24ab5738b))
+
 # [3.10.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.9.1...v3.10.0) (2024-01-19)
 
 
