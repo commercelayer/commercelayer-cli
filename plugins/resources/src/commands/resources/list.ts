@@ -67,6 +67,10 @@ export default class ResourcesList extends Command {
   }
 
 
+  static args = {
+    ...Command.args
+  }
+
 
   async run(): Promise<any> {
 

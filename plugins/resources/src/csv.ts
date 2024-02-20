@@ -86,7 +86,7 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
   if (delimiter && (delimiter === 'TAB')) delimiter = '\t'
 
 
-  json2csvAsync(output, {
+  await json2csvAsync(output, {
     excelBOM: true,
     expandArrayObjects: true,
     prependHeader: true,
