@@ -130,13 +130,15 @@ export default class ImportsCreate extends Command {
       const type = flags.type
       if (!clConfig.imports.types.includes(type)) this.error(`Unsupported resource type: ${clColor.style.error(type)}`)
 
+      const format = flags.csv ? 'csv' : 'json'
+
       const parentId = flags.parent
       const inputFile = clUtil.specialFolder(flags.inputs)
 
       const monitor = !flags.blind
 
-      const inputs: any[] = await generateInputs(inputFile, flags).catch(error => this.error(error.message as string))
-      const inputsLength = inputs.length
+      const inputs: any[] = await generateInputs(inputFile, format).catch(error => this.error((error as Error).message))
+      const inputsLength = (format === 'csv')? Math.max(0, inputs.length-1) : inputs.length
 
       // Check import size
       const humanized = type.replace(/_/g, ' ')
@@ -158,8 +160,8 @@ export default class ImportsCreate extends Command {
         resource_type: type,
         parent_resource_id: parentId,
         // cleanup_records: flags.cleanup,
-        inputs,
-      })
+        inputs
+      }, format)
 
       // Split chunks
       const batches: Batch[] = splitChunks(chunks, MAX_CHUNKS)
@@ -253,11 +255,13 @@ export default class ImportsCreate extends Command {
 
 
   private async createImport(chunk: Chunk): Promise<Import> {
+    const inputs = (chunk.format === 'json')? chunk.inputs : (chunk.inputs.join('\n') as unknown as Array<Record<string, any>>) // fix inputs resource type issue
     return this.cl.imports.create({
+      format: chunk.format,
       resource_type: chunk.resource_type,
       parent_resource_id: chunk.parent_resource_id,
       // cleanup_records: chunk.cleanup_records,
-      inputs: chunk.inputs,
+      inputs,
       reference: `${chunk.group_id}-${String(chunk.chunk_number).padStart(4, '0')}`,
       reference_origin: 'cli-plugin-imports',
       metadata: {

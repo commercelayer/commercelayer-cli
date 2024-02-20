@@ -22,39 +22,46 @@ type Batch = {
 }
 
 
-const splitImports = (imp: ImportCreate, size?: number): Chunk[] => {
+const splitImports = (imp: ImportCreate, format: 'csv' | 'json', size?: number): Chunk[] => {
 
   const chunks: Chunk[] = []
   if (!imp?.inputs || (imp.inputs.length === 0)) return chunks
 
   const chunkSize = size || clConfig.imports.max_size
 
+  const header = (format === 'csv') ? imp.inputs.shift() : undefined
   const allInputs = imp.inputs
   const totalItems = imp.inputs.length
   const groupId = generateGroupUID()
 
   let chunkNum = 0
-  while (allInputs.length > 0) chunks.push({
-    chunk_number: ++chunkNum,
-    resource_type: imp.resource_type,
-    parent_resource_id: imp.parent_resource_id,
-    // cleanup_records: (chunkNum === 1) ? imp.cleanup_records : false,
-    start_item: 0,
-    end_item: 0,
-    total_chunks: 0,
-    total_items: totalItems,
-    inputs: allInputs.splice(0, chunkSize),
-    group_id: groupId,
-    items_count: 0,
-    total_batch_chunks: 0,
-    total_batch_items: totalItems,
-  })
+  while (allInputs.length > 0) {
+    const inputs = allInputs.splice(0, chunkSize)
+    const inputsCount = inputs.length
+    if ((format === 'csv') && header) inputs.unshift(header)
+    chunks.push({
+      format,
+      chunk_number: ++chunkNum,
+      resource_type: imp.resource_type,
+      parent_resource_id: imp.parent_resource_id,
+      // cleanup_records: (chunkNum === 1) ? imp.cleanup_records : false,
+      start_item: 0,
+      end_item: 0,
+      total_chunks: 0,
+      total_items: totalItems,
+      inputs,
+      group_id: groupId,
+      items_count: inputsCount,
+      total_batch_chunks: 0,
+      total_batch_items: totalItems
+    })
+  }
 
   return chunks.map(c => {
     c.start_item = ((c.chunk_number - 1) * chunkSize) + 1
     c.end_item = (c.start_item + c.inputs.length) - 1
     c.total_chunks = chunks.length
-    c.items_count = c.inputs.length
+    // c.items_count = c.inputs.length
     return c
   })
 

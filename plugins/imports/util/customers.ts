@@ -1,9 +1,10 @@
-
 import { writeFileSync } from 'fs'
 
 
 
 const generateImportCustomers = (size: number, format: string) => {
+
+  const reference = String(Date.now())
 
 	const inputs: Array<string> = []
 
@@ -14,14 +15,14 @@ const generateImportCustomers = (size: number, format: string) => {
 	let data = ''
 
 	if (format === 'csv') {
-		const csvInputs = [ 'email', ...inputs ]
+		const csvInputs = [ 'email,reference', ...inputs.map(i => `${i},${reference}`) ]
 		data = csvInputs.join('\n')
 	} else
 	if (format === 'json') {
 		const jsonInputs = inputs.map(i => {
-			return { email: i }
+			return { email: i, reference }
 		})
-		data = JSON.stringify(jsonInputs)
+		data = JSON.stringify(jsonInputs, undefined, 2)
 	}
 
 	const filePath = '/users/pierlu/Desktop/test_import_customers.' + format
@@ -33,4 +34,4 @@ const generateImportCustomers = (size: number, format: string) => {
 }
 
 
-generateImportCustomers(7500, 'json')
+generateImportCustomers(12000, 'csv')
