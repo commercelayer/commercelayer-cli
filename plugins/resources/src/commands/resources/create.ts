@@ -55,6 +55,10 @@ export default class ResourcesCreate extends Command {
     })
   }
 
+  static args = {
+    ...Command.args
+  }
+
 
 
   async run(): Promise<any> {
