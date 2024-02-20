@@ -1,3 +1,10 @@
+# [4.12.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.11.4...v4.12.0) (2024-02-20)
+
+
+### Features
+
+* add missing export types ([37f6c21](https://github.com/commercelayer/commercelayer-cli-core/commit/37f6c217371a132c70f29babfe5d462c9d1b71ad))
+
 ## [4.11.4](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.11.3...v4.11.4) (2024-01-23)
 
 
