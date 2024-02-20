@@ -1,3 +1,10 @@
+# [3.11.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.10.1...v3.11.0) (2024-02-20)
+
+
+### Features
+
+* bump version to 3.11.0 ([85da21b](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/85da21bbd8c875cb976025a6a11d9d73d9075c3d))
+
 ## [3.10.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.10.0...v3.10.1) (2024-02-20)
 
 
