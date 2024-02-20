@@ -39,7 +39,7 @@ export default class ImportsDetails extends Command {
   }
 
   static args = {
-    id: Args.string({ name: 'id', description: 'unique id of the import', required: true, hidden: false }),
+    id: Args.string({ name: 'id', description: 'unique id of the import', required: true, hidden: false })
   }
 
 
