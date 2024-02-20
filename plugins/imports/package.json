@@ -75,7 +75,6 @@
   "dependencies": {
     "@commercelayer/cli-core": "^4.11.4",
     "@commercelayer/sdk": "^5.32.0",
-    "@fast-csv/parse": "^4.3.6",
     "@oclif/core": "^2.15.0",
     "axios": "^1.6.7",
     "cli-progress": "^3.12.0",

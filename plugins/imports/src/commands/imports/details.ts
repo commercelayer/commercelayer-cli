@@ -5,6 +5,7 @@ import axios from 'axios'
 import { gunzipSync } from 'node:zlib'
 import { dirname } from 'node:path'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import type { Import } from '@commercelayer/sdk'
 
 
 
@@ -82,7 +83,7 @@ export default class ImportsDetails extends Command {
       this.log()
 
       if (flags.inputs) {
-        const inputs = (!imp.inputs && imp.attachment_url) ? await this.getInputs(imp.attachment_url) : imp.inputs
+        const inputs = (!imp.inputs && imp.attachment_url) ? await this.getInputs(imp) : imp.inputs
         this.showInputs(inputs)
         if (flags['save-inputs'] && inputs) this.saveInputs(flags, inputs)
       }
@@ -97,13 +98,16 @@ export default class ImportsDetails extends Command {
   }
 
 
-  private async getInputs(attachmentUrl: string): Promise<object[]> {
-    const inputs = await axios.get(attachmentUrl, { responseType: 'arraybuffer' })
-    return inputs ? JSON.parse(gunzipSync(inputs.data as ArrayBuffer).toString()) as object[] : []
+  private async getInputs(imp: Import): Promise<any[]> {
+    if (!imp.attachment_url) return []
+    const inputs = await axios.get(imp.attachment_url, { responseType: 'arraybuffer' })
+    if (!inputs) return []
+    const unzipped = gunzipSync(inputs.data as ArrayBuffer).toString()
+    return (imp.format === 'csv') ? unzipped.split('\n') : JSON.parse(unzipped)
   }
 
 
-  private saveInputs(flags: any, inputs: object[]): void {
+  private saveInputs(flags: any, inputs: any[]): void {
 
     let filePath: string = flags['save-inputs']
     if (!filePath) this.warn('Undefined output save path')
