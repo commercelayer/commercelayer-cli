@@ -1,3 +1,10 @@
+## [5.21.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.21.1...v5.21.2) (2024-02-20)
+
+
+### Bug Fixes
+
+* fix command all duplicates ([05a4274](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/05a4274aab68e8f69660f803f58df2217d8b50a9))
+
 ## [5.21.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.21.0...v5.21.1) (2024-02-14)
 
 
