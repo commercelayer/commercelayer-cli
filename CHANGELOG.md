@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.3...v6.0.0-oclif3.4) (2024-02-21)
+
+
+### Bug Fixes
+
+* update dependencies ([6f2847e](https://github.com/commercelayer/commercelayer-cli/commit/6f2847ef3997a395988ddfaac50e159aeb18d97a))
+
 # [6.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.2...v6.0.0-oclif3.3) (2024-02-15)
 
 
