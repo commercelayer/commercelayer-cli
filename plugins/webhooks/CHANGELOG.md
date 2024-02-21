@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.2...v4.0.0-oclif3.3) (2024-02-21)
+
+
+### Bug Fixes
+
+* update dependencies ([b6c7997](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/b6c7997e98505012dc116344f0aab88cadfca0f3))
+
 # [4.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.1...v4.0.0-oclif3.2) (2024-02-16)
 
 
