@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0-oclif3.2...v5.0.0-oclif3.3) (2024-02-21)
+
+
+### Bug Fixes
+
+* update dependencies ([2b44e05](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/2b44e050a5f109631634a832e8bb3bc8102f8c17))
+
 # [5.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0-oclif3.1...v5.0.0-oclif3.2) (2024-02-16)
 
 
