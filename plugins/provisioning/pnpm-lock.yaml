@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@commercelayer/cli-core':
     specifier: beta
-    version: 5.0.0-oclif3.3
+    version: 5.0.0-oclif3.4
   '@commercelayer/provisioning-sdk':
     specifier: ^1.0.0
     version: 1.0.0
@@ -970,8 +970,8 @@ packages:
     dev: true
     optional: true
 
-  /@commercelayer/cli-core@5.0.0-oclif3.3:
-    resolution: {integrity: sha512-7aiwOQ+Z2fWxB48rjalsFcD5UNcNKfYZOI7daLSw4+yx6VjKtoNlnTcZ52J16ZxZ7xEBsTEPHW623XnL43zLUg==}
+  /@commercelayer/cli-core@5.0.0-oclif3.4:
+    resolution: {integrity: sha512-I3bnjCshATeLNG2+ytWF0K4rF2uNr4PHaw0u3irgzlCdKAguY26UWyW0kd+fSMLRRGeLuTenw03TfHCwTMRH6g==}
     engines: {node: '>=20.0.0'}
     dependencies:
       '@commercelayer/js-auth': 4.2.1
