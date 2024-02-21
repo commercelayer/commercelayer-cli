@@ -7,13 +7,13 @@ settings:
 dependencies:
   '@commercelayer/cli-core':
     specifier: beta
-    version: 5.0.0-oclif3.2
+    version: 5.0.0-oclif3.3
   '@commercelayer/sdk':
     specifier: ^5.32.0
     version: 5.32.0
   '@oclif/core':
-    specifier: ^3.19.2
-    version: 3.19.2
+    specifier: ^3.19.4
+    version: 3.19.4
   inquirer:
     specifier: ^8.2.6
     version: 8.2.6
@@ -29,11 +29,11 @@ devDependencies:
     specifier: ^1.3.0
     version: 1.3.0(eslint@8.56.0)(typescript@5.3.2)
   '@oclif/plugin-help':
-    specifier: ^6.0.12
-    version: 6.0.12
+    specifier: ^6.0.13
+    version: 6.0.13
   '@oclif/test':
-    specifier: ^3.1.16
-    version: 3.1.16
+    specifier: ^3.2.0
+    version: 3.2.0
   '@semantic-release/changelog':
     specifier: ^6.0.3
     version: 6.0.3(semantic-release@22.0.12)
@@ -74,8 +74,8 @@ devDependencies:
     specifier: ^15.1.0
     version: 15.1.0
   oclif:
-    specifier: ^4.4.12
-    version: 4.4.12
+    specifier: ^4.4.17
+    version: 4.4.17
   semantic-release:
     specifier: ^22.0.12
     version: 22.0.12(typescript@5.3.2)
@@ -982,12 +982,12 @@ packages:
     dev: true
     optional: true
 
-  /@commercelayer/cli-core@5.0.0-oclif3.2:
-    resolution: {integrity: sha512-h3ZogwcBAWgw1rdia2FvxeXayKdrGZTmm2B9Fc/P+/RBk5uT7BUDER5iXbijIvFlxLJRKs8YJspKjB0AapVv8w==}
+  /@commercelayer/cli-core@5.0.0-oclif3.3:
+    resolution: {integrity: sha512-7aiwOQ+Z2fWxB48rjalsFcD5UNcNKfYZOI7daLSw4+yx6VjKtoNlnTcZ52J16ZxZ7xEBsTEPHW623XnL43zLUg==}
     engines: {node: '>=20.0.0'}
     dependencies:
       '@commercelayer/js-auth': 4.2.1
-      '@oclif/core': 3.19.2
+      '@oclif/core': 3.19.4
       axios: 1.6.7
       chalk: 4.1.2
       jsonwebtoken: 9.0.2
@@ -1002,7 +1002,7 @@ packages:
     engines: {node: '>=20.0.0'}
     hasBin: true
     dependencies:
-      '@oclif/core': 3.19.2
+      '@oclif/core': 3.19.4
       fs-extra: 10.1.0
       github-slugger: 1.5.0
       normalize-package-data: 5.0.0
@@ -1414,8 +1414,8 @@ packages:
       - supports-color
     dev: true
 
-  /@oclif/core@3.19.2:
-    resolution: {integrity: sha512-/kUZZQZO92esToSTn+fnfMQdAj8uDJ/lsMNXBRBCiLQpwnIskHXy8JzYpynxxkzY2wbGREBceQhxCyDV0XpY4g==}
+  /@oclif/core@3.19.4:
+    resolution: {integrity: sha512-Q8JWPbz3YusttsBi+GngxtuhXQ9esAPQbhpp0ABxX9fcOeNPa2EA66oSxpOExxFjI3H3KFSHBUNPeDlp8syRog==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@types/cli-progress': 3.11.5
@@ -1446,27 +1446,27 @@ packages:
       wordwrap: 1.0.0
       wrap-ansi: 7.0.0
 
-  /@oclif/plugin-help@6.0.12:
-    resolution: {integrity: sha512-KMxQ5Oli1tkWiWNSdrjNtiFIFZvX0+IsvuuGcDwJIn1Jm+SzEQF90vkK6WzIjFACmyKIwXbGMmimcFaLrslJPQ==}
+  /@oclif/plugin-help@6.0.13:
+    resolution: {integrity: sha512-D/hiHmg+c6eOny95VfbhBcdgGxbi4AU2I3s1nFit0wpV2YziZnjmD7NQvYUCUJB052RcVmni6NiegttLgM4y5g==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.19.2
+      '@oclif/core': 3.19.4
     dev: true
 
-  /@oclif/plugin-not-found@3.0.10:
-    resolution: {integrity: sha512-vjY0nh+QcnAnKYP1SW/c4YhSBS8AkVsv4J61X2Bg2uedLi8Xaj5wCE8zTkqi/gSUtCH3SC3XZ5XGiqGVJegkTw==}
+  /@oclif/plugin-not-found@3.0.11:
+    resolution: {integrity: sha512-bmZHh5INkqnouz8E/8QiZ2q+hXeela4s8cnxdtcCNEc2vb5JIYYa0JAPR/LVmE2q19LyKStIOOpDy/eVdonpPg==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.19.2
+      '@oclif/core': 3.19.4
       chalk: 5.3.0
       fast-levenshtein: 3.0.0
     dev: true
 
-  /@oclif/plugin-warn-if-update-available@3.0.10:
-    resolution: {integrity: sha512-dUuBnoU80VQ6Rt/cMhqMsz5abFMnCi/IqnAhRNfO5EQbJ8PvYpU+0kPx15cbtQcU4olQ2kqigLt4BU7ms4RqMA==}
+  /@oclif/plugin-warn-if-update-available@3.0.12:
+    resolution: {integrity: sha512-BPj+1dSgp9Xtd5BZjLF9s0PeYBl07GSF69aol6/ZUMJMWD78SUWgAAm2SMJJBXic7Lw8hIGBY/YSGXDGaMh4gw==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.19.2
+      '@oclif/core': 3.19.4
       chalk: 5.3.0
       debug: 4.3.4(supports-color@8.1.1)
       http-call: 5.3.0
@@ -1475,13 +1475,13 @@ packages:
       - supports-color
     dev: true
 
-  /@oclif/test@3.1.16:
-    resolution: {integrity: sha512-LeoojG2tD8XDN9HzEt1j+JUKSyYz7qGp55SfvnXCa8d7k4Hq9jTzTiubu+s2mE4Nq9Ns5X40NZNSm85COxbsqw==}
+  /@oclif/test@3.2.0:
+    resolution: {integrity: sha512-CTIKOfkhhKKbUjYEhFJRzlg4T2bLF56Z6S/22CHdTbmo4xyyL/lQvlCJjeqrTEf1yvWSa1oBNprRzcU6Z6qffw==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      '@oclif/core': 3.19.2
+      '@oclif/core': 3.19.4
       chai: 4.4.1
-      fancy-test: 3.0.10
+      fancy-test: 3.0.11
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1888,8 +1888,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@sindresorhus/merge-streams@2.2.1:
-    resolution: {integrity: sha512-255V7MMIKw6aQ43Wbqp9HZ+VHn6acddERTLiiLnlcPLU9PdTq9Aijl12oklAgUEblLWye+vHLzmqBx6f2TGcZw==}
+  /@sindresorhus/merge-streams@2.3.0:
+    resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
     dev: true
 
@@ -2954,7 +2954,7 @@ packages:
       es-errors: 1.3.0
       get-intrinsic: 1.2.4
       is-array-buffer: 3.0.4
-      is-shared-array-buffer: 1.0.2
+      is-shared-array-buffer: 1.0.3
     dev: true
 
   /arrify@2.0.1:
@@ -2987,9 +2987,11 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: false
 
-  /available-typed-arrays@1.0.6:
-    resolution: {integrity: sha512-j1QzY8iPNPG4o4xmO3ptzpRxTciqD3MgEHtifP/YnJpIo58Xu+ne4BejlbkuaLfXn/nz6HFiw29bLpj2PNMdGg==}
+  /available-typed-arrays@1.0.7:
+    resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
+    dependencies:
+      possible-typed-array-names: 1.0.0
     dev: true
 
   /axios@1.6.7:
@@ -3089,8 +3091,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001587
-      electron-to-chromium: 1.4.672
+      caniuse-lite: 1.0.30001588
+      electron-to-chromium: 1.4.677
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -3257,8 +3259,8 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
 
-  /caniuse-lite@1.0.30001587:
-    resolution: {integrity: sha512-HMFNotUmLXn71BQxg8cijvqxnIAofforZOwGsxyXJ0qugTdspUF4sPSJ2vhgprHCB996tIDzEq1ubumPDV8ULA==}
+  /caniuse-lite@1.0.30001588:
+    resolution: {integrity: sha512-+hVY9jE44uKLkH0SrUTqxjxqNTOWHsbnQDIKjwkZ3lNTzUUVdBLBGXtj/q5Mp5u98r3droaZAewQuEDzjQdZlQ==}
     dev: true
 
   /capital-case@1.0.4:
@@ -3878,8 +3880,8 @@ packages:
     dependencies:
       jake: 10.8.7
 
-  /electron-to-chromium@1.4.672:
-    resolution: {integrity: sha512-YYCy+goe3UqZqa3MOQCI5Mx/6HdBLzXL/mkbGCEWL3sP3Z1BP9zqAzeD3YEmLZlespYGFtyM8tRp5i2vfaUGCA==}
+  /electron-to-chromium@1.4.677:
+    resolution: {integrity: sha512-erDa3CaDzwJOpyvfKhOiJjBVNnMM0qxHq47RheVVwsSQrgBA9ZSGV9kdaOfZDPXcHzhG7lBxhj6A7KvfLJBd6Q==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -3940,11 +3942,11 @@ packages:
     dependencies:
       array-buffer-byte-length: 1.0.1
       arraybuffer.prototype.slice: 1.0.3
-      available-typed-arrays: 1.0.6
+      available-typed-arrays: 1.0.7
       call-bind: 1.0.7
       es-define-property: 1.0.0
       es-errors: 1.3.0
-      es-set-tostringtag: 2.0.2
+      es-set-tostringtag: 2.0.3
       es-to-primitive: 1.2.1
       function.prototype.name: 1.1.6
       get-intrinsic: 1.2.4
@@ -3952,15 +3954,15 @@ packages:
       globalthis: 1.0.3
       gopd: 1.0.1
       has-property-descriptors: 1.0.2
-      has-proto: 1.0.1
+      has-proto: 1.0.3
       has-symbols: 1.0.3
       hasown: 2.0.1
       internal-slot: 1.0.7
       is-array-buffer: 3.0.4
       is-callable: 1.2.7
-      is-negative-zero: 2.0.2
+      is-negative-zero: 2.0.3
       is-regex: 1.1.4
-      is-shared-array-buffer: 1.0.2
+      is-shared-array-buffer: 1.0.3
       is-string: 1.0.7
       is-typed-array: 1.1.13
       is-weakref: 1.0.2
@@ -3973,10 +3975,10 @@ packages:
       string.prototype.trim: 1.2.8
       string.prototype.trimend: 1.0.7
       string.prototype.trimstart: 1.0.7
-      typed-array-buffer: 1.0.1
-      typed-array-byte-length: 1.0.0
-      typed-array-byte-offset: 1.0.0
-      typed-array-length: 1.0.4
+      typed-array-buffer: 1.0.2
+      typed-array-byte-length: 1.0.1
+      typed-array-byte-offset: 1.0.2
+      typed-array-length: 1.0.5
       unbox-primitive: 1.0.2
       which-typed-array: 1.1.14
     dev: true
@@ -3997,8 +3999,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /es-set-tostringtag@2.0.2:
-    resolution: {integrity: sha512-BuDyupZt65P9D2D2vA/zqcI3G5xRsklm5N3xCwuiy+/vKy8i0ifdsQP1sLgO4tZDSCaQUSnmC48khknGMV3D2Q==}
+  /es-set-tostringtag@2.0.3:
+    resolution: {integrity: sha512-3T8uNMC3OQTHkFUsFq8r/BwAXLHvU/9O9mE0fBc/MY5iq/8H7ncvO947LmYA6ldWw9Uh8Yhf25zu6n7nML5QWQ==}
     engines: {node: '>= 0.4'}
     dependencies:
       get-intrinsic: 1.2.4
@@ -4393,8 +4395,8 @@ packages:
       iconv-lite: 0.4.24
       tmp: 0.0.33
 
-  /fancy-test@3.0.10:
-    resolution: {integrity: sha512-6pwRQ7gqW57FKoTyRPPmcZktHLvrX+LS5ZQdXvQTMAq6vOVGCUrtJ4WP2BD4sZisRBnasaT4981L/8Q+qfh3wg==}
+  /fancy-test@3.0.11:
+    resolution: {integrity: sha512-cyfdbhT7LlkWHtPa2PaR5yWOTDzgmrpBqkTVXC5l7Uzs7og2Wnhj5lQnxA9+nSPr+WfY8jrH0Kf2v8HPsPQFKQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
       '@types/chai': 4.3.11
@@ -4403,7 +4405,7 @@ packages:
       '@types/sinon': 17.0.3
       lodash: 4.17.21
       mock-stdin: 1.0.0
-      nock: 13.5.1
+      nock: 13.5.3
       sinon: 16.1.3
       stdout-stderr: 0.1.13
     transitivePeerDependencies:
@@ -4565,7 +4567,7 @@ packages:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
-      flatted: 3.2.9
+      flatted: 3.3.1
       keyv: 4.5.4
       rimraf: 3.0.2
     dev: true
@@ -4575,8 +4577,8 @@ packages:
     hasBin: true
     dev: true
 
-  /flatted@3.2.9:
-    resolution: {integrity: sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==}
+  /flatted@3.3.1:
+    resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
     dev: true
 
   /follow-redirects@1.15.5:
@@ -4751,7 +4753,7 @@ packages:
     dependencies:
       es-errors: 1.3.0
       function-bind: 1.1.2
-      has-proto: 1.0.1
+      has-proto: 1.0.3
       has-symbols: 1.0.3
       hasown: 2.0.1
     dev: true
@@ -4909,7 +4911,7 @@ packages:
     resolution: {integrity: sha512-jOMLD2Z7MAhyG8aJpNOpmziMOP4rPLcc95oQPKXBazW82z+CEgPFBQvEpRUa1KeIMUJo4Wsm+q6uzO/Q/4BksQ==}
     engines: {node: '>=18'}
     dependencies:
-      '@sindresorhus/merge-streams': 2.2.1
+      '@sindresorhus/merge-streams': 2.3.0
       fast-glob: 3.3.2
       ignore: 5.3.1
       path-type: 5.0.0
@@ -4987,8 +4989,8 @@ packages:
       es-define-property: 1.0.0
     dev: true
 
-  /has-proto@1.0.1:
-    resolution: {integrity: sha512-7qE+iP+O+bgF9clE5+UoBFzE65mlBiVj3tKCrlNQ0Ogwm0BjpT/gK4SlLYDMybDh5I3TCTKnPPa0oMG7JDYrhg==}
+  /has-proto@1.0.3:
+    resolution: {integrity: sha512-SJ1amZAJUiZS+PhsVLf5tGydlaVB8EdFpaSO4gmiUKUOxk8qzn5AIy4ZeJUmh22znIdk/uMAUT2pl3FxzVUH+Q==}
     engines: {node: '>= 0.4'}
     dev: true
 
@@ -5432,8 +5434,8 @@ packages:
     resolution: {integrity: sha512-z7CMFGNrENq5iFB9Bqo64Xk6Y9sg+epq1myIcdHaGnbMTYOxvzsEtdYqQUylB7LxfkvgrrjP32T6Ywciio9UIQ==}
     dev: true
 
-  /is-negative-zero@2.0.2:
-    resolution: {integrity: sha512-dqJvarLawXsFbNDeJW7zAz8ItJ9cd28YufuuFzh0G8pNHjJMnY08Dv7sYX2uF5UpQOwieAeOExEYAWWfu7ZZUA==}
+  /is-negative-zero@2.0.3:
+    resolution: {integrity: sha512-5KoIu2Ngpyek75jXodFvnafB6DJgr3u8uuK0LEZJjrU19DrMD3EVERaR8sjz8CCGgpZvxPl9SuE1GMVPFHx1mw==}
     engines: {node: '>= 0.4'}
     dev: true
 
@@ -5491,8 +5493,9 @@ packages:
       scoped-regex: 2.1.0
     dev: true
 
-  /is-shared-array-buffer@1.0.2:
-    resolution: {integrity: sha512-sqN2UDu1/0y6uvXyStCOzyhAjCSlHceFoMKJW8W9EU9cvic/QdsZ0kEU93HEy3IUEFZIiH/3w+AH/UQbPHNdhA==}
+  /is-shared-array-buffer@1.0.3:
+    resolution: {integrity: sha512-nA2hv5XIhLR3uVzDDfCIknerhx8XUKnstuOERPNNIinXG7v9u+ohXF67vxm4TPTEPU6lm61ZkwP3c9PCB97rhg==}
+    engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.7
     dev: true
@@ -5669,8 +5672,8 @@ packages:
       - supports-color
     dev: true
 
-  /istanbul-reports@3.1.6:
-    resolution: {integrity: sha512-TLgnMkKg3iTDsQ9PbPTdpfAK2DzjF9mqUG7RMgcQl8oFjad8ob4laGxv5XV5U9MAfx8D6tSJiUyuAwzLicaxlg==}
+  /istanbul-reports@3.1.7:
+    resolution: {integrity: sha512-BewmUXImeuRk2YY0PVbxgKAysvhRPUQE0h5QRM++nVWyubKGV0l8qQ5op8+B2DOmwSe63Jivj0BjkPQVf8fP5g==}
     engines: {node: '>=8'}
     dependencies:
       html-escaper: 2.0.2
@@ -6448,8 +6451,8 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /nock@13.5.1:
-    resolution: {integrity: sha512-+s7b73fzj5KnxbKH4Oaqz07tQ8degcMilU4rrmnKvI//b0JMBU4wEXFQ8zqr+3+L4eWSfU3H/UoIVGUV0tue1Q==}
+  /nock@13.5.3:
+    resolution: {integrity: sha512-2NlGmHIK2rTeyy7UaY1ZNg0YZfEJMxghXgZi0b4DBsUyoDNTTxZeCSG1nmirAWF44RkkoV8NnegLVQijgVapNQ==}
     engines: {node: '>= 10.13'}
     dependencies:
       debug: 4.3.4(supports-color@8.1.1)
@@ -6860,7 +6863,7 @@ packages:
       istanbul-lib-processinfo: 2.0.3
       istanbul-lib-report: 3.0.1
       istanbul-lib-source-maps: 4.0.1
-      istanbul-reports: 3.1.6
+      istanbul-reports: 3.1.7
       make-dir: 3.1.0
       node-preload: 0.2.1
       p-map: 3.0.0
@@ -6931,17 +6934,17 @@ packages:
       es-abstract: 1.22.4
     dev: true
 
-  /oclif@4.4.12:
-    resolution: {integrity: sha512-qKzjB4u92T4bpFB+lQloHcWMCrLqFO3oE2ppBqqQkSktg5ceTkUgGOix9X4Dh4XU317J3RhapVJZjR1edIx1Vw==}
+  /oclif@4.4.17:
+    resolution: {integrity: sha512-pmnRjOpgyHO5dDeubk7tpfQKlErzp+85X1wEEu6Fmy6Z9VXhqtGToysZmGzPYBIp4o0M4ECKaL2P9fnBdBhbxg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
       '@aws-sdk/client-cloudfront': 3.515.0
       '@aws-sdk/client-s3': 3.515.0
-      '@oclif/core': 3.19.2
-      '@oclif/plugin-help': 6.0.12
-      '@oclif/plugin-not-found': 3.0.10
-      '@oclif/plugin-warn-if-update-available': 3.0.10
+      '@oclif/core': 3.19.4
+      '@oclif/plugin-help': 6.0.13
+      '@oclif/plugin-not-found': 3.0.11
+      '@oclif/plugin-warn-if-update-available': 3.0.12
       async-retry: 1.3.3
       change-case: 4.1.2
       debug: 4.3.4(supports-color@8.1.1)
@@ -7372,6 +7375,11 @@ packages:
       find-up: 4.1.0
     dev: true
 
+  /possible-typed-array-names@1.0.0:
+    resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
+    engines: {node: '>= 0.4'}
+    dev: true
+
   /preferred-pm@3.1.2:
     resolution: {integrity: sha512-nk7dKrcW8hfCZ4H6klWcdRknBOXWzNQByJ0oJyX97BOupsYD+FzLS4hflgEu/uPUEHZCuRfMxzCBsuWd7OzT8Q==}
     engines: {node: '>=10'}
@@ -7647,7 +7655,7 @@ packages:
       call-bind: 1.0.7
       define-properties: 1.2.1
       es-errors: 1.3.0
-      set-function-name: 2.0.1
+      set-function-name: 2.0.2
     dev: true
 
   /registry-auth-token@5.0.2:
@@ -7901,11 +7909,12 @@ packages:
       has-property-descriptors: 1.0.2
     dev: true
 
-  /set-function-name@2.0.1:
-    resolution: {integrity: sha512-tMNCiqYVkXIZgc2Hnoy2IvC/f8ezc5koaRFkCjrpWzGpCd3qbZXPzVy9MAZzK1ch/X0jvSkojys3oqJN0qCmdA==}
+  /set-function-name@2.0.2:
+    resolution: {integrity: sha512-7PGFlmtwsEADb0WYyvCMa1t+yke6daIG4Wirafur5kcf+MhUnPms1UeR0CKQdTZD81yESwMHbtn+TR+dMviakQ==}
     engines: {node: '>= 0.4'}
     dependencies:
       define-data-property: 1.1.4
+      es-errors: 1.3.0
       functions-have-names: 1.2.3
       has-property-descriptors: 1.0.2
     dev: true
@@ -8539,8 +8548,8 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /typed-array-buffer@1.0.1:
-    resolution: {integrity: sha512-RSqu1UEuSlrBhHTWC8O9FnPjOduNs4M7rJ4pRKoEjtx1zUNOPN2sSXHLDX+Y2WPbHIxbvg4JFo2DNAEfPIKWoQ==}
+  /typed-array-buffer@1.0.2:
+    resolution: {integrity: sha512-gEymJYKZtKXzzBzM4jqa9w6Q1Jjm7x2d+sh19AdsD4wqnMPDYyvwpsIc2Q/835kHuo3BEQ7CjelGhfTsoBb2MQ==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.7
@@ -8548,33 +8557,39 @@ packages:
       is-typed-array: 1.1.13
     dev: true
 
-  /typed-array-byte-length@1.0.0:
-    resolution: {integrity: sha512-Or/+kvLxNpeQ9DtSydonMxCx+9ZXOswtwJn17SNLvhptaXYDJvkFFP5zbfU/uLmvnBJlI4yrnXRxpdWH/M5tNA==}
+  /typed-array-byte-length@1.0.1:
+    resolution: {integrity: sha512-3iMJ9q0ao7WE9tWcaYKIptkNBuOIcZCCT0d4MRvuuH88fEoEH62IuQe0OtraD3ebQEoTRk8XCBoknUNc1Y67pw==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.7
       for-each: 0.3.3
-      has-proto: 1.0.1
+      gopd: 1.0.1
+      has-proto: 1.0.3
       is-typed-array: 1.1.13
     dev: true
 
-  /typed-array-byte-offset@1.0.0:
-    resolution: {integrity: sha512-RD97prjEt9EL8YgAgpOkf3O4IF9lhJFr9g0htQkm0rchFp/Vx7LW5Q8fSXXub7BXAODyUQohRMyOc3faCPd0hg==}
+  /typed-array-byte-offset@1.0.2:
+    resolution: {integrity: sha512-Ous0vodHa56FviZucS2E63zkgtgrACj7omjwd/8lTEMEPFFyjfixMZ1ZXenpgCFBBt4EC1J2XsyVS2gkG0eTFA==}
     engines: {node: '>= 0.4'}
     dependencies:
-      available-typed-arrays: 1.0.6
+      available-typed-arrays: 1.0.7
       call-bind: 1.0.7
       for-each: 0.3.3
-      has-proto: 1.0.1
+      gopd: 1.0.1
+      has-proto: 1.0.3
       is-typed-array: 1.1.13
     dev: true
 
-  /typed-array-length@1.0.4:
-    resolution: {integrity: sha512-KjZypGq+I/H7HI5HlOoGHkWUUGq+Q0TPhQurLbyrVrvnKTBgzLhIJ7j6J/XTQOi0d1RjyZ0wdas8bKs2p0x3Ng==}
+  /typed-array-length@1.0.5:
+    resolution: {integrity: sha512-yMi0PlwuznKHxKmcpoOdeLwxBoVPkqZxd7q2FgMkmD3bNwvF5VW0+UlUQ1k1vmktTu4Yu13Q0RIxEP8+B+wloA==}
+    engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.7
       for-each: 0.3.3
+      gopd: 1.0.1
+      has-proto: 1.0.3
       is-typed-array: 1.1.13
+      possible-typed-array-names: 1.0.0
     dev: true
 
   /typedarray-to-buffer@3.1.5:
@@ -8852,7 +8867,7 @@ packages:
     resolution: {integrity: sha512-VnXFiIW8yNn9kIHN88xvZ4yOWchftKDsRJ8fEPacX/wl1lOvBrhsJ/OeJCXq7B0AaijRuqgzSKalJoPk+D8MPg==}
     engines: {node: '>= 0.4'}
     dependencies:
-      available-typed-arrays: 1.0.6
+      available-typed-arrays: 1.0.7
       call-bind: 1.0.7
       for-each: 0.3.3
       gopd: 1.0.1
