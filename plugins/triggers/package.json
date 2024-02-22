@@ -7,10 +7,10 @@
   "repository": "commercelayer/commercelayer-cli-plugin-triggers",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers/issues",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.10.0"
   },
   "files": [
-    "/bin",
+    "/bin/run.*",
     "/lib",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@commercelayer/cli-dev": "beta",
     "@commercelayer/eslint-config-ts": "^1.3.0",
-    "@oclif/plugin-help": "^6.0.13",
+    "@oclif/plugin-help": "^6.0.14",
     "@oclif/test": "^3.2.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
