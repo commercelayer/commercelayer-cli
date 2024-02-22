@@ -39,10 +39,10 @@
     "topicSeparator": ":"
   },
   "scripts": {
-    "pretest": "npm run build --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
+    "pretest": "pnpm build --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
     "posttest": "npx lint",
     "build": "rm -rf lib && tsc",
-    "prepack": "npm run build && oclif manifest && npm run readme",
+    "prepack": "pnpm build && oclif manifest && npm run readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "./bin/run readme && git add README.md",
