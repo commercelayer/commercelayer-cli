@@ -1,3 +1,15 @@
+# [5.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.3...v5.0.0-oclif3.4) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([59972bb](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/59972bb835f72cbb2526cef3957439310e3ebd6c))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
 # [5.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.2...v5.0.0-oclif3.3) (2024-02-21)
 
 
