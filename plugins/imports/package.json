@@ -7,10 +7,10 @@
   "repository": "commercelayer/commercelayer-cli-plugin-imports",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-imports/issues",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.11.1"
   },
   "files": [
-    "/bin",
+    "/bin/run.*",
     "/lib",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
