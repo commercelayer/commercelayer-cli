@@ -7,12 +7,12 @@
   "repository": "https://github.com/commercelayer/commercelayer-cli",
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "bin": {
-    "commercelayer": "./bin/run.js",
-    "cl": "./bin/run.js",
-    "clayer": "./bin/run.js"
+    "commercelayer": "./bin/run",
+    "cl": "./bin/run",
+    "clayer": "./bin/run"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.10.0"
   },
   "files": [
     "/bin/run.*",
