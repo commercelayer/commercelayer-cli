@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-oclif3.2...v3.0.0-oclif3.3) (2024-02-22)
+
+
+### Bug Fixes
+
+* fix config ([7bdda2f](https://github.com/commercelayer/commercelayer-cli-dev/commit/7bdda2fda724110c0d83a0fd31a818a9b67ae65d))
+
 # [3.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-oclif3.1...v3.0.0-oclif3.2) (2024-02-22)
 
 
