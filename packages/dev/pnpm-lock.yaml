@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   '@oclif/core':
-    specifier: ^3.19.4
+    specifier: ^3.19.1
     version: 3.19.4
   fs-extra:
     specifier: ^10.1.0
@@ -50,7 +50,7 @@ devDependencies:
     specifier: ^10.0.6
     version: 10.0.6
   '@types/node':
-    specifier: ^20.11.19
+    specifier: ^20.11.17
     version: 20.11.19
   chai:
     specifier: ^4.4.1
@@ -71,11 +71,8 @@ devDependencies:
     specifier: ^15.1.0
     version: 15.1.0
   oclif:
-    specifier: ^4.4.17
+    specifier: ^4.4.11
     version: 4.4.17
-  pnpm:
-    specifier: ^8.15.3
-    version: 8.15.3
   semantic-release:
     specifier: ^23.0.2
     version: 23.0.2(typescript@5.3.3)
@@ -7196,12 +7193,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
-    dev: true
-
-  /pnpm@8.15.3:
-    resolution: {integrity: sha512-3YXNbspkF8b3PbMroetHZ/+0y6T1vwcnhGciyStrnlaizCGLEThbvCsh8YoWpn2nes6um2Gg9WoWQ7JeH7amBQ==}
-    engines: {node: '>=16.14'}
-    hasBin: true
     dev: true
 
   /possible-typed-array-names@1.0.0:
