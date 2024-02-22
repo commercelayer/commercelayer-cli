@@ -1,3 +1,15 @@
+# [2.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.2...v2.0.0-oclif3.3) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([2b41c33](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2b41c33ef8f5cc737a280d850ee4b5a6e43d698a))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
 # [2.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.1...v2.0.0-oclif3.2) (2024-02-21)
 
 
