@@ -1,3 +1,15 @@
+# [6.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-oclif3.8...v6.0.0-oclif3.9) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([74be9f4](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/74be9f4c67e5cef7e78b3886306a65e2af96d4eb))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
 # [6.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-oclif3.7...v6.0.0-oclif3.8) (2024-02-21)
 
 
