@@ -1,3 +1,15 @@
+# [4.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.3...v4.0.0-oclif3.4) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([db5c930](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/db5c93015fafbb8900ce73964a137a480ba7101c))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
 # [4.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.2...v4.0.0-oclif3.3) (2024-02-21)
 
 
