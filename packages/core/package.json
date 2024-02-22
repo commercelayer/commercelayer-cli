@@ -1,6 +1,9 @@
 {
   "name": "@commercelayer/cli-core",
   "version": "5.0.0-oclif3.5",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
+  "description": "Commerce Layer Javascript CLI core lib",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
@@ -23,9 +26,6 @@
     "jamstack",
     "commercelayer"
   ],
-  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "license": "MIT",
-  "description": "Commerce Layer Javascript CLI core lib",
   "files": [
     "lib/**/*"
   ],
