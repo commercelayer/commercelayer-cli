@@ -3,20 +3,21 @@
   "description": "Commerce Layer CLI development tools and helpers",
   "version": "3.0.0-oclif3.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-dev",
+  "repository": "commercelayer/commercelayer-cli-dev",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-dev/issues",
   "bin": {
     "cl-cli-dev": "./bin/run"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.10.0"
   },
   "files": [
-    "/bin",
+    "/bin/run.*",
     "/lib",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-dev",
   "keywords": [
     "ecommerce",
     "cli",
@@ -37,7 +38,6 @@
     ],
     "topicSeparator": ":"
   },
-  "repository": "commercelayer/commercelayer-cli-dev",
   "scripts": {
     "pretest": "npm run build --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
     "posttest": "npx lint",
@@ -61,21 +61,21 @@
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.17",
+    "@types/node": "^20.11.19",
     "chai": "^4.4.1",
     "eslint": "^8.56.0",
     "globby": "^10.0.2",
     "lodash": "^4.17.21",
     "mocha": "^10.3.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.4.11",
-    "pnpm": "^8.15.2",
+    "oclif": "^4.4.17",
+    "pnpm": "^8.15.3",
     "semantic-release": "^23.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@oclif/core": "^3.19.1",
+    "@oclif/core": "^3.19.4",
     "fs-extra": "^10.1.0",
     "github-slugger": "^1.5.0",
     "normalize-package-data": "^5.0.0",
