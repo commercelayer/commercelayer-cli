@@ -30,7 +30,7 @@
     "lib/**/*"
   ],
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.10.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.9",
