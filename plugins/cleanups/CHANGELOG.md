@@ -1,3 +1,15 @@
+# [3.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.3...v3.0.0-oclif3.4) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([50ce353](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/50ce353cb9730d19b71f6a14b5bff981b70a80c8))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
 # [3.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.2...v3.0.0-oclif3.3) (2024-02-16)
 
 
