@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-dev",
   "description": "Commerce Layer CLI development tools and helpers",
-  "version": "3.0.0-oclif3.3",
+  "version": "3.0.0-oclif3.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-dev",
   "repository": "commercelayer/commercelayer-cli-dev",
