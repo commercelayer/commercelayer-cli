@@ -2,10 +2,9 @@ import { clColor, clToken, clUpdate, clFilter, type KeyValRel, type KeyValString
 import { Command, Flags, Args, ux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export default abstract class extends Command {
@@ -37,7 +36,7 @@ export default abstract class extends Command {
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
