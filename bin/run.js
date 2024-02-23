@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const PROVISIONING = true
+const PROVISIONING = true;
 
 // eslint-disable-next-line unicorn/prefer-top-level-await
 (async () => {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node_modules/.bin/ts-node
 
-const PROVISIONING = true
+const PROVISIONING = true;
 
 // eslint-disable-next-line node/shebang, unicorn/prefer-top-level-await
 ; (async () => {
