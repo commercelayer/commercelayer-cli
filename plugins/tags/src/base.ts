@@ -3,14 +3,13 @@ import { clColor, clToken, clUpdate, clOutput, clConfig, clUtil } from '@commerc
 import { Command, Flags, Args, ux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Tag } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 import { Bundles, BuyXPayYPromotions, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk/lib/cjs/api'
 import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
 import type { ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
 
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 
@@ -47,7 +46,7 @@ export default abstract class BaseCommand extends Command {
   async init(): Promise<any> {
 
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
 
     // Application check
     const atFlag = this.argv.find(a => a.startsWith('--accessToken='))
