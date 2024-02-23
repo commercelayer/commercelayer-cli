@@ -60,11 +60,11 @@
     "@oclif/test": "^3.2.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/chai": "^4.3.11",
+    "@types/chai": "^4.3.12",
     "@types/inquirer": "^8.2.10",
     "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.11.20",
     "chai": "^4.4.1",
     "eslint": "^8.56.0",
     "inflector-js": "^1.0.1",
@@ -79,7 +79,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "beta",
     "@commercelayer/sdk": "^5.32.0",
-    "@oclif/core": "^3.19.4",
+    "@oclif/core": "^3.19.5",
     "inquirer": "^8.2.6",
     "tslib": "^2.6.2"
   },
