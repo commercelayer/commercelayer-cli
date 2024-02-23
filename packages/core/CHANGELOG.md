@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.5...v5.0.0-oclif3.6) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix import and export config ([b6eb37c](https://github.com/commercelayer/commercelayer-cli-core/commit/b6eb37ca73aaf776484532f26e75b9a2685d86ac))
+
 # [5.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.4...v5.0.0-oclif3.5) (2024-02-22)
 
 
