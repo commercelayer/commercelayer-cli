@@ -8,10 +8,9 @@ import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Expo
 import { writeFile } from 'fs/promises'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import notifier from 'node-notifier'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export const encoding = 'utf-8'
@@ -75,7 +74,7 @@ export default abstract class BaseCommand extends Command {
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
