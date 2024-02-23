@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.5...v6.0.0-oclif3.6) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix bin scripts ([d5503ba](https://github.com/commercelayer/commercelayer-cli/commit/d5503bad43d83ba54854b7d5b52c08df6dbcaf7f))
+
 # [6.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.4...v6.0.0-oclif3.5) (2024-02-22)
 
 
