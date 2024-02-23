@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.3...v4.0.0-oclif3.4) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix update package ([ca4844c](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/ca4844c53e29610e5d0c9e7e0c8e158d2a30f9bc))
+
 # [4.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.2...v4.0.0-oclif3.3) (2024-02-22)
 
 
