@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.0.0-oclif3.4...v3.0.0-oclif3.5) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix update package ([aec65e8](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/aec65e8dd094562209e9fc0569e32d48c519f695))
+
 # [3.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.0.0-oclif3.3...v3.0.0-oclif3.4) (2024-02-22)
 
 
