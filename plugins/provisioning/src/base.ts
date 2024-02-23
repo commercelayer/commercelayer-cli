@@ -8,13 +8,12 @@ import commercelayer, { type CommerceLayerProvisioningClient, CommerceLayerProvi
 import { clToken, clUpdate, clColor, clUtil, clCommand, clFilter, clText } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 // import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 // import type { ResourceId, ResourceType } from '@commercelayer/provisioning-sdk/lib/cjs/resource'
 
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 // export const FLAG_SAVE_PARAMS = 'save-args'
@@ -289,7 +288,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
