@@ -105,7 +105,7 @@ const getInstalledPlugins = (config: Config): PluginRelease[] => {
 
 const isPluginInstalled = (name: string, config: Config): boolean => {
   const plugin = name.startsWith(PLUGIN_PREFIX)? name : `${PLUGIN_PREFIX}${name}`
-  return (getInstalledPlugins(config).findIndex(p => (p.name === name) || (p.name === plugin)) > -1) 
+  return (getInstalledPlugins(config).findIndex(p => (p.plugin === plugin)) > -1) 
 }
 
 
