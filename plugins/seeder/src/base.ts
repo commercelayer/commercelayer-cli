@@ -7,12 +7,11 @@ import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
 import type { ListResponse, ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
 import type { Method } from 'axios'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import type { CLIError } from '@oclif/core/lib/errors'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export default abstract class extends Command {
@@ -62,7 +61,7 @@ export default abstract class extends Command {
 
 
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg as Package)
+    clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
