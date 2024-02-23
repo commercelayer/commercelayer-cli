@@ -3,10 +3,9 @@ import { Command, Flags, Args, ux as cliux } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { clOutput, clUpdate, clColor, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export abstract class BaseCommand extends Command {
@@ -37,7 +36,7 @@ export abstract class BaseCommand extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg as Package)
+    clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
