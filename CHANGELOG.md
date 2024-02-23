@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.7...v6.0.0-oclif3.8) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix plugin install/uninstall commands ([117cbb5](https://github.com/commercelayer/commercelayer-cli/commit/117cbb54721412a73f7846007261815ba82485fe))
+
 # [6.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.6...v6.0.0-oclif3.7) (2024-02-23)
 
 
