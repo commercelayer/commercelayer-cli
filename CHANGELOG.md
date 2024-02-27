@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.8...v6.0.0-oclif3.9) (2024-02-27)
+
+
+### Features
+
+* add commandshortcuts ([c91d4d2](https://github.com/commercelayer/commercelayer-cli/commit/c91d4d26a3ac9781e4091634526d6d4e4e253f30))
+
 # [6.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.7...v6.0.0-oclif3.8) (2024-02-23)
 
 
