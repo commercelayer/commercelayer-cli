@@ -209,6 +209,7 @@ export abstract class BaseCommand extends Command {
 export abstract class BaseFilterCommand extends BaseCommand {
 
   static flags = {
+    ...BaseCommand.flags,
     include: Flags.string({
       char: 'i',
       multiple: true,

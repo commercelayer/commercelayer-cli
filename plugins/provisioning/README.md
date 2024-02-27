@@ -27,7 +27,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer provisioning:create RESOURCE`](#commercelayer-provisioningcreate-resource)
 * [`commercelayer provisioning:delete RESOURCE [ID]`](#commercelayer-provisioningdelete-resource-id)
 * [`commercelayer provisioning:exec RESOURCE [ID] [ACTION]`](#commercelayer-provisioningexec-resource-id-action)
-* [`commercelayer provisioning:fetch PATH [ID]`](#commercelayer-provisioningfetch-path-id)
+* [`commercelayer provisioning:fetch RESOURCE PATH [ID]`](#commercelayer-provisioningfetch-resource-path-id)
 * [`commercelayer provisioning:get RESOURCE [ID]`](#commercelayer-provisioningget-resource-id)
 * [`commercelayer provisioning:list RESOURCE`](#commercelayer-provisioninglist-resource)
 * [`commercelayer provisioning:resources`](#commercelayer-provisioningresources)
@@ -150,18 +150,19 @@ EXAMPLES
 
 _See code: [src/commands/provisioning/exec.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/exec.ts)_
 
-### `commercelayer provisioning:fetch PATH [ID]`
+### `commercelayer provisioning:fetch RESOURCE PATH [ID]`
 
 Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:fetch PATH [ID] [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-e <value> | ] [-w
-    <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer provisioning:fetch RESOURCE PATH [ID] [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-e <value> | ]
+    [-w <value>] [-p <value>] [-n <value>] [-s <value>]
 
 ARGUMENTS
-  PATH  path (or URL) of the resource(s) to fetch
-  ID    resource id
+  RESOURCE  the resource type
+  PATH      path (or URL) of the resource(s) to fetch
+  ID        resource id
 
 FLAGS
   -H, --headers             show response headers
