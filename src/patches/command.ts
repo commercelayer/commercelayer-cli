@@ -11,22 +11,29 @@ export const patchCommand = (argv: string[]): string[] => {
 
 	const cmdIdx = process.argv.findIndex(a => !a.startsWith('/'))
 	const cmd = process.argv[cmdIdx]
+	const res = process.argv.find(a => !a.startsWith('/') && (a !== cmd))
 
 	// Check provisioning command
-	if (PROVISIONING && provisioningCommands.includes(cmd)) return checkProvisioningCommand(cmd, cmdIdx, argv)
+	if (PROVISIONING && provisioningCommands.includes(cmd)) return patchProvisioningCommand(argv, cmd, cmdIdx, res)
 
 	// Check plugins command
-	if (['install', 'uninstall'].includes(cmd)) argv[cmdIdx] = `plugins:${cmd}`
+	if (['install', 'uninstall'].includes(cmd)) return patchPluginCommand(argv, cmd, cmdIdx, res)
 
+	// Check update command
+	if (['update'].includes(cmd)) return patchUpdateCommand(argv, cmd, cmdIdx, res)
 
 	return argv
 
 }
 
 
-export const checkProvisioningCommand = (cmd: string, cmdIdx: number, argv: string[]): string[] => {
+const patchPluginCommand = (argv: string[], cmd: string, cmdIdx: number, res?: string): string[] => {
+	argv[cmdIdx] = `plugins:${cmd}`
+	return argv
+}
 
-	const res = process.argv.find(a => !a.startsWith('/') && (a !== cmd))
+
+const patchProvisioningCommand = (argv: string[], cmd: string, cmdIdx: number, res?: string): string[] => {
 
 	// Check provisioning resource
 	if (res) {
@@ -40,7 +47,12 @@ export const checkProvisioningCommand = (cmd: string, cmdIdx: number, argv: stri
 
 	}
 
-
 	return argv
 
+}
+
+
+const patchUpdateCommand = (argv: string[], cmd: string, cmdIdx: number, res?: string): string[] => {
+	if ((cmd === 'update') && !res) argv[cmdIdx] = `cli:${cmd}`
+	return argv
 }

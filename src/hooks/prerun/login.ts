@@ -71,7 +71,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
 
 	// Check command flags
-	const _flags = opts.Command.flags || {}
+	const _flags = clCommand.allFlags(opts.Command)
 
 	const ffIdx = Math.max(opts.argv.findIndex(arg => !arg.startsWith('-'))+1, opts.argv.findIndex(arg => arg.startsWith('-')))
 
