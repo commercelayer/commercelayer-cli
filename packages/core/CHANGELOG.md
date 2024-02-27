@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.6...v5.0.0-oclif3.7) (2024-02-27)
+
+
+### Features
+
+* add command allFlags function ([9990120](https://github.com/commercelayer/commercelayer-cli-core/commit/99901203d2c40ea0c47dbd50af52c7b86b9a59a3))
+
 # [5.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.5...v5.0.0-oclif3.6) (2024-02-23)
 
 
