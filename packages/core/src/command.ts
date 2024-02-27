@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
+import type { Command } from "@oclif/core"
+import type { FlagInput } from "@oclif/core/lib/interfaces/parser"
+
 /** Copy command flags excluding a subset */
 const commandFlags = <T extends object>(flags: T, exclude?: string[]): T => {
 	const filteredFlags = { ...flags }
@@ -9,7 +12,12 @@ const commandFlags = <T extends object>(flags: T, exclude?: string[]): T => {
 }
 
 
-export { commandFlags }
+const allFlags = (command: Command.Class): FlagInput => {
+	return { ...command.flags, ...command.baseFlags }
+}
+
+
+export { commandFlags, allFlags }
 
 
 
