@@ -19,6 +19,7 @@ export default class ProvisioningGet extends Command {
   static strict = false
 
   static flags = {
+    ...RetrieveCommand.flags,
     ...ListCommand.flags,
   }
 

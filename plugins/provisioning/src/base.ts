@@ -282,7 +282,12 @@ export abstract class BaseFilterCommand extends BaseCommand {
       description: 'show only response headers',
       dependsOn: ['raw'],
       exclusive: ['headers', 'fields', 'include'],
-    }),
+    })
+  }
+
+
+  static args = {
+    ...BaseCommand.args
   }
 
 

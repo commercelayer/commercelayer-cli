@@ -50,6 +50,10 @@ export default class ProvisioningCreate extends Command {
     })
   }
 
+  static args = {
+    ...Command.args
+  }
+
 
 
   async run(): Promise<any> {
