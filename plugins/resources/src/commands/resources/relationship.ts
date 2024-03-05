@@ -95,13 +95,13 @@ export default class ResourcesRelationship extends Command {
       if (!flags.doc && multiRel) cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}.${relationship} for id ${id}`)
 
       const res = await resSdk[relationship](id, params)
-      if (multiRel)  cliux.action.stop()
+      if (multiRel) cliux.action.stop()
 
       const out = (flags.raw && rawReader) ? rawReader.rawResponse : (multiRel ? [...res] : res)
 
       if (out && flags.extract) {
         const ext = this.extractFlag(flags.extract)
-        if (Array.isArray(out))  out.forEach(o => { this.extractObjectFields(ext, o) })
+        if (Array.isArray(out)) out.forEach(o => { this.extractObjectFields(ext, o) })
         else this.extractObjectFields(ext, out)
       }
 
@@ -114,8 +114,8 @@ export default class ResourcesRelationship extends Command {
       }
 
 
-       // Save command arguments
-       if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
+      // Save command arguments
+      if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
 
 
       return out
