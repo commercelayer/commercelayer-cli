@@ -16,6 +16,7 @@ export default class ApplicationsAdd extends Command {
 
   static examples = [
     '$ commercelayer applications:add -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>',
+    '$ cl app:add -i <clientId> -s <clientSecret> --provisioning -a <applicationAlias>'
   ]
 
   static flags = {

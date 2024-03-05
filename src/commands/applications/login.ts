@@ -18,6 +18,7 @@ export default class ApplicationsLogin extends Command {
 
 	static examples = [
 		'$ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>',
+		'$ cl app:login -i <clientId> -s <clientSecret> --provisioning -a <applicationAlias>'
 	]
 
 	static flags = {
@@ -79,15 +80,17 @@ export default class ApplicationsLogin extends Command {
 			required: false,
 			exclusive: ['scope', 'organization', 'email', 'password', 'api'],
 			dependsOn: ['clientId', 'clientSecret'],
-			hidden: true
+			hidden: false
 		})
-		/*,
+		/*
+		,
 		api: Flags.string({
 			char: 'A',
 			description: 'the API you want to excute login for',
 			required: false,
 			options: ['core', 'provisioning'],
-			exclusive: ['provisioning']
+			exclusive: ['scope', 'organization', 'email', 'password', 'provisioning'],
+			default: 'core'
 		})
 		*/
 	}
@@ -203,7 +206,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		})
 		scope = auth.scope
 	}
-
+console.log(tokenInfo)
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
 
 	const appInfo: AppInfo = Object.assign(auth, {
