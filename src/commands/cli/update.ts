@@ -2,7 +2,6 @@
 import { clColor } from '@commercelayer/cli-core'
 import { Command, Flags, ux as cliux } from '@oclif/core'
 import { exec } from 'child_process'
-import { commands } from '@oclif/plugin-plugins'
 // import { detect as detectPackageManager } from 'detect-package-manager'
 
 
@@ -46,8 +45,6 @@ export default class CliUpdate extends Command {
       } else {
         cliux.action.stop()
         await this.showCliVersion()
-
-        await commands['plugins:update'].run()
       }
 
     })
