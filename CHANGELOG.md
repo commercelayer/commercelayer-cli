@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.10](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.9...v6.0.0-oclif3.10) (2024-03-05)
+
+
+### Bug Fixes
+
+* fix test secret keys ([60affc1](https://github.com/commercelayer/commercelayer-cli/commit/60affc1553276d9555788c59a6a913ac1c698153))
+
 # [6.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.8...v6.0.0-oclif3.9) (2024-02-27)
 
 
