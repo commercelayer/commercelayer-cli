@@ -1,3 +1,10 @@
+# [2.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.0-oclif3.8...v2.0.0-oclif3.9) (2024-03-07)
+
+
+### Features
+
+* add doc command ([db0e30f](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/db0e30f4ae34ebe69bdbcef223a2b7f79ba883ea))
+
 # [2.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.0-oclif3.7...v2.0.0-oclif3.8) (2024-02-28)
 
 
