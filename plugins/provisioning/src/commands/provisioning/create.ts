@@ -1,7 +1,7 @@
 import Command, { Flags/* , FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS */ } from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
 import { type CommerceLayerProvisioningClient, type QueryParamsRetrieve } from '@commercelayer/provisioning-sdk'
-// import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 // import { mergeCommandParams } from '../../commands'
 
 
@@ -122,7 +122,7 @@ export default class ProvisioningCreate extends Command {
 
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
-    // const reqReader = flags.doc ? addRequestReader(cl) : undefined
+    const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
     const params: QueryParamsRetrieve = {}
 
@@ -159,11 +159,10 @@ export default class ProvisioningCreate extends Command {
       return out
 
     } catch (error) {
-      /*
       if (isRequestInterrupted(error) && reqReader) {
         await this.showLiveDocumentation(reqReader.request, params, flags)
         cl.removeInterceptor('request', reqReader.id)
-      } else */this.printError(error)
+      } else this.printError(error)
     }
 
   }

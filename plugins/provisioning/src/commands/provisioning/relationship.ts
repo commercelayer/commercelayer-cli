@@ -1,6 +1,6 @@
-import Command, { Args, cliux /*, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS */} from '../../base'
+import Command, { Args, cliux /*, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS */ } from '../../base'
 import { type CommerceLayerProvisioningClient, type QueryParamsList } from '@commercelayer/provisioning-sdk'
-// import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 // import { mergeCommandParams } from '../../commands'
 import ResourcesList from './list'
 import { clColor, clText } from '@commercelayer/cli-core'
@@ -70,7 +70,7 @@ export default class ResourcesRelationship extends Command {
     const perPage = flags.pageSize
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
-    // const reqReader = flags.doc ? addRequestReader(cl) : undefined
+    const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
     const params: QueryParamsList = {}
 
@@ -91,16 +91,16 @@ export default class ResourcesRelationship extends Command {
       // }
 
 
-      // if (!flags.doc && multiRel) cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}.${relationship} for id ${id}`)
+      if (!flags.doc && multiRel) cliux.action.start(`Fetching ${resource.api.replace(/_/g, ' ')}.${relationship} for id ${id}`)
 
       const res = await resSdk[relationship](id, params)
-      if (multiRel)  cliux.action.stop()
+      if (multiRel) cliux.action.stop()
 
       const out = (flags.raw && rawReader) ? rawReader.rawResponse : (multiRel ? [...res] : res)
 
       if (out && flags.extract) {
         const ext = this.extractFlag(flags.extract)
-        if (Array.isArray(out))  out.forEach(o => { this.extractObjectFields(ext, o) })
+        if (Array.isArray(out)) out.forEach(o => { this.extractObjectFields(ext, o) })
         else this.extractObjectFields(ext, out)
       }
 
@@ -114,17 +114,17 @@ export default class ResourcesRelationship extends Command {
       }
 
 
-       // Save command arguments
-       // if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
+      // Save command arguments
+      // if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
 
 
       return out
 
     } catch (error) {
-      /* if (isRequestInterrupted(error) && reqReader) {
+      if (isRequestInterrupted(error) && reqReader) {
         await this.showLiveDocumentation(reqReader.request, params, flags)
         cl.removeInterceptor('request', reqReader.id)
-      } else */this.printError(error, flags, args)
+      } else this.printError(error, flags, args)
     }
 
   }

@@ -3,8 +3,8 @@ import { findResource, type Resource } from './util/resources'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { existsSync } from 'fs'
-import commercelayer, { type CommerceLayerProvisioningClient, CommerceLayerProvisioningStatic } from '@commercelayer/provisioning-sdk'
-// import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
+import commercelayer, { type CommerceLayerProvisioningClient, CommerceLayerProvisioningStatic, type QueryParams } from '@commercelayer/provisioning-sdk'
+import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { clToken, clUpdate, clColor, clUtil, clCommand, clFilter, clText } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
@@ -234,7 +234,6 @@ export abstract class BaseFilterCommand extends BaseCommand {
       description: 'print out the raw API response',
       hidden: false,
     }),
-    /*
     doc: Flags.boolean({
       description: 'show the CLI command in a specific language',
       exclusive: ['raw'],
@@ -264,6 +263,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
       dependsOn: ['doc'],
       helpGroup: 'documentation',
     }),
+    /*
     [FLAG_SAVE_PARAMS]: Flags.string({
       description: 'save command data to file for future use',
     }),
@@ -626,15 +626,15 @@ export abstract class BaseFilterCommand extends BaseCommand {
 
   }
 
-/*
+
   protected async showLiveDocumentation(request: RequestData, params?: QueryParams, flags?: any): Promise<string> {
     const lang = getLanguageArg(flags) || await promptLanguage()
     const cmd = buildCommand(lang, request, params, flags)
     this.printCommand(lang, cmd)
     return cmd
   }
-*/
-/*
+
+
   protected printCommand(lang: string, command: string): void {
 
     const header = languageInfo[lang as keyof typeof languageInfo].label
@@ -650,7 +650,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
     this.log()
 
   }
-*/
+
 
 /*
   protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: Config): void {
