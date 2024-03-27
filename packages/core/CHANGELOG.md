@@ -1,3 +1,10 @@
+## [4.12.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.12.0...v4.12.1) (2024-03-27)
+
+
+### Bug Fixes
+
+* fix authentication ([dcfb006](https://github.com/commercelayer/commercelayer-cli-core/commit/dcfb00631b846979bc2b73a3651a007e398340f3))
+
 # [4.12.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v4.11.4...v4.12.0) (2024-02-20)
 
 
