@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.7...v5.0.0-oclif3.8) (2024-03-27)
+
+
+### Bug Fixes
+
+* fix authentication ([14d068f](https://github.com/commercelayer/commercelayer-cli-core/commit/14d068fb7d573b370677dbbc885fe9ef10ef18f3))
+
 # [5.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.6...v5.0.0-oclif3.7) (2024-02-27)
 
 
