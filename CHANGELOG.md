@@ -1,3 +1,10 @@
+## [5.19.4](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.3...v5.19.4) (2024-03-27)
+
+
+### Bug Fixes
+
+* update dependencies ([f7059ad](https://github.com/commercelayer/commercelayer-cli/commit/f7059ad6fe579f2deb3c1ad1b8cc85885e12fd2c))
+
 ## [5.19.3](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.2...v5.19.3) (2024-02-08)
 
 
