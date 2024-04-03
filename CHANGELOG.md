@@ -1,3 +1,17 @@
+# [6.0.0-oclif3.12](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.11...v6.0.0-oclif3.12) (2024-04-03)
+
+
+### Bug Fixes
+
+* fix dependencies ([6fc5851](https://github.com/commercelayer/commercelayer-cli/commit/6fc5851e388d88eac1df310fea6939edf29a9b3c))
+* update dependencies ([e1750ed](https://github.com/commercelayer/commercelayer-cli/commit/e1750ed096109f11df2de02b89462d8225c71af8))
+* update dependencies ([a816b66](https://github.com/commercelayer/commercelayer-cli/commit/a816b6656be9c083c6a4878916a85e2b40f3f664))
+
+
+### Features
+
+* show latest plugins on beta channel ([3284d87](https://github.com/commercelayer/commercelayer-cli/commit/3284d8793fb6edce60a4a14a1a77b25231307518))
+
 # [6.0.0-oclif3.11](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.10...v6.0.0-oclif3.11) (2024-03-05)
 
 
