@@ -31,8 +31,8 @@ const hook: Hook<'prerun'> = async function (opts) {
     }
 
     let index = -1
-    let plugin
-    let pluginArg
+    let plugin: string = ''
+    let pluginArg: string = ''
 
     const found = opts.argv.some(a => {
 
