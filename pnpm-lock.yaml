@@ -70,6 +70,9 @@ devDependencies:
   '@types/inquirer':
     specifier: ^8.2.10
     version: 8.2.10
+  '@types/lodash':
+    specifier: ^4.17.0
+    version: 4.17.0
   '@types/mocha':
     specifier: ^10.0.6
     version: 10.0.6

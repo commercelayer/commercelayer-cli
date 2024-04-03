@@ -101,6 +101,7 @@
     "@types/chai": "^4.3.14",
     "@types/configstore": "^4.0.0",
     "@types/inquirer": "^8.2.10",
+    "@types/lodash": "^4.17.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.3",
     "@types/update-notifier": "^5.1.0",
