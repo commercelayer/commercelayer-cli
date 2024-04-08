@@ -3,14 +3,12 @@ import Inflector from './inflector'
 
 const capitalize = (str: string | undefined): string | undefined => {
 	if (!str) return str
-	let s = str.toLowerCase()
-	s = s.substring(0, 1).toUpperCase() + s.substring(1)
-	return s
+	return Inflector.capitalize(str)
 }
 
-const pluralize = Inflector.pluralize
-const singularize = Inflector.singularize
-const camelize = Inflector.camelize
+const pluralize = (str: string, plural?: string | undefined): string => { return Inflector.pluralize(str, plural) }
+const singularize = (str: string, singular?: string | undefined): string => { return Inflector.singularize(str, singular) }
+const camelize = (str: string, lowFirstLetter?: boolean | undefined): string => { return Inflector.camelize(str, lowFirstLetter) }
 
 
 export { capitalize, pluralize, singularize, camelize }

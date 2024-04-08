@@ -12,8 +12,8 @@ export type { ApiMode, ApiType }
 
 
 /** Build base URL */
-const baseURL = (slug?: string, domain?: string, provisioning?: boolean): string => {
-	const subdomain = provisioning? 'provisioning' : (slug || '')
+const baseURL = (api: ApiType = 'core', slug?: string, domain?: string): string => {
+	const subdomain = (api === 'core')? (slug || api) : api
 	return `https://${subdomain.toLowerCase()}.${domain || config.api.default_domain}`
 }
 
