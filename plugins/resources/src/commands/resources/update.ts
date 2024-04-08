@@ -20,6 +20,8 @@ export default class ResourcesUpdate extends Command {
     '$ cl update customers/<customerId> -m meta_key="meta value"',
     '$ cl ru customers <customerId> -M meta_key="metadata overwrite',
     '$ clayer update customers <customerId> -D /path/to/data/file/data.json',
+    '$ cl update order <orderId> -r billing_address=addresses/<addressId>',
+    '$ cl update customer <customerId> -r customer_group=<customerGroupId>'
   ]
 
   static flags = {
