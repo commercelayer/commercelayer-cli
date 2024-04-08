@@ -57,7 +57,7 @@
     "typescript": "^5.4.4"
   },
   "dependencies": {
-    "@commercelayer/js-auth": "^5.2.1",
+    "@commercelayer/js-auth": "^6.0.0",
     "@oclif/core": "^3.26.0",
     "axios": "^1.6.8",
     "chalk": "^4.1.2",

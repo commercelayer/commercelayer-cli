@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@commercelayer/js-auth':
-    specifier: ^5.2.1
-    version: 5.2.1
+    specifier: ^6.0.0
+    version: 6.0.0
   '@oclif/core':
     specifier: ^3.26.1
     version: 3.26.1
@@ -2044,8 +2044,8 @@ packages:
       - supports-color
     dev: true
 
-  /@commercelayer/js-auth@5.2.1:
-    resolution: {integrity: sha512-44PMO+ug/ufDToerb+R6RBngGqFD/yjU06Z3Gj7IGWj4eVmtPhlAR7ynF6TRClAWgI0mZ2bXYx5geXWRGz/jLw==}
+  /@commercelayer/js-auth@6.0.0:
+    resolution: {integrity: sha512-RT7Kpi+lz0uJngyzuuz0g9TeAJvAlOoFe+8r8W/BPrqGZWwRgfqhcW715bf8qaaojJYTkX3Y4YSvvWUFDy3+dg==}
     engines: {node: '>=18.0.0'}
     dev: false
 
