@@ -104,17 +104,17 @@
     "@types/inquirer": "^8.2.10",
     "@types/lodash": "^4.17.0",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.5",
     "@types/update-notifier": "^5.1.0",
     "chai": "^4.4.1",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.7.0",
-    "semantic-release": "^23.0.6",
+    "oclif": "^4.7.7",
+    "semantic-release": "^23.0.7",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.4"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^4.12.1",
