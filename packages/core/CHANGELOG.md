@@ -1,3 +1,13 @@
+# [5.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.8...v5.0.0-oclif3.9) (2024-04-08)
+
+
+### Bug Fixes
+
+* fix baseUrl ([58ba6f9](https://github.com/commercelayer/commercelayer-cli-core/commit/58ba6f9a147ca157a39305b340b06192f8425d8a))
+* fix dependencies ([b98ada5](https://github.com/commercelayer/commercelayer-cli-core/commit/b98ada57f152078dcb5e7919bcbd1a34a22545d0))
+* fix dependencies ([a8c28c8](https://github.com/commercelayer/commercelayer-cli-core/commit/a8c28c8bc5314b8d33cb026a7f9e699a77e80500))
+* fix token revoke ([286de2b](https://github.com/commercelayer/commercelayer-cli-core/commit/286de2b19d90a731a42e79f6c2f1b6d4c791c877))
+
 # [5.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.7...v5.0.0-oclif3.8) (2024-03-27)
 
 
