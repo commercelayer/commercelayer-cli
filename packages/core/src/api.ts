@@ -1,13 +1,11 @@
-
-import type { Method } from 'axios'
 import config from './config'
-
 import { rawRequest, readDataFile, Operation } from './raw'
 import { denormalize } from './jsonapi'
+import type { Method } from './types'
 
 
 type ApiMode = 'test' | 'live'
-type ApiType = 'core' | 'provisioning' | 'metrics'
+type ApiType = 'core' | 'provisioning' | 'metrics' | 'auth'
 export type { ApiMode, ApiType }
 
 
@@ -60,7 +58,7 @@ const CACHEABLE_RESOURCES = [
 
 
 export const isResourceCacheable = (resource?: string, method?: Method): boolean => {
-	return CACHEABLE_RESOURCES.includes(resource || '') && ((method || 'get').toLowerCase() === 'get')
+	return CACHEABLE_RESOURCES.includes(resource || '') && ((method || 'GET').toUpperCase() === 'GET')
 }
 
 // Note: times in milliseconds

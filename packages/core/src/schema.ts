@@ -1,4 +1,3 @@
-import axios from 'axios'
 import clConfig from './config'
 
 
@@ -13,8 +12,8 @@ const downloadSchema = async (version?: string): Promise<any> => {
 
 	const schemaUrl = baseUrl + fileName
 
-	const schemaFile = await axios.get(schemaUrl)
-	const schemaData = schemaFile.data
+	const schemaFile = await fetch(schemaUrl)
+	const schemaData = await schemaFile.json()
 
 	return schemaData
 
