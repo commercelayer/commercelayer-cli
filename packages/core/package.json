@@ -4,12 +4,13 @@
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "description": "Commerce Layer Javascript CLI core lib",
-  "main": "lib/cjs/index.js",
-  "types": "lib/cjs/index.d.ts",
-  "module": "lib/esm/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.mjs",
   "exports": {
-    "require": "./lib/cjs/index.js",
-    "import": "./lib/esm/index.js"
+    "types": "./lib/index.d.ts",
+    "require": "./lib/index.js",
+    "import": "./lib/index.mjs"
   },
   "scripts": {
     "lint": "eslint ./src --ext .ts",
