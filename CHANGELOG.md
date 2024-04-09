@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.15](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.14...v6.0.0-oclif3.15) (2024-04-09)
+
+
+### Features
+
+* add new authentication ([cd488df](https://github.com/commercelayer/commercelayer-cli/commit/cd488dfa691908a944519c637cd6cd296ff834e7))
+
 # [6.0.0-oclif3.14](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.13...v6.0.0-oclif3.14) (2024-04-08)
 
 
