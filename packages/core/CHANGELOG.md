@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.13](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.12...v5.0.0-oclif3.13) (2024-04-09)
+
+
+### Features
+
+* **text:** add dasherize function ([7845509](https://github.com/commercelayer/commercelayer-cli-core/commit/784550975f6cbb8814d291f04be99a3e522872d3))
+
 # [5.0.0-oclif3.12](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.11...v5.0.0-oclif3.12) (2024-04-09)
 
 
