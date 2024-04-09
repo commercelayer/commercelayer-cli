@@ -19,7 +19,7 @@ export default class ApplicationsProvisioning extends ApplicationsIndex {
   public async run(): Promise<void> {
     
     if (isPluginInstalled('provisioning', this.config)) {
-      if (!this.argv.includes('--provisioning') && !this.argv.includes('-P')) this.argv.push('--provisioning')
+      if (!this.argv.includes('--api') && !this.argv.includes('-A')) this.argv.push('--api=provisioning')
       return ApplicationsIndex.run(this.argv, this.config)
     } else this.error('Provisioning plugin not installed')
 

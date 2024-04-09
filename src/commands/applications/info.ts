@@ -1,6 +1,6 @@
 import Command, { Flags } from '../../base'
 import { currentApplication, readConfigFile } from '../../config'
-import { inspect } from 'util'
+import { inspect } from 'node:util'
 import { clColor } from '@commercelayer/cli-core'
 
 
