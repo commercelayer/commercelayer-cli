@@ -119,8 +119,8 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "beta",
-    "@commercelayer/provisioning-sdk": "^1.0.5",
-    "@commercelayer/sdk": "^5.36.0",
+    "@commercelayer/provisioning-sdk": "beta",
+    "@commercelayer/sdk": "sdk6",
     "@oclif/core": "^3.26.2",
     "@oclif/plugin-autocomplete": "^3.0.13",
     "@oclif/plugin-help": "6.0.12",
