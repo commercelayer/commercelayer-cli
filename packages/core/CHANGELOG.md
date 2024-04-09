@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.10](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.9...v5.0.0-oclif3.10) (2024-04-09)
+
+
+### Features
+
+* remove axios dependency ([a7c4945](https://github.com/commercelayer/commercelayer-cli-core/commit/a7c4945385f7223a5d58fbb6467a740d02c4b731))
+
 # [5.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0-oclif3.8...v5.0.0-oclif3.9) (2024-04-08)
 
 
