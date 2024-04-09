@@ -56,7 +56,9 @@ const appKeyMatch = (app1?: AppKey, app2?: AppKey): boolean => {
 
 const arrayScope = (scope?: AuthScope): string[] => {
 	if (!scope) return []
-	else return Array.isArray(scope) ? scope : [ scope ]
+	if (Array.isArray(scope)) return scope
+	const s = scope.replace(/[ ,;]/g, '_').split('_')
+	return Array.isArray(s) ? s : [ s ]
 }
 
 
