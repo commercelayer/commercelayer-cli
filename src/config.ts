@@ -155,7 +155,6 @@ const filterApplications = (config: Config, flags: any): AppInfo[] => {
 		if (mode && (mode !== app.mode)) return false
 		if (flags.id && (flags.id !== app.id)) return false
 		if (flags.alias && (flags.alias !== app.alias)) return false
-		if (flags.provisioning && (app.api !== 'provisioning')) return false
 		if (flags.api && (flags.api !== app.api)) return false
 
 		return true

@@ -1,9 +1,10 @@
 import { Command, Flags, type Config } from '@oclif/core'
-import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { clApplication, clApi, clToken, clColor, clConfig, clCommand } from '@commercelayer/cli-core'
-import type { ApiMode,/* ApiType, */AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
+import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
+import clprovisioning from '@commercelayer/provisioning-sdk'
+import { clApplication, clApi, clToken, clColor, clCommand, clConfig } from '@commercelayer/cli-core'
+import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
-import { inspect } from 'util'
+import { inspect } from 'node:util'
 import { printCurrent } from './current'
 import { CLIError } from '@oclif/core/lib/errors'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
@@ -18,15 +19,14 @@ export default class ApplicationsLogin extends Command {
 
 	static examples = [
 		'$ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>',
-		'$ cl app:login -i <clientId> -s <clientSecret> --provisioning -a <applicationAlias>'
+		'$ cl app:login -i <clientId> -s <clientSecret> -a <applicationAlias>'
 	]
 
 	static flags = {
 		organization: Flags.string({
 			char: 'o',
 			description: 'organization slug',
-			required: false,
-			exactlyOne: ['organization', 'provisioning']
+			required: false
 		}),
 		domain: Flags.string({
 			char: 'd',
@@ -73,26 +73,7 @@ export default class ApplicationsLogin extends Command {
 		debug: Flags.boolean({
 			description: 'show more verbose error messages',
 			hidden: true
-		}),
-		provisioning: Flags.boolean({
-			char: 'P',
-			description: 'execute login to Provisioning API',
-			required: false,
-			exclusive: ['scope', 'organization', 'email', 'password', 'api'],
-			dependsOn: ['clientId', 'clientSecret'],
-			hidden: false
 		})
-		/*
-		,
-		api: Flags.string({
-			char: 'A',
-			description: 'the API you want to excute login for',
-			required: false,
-			options: ['core', 'provisioning'],
-			exclusive: ['scope', 'organization', 'email', 'password', 'provisioning'],
-			default: 'core'
-		})
-		*/
 	}
 
 
@@ -118,21 +99,17 @@ export default class ApplicationsLogin extends Command {
 			this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
 
-
-		const scope = checkScope(flags.scope as string[], flags.provisioning as boolean)
+		const scope = checkScope(flags.scope as string[])
 		const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
-		const api = /* (flags.api as ApiType) || */(flags.provisioning ? 'provisioning' : 'core')
-		const slug = flags.organization || clConfig.provisioning.default_subdomain
 
 		const config: AppAuth = {
 			clientId: flags.clientId,
 			clientSecret: flags.clientSecret,
-			slug,
+			slug: flags.organization,
 			domain: flags.domain,
 			scope,
 			email: flags.email,
-			password: flags.password,
-			api
+			password: flags.password
 		}
 
 		if (config.domain === configParam(ConfigParams.defaultDomain)) config.domain = undefined
@@ -185,57 +162,65 @@ export default class ApplicationsLogin extends Command {
 
 const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<AppInfo> => {
 
+	function error(type: string): never {
+		throw new Error(`This application cannot access the ${clColor.italic(clApi.humanizeResource(type))} resource`)
+	}
+
 	const tokenInfo = clToken.decodeAccessToken(accessToken)
+	auth.scope = clApplication.arrayScope(tokenInfo.scope)
+	// Remove metrics-api scope if exists
+	if (auth.scope.includes(clConfig.provisioning.scope)) auth.scope = clConfig.provisioning.scope
 
 	const provisioning = clApplication.isProvisioningApp(auth)
+	const api = auth.api || (provisioning? 'provisioning' : 'core')
 
-	let org, app, scope
+	let org: Partial<Organization>, app: Partial<Application>, user
 	if (provisioning) {
-		org = { name: 'Provisioning API', slug: 'provisioning' }
+		const clp = clprovisioning({ domain: auth.domain, accessToken })
+		// User info
+		const usr = await clp.user.retrieve().catch(() => { error(clp.user.type()) })
+		if (usr) user = { name: `${usr.first_name}${(usr.first_name && usr.last_name)? ' ' : ''}${usr.last_name}`, email: usr.email }
+		org = { slug: 'provisioning' }
 		app = { name: 'Provisioning App' }
-		scope = tokenInfo.scope
 	} else { // core
 		const cl = commercelayer({ organization: auth.slug || '', domain: auth.domain, accessToken })
 		// Organization info
-		org = await cl.organization.retrieve().catch(() => {
-			throw new Error(`This application cannot access the ${clColor.italic('Organization')} resource`)
-		})
+		org = await cl.organization.retrieve().catch(() => { error(cl.organization.type()) })
 		// Application info
-		app = await cl.application.retrieve().catch(() => {
-			throw new Error(`This application cannot access the ${clColor.italic('Application')} resource`)
-		})
-		scope = auth.scope
+		app = await cl.application.retrieve().catch(() => { error(cl.application.type()) })
 	}
-console.log(tokenInfo)
+
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
 
 	const appInfo: AppInfo = Object.assign(auth, {
-		organization: org.name || '',
+		organization: org.name ?? undefined,
 		key: clApplication.appKey(),
-		slug: org.slug || '',
+		slug: org.slug,
 		mode,
 		kind: tokenInfo.application.kind,
 		name: app.name || '',
-		baseUrl: clApi.baseURL(auth.slug, auth.domain, provisioning),
+		baseUrl: clApi.baseURL(api, auth.slug, auth.domain),
 		id: tokenInfo.application.id,
 		alias: '',
-		scope
+		api,
+		user: user?.name
 	})
 
 	// if (Array.isArray(appInfo.scope) && (appInfo.scope.length === 0)) appInfo.scope = undefined
-
 
 	return appInfo
 
 }
 
 
-const checkScope = (scopeFlags: string[] | undefined, provisioning?: boolean): AuthScope => {
+const checkScope = (scopeFlags: string[] | undefined): AuthScope => {
 
 	const scope: string[] = []
 
 	if (scopeFlags) {
 		for (const s of scopeFlags) {
+
+			if (['provisioning-api', 'metrics-api'].includes(s) && (scopeFlags.length > 1)) throw new Error(`Scope ${clColor.msg.error(s)} cannot be used together with other scopes`)
 
 			const colonIdx = s.indexOf(':')
 			const scopePrefix = s.substring(0, colonIdx)
@@ -251,7 +236,6 @@ const checkScope = (scopeFlags: string[] | undefined, provisioning?: boolean): A
 
 		}
 	}
-	else if (provisioning) scope.push(clConfig.provisioning.scope)
 
 	const _scope = (scope.length === 1) ? scope[0] : scope
 
@@ -272,7 +256,7 @@ const checkAlias = (alias: string, config?: Config, organization?: string): stri
 	if (config) {
 		const flags = { alias, organization }
 		const apps = filterApplications(config, flags)
-		if (apps.length > 0) throw new Error(`Alias ${clColor.msg.error(alias)} has already been used for ${organization ? `organization ${clColor.api.organization(apps[0].organization)}` : clColor.api.application('Provisioning')}`)
+		if (apps.length > 0) throw new Error(`Alias ${clColor.msg.error(alias)} has already been used${organization ? ` for organization ${clColor.api.organization(apps[0].organization)}` : ''}`)
 	}
 
 	return al

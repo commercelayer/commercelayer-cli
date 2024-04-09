@@ -12,7 +12,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=20"
   },
   "files": [
     "/bin/run.*",
@@ -102,12 +102,14 @@
     "@types/configstore": "^4.0.0",
     "@types/inquirer": "^8.2.10",
     "@types/lodash": "^4.17.0",
+    "@types/lodash.kebabcase": "^4.1.9",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.12.5",
+    "@types/node": "^20.12.6",
     "@types/update-notifier": "^5.1.0",
     "chai": "^4.4.1",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
+    "lodash.kebabcase": "^4.1.1",
     "mocha": "^10.4.0",
     "nyc": "^15.1.0",
     "oclif": "^4.7.7",
@@ -119,14 +121,13 @@
     "@commercelayer/cli-core": "beta",
     "@commercelayer/provisioning-sdk": "^1.0.5",
     "@commercelayer/sdk": "^5.36.0",
-    "@oclif/core": "^3.26.0",
+    "@oclif/core": "^3.26.2",
     "@oclif/plugin-autocomplete": "^3.0.13",
     "@oclif/plugin-help": "6.0.12",
     "@oclif/plugin-not-found": "^3.1.2",
     "@oclif/plugin-plugins": "^4.3.10",
     "configstore": "^5.0.1",
     "inquirer": "^8.2.6",
-    "lodash": "^4.17.21",
     "tslib": "^2.6.2",
     "update-notifier-cjs": "^5.1.6"
   },

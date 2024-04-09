@@ -55,7 +55,7 @@ export default class ApplicationsIndex extends Command {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 			cliux.Table.table(sortedData as any, {	
 				current: { header: `[${currentChar}]`, minWidth: 3, get: row => clApplication.appKeyMatch(current, row as unknown as AppInfo) ? clColor.magentaBright(` ${currentChar} `) : '   ' },
-				organization: { header: 'ORGANIZATION / API', get: row => currentColor(row, current)(row.organization) },
+				organization: { header: 'ORGANIZATION / USER', get: row => currentColor(row, current)(row.user || row.organization) },
 				slug: { header: 'SLUG', get: row => currentColor(row, current)(row.slug) },
 				name: { header: 'APPLICATION', get: row => currentColor(row, current)(row.name) },
 				kind: { header: 'KIND', get: row => currentColor(row, current)(row.kind) },

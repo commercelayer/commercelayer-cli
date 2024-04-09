@@ -1,7 +1,7 @@
 import type { Hook } from '@oclif/core'
-import { existsSync, mkdirSync, readdirSync, writeFileSync, appendFileSync, unlinkSync } from 'fs'
-import { join } from 'path'
-import { kebabCase } from 'lodash'
+import { existsSync, mkdirSync, readdirSync, writeFileSync, appendFileSync, unlinkSync } from 'node:fs'
+import { join } from 'node:path'
+import kebabCase from 'lodash.kebabcase'
 import { configParam, ConfigParams } from '../../config'
 
 

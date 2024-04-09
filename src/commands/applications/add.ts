@@ -3,7 +3,7 @@ import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
-import { type AppAuth, clColor, clToken, clConfig, clApplication, clCommand } from '@commercelayer/cli-core'
+import { type AppAuth, clColor, clToken, clApplication, clCommand } from '@commercelayer/cli-core'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 
 
@@ -16,7 +16,7 @@ export default class ApplicationsAdd extends Command {
 
   static examples = [
     '$ commercelayer applications:add -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>',
-    '$ cl app:add -i <clientId> -s <clientSecret> --provisioning -a <applicationAlias>'
+    '$ cl app:add -i <clientId> -s <clientSecret> -a <applicationAlias>'
   ]
 
   static flags = {
@@ -45,19 +45,17 @@ export default class ApplicationsAdd extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
-    const scope = checkScope(flags.scope as string[], flags.provisioning as boolean)
+    const scope = checkScope(flags.scope as string[])
     const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
-    const api = flags.provisioning? 'provisioning' : 'core'
-		const slug = flags.organization || clConfig.provisioning.default_subdomain
+
     const config: AppAuth = {
       clientId: flags.clientId,
       clientSecret: flags.clientSecret,
-      slug,
+      slug: flags.organization,
       domain: flags.domain,
       scope,
       email: flags.email,
-      password: flags.password,
-      api
+      password: flags.password
     }
 
     if (config.domain === configParam(ConfigParams.defaultDomain)) config.domain = undefined
