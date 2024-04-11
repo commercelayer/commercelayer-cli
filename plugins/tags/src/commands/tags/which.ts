@@ -1,9 +1,7 @@
 import { BaseIdCommand, Flags, cliux } from '../../base'
 import Table from 'cli-table3'
-import type { CommerceLayerClient, QueryParamsList, Tag } from '@commercelayer/sdk'
+import type { CommerceLayerClient, QueryParamsList, Tag, ApiResource, ListResponse, TaggableResource, QueryPageSize } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clOutput, clText, clUtil } from '@commercelayer/cli-core'
-import type { ApiResource, ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
-import type { TaggableResource } from '@commercelayer/sdk/lib/cjs/api'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
@@ -58,14 +56,14 @@ export default class TagsWhich extends BaseIdCommand {
 
 			const client: ApiResource<TaggableResource> = this.cl[resType as keyof CommerceLayerClient] as ApiResource<TaggableResource>
 
-			let pageSize = clConfig.api.page_max_size
+			let pageSize = clConfig.api.page_max_size as QueryPageSize
 			const tableData = []
 			let currentPage = 0
 			let pageCount = 1
 			let itemCount = 0
 			let totalItems = 1
 
-			if (limit) pageSize = Math.min(limit, pageSize)
+			if (limit) pageSize = Math.min(limit, pageSize) as QueryPageSize
 
 			cliux.action.start(`Fetching ${clApi.humanizeResource(flags.type)}`)
 			let delay = 0

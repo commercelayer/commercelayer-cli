@@ -40,7 +40,7 @@ export default class TagsDelete extends Command {
       const delay = clApi.requestRateLimitDelay({
         totalRequests: tags.length,
         resourceType: 'tags',
-        method: 'delete'
+        method: 'DELETE'
       })
 
       const delTags: string[] = []

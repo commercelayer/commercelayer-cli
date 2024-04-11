@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { clColor, clToken, clUpdate, clOutput, clConfig, clUtil } from '@commercelayer/cli-core'
 import { Command, Flags, Args, ux } from '@oclif/core'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Tag } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import { Bundles, BuyXPayYPromotions, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk/lib/cjs/api'
-import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
-import type { ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
+import commercelayer, { CommerceLayerStatic, Bundles, BuyXPayYPromotions, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk'
+import type { CommerceLayerClient, TaggableResource, TaggableResourceType, ListResponse, Tag } from '@commercelayer/sdk'
 
 
 

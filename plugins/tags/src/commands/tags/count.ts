@@ -1,9 +1,7 @@
 import { BaseIdCommand, Flags, cliux } from '../../base'
 import Table from 'cli-table3'
-import type { CommerceLayerClient } from '@commercelayer/sdk'
 import { clColor, clConfig } from '@commercelayer/cli-core'
-import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
-import type { ApiResource } from '@commercelayer/sdk/lib/cjs/resource'
+import type { CommerceLayerClient, TaggableResource, TaggableResourceType, ApiResource } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
@@ -57,7 +55,7 @@ export default class TagsCount extends BaseIdCommand {
 			for (const resource of resources) {
         const client: ApiResource<TaggableResource> = this.cl[resource as keyof CommerceLayerClient] as ApiResource<TaggableResource>
         await client.count({ filters: { tags_id_eq: tag.id } })
-          .then(c => { taggedResources[resource] = c })
+          .then((c: number) => { taggedResources[resource] = c })
           .catch(() => { taggedResources[resource] = -1 })
       }
       cliux.action.stop()
