@@ -1,6 +1,6 @@
 import Command, { Flags } from '../../base'
 import Table from 'cli-table3'
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash.isempty'
 import { clOutput, clColor } from '@commercelayer/cli-core'
 import type { QueryParamsRetrieve } from '@commercelayer/sdk'
 import { buildEventsTableData } from './events'

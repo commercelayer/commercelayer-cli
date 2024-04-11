@@ -7,7 +7,7 @@
   "repository": "commercelayer/commercelayer-cli-plugin-webhooks",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/issues",
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=20"
   },
   "files": [
     "/bin/run.*",
@@ -42,11 +42,11 @@
     "topicSeparator": ":"
   },
   "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
-    "build": "rm -rf lib && tsc -b",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "build": "rm -rf lib && tsc -b",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "lint": "eslint src --ext .ts --config .eslintrc",
     "lint:fix": "eslint src --fix"
@@ -54,30 +54,30 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "beta",
-    "@commercelayer/eslint-config-ts": "^1.4.0",
-    "@oclif/plugin-help": "^6.0.18",
-    "@oclif/test": "^3.2.6",
+    "@commercelayer/eslint-config-ts": "^1.4.5",
+    "@oclif/plugin-help": "^6.0.20",
+    "@oclif/test": "^3.2.9",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/chai": "^4.3.12",
-    "@types/lodash": "^4.17.0",
+    "@types/chai": "^4.3.14",
+    "@types/lodash.isempty": "^4.4.9",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.28",
+    "@types/node": "^20.12.7",
     "chai": "^4.4.1",
     "eslint": "^8.57.0",
-    "mocha": "^10.3.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.5.7",
-    "semantic-release": "^23.0.4",
+    "oclif": "^4.8.0",
+    "semantic-release": "^23.0.8",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@commercelayer/cli-core": "beta",
-    "@commercelayer/sdk": "^5.35.0",
-    "@oclif/core": "^3.25.2",
+    "@commercelayer/sdk": "sdk6",
+    "@oclif/core": "^3.26.2",
     "cli-table3": "0.6.3",
-    "lodash": "^4.17.21",
+    "lodash.isempty": "^4.4.0",
     "open": "^8.4.2",
     "tslib": "^2.6.2"
   },

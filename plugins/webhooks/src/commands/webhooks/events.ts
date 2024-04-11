@@ -2,7 +2,7 @@ import Command, { Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
 import { clConfig, clOutput, clColor, clApi, clUtil } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
-import type { EventCallback, QueryParamsList } from '@commercelayer/sdk'
+import type { EventCallback, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
@@ -50,14 +50,14 @@ export default class WebhooksEvents extends Command {
 
 		try {
 
-			let pageSize = clConfig.api.page_max_size
+			let pageSize = clConfig.api.page_max_size as QueryPageSize
 			const tableData = []
 			let currentPage = 0
 			let pageCount = 1
 			let itemCount = 0
 			let totalItems = 1
 
-			if (flags.limit) pageSize = Math.min(flags.limit, pageSize)
+			if (flags.limit) pageSize = Math.min(flags.limit, pageSize) as QueryPageSize
 
 			cliux.action.start('Fetching events')
       let delay = 0
