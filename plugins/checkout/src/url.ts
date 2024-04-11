@@ -8,7 +8,7 @@ const buildCheckoutUrl = (organization: string, orderId: string, accessToken: st
 
   const subdomain = staging? 'stg.' : ''
   const domain = `${subdomain}${clConfig.api.default_app_domain}`
-  const baseUrl = clApi.baseURL(organization, domain)
+  const baseUrl = clApi.baseURL('core', organization, domain)
 
   const checkoutUrl = `${baseUrl}/checkout/${orderId}?accessToken=${accessToken}`
 
