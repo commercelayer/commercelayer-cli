@@ -49,7 +49,7 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "resources": "pnpm update @commercelayer/provisioning-sdk && ts-node src/util/resources/build.ts",
+    "resources": "pnpm update @commercelayer/provisioning-sdk && tsx src/util/resources/build.ts",
     "lint": "eslint src --ext .ts --config .eslintrc",
     "lint:fix": "eslint src --fix"
   },
