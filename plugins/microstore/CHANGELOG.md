@@ -1,3 +1,10 @@
+# [2.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.5...v2.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* replace ts-node with tsx ([9d9707c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/9d9707c128112ce78706ca62c1a25008e7b96994))
+
 # [2.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.4...v2.0.0-oclif3.5) (2024-04-11)
 
 
