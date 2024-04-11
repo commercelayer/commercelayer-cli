@@ -11,7 +11,7 @@ export const triggers: Record<string, Trigger> = {
 	release_stock: {
       action: 'release_stock',
       trigger: '_release_stock',
-      description: 'Send this attribute if you want to automatically release the stock for this stock line item. Can be done only when fulfillment is in progress.',
+      description: 'Send this attribute if you want to automatically destroy the stock reservation for this stock line item. Can be done only when fulfillment is in progress.',
     },
 	decrement_stock: {
       action: 'decrement_stock',

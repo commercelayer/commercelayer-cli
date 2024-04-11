@@ -1,6 +1,6 @@
 import { clUtil } from '@commercelayer/cli-core'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParamsRetrieve } from '@commercelayer/sdk'
-import type { Resource } from '@commercelayer/sdk/lib/cjs/resource'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
+import type { CommerceLayerClient, Resource, QueryParamsRetrieve, QueryRecordFields } from '@commercelayer/sdk'
 import { type Config } from '@oclif/core/lib/interfaces'
 
 
@@ -33,9 +33,8 @@ const exec = async <R extends Resource>(resourceType: string, id: string, action
 
   const params: QueryParamsRetrieve = {}
   if (fields && (fields.length > 0)) {
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    params.fields = {} as Record<string, string[]>
-    params.fields[resourceType] = fields
+    params.fields = {}
+    params.fields[resourceType as R['type']] = fields as QueryRecordFields[R['type']]
   }
 
   const resSdk: any = cl[resourceType as keyof CommerceLayerClient]

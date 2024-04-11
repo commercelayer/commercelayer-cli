@@ -1,8 +1,7 @@
 /* eslint-disable no-console, no-eval */
 import fs from 'fs'
-// import Manifest from '@oclif/dev-cli/lib/commands/manifest'
-import { join } from 'path'
-import { snakeCase } from 'lodash'
+import snakeCase from 'lodash.snakecase'
+import { join } from 'node:path'
 import { clSchema } from '@commercelayer/cli-core'
 
 const Inflector = require('inflector-js')
@@ -56,7 +55,7 @@ const getResourceActions = async (): Promise<{ [key: string]: any[] }> => {
     Object.entries((t as any).properties.data.properties.attributes.properties).forEach(([k, v]) => {
       if (k.startsWith('_')) triggerAttributes.push({ action: k.substring(1), trigger: k, description: (v as any).description })
     })
-    const res = snakeCase(k.replace('Update', ''))
+    const res = snakeCase(k.replace('Update', '')) as string
     if (triggerAttributes.length > 0) actions[res] = triggerAttributes
   })
 
