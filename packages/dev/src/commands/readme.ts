@@ -279,7 +279,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
     const commandsDir = plugin.pjson.oclif.commands
     if (!commandsDir) return
 
-    let p = path.join(plugin.root, commandsDir, ...c.id.split(':'))
+    let p = path.join(plugin.root, String(commandsDir), ...c.id.split(':'))
     const libRegex = new RegExp('^lib' + (path.sep === '\\' ? '\\\\' : path.sep))
 
     if (fs.pathExistsSync(path.join(p, 'index.js'))) {
