@@ -1,6 +1,6 @@
 import Command, { Args, cliux } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
-import type { QueryParamsList } from '@commercelayer/sdk'
+import type { Cleanup, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
@@ -34,7 +34,7 @@ export default class CleanupsGroup extends Command {
 
 		try {
 
-			const pageSize = clConfig.api.page_max_size
+			const pageSize = clConfig.api.page_max_size as QueryPageSize
 			const tableData = []
 			let currentPage = 0
 			let pageCount = 1
@@ -42,7 +42,7 @@ export default class CleanupsGroup extends Command {
 			cliux.action.start('Fetching cleanups')
 			while (currentPage < pageCount) {
 
-				const params: QueryParamsList = {
+				const params: QueryParamsList<Cleanup> = {
 					pageSize,
 					pageNumber: ++currentPage,
 					sort: ['reference', '-completed_at'],
