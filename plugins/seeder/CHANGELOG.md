@@ -1,3 +1,16 @@
+# [5.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0-oclif3.5...v5.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix mocha and tsc setup ([03497ab](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/03497ab246670f8ff42692c90548363c8aa65bcc))
+* fix sdk6 types ([31cb08c](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/31cb08c4bc4f265c34f7120ece4c3499c8b2441b))
+
+
+### Features
+
+* remove axios dependency ([0028db2](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/0028db2ab7f5be22269c593b28ef920f3d973d0e))
+
 # [5.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0-oclif3.4...v5.0.0-oclif3.5) (2024-02-23)
 
 
