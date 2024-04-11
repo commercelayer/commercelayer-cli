@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.5...v3.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix sdk6 types ([c12df7a](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c12df7ac34efe2d9ab57ad1b559bbce14aa78277))
+
 # [3.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.4...v3.0.0-oclif3.5) (2024-02-23)
 
 
