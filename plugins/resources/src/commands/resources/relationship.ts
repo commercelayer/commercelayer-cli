@@ -1,5 +1,5 @@
 import Command, { Args, cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import type { CommerceLayerClient, QueryParamsList, QueryPageSize } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 import ResourcesList from './list'
@@ -81,7 +81,7 @@ export default class ResourcesRelationship extends Command {
       if (fields && (Object.keys(fields).length > 0)) params.fields = fields
       if (wheres && (Object.keys(wheres).length > 0)) params.filters = wheres
       if (sort && (Object.keys(sort).length > 0)) params.sort = sort
-      if (perPage && (perPage > 0)) params.pageSize = perPage
+      if (perPage && (perPage > 0)) params.pageSize = perPage as QueryPageSize
       if (page && (page > 0)) params.pageNumber = page
 
 

@@ -87,6 +87,7 @@ const RESOURCES = [
 	{ name: 'recurring_order_copy', api: 'recurring_order_copies', model: 'RecurringOrderCopy' },
 	{ name: 'refund', api: 'refunds', model: 'Refund' },
 	{ name: 'reserved_stock', api: 'reserved_stocks', model: 'ReservedStock' },
+	{ name: 'resource_error', api: 'resource_errors', model: 'ResourceError' },
 	{ name: 'return_line_item', api: 'return_line_items', model: 'ReturnLineItem' },
 	{ name: 'return', api: 'returns', model: 'Return' },
 	{ name: 'satispay_gateway', api: 'satispay_gateways', model: 'SatispayGateway' },

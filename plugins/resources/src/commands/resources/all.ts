@@ -1,7 +1,6 @@
 
 import Command, { Flags, cliux } from '../../base'
 import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
-import { getAccessToken } from '@commercelayer/cli-core/lib/cjs/token'
 import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 import notifier from 'node-notifier'
@@ -75,15 +74,15 @@ export default class ResourcesAll extends Command {
       hidden: true,
     }),
     clientId: Flags.string({
-      name: 'clientId',
-      char: 'i',
+      // name: 'clientId',
+      // char: 'i',
       description: 'organization client_id',
       hidden: true,
       required: false,
       env: 'CL_CLI_CLIENT_ID',
     }),
     clientSecret: Flags.string({
-      char: 's',
+      // char: 's',
       description: 'organization client_secret',
       hidden: true,
       required: false,
@@ -141,7 +140,7 @@ export default class ResourcesAll extends Command {
       const organization = flags.organization
       const domain = flags.domain
 
-      const token = await getAccessToken({
+      const token = await clToken.getAccessToken({
         clientId: flags.clientId || '',
         clientSecret: flags.clientSecret || '',
         slug: organization,

@@ -1,14 +1,14 @@
 import { Command, Flags, Args, type Config, ux as cliux } from '@oclif/core'
-import { findResource, type Resource } from './util/resources'
+import { findResource, type ApiResource } from './util/resources'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { existsSync } from 'fs'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic  } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter, clText } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
-import type { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
+import type { ResourceId, ResourceType, CommerceLayerClient, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
@@ -155,7 +155,7 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  checkResource(res: string, { required = true, singular = false } = {}): Resource {
+  checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
     if (!res && required) this.error('Resource type not defined')
     const resource = findResource(res, { singular })
     if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,

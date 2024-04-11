@@ -7,7 +7,7 @@
   "repository": "commercelayer/commercelayer-cli-plugin-resources",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=20"
   },
   "files": [
     "/bin/run.*",
@@ -59,31 +59,30 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "beta",
-    "@commercelayer/eslint-config-ts": "^1.4.0",
-    "@oclif/plugin-help": "^6.0.18",
-    "@oclif/test": "^3.2.6",
+    "@commercelayer/eslint-config-ts": "^1.4.5",
+    "@oclif/plugin-help": "^6.0.20",
+    "@oclif/test": "^3.2.9",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.14",
     "@types/inquirer": "^8.2.10",
     "@types/lodash": "^4.17.0",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.7",
     "@types/node-notifier": "^8.0.5",
     "chai": "^4.4.1",
     "eslint": "^8.57.0",
-    "mocha": "^10.3.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.6.1",
-    "semantic-release": "^23.0.5",
+    "oclif": "^4.8.0",
+    "semantic-release": "^23.0.8",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@commercelayer/cli-core": "beta",
-    "@commercelayer/sdk": "^5.35.0",
-    "@oclif/core": "^3.25.3",
-    "axios": "^1.6.8",
+    "@commercelayer/sdk": "6.0.0-beta.21",
+    "@oclif/core": "^3.26.2",
     "inquirer": "^8.2.6",
     "json-2-csv": "^3.20.0",
     "node-notifier": "^10.0.1",
