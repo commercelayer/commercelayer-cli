@@ -5,7 +5,7 @@ import { clUpdate, clColor, clToken, type ApiMode, clUtil, clApi, type Method } 
 import { isRemotePath, pathJoin } from './common'
 import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
-import type { CommerceLayerClient, ListResponse, ResourceId, QueryParamsList } from '@commercelayer/sdk'
+import type { CommerceLayerClient, ListResponse, ResourceId, QueryParamsList, Resource } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import type { CLIError } from '@oclif/core/lib/errors'
 
@@ -129,7 +129,7 @@ export default abstract class extends Command {
     await this.applyRequestDelay(type, 'GET')
 
     const resSdk = this.cl[type as keyof CommerceLayerClient] as any
-    const list = await resSdk.list(params) as ListResponse<ResourceId>
+    const list = await resSdk.list(params) as ListResponse<Resource>
 
     return list.first()
 
