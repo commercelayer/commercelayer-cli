@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.7...v5.0.0-oclif3.8) (2024-04-11)
+
+
+### Bug Fixes
+
+* update dependencies ([2440f02](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/2440f02be202dc190d8f0b2adbff99ee71822172))
+
 # [5.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.6...v5.0.0-oclif3.7) (2024-04-08)
 
 
