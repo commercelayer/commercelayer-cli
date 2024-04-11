@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.7...v4.0.0-oclif3.8) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([5433b37](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/5433b37d50f69faf1a1b8f1b9666483e00db472f))
+
 # [4.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.6...v4.0.0-oclif3.7) (2024-04-11)
 
 
