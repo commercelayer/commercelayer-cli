@@ -17,6 +17,11 @@ const triggers: Record<string, Trigger> = {
     trigger: '_unarchive',
     description: 'Send this attribute if you want to unarchive the order.',
   },
+	pending: {
+    action: 'pending',
+    trigger: '_pending',
+    description: 'Send this attribute if you want to move a draft or placing order to pending.',
+  },
 	place: {
     action: 'place',
     trigger: '_place',
@@ -142,6 +147,11 @@ const triggers: Record<string, Trigger> = {
     trigger: '_stop_editing',
     description: 'Send this attribute to stop the editing for the order and return back to placed status.',
   },
+	reset_circuit: {
+    action: 'reset_circuit',
+    trigger: '_reset_circuit',
+    description: 'Send this attribute if you want to reset the circuit breaker associated to this resource to \'closed\' state and zero failures count.',
+  },
 }
 
 
@@ -152,6 +162,7 @@ export { triggers, type Trigger }
 export type ActionType =
   'archive' |
 	'unarchive' |
+	'pending' |
 	'place' |
 	'cancel' |
 	'approve' |
@@ -176,4 +187,5 @@ export type ActionType =
 	'validate' |
 	'create_subscriptions' |
 	'start_editing' |
-	'stop_editing'
+	'stop_editing' |
+	'reset_circuit'
