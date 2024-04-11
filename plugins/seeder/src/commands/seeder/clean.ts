@@ -2,7 +2,7 @@
 import Command, { Flags } from '../../base'
 import Listr from 'listr'
 import { type BusinessModel, readResourceData, type SeederResource } from '../../data'
-import { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { type CommerceLayerClient, CommerceLayerStatic, type ResourceId } from '@commercelayer/sdk'
 import { checkResourceType } from './check'
 import { clApi, clColor, clText } from '@commercelayer/cli-core'
 import { type ResourceTypeNumber, requestsDelay } from '../../common'
@@ -126,7 +126,7 @@ export default class SeederClean extends Command {
       const resource = resourceData[ref]
       const type = resource?.type || res.resourceType
 
-      const remoteRes = await this.findByReference(type, ref)
+      const remoteRes: ResourceId | undefined = await this.findByReference(type, ref)
       if (remoteRes) await this.deleteResource(remoteRes.type, remoteRes.id)
 
     }
@@ -142,7 +142,7 @@ export default class SeederClean extends Command {
 
     const resSdk: any = this.cl[type as keyof CommerceLayerClient]
 
-    await this.applyRequestDelay(type, 'delete')
+    await this.applyRequestDelay(type, 'DELETE')
 
     await resSdk.delete(id).catch((error: any) => {
       if (CommerceLayerStatic.isApiError(error)) {
@@ -168,7 +168,7 @@ export default class SeederClean extends Command {
         const resourceData = await readResourceData(dataFilesUrl, res.resourceType)
         const referenceKeys = res.importAll ? Object.keys(resourceData): res.referenceKeys
 
-        if (clApi.isResourceCacheable(res.resourceType, 'delete')) {
+        if (clApi.isResourceCacheable(res.resourceType, 'DELETE')) {
           resources.cacheable += referenceKeys.length
           if (!resources.cacheableTypes) resources.cacheableTypes = []
           if (!resources.cacheableTypes.includes(res.resourceType)) resources.cacheableTypes.push(res.resourceType)

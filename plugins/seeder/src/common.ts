@@ -1,5 +1,4 @@
 import { join, resolve } from 'path'
-import axios from 'axios'
 import { readFileSync } from 'fs'
 import { type ApiMode, clApi } from '@commercelayer/cli-core'
 
@@ -23,8 +22,8 @@ const getCommerceLayerDataFile = async (url: string, file: string): Promise<any>
   let dataFile: any
 
   if (isRemotePath(url)) {
-    const remFile = await axios.get(filePath)
-    dataFile = remFile.data
+    const remFile = await fetch(filePath)
+    dataFile = await remFile.json()
   } else {
     const locFile = readFileSync(resolve(filePath), { encoding: 'utf-8' })
     dataFile = JSON.parse(locFile)
