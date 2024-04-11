@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.0.0-oclif3.6...v4.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* replace ts-node with tsx ([5315712](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/5315712dabd0cff5813b5f86b84dcacc2ea41ef7))
+
 # [4.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.0.0-oclif3.5...v4.0.0-oclif3.6) (2024-04-11)
 
 
