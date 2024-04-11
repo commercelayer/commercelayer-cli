@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.0.0-oclif3.5...v3.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix sdk6 types ([a14f4d4](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/a14f4d484d6c5a664138fad23c6945eaefad1273))
+
 # [3.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.0.0-oclif3.4...v3.0.0-oclif3.5) (2024-02-23)
 
 
