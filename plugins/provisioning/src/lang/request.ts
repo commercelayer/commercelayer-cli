@@ -49,12 +49,12 @@ const addRequestReader = (cl: CommerceLayerProvisioningClient, interrupt = true)
     const c = request
     const x = reader.request
 
-    x.path = c.url || ''
-    x.method = c.method || 'get'
-    x.headers = c.headers
-    x.params = c.params
-    x.baseUrl = c.baseURL || ''
-    x.data = c.data
+    x.path = c.url.pathname
+    x.method = c.options.method || 'GET'
+    x.headers = c.options.headers
+    x.params = c.url.searchParams
+    x.baseUrl = `${c.url.protocol}//${c.url.hostname}`
+    x.data = c.options.body
 
     if (interrupt) throw new RequestInterrupted()
 
@@ -63,8 +63,8 @@ const addRequestReader = (cl: CommerceLayerProvisioningClient, interrupt = true)
   }
 
 
-  const interceptor = cl.addRequestInterceptor(requestInterceptor)
-  reader.id = interceptor
+  /* const interceptor = */ cl.addRequestInterceptor(requestInterceptor)
+  reader.id = 1// interceptor
 
   return reader
 
@@ -86,7 +86,7 @@ export const getMethod = (request: RequestData): string => {
 
 
 export const getFullUrl = (request: RequestData): string => {
-  let fullUrl = `${request.baseUrl}/${request.path}`
+  let fullUrl = `${request.baseUrl}${request.path}`
   if (request.params && (Object.keys(request.params as object).length > 0)) {
     const qs = Object.entries(request.params as object).map(([k, v]) => `${k}=${v}`).join('&')
     fullUrl += `?${qs}`

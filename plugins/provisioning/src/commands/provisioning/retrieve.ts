@@ -66,7 +66,7 @@ export default class ProvisioningRetrieve extends Command {
     // Include flags
     const include: string[] = this.includeFlag(flags.include)
     // Fields flags
-    const fields = this.fieldsFlag(flags.fields, resource.api)
+    const fields = this.fieldsFlag(flags.fields, resource.api as string)
 
 
     const cl = this.initCommerceLayer(flags)

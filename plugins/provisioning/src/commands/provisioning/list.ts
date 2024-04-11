@@ -1,5 +1,5 @@
 import Command, { Flags,/* FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, */cliux } from '../../base'
-import { type CommerceLayerProvisioningClient, type QueryParamsList } from '@commercelayer/provisioning-sdk'
+import type { QueryPageSize, CommerceLayerProvisioningClient, QueryParamsList } from '@commercelayer/provisioning-sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 // import { mergeCommandParams } from '../../commands'
 import { clColor } from '@commercelayer/cli-core'
@@ -90,14 +90,14 @@ export default class ProvisioningList extends Command {
 		// Include flags
 		const include: string[] = this.includeFlag(flags.include, undefined, flags['force-include'])
 		// Fields flags
-		const fields = this.fieldsFlag(flags.fields, resource.api)
+		const fields = this.fieldsFlag(flags.fields, resource.api as string)
 		// Where flags
 		const wheres = this.whereFlag(flags.where)
 		// Sort flags
 		const sort = this.sortFlag(flags.sort)
 
 		const page = flags.page
-		const perPage = flags.pageSize
+		const perPage = flags.pageSize as QueryPageSize
 
 
 		const cl = this.initCommerceLayer(flags)

@@ -80,7 +80,7 @@ export default class ProvisioningUpdate extends Command {
     // Raw request
     if (flags.data) {
       try {
-        const baseUrl = clApi.baseURL(undefined, flags.domain, true)
+        const baseUrl = clApi.baseURL('provisioning', undefined, flags.domain)
         const accessToken = flags.accessToken
         const rawRes = await clApi.request.raw({ operation: clApi.Operation.Update, baseUrl, accessToken, resource: resource.api }, clApi.request.readDataFile(flags.data), id)
         const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
@@ -127,7 +127,7 @@ export default class ProvisioningUpdate extends Command {
     // Include flags
     const include: string[] = this.includeFlag(flags.include, relationships)
     // Fields flags
-    const fields = this.fieldsFlag(flags.fields, resource.api)
+    const fields = this.fieldsFlag(flags.fields, resource.api as string)
 
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined

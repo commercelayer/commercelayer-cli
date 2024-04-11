@@ -1,4 +1,4 @@
-import type { ResourceTypeLock } from '@commercelayer/provisioning-sdk/lib/cjs/api'
+import type { ResourceTypeLock } from '@commercelayer/provisioning-sdk'
 import RESOURCES from './available'
 
 
