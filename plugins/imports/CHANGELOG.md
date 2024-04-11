@@ -1,3 +1,11 @@
+# [4.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.4...v4.0.0-oclif3.5) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix new sdk6 types ([282f223](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/282f223e1e6dfc67690274c39dddcd0b808c9587))
+* update dependencies ([ea81ff4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/ea81ff4c3fcc8019d1bc2aaf2938b0c21ae7892c))
+
 # [4.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.3...v4.0.0-oclif3.4) (2024-02-23)
 
 
