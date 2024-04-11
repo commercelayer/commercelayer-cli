@@ -48,7 +48,7 @@
     "prepack": "pnpm generate && pnpm build && oclif manifest && pnpm readme",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "generate": "ts-node gen/generator.ts",
+    "generate": "tsx gen/generator.ts",
     "lint": "eslint src --ext .ts --config .eslintrc",
     "lint:fix": "eslint src --fix"
   },
