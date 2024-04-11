@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.6...v4.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* replace ts-node with tsx ([a1ba5cf](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/a1ba5cf2a4c2cf1ca05871ef7ff2c23c379db680))
+
 # [4.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-oclif3.5...v4.0.0-oclif3.6) (2024-04-11)
 
 
