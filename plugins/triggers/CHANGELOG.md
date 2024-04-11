@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.0.0-oclif3.5...v4.0.0-oclif3.6) (2024-04-11)
+
+
+### Features
+
+* update triggers ([1c21a80](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/1c21a800ee692a1ba5ed8ff0b70dcc8e246c0084))
+
 # [4.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.0.0-oclif3.4...v4.0.0-oclif3.5) (2024-02-23)
 
 
