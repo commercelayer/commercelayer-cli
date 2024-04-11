@@ -1,3 +1,12 @@
+# [3.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-oclif3.4...v3.0.0-oclif3.5) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix package manager ([292b395](https://github.com/commercelayer/commercelayer-cli-dev/commit/292b395a470f606f2af7c1f0990736ac0e017308))
+* fix readme generator ([63ad2ce](https://github.com/commercelayer/commercelayer-cli-dev/commit/63ad2ced37559f6a96d05cccb79ab95c27304bbc))
+* update dependencies ([a3593fb](https://github.com/commercelayer/commercelayer-cli-dev/commit/a3593fbd75aa4069dc4c90383ed7f463d5dfbb58))
+
 # [3.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-oclif3.3...v3.0.0-oclif3.4) (2024-02-22)
 
 
