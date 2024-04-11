@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.0.0-oclif3.3...v5.0.0-oclif3.4) (2024-04-11)
+
+
+### Features
+
+* update triggers and dependencies ([d156c4a](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/d156c4a500c3e5bc7fced867303c621a8c545f93))
+
 # [5.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.0.0-oclif3.2...v5.0.0-oclif3.3) (2024-02-23)
 
 
