@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@commercelayer/cli-core':
     specifier: beta
-    version: 5.0.0-oclif3.15
+    version: 5.0.0-oclif3.16
   '@commercelayer/sdk':
     specifier: sdk6
     version: 6.0.0-beta.22
@@ -24,7 +24,7 @@ dependencies:
 devDependencies:
   '@commercelayer/cli-dev':
     specifier: beta
-    version: 3.0.0-oclif3.4
+    version: 3.0.0-oclif3.6
   '@commercelayer/eslint-config-ts':
     specifier: ^1.4.5
     version: 1.4.5(eslint@8.57.0)(typescript@5.3.3)
@@ -969,8 +969,8 @@ packages:
     dev: true
     optional: true
 
-  /@commercelayer/cli-core@5.0.0-oclif3.15:
-    resolution: {integrity: sha512-T2UaFCNwEGlNsINVFhPctKC33gX3yvioc/cZnJnhD5ZIvot6c3e5TghYAYq23XarmLBNik01hWoJl62EyhFj9Q==}
+  /@commercelayer/cli-core@5.0.0-oclif3.16:
+    resolution: {integrity: sha512-Gz0ZxSjR4xMOUJCdHKEZPeqR9SoXz5MmG6nnt54HSHt8F3Ny03zAaS5Zb4zF/KqGPaZ4Q0iRCHEf57UW7B4jiA==}
     engines: {node: '>=20'}
     dependencies:
       '@commercelayer/js-auth': 6.0.0
@@ -982,9 +982,9 @@ packages:
       - encoding
     dev: false
 
-  /@commercelayer/cli-dev@3.0.0-oclif3.4:
-    resolution: {integrity: sha512-7A5shT7bRqlsbrx8uQ7gu/Noz+vBP6tSDkFDCh4WauyD5H3x1ZDo5NyglxHUNrOcdjs3Y7Z0fMQug4uWdTiOew==}
-    engines: {node: '>=20.10.0'}
+  /@commercelayer/cli-dev@3.0.0-oclif3.6:
+    resolution: {integrity: sha512-/EtcqXoLbAXDxYcIouccoR2jCRkoJ+fHvX7Pb7Filq1257UmJCe8kvrmeHCc1ne4kLQgPL6TeV5aee6r2mBlNA==}
+    engines: {node: '>=20'}
     hasBin: true
     dependencies:
       '@oclif/core': 3.26.2
