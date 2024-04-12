@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0-oclif3.6...v5.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([1455b8a](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/1455b8a8a18c64313388d2a1e513c2c72754543e))
+
 # [5.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0-oclif3.5...v5.0.0-oclif3.6) (2024-04-11)
 
 
