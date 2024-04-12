@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.7...v6.0.0-oclif3.8) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([2081922](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/208192215c23946b0e786e8379f3e752d291b08b))
+
 # [6.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.6...v6.0.0-oclif3.7) (2024-04-11)
 
 
