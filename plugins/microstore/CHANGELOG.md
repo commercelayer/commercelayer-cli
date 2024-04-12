@@ -1,3 +1,10 @@
+# [2.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.6...v2.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([fa1b53c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/fa1b53c3b6f1acc3dae7e4e52794ab5cf03855bd))
+
 # [2.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.5...v2.0.0-oclif3.6) (2024-04-11)
 
 
