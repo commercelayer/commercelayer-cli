@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.6...v3.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([3e9406d](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3e9406debbe0e70e471a74cf5a26db9c4d8f801a))
+
 # [3.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.5...v3.0.0-oclif3.6) (2024-04-11)
 
 
