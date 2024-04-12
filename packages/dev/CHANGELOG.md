@@ -1,3 +1,36 @@
+# [3.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.3...v3.0.0-rc.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix config ([7bdda2f](https://github.com/commercelayer/commercelayer-cli-dev/commit/7bdda2fda724110c0d83a0fd31a818a9b67ae65d))
+* fix dependencies ([00a46ef](https://github.com/commercelayer/commercelayer-cli-dev/commit/00a46ef4be6ce199778505ca1ae033b26e3f40a8))
+* fix package manager ([292b395](https://github.com/commercelayer/commercelayer-cli-dev/commit/292b395a470f606f2af7c1f0990736ac0e017308))
+* fix readme generator ([63ad2ce](https://github.com/commercelayer/commercelayer-cli-dev/commit/63ad2ced37559f6a96d05cccb79ab95c27304bbc))
+* fix release config ([a093541](https://github.com/commercelayer/commercelayer-cli-dev/commit/a093541d96f5f72e0daebea79ebf5ec5dd374e79))
+* fix ts-node ([dcfa319](https://github.com/commercelayer/commercelayer-cli-dev/commit/dcfa319d8ae73c1242ec502c4c55db4f5ae8cfae))
+* fix tsconfig ([6ec412b](https://github.com/commercelayer/commercelayer-cli-dev/commit/6ec412b88788c761a72658a1ef5f8aa2fa3e1a4d))
+* replace ts-node with tsx ([f0d9d32](https://github.com/commercelayer/commercelayer-cli-dev/commit/f0d9d32d3171a40c3079d859bdff4e14116878b2))
+* update dependencies ([a3593fb](https://github.com/commercelayer/commercelayer-cli-dev/commit/a3593fbd75aa4069dc4c90383ed7f463d5dfbb58))
+
+
+### Features
+
+* prerelease ([1566a68](https://github.com/commercelayer/commercelayer-cli-dev/commit/1566a68003632b2aea45e62a17eba792f99750eb))
+
+
+### Performance Improvements
+
+* update engine ([f733dc7](https://github.com/commercelayer/commercelayer-cli-dev/commit/f733dc7ecd6e4f935a068cd86845571de6acda82))
+* upgrade to oclif 3 ([09e8497](https://github.com/commercelayer/commercelayer-cli-dev/commit/09e84974d9636ede8a72edc418bc7b65eb4d0944))
+* upgrade to oclif 3 ([d7ceae0](https://github.com/commercelayer/commercelayer-cli-dev/commit/d7ceae04861b38aa971f409a99d5b75815a59b0d))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
 # [3.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-oclif3.7...v3.0.0-oclif3.8) (2024-04-12)
 
 
