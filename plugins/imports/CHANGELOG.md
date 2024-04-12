@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.6...v4.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([a36a3ab](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/a36a3ab0b3cd8b81470d31dfb80db1335838b777))
+
 # [4.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.5...v4.0.0-oclif3.6) (2024-04-11)
 
 
