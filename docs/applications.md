@@ -19,10 +19,10 @@ Show a list of all (logged in) available CLI applications.
 ```sh-session
 USAGE
   $ commercelayer applications [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-P |  | -o <value> |  | ] [-S]
+    <value>] [-A <value> | -o <value>] [-S]
 
 FLAGS
-  -P, --provisioning          Provisioning applications
+  -A, --api=<value>           specific API application
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
@@ -77,6 +77,8 @@ ALIASES
 
 EXAMPLES
   $ commercelayer applications:add -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
+
+  $ cl app:add -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
 _See code: [src/commands/applications/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/add.ts)_
@@ -113,10 +115,10 @@ Show application details.
 ```sh-session
 USAGE
   $ commercelayer applications:info [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-P |  | -o <value> |  | ] [-j]
+    <value>] [-A <value> | -o <value>] [-j]
 
 FLAGS
-  -P, --provisioning          Provisioning applications
+  -A, --api=<value>           specific API application
   -a, --alias=<value>         the alias associated to the application
   -j, --json                  show info in JSON format
   -k, --kind=<option>         application kind
@@ -163,6 +165,8 @@ ALIASES
 
 EXAMPLES
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
+
+  $ cl app:login -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
 _See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/login.ts)_
@@ -174,10 +178,10 @@ Remove an application from CLI local configuration.
 ```sh-session
 USAGE
   $ commercelayer applications:logout [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-P |  | -o <value> |  | ] [-r]
+    <value>] [-A <value> | -o <value>] [-r]
 
 FLAGS
-  -P, --provisioning          Provisioning applications
+  -A, --api=<value>           specific API application
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
                               <options: integration|sales_channel|user>
@@ -207,10 +211,10 @@ Show all Provisioning applications.
 ```sh-session
 USAGE
   $ commercelayer applications:provisioning [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-P |  | -o <value> |  | ] [-S]
+    <value>] [-A <value> | -o <value>] [-S]
 
 FLAGS
-  -P, --provisioning          Provisioning applications
+  -A, --api=<value>           specific API application
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
@@ -275,10 +279,10 @@ Switch applications.
 ```sh-session
 USAGE
   $ commercelayer applications:switch [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-P |  | -o <value> |  | ]
+    <value>] [-A <value> | -o <value>]
 
 FLAGS
-  -P, --provisioning          Provisioning applications
+  -A, --api=<value>           specific API application
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
                               <options: integration|sales_channel|user>

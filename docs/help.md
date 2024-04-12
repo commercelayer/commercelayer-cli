@@ -10,10 +10,10 @@ Display help for commercelayer.
 
 ```sh-session
 USAGE
-  $ commercelayer help [COMMANDS] [-n]
+  $ commercelayer help [COMMANDS...] [-n]
 
 ARGUMENTS
-  COMMANDS  Command to show help for.
+  COMMANDS...  Command to show help for.
 
 FLAGS
   -n, --nested-commands  Include all nested commands in the output.
