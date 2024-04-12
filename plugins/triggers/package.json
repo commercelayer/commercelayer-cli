@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "4.0.0-oclif3.9",
+  "version": "4.0.0-oclif3.10",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers",
   "repository": "commercelayer/commercelayer-cli-plugin-triggers",

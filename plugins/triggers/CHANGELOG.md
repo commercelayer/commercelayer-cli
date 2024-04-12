@@ -1,3 +1,10 @@
+# [4.0.0-oclif3.10](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.0.0-oclif3.9...v4.0.0-oclif3.10) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([f73889f](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/f73889f042418f00f0371b51b0fca7c7a1c3581d))
+
 # [4.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.0.0-oclif3.8...v4.0.0-oclif3.9) (2024-04-11)
 
 
