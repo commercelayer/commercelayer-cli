@@ -1,3 +1,10 @@
+# [6.0.0-oclif3.14](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-oclif3.13...v6.0.0-oclif3.14) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix scripts ([4becd07](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/4becd073bee37e078c853c45ff2a16041d49d9bd))
+
 # [6.0.0-oclif3.13](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-oclif3.12...v6.0.0-oclif3.13) (2024-04-11)
 
 
