@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-oclif3.6...v3.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([dcfa319](https://github.com/commercelayer/commercelayer-cli-dev/commit/dcfa319d8ae73c1242ec502c4c55db4f5ae8cfae))
+
 # [3.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-oclif3.5...v3.0.0-oclif3.6) (2024-04-11)
 
 
