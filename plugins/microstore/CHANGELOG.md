@@ -1,3 +1,10 @@
+# [2.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.7...v2.0.0-oclif3.8) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([26e390d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/26e390d6f6a3b4e40d08cfca27871a239e538385))
+
 # [2.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.6...v2.0.0-oclif3.7) (2024-04-11)
 
 
