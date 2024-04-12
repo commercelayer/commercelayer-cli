@@ -1,3 +1,15 @@
+# [6.0.0-oclif3.17](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.16...v6.0.0-oclif3.17) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix hidden commands and options ([794ac33](https://github.com/commercelayer/commercelayer-cli/commit/794ac33c7143aaab55a1494c4450eff1aa3a79fe))
+
+
+### Features
+
+* add fig command ([385697a](https://github.com/commercelayer/commercelayer-cli/commit/385697a757ff245e319768060f4e04253c45376c))
+
 # [6.0.0-oclif3.16](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.15...v6.0.0-oclif3.16) (2024-04-09)
 
 
