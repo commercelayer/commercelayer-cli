@@ -1,4 +1,4 @@
-#!/usr/bin/env node_modules/.bin/ts-node
+#!/usr/bin/env node_modules/.bin/tsx
 
 const OCLIF_PATCH = true
 const COMMAND_PATCH_ENABLED = true

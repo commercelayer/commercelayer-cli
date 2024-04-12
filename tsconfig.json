@@ -8,7 +8,7 @@
     "strict": true,
     "target": "ES2022",
     "esModuleInterop": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*"

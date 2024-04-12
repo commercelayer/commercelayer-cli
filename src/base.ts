@@ -50,7 +50,7 @@ export default abstract class extends Command {
 			char: 'A',
 			description: 'specific API application',
 			exclusive: ['organization'],
-			input: ['core', 'provisioning']
+			options: ['core', 'provisioning']
 		})
 	}
 
