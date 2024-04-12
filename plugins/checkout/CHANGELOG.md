@@ -1,3 +1,10 @@
+# [5.0.0-oclif3.10](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.9...v5.0.0-oclif3.10) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([15430cf](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/15430cfde68522fa3da584bf601f68cc22dbec52))
+
 # [5.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.8...v5.0.0-oclif3.9) (2024-04-11)
 
 
