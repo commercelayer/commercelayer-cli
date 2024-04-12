@@ -1,7 +1,7 @@
 name: Release
 on:
   push:
-    branches: [ main, oclif3 ]
+    branches: [ main, beta, prerelease, oclif3 ]
   pull_request:
     branches: [ main ]
 jobs:
