@@ -1,3 +1,10 @@
+# [3.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.7...v3.0.0-oclif3.8) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([3370ffe](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3370ffe258da60884bb63bb4c3318574625fe4df))
+
 # [3.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.6...v3.0.0-oclif3.7) (2024-04-11)
 
 
