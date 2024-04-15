@@ -54,10 +54,10 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "beta",
+    "@commercelayer/cli-dev": "prerelease",
     "@commercelayer/eslint-config-ts": "^1.4.5",
-    "@oclif/plugin-help": "^6.0.20",
-    "@oclif/test": "^3.2.9",
+    "@oclif/plugin-help": "^6.0.21",
+    "@oclif/test": "^3.2.10",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.14",
@@ -71,15 +71,15 @@
     "lodash.snakecase": "^4.1.1",
     "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.8.0",
+    "oclif": "^4.8.5",
     "semantic-release": "^22.0.12",
     "tsx": "^4.7.2",
     "typescript": "5.3.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "beta",
-    "@commercelayer/sdk": "sdk6",
-    "@oclif/core": "^3.26.2",
+    "@commercelayer/cli-core": "prerelease",
+    "@commercelayer/sdk": "prerelease",
+    "@oclif/core": "^3.26.3",
     "inquirer": "^8.2.6",
     "tslib": "^2.6.2"
   },
