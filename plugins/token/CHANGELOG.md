@@ -1,3 +1,10 @@
+# [6.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-rc.2...v6.0.0-rc.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* update dependencies ([66e5889](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/66e588909d9575392bc9ad1d43bf5b066ff65752))
+
 # [6.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2024-04-15)
 
 
