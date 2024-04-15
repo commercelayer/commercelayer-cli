@@ -1,12 +1,8 @@
 import jwt from 'jsonwebtoken'
 import config from './config'
-import https from 'https'
-import { isProvisioningApp, type AppAuth } from './application'
-import { sleep } from './util'
-import { type ApiMode, baseURL } from './api'
-import { CLIError } from '@oclif/core/lib/errors'
-import { core, provisioning, type TClientCredentials, type TPassword, type TProvisioningOptions } from '@commercelayer/js-auth'
-
+import { type AppAuth } from './application'
+import { type ApiMode } from './api'
+import { authenticate, revoke, type AuthenticateOptions } from '@commercelayer/js-auth'
 
 
 export type AuthScope = string | string[]
@@ -100,9 +96,6 @@ const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
   let accessToken
 
-  if (isProvisioningApp(auth)) accessToken = await getAccessTokenProvisioning(auth)
-  else {
-
     const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
 
     const credentials: any = {
@@ -116,134 +109,26 @@ const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
     if (auth.email && auth.password) {
       credentials.username = auth.email
       credentials.password = auth.password
-      accessToken = await core.authentication('password', credentials as TPassword)
+      accessToken = await authenticate('password', credentials as AuthenticateOptions<'password'>)
     }
-    else accessToken = await core.authentication('client_credentials', credentials as TClientCredentials)
+    else accessToken = await authenticate('client_credentials', credentials as AuthenticateOptions<'client_credentials'>)
 
-  }
+  
 
   if (!accessToken) throw new Error('Unable to get access token')
   else
-  if (accessToken.error) throw new Error(`Unable to get access token: ${accessToken.error}`)
+  if (accessToken.errors) throw new Error(`Unable to get access token: ${accessToken.errors[0].detail}`)
 
   return accessToken
 
 }
 
 
-const getAccessTokenProvisioning = async (auth: AppAuth): Promise<AccessToken> => {
-
-  const credentials: TProvisioningOptions = {
-    clientId: auth.clientId,
-    clientSecret: auth.clientSecret,
-    domain: auth.domain
-  }
-
-  return provisioning.authentication(credentials)
-
+const revokeAccessToken = async (app: AppAuth, token: string): Promise<void> => {
+  const result = await revoke({ ...app, token })
+  if (result.errors) throw new Error(result.errors[0].detail)
 }
 
-
-const revokeAccessToken = async (app: AppAuth, token: string, logger?: { log: (msg: any) => void }): Promise<void> => {
-
-  /*
-  return axios
-    .post(`${app.baseUrl}/oauth/revoke`, {
-    grant_type: 'client_credentials',
-    client_id: app.clientId,
-    client_secret: app.clientSecret,
-    token,
-    })
-  */
-  const scope = Array.isArray(app.scope) ? app.scope.join(';') : app.scope
-
-  const data = JSON.stringify({
-    grant_type: 'client_credentials',
-    client_id: app.clientId,
-    client_secret: app.clientSecret,
-    scope,
-    token,
-  })
-
-  const provisioning = isProvisioningApp(app)
-  const contentType = provisioning ? 'application/vnd.api+json' : 'application/json'
-  const slug = provisioning ? 'auth' : app.slug || ''
-
-  const options = {
-    hostname: baseURL(slug, app.domain).replace('https://', '').replace('http://', ''),
-    port: 443,
-    path: '/oauth/revoke',
-    method: 'POST',
-    headers: {
-      'Content-Type': contentType,
-      'Content-Length': data.length,
-    },
-  }
-
-  if (logger) logger.log(options)
-  if (logger) logger.log(data)
-
-  let err = false
-
-  try {
-
-    const req = https.request(options/* , res => {
-    console.log(`statusCode: ${res.statusCode}`)
-
-    res.on('data', d => {
-      process.stdout.write(d)
-    })
-  } */)
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    req.on('error', error => {
-      err = true
-      throw new CLIError(error.message || 'Error revoking access token')
-    })
-
-    req.write(data)
-    req.end()
-
-  } catch (error) {
-    err = true
-    if (logger) logger.log((error as Error).message)
-    if (error instanceof CLIError) throw error
-    else throw new CLIError((error as Error).message || 'Error revoking access token')
-  }
-
-  await sleep(300)
-  if (!err && logger) logger.log('Access token revoked')
-
-}
-
-
-/*
-const revokeAccessTokenAxios = async (app: AppAuth, token: string, logger?: { log: (msg: any) => void }): Promise<void> => {
-
-  const scope = Array.isArray(app.scope) ? app.scope.join(';') : app.scope
-
-  const data = {
-    grant_type: 'client_credentials',
-    client_id: app.clientId,
-    client_secret: app.clientSecret,
-    scope,
-    token,
-  }
-  if (logger) logger.log(data)
- 
-  try {
-    await axios.post(`${baseURL(app.slug, app.domain)}/oauth/revoke`, data, { headers: { 'Content-Type': 'application/json' }})
-  } catch (error) {
-    if (logger) logger.log((error as Error).message)
-    if (error instanceof CLIError) throw error
-    else throw new CLIError((error as Error).message || 'Error revoking access token')
-  }
-
-  await sleep(300)
-  if (logger) logger.log('Access token revoked')
-
-}
-*/
 
 
 const isAccessTokenExpiring = (tokenData: AccessToken): boolean => {

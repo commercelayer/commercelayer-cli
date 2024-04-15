@@ -1,5 +1,4 @@
 
-import axios from 'axios'
 import { readFileSync } from 'fs'
 import { clColor } from '.'
 
@@ -16,19 +15,20 @@ const rawRequest = async (
   id?: string,
 ): Promise<any> => {
 
-  return await axios.request({
+  const response = await fetch(new URL(`/api/${config.resource}` + (id ? `/${id}` : ''), config.baseUrl), {
     method: config.operation,
-    baseURL: config.baseUrl,
-    url: `/api/${config.resource}` + (id ? `/${id}` : ''),
     headers: {
       'Content-Type': 'application/vnd.api+json',
       Accept: 'application/vnd.api+json',
       Authorization: `Bearer ${config.accessToken}`,
     },
-    data,
+    body: JSON.stringify(data)
   }).then(res => {
-    return res.data
+    if (res.ok) return res
+    else throw new Error(res.statusText)
   })
+
+  return await response.json()
 
 }
 
