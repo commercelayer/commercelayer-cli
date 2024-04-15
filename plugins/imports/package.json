@@ -73,8 +73,8 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "beta",
-    "@commercelayer/sdk": "sdk6",
+    "@commercelayer/cli-core": "prerelease",
+    "@commercelayer/sdk": "prerelease",
     "@fast-csv/parse": "^4.3.6",
     "@oclif/core": "^3.26.2",
     "axios": "^1.6.8",
