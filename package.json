@@ -93,7 +93,7 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "beta",
+    "@commercelayer/cli-dev": "prerelease",
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^3.2.10",

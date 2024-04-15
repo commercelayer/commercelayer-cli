@@ -44,8 +44,8 @@ dependencies:
 
 devDependencies:
   '@commercelayer/cli-dev':
-    specifier: beta
-    version: 3.0.0-oclif3.8
+    specifier: prerelease
+    version: 3.0.0-rc.1
   '@commercelayer/eslint-config-ts':
     specifier: ^1.4.5
     version: 1.4.5(eslint@8.57.0)(typescript@5.4.5)
@@ -1024,8 +1024,8 @@ packages:
       - encoding
     dev: false
 
-  /@commercelayer/cli-dev@3.0.0-oclif3.8:
-    resolution: {integrity: sha512-VZXkuLe5B2qgvvNFcmppsZZNzRZE1n6N0GSTW+/8+K9qa44o9SK0sZGzK9OsNX48F4Cg1B00btzhLy8kYqMFbw==}
+  /@commercelayer/cli-dev@3.0.0-rc.1:
+    resolution: {integrity: sha512-nAfDQy/1HqbM95KWtddChZt+S/AIxEklEkhWegtY2KVvilMWK0Lgqv1R0sYL8G9Vt/BXacztUiqELH9vhB74Jw==}
     engines: {node: '>=20'}
     hasBin: true
     dependencies:
