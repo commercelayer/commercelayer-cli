@@ -23,8 +23,8 @@ dependencies:
 
 devDependencies:
   '@commercelayer/cli-dev':
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^3.0.2
+    version: 3.0.2
   '@commercelayer/eslint-config-ts':
     specifier: ^1.4.5
     version: 1.4.5(eslint@8.57.0)(typescript@5.3.3)
@@ -982,8 +982,8 @@ packages:
       - encoding
     dev: false
 
-  /@commercelayer/cli-dev@3.0.0:
-    resolution: {integrity: sha512-9Raf2N63iVRUyHIs2y9Q+CDqGsNd3xmuYA7wNJixHjm/vTGU/MWCoKHiXOEW9ObQbWnQhTNt12AlidUkJ1rYgQ==}
+  /@commercelayer/cli-dev@3.0.2:
+    resolution: {integrity: sha512-u9TgZPJdlqYChTvehTmrEZ449DT0bteAQEAyUqYrz+oOa42U6oJt3933EMTpv5ZL47FXdZtD0mibUHpvqx6fdg==}
     engines: {node: '>=20'}
     hasBin: true
     dependencies:
