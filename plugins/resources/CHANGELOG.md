@@ -1,3 +1,10 @@
+# [6.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix descriptions for use with fig ([dd939a3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/dd939a3c0fd21cc2e36ae5ef59351e753b811211))
+
 # [6.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v5.21.0...v6.0.0-rc.1) (2024-04-12)
 
 
