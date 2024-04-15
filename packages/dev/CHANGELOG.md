@@ -1,3 +1,10 @@
+# [3.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.0-rc.1...v3.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix bin scripts ([8c064f2](https://github.com/commercelayer/commercelayer-cli-dev/commit/8c064f2a049e26eaee8f0c17fb61a613eb3c90dc))
+
 # [3.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-dev/compare/v2.1.3...v3.0.0-rc.1) (2024-04-12)
 
 
