@@ -218,7 +218,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
     fields: Flags.string({
       char: 'f',
       multiple: true,
-      description: 'comma separeted list of fields in the format [resourceType/]field1,field2...',
+      description: 'comma separeted list of fields in the format [resourceType/]field1,field2,field3',
     }),
     json: Flags.boolean({
       char: 'j',
