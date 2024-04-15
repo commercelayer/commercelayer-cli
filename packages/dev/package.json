@@ -45,7 +45,7 @@
     "build": "rm -rf lib && tsc",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
-    "readme": "./bin/run readme && git add README.md",
+    "readme": "./bin/run.js readme && git add README.md",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "lintspec": "eslint ./specs/ --ext .spec.ts",
     "lint:fix": "eslint src --fix"
