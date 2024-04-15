@@ -1,3 +1,10 @@
+# [2.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix descriptions for use with fig ([3f12baf](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/3f12baf8e22e1bec9412782a3912b8ee44be567e))
+
 # [2.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v1.0.1...v2.0.0-rc.1) (2024-04-12)
 
 
