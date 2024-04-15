@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@commercelayer/cli-core':
-    specifier: prerelease
-    version: 5.0.0-rc.1
+    specifier: ^5.0.0
+    version: 5.0.0
   '@commercelayer/sdk':
     specifier: prerelease
     version: 6.0.0-rc.2
@@ -23,8 +23,8 @@ dependencies:
 
 devDependencies:
   '@commercelayer/cli-dev':
-    specifier: prerelease
-    version: 3.0.0-rc.1
+    specifier: ^3.0.2
+    version: 3.0.2
   '@commercelayer/eslint-config-ts':
     specifier: ^1.4.5
     version: 1.4.5(eslint@8.57.0)(typescript@5.3.2)
@@ -981,8 +981,8 @@ packages:
     dev: true
     optional: true
 
-  /@commercelayer/cli-core@5.0.0-rc.1:
-    resolution: {integrity: sha512-FBXCWg1wZzkhM7/KaG8CtaFlFVbiveYMsbg4wFUmUfGcq21FxJWV5VUqa/s/IdDh5DyO7pil3O1lvJA647MszA==}
+  /@commercelayer/cli-core@5.0.0:
+    resolution: {integrity: sha512-fYrSHZVni0jOg5Ue1AxxvRZZ7CLu5PKH/t9/l4BnkFfiZlHkrdj3aYP0w/tHkOvetQiboYC+lzaEhI0bVxonJw==}
     engines: {node: '>=20'}
     dependencies:
       '@commercelayer/js-auth': 6.0.0
@@ -994,8 +994,8 @@ packages:
       - encoding
     dev: false
 
-  /@commercelayer/cli-dev@3.0.0-rc.1:
-    resolution: {integrity: sha512-nAfDQy/1HqbM95KWtddChZt+S/AIxEklEkhWegtY2KVvilMWK0Lgqv1R0sYL8G9Vt/BXacztUiqELH9vhB74Jw==}
+  /@commercelayer/cli-dev@3.0.2:
+    resolution: {integrity: sha512-u9TgZPJdlqYChTvehTmrEZ449DT0bteAQEAyUqYrz+oOa42U6oJt3933EMTpv5ZL47FXdZtD0mibUHpvqx6fdg==}
     engines: {node: '>=20'}
     hasBin: true
     dependencies:
