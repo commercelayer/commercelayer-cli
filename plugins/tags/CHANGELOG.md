@@ -1,3 +1,10 @@
+# [2.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix remove command aliases ([1cae45a](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/1cae45ac435b839d70779f4a3b2ebf376c1ea697))
+
 # [2.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v1.2.1...v2.0.0-rc.1) (2024-04-12)
 
 
