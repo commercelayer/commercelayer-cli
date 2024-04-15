@@ -8,8 +8,6 @@ export default class TagsRemove extends BaseCommand {
 
   static description = 'remove one or more tags to a set of resources'
 
-  static aliases = ['tag']
-
   static examples = [
     '$ commercelayer tags:remove -t <resource-type> -n <tag-names> -i <resources-id>',
     '$ cl tags:rm -t customers -i aBcDeFghIL mnOPqRstUV -n groupA'
