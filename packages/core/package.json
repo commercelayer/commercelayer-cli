@@ -47,7 +47,7 @@
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "jest": "^29.7.0",
-    "oclif": "^4.8.0",
+    "oclif": "^4.8.5",
     "semantic-release": "^23.0.8",
     "tsup": "^8.0.2",
     "tsx": "^4.7.2",
@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@commercelayer/js-auth": "^6.0.0",
-    "@oclif/core": "^3.26.2",
+    "@oclif/core": "^3.26.3",
     "chalk": "^4.1.2",
     "jsonwebtoken": "^9.0.2",
     "update-notifier-cjs": "^5.1.6"
