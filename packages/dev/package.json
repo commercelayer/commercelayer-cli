@@ -40,11 +40,11 @@
   },
   "scripts": {
     "pretest": "pnpm build --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "pnpm lint",
     "build": "rm -rf lib && tsc",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "./bin/run readme && git add README.md",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "lintspec": "eslint ./specs/ --ext .spec.ts",
