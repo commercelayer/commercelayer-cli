@@ -1,3 +1,10 @@
+# [2.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2024-04-15)
+
+
+### Bug Fixes
+
+* update dependencies ([9146aca](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/9146aca6dc29daa8657aae6cc10ad915f70d939d))
+
 # [2.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-04-15)
 
 
