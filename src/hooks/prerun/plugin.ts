@@ -20,6 +20,14 @@ const hook: Hook<'prerun'> = async function (opts) {
 
     const command = opts.Command.id.replace('plugins:', '')
 
+    // Check tag flag
+    const tgIndex = opts.argv.indexOf('--tag')
+    let tag
+    if (tgIndex > -1) {
+      tag = opts.argv[tgIndex + 1]
+      opts.argv.splice(tgIndex, 2)
+    }
+
     if (opts.argv.length === 0) {
       const arg = await promptPlugin(this.config, command)
         .catch((error: Error) => { this.error(error) })
@@ -63,12 +71,8 @@ const hook: Hook<'prerun'> = async function (opts) {
       } else this.log('')
 
 
-      // Check tag flag
-      const tgIndex = opts.argv.indexOf('--tag')
-      if (tgIndex > -1) {
-        plugin = `${plugin}@${opts.argv[tgIndex + 1]}`
-        opts.argv.splice(tgIndex, 2)
-      }
+      // Set version
+      if (tgIndex > -1) plugin = `${plugin}@${tag}`
 
       // Overwrite plugin short name whith its full name
       opts.argv[index] = plugin
