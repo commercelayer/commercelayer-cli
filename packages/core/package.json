@@ -1,83 +1,66 @@
 {
-  "name": "@commercelayer/cli-plugin-checkout",
-  "description": "Commerce Layer CLI Checkout plugin",
-  "version": "5.0.0-rc.1",
+  "name": "@commercelayer/cli-core",
+  "version": "5.0.0-rc.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout",
-  "repository": "commercelayer/commercelayer-cli-plugin-checkout",
-  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout/issues",
+  "license": "MIT",
+  "description": "Commerce Layer Javascript CLI core lib",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.mjs",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "require": "./lib/index.js",
+    "import": "./lib/index.mjs"
+  },
+  "scripts": {
+    "lint": "eslint ./src --ext .ts",
+    "lintspec": "eslint ./specs/ --ext .spec.ts",
+    "lint:fix": "eslint src --fix",
+    "build": "tsup",
+    "start": "tsx src/index.ts",
+    "test": "jest --passWithNoTests",
+    "test-local": "tsx test/spot.ts",
+    "coverage": "jest --coverage"
+  },
+  "keywords": [
+    "ecommerce",
+    "jamstack",
+    "commercelayer"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
   "engines": {
     "node": ">=20"
   },
-  "files": [
-    "/bin/run.*",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
-  "keywords": [
-    "ecommerce",
-    "cli",
-    "commercelayer"
-  ],
-  "license": "MIT",
-  "main": "lib/index.js",
-  "oclif": {
-    "commands": "./lib/commands",
-    "bin": "cl-checkout",
-    "devPlugins": [
-      "@oclif/plugin-help"
-    ],
-    "plugins": [],
-    "topics": {
-      "checkout": {
-        "description": "Generate checkout URLs",
-        "hidden": false
-      }
-    },
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
-    "additionalHelpFlags": [
-      "-h"
-    ],
-    "topicSeparator": ":"
-  },
-  "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
-    "build": "rm -rf lib && tsc -b",
-    "prepack": "pnpm build && oclif manifest && pnpm readme",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "lint": "eslint src --ext .ts --config .eslintrc",
-    "lint:fix": "eslint src --fix"
-  },
-  "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "prerelease",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-typescript": "^7.24.1",
     "@commercelayer/eslint-config-ts": "^1.4.5",
-    "@oclif/plugin-help": "^6.0.21",
-    "@oclif/test": "^3.2.10",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/chai": "^4.3.14",
-    "@types/mocha": "^10.0.6",
+    "@size-limit/preset-small-lib": "^6.0.4",
+    "@types/jest": "^29.5.12",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.12.7",
-    "chai": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
-    "mocha": "^10.4.0",
-    "nyc": "^15.1.0",
+    "jest": "^29.7.0",
     "oclif": "^4.8.5",
     "semantic-release": "^23.0.8",
+    "tsup": "^8.0.2",
     "tsx": "^4.7.2",
-    "typescript": "5.3.3"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "prerelease",
-    "@commercelayer/sdk": "prerelease",
+    "@commercelayer/js-auth": "^6.0.0",
     "@oclif/core": "^3.26.3",
-    "open": "^8.4.2",
-    "tslib": "^2.6.2"
+    "chalk": "^4.1.2",
+    "jsonwebtoken": "^9.0.2",
+    "update-notifier-cjs": "^5.1.6"
   },
+  "repository": "github:commercelayer/commercelayer-cli-core",
   "publishConfig": {
     "access": "public"
   }
