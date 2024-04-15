@@ -1,3 +1,34 @@
+# [5.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v4.8.1...v5.0.0-rc.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix lint errors and update dependencies ([54fd2d4](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/54fd2d4814be48063865852e3634c9ec828b1e33))
+* fix mocha and tsc setup ([03497ab](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/03497ab246670f8ff42692c90548363c8aa65bcc))
+* fix release config ([688ce9e](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/688ce9e8b3532b0ab81d953b1d61975f4e12bb34))
+* fix sdk6 types ([31cb08c](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/31cb08c4bc4f265c34f7120ece4c3499c8b2441b))
+* fix ts-node ([1455b8a](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/1455b8a8a18c64313388d2a1e513c2c72754543e))
+* fix update package ([cbb2cb2](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/cbb2cb263af5a61f2559c516c733ca44693a477d))
+* update dependencies ([2b44e05](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/2b44e050a5f109631634a832e8bb3bc8102f8c17))
+
+
+### Features
+
+* prerelease ([47274ed](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/47274ed584b17232ea2de27d1382f476b46b547a))
+* remove axios dependency ([0028db2](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/0028db2ab7f5be22269c593b28ef920f3d973d0e))
+
+
+### Performance Improvements
+
+* update engine ([97c9909](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/97c990978603ca0309e3018d7c3360040b7a4128))
+* upgrade to oclif 3 ([3f74ba0](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/3f74ba0e05c74ea049b98a3cd7dba0d39f794c65))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
 # [5.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0-oclif3.7...v5.0.0-oclif3.8) (2024-04-12)
 
 
