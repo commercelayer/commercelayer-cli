@@ -1,3 +1,10 @@
+# [6.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.2...v6.0.0-rc.3) (2024-04-16)
+
+
+### Bug Fixes
+
+* fix cli update error message ([cad1307](https://github.com/commercelayer/commercelayer-cli/commit/cad13073a357424ef1381aaa8e57cc704b1d53ec))
+
 # [6.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2024-04-16)
 
 
