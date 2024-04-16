@@ -1,3 +1,10 @@
+# [6.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.3...v6.0.0-rc.4) (2024-04-16)
+
+
+### Bug Fixes
+
+* revert update error message ([3c975b0](https://github.com/commercelayer/commercelayer-cli/commit/3c975b05f90c36f8629e87c1aa512b8d5ef47b54))
+
 # [6.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.2...v6.0.0-rc.3) (2024-04-16)
 
 
