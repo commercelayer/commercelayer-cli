@@ -75,7 +75,7 @@ export default class CliUpdate extends Command {
     try {
       const verCmd = await this.config.findCommand('cli:version')?.load()
       await verCmd?.run([]) // without [] the command uses args of command 'version' and it fails
-    } catch (err) { this.log() }
+    } catch (err: any) { this.error(err.message as string) }
   }
 
 }
