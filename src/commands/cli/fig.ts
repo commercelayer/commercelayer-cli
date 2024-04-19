@@ -74,8 +74,8 @@ function getFigOptions(options: Command.Flag.Cached[]): Fig.Option[] {
 
 
 
-function description(desc?: string): string {
-  let d = desc || ''
+function description(desc?: string): string | undefined {
+  let d = desc
   if (d) {
     if (d.length > 80) {
       d = d.substring(0, d.indexOf('.')+1)
@@ -257,7 +257,7 @@ export default class CliFig extends Command {
 
     await enhanceSpec(spec)
 
-    const template = await format(buildSpec(spec), { parser: 'typescript', printWidth: 120 })
+    const template = await format(buildSpec(spec), { parser: 'typescript', printWidth: 80 })
 
     if (flags.dir || flags.install) {
 
