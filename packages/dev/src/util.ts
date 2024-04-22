@@ -1,4 +1,5 @@
-import _ = require('lodash')
+// import _ = require('lodash')
+import _template from 'lodash.template'
 
 
 export function castArray<T>(input?: T | T[]): T[] {
@@ -50,7 +51,7 @@ export namespace sort {
 
 
 
-export const template = (context: object) => (t: string | undefined): string => _.template(t || '')(context)
+export const template = (context: object) => (t: string | undefined): string => _template(t || '')(context)
 
 
 // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style

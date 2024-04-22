@@ -1,9 +1,9 @@
 
 import { Command, Config, Flags, type HelpBase, type Interfaces, loadHelpClass, Plugin } from '@oclif/core'
 import * as fs from 'fs-extra'
-import * as _ from 'lodash'
-import * as path from 'path'
-import { URL } from 'url'
+import * as path from 'node:path'
+import { URL } from 'node:url'
+import _template from 'lodash.template'
 
 import { castArray, compact, sortBy, template, uniqBy } from '../util'
 import { HelpCompatibilityWrapper } from '../help-compatibility'
@@ -251,7 +251,7 @@ ${config.bin} [COMMAND] (--help | -h) for detailed information about plugin comm
 
     const template = plugin.pjson.oclif.repositoryPrefix || '<%- repo %>/blob/v<%- version %>/<%- commandPath %>'
 
-    return `_See code: [${label}](${_.template(template)({ repo, version, commandPath, config, c })})_`
+    return `_See code: [${label}](${_template(template)({ repo, version, commandPath, config, c })})_`
 
   }
 
