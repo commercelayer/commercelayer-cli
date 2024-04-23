@@ -27,6 +27,7 @@ export default class ResourcesFetch extends BaseFilterCommand {
   }
 
   static args = {
+    ...ListCommand.args,
     path: Args.string({ name: 'path', description: 'path (or URL) of the resource(s) to fetch', required: true }),
     id: Args.string({ name: 'id', description: 'resource id', required: false }),
   }
