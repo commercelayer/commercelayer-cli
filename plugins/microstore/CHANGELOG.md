@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0...v2.0.1) (2024-04-23)
+
+
+### Reverts
+
+* Revert "perf: upgrade to oclif 3" ([180a9f5](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/180a9f55a421670911e4ce3bb6e7877522dbbbbf))
+* Revert "chore(release): 2.0.0 [skip ci]" ([dc14abe](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/dc14abe2013a321bdb0416f4473e567723b2b12d))
+
 ## [1.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.1...v1.6.2) (2023-12-14)
 
 
