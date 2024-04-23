@@ -1,7 +1,8 @@
 import { BaseCommand, Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
-import type { QueryParamsList } from '@commercelayer/sdk'
+import type { QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 export default class WebhooksList extends BaseCommand {
@@ -47,7 +48,7 @@ export default class WebhooksList extends BaseCommand {
 			while (currentPage < pageCount) {
 
 				const params: QueryParamsList = {
-					pageSize: clConfig.api.page_max_size,
+					pageSize: clConfig.api.page_max_size as QueryPageSize,
 					pageNumber: ++currentPage,
 				}
 
@@ -101,8 +102,8 @@ export default class WebhooksList extends BaseCommand {
 
 			return tableData
 
-		} catch (error: any) {
-			this.handleError(error, flags)
+		} catch (error) {
+			this.handleError(error as CommandError, flags)
 		}
 
 	}

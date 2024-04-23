@@ -1,7 +1,7 @@
 name: Release
 on:
   push:
-    branches: [ main ]
+    branches: [ main, beta, prerelease ]
   pull_request:
     branches: [ main ]
 jobs:
@@ -30,8 +30,8 @@ jobs:
       - name: Run specs
         env:
           CL_CLI_ORGANIZATION: cli-test-org
-          CL_CLI_CLIENT_ID: SQWYt6tF8bx9uWzxGbrPxEMCEP5dCZbu93r56KRTLPY
-          CL_CLI_CLIENT_SECRET: DKMUFKTxqjfEc9SMNeG2FKPLqKOdMHYwz1BysAJcObw
+          CL_CLI_CLIENT_ID: ${{ secrets.CL_CLI_CLIENT_ID }}
+          CL_CLI_CLIENT_SECRET: ${{ secrets.CL_CLI_CLIENT_SECRET }}
         run: pnpm test
       - name: Release
         env:

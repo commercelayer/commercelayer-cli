@@ -1,3 +1,4 @@
+import type { CommandError } from '@oclif/core/lib/interfaces'
 import Command, { Flags } from '../../base'
 import { clOutput, clColor } from '@commercelayer/cli-core'
 
@@ -52,8 +53,8 @@ export default class WebhooksPayload extends Command {
 
 			return event
 
-		} catch (error: any) {
-			this.handleError(error, flags, id)
+		} catch (error) {
+			this.handleError(error as CommandError, flags, id)
 		}
 
 	}

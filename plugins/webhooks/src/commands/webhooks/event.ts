@@ -2,6 +2,7 @@ import Command, { Flags } from '../../base'
 import Table from 'cli-table3'
 import { clOutput, clColor } from '@commercelayer/cli-core'
 import type { EventCallback } from '@commercelayer/sdk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 export default class WebhooksEvent extends Command {
@@ -62,7 +63,7 @@ export default class WebhooksEvent extends Command {
 			// let index = 0
 			table.push(...Object.entries(event)
 				.filter(([k]) => !['type', 'payload'].includes(k))
-				.map(([k, v]) => {
+				.map(([k, v]: [string, string]) => {
 					return [
 						{ content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
 						formatValue(k, v, event),
@@ -101,8 +102,8 @@ export default class WebhooksEvent extends Command {
 
 			return event
 
-		} catch (error: any) {
-			this.handleError(error, flags, id)
+		} catch (error) {
+			this.handleError(error as CommandError, flags, id)
 		}
 
 

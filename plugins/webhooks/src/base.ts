@@ -5,7 +5,7 @@ import { clOutput, clUpdate, clColor, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export abstract class BaseCommand extends Command {
@@ -42,7 +42,7 @@ export abstract class BaseCommand extends Command {
 
 
   async catch(error: any): Promise<any> {
-    this.handleError(error)
+    this.handleError(error as CommandError)
   }
 
 
