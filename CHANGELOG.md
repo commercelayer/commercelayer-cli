@@ -1,3 +1,10 @@
+# [6.0.0-rc.5](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.4...v6.0.0-rc.5) (2024-04-19)
+
+
+### Features
+
+* add fig local spec ([219e6af](https://github.com/commercelayer/commercelayer-cli/commit/219e6af587b4d7354ac7e37ef6715ece95a7c4ef))
+
 # [6.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.3...v6.0.0-rc.4) (2024-04-16)
 
 
