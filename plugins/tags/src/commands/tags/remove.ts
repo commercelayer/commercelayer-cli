@@ -1,6 +1,5 @@
-import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
 import BaseCommand, { Flags } from '../../base'
-import type { CommerceLayerClient, Tag } from '@commercelayer/sdk'
+import type { CommerceLayerClient, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
 import { clApi, clColor, clText } from '@commercelayer/cli-core'
 
 
@@ -8,8 +7,6 @@ import { clApi, clColor, clText } from '@commercelayer/cli-core'
 export default class TagsRemove extends BaseCommand {
 
   static description = 'remove one or more tags to a set of resources'
-
-  static aliases = ['tag']
 
   static examples = [
     '$ commercelayer tags:remove -t <resource-type> -n <tag-names> -i <resources-id>',
