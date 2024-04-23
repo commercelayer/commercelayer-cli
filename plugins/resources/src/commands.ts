@@ -11,14 +11,14 @@ const COMMANDS_DIR = 'commands'
 type ResourceOperation = 'retrieve' | 'list' | 'create' | 'update' | 'delete' | 'relationship'
 
 type CommandParams = {
-  alias: string;
-  command: string;
-  resource: string;
-  id?: string;
-  operation: ResourceOperation;
-  argv: string[];
-  params: QueryParams;
-  saved_at: string;
+  alias: string
+  command: string
+  resource: string
+  id?: string
+  operation: ResourceOperation
+  argv: string[]
+  params: QueryParams
+  saved_at: string
 }
 
 

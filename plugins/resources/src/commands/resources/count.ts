@@ -1,8 +1,7 @@
 import { Args, Command, Flags, ux as cliux } from '@oclif/core'
-import { type Resource, findResource } from '../../util/resources'
+import { type ApiResource, findResource } from '../../util/resources'
 import { type KeyValString, clColor, clApi, clUtil, clFilter } from '@commercelayer/cli-core'
-import { CommerceLayer, type CommerceLayerClient } from '@commercelayer/sdk'
-import type { ListResponse } from '@commercelayer/sdk/lib/cjs/resource'
+import { CommerceLayer, type CommerceLayerClient, type ListResponse, type Resource } from '@commercelayer/sdk'
 
 
 export default class ResourcesCount extends Command {
@@ -69,7 +68,7 @@ export default class ResourcesCount extends Command {
     const filters = this.whereFlag(flags.where)
 
 
-    const humanized = clApi.humanizeResource(resource.api)
+    const humanized = clApi.humanizeResource(resource.api as string)
 
     this.log()
     if (!flags.doc) cliux.action.start(`Counting ${humanized}`)
@@ -87,7 +86,7 @@ export default class ResourcesCount extends Command {
   }
 
 
-  checkResource(res: string, { required = true, singular = false } = {}): Resource {
+  checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
     if (!res && required) this.error('Resource type not defined')
     const resource = findResource(res, { singular })
     if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,

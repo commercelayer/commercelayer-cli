@@ -1,5 +1,5 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
-import { findResource, type Resource } from '../../util/resources'
+import { findResource, type ApiResource } from '../../util/resources'
 import { deleteArgsFile, loadCommandData, readCommandArgs, type ResourceOperation } from '../../commands'
 import { formatOutput } from '../../output'
 import type { QueryParamsList } from '@commercelayer/sdk'
@@ -115,7 +115,7 @@ export default class ResourcesArgs extends Command {
   }
 
 
-  protected checkResource(res: string): Resource {
+  protected checkResource(res: string): ApiResource {
     const resource = findResource(res, { singular: false })
     if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
       { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
