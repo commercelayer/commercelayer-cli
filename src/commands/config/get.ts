@@ -8,7 +8,7 @@ export default class ConfigGet extends Command {
 
   static description = 'get a CLI configuration parameter'
 
-  static hidden: true
+  static hidden = true
 
 
   static args = {

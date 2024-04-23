@@ -1,6 +1,6 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
 import type { Hook } from '@oclif/core'
-import { getAvailablePlugins, getInstalledPlugins, getPluginInfo } from '../../commands/plugins/available'
+import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
 import inquirer from 'inquirer'
 import type { Config } from '@oclif/core/lib/interfaces'
 import { CLIError } from '@oclif/core/lib/errors'
@@ -20,6 +20,14 @@ const hook: Hook<'prerun'> = async function (opts) {
 
     const command = opts.Command.id.replace('plugins:', '')
 
+    // Check tag flag
+    const tgIndex = opts.argv.indexOf('--tag')
+    let tag
+    if (tgIndex > -1) {
+      tag = opts.argv[tgIndex + 1]
+      opts.argv.splice(tgIndex, 2)
+    }
+
     if (opts.argv.length === 0) {
       const arg = await promptPlugin(this.config, command)
         .catch((error: Error) => { this.error(error) })
@@ -31,7 +39,8 @@ const hook: Hook<'prerun'> = async function (opts) {
     }
 
     let index = -1
-    let plugin
+    let plugin: string = ''
+    let pluginArg: string = ''
 
     const found = opts.argv.some(a => {
 
@@ -39,7 +48,8 @@ const hook: Hook<'prerun'> = async function (opts) {
       if (a.startsWith('-')) return false // ignore flags
       if (opts.argv[index - 1] === '--tag') return false  // ignore --tag value
 
-      const p = getPluginInfo(a)
+      pluginArg = a
+      const p = getPluginInfo(pluginArg)
       if (p === undefined) this.error(`Unknown Commerce Layer CLI plugin: ${clColor.msg.error(a)}. Run '${clColor.italic(`${this.config.bin} plugins:available`)}' to get a list of all available plugins`)
       else plugin = p.plugin
 
@@ -50,12 +60,19 @@ const hook: Hook<'prerun'> = async function (opts) {
 
     if (found && plugin) {
 
-       // Check tag flag
-      const tgIndex = opts.argv.indexOf('--tag')
-      if (tgIndex > -1) {
-        plugin =`${plugin}@${opts.argv[tgIndex + 1]}`
-        opts.argv.splice(tgIndex, 2)
-      }
+      let errMsg: string = ''
+      if ((command === 'install') && isPluginInstalled(plugin, this.config)) errMsg = 'Commerce Layer CLI plugin already installed'
+      else
+      if ((command === 'uninstall') && !isPluginInstalled(plugin, this.config)) errMsg = 'Commerce Layer CLI plugin not installed'
+
+      if (errMsg) {
+        this.log(`\n${errMsg}: ${clColor.cli.plugin(pluginArg)}\n`)
+        throw new CLIError('HOOK_EXIT')
+      } else this.log('')
+
+
+      // Set version
+      if (tgIndex > -1) plugin = `${plugin}@${tag}`
 
       // Overwrite plugin short name whith its full name
       opts.argv[index] = plugin
@@ -74,22 +91,22 @@ const promptPlugin = async (config: Config, command: string): Promise<string> =>
 
   if (plugins.length === 0) return ''
 
-	const plgMaxLength = clOutput.maxLength(plugins, 'name') + 4
+  const plgMaxLength = clOutput.maxLength(plugins, 'name') + 4
 
   plugins.sort((a, b) => a.name.localeCompare(b.name))
 
-	const answers = await inquirer.prompt([{
-		type: 'list',
-		name: 'plugin',
-		message: `Select a plugin to ${command}:`,
-		choices: plugins.map(p => {
-			return { name: `${p.name.padEnd(plgMaxLength, ' ')} ${clColor.italic(p.description)}`, value: p.plugin }
-		}),
-		loop: false,
-		pageSize: 10,
-	}])
+  const answers = await inquirer.prompt([{
+    type: 'list',
+    name: 'plugin',
+    message: `Select a plugin to ${command}:`,
+    choices: plugins.map(p => {
+      return { name: `${p.name.padEnd(plgMaxLength, ' ')} ${clColor.italic(p.description)}`, value: p.plugin }
+    }),
+    loop: false,
+    pageSize: 10,
+  }])
 
-	return answers.plugin as string
+  return answers.plugin as string
 
 }
 

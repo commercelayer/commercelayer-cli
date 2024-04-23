@@ -8,7 +8,7 @@ export default class ConfigShow extends Command {
 
   static description = 'show current CLI configuration'
 
-  static hidden: true
+  static hidden = true
 
 
   async run(): Promise<any> {

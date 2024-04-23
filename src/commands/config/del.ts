@@ -7,7 +7,7 @@ export default class ConfigDel extends Command {
 
   static description = 'delete a CLI configuration parameter'
 
-  static hidden: true
+  static hidden = true
 
   static flags = {
     // help: flags.help({char: 'h'}),

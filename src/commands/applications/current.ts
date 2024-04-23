@@ -1,6 +1,6 @@
 import { Command, Flags } from '@oclif/core'
 import { readConfigFile, currentApplication } from '../../config'
-import { inspect } from 'util'
+import { inspect } from 'node:util'
 import { printScope } from '../../common'
 import { type AppInfo, clColor, clApplication } from '@commercelayer/cli-core'
 
