@@ -2,6 +2,7 @@
 import { ExportCommand, Flags, cliux, computeDelay, notify } from '../../base'
 import { clToken, clColor, clConfig } from '@commercelayer/cli-core'
 import type { ExportCreate } from '@commercelayer/sdk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 import open from 'open'
 
 
@@ -160,9 +161,9 @@ export default class ExportsCreate extends ExportCommand {
         if (flags.open && outputFile) await open(outputFile)
       }
 
-    } catch (error: any) {
+    } catch (error) {
       if (this.cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
-      else this.handleError(error)
+      else this.handleError(error as CommandError)
     }
 
   }

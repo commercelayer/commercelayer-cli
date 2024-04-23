@@ -1,19 +1,20 @@
 {
   "name": "@commercelayer/cli-plugin-exports",
   "description": "Commerce Layer CLI Exports plugin",
-  "version": "2.4.1",
+  "version": "3.0.0-rc.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-exports",
+  "repository": "commercelayer/commercelayer-cli-plugin-exports",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-exports/issues",
   "engines": {
-    "node": "^16.13.0 || >=18.0.0"
+    "node": ">=20"
   },
   "files": [
-    "/bin",
+    "/bin/run.*",
     "/lib",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-exports",
   "keywords": [
     "ecommerce",
     "cli",
@@ -40,7 +41,6 @@
     ],
     "topicSeparator": ":"
   },
-  "repository": "commercelayer/commercelayer-cli-plugin-exports",
   "scripts": {
     "build": "rm -rf lib && tsc -b",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
@@ -53,31 +53,31 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^2.1.3",
-    "@commercelayer/eslint-config-ts": "^1.3.0",
-    "@oclif/plugin-help": "^5.2.20",
-    "@oclif/test": "^2.5.6",
+    "@commercelayer/cli-dev": "^3.0.3",
+    "@commercelayer/eslint-config-ts": "^1.4.5",
+    "@oclif/plugin-help": "^6.0.21",
+    "@oclif/test": "^3.2.11",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/chai": "^4.3.11",
+    "@types/chai": "^4.3.14",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.12.7",
     "@types/node-notifier": "^8.0.5",
     "chai": "^4.4.1",
-    "eslint": "^8.56.0",
-    "mocha": "^10.3.0",
+    "eslint": "^8.57.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.4.16",
-    "semantic-release": "^22.0.12",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "oclif": "^4.8.8",
+    "semantic-release": "^23.0.8",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^4.12.0",
-    "@commercelayer/sdk": "^5.32.0",
-    "@oclif/core": "^2.15.0",
-    "axios": "^1.6.7",
-    "cli-table3": "^0.6.3",
+    "@commercelayer/cli-core": "^5.0.0",
+    "@commercelayer/sdk": "prerelease",
+    "@oclif/core": "^3.26.4",
+    "axios": "^1.6.8",
+    "cli-table3": "^0.6.4",
     "node-notifier": "^10.0.1",
     "open": "^8.4.2",
     "spinnies": "^0.5.1",
