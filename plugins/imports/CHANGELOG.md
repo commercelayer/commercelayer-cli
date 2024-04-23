@@ -1,3 +1,15 @@
+# [4.0.0-rc.5](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-rc.4...v4.0.0-rc.5) (2024-04-23)
+
+
+### Bug Fixes
+
+* fix imports with tags ([c0f72fb](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/c0f72fbf739f74edf3c3c7fb24a7acb24ab5738b))
+
+
+### Features
+
+* bump version to 3.11.0 ([85da21b](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/85da21bbd8c875cb976025a6a11d9d73d9075c3d))
+
 # [4.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-rc.3...v4.0.0-rc.4) (2024-04-15)
 
 
