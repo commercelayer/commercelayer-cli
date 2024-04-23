@@ -1,24 +1,18 @@
 
-import { createReadStream, readFileSync, existsSync } from 'node:fs'
-import * as csv from '@fast-csv/parse'
+import { existsSync, readFileSync } from 'node:fs'
 import { clColor } from '@commercelayer/cli-core'
 
 
 
-const generateInputsCSV = async (filePath: string, delimiter?: string): Promise<any[]> => {
+const generateInputsCSV = async (filePath: string): Promise<any[]> => {
 
-  const inputs: any[] = []
-
-  const parseOptions: csv.ParserOptionsArgs = { headers: true, ignoreEmpty: true}
-  if (delimiter) parseOptions.delimiter = delimiter
-
-  return new Promise((resolve, reject) => {
-    createReadStream(filePath)
-      .pipe(csv.parse(parseOptions))
-      .on('error', error => { reject(error) })
-      .on('data', row => inputs.push(row))
-      .on('end', (_rowCount: number) => { resolve(inputs) })
-  })
+  try {
+    const data = readFileSync(filePath, { encoding: 'utf-8' })
+    const csv = data.split('\n')
+    return Promise.resolve(csv)
+  } catch (error) {
+    return Promise.reject(error)
+  }
 
 }
 
@@ -37,17 +31,15 @@ const generateInputJSON = async (filePath: string): Promise<any[]> => {
 }
 
 
-const generateInputs = async (filePath: string, flags?: any): Promise<any[]> => {
+const generateInputs = async (filePath: string, fileFormat: 'csv' | 'json'): Promise<any[]> => {
 
   if (!existsSync(filePath)) return Promise.reject(new Error('Unable to find file ' + clColor.style.path(filePath)))
 
-  if (flags?.csv) {
-    let delimiter: string = flags.delimiter || ','
-    if (delimiter && (delimiter === 'TAB')) delimiter = '\t'
-    return generateInputsCSV(filePath, delimiter)
+  switch (fileFormat) {
+    case 'csv':  return generateInputsCSV(filePath)
+    case 'json':
+    default:  return generateInputJSON(filePath)
   }
-
-  return generateInputJSON(filePath)
 
 }
 
