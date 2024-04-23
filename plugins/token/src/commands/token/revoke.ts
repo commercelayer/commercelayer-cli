@@ -11,7 +11,7 @@ export default class TokenRevoke extends Command {
 
   static examples = [
     '$ commercelayer token:revoke -o <organizationSlug> <accessToken> -i <clientId>',
-    '$ cl token:revoke -o <organizationSlug> <accessToken> -i <clientId>',
+    '$ cl token:revoke -o <organizationSlug> <accessToken> -i <clientId> -s <clientSecret>',
   ]
 
   static flags = {
