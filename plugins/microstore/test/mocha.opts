@@ -1,4 +1,4 @@
---require ts-node/register
+--import tsx
 --watch-extensions ts
 --recursive
 --reporter spec
