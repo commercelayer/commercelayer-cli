@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('orders:place', () => {
+describe('orders:reset_circuit', () => {
   test
     .timeout(29000)
     .stdout()
