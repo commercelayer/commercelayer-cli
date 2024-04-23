@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.0.0",
-    "@commercelayer/sdk": "prerelease",
+    "@commercelayer/sdk": "^6.0.0",
     "@oclif/core": "^3.26.4",
     "open": "^8.4.2",
     "tslib": "^2.6.2"
