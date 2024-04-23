@@ -1,3 +1,77 @@
+# [6.0.0-rc.5](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.4...v6.0.0-rc.5) (2024-04-19)
+
+
+### Features
+
+* add fig local spec ([219e6af](https://github.com/commercelayer/commercelayer-cli/commit/219e6af587b4d7354ac7e37ef6715ece95a7c4ef))
+
+# [6.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.3...v6.0.0-rc.4) (2024-04-16)
+
+
+### Bug Fixes
+
+* revert update error message ([3c975b0](https://github.com/commercelayer/commercelayer-cli/commit/3c975b05f90c36f8629e87c1aa512b8d5ef47b54))
+
+# [6.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.2...v6.0.0-rc.3) (2024-04-16)
+
+
+### Bug Fixes
+
+* fix cli update error message ([cad1307](https://github.com/commercelayer/commercelayer-cli/commit/cad13073a357424ef1381aaa8e57cc704b1d53ec))
+
+# [6.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2024-04-16)
+
+
+### Bug Fixes
+
+* fix dependencies ([a28a2ee](https://github.com/commercelayer/commercelayer-cli/commit/a28a2eee316a005062066e526c96649f25bcf31e))
+
+# [6.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli/compare/v5.19.4...v6.0.0-rc.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix bin scripts ([d5503ba](https://github.com/commercelayer/commercelayer-cli/commit/d5503bad43d83ba54854b7d5b52c08df6dbcaf7f))
+* fix dependencies ([742201b](https://github.com/commercelayer/commercelayer-cli/commit/742201bb4f5e1d1d6b416cc481a70d598f5dbf29))
+* fix dependencies ([6fc5851](https://github.com/commercelayer/commercelayer-cli/commit/6fc5851e388d88eac1df310fea6939edf29a9b3c))
+* fix fig command ([12347ee](https://github.com/commercelayer/commercelayer-cli/commit/12347eebadb536f68779f553ea8323f2f31444d2))
+* fix hidden commands and options ([794ac33](https://github.com/commercelayer/commercelayer-cli/commit/794ac33c7143aaab55a1494c4450eff1aa3a79fe))
+* fix order of args passed to plugin commands ([cec5f4a](https://github.com/commercelayer/commercelayer-cli/commit/cec5f4ac65f737c018fd91e9a87f51926fe4ceda))
+* fix plugin install/uninstall commands ([117cbb5](https://github.com/commercelayer/commercelayer-cli/commit/117cbb54721412a73f7846007261815ba82485fe))
+* fix release config ([d8bdc77](https://github.com/commercelayer/commercelayer-cli/commit/d8bdc777a90e3fd51743e7df9dd98d2d70532f56))
+* fix release config and dependencies ([e750c5a](https://github.com/commercelayer/commercelayer-cli/commit/e750c5af89c26071d838e55868400dee2185250a))
+* fix run scripts ([aa1af44](https://github.com/commercelayer/commercelayer-cli/commit/aa1af44ac7eae44b8e8f8710549dfef276d94fbb))
+* fix test secret keys ([60affc1](https://github.com/commercelayer/commercelayer-cli/commit/60affc1553276d9555788c59a6a913ac1c698153))
+* fix update plugins command ([d1a00f9](https://github.com/commercelayer/commercelayer-cli/commit/d1a00f918abab43255286bc62a77e52756715b81))
+* remove patched command runner ([85e33c6](https://github.com/commercelayer/commercelayer-cli/commit/85e33c68ab81d017db52530fb5e9ebcefc908434))
+* update dependencies ([ac3cd49](https://github.com/commercelayer/commercelayer-cli/commit/ac3cd49305603944aca45be8072311f176d7154c))
+* update dependencies ([2df6ef3](https://github.com/commercelayer/commercelayer-cli/commit/2df6ef35407091a00a1529a80ee9773ce436a60a))
+* update dependencies ([e1750ed](https://github.com/commercelayer/commercelayer-cli/commit/e1750ed096109f11df2de02b89462d8225c71af8))
+* update dependencies ([a816b66](https://github.com/commercelayer/commercelayer-cli/commit/a816b6656be9c083c6a4878916a85e2b40f3f664))
+* update dependencies ([6f2847e](https://github.com/commercelayer/commercelayer-cli/commit/6f2847ef3997a395988ddfaac50e159aeb18d97a))
+* update sdk dependencies ([074c7d1](https://github.com/commercelayer/commercelayer-cli/commit/074c7d11980b66fbe77ffa9905816d4d25407677))
+
+
+### Features
+
+* add commandshortcuts ([c91d4d2](https://github.com/commercelayer/commercelayer-cli/commit/c91d4d26a3ac9781e4091634526d6d4e4e253f30))
+* add fig command ([385697a](https://github.com/commercelayer/commercelayer-cli/commit/385697a757ff245e319768060f4e04253c45376c))
+* add new authentication ([cd488df](https://github.com/commercelayer/commercelayer-cli/commit/cd488dfa691908a944519c637cd6cd296ff834e7))
+* show latest plugins on beta channel ([3284d87](https://github.com/commercelayer/commercelayer-cli/commit/3284d8793fb6edce60a4a14a1a77b25231307518))
+
+
+### Performance Improvements
+
+* update engine ([9921eb6](https://github.com/commercelayer/commercelayer-cli/commit/9921eb6dfcbb700ecbc204806e95813a56b539c4))
+* upgrade to oclif 3 ([0cd40e4](https://github.com/commercelayer/commercelayer-cli/commit/0cd40e4660ecbc78fbcc98ebfbbf234f5a9d0d25))
+* upgrade to oclif 3 ([02ca50e](https://github.com/commercelayer/commercelayer-cli/commit/02ca50eda4703ef799c1b72914f9bfa46c7bbb44))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
 # [6.0.0-oclif3.19](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0-oclif3.18...v6.0.0-oclif3.19) (2024-04-15)
 
 

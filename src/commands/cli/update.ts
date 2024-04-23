@@ -60,7 +60,6 @@ export default class CliUpdate extends Command {
       }
     })
 
-
   }
 
 
