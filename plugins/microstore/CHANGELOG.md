@@ -1,3 +1,34 @@
+# [3.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.1...v3.0.0-rc.1) (2024-04-23)
+
+
+### Bug Fixes
+
+* fix dependencies ([af51013](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/af51013d5103b9491ddb325d19f06349bf1727c6))
+* fix dependencies ([78e4666](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/78e4666cd733a96e404f492ef0d7fb17b5b50b93))
+* fix release config ([26e390d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/26e390d6f6a3b4e40d08cfca27871a239e538385))
+* fix ts-node ([fa1b53c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/fa1b53c3b6f1acc3dae7e4e52794ab5cf03855bd))
+* fix update package ([5db682c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/5db682c441f98426a5414926e52de17c113e56a8))
+* replace ts-node with tsx ([9d9707c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/9d9707c128112ce78706ca62c1a25008e7b96994))
+* update cli dependencies ([a6d1c17](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a6d1c17768e4673c71c2c187db99771443f9a2ab))
+* update dependencies ([a67a0c1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a67a0c197fd011e8efb2363e0e85f029beba146b))
+* update dependencies ([4f1a3c0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/4f1a3c0a8a6f96dd238a5a031212832adc20de65))
+* update dependencies ([7dde2e8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7dde2e87ff8f618725b56d24c761189fb71ce717))
+
+
+### Features
+
+* prerelease ([80bd0a1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/80bd0a199faa44a5eaa2eca13f46a5c5980f7854))
+
+
+### Performance Improvements
+
+* update engine ([2b41c33](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2b41c33ef8f5cc737a280d850ee4b5a6e43d698a))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
 # [2.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2024-04-15)
 
 
