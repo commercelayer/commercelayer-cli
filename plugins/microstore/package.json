@@ -3,8 +3,6 @@
   "description": "Commerce Layer CLI microstore plugin",
   "version": "2.0.0-rc.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-microstore",
-  "repository": "commercelayer/commercelayer-cli-plugin-microstore",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-microstore/issues",
   "engines": {
     "node": ">=20"
@@ -15,6 +13,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-microstore",
   "keywords": [
     "ecommerce",
     "cli",
@@ -41,6 +40,7 @@
     ],
     "topicSeparator": ":"
   },
+  "repository": "commercelayer/commercelayer-cli-plugin-microstore",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
@@ -53,10 +53,10 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^3.0.2",
+    "@commercelayer/cli-dev": "^3.0.3",
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@oclif/plugin-help": "^6.0.21",
-    "@oclif/test": "^3.2.10",
+    "@oclif/test": "^3.2.11",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.14",
@@ -66,7 +66,7 @@
     "eslint": "^8.57.0",
     "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.8.5",
+    "oclif": "^4.8.8",
     "semantic-release": "^23.0.8",
     "tsx": "^4.7.2",
     "typescript": "5.3.3"
@@ -74,7 +74,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^5.0.0",
     "@commercelayer/sdk": "prerelease",
-    "@oclif/core": "^3.26.3",
+    "@oclif/core": "^3.26.4",
     "open": "^8.4.2",
     "tslib": "^2.6.2"
   },
