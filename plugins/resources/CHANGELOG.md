@@ -1,3 +1,11 @@
+# [6.0.0-rc.5](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-rc.4...v6.0.0-rc.5) (2024-04-23)
+
+
+### Bug Fixes
+
+* fix command all duplicates ([05a4274](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/05a4274aab68e8f69660f803f58df2217d8b50a9))
+* update sdk ([ca0215a](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/ca0215ac2536694a643cd4ff3ac4bfb4d5cdc071))
+
 # [6.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.0-rc.3...v6.0.0-rc.4) (2024-04-15)
 
 
