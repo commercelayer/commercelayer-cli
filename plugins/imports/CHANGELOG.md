@@ -1,16 +1,133 @@
-# [3.11.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.10.1...v3.11.0) (2024-02-20)
+# [4.0.0-rc.5](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-rc.4...v4.0.0-rc.5) (2024-04-23)
+
+
+### Bug Fixes
+
+* fix imports with tags ([c0f72fb](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/c0f72fbf739f74edf3c3c7fb24a7acb24ab5738b))
 
 
 ### Features
 
 * bump version to 3.11.0 ([85da21b](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/85da21bbd8c875cb976025a6a11d9d73d9075c3d))
 
-## [3.10.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.10.0...v3.10.1) (2024-02-20)
+# [4.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-rc.3...v4.0.0-rc.4) (2024-04-15)
 
 
 ### Bug Fixes
 
-* fix imports with tags ([c0f72fb](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/c0f72fbf739f74edf3c3c7fb24a7acb24ab5738b))
+* update dependencies ([0c4bbee](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/0c4bbee304ccbb8adbb88d3b59a427c201c4232b))
+
+# [4.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-rc.2...v4.0.0-rc.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* update cli dependencies ([795fc15](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/795fc154b4c3bd6e907e650b30f2f8e6dd14510a))
+
+# [4.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-rc.1...v4.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix dependencies ([f5a4c21](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/f5a4c216b5df2e89130e044c5d3cd484dde2bf11))
+* fix dependencies ([30a2ca0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/30a2ca0e40c0bc13b27c2deced28fd2b25ffe4c4))
+
+# [4.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.10.0...v4.0.0-rc.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix new sdk6 types ([282f223](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/282f223e1e6dfc67690274c39dddcd0b808c9587))
+* fix release config ([1c9cd7f](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/1c9cd7f630dec6aaeb4d47c2fccd43bc24e18863))
+* fix ts-node ([a36a3ab](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/a36a3ab0b3cd8b81470d31dfb80db1335838b777))
+* fix update package ([ca4844c](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/ca4844c53e29610e5d0c9e7e0c8e158d2a30f9bc))
+* replace ts-node with tsx ([d32c1f3](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/d32c1f3aee91b45566d6e4f029b4fc59bb164361))
+* update dependencies ([ea81ff4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/ea81ff4c3fcc8019d1bc2aaf2938b0c21ae7892c))
+* update dependencies ([10c8a59](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/10c8a59ed9865435405663e740c92895a9dc7d7f))
+
+
+### Features
+
+* prerelease ([c860928](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/c8609288724b045a55842e7db1840cfc869de948))
+
+
+### Performance Improvements
+
+* update engine ([5038d01](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/5038d0181ea251587e5eb3475fb320ab82b42c60))
+* upgrade to oclif v3 ([9b0064d](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/9b0064df604412fe476bbeb0d38e0ecab14d03d6))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
+# [4.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.7...v4.0.0-oclif3.8) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([1c9cd7f](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/1c9cd7f630dec6aaeb4d47c2fccd43bc24e18863))
+
+# [4.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.6...v4.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([a36a3ab](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/a36a3ab0b3cd8b81470d31dfb80db1335838b777))
+
+# [4.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.5...v4.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* replace ts-node with tsx ([d32c1f3](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/d32c1f3aee91b45566d6e4f029b4fc59bb164361))
+
+# [4.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.4...v4.0.0-oclif3.5) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix new sdk6 types ([282f223](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/282f223e1e6dfc67690274c39dddcd0b808c9587))
+* update dependencies ([ea81ff4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/ea81ff4c3fcc8019d1bc2aaf2938b0c21ae7892c))
+
+# [4.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.3...v4.0.0-oclif3.4) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix update package ([ca4844c](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/ca4844c53e29610e5d0c9e7e0c8e158d2a30f9bc))
+
+# [4.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.2...v4.0.0-oclif3.3) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([5038d01](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/5038d0181ea251587e5eb3475fb320ab82b42c60))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
+# [4.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0-oclif3.1...v4.0.0-oclif3.2) (2024-02-21)
+
+
+### Bug Fixes
+
+* update dependencies ([10c8a59](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/10c8a59ed9865435405663e740c92895a9dc7d7f))
+
+# [4.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.10.0...v4.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif v3 ([9b0064d](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/9b0064df604412fe476bbeb0d38e0ecab14d03d6))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
 
 # [3.10.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.9.1...v3.10.0) (2024-01-19)
 
