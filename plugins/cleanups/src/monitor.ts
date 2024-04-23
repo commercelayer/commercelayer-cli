@@ -119,7 +119,7 @@ class Monitor {
 
 		updPayload.tbp = String(bar.getTotal() - updCount).padStart(maxCleanupLength, ' ')
 
-		if (bar) bar.update(updCount, updPayload)
+		if (bar) bar.update(updCount, updPayload as object)
 
 		return updCount
 

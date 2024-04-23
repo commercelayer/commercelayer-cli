@@ -1,6 +1,7 @@
 import Command, { Flags, Args } from '../../base'
 import Table from 'cli-table3'
 import { clOutput, clColor, clText } from '@commercelayer/cli-core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 
@@ -73,8 +74,8 @@ export default class CleanupsDetails extends Command {
 
       return clp
 
-    } catch (error: any) {
-      this.handleError(error, flags, id)
+    } catch (error) {
+      this.handleError(error as CommandError, flags, id)
     }
 
   }
@@ -82,14 +83,14 @@ export default class CleanupsDetails extends Command {
 
   private formatValue(field: string, value: any): any {
 
-    if (field.endsWith('_date') || field.endsWith('_at')) return clOutput.localeDate(value)
+    if (field.endsWith('_date') || field.endsWith('_at')) return clOutput.localeDate(value as string)
 
     switch (field) {
 
       case 'id': return clColor.api.id(value)
       case 'resource_type': return clColor.magentaBright(value)
       case 'topic': return clColor.magenta(value)
-      case 'status': return this.cleanupStatus(value)
+      case 'status': return this.cleanupStatus(value as string)
       case 'records_count': return clColor.yellowBright(value)
       case 'errors_count': return clColor.msg.error(value)
       case 'dry_data': return (value ? clText.symbols.check.small : '')
@@ -97,7 +98,7 @@ export default class CleanupsDetails extends Command {
       case 'filters':
       case 'metadata': {
         const t = new Table({ style: { compact: false } })
-        t.push(...Object.entries(value).map(([k, v]) => {
+        t.push(...Object.entries(value as object).map(([k, v]) => {
           return [
             { content: clColor.cyan.italic(k), hAlign: 'left', vAlign: 'center' },
             { content: clColor.cli.value((typeof v === 'object') ? JSON.stringify(v) : v) } as any,
