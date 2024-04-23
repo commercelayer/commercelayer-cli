@@ -1,14 +1,12 @@
-import { CommerceLayerStatic } from '@commercelayer/sdk'
+import { CommerceLayerStatic, type Resource } from '@commercelayer/sdk'
 import { Command, Flags, Args } from '@oclif/core'
 import { clApi, clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { Resource } from '@commercelayer/sdk/lib/cjs/resource'
 import type { CLIError } from '@oclif/core/lib/errors'
 import exec from './exec'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export default abstract class extends Command {
@@ -57,7 +55,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg as Package)
+    clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
