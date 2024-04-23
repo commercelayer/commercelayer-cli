@@ -1,14 +1,13 @@
 /* eslint-disable no-await-in-loop */
 import Command, { Flags } from '../../base'
 import { type ResourceData, type SeederResource, readResourceData, type BusinessModel } from '../../data'
-import { type CommerceLayerClient } from '@commercelayer/sdk'
 import config from '../../config'
 import Listr from 'listr'
 import { relationshipType } from '../../schema'
-import type { ResourceCreate, ResourceUpdate } from '@commercelayer/sdk/lib/cjs/resource'
 import { checkResourceType } from './check'
 import { clToken, clColor, clUtil, clApi, clText } from '@commercelayer/cli-core'
 import { type ResourceTypeNumber, requestsDelay } from '../../common'
+import type { CommerceLayerClient, ResourceId, ResourceCreate, ResourceUpdate } from '@commercelayer/sdk'
 
 
 
@@ -51,6 +50,8 @@ export default class SeederSeed extends Command {
       char: 'D',
       description: 'add a delay in milliseconds between calls to different resources',
       hidden: true,
+      multiple: false,
+      min: 0
     }),
     debug: Flags.boolean({
       description: 'Show debug information',
@@ -114,7 +115,7 @@ export default class SeederSeed extends Command {
           title: `Create ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.createResources(res, flags, task).catch(this.handleCommonError)
+            const n = await this.createResources(res, flags, task).catch(err => { this.handleCommonError(err as Error) })
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -128,8 +129,8 @@ export default class SeederSeed extends Command {
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data seeding not completed, correct errors and rerun the ${clColor.cli.command('seed')} command`) })
         .finally(() => { this.log() })
 
-    } catch (error: any) {
-      this.error(error.message)
+    } catch (error) {
+      this.error((error as Error).message)
     }
 
   }
@@ -166,7 +167,7 @@ export default class SeederSeed extends Command {
             const val = resource[field] as string
             const rel = relationshipType(res.resourceType, field, val)
             if (rel) {
-              if (clApi.isResourceCacheable(rel, 'get')) {
+              if (clApi.isResourceCacheable(rel, 'GET')) {
                 resources.cacheable++ // find related resource by reference
                 if (!resources.cacheableTypes?.includes(rel)) resources.cacheableTypes?.push(rel)
               } else {
@@ -178,7 +179,7 @@ export default class SeederSeed extends Command {
 
         }
 
-        if (clApi.isResourceCacheable(res.resourceType, 'get')) {
+        if (clApi.isResourceCacheable(res.resourceType, 'GET')) {
           resources.cacheable += gets
           if (!resources.cacheableTypes?.includes(res.resourceType)) resources.cacheableTypes?.push(res.resourceType)
         } else {
@@ -242,7 +243,7 @@ export default class SeederSeed extends Command {
     const resSdk: any = this.cl[resType as keyof CommerceLayerClient]
     resourceCreate.reference_origin = config.referenceOrigin
 
-    await this.applyRequestDelay(type, 'post')
+    await this.applyRequestDelay(type, 'POST')
 
     const remoteRes = await resSdk.create(resourceCreate).catch((error: any) => {
       if (this.cl.isApiError(error)) {
@@ -268,7 +269,7 @@ export default class SeederSeed extends Command {
     resourceUpdate.id = id
     resourceUpdate.reference_origin = config.referenceOrigin
 
-    await this.applyRequestDelay(type, 'patch')
+    await this.applyRequestDelay(type, 'PATCH')
 
     const remoteRes = await resSdk.update(resourceUpdate).catch((error: any) => {
       if (this.cl.isApiError(error)) {
@@ -286,7 +287,7 @@ export default class SeederSeed extends Command {
   private async createResources(res: SeederResource, flags: any, task: Listr.ListrTaskWrapper): Promise<number> {
 
     // Read resource type data
-    const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
+    const resourceData = await readResourceData(flags.url as string, res.resourceType).catch(() => {
       throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 
@@ -303,7 +304,7 @@ export default class SeederSeed extends Command {
       if (!resource) throw new Error(`Resource not found in ${res.resourceType} file: ${clColor.msg.error(r)}`)
 
       // If resource exists in CL update it, otherwise create it
-      const remoteRes = await this.findByReference(res.resourceType, resource.reference)
+      const remoteRes: ResourceId | undefined = await this.findByReference(res.resourceType, resource.reference)
       if (remoteRes) {
         if (flags.keep) continue
         else await this.updateResource(res.resourceType, remoteRes.id, resource)
@@ -311,7 +312,7 @@ export default class SeederSeed extends Command {
 
     }
 
-    if (flags.delay) await clUtil.sleep(flags.delay)
+    if (flags.delay) await clUtil.sleep(flags.delay as number)
 
     return referenceKeys.length
 

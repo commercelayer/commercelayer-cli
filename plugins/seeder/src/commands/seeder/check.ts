@@ -55,7 +55,7 @@ export default class SeederCheck extends Command {
           title: `Check ${clColor.cli.value(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.checkResources(res, flags, task, model).catch(this.handleCommonError)
+            const n = await this.checkResources(res, flags, task, model).catch(err => { this.handleCommonError(err as Error) })
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -69,8 +69,8 @@ export default class SeederCheck extends Command {
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data check completed with errors`) })
         .finally(() => { this.log() })
 
-    } catch (error: any) {
-      this.error(error.message)
+    } catch (error) {
+      this.error((error as Error).message)
     }
 
   }
@@ -96,7 +96,7 @@ export default class SeederCheck extends Command {
       if (rel) {
         if (Array.isArray(val)) throw new Error(`Relationship ${resType}.${field} cannot be an array`)
         else if (flags.relationships) {
-          const relRes = await getResource(flags.url, rel, val)
+          const relRes = await getResource(flags.url as string, rel, val)
           if (!relRes) throw new Error(`Resource of type ${clColor.api.resource(rel)} and reference ${clColor.api.resource(val)} not found`)
           if (modelIndex(model, resType, res.reference) < modelIndex(model, rel, val)) throw new Error(`Resource ${rel}.${val} must be created before resource ${type}.${res.reference}`)
         }
@@ -114,7 +114,7 @@ export default class SeederCheck extends Command {
     checkResourceType(res.resourceType)
 
     // Read resource type data
-    const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
+    const resourceData = await readResourceData(flags.url as string, res.resourceType).catch(() => {
       throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 
