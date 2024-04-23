@@ -1,14 +1,14 @@
 
 import Command, { Flags, cliux } from '../../base'
-import { clApi, clToken, clColor, clUtil, clCommand } from '@commercelayer/cli-core'
-import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import { clApi, clToken, clColor, clUtil, clCommand, clConfig } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, QueryParamsList, ListResponse, Resource, QueryPageSize } from '@commercelayer/sdk'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 import notifier from 'node-notifier'
 
 
 // const maxPagesWarning = 1000
 const maxItemsWarning = 20000
-const maxPageItems = 25
+const maxPageItems = clConfig.api.page_max_size as QueryPageSize
 const securityInterval = 2
 const requestTimeout = { min: 1000, max: 15000 }
 
@@ -208,8 +208,11 @@ export default class ResourcesAll extends Command {
       if (include && (include.length > 0)) params.include = include
       if (fields && (Object.keys(fields).length > 0)) params.fields = fields
       if (wheres && (Object.keys(wheres).length > 0)) params.filters = wheres
+
       if (sort && (Object.keys(sort).length > 0)) params.sort = sort
       else params.sort = { created_at: 'asc' }  // query order issue
+      if (!params.sort.id) params.sort.id = 'asc'
+
       params.pageSize = maxPageItems
 
       const resources: any = []
@@ -243,7 +246,7 @@ export default class ResourcesAll extends Command {
 
         params.pageNumber = page
 
-        const res = await resSdk.list(params)
+        const res: ListResponse<Resource> = await resSdk.list(params)
         pages = res.meta.pageCount // pages count can change during extraction
         const recordCount: number = res.meta.recordCount
 
@@ -266,7 +269,7 @@ export default class ResourcesAll extends Command {
           }
 
           resources.push(...res)
-          progressBar.increment(res.length as number)
+          progressBar.increment(res.length)
 
         }
 
