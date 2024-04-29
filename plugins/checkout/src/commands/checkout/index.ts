@@ -2,7 +2,7 @@ import Command, { Flags } from '../../base'
 import CheckoutOrder from './order'
 import type { LineItemCreate } from '@commercelayer/sdk'
 import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
-import { clColor } from '@commercelayer/cli-core'
+import { clColor, clCommand } from '@commercelayer/cli-core'
 
 
 type LineItemType = 'skus' | 'bundles'
@@ -81,7 +81,7 @@ export default class CheckoutIndex extends Command {
 
       const args = [flags.order]
 
-      for (const flag of Object.values(Command.flags)) {
+      for (const flag of (Object.values(clCommand.allFlags(Command)) as any[])) {
         const flagValue = flags[flag.name as keyof typeof flags]
         if (flagValue)
           if (flag.type === 'boolean') args.push(`--${flag.name}`)
