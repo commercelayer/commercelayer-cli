@@ -60,7 +60,7 @@ export default class ResourcesList extends Command {
     }),
     'force-include': Flags.boolean({
       char: 'I',
-      description: 'force resources inclusion beyound the 3rd level',
+      description: 'force resources inclusion beyond the 3rd level',
       dependsOn: ['include'],
       hidden: true,
     }),
