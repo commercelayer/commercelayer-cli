@@ -1,8 +1,7 @@
 /* eslint-disable no-console, no-eval */
 import fs from 'fs'
-// import Manifest from '@oclif/dev-cli/lib/commands/manifest'
 import { join } from 'path'
-import { snakeCase } from 'lodash'
+import snakeCase from 'lodash.snakecase'
 import { clSchema } from '@commercelayer/cli-core'
 
 const Inflector = require('inflector-js')

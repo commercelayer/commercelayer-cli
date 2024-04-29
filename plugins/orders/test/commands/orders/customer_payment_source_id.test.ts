@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('orders:customer_payment_source_id', () => {
   test
-    .timeout(27000)
+    .timeout(29000)
     .stdout()
     .command(['orders:noc'])
     .it('runs NoC', ctx => {

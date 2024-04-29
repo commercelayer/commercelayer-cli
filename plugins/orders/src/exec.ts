@@ -31,8 +31,8 @@ const exec = async (id: string, action: ActionType, flags: any, fields?: string[
   const res: OrderUpdate = { id }
   res[`_${action}`] = flags.value || true as unknown as undefined
 
-  const params: QueryParamsRetrieve = {}
-  if (fields && (fields.length > 0)) params.fields = { orders: fields }
+  const params: QueryParamsRetrieve<Order> = {}
+  if (fields && (fields.length > 0)) params.fields = { orders: fields as Array<keyof Order> }
 
   try {
     const result = await cl.orders.update(res, params)
