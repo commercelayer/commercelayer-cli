@@ -2,10 +2,9 @@ import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@c
 import { Command, Flags } from '@oclif/core'
 import { clColor, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 const REQUIRED_APP_KIND = 'sales_channel'
@@ -43,7 +42,7 @@ export default abstract class extends Command {
 
   // INIT (override)
   async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg as Package)
+    clUpdate.checkUpdate(pkg)
     return super.init()
   }
 

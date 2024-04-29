@@ -20,7 +20,7 @@ type MicrostoreOptions = {
 // eslint-disable-next-line max-params
 const buildMicrostoreUrl = (organization: string, domain: string | undefined, skuListId: string, accessToken: string, options: MicrostoreOptions): string => {
 
-  const baseUrl = clApi.baseURL(organization, domain || clConfig.api.default_app_domain)
+  const baseUrl = clApi.baseURL('core', organization, domain || clConfig.api.default_app_domain)
 
   let microstoreUrl = `${baseUrl}/microstore/list/${skuListId}?accessToken=${accessToken}`
   if (options.all) microstoreUrl += '&all=true'
