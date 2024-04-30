@@ -1,3 +1,120 @@
+# [6.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-rc.2...v6.0.0-rc.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* update dependencies ([66e5889](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/66e588909d9575392bc9ad1d43bf5b066ff65752))
+
+# [6.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix dependencies ([eb7f830](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/eb7f8304590957225f76856d82d288500c1b788c))
+
+# [6.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.5...v6.0.0-rc.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([3c6ce82](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/3c6ce821380fd26319aa66569b3d3cb6fc7c86fc))
+* fix ts-node ([2081922](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/208192215c23946b0e786e8379f3e752d291b08b))
+* fix update package ([daf2b90](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/daf2b90f29c23f0051ba8cf5268c9f70b6edc2c4))
+* replace ts-node with tsx ([88e090d](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/88e090d52f1fac624a8abd7b6f70ddc07bd8437d))
+* update dependencies ([29ea6a7](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/29ea6a75fc4a7cb4cb4c3befb6178ffadf8280ba))
+* update dependencies ([0b980f3](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/0b980f38d07be99d549c01b5720cd81541d49221))
+* update dependencies ([f725528](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/f7255288b79b14eaa2ad8cdfdca2c8d8cd063323))
+
+
+### Features
+
+* prerelease ([422da24](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/422da24e4a7cf17b1684f2d651876f5f78248fc8))
+
+
+### Performance Improvements
+
+* update engine ([46a0600](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/46a06003050212f5fe84377bc6f990baf590d57e))
+* upgrade to oclif 3 ([382392c](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/382392c7875dac0bcadaa24aab1da864d5b8b311))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
+# [6.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.8...v6.0.0-oclif3.9) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([3c6ce82](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/3c6ce821380fd26319aa66569b3d3cb6fc7c86fc))
+
+# [6.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.7...v6.0.0-oclif3.8) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([2081922](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/208192215c23946b0e786e8379f3e752d291b08b))
+
+# [6.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.6...v6.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* replace ts-node with tsx ([88e090d](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/88e090d52f1fac624a8abd7b6f70ddc07bd8437d))
+
+# [6.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.5...v6.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* update dependencies ([29ea6a7](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/29ea6a75fc4a7cb4cb4c3befb6178ffadf8280ba))
+
+# [6.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.4...v6.0.0-oclif3.5) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix update package ([daf2b90](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/daf2b90f29c23f0051ba8cf5268c9f70b6edc2c4))
+
+# [6.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.3...v6.0.0-oclif3.4) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([46a0600](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/46a06003050212f5fe84377bc6f990baf590d57e))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
+# [6.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.2...v6.0.0-oclif3.3) (2024-02-21)
+
+
+### Bug Fixes
+
+* update dependencies ([0b980f3](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/0b980f38d07be99d549c01b5720cd81541d49221))
+
+# [6.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0-oclif3.1...v6.0.0-oclif3.2) (2024-02-16)
+
+
+### Bug Fixes
+
+* update dependencies ([f725528](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/f7255288b79b14eaa2ad8cdfdca2c8d8cd063323))
+
+# [6.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.5...v6.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([382392c](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/382392c7875dac0bcadaa24aab1da864d5b8b311))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
 ## [5.6.5](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.4...v5.6.5) (2023-12-14)
 
 
