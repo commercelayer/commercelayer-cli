@@ -1,6 +1,5 @@
-import type { TaggableResource, TaggableResourceType } from '@commercelayer/sdk/lib/cjs/api'
 import BaseCommand, { Flags } from '../../base'
-import type { CommerceLayerClient, Tag } from '@commercelayer/sdk'
+import type { CommerceLayerClient, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
 import { clApi, clColor, clText } from '@commercelayer/cli-core'
 
 
