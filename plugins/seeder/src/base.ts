@@ -1,15 +1,16 @@
 import { Command, Flags, ux as cliux } from '@oclif/core'
-import commercelayer, { CommerceLayerStatic, type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import config from './config'
-import { clUpdate, clColor, clToken, type ApiMode, clUtil, clApi } from '@commercelayer/cli-core'
+import { clUpdate, clColor, clToken, type ApiMode, clUtil, clApi, type Method } from '@commercelayer/cli-core'
 import { isRemotePath, pathJoin } from './common'
 import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
-import type { ListResponse, ResourceId } from '@commercelayer/sdk/lib/cjs/resource'
-import type { Method } from 'axios'
+import type { CommerceLayerClient, ListResponse, ResourceId, QueryParamsList, Resource } from '@commercelayer/sdk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { CLIError } from '@oclif/core/lib/errors'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export default abstract class extends Command {
@@ -52,7 +53,7 @@ export default abstract class extends Command {
   }
 
 
-  protected async applyRequestDelay(resourceType: string, method: Method = 'get'): Promise<void> {
+  protected async applyRequestDelay(resourceType: string, method: Method = 'GET'): Promise<void> {
       const delay = (clApi.isResourceCacheable(resourceType, method)? this.delay.cacheable : this.delay.uncacheable) || 0
       if (delay > 0) await clUtil.sleep(delay)
   }
@@ -64,7 +65,7 @@ export default abstract class extends Command {
   }
 
 
-  async catch(error: any): Promise<any> {
+  async catch(error: CLIError): Promise<any> {
     if ((error.code === 'EEXIT') && (error.message === 'EEXIT: 0')) return
     return await super.catch(error)
   }
@@ -75,7 +76,7 @@ export default abstract class extends Command {
 
     const organization = flags.organization
     const domain = flags.domain
-    const accessToken = flags.accessToken
+    const accessToken: string = flags.accessToken
     const userAgent = clUtil.userAgent(this.config)
 
     this.cl = commercelayer({ organization, domain, accessToken, userAgent })
@@ -108,7 +109,7 @@ export default abstract class extends Command {
       })
       .catch(error => {
         cliux.action.stop(clColor.msg.error('Error'))
-        this.error(error)
+        this.error(error as CommandError)
       })
       .finally(() => { this.log() })
   }
@@ -125,10 +126,10 @@ export default abstract class extends Command {
     }
     if (params.fields) params.fields[type] = ['id', 'reference']
 
-    await this.applyRequestDelay(type, 'get')
+    await this.applyRequestDelay(type, 'GET')
 
     const resSdk = this.cl[type as keyof CommerceLayerClient] as any
-    const list = await resSdk.list(params) as ListResponse<ResourceId>
+    const list = await resSdk.list(params) as ListResponse<Resource>
 
     return list.first()
 

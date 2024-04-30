@@ -2,7 +2,7 @@
 import Command, { Flags } from '../../base'
 import Listr from 'listr'
 import { type BusinessModel, readResourceData, type SeederResource } from '../../data'
-import { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { type CommerceLayerClient, CommerceLayerStatic, type ResourceId } from '@commercelayer/sdk'
 import { checkResourceType } from './check'
 import { clApi, clColor, clText } from '@commercelayer/cli-core'
 import { type ResourceTypeNumber, requestsDelay } from '../../common'
@@ -82,7 +82,7 @@ export default class SeederClean extends Command {
           title: `Delete ${clColor.italic(res.resourceType)}`,
           task: async (_ctx: any, task: Listr.ListrTaskWrapper<any>) => {
             const origTitle = task.title
-            const n = await this.deleteResources(res, flags, task).catch(this.handleCommonError)
+            const n = await this.deleteResources(res, flags, task).catch(err => { this.handleCommonError(err as Error) })
             task.title = `${origTitle}: [${n}]`
           },
         }
@@ -96,8 +96,8 @@ export default class SeederClean extends Command {
         .catch(() => { this.log(`\n${clColor.msg.error.bold('ERROR')} - Data cleaning not completed, correct errors and rerun the ${clColor.cli.command('clean')} command`) })
         .finally(() => { this.log() })
 
-    } catch (error: any) {
-      this.error(error.message)
+    } catch (error) {
+      this.error((error as Error).message)
     }
 
   }
@@ -109,7 +109,7 @@ export default class SeederClean extends Command {
 
 
     // Read resource type data
-    const resourceData = await readResourceData(flags.url, res.resourceType).catch(() => {
+    const resourceData = await readResourceData(flags.url as string, res.resourceType).catch(() => {
       throw new Error(`Error reading ${clColor.msg.error(res.resourceType)} data file`)
     })
 
@@ -126,7 +126,7 @@ export default class SeederClean extends Command {
       const resource = resourceData[ref]
       const type = resource?.type || res.resourceType
 
-      const remoteRes = await this.findByReference(type, ref)
+      const remoteRes: ResourceId | undefined = await this.findByReference(type, ref)
       if (remoteRes) await this.deleteResource(remoteRes.type, remoteRes.id)
 
     }
@@ -142,7 +142,7 @@ export default class SeederClean extends Command {
 
     const resSdk: any = this.cl[type as keyof CommerceLayerClient]
 
-    await this.applyRequestDelay(type, 'delete')
+    await this.applyRequestDelay(type, 'DELETE')
 
     await resSdk.delete(id).catch((error: any) => {
       if (CommerceLayerStatic.isApiError(error)) {
@@ -168,7 +168,7 @@ export default class SeederClean extends Command {
         const resourceData = await readResourceData(dataFilesUrl, res.resourceType)
         const referenceKeys = res.importAll ? Object.keys(resourceData): res.referenceKeys
 
-        if (clApi.isResourceCacheable(res.resourceType, 'delete')) {
+        if (clApi.isResourceCacheable(res.resourceType, 'DELETE')) {
           resources.cacheable += referenceKeys.length
           if (!resources.cacheableTypes) resources.cacheableTypes = []
           if (!resources.cacheableTypes.includes(res.resourceType)) resources.cacheableTypes.push(res.resourceType)
