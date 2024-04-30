@@ -1,3 +1,36 @@
+# [4.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v3.7.1...v4.0.0) (2024-04-30)
+
+
+### Bug Fixes
+
+* fix dependencies ([61f66fd](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/61f66fd23fd07ef998f3031902d638fa04caac48))
+* fix lint errors and update dependencies ([641164a](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/641164a989598c05d93863168f05726457b2630e))
+* fix release config ([326121d](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/326121d82de8be3a36ebec9c3ecc18d09f00216b))
+* fix sdk dependency ([cd6927e](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/cd6927ec21753ef1f7d003fb4b232293d638ad4f))
+* fix sdk6 types ([a943243](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/a943243714a7db2c9e15772375907547a2e769d6))
+* fix ts-node ([5433b37](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/5433b37d50f69faf1a1b8f1b9666483e00db472f))
+* fix update package ([be9da35](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/be9da35601443cd583a8bc3b48fd0552be0429a8))
+* replace ts-node with tsx ([a1ba5cf](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/a1ba5cf2a4c2cf1ca05871ef7ff2c23c379db680))
+* update dependencies ([3ffcef0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/3ffcef0ecc38f98ff79a858338c43988c3685482))
+* update dependencies ([b6c7997](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/b6c7997e98505012dc116344f0aab88cadfca0f3))
+
+
+### Features
+
+* prerelease ([82ab483](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/82ab483e866860ab84c9aa03e1171f2117109479))
+
+
+### Performance Improvements
+
+* update engine ([db5c930](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/db5c93015fafbb8900ce73964a137a480ba7101c))
+* upgrade to oclif 3 ([e998b96](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/e998b96d6dda6f50aa992d176be34c88a21c29bc))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
 # [4.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0-rc.2...v4.0.0-rc.3) (2024-04-15)
 
 
