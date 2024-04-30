@@ -113,9 +113,9 @@
     "lodash.kebabcase": "^4.1.1",
     "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.8.8",
+    "oclif": "^4.9.3",
     "semantic-release": "^23.0.8",
-    "tsx": "^4.7.2",
+    "tsx": "^4.7.3",
     "typescript": "^5.4.5"
   },
   "dependencies": {
@@ -125,8 +125,8 @@
     "@oclif/core": "^3.26.4",
     "@oclif/plugin-autocomplete": "^3.0.16",
     "@oclif/plugin-help": "6.0.21",
-    "@oclif/plugin-not-found": "^3.1.6",
-    "@oclif/plugin-plugins": "^5.0.13",
+    "@oclif/plugin-not-found": "^3.1.7",
+    "@oclif/plugin-plugins": "^5.0.16",
     "configstore": "^5.0.1",
     "inquirer": "^8.2.6",
     "tslib": "^2.6.2",
