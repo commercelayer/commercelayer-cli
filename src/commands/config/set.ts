@@ -8,7 +8,7 @@ export default class ConfigSet extends Command {
 
   static description = 'set a CLI configuration parameter'
 
-  static hidden: true
+  static hidden = true
 
   static flags = {
     // help: flags.help({char: 'h'}),

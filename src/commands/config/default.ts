@@ -7,7 +7,7 @@ export default class ConfigDefault extends Command {
 
   static description = 'reset CLI configuration to default values'
 
-  static hidden: true
+  static hidden = true
 
   static flags = {
     // help: flags.help({char: 'h'}),

@@ -99,13 +99,13 @@ const getAvailablePlugins = (): PluginRelease[] => {
 
 
 const getInstalledPlugins = (config: Config): PluginRelease[] => {
-  const installed = config.plugins.filter(p => (p.type === 'user') && p.name.startsWith(PLUGIN_PREFIX)).map(p => p.name)
+  const installed = config.getPluginsList().filter(p => (p.type === 'user') && p.name.startsWith(PLUGIN_PREFIX)).map(p => p.name)
   return AvailablePlugins.filter(p => installed.find(i => i === p.plugin) !== undefined)
 }
 
 const isPluginInstalled = (name: string, config: Config): boolean => {
   const plugin = name.startsWith(PLUGIN_PREFIX)? name : `${PLUGIN_PREFIX}${name}`
-  return (getInstalledPlugins(config).findIndex(p => (p.name === name) || (p.name === plugin)) > -1) 
+  return (getInstalledPlugins(config).findIndex(p => (p.plugin === plugin)) > -1) 
 }
 
 

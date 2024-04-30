@@ -9,7 +9,7 @@ const hook: Hook<'postrun'> = async function (opts) {
   if (opts.config.windows) return
 
   // Check if autocomplete plugin is installed
-  if (opts.config.plugins.filter(p => p.name === '@oclif/plugin-autocomplete').length > 0) {
+  if (opts.config.getPluginsList().filter(p => p.name === '@oclif/plugin-autocomplete').length > 0) {
 
     // If a plugin is installed/uninstalled refresh autocomplete cache
     if (['plugins:install', 'plugins:uninstall'].includes(opts.Command.id)) {

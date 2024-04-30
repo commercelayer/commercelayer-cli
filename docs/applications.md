@@ -8,6 +8,7 @@ Manage login to CLI applications.
 * [`commercelayer applications:info`](#commercelayer-applicationsinfo)
 * [`commercelayer applications:login`](#commercelayer-applicationslogin)
 * [`commercelayer applications:logout`](#commercelayer-applicationslogout)
+* [`commercelayer applications:provisioning`](#commercelayer-applicationsprovisioning)
 * [`commercelayer applications:scope SCOPE`](#commercelayer-applicationsscope-scope)
 * [`commercelayer applications:switch`](#commercelayer-applicationsswitch)
 
@@ -17,19 +18,20 @@ Show a list of all (logged in) available CLI applications.
 
 ```sh-session
 USAGE
-  $ commercelayer applications [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
-    --id <value>] [-S]
+  $ commercelayer applications [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
+    <value>] [-A <value> | -o <value>] [-S]
 
 FLAGS
+  -A, --api=<value>           specific API application
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: integration|sales_channel>
+                              <options: integration|sales_channel|user>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
-  --id=<value>                application id
-  --live                      live execution mode
+      --id=<value>            application id
+      --live                  live execution mode
 
 DESCRIPTION
   show a list of all (logged in) available CLI applications
@@ -55,14 +57,15 @@ Add a new Commerce Layer application to CLI config (application must be of kind 
 
 ```sh-session
 USAGE
-  $ commercelayer applications:add -o <value> -i <value> -a <value> [-s <value> | -e <value> | -p <value>] [-S <value>]
+  $ commercelayer applications:add -a <value> [-o <value>] (-s <value> -i <value>) [-S <value> ] [-e <value> -p
+    <value>]
 
 FLAGS
   -S, --scope=<value>...      access token scope (market, stock location)
   -a, --alias=<value>         (required) the alias you want to associate to the application
   -e, --email=<value>         customer email
   -i, --clientId=<value>      (required) application client_id
-  -o, --organization=<value>  (required) organization slug
+  -o, --organization=<value>  organization slug
   -p, --password=<value>      customer secret password
   -s, --clientSecret=<value>  application client_secret
 
@@ -74,6 +77,8 @@ ALIASES
 
 EXAMPLES
   $ commercelayer applications:add -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
+
+  $ cl app:add -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
 _See code: [src/commands/applications/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/add.ts)_
@@ -109,19 +114,20 @@ Show application details.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:info [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
-    --id <value>] [-j]
+  $ commercelayer applications:info [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
+    <value>] [-A <value> | -o <value>] [-j]
 
 FLAGS
+  -A, --api=<value>           specific API application
   -a, --alias=<value>         the alias associated to the application
   -j, --json                  show info in JSON format
   -k, --kind=<option>         application kind
-                              <options: integration|sales_channel>
+                              <options: integration|sales_channel|user>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
-  --id=<value>                application id
-  --live                      live execution mode
+      --id=<value>            application id
+      --live                  live execution mode
 
 DESCRIPTION
   show application details
@@ -138,15 +144,15 @@ Execute login to a Commerce Layer application (application must be of kind 'inte
 
 ```sh-session
 USAGE
-  $ commercelayer applications:login -o <value> -i <value> -a <value> [-s <value> | -e <value> | -p <value>] [-S
-  <value>]
+  $ commercelayer applications:login -a <value> [-o <value>] (-s <value> -i <value>) [-S <value> ] [-e <value> -p
+    <value>]
 
 FLAGS
   -S, --scope=<value>...      access token scope (market, stock location)
   -a, --alias=<value>         (required) the alias you want to associate to the application
   -e, --email=<value>         customer email
   -i, --clientId=<value>      (required) application client_id
-  -o, --organization=<value>  (required) organization slug
+  -o, --organization=<value>  organization slug
   -p, --password=<value>      customer secret password
   -s, --clientSecret=<value>  application client_secret
 
@@ -159,6 +165,8 @@ ALIASES
 
 EXAMPLES
   $ commercelayer applications:login -o <organizationSlug> -i <clientId> -s <clientSecret> -a <applicationAlias>
+
+  $ cl app:login -i <clientId> -s <clientSecret> -a <applicationAlias>
 ```
 
 _See code: [src/commands/applications/login.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/login.ts)_
@@ -169,19 +177,20 @@ Remove an application from CLI local configuration.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:logout [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
-    --id <value>] [-r]
+  $ commercelayer applications:logout [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
+    <value>] [-A <value> | -o <value>] [-r]
 
 FLAGS
+  -A, --api=<value>           specific API application
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: integration|sales_channel>
+                              <options: integration|sales_channel|user>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
   -r, --revoke                revoke current access token
-  --id=<value>                application id
-  --live                      live execution mode
+      --id=<value>            application id
+      --live                  live execution mode
 
 DESCRIPTION
   remove an application from CLI local configuration
@@ -194,6 +203,46 @@ ALIASES
 ```
 
 _See code: [src/commands/applications/logout.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/logout.ts)_
+
+### `commercelayer applications:provisioning`
+
+Show all Provisioning applications.
+
+```sh-session
+USAGE
+  $ commercelayer applications:provisioning [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
+    <value>] [-A <value> | -o <value>] [-S]
+
+FLAGS
+  -A, --api=<value>           specific API application
+  -S, --sort                  sort applications by Organization and Application name
+  -a, --alias=<value>         the alias associated to the application
+  -k, --kind=<option>         application kind
+                              <options: integration|sales_channel|user>
+  -m, --mode=<option>         execution mode
+                              <options: test|live>
+  -o, --organization=<value>  organization slug
+      --id=<value>            application id
+      --live                  live execution mode
+
+DESCRIPTION
+  show all Provisioning applications
+
+ALIASES
+  $ commercelayer prov:list
+  $ commercelayer app:provisioning
+  $ commercelayer prov:apps
+  $ commercelayer prov:applications
+
+EXAMPLES
+  $ commercelayer applications:provisioning
+
+  $ cl app:provisioning
+
+  $ cl prov:apps
+```
+
+_See code: [src/commands/applications/provisioning.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/provisioning.ts)_
 
 ### `commercelayer applications:scope SCOPE`
 
@@ -229,18 +278,19 @@ Switch applications.
 
 ```sh-session
 USAGE
-  $ commercelayer applications:switch [-o <value>] [-k integration|sales_channel] [--live | -m test|live] [-a <value> |
-    --id <value>]
+  $ commercelayer applications:switch [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
+    <value>] [-A <value> | -o <value>]
 
 FLAGS
+  -A, --api=<value>           specific API application
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
-                              <options: integration|sales_channel>
+                              <options: integration|sales_channel|user>
   -m, --mode=<option>         execution mode
                               <options: test|live>
   -o, --organization=<value>  organization slug
-  --id=<value>                application id
-  --live                      live execution mode
+      --id=<value>            application id
+      --live                  live execution mode
 
 DESCRIPTION
   switch applications
