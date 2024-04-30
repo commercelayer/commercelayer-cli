@@ -3,14 +3,14 @@ import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
 import { Command, Flags, Args, ux } from '@oclif/core'
 import { existsSync, readFileSync } from 'fs'
 import axios from 'axios'
-import { gunzipSync } from 'zlib'
+import { type InputType, gunzipSync } from 'zlib'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Export } from '@commercelayer/sdk'
 import { writeFile } from 'fs/promises'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import notifier from 'node-notifier'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export const encoding = 'utf-8'
@@ -104,7 +104,7 @@ export default abstract class BaseCommand extends Command {
 
     const organization = flags.organization
     const domain = flags.domain
-    const accessToken = flags.accessToken
+    const accessToken: string = flags.accessToken
 
     const userAgent = clUtil.userAgent(this.config)
 
@@ -161,7 +161,7 @@ export abstract class ExportCommand extends BaseCommand {
     let output: string
     if (attachmentUrl.toLowerCase().startsWith('http')) {
       const expFile = await axios.get(attachmentUrl, { responseType: 'arraybuffer' })
-      output = expFile ? gunzipSync(expFile.data).toString() : ''
+      output = expFile ? gunzipSync(expFile.data as InputType).toString() : ''
     }
     else output = readFileSync(attachmentUrl, { encoding })
      

@@ -1,12 +1,12 @@
 import ExportsCreate from './create'
 import { ExportCommand, cliux, notify, Flags, encoding, type ExportFormat } from '../../base'
 import { type KeyValString, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
-import type { Export, ExportCreate } from '@commercelayer/sdk'
-import type { ListableResourceType } from '@commercelayer/sdk/lib/cjs/api'
+import type { Export, ExportCreate, ListableResourceType, QueryParamsList } from '@commercelayer/sdk'
 import Spinnies from 'spinnies'
 import open from 'open'
 import { readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports
@@ -149,9 +149,11 @@ export default class ExportsAll extends ExportCommand {
     try {
 
       this.commercelayerInit(flags)
-      const resSdk = this.cl[resType as ListableResourceType]
+      const resSdk = this.cl[resType as ListableResourceType] as any
 
-      const totRecords = await resSdk.count({ filters: wheres, pageSize: 1, pageNumber: 1 })
+      const filter: QueryParamsList = { filters: wheres, pageSize: 1, pageNumber: 1 }
+
+      const totRecords = await resSdk.count(filter)
       exportJob.totalRecords = totRecords
 
       const totExports = Math.ceil(totRecords / MAX_EXPORT_SIZE)
@@ -175,9 +177,9 @@ export default class ExportsAll extends ExportCommand {
         if (flags.open && outputFile) await open(outputFile)
       }
 
-    } catch (error: any) {
+    } catch (error) {
       if (this.cl.isApiError(error) && (error.status === 422)) this.handleExportError(error, resDesc)
-      else this.handleError(error)
+      else this.handleError(error as CommandError)
     }
 
   }
@@ -245,7 +247,7 @@ export default class ExportsAll extends ExportCommand {
 
     this.log(`\nExporting ${clColor.yellowBright(expJob.totalRecords)} ${expJob.resourceDesc} ...`)
 
-    const resSdk = this.cl[expJob.resourceType as ListableResourceType]
+    const resSdk = this.cl[expJob.resourceType as ListableResourceType] as any
 
     const expCreate: ExportCreate = {
       resource_type: expJob.resourceType,
@@ -311,7 +313,9 @@ export default class ExportsAll extends ExportCommand {
           const curExpPages = Math.ceil(curExpRecords / pageSize)
           expPage += curExpPages
 
-          const curExpLastPage = await resSdk.list({ filters: expJob.filter, pageSize, pageNumber: expPage, sort: { id: 'asc' } })
+          const filter: QueryParamsList = { filters: expJob.filter, pageSize, pageNumber: expPage, sort: { id: 'asc' } }
+
+          const curExpLastPage = await resSdk.list(filter)
 
           stopId = curExpLastPage.last()?.id
 
@@ -423,7 +427,7 @@ export default class ExportsAll extends ExportCommand {
     const tmpDir = this.config.cacheDir
     const format = this.getFileFormat(flags)
 
-    const mergedFile = join(tmpDir, `${exports[0].reference?.split('-')[0] as string}.${format}`)
+    const mergedFile = join(tmpDir, `${exports[0].reference?.split('-')[0] ?? ''}.${format}`)
     if (format === 'json') writeFileSync(mergedFile, `[${flags.prettify ? '\n\t' : ''}`, { flag: 'a', encoding })
 
     let exportCounter = 0
@@ -444,7 +448,7 @@ export default class ExportsAll extends ExportCommand {
         }
       }
 
-      const checkOk = this.checkExportedFile(e.metadata?.exportRecords || 0, fileExport, format)
+      const checkOk = this.checkExportedFile(e.metadata?.exportRecords as number || 0, fileExport, format)
       if (!checkOk) this.error(`Check of exported file n.${exportCounter} failed`)
 
       const fileText = this.cleanExportFile(fileExport, format)
