@@ -1,5 +1,5 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import type {  CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 
@@ -62,7 +62,7 @@ export default class ResourcesRetrieve extends Command {
 
 
     // Include flags
-    const include: string[] = this.includeFlag(flags.include)
+    const include: string[] = this.includeFlag(flags.include, undefined, flags['force-include'])
     // Fields flags
     const fields = this.fieldsFlag(flags.fields, resource.api)
 

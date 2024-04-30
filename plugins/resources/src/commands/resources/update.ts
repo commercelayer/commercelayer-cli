@@ -1,6 +1,6 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
-import { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import type { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 
@@ -20,6 +20,8 @@ export default class ResourcesUpdate extends Command {
     '$ cl update customers/<customerId> -m meta_key="meta value"',
     '$ cl ru customers <customerId> -M meta_key="metadata overwrite',
     '$ clayer update customers <customerId> -D /path/to/data/file/data.json',
+    '$ cl update order <orderId> -r billing_address=addresses/<addressId>',
+    '$ cl update customer <customerId> -r customer_group=<customerGroupId>'
   ]
 
   static flags = {
@@ -86,7 +88,7 @@ export default class ResourcesUpdate extends Command {
     // Raw request
     if (flags.data) {
       try {
-        const baseUrl = clApi.baseURL(flags.organization, flags.domain)
+        const baseUrl = clApi.baseURL('core', flags.organization, flags.domain)
         const accessToken = flags.accessToken
         const rawRes = await clApi.request.raw({ operation: clApi.Operation.Update, baseUrl, accessToken, resource: resource.api }, clApi.request.readDataFile(flags.data), id)
         const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
@@ -138,7 +140,7 @@ export default class ResourcesUpdate extends Command {
     }
 
     // Include flags
-    const include: string[] = this.includeFlag(flags.include, relationships)
+    const include: string[] = this.includeFlag(flags.include, relationships, flags['force-include'])
     // Fields flags
     const fields = this.fieldsFlag(flags.fields, resource.api)
 
@@ -181,7 +183,7 @@ export default class ResourcesUpdate extends Command {
       this.printHeaders(rawReader?.headers, flags)
       this.printOutput(out, flags)
 
-      this.log(`\n${clColor.style.success('Successfully')} updated resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(res.id)}\n`)
+      this.log(`\n${clColor.style.success('Successfully')} updated resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(res.id)}\n`)
 
 
       // Save command arguments

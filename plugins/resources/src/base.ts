@@ -1,20 +1,19 @@
 import { Command, Flags, Args, type Config, ux as cliux } from '@oclif/core'
-import { findResource, type Resource } from './util/resources'
+import { findResource, type ApiResource } from './util/resources'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { existsSync } from 'fs'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type QueryParams, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic  } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter, clText } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
-import type { ResourceId, ResourceType } from '@commercelayer/sdk/lib/cjs/resource'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
+import type { ResourceId, ResourceType, CommerceLayerClient, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export const FLAG_SAVE_PARAMS = 'save-args'
@@ -51,7 +50,7 @@ export abstract class BaseCommand extends Command {
     fields: Flags.string({
       char: 'f',
       multiple: true,
-      description: 'comma separeted list of fields in the format [resourceType/]field1,field2...',
+      description: 'comma separeted list of fields in the format [resourceType/]field1,field2,field3',
     }),
     json: Flags.boolean({
       char: 'j',
@@ -114,13 +113,19 @@ export abstract class BaseCommand extends Command {
       dependsOn: ['raw'],
       exclusive: ['headers', 'fields', 'include'],
     }),
+    'force-include': Flags.boolean({
+      char: 'I',
+      description: 'force resources inclusion beyond the 3rd level',
+      dependsOn: ['include'],
+      hidden: true,
+    }),
   }
 
 
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
@@ -156,7 +161,7 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  checkResource(res: string, { required = true, singular = false } = {}): Resource {
+  checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
     if (!res && required) this.error('Resource type not defined')
     const resource = findResource(res, { singular })
     if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
@@ -242,7 +247,7 @@ export abstract class BaseCommand extends Command {
     if (flag) {
       const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
       flagValues.forEach(a => values.push(...a))
-      if (values.some(f => f.split('.').length > 3) && !force) this.error('Can be only included resources within the 3rd level of depth')
+      if (values.some(f => f.split('.').length > 3) && !force) this.error('Only resources within the 3rd depth level can be included')
     }
 
     if (relationships) {
@@ -746,7 +751,7 @@ export abstract class BaseCommand extends Command {
 export default abstract class extends BaseCommand {
 
   static args = {
-    resource: Args.string({ name: 'resource', description: 'the resource type', required: true }),
+    resource: Args.string({ name: 'resource', description: 'the resource type', required: true })
   }
 
 }

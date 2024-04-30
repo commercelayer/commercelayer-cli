@@ -1,5 +1,5 @@
 import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, cliux } from '../../base'
-import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
+import type { QueryPageSize, CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 import { clColor } from '@commercelayer/cli-core'
@@ -57,13 +57,7 @@ export default class ResourcesList extends Command {
       description: 'extract subfields from object attributes',
       multiple: true,
       exclusive: ['raw'],
-    }),
-    'force-include': Flags.boolean({
-      char: 'I',
-      description: 'force resources inclusion beyound the 3rd level',
-      dependsOn: ['include'],
-      hidden: true,
-    }),
+    })
   }
 
 
@@ -113,7 +107,7 @@ export default class ResourcesList extends Command {
       if (fields && (Object.keys(fields).length > 0)) params.fields = fields
       if (wheres && (Object.keys(wheres).length > 0)) params.filters = wheres
       if (sort && (Object.keys(sort).length > 0)) params.sort = sort
-      if (perPage && (perPage > 0)) params.pageSize = perPage
+      if (perPage && (perPage > 0)) params.pageSize = perPage as QueryPageSize
       if (page && (page > 0)) params.pageNumber = page
 
 

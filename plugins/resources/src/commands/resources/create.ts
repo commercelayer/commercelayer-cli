@@ -1,6 +1,6 @@
 import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
-import { type CommerceLayerClient, type QueryParamsRetrieve } from '@commercelayer/sdk'
+import type { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 
@@ -55,6 +55,10 @@ export default class ResourcesCreate extends Command {
     })
   }
 
+  static args = {
+    ...Command.args
+  }
+
 
 
   async run(): Promise<any> {
@@ -71,7 +75,7 @@ export default class ResourcesCreate extends Command {
     // Raw request
     if (flags.data) {
       try {
-        const baseUrl = clApi.baseURL(flags.organization, flags.domain)
+        const baseUrl = clApi.baseURL('core', flags.organization, flags.domain)
         const accessToken = flags.accessToken
         const rawRes = await clApi.request.raw({ operation: clApi.Operation.Create, baseUrl, accessToken, resource: resource.api }, clApi.request.readDataFile(flags.data))
         const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
@@ -124,7 +128,7 @@ export default class ResourcesCreate extends Command {
     }
 
     // Include flags
-    const include: string[] = this.includeFlag(flags.include, relationships)
+    const include: string[] = this.includeFlag(flags.include, relationships, flags['force-include'])
     // Fields flags
     const fields = this.fieldsFlag(flags.fields, resource.api)
 
@@ -157,7 +161,7 @@ export default class ResourcesCreate extends Command {
       this.printHeaders(rawReader?.headers, flags)
       this.printOutput(out, flags)
 
-      this.log(`\n${clColor.style.success('Successfully')} created new resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(res.id)}\n`)
+      this.log(`\n${clColor.style.success('Successfully')} created new resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(res.id)}\n`)
 
 
       // Save command arguments

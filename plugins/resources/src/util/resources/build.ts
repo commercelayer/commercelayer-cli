@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable no-console */
-import type { Resource } from '../resources'
-import axios from 'axios'
-import { CommerceLayerStatic } from '@commercelayer/sdk'
-import { join } from 'path'
-import { writeFileSync } from 'fs'
-import type { ResourceTypeLock } from '@commercelayer/sdk/lib/cjs/api'
+
+import type { ApiResource } from '../resources'
+import { CommerceLayerStatic, type ResourceTypeLock } from '@commercelayer/sdk'
+import { join } from 'node:path'
+import { writeFileSync } from 'node:fs'
 import { clText } from '@commercelayer/cli-core'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
@@ -18,8 +16,8 @@ const getResourcesJson = async (): Promise<any> => {
 
 	try {
 		console.log(`Loading resources from remote url ${resUrl} ...`)
-		const response = await axios.get(resUrl)
-		resources = response.data
+		const response = await fetch(resUrl)
+		resources = await response.json()
 		writeFileSync(resFile, resources, { encoding: 'utf-8' })
 	} catch (error) {
 		console.log('Error loading resources from ' + resUrl)
@@ -44,7 +42,7 @@ const isSingleton = (res: string): boolean => {
 }
 
 
-const parseResourcesSchema = async (): Promise<Resource[]> => {
+const parseResourcesSchema = async (): Promise<ApiResource[]> => {
 
 	const resJson = await getResourcesJson()
 
@@ -69,7 +67,7 @@ const parseResourcesSchema = async (): Promise<Resource[]> => {
 }
 
 
-const parseResourcesSdk = async (): Promise<Resource[]> => {
+const parseResourcesSdk = async (): Promise<ApiResource[]> => {
 
 	const resList = CommerceLayerStatic.resources().map(r => {
 		const singular = clText.singularize(r)

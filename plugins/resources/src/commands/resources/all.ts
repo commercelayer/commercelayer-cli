@@ -1,16 +1,14 @@
 
 import Command, { Flags, cliux } from '../../base'
 import { clApi, clToken, clColor, clUtil, clCommand, clConfig } from '@commercelayer/cli-core'
-import { getAccessToken } from '@commercelayer/cli-core/lib/cjs/token'
-import { type CommerceLayerClient, type QueryParamsList } from '@commercelayer/sdk'
-import type { ListResponse, Resource } from '@commercelayer/sdk/lib/cjs/resource'
+import type { CommerceLayerClient, QueryParamsList, ListResponse, Resource, QueryPageSize } from '@commercelayer/sdk'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 import notifier from 'node-notifier'
 
 
 // const maxPagesWarning = 1000
 const maxItemsWarning = 20000
-const maxPageItems = clConfig.api.page_max_size
+const maxPageItems = clConfig.api.page_max_size as QueryPageSize
 const securityInterval = 2
 const requestTimeout = { min: 1000, max: 15000 }
 
@@ -76,15 +74,15 @@ export default class ResourcesAll extends Command {
       hidden: true,
     }),
     clientId: Flags.string({
-      name: 'clientId',
-      char: 'i',
+      // name: 'clientId',
+      // char: 'i',
       description: 'organization client_id',
       hidden: true,
       required: false,
       env: 'CL_CLI_CLIENT_ID',
     }),
     clientSecret: Flags.string({
-      char: 's',
+      // char: 's',
       description: 'organization client_secret',
       hidden: true,
       required: false,
@@ -142,7 +140,7 @@ export default class ResourcesAll extends Command {
       const organization = flags.organization
       const domain = flags.domain
 
-      const token = await getAccessToken({
+      const token = await clToken.getAccessToken({
         clientId: flags.clientId || '',
         clientSecret: flags.clientSecret || '',
         slug: organization,
