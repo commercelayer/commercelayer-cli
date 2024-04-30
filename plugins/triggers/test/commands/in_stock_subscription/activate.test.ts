@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('in_stock_subscriptions:activate', () => {
   test
-    .timeout(31000)
+    .timeout(35000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

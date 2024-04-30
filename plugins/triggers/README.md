@@ -150,6 +150,10 @@ $ commercelayer plugins:install triggers
 * [`commercelayer shipping_method ID`](#commercelayer-shipping_method-id)
 * [`commercelayer shipping_method:disable ID`](#commercelayer-shipping_methoddisable-id)
 * [`commercelayer shipping_method:enable ID`](#commercelayer-shipping_methodenable-id)
+* [`commercelayer stock_line_item ID`](#commercelayer-stock_line_item-id)
+* [`commercelayer stock_line_item:decrement_stock ID`](#commercelayer-stock_line_itemdecrement_stock-id)
+* [`commercelayer stock_line_item:release_stock ID`](#commercelayer-stock_line_itemrelease_stock-id)
+* [`commercelayer stock_line_item:reserve_stock ID`](#commercelayer-stock_line_itemreserve_stock-id)
 * [`commercelayer stock_reservation ID`](#commercelayer-stock_reservation-id)
 * [`commercelayer stock_reservation:pending ID`](#commercelayer-stock_reservationpending-id)
 * [`commercelayer stock_transfer ID`](#commercelayer-stock_transfer-id)
@@ -163,6 +167,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer stripe_payment:refresh ID`](#commercelayer-stripe_paymentrefresh-id)
 * [`commercelayer stripe_payment:update ID`](#commercelayer-stripe_paymentupdate-id)
 * [`commercelayer webhook ID`](#commercelayer-webhook-id)
+* [`commercelayer webhook:disable ID`](#commercelayer-webhookdisable-id)
+* [`commercelayer webhook:enable ID`](#commercelayer-webhookenable-id)
 * [`commercelayer webhook:reset_circuit ID`](#commercelayer-webhookreset_circuit-id)
 
 ### `commercelayer adyen_payment ID`
@@ -2826,6 +2832,97 @@ DESCRIPTION
 
 _See code: [src/commands/shipping_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/enable.ts)_
 
+### `commercelayer stock_line_item ID`
+
+Execute an action on a resource of type stock_line_items.
+
+```sh-session
+USAGE
+  $ commercelayer stock_line_item ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type stock_line_items
+```
+
+_See code: [src/commands/stock_line_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/index.ts)_
+
+### `commercelayer stock_line_item:decrement_stock ID`
+
+Send this attribute if you want to automatically decrement and release the stock this stock line item. Can be done only when fulfillment is in progress.
+
+```sh-session
+USAGE
+  $ commercelayer stock_line_item:decrement_stock ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to automatically decrement and release the stock this stock line item. Can be done
+  only when fulfillment is in progress.
+```
+
+_See code: [src/commands/stock_line_item/decrement_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/decrement_stock.ts)_
+
+### `commercelayer stock_line_item:release_stock ID`
+
+Send this attribute if you want to automatically release the stock for this stock line item. Can be done only when fulfillment is in progress.
+
+```sh-session
+USAGE
+  $ commercelayer stock_line_item:release_stock ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to automatically release the stock for this stock line item. Can be done only when
+  fulfillment is in progress.
+```
+
+_See code: [src/commands/stock_line_item/release_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/release_stock.ts)_
+
+### `commercelayer stock_line_item:reserve_stock ID`
+
+Send this attribute if you want to automatically reserve the stock for this stock line item. Can be done only when fulfillment is in progress.
+
+```sh-session
+USAGE
+  $ commercelayer stock_line_item:reserve_stock ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to automatically reserve the stock for this stock line item. Can be done only when
+  fulfillment is in progress.
+```
+
+_See code: [src/commands/stock_line_item/reserve_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/reserve_stock.ts)_
+
 ### `commercelayer stock_reservation ID`
 
 Execute an action on a resource of type stock_reservations.
@@ -3111,6 +3208,50 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/index.ts)_
+
+### `commercelayer webhook:disable ID`
+
+Send this attribute if you want to mark the webhook as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer webhook:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the webhook as disabled.
+```
+
+_See code: [src/commands/webhook/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/disable.ts)_
+
+### `commercelayer webhook:enable ID`
+
+Send this attribute if you want to mark the webhook as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer webhook:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark the webhook as enabled.
+```
+
+_See code: [src/commands/webhook/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/enable.ts)_
 
 ### `commercelayer webhook:reset_circuit ID`
 
