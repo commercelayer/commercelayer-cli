@@ -4,6 +4,7 @@ import type { SingleBar } from 'cli-progress'
 import { clUtil, clConfig, clColor, clApi } from '@commercelayer/cli-core'
 import { Monitor } from '../../monitor'
 import { type Chunk, type Batch, splitChunks, splitRecords, MAX_QUEUE_LENGTH } from '../../chunk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 
@@ -117,7 +118,7 @@ export default class CleanupsCreate extends Command {
 
       const resSdk: any = this.cl[type as keyof CommerceLayerClient]
       const clpRecords = await resSdk.list({ filters: wheres, pageSize: 1 })
-      const cleanupsLength = clpRecords.meta.recordCount
+      const cleanupsLength: number = clpRecords.meta.recordCount
 
       // Check cleanup size
       const humanized = type.replace(/_/g, ' ')
@@ -181,8 +182,8 @@ export default class CleanupsCreate extends Command {
       this.log()
 
 
-    } catch (error: any) {
-      this.handleError(error, flags)
+    } catch (error) {
+      this.handleError(error as CommandError, flags)
     }
 
   }
@@ -283,7 +284,7 @@ export default class CleanupsCreate extends Command {
 
       
     }).catch(async error => {
-      this.handleError(error)
+      this.handleError(error as CommandError)
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
       return Promise.reject(error)
     })

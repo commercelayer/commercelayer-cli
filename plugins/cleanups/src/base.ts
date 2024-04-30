@@ -4,7 +4,7 @@ import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@c
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 export default abstract class extends Command {
