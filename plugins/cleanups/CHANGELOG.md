@@ -1,3 +1,35 @@
+# [3.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.3.0...v3.0.0) (2024-04-30)
+
+
+### Bug Fixes
+
+* fix dependencies ([e502702](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/e502702b4c876ae427751e33b11ed0cd8fc13760))
+* fix linter ([9ba7eb6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/9ba7eb6edda684a6e3f89b7f45421663d327da86))
+* fix linter errors ([21aafee](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/21aafee214e590d360548ffb9da458ec78debbbc))
+* fix release config ([3370ffe](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3370ffe258da60884bb63bb4c3318574625fe4df))
+* fix sdk dependency ([993bceb](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/993bceb1559fc11030025dfd6b08ab672c125c32))
+* fix sdk6 types ([c12df7a](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c12df7ac34efe2d9ab57ad1b559bbce14aa78277))
+* fix ts-node ([3e9406d](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3e9406debbe0e70e471a74cf5a26db9c4d8f801a))
+* fix update package ([52ce543](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/52ce543f5b7afec441d5c5732af33d5cc0642420))
+* update dependencies ([96ef1a7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/96ef1a7fe346426dce236909f5a202b7901f823c))
+
+
+### Features
+
+* prerelease ([37cdf9e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/37cdf9e909eed219a7e12b2808da77ab1549cc9b))
+
+
+### Performance Improvements
+
+* update engine ([50ce353](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/50ce353cb9730d19b71f6a14b5bff981b70a80c8))
+* upgrade to oclif 3 ([dd4b1d2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/dd4b1d213c3ba93ed8ade4ef29b8e870fbcf8c8b))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
 # [3.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-rc.2...v3.0.0-rc.3) (2024-04-15)
 
 
