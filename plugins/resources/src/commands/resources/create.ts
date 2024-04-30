@@ -128,7 +128,7 @@ export default class ResourcesCreate extends Command {
     }
 
     // Include flags
-    const include: string[] = this.includeFlag(flags.include, relationships)
+    const include: string[] = this.includeFlag(flags.include, relationships, flags['force-include'])
     // Fields flags
     const fields = this.fieldsFlag(flags.fields, resource.api)
 

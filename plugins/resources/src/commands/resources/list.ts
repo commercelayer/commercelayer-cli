@@ -57,13 +57,7 @@ export default class ResourcesList extends Command {
       description: 'extract subfields from object attributes',
       multiple: true,
       exclusive: ['raw'],
-    }),
-    'force-include': Flags.boolean({
-      char: 'I',
-      description: 'force resources inclusion beyond the 3rd level',
-      dependsOn: ['include'],
-      hidden: true,
-    }),
+    })
   }
 
 

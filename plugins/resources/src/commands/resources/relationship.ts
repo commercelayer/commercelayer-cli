@@ -59,7 +59,7 @@ export default class ResourcesRelationship extends Command {
 
 
     // Include flags
-    const include: string[] = this.includeFlag(flags.include)
+    const include: string[] = this.includeFlag(flags.include, undefined, flags['force-include'])
     // Fields flags
     const fields = this.fieldsFlag(flags.fields, resource.api)
     // Where flags

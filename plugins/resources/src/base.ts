@@ -113,6 +113,12 @@ export abstract class BaseCommand extends Command {
       dependsOn: ['raw'],
       exclusive: ['headers', 'fields', 'include'],
     }),
+    'force-include': Flags.boolean({
+      char: 'I',
+      description: 'force resources inclusion beyond the 3rd level',
+      dependsOn: ['include'],
+      hidden: true,
+    }),
   }
 
 
