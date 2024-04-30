@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "6.0.0-rc.5",
+  "version": "6.0.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli",
   "repository": "https://github.com/commercelayer/commercelayer-cli",
