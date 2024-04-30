@@ -1,3 +1,36 @@
+# [2.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v1.3.0...v2.0.0) (2024-04-30)
+
+
+### Bug Fixes
+
+* fix dependencies ([f4577d3](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/f4577d3e994584ed102557717f1c47d1f28e88ff))
+* fix release config ([ede5ac4](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/ede5ac49b78203b8018be38d2319269217fce773))
+* fix remove command aliases ([1cae45a](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/1cae45ac435b839d70779f4a3b2ebf376c1ea697))
+* fix sdk dependency ([17950b2](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/17950b2504df5dc32e33807c73d020f4accb91b4))
+* fix ts-node ([be568fd](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/be568fde4f4326ce59b81d80dd099a6d6f5fef17))
+* fix update package ([389649f](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/389649f73bac7ef9678eae99a1b999acb4654ab1))
+* replace ts-node with tsx ([a9e7a09](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/a9e7a09e9f13c07b31bb20c957b8f0e59006a026))
+* update dependencies ([9146aca](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/9146aca6dc29daa8657aae6cc10ad915f70d939d))
+* update dependencies ([7a8fdd1](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/7a8fdd117b50a523d254ff5a142e9d51502197ac))
+* update dependencies ([c1a6548](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/c1a654883551d7a658ffee7d9922df7b769643f4))
+
+
+### Features
+
+* prerelease ([01e4b56](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/01e4b560d34dc1ddb96a3209c856be0910830b2c))
+
+
+### Performance Improvements
+
+* update engine ([1b72b29](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/1b72b29730cc8e458d9511097331c80de452541d))
+* upgrade to oclif 3 ([801bd62](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/801bd62000b031bc504cc352f9414c88626ced76))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
 # [2.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2024-04-15)
 
 
