@@ -1,6 +1,7 @@
 import Command, { Flags, Args/* , FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS */} from '../../base'
 import { clApi, clColor } from '@commercelayer/cli-core'
 import { type CommerceLayerProvisioningClient, type QueryParamsRetrieve } from '@commercelayer/provisioning-sdk'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 
 
 const OPERATION = 'update'
@@ -79,7 +80,7 @@ export default class ProvisioningUpdate extends Command {
     // Raw request
     if (flags.data) {
       try {
-        const baseUrl = clApi.baseURL(undefined, flags.domain, true)
+        const baseUrl = clApi.baseURL('provisioning', undefined, flags.domain)
         const accessToken = flags.accessToken
         const rawRes = await clApi.request.raw({ operation: clApi.Operation.Update, baseUrl, accessToken, resource: resource.api }, clApi.request.readDataFile(flags.data), id)
         const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
@@ -126,11 +127,11 @@ export default class ProvisioningUpdate extends Command {
     // Include flags
     const include: string[] = this.includeFlag(flags.include, relationships)
     // Fields flags
-    const fields = this.fieldsFlag(flags.fields, resource.api)
+    const fields = this.fieldsFlag(flags.fields, resource.api as string)
 
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
-    // const reqReader = flags.doc ? addRequestReader(cl) : undefined
+    const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
     const params: QueryParamsRetrieve = {}
 
@@ -177,11 +178,10 @@ export default class ProvisioningUpdate extends Command {
       return out
 
     } catch (error) {
-      /*
       if (isRequestInterrupted(error) && reqReader) {
         await this.showLiveDocumentation(reqReader.request, undefined, flags)
         cl.removeInterceptor('request', reqReader.id)
-      } else */this.printError(error, flags, args)
+      } else this.printError(error, flags, args)
     }
 
   }

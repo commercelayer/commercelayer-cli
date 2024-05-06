@@ -3,18 +3,17 @@ import { findResource, type Resource } from './util/resources'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { existsSync } from 'fs'
-import commercelayer, { type CommerceLayerProvisioningClient, CommerceLayerProvisioningStatic } from '@commercelayer/provisioning-sdk'
-// import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
+import commercelayer, { type CommerceLayerProvisioningClient, CommerceLayerProvisioningStatic, type QueryParams } from '@commercelayer/provisioning-sdk'
+import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { clToken, clUpdate, clColor, clUtil, clCommand, clFilter, clText } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { Package } from '@commercelayer/cli-core/lib/cjs/update'
 // import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 // import type { ResourceId, ResourceType } from '@commercelayer/provisioning-sdk/lib/cjs/resource'
 
 
 
-const pkg = require('../package.json')
+const pkg: clUpdate.Package = require('../package.json')
 
 
 // export const FLAG_SAVE_PARAMS = 'save-args'
@@ -210,6 +209,7 @@ export abstract class BaseCommand extends Command {
 export abstract class BaseFilterCommand extends BaseCommand {
 
   static flags = {
+    ...BaseCommand.flags,
     include: Flags.string({
       char: 'i',
       multiple: true,
@@ -218,7 +218,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
     fields: Flags.string({
       char: 'f',
       multiple: true,
-      description: 'comma separeted list of fields in the format [resourceType/]field1,field2...',
+      description: 'comma separeted list of fields in the format [resourceType/]field1,field2,field3',
     }),
     json: Flags.boolean({
       char: 'j',
@@ -234,7 +234,6 @@ export abstract class BaseFilterCommand extends BaseCommand {
       description: 'print out the raw API response',
       hidden: false,
     }),
-    /*
     doc: Flags.boolean({
       description: 'show the CLI command in a specific language',
       exclusive: ['raw'],
@@ -264,6 +263,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
       dependsOn: ['doc'],
       helpGroup: 'documentation',
     }),
+    /*
     [FLAG_SAVE_PARAMS]: Flags.string({
       description: 'save command data to file for future use',
     }),
@@ -282,14 +282,19 @@ export abstract class BaseFilterCommand extends BaseCommand {
       description: 'show only response headers',
       dependsOn: ['raw'],
       exclusive: ['headers', 'fields', 'include'],
-    }),
+    })
+  }
+
+
+  static args = {
+    ...BaseCommand.args
   }
 
 
   // INIT (override)
   async init(): Promise<any> {
     // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg as Package)
+    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
     return await super.init()
   }
 
@@ -621,15 +626,15 @@ export abstract class BaseFilterCommand extends BaseCommand {
 
   }
 
-/*
+
   protected async showLiveDocumentation(request: RequestData, params?: QueryParams, flags?: any): Promise<string> {
     const lang = getLanguageArg(flags) || await promptLanguage()
     const cmd = buildCommand(lang, request, params, flags)
     this.printCommand(lang, cmd)
     return cmd
   }
-*/
-/*
+
+
   protected printCommand(lang: string, command: string): void {
 
     const header = languageInfo[lang as keyof typeof languageInfo].label
@@ -645,7 +650,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
     this.log()
 
   }
-*/
+
 
 /*
   protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: Config): void {
@@ -709,6 +714,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
 export default abstract class extends BaseFilterCommand {
 
   static args = {
+    ...BaseFilterCommand.args,
     resource: Args.string({ name: 'resource', description: 'the resource type', required: true }),
   }
 

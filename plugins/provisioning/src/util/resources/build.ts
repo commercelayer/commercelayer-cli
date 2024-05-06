@@ -3,7 +3,7 @@ import type { Resource } from '../resources'
 import { CommerceLayerProvisioningStatic } from '@commercelayer/provisioning-sdk'
 import { join } from 'path'
 import { writeFileSync } from 'fs'
-import type { ResourceTypeLock } from '@commercelayer/provisioning-sdk/lib/cjs/api'
+import type { ResourceTypeLock } from '@commercelayer/provisioning-sdk'
 import { clText } from '@commercelayer/cli-core'
 
 

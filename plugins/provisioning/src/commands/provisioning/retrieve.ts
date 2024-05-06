@@ -1,6 +1,6 @@
 import Command, { Flags, Args /*, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAM */} from '../../base'
 import { type CommerceLayerProvisioningClient, type QueryParamsRetrieve } from '@commercelayer/provisioning-sdk'
-// import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 // import { mergeCommandParams } from '../../commands'
 
 
@@ -66,13 +66,13 @@ export default class ProvisioningRetrieve extends Command {
     // Include flags
     const include: string[] = this.includeFlag(flags.include)
     // Fields flags
-    const fields = this.fieldsFlag(flags.fields, resource.api)
+    const fields = this.fieldsFlag(flags.fields, resource.api as string)
 
 
     const cl = this.initCommerceLayer(flags)
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
-    // const reqReader = flags.doc ? addRequestReader(cl) : undefined
+    const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
     const params: QueryParamsRetrieve = {}
 
@@ -114,11 +114,10 @@ export default class ProvisioningRetrieve extends Command {
       return out
 
     } catch (error: any) {
-      /*
       if (isRequestInterrupted(error) && reqReader) {
         await this.showLiveDocumentation(reqReader.request, params, flags)
         cl.removeInterceptor('request', reqReader.id)
-      } else */this.printError(error, flags, args)
+      } else this.printError(error, flags, args)
     }
 
   }

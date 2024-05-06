@@ -1,6 +1,6 @@
 import Command, { Args } from '../../base'
 import { type CommerceLayerProvisioningClient } from '@commercelayer/provisioning-sdk'
-// import { addRequestReader, isRequestInterrupted } from '../../lang'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { clCommand, clColor } from '@commercelayer/cli-core'
 
 
@@ -47,7 +47,7 @@ export default class ProvisioningDelete extends Command {
 		const cl = this.initCommerceLayer(flags)
 
 		const rawReader = (flags.raw && showHeaders) ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
-		// const reqReader = flags.doc ? addRequestReader(cl) : undefined
+		const reqReader = flags.doc ? addRequestReader(cl) : undefined
 
 		try {
 
@@ -61,11 +61,10 @@ export default class ProvisioningDelete extends Command {
 			this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(id)}\n`)
 
 		} catch (error) {
-			/*
 			if (isRequestInterrupted(error) && reqReader) {
 				await this.showLiveDocumentation(reqReader.request, undefined, flags)
 				cl.removeInterceptor('request', reqReader.id)
-			} else */this.printError(error, flags, args)
+			} else this.printError(error, flags, args)
 		}
 
 	}

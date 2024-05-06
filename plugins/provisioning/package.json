@@ -1,19 +1,20 @@
 {
   "name": "@commercelayer/cli-plugin-provisioning",
   "description": "Commerce Layer CLI Provisioning plugin",
-  "version": "1.0.1",
+  "version": "2.0.0-rc.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-provisioning",
+  "repository": "commercelayer/commercelayer-cli-plugin-provisioning",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/issues",
   "engines": {
-    "node": "^16.13.0 || >=18.0.0"
+    "node": ">=20"
   },
   "files": [
-    "/bin",
+    "/bin/run.*",
     "/lib",
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-provisioning",
   "keywords": [
     "ecommerce",
     "cli",
@@ -41,7 +42,6 @@
     "topicSeparator": ":",
     "hooks": {}
   },
-  "repository": "commercelayer/commercelayer-cli-plugin-provisioning",
   "scripts": {
     "build": "rm -rf lib && tsc -b",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
@@ -49,35 +49,37 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "resources": "pnpm update @commercelayer/provisioning-sdk && ts-node src/util/resources/build.ts",
+    "resources": "pnpm update @commercelayer/provisioning-sdk && tsx src/util/resources/build.ts",
     "lint": "eslint src --ext .ts --config .eslintrc",
     "lint:fix": "eslint src --fix"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^2.1.3",
-    "@commercelayer/eslint-config-ts": "^1.3.0",
-    "@oclif/plugin-help": "^6.0.12",
-    "@oclif/test": "^3.1.13",
+    "@commercelayer/cli-dev": "^3.0.3",
+    "@commercelayer/eslint-config-ts": "^1.4.5",
+    "@oclif/plugin-help": "^6.0.21",
+    "@oclif/test": "^3.2.13",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@types/chai": "^4.3.11",
+    "@types/chai": "^4.3.16",
+    "@types/inquirer": "^8.2.10",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.13",
+    "@types/node": "^20.12.8",
     "chai": "^4.4.1",
-    "eslint": "^8.56.0",
-    "mocha": "^10.2.0",
+    "eslint": "^8.57.0",
+    "mocha": "^10.4.0",
     "nyc": "^15.1.0",
-    "oclif": "^4.4.2",
-    "semantic-release": "^22.0.12",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "oclif": "^4.10.4",
+    "semantic-release": "^23.0.8",
+    "tsx": "^4.9.3",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^4.11.4",
-    "@commercelayer/provisioning-sdk": "^1.0.0",
-    "@oclif/core": "^2.15.0",
-    "json-2-csv": "^5.0.1",
+    "@commercelayer/cli-core": "^5.0.1",
+    "@commercelayer/provisioning-sdk": "^2.0.1",
+    "@oclif/core": "^3.26.5",
+    "inquirer": "^8.2.6",
+    "json-2-csv": "^5.5.1",
     "tslib": "^2.6.2"
   },
   "publishConfig": {
