@@ -80,18 +80,30 @@ export default class WebhooksEvent extends Command {
 
 				if (event.payload) {
 
-					const hSuffix = flags.format ? 'formatted object' : 'raw JSON'
+          this.log()
+          const hSuffix = flags.format ? 'formatted object' : 'raw JSON'
+          const header = clColor.blueBright(`EVENT CALLBACK PAYLOAD  ${clColor.italic(`(${hSuffix} payload)`)}`)
+          this.log(header)
+          this.log()
 
+          /*
 					const t = new Table({
 						colWidths: [91],
 						head: [`EVENT CALLBACK PAYLOAD  ${clColor.italic(`(${hSuffix} payload)`)}`],
 						style: { head: ['brightBlue'] },
-						wordWrap: true,
+						wordWrap: false,
 					})
+          */
 
 					const payloadObject = (typeof event.payload === 'object') ? event.payload : JSON.parse(event.payload as unknown as string)
-					t.push([ flags.format ? clOutput.printObject(payloadObject) : JSON.stringify(payloadObject, null, 2) ])
+          const tBody = flags.format ? clOutput.printObject(payloadObject) : JSON.stringify(payloadObject, null, 2)
+
+          /*
+					t.push([ tBody ])
 					this.log(t.toString())
+          */
+
+          this.log(tBody)
 
 				} else this.log(clColor.italic('No payload associated to this event'))
 
