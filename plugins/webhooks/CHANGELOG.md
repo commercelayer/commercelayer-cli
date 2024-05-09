@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.0...v4.0.1) (2024-05-09)
+
+
+### Bug Fixes
+
+* fix event payload ([7580b07](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/7580b07478dd6810065191c691168ea05587f159))
+
 # [4.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v3.7.1...v4.0.0) (2024-04-30)
 
 
