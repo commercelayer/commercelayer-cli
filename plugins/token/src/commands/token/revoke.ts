@@ -19,7 +19,6 @@ export default class TokenRevoke extends Command {
       char: 'o',
       description: 'the slug of your organization',
       required: false,
-      exactlyOne: ['organization', 'provisioning'],
       env: 'CL_CLI_ORGANIZATION',
     }),
     domain: Flags.string({
@@ -46,13 +45,6 @@ export default class TokenRevoke extends Command {
       required: false,
       multiple: true,
       dependsOn: ['clientId'],
-    }),
-    provisioning: Flags.boolean({
-      char: 'P',
-      description: 'execute login to Provisioning API',
-      required: false,
-      exclusive: ['scope', 'organization', 'email', 'password', 'api'],
-      dependsOn: ['clientId', 'clientSecret']
     })
   }
 
@@ -78,13 +70,12 @@ export default class TokenRevoke extends Command {
       this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
     const accessToken: string = args.token
-    const scope = this.checkScope(flags.scope as string[], flags.provisioning as boolean)
+    const scope = this.checkScope(flags.scope as string[])
     const slug = flags.provisioning? undefined : flags.organization
-    const api = flags.provisioning? 'provisioning' : 'core'
 
 
     this.log()
-    cliux.action.start(`Revoking ${api} access token`)
+    cliux.action.start(`Revoking access token`)
     await revokeAccessToken({
       domain: flags.domain,
       slug,

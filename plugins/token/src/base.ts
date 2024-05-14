@@ -9,7 +9,7 @@ const pkg: clUpdate.Package = require('../package.json')
 export default abstract class extends Command {
 
   // INIT (override)
-  async init(): Promise<any> {
+  override async init(): Promise<any> {
     clUpdate.checkUpdate(pkg)
     return await super.init()
   }
@@ -41,12 +41,14 @@ export default abstract class extends Command {
   }
 
 
-  protected checkScope(scopeFlags: string[] | undefined, provisioning?: boolean): AuthScope {
+  protected checkScope(scopeFlags: string[] | undefined): AuthScope {
 
     const scope: string[] = []
 
     if (scopeFlags) {
       for (const s of scopeFlags) {
+
+        if (['provisioning-api', 'metrics-api'].includes(s) && (scopeFlags.length > 1)) throw new Error(`Scope ${clColor.msg.error(s)} cannot be used together with other scopes`)
 
         const colonIdx = s.indexOf(':')
         const scopePrefix = s.substring(0, colonIdx)
@@ -62,7 +64,6 @@ export default abstract class extends Command {
 
       }
     }
-    else if (provisioning) scope.push(clConfig.provisioning.scope)
 
     const _scope = (scope.length === 1) ? scope[0] : scope
 

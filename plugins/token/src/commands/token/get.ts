@@ -12,7 +12,7 @@ export default class TokenGet extends Command {
   static examples = [
 		'$ commercelayer token:get -o <organizationSlug> -i <clientId> -s <clientSecret>',
     '$ cl token:get -o <organizationSlug> -i <clientId> -S <scope> --info',
-    '$ cl token:get -i <clientId> -s <clientSecret> --provisioning',
+    '$ cl token:get -i <clientId> -s <clientSecret>',
 	]
 
   static flags = {
@@ -20,7 +20,6 @@ export default class TokenGet extends Command {
       char: 'o',
       description: 'the slug of your organization',
       required: false,
-      exactlyOne: ['organization', 'provisioning'],
       env: 'CL_CLI_ORGANIZATION',
     }),
     domain: Flags.string({
@@ -61,23 +60,7 @@ export default class TokenGet extends Command {
     }),
     info: Flags.boolean({
       description: 'show access token info',
-    }),
-    provisioning: Flags.boolean({
-			char: 'P',
-			description: 'execute login to Provisioning API',
-			required: false,
-			exclusive: ['scope', 'organization', 'email', 'password', 'api'],
-			dependsOn: ['clientId', 'clientSecret']
-		})
-    /*,
-		api: Flags.string({
-			char: 'A',
-			description: 'the API you want to excute login for',
-			required: false,
-			options: ['core', 'provisioning'],
-			exclusive: ['provisioning']
-		})
-    */
+    })
   }
 
 
@@ -97,8 +80,7 @@ export default class TokenGet extends Command {
     if (!flags.clientSecret && !flags.scope)
       this.error(`You must provide one of the arguments ${clColor.cli.arg('clientSecret')} and ${clColor.cli.arg('scope')}`)
 
-    const scope = this.checkScope(flags.scope as string[], flags.provisioning as boolean)
-		const api = /* (flags.api as ApiType) || */(flags.provisioning? 'provisioning' : 'core')
+    const scope = this.checkScope(flags.scope as string[])
 		const slug = flags.organization || clConfig.provisioning.default_subdomain
 
     const config: AppAuth = {
@@ -108,8 +90,7 @@ export default class TokenGet extends Command {
       domain: flags.domain,
       scope,
       email: flags.email,
-      password: flags.password,
-      api
+      password: flags.password
     }
 
 
