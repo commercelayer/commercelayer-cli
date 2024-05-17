@@ -26,6 +26,7 @@ const IMPORT_RESOURCE_TYPES: readonly string[] = [
 	'sku_options',
 	'skus',
 	'stock_items',
+	'stock_transfers',
 	'tags',
 	'tax_categories'
 ] as const
@@ -38,10 +39,12 @@ const EXPORT_RESOURCE_TYPES: readonly string[] = [
 	'captures',
 	'coupons',
 	'customer_addresses',
+	'customer_payment_sources',
 	'customer_subscriptions',
 	'customers',
 	'gift_cards',
 	'line_items',
+	'line_item_options',
 	'orders',
 	'payment_methods',
 	'price_tiers',
@@ -55,6 +58,7 @@ const EXPORT_RESOURCE_TYPES: readonly string[] = [
 	'sku_options',
 	'skus',
 	'stock_items',
+	'stock_transfers',
 	'tags',
 	'tax_categories',
 	'transactions',
