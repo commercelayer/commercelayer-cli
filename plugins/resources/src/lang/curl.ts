@@ -1,6 +1,5 @@
 import type { QueryParams } from '@commercelayer/sdk'
-import { getFullUrl } from '.'
-import { type RequestData, getMethod, getHeaders } from './request'
+import { type RequestData, getMethod, getHeaders, getFullUrl } from './request'
 
 
 const headers = (request: RequestData): string => {

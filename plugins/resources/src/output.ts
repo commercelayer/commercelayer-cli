@@ -1,5 +1,5 @@
 
-import { writeFileSync } from 'fs'
+import { writeFileSync } from 'node:fs'
 import { clOutput } from '@commercelayer/cli-core'
 
 

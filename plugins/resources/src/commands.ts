@@ -1,7 +1,7 @@
 import type { QueryParams, QueryParamsList } from '@commercelayer/sdk'
 import type { Config } from '@oclif/core'
-import { join } from 'path'
-import fs from 'fs'
+import { join } from 'node:path'
+import { readdirSync, readFileSync, existsSync, mkdirSync, writeFileSync, unlinkSync } from 'node:fs'
 import { clOutput, clColor, type KeyValSort, type KeyValArray } from '@commercelayer/cli-core'
 
 
@@ -49,12 +49,13 @@ const commandSaveDir = (config: Config): string => {
 
 const readCommandArgs = (config: Config, resource?: string, operation?: ResourceOperation): CommandParams[] => {
   const saveDir = commandSaveDir(config)
-  const cmdParams = fs.readdirSync(saveDir)
+  if (!existsSync(saveDir)) return []
+  const cmdParams = readdirSync(saveDir)
     .filter(f => f.endsWith('.json'))
     .filter(f => (!resource || f.startsWith(resource)))
     .filter(f => (!operation || f.includes(`.${operation}.`)))
     .map(f => {
-      const json = fs.readFileSync(join(saveDir, f), { encoding: 'utf-8' })
+      const json = readFileSync(join(saveDir, f), { encoding: 'utf-8' })
       return JSON.parse(json)
     })
   return cmdParams
@@ -68,9 +69,9 @@ const saveCommandData = (alias: string, config: Config, params: CommandParams): 
   const saveDir = commandSaveDir(config)
   const fileName = commandFileName(params.resource, alias, params.operation)
 
-  if (!fs.existsSync(saveDir)) fs.mkdirSync(saveDir, { recursive: true })
+  if (!existsSync(saveDir)) mkdirSync(saveDir, { recursive: true })
 
-  fs.writeFileSync(join(saveDir, fileName), clOutput.printJSON(params))
+  writeFileSync(join(saveDir, fileName), clOutput.printJSON(params))
 
 }
 
@@ -81,7 +82,7 @@ const loadCommandData = (alias: string, config: Config, resource: string, operat
   const fileName = commandFileName(resource, alias, operation)
 
   try {
-    const cmdData = fs.readFileSync(join(saveDir, fileName), { encoding: 'utf-8' })
+    const cmdData = readFileSync(join(saveDir, fileName), { encoding: 'utf-8' })
     return cmdData ? JSON.parse(cmdData) : undefined
   } catch (error) {
     return undefined
@@ -93,14 +94,14 @@ const loadCommandData = (alias: string, config: Config, resource: string, operat
 const aliasExists = (alias: string, config: Config, resource: string, operation: ResourceOperation): boolean => {
   const saveDir = commandSaveDir(config)
   const fileName = commandFileName(resource, alias, operation)
-  return fs.existsSync(join(saveDir, fileName))
+  return existsSync(join(saveDir, fileName))
 }
 
 
 const deleteArgsFile = (alias: string, config: Config, resource: string, operation: ResourceOperation): void => {
   const saveDir = commandSaveDir(config)
   const fileName = commandFileName(resource, alias, operation)
-  fs.unlinkSync(join(saveDir, fileName))
+  unlinkSync(join(saveDir, fileName))
 }
 
 
