@@ -94,7 +94,7 @@ FLAGS
   -X, --save-path=<value>   save command output to file and create missing path directories
   -b, --blind               execute in blind mode without prompt and progress bar
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -s, --sort=<value>...     defines results ordering
@@ -203,7 +203,7 @@ FLAGS
   -R, --raw                      print out the raw API response
   -Y, --headers-only             show only response headers
   -a, --attribute=<value>...     define a resource attribute
-  -f, --fields=<value>...        comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...        comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
@@ -258,7 +258,7 @@ FLAGS
   -H, --headers             show response headers
   -R, --raw                 print out the raw API response
   -Y, --headers-only        show only response headers
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -u, --unformatted         print unformatted JSON output
@@ -326,13 +326,13 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:fetch PATH [ID] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
-    [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-x <value> | -X <value>] [-e <value> | ] [-w
-    <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer resources:fetch PATH... [ID...] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-x <value> | -X <value>] [-e <value> |
+    ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
 
 ARGUMENTS
-  PATH  path (or URL) of the resource(s) to fetch
-  ID    resource id
+  PATH...  path (or URL) of the resource(s) to fetch
+  ID...    resource id
 
 FLAGS
   -H, --headers             show response headers
@@ -340,7 +340,7 @@ FLAGS
   -X, --save-path=<value>   save command output to file and create missing path directories
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
@@ -409,13 +409,13 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:get RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl
-    ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>] [-p <value>] [-n <value>] [-s
-    <value>] [-x <value> | -X <value>] [-e <value> | ]
+  $ commercelayer resources:get RESOURCE... [ID...] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>] [-p <value>] [-n <value>]
+    [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
 
 ARGUMENTS
-  RESOURCE  the resource type
-  ID        id of the resource to retrieve
+  RESOURCE...  the resource type
+  ID...        id of the resource to retrieve
 
 FLAGS
   -H, --headers             show response headers
@@ -423,7 +423,7 @@ FLAGS
   -X, --save-path=<value>   save command output to file and create missing path directories
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
@@ -481,7 +481,7 @@ FLAGS
   -X, --save-path=<value>   save command output to file and create missing path directories
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
@@ -537,7 +537,7 @@ FLAGS
   -X, --save-path=<value>   save command output to file and create missing path directories
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -u, --unformatted         print unformatted JSON output
@@ -619,7 +619,7 @@ FLAGS
   -R, --raw                          print out the raw API response
   -Y, --headers-only                 show only response headers
   -a, --attribute=<value>...         define a resource attribute
-  -f, --fields=<value>...            comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...            comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...           comma separated resources to include
   -j, --json                         convert output in standard JSON format
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
@@ -656,6 +656,10 @@ EXAMPLES
   $ cl ru customers <customerId> -M meta_key="metadata overwrite
 
   $ clayer update customers <customerId> -D /path/to/data/file/data.json
+
+  $ cl update order <orderId> -r billing_address=addresses/<addressId>
+
+  $ cl update customer <customerId> -r customer_group=<customerGroupId>
 ```
 
 _See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/update.ts)_
