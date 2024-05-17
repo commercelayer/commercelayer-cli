@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0...v6.1.0) (2024-05-14)
+
+
+### Features
+
+* add hidden assertion command ([719f7e1](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/719f7e1952ae600177ec3463a6e42ad4a2835f77))
+
 # [6.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v5.6.5...v6.0.0) (2024-04-30)
 
 
