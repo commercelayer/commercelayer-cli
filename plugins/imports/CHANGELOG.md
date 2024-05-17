@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.0.0...v4.1.0) (2024-05-17)
+
+
+### Features
+
+* add support for stock_transfers resources ([a645e4d](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/a645e4dae2540dda60904628f8b2798f4ebe7888))
+
 # [4.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v3.11.0...v4.0.0) (2024-04-29)
 
 
