@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.1...v5.0.2) (2024-05-17)
+
+
+### Bug Fixes
+
+* update import and export resources ([a481afb](https://github.com/commercelayer/commercelayer-cli-core/commit/a481afb954fbeb936a3a99cd0c333c6739dee259))
+
 ## [5.0.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.0...v5.0.1) (2024-04-30)
 
 
