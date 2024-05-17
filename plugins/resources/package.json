@@ -58,7 +58,7 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^3.0.4",
+    "@commercelayer/cli-dev": "^3.0.5",
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@oclif/plugin-help": "^6.0.22",
     "@oclif/test": "^3.2.15",
@@ -66,7 +66,6 @@
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.16",
     "@types/inquirer": "^8.2.10",
-    "@types/lodash": "^4.17.4",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.12",
     "@types/node-notifier": "^8.0.5",
