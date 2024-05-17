@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.4...v3.0.5) (2024-05-17)
+
+
+### Bug Fixes
+
+* fix lodash.template module issue ([62d06a6](https://github.com/commercelayer/commercelayer-cli-dev/commit/62d06a65bbc42079d14b7ddd8a7e8ccb44b53d98))
+
 ## [3.0.4](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.3...v3.0.4) (2024-05-17)
 
 
