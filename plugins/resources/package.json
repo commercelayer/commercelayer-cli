@@ -58,7 +58,7 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^3.0.3",
+    "@commercelayer/cli-dev": "^3.0.4",
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@oclif/plugin-help": "^6.0.22",
     "@oclif/test": "^3.2.15",
@@ -81,7 +81,7 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.0.2",
-    "@commercelayer/sdk": "^6.0.2",
+    "@commercelayer/sdk": "^6.1.0",
     "@oclif/core": "^3.26.6",
     "inquirer": "^8.2.6",
     "json-2-csv": "^3.20.0",

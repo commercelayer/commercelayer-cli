@@ -12,8 +12,8 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2(encoding@0.1.13)
       '@commercelayer/sdk':
-        specifier: ^6.0.2
-        version: 6.0.2
+        specifier: ^6.1.0
+        version: 6.1.0
       '@oclif/core':
         specifier: ^3.26.6
         version: 3.26.6
@@ -34,8 +34,8 @@ importers:
         version: 2.6.2
     devDependencies:
       '@commercelayer/cli-dev':
-        specifier: ^3.0.3
-        version: 3.0.3
+        specifier: ^3.0.4
+        version: 3.0.4
       '@commercelayer/eslint-config-ts':
         specifier: ^1.4.5
         version: 1.4.5(eslint@8.57.0)(typescript@5.4.5)
@@ -368,8 +368,8 @@ packages:
     resolution: {integrity: sha512-1LrWKvfU3YI7DL+/QWFaRgexxmB9qu5w+hGcmOIxhbNdg0N3wVqfyCuQmwbtmy2PJrucpOgYSn6ssK4mjp2thw==}
     engines: {node: '>=20'}
 
-  '@commercelayer/cli-dev@3.0.3':
-    resolution: {integrity: sha512-spjxFOa66TwG6cCB+IgGnpFxk++/NvkkIBbuXxGs6//1tDhYmiJ/Qp4JxMStOYcaKbdYWehkAiaIImE+GwQVnw==}
+  '@commercelayer/cli-dev@3.0.4':
+    resolution: {integrity: sha512-5ExOZnWgLBKwDLLPd/tW71k/llz07qb2cPL3xihRlyFRTwUdJDJTVssr2OhvIkqqPZXlEfvp695M6sxcU+sjQg==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -383,8 +383,8 @@ packages:
     resolution: {integrity: sha512-2vHvIOC6utCcAdhNw98+XyXrrFVj7l4INnoer5H/mlUnrkGelXdrNq6CmGqFV5bbqSLO1xg19VFtbwgTW9gn2Q==}
     engines: {node: '>=18.0.0'}
 
-  '@commercelayer/sdk@6.0.2':
-    resolution: {integrity: sha512-iHdZWb/Lfy3OFUkggeW800155yF464bcIIPrUNV6HTE9NZAbkzvB3K8Z8UGnm4QqskzaByrX36zAVrbI9aUWYQ==}
+  '@commercelayer/sdk@6.1.0':
+    resolution: {integrity: sha512-anqnvFWq01un44VVDoIZosIuh0714YYP0EA+fiWzbzkjmIBAJDGxo3/XRxDv+ut0vlCVcXh1+Ez3VYlwQvmxRQ==}
     engines: {node: '>=20'}
 
   '@esbuild/aix-ppc64@0.20.2':
@@ -4624,7 +4624,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@commercelayer/cli-dev@3.0.3':
+  '@commercelayer/cli-dev@3.0.4':
     dependencies:
       '@oclif/core': 3.26.6
       fs-extra: 10.1.0
@@ -4653,7 +4653,7 @@ snapshots:
 
   '@commercelayer/js-auth@6.2.1': {}
 
-  '@commercelayer/sdk@6.0.2': {}
+  '@commercelayer/sdk@6.1.0': {}
 
   '@esbuild/aix-ppc64@0.20.2':
     optional: true
