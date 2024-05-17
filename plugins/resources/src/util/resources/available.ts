@@ -78,6 +78,7 @@ const RESOURCES = [
 	{ name: 'paypal_payment', api: 'paypal_payments', model: 'PaypalPayment' },
 	{ name: 'percentage_discount_promotion', api: 'percentage_discount_promotions', model: 'PercentageDiscountPromotion' },
 	{ name: 'price_frequency_tier', api: 'price_frequency_tiers', model: 'PriceFrequencyTier' },
+	{ name: 'price_list_scheduler', api: 'price_list_schedulers', model: 'PriceListScheduler' },
 	{ name: 'price_list', api: 'price_lists', model: 'PriceList' },
 	{ name: 'price_tier', api: 'price_tiers', model: 'PriceTier' },
 	{ name: 'price_volume_tier', api: 'price_volume_tiers', model: 'PriceVolumeTier' },
