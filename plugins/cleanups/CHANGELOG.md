@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0...v3.0.1) (2024-05-20)
+
+
+### Bug Fixes
+
+* fix monitor counting ([5015ca8](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/5015ca8313a54bc9e5af29a7c9f3d978c5246af9))
+
 # [3.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.3.0...v3.0.0) (2024-04-30)
 
 
