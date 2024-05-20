@@ -117,7 +117,7 @@ class Monitor {
 
 		if (payload?.status) updPayload.status = this.statusStyle(payload.status.replace(/_/, ' '), payload.processed)
 
-		updPayload.tbp = String(bar.getTotal() - updCount).padStart(maxCleanupLength, ' ')
+		updPayload.tbp = String(Math.max(0, bar.getTotal() - updCount)).padStart(maxCleanupLength, ' ')
 
 		if (bar) bar.update(updCount, updPayload as object)
 
