@@ -85,6 +85,7 @@ export default class ImportsCreate extends Command {
       description: 'accept input file in CSV format',
       dependsOn: ['inputs'],
     }),
+    /*
     delimiter: Flags.string({
       char: 'D',
       description: 'the delimiter character used in the CSV input file (one of \',\', \';\', \'|\', TAB)',
@@ -92,6 +93,7 @@ export default class ImportsCreate extends Command {
       dependsOn: ['csv'],
       multiple: false
     }),
+    */
     blind: Flags.boolean({
       char: 'b',
       description: 'execute in blind mode without showing the progress monitor',

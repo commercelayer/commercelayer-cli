@@ -21,24 +21,31 @@ type Batch = {
   items_count: number;
 }
 
+type InputFormat = 'csv' | 'json'
 
-const splitImports = (imp: ImportCreate, format: 'csv' | 'json', size?: number): Chunk[] => {
+
+
+const splitImports = (imp: ImportCreate, format: InputFormat, size?: number): Chunk[] => {
 
   const chunks: Chunk[] = []
   if (!imp?.inputs || (imp.inputs.length === 0)) return chunks
 
   const chunkSize = size || clConfig.imports.max_size
 
-  const header = (format === 'csv') ? imp.inputs.shift() : undefined
+  const header = (format === 'csv') ? imp.inputs.shift() : undefined  // Extract file header
   const allInputs = imp.inputs
   const totalItems = imp.inputs.length
   const groupId = generateGroupUID()
+
+  console.log(header)
+  console.log(allInputs)
+  console.log(totalItems)
 
   let chunkNum = 0
   while (allInputs.length > 0) {
     const inputs = allInputs.splice(0, chunkSize)
     const inputsCount = inputs.length
-    if ((format === 'csv') && header) inputs.unshift(header)
+    if ((format === 'csv') && header) inputs.unshift(header) // CSV inputs must have an header
     chunks.push({
       format,
       chunk_number: ++chunkNum,
@@ -59,7 +66,7 @@ const splitImports = (imp: ImportCreate, format: 'csv' | 'json', size?: number):
 
   return chunks.map(c => {
     c.start_item = ((c.chunk_number - 1) * chunkSize) + 1
-    c.end_item = (c.start_item + c.inputs.length) - 1
+    c.end_item = (c.start_item + c.items_count) - 1
     c.total_chunks = chunks.length
     // c.items_count = c.inputs.length
     return c
