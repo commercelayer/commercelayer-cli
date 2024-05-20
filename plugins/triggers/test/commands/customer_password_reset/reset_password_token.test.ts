@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('customer_password_resets:reset_password_token', () => {
   test
-    .timeout(35000)
+    .timeout(36000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

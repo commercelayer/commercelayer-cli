@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('bundles:compute_price_amount', () => {
+describe('price_list_schedulers:enable', () => {
   test
     .timeout(36000)
     .stdout()
