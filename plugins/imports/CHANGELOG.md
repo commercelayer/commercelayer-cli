@@ -1,3 +1,10 @@
+## [4.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.1.1...v4.1.2) (2024-05-20)
+
+
+### Bug Fixes
+
+* fix import monitor counting ([8bfe848](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/8bfe84884e9db5d65939616d626132ddf8a2a806))
+
 ## [4.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.1.0...v4.1.1) (2024-05-17)
 
 
