@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.1.0...v4.2.0) (2024-05-21)
+
+
+### Features
+
+* update order_subscriptions triggers ([3f89b04](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/3f89b047d2e73edb9a11426e5c33e8173c6b3619))
+
 # [4.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.0.0...v4.1.0) (2024-05-20)
 
 
