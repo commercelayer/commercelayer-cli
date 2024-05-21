@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.0.2",
-    "@commercelayer/sdk": "^6.1.0",
+    "@commercelayer/sdk": "^6.2.0",
     "@oclif/core": "^3.26.6",
     "inquirer": "^8.2.6",
     "tslib": "^2.6.2"
