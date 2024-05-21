@@ -109,7 +109,7 @@ export default class ResourcesUpdate extends Command {
     // Relationships flags
     const relationships = this.relationshipFlag(flags.relationship)
     // Metadata flags
-    const metadata = this.metadataFlag(flags.metadata || flags['metadata-replace'])
+    const metadata = this.metadataFlag(flags.metadata || flags['metadata-replace'], { fixTypes: true })
 
     // Relationships
     if (relationships && Object.keys(relationships).length > 0) Object.entries(relationships).forEach(([key, value]) => {
