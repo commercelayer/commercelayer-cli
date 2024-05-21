@@ -3,26 +3,26 @@ import { clText, type KeyValString } from '@commercelayer/cli-core'
 
 
 type RequestData = {
-  baseUrl: string;
-  path: string;
-  method: string;
-  headers: any;
-  params?: any;
-  data?: any;
+  baseUrl: string
+  path: string
+  method: string
+  headers?: any
+  params?: URLSearchParams
+  data?: any
 }
 
 type OperationData = {
-  name: string;
-  id?: string;
-  resource: string;
-  relationship?: string;
-  oneToMany?: boolean;
-  method: string;
+  name: string
+  id?: string
+  resource: string
+  relationship?: string
+  oneToMany?: boolean
+  method: string
 }
 
 type RequestReader = {
-  id: number;
-  request: RequestData;
+  id: number
+  request: RequestData
 }
 
 
@@ -87,9 +87,11 @@ export const getMethod = (request: RequestData): string => {
 
 export const getFullUrl = (request: RequestData): string => {
   let fullUrl = `${request.baseUrl}${request.path}`
-  if (request.params && (Object.keys(request.params as object).length > 0)) {
-    const qs = Object.entries(request.params as object).map(([k, v]) => `${k}=${v}`).join('&')
-    fullUrl += `?${qs}`
+  const params = request.params
+  if (params && (params.size > 0)) {
+    const qs: string[] = []
+    params.forEach((v, k) => { qs.push(`${k}=${v}`) })
+    fullUrl += `?${qs.join('&')}`
   }
   return fullUrl
 }
