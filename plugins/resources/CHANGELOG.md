@@ -1,3 +1,10 @@
+## [6.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.5...v6.0.6) (2024-05-21)
+
+
+### Bug Fixes
+
+* fix curl co,mmand generation ([316e256](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/316e25665a242d328992bb7732aac9d84ff704ae))
+
 ## [6.0.5](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.4...v6.0.5) (2024-05-17)
 
 
