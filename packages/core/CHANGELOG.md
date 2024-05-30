@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.3...v5.0.4) (2024-05-30)
+
+
+### Bug Fixes
+
+* fix requests delay ([842288c](https://github.com/commercelayer/commercelayer-cli-core/commit/842288c738a571e063874efc06e8d74747cc1616))
+
 ## [5.0.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.2...v5.0.3) (2024-05-30)
 
 
