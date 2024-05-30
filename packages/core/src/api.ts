@@ -44,6 +44,7 @@ const CACHEABLE_RESOURCES = [
 	'prices',
 	'price_lists',
 	'promotions',
+	'buy_x_pay_y_promotions',
 	'external_promotions',
 	'fixed_amount_promotions',
 	'fixed_price_promotions',
@@ -84,11 +85,13 @@ export const requestRateLimitDelay = (options?: DelayOptions): number => {
 	const parallelRequests = options?.parallelRequests || 1
 	const resourceCacheable = isResourceCacheable(options?.resourceType, options?.method)
 
-	let requestsMaxNumBurst = resourceCacheable ? config.api.requests_max_num_burst_cacheable : config.api.requests_max_num_burst
-	let requestsMaxNumAvg = resourceCacheable? config.api.requests_max_num_avg_cacheable : config.api.requests_max_num_avg
+	let requestsMaxNumBurst: number
+	let requestsMaxNumAvg: number
 
-	// Test env allows half number of requests than live
-	if (env !== 'live') {
+	if (env === 'live') {
+		requestsMaxNumBurst = resourceCacheable ? config.api.requests_max_num_burst_cacheable : config.api.requests_max_num_burst
+		requestsMaxNumAvg = resourceCacheable? config.api.requests_max_num_avg_cacheable : config.api.requests_max_num_avg
+	} else {
 		requestsMaxNumBurst = resourceCacheable? config.api.requests_max_num_burst_test_cacheable : config.api.requests_max_num_burst_test
 		requestsMaxNumAvg = resourceCacheable? config.api.requests_max_num_avg_test_cacheable : config.api.requests_max_num_avg_test
 	}

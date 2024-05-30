@@ -204,15 +204,18 @@ type Config = {
 
 
 const RATE_LIMIT = {
+	// Authentication
 	erl_oauth_limit_live: 30,
-	erl_burst_limit_uncachable_live: 50,
-	erl_burst_limit_uncachable_test: 25,
+	// Cacheable
+	erl_average_limit_cachable_live: 1000,
+	erl_average_limit_cachable_test: 500,
 	erl_burst_limit_cachable_live: 250,
 	erl_burst_limit_cachable_test: 125,
+	// Uncacheable
 	erl_average_limit_uncachable_live: 200,
 	erl_average_limit_uncachable_test: 100,
-	erl_average_limit_cachable_live: 1000,
-	erl_average_limit_cachable_test: 500
+	erl_burst_limit_uncachable_live: 50,
+	erl_burst_limit_uncachable_test: 25
 } as const
 
 const config: Config = {
