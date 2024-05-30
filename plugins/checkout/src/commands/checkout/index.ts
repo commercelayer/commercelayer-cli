@@ -19,7 +19,6 @@ export default class CheckoutIndex extends Command {
   ]
 
   static flags = {
-    ...Command.flags,
     order: Flags.string({
       char: 'O',
       description: 'an order id',

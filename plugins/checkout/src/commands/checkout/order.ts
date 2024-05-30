@@ -13,9 +13,8 @@ export default class CheckoutOrder extends Command {
   ]
 
 
-
   static args = {
-    id: Args.string({ name: 'id', description: 'unique id of the order', required: true }),
+    id: Args.string({ name: 'id', description: 'unique id of the order', required: true })
   }
 
 
