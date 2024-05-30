@@ -29,6 +29,7 @@ export default abstract class extends Command {
     }),
     accessToken: Flags.string({
       char: 'a',
+      description: 'custom access token to use instead of the one used for login',
       hidden: false,
       required: true,
       env: 'CL_CLI_ACCESS_TOKEN',
