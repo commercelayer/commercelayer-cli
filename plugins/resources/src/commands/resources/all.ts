@@ -243,7 +243,6 @@ export default class ResourcesAll extends Command {
               resourceType: resource.api,
               totalRequests: pages
             })
-            console.log(delay)
           }
           await clUtil.sleep(delay)
         }
