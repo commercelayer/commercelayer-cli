@@ -154,6 +154,10 @@ export default abstract class BaseCommand extends Command {
 
 export abstract class ExportCommand extends BaseCommand {
 
+  static baseFlags = {
+    ...BaseCommand.baseFlags
+  }
+
   protected async getExportedFile(attachmentUrl?: string | null, flags?: any): Promise<string> {
 
     if (!attachmentUrl) return ''
