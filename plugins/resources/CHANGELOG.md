@@ -1,3 +1,10 @@
+## [6.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.6...v6.0.7) (2024-05-21)
+
+
+### Bug Fixes
+
+* fix update metadata data types ([7d00634](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/7d006343c3e9561d923275b56a7c9129f96a3ca4))
+
 ## [6.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.5...v6.0.6) (2024-05-21)
 
 
