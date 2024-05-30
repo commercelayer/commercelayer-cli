@@ -105,7 +105,7 @@ export const requestRateLimitDelay = (options?: DelayOptions): number => {
 	// If the total number of requests is known the delay can be optimized
 	const totalRequests = options?.totalRequests
 	let delay = 0
-	if (totalRequests) {
+	if (totalRequests && (totalRequests > 0)) {
 		if (totalRequests > requestsMaxNumBurst) {
 			if (totalRequests > requestsMaxNumAvg) delay = delayAvg
 			else delay = delayBurst
