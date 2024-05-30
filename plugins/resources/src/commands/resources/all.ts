@@ -226,13 +226,14 @@ export default class ResourcesAll extends Command {
         format: `Fetching ${itemsDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
-        hideCursor: true,
+        hideCursor: true
       })
 
 
       const delay = clApi.requestRateLimitDelay({
         environment: clApi.execMode(!jwtData.test),
         resourceType: resource.api,
+        totalRequests: pages
       })
 
 
@@ -240,7 +241,7 @@ export default class ResourcesAll extends Command {
 
         page++
 
-        if ((page > 1) && (pages > 50)) await cliux.wait(delay)
+        if (page > 1) await clUtil.sleep(delay)
 
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
 
