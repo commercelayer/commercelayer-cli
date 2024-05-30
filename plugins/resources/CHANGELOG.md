@@ -1,3 +1,10 @@
+## [6.0.10](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.9...v6.0.10) (2024-05-30)
+
+
+### Bug Fixes
+
+* fix all command delay ([8ba19a1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/8ba19a1296ce68beeab732fb57fd330c6053d093))
+
 ## [6.0.9](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.8...v6.0.9) (2024-05-30)
 
 
