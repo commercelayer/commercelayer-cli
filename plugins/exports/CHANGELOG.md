@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.1.1...v3.1.2) (2024-05-30)
+
+
+### Bug Fixes
+
+* fix command flags inheritance ([edc4acc](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/edc4acccf03a1beb3644d95bd5d4bbde6e960bb6))
+
 ## [3.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.1.0...v3.1.1) (2024-05-17)
 
 
