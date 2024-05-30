@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0...v5.0.1) (2024-05-30)
+
+
+### Bug Fixes
+
+* fix flags inheritance ([75ffa8a](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/75ffa8ab84ff4307e282add54520b983e748320b))
+
 # [5.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.2...v5.0.0) (2024-04-29)
 
 
