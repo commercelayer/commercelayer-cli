@@ -230,18 +230,23 @@ export default class ResourcesAll extends Command {
       })
 
 
-      const delay = clApi.requestRateLimitDelay({
-        environment: clApi.execMode(!jwtData.test),
-        resourceType: resource.api,
-        totalRequests: pages
-      })
-
+      let delay = -1
 
       do {
 
         page++
 
-        if (page > 1) await clUtil.sleep(delay)
+        if (page > 1) {
+          if (delay < 0) {
+              delay = clApi.requestRateLimitDelay({
+              environment: clApi.execMode(!jwtData.test),
+              resourceType: resource.api,
+              totalRequests: pages
+            })
+            console.log(delay)
+          }
+          await clUtil.sleep(delay)
+        }
 
         jwtData = await this.checkAccessToken(jwtData, flags, cl)
 
