@@ -2,7 +2,8 @@ import commercelayer from '@commercelayer/sdk'
 import type { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
 import type { ActionType } from './triggers'
 import type { Config } from '@oclif/core/lib/interfaces'
-import { clUtil } from '@commercelayer/cli-core'
+import { clColor, clUtil } from '@commercelayer/cli-core'
+import { CLIError } from '@oclif/core/lib/errors'
 
 
 
@@ -28,9 +29,11 @@ const exec = async (id: string, action: ActionType, flags: any, fields?: string[
 
   const cl = commercelayerInit(flags, config)
 
-  const res: OrderUpdate = { id }
-  res[`_${action}`] = flags.value || true as unknown as undefined
+  await cl.orders.retrieve(id).catch(err => {
+    if (cl.isApiError(err) && (err.status === 404)) throw new CLIError(`Invalid order or order not found: ${clColor.msg.error(id)}`)
+  })
 
+  const res: OrderUpdate = { id, [`_${action}`]: flags.value || true }
   const params: QueryParamsRetrieve<Order> = {}
   if (fields && (fields.length > 0)) params.fields = { orders: fields as Array<keyof Order> }
 
