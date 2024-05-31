@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('orders:archive', () => {
+describe('orders:fulfill', () => {
   test
     .timeout(30000)
     .stdout()
