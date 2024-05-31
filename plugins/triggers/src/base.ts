@@ -103,7 +103,7 @@ export default abstract class extends Command {
 
 
   protected successMessage(resource: string, action: string, id: string): void {
-    this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on ${resource.replace(/_/g, ' ')} ${clColor.api.id(id)}\n`)
+    this.log(`\nAction ${clColor.api.trigger(action)} executed without errors on ${clApi.humanizeResource(resource)} ${clColor.api.id(id)}\n`)
   }
 
 
