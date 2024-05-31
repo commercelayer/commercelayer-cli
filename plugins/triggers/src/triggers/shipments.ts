@@ -33,6 +33,11 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_ship',
       description: 'Send this attribute if you want to mark this shipment as shipped.',
     },
+	deliver: {
+      action: 'deliver',
+      trigger: '_deliver',
+      description: 'Send this attribute if you want to mark this shipment as delivered.',
+    },
 	reserve_stock: {
       action: 'reserve_stock',
       trigger: '_reserve_stock',
@@ -68,6 +73,7 @@ export type ActionType =
 	'packing' |
 	'ready_to_ship' |
 	'ship' |
+	'deliver' |
 	'reserve_stock' |
 	'release_stock' |
 	'decrement_stock' |

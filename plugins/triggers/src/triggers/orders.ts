@@ -58,6 +58,11 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_refund',
       description: 'Send this attribute if you want to refund a captured order.',
     },
+	fulfill: {
+      action: 'fulfill',
+      trigger: '_fulfill',
+      description: 'Send this attribute if you want to mark as fulfilled a shipped/delivered order.',
+    },
 	update_taxes: {
       action: 'update_taxes',
       trigger: '_update_taxes',
@@ -163,6 +168,7 @@ export type ActionType =
 	'authorization_amount_cents' |
 	'capture' |
 	'refund' |
+	'fulfill' |
 	'update_taxes' |
 	'nullify_payment_source' |
 	'billing_address_clone_id' |
