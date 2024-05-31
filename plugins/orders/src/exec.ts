@@ -33,9 +33,7 @@ const exec = async (id: string, action: ActionType, flags: any, fields?: string[
     if (cl.isApiError(err) && (err.status === 404)) throw new CLIError(`Invalid order or order not found: ${clColor.msg.error(id)}`)
   })
 
-  const res: OrderUpdate = { id }
-  res[`_${action}`] = flags.value || true as unknown as undefined
-
+  const res: OrderUpdate = { id, [`_${action}`]: flags.value || true }
   const params: QueryParamsRetrieve<Order> = {}
   if (fields && (fields.length > 0)) params.fields = { orders: fields as Array<keyof Order> }
 
