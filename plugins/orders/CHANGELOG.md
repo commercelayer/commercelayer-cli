@@ -1,3 +1,16 @@
+# [5.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.0.0...v5.1.0) (2024-05-31)
+
+
+### Bug Fixes
+
+* fix trigger setup ([eb650bd](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/eb650bd9d89f6e314cc5f7260190c4d51bf3e1fd))
+* update dependencies ([2e45288](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/2e45288caaeb734fc718b01ba0eacb9d75a04552))
+
+
+### Features
+
+* add order check ([2505c15](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/2505c150f6e80a5f1b64cfe98409362ec52f54da))
+
 # [5.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v4.9.3...v5.0.0) (2024-04-29)
 
 
