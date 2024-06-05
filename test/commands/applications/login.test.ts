@@ -5,7 +5,7 @@ describe('applications:login', () => {
     .timeout(5000)
     .stdout()
     .command(['applications:login',
-      '-o', process.env.CL_CLI_ORGANIZATION || '',
+      '-o', process.env.CL_CLI_ORGANIZATION || 'cli-test-org',
       '-i', process.env.CL_CLI_CLIENT_ID || '',
       '-s', process.env.CL_CLI_CLIENT_SECRET || '',
       '-a', 'admin'])

@@ -1,11 +1,12 @@
-import { clText, clUtil } from "@commercelayer/cli-core"
+import { clColor, clText, clUtil } from "@commercelayer/cli-core"
 import { Command, Flags, ux as cliux } from "@oclif/core"
-import { writeFileSync } from "node:fs"
+import { writeFileSync, existsSync } from "node:fs"
 import { join } from "node:path"
 import { format } from 'prettier'
+import { homedir } from 'node:os'
 
 
-const FIG_SPECS_DIR = '/Users/pierlu/Documents/GitHub/fig-autocomplete/src'
+const FIG_SPECS_DIR = `${homedir()}/Documents/GitHub/fig-autocomplete/src`
 const SPEC_NAME = 'commercelayer'
 
 const processedCommands: string[] = []
@@ -74,8 +75,16 @@ function getFigOptions(options: Command.Flag.Cached[]): Fig.Option[] {
 
 
 
-function description(desc?: string): string | undefined {
+function description(desc?: string | string[]): string | undefined {
+
+  if (!desc) return desc
   let d = desc
+
+  if (Array.isArray(d)) {
+    if (d.length > 0) d = d[0]
+    else d = ''
+  }
+
   if (d) {
     if (d.length > 80) {
       d = d.substring(0, d.indexOf('.')+1)
@@ -86,7 +95,9 @@ function description(desc?: string): string | undefined {
     if (d.endsWith('.')) d = d.substring(0, d.length - 1)
     d = d.trim()
   }
+
   return d
+
 }
 
 
@@ -234,7 +245,8 @@ export default class CliFig extends Command {
     install: Flags.boolean({
       char: 'i',
       description: 'copy into Fig specs directory',
-      exclusive: ['dir']
+      exclusive: ['dir'],
+      hidden: true
     }),
     blind: Flags.boolean({
       char: 'b',
@@ -266,6 +278,8 @@ export default class CliFig extends Command {
       let fileDir = '.'
       if (flags.dir) fileDir = clUtil.specialFolder(flags.dir)
       else if (flags.install) fileDir = FIG_SPECS_DIR
+
+      if (!existsSync(fileDir)) this.error(`Folder does not exists: ${clColor.msg.error(fileDir)}`)
 
       const filePath = join(fileDir, fileName)
       cliux.action.start(`Generating spec file ${filePath}`)

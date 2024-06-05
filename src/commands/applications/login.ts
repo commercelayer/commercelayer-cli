@@ -180,7 +180,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		// User info
 		const usr = await clp.user.retrieve().catch(() => { error(clp.user.type()) })
 		if (usr) user = { name: `${usr.first_name}${(usr.first_name && usr.last_name)? ' ' : ''}${usr.last_name}`, email: usr.email }
-		org = { slug: 'provisioning' }
+		org = { slug: 'provisioning', name: user?.name || 'Provisioning API' }
 		app = { name: 'Provisioning App' }
 	} else { // core
 		const cl = commercelayer({ organization: auth.slug || '', domain: auth.domain, accessToken })
@@ -192,10 +192,10 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
 
-	const appInfo: AppInfo = Object.assign(auth, {
+	const appInfo: AppInfo = { ...auth, 
 		organization: org.name ?? undefined,
 		key: clApplication.appKey(),
-		slug: org.slug,
+		slug: org.slug ?? undefined,
 		mode,
 		kind: tokenInfo.application.kind,
 		name: app.name || '',
@@ -204,7 +204,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		alias: '',
 		api,
 		user: user?.name
-	})
+	}
 
 	// if (Array.isArray(appInfo.scope) && (appInfo.scope.length === 0)) appInfo.scope = undefined
 
