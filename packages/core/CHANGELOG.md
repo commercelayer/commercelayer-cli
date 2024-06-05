@@ -1,3 +1,10 @@
+## [5.0.5](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.4...v5.0.5) (2024-06-05)
+
+
+### Bug Fixes
+
+* add user to appInfo ([bb74412](https://github.com/commercelayer/commercelayer-cli-core/commit/bb7441231082983ba13c7a94940f21abeee63d51))
+
 ## [5.0.4](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.3...v5.0.4) (2024-05-30)
 
 
