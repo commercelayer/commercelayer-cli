@@ -1,33 +1,34 @@
-import type { ApiMode, ApiType } from "./api";
-import config from "./config";
-import type { AuthScope } from "./token";
+import type { ApiMode, ApiType } from "./api"
+import config from "./config"
+import type { AuthScope } from "./token"
 
 
 
 interface AppKey {
-	key: string;
-	mode: ApiMode;
-	id?: string;
-	alias?: string;
+	key: string
+	mode: ApiMode
+	id?: string
+	alias?: string
 }
 
 
 interface AppAuth {
-	slug?: string;
-	domain?: string;
-	clientId: string;
-	clientSecret?: string;
-	scope?: AuthScope;
-	email?: string;
-	password?: string;
-	api?: ApiType;
+	slug?: string
+	domain?: string
+	clientId: string
+	clientSecret?: string
+	scope?: AuthScope
+	email?: string
+	password?: string
+	api?: ApiType
 }
 
 interface AppInfo extends AppKey, AppAuth {
-	organization?: string;
-	kind: string;
-	name: string;
-	baseUrl?: string;
+	organization?: string
+	kind: string
+	name: string
+	baseUrl?: string
+	user?: string
 }
 
 
