@@ -127,7 +127,7 @@ const newAccessToken = async (config: Config, app: AppKey, save: boolean = false
 
 		if (save) writeTokenFile(config, app, token)
 
-	}
+	} else throw new Error('Error getting new access token')
 
 	return token
 

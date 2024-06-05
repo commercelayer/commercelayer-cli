@@ -1,6 +1,6 @@
 import Configstore from 'configstore'
-import { join } from 'path'
-import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'fs'
+import { join } from 'node:path'
+import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'node:fs'
 import type { Config } from '@oclif/core/lib/interfaces/config'
 import { type AppKey, type AppInfo, clApi, clConfig, type AccessToken } from '@commercelayer/cli-core'
 
@@ -16,7 +16,7 @@ const fixed = {
 	applicationsDir: 'applications',
 	configSuffix: 'config.json',
 	tokenSuffix: 'token.json',
-	encoding: 'utf-8' as BufferEncoding,
+	encoding: 'utf-8' as BufferEncoding
 }
 
 
@@ -55,12 +55,20 @@ const tokenFileExists = (config: Config, app: AppKey): boolean => {
 
 const writeConfigFile = (config: Config, app: AppInfo): void => {
 	const filePath = configFilePath(config, app)
-	writeFileSync(filePath, JSON.stringify(app, null, 4))
+	try {
+		writeFileSync(filePath, JSON.stringify(app, null, 4))
+	} catch (err: any) {
+		throw new Error(`Error saving config file: ${err.message}`)
+	}
 }
 
 const writeTokenFile = (config: Config, app: AppKey, token: any): void => {
 	const filePath = tokenFilePath(config, app)
-	writeFileSync(filePath, JSON.stringify(token, null, 4))
+	try {
+		writeFileSync(filePath, JSON.stringify(token, null, 4))
+	} catch (err: any) {
+		throw new Error(`Error saving access token: ${err.message}`)
+	}
 }
 
 const readConfigFile = (config: Config, app: AppKey): AppInfo => {

@@ -101,7 +101,9 @@ const hook: Hook<'prerun'> = async function (opts) {
 				refresh = true
 				// If not overridden by saved current application, load configuration data
 				if (!configData) configData = readConfigFile(this.config, app)
-				await clToken.revokeAccessToken(configData, tokenData.accessToken)
+				await clToken.revokeAccessToken(configData, tokenData.accessToken).catch(err => {
+					this.log(`Error revoking old access token: ${err.message}`)
+				})	// no matter if token revoke fails
 				tokenData = null
 			}
 		}
