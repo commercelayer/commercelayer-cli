@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('line_items:reset_circuit', () => {
+describe('links:disable', () => {
   test
     .timeout(37000)
     .stdout()
