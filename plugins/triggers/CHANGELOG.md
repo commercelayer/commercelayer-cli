@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.3.0...v4.4.0) (2024-06-06)
+
+
+### Features
+
+* add links triggers ([185a9ec](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/185a9ec9f1dce8cbee51eeb745a04a53accd7066))
+
 # [4.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.2.0...v4.3.0) (2024-05-31)
 
 
