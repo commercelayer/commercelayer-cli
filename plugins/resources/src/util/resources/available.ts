@@ -56,6 +56,7 @@ const RESOURCES = [
 	{ name: 'klarna_payment', api: 'klarna_payments', model: 'KlarnaPayment' },
 	{ name: 'line_item_option', api: 'line_item_options', model: 'LineItemOption' },
 	{ name: 'line_item', api: 'line_items', model: 'LineItem' },
+	{ name: 'link', api: 'links', model: 'Link' },
 	{ name: 'manual_gateway', api: 'manual_gateways', model: 'ManualGateway' },
 	{ name: 'manual_tax_calculator', api: 'manual_tax_calculators', model: 'ManualTaxCalculator' },
 	{ name: 'market', api: 'markets', model: 'Market' },
