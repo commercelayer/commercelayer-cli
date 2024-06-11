@@ -66,7 +66,6 @@ const RESOURCES = [
 	{ name: 'order_factory', api: 'order_factories', model: 'OrderFactory' },
 	{ name: 'order_subscription_item', api: 'order_subscription_items', model: 'OrderSubscriptionItem' },
 	{ name: 'order_subscription', api: 'order_subscriptions', model: 'OrderSubscription' },
-	{ name: 'order_validation_rule', api: 'order_validation_rules', model: 'OrderValidationRule' },
 	{ name: 'order', api: 'orders', model: 'Order' },
 	{ name: 'organization', api: 'organization', model: 'Organization', singleton: true },
 	{ name: 'package', api: 'packages', model: 'Package' },
