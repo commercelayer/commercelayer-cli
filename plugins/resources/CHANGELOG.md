@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.1.0...v6.2.0) (2024-06-11)
+
+
+### Features
+
+* remove resource order_validation_rules ([dd9f272](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/dd9f2723b2d2468f72c52c9dd98d1bde885c4aba))
+
 # [6.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.0.10...v6.1.0) (2024-06-06)
 
 
