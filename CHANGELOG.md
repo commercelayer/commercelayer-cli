@@ -1,3 +1,10 @@
+## [6.0.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.2...v6.0.3) (2024-06-17)
+
+
+### Bug Fixes
+
+* fix command token app info ([aeb98e2](https://github.com/commercelayer/commercelayer-cli/commit/aeb98e2018f5c768dbc8a152c827fc6c47e25d73))
+
 ## [6.0.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.1...v6.0.2) (2024-06-05)
 
 
