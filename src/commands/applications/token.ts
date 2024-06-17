@@ -2,6 +2,7 @@ import Command, { Flags } from '../../base'
 import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
 import { clOutput, type AppKey, clToken, clConfig, clColor, type AccessToken, type CustomToken } from '@commercelayer/cli-core'
 import type { Config } from '@oclif/core/lib/interfaces/config'
+import { printCurrent } from './current'
 
 
 
@@ -76,7 +77,7 @@ export default class ApplicationsToken extends Command {
 			}
 
 			if (accessToken) {
-				this.log(`\nAccess token for application ${clColor.api.application(app.name)}`)
+				this.log(`\nAccess token for application ${printCurrent(app)}`)
 				this.log(`\n${clColor.api.token(accessToken)}\n`)
 				if (flags.shared && expMinutes) {
 					this.warn(clColor.italic(`this access token will expire in ${expMinutes} minutes`))
