@@ -23,24 +23,24 @@ export default class CheckoutIndex extends Command {
       char: 'O',
       description: 'an order id',
       exclusive: ['sku', 'bundle'],
-      multiple: false,
+      multiple: false
     }),
     sku: Flags.string({
       char: 'S',
       description: 'an SKU code',
-      exclusive: ['order'],
-      multiple: true,
+      exclusive: ['order', 'bundle'],
+      multiple: true
     }),
     bundle: Flags.string({
       char: 'B',
       description: 'a bundle code',
-      exclusive: ['order'],
-      multiple: true,
+      exclusive: ['order', 'sku'],
+      multiple: true
     }),
     market: Flags.string({
       char: 'm',
       description: 'a market number',
-      exclusive: ['order'],
+      exclusive: ['order']
     }),
     coupon: Flags.string({
       char: 'c',
@@ -50,7 +50,7 @@ export default class CheckoutIndex extends Command {
     email: Flags.string({
       char: 'e',
       description: 'a customer email',
-      exclusive: ['order'],
+      exclusive: ['order']
     }),
     /*
     'set-defaults': flags.boolean({
@@ -73,6 +73,8 @@ export default class CheckoutIndex extends Command {
 
     const organization = flags.organization
     const accessToken = flags.accessToken
+    const domain = flags.domain
+    const staging = flags.staging
 
 
     // Checkout URL by order id
@@ -148,7 +150,7 @@ export default class CheckoutIndex extends Command {
 
     await Promise.all(lis)
 
-    const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, flags.staging)
+    const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, { domain, staging })
 
     this.log(`\nCheckout URL for order ${clColor.api.id(order.id)}:\n`)
     this.log(clColor.cyanBright(checkoutUrl))
