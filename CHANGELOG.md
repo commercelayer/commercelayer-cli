@@ -1,3 +1,11 @@
+## [6.0.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.1...v6.0.2) (2024-06-05)
+
+
+### Bug Fixes
+
+* fix fig dir check ([268b70d](https://github.com/commercelayer/commercelayer-cli/commit/268b70d6be1372d9334d4c168e5819c91da7fdc1))
+* fix provisioning app name ([c4ac029](https://github.com/commercelayer/commercelayer-cli/commit/c4ac029fc965dfdd78d58fd13ca016ec8c5a7f9c))
+
 ## [6.0.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.0.0...v6.0.1) (2024-05-17)
 
 
