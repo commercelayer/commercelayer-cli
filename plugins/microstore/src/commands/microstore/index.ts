@@ -43,6 +43,7 @@ export default class MicrostoreIndex extends Command {
 
     const organization = flags.organization
     const domain = flags.domain
+    const staging = flags.staging
     const accessToken = flags.accessToken
     const skuListId = flags.skuListId
 
@@ -55,10 +56,12 @@ export default class MicrostoreIndex extends Command {
     const skuList = await cl.sku_lists.retrieve(skuListId)
     if (!skuList) this.error(`Inexistent sku list: ${clColor.msg.error(String(skuListId))}`)
 
-    const microstoreUrl = buildMicrostoreUrl(organization, domain, skuListId, accessToken, {
+    const microstoreUrl = buildMicrostoreUrl(organization, skuListId, accessToken, {
       all: flags.all,
       cart: flags.cart,
       inline: flags.inline,
+      domain,
+      staging
     })
 
     this.log(`\nMicrostore URL for sku list ${clColor.api.id(skuListId)}:\n`)

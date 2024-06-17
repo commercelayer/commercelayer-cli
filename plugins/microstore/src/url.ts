@@ -17,10 +17,18 @@ type MicrostoreOptions = {
 )
 
 
-// eslint-disable-next-line max-params
-const buildMicrostoreUrl = (organization: string, domain: string | undefined, skuListId: string, accessToken: string, options: MicrostoreOptions): string => {
+export type UrlOptions = {
+  staging?: boolean,
+  domain?: string
+} & MicrostoreOptions
 
-  const baseUrl = clApi.baseURL('core', organization, domain || clConfig.api.default_app_domain)
+
+// eslint-disable-next-line max-params
+const buildMicrostoreUrl = (organization: string, skuListId: string, accessToken: string, options: UrlOptions): string => {
+
+  const subdomain = options?.staging? 'stg.' : ''
+  const domain = `${subdomain}${options?.domain || clConfig.api.default_app_domain}`
+  const baseUrl = clApi.baseURL('core', organization, domain)
 
   let microstoreUrl = `${baseUrl}/microstore/list/${skuListId}?accessToken=${accessToken}`
   if (options.all) microstoreUrl += '&all=true'

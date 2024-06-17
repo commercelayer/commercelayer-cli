@@ -18,14 +18,14 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
-      hidden: true,
+      hidden: true
     }),
     domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
+      env: 'CL_CLI_DOMAIN'
     }),
     accessToken: Flags.string({
       char: 'a',
@@ -36,8 +36,16 @@ export default abstract class extends Command {
       dependsOn: ['organization']
     }),
     open: Flags.boolean({
-      description: 'open microstore URL in default browser',
+      description: 'open microstore URL in default browser'
     }),
+    staging: Flags.boolean({
+      description: 'connect to Microstore application in Staging environment',
+      hidden: true,
+    }),
+    link: Flags.boolean({
+      char: 'l',
+      description: 'generate short link'
+    })
   }
 
 
