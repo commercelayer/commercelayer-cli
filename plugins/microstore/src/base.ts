@@ -46,6 +46,31 @@ export default abstract class extends Command {
       char: 'l',
       description: 'generate short link'
     })
+    /* ,
+    client_id: Flags.string({
+      description: 'the application client_id',
+      hidden: true,
+      dependsOn: ['link'],
+      env: 'CL_CLI_CLIENT_ID'
+    }),
+    scope: Flags.string({
+      description: 'the application scope',
+      hidden: true,
+      dependsOn: ['link'],
+      env: 'CL_CLI_SCOPE'
+    }),
+    name: Flags.string({
+      char: 'n',
+      description: 'the name of the link',
+      hidden: true,
+      dependsOn: ['link']
+    }),
+    expires: Flags.string({
+      char: 'e',
+      description: 'the link\'s expiration date and time',
+      dependsOn: ['link']
+    })
+      */
   }
 
 
@@ -105,6 +130,14 @@ export default abstract class extends Command {
     return true
 
   }
+
+  /*
+  protected checkRequiredAttribute(flags: Record<string, any>, linkName: string, defaultValue?: string): string {
+    const attrib = flags[linkName] || defaultValue
+    if (!attrib) this.error(`Missing required attribute: ${clColor.msg.error(linkName)}`)
+    return attrib
+  }
+    */
 
 }
 
