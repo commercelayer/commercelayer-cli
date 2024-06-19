@@ -17,7 +17,7 @@ export default class ResourcesRetrieve extends Command {
     '$ commercelayer resources:retrieve customers/<customerId>',
     '$ commercelayer retrieve customers <customerId>',
     '$ cl res:retrieve customers <customerId>',
-    '$ clayer rr customers/<customerId>',
+    '$ clayer rr customers/<customerId>'
   ]
 
   static flags = {
@@ -26,25 +26,25 @@ export default class ResourcesRetrieve extends Command {
       char: 'x',
       description: 'save command output to file',
       multiple: false,
-      exclusive: ['save-path'],
+      exclusive: ['save-path']
     }),
     'save-path': Flags.string({
       char: 'X',
       description: 'save command output to file and create missing path directories',
       multiple: false,
-      exclusive: ['save'],
+      exclusive: ['save']
     }),
     extract: Flags.string({
       char: 'e',
       description: 'extract subfields from object attributes',
       multiple: true,
-      exclusive: ['raw'],
-    }),
+      exclusive: ['raw']
+    })
   }
 
   static args = {
     ...Command.args,
-    id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: false }),
+    id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: false })
   }
 
 
