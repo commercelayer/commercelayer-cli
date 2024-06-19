@@ -1,3 +1,11 @@
+## [5.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.1...v5.0.2) (2024-06-19)
+
+
+### Bug Fixes
+
+* fix output url ([369a5d7](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/369a5d778f84fcfba26d880560b54c876b62071f))
+* fix url building ([40e5503](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/40e55037f350921c41c8d501ea3bf5a2b70173f7))
+
 ## [5.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0...v5.0.1) (2024-05-30)
 
 
