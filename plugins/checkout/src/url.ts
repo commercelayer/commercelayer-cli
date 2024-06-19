@@ -4,15 +4,16 @@ import open from 'open'
 
 
 export type UrlOptions = {
-  staging?: boolean,
+  staging?: boolean
   domain?: string
 }
 
 
+
 const buildCheckoutUrl = (organization: string, orderId: string, accessToken: string, options: UrlOptions): string => {
 
-  const subdomain = options?.staging? 'stg.' : ''
-  const domain = `${subdomain}${options?.domain || clConfig.api.default_app_domain}`
+  const subdomain = options.staging? 'stg.' : ''
+  const domain = `${subdomain}${options.domain || clConfig.api.default_app_domain}`
   const baseUrl = clApi.baseURL('core', organization, domain)
 
   const checkoutUrl = `${baseUrl}/checkout/${orderId}?accessToken=${accessToken}`
