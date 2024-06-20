@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.4.0...v4.5.0) (2024-06-20)
+
+
+### Features
+
+* update shipments triggers ([930bc10](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/930bc105b2adf7f44e2ccba6d9fa2c9a252316a3))
+
 # [4.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.3.0...v4.4.0) (2024-06-06)
 
 
