@@ -8,6 +8,11 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_upcoming',
       description: 'Send this attribute if you want to mark this shipment as upcoming.',
     },
+	cancel: {
+      action: 'cancel',
+      trigger: '_cancel',
+      description: 'Send this attribute if you want to mark this shipment as cancelled (unless already shipped or delivered).',
+    },
 	on_hold: {
       action: 'on_hold',
       trigger: '_on_hold',
@@ -68,6 +73,7 @@ export const triggers: Record<string, Trigger> = {
 
 export type ActionType =
   'upcoming' |
+	'cancel' |
 	'on_hold' |
 	'picking' |
 	'packing' |
