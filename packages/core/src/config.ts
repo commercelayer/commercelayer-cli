@@ -100,106 +100,118 @@ const TAG_RESOURCE_TYPES: readonly string[] = [
 ] as const
 
 
+const LINK_RESOURCE_TYPES: readonly string[] = [
+	'orders',
+	'sku_lists'
+] as const
+
 
 type ApiConfig = {
-	default_domain: string;
-	default_app_domain: string;
-	default_stg_domain: string;
-	token_expiration_mins: number;
-	token_encoding_algorithm: string;
-	requests_max_num_burst: number;
-	requests_max_num_burst_cacheable: number;
-	requests_max_num_burst_test: number;
-	requests_max_num_burst_test_cacheable: number;
-	requests_max_secs_burst: number;
-	requests_max_num_avg: number;
-	requests_max_num_avg_cacheable: number;
-	requests_max_num_avg_test: number;
-	requests_max_num_avg_test_cacheable: number;
-	requests_max_secs_avg: number;
-	requests_max_num_oauth: number;
-	requests_max_secs_oauth: number;
-	page_max_size: number;
-	page_default_size: number;
+	default_domain: string
+	default_app_domain: string
+	default_stg_domain: string
+	token_expiration_mins: number
+	token_encoding_algorithm: string
+	requests_max_num_burst: number
+	requests_max_num_burst_cacheable: number
+	requests_max_num_burst_test: number
+	requests_max_num_burst_test_cacheable: number
+	requests_max_secs_burst: number
+	requests_max_num_avg: number
+	requests_max_num_avg_cacheable: number
+	requests_max_num_avg_test: number
+	requests_max_num_avg_test_cacheable: number
+	requests_max_secs_avg: number
+	requests_max_num_oauth: number
+	requests_max_secs_oauth: number
+	page_max_size: number
+	page_default_size: number
 }
 
 type ApplicationConfig = {
-	kinds: readonly string[];
-	login_scopes: readonly string[];
+	kinds: readonly string[]
+	login_scopes: readonly string[]
 }
 
 type ImportsConfig = {
-	max_size: number;
-	statuses: readonly string[];
-	types: readonly string[];
-	max_queue_length: number;
-	attachment_expiration: number;
+	max_size: number
+	statuses: readonly string[]
+	types: readonly string[]
+	max_queue_length: number
+	attachment_expiration: number
 }
 
 type ExportsConfig = {
-	max_size: number;
-	statuses: readonly string[];
-	types: readonly string[];
-	max_queue_length: number;
-	attachment_expiration: number;
+	max_size: number
+	statuses: readonly string[]
+	types: readonly string[]
+	max_queue_length: number
+	attachment_expiration: number
 }
 
 type CleanupsConfig = {
-	max_size: number;
-	statuses: readonly string[];
-	types: readonly string[];
-	max_queue_length: number;
+	max_size: number
+	statuses: readonly string[]
+	types: readonly string[]
+	max_queue_length: number
 }
 
 type WebhooksConfig = {
-	retry_number: number;
+	retry_number: number
 }
 
 type CliConfig = {
-	applications: readonly string[];
+	applications: readonly string[]
 }
 
 type DocConfig = {
-	core: string;
-	core_api_reference: string;
-	core_how_tos: string;
-	core_raste_limits: string;
-	core_filtering_data: string;
-	metrics: string;
-	metrics_api_reference: string;
-	provisioning: string;
-	provisioning_api_reference: string;
-	imports_resources: string;
-	exports_resources: string;
-	cleanups_resources: string;
-	webhooks_events: string;
-	tags_resources: string;
+	core: string
+	core_api_reference: string
+	core_how_tos: string
+	core_raste_limits: string
+	core_filtering_data: string
+	metrics: string
+	metrics_api_reference: string
+	provisioning: string
+	provisioning_api_reference: string
+	imports_resources: string
+	exports_resources: string
+	cleanups_resources: string
+	webhooks_events: string
+	tags_resources: string
+	links_resources: string
 }
 
 type TagsConfig = {
-	max_resource_tags: number;
-	taggable_resources: readonly string[];
-	tag_name_max_length: number;
+	max_resource_tags: number
+	taggable_resources: readonly string[]
+	tag_name_max_length: number
 	tag_name_pattern: RegExp
 }
 
 type ProvisioningConfig = {
-	default_subdomain: string;
-	scope: string;
+	default_subdomain: string
+	scope: string
 	applications: readonly string[]
 }
 
+type LinksConfig = {
+	default_domain: 'c11r.link',
+	linkable_resources: readonly string[]
+}
+
 type Config = {
-	api: ApiConfig;
-	application: ApplicationConfig;
-	imports: ImportsConfig;
-	exports: ExportsConfig;
-	cleanups: CleanupsConfig;
-	webhooks: WebhooksConfig;
-	cli: CliConfig;
-	doc: DocConfig;
-	tags: TagsConfig;
-	provisioning: ProvisioningConfig;
+	api: ApiConfig
+	application: ApplicationConfig
+	imports: ImportsConfig
+	exports: ExportsConfig
+	cleanups: CleanupsConfig
+	webhooks: WebhooksConfig
+	cli: CliConfig
+	doc: DocConfig
+	tags: TagsConfig
+	provisioning: ProvisioningConfig
+	links: LinksConfig
 }
 
 
@@ -284,7 +296,8 @@ const config: Config = {
 		exports_resources: 'https://docs.commercelayer.io/core/exporting-resources#supported-resources',
 		cleanups_resources: 'https://docs.commercelayer.io/core/cleaning-resources#supported-resources',
 		webhooks_events: 'https://docs.commercelayer.io/api/real-time-webhooks#supported-events',
-		tags_resources: 'https://docs.commercelayer.io/core/v/api-reference/tags#taggable-resources'
+		tags_resources: 'https://docs.commercelayer.io/core/v/api-reference/tags#taggable-resources',
+		links_resources: 'https://docs.commercelayer.io/core/v/api-reference/links'
 	},
 	tags: {
 		max_resource_tags: 10,
@@ -296,6 +309,10 @@ const config: Config = {
 		default_subdomain: 'provisioning',
 		scope: 'provisioning-api',
 		applications: ['user']
+	},
+	links: {
+		linkable_resources: LINK_RESOURCE_TYPES,
+		default_domain: 'c11r.link'
 	}
 } as const
 
