@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "@commercelayer/eslint-config-ts"
+  ],
+  "ignorePatterns": ["test/**/*.test.ts", "bin/**"],
+  "rules": {
+    "prettier/prettier": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "no-return-assign": "off"
+  }
+}
