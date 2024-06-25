@@ -58,7 +58,7 @@ export default class WebhooksDetails extends BaseIdCommand {
 
       table.push(...Object.entries(webhook)
         .filter(([k]) => !['type', 'last_event_callbacks'].includes(k))
-        .filter(([_k, v]) => !flags['hide-empty'] || isEmpty(v) || (Array.isArray(v) && (v.length > 0)))
+        .filter(([_k, v]) => !flags['hide-empty'] || !isEmpty(v) || (Array.isArray(v) && (v.length > 0)))
         .map(([k, v]: [string, string]) => {
           return [
             { content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
