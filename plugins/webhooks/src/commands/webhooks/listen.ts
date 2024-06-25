@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags, cliux } from '../../base'
+import { BaseIdCommand, Flags, cliux } from '../../base'
 import { clUtil, clColor, clOutput } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
 import type { EventCallback } from '@commercelayer/sdk'
@@ -9,7 +9,7 @@ const MAX_LISTEN_TIME = 60 * 2	// 2 minutes
 const MIN_LISTEN_TIME = 5
 
 
-export default class WebhooksListen extends Command {
+export default class WebhooksListen extends BaseIdCommand {
 
 	static description = 'listen a webhook for outgoing callbacks'
 
@@ -17,7 +17,7 @@ export default class WebhooksListen extends Command {
 
 	static examples = [
 		'$ commercelayer webhooks:listen <webhook-id>',
-		'$ cl wh:listen <webhook-id>',
+		'$ cl wh:listen <webhook-id>'
 	]
 
 	static flags = {
@@ -26,11 +26,11 @@ export default class WebhooksListen extends Command {
 			description: 'waiting time for the first event',
 			required: false,
 			default: MAX_LISTEN_TIME,
-		}),
+		})
 	}
 
 	static args = {
-		...Command.args,
+		...BaseIdCommand.args
   }
 
 

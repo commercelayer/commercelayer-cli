@@ -11,7 +11,7 @@ export default class WebhooksTopics extends Command {
 
   static examples = [
 		'$ commercelayer webhooks:topics',
-		'$ cl wh:topics',
+		'$ cl wh:topics'
 	]
 
 

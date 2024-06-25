@@ -10,11 +10,11 @@ export default class WebhooksIndex extends BaseCommand {
   static flags = {
     ...BaseCommand.flags,
     ...ListCommand.flags,
-    ...DetailsCommand.flags,
+    ...DetailsCommand.flags
   }
 
   static args = {
-    id: Args.string({ name: 'id', description: 'unique id of the webhook to get a single webhook', required: false, hidden: false }),
+    id: Args.string({ name: 'id', description: 'unique id of the webhook to get a single webhook', required: false, hidden: false })
   }
 
 

@@ -1,9 +1,9 @@
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import Command from '../../base'
+import { BaseIdCommand } from '../../base'
 import { clColor } from '@commercelayer/cli-core'
 
 
-export default class WebhooksReset extends Command {
+export default class WebhooksReset extends BaseIdCommand {
 
   static description = 'reset the circuit breaker associated to the webhook'
 
@@ -11,12 +11,12 @@ export default class WebhooksReset extends Command {
 
   static examples = [
 		'$ commercelayer webhooks:reset <webhook-id>',
-		'$ cl wh:reset <webhook-id>',
+		'$ cl wh:reset <webhook-id>'
 	]
 
 
 	static args = {
-    ...Command.args,
+    ...BaseIdCommand.args
   }
 
 

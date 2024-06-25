@@ -1,11 +1,11 @@
-import Command, { Flags } from '../../base'
+import { BaseIdCommand, Flags } from '../../base'
 import { URL } from 'node:url'
 import type { WebhookUpdate } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
-export default class WebhooksUpdate extends Command {
+export default class WebhooksUpdate extends BaseIdCommand {
 
 	static description = 'update an existing webhook'
 
@@ -13,35 +13,35 @@ export default class WebhooksUpdate extends Command {
 
 	static examples = [
 		'$ commercelayer webhooks:update -t customers.create -u https://callback.url.io',
-		'$ cl wh:update -i customer_group',
+		'$ cl wh:update -i customer_group'
 	]
 
 	static flags = {
 		topic: Flags.string({
 			char: 't',
 			description: 'the identifier of the event that will trigger the webhook',
-			required: false,
+			required: false
 		}),
 		url: Flags.string({
 			char: 'u',
 			description: 'the callback URL used to POST data',
-			required: false,
+			required: false
 		}),
 		include: Flags.string({
 			char: 'i',
 			description: 'a comma separated list of related resources to be included',
-			multiple: true,
+			multiple: true
 		}),
 		name: Flags.string({
 			char: 'n',
 			description: 'the webhook short name',
-			required: false,
-		}),
+			required: false
+		})
 	}
 
 
 	static args = {
-		...Command.args,
+		...BaseIdCommand.args
   }
 
 

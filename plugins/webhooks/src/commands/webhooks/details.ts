@@ -1,4 +1,4 @@
-import Command, { Flags } from '../../base'
+import { BaseIdCommand, Flags } from '../../base'
 import Table from 'cli-table3'
 import isEmpty from 'lodash.isempty'
 import { clOutput, clColor } from '@commercelayer/cli-core'
@@ -7,7 +7,7 @@ import { buildEventsTableData } from './events'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
-export default class WebhooksDetails extends Command {
+export default class WebhooksDetails extends BaseIdCommand {
 
   static description = 'show the details of an existing webhook'
 
@@ -16,22 +16,22 @@ export default class WebhooksDetails extends Command {
   static examples = [
     '$ commercelayer webhooks:details <webhook-id>',
     '$ cl webhooks:details <webhook-id> -H',
-    '$ cl wh:details <webhook-id>',
+    '$ cl wh:details <webhook-id>'
   ]
 
   static flags = {
     'hide-empty': Flags.boolean({
       char: 'H',
-      description: 'hide empty attributes',
+      description: 'hide empty attributes'
     }),
     events: Flags.boolean({
       char: 'e',
-      description: 'show the last event callbacks associated to the webhook',
-    }),
+      description: 'show the last event callbacks associated to the webhook'
+    })
   }
 
   static args = {
-    ...Command.args,
+    ...BaseIdCommand.args
   }
 
 

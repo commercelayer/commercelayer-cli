@@ -1,11 +1,11 @@
-import Command, { Flags } from '../../base'
+import { BaseIdCommand, Flags } from '../../base'
 import Table from 'cli-table3'
 import { clOutput, clColor } from '@commercelayer/cli-core'
 import type { EventCallback } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
-export default class WebhooksEvent extends Command {
+export default class WebhooksEvent extends BaseIdCommand {
 
 	static description = 'show the details of a firedf webhook event'
 
@@ -29,7 +29,7 @@ export default class WebhooksEvent extends Command {
 	}
 
 	static args = {
-    ...Command.args,
+    ...BaseIdCommand.args,
   }
 
 

@@ -14,19 +14,19 @@ export default class WebhooksList extends BaseCommand {
 	static examples = [
 		'$ commercelayer webhooks',
 		'$ cl webhooks:list -c open',
-		'$ cl wh:list',
+		'$ cl wh:list'
 	]
 
 	static flags = {
 		circuit: Flags.string({
 			char: 'c',
 			description: 'show only webhooks with circuit in the declared state',
-			options: ['open', 'closed'],
+			options: ['open', 'closed']
 		}),
 		topic: Flags.string({
 			char: 't',
-			description: 'the event that triggered the webhook',
-		}),
+			description: 'the event that triggered the webhook'
+		})
 	}
 
 
@@ -43,7 +43,7 @@ export default class WebhooksList extends BaseCommand {
 			let currentPage = 0
 			let pageCount = 1
 
-      cliux.action.start('Fetching imports')
+      cliux.action.start('Fetching webhooks')
       let delay = 0
 			while (currentPage < pageCount) {
 

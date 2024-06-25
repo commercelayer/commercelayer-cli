@@ -1,4 +1,4 @@
-import Command, { Flags, cliux } from '../../base'
+import { BaseIdCommand, Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
 import { clConfig, clOutput, clColor, clApi, clUtil } from '@commercelayer/cli-core'
 import { responseCodeColor } from './event'
@@ -8,7 +8,7 @@ import type { CommandError } from '@oclif/core/lib/interfaces'
 
 const MAX_EVENTS = 1000
 
-export default class WebhooksEvents extends Command {
+export default class WebhooksEvents extends BaseIdCommand {
 
 	static description = 'list all the events associated to the webhook'
 
@@ -16,24 +16,24 @@ export default class WebhooksEvents extends Command {
 
 	static examples = [
 		'$ commercelayer webhooks:events <webhook-id>',
-		'$ cl wh:events <webhook-id>',
+		'$ cl wh:events <webhook-id>'
 	]
 
 	static flags = {
 		all: Flags.boolean({
 			char: 'A',
 			description: `show all events instead of first ${clConfig.api.page_max_size} only `,
-			exclusive: ['limit'],
+			exclusive: ['limit']
 		}),
 		limit: Flags.integer({
 			char: 'l',
 			description: 'limit number of events in output',
-			exclusive: ['all'],
-		}),
+			exclusive: ['all']
+		})
 	}
 
 	static args = {
-    ...Command.args,
+    ...BaseIdCommand.args,
   }
 
 

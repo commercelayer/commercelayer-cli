@@ -1,10 +1,10 @@
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import Command, { Flags } from '../../base'
+import { BaseIdCommand, Flags } from '../../base'
 import { clOutput, clColor } from '@commercelayer/cli-core'
 
 
 
-export default class WebhooksPayload extends Command {
+export default class WebhooksPayload extends BaseIdCommand {
 
 	static description = 'show the payload associated to an event callback'
 
@@ -12,18 +12,18 @@ export default class WebhooksPayload extends Command {
 
 	static examples = [
 		'$ commercelayer webhooks:payload <event-id>',
-		'$ cl wh:payload <event-id> -f',
+		'$ cl wh:payload <event-id> -f'
 	]
 
 	static flags = {
 		format: Flags.boolean({
 			char: 'f',
 			description: 'format the payload output',
-		}),
+		})
 	}
 
 	static args = {
-		...Command.args,
+		...BaseIdCommand.args
   }
 
 

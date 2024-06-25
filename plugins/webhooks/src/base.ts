@@ -23,13 +23,13 @@ export abstract class BaseCommand extends Command {
       required: false,
       hidden: true,
       dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
+      env: 'CL_CLI_DOMAIN'
     }),
     accessToken: Flags.string({
       hidden: true,
       required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-    }),
+      env: 'CL_CLI_ACCESS_TOKEN'
+    })
   }
 
 
@@ -81,7 +81,7 @@ export abstract class BaseCommand extends Command {
 }
 
 
-export default abstract class BaseIdCommand extends BaseCommand {
+export abstract class BaseIdCommand extends BaseCommand {
 
   static args = {
     id: Args.string({ name: 'id', description: 'unique id of the webhook', required: true, hidden: false }),

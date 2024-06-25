@@ -1,9 +1,9 @@
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import Command from '../../base'
+import { BaseIdCommand } from '../../base'
 import { clColor } from '@commercelayer/cli-core'
 
 
-export default class WebhooksDestroy extends Command {
+export default class WebhooksDestroy extends BaseIdCommand {
 
 	static description = 'destroy an existing webhook'
 
@@ -11,12 +11,12 @@ export default class WebhooksDestroy extends Command {
 
 	static examples = [
 		'$ commercelayer webhooks:destroy <webhook-id>>',
-		'$ cl wh:destroy <webhook-id>>',
+		'$ cl wh:destroy <webhook-id>>'
 	]
 
 
 	static args = {
-		...Command.args,
+		...BaseIdCommand.args
   }
 
 

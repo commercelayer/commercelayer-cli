@@ -12,7 +12,7 @@ export default class WebhooksCreate extends BaseCommand {
 
 	static examples = [
 		'$ commercelayer webhooks:create -t customers.create -u https://callback.url.io',
-		'$ cl wh:create -t orders.place -u http://myurl.com',
+		'$ cl wh:create -t orders.place -u http://myurl.com'
 	]
 
 	static flags = {
@@ -20,23 +20,23 @@ export default class WebhooksCreate extends BaseCommand {
 		topic: Flags.string({
 			char: 't',
 			description: 'the identifier of the event that will trigger the webhook',
-			required: true,
+			required: true
 		}),
 		url: Flags.string({
 			char: 'u',
 			description: 'the callback URL used to POST data',
-			required: true,
+			required: true
 		}),
 		include: Flags.string({
 			char: 'i',
 			description: 'a comma separated list of related resources to be included',
-			multiple: true,
+			multiple: true
 		}),
 		name: Flags.string({
 			char: 'n',
 			description: 'the webhook short name',
-			default: '',	// TEMP: the sdk currently consider this field as mandatory
-		}),
+			default: ''	// TEMP: the sdk currently consider this field as mandatory
+		})
 	}
 
 
