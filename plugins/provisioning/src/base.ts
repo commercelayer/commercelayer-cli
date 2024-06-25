@@ -74,7 +74,7 @@ export abstract class BaseCommand extends Command {
 
     if (id) {
       if (singleton) this.error(`Singleton resource ${clColor.api.resource(res)} does not require id`)
-      if (id.includes('/')) this.error(`Invalid resourde id: ${clColor.msg.error(id)}`)
+      if (id.includes('/')) this.error(`Invalid resource id: ${clColor.msg.error(id)}`)
     } else if (required && !singleton) this.error('Resource id not defined')
 
     return {
