@@ -13,19 +13,19 @@ export default class WebhooksEvent extends BaseIdCommand {
 
 	static examples = [
 		'$ commercelayer webhooks:event <event-id>',
-		'$ cl wh:event <event-id> -p',
+		'$ cl wh:event <event-id> -p'
 	]
 
 	static flags = {
 		payload: Flags.boolean({
 			char: 'p',
-			description: 'show the event payload sent to the callback endpoint',
+			description: 'show the event payload sent to the callback endpoint'
 		}),
 		format: Flags.boolean({
 			char: 'f',
 			description: 'format the payload output',
-			dependsOn: ['payload'],
-		}),
+			dependsOn: ['payload']
+		})
 	}
 
 	static args = {
@@ -66,7 +66,7 @@ export default class WebhooksEvent extends BaseIdCommand {
 				.map(([k, v]: [string, string]) => {
 					return [
 						{ content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
-						formatValue(k, v, event),
+						formatValue(k, v, event)
 					]
 				}))
 
@@ -117,7 +117,6 @@ export default class WebhooksEvent extends BaseIdCommand {
 		} catch (error) {
 			this.handleError(error as CommandError, flags, id)
 		}
-
 
 	}
 }
