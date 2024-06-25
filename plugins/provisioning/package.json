@@ -55,32 +55,32 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^3.0.3",
+    "@commercelayer/cli-dev": "^3.0.5",
     "@commercelayer/eslint-config-ts": "^1.4.5",
-    "@oclif/plugin-help": "^6.0.21",
-    "@oclif/test": "^3.2.13",
+    "@oclif/plugin-help": "^6.2.3",
+    "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.16",
     "@types/inquirer": "^8.2.10",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.12.8",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.14.8",
     "chai": "^4.4.1",
     "eslint": "^8.57.0",
-    "mocha": "^10.4.0",
+    "mocha": "^10.5.1",
     "nyc": "^15.1.0",
-    "oclif": "^4.10.4",
-    "semantic-release": "^23.0.8",
-    "tsx": "^4.9.3",
-    "typescript": "^5.4.5"
+    "oclif": "^4.13.10",
+    "semantic-release": "^23.1.1",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.0.1",
-    "@commercelayer/provisioning-sdk": "^2.0.1",
-    "@oclif/core": "^3.26.5",
+    "@commercelayer/cli-core": "^5.1.0",
+    "@commercelayer/provisioning-sdk": "^2.1.0",
+    "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.6",
     "json-2-csv": "^5.5.1",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.3"
   },
   "publishConfig": {
     "access": "public"
