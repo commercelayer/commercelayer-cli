@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.2...v4.0.3) (2024-06-25)
+
+
+### Bug Fixes
+
+* fix hide-empty flag in details command ([ee9a3be](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/ee9a3be709feb632acf6fafebdc9ab45ece37c88))
+
 ## [4.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.1...v4.0.2) (2024-06-25)
 
 
