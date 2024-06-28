@@ -16,7 +16,9 @@ const exludedCommands: string[] = [
 	'seeder:check',
 	'webhooks:topics',
 	'autocomplete',
-	'applications'
+	'applications',
+	'cleanups:types',
+	'links:resources'
 ]
 
 

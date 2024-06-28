@@ -19,10 +19,11 @@ Show a list of all (logged in) available CLI applications.
 ```sh-session
 USAGE
   $ commercelayer applications [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-A <value> | -o <value>] [-S]
+    <value>] [-A core|provisioning | -o <value>] [-S]
 
 FLAGS
-  -A, --api=<value>           specific API application
+  -A, --api=<option>          specific API application
+                              <options: core|provisioning>
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
@@ -57,7 +58,7 @@ Add a new Commerce Layer application to CLI config (application must be of kind 
 
 ```sh-session
 USAGE
-  $ commercelayer applications:add -a <value> [-o <value>] (-s <value> -i <value>) [-S <value> ] [-e <value> -p
+  $ commercelayer applications:add -a <value> [-o <value>] (-s <value> -i <value>) [-S <value>... ] [-e <value> -p
     <value>]
 
 FLAGS
@@ -115,10 +116,11 @@ Show application details.
 ```sh-session
 USAGE
   $ commercelayer applications:info [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-A <value> | -o <value>] [-j]
+    <value>] [-A core|provisioning | -o <value>] [-j]
 
 FLAGS
-  -A, --api=<value>           specific API application
+  -A, --api=<option>          specific API application
+                              <options: core|provisioning>
   -a, --alias=<value>         the alias associated to the application
   -j, --json                  show info in JSON format
   -k, --kind=<option>         application kind
@@ -144,7 +146,7 @@ Execute login to a Commerce Layer application (application must be of kind 'inte
 
 ```sh-session
 USAGE
-  $ commercelayer applications:login -a <value> [-o <value>] (-s <value> -i <value>) [-S <value> ] [-e <value> -p
+  $ commercelayer applications:login -a <value> [-o <value>] (-s <value> -i <value>) [-S <value>... ] [-e <value> -p
     <value>]
 
 FLAGS
@@ -178,10 +180,11 @@ Remove an application from CLI local configuration.
 ```sh-session
 USAGE
   $ commercelayer applications:logout [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-A <value> | -o <value>] [-r]
+    <value>] [-A core|provisioning | -o <value>] [-r]
 
 FLAGS
-  -A, --api=<value>           specific API application
+  -A, --api=<option>          specific API application
+                              <options: core|provisioning>
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
                               <options: integration|sales_channel|user>
@@ -211,10 +214,11 @@ Show all Provisioning applications.
 ```sh-session
 USAGE
   $ commercelayer applications:provisioning [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-A <value> | -o <value>] [-S]
+    <value>] [-A core|provisioning | -o <value>] [-S]
 
 FLAGS
-  -A, --api=<value>           specific API application
+  -A, --api=<option>          specific API application
+                              <options: core|provisioning>
   -S, --sort                  sort applications by Organization and Application name
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
@@ -229,7 +233,7 @@ DESCRIPTION
   show all Provisioning applications
 
 ALIASES
-  $ commercelayer prov:list
+  $ commercelayer app:prov
   $ commercelayer app:provisioning
   $ commercelayer prov:apps
   $ commercelayer prov:applications
@@ -279,10 +283,11 @@ Switch applications.
 ```sh-session
 USAGE
   $ commercelayer applications:switch [-k integration|sales_channel|user] [--live | -m test|live] [-a <value> | --id
-    <value>] [-A <value> | -o <value>]
+    <value>] [-A core|provisioning | -o <value>]
 
 FLAGS
-  -A, --api=<value>           specific API application
+  -A, --api=<option>          specific API application
+                              <options: core|provisioning>
   -a, --alias=<value>         the alias associated to the application
   -k, --kind=<option>         application kind
                               <options: integration|sales_channel|user>

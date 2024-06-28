@@ -5,11 +5,11 @@ Manage CLI plugins.
 * [`commercelayer plugins`](#commercelayer-plugins)
 * [`commercelayer plugins:available`](#commercelayer-pluginsavailable)
 * [`commercelayer plugins:inspect PLUGIN...`](#commercelayer-pluginsinspect-plugin)
-* [`commercelayer plugins:install PLUGIN...`](#commercelayer-pluginsinstall-plugin)
+* [`commercelayer plugins:install PLUGIN`](#commercelayer-pluginsinstall-plugin)
 * [`commercelayer plugins:latest [PLUGIN]`](#commercelayer-pluginslatest-plugin)
-* [`commercelayer plugins:link PLUGIN`](#commercelayer-pluginslink-plugin)
+* [`commercelayer plugins:link PATH`](#commercelayer-pluginslink-path)
 * [`commercelayer plugins:reset`](#commercelayer-pluginsreset)
-* [`commercelayer plugins:uninstall PLUGIN...`](#commercelayer-pluginsuninstall-plugin)
+* [`commercelayer plugins:uninstall [PLUGIN]`](#commercelayer-pluginsuninstall-plugin)
 * [`commercelayer plugins:update`](#commercelayer-pluginsupdate)
 
 ### `commercelayer plugins`
@@ -33,7 +33,7 @@ EXAMPLES
   $ commercelayer plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v4.3.10/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.3.2/src/commands/plugins/index.ts)_
 
 ### `commercelayer plugins:available`
 
@@ -77,51 +77,56 @@ EXAMPLES
   $ commercelayer plugins:inspect myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v4.3.10/src/commands/plugins/inspect.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.3.2/src/commands/plugins/inspect.ts)_
 
-### `commercelayer plugins:install PLUGIN...`
+### `commercelayer plugins:install PLUGIN`
 
-Installs a plugin into the CLI.
+Installs a plugin into commercelayer.
 
 ```sh-session
 USAGE
-  $ commercelayer plugins:install PLUGIN...
+  $ commercelayer plugins:install PLUGIN... [--json] [-f] [-h] [-s | -v]
 
 ARGUMENTS
   PLUGIN...  Plugin to install.
 
 FLAGS
-  -f, --force    Run yarn install with force flag.
+  -f, --force    Force npm to fetch remote resources even if a local copy exists on disk.
   -h, --help     Show CLI help.
-  -s, --silent   Silences yarn output.
-  -v, --verbose  Show verbose yarn output.
+  -s, --silent   Silences npm output.
+  -v, --verbose  Show verbose npm output.
 
 GLOBAL FLAGS
   --json  Format output as json.
 
 DESCRIPTION
-  Installs a plugin into the CLI.
-  Can be installed from npm or a git url.
+  Installs a plugin into commercelayer.
+
+  Uses npm to install plugins.
 
   Installation of a user-installed plugin will override a core plugin.
 
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
+  Use the COMMERCELAYER_NPM_LOG_LEVEL environment variable to set the npm loglevel.
+  Use the COMMERCELAYER_NPM_REGISTRY environment variable to set the npm registry.
 
 ALIASES
   $ commercelayer plugins:add
 
 EXAMPLES
-  $ commercelayer plugins:install myplugin 
+  Install a plugin from npm registry.
 
-  $ commercelayer plugins:install https://github.com/someuser/someplugin
+    $ commercelayer plugins:install myplugin
 
-  $ commercelayer plugins:install someuser/someplugin
+  Install a plugin from a github url.
+
+    $ commercelayer plugins:install https://github.com/someuser/someplugin
+
+  Install a plugin from a github slug.
+
+    $ commercelayer plugins:install someuser/someplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v4.3.10/src/commands/plugins/install.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.3.2/src/commands/plugins/install.ts)_
 
 ### `commercelayer plugins:latest [PLUGIN]`
 
@@ -148,13 +153,13 @@ EXAMPLES
 
 _See code: [src/commands/plugins/latest.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/plugins/latest.ts)_
 
-### `commercelayer plugins:link PLUGIN`
+### `commercelayer plugins:link PATH`
 
 Links a plugin into the CLI for development.
 
 ```sh-session
 USAGE
-  $ commercelayer plugins:link PLUGIN
+  $ commercelayer plugins:link PATH [-h] [--install] [-v]
 
 ARGUMENTS
   PATH  [default: .] path to plugin
@@ -176,7 +181,7 @@ EXAMPLES
   $ commercelayer plugins:link myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v4.3.10/src/commands/plugins/link.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.3.2/src/commands/plugins/link.ts)_
 
 ### `commercelayer plugins:reset`
 
@@ -191,15 +196,15 @@ FLAGS
   --reinstall  Reinstall all plugins after uninstalling.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v4.3.10/src/commands/plugins/reset.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.3.2/src/commands/plugins/reset.ts)_
 
-### `commercelayer plugins:uninstall PLUGIN...`
+### `commercelayer plugins:uninstall [PLUGIN]`
 
 Removes a plugin from the CLI.
 
 ```sh-session
 USAGE
-  $ commercelayer plugins:uninstall PLUGIN...
+  $ commercelayer plugins:uninstall [PLUGIN...] [-h] [-v]
 
 ARGUMENTS
   PLUGIN...  plugin to uninstall
@@ -219,7 +224,7 @@ EXAMPLES
   $ commercelayer plugins:uninstall myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v4.3.10/src/commands/plugins/uninstall.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.3.2/src/commands/plugins/uninstall.ts)_
 
 ### `commercelayer plugins:update`
 
@@ -237,4 +242,4 @@ DESCRIPTION
   Update installed plugins.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v4.3.10/src/commands/plugins/update.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.3.2/src/commands/plugins/update.ts)_
