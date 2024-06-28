@@ -2,8 +2,8 @@ import { Flags } from '@oclif/core'
 import { BaseIdCommand } from '../../base'
 import Table from 'cli-table3'
 import isEmpty from 'lodash.isempty'
-import { clColor, clOutput } from '@commercelayer/cli-core'
-import { linkStatus } from '../../util'
+import { clColor } from '@commercelayer/cli-core'
+import { formatDate, linkStatus } from '../../util'
 import type { Link } from '@commercelayer/sdk'
 
 
@@ -11,7 +11,7 @@ export default class LinksDetails extends BaseIdCommand {
 
   static override description = 'show link details'
 
-  static aliases = ['links:show']
+  static aliases = ['links:show', 'links:get']
 
   static override examples = [
     '$ commercelayer links:details <link-id>',
@@ -23,7 +23,17 @@ export default class LinksDetails extends BaseIdCommand {
     'hide-empty': Flags.boolean({
       char: 'H',
       description: 'hide empty attributes'
+    }),
+    locale: Flags.boolean({
+      char: 'L',
+      description: 'show dates in locale time zone and format'
     })
+    /*,
+    utc: Flags.boolean({
+      char: 'U',
+      description: 'show dates in UTC format'
+    })
+    */
   }
 
   static override args = {
@@ -41,12 +51,17 @@ export default class LinksDetails extends BaseIdCommand {
     this.commercelayerInit(flags)
 
     const link = await this.cl.links.retrieve(id, {
-        include: ['item'],
-        fields: { orders: ['id'], sku_lists: ['id'], bundles: ['id'] }
+      include: ['item'],
+      fields: { orders: ['id'], sku_lists: ['id'], bundles: ['id'] }
+    }).catch(err => {
+      if (this.cl.isApiError(err) && (err.status === 404)) {
+        this.log(`\nLink ${clColor.api.id(id)} not found\n`)
+        this.exit()
       }
-    )
+    })
+    if (!link) return
 
-    
+
     const table = new Table({
       colWidths: [18, 72],
       wordWrap: true
@@ -59,7 +74,7 @@ export default class LinksDetails extends BaseIdCommand {
       .map(([k, v]: [string, string]) => {
         return [
           { content: clColor.table.key(k), hAlign: 'right', vAlign: 'center' },
-          formatValue(k, v),
+          formatValue(k, v, { locale: flags.locale }),
         ]
       }))
 
@@ -72,9 +87,9 @@ export default class LinksDetails extends BaseIdCommand {
 }
 
 
-const formatValue = (field: string, value: string): any => {
+const formatValue = (field: string, value: string, options: { locale?: boolean } = {}): any => {
 
-  if (field.endsWith('_date') || field.endsWith('_at')) return clOutput.localeDate(value)
+  if (field.endsWith('_date') || field.endsWith('_at')) return formatDate(value, options.locale)
 
   switch (field) {
 

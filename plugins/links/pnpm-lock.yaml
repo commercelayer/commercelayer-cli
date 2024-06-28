@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@commercelayer/cli-core':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.1
+        version: 5.1.1
       '@commercelayer/sdk':
         specifier: ^6.9.1
         version: 6.9.1
@@ -79,8 +79,8 @@ importers:
         specifier: ^24.0.0
         version: 24.0.0(typescript@5.5.2)
       tsx:
-        specifier: ^4.15.7
-        version: 4.15.7
+        specifier: ^4.15.8
+        version: 4.15.8
       typescript:
         specifier: 5.5.2
         version: 5.5.2
@@ -351,8 +351,8 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
-  '@commercelayer/cli-core@5.1.0':
-    resolution: {integrity: sha512-+527W06fIPVtldf4k6te5tsDYpxPooXLGfiAyZfm6rf6WLCpGQHI6kChANuP/8fIvuZydnr9r0QK+TvDeVGM2A==}
+  '@commercelayer/cli-core@5.1.1':
+    resolution: {integrity: sha512-PTgQIgU+VKlGfxcrUbLS/pZzz0TaQXYwv4a+vQ/0wBABQ1c2Pciw5QL0v2QbEAHxc64/aVBg9wVPdBee/5JdaQ==}
     engines: {node: '>=20'}
 
   '@commercelayer/cli-dev@3.0.5':
@@ -3566,8 +3566,8 @@ packages:
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
-  tsx@4.15.7:
-    resolution: {integrity: sha512-u3H0iSFDZM3za+VxkZ1kywdCeHCn+8/qHQS1MNoO2sONDgD95HlWtt8aB23OzeTmFP9IU4/8bZUdg58Uu5J4cg==}
+  tsx@4.15.8:
+    resolution: {integrity: sha512-B8dMlbbkZPW0GQ7wafyy2TGXyoGYW0IURfWkM1h/WzgG5lxxRoeDU2VbMURmmjwGaCsoKROVTLmQQPe/s2TnLw==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -4506,7 +4506,7 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@commercelayer/cli-core@5.1.0':
+  '@commercelayer/cli-core@5.1.1':
     dependencies:
       '@commercelayer/js-auth': 6.2.2
       '@oclif/core': 3.27.0
@@ -8157,7 +8157,7 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsx@4.15.7:
+  tsx@4.15.8:
     dependencies:
       esbuild: 0.21.5
       get-tsconfig: 4.7.5

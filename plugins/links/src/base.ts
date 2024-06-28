@@ -105,8 +105,8 @@ export abstract class BaseCommand extends Command {
     try {
       const parsed = Date.parse(value)
       if (Number.isNaN(parsed)) throw new Error('Invalid date', { cause: 'PARSE' })
-      const isoDate = new Date(fillUTCDate(value))
-      return isoDate.toISOString()
+      const utcDate = fillUTCDate(value)
+      return new Date(utcDate).toISOString()
     } catch (err: any) {
       const msg = (err.cause === 'PARSE') ? err.message : 'Error parsing date'
       this.error(`${msg}: ${clColor.msg.error(value)}`, {

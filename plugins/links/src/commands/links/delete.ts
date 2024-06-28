@@ -24,6 +24,13 @@ export default class LinksDelete extends BaseIdCommand {
     this.commercelayerInit(flags)
 
     await this.cl.links.delete(id)
+      .catch(err => {
+        if (this.cl.isApiError(err) && (err.status === 404)) {
+          this.log(`\nLink ${clColor.api.id(id)} not found\n`)
+          this.exit()
+        }
+      })
+
 
     this.log(`\n${clColor.style.success('Successfully')} deleted link with id ${clColor.style.id(id)}\n`)
 

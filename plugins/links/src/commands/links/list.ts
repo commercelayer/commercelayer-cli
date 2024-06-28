@@ -1,8 +1,8 @@
 import { BaseCommand, Flags, cliux } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import type { Link, QueryArraySortable, QueryPageSize, QueryParamsList, QueryRecordSortable } from '@commercelayer/sdk'
-import { type KeyValSort, clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
-import { fillUTCDate, linkStatus } from '../../util'
+import { type KeyValSort, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
+import { fillUTCDate, formatDate, linkStatus } from '../../util'
 
 
 const MAX_LINKS = 1000
@@ -70,7 +70,17 @@ Examples:
 		sort: Flags.string({
 			description: 'a comma separated list of fields to sort by',
 			multiple: true
-		})
+		}),
+		locale: Flags.boolean({
+      char: 'L',
+      description: 'show dates in locale time zone and format'
+    })
+		/*,
+		utc: Flags.boolean({
+      char: 'U',
+      description: 'show dates in UTC format'
+    })
+		*/
 	}
 
 
@@ -129,8 +139,6 @@ Examples:
 					if (expiresFilter?.length > 0) for (const f of expiresFilter) params.filters[`expires_at_${f.op}`] = f.value
 				}
 
-				console.log(params)
-
 				const links = await this.cl.links.list(params)
 
 				if (links?.length) {
@@ -168,8 +176,8 @@ Examples:
 					i.item?.type,
 					// i.item?.id || '',
 					{ content: linkStatus(i.status), hAlign: 'center' as HorizontalAlignment },
-					clOutput.localeDate(i.starts_at || ''),
-					clOutput.localeDate(i.expires_at || '')
+					formatDate(i.starts_at, flags.locale),
+					formatDate(i.expires_at, flags.locale)
 				]))
 
 				this.log(table.toString())

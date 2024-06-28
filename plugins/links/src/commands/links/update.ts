@@ -80,8 +80,6 @@ export default class LinksUpdate extends BaseEditCommand {
         }
       )
 
-      console.log(link)
-
       if (link.url) {
         this.log(`\n${clColor.yellowBright('LINK')}: ${clColor.cyanBright(link.url)}`)
         if (flags.open) await open(link.url)

@@ -10,6 +10,8 @@ export default class LinksCreate extends BaseEditCommand {
 
   static override description = 'create a new resource link'
 
+  static aliases = ['link']
+
   static override examples = [
     'commercelayer links:create -t <item-type> -i <item-id> -S market:<market-id> -n <link-name> -e 2050-12-15 -I <sales_channel-client-id>'
   ]

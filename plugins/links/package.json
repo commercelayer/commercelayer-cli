@@ -70,11 +70,11 @@
     "nyc": "^15.1.0",
     "oclif": "^4.13.10",
     "semantic-release": "^24.0.0",
-    "tsx": "^4.15.7",
+    "tsx": "^4.15.8",
     "typescript": "5.5.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.1.0",
+    "@commercelayer/cli-core": "^5.1.1",
     "@commercelayer/sdk": "^6.9.1",
     "@oclif/core": "^3.27.0",
     "cli-table3": "^0.6.5",
