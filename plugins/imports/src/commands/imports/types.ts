@@ -12,15 +12,15 @@ export default class ImportsTypes extends Command {
 
   static examples = [
 		'$ commercelayer imports:types',
-		'$ cl imp:types',
+		'$ cl imp:types'
 	]
 
 
   static flags = {
     open: Flags.boolean({
       char: 'O',
-      description: 'open online documentation page',
-    }),
+      description: 'open online documentation page'
+    })
   }
 
 
