@@ -41,12 +41,12 @@ export default abstract class extends Command {
     staging: Flags.boolean({
       description: 'connect to Microstore application in Staging environment',
       hidden: true,
-    }),
+    })
+    /* ,
     link: Flags.boolean({
       char: 'l',
       description: 'generate short link'
-    })
-    /* ,
+    }),
     client_id: Flags.string({
       description: 'the application client_id',
       hidden: true,
