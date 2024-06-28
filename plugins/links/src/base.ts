@@ -2,7 +2,7 @@ import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Link
 import { Command, Args, Flags, ux as cliux } from '@oclif/core'
 import { clColor, clConfig, clOutput, clText, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import { DOC_DATE_TIME_STRING_FORMAT } from './util'
+import { DOC_DATE_TIME_STRING_FORMAT, fillUTCDate } from './util'
 
 
 
@@ -100,6 +100,21 @@ export abstract class BaseCommand extends Command {
 
   }
 
+
+  protected checkDateValue(value: string): string {
+    try {
+      const parsed = Date.parse(value)
+      if (Number.isNaN(parsed)) throw new Error('Invalid date', { cause: 'PARSE' })
+      const isoDate = new Date(fillUTCDate(value))
+      return isoDate.toISOString()
+    } catch (err: any) {
+      const msg = (err.cause === 'PARSE') ? err.message : 'Error parsing date'
+      this.error(`${msg}: ${clColor.msg.error(value)}`, {
+        suggestions: [`Dates must be in standard ISO format (${DOC_DATE_TIME_STRING_FORMAT})`]
+      })
+    }
+  }
+
 }
 
 
@@ -129,7 +144,8 @@ export abstract class BaseEditCommand extends BaseCommand {
       char: 'S',
       description: 'the scope of the link',
       required: false,
-      multiple: true
+      multiple: true,
+      multipleNonGreedy: true
     }),
     name: Flags.string({
       char: 'n',
@@ -215,21 +231,6 @@ export abstract class BaseEditCommand extends BaseCommand {
       code
     }
 
-  }
-
-
-  protected checkDateValue(value: string): string {
-    try {
-      const parsed = Date.parse(value)
-      if (Number.isNaN(parsed)) throw new Error('Invalid date', { cause: 'PARSE' })
-      const isoDate = new Date(value)
-      return isoDate.toISOString()
-    } catch (err: any) {
-      const msg = (err.cause === 'PARSE') ? err.message : 'Error parsing date'
-      this.error(`${msg}: ${clColor.msg.error(value)}`, {
-        suggestions: [`Dates must be in standard ISO format (${DOC_DATE_TIME_STRING_FORMAT})`]
-      })
-    }
   }
 
 
