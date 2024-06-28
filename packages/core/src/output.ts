@@ -54,6 +54,7 @@ const maxLength = (values: any[], field: string): number => {
 
 /** Clean ISO string date */
 const cleanDate = (date: string): string => {
+	if (!date) return ''
 	return date.replace('T', ' ').replace('Z', '').substring(0, date.lastIndexOf('.'))
 }
 
