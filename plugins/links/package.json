@@ -1,0 +1,88 @@
+{
+  "name": "@commercelayer/cli-plugin-linkls",
+  "description": "Commerce Layer CLI links plugin",
+  "version": "0.0.1",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-links/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-links",
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-links",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "links": {
+        "description": "Generate short links for shoppable resources",
+        "hidden": false
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "repository": "commercelayer/commercelayer-cli-plugin-links",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test-local": "tsx test/spot.ts",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+    "lint": "eslint src --ext .ts --config .eslintrc",
+    "lint:fix": "eslint src --fix"
+  },
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@commercelayer/cli-dev": "^3.0.5",
+    "@commercelayer/eslint-config-ts": "^1.4.5",
+    "@oclif/plugin-help": "^6.2.3",
+    "@oclif/test": "^3.2.15",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^4.3.16",
+    "@types/lodash.isempty": "^4.4.9",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "^20.14.9",
+    "chai": "^4.4.1",
+    "eslint": "^8.57.0",
+    "mocha": "^10.5.2",
+    "nyc": "^15.1.0",
+    "oclif": "^4.13.10",
+    "semantic-release": "^24.0.0",
+    "tsx": "^4.15.8",
+    "typescript": "5.5.2"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "^5.1.1",
+    "@commercelayer/sdk": "^6.9.1",
+    "@oclif/core": "^3.27.0",
+    "cli-table3": "^0.6.5",
+    "lodash.isempty": "^4.4.0",
+    "open": "^8.4.2",
+    "tslib": "^2.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
