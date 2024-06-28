@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.5...v5.1.0) (2024-06-24)
+
+
+### Features
+
+* add basic links config ([4b9afa5](https://github.com/commercelayer/commercelayer-cli-core/commit/4b9afa56c60301c857aa773e8565c59fca2667c8))
+
 ## [5.0.5](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.4...v5.0.5) (2024-06-05)
 
 
