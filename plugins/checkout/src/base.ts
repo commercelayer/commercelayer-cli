@@ -41,11 +41,13 @@ export default abstract class extends Command {
     staging: Flags.boolean({
       description: 'connect to Checkout application in Staging environment',
       hidden: true,
-    }),
+    })
+    /*,
     link: Flags.boolean({
       char: 'l',
       description: 'generate short link'
     })
+      */
   }
 
 
