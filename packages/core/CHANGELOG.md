@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.1.0...v5.1.1) (2024-06-28)
+
+
+### Bug Fixes
+
+* fix cleanDate ([5e06a2e](https://github.com/commercelayer/commercelayer-cli-core/commit/5e06a2e30b373683f2c8220fc1bfaa959c57d399))
+
 # [5.1.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.0.5...v5.1.0) (2024-06-24)
 
 
