@@ -40,22 +40,22 @@ export type ResAttributes = KeyValObj
 
 const fixValueType = (val: string): string | number | boolean | null | undefined => {
 
-  let v: any = val
+	let v: any = val
 
-  if (v === 'null') v = null	// null check
-  else
-    // eslint-disable-next-line eqeqeq
-    if (Number(v) == v) v = Number(v)	// number check
-    else v = (v === 'true') ? true : (v === 'false') ? false : v	// boolean check
+	if (v === 'null') v = null	// null check
+	else
+		// eslint-disable-next-line eqeqeq
+		if (Number(v) == v) v = Number(v)	// number check
+		else v = (v === 'true') ? true : (v === 'false') ? false : v	// boolean check
 
-  return v
+	return v
 
 }
 
 
 const findLongStringFlag = (args: string[], name: string): { value: string; index: number, single: boolean } | undefined => {
 
-	const flag = name.startsWith('--')? name : `--${name}`
+	const flag = name.startsWith('--') ? name : `--${name}`
 
 	let value: string
 	const index = args.findIndex(arg => arg.startsWith(flag))
@@ -65,7 +65,7 @@ const findLongStringFlag = (args: string[], name: string): { value: string; inde
 		const val = args[index]
 		if (val.includes('=')) {
 			const vals = val.split('=')
-			value = (vals.length === 2)? vals[1] : ''
+			value = (vals.length === 2) ? vals[1] : ''
 			single = true
 		} else value = args[index + 1]
 		return { value, index, single }
@@ -83,18 +83,18 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string, parsed?: a
 	const char_ = flag.char
 	if (!name_ && !char_) return argv
 
-	const n: string = name_? (name_.startsWith('--')? name_ : `--${name_}`) : undefined
-	const c: string = char_? (flag.char.startsWith('-')? char_ : `-${char_}`) : undefined
+	const n: string = name_ ? (name_.startsWith('--') ? name_ : `--${name_}`) : undefined
+	const c: string = char_ ? (flag.char.startsWith('-') ? char_ : `-${char_}`) : undefined
 
 	let cidIdx = argv.findIndex(a => {
 		return ((c && a.startsWith(c)) || (n && a.startsWith(n)))
 	})
 	if (cidIdx < 0) return argv
-	
+
 	let flagKey = argv[cidIdx]
 	let flagValue = ''
 	let prefix = ''
-	
+
 	if (c && flagKey.startsWith(c)) {
 		flagValue = flagKey.replace(c, '').trim()
 		flagKey = c
@@ -102,7 +102,7 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string, parsed?: a
 		flagValue = flagKey.replace(n, '').trim()
 		flagKey = n
 	} else return argv
-	
+
 	if (flagValue.startsWith('=')) {
 		flagValue = flagValue.slice(1)
 		prefix = flagKey + '='
@@ -111,11 +111,11 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string, parsed?: a
 
 	if (flagValue.startsWith('-') || flagValue.startsWith(TEMP_PREFIX)) {
 
-		const val = flagValue.startsWith(`${TEMP_PREFIX}`)? flagValue.replace(`${TEMP_PREFIX}`, '') : flagValue.replace('-', `${TEMP_PREFIX}-`)
+		const val = flagValue.startsWith(`${TEMP_PREFIX}`) ? flagValue.replace(`${TEMP_PREFIX}`, '') : flagValue.replace('-', `${TEMP_PREFIX}-`)
 		argv[cidIdx] = prefix + val
 
 		if (flagValue.startsWith(TEMP_PREFIX) && parsed) {
-			const nameKey = name_? name_.replace('--', '') : undefined
+			const nameKey = name_ ? name_.replace('--', '') : undefined
 			const parsedFlag = Object.entries(parsed.flags).find(([k, v]) => v === flagValue)
 			if (parsedFlag && (!nameKey || nameKey === parsedFlag[0])) parsed.flags[parsedFlag[0]] = val
 			const parsedRawFlag = Object.values(parsed.raw).find((f: any) => (f.type === 'flag') && (f.input === flagValue)) as any
@@ -129,5 +129,16 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string, parsed?: a
 }
 
 
-export { fixValueType, findLongStringFlag, fixDashedFlagValue }
+const checkISODateTimeValue = (value?: string): Date => {
+	if (!value) throw Error('Date is empty')
+	try {
+		const parsed = Date.parse(value)
+		if (Number.isNaN(parsed)) throw new Error('Invalid date')
+		return new Date(parsed)
+	} catch (err: any) {
+		throw new Error('Error parsing date: ' + value)
+	}
+}
 
+
+export { fixValueType, findLongStringFlag, fixDashedFlagValue, checkISODateTimeValue }

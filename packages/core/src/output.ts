@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import { inspect } from 'util'
-import type { KeyValObj } from './command';
+import { inspect } from 'node:util'
+import type { KeyValObj } from './command'
 
 
 /** Print a formatted object */
@@ -11,7 +11,7 @@ const printObject = (obj: any, options?: { color?: boolean, sort?: boolean, widt
 		colors: (options?.color === undefined) ? true : options.color,
 		sorted: (options?.sort === undefined) ? false : options?.sort,
 		maxArrayLength: Infinity,
-		breakLength: options?.width || 120,
+		breakLength: options?.width || 120
 	})
 }
 
