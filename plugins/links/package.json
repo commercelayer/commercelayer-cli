@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-links",
   "description": "Commerce Layer CLI links plugin",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-links/issues",
   "engines": {
