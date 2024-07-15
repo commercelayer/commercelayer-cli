@@ -46,7 +46,7 @@ export const triggers: Record<string, Trigger> = {
 	authorization_amount_cents: {
       action: 'authorization_amount_cents',
       trigger: '_authorization_amount_cents',
-      description: 'The authorization amount, in cents.',
+      description: 'Send this attribute as a value in cents if you want to overwrite the amount to be authorized.',
     },
 	capture: {
       action: 'capture',

@@ -29,9 +29,11 @@ const exec = async <R extends Resource>(resourceType: string, id: string, action
   const cl = commercelayerInit(flags, config)
 
   const resSdk: any = cl[resourceType as keyof CommerceLayerClient]
-  await cl.orders.retrieve(id).catch(err => {
-    const resource = clApi.humanizeResource(clText.singularize(resourceType))
-    if (cl.isApiError(err) && (err.status === 404)) throw new CLIError(`Invalid ${resource} or ${resource} not found: ${clColor.msg.error(id)}`)
+  await resSdk.retrieve(id).catch((err: any) => {
+    if (cl.isApiError(err) && (err.status === 404)) {
+      const resource = clApi.humanizeResource(clText.singularize(resourceType))
+      throw new CLIError(`Invalid ${resource} or ${resource} not found: ${clColor.msg.error(id)}`)
+    }
   })
 
   const res: any = { id, [`_${action}`]: flags.value || true }
