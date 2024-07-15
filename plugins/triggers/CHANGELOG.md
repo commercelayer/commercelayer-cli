@@ -1,3 +1,10 @@
+# [4.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.5.0...v4.6.0) (2024-07-15)
+
+
+### Features
+
+* update resources triggers ([12958f8](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/12958f804fb1fe7d4455cf90a3ffecaaa6310d86))
+
 # [4.5.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.4.0...v4.5.0) (2024-06-20)
 
 
