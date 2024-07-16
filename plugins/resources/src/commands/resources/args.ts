@@ -16,28 +16,28 @@ export default class ResourcesArgs extends Command {
     alias: Flags.string({
       char: 'a',
       description: 'the alias associated to saved command arguments',
-      dependsOn: ['operation', 'resource'],
+      dependsOn: ['operation', 'resource']
     }),
     resource: Flags.string({
       char: 'r',
-      description: 'the resource type',
+      description: 'the resource type'
     }),
     operation: Flags.string({
       char: 'o',
       description: 'the resource operation',
-      options: ['list', 'retrieve', 'create', 'update'],
+      options: ['list', 'retrieve', 'create', 'update']
     }),
     delete: Flags.boolean({
       char: 'D',
       description: 'delete saved arguments associated to the alias',
-      dependsOn: ['alias'],
+      dependsOn: ['alias']
     }),
     pretty: Flags.boolean({
       char: 'P',
       description: 'show saved arguments in table format',
       hidden: true,
-      exclusive: ['alias'],
-    }),
+      exclusive: ['alias']
+    })
   }
 
 
