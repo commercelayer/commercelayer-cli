@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.2.1...v6.3.0) (2024-07-16)
+
+
+### Features
+
+* add last relationship helper ([ac1b4cf](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/ac1b4cf69bc08c2b2872e7d42eec6e5e90079442))
+
 ## [6.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.2.0...v6.2.1) (2024-06-20)
 
 
