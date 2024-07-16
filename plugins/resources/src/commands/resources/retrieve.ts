@@ -92,6 +92,9 @@ export default class ResourcesRetrieve extends Command {
 
       const res = await resSdk.retrieve(id, params)
 
+      // Save last resource id
+      if (res?.id) this.lastResources(flags.organization, { [res.type]: res.id })
+
       const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 
       if (flags.extract) {

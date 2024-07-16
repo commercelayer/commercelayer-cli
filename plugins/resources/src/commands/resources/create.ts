@@ -95,7 +95,7 @@ export default class ResourcesCreate extends Command {
     // Objects flags
     const objects = this.objectFlag(flags.object)
     // Relationships flags
-    const relationships = this.relationshipFlag(flags.relationship)
+    const relationships = this.relationshipFlag(flags.relationship, flags.organization)
     // Metadata flags
     const metadata = this.metadataFlag(flags.metadata, { fixTypes: true })
 
@@ -155,6 +155,9 @@ export default class ResourcesCreate extends Command {
 
 
       const res = await resSdk.create(attributes, params)
+
+      // Save last resource id
+      if (res?.id) this.lastResources(flags.organization, { [res.type]: res.id })
 
       const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 

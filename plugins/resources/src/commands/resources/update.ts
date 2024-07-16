@@ -107,7 +107,7 @@ export default class ResourcesUpdate extends Command {
     // Objects flags
     const objects = this.objectFlag(flags.object)
     // Relationships flags
-    const relationships = this.relationshipFlag(flags.relationship)
+    const relationships = this.relationshipFlag(flags.relationship, flags.organization)
     // Metadata flags
     const metadata = this.metadataFlag(flags.metadata || flags['metadata-replace'], { fixTypes: true })
 
@@ -177,6 +177,9 @@ export default class ResourcesUpdate extends Command {
 
 
       const res = await resSdk.update(attributes, params)
+
+      // Save last resource id
+      if (res?.id) this.lastResources(flags.organization, { [res.type]: res.id })
 
       const out = (flags.raw && rawReader) ? rawReader.rawResponse : res
 

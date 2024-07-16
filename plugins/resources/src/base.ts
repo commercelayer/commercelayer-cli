@@ -4,12 +4,13 @@ import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { existsSync } from 'node:fs'
 import commercelayer, { CommerceLayerStatic  } from '@commercelayer/sdk'
-import type { ResourceId, ResourceType, CommerceLayerClient, QueryParams, QueryParamsRetrieve } from '@commercelayer/sdk'
+import type { ResourceId, ResourceType, CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceTypeLock } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter, clText } from '@commercelayer/cli-core'
 import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import { lastResources, type LastResources } from './last'
 
 
 
@@ -96,28 +97,28 @@ export abstract class BaseCommand extends Command {
       helpGroup: 'documentation',
     }),
     [FLAG_SAVE_PARAMS]: Flags.string({
-      description: 'save command data to file for future use',
+      description: 'save command data to file for future use'
     }),
     [FLAG_LOAD_PARAMS]: Flags.string({
-      description: 'load previously saved command arguments',
+      description: 'load previously saved command arguments'
     }),
     headers: Flags.boolean({
       char: 'H',
       description: 'show response headers',
       dependsOn: ['raw'],
-      exclusive: ['headers-only'],
+      exclusive: ['headers-only']
     }),
     'headers-only': Flags.boolean({
       char: 'Y',
       description: 'show only response headers',
       dependsOn: ['raw'],
-      exclusive: ['headers', 'fields', 'include'],
+      exclusive: ['headers', 'fields', 'include']
     }),
     'force-include': Flags.boolean({
       char: 'I',
       description: 'force resources inclusion beyond the 3rd level',
       dependsOn: ['include'],
-      hidden: true,
+      hidden: true
     }),
   }
 
@@ -460,7 +461,7 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  relationshipFlag(flag: string[] | undefined): KeyValRel {
+  relationshipFlag(flag: string[] | undefined, organization?: string): KeyValRel {
 
     const relationships: KeyValRel = {}
 
@@ -494,6 +495,13 @@ export abstract class BaseCommand extends Command {
         // const res = this.checkResource(type)
 
         if (relationships[name]) this.warn(`Relationship ${clColor.yellow(name)} has already been defined`)
+
+        // Last
+        if ((id.toLowerCase() === 'last') && organization) {
+          const last = this.lastResources(organization)[type as ResourceTypeLock]
+          if (last) id = last
+          else this.warn(`Last ID not found for resource type ${clColor.api.resource(type)}`)
+        }
 
         relationships[name] = { id, type }
 
@@ -743,6 +751,11 @@ export abstract class BaseCommand extends Command {
 
     return queryParams
 
+  }
+
+
+  protected lastResources(organization: string, lastRes?: LastResources): LastResources {
+    return lastResources(this.config.dataDir, organization, lastRes)
   }
 
 }
