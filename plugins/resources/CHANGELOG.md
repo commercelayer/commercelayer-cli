@@ -1,3 +1,10 @@
+## [6.5.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.5.1...v6.5.2) (2024-07-17)
+
+
+### Bug Fixes
+
+* fix last id label ([ec0e327](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/ec0e327a0536796b9806add5653445414ea015ea))
+
 ## [6.5.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.5.0...v6.5.1) (2024-07-17)
 
 
