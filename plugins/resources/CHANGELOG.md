@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.4.1...v6.5.0) (2024-07-17)
+
+
+### Features
+
+* add last support to *id commands ([c54b3d5](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/c54b3d55f6d3df67d7d76afdffbb160c536eefc2))
+
 ## [6.4.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.4.0...v6.4.1) (2024-07-17)
 
 
