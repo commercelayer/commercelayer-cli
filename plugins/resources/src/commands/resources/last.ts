@@ -46,7 +46,7 @@ export default class ResourcesLast extends BaseCommand {
         const cl = this.initCommerceLayer(flags)
         const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
 
-        const res = await resSdk.retrieve(last)
+        const res = await resSdk.retrieve(last).catch(() => { /* do nothing */ })
 
         if (res) {
           const fields = ['name', 'code', 'number', 'email', 'label', 'description']
