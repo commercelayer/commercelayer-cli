@@ -1,5 +1,5 @@
 import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import type {  CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
+import type { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
 
@@ -52,8 +52,9 @@ export default class ResourcesRetrieve extends Command {
 
     const { args, flags } = await this.parse(ResourcesRetrieve)
 
-    const { res, id } = this.checkResourceId(args.resource, args.id)
-    const resource = this.checkResource(res, { singular: true })
+    const resId = this.checkResourceId(args.resource, args.id)
+    const resource = this.checkResource(resId.res, { singular: true })
+    const id = this.checkLastId(flags.organization, resource.api, resId.id)
 
     const loadParams = flags[FLAG_LOAD_PARAMS]
     const saveCmd = flags[FLAG_SAVE_PARAMS]

@@ -3,7 +3,7 @@ import { findResource, type ApiResource } from './util/resources'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
 import { existsSync } from 'node:fs'
-import commercelayer, { CommerceLayerStatic  } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { ResourceId, ResourceType, CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceTypeLock } from '@commercelayer/sdk'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter, clText } from '@commercelayer/cli-core'
@@ -212,10 +212,10 @@ export abstract class BaseQueryCommand extends BaseCommand {
   // -- CUSTOM METHODS -- //
 
   checkResourceId(resource: string, resourceId?: string, required = true): {
-      res: string,
-      id?: string,
-      singleton: boolean
-    } {
+    res: string,
+    id?: string,
+    singleton: boolean
+  } {
 
     let res = resource
     let id = resourceId
@@ -774,6 +774,15 @@ export default abstract class extends BaseQueryCommand {
 
   static args = {
     resource: Args.string({ name: 'resource', description: 'the resource type', required: true })
+  }
+
+  protected checkLastId(organization: string, resource: string, id?: string): string {
+    if (id?.toLowerCase() === 'last') {
+      const last = this.lastResources(organization)[resource as ResourceTypeLock]
+      if (last) id = last
+      else this.error(`No local ID for resource type ${clColor.msg.error(resource)}`)
+    }
+    return id || ''
   }
 
 }

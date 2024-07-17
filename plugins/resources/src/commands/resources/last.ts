@@ -49,7 +49,7 @@ export default class ResourcesLast extends BaseCommand {
         const res = await resSdk.retrieve(last)
 
         if (res) {
-          const fields = ['name', 'code', 'number']
+          const fields = ['name', 'code', 'number', 'email', 'label', 'description']
           for (const f of fields) {
             if (f in res && f) {
               const v = res[f]

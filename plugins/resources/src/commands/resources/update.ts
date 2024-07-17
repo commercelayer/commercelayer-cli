@@ -76,8 +76,9 @@ export default class ResourcesUpdate extends Command {
 
     const { args, flags } = await this.parse(ResourcesUpdate)
 
-    const { res, id } = this.checkResourceId(args.resource, args.id)
-    const resource = this.checkResource(res, { singular: true })
+    const resId = this.checkResourceId(args.resource, args.id)
+    const resource = this.checkResource(resId.res, { singular: true })
+    const id = this.checkLastId(flags.organization, resource.api, resId.id)
 
     const loadParams = flags[FLAG_LOAD_PARAMS]
     const saveCmd = flags[FLAG_SAVE_PARAMS]
