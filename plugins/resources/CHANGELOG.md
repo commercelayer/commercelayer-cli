@@ -1,3 +1,11 @@
+# [6.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.3.0...v6.4.0) (2024-07-17)
+
+
+### Features
+
+* add last command ([87834a1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/87834a13e1bbd8e9212e9eac07b8163a4778dd16))
+* add last command ([a5d1926](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/a5d19262aea8b990e0b2c6dc5cbe6246646e7aec))
+
 # [6.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.2.1...v6.3.0) (2024-07-16)
 
 
