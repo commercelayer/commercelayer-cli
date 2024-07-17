@@ -17,7 +17,7 @@ export default class ResourcesCreate extends Command {
     '$ commercelayer resources:create customers -a email=user@test.com',
     '$ clayer res:create customers -a email="user@test-com" -r customer_group=customer_groups/<customerGroupId>',
     '$ cl create customers -a email=user@test.com -m meta_key="meta value"',
-    '$ cl rc customers -D /path/to/data/file/data.json',
+    '$ cl rc customers -D /path/to/data/file/data.json'
   ]
 
   static flags = {
@@ -25,28 +25,28 @@ export default class ResourcesCreate extends Command {
     attribute: Flags.string({
       char: 'a',
       description: 'define a resource attribute',
-      multiple: true,
+      multiple: true
     }),
     object: Flags.string({
       char: 'O',
       description: 'define a resource object attribute',
-      multiple: true,
+      multiple: true
     }),
     relationship: Flags.string({
       char: 'r',
       description: 'define a relationship with another resource',
-      multiple: true,
+      multiple: true
     }),
     metadata: Flags.string({
       char: 'm',
       description: 'define a metadata attribute or a set of metadata attributes',
-      multiple: true,
+      multiple: true
     }),
     data: Flags.string({
       char: 'D',
       description: 'the data file to use as request body',
       multiple: false,
-      exclusive: ['attribute', 'relationship', 'metadata', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS],
+      exclusive: ['attribute', 'relationship', 'metadata', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS]
     }),
     tags: Flags.string({
       char: 't',
@@ -54,6 +54,7 @@ export default class ResourcesCreate extends Command {
       multiple: true
     })
   }
+
 
   static args = {
     ...Command.args

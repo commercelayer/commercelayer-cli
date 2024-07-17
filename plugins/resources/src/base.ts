@@ -41,12 +41,78 @@ export abstract class BaseCommand extends Command {
     accessToken: Flags.string({
       hidden: true,
       required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-    }),
+      env: 'CL_CLI_ACCESS_TOKEN'
+    })
+  }
+
+
+  protected initCommerceLayer(flags: any, ...options: any[]): CommerceLayerClient {
+
+    const organization = flags.organization
+    const domain = flags.domain
+    const accessToken = flags.accessToken
+    const userAgent = clUtil.userAgent(this.config)
+
+
+    const cl = commercelayer({ organization, domain, accessToken, userAgent, ...options })
+
+    if ('cl' in this) this.cl = cl
+
+    return cl
+
+  }
+
+
+  printError(error: any, flags?: any, args?: any): void {
+
+    let err = error
+
+    if (CommerceLayerStatic.isApiError(err)) {
+      err = err.errors || `Unable to find resource of type ${clColor.msg.error(args.resource)} and id ${clColor.msg.error(args.id)}`
+    } else
+      if (error.response) {
+        if (error.response.status === 401) this.error(clColor.bg.red(`${error.response.statusText} [${error.response.status}]`),
+          { suggestions: ['Execute login to get access to the selected resource'] }
+        )
+        else
+          if (error.response.status === 500) this.error(`We're sorry, but something went wrong (${error.response.status})`)
+          else
+            if (error.response.status === 429) this.error(`You have done too many requests in the last 5 minutes (${error.response.status})`)
+            else err = error.response.data.errors
+      } else
+        if (error.message) err = error.message
+
+
+    this.error(formatOutput(err, flags))
+
+  }
+
+
+  checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
+    if (!res && required) this.error('Resource type not defined')
+    const resource = findResource(res, { singular })
+    if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
+      { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
+    )
+    return resource
+  }
+
+
+  protected lastResources(organization: string, lastRes?: LastResources): LastResources {
+    return lastResources(this.config.dataDir, organization, lastRes)
+  }
+
+}
+
+
+export abstract class BaseQueryCommand extends BaseCommand {
+
+  static flags = {
+    ...BaseCommand.flags,
     include: Flags.string({
       char: 'i',
       multiple: true,
-      description: 'comma separated resources to include',
+      description: 'comma separated resources to include'
     }),
     fields: Flags.string({
       char: 'f',
@@ -55,17 +121,17 @@ export abstract class BaseCommand extends Command {
     }),
     json: Flags.boolean({
       char: 'j',
-      description: 'convert output in standard JSON format',
+      description: 'convert output in standard JSON format'
     }),
     unformatted: Flags.boolean({
       char: 'u',
       description: 'print unformatted JSON output',
-      dependsOn: ['json'],
+      dependsOn: ['json']
     }),
     raw: Flags.boolean({
       char: 'R',
       description: 'print out the raw API response',
-      hidden: false,
+      hidden: false
     }),
     doc: Flags.boolean({
       description: 'show the CLI command in a specific language',
@@ -86,7 +152,7 @@ export abstract class BaseCommand extends Command {
       parse: async (): Promise<string> => await Promise.resolve('curl'),
       hidden: !availableLanguages.includes('curl'),
       dependsOn: ['doc'],
-      helpGroup: 'documentation',
+      helpGroup: 'documentation'
     }),
     node: Flags.boolean({
       description: `show the equivalent ${languageInfo.node.label} of the CLI command`,
@@ -94,7 +160,7 @@ export abstract class BaseCommand extends Command {
       parse: async (): Promise<string> => await Promise.resolve('node'),
       hidden: !availableLanguages.includes('node'),
       dependsOn: ['doc'],
-      helpGroup: 'documentation',
+      helpGroup: 'documentation'
     }),
     [FLAG_SAVE_PARAMS]: Flags.string({
       description: 'save command data to file for future use'
@@ -119,7 +185,7 @@ export abstract class BaseCommand extends Command {
       description: 'force resources inclusion beyond the 3rd level',
       dependsOn: ['include'],
       hidden: true
-    }),
+    })
   }
 
 
@@ -144,33 +210,6 @@ export abstract class BaseCommand extends Command {
 
 
   // -- CUSTOM METHODS -- //
-
-  protected initCommerceLayer(flags: any, ...options: any[]): CommerceLayerClient {
-
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken = flags.accessToken
-    const userAgent = clUtil.userAgent(this.config)
-
-
-    const cl = commercelayer({ organization, domain, accessToken, userAgent, ...options })
-
-    if ('cl' in this) this.cl = cl
-
-    return cl
-
-  }
-
-
-  checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
-    if (!res && required) this.error('Resource type not defined')
-    const resource = findResource(res, { singular })
-    if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
-      { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
-    )
-    return resource
-  }
-
 
   checkResourceId(resource: string, resourceId?: string, required = true): {
       res: string,
@@ -599,31 +638,6 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  printError(error: any, flags?: any, args?: any): void {
-
-    let err = error
-
-    if (CommerceLayerStatic.isApiError(err)) {
-      err = err.errors || `Unable to find resource of type ${clColor.msg.error(args.resource)} and id ${clColor.msg.error(args.id)}`
-    } else
-      if (error.response) {
-        if (error.response.status === 401) this.error(clColor.bg.red(`${error.response.statusText} [${error.response.status}]`),
-          { suggestions: ['Execute login to get access to the selected resource'] }
-        )
-        else
-          if (error.response.status === 500) this.error(`We're sorry, but something went wrong (${error.response.status})`)
-          else
-            if (error.response.status === 429) this.error(`You have done too many requests in the last 5 minutes (${error.response.status})`)
-            else err = error.response.data.errors
-      } else
-        if (error.message) err = error.message
-
-
-    this.error(formatOutput(err, flags))
-
-  }
-
-
   saveOutput(output: any, flags: any): void {
 
     try {
@@ -753,15 +767,10 @@ export abstract class BaseCommand extends Command {
 
   }
 
-
-  protected lastResources(organization: string, lastRes?: LastResources): LastResources {
-    return lastResources(this.config.dataDir, organization, lastRes)
-  }
-
 }
 
 
-export default abstract class extends BaseCommand {
+export default abstract class extends BaseQueryCommand {
 
   static args = {
     resource: Args.string({ name: 'resource', description: 'the resource type', required: true })

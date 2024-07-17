@@ -1,11 +1,11 @@
-import { BaseCommand, Args } from '../../base'
+import { BaseQueryCommand, Args } from '../../base'
 import RetrieveCommand from './retrieve'
 import ListCommand from './list'
 import RelationshipCommand from './relationship'
 import GetCommand from './get'
 
 
-export default class ResourcesFetch extends BaseCommand {
+export default class ResourcesFetch extends BaseQueryCommand {
 
   static description = 'retrieve a resource or list a set of resources'
 

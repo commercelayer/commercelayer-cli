@@ -1,10 +1,9 @@
-import { Args, Command, Flags, ux as cliux } from '@oclif/core'
-import { type ApiResource, findResource } from '../../util/resources'
 import { type KeyValString, clColor, clApi, clUtil, clFilter } from '@commercelayer/cli-core'
 import { CommerceLayer, type CommerceLayerClient, type ListResponse, type Resource } from '@commercelayer/sdk'
+import { BaseCommand, Flags, Args, cliux } from '../../base'
 
 
-export default class ResourcesCount extends Command {
+export default class ResourcesCount extends BaseCommand {
 
   static description = 'count the number of existent resources'
 
@@ -16,35 +15,17 @@ export default class ResourcesCount extends Command {
   ]
 
   static flags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true,
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
-    }),
-    accessToken: Flags.string({
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-    }),
+    ...BaseCommand.flags,
     where: Flags.string({
       char: 'w',
       multiple: true,
-      description: 'comma separated list of query filters',
-    }),
+      description: 'comma separated list of query filters'
+    })
   }
 
 
   static args = {
-    resource: Args.string({ name: 'resource', description: 'the resource type', required: true }),
+    resource: Args.string({ name: 'resource', description: 'the resource type', required: true })
   }
 
 
@@ -83,16 +64,6 @@ export default class ResourcesCount extends Command {
 
     this.log()
 
-  }
-
-
-  checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
-    if (!res && required) this.error('Resource type not defined')
-    const resource = findResource(res, { singular })
-    if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
-      { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
-    )
-    return resource
   }
 
 
