@@ -49,13 +49,15 @@ export default class ResourcesLast extends BaseCommand {
         const res = await resSdk.retrieve(last).catch(() => { /* do nothing */ })
 
         if (res) {
-          const fields = ['name', 'code', 'number', 'email', 'label', 'description']
+          const fields = ['reference', 'name', 'code', 'number', 'email', 'label', 'description']
           for (const f of fields) {
-            if (f in res && f) {
+            if (f in res) {
               const v = res[f]
               const value = v?.includes(' ') ? `'${v}'` : v
-               if (value) label = `${clText.capitalize(clApi.humanizeResource(resource.name))} ${f}: ${clColor.cli.value(value)}`
-              break
+              if (value) {
+                label = `${clText.capitalize(clApi.humanizeResource(resource.name))} ${f}: ${clColor.cli.value(value)}`
+                break
+              }
             }
           }
         }
