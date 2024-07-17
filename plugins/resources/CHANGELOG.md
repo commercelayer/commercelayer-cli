@@ -1,3 +1,10 @@
+## [6.4.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.4.0...v6.4.1) (2024-07-17)
+
+
+### Bug Fixes
+
+* fix empty last id ([f199860](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/f199860729eb9e035431fc5ddd0382a1bdf3f2cd))
+
 # [6.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.3.0...v6.4.0) (2024-07-17)
 
 
