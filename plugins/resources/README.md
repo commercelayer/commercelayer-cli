@@ -41,6 +41,7 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources:fetch PATH [ID]`](#commercelayer-resourcesfetch-path-id)
 * [`commercelayer resources:filters`](#commercelayer-resourcesfilters)
 * [`commercelayer resources:get RESOURCE [ID]`](#commercelayer-resourcesget-resource-id)
+* [`commercelayer resources:last RESOURCE`](#commercelayer-resourceslast-resource)
 * [`commercelayer resources:list RESOURCE`](#commercelayer-resourceslist-resource)
 * [`commercelayer resources:retrieve RESOURCE [ID]`](#commercelayer-resourcesretrieve-resource-id)
 * [`commercelayer resources:schema`](#commercelayer-resourcesschema)
@@ -78,9 +79,9 @@ Fetch all resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:all RESOURCE [-i <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ] [--node ]
-    [--save-args <value>] [--load-args <value>] [-w <value>] [-s <value>] [-x <value> | -X <value>] [-D ,|;|||TAB [-C -f
-    <value>]] [-H <value> ] [-b] [-e <value> | ]
+  $ commercelayer resources:all RESOURCE [-i <value>...] [-u -j] [-l curl|node [--doc | -R]] [--curl ] [--node ]
+    [--save-args <value>] [--load-args <value>] [-w <value>...] [-s <value>...] [-x <value> | -X <value>] [-D ,|;|||TAB
+    [-C -f <value>...]] [-H <value>... ] [-b] [-e <value>... | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -159,7 +160,7 @@ Count the number of existent resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:count RESOURCE [-w <value>]
+  $ commercelayer resources:count RESOURCE [-w <value>...]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -189,9 +190,9 @@ Create a new resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:create RESOURCE [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
-    [--node ] [-H ] [-Y ] [-O <value>] [-D <value> | -a <value> | -r <value> | -m <value> |  | --load-args <value> |
-    --save-args <value>] [-t <value>]
+  $ commercelayer resources:create RESOURCE [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [-H ] [-Y ] [-O <value>...] [-D <value> | -a <value>... | -r <value>... | -m <value>... |  |
+    --load-args <value> | --save-args <value>] [-t <value>...]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -247,8 +248,8 @@ Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:delete RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl
-    ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ]
+  $ commercelayer resources:delete RESOURCE [ID] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -326,9 +327,9 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:fetch PATH... [ID...] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
-    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-x <value> | -X <value>] [-e <value> |
-    ] [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer resources:fetch PATH... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-x <value> | -X <value>] [-e <value>...
+    | ] [-w <value>...] [-p <value>] [-n <value>] [-s <value>...]
 
 ARGUMENTS
   PATH...  path (or URL) of the resource(s) to fetch
@@ -409,9 +410,9 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:get RESOURCE... [ID...] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]]
-    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>] [-p <value>] [-n <value>]
-    [-s <value>] [-x <value> | -X <value>] [-e <value> | ]
+  $ commercelayer resources:get RESOURCE... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc |
+    -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>...] [-p <value>] [-n
+    <value>] [-s <value>...] [-x <value> | -X <value>] [-e <value>... | ]
 
 ARGUMENTS
   RESOURCE...  the resource type
@@ -462,15 +463,43 @@ EXAMPLES
 
 _See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/get.ts)_
 
+### `commercelayer resources:last RESOURCE`
+
+Show the last id of a resource type.
+
+```sh-session
+USAGE
+  $ commercelayer resources:last RESOURCE
+
+ARGUMENTS
+  RESOURCE  the resource type
+
+DESCRIPTION
+  show the last id of a resource type
+
+ALIASES
+  $ commercelayer last
+  $ commercelayer res:last
+
+EXAMPLES
+  $ commercelayer resources:last customers
+
+  $ commercelayer last customer
+
+  $ cl res:last customers
+```
+
+_See code: [src/commands/resources/last.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/last.ts)_
+
 ### `commercelayer resources:list RESOURCE`
 
 Fetch a collection of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:list RESOURCE [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl ]
-    [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>] [-p <value>] [-n <value>] [-s
-    <value>] [-x <value> | -X <value>] [-e <value> | ]
+  $ commercelayer resources:list RESOURCE [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>...] [-p <value>] [-n
+    <value>] [-s <value>...] [-x <value> | -X <value>] [-e <value>... | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -524,8 +553,9 @@ Fetch a single resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:retrieve RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl
-    ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-x <value> | -X <value>] [-e <value> | ]
+  $ commercelayer resources:retrieve RESOURCE [ID] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-x <value> | -X <value>] [-e <value>...
+    | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -602,9 +632,9 @@ Update an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:update RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-l curl|node [--doc | -R]] [--curl
-    ] [--node ] [-H ] [-Y ] [-O <value>] [-D <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  |  |
-    --load-args <value> | --save-args <value>] [-t <value>]
+  $ commercelayer resources:update RESOURCE [ID] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [-H ] [-Y ] [-O <value>...] [-D <value> | -a <value>... | -r <value>... | [-m <value>... | -M
+    <value>...] |  |  | --load-args <value> | --save-args <value>] [-t <value>...]
 
 ARGUMENTS
   RESOURCE  the resource type
