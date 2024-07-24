@@ -1,6 +1,6 @@
 import { Command } from '@oclif/core'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam } from '../../config'
+import { ConfigParams, appsDirCreate, writeConfigFile, writeTokenFile, configParam } from '../../config'
 import { inspect } from 'util'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
 import { type AppAuth, clColor, clToken, clApplication, clCommand } from '@commercelayer/cli-core'
@@ -76,7 +76,7 @@ export default class ApplicationsAdd extends Command {
       }
       app.alias = alias
 
-      createConfigDir(this.config)
+      appsDirCreate(this.config)
 
       writeConfigFile(this.config, app)
 

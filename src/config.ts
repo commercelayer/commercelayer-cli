@@ -20,25 +20,25 @@ const fixed = {
 }
 
 
-const configDir = (config: Config): string => {
+const appsDir = (config: Config): string => {
 	return join(config.configDir, fixed.applicationsDir)
 }
 
-const configDirExists = (config: Config): boolean => {
-	return existsSync(configDir(config))
+const appsDirExists = (config: Config): boolean => {
+	return existsSync(appsDir(config))
 }
 
-const createConfigDir = (config: Config): void => {
-	mkdirSync(configDir(config), { recursive: true })
+const appsDirCreate = (config: Config): void => {
+	mkdirSync(appsDir(config), { recursive: true })
 }
 
 
 const configFilePath = (config: Config, { key }: AppKey): string => {
-	return join(configDir(config), `${key}.${fixed.configSuffix}`)
+	return join(appsDir(config), `${key}.${fixed.configSuffix}`)
 }
 
 const tokenFilePath = (config: Config, { key }: AppKey): string => {
-	return join(configDir(config), `${key}.${fixed.tokenSuffix}`)
+	return join(appsDir(config), `${key}.${fixed.tokenSuffix}`)
 }
 
 
@@ -95,11 +95,11 @@ const deleteTokenFile = (config: Config, app: AppKey): boolean => {
 	return true
 }
 
-const readConfigDir = (config: Config, filter: { key?: string }): AppInfo[] => {
+const appsDirRead = (config: Config, filter: { key?: string }): AppInfo[] => {
 
-	if (!configDirExists(config)) return []
+	if (!appsDirExists(config)) return []
 
-	const files = readdirSync(configDir(config)).map(f => {
+	const files = readdirSync(appsDir(config)).map(f => {
 
 		const fc = f.split('.')
 
@@ -122,7 +122,7 @@ const readConfigDir = (config: Config, filter: { key?: string }): AppInfo[] => {
 }
 
 
-export { createConfigDir, readConfigDir, configDir, configDirExists }
+export { appsDirCreate, appsDirRead, appsDir, appsDirExists }
 export { configFilePath, configFileExists, writeConfigFile, readConfigFile, deleteConfigFile }
 export { tokenFilePath, tokenFileExists, writeTokenFile, readTokenFile, deleteTokenFile }
 
@@ -155,7 +155,7 @@ const filterApplications = (config: Config, flags: any): AppInfo[] => {
 
 	const mode = flags.mode || (flags.live ? clApi.execMode(flags.live as boolean) : undefined)
 
-	const applications = readConfigDir(config, { key: flags.key || flags.appkey }).filter(app => {
+	const applications = appsDirRead(config, { key: flags.key || flags.appkey }).filter(app => {
 
 		if (flags.organization && (flags.organization !== app.slug)) return false
 		if (flags.domain && (flags.domain !== app.domain)) return false

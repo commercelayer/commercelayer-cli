@@ -3,7 +3,7 @@ import commercelayer, { type Application, CommerceLayerStatic, type Organization
 import clprovisioning from '@commercelayer/provisioning-sdk'
 import { clApplication, clApi, clToken, clColor, clCommand, clConfig } from '@commercelayer/cli-core'
 import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
-import { ConfigParams, createConfigDir, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
+import { ConfigParams, appsDirCreate, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
 import { inspect } from 'node:util'
 import { printCurrent } from './current'
 import { CLIError } from '@oclif/core/lib/errors'
@@ -130,7 +130,7 @@ export default class ApplicationsLogin extends Command {
 			}
 			app.alias = alias
 
-			createConfigDir(this.config)
+			appsDirCreate(this.config)
 
 			writeConfigFile(this.config, app)
 
