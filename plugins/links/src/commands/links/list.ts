@@ -40,7 +40,7 @@ export default class LinksList extends BaseCommand {
 			char: 'n',
 			description: 'the name of the link'
 		}),
-		scope: Flags.string({
+		link_scope: Flags.string({
 			char: 'S',
 			description: 'the scope of the link',
 			required: false,
@@ -134,7 +134,7 @@ Examples:
 					// if (flags.type) params.filters.item_type_in = flags.type.join(',')
 					// if (flags.status) params.filters.status_in = flags.status.join(',')
 					if (flags.name) params.filters.name_cont = flags.name
-					if (flags.scope) params.filters.scope_cont = flags.scope
+					if (flags.link_scope) params.filters.scope_cont = flags.link_scope
 					if (startsFilter?.length > 0) for (const f of startsFilter) params.filters[`starts_at_${f.op}`] = f.value
 					if (expiresFilter?.length > 0) for (const f of expiresFilter) params.filters[`expires_at_${f.op}`] = f.value
 				}
