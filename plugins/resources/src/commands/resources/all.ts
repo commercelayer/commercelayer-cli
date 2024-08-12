@@ -53,7 +53,7 @@ export default class ResourcesAll extends Command {
     }),
     sort: Flags.string({
       char: 's',
-      description: 'defines results ordering',
+      description: 'define results ordering',
       multiple: true,
     }),
     save: Flags.string({
