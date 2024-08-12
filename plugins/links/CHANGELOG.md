@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-links/compare/v1.0.0...v1.0.1) (2024-07-02)
+
+
+### Bug Fixes
+
+* update dependencies and package name ([46be7e0](https://github.com/commercelayer/commercelayer-cli-plugin-links/commit/46be7e056536fb413d6138c1b6a75f00e9959bee))
+
 # 1.0.0 (2024-06-28)
 
 
