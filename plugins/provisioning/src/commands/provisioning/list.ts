@@ -37,7 +37,7 @@ export default class ProvisioningList extends Command {
 		}),
 		sort: Flags.string({
 			char: 's',
-			description: 'defines results ordering',
+			description: 'define results ordering',
 			multiple: true,
 		}),
 		/*
