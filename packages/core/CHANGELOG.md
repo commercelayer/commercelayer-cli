@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.1.1...v5.2.0) (2024-08-12)
+
+
+### Features
+
+* add underscorize function ([df4f5aa](https://github.com/commercelayer/commercelayer-cli-core/commit/df4f5aa311764faae8badc6c5ed37ab51f9a05bd))
+
 ## [5.1.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.1.0...v5.1.1) (2024-06-28)
 
 
