@@ -49,7 +49,7 @@ export default class LinksCreate extends BaseEditCommand {
     const starts_at = this.checkDateValue(this.checkRequired(flags, 'starts', 'Start date'))
     const expires_at = this.checkDateValue(this.checkRequired(flags, 'expires', 'Expiration date'))
 
-    const scope = this.checkScope(this.checkRequired<string[]>(flags, 'scope'))
+    const scope = this.checkScope(this.checkRequired<string[]>(flags, 'link_scope', 'Scope'))
     const name = this.checkRequired(flags, 'name')
     const domain = flags.domain
 

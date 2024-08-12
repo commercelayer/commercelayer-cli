@@ -140,6 +140,13 @@ export abstract class BaseEditCommand extends BaseCommand {
       description: 'the client_id of the application of kind sales_channel to be used with the link',
       required: false
     }),
+    scope: Flags.string({
+      description: 'the application scope',
+      required: false,
+      multiple: true,
+      multipleNonGreedy: true,
+      hidden: true
+    }),
     link_scope: Flags.string({
       char: 'S',
       description: 'the scope of the link',
