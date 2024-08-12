@@ -250,14 +250,14 @@ export abstract class BaseEditCommand extends BaseCommand {
         switch (parts.length) { // market:12345
           case 2: {
             const scopeId = parts[1]
-            if (!Number.isInteger(Number(scopeId))) this.error(`Invalid ${scopePrefix} number: ${clColor.msg.error(scopeId)}`)
+            if (!scopeId || (scopeId.length > 10)) this.error(`Invalid ${scopePrefix} number: ${clColor.msg.error(scopeId)}`)
             break
           }
           case 3: { // market:id:aBcDe
             const scopeField = parts[1]
-            if (!['id'].includes(scopeField)) this.error(`Invalid ${scopePrefix} field: ${clColor.msg.error(scopeField)}`)
-            const scopeId = parts[2]
-            if (Number.isInteger(Number(scopeId))) this.error(`Invalid ${scopePrefix} ${scopeField}: ${clColor.msg.error(scopeId)}`)
+            if (!['id', 'code'].includes(scopeField)) this.error(`Invalid ${scopePrefix} field: ${clColor.msg.error(scopeField)}`)
+            const scopeVal = parts[2]
+            if (!scopeVal || ((scopeField === 'id') && (scopeVal.length > 10))) this.error(`Invalid ${scopePrefix} ${scopeField}: ${clColor.msg.error(scopeVal)}`)
             break
           }
         }
