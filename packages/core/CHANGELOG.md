@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.2.0...v5.2.1) (2024-08-12)
+
+
+### Bug Fixes
+
+* fix dasherize and underscorize regex ([ab4ff4d](https://github.com/commercelayer/commercelayer-cli-core/commit/ab4ff4d48e493a850c6525417129f6a7e3ffdc04))
+
 # [5.2.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.1.1...v5.2.0) (2024-08-12)
 
 
