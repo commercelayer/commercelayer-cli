@@ -50,7 +50,7 @@ export default class LinksUpdate extends BaseEditCommand {
     const starts_at = flags.starts ? this.checkDateValue(flags.starts) : undefined
     const expires_at = flags.expires ? this.checkDateValue(flags.expires) : undefined
 
-    const scope = this.checkScope(flags.scope) || undefined
+    const scope = this.checkScope(flags.link_scope) || undefined
     const name = flags.name
     const domain = flags.domain
 
