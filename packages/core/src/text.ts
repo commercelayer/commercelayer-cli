@@ -8,14 +8,14 @@ const capitalize = (str?: string): string | undefined => {
 
 const dasherize = (str?: string): string | undefined => {
 	if (!str) return str
-    str = str.toLocaleLowerCase()
-		return str.replace(/ _/g, '-')
+	str = str.toLocaleLowerCase()
+	return str.replace(/[ _]/g, '-')
 }
 
 const underscorize = (str?: string): string | undefined => {
 	if (!str) return str
-    str = str.toLocaleLowerCase()
-		return str.replace(/ -/g, '_')
+	str = str.toLocaleLowerCase()
+	return str.replace(/[ -]/g, '_')
 }
 
 const pluralize = (str: string, plural?: string): string => { return Inflector.pluralize(str, plural) }
