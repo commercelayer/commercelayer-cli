@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-links/compare/v1.0.1...v1.0.2) (2024-08-12)
+
+
+### Bug Fixes
+
+* fix scope handler ([9543355](https://github.com/commercelayer/commercelayer-cli-plugin-links/commit/9543355dd8a6c0781e6d6008ba10b3be24b53bdf))
+
 ## [1.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-links/compare/v1.0.0...v1.0.1) (2024-07-02)
 
 
