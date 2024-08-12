@@ -1487,7 +1487,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "define results ordering",
           args: {},
         },
         {
@@ -2193,7 +2193,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
@@ -2321,7 +2321,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
@@ -2461,7 +2461,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
@@ -2718,7 +2718,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
@@ -12109,7 +12109,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
@@ -12225,7 +12225,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
@@ -12332,7 +12332,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
@@ -12448,7 +12448,7 @@ const completionSpec: Fig.Spec = {
         },
         {
           name: ["-s", "--sort"],
-          description: "Defines results ordering",
+          description: "Define results ordering",
           args: {},
         },
         {
