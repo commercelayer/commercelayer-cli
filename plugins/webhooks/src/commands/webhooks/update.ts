@@ -12,8 +12,8 @@ export default class WebhooksUpdate extends BaseIdCommand {
 	static aliases = ['wh:update']
 
 	static examples = [
-		'$ commercelayer webhooks:update -t customers.create -u https://callback.url.io',
-		'$ cl wh:update -i customer_group'
+		'$ commercelayer webhooks:update <webhook-id> -t customers.create -u https://callback.url.io',
+		'$ cl wh:update <webhook-id> -t orders.place -u http://myurl.com'
 	]
 
 	static flags = {
