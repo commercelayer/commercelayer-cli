@@ -1,3 +1,15 @@
+# [4.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.3...v4.1.0) (2024-08-16)
+
+
+### Bug Fixes
+
+* fix enable/disable calls ([cdd5fd4](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/cdd5fd4f6daecc25c6dd831b2737522ac931df31))
+
+
+### Features
+
+* add enable and disable commands ([e4ceaa2](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/e4ceaa286bef7203de0e9e43c74405b58ae0e1a5))
+
 ## [4.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.2...v4.0.3) (2024-06-25)
 
 
