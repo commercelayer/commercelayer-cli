@@ -1,6 +1,4 @@
-import { BaseIdCommand, Flags } from '../../base'
-import { URL } from 'node:url'
-import type { WebhookUpdate } from '@commercelayer/sdk'
+import { BaseIdCommand } from '../../base'
 import { clColor } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
@@ -35,7 +33,7 @@ export default class WebhooksEnable extends BaseIdCommand {
 			let webhook = await cl.webhooks.retrieve(id)
       if (!webhook) this.error(`Unable to find ${clColor.api.resource('webhook')} with ID ${clColor.msg.error(id)}`)
 
-			webhook = await cl.webhooks.update({ id, _enable: true })
+			webhook = await cl.webhooks._enable(id)
 
 			this.log(`\n${clColor.msg.success('Successfully')} enabled webhook with id ${clColor.api.id(webhook.id)}\n`)
 
