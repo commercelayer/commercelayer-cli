@@ -50,7 +50,7 @@ const triggers: Record<string, Trigger> = {
 	authorization_amount_cents: {
     action: 'authorization_amount_cents',
     trigger: '_authorization_amount_cents',
-    description: 'The authorization amount, in cents.',
+    description: 'Send this attribute as a value in cents if you want to overwrite the amount to be authorized.',
   },
 	capture: {
     action: 'capture',
@@ -65,7 +65,7 @@ const triggers: Record<string, Trigger> = {
 	fulfill: {
     action: 'fulfill',
     trigger: '_fulfill',
-    description: 'Send this attribute if you want to mark as fulfilled a shipped/delivered order.',
+    description: 'Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).',
   },
 	update_taxes: {
     action: 'update_taxes',
