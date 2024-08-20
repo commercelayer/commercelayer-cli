@@ -39,7 +39,6 @@
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@size-limit/preset-small-lib": "^6.0.4",
     "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.16.1",
