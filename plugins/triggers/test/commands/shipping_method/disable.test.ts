@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('shipping_methods:disable', () => {
   test
-    .timeout(37000)
+    .timeout(38000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

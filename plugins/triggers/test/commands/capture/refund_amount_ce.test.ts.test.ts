@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('captures:refund_amount_cents', () => {
   test
-    .timeout(37000)
+    .timeout(38000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('percentage_discount_promotions:enable', () => {
+describe('events:trigger', () => {
   test
     .timeout(38000)
     .stdout()

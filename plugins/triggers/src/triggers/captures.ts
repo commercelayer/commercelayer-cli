@@ -6,7 +6,7 @@ export const triggers: Record<string, Trigger> = {
   forward: {
       action: 'forward',
       trigger: '_forward',
-      description: 'Send this attribute if you want to forwrad a stuck transaction to succeeded and update associated order states accordingly.',
+      description: 'Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states accordingly.',
     },
 	refund: {
       action: 'refund',

@@ -61,7 +61,7 @@ export const triggers: Record<string, Trigger> = {
 	fulfill: {
       action: 'fulfill',
       trigger: '_fulfill',
-      description: 'Send this attribute if you want to mark as fulfilled a shipped/delivered order.',
+      description: 'Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).',
     },
 	update_taxes: {
       action: 'update_taxes',
