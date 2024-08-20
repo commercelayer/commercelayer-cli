@@ -1,3 +1,10 @@
+# [5.2.0-beta.2](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.2.0-beta.1...v5.2.0-beta.2) (2024-08-20)
+
+
+### Bug Fixes
+
+* update readme ([dc3b36d](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/dc3b36d667cccb912ddeeca39c88a3908a0c357b))
+
 # [5.2.0-beta.1](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.1.0...v5.2.0-beta.1) (2024-08-20)
 
 
