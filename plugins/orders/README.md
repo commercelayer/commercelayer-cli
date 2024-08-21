@@ -43,11 +43,14 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:commit_invoice ID`](#commercelayer-orderscommit_invoice-id)
 * [`commercelayer orders:create_subscriptions ID`](#commercelayer-orderscreate_subscriptions-id)
 * [`commercelayer orders:customer_payment_source_id ID`](#commercelayer-orderscustomer_payment_source_id-id)
+* [`commercelayer orders:fulfill ID`](#commercelayer-ordersfulfill-id)
 * [`commercelayer orders:nullify_payment_source ID`](#commercelayer-ordersnullify_payment_source-id)
+* [`commercelayer orders:pending ID`](#commercelayer-orderspending-id)
 * [`commercelayer orders:place ID`](#commercelayer-ordersplace-id)
 * [`commercelayer orders:refresh ID`](#commercelayer-ordersrefresh-id)
 * [`commercelayer orders:refund ID`](#commercelayer-ordersrefund-id)
 * [`commercelayer orders:refund_invoice ID`](#commercelayer-ordersrefund_invoice-id)
+* [`commercelayer orders:reset_circuit ID`](#commercelayer-ordersreset_circuit-id)
 * [`commercelayer orders:save_billing_address_to_customer_address_book ID`](#commercelayer-orderssave_billing_address_to_customer_address_book-id)
 * [`commercelayer orders:save_payment_source_to_customer_wallet ID`](#commercelayer-orderssave_payment_source_to_customer_wallet-id)
 * [`commercelayer orders:save_shipping_address_to_customer_address_book ID`](#commercelayer-orderssave_shipping_address_to_customer_address_book-id)
@@ -149,7 +152,7 @@ _See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/com
 
 ### `commercelayer orders:authorization_amount_cents ID`
 
-The authorization amount, in cents.
+Send this attribute as a value in cents if you want to overwrite the amount to be authorized.
 
 ```sh-session
 USAGE
@@ -164,7 +167,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  The authorization amount, in cents.
+  Send this attribute as a value in cents if you want to overwrite the amount to be authorized.
 ```
 
 _See code: [src/commands/orders/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorization_amount_cents.ts)_
@@ -349,6 +352,28 @@ DESCRIPTION
 
 _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/customer_payment_source_id.ts)_
 
+### `commercelayer orders:fulfill ID`
+
+Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+
+```sh-session
+USAGE
+  $ commercelayer orders:fulfill ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+```
+
+_See code: [src/commands/orders/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fulfill.ts)_
+
 ### `commercelayer orders:nullify_payment_source ID`
 
 Send this attribute if you want to nullify the payment source for this order.
@@ -370,6 +395,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/nullify_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/nullify_payment_source.ts)_
+
+### `commercelayer orders:pending ID`
+
+Send this attribute if you want to move a draft or placing order to pending.
+
+```sh-session
+USAGE
+  $ commercelayer orders:pending ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to move a draft or placing order to pending.
+```
+
+_See code: [src/commands/orders/pending.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/pending.ts)_
 
 ### `commercelayer orders:place ID`
 
@@ -459,6 +506,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/refund_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund_invoice.ts)_
+
+### `commercelayer orders:reset_circuit ID`
+
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+
+```sh-session
+USAGE
+  $ commercelayer orders:reset_circuit ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
+  failures count.
+```
+
+_See code: [src/commands/orders/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/reset_circuit.ts)_
 
 ### `commercelayer orders:save_billing_address_to_customer_address_book ID`
 
