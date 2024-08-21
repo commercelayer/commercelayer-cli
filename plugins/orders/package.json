@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-orders",
   "description": "Commerce Layer CLI Orders plugin",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-orders",
   "repository": "commercelayer/commercelayer-cli-plugin-orders",
