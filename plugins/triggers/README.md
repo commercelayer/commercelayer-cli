@@ -35,6 +35,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer authorization ID`](#commercelayer-authorization-id)
 * [`commercelayer authorization:capture ID`](#commercelayer-authorizationcapture-id)
 * [`commercelayer authorization:capture_amount_cents ID`](#commercelayer-authorizationcapture_amount_cents-id)
+* [`commercelayer authorization:forward ID`](#commercelayer-authorizationforward-id)
 * [`commercelayer authorization:void ID`](#commercelayer-authorizationvoid-id)
 * [`commercelayer axerve_payment ID`](#commercelayer-axerve_payment-id)
 * [`commercelayer axerve_payment:update ID`](#commercelayer-axerve_paymentupdate-id)
@@ -45,6 +46,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer buy_x_pay_y_promotion:disable ID`](#commercelayer-buy_x_pay_y_promotiondisable-id)
 * [`commercelayer buy_x_pay_y_promotion:enable ID`](#commercelayer-buy_x_pay_y_promotionenable-id)
 * [`commercelayer capture ID`](#commercelayer-capture-id)
+* [`commercelayer capture:forward ID`](#commercelayer-captureforward-id)
 * [`commercelayer capture:refund ID`](#commercelayer-capturerefund-id)
 * [`commercelayer capture:refund_amount_cents ID`](#commercelayer-capturerefund_amount_cents-id)
 * [`commercelayer checkout_com_payment ID`](#commercelayer-checkout_com_payment-id)
@@ -52,9 +54,16 @@ $ commercelayer plugins:install triggers
 * [`commercelayer checkout_com_payment:refresh ID`](#commercelayer-checkout_com_paymentrefresh-id)
 * [`commercelayer customer_password_reset ID`](#commercelayer-customer_password_reset-id)
 * [`commercelayer customer_password_reset:reset_password_token ID`](#commercelayer-customer_password_resetreset_password_token-id)
+* [`commercelayer event ID`](#commercelayer-event-id)
+* [`commercelayer event:trigger ID`](#commercelayer-eventtrigger-id)
+* [`commercelayer external_gateway ID`](#commercelayer-external_gateway-id)
+* [`commercelayer external_gateway:reset_circuit ID`](#commercelayer-external_gatewayreset_circuit-id)
 * [`commercelayer external_promotion ID`](#commercelayer-external_promotion-id)
 * [`commercelayer external_promotion:disable ID`](#commercelayer-external_promotiondisable-id)
 * [`commercelayer external_promotion:enable ID`](#commercelayer-external_promotionenable-id)
+* [`commercelayer external_promotion:reset_circuit ID`](#commercelayer-external_promotionreset_circuit-id)
+* [`commercelayer external_tax_calculator ID`](#commercelayer-external_tax_calculator-id)
+* [`commercelayer external_tax_calculator:reset_circuit ID`](#commercelayer-external_tax_calculatorreset_circuit-id)
 * [`commercelayer fixed_amount_promotion ID`](#commercelayer-fixed_amount_promotion-id)
 * [`commercelayer fixed_amount_promotion:disable ID`](#commercelayer-fixed_amount_promotiondisable-id)
 * [`commercelayer fixed_amount_promotion:enable ID`](#commercelayer-fixed_amount_promotionenable-id)
@@ -80,6 +89,10 @@ $ commercelayer plugins:install triggers
 * [`commercelayer line_item ID`](#commercelayer-line_item-id)
 * [`commercelayer line_item:external_price ID`](#commercelayer-line_itemexternal_price-id)
 * [`commercelayer line_item:reserve_stock ID`](#commercelayer-line_itemreserve_stock-id)
+* [`commercelayer line_item:reset_circuit ID`](#commercelayer-line_itemreset_circuit-id)
+* [`commercelayer link ID`](#commercelayer-link-id)
+* [`commercelayer link:disable ID`](#commercelayer-linkdisable-id)
+* [`commercelayer link:enable ID`](#commercelayer-linkenable-id)
 * [`commercelayer market ID`](#commercelayer-market-id)
 * [`commercelayer market:disable ID`](#commercelayer-marketdisable-id)
 * [`commercelayer market:enable ID`](#commercelayer-marketenable-id)
@@ -96,11 +109,14 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order:commit_invoice ID`](#commercelayer-ordercommit_invoice-id)
 * [`commercelayer order:create_subscriptions ID`](#commercelayer-ordercreate_subscriptions-id)
 * [`commercelayer order:customer_payment_source_id ID`](#commercelayer-ordercustomer_payment_source_id-id)
+* [`commercelayer order:fulfill ID`](#commercelayer-orderfulfill-id)
 * [`commercelayer order:nullify_payment_source ID`](#commercelayer-ordernullify_payment_source-id)
+* [`commercelayer order:pending ID`](#commercelayer-orderpending-id)
 * [`commercelayer order:place ID`](#commercelayer-orderplace-id)
 * [`commercelayer order:refresh ID`](#commercelayer-orderrefresh-id)
 * [`commercelayer order:refund ID`](#commercelayer-orderrefund-id)
 * [`commercelayer order:refund_invoice ID`](#commercelayer-orderrefund_invoice-id)
+* [`commercelayer order:reset_circuit ID`](#commercelayer-orderreset_circuit-id)
 * [`commercelayer order:save_billing_address_to_customer_address_book ID`](#commercelayer-ordersave_billing_address_to_customer_address_book-id)
 * [`commercelayer order:save_payment_source_to_customer_wallet ID`](#commercelayer-ordersave_payment_source_to_customer_wallet-id)
 * [`commercelayer order:save_shipping_address_to_customer_address_book ID`](#commercelayer-ordersave_shipping_address_to_customer_address_book-id)
@@ -114,6 +130,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order_subscription ID`](#commercelayer-order_subscription-id)
 * [`commercelayer order_subscription:activate ID`](#commercelayer-order_subscriptionactivate-id)
 * [`commercelayer order_subscription:cancel ID`](#commercelayer-order_subscriptioncancel-id)
+* [`commercelayer order_subscription:convert ID`](#commercelayer-order_subscriptionconvert-id)
 * [`commercelayer order_subscription:deactivate ID`](#commercelayer-order_subscriptiondeactivate-id)
 * [`commercelayer payment_method ID`](#commercelayer-payment_method-id)
 * [`commercelayer payment_method:disable ID`](#commercelayer-payment_methoddisable-id)
@@ -121,11 +138,16 @@ $ commercelayer plugins:install triggers
 * [`commercelayer percentage_discount_promotion ID`](#commercelayer-percentage_discount_promotion-id)
 * [`commercelayer percentage_discount_promotion:disable ID`](#commercelayer-percentage_discount_promotiondisable-id)
 * [`commercelayer percentage_discount_promotion:enable ID`](#commercelayer-percentage_discount_promotionenable-id)
+* [`commercelayer price_list_scheduler ID`](#commercelayer-price_list_scheduler-id)
+* [`commercelayer price_list_scheduler:disable ID`](#commercelayer-price_list_schedulerdisable-id)
+* [`commercelayer price_list_scheduler:enable ID`](#commercelayer-price_list_schedulerenable-id)
 * [`commercelayer return ID`](#commercelayer-return-id)
 * [`commercelayer return:approve ID`](#commercelayer-returnapprove-id)
 * [`commercelayer return:archive ID`](#commercelayer-returnarchive-id)
 * [`commercelayer return:cancel ID`](#commercelayer-returncancel-id)
 * [`commercelayer return:receive ID`](#commercelayer-returnreceive-id)
+* [`commercelayer return:refund ID`](#commercelayer-returnrefund-id)
+* [`commercelayer return:refund_amount_cents ID`](#commercelayer-returnrefund_amount_cents-id)
 * [`commercelayer return:reject ID`](#commercelayer-returnreject-id)
 * [`commercelayer return:request ID`](#commercelayer-returnrequest-id)
 * [`commercelayer return:restock ID`](#commercelayer-returnrestock-id)
@@ -136,7 +158,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer satispay_payment ID`](#commercelayer-satispay_payment-id)
 * [`commercelayer satispay_payment:refresh ID`](#commercelayer-satispay_paymentrefresh-id)
 * [`commercelayer shipment ID`](#commercelayer-shipment-id)
+* [`commercelayer shipment:cancel ID`](#commercelayer-shipmentcancel-id)
 * [`commercelayer shipment:decrement_stock ID`](#commercelayer-shipmentdecrement_stock-id)
+* [`commercelayer shipment:deliver ID`](#commercelayer-shipmentdeliver-id)
 * [`commercelayer shipment:get_rates ID`](#commercelayer-shipmentget_rates-id)
 * [`commercelayer shipment:on_hold ID`](#commercelayer-shipmenton_hold-id)
 * [`commercelayer shipment:packing ID`](#commercelayer-shipmentpacking-id)
@@ -150,6 +174,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer shipping_method ID`](#commercelayer-shipping_method-id)
 * [`commercelayer shipping_method:disable ID`](#commercelayer-shipping_methoddisable-id)
 * [`commercelayer shipping_method:enable ID`](#commercelayer-shipping_methodenable-id)
+* [`commercelayer shipping_method:reset_circuit ID`](#commercelayer-shipping_methodreset_circuit-id)
+* [`commercelayer stock_item ID`](#commercelayer-stock_item-id)
+* [`commercelayer stock_item:validate ID`](#commercelayer-stock_itemvalidate-id)
 * [`commercelayer stock_line_item ID`](#commercelayer-stock_line_item-id)
 * [`commercelayer stock_line_item:decrement_stock ID`](#commercelayer-stock_line_itemdecrement_stock-id)
 * [`commercelayer stock_line_item:release_stock ID`](#commercelayer-stock_line_itemrelease_stock-id)
@@ -261,7 +288,7 @@ _See code: [src/commands/authorization/capture.ts](https://github.com/commercela
 
 ### `commercelayer authorization:capture_amount_cents ID`
 
-The associated capture amount, in cents.
+Send this attribute as a value in cents if you want to overwrite the amount to be captured.
 
 ```sh-session
 USAGE
@@ -276,10 +303,33 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  The associated capture amount, in cents.
+  Send this attribute as a value in cents if you want to overwrite the amount to be captured.
 ```
 
 _See code: [src/commands/authorization/capture_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/capture_amount_cents.ts)_
+
+### `commercelayer authorization:forward ID`
+
+Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states accordingly.
+
+```sh-session
+USAGE
+  $ commercelayer authorization:forward ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states
+  accordingly.
+```
+
+_See code: [src/commands/authorization/forward.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/forward.ts)_
 
 ### `commercelayer authorization:void ID`
 
@@ -439,7 +489,7 @@ _See code: [src/commands/buy_x_pay_y_promotion/index.ts](https://github.com/comm
 
 ### `commercelayer buy_x_pay_y_promotion:disable ID`
 
-Send this attribute if you want to mark the promotion as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -454,14 +504,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/buy_x_pay_y_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/disable.ts)_
 
 ### `commercelayer buy_x_pay_y_promotion:enable ID`
 
-Send this attribute if you want to mark the promotion as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -476,7 +526,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/buy_x_pay_y_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/enable.ts)_
@@ -503,6 +553,29 @@ DESCRIPTION
 
 _See code: [src/commands/capture/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/index.ts)_
 
+### `commercelayer capture:forward ID`
+
+Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states accordingly.
+
+```sh-session
+USAGE
+  $ commercelayer capture:forward ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states
+  accordingly.
+```
+
+_See code: [src/commands/capture/forward.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/forward.ts)_
+
 ### `commercelayer capture:refund ID`
 
 Send this attribute if you want to create a refund for this capture.
@@ -527,7 +600,7 @@ _See code: [src/commands/capture/refund.ts](https://github.com/commercelayer/com
 
 ### `commercelayer capture:refund_amount_cents ID`
 
-The associated refund amount, in cents.
+Send this attribute as a value in cents if you want to overwrite the amount to be refunded.
 
 ```sh-session
 USAGE
@@ -542,7 +615,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  The associated refund amount, in cents.
+  Send this attribute as a value in cents if you want to overwrite the amount to be refunded.
 ```
 
 _See code: [src/commands/capture/refund_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/refund_amount_cents.ts)_
@@ -657,6 +730,95 @@ DESCRIPTION
 
 _See code: [src/commands/customer_password_reset/reset_password_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer_password_reset/reset_password_token.ts)_
 
+### `commercelayer event ID`
+
+Execute an action on a resource of type events.
+
+```sh-session
+USAGE
+  $ commercelayer event ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type events
+```
+
+_See code: [src/commands/event/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/event/index.ts)_
+
+### `commercelayer event:trigger ID`
+
+Send this attribute if you want to force webhooks execution for this event.
+
+```sh-session
+USAGE
+  $ commercelayer event:trigger ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to force webhooks execution for this event.
+```
+
+_See code: [src/commands/event/trigger.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/event/trigger.ts)_
+
+### `commercelayer external_gateway ID`
+
+Execute an action on a resource of type external_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer external_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type external_gateways
+```
+
+_See code: [src/commands/external_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/index.ts)_
+
+### `commercelayer external_gateway:reset_circuit ID`
+
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+
+```sh-session
+USAGE
+  $ commercelayer external_gateway:reset_circuit ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
+  failures count.
+```
+
+_See code: [src/commands/external_gateway/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/reset_circuit.ts)_
+
 ### `commercelayer external_promotion ID`
 
 Execute an action on a resource of type external_promotions.
@@ -681,7 +843,7 @@ _See code: [src/commands/external_promotion/index.ts](https://github.com/commerc
 
 ### `commercelayer external_promotion:disable ID`
 
-Send this attribute if you want to mark the promotion as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -696,14 +858,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/external_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/disable.ts)_
 
 ### `commercelayer external_promotion:enable ID`
 
-Send this attribute if you want to mark the promotion as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -718,10 +880,78 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/external_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/enable.ts)_
+
+### `commercelayer external_promotion:reset_circuit ID`
+
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+
+```sh-session
+USAGE
+  $ commercelayer external_promotion:reset_circuit ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
+  failures count.
+```
+
+_See code: [src/commands/external_promotion/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/reset_circuit.ts)_
+
+### `commercelayer external_tax_calculator ID`
+
+Execute an action on a resource of type external_tax_calculators.
+
+```sh-session
+USAGE
+  $ commercelayer external_tax_calculator ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type external_tax_calculators
+```
+
+_See code: [src/commands/external_tax_calculator/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_tax_calculator/index.ts)_
+
+### `commercelayer external_tax_calculator:reset_circuit ID`
+
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+
+```sh-session
+USAGE
+  $ commercelayer external_tax_calculator:reset_circuit ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
+  failures count.
+```
+
+_See code: [src/commands/external_tax_calculator/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_tax_calculator/reset_circuit.ts)_
 
 ### `commercelayer fixed_amount_promotion ID`
 
@@ -747,7 +977,7 @@ _See code: [src/commands/fixed_amount_promotion/index.ts](https://github.com/com
 
 ### `commercelayer fixed_amount_promotion:disable ID`
 
-Send this attribute if you want to mark the promotion as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -762,14 +992,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/fixed_amount_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/disable.ts)_
 
 ### `commercelayer fixed_amount_promotion:enable ID`
 
-Send this attribute if you want to mark the promotion as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -784,7 +1014,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/fixed_amount_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/enable.ts)_
@@ -813,7 +1043,7 @@ _See code: [src/commands/fixed_price_promotion/index.ts](https://github.com/comm
 
 ### `commercelayer fixed_price_promotion:disable ID`
 
-Send this attribute if you want to mark the promotion as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -828,14 +1058,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/fixed_price_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/disable.ts)_
 
 ### `commercelayer fixed_price_promotion:enable ID`
 
-Send this attribute if you want to mark the promotion as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -850,7 +1080,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/fixed_price_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/enable.ts)_
@@ -879,7 +1109,7 @@ _See code: [src/commands/free_gift_promotion/index.ts](https://github.com/commer
 
 ### `commercelayer free_gift_promotion:disable ID`
 
-Send this attribute if you want to mark the promotion as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -894,14 +1124,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/free_gift_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/disable.ts)_
 
 ### `commercelayer free_gift_promotion:enable ID`
 
-Send this attribute if you want to mark the promotion as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -916,7 +1146,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/free_gift_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/enable.ts)_
@@ -945,7 +1175,7 @@ _See code: [src/commands/free_shipping_promotion/index.ts](https://github.com/co
 
 ### `commercelayer free_shipping_promotion:disable ID`
 
-Send this attribute if you want to mark the promotion as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -960,14 +1190,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/free_shipping_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/disable.ts)_
 
 ### `commercelayer free_shipping_promotion:enable ID`
 
-Send this attribute if you want to mark the promotion as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -982,7 +1212,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/free_shipping_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/enable.ts)_
@@ -1278,6 +1508,95 @@ DESCRIPTION
 
 _See code: [src/commands/line_item/reserve_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reserve_stock.ts)_
 
+### `commercelayer line_item:reset_circuit ID`
+
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+
+```sh-session
+USAGE
+  $ commercelayer line_item:reset_circuit ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
+  failures count.
+```
+
+_See code: [src/commands/line_item/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reset_circuit.ts)_
+
+### `commercelayer link ID`
+
+Execute an action on a resource of type links.
+
+```sh-session
+USAGE
+  $ commercelayer link ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type links
+```
+
+_See code: [src/commands/link/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/link/index.ts)_
+
+### `commercelayer link:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer link:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/link/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/link/disable.ts)_
+
+### `commercelayer link:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer link:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/link/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/link/enable.ts)_
+
 ### `commercelayer market ID`
 
 Execute an action on a resource of type markets.
@@ -1302,7 +1621,7 @@ _See code: [src/commands/market/index.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer market:disable ID`
 
-Send this attribute if you want to mark the market as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -1317,14 +1636,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the market as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/market/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/market/disable.ts)_
 
 ### `commercelayer market:enable ID`
 
-Send this attribute if you want to mark the market as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -1339,7 +1658,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the market as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/market/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/market/enable.ts)_
@@ -1434,7 +1753,7 @@ _See code: [src/commands/order/archive.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer order:authorization_amount_cents ID`
 
-The authorization amount, in cents.
+Send this attribute as a value in cents if you want to overwrite the amount to be authorized.
 
 ```sh-session
 USAGE
@@ -1449,7 +1768,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  The authorization amount, in cents.
+  Send this attribute as a value in cents if you want to overwrite the amount to be authorized.
 ```
 
 _See code: [src/commands/order/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/authorization_amount_cents.ts)_
@@ -1634,6 +1953,28 @@ DESCRIPTION
 
 _See code: [src/commands/order/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/customer_payment_source_id.ts)_
 
+### `commercelayer order:fulfill ID`
+
+Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+
+```sh-session
+USAGE
+  $ commercelayer order:fulfill ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+```
+
+_See code: [src/commands/order/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/fulfill.ts)_
+
 ### `commercelayer order:nullify_payment_source ID`
 
 Send this attribute if you want to nullify the payment source for this order.
@@ -1655,6 +1996,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/order/nullify_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/nullify_payment_source.ts)_
+
+### `commercelayer order:pending ID`
+
+Send this attribute if you want to move a draft or placing order to pending.
+
+```sh-session
+USAGE
+  $ commercelayer order:pending ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to move a draft or placing order to pending.
+```
+
+_See code: [src/commands/order/pending.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/pending.ts)_
 
 ### `commercelayer order:place ID`
 
@@ -1744,6 +2107,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/order/refund_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refund_invoice.ts)_
+
+### `commercelayer order:reset_circuit ID`
+
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+
+```sh-session
+USAGE
+  $ commercelayer order:reset_circuit ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
+  failures count.
+```
+
+_See code: [src/commands/order/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/reset_circuit.ts)_
 
 ### `commercelayer order:save_billing_address_to_customer_address_book ID`
 
@@ -2037,6 +2423,29 @@ DESCRIPTION
 
 _See code: [src/commands/order_subscription/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/cancel.ts)_
 
+### `commercelayer order_subscription:convert ID`
+
+Send this attribute if you want to convert a manual subscription to an automatic one. A subscription model is required before conversion.
+
+```sh-session
+USAGE
+  $ commercelayer order_subscription:convert ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to convert a manual subscription to an automatic one. A subscription model is required
+  before conversion.
+```
+
+_See code: [src/commands/order_subscription/convert.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/convert.ts)_
+
 ### `commercelayer order_subscription:deactivate ID`
 
 Send this attribute if you want to mark this subscription as inactive.
@@ -2083,7 +2492,7 @@ _See code: [src/commands/payment_method/index.ts](https://github.com/commercelay
 
 ### `commercelayer payment_method:disable ID`
 
-Send this attribute if you want to mark the payment method as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -2098,14 +2507,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the payment method as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/payment_method/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/payment_method/disable.ts)_
 
 ### `commercelayer payment_method:enable ID`
 
-Send this attribute if you want to mark the payment method as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -2120,7 +2529,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the payment method as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/payment_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/payment_method/enable.ts)_
@@ -2149,7 +2558,7 @@ _See code: [src/commands/percentage_discount_promotion/index.ts](https://github.
 
 ### `commercelayer percentage_discount_promotion:disable ID`
 
-Send this attribute if you want to mark the promotion as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -2164,14 +2573,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/percentage_discount_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/disable.ts)_
 
 ### `commercelayer percentage_discount_promotion:enable ID`
 
-Send this attribute if you want to mark the promotion as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -2186,10 +2595,76 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the promotion as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/percentage_discount_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/enable.ts)_
+
+### `commercelayer price_list_scheduler ID`
+
+Execute an action on a resource of type price_list_schedulers.
+
+```sh-session
+USAGE
+  $ commercelayer price_list_scheduler ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type price_list_schedulers
+```
+
+_See code: [src/commands/price_list_scheduler/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/price_list_scheduler/index.ts)_
+
+### `commercelayer price_list_scheduler:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer price_list_scheduler:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/price_list_scheduler/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/price_list_scheduler/disable.ts)_
+
+### `commercelayer price_list_scheduler:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer price_list_scheduler:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/price_list_scheduler/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/price_list_scheduler/enable.ts)_
 
 ### `commercelayer return ID`
 
@@ -2300,6 +2775,50 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/return/receive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/receive.ts)_
+
+### `commercelayer return:refund ID`
+
+Send this attribute if you want to create a refund for this return.
+
+```sh-session
+USAGE
+  $ commercelayer return:refund ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to create a refund for this return.
+```
+
+_See code: [src/commands/return/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/refund.ts)_
+
+### `commercelayer return:refund_amount_cents ID`
+
+Send this attribute as a value in cents to specify the amount to be refunded.
+
+```sh-session
+USAGE
+  $ commercelayer return:refund_amount_cents ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute as a value in cents to specify the amount to be refunded.
+```
+
+_See code: [src/commands/return/refund_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/refund_amount_cents.ts)_
 
 ### `commercelayer return:reject ID`
 
@@ -2521,6 +3040,28 @@ DESCRIPTION
 
 _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/index.ts)_
 
+### `commercelayer shipment:cancel ID`
+
+Send this attribute if you want to mark this shipment as cancelled (unless already shipped or delivered).
+
+```sh-session
+USAGE
+  $ commercelayer shipment:cancel ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this shipment as cancelled (unless already shipped or delivered).
+```
+
+_See code: [src/commands/shipment/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/cancel.ts)_
+
 ### `commercelayer shipment:decrement_stock ID`
 
 Send this attribute if you want to automatically decrement and release the stock for each of the associated stock line item. Can be done only when fulfillment is in progress.
@@ -2543,6 +3084,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/shipment/decrement_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/decrement_stock.ts)_
+
+### `commercelayer shipment:deliver ID`
+
+Send this attribute if you want to mark this shipment as delivered.
+
+```sh-session
+USAGE
+  $ commercelayer shipment:deliver ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this shipment as delivered.
+```
+
+_See code: [src/commands/shipment/deliver.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/deliver.ts)_
 
 ### `commercelayer shipment:get_rates ID`
 
@@ -2678,7 +3241,7 @@ _See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercel
 
 ### `commercelayer shipment:release_stock ID`
 
-Send this attribute if you want to automatically release the stock for each of the associated stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically destroy the stock reservations for each of the associated stock line item. Can be done only when fulfillment is in progress.
 
 ```sh-session
 USAGE
@@ -2693,8 +3256,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to automatically release the stock for each of the associated stock line item. Can be
-  done only when fulfillment is in progress.
+  Send this attribute if you want to automatically destroy the stock reservations for each of the associated stock line
+  item. Can be done only when fulfillment is in progress.
 ```
 
 _See code: [src/commands/shipment/release_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/release_stock.ts)_
@@ -2790,7 +3353,7 @@ _See code: [src/commands/shipping_method/index.ts](https://github.com/commercela
 
 ### `commercelayer shipping_method:disable ID`
 
-Send this attribute if you want to mark the shipping method as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -2805,14 +3368,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the shipping method as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/shipping_method/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/disable.ts)_
 
 ### `commercelayer shipping_method:enable ID`
 
-Send this attribute if you want to mark the shipping method as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -2827,10 +3390,78 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the shipping method as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/shipping_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/enable.ts)_
+
+### `commercelayer shipping_method:reset_circuit ID`
+
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+
+```sh-session
+USAGE
+  $ commercelayer shipping_method:reset_circuit ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
+  failures count.
+```
+
+_See code: [src/commands/shipping_method/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/reset_circuit.ts)_
+
+### `commercelayer stock_item ID`
+
+Execute an action on a resource of type stock_items.
+
+```sh-session
+USAGE
+  $ commercelayer stock_item ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type stock_items
+```
+
+_See code: [src/commands/stock_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_item/index.ts)_
+
+### `commercelayer stock_item:validate ID`
+
+Send this attribute if you want to validate the stock item quantity against the existing reserved stock one, returns an error in case the former is smaller.
+
+```sh-session
+USAGE
+  $ commercelayer stock_item:validate ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to validate the stock item quantity against the existing reserved stock one, returns
+  an error in case the former is smaller.
+```
+
+_See code: [src/commands/stock_item/validate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_item/validate.ts)_
 
 ### `commercelayer stock_line_item ID`
 
@@ -2879,7 +3510,7 @@ _See code: [src/commands/stock_line_item/decrement_stock.ts](https://github.com/
 
 ### `commercelayer stock_line_item:release_stock ID`
 
-Send this attribute if you want to automatically release the stock for this stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically destroy the stock reservation for this stock line item. Can be done only when fulfillment is in progress.
 
 ```sh-session
 USAGE
@@ -2894,8 +3525,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to automatically release the stock for this stock line item. Can be done only when
-  fulfillment is in progress.
+  Send this attribute if you want to automatically destroy the stock reservation for this stock line item. Can be done
+  only when fulfillment is in progress.
 ```
 
 _See code: [src/commands/stock_line_item/release_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/release_stock.ts)_
@@ -3211,7 +3842,7 @@ _See code: [src/commands/webhook/index.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer webhook:disable ID`
 
-Send this attribute if you want to mark the webhook as disabled.
+Send this attribute if you want to mark this resource as disabled.
 
 ```sh-session
 USAGE
@@ -3226,14 +3857,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the webhook as disabled.
+  Send this attribute if you want to mark this resource as disabled.
 ```
 
 _See code: [src/commands/webhook/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/disable.ts)_
 
 ### `commercelayer webhook:enable ID`
 
-Send this attribute if you want to mark the webhook as enabled.
+Send this attribute if you want to mark this resource as enabled.
 
 ```sh-session
 USAGE
@@ -3248,14 +3879,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark the webhook as enabled.
+  Send this attribute if you want to mark this resource as enabled.
 ```
 
 _See code: [src/commands/webhook/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/enable.ts)_
 
 ### `commercelayer webhook:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
 
 ```sh-session
 USAGE
@@ -3270,7 +3901,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to reset the circuit breaker associated to this webhook to 'closed' state and zero
+  Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
   failures count.
 ```
 
