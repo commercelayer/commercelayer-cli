@@ -1,12 +1,15 @@
 {
   "extends": [
-    "oclif",
-    "oclif-typescript"
+    "@commercelayer/eslint-config-ts"
   ],
+  "ignorePatterns": ["test/**/*.test.ts", "spec/", "test/"],
   "rules": {
-    "unicorn/no-abusive-eslint-disable": 1,
-    "unicorn/prefer-node-protocol": 0,
-    "unicorn/import-style": 1,
-    "unicorn/no-array-reduce": 1
+    "prettier/prettier": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/return-await": "off"
   }
 }
