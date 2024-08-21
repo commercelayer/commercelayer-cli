@@ -1,9 +1,9 @@
-import { ActionBase, ActionType } from './base'
+import { ActionBase, type ActionType } from './base'
 
 export default class SimpleAction extends ActionBase {
   public type: ActionType = 'simple'
 
-  private _flush() {
+  private _flush(): void {
     this._write(this.std, '\n')
     this._flushStdout()
   }
@@ -13,7 +13,7 @@ export default class SimpleAction extends ActionBase {
     else this._flush()
   }
 
-  private _render(action: string, status?: string) {
+  private _render(action: string, status?: string): void {
     if (!this.task) return
     if (this.task.active) this._flush()
     this._write(this.std, status ? `${action}... ${status}` : `${action}...`)

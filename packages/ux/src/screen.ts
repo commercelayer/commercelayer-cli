@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 function termwidth(stream: any): number {
   if (!stream.isTTY) {

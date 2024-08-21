@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import ansiStyles from 'ansi-styles'
 import chalk from 'chalk'
 import stripAnsi from 'strip-ansi'
 import * as supportsColor from 'supports-color'
 
 import { errtermwidth } from '../screen'
-import { ActionBase, ActionType } from './base'
+import { ActionBase, type ActionType } from './base'
 import spinners from './spinners'
-import { Options } from './types'
+import type { Options } from './types'
 
 const ansiEscapes = require('ansi-escapes')
 
@@ -48,7 +49,7 @@ export default class SpinnerAction extends ActionBase {
     this.output = undefined
   }
 
-  private _render(icon?: string) {
+  private _render(icon?: string): void {
     if (!this.task) return
     this._reset()
     this._flushStdout()
@@ -59,7 +60,7 @@ export default class SpinnerAction extends ActionBase {
     this._write(this.std, this.output)
   }
 
-  private _reset() {
+  private _reset(): void {
     if (!this.output) return
     const lines = this._lines(this.output)
     this._write(this.std, ansiEscapes.cursorLeft + ansiEscapes.cursorUp(lines) + ansiEscapes.eraseDown)
@@ -73,7 +74,7 @@ export default class SpinnerAction extends ActionBase {
     if (this.spinner) clearInterval(this.spinner)
     this._render()
     this.spinner = setInterval(
-      (icon) => this._render.bind(this)(icon),
+      (icon) => { this._render.bind(this)(icon); },
       process.platform === 'win32' ? 500 : 100,
       'spinner',
     )
@@ -88,7 +89,7 @@ export default class SpinnerAction extends ActionBase {
     this.output = undefined
   }
 
-  private getFrames(opts?: Options) {
+  private getFrames(opts?: Options): string[] {
     if (opts?.style) return spinners[opts.style].frames
 
     return spinners[process.platform === 'win32' ? 'line' : 'dots2'].frames

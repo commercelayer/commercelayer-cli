@@ -1,10 +1,10 @@
 import { error } from "@oclif/core/lib/errors"
 
 
-function timeout(p: Promise<any>, ms: number) {
-  function wait(ms: number, unref = false) {
+async function timeout(p: Promise<any>, ms: number): Promise<any> {
+  async function wait(ms: number, unref = false): Promise<any> {
     return new Promise((resolve) => {
-      const t: any = setTimeout(() => resolve(null), ms)
+      const t: any = setTimeout(() => { resolve(null); }, ms)
       if (unref) t.unref()
     })
   }
@@ -12,9 +12,9 @@ function timeout(p: Promise<any>, ms: number) {
   return Promise.race([p, wait(ms, true).then(() => error('timed out'))])
 }
 
-async function _flush() {
+async function _flush(): Promise<any> {
   const p = new Promise((resolve) => {
-    process.stdout.once('drain', () => resolve(null))
+    process.stdout.once('drain', () => { resolve(null); })
   })
   const flushed = process.stdout.write('')
 

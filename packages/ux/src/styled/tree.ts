@@ -1,12 +1,12 @@
 const treeify = require('object-treeify')
 
 export class Tree {
-  nodes: { [key: string]: Tree } = {}
+  nodes: Record<string, Tree> = {}
 
   display(logger: any = console.log): void {
-    const addNodes = function (nodes: any) {
-      const tree: { [key: string]: any } = {}
-      for (const p of Object.keys(nodes)) {
+    const addNodes = function (nodes: any): Record<string, any> {
+      const tree: Record<string, any> = {}
+      for (const p of Object.keys(nodes as object)) {
         tree[p] = addNodes(nodes[p].nodes)
       }
 
@@ -17,7 +17,7 @@ export class Tree {
     logger(treeify(tree))
   }
 
-  insert(child: string, value: Tree = new Tree()): Tree {
+  insert(child: string, value: Tree = new Tree()): this {
     this.nodes[child] = value
     return this
   }

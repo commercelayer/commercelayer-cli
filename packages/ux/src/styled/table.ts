@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/method-signature-style */
+/* eslint-disable @typescript-eslint/no-namespace */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/unbound-method */
 import chalk from 'chalk'
 import {safeDump} from 'js-yaml'
 import {orderBy} from 'natural-orderby'
@@ -8,13 +13,13 @@ import sw from 'string-width'
 import {stdtermwidth} from '../screen'
 import {capitalize, sumBy} from '../util'
 import write from '../write'
-import { Interfaces, Flags as F } from '@oclif/core'
+import { type Interfaces, Flags as F } from '@oclif/core'
 
 
 class Table<T extends Record<string, unknown>> {
-  columns: (table.Column<T> & {key: string; maxWidth?: number; width?: number})[]
+  columns: Array<table.Column<T> & {key: string; maxWidth?: number; width?: number}>
 
-  options: table.Options & {printLine(s: any): any}
+  options: table.Options & {printLine: (s: any) => any}
 
   constructor(
     private data: T[],
@@ -48,14 +53,14 @@ class Table<T extends Record<string, unknown>> {
       'no-header': options['no-header'] ?? false,
       'no-truncate': options['no-truncate'] ?? false,
       output: csv ? 'csv' : output,
-      printLine: printLine ?? ((s: any) => write.stdout(s + '\n')),
+      printLine: printLine ?? ((s: any) => { write.stdout(s + '\n'); }),
       rowStart: ' ',
       sort,
       title,
     }
   }
 
-  display() {
+  display(): any {
     // build table rows from input array data
     let rows = this.data.map((d) => {
       const row: any = {}
@@ -127,10 +132,10 @@ class Table<T extends Record<string, unknown>> {
 
   private filterColumnsFromHeaders(
     filters: string[],
-  ): (table.Column<T> & {key: string; maxWidth?: number; width?: number})[] {
+  ): Array<table.Column<T> & {key: string; maxWidth?: number; width?: number}> {
     // unique
     filters = [...new Set(filters)]
-    const cols: (table.Column<T> & {key: string; maxWidth?: number; width?: number})[] = []
+    const cols: Array<table.Column<T> & {key: string; maxWidth?: number; width?: number}> = []
     for (const f of filters) {
       const c = this.columns.find((c) => c.header.toLowerCase() === f.toLowerCase())
       if (c) cols.push(c)
@@ -153,7 +158,7 @@ class Table<T extends Record<string, unknown>> {
     return values.map((e) => (lineToBeEscaped ? `"${e.replaceAll('"', '""')}"` : e))
   }
 
-  private outputCSV() {
+  private outputCSV(): void {
     const {columns, data, options} = this
 
     if (!options['no-header']) {
@@ -166,11 +171,11 @@ class Table<T extends Record<string, unknown>> {
     }
   }
 
-  private outputJSON() {
+  private outputJSON(): void {
     this.options.printLine(JSON.stringify(this.resolveColumnsToObjectArray(), undefined, 2))
   }
 
-  private outputTable() {
+  private outputTable(): any {
     const {data, options} = this
     // column truncation
     //
@@ -187,7 +192,7 @@ class Table<T extends Record<string, unknown>> {
     // terminal width
     const maxWidth = stdtermwidth - 2
     // truncation logic
-    const shouldShorten = () => {
+    const shouldShorten = (): void => {
       // don't shorten if full mode
       if (options['no-truncate'] || (!process.stdout.isTTY && !process.env.CLI_UX_SKIP_TTY_CHECK)) return
 
@@ -274,7 +279,6 @@ class Table<T extends Record<string, unknown>> {
         if (lines > numOfLines) numOfLines = lines
       }
 
-      // eslint-disable-next-line unicorn/no-new-array
       const linesIndexess = [...new Array(numOfLines).keys()]
 
       // print row
@@ -285,16 +289,16 @@ class Table<T extends Record<string, unknown>> {
           const width = col.width!
           let d = (row as any)[col.key]
           d = d.split('\n')[i] || ''
-          const visualWidth = sw(d)
+          const visualWidth = sw(d as string)
           const colorWidth = d.length - visualWidth
           let cell = d.padEnd(width + colorWidth)
           if (cell.length - colorWidth > width || visualWidth === width) {
             // truncate the cell, preserving ANSI escape sequences, and keeping
             // into account the width of fullwidth unicode characters
-            cell = sliceAnsi(cell, 0, width - 2) + '… '
+            cell = sliceAnsi(cell as string, 0, width - 2) + '… '
             // pad with spaces; this is necessary in case the original string
             // contained fullwidth characters which cannot be split
-            cell += ' '.repeat(width - sw(cell))
+            cell += ' '.repeat(width - sw(cell as string))
           }
 
           l += cell
@@ -305,11 +309,11 @@ class Table<T extends Record<string, unknown>> {
     }
   }
 
-  private outputYAML() {
+  private outputYAML(): void {
     this.options.printLine(safeDump(this.resolveColumnsToObjectArray()))
   }
 
-  private resolveColumnsToObjectArray() {
+  private resolveColumnsToObjectArray(): any {
     const {columns, data} = this
     return data.map((d: any) => Object.fromEntries(columns.map((col) => [col.key, d[col.key] ?? ''])))
   }
@@ -380,7 +384,7 @@ export namespace table {
     minWidth: number
   }
 
-  export type Columns<T extends Record<string, unknown>> = {[key: string]: Partial<Column<T>>}
+  export type Columns<T extends Record<string, unknown>> = Record<string, Partial<Column<T>>>
 
   // export type OutputType = 'csv' | 'json' | 'yaml'
 
@@ -403,5 +407,5 @@ const getWidestColumnWith = (data: any[], columnKey: string): number =>
     // convert multi-line cell to single longest line
     // for width calculations
     const manyLines = (d as string).split('\n')
-    return Math.max(previous, manyLines.length > 1 ? Math.max(...manyLines.map((r: string) => sw(r))) : sw(d))
+    return Math.max(previous as number, manyLines.length > 1 ? Math.max(...manyLines.map((r: string) => sw(r))) : sw(d as string))
   }, 0)

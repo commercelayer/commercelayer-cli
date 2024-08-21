@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/non-nullable-type-assertion-style */
+/* eslint-disable @typescript-eslint/unbound-method */
 import { inspect } from 'node:util'
 
 import { castArray } from '../util'
-import { Options } from './types'
+import type { Options } from './types'
 
 export interface ITask {
   action: string
@@ -15,7 +18,7 @@ export type ActionType = 'debug' | 'simple' | 'spinner'
 export class ActionBase {
   std: 'stderr' | 'stdout' = 'stderr'
 
-  protected stdmocks?: ['stderr' | 'stdout', string[]][]
+  protected stdmocks?: Array<['stderr' | 'stdout', string[]]>
 
   type!: ActionType
 
@@ -62,9 +65,9 @@ export class ActionBase {
     this.globals.action.task = task
   }
 
-  public pause(fn: () => any, icon?: string): Promise<any> {
+  public async pause(fn: () => any, icon?: string): Promise<any> {
     const { task } = this
-    const active = task && task.active
+    const active = task?.active
     if (task && active) {
       this._pause(icon)
       this._stdout(false)
@@ -81,7 +84,7 @@ export class ActionBase {
 
   public async pauseAsync<T>(fn: () => Promise<T>, icon?: string): Promise<T> {
     const { task } = this
-    const active = task && task.active
+    const active = task?.active
     if (task && active) {
       this._pause(icon)
       this._stdout(false)
@@ -98,7 +101,7 @@ export class ActionBase {
 
   public start(action: string, status?: string, opts: Options = {}): void {
     this.std = opts.stdout ? 'stdout' : 'stderr'
-    const task = { action, active: Boolean(this.task && this.task.active), status }
+    const task = { action, active: Boolean(this.task?.active), status }
     this.task = task
 
     this._start(opts)

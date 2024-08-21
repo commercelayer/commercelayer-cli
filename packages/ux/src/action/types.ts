@@ -1,4 +1,4 @@
-import spinners from './spinners'
+import type spinners from './spinners'
 
 export type Options = {
   stdout?: boolean

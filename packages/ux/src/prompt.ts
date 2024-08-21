@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import chalk from 'chalk'
 
 import { config } from './config'
@@ -25,7 +26,7 @@ interface IPromptConfig {
   type: 'hide' | 'mask' | 'normal' | 'single'
 }
 
-function normal(options: IPromptConfig, retries = 100): Promise<string> {
+async function normal(options: IPromptConfig, retries = 100): Promise<string> {
   if (retries < 0) throw new Error('no input')
   return new Promise((resolve, reject) => {
     let timer: NodeJS.Timeout
@@ -47,13 +48,14 @@ function normal(options: IPromptConfig, retries = 100): Promise<string> {
       if (!options.default && options.required && data === '') {
         resolve(normal(options, retries - 1))
       } else {
+        // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
         resolve(data || (options.default as string))
       }
     })
   })
 }
 
-function getPrompt(name: string, type?: string, defaultValue?: string) {
+function getPrompt(name: string, type?: string, defaultValue?: string): string {
   let prompt = '> '
 
   if (defaultValue && type === 'hide') {
@@ -75,7 +77,7 @@ async function single(options: IPromptConfig): Promise<string> {
   return response
 }
 
-function replacePrompt(prompt: string) {
+function replacePrompt(prompt: string): void {
   const ansiEscapes = require('ansi-escapes')
   process.stderr.write(
     ansiEscapes.cursorHide +
@@ -142,7 +144,7 @@ async function _prompt(name: string, inputOptions: Partial<IPromptOptions> = {})
  * @returns Promise<string>
  */
 export async function prompt(name: string, options: IPromptOptions = {}): Promise<string> {
-  return config.action.pauseAsync(() => _prompt(name, options), chalk.cyan('?'))
+  return config.action.pauseAsync(async () => _prompt(name, options), chalk.cyan('?'))
 }
 
 /**
@@ -150,7 +152,7 @@ export async function prompt(name: string, options: IPromptOptions = {}): Promis
  * @param message - confirmation text
  * @returns Promise<boolean>
  */
-export function confirm(message: string): Promise<boolean> {
+export async function confirm(message: string): Promise<boolean> {
   return config.action.pauseAsync(async () => {
     const confirm = async (): Promise<boolean> => {
       const raw = await _prompt(message)

@@ -9,6 +9,7 @@ class Stream {
   }
 
   public emit(event: string, ...args: any[]): boolean {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     return process[this.channel].emit(event, ...args)
   }
 
@@ -16,12 +17,12 @@ class Stream {
     return process[this.channel].getWindowSize()
   }
 
-  public on(event: string, listener: (...args: any[]) => void): Stream {
+  public on(event: string, listener: (...args: any[]) => void): this {
     process[this.channel].on(event, listener)
     return this
   }
 
-  public once(event: string, listener: (...args: any[]) => void): Stream {
+  public once(event: string, listener: (...args: any[]) => void): this {
     process[this.channel].once(event, listener)
     return this
   }

@@ -91,6 +91,7 @@ export type Theme = {
 
 
 function isStandardChalk(color: any): color is StandardChalk {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   return STANDARD_CHALK.includes(color)
 }
 

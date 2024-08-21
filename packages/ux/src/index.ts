@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/unbound-method */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import chalk from 'chalk'
 import { format as utilFormat } from 'node:util'
 
-import { ActionBase } from './action/base'
+import type { ActionBase } from './action/base'
 import { config } from './config'
 import { flush as _flush } from './flush'
 import * as uxPrompt from './prompt'
@@ -11,6 +13,7 @@ import write from './write'
 import { Errors } from '@oclif/core'
 const hyperlinker = require('hyperlinker')
 
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class ux {
   public static config = config
 
@@ -172,7 +175,7 @@ export {
   warn
 }
 
-const uxProcessExitHandler = async () => {
+const uxProcessExitHandler = async (): Promise<void> => {
   try {
     await ux.done()
   } catch (error) {
@@ -185,13 +188,14 @@ const uxProcessExitHandler = async () => {
 // only attach named listener once
 const uxListener = process.listeners('exit').find((fn) => fn.name === uxProcessExitHandler.name)
 if (!uxListener) {
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   process.once('exit', uxProcessExitHandler)
 }
 
 export { ActionBase } from './action/base'
 export { Config, config } from './config'
 export { ExitError } from './exit'
-export { IPromptOptions } from './prompt'
+export type { IPromptOptions } from './prompt'
 export { Table } from './styled'
 
 export { colorize } from './theme'
