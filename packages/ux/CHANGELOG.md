@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.0...v1.0.1) (2024-08-21)
+
+
+### Bug Fixes
+
+* fix publish name ([cd01687](https://github.com/commercelayer/commercelayer-cli-ux/commit/cd0168740beb41ceb0089ca91739d34390f68b0a))
+
 # 1.0.0 (2024-08-21)
 
 
