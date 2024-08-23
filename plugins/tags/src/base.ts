@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { clColor, clToken, clUpdate, clOutput, clConfig, clUtil } from '@commercelayer/cli-core'
-import { Command, Flags, Args, ux } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import commercelayer, { CommerceLayerStatic, Bundles, BuyXPayYPromotions, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk'
 import type { CommerceLayerClient, TaggableResource, TaggableResourceType, ListResponse, Tag } from '@commercelayer/sdk'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 
@@ -215,4 +216,4 @@ export abstract class BaseIdCommand extends BaseCommand {
 
 
 
-export { Flags, Args, ux as cliux }
+export { Flags, Args, cliux }

@@ -63,11 +63,11 @@ Add one or more tags to a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer tags:add -n <value> -t <value> -i <value> [-C <value>] [-v]
+  $ commercelayer tags:add -n <value>... -t <value> -i <value>... [-C <value>] [-v]
 
 FLAGS
   -C, --create=<value>   create tags if don't exist
-  -i, --id=<value>...    (required) the IDs of th eresources to tag
+  -i, --id=<value>...    (required) the IDs of the resources to tag
   -n, --name=<value>...  (required) the tag name
   -t, --type=<value>     (required) the type of the resource to tag
   -v, --verbose          show details of the tag process
@@ -79,9 +79,9 @@ ALIASES
   $ commercelayer tag
 
 EXAMPLES
-  $ commercelayer tags:add -t <resource-type> -n <tag-names> -r <resources-id>
+  $ commercelayer tags:add -t <resource-type> -n <tag-names> -i <resources-id>
 
-  $ cl tag -t customers -r aBcDeFghIL mnOPqRstUV -n groupA
+  $ cl tag -t customers -i aBcDeFghIL mnOPqRstUV -n groupA
 ```
 
 _See code: [src/commands/tags/add.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/add.ts)_
@@ -118,7 +118,7 @@ Create one or more new tags.
 
 ```sh-session
 USAGE
-  $ commercelayer tags:create -n <value>
+  $ commercelayer tags:create -n <value>...
 
 FLAGS
   -n, --name=<value>...  (required) the tag name
@@ -140,7 +140,7 @@ Delete one or more existing tags.
 
 ```sh-session
 USAGE
-  $ commercelayer tags:delete -n <value>
+  $ commercelayer tags:delete -n <value>...
 
 FLAGS
   -n, --name=<value>...  (required) the tag name
@@ -205,7 +205,7 @@ Remove one or more tags to a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer tags:remove -n <value> -t <value> -i <value> [-v]
+  $ commercelayer tags:remove -n <value>... -t <value> -i <value>... [-v]
 
 FLAGS
   -i, --id=<value>...    (required) the IDs of th eresources to tag
@@ -216,13 +216,10 @@ FLAGS
 DESCRIPTION
   remove one or more tags to a set of resources
 
-ALIASES
-  $ commercelayer tag
-
 EXAMPLES
-  $ commercelayer tags:remove -t <resource-type> -n <tag-names> -r <resources-id>
+  $ commercelayer tags:remove -t <resource-type> -n <tag-names> -i <resources-id>
 
-  $ cl tags:rm -t customers -r aBcDeFghIL mnOPqRstUV -n groupA
+  $ cl tags:rm -t customers -i aBcDeFghIL mnOPqRstUV -n groupA
 ```
 
 _See code: [src/commands/tags/remove.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/remove.ts)_
