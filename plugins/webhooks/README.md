@@ -28,6 +28,8 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer webhooks:create`](#commercelayer-webhookscreate)
 * [`commercelayer webhooks:destroy ID`](#commercelayer-webhooksdestroy-id)
 * [`commercelayer webhooks:details ID`](#commercelayer-webhooksdetails-id)
+* [`commercelayer webhooks:disable ID`](#commercelayer-webhooksdisable-id)
+* [`commercelayer webhooks:enable ID`](#commercelayer-webhooksenable-id)
 * [`commercelayer webhooks:event ID`](#commercelayer-webhooksevent-id)
 * [`commercelayer webhooks:events ID`](#commercelayer-webhooksevents-id)
 * [`commercelayer webhooks:list`](#commercelayer-webhookslist)
@@ -67,7 +69,7 @@ Create a new webhook.
 
 ```sh-session
 USAGE
-  $ commercelayer webhooks:create -t <value> -u <value> [-i <value>] [-n <value>]
+  $ commercelayer webhooks:create -t <value> -u <value> [-i <value>...] [-n <value>]
 
 FLAGS
   -i, --include=<value>...  a comma separated list of related resources to be included
@@ -146,6 +148,56 @@ EXAMPLES
 ```
 
 _See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/details.ts)_
+
+### `commercelayer webhooks:disable ID`
+
+Disable an enabled webhook.
+
+```sh-session
+USAGE
+  $ commercelayer webhooks:disable ID
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+DESCRIPTION
+  disable an enabled webhook
+
+ALIASES
+  $ commercelayer wh:disable
+
+EXAMPLES
+  $ commercelayer webhooks:disable <webhook-id>
+
+  $ cl wh:disable <webhook-id>
+```
+
+_See code: [src/commands/webhooks/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/disable.ts)_
+
+### `commercelayer webhooks:enable ID`
+
+Enable a disabled webhook.
+
+```sh-session
+USAGE
+  $ commercelayer webhooks:enable ID
+
+ARGUMENTS
+  ID  unique id of the webhook
+
+DESCRIPTION
+  enable a disabled webhook
+
+ALIASES
+  $ commercelayer wh:enable
+
+EXAMPLES
+  $ commercelayer webhooks:enable <webhook-id>
+
+  $ cl wh:enable <webhook-id>
+```
+
+_See code: [src/commands/webhooks/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/enable.ts)_
 
 ### `commercelayer webhooks:event ID`
 
@@ -343,7 +395,7 @@ Update an existing webhook.
 
 ```sh-session
 USAGE
-  $ commercelayer webhooks:update ID [-t <value>] [-u <value>] [-i <value>] [-n <value>]
+  $ commercelayer webhooks:update ID [-t <value>] [-u <value>] [-i <value>...] [-n <value>]
 
 ARGUMENTS
   ID  unique id of the webhook
@@ -361,9 +413,9 @@ ALIASES
   $ commercelayer wh:update
 
 EXAMPLES
-  $ commercelayer webhooks:update -t customers.create -u https://callback.url.io
+  $ commercelayer webhooks:update <webhook-id> -t customers.create -u https://callback.url.io
 
-  $ cl wh:update -i customer_group
+  $ cl wh:update <webhook-id> -t orders.place -u http://myurl.com
 ```
 
 _See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/update.ts)_
