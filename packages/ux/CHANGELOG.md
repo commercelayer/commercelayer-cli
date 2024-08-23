@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.3...v1.0.4) (2024-08-23)
+
+
+### Bug Fixes
+
+* fix dependencies ([26ca906](https://github.com/commercelayer/commercelayer-cli-ux/commit/26ca906f9be22f6e634c8ec68cb8e7bdcbc64028))
+* fix ESM dependencies ([1812d1b](https://github.com/commercelayer/commercelayer-cli-ux/commit/1812d1bb7fe1ec420dd7e766bec9bad2af6914e1))
+
 ## [1.0.3](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.2...v1.0.3) (2024-08-23)
 
 
