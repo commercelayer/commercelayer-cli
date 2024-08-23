@@ -79,8 +79,9 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.2.3",
-    "@commercelayer/sdk": "^6.13.0",
+    "@commercelayer/cli-core": "^5.2.4",
+    "@commercelayer/cli-ux": "^1.0.5",
+    "@commercelayer/sdk": "^6.14.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.6",
     "json-2-csv": "^3.20.0",

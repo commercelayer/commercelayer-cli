@@ -1,4 +1,4 @@
-import { Command, Flags, Args, type Config, ux as cliux } from '@oclif/core'
+import { Command, Flags, Args, type Config } from '@oclif/core'
 import { findResource, type ApiResource } from './util/resources'
 import { formatOutput, exportOutput } from './output'
 import { exportCsv } from './csv'
@@ -11,6 +11,7 @@ import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAt
 import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { lastResources, type LastResources } from './last'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 

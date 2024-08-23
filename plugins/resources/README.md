@@ -98,7 +98,7 @@ FLAGS
   -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
-  -s, --sort=<value>...     defines results ordering
+  -s, --sort=<value>...     define results ordering
   -u, --unformatted         print unformatted JSON output
   -w, --where=<value>...    comma separated list of query filters
   -x, --save=<value>        save command output to file
@@ -346,7 +346,7 @@ FLAGS
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
   -p, --page=<value>        page number
-  -s, --sort=<value>...     defines results ordering
+  -s, --sort=<value>...     define results ordering
   -u, --unformatted         print unformatted JSON output
   -w, --where=<value>...    comma separated list of query filters
   -x, --save=<value>        save command output to file
@@ -429,7 +429,7 @@ FLAGS
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
   -p, --page=<value>        page number
-  -s, --sort=<value>...     defines results ordering
+  -s, --sort=<value>...     define results ordering
   -u, --unformatted         print unformatted JSON output
   -w, --where=<value>...    comma separated list of query filters
   -x, --save=<value>        save command output to file
@@ -515,7 +515,7 @@ FLAGS
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
   -p, --page=<value>        page number
-  -s, --sort=<value>...     defines results ordering
+  -s, --sort=<value>...     define results ordering
   -u, --unformatted         print unformatted JSON output
   -w, --where=<value>...    comma separated list of query filters
   -x, --save=<value>        save command output to file
