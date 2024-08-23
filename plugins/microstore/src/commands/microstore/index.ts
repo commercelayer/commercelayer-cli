@@ -1,4 +1,3 @@
- // import { Link, LinkCreate } from '@commercelayer/sdk'
 import Command, { Flags } from '../../base'
 import { buildMicrostoreUrl, openMicrostoreUrl } from '../../url'
 import { clColor } from '@commercelayer/cli-core'

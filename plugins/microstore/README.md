@@ -45,8 +45,8 @@ FLAGS
   -C, --cart                 activate the Cart application
   -I, --inline               disable redirect to Cart application
   -S, --skuListId=<value>    (required) the sku list id
-  -a, --accessToken=<value>  (required)
-  --open                     open microstore URL in default browser
+  -a, --accessToken=<value>  (required) custom access token to use instead of the one used for login
+      --open                 open microstore URL in default browser
 
 DESCRIPTION
   create Microstore URLs
