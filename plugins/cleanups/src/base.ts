@@ -1,7 +1,8 @@
 import { clColor, clToken, clUpdate, clFilter, type KeyValRel, type KeyValString, clOutput, clUtil } from '@commercelayer/cli-core'
-import { Command, Flags, Args, ux } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -156,4 +157,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, Args, ux as cliux }
+export { Flags, Args, cliux }

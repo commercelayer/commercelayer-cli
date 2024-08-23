@@ -64,8 +64,7 @@ Create a new cleanup.
 
 ```sh-session
 USAGE
-  $ commercelayer cleanups:create -t bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items [-w
-    <value>] [-b | -q | ]
+  $ commercelayer cleanups:create -t bundles|gift_cards|prices|promotions|... [-w <value>...] [-b | -q | ]
 
 FLAGS
   -b, --blind                                          execute in blind mode without showing the progress monitor
