@@ -1,5 +1,5 @@
 import ExportsCreate from './create'
-import { ExportCommand, cliux, notify, Flags, encoding, type ExportFormat } from '../../base'
+import { ExportCommand, notify, Flags, encoding, type ExportFormat } from '../../base'
 import { type KeyValString, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 import type { Export, ExportCreate, ListableResourceType, QueryParamsList } from '@commercelayer/sdk'
 import Spinnies from 'spinnies'
@@ -7,6 +7,7 @@ import open from 'open'
 import { readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports

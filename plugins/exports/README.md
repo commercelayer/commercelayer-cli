@@ -77,12 +77,8 @@ Export all the records.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:all -t
-    addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_subscriptions
-    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|shipments|shipp
-    ing_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|tax_categ
-    ories|transactions|voids [-i <value>] [-w <value>] [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ]
-    [-O] [-q] [-k]
+  $ commercelayer exports:all -t addresses|authorizations|bundles|captures|... [-i <value>...] [-w <value>...]
+    [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O] [-q] [-k]
 
 FLAGS
   -C, --csv                                                 export data in CSV format
@@ -124,12 +120,8 @@ Create a new export.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:create -t
-    addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_subscriptions
-    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|shipments|shipp
-    ing_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|tax_categ
-    ories|transactions|voids [-i <value>] [-w <value>] [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ]
-    [-O]
+  $ commercelayer exports:create -t addresses|authorizations|bundles|captures|... [-i <value>...] [-w <value>...]
+    [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O]
 
 FLAGS
   -C, --csv                                                 export data in CSV format

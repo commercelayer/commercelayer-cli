@@ -1,6 +1,6 @@
 import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil, clApi } from '@commercelayer/cli-core'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
-import { Command, Flags, Args, ux } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import { existsSync, readFileSync } from 'fs'
 import axios from 'axios'
 import { type InputType, gunzipSync } from 'zlib'
@@ -8,6 +8,7 @@ import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Expo
 import { writeFile } from 'fs/promises'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import notifier from 'node-notifier'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -220,7 +221,7 @@ export abstract class ExportCommand extends BaseCommand {
 
     if (((jwtData.exp - securityInterval) * 1000) <= Date.now()) {
 
-      await ux.wait((securityInterval + 1) * 1000)
+      await cliux.wait((securityInterval + 1) * 1000)
 
       const organization = flags.organization
       const domain = flags.domain
@@ -316,6 +317,6 @@ export abstract class ExportCommand extends BaseCommand {
 
 
 
-export { Flags, Args, ux as cliux }
+export { Flags, Args }
 
 export type ExportFormat = 'json' | 'csv'

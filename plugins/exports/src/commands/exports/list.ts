@@ -1,8 +1,9 @@
-import Command, { Flags, cliux } from '../../base'
+import Command, { Flags } from '../../base'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import type { Export, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clOutput, clText, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 const MAX_EXPORTS = 1000
