@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.1.2...v4.2.0) (2024-08-23)
+
+
+### Features
+
+* remove oclif ux ([85e9633](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/85e9633990e5c022b80f7b3f2555583ddab41c8e))
+
 ## [4.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.1.1...v4.1.2) (2024-05-20)
 
 
