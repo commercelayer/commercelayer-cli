@@ -73,16 +73,11 @@ Create a new import.
 
 ```sh-session
 USAGE
-  $ commercelayer imports:create -t
-    addresses|bundles|coupons|customer_addresses|customer_payment_sources|customer_subscriptions|customers|gift_cards|li
-    ne_items|line_item_options|orders|price_tiers|prices|shipping_categories|sku_lists|sku_list_items|sku_options|skus|s
-    tock_items|stock_transfers|tags|tax_categories [-p <value>] [-D ,|;|||TAB (-C -i <value>)] [-b | -q | ]
+  $ commercelayer imports:create -t addresses|bundles|coupons|customer_addresses|... [-p <value>] (-C -i <value>)
+    [-b | -q | ]
 
 FLAGS
   -C, --csv                                                    accept input file in CSV format
-  -D, --delimiter=<option>                                     the delimiter character used in the CSV input file (one
-                                                               of ',', ';', '|', TAB)
-                                                               <options: ,|;|||TAB>
   -b, --blind                                                  execute in blind mode without showing the progress
                                                                monitor
   -i, --inputs=<value>                                         (required) the path of the file containing the data to
