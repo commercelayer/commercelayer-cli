@@ -1,7 +1,8 @@
-import { Command, Flags, ux as cliux } from '@oclif/core'
+import { Command, Flags } from '@oclif/core'
 import { configParam, ConfigParams, filterApplications } from './config'
 import { type AppInfo } from '@commercelayer/cli-core'
 import { promptApplication } from './common'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 export default abstract class extends Command {
