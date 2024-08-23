@@ -74,6 +74,7 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.2.1",
+    "@commercelayer/cli-ux": "^1.0.5",
     "@commercelayer/sdk": "^6.13.0",
     "@oclif/core": "^3.27.0",
     "cli-table3": "0.6.3",
