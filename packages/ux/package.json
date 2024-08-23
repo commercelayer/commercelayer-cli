@@ -76,7 +76,7 @@
     "wordwrap": "^1.0.0"
   },
   "peerDependencies": {
-    "@oclif/core": ">3"
+    "@oclif/core": ">=3"
   },
   "repository": "github:commercelayer/commercelayer-cli-ux",
   "publishConfig": {
