@@ -1,3 +1,15 @@
+# [4.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.1.0...v4.2.0) (2024-08-23)
+
+
+### Bug Fixes
+
+* update dependencies ([a025a21](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/a025a215c7637dcf9d493a510e6b5a8682b1e192))
+
+
+### Features
+
+* remove oclif ux ([4e05a1f](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/4e05a1f1bc83c877abd1c5f825f40594d7032eec))
+
 # [4.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.0.3...v4.1.0) (2024-08-16)
 
 
