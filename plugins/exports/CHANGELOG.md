@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.1.3...v3.2.0) (2024-08-23)
+
+
+### Features
+
+* remove oclif ux ([22361b8](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/22361b8a141b3dd83ba18a253bafbe7555f2a29b))
+
 ## [3.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.1.2...v3.1.3) (2024-05-30)
 
 
