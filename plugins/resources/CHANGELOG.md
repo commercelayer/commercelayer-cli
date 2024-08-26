@@ -1,3 +1,10 @@
+# [6.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.5.2...v6.6.0) (2024-08-23)
+
+
+### Features
+
+* remove oclif ux and update sdk ([1e93dea](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/1e93deace920ab67a4f0f707003ba1de7cba23aa))
+
 ## [6.5.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.5.1...v6.5.2) (2024-07-17)
 
 
