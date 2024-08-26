@@ -192,7 +192,7 @@ export default class ResourcesAll extends Command {
     // Sort flags
     const sort = this.sortFlag(flags.sort as string[])
 
-    const timeout = flags.timeout || 5000
+    const timeout = flags.timeout
     if (timeout && ((timeout < requestTimeout.min) || (timeout > requestTimeout.max)))
       this.error(`Invalid timeout: ${clColor.style.error(String(timeout))}. Timeout value must be in range [${requestTimeout.min} - ${requestTimeout.max}]`)
 
