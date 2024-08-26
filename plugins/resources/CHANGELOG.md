@@ -1,3 +1,10 @@
+## [6.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.6.0...v6.6.1) (2024-08-26)
+
+
+### Bug Fixes
+
+* **all:** fix timeout ([2699d8d](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/2699d8daf24efd9c77539a7b9a3cce1956a64b0b))
+
 # [6.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.5.2...v6.6.0) (2024-08-23)
 
 
