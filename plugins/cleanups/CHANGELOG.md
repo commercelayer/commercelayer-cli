@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.1...v3.1.0) (2024-08-23)
+
+
+### Features
+
+* remove oclif ux ([19f74a7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/19f74a795c335b4431b7e663aa786ca330702ac7))
+
 ## [3.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0...v3.0.1) (2024-05-20)
 
 
