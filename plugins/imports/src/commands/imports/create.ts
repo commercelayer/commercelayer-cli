@@ -143,7 +143,7 @@ export default class ImportsCreate extends Command {
       const inputsLength = (format === 'csv')? Math.max(0, inputs.length-1) : inputs.length
 
       // Check import size
-      const humanized = type.replace(/_/g, ' ')
+      const humanized = clApi.humanizeResource(type)
       if (inputsLength === 0) this.error(`No ${humanized} to import`)
       else {
         if ((MAX_INPUTS > 0) && (inputsLength > MAX_INPUTS)) this.error(`You are trying to import ${clColor.yellowBright(inputsLength)} ${humanized}. Using the CLI you can import up to ${MAX_INPUTS} items at a time`, {
@@ -206,7 +206,7 @@ export default class ImportsCreate extends Command {
           withErrors ||= !impOk
         }
 
-        this.log(`\nImport of ${clColor.yellowBright(String(inputsLength))} ${humanized} completed${withErrors ? ' with errors' : ''}.`)
+        this.log(`\n${clColor.reset('Import of')} ${clColor.yellowBright(String(inputsLength))} ${humanized} completed${withErrors ? ' with errors' : ''}.`)
       } else {
         await this.parallelizeImports(chunks, monitor)
         this.log(`\nThe import of ${clColor.yellowBright(String(inputsLength))} ${resource} has been started`)
@@ -248,7 +248,7 @@ export default class ImportsCreate extends Command {
     if (monitor && this.monitor) {
       const results = await Promise.allSettled(imports)
       this.monitor.stop()
-      return !results.some((r: any) => ((r.value === undefined) || (r.value.status === 'interrupted') || (r.value.errors_count > 0)))
+      return !results.some((r: any) => ((r.value === undefined) || (r.value.status === 'interrupted') || (r.value.errors_count > 0) || (r.status === 'rejected')))
     }
 
     return true
@@ -269,8 +269,8 @@ export default class ImportsCreate extends Command {
       metadata: {
         chunk_number: `${chunk.chunk_number}/${chunk.total_chunks}`,
         chunk_items: `${chunk.start_item}-${chunk.end_item}`,
-        group_id: chunk.group_id,
-      },
+        group_id: chunk.group_id
+      }
     })
   }
 
@@ -284,7 +284,6 @@ export default class ImportsCreate extends Command {
     return this.createImport(chunk).then(async i => {
 
       let imp: Import = i
-
       if (monitor && this.monitor) {
 
         let barValue = 0
@@ -306,7 +305,7 @@ export default class ImportsCreate extends Command {
               processed: Number(imp.processed_count),
               warnings: Number(imp.warnings_count),
               errors: Number(imp.errors_count),
-              status: imp.status,
+              status: imp.status
             })
           }
 
@@ -320,8 +319,7 @@ export default class ImportsCreate extends Command {
 
       return imp
 
-      // eslint-disable-next-line @typescript-eslint/promise-function-async
-    }).catch(error => {
+    }).catch(async error => {
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
       // console.log(error)
       return Promise.reject(error)

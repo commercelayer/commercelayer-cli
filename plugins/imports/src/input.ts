@@ -1,7 +1,6 @@
 
 import { existsSync, readFileSync } from 'node:fs'
 import { clColor } from '@commercelayer/cli-core'
-import { EOL } from "node:os"
 
 
 
@@ -10,7 +9,7 @@ const generateInputsCSV = async (filePath: string): Promise<any[]> => {
   try {
     const data = readFileSync(filePath, { encoding: 'utf-8' }).trim()
     if (data.startsWith('{') || data.startsWith('[')) throw new Error('The imported file is not a valid CSV file')
-    const csv = data.split(EOL)
+    const csv = data.replace(/\r/g, '').split('\n')
     return Promise.resolve(csv)
   } catch (error) {
     return Promise.reject(error)

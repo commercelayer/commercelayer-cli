@@ -37,10 +37,6 @@ const splitImports = (imp: ImportCreate, format: InputFormat, size?: number): Ch
   const totalItems = imp.inputs.length
   const groupId = generateGroupUID()
 
-  console.log(header)
-  console.log(allInputs)
-  console.log(totalItems)
-
   let chunkNum = 0
   while (allInputs.length > 0) {
     const inputs = allInputs.splice(0, chunkSize)
