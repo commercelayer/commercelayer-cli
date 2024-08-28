@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.1.0...v6.2.0) (2024-08-28)
+
+
+### Features
+
+* remove oclif ux ([c8c9e13](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/c8c9e1342baa7ff156804e17b6167b870e556199))
+
 # [6.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.0.0...v6.1.0) (2024-05-14)
 
 
