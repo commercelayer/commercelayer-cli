@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.0.0...v5.1.0) (2024-08-28)
+
+
+### Features
+
+* remove oclif ux ([29b72c1](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/29b72c1a62d44deb45af51a0e5436bcd03d37c50))
+
 # [5.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v4.8.1...v5.0.0) (2024-04-30)
 
 
