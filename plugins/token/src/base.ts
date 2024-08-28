@@ -1,4 +1,4 @@
-import { Command, Flags, Args, ux } from '@oclif/core'
+import { Command, Flags, Args } from '@oclif/core'
 import { type AccessTokenInfo, clColor, clConfig, clOutput, clUpdate, type AuthScope } from '@commercelayer/cli-core'
 import { CLIError } from '@oclif/core/lib/errors'
 
@@ -75,4 +75,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, Args, ux as cliux }
+export { Flags, Args }

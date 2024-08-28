@@ -1,7 +1,8 @@
 import { clColor, clCommand } from '@commercelayer/cli-core'
-import Command, { Flags, Args, cliux } from '../../base'
+import Command, { Flags, Args } from '../../base'
 import { revokeAccessToken } from '../../token'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 
