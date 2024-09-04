@@ -436,24 +436,6 @@ export default class ExportsAll extends ExportCommand {
   }
 
 
-  private async singleExportFile(exp: Export, flags: any): Promise<string> {
-
-    const tmpDir = this.config.cacheDir
-    const format = this.getFileFormat(flags)
-
-    // Export just completed, no need to refresh attachment url
-    const fileExport = await this.getExportedFile(exp.attachment_url, flags)
-
-    const tmpFile = join(tmpDir, `${exp.id}-tmp.${format}`)
-
-    writeFileSync(tmpFile, fileExport, { encoding })
-    if (flags.keep) writeFileSync(tmpFile.replace('-tmp', ''), fileExport, { encoding })
-
-    return tmpFile
-
-  }
-
-
   private async mergeExportFiles(exports: Export[], flags: any): Promise<string> {
 
     const tmpDir = this.config.cacheDir

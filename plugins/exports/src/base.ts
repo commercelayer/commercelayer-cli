@@ -1,14 +1,15 @@
 import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil, clApi } from '@commercelayer/cli-core'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
 import { Command, Flags, Args } from '@oclif/core'
-import { existsSync, readFileSync } from 'fs'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
 import axios from 'axios'
 import { type InputType, gunzipSync } from 'zlib'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Export } from '@commercelayer/sdk'
 import { rename } from 'fs/promises'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import notifier from 'node-notifier'
 import * as cliux from '@commercelayer/cli-ux'
+import { join } from 'path'
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -173,6 +174,24 @@ export abstract class ExportCommand extends BaseCommand {
     if (output && ((flags?.format === 'json') && !flags?.csv) && flags.prettify) output = JSON.stringify(JSON.parse(output), null, 4)
 
     return output
+
+  }
+
+
+  protected async singleExportFile(exp: Export, flags: any): Promise<string> {
+
+    const tmpDir = this.config.cacheDir
+    const format = this.getFileFormat(flags)
+
+    // Export just completed, no need to refresh attachment url
+    const fileExport = await this.getExportedFile(exp.attachment_url, flags)
+
+    const tmpFile = join(tmpDir, `${exp.id}-tmp.${format}`)
+
+    writeFileSync(tmpFile, fileExport, { encoding })
+    if (flags.keep) writeFileSync(tmpFile.replace('-tmp', ''), fileExport, { encoding })
+
+    return tmpFile
 
   }
 

@@ -152,7 +152,8 @@ export default class ExportsCreate extends ExportCommand {
       if (exp.status === 'completed') this.log(`\nExported ${clColor.yellowBright(exp.records_count || 0)} ${resDesc}`)
       else this.error(`Export ${exp?.id} ended with errors`)
 
-      const outputFile = await this.saveOutput(exp, flags)
+      const tmpOutputFile = await this.singleExportFile(exp, flags)
+      const outputFile = await this.saveOutput(tmpOutputFile, flags)
 
       // Notification
       const finishMessage = `Export of ${exp.records_count} ${resDesc} is finished!`
