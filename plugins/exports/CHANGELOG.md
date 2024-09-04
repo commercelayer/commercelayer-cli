@@ -1,3 +1,15 @@
+# [3.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.2.1...v3.3.0) (2024-09-04)
+
+
+### Bug Fixes
+
+* fix create command ([afe721f](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/afe721f3323a2c2caf40a393ebe5e3196d56785d))
+
+
+### Features
+
+* manage huge export files ([5ea32ff](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/5ea32ff4a3858159dcd62f169ca52bdad4d4c7ef))
+
 ## [3.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.2.0...v3.2.1) (2024-09-04)
 
 
