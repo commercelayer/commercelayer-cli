@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.2.0...v3.2.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* fix export timeouts ([ce186e7](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/ce186e783b3caf5c293c46f1fe10024a2c715402))
+
 # [3.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.1.3...v3.2.0) (2024-08-23)
 
 
