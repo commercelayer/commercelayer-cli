@@ -4,14 +4,14 @@ import { type KeyValString, clApi, clColor, clConfig, clUtil } from '@commercela
 import type { Export, ExportCreate, ListableResourceType, QueryParamsList } from '@commercelayer/sdk'
 import Spinnies from 'spinnies'
 import open from 'open'
-import { readFileSync, unlinkSync, writeFileSync } from 'node:fs'
+import { readFileSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import * as cliux from '@commercelayer/cli-ux'
 
 
-const DEBUG = (process.env.CL_CLI_DEBUG === 'true')
-if (DEBUG) console.log('\nDEBUG MODE ON\n')
+const DEBUG = ['1', 'on', 'true', 'export'].includes((process.env.CL_CLI_DEBUG || '').toLowerCase())
+if (DEBUG) console.log('\nDEBUG MODE ON')
 
 const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports
 const MAX_QUEUE_LENGTH = Math.floor(clConfig.exports.max_queue_length / 2) - 1
@@ -158,7 +158,7 @@ export default class ExportsAll extends ExportCommand {
       // [2024-09-04] Sort is used to force PG to use the correct index
       const filter: QueryParamsList = { filters: wheres, pageSize: 1, pageNumber: 1, sort: ['created_at', 'id'] }
 
-      const totRecords = await resSdk.count(filter).catch (() => {
+      const totRecords = await resSdk.count(filter).catch(() => {
         this.error('Error initializing export process, please try again')
       })
       exportJob.totalRecords = totRecords
@@ -169,12 +169,14 @@ export default class ExportsAll extends ExportCommand {
       // Check if export needs to be split
       await this.checkMultiExport(exportJob, flags)
 
-      // Create export resources
+      // Create export resources (and monitor jobs execution)
       const exports = await this.createExports(exportJob)
       if (exports.some(e => !e.attachment_url)) this.error('Something went wrong creating export files')
 
       const outputFile = await this.saveExportOutput(exportJob, flags)
       if (!outputFile) this.error('Something went wrong saving the export file')
+
+      if (flags.keep) this.log(clColor.italic(`Original export file saved to ${this.config.cacheDir}\n`))
 
       // Notification
       const finishMessage = `Export of ${totRecords} ${resDesc} is finished!`
@@ -196,26 +198,28 @@ export default class ExportsAll extends ExportCommand {
 
     const exports = expJob.exports
 
-    let outputFile: string | undefined
+    let tmpOutputFile: string
     let exportOk = false
     if (expJob.totalExports === 1) {
       if (!expJob.blindMode && !flags.quiet) this.log('Single file export')
-      outputFile = await this.saveOutput(exports[0], flags)
-      exportOk = true
+      tmpOutputFile = await this.singleExportFile(exports[0], flags)
     }
     else {
-
       if (!expJob.blindMode && !flags.quiet) cliux.action.start('Checking and merging exported files')
-      const tmpOutputFile = await this.mergeExportFiles(exports, flags)
-      const checkOk = this.checkExportedFile(expJob.totalRecords, readFileSync(tmpOutputFile, { encoding }), expJob.format)
-      if (!checkOk) this.error('Check of generated merged file failed')
+      tmpOutputFile = await this.mergeExportFiles(exports, flags)
+      const fileSize = statSync(tmpOutputFile).size
+      if (DEBUG) console.log(`Merged export file size: ${fileSize} bytes`)
+      if (fileSize < (512 * 1024 * 1024)) {
+        const checkOk = this.checkExportedFile(expJob.totalRecords, readFileSync(tmpOutputFile, { encoding }), expJob.format)
+        if (!checkOk) this.error('Check of generated merged file failed')
+      }
       if (!expJob.blindMode) cliux.action.stop()
-
-      outputFile = await this.saveOutput(tmpOutputFile, flags)
-      unlinkSync(tmpOutputFile)
-      exportOk = true
-
     }
+
+    if (DEBUG) console.log('Move temp file to output path')
+    const outputFile = await this.saveOutput(tmpOutputFile, flags)
+    exportOk = true
+    if (DEBUG) console.log('Done.')
 
 
     return exportOk ? outputFile : undefined
@@ -295,6 +299,8 @@ export default class ExportsAll extends ExportCommand {
       minimumDelay: 1000
     })
 
+    const reference = expCreate.reference
+
 
     while (!exportCompleted(exports)) {
 
@@ -304,7 +310,7 @@ export default class ExportsAll extends ExportCommand {
 
           const curIdx = curExp + 1
           const exportName = `Export_${curIdx}`
-          if (expJob.totalExports > 1) expCreate.reference = `${expCreate.reference}-${curIdx}`
+          if (expJob.totalExports > 1) expCreate.reference = `${reference}-${curIdx}`
 
           if (!expJob.blindMode) spinners.add(spinnerText(exportName), { text: `${exportName} initializing` })
 
@@ -423,9 +429,27 @@ export default class ExportsAll extends ExportCommand {
       }
     }
 
-if (DEBUG) console.log(`numRecords: ${numRecords}, expRecords: ${expRecords}`)
+    if (DEBUG) console.log(`numRecords: ${numRecords}, expRecords: ${expRecords}`)
 
     return numRecords === expRecords
+
+  }
+
+
+  private async singleExportFile(exp: Export, flags: any): Promise<string> {
+
+    const tmpDir = this.config.cacheDir
+    const format = this.getFileFormat(flags)
+
+    // Export just completed, no need to refresh attachment url
+    const fileExport = await this.getExportedFile(exp.attachment_url, flags)
+
+    const tmpFile = join(tmpDir, `${exp.id}-tmp.${format}`)
+
+    writeFileSync(tmpFile, fileExport, { encoding })
+    if (flags.keep) writeFileSync(tmpFile.replace('-tmp', ''), fileExport, { encoding })
+
+    return tmpFile
 
   }
 
@@ -443,10 +467,11 @@ if (DEBUG) console.log(`numRecords: ${numRecords}, expRecords: ${expRecords}`)
     for (const e of exports) {
       const expFresh = await this.cl.exports.retrieve(e)  // Retrieve needed to resfresh S3 url
       e.attachment_url = expFresh.attachment_url
-if (DEBUG) console.log(`Getting file ${e.attachment_url}`)
+
+      if (DEBUG) console.log(`Getting file ${e.attachment_url} [${e.id}]`)
       const fileExport = await this.getExportedFile(e.attachment_url, flags)
       exportCounter++
-if (DEBUG) console.log('Done.')
+      if (DEBUG) console.log('Done.')
 
       if ((exportCounter === 1)) {
         if (format === 'csv') { // Write csv header at the beginning of the merged file
@@ -454,26 +479,25 @@ if (DEBUG) console.log('Done.')
           if (header) writeFileSync(mergedFile, `${header}\n`, { flag: 'a', encoding })
         }
       } else {
-        if (format === 'json') {  // Add comma between exported files
+        if (format === 'json') {  // Add comma between exported json files
           writeFileSync(mergedFile, `,\n${flags.prettify ? '\t' : ''}`, { flag: 'a', encoding })
         }
       }
-if (DEBUG) console.log(`Checking file`)
+      if (DEBUG) console.log(`Checking file [${e.id}]`)
       const checkOk = this.checkExportedFile(e.metadata?.exportRecords as number || 0, fileExport, format)
       if (!checkOk) this.error(`Check of exported file n.${exportCounter} failed`)
-else if (DEBUG) console.log('Done.')
+      else if (DEBUG) console.log('Done.')
 
-if (DEBUG) console.log('Cleaning and saving file')
+      if (DEBUG) console.log(`Cleaning and saving file [${e.id}]`)
       const fileText = this.cleanExportFile(fileExport, format)
       if (flags.keep) writeFileSync(join(tmpDir, `${(e.reference || e.id)}${e.reference ? `-${e.id}` : ''}.${format}`), fileText, { encoding })
       writeFileSync(mergedFile, fileText, { flag: 'a', encoding })
-if (DEBUG) console.log('Done.')
+      if (DEBUG) console.log('Done.')
 
     }
 
-if (DEBUG) console.log('Writing merged file')
     if (format === 'json') writeFileSync(mergedFile, `${flags.prettify ? '\n' : ''}]`, { flag: 'a', encoding })
-if (DEBUG) console.log('Done.')
+
 
     return mergedFile
 

@@ -4,8 +4,8 @@ import { Command, Flags, Args } from '@oclif/core'
 import { existsSync, readFileSync } from 'fs'
 import axios from 'axios'
 import { type InputType, gunzipSync } from 'zlib'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Export } from '@commercelayer/sdk'
-import { writeFile } from 'fs/promises'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { rename } from 'fs/promises'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import notifier from 'node-notifier'
 import * as cliux from '@commercelayer/cli-ux'
@@ -177,16 +177,13 @@ export abstract class ExportCommand extends BaseCommand {
   }
 
 
-  protected async saveOutput(exp: Export | string, flags: any): Promise<string | undefined> {
+  protected async saveOutput(tempFile: string, flags: any): Promise<string | undefined> {
 
     try {
 
       const filePath = this.getOutputFilePath(flags)
 
-      const url = (typeof exp === 'string') ? exp : exp.attachment_url
-      const fileExport = await this.getExportedFile(url, flags)
-
-      return writeFile(filePath, fileExport)
+      return rename(tempFile, filePath)
         .then(() => {
           if (existsSync(filePath) && !flags.quiet) this.log(`Exported file saved to ${clColor.style.path(filePath)}\n`)
           return filePath

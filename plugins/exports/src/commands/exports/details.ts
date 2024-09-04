@@ -62,7 +62,7 @@ export default class ExportsDetails extends Command {
       this.log()
 
       if (exp.attachment_url) {
-        const availableTime = new Date(exp?.completed_at || '')
+        const availableTime = new Date(/* exp?.completed_at || '' */)
         availableTime.setMinutes(availableTime.getMinutes() + 5)
         const clfun = (availableTime < new Date()) ? clColor.msg.error : clColor.msg.success
         this.log(`${clColor.style.title('Attachment URL')} (${clText.symbols.clock.stopwatch} Available until ${clfun(clOutput.localeDate(availableTime.toISOString()))})`)
