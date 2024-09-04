@@ -10,6 +10,9 @@ import type { CommandError } from '@oclif/core/lib/interfaces'
 import * as cliux from '@commercelayer/cli-ux'
 
 
+const DEBUG = (process.env.CL_CLI_DEBUG === 'true')
+if (DEBUG) console.log('\nDEBUG MODE ON\n')
+
 const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports
 const MAX_QUEUE_LENGTH = Math.floor(clConfig.exports.max_queue_length / 2) - 1
 const MAX_EXPORT_SIZE = clConfig.exports.max_size
@@ -152,9 +155,12 @@ export default class ExportsAll extends ExportCommand {
       this.commercelayerInit(flags)
       const resSdk = this.cl[resType as ListableResourceType] as any
 
-      const filter: QueryParamsList = { filters: wheres, pageSize: 1, pageNumber: 1 }
+      // [2024-09-04] Sort is used to force PG to use the correct index
+      const filter: QueryParamsList = { filters: wheres, pageSize: 1, pageNumber: 1, sort: ['created_at', 'id'] }
 
-      const totRecords = await resSdk.count(filter)
+      const totRecords = await resSdk.count(filter).catch (() => {
+        this.error('Error initializing export process, please try again')
+      })
       exportJob.totalRecords = totRecords
 
       const totExports = Math.ceil(totRecords / MAX_EXPORT_SIZE)
@@ -300,7 +306,7 @@ export default class ExportsAll extends ExportCommand {
           const exportName = `Export_${curIdx}`
           if (expJob.totalExports > 1) expCreate.reference = `${expCreate.reference}-${curIdx}`
 
-          if (!expJob.blindMode) spinners.add(spinnerText(exportName))
+          if (!expJob.blindMode) spinners.add(spinnerText(exportName), { text: `${exportName} initializing` })
 
           // Export split simulation ...
           // 1500  --> 1: 1500,  2: x
@@ -366,7 +372,7 @@ export default class ExportsAll extends ExportCommand {
       if (!flags.quiet) {
         const msg1 = `You have requested to export ${clColor.yellowBright(expJob.totalRecords)} ${expJob.resourceDesc}, more than the maximun ${MAX_EXPORT_SIZE} elements allowed for each single export.`
         const msg2 = `The export will be split into a set of ${clColor.yellowBright(expJob.totalExports)} distinct exports with the same unique group ID ${clColor.underline.yellowBright(groupId)}.`
-        const msg3 = `Execute the command ${clColor.cli.command(`exports:group ${groupId}`)} to retrieve all the related exports`
+        const msg3 = `Execute the command ${clColor.cli.command(`exports:group ${groupId}`)} to retrieve all the related exports.`
         this.log(`\n${msg1} ${msg2} ${msg3}`)
         this.log()
         await cliux.anykey()
@@ -417,6 +423,7 @@ export default class ExportsAll extends ExportCommand {
       }
     }
 
+if (DEBUG) console.log(`numRecords: ${numRecords}, expRecords: ${expRecords}`)
 
     return numRecords === expRecords
 
@@ -434,9 +441,13 @@ export default class ExportsAll extends ExportCommand {
     let exportCounter = 0
 
     for (const e of exports) {
-
+      // [2024-09-04] Retrieve needed to resfresh S3 url
+      const expFresh = await this.cl.exports.retrieve(e)
+      e.attachment_url = expFresh.attachment_url
+if (DEBUG) console.log(`Getting file ${e.attachment_url}`)
       const fileExport = await this.getExportedFile(e.attachment_url, flags)
       exportCounter++
+if (DEBUG) console.log('Done.')
 
       if ((exportCounter === 1)) {
         if (format === 'csv') { // Write csv header at the beginning of the merged file
@@ -448,17 +459,22 @@ export default class ExportsAll extends ExportCommand {
           writeFileSync(mergedFile, `,\n${flags.prettify ? '\t' : ''}`, { flag: 'a', encoding })
         }
       }
-
+if (DEBUG) console.log(`Checking file`)
       const checkOk = this.checkExportedFile(e.metadata?.exportRecords as number || 0, fileExport, format)
       if (!checkOk) this.error(`Check of exported file n.${exportCounter} failed`)
+else if (DEBUG) console.log('Done.')
 
+if (DEBUG) console.log('Cleaning and saving file')
       const fileText = this.cleanExportFile(fileExport, format)
       if (flags.keep) writeFileSync(join(tmpDir, `${(e.reference || e.id)}${e.reference ? `-${e.id}` : ''}.${format}`), fileText, { encoding })
       writeFileSync(mergedFile, fileText, { flag: 'a', encoding })
+if (DEBUG) console.log('Done.')
 
     }
 
+if (DEBUG) console.log('Writing merged file')
     if (format === 'json') writeFileSync(mergedFile, `${flags.prettify ? '\n' : ''}]`, { flag: 'a', encoding })
+if (DEBUG) console.log('Done.')
 
     return mergedFile
 
