@@ -441,8 +441,7 @@ if (DEBUG) console.log(`numRecords: ${numRecords}, expRecords: ${expRecords}`)
     let exportCounter = 0
 
     for (const e of exports) {
-      // [2024-09-04] Retrieve needed to resfresh S3 url
-      const expFresh = await this.cl.exports.retrieve(e)
+      const expFresh = await this.cl.exports.retrieve(e)  // Retrieve needed to resfresh S3 url
       e.attachment_url = expFresh.attachment_url
 if (DEBUG) console.log(`Getting file ${e.attachment_url}`)
       const fileExport = await this.getExportedFile(e.attachment_url, flags)
