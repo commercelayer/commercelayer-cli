@@ -1,5 +1,5 @@
 import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import { clApi, clColor } from '@commercelayer/cli-core'
+import { clApi, clColor, clUtil } from '@commercelayer/cli-core'
 import type { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
 import { mergeCommandParams } from '../../commands'
@@ -76,13 +76,23 @@ export default class ResourcesCreate extends Command {
     // Raw request
     if (flags.data) {
       try {
+
         const baseUrl = clApi.baseURL('core', flags.organization, flags.domain)
         const accessToken = flags.accessToken
-        const rawRes = await clApi.request.raw({ operation: clApi.Operation.Create, baseUrl, accessToken, resource: resource.api }, clApi.request.readDataFile(flags.data))
+        const dataPath = clUtil.specialFolder(flags.data)
+
+        const rawData = clApi.request.readDataFile(dataPath)
+        if (!rawData?.data) this.error('Empty data file')
+        if (!rawData.data.type) rawData.data.type = resource.api
+
+        const rawRes = await clApi.request.raw({ operation: clApi.Operation.Create, baseUrl, accessToken, resource: resource.api }, rawData)
+
         const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
         this.printOutput(out, flags)
         this.log(`\n${clColor.style.success('Successfully')} created new resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(rawRes.data.id)}\n`)
+
         return out
+
       } catch (error) {
         this.printError(error, flags, args)
       }
