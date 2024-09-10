@@ -1,3 +1,10 @@
+## [6.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.6.1...v6.6.2) (2024-09-10)
+
+
+### Bug Fixes
+
+* fix update and create with external file ([2189053](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/2189053f85cef35711c3730f2ac1ef2936cbe7e1))
+
 ## [6.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.6.0...v6.6.1) (2024-08-26)
 
 
