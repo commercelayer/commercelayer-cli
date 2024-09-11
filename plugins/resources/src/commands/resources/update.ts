@@ -95,6 +95,7 @@ export default class ResourcesUpdate extends Command {
         const dataPath = clUtil.specialFolder(flags.data)
 
         const rawData = clApi.request.readDataFile(dataPath)
+
         if (!rawData?.data) this.error('Empty data file')
         if (!rawData.data.type) rawData.data.type = resource.api
         if (!rawData.data.id) rawData.data.id = id
@@ -103,7 +104,7 @@ export default class ResourcesUpdate extends Command {
 
         const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
         this.printOutput(out, flags)
-        this.log(`\n${clColor.style.success('Successfully')} updated resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(rawRes.id)}\n`)
+        this.log(`\n${clColor.style.success('Successfully')} updated resource of type ${clColor.style.resource(resource.api)} with id ${clColor.style.id(rawRes.data.id)}\n`)
 
         return out
 
