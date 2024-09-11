@@ -99,8 +99,6 @@ export default class ResourcesUpdate extends Command {
         if (!rawData.data.type) rawData.data.type = resource.api
         if (!rawData.data.id) rawData.data.id = id
 
-        console.log(rawData)
-
         const rawRes = await clApi.request.raw({ operation: clApi.Operation.Update, baseUrl, accessToken, resource: resource.api }, rawData, id)
 
         const out = flags.raw ? rawRes : clApi.response.denormalize(rawRes)
