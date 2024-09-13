@@ -17,7 +17,7 @@ function termwidth(stream: any): number {
   return width
 }
 
-const columns = Number.parseInt(process.env.OCLIF_COLUMNS!, 10) || 80
+const columns = Number.parseInt(process.env.OCLIF_COLUMNS!, 10) // || settings.columns
 
 export const stdtermwidth = columns || termwidth(process.stdout)
 export const errtermwidth = columns || termwidth(process.stderr)
