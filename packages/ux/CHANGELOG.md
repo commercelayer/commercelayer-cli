@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.5...v1.0.6) (2024-09-13)
+
+
+### Bug Fixes
+
+* fix terminal width ([794ac7b](https://github.com/commercelayer/commercelayer-cli-ux/commit/794ac7b9be8d652bc1413c65687bb30734689466))
+
 ## [1.0.5](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.4...v1.0.5) (2024-08-23)
 
 
