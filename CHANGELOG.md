@@ -1,3 +1,11 @@
+## [6.2.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.0...v6.2.1) (2024-09-13)
+
+
+### Bug Fixes
+
+* fix apps table columns size ([34b80fa](https://github.com/commercelayer/commercelayer-cli/commit/34b80fa7f6a0e3ccd3a39530eda273c8bf3f6afe))
+* update dependencies ([8737a6c](https://github.com/commercelayer/commercelayer-cli/commit/8737a6cb1779c4dc975d50a20bc9957f6d0f8768))
+
 # [6.2.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.1.1...v6.2.0) (2024-08-23)
 
 
