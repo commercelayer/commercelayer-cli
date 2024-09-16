@@ -12,19 +12,19 @@ export default class ApplicationsIndex extends Command {
 
 	static examples = [
 		'$ commercelayer applications',
-		'$ cl applications',
+		'$ cl applications'
 	]
 
 	static flags = {
 		extra: Flags.boolean({
 			char: 'X',
 			description: 'show applications extra info',
-			hidden: true,
+			hidden: true
 		}),
 		sort: Flags.boolean({
 			char: 'S',
-			description: 'sort applications by Organization and Application name',
-		}),
+			description: 'sort applications by Organization and Application name'
+		})
 	}
 
 

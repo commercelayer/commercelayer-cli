@@ -13,19 +13,19 @@ export default class ApplicationsCurrent extends Command {
 
 	static examples = [
 		'$ commercelayer applications:current',
-		'$ commercelayer app:current --info',
+		'$ commercelayer app:current --info'
 	]
 
 	static flags = {
 		info: Flags.boolean({
 			hidden: true,
-			exclusive: ['organization', 'live'],
+			exclusive: ['organization', 'live']
 		}),
 		json: Flags.boolean({
 			char: 'j',
 			description: 'show info in JSON format',
-			dependsOn: ['info'],
-		}),
+			dependsOn: ['info']
+		})
 	}
 
 	async run(): Promise<any> {

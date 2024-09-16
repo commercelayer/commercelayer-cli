@@ -10,42 +10,42 @@ export default abstract class extends Command {
 	static baseFlags = {
 		organization: Flags.string({
 			char: 'o',
-			description: 'organization slug',
+			description: 'organization slug'
 		}),
 		domain: Flags.string({
 			char: 'd',
 			description: 'api domain',
 			required: false,
 			hidden: true,
-			dependsOn: ['organization'],
+			dependsOn: ['organization']
 		}),
 		kind: Flags.string({
 			char: 'k',
 			description: 'application kind',
-			options: configParam(ConfigParams.applicationTypeCheck),
+			options: configParam(ConfigParams.applicationTypeCheck)
 		}),
 		mode: Flags.string({
 			char: 'm',
 			description: 'execution mode',
-			options: ['test', 'live'],
+			options: ['test', 'live']
 		}),
 		live: Flags.boolean({
 			description: 'live execution mode',
-			exclusive: ['mode'],
+			exclusive: ['mode']
 		}),
 		id: Flags.string({
-			description: 'application id',
+			description: 'application id'
 		}),
 		alias: Flags.string({
 			char: 'a',
 			description: 'the alias associated to the application',
 			exclusive: ['id'],
-			multiple: false,
+			multiple: false
 		}),
 		appkey: Flags.string({
 			description: 'CLI application key',
 			hidden: true,
-			exclusive: ['alias', 'id', 'mode', 'kind'],
+			exclusive: ['alias', 'id', 'mode', 'kind']
 		}),
 		api: Flags.string({
 			char: 'A',
