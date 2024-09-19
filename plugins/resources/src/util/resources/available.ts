@@ -41,6 +41,7 @@ const RESOURCES = [
 	{ name: 'external_tax_calculator', api: 'external_tax_calculators', model: 'ExternalTaxCalculator' },
 	{ name: 'fixed_amount_promotion', api: 'fixed_amount_promotions', model: 'FixedAmountPromotion' },
 	{ name: 'fixed_price_promotion', api: 'fixed_price_promotions', model: 'FixedPricePromotion' },
+	{ name: 'flex_promotion', api: 'flex_promotions', model: 'FlexPromotion' },
 	{ name: 'free_gift_promotion', api: 'free_gift_promotions', model: 'FreeGiftPromotion' },
 	{ name: 'free_shipping_promotion', api: 'free_shipping_promotions', model: 'FreeShippingPromotion' },
 	{ name: 'geocoder', api: 'geocoders', model: 'Geocoder' },
