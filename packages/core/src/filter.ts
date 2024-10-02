@@ -49,6 +49,8 @@ const FILTERS: Filter[] = [
 	{ predicate: '*_jcont', description: 'The attribute contains a portion of the JSON used as  filter value (works with object only)' },
 	{ predicate: '*_true', description: 'The attribute is true' },
 	{ predicate: '*_false', description: 'The attribute is false' },
+	{ predicate: '*_not_eq_or_null', description: 'The attribute is null or equal to the filter value' },
+	{ predicate: '*_not_in_or_null', description: 'The attribute is null or matches none of the filter values (comma-separated)' }
 ] as const
 
 
