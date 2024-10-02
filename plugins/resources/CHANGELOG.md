@@ -1,3 +1,10 @@
+# [6.7.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.6.4...v6.7.0) (2024-09-19)
+
+
+### Features
+
+* update sdk and resources ([15bf630](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/15bf63077facedce1c17e246722b4e1c9bbc8a4c))
+
 ## [6.6.4](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.6.3...v6.6.4) (2024-09-11)
 
 
