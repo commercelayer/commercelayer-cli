@@ -1,3 +1,10 @@
+## [6.2.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.1...v6.2.2) (2024-09-27)
+
+
+### Bug Fixes
+
+* fix dependencies ([234fe7d](https://github.com/commercelayer/commercelayer-cli/commit/234fe7ddb263f5c1a972ef0c9100489e2cef894d))
+
 ## [6.2.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.0...v6.2.1) (2024-09-13)
 
 
