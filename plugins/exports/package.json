@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-exports",
   "description": "Commerce Layer CLI Exports plugin",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-exports",
   "repository": "commercelayer/commercelayer-cli-plugin-exports",

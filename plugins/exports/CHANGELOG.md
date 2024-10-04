@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.3.0...v3.3.1) (2024-10-04)
+
+
+### Bug Fixes
+
+* handle malformed requests ([6171005](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/617100565fd11e56be3a33bcf72e279f8c676982))
+
 # [3.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.2.1...v3.3.0) (2024-09-04)
 
 
