@@ -158,10 +158,17 @@ export default class ExportsAll extends ExportCommand {
       // [2024-09-04] Sort is used to force PG to use the correct index
       const filter: QueryParamsList = { filters: wheres, pageSize: 1, pageNumber: 1, sort: ['created_at', 'id'] }
 
-      const totRecords = await resSdk.count(filter).catch(() => {
-        this.error('Error initializing export process, please try again')
+      // Handle malformed requests before initializing the export
+      await resSdk.list({ ...filter, include }).catch((err: unknown) => {
+        this.error('Error initializing export process, please try again', { exit: false })
+        this.handleError(err as CommandError)
       })
-      exportJob.totalRecords = totRecords
+
+      const totRecords = await resSdk.count(filter)
+      if (totRecords === 0) {
+        this.log(`\n${clColor.italic('Nothing to export')}\n`)
+        this.exit()
+      } else exportJob.totalRecords = totRecords
 
       const totExports = Math.ceil(totRecords / MAX_EXPORT_SIZE)
       exportJob.totalExports = totExports
