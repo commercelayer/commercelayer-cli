@@ -98,9 +98,9 @@ export const getFullUrl = (request: RequestData): string => {
 
 
 export const getResource = (request: RequestData): string => {
-  const slashIdx = request.path.indexOf('/')
-  if (slashIdx < 0) return request.path
-  return request.path.substring(0, slashIdx)
+  const match = request.path.match(/\/api\/[a-z_]*/g)
+  const res = match ? match[0].replace('/api/', '') : request.path
+  return res
 }
 
 
