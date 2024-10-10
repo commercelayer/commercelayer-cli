@@ -1,3 +1,10 @@
+## [6.7.4](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.3...v6.7.4) (2024-10-10)
+
+
+### Bug Fixes
+
+* fix doc resource name finder ([264c6a8](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/264c6a8202261a3178eb72a80466db8eb5fe1326))
+
 ## [6.7.3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.2...v6.7.3) (2024-10-10)
 
 
