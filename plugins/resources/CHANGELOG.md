@@ -1,3 +1,10 @@
+## [6.7.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.1...v6.7.2) (2024-10-10)
+
+
+### Bug Fixes
+
+* fix curl command generation ([aba10ab](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/aba10abf8528d90c27a99a323449fb7acee67c49))
+
 ## [6.7.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.0...v6.7.1) (2024-10-02)
 
 
