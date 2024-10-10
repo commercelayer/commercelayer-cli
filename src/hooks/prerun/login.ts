@@ -1,7 +1,8 @@
-import { type Hook, ux as cliux } from '@oclif/core'
+import { type Hook} from '@oclif/core'
 import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
 import { clApplication, type AppKey, clToken, clColor, clCommand } from '@commercelayer/cli-core'
 import { newAccessToken } from '../../commands/applications/token'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 
