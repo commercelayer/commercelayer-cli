@@ -1,3 +1,10 @@
+## [6.7.3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.2...v6.7.3) (2024-10-10)
+
+
+### Bug Fixes
+
+* fix doc command node ([3732a17](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/3732a17d86b17c71a61118f520c305997644992b))
+
 ## [6.7.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.1...v6.7.2) (2024-10-10)
 
 
