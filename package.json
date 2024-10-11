@@ -118,7 +118,7 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.3.0",
+    "@commercelayer/cli-core": "^5.3.1",
     "@commercelayer/cli-ux": "^1.0.6",
     "@commercelayer/provisioning-sdk": "^2.1.1",
     "@commercelayer/sdk": "^6.22.0",
