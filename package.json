@@ -124,7 +124,7 @@
     "@commercelayer/sdk": "^6.22.0",
     "@oclif/core": "^3.27.0",
     "@oclif/plugin-autocomplete": "^3.2.5",
-    "@oclif/plugin-help": "6.2.8",
+    "@oclif/plugin-help": "6.2.14",
     "@oclif/plugin-not-found": "^3.2.22",
     "@oclif/plugin-plugins": "^5.4.14",
     "configstore": "^5.0.1",

@@ -27,8 +27,8 @@ importers:
         specifier: ^3.2.5
         version: 3.2.5
       '@oclif/plugin-help':
-        specifier: 6.2.8
-        version: 6.2.8
+        specifier: 6.2.14
+        version: 6.2.14
       '@oclif/plugin-not-found':
         specifier: ^3.2.22
         version: 3.2.22
@@ -671,10 +671,6 @@ packages:
 
   '@oclif/plugin-help@6.2.14':
     resolution: {integrity: sha512-Tz0QuOstZhr9EXftjihMScM0sXtjzDPrx683lKnEit/XGPdx3IJtH8+0uKxmmeDQ/VbGLNWb57ZLjB62H5yA9g==}
-    engines: {node: '>=18.0.0'}
-
-  '@oclif/plugin-help@6.2.8':
-    resolution: {integrity: sha512-QRpFYlBeJffl4cXGBi8e+EfGogDmU7y8do1ZHxmPKZ5eZ0mfeKiqq2WA9dwRMZJriy1qSaGsbkOYgYQWlOYhSg==}
     engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-not-found@3.2.22':
@@ -5131,10 +5127,6 @@ snapshots:
       - supports-color
 
   '@oclif/plugin-help@6.2.14':
-    dependencies:
-      '@oclif/core': 4.0.27
-
-  '@oclif/plugin-help@6.2.8':
     dependencies:
       '@oclif/core': 4.0.27
 
