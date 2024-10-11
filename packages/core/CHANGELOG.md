@@ -1,3 +1,10 @@
+## [5.3.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.3.0...v5.3.1) (2024-10-11)
+
+
+### Bug Fixes
+
+* fix auth ([131d14f](https://github.com/commercelayer/commercelayer-cli-core/commit/131d14fc8ec53964acfd9b7f93233760bc12ced0))
+
 # [5.3.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.2.4...v5.3.0) (2024-10-02)
 
 
