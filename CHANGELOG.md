@@ -1,3 +1,10 @@
+## [6.2.5](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.4...v6.2.5) (2024-10-11)
+
+
+### Bug Fixes
+
+* fix revoke of old tokens ([ee80616](https://github.com/commercelayer/commercelayer-cli/commit/ee8061694ef8394d6b8275c5bc76ea02056c590e))
+
 ## [6.2.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.3...v6.2.4) (2024-10-11)
 
 
