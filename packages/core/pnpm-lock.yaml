@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@commercelayer/js-auth':
-        specifier: ^6.6.0
-        version: 6.6.0
+        specifier: ^6.6.1
+        version: 6.6.1
       '@oclif/core':
         specifier: ^3.27.0
         version: 3.27.0
@@ -850,8 +850,8 @@ packages:
       eslint: '>=8.0'
       typescript: '>=5.0'
 
-  '@commercelayer/js-auth@6.6.0':
-    resolution: {integrity: sha512-daPrI5Vdc2SyvyvtyJgPagSQntJ4+QhPBrZrftN161A4y3nhUaHBxwRYSU8CM9I/+Qzd/xlQoWi+bpxMBdHwMA==}
+  '@commercelayer/js-auth@6.6.1':
+    resolution: {integrity: sha512-r0Aa7poj8Dfd0JPJwLR/MaZchAhTVW8/6Qx2yDC36CcP/G5Am/DCNZiLoDcnbxObjCB6JJvEbkDnFamHcM/c3Q==}
     engines: {node: '>=18.0.0'}
 
   '@esbuild/aix-ppc64@0.23.1':
@@ -6106,7 +6106,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@commercelayer/js-auth@6.6.0': {}
+  '@commercelayer/js-auth@6.6.1': {}
 
   '@esbuild/aix-ppc64@0.23.1':
     optional: true

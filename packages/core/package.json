@@ -53,7 +53,7 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@commercelayer/js-auth": "^6.6.0",
+    "@commercelayer/js-auth": "^6.6.1",
     "@oclif/core": "^3.27.0",
     "chalk": "^4.1.2",
     "jsonwebtoken": "^9.0.2",
