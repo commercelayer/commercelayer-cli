@@ -16,7 +16,7 @@ export const triggers: Record<string, Trigger> = {
 	pending: {
       action: 'pending',
       trigger: '_pending',
-      description: 'Send this attribute if you want to move a draft or placing order to pending.',
+      description: 'Send this attribute if you want to move a draft or placing order to pending. Cannot be passed by sales channels.',
     },
 	place: {
       action: 'place',
@@ -31,12 +31,12 @@ export const triggers: Record<string, Trigger> = {
 	approve: {
       action: 'approve',
       trigger: '_approve',
-      description: 'Send this attribute if you want to approve a placed order.',
+      description: 'Send this attribute if you want to approve a placed order. Cannot be passed by sales channels.',
     },
 	approve_and_capture: {
       action: 'approve_and_capture',
       trigger: '_approve_and_capture',
-      description: 'Send this attribute if you want to approve and capture a placed order.',
+      description: 'Send this attribute if you want to approve and capture a placed order. Cannot be passed by sales channels.',
     },
 	authorize: {
       action: 'authorize',
@@ -51,17 +51,17 @@ export const triggers: Record<string, Trigger> = {
 	capture: {
       action: 'capture',
       trigger: '_capture',
-      description: 'Send this attribute if you want to capture an authorized order.',
+      description: 'Send this attribute if you want to capture an authorized order. Cannot be passed by sales channels.',
     },
 	refund: {
       action: 'refund',
       trigger: '_refund',
-      description: 'Send this attribute if you want to refund a captured order.',
+      description: 'Send this attribute if you want to refund a captured order. Cannot be passed by sales channels.',
     },
 	fulfill: {
       action: 'fulfill',
       trigger: '_fulfill',
-      description: 'Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).',
+      description: 'Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered). Cannot be passed by sales channels.',
     },
 	update_taxes: {
       action: 'update_taxes',
@@ -141,17 +141,17 @@ export const triggers: Record<string, Trigger> = {
 	start_editing: {
       action: 'start_editing',
       trigger: '_start_editing',
-      description: 'Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount.',
+      description: 'Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount. Cannot be passed by sales channels.',
     },
 	stop_editing: {
       action: 'stop_editing',
       trigger: '_stop_editing',
-      description: 'Send this attribute to stop the editing for the order and return back to placed status.',
+      description: 'Send this attribute to stop the editing for the order and return back to placed status. Cannot be passed by sales channels.',
     },
 	reset_circuit: {
       action: 'reset_circuit',
       trigger: '_reset_circuit',
-      description: 'Send this attribute if you want to reset the circuit breaker associated to this resource to \'closed\' state and zero failures count.',
+      description: 'Send this attribute if you want to reset the circuit breaker associated to this resource to \'closed\' state and zero failures count. Cannot be passed by sales channels.',
     },
 }
 

@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('authorizations:capture', () => {
   test
-    .timeout(38000)
+    .timeout(41000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {
