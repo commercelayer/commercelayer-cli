@@ -1,3 +1,10 @@
+## [5.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.1.1...v5.1.2) (2024-10-21)
+
+
+### Bug Fixes
+
+* fix security issue ([a2a21ef](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/a2a21ef4c68f944b05863090cf8a3fbf211de885))
+
 ## [5.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.1.0...v5.1.1) (2024-08-21)
 
 
