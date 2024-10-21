@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.2.0...v4.2.1) (2024-10-21)
+
+
+### Bug Fixes
+
+* fix security issue ([40c8e7b](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/40c8e7b88dd9058e949ebc354b1fc38023f90ca2))
+
 # [4.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.1.0...v4.2.0) (2024-08-23)
 
 
