@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "4.7.1",
+  "version": "4.8.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-triggers",
   "repository": "commercelayer/commercelayer-cli-plugin-triggers",
@@ -57,7 +57,7 @@
     "@commercelayer/cli-dev": "^3.0.6",
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@oclif/plugin-help": "^6.2.16",
-   "@oclif/test": "^3.2.15",
+    "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.20",
