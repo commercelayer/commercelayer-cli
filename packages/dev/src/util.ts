@@ -1,5 +1,5 @@
 // import _ = require('lodash')
-import _template from 'lodash.template'
+import _template from 'lodash/template'
 
 
 export function castArray<T>(input?: T | T[]): T[] {

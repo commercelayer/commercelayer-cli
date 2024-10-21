@@ -3,7 +3,7 @@ import { Command, Config, Flags, type HelpBase, type Interfaces, loadHelpClass, 
 import * as fs from 'fs-extra'
 import * as path from 'node:path'
 import { URL } from 'node:url'
-import _template from 'lodash.template'
+import _template from 'lodash/template'
 
 import { castArray, compact, sortBy, template, uniqBy } from '../util'
 import { HelpCompatibilityWrapper } from '../help-compatibility'
