@@ -1,3 +1,10 @@
+# [4.9.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.8.0...v4.9.0) (2024-10-23)
+
+
+### Features
+
+* update triggers of authorizations and captures resources ([cc39f77](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/cc39f77c59c442da35fb55ea1712015a765b54cf))
+
 # [4.8.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.7.1...v4.8.0) (2024-10-21)
 
 
