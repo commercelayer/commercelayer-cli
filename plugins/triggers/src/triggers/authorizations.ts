@@ -23,6 +23,11 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_void',
       description: 'Send this attribute if you want to create a void for this authorization.',
     },
+	cancel: {
+      action: 'cancel',
+      trigger: '_cancel',
+      description: 'Send this attribute if you want to void a succeeded authorization of a pending order (which is left unpaid).',
+    },
 }
 
 
@@ -30,4 +35,5 @@ export type ActionType =
   'forward' |
 	'capture' |
 	'capture_amount_cents' |
-	'void'
+	'void' |
+	'cancel'

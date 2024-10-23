@@ -18,10 +18,16 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_refund_amount_cents',
       description: 'Send this attribute as a value in cents if you want to overwrite the amount to be refunded.',
     },
+	cancel: {
+      action: 'cancel',
+      trigger: '_cancel',
+      description: 'Send this attribute if you want to refund a succeeded capture of a pending order (which is left unpaid).',
+    },
 }
 
 
 export type ActionType =
   'forward' |
 	'refund' |
-	'refund_amount_cents'
+	'refund_amount_cents' |
+	'cancel'
