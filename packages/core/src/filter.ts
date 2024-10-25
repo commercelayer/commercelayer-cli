@@ -1,9 +1,11 @@
-import config from "./config";
+import config from "./config"
 
 
 const FILTERS: Filter[] = [
 	{ predicate: '*_eq', description: 'The attribute is equal to the filter value' },
+	{ predicate: '*_eq_or_null', description: 'The attribute is equal to the filter value, including null values' },
 	{ predicate: '*_not_eq', description: 'The attribute is not equal to the filter value' },
+	{ predicate: '*_not_eq_or_null', description: 'The attribute is not equal to the filter value, including null values' },
 	{ predicate: '*_matches', description: 'The attribute matches the filter value with "LIKE" operator' },
 	{ predicate: '*_does_not_match', description: 'The attribute does not match the filter value with "LIKE" operator' },
 	{ predicate: '*_matches_any', description: 'The attribute matches all of the filter values (comma-separated) with "LIKE" operator' },
