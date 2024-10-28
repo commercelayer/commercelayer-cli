@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.3.1...v5.4.0) (2024-10-25)
+
+
+### Features
+
+* add eq_or_null and not_eq_or_null filters ([e4cd8d0](https://github.com/commercelayer/commercelayer-cli-core/commit/e4cd8d02cd8386fac0c4c09267d0469aeb51ccb2))
+
 ## [5.3.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.3.0...v5.3.1) (2024-10-11)
 
 
