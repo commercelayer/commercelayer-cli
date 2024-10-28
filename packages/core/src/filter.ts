@@ -21,7 +21,9 @@ const FILTERS: Filter[] = [
 	{ predicate: '*_null', description: 'The attribute is null' },
 	{ predicate: '*_not_null', description: 'The attribute is not null' },
 	{ predicate: '*_in', description: 'The attribute matches any of the filter values (comma-separated)' },
+	{ predicate: '*_in_or_null', description: 'The attribute matches any of the filter values (comma-separated), including null values' },
 	{ predicate: '*_not_in', description: 'The attribute matches none of the filter values (comma-separated)' },
+	{ predicate: '*_not_in_or_null', description: 'The attribute matches none of the filter values (comma-separated), including null values' },
 	{ predicate: '*_lt_any', description: 'The attribute is less than any of the filter values (comma-separated)' },
 	{ predicate: '*_lteq_any', description: 'The attribute is less than or equal to any of the filter values (comma-separated)' },
 	{ predicate: '*_gt_any', description: 'The attribute is greater than any of the filter values (comma-separated)' },
@@ -50,9 +52,7 @@ const FILTERS: Filter[] = [
 	{ predicate: '*_not_cont_all', description: 'The attribute contains none of the filter values (comma-separated)' },
 	{ predicate: '*_jcont', description: 'The attribute contains a portion of the JSON used as  filter value (works with object only)' },
 	{ predicate: '*_true', description: 'The attribute is true' },
-	{ predicate: '*_false', description: 'The attribute is false' },
-	{ predicate: '*_not_eq_or_null', description: 'The attribute is null or equal to the filter value' },
-	{ predicate: '*_not_in_or_null', description: 'The attribute is null or matches none of the filter values (comma-separated)' }
+	{ predicate: '*_false', description: 'The attribute is false' }
 ] as const
 
 
