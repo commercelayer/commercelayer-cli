@@ -102,6 +102,7 @@ const TAG_RESOURCE_TYPES: readonly string[] = [
 
 const LINK_RESOURCE_TYPES: readonly string[] = [
 	'orders',
+	'skus',
 	'sku_lists'
 ] as const
 
@@ -196,7 +197,7 @@ type ProvisioningConfig = {
 }
 
 type LinksConfig = {
-	default_domain: 'c11r.link',
+	default_domain: string,
 	linkable_resources: readonly string[]
 }
 
@@ -254,7 +255,7 @@ const config: Config = {
 	},
 	application: {
 		kinds: ['integration', 'sales_channel', 'webapp', 'user'],
-		login_scopes: ['market', 'stock_location'],
+		login_scopes: ['market', 'stock_location', 'store'],
 	},
 	imports: {
 		max_size: 10_000,
@@ -311,8 +312,8 @@ const config: Config = {
 		applications: ['user']
 	},
 	links: {
-		linkable_resources: LINK_RESOURCE_TYPES,
-		default_domain: 'c11r.link'
+		default_domain: 'c11r.link',
+		linkable_resources: LINK_RESOURCE_TYPES
 	}
 } as const
 
