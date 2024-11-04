@@ -1,3 +1,10 @@
+## [5.4.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.0...v5.4.1) (2024-10-28)
+
+
+### Bug Fixes
+
+* fix filter predicates ([e3ac898](https://github.com/commercelayer/commercelayer-cli-core/commit/e3ac898b2d3d040a59a148b45e5516a612a8fe98))
+
 # [5.4.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.3.1...v5.4.0) (2024-10-25)
 
 
