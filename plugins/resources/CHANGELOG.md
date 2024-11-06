@@ -1,3 +1,10 @@
+# [6.8.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.6...v6.8.0) (2024-11-06)
+
+
+### Features
+
+* add support for stores resource type ([5f8b97d](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/5f8b97d494469bdea1a9e757c5bf8f80828a8d1e))
+
 ## [6.7.6](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.5...v6.7.6) (2024-10-28)
 
 
