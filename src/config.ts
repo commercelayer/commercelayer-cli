@@ -185,9 +185,9 @@ enum ConfigParams {
 	currentApplication = 'currentApplication',
 	commandRetention = 'commandRetention',
 	applicationTypeCheck = 'applicationTypeCheck',
-	scopeChek = 'scopeCheck',
+	scopeCheck = 'scopeCheck',
 	defaultDomain = 'defaultDomain',
-	test = 'test',
+	test = 'test'
 }
 
 enum ConfigParamsEditable {
@@ -200,7 +200,7 @@ const defaultConfig: any = {
 	commandRetention: 30,	// days of retention
 	defaultDomain: clConfig.api.default_domain,
 	applicationTypeCheck: clConfig.cli.applications,
-	scopeCheck: clConfig.application.login_scopes,
+	scopeCheck: clConfig.application.login_scopes
 }
 
 

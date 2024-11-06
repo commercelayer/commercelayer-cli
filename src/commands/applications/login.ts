@@ -228,7 +228,7 @@ const checkScope = (scopeFlags: string[] | undefined): AuthScope => {
 			if ((colonIdx < 1) || (colonIdx === s.length - 1)) throw new Error(`Invalid scope: ${clColor.msg.error(s)}`)
 			if (scope.includes(s)) throw new Error(`Duplicate login scope: ${clColor.msg.error(s)}`)
 
-			const scopeCheck = configParam(ConfigParams.scopeChek)
+			const scopeCheck = configParam(ConfigParams.scopeCheck)
 			if (scopeCheck && !scopeCheck.includes(scopePrefix))
 				throw new CLIError(`Invalid scope prefix: ${clColor.msg.error(scopePrefix)}`)
 
