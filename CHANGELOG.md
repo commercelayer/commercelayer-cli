@@ -1,3 +1,10 @@
+# [6.3.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.6...v6.3.0) (2024-11-06)
+
+
+### Features
+
+* add support for store login scope ([109323d](https://github.com/commercelayer/commercelayer-cli/commit/109323d4deeecafea53443f12c0410cbb88633ea))
+
 ## [6.2.6](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.5...v6.2.6) (2024-10-21)
 
 
