@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.3.0...v6.4.0) (2024-11-22)
+
+
+### Features
+
+* add supporto to links plugin ([55df7e7](https://github.com/commercelayer/commercelayer-cli/commit/55df7e7d4483b53cbe50b8a4efe1c899b6ea5d13))
+
 # [6.3.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.2.6...v6.3.0) (2024-11-06)
 
 
