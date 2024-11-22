@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.4.0...v6.5.0) (2024-11-22)
+
+
+### Features
+
+* make available plugins list sortable ([aed1312](https://github.com/commercelayer/commercelayer-cli/commit/aed131249e66bc0d8c571d95b45e71d7b467d3bc))
+
 # [6.4.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.3.0...v6.4.0) (2024-11-22)
 
 
