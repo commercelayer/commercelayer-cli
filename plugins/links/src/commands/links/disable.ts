@@ -4,7 +4,7 @@ import { clColor } from '@commercelayer/cli-core'
 
 export default class LinksDisable extends BaseIdCommand {
 
-  static override description = 'disable an existing enabled link'
+  static override description = 'disable an existent enabled link'
 
   static override examples = [
     'commercelayer links:disable <link-id>'

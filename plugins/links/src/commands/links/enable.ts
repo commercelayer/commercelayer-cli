@@ -4,7 +4,7 @@ import { clColor } from '@commercelayer/cli-core'
 
 export default class LinksEnable extends BaseIdCommand {
 
-  static override description = 'enable an existend disabled link'
+  static override description = 'enable an existent disabled link'
 
   static override examples = [
     'commercelayer links:enable <link-id>'

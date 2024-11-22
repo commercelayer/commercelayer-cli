@@ -31,7 +31,7 @@ export const fillUTCDate = (date: string): string => {
 }
 
 
-export const formatDate = (value: string, locale?: boolean): string => {
+export const formatDate = (value?: string | null, locale?: boolean): string => {
   if (!value) return ''
   return locale? clOutput.localeDate(value) : clOutput.cleanDate(value)
 }
