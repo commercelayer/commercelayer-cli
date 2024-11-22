@@ -18,8 +18,12 @@ export default class PluginsAvailable extends Command {
     hidden: Flags.boolean({
       char: 'H',
       description: 'show also enabled but hidden plugins',
-      hidden: true,
+      hidden: true
     }),
+    sort: Flags.boolean({
+      char: 'S',
+      description: 'order by plugin name'
+    })
   }
 
 
@@ -33,11 +37,12 @@ export default class PluginsAvailable extends Command {
     const availablePlugins = AvailablePlugins.filter(p => ((!p.hidden || flags.hidden) && p.enabled))
 
     if (availablePlugins && (availablePlugins.length > 0)) {
+      if (flags.sort) availablePlugins.sort((a, b) => a.name.localeCompare(b.name))
       cliux.Table.table(availablePlugins, {
-          key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? clColor.dim : clColor).blueBright(row.name) },
-          description: { header: 'DESCRIPTION', get: row => (row.hidden ? clColor.dim(row.description) : row.description) },
-        }, {
-          printLine: clUtil.log,
+        key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? clColor.dim : clColor).blueBright(row.name) },
+        description: { header: 'DESCRIPTION', get: row => (row.hidden ? clColor.dim(row.description) : row.description) },
+      }, {
+        printLine: clUtil.log,
       })
     } else this.log(clColor.italic('No available plugins'))
 
@@ -58,20 +63,20 @@ type PluginRelease = {
 }
 
 const AvailablePlugins: PluginRelease[] = [
-  { name: 'resources',    plugin: '@commercelayer/cli-plugin-resources',    description: 'CRUD operations on API resources',    enabled: true },
-  { name: 'seeder',       plugin: '@commercelayer/cli-plugin-seeder',       description: 'Organization data seeder',            enabled: true },
-  { name: 'imports',      plugin: '@commercelayer/cli-plugin-imports',      description: 'Organization imports manager',        enabled: true },
-  { name: 'webhooks',     plugin: '@commercelayer/cli-plugin-webhooks',     description: 'Organization webhooks analyzer',      enabled: true },
-  { name: 'orders',       plugin: '@commercelayer/cli-plugin-orders',       description: 'Organization orders management',      enabled: true },
-  { name: 'checkout',     plugin: '@commercelayer/cli-plugin-checkout',     description: 'Checkout URLs generation',            enabled: true },
-  { name: 'triggers',     plugin: '@commercelayer/cli-plugin-triggers',     description: 'Execute actions on resources',        enabled: true },
-  { name: 'token',        plugin: '@commercelayer/cli-plugin-token',        description: 'Manage Commerce Layer access tokens', enabled: true },
-  { name: 'microstore',   plugin: '@commercelayer/cli-plugin-microstore',   description: 'Microstore URLs generation',          enabled: true },
-  { name: 'exports',      plugin: '@commercelayer/cli-plugin-exports',      description: 'Organization exports manager',        enabled: true },
-  { name: 'cleanups',     plugin: '@commercelayer/cli-plugin-cleanups',     description: 'Organization cleanups manager',       enabled: true },
-  { name: 'tags',         plugin: '@commercelayer/cli-plugin-tags',         description: 'Manage resources tags',               enabled: true },
-  { name: 'provisioning', plugin: '@commercelayer/cli-plugin-provisioning', description: 'Add support for Provisioning API',    enabled: true },
-  { name: 'links',        plugin: '@commercelayer/cli-plugin-links',        description: 'Manage links to resources',           enabled: true }
+  { name: 'resources', plugin: '@commercelayer/cli-plugin-resources', description: 'CRUD operations on API resources', enabled: true },
+  { name: 'seeder', plugin: '@commercelayer/cli-plugin-seeder', description: 'Organization data seeder', enabled: true },
+  { name: 'imports', plugin: '@commercelayer/cli-plugin-imports', description: 'Organization imports manager', enabled: true },
+  { name: 'webhooks', plugin: '@commercelayer/cli-plugin-webhooks', description: 'Organization webhooks analyzer', enabled: true },
+  { name: 'orders', plugin: '@commercelayer/cli-plugin-orders', description: 'Organization orders management', enabled: true },
+  { name: 'checkout', plugin: '@commercelayer/cli-plugin-checkout', description: 'Checkout URLs generation', enabled: true },
+  { name: 'triggers', plugin: '@commercelayer/cli-plugin-triggers', description: 'Execute actions on resources', enabled: true },
+  { name: 'token', plugin: '@commercelayer/cli-plugin-token', description: 'Manage Commerce Layer access tokens', enabled: true },
+  { name: 'microstore', plugin: '@commercelayer/cli-plugin-microstore', description: 'Microstore URLs generation', enabled: true },
+  { name: 'exports', plugin: '@commercelayer/cli-plugin-exports', description: 'Organization exports manager', enabled: true },
+  { name: 'cleanups', plugin: '@commercelayer/cli-plugin-cleanups', description: 'Organization cleanups manager', enabled: true },
+  { name: 'tags', plugin: '@commercelayer/cli-plugin-tags', description: 'Manage resources tags', enabled: true },
+  { name: 'provisioning', plugin: '@commercelayer/cli-plugin-provisioning', description: 'Add support for Provisioning API', enabled: true },
+  { name: 'links', plugin: '@commercelayer/cli-plugin-links', description: 'Manage links to resources', enabled: true }
 ]
 
 
@@ -105,8 +110,8 @@ const getInstalledPlugins = (config: Config): PluginRelease[] => {
 }
 
 const isPluginInstalled = (name: string, config: Config): boolean => {
-  const plugin = name.startsWith(PLUGIN_PREFIX)? name : `${PLUGIN_PREFIX}${name}`
-  return (getInstalledPlugins(config).findIndex(p => (p.plugin === plugin)) > -1) 
+  const plugin = name.startsWith(PLUGIN_PREFIX) ? name : `${PLUGIN_PREFIX}${name}`
+  return (getInstalledPlugins(config).findIndex(p => (p.plugin === plugin)) > -1)
 }
 
 
