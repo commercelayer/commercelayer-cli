@@ -127,7 +127,8 @@ export abstract class BaseEditCommand extends BaseCommand {
       charAliases: ['r'],
       description: 'the type of the resource for which the link is created',
       aliases: ['type', 'resource'],
-      required: false
+      required: false,
+      options: clConfig.links.linkable_resources
     }),
     item_id: Flags.string({
       char: 'i',
