@@ -1,3 +1,11 @@
+## [6.8.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.8.0...v6.8.1) (2024-11-26)
+
+
+### Bug Fixes
+
+* fix fields filter issue ([5c8d71a](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/5c8d71a72883ae3025c32a317214a7288c5fbb7a))
+* fix resource types ([b438461](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/b438461638b720952128e1c8d83d8149094b5b0a))
+
 # [6.8.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.7.6...v6.8.0) (2024-11-06)
 
 
