@@ -367,7 +367,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
 
         }
 
-        const values = val.split(',').map(v => v.trim())
+        const values = val.split(',').map(v => v.trim()).filter(v => v)
         if (values[0].trim() === '') this.error(`No fields defined for resource ${clColor.api.resource(res)}`)
 
         if (fields[res] === undefined) fields[res] = []
