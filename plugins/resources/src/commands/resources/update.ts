@@ -204,7 +204,7 @@ export default class ResourcesUpdate extends Command {
 
 
       // Save command arguments
-      if (saveCmd) this.saveParams(saveCmd, { type: resource.api }, OPERATION, params)
+      if (saveCmd) this.saveParams(saveCmd, { type: resource.type }, OPERATION, params)
 
 
       return out

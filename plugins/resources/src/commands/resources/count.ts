@@ -49,7 +49,7 @@ export default class ResourcesCount extends BaseCommand {
     const filters = this.whereFlag(flags.where)
 
 
-    const humanized = clApi.humanizeResource(resource.api as string)
+    const humanized = clApi.humanizeResource(resource.type)
 
     this.log()
     if (!flags.doc) cliux.action.start(`Counting ${humanized}`)

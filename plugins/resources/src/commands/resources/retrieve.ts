@@ -110,7 +110,7 @@ export default class ResourcesRetrieve extends Command {
       // Save command output
       if (flags.save || flags['save-path']) this.saveOutput(out, flags)
       // Save command arguments
-      if (saveCmd) this.saveParams(saveCmd, { type: resource.api, id }, OPERATION, params)
+      if (saveCmd) this.saveParams(saveCmd, { type: resource.type, id }, OPERATION, params)
 
 
       return out

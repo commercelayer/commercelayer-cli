@@ -37,11 +37,6 @@ const getResourcesJson = async (): Promise<any> => {
 }
 
 
-const isSingleton = (res: string): boolean => {
-	return (clText.singularize(res) === res)
-}
-
-
 const parseResourcesSchema = async (): Promise<ApiResource[]> => {
 
 	const resJson = await getResourcesJson()
@@ -51,6 +46,7 @@ const parseResourcesSchema = async (): Promise<ApiResource[]> => {
 		const resList = resJson.data.map((r: { id: string; attributes: { singleton: boolean } }) => {
 			const item = {
 				name: r.id,
+        type: clText.pluralize(r.id),
 				api: r.attributes.singleton ? r.id : clText.pluralize(r.id),
 				model: clText.camelize(r.id),
 				singleton: r.attributes.singleton,
@@ -70,12 +66,14 @@ const parseResourcesSchema = async (): Promise<ApiResource[]> => {
 const parseResourcesSdk = async (): Promise<ApiResource[]> => {
 
 	const resList = CommerceLayerStatic.resources().map(r => {
-		const singular = clText.singularize(r)
+    const res = r as ResourceTypeLock
+		const singular = clText.singularize(res)
 		const item = {
 			name: singular,
-			api: r as ResourceTypeLock,
+      type: res,
+			api: CommerceLayerStatic.isSingleton(res)? clText.singularize(res) : res,
 			model: clText.camelize(singular),
-			singleton: isSingleton(r),
+			singleton: CommerceLayerStatic.isSingleton(res),
 		}
 		return item
 	})
@@ -98,7 +96,7 @@ const exportResources = async ({ source = 'sdk', variable = false, name = 'resou
 
 	const resLines = resources.map(res => {
 		let item = `${tab ? '\t' : ''}{ `
-		item += `name: '${res.name}', api: '${res.api}', model: '${res.model}'`
+		item += `name: '${res.name}', type: '${res.type}', api: '${res.api}', model: '${res.model}'`
 		if (res.singleton) item += ', singleton: true'
 		item += ' },'
 		return item

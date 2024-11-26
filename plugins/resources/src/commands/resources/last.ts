@@ -34,7 +34,7 @@ export default class ResourcesLast extends BaseCommand {
 
     try {
 
-      const last = this.lastResources(flags.organization)[resource.api]
+      const last = this.lastResources(flags.organization)[resource.type]
 
       let id = clColor.dim('none')
       let label = ''
