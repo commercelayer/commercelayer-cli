@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.3...v3.0.4) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([1ebc036](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/1ebc036b7644650b43aaa461d1fd03e966bb0fdf))
+
 ## [3.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.2...v3.0.3) (2024-10-21)
 
 
