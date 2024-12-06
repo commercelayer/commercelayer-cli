@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.6...v1.0.7) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([9c1131d](https://github.com/commercelayer/commercelayer-cli-ux/commit/9c1131ddaa728d186b7f10bf0b7371a6c47d804e))
+
 ## [1.0.6](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.5...v1.0.6) (2024-09-13)
 
 
