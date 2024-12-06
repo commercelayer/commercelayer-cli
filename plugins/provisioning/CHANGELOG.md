@@ -1,3 +1,12 @@
+## [2.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.2...v2.0.3) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix linter issues ([565b320](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/565b320469108fcd0122f582f62915ff4f2629f6))
+* fix security issue ([a8d3c68](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/a8d3c68f575026cdc68df7a2c44ea039d1e1823f))
+* fix singleton types ([a73ef93](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/a73ef9325f07e494bc01e162656b44ba766b5323))
+
 ## [2.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.1...v2.0.2) (2024-10-21)
 
 
