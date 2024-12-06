@@ -1,3 +1,10 @@
+## [6.2.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.2.1...v6.2.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([fdfd9b7](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/fdfd9b7a2f317c243b772b6fa2e117b0d551e37e))
+
 ## [6.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.2.0...v6.2.1) (2024-10-21)
 
 
