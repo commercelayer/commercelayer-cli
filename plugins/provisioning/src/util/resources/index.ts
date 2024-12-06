@@ -2,19 +2,20 @@ import type { ResourceTypeLock } from '@commercelayer/provisioning-sdk'
 import RESOURCES from './available'
 
 
-interface Resource {
-	name: string;
-	api: ResourceTypeLock;
-	model: string;
-	singleton?: boolean;
+interface ApiResource {
+	name: string
+  type: ResourceTypeLock
+	api: string
+	model: string
+	singleton?: boolean
 }
 
 
-const resources: readonly Resource[] = RESOURCES
+const resources: readonly ApiResource[] = RESOURCES
 
 
 
-const findResource = (res: string, { singular = false } = {}): (Resource | undefined) => {
+const findResource = (res: string, { singular = false } = {}): (ApiResource | undefined) => {
 	if (res === undefined) return undefined
 	const lowRes = res.toLowerCase()
 	return resources.find(r => {
@@ -28,4 +29,4 @@ const resourceList = (field: 'name' | 'api' | 'model'): string[] => {
 }
 
 
-export { findResource, resourceList, type Resource }
+export { findResource, resourceList, type ApiResource as Resource }

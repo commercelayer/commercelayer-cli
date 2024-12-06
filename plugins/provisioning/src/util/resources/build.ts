@@ -7,20 +7,18 @@ import type { ResourceTypeLock } from '@commercelayer/provisioning-sdk'
 import { clText } from '@commercelayer/cli-core'
 
 
-const isSingleton = (res: string): boolean => {
-	return (clText.singularize(res) === res)
-}
-
 
 const parseResourcesSdk = async (): Promise<Resource[]> => {
 
 	const resList = CommerceLayerProvisioningStatic.resources().map(r => {
-		const singular = clText.singularize(r)
+    const res = r as ResourceTypeLock
+		const singular = clText.singularize(res)
 		const item = {
 			name: singular,
-			api: r as ResourceTypeLock,
+      type: res,
+			api: CommerceLayerProvisioningStatic.isSingleton(res)? clText.singularize(res) : res,
 			model: clText.camelize(singular),
-			singleton: isSingleton(r),
+			singleton: CommerceLayerProvisioningStatic.isSingleton(res),
 		}
 		return item
 	})
@@ -44,7 +42,7 @@ const exportResources = async ({ source = 'sdk', variable = false, name = 'resou
 
 	const resLines = resources.map(res => {
 		let item = `${tab ? '\t' : ''}{ `
-		item += `name: '${res.name}', api: '${res.api}', model: '${res.model}'`
+		item += `name: '${res.name}', type: '${res.type}', api: '${res.api}', model: '${res.model}'`
 		if (res.singleton) item += ', singleton: true'
 		item += ' },'
 		return item
