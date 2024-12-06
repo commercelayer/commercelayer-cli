@@ -127,7 +127,7 @@ export default class ProvisioningUpdate extends Command {
     // Include flags
     const include: string[] = this.includeFlag(flags.include, relationships)
     // Fields flags
-    const fields = this.fieldsFlag(flags.fields, resource.api as string)
+    const fields = this.fieldsFlag(flags.fields, resource.type)
 
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
@@ -168,7 +168,7 @@ export default class ProvisioningUpdate extends Command {
       this.printHeaders(rawReader?.headers, flags)
       this.printOutput(out, flags)
 
-      this.log(`\n${clColor.style.success('Successfully')} updated resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(res.id)}\n`)
+      this.log(`\n${clColor.style.success('Successfully')} updated resource of type ${clColor.style.resource(resource.type)} with id ${clColor.style.id(res.id)}\n`)
 
 
       // Save command arguments

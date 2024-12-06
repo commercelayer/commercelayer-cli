@@ -90,7 +90,7 @@ export default class ProvisioningList extends Command {
 		// Include flags
 		const include: string[] = this.includeFlag(flags.include, undefined, flags['force-include'])
 		// Fields flags
-		const fields = this.fieldsFlag(flags.fields, resource.api as string)
+		const fields = this.fieldsFlag(flags.fields, resource.type)
 		// Where flags
 		const wheres = this.whereFlag(flags.where)
 		// Sort flags

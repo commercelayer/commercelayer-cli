@@ -4,7 +4,7 @@ import RESOURCES from './available'
 
 interface ApiResource {
 	name: string
-  type: ResourceTypeLock
+	type: ResourceTypeLock
 	api: string
 	model: string
 	singleton?: boolean
@@ -19,7 +19,7 @@ const findResource = (res: string, { singular = false } = {}): (ApiResource | un
 	if (res === undefined) return undefined
 	const lowRes = res.toLowerCase()
 	return resources.find(r => {
-		return (lowRes === r.api) || (singular && (lowRes === r.name))
+		return (lowRes === r.type) || (singular && (lowRes === r.name))
 	})
 }
 

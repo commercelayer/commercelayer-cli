@@ -58,7 +58,7 @@ export default class ProvisioningDelete extends Command {
 
 			if (showHeaders) this.printHeaders(rawReader?.headers, flags)
 
-			this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.api as string)} with id ${clColor.style.id(id)}\n`)
+			this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.type)} with id ${clColor.style.id(id)}\n`)
 
 		} catch (error) {
 			if (isRequestInterrupted(error) && reqReader) {
