@@ -1,3 +1,10 @@
+## [5.4.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.1...v5.4.2) (2024-11-04)
+
+
+### Bug Fixes
+
+* fix links config and update login scopes ([8aa9657](https://github.com/commercelayer/commercelayer-cli-core/commit/8aa9657ea8e6d36cabe690283e45acaa9bd418ca))
+
 ## [5.4.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.0...v5.4.1) (2024-10-28)
 
 
