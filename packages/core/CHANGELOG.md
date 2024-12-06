@@ -1,3 +1,10 @@
+## [5.4.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.2...v5.4.3) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([ffe8b72](https://github.com/commercelayer/commercelayer-cli-core/commit/ffe8b729689620ba77dfb5f6d49efcd67004542d))
+
 ## [5.4.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.1...v5.4.2) (2024-11-04)
 
 
