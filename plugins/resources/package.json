@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "6.8.1",
+  "version": "6.9.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-resources",
   "repository": "commercelayer/commercelayer-cli-plugin-resources",
