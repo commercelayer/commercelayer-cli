@@ -17,39 +17,39 @@ export default abstract class extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
-      hidden: true,
+      hidden: true
     }),
     domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
+      env: 'CL_CLI_DOMAIN'
     }),
     accessToken: Flags.string({
       hidden: true,
       required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
+      env: 'CL_CLI_ACCESS_TOKEN'
     }),
     print: Flags.boolean({
       char: 'p',
-      description: 'print out the modified order',
+      description: 'print out the modified order'
     }),
     json: Flags.boolean({
       char: 'j',
       description: 'print result in JSON format',
-      dependsOn: ['print'],
+      dependsOn: ['print']
     }),
     unformatted: Flags.boolean({
       char: 'u',
       description: 'print JSON output without indentation',
-      dependsOn: ['json'],
-    }),
+      dependsOn: ['json']
+    })
   }
 
 
   static args = {
-    id: Args.string({ name: 'id', description: 'the unique id of the order', required: true }),
+    id: Args.string({ name: 'id', description: 'the unique id of the order', required: true })
   }
 
 
@@ -60,8 +60,9 @@ export default abstract class extends Command {
   }
 
 
-  async catch(error: any): Promise<any> {
-    this.handleError(error as Error)
+  async catch(error: CommandError): Promise<any> {
+    if (error.message?.includes('quit')) this.exit()
+    else this.handleError(error as Error)
   }
 
 

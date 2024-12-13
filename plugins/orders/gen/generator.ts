@@ -14,10 +14,12 @@ const SPECS_DIR = 'test/commands/orders'
 
 const clean = () => {
 
+  const staticFiles = ['index.ts', 'noc.ts', 'history.ts']
+
   // Clean commands dir
   const files = fs.readdirSync(COMMANDS_DIR)
   files.forEach(f => {
-    if (!['index.ts', 'noc.ts'].includes(f)) fs.unlinkSync(`${COMMANDS_DIR}/${f}`)
+    if (!staticFiles.includes(f)) fs.unlinkSync(`${COMMANDS_DIR}/${f}`)
   })
   console.log('Deleted command files')
 
