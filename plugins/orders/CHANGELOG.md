@@ -1,16 +1,16 @@
-# [5.2.0-beta.2](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.2.0-beta.1...v5.2.0-beta.2) (2024-08-20)
+## [5.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.1.1...v5.1.2) (2024-10-21)
 
 
 ### Bug Fixes
 
-* update readme ([dc3b36d](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/dc3b36d667cccb912ddeeca39c88a3908a0c357b))
+* fix security issue ([a2a21ef](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/a2a21ef4c68f944b05863090cf8a3fbf211de885))
 
-# [5.2.0-beta.1](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.1.0...v5.2.0-beta.1) (2024-08-20)
+## [5.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.1.0...v5.1.1) (2024-08-21)
 
 
-### Features
+### Bug Fixes
 
-* migrate to oclif/core v4 and oclif/test v4 ([94dabae](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/94dabae4c69c799ca9101d6f275058ece7f943c9))
+* update readme ([ce0e85a](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/ce0e85a786acae26b8b9b42cb529a136a52d9818))
 
 # [5.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.0.0...v5.1.0) (2024-05-31)
 

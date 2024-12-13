@@ -14,7 +14,7 @@ export default class OrdersIndex extends Command {
   }
 
   static args = {
-    ...Command.args,
+    ...Command.args
   }
 
   async run(): Promise<any> {
