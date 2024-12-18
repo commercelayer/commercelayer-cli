@@ -7,6 +7,7 @@ import { checkMandatory, checkList, checkValidity } from '../../check'
 
 export default class TokenGenerate extends Command {
 
+  // Token generation doesn't work with current authentication
   static hidden = true
   static deprecated = true
 
