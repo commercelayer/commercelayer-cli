@@ -7,6 +7,9 @@ import { checkMandatory, checkList, checkValidity } from '../../check'
 
 export default class TokenGenerate extends Command {
 
+  static hidden = true
+  static deprecated = true
+
   static description = 'start a wizard to generate a custom access token'
 
   static examples = [

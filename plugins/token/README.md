@@ -23,7 +23,6 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 <!-- commands -->
 
 * [`commercelayer token:decode TOKEN`](#commercelayer-tokendecode-token)
-* [`commercelayer token:generate`](#commercelayer-tokengenerate)
 * [`commercelayer token:get`](#commercelayer-tokenget)
 * [`commercelayer token:revoke TOKEN`](#commercelayer-tokenrevoke-token)
 
@@ -52,45 +51,23 @@ EXAMPLES
 
 _See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
 
-### `commercelayer token:generate`
-
-Start a wizard to generate a custom access token.
-
-```sh-session
-USAGE
-  $ commercelayer token:generate [-i] [-c]
-
-FLAGS
-  -c, --check  check generated access token
-  -i, --info   print generated token info
-
-DESCRIPTION
-  start a wizard to generate a custom access token
-
-EXAMPLES
-  $ commercelayer token:generate
-
-  $ cl token:generate
-```
-
-_See code: [src/commands/token/generate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/generate.ts)_
-
 ### `commercelayer token:get`
 
 Get a new access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:get -o <value> (-s <value> -i <value>) [-S <value> ] [-e <value> -p <value>] [--info]
+  $ commercelayer token:get [-o <value>] (-s <value> -i <value>) [-S <value>... ] [-e <value> -p <value>]
+    [--info]
 
 FLAGS
   -S, --scope=<value>...      access token scope (market, stock location)
   -e, --email=<value>         customer email
   -i, --clientId=<value>      (required) application client_id
-  -o, --organization=<value>  (required) the slug of your organization
+  -o, --organization=<value>  the slug of your organization
   -p, --password=<value>      customer secret password
   -s, --clientSecret=<value>  application client_secret
-  --info                      show access token info
+      --info                  show access token info
 
 DESCRIPTION
   get a new access token
@@ -99,6 +76,8 @@ EXAMPLES
   $ commercelayer token:get -o <organizationSlug> -i <clientId> -s <clientSecret>
 
   $ cl token:get -o <organizationSlug> -i <clientId> -S <scope> --info
+
+  $ cl token:get -i <clientId> -s <clientSecret>
 ```
 
 _See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/get.ts)_
@@ -109,7 +88,7 @@ Revoke a Commerce Layer access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:revoke TOKEN -o <value> (-s <value> -i <value>) [-S <value> ]
+  $ commercelayer token:revoke TOKEN [-o <value>] (-s <value> -i <value>) [-S <value>... ]
 
 ARGUMENTS
   TOKEN  access token to revoke
@@ -117,7 +96,7 @@ ARGUMENTS
 FLAGS
   -S, --scope=<value>...      access token scope
   -i, --clientId=<value>      (required) application client_id
-  -o, --organization=<value>  (required) the slug of your organization
+  -o, --organization=<value>  the slug of your organization
   -s, --clientSecret=<value>  application client_secret
 
 DESCRIPTION
@@ -126,7 +105,7 @@ DESCRIPTION
 EXAMPLES
   $ commercelayer token:revoke -o <organizationSlug> <accessToken> -i <clientId>
 
-  $ cl token:revoke -o <organizationSlug> <accessToken> -i <clientId>
+  $ cl token:revoke -o <organizationSlug> <accessToken> -i <clientId> -s <clientSecret>
 ```
 
 _See code: [src/commands/token/revoke.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/revoke.ts)_
