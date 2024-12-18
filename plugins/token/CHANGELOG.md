@@ -1,3 +1,15 @@
+# [7.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.2.2...v7.0.0) (2024-12-18)
+
+
+### Features
+
+* remove generate command ([6fe30fe](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/6fe30fe3be125008ccf9eee4d35dbd34a5a1ef53))
+
+
+### BREAKING CHANGES
+
+* removed npo more working generate command
+
 ## [6.2.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.2.1...v6.2.2) (2024-12-06)
 
 
