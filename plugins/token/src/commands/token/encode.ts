@@ -5,17 +5,13 @@ import { testAccessToken, decodeAccessToken } from '../../token'
 import { checkMandatory, checkList, checkValidity } from '../../check'
 
 
-export default class TokenGenerate extends Command {
-
-  // Token generation doesn't work with current authentication
-  static hidden = true
-  static deprecated = true
+export default class TokenEncode extends Command {
 
   static description = 'start a wizard to generate a custom access token'
 
   static examples = [
-    '$ commercelayer token:generate',
-    '$ cl token:generate',
+    '$ commercelayer token:encode',
+    '$ cl token:encode'
   ]
 
   static flags = {
@@ -23,21 +19,21 @@ export default class TokenGenerate extends Command {
       char: 'd',
       required: false,
       hidden: true,
-      env: 'CL_CLI_DOMAIN',
+      env: 'CL_CLI_DOMAIN'
     }),
     print: Flags.boolean({
       char: 'p',
       description: 'print users answers',
-      hidden: true,
+      hidden: true
     }),
     info: Flags.boolean({
       char: 'i',
-      description: 'print generated token info',
+      description: 'print generated token info'
     }),
     check: Flags.boolean({
       char: 'c',
-      description: 'check generated access token',
-    }),
+      description: 'check generated access token'
+    })
   }
 
   static args = {}
@@ -57,7 +53,7 @@ export default class TokenGenerate extends Command {
       })
 
 
-    const { flags } = await this.parse(TokenGenerate)
+    const { flags } = await this.parse(TokenEncode)
 
 
     if (flags.print) {

@@ -55,7 +55,7 @@
   "devDependencies": {
     "@commercelayer/cli-dev": "^3.0.7",
     "@commercelayer/eslint-config-ts": "^1.4.5",
-    "@oclif/plugin-help": "^6.2.20",
+    "@oclif/plugin-help": "^6.2.21",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -75,6 +75,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^5.4.3",
     "@commercelayer/cli-ux": "^1.0.7",
+    "@commercelayer/js-auth": "^6.7.0",
     "@commercelayer/sdk": "^6.28.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.6",

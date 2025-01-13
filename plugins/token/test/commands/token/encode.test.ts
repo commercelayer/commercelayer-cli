@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('token:generate', () => {
+describe('token:encode', () => {
   test
     .timeout(5000)
     .stdout()

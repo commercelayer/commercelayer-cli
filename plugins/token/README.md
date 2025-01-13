@@ -23,6 +23,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 <!-- commands -->
 
 * [`commercelayer token:decode TOKEN`](#commercelayer-tokendecode-token)
+* [`commercelayer token:encode`](#commercelayer-tokenencode)
 * [`commercelayer token:get`](#commercelayer-tokenget)
 * [`commercelayer token:revoke TOKEN`](#commercelayer-tokenrevoke-token)
 
@@ -50,6 +51,29 @@ EXAMPLES
 ```
 
 _See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
+
+### `commercelayer token:encode`
+
+Start a wizard to generate a custom access token.
+
+```sh-session
+USAGE
+  $ commercelayer token:encode [-i] [-c]
+
+FLAGS
+  -c, --check  check generated access token
+  -i, --info   print generated token info
+
+DESCRIPTION
+  start a wizard to generate a custom access token
+
+EXAMPLES
+  $ commercelayer token:encode
+
+  $ cl token:encode
+```
+
+_See code: [src/commands/token/encode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/encode.ts)_
 
 ### `commercelayer token:get`
 
