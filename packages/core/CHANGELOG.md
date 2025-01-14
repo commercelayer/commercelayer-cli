@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.3...v5.5.0) (2025-01-14)
+
+
+### Features
+
+* add support for assertion in token generation ([8530f32](https://github.com/commercelayer/commercelayer-cli-core/commit/8530f32c85970bd6f539eeab2276928a02781ee1))
+
 ## [5.4.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.2...v5.4.3) (2024-12-06)
 
 

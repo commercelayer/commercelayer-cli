@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "5.4.3",
+  "version": "5.5.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "description": "Commerce Layer Javascript CLI core lib",
