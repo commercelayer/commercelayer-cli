@@ -20,7 +20,8 @@ interface AppAuth {
 	scope?: AuthScope
 	email?: string
 	password?: string
-	api?: ApiType
+	api?: ApiType,
+	assertion?: string
 }
 
 interface AppInfo extends AppKey, AppAuth {

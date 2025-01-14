@@ -96,24 +96,29 @@ const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
   let accessToken
 
-    const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
+  const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
 
-    const credentials: any = {
-      clientId: auth.clientId,
-      clientSecret: auth.clientSecret,
-      slug: auth.slug,
-      domain: auth.domain,
-      scope
-    }
+  const credentials: any = {
+    clientId: auth.clientId,
+    clientSecret: auth.clientSecret,
+    slug: auth.slug,
+    domain: auth.domain,
+    scope
+  }
 
-    if (auth.email && auth.password) {
-      credentials.username = auth.email
-      credentials.password = auth.password
-      accessToken = await authenticate('password', credentials as AuthenticateOptions<'password'>)
-    }
-    else accessToken = await authenticate('client_credentials', credentials as AuthenticateOptions<'client_credentials'>)
+  if (auth.email && auth.password) {
+    credentials.username = auth.email
+    credentials.password = auth.password
+    accessToken = await authenticate('password', credentials as AuthenticateOptions<'password'>)
+  }
+  else
+  if (auth.assertion) {
+    credentials.assertion = auth.assertion
+    accessToken = await authenticate('urn:ietf:params:oauth:grant-type:jwt-bearer', credentials as AuthenticateOptions<'urn:ietf:params:oauth:grant-type:jwt-bearer'>)
+  }
+  else accessToken = await authenticate('client_credentials', credentials as AuthenticateOptions<'client_credentials'>)
 
-  
+
 
   if (!accessToken) throw new Error('Unable to get access token')
   else

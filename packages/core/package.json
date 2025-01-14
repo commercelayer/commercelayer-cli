@@ -41,23 +41,23 @@
     "@semantic-release/git": "^10.0.1",
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.6",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "dotenv": "^16.4.7",
     "eslint": "^8.57.1",
     "jest": "^29.7.0",
-    "oclif": "^4.16.0",
-    "semantic-release": "^24.2.0",
+    "oclif": "^4.17.11",
+    "semantic-release": "^24.2.1",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "@commercelayer/js-auth": "^6.7.0",
     "@oclif/core": "^3.27.0",
     "chalk": "^4.1.2",
     "jsonwebtoken": "^9.0.2",
-    "update-notifier-cjs": "^5.1.6"
+    "update-notifier-cjs": "^5.1.7"
   },
   "repository": "github:commercelayer/commercelayer-cli-core",
   "publishConfig": {
