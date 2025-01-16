@@ -3,6 +3,7 @@ import config from './config'
 import { type AppAuth } from './application'
 import { type ApiMode } from './api'
 import { authenticate, revoke, type AuthenticateOptions } from '@commercelayer/js-auth'
+import type { KeyValString } from './command'
 
 
 export type AuthScope = string | string[]
@@ -10,50 +11,53 @@ export type AuthScope = string | string[]
 
 export type AccessToken = {
   accessToken: string;
-  tokenType: 'bearer' | 'Bearer';
-  expiresIn: number;
-  expires: Date;
-  scope: AuthScope;
-  createdAt: number;
-  error?: string;
-  errorDescription?: string;
+  tokenType: 'bearer' | 'Bearer'
+  expiresIn: number
+  expires: Date
+  scope: AuthScope
+  createdAt: number
+  error?: string
+  errorDescription?: string
 }
 
+
+const OWNER_TYPES = ['User', 'Customer'] as const
+export type OwnerType = typeof OWNER_TYPES[number]
 
 
 export type AccessTokenInfo = {
   organization?: {
-    id: string;
-    slug: string;
-  };
+    id: string
+    slug: string
+  }
   application: {
-    id: string;
-    kind: 'integration' | 'sales_channel' | 'user';
-    public: boolean;
-  };
-  test: boolean;
-  exp?: number;
-  rand?: number;
+    id: string
+    kind: 'integration' | 'sales_channel' | 'user'
+    public: boolean
+  }
+  test: boolean
+  exp?: number
+  rand?: number
   owner?: {
-    id: string;
-    type: 'Customer' | 'User';
+    id: string
+    type: OwnerType
   };
   market?: {
-    id: string[];
-    price_list_id: string;
-    stock_location_ids?: string[];
-    geocoder_id?: string;
-    allows_external_prices: boolean;
-  };
+    id: string[]
+    price_list_id: string
+    stock_location_ids?: string[]
+    geocoder_id?: string
+    allows_external_prices: boolean
+  }
   scope?: AuthScope,
   user?: { id: string }
 }
 
 
 export type CustomToken = {
-  accessToken: string;
-  info: AccessTokenInfo;
-  expMinutes: number;
+  accessToken: string
+  info: AccessTokenInfo
+  expMinutes: number
 }
 
 
@@ -74,7 +78,7 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
   const payload = {
     ...tokenData,
     exp: Math.floor(Date.now() / 1000) + (minutes * 60),
-    rand: Math.random(),
+    rand: Math.random()
   }
 
   const algo = config.api.token_encoding_algorithm as jwt.Algorithm
@@ -86,7 +90,7 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
   return {
     accessToken,
     info: info as AccessTokenInfo,
-    expMinutes: minutes,
+    expMinutes: minutes
   }
 
 }
@@ -155,3 +159,45 @@ const getTokenEnvironment = (token: string | AccessTokenInfo): ApiMode => {
 
 
 export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken, isAccessTokenExpiring, getTokenEnvironment }
+
+
+export const buildAssertionPayload = (ownerType: OwnerType, ownerId: string, customClaim?: KeyValString): any => {
+
+  const clClaimKey = 'https://commercelayer.io/claims'
+
+  const assertion: Record<string, any> = {
+    [clClaimKey]: {
+      owner: {
+        type: ownerType,
+        id: ownerId
+      }
+    }
+  }
+
+
+  // Build custom claim
+  if (customClaim && (Object.keys(customClaim).length > 0)) {
+
+    const cClaim: Record<string, any> = {}
+
+    Object.entries(customClaim).forEach(([key, value]) => {
+
+      const keys = key.split('.')
+      const lastKey = keys[keys.length - 1]
+
+      let cur: Record<string, any> = cClaim
+      keys.forEach(k => {
+        if (k === lastKey) cur[k] = value
+        else cur = cur[k] || (cur[k] = {})
+      })
+
+    })
+
+    assertion[clClaimKey].custom_claim = cClaim
+
+  }
+
+
+  return assertion
+
+}
