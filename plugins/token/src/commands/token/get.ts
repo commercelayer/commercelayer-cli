@@ -12,7 +12,7 @@ export default class TokenGet extends Command {
   static examples = [
 		'$ commercelayer token:get -o <organizationSlug> -i <clientId> -s <clientSecret>',
     '$ cl token:get -o <organizationSlug> -i <clientId> -S <scope> --info',
-    '$ cl token:get -i <clientId> -s <clientSecret>',
+    '$ cl token:get -i <clientId> -s <clientSecret> -a <jwtAssertion>'
 	]
 
   static flags = {
@@ -60,6 +60,11 @@ export default class TokenGet extends Command {
     }),
     info: Flags.boolean({
       description: 'show access token info',
+    }),
+    assertion: Flags.string({
+      char: 'a',
+      description: 'use jwt assertion',
+      exclusive: ['email', 'password']
     })
   }
 
@@ -90,7 +95,8 @@ export default class TokenGet extends Command {
       domain: flags.domain,
       scope,
       email: flags.email,
-      password: flags.password
+      password: flags.password,
+      assertion: flags.assertion
     }
 
 
@@ -105,7 +111,7 @@ export default class TokenGet extends Command {
 
         let msg = `Access token for ${clColor.api.kind(decodedAccessToken.application.kind)} application`
         if (decodedAccessToken.organization) msg += ` of organization ${clColor.api.slug(decodedAccessToken.organization.slug)}`
-        if (flags.provisioning) msg += ' [provisioning]'
+        if (flags.provisioning || (decodedAccessToken.scope === 'provisioning-api')) msg += ' [provisioning]'
 
         this.log(`\n${msg}:`)
         this.printAccessToken(accessToken)

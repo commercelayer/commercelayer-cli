@@ -1,1 +1,1 @@
-{"root":["./src/base.ts","./src/check.ts","./src/index.ts","./src/token.ts","./src/commands/token/assertion.ts","./src/commands/token/decode.ts","./src/commands/token/encode.ts","./src/commands/token/get.ts","./src/commands/token/noc.ts","./src/commands/token/revoke.ts"],"version":"5.7.3"}
+{"root":["./src/base.ts","./src/check.ts","./src/index.ts","./src/token.ts","./src/commands/token/assertion.ts","./src/commands/token/decode.ts","./src/commands/token/get.ts","./src/commands/token/noc.ts","./src/commands/token/revoke.ts"],"version":"5.7.3"}
