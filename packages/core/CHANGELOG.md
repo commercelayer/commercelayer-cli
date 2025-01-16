@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.5.0...v5.6.0) (2025-01-16)
+
+
+### Features
+
+* add support for jwt assertion ([44ac910](https://github.com/commercelayer/commercelayer-cli-core/commit/44ac910941f1afe0c23bb666de5efdde5405321f))
+
 # [5.5.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.4.3...v5.5.0) (2025-01-14)
 
 
