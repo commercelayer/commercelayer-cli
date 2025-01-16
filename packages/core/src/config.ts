@@ -1,3 +1,4 @@
+
 const JOB_STATUSES: readonly string[] = [
 	'in_progress',
 	'pending',
@@ -113,6 +114,7 @@ type ApiConfig = {
 	default_stg_domain: string
 	token_expiration_mins: number
 	token_encoding_algorithm: string
+	token_owner_types: string[]
 	requests_max_num_burst: number
 	requests_max_num_burst_cacheable: number
 	requests_max_num_burst_test: number
@@ -238,6 +240,7 @@ const config: Config = {
 		default_stg_domain: 'commercelayer.co',
 		token_expiration_mins: 60 * 4,	// 4 hours (14400 secs)
 		token_encoding_algorithm: 'HS512',
+		token_owner_types: ['Customer', 'User'] as const,
 		requests_max_num_burst: RATE_LIMIT.erl_burst_limit_uncachable_live,					// 50
 		requests_max_num_burst_cacheable: RATE_LIMIT.erl_burst_limit_cachable_live,			// 250
 		requests_max_num_burst_test: RATE_LIMIT.erl_burst_limit_uncachable_test,			// 25

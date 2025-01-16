@@ -21,8 +21,8 @@ export type AccessToken = {
 }
 
 
-const OWNER_TYPES = ['User', 'Customer'] as const
-export type OwnerType = typeof OWNER_TYPES[number]
+export type ApplicationKind = typeof config.application.kinds[number]
+export type OwnerType = typeof config.api.token_owner_types[number]
 
 
 export type AccessTokenInfo = {
@@ -32,7 +32,7 @@ export type AccessTokenInfo = {
   }
   application: {
     id: string
-    kind: 'integration' | 'sales_channel' | 'user'
+    kind: ApplicationKind
     public: boolean
   }
   test: boolean
