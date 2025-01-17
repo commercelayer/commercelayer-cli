@@ -6,6 +6,14 @@ import { CLIError } from '@oclif/core/lib/errors'
 const pkg: clUpdate.Package = require('../package.json')
 
 
+type CommerceLayerJWT = {
+  header: any,
+  payload: AccessTokenInfo,
+  signature: string
+}
+
+
+
 export default abstract class extends Command {
 
   // INIT (override)
@@ -15,14 +23,17 @@ export default abstract class extends Command {
   }
 
 
-  protected printAccessTokenInfo(data: AccessTokenInfo): string {
+  protected printAccessTokenInfo(data: AccessTokenInfo | CommerceLayerJWT): string {
 
     this.log(`\n${clColor.style.title('-= Access token info =-')}\n`)
     const tokenData = clOutput.printObject(data)
     this.log(tokenData)
     this.log()
 
-    const exp = new Date((data.exp || 0) * 1000)
+    const flatData: any = data
+    const dataExp = flatData.payload?.exp || flatData.exp
+
+    const exp = new Date((dataExp || 0) * 1000)
     const expMsg = (exp.getTime() < Date.now()) ? `\t ${clColor.msg.warning.underline('Token expired!')}` : ''
     // \u23F0 \u23F1  \u23F2  \u23F3
     this.log(clColor.blueBright('\u23F1  This access token will expire at: ') + clColor.style.datetime(exp.toLocaleString()) + expMsg)
