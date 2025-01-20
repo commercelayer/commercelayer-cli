@@ -170,7 +170,7 @@ export abstract class ExportCommand extends BaseCommand {
       output = expFile ? gunzipSync(expFile.data as InputType).toString() : ''
     }
     else output = readFileSync(attachmentUrl, { encoding })
-     
+
     if (output && ((flags?.format === 'json') && !flags?.csv) && flags.prettify) output = JSON.stringify(JSON.parse(output), null, 4)
 
     return output
@@ -308,6 +308,25 @@ export abstract class ExportCommand extends BaseCommand {
     }
 
     return wheres
+
+  }
+
+
+  protected fieldsFlag(flag: string[] | undefined): string[] {
+
+    const values: string[] = []
+
+    if (flag) {
+      const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
+      flagValues.forEach(a => {
+        a.forEach(v => {
+          if (values.includes(v)) this.warn(`Field ${clColor.msg.warning(v)} already defined`)
+          values.push(v)
+        })
+      })
+    }
+
+    return values
 
   }
 

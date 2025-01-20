@@ -38,6 +38,11 @@ export default class ExportsCreate extends ExportCommand {
       multiple: true,
       description: 'comma separated list of query filters',
     }),
+    fields: Flags.string({
+      char: 'f',
+      description: 'comma separated list of fields to include in the export',
+      multiple: true
+    }),
     'dry-data': Flags.boolean({
       char: 'D',
       description: 'skip redundant attributes',
@@ -113,6 +118,9 @@ export default class ExportsCreate extends ExportCommand {
     const include: string[] = this.includeFlag(flags.include)
     // Where flags
     const wheres = this.whereFlag(flags.where)
+    // Fields flags
+    const fields = this.fieldsFlag(flags.fields)
+
 
     const expCreate: ExportCreate = {
       resource_type: resType,
@@ -122,6 +130,7 @@ export default class ExportsCreate extends ExportCommand {
 
     if (include && (include.length > 0)) expCreate.includes = include
     if (wheres && (Object.keys(wheres).length > 0)) expCreate.filters = wheres
+    if (fields && (fields.length > 0)) expCreate.fields = fields
 
 
     try {

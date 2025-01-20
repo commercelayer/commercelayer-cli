@@ -31,6 +31,7 @@ type ExportJob = {
   resourceDesc: string,
   include?: string[],
   filter?: KeyValString,
+  fields?: string[],
   dryData: boolean,
   blindMode: boolean
 }
@@ -128,6 +129,8 @@ export default class ExportsAll extends ExportCommand {
     const include: string[] = this.includeFlag(flags.include)
     // Where flags
     const wheres = this.whereFlag(flags.where)
+    // Fields flags
+    const fields = this.fieldsFlag(flags.fields)
 
 
     const exportJob: ExportJob = {
@@ -148,6 +151,7 @@ export default class ExportsAll extends ExportCommand {
     if (include && (include.length > 0)) exportJob.include = include
     if (wheres && (Object.keys(wheres).length > 0)) exportJob.filter = wheres
     else exportJob.filter = {}
+    if (fields && (fields.length > 0)) exportJob.fields = fields
 
 
     try {
@@ -274,7 +278,8 @@ export default class ExportsAll extends ExportCommand {
       reference: expJob.groupId,
       reference_origin: 'cli-plugin-exports',
       includes: expJob.include,
-      filters: { ...expJob.filter }
+      filters: { ...expJob.filter },
+      fields: expJob.fields
     }
 
     if (!expCreate.filters) expCreate.filters = {}
