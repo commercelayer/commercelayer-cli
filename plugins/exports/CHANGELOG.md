@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.3.3...v3.4.0) (2025-01-20)
+
+
+### Features
+
+* add support for fieldsets ([245d598](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/245d5982397f5f195cffb3ccd21e7943b6486a4f))
+
 ## [3.3.3](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.3.2...v3.3.3) (2024-12-06)
 
 
