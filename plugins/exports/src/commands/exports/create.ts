@@ -15,8 +15,8 @@ export default class ExportsCreate extends ExportCommand {
   static aliases = ['exp:create']
 
   static examples = [
-    '$ commercelayer exports:create -t orders -X <output-file-path>',
-    '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv',
+    '$ commercelayer exports:create -t orders -f number -X <output-file-path>',
+    '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv'
   ]
 
   static flags = {
@@ -26,17 +26,17 @@ export default class ExportsCreate extends ExportCommand {
       required: true,
       options: clConfig.exports.types as string[],
       helpValue: clConfig.exports.types.slice(0, 4).join('|') + '|...',
-      multiple: false,
+      multiple: false
     }),
     include: Flags.string({
       char: 'i',
       multiple: true,
-      description: 'comma separated resources to include',
+      description: 'comma separated resources to include'
     }),
     where: Flags.string({
       char: 'w',
       multiple: true,
-      description: 'comma separated list of query filters',
+      description: 'comma separated list of query filters'
     }),
     fields: Flags.string({
       char: 'f',
@@ -64,22 +64,22 @@ export default class ExportsCreate extends ExportCommand {
       char: 'x',
       description: 'save command output to file',
       multiple: false,
-      exclusive: ['save-path'],
+      exclusive: ['save-path']
     }),
     'save-path': Flags.string({
       char: 'X',
       description: 'save command output to file and create missing path directories',
       multiple: false,
-      exclusive: ['save'],
+      exclusive: ['save']
     }),
     notify: Flags.boolean({
       char: 'N',
       description: 'force system notification when export has finished',
-      hidden: true,
+      hidden: true
     }),
     blind: Flags.boolean({
       char: 'b',
-      description: 'execute in blind mode without showing the progress monitor',
+      description: 'execute in blind mode without showing the progress monitor'
     }),
     prettify: Flags.boolean({
       char: 'P',

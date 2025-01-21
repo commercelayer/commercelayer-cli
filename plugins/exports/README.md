@@ -78,7 +78,7 @@ Export all the records.
 ```sh-session
 USAGE
   $ commercelayer exports:all -t addresses|authorizations|bundles|captures|... [-i <value>...] [-w <value>...]
-    [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O] [-q] [-k]
+    [-f <value>...] [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O] [-q] [-k]
 
 FLAGS
   -C, --csv                                                 export data in CSV format
@@ -90,6 +90,7 @@ FLAGS
   -X, --save-path=<value>                                   save command output to file and create missing path
                                                             directories
   -b, --blind                                               execute in blind mode without showing the progress monitor
+  -f, --fields=<value>...                                   comma separated list of fields to include in the export
   -i, --include=<value>...                                  comma separated resources to include
   -k, --keep                                                keep original export files in temp dir
   -q, --quiet                                               execute command without showing warning messages
@@ -105,7 +106,7 @@ ALIASES
   $ commercelayer export
 
 EXAMPLES
-  $ commercelayer exports:all -t cusorderstomers -X <output-file-path>
+  $ commercelayer exports:all -t orders -f number -X <output-file-path>
 
   $ cl exp:all -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path>
 
@@ -121,7 +122,7 @@ Create a new export.
 ```sh-session
 USAGE
   $ commercelayer exports:create -t addresses|authorizations|bundles|captures|... [-i <value>...] [-w <value>...]
-    [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O]
+    [-f <value>...] [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O]
 
 FLAGS
   -C, --csv                                                 export data in CSV format
@@ -133,6 +134,7 @@ FLAGS
   -X, --save-path=<value>                                   save command output to file and create missing path
                                                             directories
   -b, --blind                                               execute in blind mode without showing the progress monitor
+  -f, --fields=<value>...                                   comma separated list of fields to include in the export
   -i, --include=<value>...                                  comma separated resources to include
   -t, --type=addresses|authorizations|bundles|captures|...  (required) the type of resource being exported
   -w, --where=<value>...                                    comma separated list of query filters
@@ -145,7 +147,7 @@ ALIASES
   $ commercelayer exp:create
 
 EXAMPLES
-  $ commercelayer exports:create -t orders -X <output-file-path>
+  $ commercelayer exports:create -t orders -f number -X <output-file-path>
 
   $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv
 ```

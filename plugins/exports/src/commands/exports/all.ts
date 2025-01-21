@@ -86,7 +86,7 @@ export default class ExportsAll extends ExportCommand {
   static aliases = ['exp:all', 'export']
 
   static examples = [
-    '$ commercelayer exports:all -t cusorderstomers -X <output-file-path>',
+    '$ commercelayer exports:all -t orders -f number -X <output-file-path>',
     '$ cl exp:all -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path>',
     '$ cl export -t skus -w code_start=SHIRT -X <output-file-path> --csv'
   ]
