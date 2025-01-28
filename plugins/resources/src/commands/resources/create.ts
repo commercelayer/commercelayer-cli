@@ -24,7 +24,7 @@ export default class ResourcesCreate extends Command {
     ...Command.flags,
     attribute: Flags.string({
       char: 'a',
-      description: 'define a resource attribute',
+      description: 'define a resource attribute [name=value]',
       multiple: true
     }),
     object: Flags.string({
@@ -142,7 +142,8 @@ export default class ResourcesCreate extends Command {
     const include: string[] = this.includeFlag(flags.include, relationships, flags['force-include'])
     // Fields flags
     const fields = this.fieldsFlag(flags.fields, resource.api)
-
+console.log(objects)
+this.exit()
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
     const reqReader = flags.doc ? addRequestReader(cl) : undefined

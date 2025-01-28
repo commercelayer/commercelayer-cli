@@ -314,6 +314,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
 
         const name = f.substring(0, slashSep)
         if (name === '') this.error(`No name defined in flag object ${f}`)
+        if (objects[name]) this.error(`Object ${clColor.msg.error(name)} has already been defined`)
         const fields = f.substring(slashSep + 1).split(/(?<!\\),/g).map(v => v.trim())  // escape ',' in value with \\ (double back slash)
         if (fields[0].trim() === '') this.error(`No fields defined for object field ${clColor.style.attribute(name)}`)
 
@@ -331,8 +332,10 @@ export abstract class BaseQueryCommand extends BaseCommand {
 
         })
 
+        const o = clUtil.dotNotationToObject(obj)
+
         if (objects[name] === undefined) objects[name] = {}
-        objects[name] = { ...objects[name], ...obj }
+        objects[name] = { ...objects[name], ...o }
 
       })
     }
