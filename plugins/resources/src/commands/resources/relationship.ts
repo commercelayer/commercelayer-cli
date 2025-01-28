@@ -21,17 +21,17 @@ export default class ResourcesRelationship extends Command {
     '$ commercelayer resources:relationship customers <customerId> customer_group',
     '$ clayer res:relationship customers <customerId> orders',
     '$ cl res:rel customers <customerId> orders -w status_eq=pending',
-    '$ cl relationship customers <customerId> <customerRelationship>',
+    '$ cl relationship customers <customerId> <customerRelationship>'
   ]
 
   static flags = {
-    ...ResourcesList.flags,
+    ...ResourcesList.flags
   }
 
   static args = {
     ...Command.args,
     id: Args.string({ name: 'id', description: 'id of the resource to retrieve', required: true }),
-    relationship: Args.string({ name: 'relationship', description: 'name of the relationship field', required: true }),
+    relationship: Args.string({ name: 'relationship', description: 'name of the relationship field', required: true })
   }
 
 

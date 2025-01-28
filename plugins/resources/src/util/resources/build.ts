@@ -73,7 +73,7 @@ const parseResourcesSdk = async (): Promise<ApiResource[]> => {
       type: res,
 			api: CommerceLayerStatic.isSingleton(res)? clText.singularize(res) : res,
 			model: clText.camelize(singular),
-			singleton: CommerceLayerStatic.isSingleton(res),
+			singleton: CommerceLayerStatic.isSingleton(res)
 		}
 		return item
 	})

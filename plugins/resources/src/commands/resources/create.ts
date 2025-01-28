@@ -32,6 +32,11 @@ export default class ResourcesCreate extends Command {
       description: 'define a resource object attribute',
       multiple: true
     }),
+    'json-object': Flags.string({
+      char: 'J',
+      description: 'define a resource object attribute in JSON format (value enclosed in single quotes)',
+      multiple: true
+    }),
     relationship: Flags.string({
       char: 'r',
       description: 'define a relationship with another resource',
@@ -46,7 +51,7 @@ export default class ResourcesCreate extends Command {
       char: 'D',
       description: 'the data file to use as request body',
       multiple: false,
-      exclusive: ['attribute', 'relationship', 'metadata', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS]
+      exclusive: ['attribute', 'relationship', 'metadata', 'doc', 'object', 'json-object', FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS]
     }),
     tags: Flags.string({
       char: 't',
@@ -105,6 +110,10 @@ export default class ResourcesCreate extends Command {
     const attributes = this.attributeFlag(flags.attribute)
     // Objects flags
     const objects = this.objectFlag(flags.object)
+    if (flags['json-object']) {
+      const json = this.jsonFlag(flags['json-object'], objects)
+      Object.assign(objects, json)
+    }
     // Relationships flags
     const relationships = this.relationshipFlag(flags.relationship, flags.organization)
     // Metadata flags
@@ -142,8 +151,7 @@ export default class ResourcesCreate extends Command {
     const include: string[] = this.includeFlag(flags.include, relationships, flags['force-include'])
     // Fields flags
     const fields = this.fieldsFlag(flags.fields, resource.api)
-console.log(objects)
-this.exit()
+
 
     const rawReader = flags.raw ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
     const reqReader = flags.doc ? addRequestReader(cl) : undefined

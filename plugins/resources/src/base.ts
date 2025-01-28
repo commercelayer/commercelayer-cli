@@ -302,9 +302,9 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  objectFlag(flag: string[] | undefined): KeyValObj {
+  objectFlag(flag: string[] | undefined): ResAttributes {
 
-    const objects: KeyValObj = {}
+    const objects: ResAttributes = {}
 
     if (flag && (flag.length > 0)) {
       flag.forEach(f => {
@@ -314,7 +314,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
 
         const name = f.substring(0, slashSep)
         if (name === '') this.error(`No name defined in flag object ${f}`)
-        if (objects[name]) this.error(`Object ${clColor.msg.error(name)} has already been defined`)
+        if (objects[name]) this.warn(`Object ${clColor.msg.error(name)} has already been defined`)
         const fields = f.substring(slashSep + 1).split(/(?<!\\),/g).map(v => v.trim())  // escape ',' in value with \\ (double back slash)
         if (fields[0].trim() === '') this.error(`No fields defined for object field ${clColor.style.attribute(name)}`)
 
@@ -342,6 +342,21 @@ export abstract class BaseQueryCommand extends BaseCommand {
 
     return objects
 
+  }
+
+
+  jsonFlag(flag: string[] | undefined, objects?: KeyValObj): ResAttributes {
+    const obj = this._keyvalFlag(flag, 'object')
+    const json: ResAttributes = {}
+    Object.entries(obj).forEach(([k, v]) => {
+      if (objects?.[k]) this.warn(`Object ${clColor.msg.warning(k)} has already been defined`)
+      try {
+        json[k] = (v === 'null') ? null : JSON.parse(v)
+      } catch (error) {
+        this.error(`Invalid JSON value for object ${clColor.msg.error(k)}`)
+      }
+    })
+    return json
   }
 
 

@@ -29,35 +29,40 @@ export default class ResourcesUpdate extends Command {
     attribute: Flags.string({
       char: 'a',
       description: 'define a resource attribute',
-      multiple: true,
+      multiple: true
     }),
     object: Flags.string({
       char: 'O',
       description: 'define a resource object attribute',
-      multiple: true,
+      multiple: true
+    }),
+    'json-object': Flags.string({
+      char: 'J',
+      description: 'define a resource object attribute in JSON format (value enclosed in single quotes)',
+      multiple: true
     }),
     relationship: Flags.string({
       char: 'r',
       description: 'define a relationship with another resource',
-      multiple: true,
+      multiple: true
     }),
     metadata: Flags.string({
       char: 'm',
       description: 'define a metadata attribute and merge it with the metadata already present in the remote resource',
       multiple: true,
-      exclusive: ['metadata-replace'],
+      exclusive: ['metadata-replace']
     }),
     'metadata-replace': Flags.string({
       char: 'M',
       description: 'define a metadata attribute and replace every item already present in the remote resource',
       multiple: true,
-      exclusive: ['metadata'],
+      exclusive: ['metadata']
     }),
     data: Flags.string({
       char: 'D',
       description: 'the data file to use as request body',
       multiple: false,
-      exclusive: ['attribute', 'relationship', 'metadata', 'metadata-replace', 'doc', FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS],
+      exclusive: ['attribute', 'relationship', 'metadata', 'metadata-replace', 'doc', 'object', 'json-object', FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS]
     }),
     tags: Flags.string({
       char: 't',
@@ -68,7 +73,7 @@ export default class ResourcesUpdate extends Command {
 
   static args = {
     ...Command.args,
-    id: Args.string({ name: 'id', description: 'id of the resource to update', required: false }),
+    id: Args.string({ name: 'id', description: 'id of the resource to update', required: false })
   }
 
 
@@ -120,6 +125,10 @@ export default class ResourcesUpdate extends Command {
     const attributes = this.attributeFlag(flags.attribute)
     // Objects flags
     const objects = this.objectFlag(flags.object)
+    if (flags['json-object']) {
+      const json = this.jsonFlag(flags['json-object'], objects)
+      Object.assign(objects, json)
+    }
     // Relationships flags
     const relationships = this.relationshipFlag(flags.relationship, flags.organization)
     // Metadata flags
