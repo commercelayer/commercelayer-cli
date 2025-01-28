@@ -12,7 +12,7 @@ export default class ApplicationsLogout extends Command {
   static flags = {
     revoke: Flags.boolean({
       char: 'r',
-      description: 'revoke current access token',
+      description: 'revoke current access token'
     }),
     force: Flags.boolean({
       char: 'F',

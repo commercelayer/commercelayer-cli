@@ -20,30 +20,32 @@ export default class ApplicationsToken extends Command {
 
 	static examples = [
 		'$ commercelayer applications:token',
-		'$ commercelayer app:token --info',
+		'$ commercelayer app:token --info'
 	]
 
 	static flags = {
 		save: Flags.boolean({
 			char: 's',
-			description: 'save access token',
+			description: 'save access token'
 		}),
 		info: Flags.boolean({
 			char: 'i',
-			description: 'show access token info',
+			description: 'show access token info'
 		}),
 		shared: Flags.string({
 			char: 'S',
 			description: 'organization shared secret',
 			hidden: true,
 			exclusive: ['save'],
+			deprecated: true
 		}),
 		minutes: Flags.integer({
 			char: 'M',
 			description: `minutes to token expiration [2, ${defaultTokenExpiration}]`,
 			hidden: true,
 			dependsOn: ['shared'],
-		}),
+			deprecated: true
+		})
 	}
 
 

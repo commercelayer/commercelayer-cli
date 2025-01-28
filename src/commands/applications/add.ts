@@ -20,7 +20,7 @@ export default class ApplicationsAdd extends Command {
   ]
 
   static flags = {
-    ...ApplicationsLogin.flags,
+    ...ApplicationsLogin.flags
   }
 
 

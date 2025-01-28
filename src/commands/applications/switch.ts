@@ -5,6 +5,7 @@ import { clColor } from '@commercelayer/cli-core'
 
 
 
+
 export default class ApplicationsSwitch extends Command {
 
   static description = 'switch applications'

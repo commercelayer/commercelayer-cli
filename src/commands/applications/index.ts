@@ -93,4 +93,3 @@ const extraColumns = (flags: any): any => {
 const currentColor = (app: any, current: AppKey): ((s: unknown) => string) => {
 	return (clApplication.appKeyMatch(current, app as AppKey) ? clColor.magentaBright : clColor.visible)
 }
-

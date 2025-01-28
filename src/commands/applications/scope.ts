@@ -6,6 +6,7 @@ import { promptApplication } from '../../common'
 import { printCurrent } from './current'
 
 
+
 export default class ApplicationsScope extends Command {
 
   static description = 'switch scope of current application'
@@ -13,8 +14,8 @@ export default class ApplicationsScope extends Command {
   static aliases = ['app:scope']
 
   static examples = [
-    '$ commercelayer <%= command.id %> market:1234',
-    '$ cl app:scope market:1234',
+    '$ commercelayer <%= command.id %> market:code:1234',
+    '$ cl app:scope market:id:aBcDeFgHij'
   ]
 
   static flags = {
@@ -22,7 +23,7 @@ export default class ApplicationsScope extends Command {
       char: 'a',
       description: 'the alias you want to associate to the application',
       multiple: false,
-      required: false,
+      required: false
     }),
   }
 

@@ -93,7 +93,7 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^3.0.6",
+    "@commercelayer/cli-dev": "^3.0.7",
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^3.2.15",
@@ -104,7 +104,7 @@
     "@types/inquirer": "^8.2.10",
     "@types/lodash.kebabcase": "^4.1.9",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.7",
     "@types/update-notifier": "^5.1.0",
     "@withfig/autocomplete-types": "^1.31.0",
     "chai": "^4.5.0",
@@ -112,26 +112,26 @@
     "eslint": "^8.57.1",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
-    "oclif": "^4.16.0",
-    "semantic-release": "^24.2.0",
+    "oclif": "^4.17.13",
+    "semantic-release": "^24.2.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.4.2",
-    "@commercelayer/cli-ux": "^1.0.6",
-    "@commercelayer/provisioning-sdk": "^2.2.0",
-    "@commercelayer/sdk": "^6.25.2",
+    "@commercelayer/cli-core": "^5.6.2",
+    "@commercelayer/cli-ux": "^1.0.7",
+    "@commercelayer/provisioning-sdk": "^2.3.2",
+    "@commercelayer/sdk": "^6.28.0",
     "@oclif/core": "^3.27.0",
-    "@oclif/plugin-autocomplete": "^3.2.11",
+    "@oclif/plugin-autocomplete": "^3.2.17",
     "@oclif/plugin-help": "6.2.14",
-    "@oclif/plugin-not-found": "^3.2.29",
-    "@oclif/plugin-plugins": "^5.4.19",
+    "@oclif/plugin-not-found": "^3.2.35",
+    "@oclif/plugin-plugins": "^5.4.25",
     "configstore": "^5.0.1",
     "inquirer": "^8.2.6",
     "lodash.kebabcase": "^4.1.1",
     "tslib": "^2.8.1",
-    "update-notifier-cjs": "^5.1.6"
+    "update-notifier-cjs": "^5.1.7"
   },
   "publishConfig": {
     "access": "public"

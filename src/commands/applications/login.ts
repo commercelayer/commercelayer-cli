@@ -52,7 +52,7 @@ export default class ApplicationsLogin extends Command {
 			description: 'access token scope (market, stock location)',
 			required: false,
 			multiple: true,
-			dependsOn: ['clientId'],
+			dependsOn: ['clientId']
 		}),
 		email: Flags.string({
 			char: 'e',

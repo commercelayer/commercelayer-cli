@@ -15,7 +15,7 @@ export default class ApplicationsInfo extends Command {
     json: Flags.boolean({
       char: 'j',
       description: 'show info in JSON format',
-    }),
+    })
   }
 
 

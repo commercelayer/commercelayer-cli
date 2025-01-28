@@ -2,6 +2,8 @@
 import ApplicationsIndex from '.'
 import { isPluginInstalled } from '../plugins/available'
 
+
+
 export default class ApplicationsProvisioning extends ApplicationsIndex {
 
   static description = 'show all Provisioning applications'

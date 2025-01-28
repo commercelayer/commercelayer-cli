@@ -5,6 +5,7 @@ import { printScope } from '../../common'
 import { type AppInfo, clColor, clApplication } from '@commercelayer/cli-core'
 
 
+
 export default class ApplicationsCurrent extends Command {
 
 	static description = 'show the current application'
