@@ -73,9 +73,9 @@ export const userAgent = (config: Config): string => {
 }
 
 
-export const dotNotationToObject = (dotNot: KeyValObj): KeyValObj => {
+export const dotNotationToObject = (dotNot: KeyValObj, toObj?: KeyValObj): KeyValObj => {
 
-	const obj: KeyValObj = {}
+	const obj: KeyValObj = toObj || {}
 
 	Object.entries(dotNot).forEach(([key, value]) => {
 
@@ -89,6 +89,8 @@ export const dotNotationToObject = (dotNot: KeyValObj): KeyValObj => {
 		})
 
 	})
+
+	if (toObj) Object.assign(toObj, obj)
 
 	return obj
 
