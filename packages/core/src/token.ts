@@ -3,7 +3,8 @@ import config from './config'
 import { type AppAuth } from './application'
 import { type ApiMode } from './api'
 import { authenticate, revoke, type AuthenticateOptions } from '@commercelayer/js-auth'
-import type { KeyValString } from './command'
+import type { KeyValObj, KeyValString } from './command'
+import { dotNotationToObject } from './util'
 
 
 export type AuthScope = string | string[]
@@ -165,7 +166,7 @@ export const buildAssertionPayload = (ownerType: OwnerType, ownerId: string, cus
 
   const clClaimKey = 'https://commercelayer.io/claims'
 
-  const assertion: Record<string, any> = {
+  const assertion: KeyValObj = {
     [clClaimKey]: {
       owner: {
         type: ownerType,
@@ -174,27 +175,10 @@ export const buildAssertionPayload = (ownerType: OwnerType, ownerId: string, cus
     }
   }
 
-
   // Build custom claim
   if (customClaim && (Object.keys(customClaim).length > 0)) {
-
-    const cClaim: Record<string, any> = {}
-
-    Object.entries(customClaim).forEach(([key, value]) => {
-
-      const keys = key.split('.')
-      const lastKey = keys[keys.length - 1]
-
-      let cur: Record<string, any> = cClaim
-      keys.forEach(k => {
-        if (k === lastKey) cur[k] = value
-        else cur = cur[k] || (cur[k] = {})
-      })
-
-    })
-
+    const cClaim = dotNotationToObject(customClaim)
     assertion[clClaimKey].custom_claim = cClaim
-
   }
 
 

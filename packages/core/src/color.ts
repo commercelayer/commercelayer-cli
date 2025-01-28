@@ -88,7 +88,7 @@ export const style = {
 
 	path: italic,
 	datetime: cyanBright,
-	number: yellowBright,
+	number: yellowBright
 
 }
 
@@ -113,7 +113,7 @@ export const api = {
 	trigger: style.trigger,
 	kind: style.kind,
 	live: style.live,
-	test: style.test,
+	test: style.test
 }
 
 
@@ -121,7 +121,7 @@ export const api = {
 export const msg = {
 	success: style.success,
 	warning: style.warning,
-	error: style.error,
+	error: style.error
 }
 
 

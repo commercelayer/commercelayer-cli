@@ -3,16 +3,17 @@ import { sep, dirname } from 'path'
 import { homedir } from 'os'
 import { existsSync, mkdirSync } from 'fs'
 import type { Config } from '@oclif/core/lib/interfaces'
+import type { KeyValObj } from './command'
 
 
 /** Await ms milliseconds */
-const sleep = async (ms: number): Promise<void> => {
+export const sleep = async (ms: number): Promise<void> => {
 	return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 
 // Reset terminal style after use of colors and text styles
-const resetConsole = (): void => {
+export const resetConsole = (): void => {
 
 	// Cursor
 	// const showCursor = '\u001B[?25l'  // \x1B[?25l
@@ -29,13 +30,13 @@ const resetConsole = (): void => {
 }
 
 
-const log = (message = '', ...args: unknown[]): void => {
+export const log = (message = '', ...args: unknown[]): void => {
 	message = (typeof message === 'string') ? message : inspect(message)
 	process.stdout.write(format(message, ...args) + '\n')
 }
 
 
-const specialFolder = (filePath: string, createIfNotExists: boolean = false): string => {
+export const specialFolder = (filePath: string, createIfNotExists: boolean = false): string => {
 
 	const specialFolders = ['desktop', 'home']
 
@@ -55,7 +56,7 @@ const specialFolder = (filePath: string, createIfNotExists: boolean = false): st
 }
 
 
-const generateGroupUID = (): string => {
+export const generateGroupUID = (): string => {
 
 	const firstPart = Math.trunc(Math.random() * 46_656)
 	const secondPart = Math.trunc(Math.random() * 46_656)
@@ -67,9 +68,28 @@ const generateGroupUID = (): string => {
 }
 
 
-const userAgent = (config: Config): string => {
+export const userAgent = (config: Config): string => {
 	return `${config.name.replace(/@commercelayer\/cli-plugin/, 'CLI')}/${config.version}`
 }
 
 
-export { sleep, resetConsole, log, specialFolder, generateGroupUID, userAgent }
+export const dotNotationToObject = (dotNot: KeyValObj): KeyValObj => {
+
+	const obj: KeyValObj = {}
+
+	Object.entries(dotNot).forEach(([key, value]) => {
+
+		const keys = key.split('.')
+		const lastKey = keys[keys.length - 1]
+
+		let cur: KeyValObj = obj
+		keys.forEach(k => {
+			if (k === lastKey) cur[k] = value
+			else cur = cur[k] || (cur[k] = {})
+		})
+
+	})
+
+	return obj
+
+}

@@ -254,11 +254,41 @@ const config: Config = {
 		requests_max_secs_oauth: 60,
 		requests_max_secs_avg: 60,
 		page_max_size: 25,
-		page_default_size: 10,
+		page_default_size: 10
 	},
 	application: {
-		kinds: ['integration', 'sales_channel', 'webapp', 'user'],
-		login_scopes: ['market', 'stock_location', 'store'],
+		kinds: [
+			'dashboard',
+			'user',
+			'metrics',
+			'contentful',
+			'bundles',
+			'customers',
+			'datocms',
+			'exports',
+			'external',
+			'gift_cards',
+			'imports',
+			'integration',
+			'inventory',
+			'orders',
+			'price_lists',
+			'promotions',
+			'resources',
+			'returns',
+			'sales_channel',
+			'sanity',
+			'shipments',
+			'skus',
+			'sku_lists',
+			'stock_transfers',
+			'subscriptions',
+			'tags',
+			'webapp',
+			'webhooks',
+			'zapier'
+		],
+		login_scopes: ['market', 'stock_location', 'store']
 	},
 	imports: {
 		max_size: 10_000,
@@ -281,10 +311,10 @@ const config: Config = {
 		max_queue_length: 10
 	},
 	webhooks: {
-		retry_number: 5,
+		retry_number: 5
 	},
 	cli: {	// Including Provisioning
-		applications: ['integration', 'sales_channel', 'user'],
+		applications: ['integration', 'sales_channel', 'user']
 	},
 	doc: {
 		core: 'https://docs.commercelayer.io/core/',
