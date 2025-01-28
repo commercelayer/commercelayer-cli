@@ -1,3 +1,10 @@
+## [5.6.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.1...v5.6.2) (2025-01-16)
+
+
+### Bug Fixes
+
+* fix exported types ([d356705](https://github.com/commercelayer/commercelayer-cli-core/commit/d3567056cef59ad6775111d39e010444190dd014))
+
 ## [5.6.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.0...v5.6.1) (2025-01-16)
 
 
