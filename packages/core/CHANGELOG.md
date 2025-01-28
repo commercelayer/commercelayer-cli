@@ -1,3 +1,10 @@
+## [5.6.4](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.3...v5.6.4) (2025-01-28)
+
+
+### Bug Fixes
+
+* fix dotNotationToObject function ([a9bb9e4](https://github.com/commercelayer/commercelayer-cli-core/commit/a9bb9e40e3b30c4ec334988c2302dc2153e78f91))
+
 ## [5.6.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.2...v5.6.3) (2025-01-28)
 
 
