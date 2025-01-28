@@ -1,3 +1,10 @@
+## [5.6.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.2...v5.6.3) (2025-01-28)
+
+
+### Bug Fixes
+
+* export object conversion function and update dependencies ([0b558fb](https://github.com/commercelayer/commercelayer-cli-core/commit/0b558fb7eea87b053c751f6b5de48fb378c3caae))
+
 ## [5.6.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.1...v5.6.2) (2025-01-16)
 
 
