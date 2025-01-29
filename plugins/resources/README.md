@@ -203,7 +203,7 @@ FLAGS
   -O, --object=<value>...        define a resource object attribute
   -R, --raw                      print out the raw API response
   -Y, --headers-only             show only response headers
-  -a, --attribute=<value>...     define a resource attribute
+  -a, --attribute=<value>...     define a resource attribute [name=value]
   -f, --fields=<value>...        comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format

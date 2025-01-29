@@ -13,7 +13,7 @@ export default class ResourcesFilters extends Command {
 
   static examples = [
     '$ commercelayer resources:filters',
-    '$ cl res:filters',
+    '$ cl res:filters'
   ]
 
 
@@ -23,9 +23,9 @@ export default class ResourcesFilters extends Command {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     cliux.Table.table(clFilter.filters().sort((a, b) => a.predicate.localeCompare(b.predicate)), {
       predicate: { header: 'PREDICATE', minWidth: 25, get: row => clColor.table.key(row.predicate) },
-      description: { header: 'DESCRIPTION' },
+      description: { header: 'DESCRIPTION' }
     }, {
-      printLine: clUtil.log,
+      printLine: clUtil.log
     })
 
     this.log()

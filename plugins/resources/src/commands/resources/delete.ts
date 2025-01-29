@@ -14,16 +14,16 @@ export default class ResourcesDelete extends Command {
 
   static examples = [
     '$ commercelayer resources:delete customers/<customerId>',
-    '$ cl delete customers <customerId>',
+    '$ cl delete customers <customerId>'
   ]
 
   static flags = {
-    ...(clCommand.commandFlags<typeof Command.flags>(Command.flags, ['save-params', 'load-params'])),
+    ...(clCommand.commandFlags<typeof Command.flags>(Command.flags, ['save-params', 'load-params']))
   }
 
   static args = {
     ...Command.args,
-    id: Args.string({ name: 'id', description: 'id of the resource to delete', required: false }),
+    id: Args.string({ name: 'id', description: 'id of the resource to delete', required: false })
   }
 
 

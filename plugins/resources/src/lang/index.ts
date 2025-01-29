@@ -15,7 +15,7 @@ export const availableLanguages = ['curl', 'node']
 
 export const languageInfo = {
 	curl: { name: 'cURL', label: 'cURL command' },
-	node: { name: 'Node', label: 'Node SDK source code' },
+	node: { name: 'Node', label: 'Node SDK source code' }
 }
 
 

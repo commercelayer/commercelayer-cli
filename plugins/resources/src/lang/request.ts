@@ -41,7 +41,7 @@ const addRequestReader = (cl: CommerceLayerClient, interrupt = true): RequestRea
 
   const reader: RequestReader = {
     id: -1,
-    request: { baseUrl: '', path: '/', method: 'get', headers: {} },
+    request: { baseUrl: '', path: '/', method: 'get', headers: {} }
   }
 
   function requestInterceptor(request: RequestObj): RequestObj {
