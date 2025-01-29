@@ -1,10 +1,12 @@
 import Command, { Args } from '../../base'
 import { type CommerceLayerClient } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { clCommand, clColor } from '@commercelayer/cli-core'
+import { clCommand, clColor, clConfig } from '@commercelayer/cli-core'
 
 
 const OPERATION = 'delete'
+
+const OPERATION_LIMIT = (clConfig.api.requests_max_num_burst_test - 5)
 
 export default class ResourcesDelete extends Command {
 
@@ -23,7 +25,7 @@ export default class ResourcesDelete extends Command {
 
   static args = {
     ...Command.args,
-    id: Args.string({ name: 'id', description: 'id of the resource to delete', required: false }),
+    id: Args.string({ name: 'id', description: `id of the resources to delete (max ${OPERATION_LIMIT})`, required: false })
   }
 
 
