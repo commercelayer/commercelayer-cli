@@ -4,22 +4,12 @@ import type { Command } from "@oclif/core"
 import type { FlagInput } from "@oclif/core/lib/interfaces/parser"
 
 
-/** Copy command flags excluding a subset
- * @deprecated Use `filterFlags` instead
- */
-export const commandFlags = <T extends object>(flags: T, exclude?: string[]): T => {
-	const filteredFlags = { ...flags }
+/* Copy command flags excluding a subset */
+export const commandFlags = <T extends FlagInput>(flags: T, exclude?: Array<keyof T>): Partial<T> => {
+	// return Object.fromEntries(Object.entries(flags).filter(([key]) => !exclude?.includes(key))) as Partial<T>
+	const filteredFlags: T = { ...flags }
 	// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-	if (exclude) for (const e of exclude) delete filteredFlags[e as keyof T]
-	return filteredFlags
-}
-
-
-export const filterFlags = (flags: FlagInput, include?: string[], exclude?: string[]): FlagInput => {
-	const filteredFlags: FlagInput = {}
-	Object.entries(flags).forEach(([key, value]) => {
-		if ((!include || include.includes(key)) && !exclude?.includes(key)) filteredFlags[key] = value
-	})
+	if (exclude) for (const e of exclude) delete filteredFlags[e]
 	return filteredFlags
 }
 
