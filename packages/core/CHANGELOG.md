@@ -1,3 +1,10 @@
+## [5.7.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.7.1...v5.7.2) (2025-01-30)
+
+
+### Bug Fixes
+
+* fix commandFlags function ([994489b](https://github.com/commercelayer/commercelayer-cli-core/commit/994489b212b31773540c27820ca8623535cf1611))
+
 ## [5.7.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.7.0...v5.7.1) (2025-01-30)
 
 
