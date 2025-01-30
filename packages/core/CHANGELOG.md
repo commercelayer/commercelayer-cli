@@ -1,3 +1,10 @@
+## [5.7.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.7.0...v5.7.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* remove filterFlags function ([d7ade1f](https://github.com/commercelayer/commercelayer-cli-core/commit/d7ade1f1e64775592358c5aeb0c80beb332d3d54))
+
 # [5.7.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.4...v5.7.0) (2025-01-29)
 
 
