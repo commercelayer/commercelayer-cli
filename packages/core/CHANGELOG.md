@@ -1,3 +1,10 @@
+# [5.7.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.4...v5.7.0) (2025-01-29)
+
+
+### Features
+
+* add function to filter command flags ([baec340](https://github.com/commercelayer/commercelayer-cli-core/commit/baec340c63b30084c45d2225f1bca3bdf021e5ad))
+
 ## [5.6.4](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.6.3...v5.6.4) (2025-01-28)
 
 
