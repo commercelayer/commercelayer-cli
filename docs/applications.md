@@ -269,9 +269,9 @@ ALIASES
   $ commercelayer app:scope
 
 EXAMPLES
-  $ commercelayer applications:scope market:1234
+  $ commercelayer applications:scope market:code:1234
 
-  $ cl app:scope market:1234
+  $ cl app:scope market:id:aBcDeFgHij
 ```
 
 _See code: [src/commands/applications/scope.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/scope.ts)_
