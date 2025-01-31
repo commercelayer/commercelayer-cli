@@ -1,3 +1,10 @@
+## [5.0.5](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.4...v5.0.5) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([05ac93c](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/05ac93c67f0fe355b8948f0f2b181ccd12e2c054))
+
 ## [5.0.4](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.3...v5.0.4) (2024-10-21)
 
 
