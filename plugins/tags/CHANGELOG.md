@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.2...v2.1.3) (2025-01-31)
+
+
+### Bug Fixes
+
+* update readme and dependencies ([2ee9922](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/2ee9922a87f50f68578472c04de42829b1a65d98))
+
 ## [2.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.1...v2.1.2) (2024-12-06)
 
 
