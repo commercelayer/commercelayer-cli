@@ -73,15 +73,15 @@
     "eslint": "^8.57.1",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
-    "oclif": "^4.17.20",
+    "oclif": "^4.17.21",
     "semantic-release": "^23.1.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.6.4",
+    "@commercelayer/cli-core": "^5.7.2",
     "@commercelayer/cli-ux": "^1.0.7",
-    "@commercelayer/sdk": "^6.29.2",
+    "@commercelayer/sdk": "^6.30.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.6",
     "json-2-csv": "^3.20.0",
