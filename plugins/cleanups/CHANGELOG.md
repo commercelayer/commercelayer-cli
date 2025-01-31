@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.1...v3.1.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([c4a1f9e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c4a1f9e491cd3a58255c3df7264340e30a0d8e9e))
+
 ## [3.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.0...v3.1.1) (2024-10-21)
 
 
