@@ -1,3 +1,10 @@
+# [6.11.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.10.0...v6.11.0) (2025-01-31)
+
+
+### Features
+
+* add multi delete operation ([c56a1d5](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/c56a1d5e16947d78e69b1bf577c17c8ceaa405e1))
+
 # [6.10.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.9.0...v6.10.0) (2025-01-29)
 
 
