@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('gift_cards:balance_change_cents', () => {
   test
-    .timeout(41000)
+    .timeout(45000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('percentage_discount_promotions:enable', () => {
   test
-    .timeout(41000)
+    .timeout(45000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

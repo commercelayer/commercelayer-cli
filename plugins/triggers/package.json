@@ -50,13 +50,14 @@
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "generate": "tsx gen/generator.ts",
     "lint": "eslint src --ext .ts --config .eslintrc",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "release": "pnpm upgrade && pnpm generate && pnpm prepack && pnpm postpack"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/cli-dev": "^3.0.6",
+    "@commercelayer/cli-dev": "^3.0.7",
     "@commercelayer/eslint-config-ts": "^1.4.5",
-    "@oclif/plugin-help": "^6.2.18",
+    "@oclif/plugin-help": "^6.2.23",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -64,21 +65,21 @@
     "@types/inquirer": "^8.2.10",
     "@types/lodash.snakecase": "^4.1.9",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.12.0",
     "chai": "^4.5.0",
     "eslint": "^8.57.1",
     "inflector-js": "^1.0.1",
     "lodash.snakecase": "^4.1.1",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
-    "oclif": "^4.16.0",
-    "semantic-release": "^24.2.0",
+    "oclif": "^4.17.21",
+    "semantic-release": "^24.2.1",
     "tsx": "^4.19.2",
     "typescript": "5.5.4"
   },
   "dependencies": {
     "@commercelayer/cli-core": "beta",
-    "@commercelayer/sdk": "^6.25.2",
+    "@commercelayer/sdk": "^6.30.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.6",
     "tslib": "^2.8.1"

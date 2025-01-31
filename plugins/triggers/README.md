@@ -33,6 +33,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
 * [`commercelayer adyen_payment:details ID`](#commercelayer-adyen_paymentdetails-id)
 * [`commercelayer authorization ID`](#commercelayer-authorization-id)
+* [`commercelayer authorization:cancel ID`](#commercelayer-authorizationcancel-id)
 * [`commercelayer authorization:capture ID`](#commercelayer-authorizationcapture-id)
 * [`commercelayer authorization:capture_amount_cents ID`](#commercelayer-authorizationcapture_amount_cents-id)
 * [`commercelayer authorization:forward ID`](#commercelayer-authorizationforward-id)
@@ -46,16 +47,21 @@ $ commercelayer plugins:install triggers
 * [`commercelayer buy_x_pay_y_promotion:disable ID`](#commercelayer-buy_x_pay_y_promotiondisable-id)
 * [`commercelayer buy_x_pay_y_promotion:enable ID`](#commercelayer-buy_x_pay_y_promotionenable-id)
 * [`commercelayer capture ID`](#commercelayer-capture-id)
+* [`commercelayer capture:cancel ID`](#commercelayer-capturecancel-id)
 * [`commercelayer capture:forward ID`](#commercelayer-captureforward-id)
 * [`commercelayer capture:refund ID`](#commercelayer-capturerefund-id)
 * [`commercelayer capture:refund_amount_cents ID`](#commercelayer-capturerefund_amount_cents-id)
 * [`commercelayer checkout_com_payment ID`](#commercelayer-checkout_com_payment-id)
 * [`commercelayer checkout_com_payment:details ID`](#commercelayer-checkout_com_paymentdetails-id)
 * [`commercelayer checkout_com_payment:refresh ID`](#commercelayer-checkout_com_paymentrefresh-id)
+* [`commercelayer cleanup ID`](#commercelayer-cleanup-id)
+* [`commercelayer cleanup:interrupt ID`](#commercelayer-cleanupinterrupt-id)
 * [`commercelayer customer_password_reset ID`](#commercelayer-customer_password_reset-id)
 * [`commercelayer customer_password_reset:reset_password_token ID`](#commercelayer-customer_password_resetreset_password_token-id)
 * [`commercelayer event ID`](#commercelayer-event-id)
 * [`commercelayer event:trigger ID`](#commercelayer-eventtrigger-id)
+* [`commercelayer export ID`](#commercelayer-export-id)
+* [`commercelayer export:interrupt ID`](#commercelayer-exportinterrupt-id)
 * [`commercelayer external_gateway ID`](#commercelayer-external_gateway-id)
 * [`commercelayer external_gateway:reset_circuit ID`](#commercelayer-external_gatewayreset_circuit-id)
 * [`commercelayer external_promotion ID`](#commercelayer-external_promotion-id)
@@ -70,6 +76,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer fixed_price_promotion ID`](#commercelayer-fixed_price_promotion-id)
 * [`commercelayer fixed_price_promotion:disable ID`](#commercelayer-fixed_price_promotiondisable-id)
 * [`commercelayer fixed_price_promotion:enable ID`](#commercelayer-fixed_price_promotionenable-id)
+* [`commercelayer flex_promotion ID`](#commercelayer-flex_promotion-id)
+* [`commercelayer flex_promotion:disable ID`](#commercelayer-flex_promotiondisable-id)
+* [`commercelayer flex_promotion:enable ID`](#commercelayer-flex_promotionenable-id)
 * [`commercelayer free_gift_promotion ID`](#commercelayer-free_gift_promotion-id)
 * [`commercelayer free_gift_promotion:disable ID`](#commercelayer-free_gift_promotiondisable-id)
 * [`commercelayer free_gift_promotion:enable ID`](#commercelayer-free_gift_promotionenable-id)
@@ -81,6 +90,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer gift_card:balance_change_cents ID`](#commercelayer-gift_cardbalance_change_cents-id)
 * [`commercelayer gift_card:deactivate ID`](#commercelayer-gift_carddeactivate-id)
 * [`commercelayer gift_card:purchase ID`](#commercelayer-gift_cardpurchase-id)
+* [`commercelayer import ID`](#commercelayer-import-id)
+* [`commercelayer import:interrupt ID`](#commercelayer-importinterrupt-id)
 * [`commercelayer in_stock_subscription ID`](#commercelayer-in_stock_subscription-id)
 * [`commercelayer in_stock_subscription:activate ID`](#commercelayer-in_stock_subscriptionactivate-id)
 * [`commercelayer in_stock_subscription:deactivate ID`](#commercelayer-in_stock_subscriptiondeactivate-id)
@@ -109,6 +120,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order:commit_invoice ID`](#commercelayer-ordercommit_invoice-id)
 * [`commercelayer order:create_subscriptions ID`](#commercelayer-ordercreate_subscriptions-id)
 * [`commercelayer order:customer_payment_source_id ID`](#commercelayer-ordercustomer_payment_source_id-id)
+* [`commercelayer order:fix_payment_source ID`](#commercelayer-orderfix_payment_source-id)
 * [`commercelayer order:fulfill ID`](#commercelayer-orderfulfill-id)
 * [`commercelayer order:nullify_payment_source ID`](#commercelayer-ordernullify_payment_source-id)
 * [`commercelayer order:pending ID`](#commercelayer-orderpending-id)
@@ -141,6 +153,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer price_list_scheduler ID`](#commercelayer-price_list_scheduler-id)
 * [`commercelayer price_list_scheduler:disable ID`](#commercelayer-price_list_schedulerdisable-id)
 * [`commercelayer price_list_scheduler:enable ID`](#commercelayer-price_list_schedulerenable-id)
+* [`commercelayer refund ID`](#commercelayer-refund-id)
+* [`commercelayer refund:forward ID`](#commercelayer-refundforward-id)
 * [`commercelayer return ID`](#commercelayer-return-id)
 * [`commercelayer return:approve ID`](#commercelayer-returnapprove-id)
 * [`commercelayer return:archive ID`](#commercelayer-returnarchive-id)
@@ -193,6 +207,10 @@ $ commercelayer plugins:install triggers
 * [`commercelayer stripe_payment ID`](#commercelayer-stripe_payment-id)
 * [`commercelayer stripe_payment:refresh ID`](#commercelayer-stripe_paymentrefresh-id)
 * [`commercelayer stripe_payment:update ID`](#commercelayer-stripe_paymentupdate-id)
+* [`commercelayer vertex_account ID`](#commercelayer-vertex_account-id)
+* [`commercelayer vertex_account:refresh_token ID`](#commercelayer-vertex_accountrefresh_token-id)
+* [`commercelayer void ID`](#commercelayer-void-id)
+* [`commercelayer void:forward ID`](#commercelayer-voidforward-id)
 * [`commercelayer webhook ID`](#commercelayer-webhook-id)
 * [`commercelayer webhook:disable ID`](#commercelayer-webhookdisable-id)
 * [`commercelayer webhook:enable ID`](#commercelayer-webhookenable-id)
@@ -263,6 +281,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/authorization/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/index.ts)_
+
+### `commercelayer authorization:cancel ID`
+
+Send this attribute if you want to void a succeeded authorization of a pending order (which is left unpaid).
+
+```sh-session
+USAGE
+  $ commercelayer authorization:cancel ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to void a succeeded authorization of a pending order (which is left unpaid).
+```
+
+_See code: [src/commands/authorization/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/cancel.ts)_
 
 ### `commercelayer authorization:capture ID`
 
@@ -553,6 +593,28 @@ DESCRIPTION
 
 _See code: [src/commands/capture/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/index.ts)_
 
+### `commercelayer capture:cancel ID`
+
+Send this attribute if you want to refund a succeeded capture of a pending order (which is left unpaid).
+
+```sh-session
+USAGE
+  $ commercelayer capture:cancel ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refund a succeeded capture of a pending order (which is left unpaid).
+```
+
+_See code: [src/commands/capture/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/cancel.ts)_
+
 ### `commercelayer capture:forward ID`
 
 Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states accordingly.
@@ -686,6 +748,50 @@ DESCRIPTION
 
 _See code: [src/commands/checkout_com_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/refresh.ts)_
 
+### `commercelayer cleanup ID`
+
+Execute an action on a resource of type cleanups.
+
+```sh-session
+USAGE
+  $ commercelayer cleanup ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type cleanups
+```
+
+_See code: [src/commands/cleanup/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/cleanup/index.ts)_
+
+### `commercelayer cleanup:interrupt ID`
+
+Send this attribute if you want to mark status as 'interrupted'.
+
+```sh-session
+USAGE
+  $ commercelayer cleanup:interrupt ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark status as 'interrupted'.
+```
+
+_See code: [src/commands/cleanup/interrupt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/cleanup/interrupt.ts)_
+
 ### `commercelayer customer_password_reset ID`
 
 Execute an action on a resource of type customer_password_resets.
@@ -754,7 +860,7 @@ _See code: [src/commands/event/index.ts](https://github.com/commercelayer/commer
 
 ### `commercelayer event:trigger ID`
 
-Send this attribute if you want to force webhooks execution for this event.
+Send this attribute if you want to force webhooks execution for this event. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -769,10 +875,54 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to force webhooks execution for this event.
+  Send this attribute if you want to force webhooks execution for this event. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/event/trigger.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/event/trigger.ts)_
+
+### `commercelayer export ID`
+
+Execute an action on a resource of type exports.
+
+```sh-session
+USAGE
+  $ commercelayer export ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type exports
+```
+
+_See code: [src/commands/export/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/export/index.ts)_
+
+### `commercelayer export:interrupt ID`
+
+Send this attribute if you want to mark status as 'interrupted'.
+
+```sh-session
+USAGE
+  $ commercelayer export:interrupt ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark status as 'interrupted'.
+```
+
+_See code: [src/commands/export/interrupt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/export/interrupt.ts)_
 
 ### `commercelayer external_gateway ID`
 
@@ -798,7 +948,7 @@ _See code: [src/commands/external_gateway/index.ts](https://github.com/commercel
 
 ### `commercelayer external_gateway:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -814,7 +964,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/external_gateway/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/reset_circuit.ts)_
@@ -887,7 +1037,7 @@ _See code: [src/commands/external_promotion/enable.ts](https://github.com/commer
 
 ### `commercelayer external_promotion:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -903,7 +1053,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/external_promotion/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/reset_circuit.ts)_
@@ -932,7 +1082,7 @@ _See code: [src/commands/external_tax_calculator/index.ts](https://github.com/co
 
 ### `commercelayer external_tax_calculator:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -948,7 +1098,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/external_tax_calculator/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_tax_calculator/reset_circuit.ts)_
@@ -1084,6 +1234,72 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/fixed_price_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/enable.ts)_
+
+### `commercelayer flex_promotion ID`
+
+Execute an action on a resource of type flex_promotions.
+
+```sh-session
+USAGE
+  $ commercelayer flex_promotion ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type flex_promotions
+```
+
+_See code: [src/commands/flex_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/flex_promotion/index.ts)_
+
+### `commercelayer flex_promotion:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer flex_promotion:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/flex_promotion/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/flex_promotion/disable.ts)_
+
+### `commercelayer flex_promotion:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer flex_promotion:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/flex_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/flex_promotion/enable.ts)_
 
 ### `commercelayer free_gift_promotion ID`
 
@@ -1329,6 +1545,50 @@ DESCRIPTION
 
 _See code: [src/commands/gift_card/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/purchase.ts)_
 
+### `commercelayer import ID`
+
+Execute an action on a resource of type imports.
+
+```sh-session
+USAGE
+  $ commercelayer import ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type imports
+```
+
+_See code: [src/commands/import/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/import/index.ts)_
+
+### `commercelayer import:interrupt ID`
+
+Send this attribute if you want to mark status as 'interrupted'.
+
+```sh-session
+USAGE
+  $ commercelayer import:interrupt ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark status as 'interrupted'.
+```
+
+_See code: [src/commands/import/interrupt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/import/interrupt.ts)_
+
 ### `commercelayer in_stock_subscription ID`
 
 Execute an action on a resource of type in_stock_subscriptions.
@@ -1487,7 +1747,7 @@ _See code: [src/commands/line_item/external_price.ts](https://github.com/commerc
 
 ### `commercelayer line_item:reserve_stock ID`
 
-Send this attribute if you want to reserve the stock for the line item's SKUs quantity. Stock reservations expiration depends on the inventory model's cutoff. When used on update the existing active stock reservations are renewed.
+Send this attribute if you want to reserve the stock for the line item's SKUs quantity. Stock reservations expiration depends on the inventory model's cutoff. When used on update the existing active stock reservations are renewed. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1504,13 +1764,14 @@ FLAGS
 DESCRIPTION
   Send this attribute if you want to reserve the stock for the line item's SKUs quantity. Stock reservations expiration
   depends on the inventory model's cutoff. When used on update the existing active stock reservations are renewed.
+  Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/line_item/reserve_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reserve_stock.ts)_
 
 ### `commercelayer line_item:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1526,7 +1787,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/line_item/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reset_circuit.ts)_
@@ -1687,7 +1948,7 @@ _See code: [src/commands/order/index.ts](https://github.com/commercelayer/commer
 
 ### `commercelayer order:approve ID`
 
-Send this attribute if you want to approve a placed order.
+Send this attribute if you want to approve a placed order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1702,14 +1963,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to approve a placed order.
+  Send this attribute if you want to approve a placed order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/approve.ts)_
 
 ### `commercelayer order:approve_and_capture ID`
 
-Send this attribute if you want to approve and capture a placed order.
+Send this attribute if you want to approve and capture a placed order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1724,7 +1985,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to approve and capture a placed order.
+  Send this attribute if you want to approve and capture a placed order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/approve_and_capture.ts)_
@@ -1864,7 +2125,7 @@ _See code: [src/commands/order/cancel.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer order:capture ID`
 
-Send this attribute if you want to capture an authorized order.
+Send this attribute if you want to capture an authorized order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1879,7 +2140,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to capture an authorized order.
+  Send this attribute if you want to capture an authorized order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/capture.ts)_
@@ -1953,9 +2214,32 @@ DESCRIPTION
 
 _See code: [src/commands/order/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/customer_payment_source_id.ts)_
 
+### `commercelayer order:fix_payment_source ID`
+
+Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer order:fix_payment_source ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end
+  of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+```
+
+_See code: [src/commands/order/fix_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/fix_payment_source.ts)_
+
 ### `commercelayer order:fulfill ID`
 
-Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered). Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1971,6 +2255,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+  Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/fulfill.ts)_
@@ -1999,7 +2284,7 @@ _See code: [src/commands/order/nullify_payment_source.ts](https://github.com/com
 
 ### `commercelayer order:pending ID`
 
-Send this attribute if you want to move a draft or placing order to pending.
+Send this attribute if you want to move a draft or placing order to pending. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -2014,7 +2299,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to move a draft or placing order to pending.
+  Send this attribute if you want to move a draft or placing order to pending. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/pending.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/pending.ts)_
@@ -2065,7 +2350,7 @@ _See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer order:refund ID`
 
-Send this attribute if you want to refund a captured order.
+Send this attribute if you want to refund a captured order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -2080,7 +2365,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to refund a captured order.
+  Send this attribute if you want to refund a captured order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refund.ts)_
@@ -2110,7 +2395,7 @@ _See code: [src/commands/order/refund_invoice.ts](https://github.com/commercelay
 
 ### `commercelayer order:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -2126,7 +2411,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/reset_circuit.ts)_
@@ -2247,7 +2532,7 @@ _See code: [src/commands/order/shipping_address_same_as_billing.ts](https://gith
 
 ### `commercelayer order:start_editing ID`
 
-Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount.
+Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -2263,14 +2548,14 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total
-  amount.
+  amount. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/start_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/start_editing.ts)_
 
 ### `commercelayer order:stop_editing ID`
 
-Send this attribute to stop the editing for the order and return back to placed status.
+Send this attribute to stop the editing for the order and return back to placed status. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -2285,7 +2570,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute to stop the editing for the order and return back to placed status.
+  Send this attribute to stop the editing for the order and return back to placed status. Cannot be passed by sales
+  channels.
 ```
 
 _See code: [src/commands/order/stop_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/stop_editing.ts)_
@@ -2666,6 +2952,51 @@ DESCRIPTION
 
 _See code: [src/commands/price_list_scheduler/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/price_list_scheduler/enable.ts)_
 
+### `commercelayer refund ID`
+
+Execute an action on a resource of type refunds.
+
+```sh-session
+USAGE
+  $ commercelayer refund ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type refunds
+```
+
+_See code: [src/commands/refund/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/refund/index.ts)_
+
+### `commercelayer refund:forward ID`
+
+Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states accordingly.
+
+```sh-session
+USAGE
+  $ commercelayer refund:forward ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states
+  accordingly.
+```
+
+_See code: [src/commands/refund/forward.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/refund/forward.ts)_
+
 ### `commercelayer return ID`
 
 Execute an action on a resource of type returns.
@@ -3042,7 +3373,7 @@ _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/com
 
 ### `commercelayer shipment:cancel ID`
 
-Send this attribute if you want to mark this shipment as cancelled (unless already shipped or delivered).
+Send this attribute if you want to mark this shipment as cancelled (unless already shipped or delivered). Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3057,14 +3388,15 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark this shipment as cancelled (unless already shipped or delivered).
+  Send this attribute if you want to mark this shipment as cancelled (unless already shipped or delivered). Cannot be
+  passed by sales channels.
 ```
 
 _See code: [src/commands/shipment/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/cancel.ts)_
 
 ### `commercelayer shipment:decrement_stock ID`
 
-Send this attribute if you want to automatically decrement and release the stock for each of the associated stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically decrement and release the stock for each of the associated stock line item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3080,7 +3412,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to automatically decrement and release the stock for each of the associated stock line
-  item. Can be done only when fulfillment is in progress.
+  item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/shipment/decrement_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/decrement_stock.ts)_
@@ -3241,7 +3573,7 @@ _See code: [src/commands/shipment/ready_to_ship.ts](https://github.com/commercel
 
 ### `commercelayer shipment:release_stock ID`
 
-Send this attribute if you want to automatically destroy the stock reservations for each of the associated stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically destroy the stock reservations for each of the associated stock line item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3257,14 +3589,14 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to automatically destroy the stock reservations for each of the associated stock line
-  item. Can be done only when fulfillment is in progress.
+  item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/shipment/release_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/release_stock.ts)_
 
 ### `commercelayer shipment:reserve_stock ID`
 
-Send this attribute if you want to automatically reserve the stock for each of the associated stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically reserve the stock for each of the associated stock line item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3280,7 +3612,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to automatically reserve the stock for each of the associated stock line item. Can be
-  done only when fulfillment is in progress.
+  done only when fulfillment is in progress. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/shipment/reserve_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/reserve_stock.ts)_
@@ -3309,7 +3641,7 @@ _See code: [src/commands/shipment/ship.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer shipment:upcoming ID`
 
-Send this attribute if you want to mark this shipment as upcoming.
+Send this attribute if you want to mark this shipment as upcoming. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3324,7 +3656,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark this shipment as upcoming.
+  Send this attribute if you want to mark this shipment as upcoming. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/shipment/upcoming.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/upcoming.ts)_
@@ -3397,7 +3729,7 @@ _See code: [src/commands/shipping_method/enable.ts](https://github.com/commercel
 
 ### `commercelayer shipping_method:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3413,7 +3745,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/shipping_method/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/reset_circuit.ts)_
@@ -3442,7 +3774,7 @@ _See code: [src/commands/stock_item/index.ts](https://github.com/commercelayer/c
 
 ### `commercelayer stock_item:validate ID`
 
-Send this attribute if you want to validate the stock item quantity against the existing reserved stock one, returns an error in case the former is smaller.
+Send this attribute if you want to validate the stock item quantity against the existing reserved stock one, returns an error in case the former is smaller. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3458,7 +3790,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to validate the stock item quantity against the existing reserved stock one, returns
-  an error in case the former is smaller.
+  an error in case the former is smaller. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/stock_item/validate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_item/validate.ts)_
@@ -3487,7 +3819,7 @@ _See code: [src/commands/stock_line_item/index.ts](https://github.com/commercela
 
 ### `commercelayer stock_line_item:decrement_stock ID`
 
-Send this attribute if you want to automatically decrement and release the stock this stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically decrement and release the stock this stock line item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3503,14 +3835,14 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to automatically decrement and release the stock this stock line item. Can be done
-  only when fulfillment is in progress.
+  only when fulfillment is in progress. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/stock_line_item/decrement_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/decrement_stock.ts)_
 
 ### `commercelayer stock_line_item:release_stock ID`
 
-Send this attribute if you want to automatically destroy the stock reservation for this stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically destroy the stock reservation for this stock line item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3526,14 +3858,14 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to automatically destroy the stock reservation for this stock line item. Can be done
-  only when fulfillment is in progress.
+  only when fulfillment is in progress. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/stock_line_item/release_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/release_stock.ts)_
 
 ### `commercelayer stock_line_item:reserve_stock ID`
 
-Send this attribute if you want to automatically reserve the stock for this stock line item. Can be done only when fulfillment is in progress.
+Send this attribute if you want to automatically reserve the stock for this stock line item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3549,7 +3881,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to automatically reserve the stock for this stock line item. Can be done only when
-  fulfillment is in progress.
+  fulfillment is in progress. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/stock_line_item/reserve_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_line_item/reserve_stock.ts)_
@@ -3818,6 +4150,95 @@ DESCRIPTION
 
 _See code: [src/commands/stripe_payment/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_payment/update.ts)_
 
+### `commercelayer vertex_account ID`
+
+Execute an action on a resource of type vertex_accounts.
+
+```sh-session
+USAGE
+  $ commercelayer vertex_account ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type vertex_accounts
+```
+
+_See code: [src/commands/vertex_account/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/vertex_account/index.ts)_
+
+### `commercelayer vertex_account:refresh_token ID`
+
+Send this attribute if you want to manually refresh the access token.
+
+```sh-session
+USAGE
+  $ commercelayer vertex_account:refresh_token ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to manually refresh the access token.
+```
+
+_See code: [src/commands/vertex_account/refresh_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/vertex_account/refresh_token.ts)_
+
+### `commercelayer void ID`
+
+Execute an action on a resource of type voids.
+
+```sh-session
+USAGE
+  $ commercelayer void ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type voids
+```
+
+_See code: [src/commands/void/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/void/index.ts)_
+
+### `commercelayer void:forward ID`
+
+Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states accordingly.
+
+```sh-session
+USAGE
+  $ commercelayer void:forward ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to forward a stuck transaction to succeeded and update associated order states
+  accordingly.
+```
+
+_See code: [src/commands/void/forward.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/void/forward.ts)_
+
 ### `commercelayer webhook ID`
 
 Execute an action on a resource of type webhooks.
@@ -3886,7 +4307,7 @@ _See code: [src/commands/webhook/enable.ts](https://github.com/commercelayer/com
 
 ### `commercelayer webhook:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -3902,7 +4323,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/webhook/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/reset_circuit.ts)_

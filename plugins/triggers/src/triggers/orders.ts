@@ -73,6 +73,11 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_nullify_payment_source',
       description: 'Send this attribute if you want to nullify the payment source for this order.',
     },
+	fix_payment_source: {
+      action: 'fix_payment_source',
+      trigger: '_fix_payment_source',
+      description: 'Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.',
+    },
 	billing_address_clone_id: {
       action: 'billing_address_clone_id',
       trigger: '_billing_address_clone_id',
@@ -171,6 +176,7 @@ export type ActionType =
 	'fulfill' |
 	'update_taxes' |
 	'nullify_payment_source' |
+	'fix_payment_source' |
 	'billing_address_clone_id' |
 	'shipping_address_clone_id' |
 	'customer_payment_source_id' |
