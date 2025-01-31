@@ -22,10 +22,40 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 ## Commands
 <!-- commands -->
 
+* [`commercelayer token:assertion`](#commercelayer-tokenassertion)
 * [`commercelayer token:decode TOKEN`](#commercelayer-tokendecode-token)
-* [`commercelayer token:encode`](#commercelayer-tokenencode)
 * [`commercelayer token:get`](#commercelayer-tokenget)
 * [`commercelayer token:revoke TOKEN`](#commercelayer-tokenrevoke-token)
+
+### `commercelayer token:assertion`
+
+Generate an assertion to be used with the jwt bearer flow.
+
+```sh-session
+USAGE
+  $ commercelayer token:assertion -o <value> [-t Customer|User] [-c | -u] [-C <value>...] [-j]
+
+FLAGS
+  -C, --custom=<value>...  custom claim attribute [key=value]
+  -c, --customer           owner of type 'Customer'
+  -j, --json               print assertion in json format
+  -o, --ownerId=<value>    (required) the owner id
+  -t, --type=<option>      the type of the owner
+                           <options: Customer|User>
+  -u, --user               owner of type 'User'
+
+DESCRIPTION
+  generate an assertion to be used with the jwt bearer flow
+
+EXAMPLES
+  cl token:assertion -t <Customer|User> -o <ownerId>
+
+  cl token:assertion -co <ownerId> -j
+
+  cl token:assertion -to <ownerId> -C key1=value1 -C key2=value2 key3=value3
+```
+
+_See code: [src/commands/token/assertion.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/assertion.ts)_
 
 ### `commercelayer token:decode TOKEN`
 
@@ -33,10 +63,13 @@ Decode a Commerce Layer access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:decode TOKEN
+  $ commercelayer token:decode TOKEN [-f]
 
 ARGUMENTS
   TOKEN  the access token to be decoded
+
+FLAGS
+  -f, --full  show the full token info
 
 DESCRIPTION
   decode a Commerce Layer access token
@@ -47,33 +80,10 @@ ALIASES
 EXAMPLES
   $ commercelayer token:decode <accessToken>
 
-  $ cl token:info <accessToken>
+  $ cl token:info <accessToken> -f
 ```
 
 _See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
-
-### `commercelayer token:encode`
-
-Start a wizard to generate a custom access token.
-
-```sh-session
-USAGE
-  $ commercelayer token:encode [-i] [-c]
-
-FLAGS
-  -c, --check  check generated access token
-  -i, --info   print generated token info
-
-DESCRIPTION
-  start a wizard to generate a custom access token
-
-EXAMPLES
-  $ commercelayer token:encode
-
-  $ cl token:encode
-```
-
-_See code: [src/commands/token/encode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/encode.ts)_
 
 ### `commercelayer token:get`
 
@@ -81,11 +91,12 @@ Get a new access token.
 
 ```sh-session
 USAGE
-  $ commercelayer token:get [-o <value>] (-s <value> -i <value>) [-S <value>... ] [-e <value> -p <value>]
-    [--info]
+  $ commercelayer token:get [-o <value>] (-s <value> -i <value>) [-S <value>... ] [--info] [-a <value> | [-e
+    <value> -p <value>] | ]
 
 FLAGS
   -S, --scope=<value>...      access token scope (market, stock location)
+  -a, --assertion=<value>     use jwt assertion
   -e, --email=<value>         customer email
   -i, --clientId=<value>      (required) application client_id
   -o, --organization=<value>  the slug of your organization
@@ -101,7 +112,7 @@ EXAMPLES
 
   $ cl token:get -o <organizationSlug> -i <clientId> -S <scope> --info
 
-  $ cl token:get -i <clientId> -s <clientSecret>
+  $ cl token:get -i <clientId> -s <clientSecret> -a <jwtAssertion>
 ```
 
 _See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/get.ts)_
