@@ -43,7 +43,9 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:commit_invoice ID`](#commercelayer-orderscommit_invoice-id)
 * [`commercelayer orders:create_subscriptions ID`](#commercelayer-orderscreate_subscriptions-id)
 * [`commercelayer orders:customer_payment_source_id ID`](#commercelayer-orderscustomer_payment_source_id-id)
+* [`commercelayer orders:fix_payment_source ID`](#commercelayer-ordersfix_payment_source-id)
 * [`commercelayer orders:fulfill ID`](#commercelayer-ordersfulfill-id)
+* [`commercelayer orders:history ID`](#commercelayer-ordershistory-id)
 * [`commercelayer orders:nullify_payment_source ID`](#commercelayer-ordersnullify_payment_source-id)
 * [`commercelayer orders:pending ID`](#commercelayer-orderspending-id)
 * [`commercelayer orders:place ID`](#commercelayer-ordersplace-id)
@@ -86,7 +88,7 @@ _See code: [src/commands/orders/index.ts](https://github.com/commercelayer/comme
 
 ### `commercelayer orders:approve ID`
 
-Send this attribute if you want to approve a placed order.
+Send this attribute if you want to approve a placed order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -101,14 +103,14 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to approve a placed order.
+  Send this attribute if you want to approve a placed order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve.ts)_
 
 ### `commercelayer orders:approve_and_capture ID`
 
-Send this attribute if you want to approve and capture a placed order.
+Send this attribute if you want to approve and capture a placed order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -123,7 +125,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to approve and capture a placed order.
+  Send this attribute if you want to approve and capture a placed order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve_and_capture.ts)_
@@ -263,7 +265,7 @@ _See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/comm
 
 ### `commercelayer orders:capture ID`
 
-Send this attribute if you want to capture an authorized order.
+Send this attribute if you want to capture an authorized order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -278,7 +280,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to capture an authorized order.
+  Send this attribute if you want to capture an authorized order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/capture.ts)_
@@ -352,9 +354,32 @@ DESCRIPTION
 
 _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/customer_payment_source_id.ts)_
 
+### `commercelayer orders:fix_payment_source ID`
+
+Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer orders:fix_payment_source ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end
+  of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+```
+
+_See code: [src/commands/orders/fix_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fix_payment_source.ts)_
+
 ### `commercelayer orders:fulfill ID`
 
-Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered). Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -370,9 +395,33 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
+  Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fulfill.ts)_
+
+### `commercelayer orders:history ID`
+
+Show history of specific order.
+
+```sh-session
+USAGE
+  $ commercelayer orders:history ID [-u [-j -p]] [-S]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -S, --status       show only status changes
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  show history of specific order
+```
+
+_See code: [src/commands/orders/history.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/history.ts)_
 
 ### `commercelayer orders:nullify_payment_source ID`
 
@@ -398,7 +447,7 @@ _See code: [src/commands/orders/nullify_payment_source.ts](https://github.com/co
 
 ### `commercelayer orders:pending ID`
 
-Send this attribute if you want to move a draft or placing order to pending.
+Send this attribute if you want to move a draft or placing order to pending. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -413,7 +462,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to move a draft or placing order to pending.
+  Send this attribute if you want to move a draft or placing order to pending. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/pending.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/pending.ts)_
@@ -464,7 +513,7 @@ _See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/com
 
 ### `commercelayer orders:refund ID`
 
-Send this attribute if you want to refund a captured order.
+Send this attribute if you want to refund a captured order. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -479,7 +528,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to refund a captured order.
+  Send this attribute if you want to refund a captured order. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund.ts)_
@@ -509,7 +558,7 @@ _See code: [src/commands/orders/refund_invoice.ts](https://github.com/commercela
 
 ### `commercelayer orders:reset_circuit ID`
 
-Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count.
+Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -525,7 +574,7 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero
-  failures count.
+  failures count. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/reset_circuit.ts)_
@@ -646,7 +695,7 @@ _See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://git
 
 ### `commercelayer orders:start_editing ID`
 
-Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount.
+Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total amount. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -662,14 +711,14 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to edit the order after it is placed. Remember you cannot exceed the original total
-  amount.
+  amount. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/start_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/start_editing.ts)_
 
 ### `commercelayer orders:stop_editing ID`
 
-Send this attribute to stop the editing for the order and return back to placed status.
+Send this attribute to stop the editing for the order and return back to placed status. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -684,7 +733,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute to stop the editing for the order and return back to placed status.
+  Send this attribute to stop the editing for the order and return back to placed status. Cannot be passed by sales
+  channels.
 ```
 
 _See code: [src/commands/orders/stop_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/stop_editing.ts)_
