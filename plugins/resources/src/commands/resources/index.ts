@@ -12,11 +12,11 @@ export default class ResourcesIndex extends Command {
 		'$ cl-resources resources',
 		'$ cl-res resources',
 		'$ commercelayer resources',
-		'$ cl resources',
+		'$ cl resources'
 	]
 
 	static flags = {
-		help: Flags.help({ char: 'h' }),
+		help: Flags.help({ char: 'h' })
 	}
 
 

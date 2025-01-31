@@ -1,3 +1,11 @@
+# [6.10.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.9.0...v6.10.0) (2025-01-29)
+
+
+### Features
+
+* add support for full json objects ([58a22b8](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/58a22b877c1d8cb957eadededd8d770222f63229))
+* add support for object fields in dot notation ([b5d8dc9](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/b5d8dc9eec9941d30f967709682fc07344e4515e))
+
 # [6.9.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.8.1...v6.9.0) (2024-12-11)
 
 

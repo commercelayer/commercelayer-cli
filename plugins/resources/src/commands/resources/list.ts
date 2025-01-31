@@ -17,7 +17,7 @@ export default class ResourcesList extends Command {
   static examples = [
     '$ commercelayer resources:list customers -f id,email,customer_group -i customer_group -s updated_at',
     '$ cl res:list customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
-    '$ cl list customers -p 5 -n 10 -s -created_at --raw',
+    '$ cl list customers -p 5 -n 10 -s -created_at --raw'
   ]
 
   static flags = {
@@ -25,38 +25,38 @@ export default class ResourcesList extends Command {
     where: Flags.string({
       char: 'w',
       multiple: true,
-      description: 'comma separated list of query filters',
+      description: 'comma separated list of query filters'
     }),
     page: Flags.integer({
       char: 'p',
-      description: 'page number',
+      description: 'page number'
     }),
     pageSize: Flags.integer({
       char: 'n',
-      description: 'number of elements per page',
+      description: 'number of elements per page'
     }),
     sort: Flags.string({
       char: 's',
       description: 'define results ordering',
-      multiple: true,
+      multiple: true
     }),
     save: Flags.string({
       char: 'x',
       description: 'save command output to file',
       multiple: false,
-      exclusive: ['save-path'],
+      exclusive: ['save-path']
     }),
     'save-path': Flags.string({
       char: 'X',
       description: 'save command output to file and create missing path directories',
       multiple: false,
-      exclusive: ['save'],
+      exclusive: ['save']
     }),
     extract: Flags.string({
       char: 'e',
       description: 'extract subfields from object attributes',
       multiple: true,
-      exclusive: ['raw'],
+      exclusive: ['raw']
     })
   }
 

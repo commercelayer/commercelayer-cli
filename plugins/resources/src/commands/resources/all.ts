@@ -41,7 +41,7 @@ export default class ResourcesAll extends Command {
   static examples = [
     '$ commercelayer resources:all customers -f id,email,customer_group -i customer_group -s updated_at',
     '$ cl res:all customers -i customer_group -f customer_group -f customer_groups/name -w customer_group_name_eq="GROUP NAME"',
-    '$ cl all customers -s -created_at --json',
+    '$ cl all customers -s -created_at --json'
   ]
 
   static flags = {
@@ -49,29 +49,29 @@ export default class ResourcesAll extends Command {
     where: Flags.string({
       char: 'w',
       multiple: true,
-      description: 'comma separated list of query filters',
+      description: 'comma separated list of query filters'
     }),
     sort: Flags.string({
       char: 's',
       description: 'define results ordering',
-      multiple: true,
+      multiple: true
     }),
     save: Flags.string({
       char: 'x',
       description: 'save command output to file',
       multiple: false,
-      exclusive: ['save-path'],
+      exclusive: ['save-path']
     }),
     'save-path': Flags.string({
       char: 'X',
       description: 'save command output to file and create missing path directories',
       multiple: false,
-      exclusive: ['save'],
+      exclusive: ['save']
     }),
     notify: Flags.boolean({
       char: 'N',
       description: 'force system notification when export has finished',
-      hidden: true,
+      hidden: true
     }),
     clientId: Flags.string({
       // name: 'clientId',
@@ -79,49 +79,49 @@ export default class ResourcesAll extends Command {
       description: 'organization client_id',
       hidden: true,
       required: false,
-      env: 'CL_CLI_CLIENT_ID',
+      env: 'CL_CLI_CLIENT_ID'
     }),
     clientSecret: Flags.string({
       // char: 's',
       description: 'organization client_secret',
       hidden: true,
       required: false,
-      env: 'CL_CLI_CLIENT_SECRET',
+      env: 'CL_CLI_CLIENT_SECRET'
     }),
     csv: Flags.boolean({
       char: 'C',
       description: 'export fields in csv format',
       exclusive: ['raw', 'json'],
-      dependsOn: ['fields'],
+      dependsOn: ['fields']
     }),
     delimiter: Flags.string({
       char: 'D',
       // eslint-disable-next-line quotes
       description: `the delimiter character to use in the CSV output file (one of ',', ';', '|', TAB)`,
       options: [',', ';', '|', 'TAB'],
-      dependsOn: ['csv'],
+      dependsOn: ['csv']
     }),
     header: Flags.string({
       char: 'H',
       description: 'rename column headers defining a comma-separated list of values field:"renamed title"',
       dependsOn: ['csv'],
-      multiple: true,
+      multiple: true
     }),
     blind: Flags.boolean({
       char: 'b',
-      description: 'execute in blind mode without prompt and progress bar',
+      description: 'execute in blind mode without prompt and progress bar'
     }),
     extract: Flags.string({
       char: 'e',
       description: 'extract subfields from object attributes',
       multiple: true,
-      exclusive: ['raw'],
+      exclusive: ['raw']
     }),
     timeout: Flags.integer({
       char: 'T',
       description: `set request timeout in milliseconds [${requestTimeout.min} - ${requestTimeout.max}]`,
-      hidden: true,
-    }),
+      hidden: true
+    })
   }
 
 
