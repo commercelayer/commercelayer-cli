@@ -18,7 +18,7 @@ export default class ProvisioningDelete extends Command {
 	]
 
 	static flags = {
-		...(clCommand.commandFlags<typeof Command.flags>(Command.flags, ['save-params', 'load-params']))
+		...(clCommand.commandFlags(Command.flags, [/* FLAG_SAVE_PARAMS, FLAG_LOAD_PARAMS, */'fields', 'include', 'json', 'unformatted']))
 	}
 
 	static args = {

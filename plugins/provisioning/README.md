@@ -40,8 +40,8 @@ Create a new resource.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:create RESOURCE [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-O <value>] [-D <value> |
-    -a <value> | -r <value> | -m <value> | ]
+  $ commercelayer provisioning:create RESOURCE [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [-H ] [-Y ] [-O <value>...] [-D <value> | -a <value>... | -r <value>... | -m <value>... | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -53,12 +53,19 @@ FLAGS
   -R, --raw                      print out the raw API response
   -Y, --headers-only             show only response headers
   -a, --attribute=<value>...     define a resource attribute
-  -f, --fields=<value>...        comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...        comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...       comma separated resources to include
   -j, --json                     convert output in standard JSON format
   -m, --metadata=<value>...      define a metadata attribute or a set of metadata attributes
   -r, --relationship=<value>...  define a relationship with another resource
   -u, --unformatted              print unformatted JSON output
+
+DOCUMENTATION FLAGS
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+      --curl           show the equivalent cURL command of the CLI command
+      --doc            show the CLI command in a specific language
+      --node           show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   create a new resource
@@ -86,20 +93,23 @@ Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:delete RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ]
+  $ commercelayer provisioning:delete RESOURCE [ID] [-l curl|node [--doc | -R]] [--curl ] [--node ] [-H ] [-Y ]
 
 ARGUMENTS
   RESOURCE  the resource type
   ID        id of the resource to delete
 
 FLAGS
-  -H, --headers             show response headers
-  -R, --raw                 print out the raw API response
-  -Y, --headers-only        show only response headers
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
-  -i, --include=<value>...  comma separated resources to include
-  -j, --json                convert output in standard JSON format
-  -u, --unformatted         print unformatted JSON output
+  -H, --headers       show response headers
+  -R, --raw           print out the raw API response
+  -Y, --headers-only  show only response headers
+
+DOCUMENTATION FLAGS
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+      --curl           show the equivalent cURL command of the CLI command
+      --doc            show the CLI command in a specific language
+      --node           show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   delete an existing resource
@@ -124,7 +134,7 @@ Execute an action on a resource.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:exec RESOURCE [ID] [ACTION] [-a <value>]
+  $ commercelayer provisioning:exec RESOURCE [ID] [ACTION] [-a <value>...]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -156,27 +166,35 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:fetch RESOURCE PATH [ID] [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-e <value> | ]
-    [-w <value>] [-p <value>] [-n <value>] [-s <value>]
+  $ commercelayer provisioning:fetch RESOURCE... PATH... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node
+    [--doc | -R]] [--curl ] [--node ] [-H ] [-Y ] [-e <value>... | ] [-w <value>...] [-p <value>] [-n <value>] [-s
+    <value>...]
 
 ARGUMENTS
-  RESOURCE  the resource type
-  PATH      path (or URL) of the resource(s) to fetch
-  ID        resource id
+  RESOURCE...  the resource type
+  PATH...      path (or URL) of the resource(s) to fetch
+  ID...        resource id
 
 FLAGS
   -H, --headers             show response headers
   -R, --raw                 print out the raw API response
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
   -p, --page=<value>        page number
-  -s, --sort=<value>...     defines results ordering
+  -s, --sort=<value>...     define results ordering
   -u, --unformatted         print unformatted JSON output
   -w, --where=<value>...    comma separated list of query filters
+
+DOCUMENTATION FLAGS
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+      --curl           show the equivalent cURL command of the CLI command
+      --doc            show the CLI command in a specific language
+      --node           show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -205,26 +223,33 @@ Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:get RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-w <value>] [-p
-    <value>] [-n <value>] [-s <value>] [-e <value> | ]
+  $ commercelayer provisioning:get RESOURCE... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc |
+    -R]] [--curl ] [--node ] [-H ] [-Y ] [-e <value>... | ] [-w <value>...] [-p <value>] [-n <value>] [-s <value>...]
 
 ARGUMENTS
-  RESOURCE  the resource type
-  ID        id of the resource to retrieve
+  RESOURCE...  the resource type
+  ID...        id of the resource to retrieve
 
 FLAGS
   -H, --headers             show response headers
   -R, --raw                 print out the raw API response
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
   -p, --page=<value>        page number
-  -s, --sort=<value>...     defines results ordering
+  -s, --sort=<value>...     define results ordering
   -u, --unformatted         print unformatted JSON output
   -w, --where=<value>...    comma separated list of query filters
+
+DOCUMENTATION FLAGS
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+      --curl           show the equivalent cURL command of the CLI command
+      --doc            show the CLI command in a specific language
+      --node           show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   retrieve a resource or list a set of resources
@@ -252,8 +277,8 @@ Fetch a collection of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:list RESOURCE [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-w <value>] [-p <value>]
-    [-n <value>] [-s <value>] [-e <value> | ]
+  $ commercelayer provisioning:list RESOURCE [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [-H ] [-Y ] [-w <value>...] [-p <value>] [-n <value>] [-s <value>...] [-e <value>... | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -263,14 +288,21 @@ FLAGS
   -R, --raw                 print out the raw API response
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -n, --pageSize=<value>    number of elements per page
   -p, --page=<value>        page number
-  -s, --sort=<value>...     defines results ordering
+  -s, --sort=<value>...     define results ordering
   -u, --unformatted         print unformatted JSON output
   -w, --where=<value>...    comma separated list of query filters
+
+DOCUMENTATION FLAGS
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+      --curl           show the equivalent cURL command of the CLI command
+      --doc            show the CLI command in a specific language
+      --node           show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a collection of resources
@@ -323,7 +355,8 @@ Fetch a single resource.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:retrieve RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-e <value> | ]
+  $ commercelayer provisioning:retrieve RESOURCE [ID] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [-H ] [-Y ] [-e <value>... | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -334,10 +367,17 @@ FLAGS
   -R, --raw                 print out the raw API response
   -Y, --headers-only        show only response headers
   -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...  comma separated resources to include
   -j, --json                convert output in standard JSON format
   -u, --unformatted         print unformatted JSON output
+
+DOCUMENTATION FLAGS
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+      --curl           show the equivalent cURL command of the CLI command
+      --doc            show the CLI command in a specific language
+      --node           show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   fetch a single resource
@@ -365,8 +405,9 @@ Update an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:update RESOURCE [ID] [-i <value>] [-f <value>] [-u -j] [-H -R] [-Y ] [-O <value>] [-D
-    <value> | -a <value> | -r <value> | [-m <value> | -M <value>] |  | ]
+  $ commercelayer provisioning:update RESOURCE [ID] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [-H ] [-Y ] [-O <value>...] [-D <value> | -a <value>... | -r <value>... | [-m <value>... | -M
+    <value>...] |  | ]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -381,13 +422,20 @@ FLAGS
   -R, --raw                          print out the raw API response
   -Y, --headers-only                 show only response headers
   -a, --attribute=<value>...         define a resource attribute
-  -f, --fields=<value>...            comma separeted list of fields in the format [resourceType/]field1,field2...
+  -f, --fields=<value>...            comma separeted list of fields in the format [resourceType/]field1,field2,field3
   -i, --include=<value>...           comma separated resources to include
   -j, --json                         convert output in standard JSON format
   -m, --metadata=<value>...          define a metadata attribute and merge it with the metadata already present in the
                                      remote resource
   -r, --relationship=<value>...      define a relationship with another resource
   -u, --unformatted                  print unformatted JSON output
+
+DOCUMENTATION FLAGS
+  -l, --lang=<option>  show the CLI command in the specified language syntax
+                       <options: curl|node>
+      --curl           show the equivalent cURL command of the CLI command
+      --doc            show the CLI command in a specific language
+      --node           show the equivalent Node SDK source code of the CLI command
 
 DESCRIPTION
   update an existing resource
