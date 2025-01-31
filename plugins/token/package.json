@@ -50,7 +50,7 @@
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "lint": "eslint src --ext .ts --config .eslintrc",
     "lint:fix": "eslint src --fix",
-    "release": "pnpm prepack && pnpm postpack"
+    "release": "pnpm upgrade && pnpm prepack && pnpm postpack"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
