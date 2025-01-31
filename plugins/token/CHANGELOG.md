@@ -1,3 +1,23 @@
+# [8.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v7.0.0...v8.0.0) (2025-01-17)
+
+
+* feat!: remove generate token command BREAKING CHANGE: remove command "generate" used to create a custom access token (use custom claim instead) ([0ce2230](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/0ce223034111eb8e283263c253e9c17b142b0b7e))
+
+
+### Bug Fixes
+
+* update dependencies ([2e386b9](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/2e386b9e10535174274f3f9a196a1624dc3e1f32))
+
+
+### Features
+
+* add assertion command ([55b1081](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/55b1081767869122485e8a008a5e925c90f7c329))
+
+
+### BREAKING CHANGES
+
+* remove command "generate" used to create a custom access token (use custom claim instead)
+
 # [7.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v6.2.2...v7.0.0) (2024-12-18)
 
 
