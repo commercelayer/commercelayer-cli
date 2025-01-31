@@ -191,8 +191,8 @@ Create a new resource.
 ```sh-session
 USAGE
   $ commercelayer resources:create RESOURCE [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
-    [--curl ] [--node ] [-H ] [-Y ] [-O <value>...] [-D <value> | -a <value>... | -r <value>... | -m <value>... |  |
-    --load-args <value> | --save-args <value>] [-t <value>...]
+    [--curl ] [--node ] [-H ] [-Y ] [-D <value> | -a <value>... | -r <value>... | -m <value>... |  | -O <value>... | -J
+    <value>... | --load-args <value> | --save-args <value>] [-t <value>...]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -200,6 +200,7 @@ ARGUMENTS
 FLAGS
   -D, --data=<value>             the data file to use as request body
   -H, --headers                  show response headers
+  -J, --json-object=<value>...   define a resource object attribute in JSON format (value enclosed in single quotes)
   -O, --object=<value>...        define a resource object attribute
   -R, --raw                      print out the raw API response
   -Y, --headers-only             show only response headers
@@ -248,23 +249,16 @@ Delete an existing resource.
 
 ```sh-session
 USAGE
-  $ commercelayer resources:delete RESOURCE [ID] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
-    [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ]
+  $ commercelayer resources:delete RESOURCE [ID] [-l curl|node [--doc | -R]] [--curl ] [--node ] [-H ] [-Y ]
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource to delete
+  ID        id of the resources to delete (max 20)
 
 FLAGS
-  -H, --headers             show response headers
-  -R, --raw                 print out the raw API response
-  -Y, --headers-only        show only response headers
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
-  -i, --include=<value>...  comma separated resources to include
-  -j, --json                convert output in standard JSON format
-  -u, --unformatted         print unformatted JSON output
-      --load-args=<value>   load previously saved command arguments
-      --save-args=<value>   save command data to file for future use
+  -H, --headers       show response headers
+  -R, --raw           print out the raw API response
+  -Y, --headers-only  show only response headers
 
 DOCUMENTATION FLAGS
   -l, --lang=<option>  show the CLI command in the specified language syntax
@@ -285,6 +279,8 @@ EXAMPLES
   $ commercelayer resources:delete customers/<customerId>
 
   $ cl delete customers <customerId>
+
+  $ cl rd customers <customerId-1>,<customerId-2>,<customerId-3>
 ```
 
 _See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/delete.ts)_
@@ -633,8 +629,8 @@ Update an existing resource.
 ```sh-session
 USAGE
   $ commercelayer resources:update RESOURCE [ID] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
-    [--curl ] [--node ] [-H ] [-Y ] [-O <value>...] [-D <value> | -a <value>... | -r <value>... | [-m <value>... | -M
-    <value>...] |  |  | --load-args <value> | --save-args <value>] [-t <value>...]
+    [--curl ] [--node ] [-H ] [-Y ] [-D <value> | -a <value>... | -r <value>... | [-m <value>... | -M <value>...] |  |
+    | -O <value>... | -J <value>... | --load-args <value> | --save-args <value>] [-t <value>...]
 
 ARGUMENTS
   RESOURCE  the resource type
@@ -643,6 +639,7 @@ ARGUMENTS
 FLAGS
   -D, --data=<value>                 the data file to use as request body
   -H, --headers                      show response headers
+  -J, --json-object=<value>...       define a resource object attribute in JSON format (value enclosed in single quotes)
   -M, --metadata-replace=<value>...  define a metadata attribute and replace every item already present in the remote
                                      resource
   -O, --object=<value>...            define a resource object attribute

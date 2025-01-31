@@ -54,7 +54,8 @@
     "resources": "pnpm update @commercelayer/sdk && tsx src/util/resources/build.ts",
     "generate": "pnpm resources",
     "lint": "eslint src --ext .ts --config .eslintrc",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "release": "pnpm upgrade && pnpm resources && pnpm prepack && pnpm postpack"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {

@@ -18,7 +18,8 @@ export default class ResourcesDelete extends Command {
 
   static examples = [
     '$ commercelayer resources:delete customers/<customerId>',
-    '$ cl delete customers <customerId>'
+    '$ cl delete customers <customerId>',
+    '$ cl rd customers <customerId-1>,<customerId-2>,<customerId-3>'
   ]
 
   static flags = {
@@ -49,7 +50,7 @@ export default class ResourcesDelete extends Command {
 
     const showHeaders = flags.headers || flags['headers-only']
 
-    const idList = id? id.split(',') : []
+    const idList = id ? id.split(',') : []
     const multiDelete = (idList.length > 1)
     if (multiDelete) {
       if (showHeaders) this.error(`Flags ${clColor.style.error('--headers')} and $${clColor.style.error('--headers-only')} not supported in multi delete operation`)
@@ -69,9 +70,9 @@ export default class ResourcesDelete extends Command {
 
       if (multiDelete) await this.multiDeleteOperation(resSdk, idList, resource.type)
       else {
-        await resSdk.delete(resource.singleton? undefined : id)
+        await resSdk.delete(resource.singleton ? undefined : id)
         if (showHeaders) this.printHeaders(rawReader?.headers, flags)
-        this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.api)}${resource.singleton? '' : ` with id ${clColor.style.id(id)}`}\n`)
+        this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.api)}${resource.singleton ? '' : ` with id ${clColor.style.id(id)}`}\n`)
       }
 
     } catch (error) {
@@ -107,13 +108,13 @@ export default class ResourcesDelete extends Command {
 
     this.log()
     if (kos.length === 0) this.log(`All ${idList.length} ${clColor.style.resource(humanized)} have been ${clColor.style.success('successfully')} deleted`)
-      else
-    if (oks.length === 0) this.log(`${clColor.style.error('Failed')} to delete all ${clColor.style.resource(humanized)}`)
-    else {
-      this.log(`${clColor.style.success('Successfully')} deleted ${clColor.style.resource(humanized)} with id: ${oks.join(', ')}`)
-      this.log()
-      this.log(`${clColor.style.error('Failed')} to delete the following ${clColor.style.resource(humanized)}:`)
-    }
+    else
+      if (oks.length === 0) this.log(`${clColor.style.error('Failed')} to delete all ${clColor.style.resource(humanized)}`)
+      else {
+        this.log(`${clColor.style.success('Successfully')} deleted ${clColor.style.resource(humanized)} with id: ${oks.join(', ')}`)
+        this.log()
+        this.log(`${clColor.style.error('Failed')} to delete the following ${clColor.style.resource(humanized)}:`)
+      }
     this.log()
 
     if ((Object.keys(errors).length > 0) && (kos.length > 0)) {
