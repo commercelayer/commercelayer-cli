@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-token",
   "description": "Commerce Layer CLI Token plugin",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-token",
   "repository": "commercelayer/commercelayer-cli-plugin-token",
