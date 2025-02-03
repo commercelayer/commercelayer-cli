@@ -10,11 +10,14 @@ import type { CommandError } from '@oclif/core/lib/interfaces'
 import * as cliux from '@commercelayer/cli-ux'
 
 
+
 const DEBUG = ['1', 'on', 'true', 'export'].includes((process.env.CL_CLI_DEBUG || '').toLowerCase())
 if (DEBUG) console.log('\nDEBUG MODE ON')
 
 const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports
 const MAX_QUEUE_LENGTH = Math.floor(clConfig.exports.max_queue_length / 2) - 1
+
+const MIN_EXPORT_SIZE = 2000
 const MAX_EXPORT_SIZE = clConfig.exports.max_size
 
 
@@ -33,7 +36,8 @@ type ExportJob = {
   filter?: KeyValString,
   fields?: string[],
   dryData: boolean,
-  blindMode: boolean
+  blindMode: boolean,
+  exportSize: number
 }
 
 
@@ -56,10 +60,10 @@ const countRunning = (exports: Export[] | ExportJob): number => {
 }
 
 
-const spinnerText = (exp: Export | string): string => {
+const spinnerText = (exp: Export | string, maxExpSize?: number): string => {
   if (typeof exp === 'string') return exp
   else {
-    const details = ` [${exp.id}, ${String(exp.metadata?.exportRecords).padEnd(String(MAX_EXPORT_SIZE).length, ' ')} ${exp.resource_type}]`
+    const details = ` [${exp.id}, ${String(exp.metadata?.exportRecords).padEnd(String(maxExpSize|| MAX_EXPORT_SIZE).length, ' ')} ${exp.resource_type}]`
     return `${exp.metadata?.exportName} ${exp.status}${details}`.replace(/_/g, ' ')
   }
 }
@@ -101,6 +105,12 @@ export default class ExportsAll extends ExportCommand {
     keep: Flags.boolean({
       char: 'k',
       description: 'keep original export files in temp dir'
+    }),
+    size: Flags.integer({
+      char: 'S',
+      description: `max number of records for each export [${MIN_EXPORT_SIZE}-${MAX_EXPORT_SIZE}]`,
+      min: MIN_EXPORT_SIZE,
+      max: MAX_EXPORT_SIZE,
     })
   }
 
@@ -133,6 +143,9 @@ export default class ExportsAll extends ExportCommand {
     const fields = this.fieldsFlag(flags.fields)
 
 
+    const exportSize = flags.size || MAX_EXPORT_SIZE
+
+
     const exportJob: ExportJob = {
       groupId: '',
       totalRecords: 0,
@@ -144,7 +157,8 @@ export default class ExportsAll extends ExportCommand {
       include,
       filter: wheres,
       dryData: flags['dry-data'],
-      blindMode
+      blindMode,
+      exportSize
     }
 
 
@@ -174,7 +188,8 @@ export default class ExportsAll extends ExportCommand {
         this.exit()
       } else exportJob.totalRecords = totRecords
 
-      const totExports = Math.ceil(totRecords / MAX_EXPORT_SIZE)
+  
+      const totExports = Math.ceil(totRecords / exportSize)
       exportJob.totalExports = totExports
 
       // Check if export needs to be split
@@ -255,7 +270,7 @@ export default class ExportsAll extends ExportCommand {
       if (!expJob.blindMode) {
         const exportName = exp.metadata?.exportName
         if (spinners.pick(exportName)) {
-          spinners.update(exportName, { text: spinnerText(exp) })
+          spinners.update(exportName, { text: spinnerText(exp, expJob.exportSize) })
           if (exportCompleted(exp)) spinners.succeed(exportName)
         }
       }
@@ -334,7 +349,7 @@ export default class ExportsAll extends ExportCommand {
           // 25000 --> 1: 10000, 2: 10000, 3: 5000, 4: x
 
           const pageSize = 1  // clConfig.api.page_max_size
-          const curExpRecords = Math.min(MAX_EXPORT_SIZE, expJob.totalRecords - (MAX_EXPORT_SIZE * curExp))
+          const curExpRecords = Math.min(expJob.exportSize, expJob.totalRecords - (expJob.exportSize * curExp))
           const curExpPages = Math.ceil(curExpRecords / pageSize)
           expPage += curExpPages
 
@@ -388,10 +403,10 @@ export default class ExportsAll extends ExportCommand {
       expJob.groupId = groupId
 
       if (!flags.quiet) {
-        const msg1 = `You have requested to export ${clColor.yellowBright(expJob.totalRecords)} ${expJob.resourceDesc}, more than the maximun ${MAX_EXPORT_SIZE} elements allowed for each single export.`
+        const msg1 = flags.size? '' : `You have requested to export ${clColor.yellowBright(expJob.totalRecords)} ${expJob.resourceDesc}, more than the maximun ${MAX_EXPORT_SIZE} elements allowed for each single export. `
         const msg2 = `The export will be split into a set of ${clColor.yellowBright(expJob.totalExports)} distinct exports with the same unique group ID ${clColor.underline.yellowBright(groupId)}.`
-        const msg3 = `Execute the command ${clColor.cli.command(`exports:group ${groupId}`)} to retrieve all the related exports.`
-        this.log(`\n${msg1} ${msg2} ${msg3}`)
+        const msg3 = ` Execute the command ${clColor.cli.command(`exports:group ${groupId}`)} to retrieve all the related exports.`
+        this.log(`\n${msg1}${msg2}${msg3}`)
         this.log()
         await cliux.anykey()
       }
