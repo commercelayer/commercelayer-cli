@@ -1,3 +1,10 @@
+# [3.5.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.4.2...v3.5.0) (2025-02-03)
+
+
+### Features
+
+* add --size flag to limit numbner of records ([2932eef](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/2932eef521762eeb69e1b086d17f7d168f811eb5))
+
 ## [3.4.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.4.1...v3.4.2) (2025-01-31)
 
 
