@@ -13,12 +13,12 @@ export default class ExportsDetails extends Command {
 
   static examples = [
     '$ commercelayer exports:details <export-id>',
-    '$ cl exp:details <export-id>',
+    '$ cl exp:details <export-id>'
   ]
 
 
   static args = {
-    id: Args.string({ name: 'id', description: 'unique id of the export', required: true, hidden: false }),
+    id: Args.string({ name: 'id', description: 'id of the export resource', required: true, hidden: false })
   }
 
 
