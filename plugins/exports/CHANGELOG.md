@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.6.0...v3.6.1) (2025-02-11)
+
+
+### Bug Fixes
+
+* update documentation ([825f83b](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/825f83b1c458e32aab11e5ab4187806785a038eb))
+
 # [3.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.5.0...v3.6.0) (2025-02-11)
 
 
