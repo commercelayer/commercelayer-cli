@@ -29,6 +29,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer exports:create`](#commercelayer-exportscreate)
 * [`commercelayer exports:details ID`](#commercelayer-exportsdetails-id)
 * [`commercelayer exports:group GROUP_ID`](#commercelayer-exportsgroup-group_id)
+* [`commercelayer exports:interrupt ID`](#commercelayer-exportsinterrupt-id)
 * [`commercelayer exports:list`](#commercelayer-exportslist)
 * [`commercelayer exports:types`](#commercelayer-exportstypes)
 
@@ -164,7 +165,7 @@ USAGE
   $ commercelayer exports:details ID
 
 ARGUMENTS
-  ID  unique id of the export
+  ID  id of the export resource
 
 DESCRIPTION
   show the details of an existing export
@@ -204,6 +205,34 @@ EXAMPLES
 ```
 
 _See code: [src/commands/exports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/group.ts)_
+
+### `commercelayer exports:interrupt ID`
+
+Show the details of an existing export.
+
+```sh-session
+USAGE
+  $ commercelayer exports:interrupt ID [-D]
+
+ARGUMENTS
+  ID  id of the export resource
+
+FLAGS
+  -D, --details  show export details after command execution
+
+DESCRIPTION
+  show the details of an existing export
+
+ALIASES
+  $ commercelayer exp:interrupt
+
+EXAMPLES
+  $ commercelayer exports:interrupt <export-id>
+
+  $ cl exp:interrupt <export-id>
+```
+
+_See code: [src/commands/exports/interrupt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/interrupt.ts)_
 
 ### `commercelayer exports:list`
 
