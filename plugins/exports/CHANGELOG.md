@@ -1,3 +1,15 @@
+# [3.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.5.0...v3.6.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* fix command imports ([836cf18](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/836cf18eebf210aaa084d5bf44743feddeada754))
+
+
+### Features
+
+* add interrupt command ([935063e](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/935063e0861472694381c31a2c78513b6a6b05c3))
+
 # [3.5.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.4.2...v3.5.0) (2025-02-03)
 
 
