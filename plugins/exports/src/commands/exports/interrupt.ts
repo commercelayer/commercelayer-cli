@@ -1,8 +1,6 @@
 import Command, { Args, Flags } from '../../base'
-import Table from 'cli-table3'
-import { clOutput, clColor, clText } from '@commercelayer/cli-core'
+import { clOutput, clColor } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import { FlagInput } from '@oclif/core/lib/interfaces/parser'
 
 
 
