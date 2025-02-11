@@ -22,7 +22,7 @@ export const notify = (message: string): void => {
   notifier.notify({
     title: 'Commerce Layer CLI',
     message,
-    wait: true,
+    wait: true
   })
 }
 
@@ -51,20 +51,20 @@ export default abstract class BaseCommand extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
-      hidden: true,
+      hidden: true
     }),
     domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
+      env: 'CL_CLI_DOMAIN'
     }),
     accessToken: Flags.string({
       hidden: true,
       required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-    }),
+      env: 'CL_CLI_ACCESS_TOKEN'
+    })
   }
 
 
@@ -94,8 +94,8 @@ export default abstract class BaseCommand extends Command {
 
     if (info === null) this.error('Invalid access token provided')
     else
-      if (!kinds.includes(info.application.kind))
-        this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Application kind must be one of the following: ${clColor.cyanBright(kinds.join(', '))}`)
+    if (!kinds.includes(info.application.kind))
+      this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Application kind must be one of the following: ${clColor.cyanBright(kinds.join(', '))}`)
 
     return true
 
