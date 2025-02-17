@@ -1,3 +1,10 @@
+# [5.8.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.7.2...v5.8.0) (2025-02-17)
+
+
+### Features
+
+* add returns to exportable resources ([9a01c45](https://github.com/commercelayer/commercelayer-cli-core/commit/9a01c4580dcd64cf540396b168fc828ade347210))
+
 ## [5.7.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.7.1...v5.7.2) (2025-01-30)
 
 
