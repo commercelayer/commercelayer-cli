@@ -1,7 +1,7 @@
 import ExportsCreate from './create'
 import { ExportCommand, notify, Flags, encoding, type ExportFormat } from '../../base'
 import { type KeyValString, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
-import type { Export, ExportCreate, ListableResourceType, QueryParamsList } from '@commercelayer/sdk'
+import type { Export, ExportCreate, ListableResourceType, QueryParamsList, ResourceTypeLock } from '@commercelayer/sdk'
 import Spinnies from 'spinnies'
 import open from 'open'
 import { readFileSync, statSync, writeFileSync } from 'node:fs'
@@ -110,7 +110,7 @@ export default class ExportsAll extends ExportCommand {
       char: 'S',
       description: `max number of records for each export [${MIN_EXPORT_SIZE}-${MAX_EXPORT_SIZE}]`,
       min: MIN_EXPORT_SIZE,
-      max: MAX_EXPORT_SIZE,
+      max: MAX_EXPORT_SIZE
     })
   }
 
@@ -129,8 +129,8 @@ export default class ExportsAll extends ExportCommand {
     const format = this.getFileFormat(flags)
     if (flags.prettify && (format === 'csv')) this.error(`Flag ${clColor.cli.flag('Prettify')} can only be used with ${clColor.cli.value('JSON')} format`)
 
-    const resType = flags.type
-    if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
+    const resType = flags.type as ResourceTypeLock
+    this.checkResource(resType)
     const resDesc = resType.replace(/_/g, ' ')
 
     const blindMode = flags.blind || false

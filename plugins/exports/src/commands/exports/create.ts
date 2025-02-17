@@ -1,7 +1,7 @@
 
 import { ExportCommand, Flags, computeDelay, notify } from '../../base'
 import { clToken, clColor, clConfig } from '@commercelayer/cli-core'
-import type { ExportCreate } from '@commercelayer/sdk'
+import type { ExportCreate, ResourceTypeLock } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import open from 'open'
 import * as cliux from '@commercelayer/cli-ux'
@@ -107,8 +107,8 @@ export default class ExportsCreate extends ExportCommand {
     const format = this.getFileFormat(flags)
     if (flags.prettify && (format === 'csv')) this.error(`Flag ${clColor.cli.flag('Prettify')} can only be used with ${clColor.cli.value('JSON')} format`)
 
-    const resType = flags.type
-    if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
+    const resType = flags.type as ResourceTypeLock
+    this.checkResource(resType)
     const resDesc = resType.replace(/_/g, ' ')
 
     const notification = flags.notify || false

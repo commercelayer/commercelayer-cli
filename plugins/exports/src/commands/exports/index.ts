@@ -9,11 +9,11 @@ export default class ExportsIndex extends Command {
 	static description = 'list all the created exports or show details of a single export'
 
 	static flags = {
-		...ListCommand.flags,
+		...ListCommand.flags
 	}
 
 	static args = {
-		id: Args.string({ name: 'id', description: 'unique id of the export to be retrieved', required: false, hidden: false }),
+		id: Args.string({ name: 'id', description: 'unique id of the export to be retrieved', required: false, hidden: false })
 	}
 
 

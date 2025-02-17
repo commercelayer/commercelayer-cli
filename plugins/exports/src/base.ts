@@ -1,10 +1,10 @@
-import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil, clApi } from '@commercelayer/cli-core'
+import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil, clApi, clConfig } from '@commercelayer/cli-core'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
 import { Command, Flags, Args } from '@oclif/core'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import axios from 'axios'
 import { type InputType, gunzipSync } from 'zlib'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Export } from '@commercelayer/sdk'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type Export, ResourceTypeLock } from '@commercelayer/sdk'
 import { rename } from 'fs/promises'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import notifier from 'node-notifier'
@@ -158,6 +158,12 @@ export abstract class ExportCommand extends BaseCommand {
 
   static baseFlags = {
     ...BaseCommand.baseFlags
+  }
+
+
+  protected checkResource(resType: ResourceTypeLock): boolean {
+    if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
+    return true
   }
 
   protected async getExportedFile(attachmentUrl?: string | null, flags?: any): Promise<string> {
