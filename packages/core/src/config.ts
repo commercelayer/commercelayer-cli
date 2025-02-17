@@ -51,6 +51,7 @@ const EXPORT_RESOURCE_TYPES: readonly string[] = [
 	'price_tiers',
 	'prices',
 	'refunds',
+	'returns',
 	'shipments',
 	'shipping_categories',
 	'shipping_methods',
