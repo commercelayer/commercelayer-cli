@@ -17,31 +17,31 @@ export default class ExportsList extends Command {
 	static examples = [
 		'$ commercelayer exports',
 		'$ cl exports:list -A',
-		'$ cl exp:list',
+		'$ cl exp:list'
 	]
 
 	static flags = {
 		all: Flags.boolean({
 			char: 'A',
 			description: `show all exports instead of first ${clConfig.api.page_max_size} only`,
-			exclusive: ['limit'],
+			exclusive: ['limit']
 		}),
 		type: Flags.string({
 			char: 't',
 			description: 'the type of resource exported',
 			options: clConfig.exports.types as string[],
-			multiple: false,
+			multiple: false
 		}),
 		status: Flags.string({
 			char: 's',
 			description: 'the export job status',
 			options: clConfig.exports.statuses as string[],
-			multiple: false,
+			multiple: false
 		}),
 		limit: Flags.integer({
 			char: 'l',
 			description: 'limit number of exports in output',
-			exclusive: ['all'],
+			exclusive: ['all']
 		}),
 	}
 

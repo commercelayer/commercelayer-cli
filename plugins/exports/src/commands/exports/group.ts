@@ -15,12 +15,12 @@ export default class ExportsGroup extends Command {
 
 	static examples = [
 		'$ commercelayer exports:group <group-id>',
-		'$ cl exp:group <group-id>',
+		'$ cl exp:group <group-id>'
   ]
 
 
 	static args = {
-		group_id: Args.string({ name: 'group_id', description: 'unique id of the group export', required: true, hidden: false }),
+		group_id: Args.string({ name: 'group_id', description: 'unique id of the group export', required: true, hidden: false })
   }
 
 
