@@ -1,3 +1,12 @@
+## [3.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.6.1...v3.6.2) (2025-02-17)
+
+
+### Bug Fixes
+
+* closes [#19](https://github.com/commercelayer/commercelayer-cli-plugin-exports/issues/19) ([1de71f8](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/1de71f862eb4cde9ecb061f06b539e9620db3d5a))
+* fix issue [#19](https://github.com/commercelayer/commercelayer-cli-plugin-exports/issues/19), returns were not supported ([d232b1b](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/d232b1b227050274b668fdb6bcaffc87cb695d27))
+* fix linter issue ([cf4d45f](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/cf4d45f99e329f17dfb76454150c05563056bce9))
+
 ## [3.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.6.0...v3.6.1) (2025-02-11)
 
 
