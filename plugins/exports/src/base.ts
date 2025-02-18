@@ -1,4 +1,4 @@
-import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil, clApi, clConfig } from '@commercelayer/cli-core'
+import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil, clApi } from '@commercelayer/cli-core'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'

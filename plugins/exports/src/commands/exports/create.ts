@@ -1,6 +1,6 @@
 
 import { ExportCommand, Flags, computeDelay, notify } from '../../base'
-import { clToken, clColor, clConfig } from '@commercelayer/cli-core'
+import { clToken, clColor } from '@commercelayer/cli-core'
 import type { ExportCreate, ResourceTypeLock } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import open from 'open'
