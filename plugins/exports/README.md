@@ -41,9 +41,9 @@ List all the created exports or show details of a single export.
 USAGE
   $ commercelayer exports [ID] [-A | -l <value>] [-t
     addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_subscriptions
-    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|shipments|shipp
-    ing_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|tax_categ
-    ories|transactions|voids] [-s in_progress|pending|completed|interrupted]
+    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|returns|shipmen
+    ts|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|t
+    ax_categories|transactions|voids] [-s in_progress|pending|completed|interrupted]
 
 ARGUMENTS
   ID  unique id of the export to be retrieved
@@ -62,9 +62,9 @@ FLAGS
   -t, --type=<option>
       the type of resource exported
       <options: addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_sub
-      scriptions|customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|shipm
-      ents|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags
-      |tax_categories|transactions|voids>
+      scriptions|customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|retur
+      ns|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transf
+      ers|tags|tax_categories|transactions|voids>
 
 DESCRIPTION
   list all the created exports or show details of a single export
@@ -78,27 +78,26 @@ Export all the records.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:all -t addresses|authorizations|bundles|captures|... [-i <value>...] [-w <value>...]
-    [-f <value>...] [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O] [-q] [-k] [-S <value>]
+  $ commercelayer exports:all -t <value> [-i <value>...] [-w <value>...] [-f <value>...] [-D] [-F csv|json | -C |
+    ] [-x <value> | -X <value>] [-b] [-P | ] [-O] [-q] [-k] [-S <value>]
 
 FLAGS
-  -C, --csv                                                 export data in CSV format
-  -D, --dry-data                                            skip redundant attributes
-  -F, --format=<option>                                     [default: json] export file format
-                                                            <options: csv|json>
-  -O, --open                                                open automatically the file after a successful export
-  -P, --prettify                                            prettify json output format
-  -S, --size=<value>                                        max number of records for each export [2000-10000]
-  -X, --save-path=<value>                                   save command output to file and create missing path
-                                                            directories
-  -b, --blind                                               execute in blind mode without showing the progress monitor
-  -f, --fields=<value>...                                   comma separated list of fields to include in the export
-  -i, --include=<value>...                                  comma separated resources to include
-  -k, --keep                                                keep original export files in temp dir
-  -q, --quiet                                               execute command without showing warning messages
-  -t, --type=addresses|authorizations|bundles|captures|...  (required) the type of resource being exported
-  -w, --where=<value>...                                    comma separated list of query filters
-  -x, --save=<value>                                        save command output to file
+  -C, --csv                 export data in CSV format
+  -D, --dry-data            skip redundant attributes
+  -F, --format=<option>     [default: json] export file format
+                            <options: csv|json>
+  -O, --open                open automatically the file after a successful export
+  -P, --prettify            prettify json output format
+  -S, --size=<value>        max number of records for each export [2000-10000]
+  -X, --save-path=<value>   save command output to file and create missing path directories
+  -b, --blind               execute in blind mode without showing the progress monitor
+  -f, --fields=<value>...   comma separated list of fields to include in the export
+  -i, --include=<value>...  comma separated resources to include
+  -k, --keep                keep original export files in temp dir
+  -q, --quiet               execute command without showing warning messages
+  -t, --type=<value>        (required) the type of resource being exported
+  -w, --where=<value>...    comma separated list of query filters
+  -x, --save=<value>        save command output to file
 
 DESCRIPTION
   export all the records
@@ -123,24 +122,23 @@ Create a new export.
 
 ```sh-session
 USAGE
-  $ commercelayer exports:create -t addresses|authorizations|bundles|captures|... [-i <value>...] [-w <value>...]
-    [-f <value>...] [-D] [-F csv|json | -C | ] [-x <value> | -X <value>] [-b] [-P | ] [-O]
+  $ commercelayer exports:create -t <value> [-i <value>...] [-w <value>...] [-f <value>...] [-D] [-F csv|json | -C |
+    ] [-x <value> | -X <value>] [-b] [-P | ] [-O]
 
 FLAGS
-  -C, --csv                                                 export data in CSV format
-  -D, --dry-data                                            skip redundant attributes
-  -F, --format=<option>                                     [default: json] export file format
-                                                            <options: csv|json>
-  -O, --open                                                open automatically the file after a successful export
-  -P, --prettify                                            prettify json output format
-  -X, --save-path=<value>                                   save command output to file and create missing path
-                                                            directories
-  -b, --blind                                               execute in blind mode without showing the progress monitor
-  -f, --fields=<value>...                                   comma separated list of fields to include in the export
-  -i, --include=<value>...                                  comma separated resources to include
-  -t, --type=addresses|authorizations|bundles|captures|...  (required) the type of resource being exported
-  -w, --where=<value>...                                    comma separated list of query filters
-  -x, --save=<value>                                        save command output to file
+  -C, --csv                 export data in CSV format
+  -D, --dry-data            skip redundant attributes
+  -F, --format=<option>     [default: json] export file format
+                            <options: csv|json>
+  -O, --open                open automatically the file after a successful export
+  -P, --prettify            prettify json output format
+  -X, --save-path=<value>   save command output to file and create missing path directories
+  -b, --blind               execute in blind mode without showing the progress monitor
+  -f, --fields=<value>...   comma separated list of fields to include in the export
+  -i, --include=<value>...  comma separated resources to include
+  -t, --type=<value>        (required) the type of resource being exported
+  -w, --where=<value>...    comma separated list of query filters
+  -x, --save=<value>        save command output to file
 
 DESCRIPTION
   create a new export
@@ -242,9 +240,9 @@ List all the created exports.
 USAGE
   $ commercelayer exports:list [-A | -l <value>] [-t
     addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_subscriptions
-    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|shipments|shipp
-    ing_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|tax_categ
-    ories|transactions|voids] [-s in_progress|pending|completed|interrupted]
+    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|returns|shipmen
+    ts|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|t
+    ax_categories|transactions|voids] [-s in_progress|pending|completed|interrupted]
 
 FLAGS
   -A, --all
@@ -260,9 +258,9 @@ FLAGS
   -t, --type=<option>
       the type of resource exported
       <options: addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_sub
-      scriptions|customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|shipm
-      ents|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags
-      |tax_categories|transactions|voids>
+      scriptions|customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|retur
+      ns|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transf
+      ers|tags|tax_categories|transactions|voids>
 
 DESCRIPTION
   list all the created exports

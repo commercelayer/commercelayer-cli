@@ -74,7 +74,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.8.0",
+    "@commercelayer/cli-core": "^5.8.1",
     "@commercelayer/cli-ux": "^1.0.7",
     "@commercelayer/sdk": "^6.32.0",
     "@oclif/core": "^3.27.0",

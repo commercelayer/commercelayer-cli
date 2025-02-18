@@ -163,7 +163,8 @@ export abstract class ExportCommand extends BaseCommand {
 
 
   protected checkResource(resType: ResourceTypeLock): boolean {
-    if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
+    // if (!clConfig.exports.types.includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
+    if (!CommerceLayerStatic.resources().includes(resType)) this.error(`Unsupported resource type: ${clColor.style.error(resType)}`)
     return true
   }
 

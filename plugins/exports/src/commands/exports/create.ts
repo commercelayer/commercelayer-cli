@@ -24,8 +24,8 @@ export default class ExportsCreate extends ExportCommand {
       char: 't',
       description: 'the type of resource being exported',
       required: true,
-      options: clConfig.exports.types as string[],
-      helpValue: clConfig.exports.types.slice(0, 4).join('|') + '|...',
+      // options: clConfig.exports.types as string[],
+      // helpValue: clConfig.exports.types.slice(0, 4).join('|') + '|...',
       multiple: false
     }),
     include: Flags.string({
