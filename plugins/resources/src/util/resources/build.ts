@@ -49,7 +49,7 @@ const parseResourcesSchema = async (): Promise<ApiResource[]> => {
         type: clText.pluralize(r.id),
 				api: r.attributes.singleton ? r.id : clText.pluralize(r.id),
 				model: clText.camelize(r.id),
-				singleton: r.attributes.singleton,
+				singleton: r.attributes.singleton
 			}
 			return item
 		})
