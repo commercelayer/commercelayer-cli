@@ -31,6 +31,7 @@ $ commercelayer plugins:install triggers
 <!-- commands -->
 
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
+* [`commercelayer adyen_payment:authorize ID`](#commercelayer-adyen_paymentauthorize-id)
 * [`commercelayer adyen_payment:details ID`](#commercelayer-adyen_paymentdetails-id)
 * [`commercelayer authorization ID`](#commercelayer-authorization-id)
 * [`commercelayer authorization:cancel ID`](#commercelayer-authorizationcancel-id)
@@ -237,6 +238,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/adyen_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/index.ts)_
+
+### `commercelayer adyen_payment:authorize ID`
+
+Send this attribute if you want to authorize the payment.
+
+```sh-session
+USAGE
+  $ commercelayer adyen_payment:authorize ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to authorize the payment.
+```
+
+_See code: [src/commands/adyen_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/authorize.ts)_
 
 ### `commercelayer adyen_payment:details ID`
 
@@ -2216,7 +2239,7 @@ _See code: [src/commands/order/customer_payment_source_id.ts](https://github.com
 
 ### `commercelayer order:fix_payment_source ID`
 
-Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready to be approved. A tentative to fix the payment source is done before approval automatically. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -2232,7 +2255,8 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end
-  of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+  of the fix the order should be placed and authorized and ready to be approved. A tentative to fix the payment source
+  is done before approval automatically. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/fix_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/fix_payment_source.ts)_
