@@ -1,3 +1,10 @@
+## [5.8.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.8.0...v5.8.1) (2025-02-18)
+
+
+### Bug Fixes
+
+* add singularize option to humanizeResource function ([f2912d1](https://github.com/commercelayer/commercelayer-cli-core/commit/f2912d17be2b821b4b75f1bbdb4c59cf1c8a5914))
+
 # [5.8.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.7.2...v5.8.0) (2025-02-17)
 
 
