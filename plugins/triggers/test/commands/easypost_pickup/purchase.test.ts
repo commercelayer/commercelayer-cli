@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('returns:refund_amount_cents', () => {
+describe('easypost_pickups:purchase', () => {
   test
     .timeout(46000)
     .stdout()

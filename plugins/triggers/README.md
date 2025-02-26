@@ -59,6 +59,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer cleanup:interrupt ID`](#commercelayer-cleanupinterrupt-id)
 * [`commercelayer customer_password_reset ID`](#commercelayer-customer_password_reset-id)
 * [`commercelayer customer_password_reset:reset_password_token ID`](#commercelayer-customer_password_resetreset_password_token-id)
+* [`commercelayer easypost_pickup ID`](#commercelayer-easypost_pickup-id)
+* [`commercelayer easypost_pickup:purchase ID`](#commercelayer-easypost_pickuppurchase-id)
 * [`commercelayer event ID`](#commercelayer-event-id)
 * [`commercelayer event:trigger ID`](#commercelayer-eventtrigger-id)
 * [`commercelayer export ID`](#commercelayer-export-id)
@@ -858,6 +860,50 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/customer_password_reset/reset_password_token.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer_password_reset/reset_password_token.ts)_
+
+### `commercelayer easypost_pickup ID`
+
+Execute an action on a resource of type easypost_pickups.
+
+```sh-session
+USAGE
+  $ commercelayer easypost_pickup ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type easypost_pickups
+```
+
+_See code: [src/commands/easypost_pickup/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/easypost_pickup/index.ts)_
+
+### `commercelayer easypost_pickup:purchase ID`
+
+Send this attribute if you want to purchase this pick up with the selected rate.
+
+```sh-session
+USAGE
+  $ commercelayer easypost_pickup:purchase ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to purchase this pick up with the selected rate.
+```
+
+_See code: [src/commands/easypost_pickup/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/easypost_pickup/purchase.ts)_
 
 ### `commercelayer event ID`
 
@@ -2263,7 +2309,7 @@ _See code: [src/commands/order/fix_payment_source.ts](https://github.com/commerc
 
 ### `commercelayer order:fulfill ID`
 
-Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered). Cannot be passed by sales channels.
+Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered, alternatively order must be approved). Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -2278,8 +2324,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
-  Cannot be passed by sales channels.
+  Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered,
+  alternatively order must be approved). Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/order/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/fulfill.ts)_

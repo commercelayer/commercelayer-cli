@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('free_shipping_promotions:disable', () => {
   test
-    .timeout(45000)
+    .timeout(46000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

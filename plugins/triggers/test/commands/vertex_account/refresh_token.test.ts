@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('vertex_accounts:refresh_token', () => {
   test
-    .timeout(45000)
+    .timeout(46000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {
