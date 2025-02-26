@@ -65,7 +65,7 @@ const triggers: Record<string, Trigger> = {
 	fulfill: {
     action: 'fulfill',
     trigger: '_fulfill',
-    description: 'Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered). Cannot be passed by sales channels.',
+    description: 'Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered, alternatively order must be approved). Cannot be passed by sales channels.',
   },
 	update_taxes: {
     action: 'update_taxes',
@@ -80,7 +80,7 @@ const triggers: Record<string, Trigger> = {
 	fix_payment_source: {
     action: 'fix_payment_source',
     trigger: '_fix_payment_source',
-    description: 'Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.',
+    description: 'Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready to be approved. A tentative to fix the payment source is done before approval automatically. Cannot be passed by sales channels.',
   },
 	billing_address_clone_id: {
     action: 'billing_address_clone_id',

@@ -356,7 +356,7 @@ _See code: [src/commands/orders/customer_payment_source_id.ts](https://github.co
 
 ### `commercelayer orders:fix_payment_source ID`
 
-Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end of the fix the order should be placed and authorized and ready to be approved. A tentative to fix the payment source is done before approval automatically. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -372,14 +372,15 @@ FLAGS
 
 DESCRIPTION
   Send this attribute if you want to set the payment source associated with the last succeeded authorization. At the end
-  of the fix the order should be placed and authorized and ready for approval. Cannot be passed by sales channels.
+  of the fix the order should be placed and authorized and ready to be approved. A tentative to fix the payment source
+  is done before approval automatically. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/fix_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fix_payment_source.ts)_
 
 ### `commercelayer orders:fulfill ID`
 
-Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered). Cannot be passed by sales channels.
+Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered, alternatively order must be approved). Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -394,8 +395,8 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered).
-  Cannot be passed by sales channels.
+  Send this attribute if you want to mark as fulfilled the order (shipments must be cancelled, shipped or delivered,
+  alternatively order must be approved). Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/orders/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fulfill.ts)_
