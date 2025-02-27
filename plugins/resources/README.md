@@ -41,6 +41,7 @@ $ commercelayer plugins:install resources
 * [`commercelayer resources:fetch PATH [ID]`](#commercelayer-resourcesfetch-path-id)
 * [`commercelayer resources:filters`](#commercelayer-resourcesfilters)
 * [`commercelayer resources:get RESOURCE [ID]`](#commercelayer-resourcesget-resource-id)
+* [`commercelayer resources:history RESOURCE [ID]`](#commercelayer-resourceshistory-resource-id)
 * [`commercelayer resources:last RESOURCE`](#commercelayer-resourceslast-resource)
 * [`commercelayer resources:list RESOURCE`](#commercelayer-resourceslist-resource)
 * [`commercelayer resources:retrieve RESOURCE [ID]`](#commercelayer-resourcesretrieve-resource-id)
@@ -458,6 +459,39 @@ EXAMPLES
 ```
 
 _See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/get.ts)_
+
+### `commercelayer resources:history RESOURCE [ID]`
+
+Show history of a resource.
+
+```sh-session
+USAGE
+  $ commercelayer resources:history RESOURCE [ID]
+
+ARGUMENTS
+  RESOURCE  the resource type
+  ID        id of the resource to retrieve
+
+DESCRIPTION
+  show history of a resource
+
+ALIASES
+  $ commercelayer versions
+  $ commercelayer history
+  $ commercelayer rh
+  $ commercelayer res:history
+
+EXAMPLES
+  $ commercelayer resources:history customers/<customerId>
+
+  $ commercelayer history customers <customerId>
+
+  $ cl res:hidtory customers <customerId>
+
+  $ clayer rh customers/<customerId>
+```
+
+_See code: [src/commands/resources/history.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/history.ts)_
 
 ### `commercelayer resources:last RESOURCE`
 

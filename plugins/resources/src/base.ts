@@ -30,14 +30,14 @@ export abstract class BaseCommand extends Command {
       description: 'the slug of your organization',
       required: true,
       env: 'CL_CLI_ORGANIZATION',
-      hidden: true,
+      hidden: true
     }),
     domain: Flags.string({
       char: 'd',
       required: false,
       hidden: true,
       dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
+      env: 'CL_CLI_DOMAIN'
     }),
     accessToken: Flags.string({
       hidden: true,
@@ -64,7 +64,12 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  printError(error: any, flags?: any, args?: any): void {
+  protected printOutput(output: any, flags: any | undefined): void {
+    if (output && !flags['headers-only']) this.log(formatOutput(output, flags))
+  }
+
+
+  protected printError(error: any, flags?: any, args?: any): void {
 
     let err = error
 
@@ -89,13 +94,61 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
+  protected checkResource(res: string, { required = true, singular = false } = {}): ApiResource {
     if (!res && required) this.error('Resource type not defined')
     const resource = findResource(res, { singular })
     if (resource === undefined) this.error(`Invalid resource ${clColor.style.error(res)}`,
       { suggestions: [`Execute command ${clColor.style.command('resources')} to get a list of all available CLI resources`] }
     )
     return resource
+  }
+
+
+  protected checkResourceId(resource: string, resourceId?: string, required = true): {
+    res: string,
+    id?: string,
+    singleton: boolean
+  } {
+
+    let res = resource
+    let id = resourceId
+
+    const si = res.indexOf('/')
+    if (si >= 0) {
+      const rt = res.split('/')
+      if (id && rt[1]) this.error(`Double definition of resource id: [${res}, ${id}]`,
+        { suggestions: [`Define resource id as command argument (${clColor.italic(id)}) or as part of the resource itself (${clColor.italic(res)}) but not both`] }
+      )
+      else id = rt[1]
+      res = rt[0]
+    }
+
+    const res_ = findResource(res, { singular: true })
+    const singleton = res_?.singleton || false
+
+    if (id) {
+      if (singleton) this.error(`Singleton resource ${clColor.api.resource(res)} does not require id`)
+      if (id.includes('/')) this.error(`Invalid resource id: ${clColor.msg.error(id)}`)
+    } else if (required && !singleton) this.error('Resource id not defined')
+
+    return {
+      res,
+      id,
+      singleton,
+    }
+
+  }
+
+
+  protected checkOperation(sdk: any, name: string, attributes?: ResAttributes): boolean {
+    if (!sdk[name]) {
+      // resource attributes reference, reference_origin and metadata are always updatable
+      if ((name === 'update') && attributes) {
+        if (!Object.keys(attributes).some(attr => !['reference', 'reference_origin', 'metadata'].includes(attr))) return true
+      }
+      this.error(`Operation not supported for resource ${clColor.api.resource(sdk.type())}: ${clColor.msg.error(name)}`)
+    }
+    return true
   }
 
 
@@ -212,43 +265,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
 
   // -- CUSTOM METHODS -- //
 
-  checkResourceId(resource: string, resourceId?: string, required = true): {
-    res: string,
-    id?: string,
-    singleton: boolean
-  } {
-
-    let res = resource
-    let id = resourceId
-
-    const si = res.indexOf('/')
-    if (si >= 0) {
-      const rt = res.split('/')
-      if (id && rt[1]) this.error(`Double definition of resource id: [${res}, ${id}]`,
-        { suggestions: [`Define resource id as command argument (${clColor.italic(id)}) or as part of the resource itself (${clColor.italic(res)}) but not both`] }
-      )
-      else id = rt[1]
-      res = rt[0]
-    }
-
-    const res_ = findResource(res, { singular: true })
-    const singleton = res_?.singleton || false
-
-    if (id) {
-      if (singleton) this.error(`Singleton resource ${clColor.api.resource(res)} does not require id`)
-      if (id.includes('/')) this.error(`Invalid resource id: ${clColor.msg.error(id)}`)
-    } else if (required && !singleton) this.error('Resource id not defined')
-
-    return {
-      res,
-      id,
-      singleton,
-    }
-
-  }
-
-
-  checkTag(resource: string): boolean {
+  protected checkTag(resource: string): boolean {
     if (!clConfig.tags.taggable_resources.includes(resource)) {
       this.error(`Resource ${clColor.msg.error(resource)} not taggable`, {
         suggestions: [
@@ -260,7 +277,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  tagFlag(flag: string[] | undefined): Array<string | null> {
+  protected tagFlag(flag: string[] | undefined): Array<string | null> {
 
     const values: Array<string | null> = []
 
@@ -281,7 +298,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  includeFlag(flag: string[] | undefined, relationships?: KeyValRel, force?: boolean): string[] {
+  protected includeFlag(flag: string[] | undefined, relationships?: KeyValRel, force?: boolean): string[] {
 
     const values: string[] = []
 
@@ -302,7 +319,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  objectFlag(flag: string[] | undefined): ResAttributes {
+  protected objectFlag(flag: string[] | undefined): ResAttributes {
 
     const objects: ResAttributes = {}
 
@@ -345,7 +362,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  jsonFlag(flag: string[] | undefined, objects?: KeyValObj): ResAttributes {
+  protected jsonFlag(flag: string[] | undefined, objects?: KeyValObj): ResAttributes {
     const obj = this._keyvalFlag(flag, 'object')
     const json: ResAttributes = {}
     Object.entries(obj).forEach(([k, v]) => {
@@ -360,7 +377,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  fieldsFlag(flag: string[] | undefined, type: string): KeyValArray {
+  protected fieldsFlag(flag: string[] | undefined, type: string): KeyValArray {
 
     const fields: KeyValArray = {}
 
@@ -399,7 +416,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  whereFlag(flag: string[] | undefined): KeyValString {
+  protected whereFlag(flag: string[] | undefined): KeyValString {
 
     const wheres: KeyValString = {}
 
@@ -426,7 +443,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  sortFlag(flag: string[] | undefined): KeyValSort {
+  protected sortFlag(flag: string[] | undefined): KeyValSort {
 
     const sort: KeyValSort = {}
 
@@ -472,7 +489,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  _keyvalFlag(flag: string[] | undefined, type = 'attribute'): KeyValString {
+  protected _keyvalFlag(flag: string[] | undefined, type = 'attribute'): KeyValString {
 
     const param: KeyValString = {}
 
@@ -499,7 +516,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  attributeFlag(flag: string[] | undefined): ResAttributes {
+  protected attributeFlag(flag: string[] | undefined): ResAttributes {
     const attr = this._keyvalFlag(flag, 'attribute')
     const attributes: ResAttributes = {}
     Object.entries(attr).forEach(([k, v]) => {
@@ -509,7 +526,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  metadataFlag(flag: string[] | undefined, { fixTypes = false } = {}): KeyVal {
+  protected metadataFlag(flag: string[] | undefined, { fixTypes = false } = {}): KeyVal {
     const md = this._keyvalFlag(flag, 'metadata')
     const metadata: KeyVal = {}
     Object.keys(md).forEach(k => {
@@ -519,7 +536,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  relationshipFlag(flag: string[] | undefined, organization?: string): KeyValRel {
+  protected relationshipFlag(flag: string[] | undefined, organization?: string): KeyValRel {
 
     const relationships: KeyValRel = {}
 
@@ -571,8 +588,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-
-  extractFlag(flag: string[],): KeyValArray {
+  protected extractFlag(flag: string[],): KeyValArray {
 
     const extract: KeyValArray = {}
 
@@ -606,7 +622,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  extractObjectFields(fields: KeyValArray, obj: any): void {
+  protected extractObjectFields(fields: KeyValArray, obj: any): void {
 
     Object.entries(fields).forEach(([extObj, extFields]) => {
 
@@ -628,24 +644,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  protected checkOperation(sdk: any, name: string, attributes?: ResAttributes): boolean {
-    if (!sdk[name]) {
-      // resource attributes reference, reference_origin and metadata are always updatable
-      if ((name === 'update') && attributes) {
-        if (!Object.keys(attributes).some(attr => !['reference', 'reference_origin', 'metadata'].includes(attr))) return true
-      }
-      this.error(`Operation not supported for resource ${clColor.api.resource(sdk.type())}: ${clColor.msg.error(name)}`)
-    }
-    return true
-  }
-
-
-  printOutput(output: any, flags: any | undefined): void {
-    if (output && !flags['headers-only']) this.log(formatOutput(output, flags))
-  }
-
-
-  printHeaders(headers: any, flags: any): void {
+  protected printHeaders(headers: any, flags: any): void {
     if (headers) {
       if (flags.headers || flags['headers-only']) {
         this.log('---------- Response Headers ----------')
@@ -657,7 +656,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  saveOutput(output: any, flags: any): void {
+  protected saveOutput(output: any, flags: any): void {
 
     try {
 
