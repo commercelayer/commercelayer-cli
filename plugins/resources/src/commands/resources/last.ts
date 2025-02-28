@@ -53,7 +53,7 @@ export default class ResourcesLast extends BaseCommand {
           for (const f of fields) {
             if (f in res) {
               const v = res[f]
-              const value = v?.includes(' ') ? `'${v}'` : v
+              const value = (v && String(v)).includes(' ') ? `'${v}'` : v
               if (value) {
                 label = `${clText.capitalize(clApi.humanizeResource(resource.name))} ${f}: ${clColor.cli.value(value)}`
                 break
