@@ -31,6 +31,7 @@ $ commercelayer plugins:install orders
 <!-- commands -->
 
 * [`commercelayer orders ID`](#commercelayer-orders-id)
+* [`commercelayer orders:add_tags ID`](#commercelayer-ordersadd_tags-id)
 * [`commercelayer orders:approve ID`](#commercelayer-ordersapprove-id)
 * [`commercelayer orders:approve_and_capture ID`](#commercelayer-ordersapprove_and_capture-id)
 * [`commercelayer orders:archive ID`](#commercelayer-ordersarchive-id)
@@ -52,6 +53,7 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:refresh ID`](#commercelayer-ordersrefresh-id)
 * [`commercelayer orders:refund ID`](#commercelayer-ordersrefund-id)
 * [`commercelayer orders:refund_invoice ID`](#commercelayer-ordersrefund_invoice-id)
+* [`commercelayer orders:remove_tags ID`](#commercelayer-ordersremove_tags-id)
 * [`commercelayer orders:reset_circuit ID`](#commercelayer-ordersreset_circuit-id)
 * [`commercelayer orders:save_billing_address_to_customer_address_book ID`](#commercelayer-orderssave_billing_address_to_customer_address_book-id)
 * [`commercelayer orders:save_payment_source_to_customer_wallet ID`](#commercelayer-orderssave_payment_source_to_customer_wallet-id)
@@ -85,6 +87,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/index.ts)_
+
+### `commercelayer orders:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer orders:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/orders/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/add_tags.ts)_
 
 ### `commercelayer orders:approve ID`
 
@@ -556,6 +581,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/refund_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund_invoice.ts)_
+
+### `commercelayer orders:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer orders:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/orders/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/remove_tags.ts)_
 
 ### `commercelayer orders:reset_circuit ID`
 

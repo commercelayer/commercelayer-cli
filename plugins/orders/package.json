@@ -57,7 +57,7 @@
   "devDependencies": {
     "@commercelayer/cli-dev": "^3.0.7",
     "@commercelayer/eslint-config-ts": "^1.4.5",
-    "@oclif/plugin-help": "^6.2.26",
+    "@oclif/plugin-help": "^6.2.27",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -65,14 +65,14 @@
     "@types/inquirer": "^8.2.10",
     "@types/lodash.snakecase": "^4.1.9",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^20.17.19",
+    "@types/node": "^20.17.24",
     "chai": "^4.5.0",
     "eslint": "^8.57.1",
     "inflector-js": "^1.0.1",
     "lodash.snakecase": "^4.1.1",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
-    "oclif": "^4.17.32",
+    "oclif": "^4.17.37",
     "semantic-release": "^23.1.1",
     "tsx": "^4.19.3",
     "typescript": "5.3.3"
@@ -80,7 +80,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^5.8.1",
     "@commercelayer/cli-ux": "1.0.6",
-    "@commercelayer/sdk": "^6.34.0",
+    "@commercelayer/sdk": "^6.36.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.6",
     "tslib": "^2.8.1"

@@ -1,6 +1,6 @@
 import { expect, test } from '@oclif/test'
 
-describe('orders:create_subscriptions', () => {
+describe('orders:remove_tags', () => {
   test
     .timeout(33000)
     .stdout()
