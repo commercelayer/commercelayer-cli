@@ -30,6 +30,9 @@ $ commercelayer plugins:install triggers
 ## Commands
 <!-- commands -->
 
+* [`commercelayer address ID`](#commercelayer-address-id)
+* [`commercelayer address:add_tags ID`](#commercelayer-addressadd_tags-id)
+* [`commercelayer address:remove_tags ID`](#commercelayer-addressremove_tags-id)
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
 * [`commercelayer adyen_payment:authorize ID`](#commercelayer-adyen_paymentauthorize-id)
 * [`commercelayer adyen_payment:details ID`](#commercelayer-adyen_paymentdetails-id)
@@ -42,11 +45,15 @@ $ commercelayer plugins:install triggers
 * [`commercelayer axerve_payment ID`](#commercelayer-axerve_payment-id)
 * [`commercelayer axerve_payment:update ID`](#commercelayer-axerve_paymentupdate-id)
 * [`commercelayer bundle ID`](#commercelayer-bundle-id)
+* [`commercelayer bundle:add_tags ID`](#commercelayer-bundleadd_tags-id)
 * [`commercelayer bundle:compute_compare_at_amount ID`](#commercelayer-bundlecompute_compare_at_amount-id)
 * [`commercelayer bundle:compute_price_amount ID`](#commercelayer-bundlecompute_price_amount-id)
+* [`commercelayer bundle:remove_tags ID`](#commercelayer-bundleremove_tags-id)
 * [`commercelayer buy_x_pay_y_promotion ID`](#commercelayer-buy_x_pay_y_promotion-id)
+* [`commercelayer buy_x_pay_y_promotion:add_tags ID`](#commercelayer-buy_x_pay_y_promotionadd_tags-id)
 * [`commercelayer buy_x_pay_y_promotion:disable ID`](#commercelayer-buy_x_pay_y_promotiondisable-id)
 * [`commercelayer buy_x_pay_y_promotion:enable ID`](#commercelayer-buy_x_pay_y_promotionenable-id)
+* [`commercelayer buy_x_pay_y_promotion:remove_tags ID`](#commercelayer-buy_x_pay_y_promotionremove_tags-id)
 * [`commercelayer capture ID`](#commercelayer-capture-id)
 * [`commercelayer capture:cancel ID`](#commercelayer-capturecancel-id)
 * [`commercelayer capture:forward ID`](#commercelayer-captureforward-id)
@@ -57,6 +64,12 @@ $ commercelayer plugins:install triggers
 * [`commercelayer checkout_com_payment:refresh ID`](#commercelayer-checkout_com_paymentrefresh-id)
 * [`commercelayer cleanup ID`](#commercelayer-cleanup-id)
 * [`commercelayer cleanup:interrupt ID`](#commercelayer-cleanupinterrupt-id)
+* [`commercelayer coupon ID`](#commercelayer-coupon-id)
+* [`commercelayer coupon:add_tags ID`](#commercelayer-couponadd_tags-id)
+* [`commercelayer coupon:remove_tags ID`](#commercelayer-couponremove_tags-id)
+* [`commercelayer customer ID`](#commercelayer-customer-id)
+* [`commercelayer customer:add_tags ID`](#commercelayer-customeradd_tags-id)
+* [`commercelayer customer:remove_tags ID`](#commercelayer-customerremove_tags-id)
 * [`commercelayer customer_password_reset ID`](#commercelayer-customer_password_reset-id)
 * [`commercelayer customer_password_reset:reset_password_token ID`](#commercelayer-customer_password_resetreset_password_token-id)
 * [`commercelayer easypost_pickup ID`](#commercelayer-easypost_pickup-id)
@@ -68,31 +81,45 @@ $ commercelayer plugins:install triggers
 * [`commercelayer external_gateway ID`](#commercelayer-external_gateway-id)
 * [`commercelayer external_gateway:reset_circuit ID`](#commercelayer-external_gatewayreset_circuit-id)
 * [`commercelayer external_promotion ID`](#commercelayer-external_promotion-id)
+* [`commercelayer external_promotion:add_tags ID`](#commercelayer-external_promotionadd_tags-id)
 * [`commercelayer external_promotion:disable ID`](#commercelayer-external_promotiondisable-id)
 * [`commercelayer external_promotion:enable ID`](#commercelayer-external_promotionenable-id)
+* [`commercelayer external_promotion:remove_tags ID`](#commercelayer-external_promotionremove_tags-id)
 * [`commercelayer external_promotion:reset_circuit ID`](#commercelayer-external_promotionreset_circuit-id)
 * [`commercelayer external_tax_calculator ID`](#commercelayer-external_tax_calculator-id)
 * [`commercelayer external_tax_calculator:reset_circuit ID`](#commercelayer-external_tax_calculatorreset_circuit-id)
 * [`commercelayer fixed_amount_promotion ID`](#commercelayer-fixed_amount_promotion-id)
+* [`commercelayer fixed_amount_promotion:add_tags ID`](#commercelayer-fixed_amount_promotionadd_tags-id)
 * [`commercelayer fixed_amount_promotion:disable ID`](#commercelayer-fixed_amount_promotiondisable-id)
 * [`commercelayer fixed_amount_promotion:enable ID`](#commercelayer-fixed_amount_promotionenable-id)
+* [`commercelayer fixed_amount_promotion:remove_tags ID`](#commercelayer-fixed_amount_promotionremove_tags-id)
 * [`commercelayer fixed_price_promotion ID`](#commercelayer-fixed_price_promotion-id)
+* [`commercelayer fixed_price_promotion:add_tags ID`](#commercelayer-fixed_price_promotionadd_tags-id)
 * [`commercelayer fixed_price_promotion:disable ID`](#commercelayer-fixed_price_promotiondisable-id)
 * [`commercelayer fixed_price_promotion:enable ID`](#commercelayer-fixed_price_promotionenable-id)
+* [`commercelayer fixed_price_promotion:remove_tags ID`](#commercelayer-fixed_price_promotionremove_tags-id)
 * [`commercelayer flex_promotion ID`](#commercelayer-flex_promotion-id)
+* [`commercelayer flex_promotion:add_tags ID`](#commercelayer-flex_promotionadd_tags-id)
 * [`commercelayer flex_promotion:disable ID`](#commercelayer-flex_promotiondisable-id)
 * [`commercelayer flex_promotion:enable ID`](#commercelayer-flex_promotionenable-id)
+* [`commercelayer flex_promotion:remove_tags ID`](#commercelayer-flex_promotionremove_tags-id)
 * [`commercelayer free_gift_promotion ID`](#commercelayer-free_gift_promotion-id)
+* [`commercelayer free_gift_promotion:add_tags ID`](#commercelayer-free_gift_promotionadd_tags-id)
 * [`commercelayer free_gift_promotion:disable ID`](#commercelayer-free_gift_promotiondisable-id)
 * [`commercelayer free_gift_promotion:enable ID`](#commercelayer-free_gift_promotionenable-id)
+* [`commercelayer free_gift_promotion:remove_tags ID`](#commercelayer-free_gift_promotionremove_tags-id)
 * [`commercelayer free_shipping_promotion ID`](#commercelayer-free_shipping_promotion-id)
+* [`commercelayer free_shipping_promotion:add_tags ID`](#commercelayer-free_shipping_promotionadd_tags-id)
 * [`commercelayer free_shipping_promotion:disable ID`](#commercelayer-free_shipping_promotiondisable-id)
 * [`commercelayer free_shipping_promotion:enable ID`](#commercelayer-free_shipping_promotionenable-id)
+* [`commercelayer free_shipping_promotion:remove_tags ID`](#commercelayer-free_shipping_promotionremove_tags-id)
 * [`commercelayer gift_card ID`](#commercelayer-gift_card-id)
 * [`commercelayer gift_card:activate ID`](#commercelayer-gift_cardactivate-id)
+* [`commercelayer gift_card:add_tags ID`](#commercelayer-gift_cardadd_tags-id)
 * [`commercelayer gift_card:balance_change_cents ID`](#commercelayer-gift_cardbalance_change_cents-id)
 * [`commercelayer gift_card:deactivate ID`](#commercelayer-gift_carddeactivate-id)
 * [`commercelayer gift_card:purchase ID`](#commercelayer-gift_cardpurchase-id)
+* [`commercelayer gift_card:remove_tags ID`](#commercelayer-gift_cardremove_tags-id)
 * [`commercelayer import ID`](#commercelayer-import-id)
 * [`commercelayer import:interrupt ID`](#commercelayer-importinterrupt-id)
 * [`commercelayer in_stock_subscription ID`](#commercelayer-in_stock_subscription-id)
@@ -101,9 +128,14 @@ $ commercelayer plugins:install triggers
 * [`commercelayer klarna_payment ID`](#commercelayer-klarna_payment-id)
 * [`commercelayer klarna_payment:update ID`](#commercelayer-klarna_paymentupdate-id)
 * [`commercelayer line_item ID`](#commercelayer-line_item-id)
+* [`commercelayer line_item:add_tags ID`](#commercelayer-line_itemadd_tags-id)
 * [`commercelayer line_item:external_price ID`](#commercelayer-line_itemexternal_price-id)
+* [`commercelayer line_item:remove_tags ID`](#commercelayer-line_itemremove_tags-id)
 * [`commercelayer line_item:reserve_stock ID`](#commercelayer-line_itemreserve_stock-id)
 * [`commercelayer line_item:reset_circuit ID`](#commercelayer-line_itemreset_circuit-id)
+* [`commercelayer line_item_option ID`](#commercelayer-line_item_option-id)
+* [`commercelayer line_item_option:add_tags ID`](#commercelayer-line_item_optionadd_tags-id)
+* [`commercelayer line_item_option:remove_tags ID`](#commercelayer-line_item_optionremove_tags-id)
 * [`commercelayer link ID`](#commercelayer-link-id)
 * [`commercelayer link:disable ID`](#commercelayer-linkdisable-id)
 * [`commercelayer link:enable ID`](#commercelayer-linkenable-id)
@@ -111,6 +143,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer market:disable ID`](#commercelayer-marketdisable-id)
 * [`commercelayer market:enable ID`](#commercelayer-marketenable-id)
 * [`commercelayer order ID`](#commercelayer-order-id)
+* [`commercelayer order:add_tags ID`](#commercelayer-orderadd_tags-id)
 * [`commercelayer order:approve ID`](#commercelayer-orderapprove-id)
 * [`commercelayer order:approve_and_capture ID`](#commercelayer-orderapprove_and_capture-id)
 * [`commercelayer order:archive ID`](#commercelayer-orderarchive-id)
@@ -131,6 +164,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order:refresh ID`](#commercelayer-orderrefresh-id)
 * [`commercelayer order:refund ID`](#commercelayer-orderrefund-id)
 * [`commercelayer order:refund_invoice ID`](#commercelayer-orderrefund_invoice-id)
+* [`commercelayer order:remove_tags ID`](#commercelayer-orderremove_tags-id)
 * [`commercelayer order:reset_circuit ID`](#commercelayer-orderreset_circuit-id)
 * [`commercelayer order:save_billing_address_to_customer_address_book ID`](#commercelayer-ordersave_billing_address_to_customer_address_book-id)
 * [`commercelayer order:save_payment_source_to_customer_wallet ID`](#commercelayer-ordersave_payment_source_to_customer_wallet-id)
@@ -144,21 +178,26 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order:validate ID`](#commercelayer-ordervalidate-id)
 * [`commercelayer order_subscription ID`](#commercelayer-order_subscription-id)
 * [`commercelayer order_subscription:activate ID`](#commercelayer-order_subscriptionactivate-id)
+* [`commercelayer order_subscription:add_tags ID`](#commercelayer-order_subscriptionadd_tags-id)
 * [`commercelayer order_subscription:cancel ID`](#commercelayer-order_subscriptioncancel-id)
 * [`commercelayer order_subscription:convert ID`](#commercelayer-order_subscriptionconvert-id)
 * [`commercelayer order_subscription:deactivate ID`](#commercelayer-order_subscriptiondeactivate-id)
+* [`commercelayer order_subscription:remove_tags ID`](#commercelayer-order_subscriptionremove_tags-id)
 * [`commercelayer payment_method ID`](#commercelayer-payment_method-id)
 * [`commercelayer payment_method:disable ID`](#commercelayer-payment_methoddisable-id)
 * [`commercelayer payment_method:enable ID`](#commercelayer-payment_methodenable-id)
 * [`commercelayer percentage_discount_promotion ID`](#commercelayer-percentage_discount_promotion-id)
+* [`commercelayer percentage_discount_promotion:add_tags ID`](#commercelayer-percentage_discount_promotionadd_tags-id)
 * [`commercelayer percentage_discount_promotion:disable ID`](#commercelayer-percentage_discount_promotiondisable-id)
 * [`commercelayer percentage_discount_promotion:enable ID`](#commercelayer-percentage_discount_promotionenable-id)
+* [`commercelayer percentage_discount_promotion:remove_tags ID`](#commercelayer-percentage_discount_promotionremove_tags-id)
 * [`commercelayer price_list_scheduler ID`](#commercelayer-price_list_scheduler-id)
 * [`commercelayer price_list_scheduler:disable ID`](#commercelayer-price_list_schedulerdisable-id)
 * [`commercelayer price_list_scheduler:enable ID`](#commercelayer-price_list_schedulerenable-id)
 * [`commercelayer refund ID`](#commercelayer-refund-id)
 * [`commercelayer refund:forward ID`](#commercelayer-refundforward-id)
 * [`commercelayer return ID`](#commercelayer-return-id)
+* [`commercelayer return:add_tags ID`](#commercelayer-returnadd_tags-id)
 * [`commercelayer return:approve ID`](#commercelayer-returnapprove-id)
 * [`commercelayer return:archive ID`](#commercelayer-returnarchive-id)
 * [`commercelayer return:cancel ID`](#commercelayer-returncancel-id)
@@ -166,6 +205,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer return:refund ID`](#commercelayer-returnrefund-id)
 * [`commercelayer return:refund_amount_cents ID`](#commercelayer-returnrefund_amount_cents-id)
 * [`commercelayer return:reject ID`](#commercelayer-returnreject-id)
+* [`commercelayer return:remove_tags ID`](#commercelayer-returnremove_tags-id)
 * [`commercelayer return:request ID`](#commercelayer-returnrequest-id)
 * [`commercelayer return:restock ID`](#commercelayer-returnrestock-id)
 * [`commercelayer return:ship ID`](#commercelayer-returnship-id)
@@ -175,6 +215,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer satispay_payment ID`](#commercelayer-satispay_payment-id)
 * [`commercelayer satispay_payment:refresh ID`](#commercelayer-satispay_paymentrefresh-id)
 * [`commercelayer shipment ID`](#commercelayer-shipment-id)
+* [`commercelayer shipment:add_tags ID`](#commercelayer-shipmentadd_tags-id)
 * [`commercelayer shipment:cancel ID`](#commercelayer-shipmentcancel-id)
 * [`commercelayer shipment:decrement_stock ID`](#commercelayer-shipmentdecrement_stock-id)
 * [`commercelayer shipment:deliver ID`](#commercelayer-shipmentdeliver-id)
@@ -185,6 +226,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer shipment:purchase ID`](#commercelayer-shipmentpurchase-id)
 * [`commercelayer shipment:ready_to_ship ID`](#commercelayer-shipmentready_to_ship-id)
 * [`commercelayer shipment:release_stock ID`](#commercelayer-shipmentrelease_stock-id)
+* [`commercelayer shipment:remove_tags ID`](#commercelayer-shipmentremove_tags-id)
 * [`commercelayer shipment:reserve_stock ID`](#commercelayer-shipmentreserve_stock-id)
 * [`commercelayer shipment:ship ID`](#commercelayer-shipmentship-id)
 * [`commercelayer shipment:upcoming ID`](#commercelayer-shipmentupcoming-id)
@@ -192,6 +234,12 @@ $ commercelayer plugins:install triggers
 * [`commercelayer shipping_method:disable ID`](#commercelayer-shipping_methoddisable-id)
 * [`commercelayer shipping_method:enable ID`](#commercelayer-shipping_methodenable-id)
 * [`commercelayer shipping_method:reset_circuit ID`](#commercelayer-shipping_methodreset_circuit-id)
+* [`commercelayer sku ID`](#commercelayer-sku-id)
+* [`commercelayer sku:add_tags ID`](#commercelayer-skuadd_tags-id)
+* [`commercelayer sku:remove_tags ID`](#commercelayer-skuremove_tags-id)
+* [`commercelayer sku_option ID`](#commercelayer-sku_option-id)
+* [`commercelayer sku_option:add_tags ID`](#commercelayer-sku_optionadd_tags-id)
+* [`commercelayer sku_option:remove_tags ID`](#commercelayer-sku_optionremove_tags-id)
 * [`commercelayer stock_item ID`](#commercelayer-stock_item-id)
 * [`commercelayer stock_item:validate ID`](#commercelayer-stock_itemvalidate-id)
 * [`commercelayer stock_line_item ID`](#commercelayer-stock_line_item-id)
@@ -218,6 +266,74 @@ $ commercelayer plugins:install triggers
 * [`commercelayer webhook:disable ID`](#commercelayer-webhookdisable-id)
 * [`commercelayer webhook:enable ID`](#commercelayer-webhookenable-id)
 * [`commercelayer webhook:reset_circuit ID`](#commercelayer-webhookreset_circuit-id)
+
+### `commercelayer address ID`
+
+Execute an action on a resource of type addresses.
+
+```sh-session
+USAGE
+  $ commercelayer address ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type addresses
+```
+
+_See code: [src/commands/address/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/address/index.ts)_
+
+### `commercelayer address:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer address:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/address/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/address/add_tags.ts)_
+
+### `commercelayer address:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer address:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/address/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/address/remove_tags.ts)_
 
 ### `commercelayer adyen_payment ID`
 
@@ -484,6 +600,29 @@ DESCRIPTION
 
 _See code: [src/commands/bundle/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/index.ts)_
 
+### `commercelayer bundle:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer bundle:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/bundle/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/add_tags.ts)_
+
 ### `commercelayer bundle:compute_compare_at_amount ID`
 
 Send this attribute if you want to compute the compare_at_amount_cents as the sum of the prices of the bundle SKUs for the market.
@@ -530,6 +669,29 @@ DESCRIPTION
 
 _See code: [src/commands/bundle/compute_price_amount.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/compute_price_amount.ts)_
 
+### `commercelayer bundle:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer bundle:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/bundle/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/bundle/remove_tags.ts)_
+
 ### `commercelayer buy_x_pay_y_promotion ID`
 
 Execute an action on a resource of type buy_x_pay_y_promotions.
@@ -551,6 +713,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/buy_x_pay_y_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/index.ts)_
+
+### `commercelayer buy_x_pay_y_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer buy_x_pay_y_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/buy_x_pay_y_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/add_tags.ts)_
 
 ### `commercelayer buy_x_pay_y_promotion:disable ID`
 
@@ -595,6 +780,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/buy_x_pay_y_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/enable.ts)_
+
+### `commercelayer buy_x_pay_y_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer buy_x_pay_y_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/buy_x_pay_y_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/buy_x_pay_y_promotion/remove_tags.ts)_
 
 ### `commercelayer capture ID`
 
@@ -816,6 +1024,142 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/cleanup/interrupt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/cleanup/interrupt.ts)_
+
+### `commercelayer coupon ID`
+
+Execute an action on a resource of type coupons.
+
+```sh-session
+USAGE
+  $ commercelayer coupon ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type coupons
+```
+
+_See code: [src/commands/coupon/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/coupon/index.ts)_
+
+### `commercelayer coupon:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer coupon:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/coupon/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/coupon/add_tags.ts)_
+
+### `commercelayer coupon:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer coupon:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/coupon/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/coupon/remove_tags.ts)_
+
+### `commercelayer customer ID`
+
+Execute an action on a resource of type customers.
+
+```sh-session
+USAGE
+  $ commercelayer customer ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type customers
+```
+
+_See code: [src/commands/customer/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/index.ts)_
+
+### `commercelayer customer:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer customer:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/customer/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/add_tags.ts)_
+
+### `commercelayer customer:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer customer:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/customer/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/remove_tags.ts)_
 
 ### `commercelayer customer_password_reset ID`
 
@@ -1060,6 +1404,29 @@ DESCRIPTION
 
 _See code: [src/commands/external_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/index.ts)_
 
+### `commercelayer external_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer external_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/external_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/add_tags.ts)_
+
 ### `commercelayer external_promotion:disable ID`
 
 Send this attribute if you want to mark this resource as disabled.
@@ -1103,6 +1470,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/external_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/enable.ts)_
+
+### `commercelayer external_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer external_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/external_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/remove_tags.ts)_
 
 ### `commercelayer external_promotion:reset_circuit ID`
 
@@ -1194,6 +1584,29 @@ DESCRIPTION
 
 _See code: [src/commands/fixed_amount_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/index.ts)_
 
+### `commercelayer fixed_amount_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_amount_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/fixed_amount_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/add_tags.ts)_
+
 ### `commercelayer fixed_amount_promotion:disable ID`
 
 Send this attribute if you want to mark this resource as disabled.
@@ -1238,6 +1651,29 @@ DESCRIPTION
 
 _See code: [src/commands/fixed_amount_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/enable.ts)_
 
+### `commercelayer fixed_amount_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_amount_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/fixed_amount_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_amount_promotion/remove_tags.ts)_
+
 ### `commercelayer fixed_price_promotion ID`
 
 Execute an action on a resource of type fixed_price_promotions.
@@ -1259,6 +1695,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/fixed_price_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/index.ts)_
+
+### `commercelayer fixed_price_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_price_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/fixed_price_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/add_tags.ts)_
 
 ### `commercelayer fixed_price_promotion:disable ID`
 
@@ -1304,6 +1763,29 @@ DESCRIPTION
 
 _See code: [src/commands/fixed_price_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/enable.ts)_
 
+### `commercelayer fixed_price_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer fixed_price_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/fixed_price_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/fixed_price_promotion/remove_tags.ts)_
+
 ### `commercelayer flex_promotion ID`
 
 Execute an action on a resource of type flex_promotions.
@@ -1325,6 +1807,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/flex_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/flex_promotion/index.ts)_
+
+### `commercelayer flex_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer flex_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/flex_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/flex_promotion/add_tags.ts)_
 
 ### `commercelayer flex_promotion:disable ID`
 
@@ -1370,6 +1875,29 @@ DESCRIPTION
 
 _See code: [src/commands/flex_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/flex_promotion/enable.ts)_
 
+### `commercelayer flex_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer flex_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/flex_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/flex_promotion/remove_tags.ts)_
+
 ### `commercelayer free_gift_promotion ID`
 
 Execute an action on a resource of type free_gift_promotions.
@@ -1391,6 +1919,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/free_gift_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/index.ts)_
+
+### `commercelayer free_gift_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer free_gift_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/free_gift_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/add_tags.ts)_
 
 ### `commercelayer free_gift_promotion:disable ID`
 
@@ -1436,6 +1987,29 @@ DESCRIPTION
 
 _See code: [src/commands/free_gift_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/enable.ts)_
 
+### `commercelayer free_gift_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer free_gift_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/free_gift_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_gift_promotion/remove_tags.ts)_
+
 ### `commercelayer free_shipping_promotion ID`
 
 Execute an action on a resource of type free_shipping_promotions.
@@ -1457,6 +2031,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/free_shipping_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/index.ts)_
+
+### `commercelayer free_shipping_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer free_shipping_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/free_shipping_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/add_tags.ts)_
 
 ### `commercelayer free_shipping_promotion:disable ID`
 
@@ -1502,6 +2099,29 @@ DESCRIPTION
 
 _See code: [src/commands/free_shipping_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/enable.ts)_
 
+### `commercelayer free_shipping_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer free_shipping_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/free_shipping_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/free_shipping_promotion/remove_tags.ts)_
+
 ### `commercelayer gift_card ID`
 
 Execute an action on a resource of type gift_cards.
@@ -1545,6 +2165,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/gift_card/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/activate.ts)_
+
+### `commercelayer gift_card:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer gift_card:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/gift_card/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/add_tags.ts)_
 
 ### `commercelayer gift_card:balance_change_cents ID`
 
@@ -1613,6 +2256,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/gift_card/purchase.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/purchase.ts)_
+
+### `commercelayer gift_card:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer gift_card:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/gift_card/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/gift_card/remove_tags.ts)_
 
 ### `commercelayer import ID`
 
@@ -1790,6 +2456,29 @@ DESCRIPTION
 
 _See code: [src/commands/line_item/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/index.ts)_
 
+### `commercelayer line_item:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer line_item:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/line_item/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/add_tags.ts)_
+
 ### `commercelayer line_item:external_price ID`
 
 When creating or updating a new line item, set this attribute to '1' if you want to inject the unit_amount_cents price from an external source. Any successive price computation will be done externally, until the attribute is reset to '0'.
@@ -1813,6 +2502,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/line_item/external_price.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/external_price.ts)_
+
+### `commercelayer line_item:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer line_item:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/line_item/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/remove_tags.ts)_
 
 ### `commercelayer line_item:reserve_stock ID`
 
@@ -1860,6 +2572,74 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/line_item/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reset_circuit.ts)_
+
+### `commercelayer line_item_option ID`
+
+Execute an action on a resource of type line_item_options.
+
+```sh-session
+USAGE
+  $ commercelayer line_item_option ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type line_item_options
+```
+
+_See code: [src/commands/line_item_option/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item_option/index.ts)_
+
+### `commercelayer line_item_option:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer line_item_option:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/line_item_option/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item_option/add_tags.ts)_
+
+### `commercelayer line_item_option:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer line_item_option:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/line_item_option/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item_option/remove_tags.ts)_
 
 ### `commercelayer link ID`
 
@@ -2014,6 +2794,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/order/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/index.ts)_
+
+### `commercelayer order:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer order:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/order/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/add_tags.ts)_
 
 ### `commercelayer order:approve ID`
 
@@ -2463,6 +3266,29 @@ DESCRIPTION
 
 _See code: [src/commands/order/refund_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refund_invoice.ts)_
 
+### `commercelayer order:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer order:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/order/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/remove_tags.ts)_
+
 ### `commercelayer order:reset_circuit ID`
 
 Send this attribute if you want to reset the circuit breaker associated to this resource to 'closed' state and zero failures count. Cannot be passed by sales channels.
@@ -2757,6 +3583,29 @@ DESCRIPTION
 
 _See code: [src/commands/order_subscription/activate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/activate.ts)_
 
+### `commercelayer order_subscription:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer order_subscription:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/order_subscription/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/add_tags.ts)_
+
 ### `commercelayer order_subscription:cancel ID`
 
 Send this attribute if you want to mark this subscription as cancelled.
@@ -2823,6 +3672,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/order_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/deactivate.ts)_
+
+### `commercelayer order_subscription:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer order_subscription:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/order_subscription/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order_subscription/remove_tags.ts)_
 
 ### `commercelayer payment_method ID`
 
@@ -2912,6 +3784,29 @@ DESCRIPTION
 
 _See code: [src/commands/percentage_discount_promotion/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/index.ts)_
 
+### `commercelayer percentage_discount_promotion:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer percentage_discount_promotion:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/percentage_discount_promotion/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/add_tags.ts)_
+
 ### `commercelayer percentage_discount_promotion:disable ID`
 
 Send this attribute if you want to mark this resource as disabled.
@@ -2955,6 +3850,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/percentage_discount_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/enable.ts)_
+
+### `commercelayer percentage_discount_promotion:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer percentage_discount_promotion:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/percentage_discount_promotion/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/percentage_discount_promotion/remove_tags.ts)_
 
 ### `commercelayer price_list_scheduler ID`
 
@@ -3088,6 +4006,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/return/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/index.ts)_
+
+### `commercelayer return:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer return:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/return/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/add_tags.ts)_
 
 ### `commercelayer return:approve ID`
 
@@ -3242,6 +4183,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/return/reject.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/reject.ts)_
+
+### `commercelayer return:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer return:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/return/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return/remove_tags.ts)_
 
 ### `commercelayer return:request ID`
 
@@ -3440,6 +4404,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/shipment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/index.ts)_
+
+### `commercelayer shipment:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer shipment:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/shipment/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/add_tags.ts)_
 
 ### `commercelayer shipment:cancel ID`
 
@@ -3664,6 +4651,29 @@ DESCRIPTION
 
 _See code: [src/commands/shipment/release_stock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/release_stock.ts)_
 
+### `commercelayer shipment:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer shipment:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/shipment/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipment/remove_tags.ts)_
+
 ### `commercelayer shipment:reserve_stock ID`
 
 Send this attribute if you want to automatically reserve the stock for each of the associated stock line item. Can be done only when fulfillment is in progress. Cannot be passed by sales channels.
@@ -3819,6 +4829,142 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/shipping_method/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/reset_circuit.ts)_
+
+### `commercelayer sku ID`
+
+Execute an action on a resource of type skus.
+
+```sh-session
+USAGE
+  $ commercelayer sku ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type skus
+```
+
+_See code: [src/commands/sku/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/sku/index.ts)_
+
+### `commercelayer sku:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer sku:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/sku/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/sku/add_tags.ts)_
+
+### `commercelayer sku:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer sku:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/sku/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/sku/remove_tags.ts)_
+
+### `commercelayer sku_option ID`
+
+Execute an action on a resource of type sku_options.
+
+```sh-session
+USAGE
+  $ commercelayer sku_option ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type sku_options
+```
+
+_See code: [src/commands/sku_option/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/sku_option/index.ts)_
+
+### `commercelayer sku_option:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer sku_option:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/sku_option/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/sku_option/add_tags.ts)_
+
+### `commercelayer sku_option:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer sku_option:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/sku_option/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/sku_option/remove_tags.ts)_
 
 ### `commercelayer stock_item ID`
 

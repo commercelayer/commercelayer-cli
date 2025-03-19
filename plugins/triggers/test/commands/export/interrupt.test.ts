@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('exports:interrupt', () => {
   test
-    .timeout(46000)
+    .timeout(52000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

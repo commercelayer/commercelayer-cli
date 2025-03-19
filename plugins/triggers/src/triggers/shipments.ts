@@ -68,6 +68,16 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_purchase',
       description: 'Send this attribute if you want to purchase this shipment with the selected rate.',
     },
+	add_tags: {
+      action: 'add_tags',
+      trigger: '_add_tags',
+      description: 'Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.',
+    },
+	remove_tags: {
+      action: 'remove_tags',
+      trigger: '_remove_tags',
+      description: 'Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.',
+    },
 }
 
 
@@ -84,4 +94,6 @@ export type ActionType =
 	'release_stock' |
 	'decrement_stock' |
 	'get_rates' |
-	'purchase'
+	'purchase' |
+	'add_tags' |
+	'remove_tags'

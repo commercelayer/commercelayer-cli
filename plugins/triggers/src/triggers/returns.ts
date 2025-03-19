@@ -58,6 +58,16 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_refund_amount_cents',
       description: 'Send this attribute as a value in cents to specify the amount to be refunded.',
     },
+	add_tags: {
+      action: 'add_tags',
+      trigger: '_add_tags',
+      description: 'Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.',
+    },
+	remove_tags: {
+      action: 'remove_tags',
+      trigger: '_remove_tags',
+      description: 'Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.',
+    },
 }
 
 
@@ -72,4 +82,6 @@ export type ActionType =
 	'archive' |
 	'unarchive' |
 	'refund' |
-	'refund_amount_cents'
+	'refund_amount_cents' |
+	'add_tags' |
+	'remove_tags'
