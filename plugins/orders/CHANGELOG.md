@@ -1,3 +1,10 @@
+# [5.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.3.0...v5.4.0) (2025-03-19)
+
+
+### Features
+
+* update triggers ([e46d24c](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/e46d24c5ff0b3ea34d9b96704b57c2afa08f6439))
+
 # [5.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.2.0...v5.3.0) (2025-02-26)
 
 
