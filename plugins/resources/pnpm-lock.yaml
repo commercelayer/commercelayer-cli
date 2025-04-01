@@ -15,8 +15,8 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(@oclif/core@3.27.0)
       '@commercelayer/sdk':
-        specifier: ^6.37.0
-        version: 6.37.0
+        specifier: ^7.0.0-rc.2
+        version: 7.0.0-rc.2
       '@oclif/core':
         specifier: ^3.27.0
         version: 3.27.0
@@ -347,9 +347,9 @@ packages:
     resolution: {integrity: sha512-kk4VqN2iEOreXFq76YqTP83KhBs09Z5Ez9nZNlikXWf5DXzkrOfShqqEwq8ezHjSOlqs4xVyxgQzsEdPP35CeQ==}
     engines: {node: '>=18.0.0'}
 
-  '@commercelayer/sdk@6.37.0':
-    resolution: {integrity: sha512-dzXIy/1mlr004p3TvgLiCJr72KuObOKDd5tFSf1TRQOhsIthJjmRb/Q6Jo/+vx0rGU4QtusN4PLrhYQTIofulQ==}
-    engines: {node: '>=20'}
+  '@commercelayer/sdk@7.0.0-rc.2':
+    resolution: {integrity: sha512-knrcB620rkpsAIsov7k53C2q62h3TpOuxHVajPjw7nZcPU8qCVxZbOnk0WhCHRpBVx5LlWEsjQ6fFmLrn/Djzw==}
+    engines: {node: '>=22'}
 
   '@esbuild/aix-ppc64@0.25.2':
     resolution: {integrity: sha512-wCIboOL2yXZym2cgm6mlA742s9QeJ8DjGVaL39dLN4rRwrOgOyYSnOaFPhKZGLb2ngj4EyfAFjsNJwPXZvseag==}
@@ -4854,7 +4854,7 @@ snapshots:
 
   '@commercelayer/js-auth@6.7.2': {}
 
-  '@commercelayer/sdk@6.37.0': {}
+  '@commercelayer/sdk@7.0.0-rc.2': {}
 
   '@esbuild/aix-ppc64@0.25.2':
     optional: true
