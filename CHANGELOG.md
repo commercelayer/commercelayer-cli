@@ -1,3 +1,10 @@
+## [6.5.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.5.2...v6.5.3) (2025-04-17)
+
+
+### Bug Fixes
+
+* add switch alias ([83984f4](https://github.com/commercelayer/commercelayer-cli/commit/83984f4b1e4c5a95b0984efda6defd363571070f))
+
 ## [6.5.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.5.1...v6.5.2) (2025-01-31)
 
 
