@@ -10,7 +10,7 @@ export default class ApplicationsSwitch extends Command {
 
   static description = 'switch applications'
 
-  static aliases = ['app:switch']
+  static aliases = ['app:switch', 'app:use']
 
 
   async run(): Promise<any> {
