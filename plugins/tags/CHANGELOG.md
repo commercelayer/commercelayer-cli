@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.3...v2.1.4) (2025-04-17)
+
+
+### Bug Fixes
+
+* fix creation if inexistent tags ([5bf7810](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/5bf7810f1b8ab519df3d866a9e744393bfe86efc))
+
 ## [2.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.2...v2.1.3) (2025-01-31)
 
 
