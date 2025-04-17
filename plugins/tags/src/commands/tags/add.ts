@@ -36,7 +36,7 @@ export default class TagsAdd extends BaseCommand {
     }),
     create: Flags.string({
       char: 'C',
-      description: 'create tags if don\'t exist'
+      description: 'create tags if doesn\'t exist'
     }),
     verbose: Flags.boolean({
       char: 'v',
@@ -60,7 +60,7 @@ export default class TagsAdd extends BaseCommand {
     const tags: Tag[] = []
     for (const tn of nameOrIds) {
       let tag = await this.checkTag(tn, false)
-      if (!tag) {
+      if (!tag && flags.create) {
         tag = await this.cl.tags.create({ name: tn })
           .then(t => {
             if (flags.verbose) this.log(`Created tag ${clColor.cli.value(t.name)} with id ${clColor.api.id(t.id)}`)
