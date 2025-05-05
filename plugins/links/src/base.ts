@@ -1,6 +1,6 @@
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type LinkCreate } from '@commercelayer/sdk'
 import { Command, Args, Flags, ux as cliux } from '@oclif/core'
-import { clColor, clConfig, clOutput, clText, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { clColor, clConfig, clOutput, clText, clUpdate, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { DOC_DATE_TIME_STRING_FORMAT, fillUTCDate } from './util'
 
@@ -8,8 +8,6 @@ import { DOC_DATE_TIME_STRING_FORMAT, fillUTCDate } from './util'
 
 const pkg: clUpdate.Package = require('../package.json')
 
-
-const REQUIRED_APP_KIND = 'integration'
 
 
 export abstract class BaseCommand extends Command {
