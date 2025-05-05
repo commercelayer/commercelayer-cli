@@ -84,23 +84,6 @@ export abstract class BaseCommand extends Command {
   }
 
 
-  protected checkAcessTokenData(accessToken: string, flags?: any): boolean {
-
-    const info = clToken.decodeAccessToken(accessToken)
-
-    if (info === null) this.error('Invalid access token provided')
-    else
-      if (info.application.kind !== REQUIRED_APP_KIND) // Application
-        this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Only ${clColor.api.kind(REQUIRED_APP_KIND)} access token can be used to generate a microstore URL`)
-      else
-        if (info.organization?.slug !== flags.organization) // Organization
-          this.error(`The access token provided belongs to a wrong organization: ${clColor.msg.error(info.organization?.slug)} instead of ${clColor.style.organization(flags.organization)}`)
-
-    return true
-
-  }
-
-
   protected checkDateValue(value: string): string {
     try {
       const parsed = Date.parse(value)
