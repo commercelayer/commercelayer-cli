@@ -1,3 +1,10 @@
+## [5.4.1](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.4.0...v5.4.1) (2025-03-31)
+
+
+### Bug Fixes
+
+* update dependencies ([b48cdc9](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/b48cdc9ffc918cec0ef355400d257898c8789309))
+
 # [5.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.3.0...v5.4.0) (2025-03-19)
 
 
