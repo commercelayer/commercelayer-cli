@@ -1,3 +1,15 @@
+# [5.9.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.8.1...v5.9.0) (2025-05-06)
+
+
+### Bug Fixes
+
+* add metrics config ([5678a27](https://github.com/commercelayer/commercelayer-cli-core/commit/5678a27ed67a0a6320ffc6ddeec870a1240f1e13))
+
+
+### Features
+
+* add basic support for metrics api ([66eeedd](https://github.com/commercelayer/commercelayer-cli-core/commit/66eeedd269b660a8f9bddc4d7afaafdb0dd5707b))
+
 ## [5.8.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.8.0...v5.8.1) (2025-02-18)
 
 
