@@ -1,3 +1,10 @@
+## [8.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.0.2...v8.0.3) (2025-03-31)
+
+
+### Bug Fixes
+
+* update dependencies ([c956a86](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/c956a860c033ae3640ef1c1bf6dadfb5505a02ba))
+
 ## [8.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.0.1...v8.0.2) (2025-01-31)
 
 
