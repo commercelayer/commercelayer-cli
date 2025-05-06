@@ -12,7 +12,7 @@ export type { ApiMode, ApiType }
 
 /** Build base URL */
 const baseURL = (api: ApiType = 'core', slug?: string, domain?: string): string => {
-	const subdomain = (api === 'core')? (slug || api) : api
+	const subdomain = (['core', 'metrics'].includes(api))? (slug || api) : api
 	return `https://${subdomain.toLowerCase()}.${domain || config.api.default_domain}`
 }
 
