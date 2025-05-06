@@ -13,9 +13,21 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_remove_tags',
       description: 'Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.',
     },
+	request_anonymization: {
+      action: 'request_anonymization',
+      trigger: '_request_anonymization',
+      description: 'Send this attribute if you want to trigger anonymization.',
+    },
+	cancel_anonymization: {
+      action: 'cancel_anonymization',
+      trigger: '_cancel_anonymization',
+      description: 'Send this attribute if you want to trigger a cancellation of anonymization.',
+    },
 }
 
 
 export type ActionType =
   'add_tags' |
-	'remove_tags'
+	'remove_tags' |
+	'request_anonymization' |
+	'cancel_anonymization'

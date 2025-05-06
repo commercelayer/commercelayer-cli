@@ -69,7 +69,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer coupon:remove_tags ID`](#commercelayer-couponremove_tags-id)
 * [`commercelayer customer ID`](#commercelayer-customer-id)
 * [`commercelayer customer:add_tags ID`](#commercelayer-customeradd_tags-id)
+* [`commercelayer customer:cancel_anonymization ID`](#commercelayer-customercancel_anonymization-id)
 * [`commercelayer customer:remove_tags ID`](#commercelayer-customerremove_tags-id)
+* [`commercelayer customer:request_anonymization ID`](#commercelayer-customerrequest_anonymization-id)
 * [`commercelayer customer_password_reset ID`](#commercelayer-customer_password_reset-id)
 * [`commercelayer customer_password_reset:reset_password_token ID`](#commercelayer-customer_password_resetreset_password_token-id)
 * [`commercelayer easypost_pickup ID`](#commercelayer-easypost_pickup-id)
@@ -1138,6 +1140,28 @@ DESCRIPTION
 
 _See code: [src/commands/customer/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/add_tags.ts)_
 
+### `commercelayer customer:cancel_anonymization ID`
+
+Send this attribute if you want to trigger a cancellation of anonymization.
+
+```sh-session
+USAGE
+  $ commercelayer customer:cancel_anonymization ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to trigger a cancellation of anonymization.
+```
+
+_See code: [src/commands/customer/cancel_anonymization.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/cancel_anonymization.ts)_
+
 ### `commercelayer customer:remove_tags ID`
 
 Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
@@ -1160,6 +1184,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/customer/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/remove_tags.ts)_
+
+### `commercelayer customer:request_anonymization ID`
+
+Send this attribute if you want to trigger anonymization.
+
+```sh-session
+USAGE
+  $ commercelayer customer:request_anonymization ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to trigger anonymization.
+```
+
+_See code: [src/commands/customer/request_anonymization.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/request_anonymization.ts)_
 
 ### `commercelayer customer_password_reset ID`
 
