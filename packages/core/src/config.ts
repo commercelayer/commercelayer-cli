@@ -199,6 +199,12 @@ type ProvisioningConfig = {
 	applications: readonly string[]
 }
 
+type MetricsConfig = {
+	default_path: string
+	scope: string
+	applications: readonly string[]
+}
+
 type LinksConfig = {
 	default_domain: string,
 	linkable_resources: readonly string[]
@@ -215,6 +221,7 @@ type Config = {
 	doc: DocConfig
 	tags: TagsConfig
 	provisioning: ProvisioningConfig
+	metrics: MetricsConfig
 	links: LinksConfig
 }
 
@@ -344,6 +351,11 @@ const config: Config = {
 		default_subdomain: 'provisioning',
 		scope: 'provisioning-api',
 		applications: ['user']
+	},
+	metrics: {
+		default_path: 'metrics',
+		scope: 'metrics-api',
+		applications: ['integration', 'webapp']
 	},
 	links: {
 		default_domain: 'c11r.link',
