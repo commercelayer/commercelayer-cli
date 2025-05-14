@@ -1,3 +1,10 @@
+# [6.6.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.5.4...v6.6.0) (2025-05-14)
+
+
+### Features
+
+* add support for metrics plugin ([00f6328](https://github.com/commercelayer/commercelayer-cli/commit/00f6328e90ec4c908d47f2a8671b84113b8389ed))
+
 ## [6.5.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.5.3...v6.5.4) (2025-05-06)
 
 
