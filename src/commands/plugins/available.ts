@@ -76,7 +76,8 @@ const AvailablePlugins: PluginRelease[] = [
   { name: 'cleanups', plugin: '@commercelayer/cli-plugin-cleanups', description: 'Organization cleanups manager', enabled: true },
   { name: 'tags', plugin: '@commercelayer/cli-plugin-tags', description: 'Manage resources tags', enabled: true },
   { name: 'provisioning', plugin: '@commercelayer/cli-plugin-provisioning', description: 'Add support for Provisioning API', enabled: true },
-  { name: 'links', plugin: '@commercelayer/cli-plugin-links', description: 'Manage links to resources', enabled: true }
+  { name: 'links', plugin: '@commercelayer/cli-plugin-links', description: 'Manage links to resources', enabled: true },
+  { name: 'metrics', plugin: '@commercelayer/cli-plugin-metrics', description: 'Add support for Metrics APIs', enabled: true, hidden: true }
 ]
 
 
