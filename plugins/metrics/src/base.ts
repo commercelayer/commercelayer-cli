@@ -2,7 +2,7 @@ import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@c
 import { Command, Args, Flags } from '@oclif/core'
 import { clColor, clConfig, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
-import { type MetricsFilter, type MetricsQueryBreakdown, operators, resources } from './common'
+import { type MetricsFilter, type MetricsQueryBreakdown, type MetricsQueryBreakdownResponse, operators, resources } from './common'
 import * as cliux from '@commercelayer/cli-ux'
 
 
@@ -220,9 +220,9 @@ export abstract class BaseBreakdownCommand extends BaseResourceCommand {
 
     const items = data[by] || []
 
-    for (const item of (items as any[])) {
+    for (const item of (items as MetricsQueryBreakdownResponse[])) {
       this.log(`${tab}  ${item.label}: ${clColor.yellow(item.value)}`)
-      const extraFields = Object.keys(item).filter((field: any) => !['label', 'value', 'date'].includes(field))
+      const extraFields = Object.keys(item).filter((field: any) => !['label', 'value', 'date'].includes(String(field)))
       const nestedBreakdown = (extraFields.length > 0) ? extraFields[0] : undefined
       if (nestedBreakdown) this.printBreakdown(nestedBreakdown, item, level + 1)
     }

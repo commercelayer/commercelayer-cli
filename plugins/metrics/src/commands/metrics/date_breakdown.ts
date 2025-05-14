@@ -1,6 +1,7 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
 import { BaseBreakdownCommand, BaseResourceCommand, Flags } from '../../base'
-import { intervals, MetricsInterval, MetricsOperator, MetricsQuery, MetricsQueryDateBreakdown, MetricsResource, operatorMap } from '../../common'
+import { intervals, operatorMap } from '../../common'
+import type { MetricsInterval, MetricsOperator, MetricsQuery, MetricsQueryDateBreakdown, MetricsQueryDateBreakdownResponse, MetricsResource } from '../../common'
 import { metricsRequest } from '../../request'
 import * as cliux from '@commercelayer/cli-ux'
 
@@ -78,9 +79,9 @@ export default class MetricsDateBreakdown extends BaseBreakdownCommand {
     const operatorInfo = operatorMap[operator]
 
     this.log('----------------------------------------')
-    for (const item of (data as any[])) {
+    for (const item of (data as MetricsQueryDateBreakdownResponse[])) {
 
-      this.log(`date: ${clColor.magenta(clOutput.cleanDate(item.date))}`)
+      this.log(`date: ${clColor.magenta(clOutput.cleanDate(String(item.date)))}`)
 
       if (operatorInfo.type === 'Object') {
         this.log(`${operator} = {`);
@@ -90,7 +91,7 @@ export default class MetricsDateBreakdown extends BaseBreakdownCommand {
         this.log('}')
       } else this.log(`${operator} = ${clColor.yellow(item.value)}`)
 
-      const extraFields = Object.keys(item).filter((field: any) => !['label', 'value', 'date'].includes(field))
+      const extraFields = Object.keys(item).filter((field: any) => !['label', 'value', 'date'].includes(String(field)))
       const nestedBreakdown = (extraFields.length > 0) ? extraFields[0] : undefined
       if (nestedBreakdown) this.printBreakdown(nestedBreakdown, item, level)
 
