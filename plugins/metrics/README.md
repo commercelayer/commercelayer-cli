@@ -1,1 +1,1 @@
-# commercelayer-cli-plugin-metrics
+# commercelayer-cli-plugin-links
