@@ -166,5 +166,18 @@ class BaseBreakdownCommand extends BaseResourceCommand {
         }
         return breakdown;
     }
+    printBreakdown(by, data, level = 0) {
+        const tab = '  '.repeat(level);
+        this.log(`${tab}${cli_core_1.clColor.cyanBright(by)}: [`);
+        const items = data[by] || [];
+        for (const item of items) {
+            this.log(`${tab}  ${item.label}: ${cli_core_1.clColor.yellow(item.value)}`);
+            const extraFields = Object.keys(item).filter((field) => !['label', 'value', 'date'].includes(field));
+            const nestedBreakdown = (extraFields.length > 0) ? extraFields[0] : undefined;
+            if (nestedBreakdown)
+                this.printBreakdown(nestedBreakdown, item, level + 1);
+        }
+        this.log(`${tab}]`);
+    }
 }
 exports.BaseBreakdownCommand = BaseBreakdownCommand;

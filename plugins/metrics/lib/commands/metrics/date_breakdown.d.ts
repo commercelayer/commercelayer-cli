@@ -1,4 +1,5 @@
 import { BaseBreakdownCommand } from '../../base';
+import { MetricsOperator } from '../../common';
 export default class MetricsDateBreakdown extends BaseBreakdownCommand {
     static operation: string;
     static aliases: string[];
@@ -11,4 +12,5 @@ export default class MetricsDateBreakdown extends BaseBreakdownCommand {
         resource: import("@oclif/core/lib/interfaces").Arg<string, Record<string, unknown>>;
     };
     run(): Promise<void>;
+    protected printDateBreakdown(operator: MetricsOperator, data: any, level?: number): void;
 }

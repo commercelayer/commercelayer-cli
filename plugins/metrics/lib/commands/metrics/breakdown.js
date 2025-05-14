@@ -1,15 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
 const cli_core_1 = require("@commercelayer/cli-core");
 const base_1 = require("../../base");
 const common_1 = require("../../common");
 const request_1 = require("../../request");
+const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
 class MetricsBreakdown extends base_1.BaseBreakdownCommand {
     static operation = 'breakdown';
     static aliases = ['metrics:break', MetricsBreakdown.operation];
     static description = 'perform a breakdown query on the Metrics API endpoint';
     static examples = [
-        'commercelayer metrics:breakdown orders'
+        'commercelayer metrics:breakdown orders -b order.country_code -f order.id -O value_count -s desc -l 20',
+        'cl breakdown orders -b order.country_code -f order.id -O value_count -s desc -l 20 -B \'{"by": "line_items.name","field": "line_items.id","operator": "value_count","sort": "desc","limit": 20}\'',
     ];
     static flags = {
         condition: base_1.Flags.string({
@@ -54,9 +57,16 @@ class MetricsBreakdown extends base_1.BaseBreakdownCommand {
             breakdown: queryBreakdown,
             filter: filterObject
         };
-        console.log(query);
         const response = await (0, request_1.metricsRequest)(MetricsBreakdown.operation, query, resource, flags);
-        await this.printResponse(response);
+        if (response.ok) {
+            const breakdown0 = (await response.json()).data;
+            cliux.action.stop(cli_core_1.clColor.msg.success('Done'));
+            this.log();
+            this.printBreakdown(flags.by, breakdown0);
+            this.log();
+        }
+        else
+            await this.printResponse(response);
     }
     conditionFlag(flag) {
         let condition;

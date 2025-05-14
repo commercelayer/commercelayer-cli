@@ -42,5 +42,6 @@ export declare abstract class BaseBreakdownCommand extends BaseResourceCommand {
         resource: import("@oclif/core/lib/interfaces").Arg<string, Record<string, unknown>>;
     };
     protected breakdownFlag(flag?: string): MetricsQueryBreakdown | undefined;
+    protected printBreakdown(by: string, data: any, level?: number): void;
 }
 export { Args, Flags };
