@@ -302,6 +302,7 @@ DESCRIPTION
 
 ALIASES
   $ commercelayer app:switch
+  $ commercelayer app:use
 ```
 
 _See code: [src/commands/applications/switch.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/applications/switch.ts)_
