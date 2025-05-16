@@ -1,3 +1,10 @@
+## [6.6.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.6.0...v6.6.1) (2025-05-16)
+
+
+### Bug Fixes
+
+* update readme ([7f44967](https://github.com/commercelayer/commercelayer-cli/commit/7f44967436748e5eff849898eb40fd520a2c7abd))
+
 # [6.6.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.5.4...v6.6.0) (2025-05-14)
 
 
