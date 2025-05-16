@@ -172,7 +172,7 @@ class BaseBreakdownCommand extends BaseResourceCommand {
         const items = data[by] || [];
         for (const item of items) {
             this.log(`${tab}  ${item.label}: ${cli_core_1.clColor.yellow(item.value)}`);
-            const extraFields = Object.keys(item).filter((field) => !['label', 'value', 'date'].includes(field));
+            const extraFields = Object.keys(item).filter((field) => !['label', 'value', 'date'].includes(String(field)));
             const nestedBreakdown = (extraFields.length > 0) ? extraFields[0] : undefined;
             if (nestedBreakdown)
                 this.printBreakdown(nestedBreakdown, item, level + 1);

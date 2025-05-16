@@ -17,7 +17,7 @@ class MetricsFbt extends base_1.BaseCommand {
         in: core_1.Flags.string({
             char: 'i',
             description: 'a list of SKU or bundle IDs associated as line items to one or more orders',
-            required: true,
+            required: false,
             multiple: true
         })
     };
@@ -25,7 +25,7 @@ class MetricsFbt extends base_1.BaseCommand {
         const { flags } = await this.parse(MetricsFbt);
         this.checkAcessTokenData(flags.accessToken, flags);
         const ids = this.multivalFlag(flags.in);
-        const query = {
+        const query = (ids.length > 0) ? {
             filter: {
                 line_items: {
                     item_ids: {
@@ -33,7 +33,7 @@ class MetricsFbt extends base_1.BaseCommand {
                     }
                 }
             }
-        };
+        } : {};
         const response = await (0, request_1.metricsRequest)(MetricsFbt.operation, query, undefined, flags);
         if (response.ok) {
             cliux.action.stop(cli_core_1.clColor.msg.success('Done'));

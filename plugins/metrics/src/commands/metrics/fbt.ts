@@ -22,7 +22,7 @@ export default class MetricsFbt extends BaseCommand {
     in: Flags.string({
       char: 'i',
       description: 'a list of SKU or bundle IDs associated as line items to one or more orders',
-      required: true,
+      required: false,
       multiple: true
     })
   }
@@ -36,7 +36,7 @@ export default class MetricsFbt extends BaseCommand {
 
     const ids = this.multivalFlag(flags.in)
 
-    const query: MetricsQueryFbt = {
+    const query: MetricsQueryFbt = (ids.length > 0) ? {
       filter: {
         line_items: {
           item_ids: {
@@ -44,7 +44,7 @@ export default class MetricsFbt extends BaseCommand {
           }
         }
       }
-    }
+    } : {}
 
     const response = await metricsRequest(MetricsFbt.operation, query, undefined, flags)
 

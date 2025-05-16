@@ -59,7 +59,7 @@ class MetricsDateBreakdown extends base_1.BaseBreakdownCommand {
         const operatorInfo = common_1.operatorMap[operator];
         this.log('----------------------------------------');
         for (const item of data) {
-            this.log(`date: ${cli_core_1.clColor.magenta(cli_core_1.clOutput.cleanDate(item.date))}`);
+            this.log(`date: ${cli_core_1.clColor.magenta(cli_core_1.clOutput.cleanDate(String(item.date)))}`);
             if (operatorInfo.type === 'Object') {
                 this.log(`${operator} = {`);
                 ['count', 'min', 'max', 'avg', 'sum'].forEach((op) => {
@@ -69,7 +69,7 @@ class MetricsDateBreakdown extends base_1.BaseBreakdownCommand {
             }
             else
                 this.log(`${operator} = ${cli_core_1.clColor.yellow(item.value)}`);
-            const extraFields = Object.keys(item).filter((field) => !['label', 'value', 'date'].includes(field));
+            const extraFields = Object.keys(item).filter((field) => !['label', 'value', 'date'].includes(String(field)));
             const nestedBreakdown = (extraFields.length > 0) ? extraFields[0] : undefined;
             if (nestedBreakdown)
                 this.printBreakdown(nestedBreakdown, item, level);

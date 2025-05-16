@@ -103,7 +103,7 @@ export type MetricsFilterFbt = {
   }
 }
 export type MetricsQueryFbt = {
-  filter: MetricsFilterFbt
+  filter?: MetricsFilterFbt
 }
 
 

@@ -73,12 +73,24 @@ export type MetricsQueryBreakdown = {
     limit?: number;
     breakdown?: MetricsQueryBreakdown;
 };
+export type MetricsQueryBreakdownResponse = {
+    label: string;
+    value: string | number;
+} & {
+    key?: MetricsQueryBreakdown;
+};
 export type MetricsQueryDateBreakdown = {
     by: string;
     field: string;
     operator: MetricsOperator;
     interval?: MetricsInterval;
     breakdown?: MetricsQueryBreakdown;
+};
+export type MetricsQueryDateBreakdownResponse = {
+    date: string;
+    value: any;
+} & {
+    key?: MetricsQueryBreakdown;
 };
 export type MetricsFilter = Record<string, any>;
 export type MetricsFilterFbt = {
@@ -89,7 +101,7 @@ export type MetricsFilterFbt = {
     };
 };
 export type MetricsQueryFbt = {
-    filter: MetricsFilterFbt;
+    filter?: MetricsFilterFbt;
 };
 export type MetricsQuery = (({
     search: MetricsQuerySearch;

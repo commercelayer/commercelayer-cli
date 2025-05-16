@@ -1,5 +1,5 @@
 import { BaseBreakdownCommand } from '../../base';
-import { MetricsOperator } from '../../common';
+import type { MetricsOperator } from '../../common';
 export default class MetricsDateBreakdown extends BaseBreakdownCommand {
     static operation: string;
     static aliases: string[];

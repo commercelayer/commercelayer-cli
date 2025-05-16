@@ -5,7 +5,7 @@ export default class MetricsFbt extends BaseCommand {
     static description: string;
     static examples: string[];
     static flags: {
-        in: import("@oclif/core/lib/interfaces").OptionFlag<string[], import("@oclif/core/lib/interfaces").CustomOptions>;
+        in: import("@oclif/core/lib/interfaces").OptionFlag<string[] | undefined, import("@oclif/core/lib/interfaces").CustomOptions>;
     };
     run(): Promise<void>;
 }

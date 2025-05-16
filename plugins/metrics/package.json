@@ -62,7 +62,6 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.20",
-    "@types/lodash.isempty": "^4.4.9",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.15.18",
     "chai": "^4.5.0",
