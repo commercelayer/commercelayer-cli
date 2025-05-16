@@ -64,7 +64,7 @@
     "@types/chai": "^4.3.20",
     "@types/lodash.isempty": "^4.4.9",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^20.17.32",
+    "@types/node": "^22.15.18",
     "chai": "^4.5.0",
     "eslint": "^8.57.1",
     "mocha": "^10.8.2",
@@ -75,8 +75,8 @@
     "typescript": "5.5.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.8.1",
-    "@commercelayer/sdk": "^6.40.0",
+    "@commercelayer/cli-core": "^5.9.0",
+    "@commercelayer/sdk": "^6.41.0",
     "@oclif/core": "^3.27.0",
     "cli-table3": "^0.6.5",
     "lodash.isempty": "^4.4.0",
