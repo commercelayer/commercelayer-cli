@@ -91,7 +91,7 @@ The Commerce Layer CLI currently supports the following plugins:
 * [`tags`](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/README.md) - Manage resources tags in Commerce Layer.
 * [`provisioning`](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/README.md) - Make requests to Commerce Layer's Provisioning API.
 * [`links`](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/README.md) - Generate short links for shoppable resources.
-* [`metrics`](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/README.md) - Make requests to Commerce Layer's Provisioning API.
+* [`metrics`](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/README.md) - Make requests to Commerce Layer's Metrics API.
 
 You can run the command below to get a list of all available CLI plugins:
 
