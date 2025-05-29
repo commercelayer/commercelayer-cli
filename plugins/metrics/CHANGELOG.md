@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.1...v1.0.2) (2025-05-29)
+
+
+### Bug Fixes
+
+* fix fbt command ([e64a90e](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/e64a90eea304cecfa1c393af51e1e26b8559fe38))
+* fix lint issues ([816da5b](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/816da5b6371cc98e6fcf7c45c02c1dde73960bc2))
+
 ## [1.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.0...v1.0.1) (2025-05-16)
 
 
