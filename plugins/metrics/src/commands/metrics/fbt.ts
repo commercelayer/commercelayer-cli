@@ -1,12 +1,12 @@
 import { Flags } from '@oclif/core'
-import { BaseCommand } from '../../base'
+import { BaseCommand, BaseFilterCommand } from '../../base'
 import { metricsRequest } from '../../request'
 import type { MetricsQueryFbt } from '../../common'
 import { clColor } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 
 
-export default class MetricsFbt extends BaseCommand {
+export default class MetricsFbt extends BaseFilterCommand {
 
   static operation = 'fbt'
 
@@ -23,7 +23,10 @@ export default class MetricsFbt extends BaseCommand {
       char: 'i',
       description: 'a list of SKU or bundle IDs associated as line items to one or more orders',
       required: false,
-      multiple: true
+      multiple: true,
+      relationships: [
+        { type: 'some', flags: ['in', 'filter'] }
+      ],
     })
   }
 
@@ -35,9 +38,11 @@ export default class MetricsFbt extends BaseCommand {
     this.checkAcessTokenData(flags.accessToken, flags)
 
     const ids = this.multivalFlag(flags.in)
+    const filterObject = this.filterFlag(flags.filter)
 
     const query: MetricsQueryFbt = (ids.length > 0) ? {
       filter: {
+        ...filterObject,
         line_items: {
           item_ids: {
             in: ids

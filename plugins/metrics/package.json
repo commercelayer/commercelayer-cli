@@ -63,20 +63,20 @@
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.20",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.15.18",
+    "@types/node": "^22.15.24",
     "chai": "^4.5.0",
     "eslint": "^8.57.1",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
     "oclif": "^4.17.46",
-    "semantic-release": "^24.2.3",
+    "semantic-release": "^24.2.5",
     "tsx": "^4.19.4",
     "typescript": "5.5.2"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.9.0",
     "@commercelayer/cli-ux": "^1.0.7",
-    "@commercelayer/sdk": "^6.41.0",
+    "@commercelayer/sdk": "^6.42.0",
     "@oclif/core": "^3.27.0",
     "tslib": "^2.8.1"
   },

@@ -125,7 +125,7 @@ export abstract class BaseCommand extends Command {
 }
 
 
-export abstract class BaseResourceCommand extends BaseCommand {
+export abstract class BaseFilterCommand extends BaseCommand { 
 
   static baseFlags = {
     ...BaseCommand.baseFlags,
@@ -133,11 +133,6 @@ export abstract class BaseResourceCommand extends BaseCommand {
       char: 'F',
       description: 'the filter to apply to the query in JSON format (enclosed in single quotes)'
     })
-  }
-
-
-  static args = {
-    resource: Args.string({ resource: 'the resource name', options: resources, required: true })
   }
 
 
@@ -155,6 +150,20 @@ export abstract class BaseResourceCommand extends BaseCommand {
 
     return filter
 
+  }
+
+}
+
+
+export abstract class BaseResourceCommand extends BaseFilterCommand {
+
+  static baseFlags = {
+    ...BaseFilterCommand.baseFlags
+  }
+
+
+  static args = {
+    resource: Args.string({ resource: 'the resource name', options: resources, required: true })
   }
 
 }
