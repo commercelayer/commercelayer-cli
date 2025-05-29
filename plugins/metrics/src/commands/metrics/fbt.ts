@@ -1,5 +1,5 @@
 import { Flags } from '@oclif/core'
-import { BaseCommand, BaseFilterCommand } from '../../base'
+import { BaseFilterCommand } from '../../base'
 import { metricsRequest } from '../../request'
 import type { MetricsQueryFbt } from '../../common'
 import { clColor } from '@commercelayer/cli-core'
