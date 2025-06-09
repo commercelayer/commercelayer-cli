@@ -16,12 +16,12 @@ export const triggers: Record<string, Trigger> = {
 	request_anonymization: {
       action: 'request_anonymization',
       trigger: '_request_anonymization',
-      description: 'Send this attribute if you want to trigger anonymization.',
+      description: 'Send this attribute if you want to trigger anonymization. Cannot be passed by sales channels.',
     },
 	cancel_anonymization: {
       action: 'cancel_anonymization',
       trigger: '_cancel_anonymization',
-      description: 'Send this attribute if you want to trigger a cancellation of anonymization.',
+      description: 'Send this attribute if you want to trigger a cancellation of anonymization. Cannot be passed by sales channels.',
     },
 }
 
