@@ -1,3 +1,10 @@
+# [4.14.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.13.0...v4.14.0) (2025-06-09)
+
+
+### Features
+
+* add trigger 'balance' to adyen_payments ([1ede75b](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/1ede75bec303bae5ac011b2e22bcfede1574b2ae))
+
 # [4.13.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.12.1...v4.13.0) (2025-05-06)
 
 
