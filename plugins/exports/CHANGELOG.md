@@ -1,3 +1,10 @@
+# [3.7.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.6.4...v3.7.0) (2025-07-14)
+
+
+### Features
+
+* limit exports size to 5000 records ([969a9b2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/969a9b293e324822cb535fe5fce35d7df583ccf3))
+
 ## [3.6.4](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.6.3...v3.6.4) (2025-03-31)
 
 
