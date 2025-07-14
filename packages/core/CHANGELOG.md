@@ -1,3 +1,10 @@
+# [5.10.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.9.0...v5.10.0) (2025-07-14)
+
+
+### Features
+
+* limit exports size to 5000 records ([5111d6a](https://github.com/commercelayer/commercelayer-cli-core/commit/5111d6a4665b0e7605c531be2c38d5071500b565))
+
 # [5.9.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.8.1...v5.9.0) (2025-05-06)
 
 
