@@ -306,7 +306,7 @@ const config: Config = {
 		attachment_expiration: 5
 	},
 	exports: {
-		max_size: 10_000,
+		max_size: 5_000,	// 10_000, --> https://github.com/commercelayer/support/issues/777
 		statuses: JOB_STATUSES,
 		types: EXPORT_RESOURCE_TYPES,
 		max_queue_length: 10,
