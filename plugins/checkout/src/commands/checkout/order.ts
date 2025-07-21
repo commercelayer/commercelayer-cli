@@ -26,7 +26,6 @@ export default class CheckoutOrder extends Command {
     const organization = flags.organization
     const accessToken = flags.accessToken
     const domain = flags.domain
-    const staging = flags.staging
 
     const cl = this.commercelayerInit(flags)
 
@@ -36,7 +35,7 @@ export default class CheckoutOrder extends Command {
 
       const order = await cl.orders.retrieve(id, { fields: { orders: ['id', 'number'] } })
 
-      const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, { domain, staging })
+      const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, domain)
 
       this.log(`\nCheckout URL for order ${clColor.api.id(order.id)}:\n`)
       this.log(clColor.cyanBright(checkoutUrl))

@@ -74,7 +74,6 @@ export default class CheckoutIndex extends Command {
     const organization = flags.organization
     const accessToken = flags.accessToken
     const domain = flags.domain
-    const staging = flags.staging
 
 
     // Checkout URL by order id
@@ -150,7 +149,7 @@ export default class CheckoutIndex extends Command {
 
     await Promise.all(lis)
 
-    const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, { domain, staging })
+    const checkoutUrl = buildCheckoutUrl(organization, order.id, accessToken, domain)
 
     this.log(`\nCheckout URL for order ${clColor.api.id(order.id)}:\n`)
     this.log(clColor.cyanBright(checkoutUrl))
