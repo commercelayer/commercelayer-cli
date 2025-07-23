@@ -1,3 +1,10 @@
+## [5.1.6](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.5...v5.1.6) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([3ff013f](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/3ff013f5f3d39c1c56d6056baa653ae46c3f376e))
+
 ## [5.1.5](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.4...v5.1.5) (2025-07-23)
 
 
