@@ -1,3 +1,10 @@
+## [2.1.6](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.5...v2.1.6) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix vulnerability issues ([189f059](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/189f0590418528dfbf85e25b9927748a70973eb3))
+
 ## [2.1.5](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.4...v2.1.5) (2025-05-06)
 
 
