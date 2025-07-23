@@ -1,3 +1,10 @@
+## [5.4.5](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.4.4...v5.4.5) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([98eca18](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/98eca18f9f1aa1007fe7706c9e389e24479496d8))
+
 ## [5.4.4](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.4.3...v5.4.4) (2025-07-23)
 
 
