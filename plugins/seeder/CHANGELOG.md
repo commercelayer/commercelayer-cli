@@ -1,3 +1,10 @@
+## [5.1.5](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.4...v5.1.5) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([b9d6379](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/b9d637947c2f67ba4d5c05719bb9a3dd47c58589))
+
 ## [5.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.3...v5.1.4) (2025-07-23)
 
 
