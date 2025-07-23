@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.7...v1.0.8) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([a0df75e](https://github.com/commercelayer/commercelayer-cli-ux/commit/a0df75edfdd85bf0d6a0ba7392181015cbca6a5e))
+
 ## [1.0.7](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.6...v1.0.7) (2024-12-06)
 
 
