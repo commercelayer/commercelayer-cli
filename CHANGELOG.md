@@ -1,3 +1,10 @@
+## [6.6.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.6.3...v6.6.4) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([038af2e](https://github.com/commercelayer/commercelayer-cli/commit/038af2e34e626271dc70e35dedb8e20b2ecddc4d))
+
 ## [6.6.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.6.2...v6.6.3) (2025-07-23)
 
 
