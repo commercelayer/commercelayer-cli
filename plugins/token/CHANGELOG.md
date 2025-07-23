@@ -1,3 +1,10 @@
+## [8.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.0.6...v8.0.7) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([57fd496](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/57fd496c76a82ea998d97d751ab6c8cf9e1c89bd))
+
 ## [8.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.0.5...v8.0.6) (2025-07-23)
 
 
