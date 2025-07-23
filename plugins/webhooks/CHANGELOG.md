@@ -1,3 +1,10 @@
+## [4.2.5](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.2.4...v4.2.5) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([9db2b13](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/9db2b13f78d8fa33f6a5cbae153de7eeefbd1f11))
+
 ## [4.2.4](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.2.3...v4.2.4) (2025-07-23)
 
 
