@@ -1,3 +1,10 @@
+## [3.1.6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.5...v3.1.6) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([fac346e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/fac346e4c32ffb46c7ece1b9a72c1954edf29897))
+
 ## [3.1.5](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.4...v3.1.5) (2025-07-23)
 
 

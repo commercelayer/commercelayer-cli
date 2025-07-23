@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-cleanups",
   "description": "Commerce Layer CLI Cleanups plugin",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-cleanups",
   "repository": "commercelayer/commercelayer-cli-plugin-cleanups",
