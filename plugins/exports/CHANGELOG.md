@@ -1,3 +1,10 @@
+## [3.7.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.7.1...v3.7.2) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([325f6e4](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/325f6e41e9f1ee2ccea270fee19644cad4154abc))
+
 ## [3.7.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.7.0...v3.7.1) (2025-07-23)
 
 
