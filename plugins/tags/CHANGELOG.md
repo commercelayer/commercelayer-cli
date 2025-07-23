@@ -1,3 +1,10 @@
+## [2.1.8](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.7...v2.1.8) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([1545e72](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/1545e72980dd37f2e1afd7ccaf48961103c9ed57))
+
 ## [2.1.7](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.6...v2.1.7) (2025-07-23)
 
 
