@@ -1,3 +1,10 @@
+## [3.0.8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.7...v3.0.8) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([2db9f1d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2db9f1dd9821bbf659d8b11ff4b59cef61911f0a))
+
 ## [3.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.6...v3.0.7) (2025-07-23)
 
 
