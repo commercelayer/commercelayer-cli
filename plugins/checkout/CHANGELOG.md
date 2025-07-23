@@ -1,3 +1,10 @@
+## [5.0.10](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.9...v5.0.10) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([aac2913](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/aac2913666ea76b147c1daf608eeff7cb63ab55a))
+
 ## [5.0.9](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.8...v5.0.9) (2025-07-23)
 
 
