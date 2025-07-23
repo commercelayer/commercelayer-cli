@@ -1,3 +1,10 @@
+## [2.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.5...v2.0.6) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([ad8ec27](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/ad8ec274e93e65f6976a147982f25a9a3402f834))
+
 ## [2.0.5](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.4...v2.0.5) (2025-07-23)
 
 
