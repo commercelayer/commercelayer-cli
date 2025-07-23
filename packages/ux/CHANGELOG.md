@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.8...v1.0.9) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([97fe783](https://github.com/commercelayer/commercelayer-cli-ux/commit/97fe7838a451d7a965f5866c87a4e4a1d8375c47))
+
 ## [1.0.8](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.7...v1.0.8) (2025-07-23)
 
 
