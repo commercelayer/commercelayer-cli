@@ -1,3 +1,10 @@
+## [4.2.10](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.9...v4.2.10) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([0cf873c](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/0cf873c4ff4be48f29bbc9bb562183d8474d7264))
+
 ## [4.2.9](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.8...v4.2.9) (2025-07-23)
 
 
