@@ -1,3 +1,10 @@
+## [5.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.6...v5.0.7) (2025-07-21)
+
+
+### Bug Fixes
+
+* fix staging checkout url ([d398601](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/d398601874c46190d3127c59b7187407ed25f5d1))
+
 ## [5.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.5...v5.0.6) (2025-01-31)
 
 
