@@ -1,3 +1,10 @@
+## [4.2.8](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.7...v4.2.8) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix vulnerability issues ([316fb99](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/316fb99690de48b5d49c8d5e5b9b469c7470868c))
+
 ## [4.2.7](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.6...v4.2.7) (2025-05-06)
 
 
