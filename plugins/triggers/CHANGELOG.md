@@ -1,3 +1,10 @@
+## [4.14.3](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.14.2...v4.14.3) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([5ca7e5b](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/5ca7e5b460b8399d8e4fc76cb6d9cc16545b9b29))
+
 ## [4.14.2](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.14.1...v4.14.2) (2025-07-23)
 
 
