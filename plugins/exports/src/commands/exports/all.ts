@@ -17,8 +17,8 @@ if (DEBUG) console.log('\nDEBUG MODE ON')
 const ALLOW_OVERQUEUING = true // Allow to bypass the limit of concurrent exports
 const MAX_QUEUE_LENGTH = Math.floor(clConfig.exports.max_queue_length / 2) - 1
 
-const MIN_EXPORT_SIZE = 2000
-const MAX_EXPORT_SIZE = clConfig.exports.max_size || 5000
+const MIN_EXPORT_SIZE = 1_000
+const MAX_EXPORT_SIZE = clConfig.exports.max_size || 5_000
 
 
 type Spinners = typeof Spinnies
