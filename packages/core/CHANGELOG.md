@@ -1,3 +1,10 @@
+## [5.10.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.2...v5.10.3) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([ef127e5](https://github.com/commercelayer/commercelayer-cli-core/commit/ef127e5ba4c17d16840c0871339fe9a398025b6e))
+
 ## [5.10.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.1...v5.10.2) (2025-07-23)
 
 
