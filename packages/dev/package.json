@@ -61,16 +61,16 @@
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.17.20",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^20.19.9",
+    "@types/node": "^20.19.11",
     "chai": "^4.5.0",
     "eslint": "^8.57.1",
     "globby": "^10.0.2",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
-    "oclif": "^4.22.0",
+    "oclif": "^4.22.12",
     "semantic-release": "^23.1.1",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "@oclif/core": "^3.27.0",
