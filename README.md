@@ -121,9 +121,9 @@ commercelayer plugins:update
 
 ## Need help?
 
-- Join [Commerce Layer's Discord community](https://discord.gg/commercelayer).
-- Ping us on [Bluesky](https://bsky.app/profile/commercelayer.io), [X (formerly Twitter)](https://x.com/commercelayer), or [LinkedIn](https://www.linkedin.com/company/commerce-layer).
-- Is there a bug? Create an [issue](https://github.com/commercelayer/commercelayer-cli/issues) on this repository.
+* Join [Commerce Layer's Discord community](https://discord.gg/commercelayer).
+* Ping us on [Bluesky](https://bsky.app/profile/commercelayer.io), [X (formerly Twitter)](https://x.com/commercelayer), or [LinkedIn](https://www.linkedin.com/company/commerce-layer).
+* Is there a bug? Create an [issue](https://github.com/commercelayer/commercelayer-cli/issues) on this repository.
 
 ## License
 
