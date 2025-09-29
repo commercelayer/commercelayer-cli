@@ -25,7 +25,6 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 <!-- commands -->
 
 * [`commercelayer exports [ID]`](#commercelayer-exports-id)
-* [`commercelayer exports:all`](#commercelayer-exportsall)
 * [`commercelayer exports:create`](#commercelayer-exportscreate)
 * [`commercelayer exports:details ID`](#commercelayer-exportsdetails-id)
 * [`commercelayer exports:group GROUP_ID`](#commercelayer-exportsgroup-group_id)
@@ -71,50 +70,6 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/exports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/index.ts)_
-
-### `commercelayer exports:all`
-
-Export all the records.
-
-```sh-session
-USAGE
-  $ commercelayer exports:all -t <value> [-i <value>...] [-w <value>...] [-f <value>...] [-D] [-F csv|json | -C |
-    ] [-x <value> | -X <value>] [-b] [-P | ] [-O] [-q] [-k] [-S <value>]
-
-FLAGS
-  -C, --csv                 export data in CSV format
-  -D, --dry-data            skip redundant attributes
-  -F, --format=<option>     [default: json] export file format
-                            <options: csv|json>
-  -O, --open                open automatically the file after a successful export
-  -P, --prettify            prettify json output format
-  -S, --size=<value>        max number of records for each export [2000-10000]
-  -X, --save-path=<value>   save command output to file and create missing path directories
-  -b, --blind               execute in blind mode without showing the progress monitor
-  -f, --fields=<value>...   comma separated list of fields to include in the export
-  -i, --include=<value>...  comma separated resources to include
-  -k, --keep                keep original export files in temp dir
-  -q, --quiet               execute command without showing warning messages
-  -t, --type=<value>        (required) the type of resource being exported
-  -w, --where=<value>...    comma separated list of query filters
-  -x, --save=<value>        save command output to file
-
-DESCRIPTION
-  export all the records
-
-ALIASES
-  $ commercelayer exp:all
-  $ commercelayer export
-
-EXAMPLES
-  $ commercelayer exports:all -t orders -f number -X <output-file-path>
-
-  $ cl exp:all -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path>
-
-  $ cl export -t skus -w code_start=SHIRT -X <output-file-path> --csv
-```
-
-_See code: [src/commands/exports/all.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/all.ts)_
 
 ### `commercelayer exports:create`
 
