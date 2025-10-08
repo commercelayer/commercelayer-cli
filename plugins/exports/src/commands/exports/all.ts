@@ -87,7 +87,7 @@ export default class ExportsAll extends ExportCommand {
 
   static description = 'export all the records'
 
-  static aliases = ['exp:all', 'export']
+  static aliases = ['exp:all'/*, 'export'*/]
 
   static examples = [
     '$ commercelayer exports:all -t orders -f number -X <output-file-path>',
