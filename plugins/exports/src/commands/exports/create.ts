@@ -8,15 +8,25 @@ import * as cliux from '@commercelayer/cli-ux'
 
 
 
+const blindProgressBar = {
+  start() {},
+  stop() {},
+  // setTotal() {},
+  // increment() {},
+  update() {}
+}
+
+
 export default class ExportsCreate extends ExportCommand {
 
   static description = 'create a new export'
 
-  static aliases = ['exp:create']
+  static aliases = ['exp:create', 'export']
 
   static examples = [
     '$ commercelayer exports:create -t orders -f number -X <output-file-path>',
-    '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv'
+    '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv',
+    '$ cl export -t return -f number -X desktop/returna.json'
   ]
 
   static flags = {
@@ -148,14 +158,25 @@ export default class ExportsCreate extends ExportCommand {
 
       const delay = computeDelay()
 
-      if (!blindMode) cliux.action.start(`Exporting ${resDesc}`, this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting'))
+      // if (!blindMode) cliux.action.start(`Exporting ${resDesc}`, this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting'))
+      const progressBar = blindMode ? blindProgressBar : cliux.progress({
+        format: `Fetching ${resDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
+        barCompleteChar: '\u2588',
+        barIncompleteChar: '\u2591',
+        hideCursor: true
+      })
+
+      progressBar.start(100, 0)
+   
       while (!['completed', 'interrupted'].includes(exp.status || '')) {
         jwtData = await this.checkAccessToken(jwtData, flags)
         exp = await this.cl.exports.retrieve(exp.id)
-        cliux.action.status = this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting')
+        // if (!blindMode) cliux.action.status = this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting')
+        progressBar.update(exp.progress || 0)
         await cliux.wait(delay)
       }
-      if (!blindMode) cliux.action.stop(this.exportStatus(exp.status))
+      // if (!blindMode) cliux.action.stop(this.exportStatus(exp.status))
+      progressBar.stop()
 
 
       if (exp.status === 'completed') this.log(`\nExported ${clColor.yellowBright(exp.records_count || 0)} ${resDesc}`)
