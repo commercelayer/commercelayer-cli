@@ -13,6 +13,11 @@ export const triggers: Record<string, Trigger> = {
       trigger: '_reserve_stock',
       description: 'Send this attribute if you want to reserve the stock for the line item\'s SKUs quantity. Stock reservations expiration depends on the inventory model\'s cutoff. When used on update the existing active stock reservations are renewed. Cannot be passed by sales channels.',
     },
+	reset_restocked_quantity: {
+      action: 'reset_restocked_quantity',
+      trigger: '_reset_restocked_quantity',
+      description: 'Send this attribute if you want to reset the quantity restocked by a return or by an order/shipment cancel. This will allow for multiple returns, albeit you need to adjust the stock manually. Cannot be passed by sales channels.',
+    },
 	reset_circuit: {
       action: 'reset_circuit',
       trigger: '_reset_circuit',
@@ -34,6 +39,7 @@ export const triggers: Record<string, Trigger> = {
 export type ActionType =
   'external_price' |
 	'reserve_stock' |
+	'reset_restocked_quantity' |
 	'reset_circuit' |
 	'add_tags' |
 	'remove_tags'

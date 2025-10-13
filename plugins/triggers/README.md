@@ -35,6 +35,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer address:remove_tags ID`](#commercelayer-addressremove_tags-id)
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
 * [`commercelayer adyen_payment:authorize ID`](#commercelayer-adyen_paymentauthorize-id)
+* [`commercelayer adyen_payment:balance ID`](#commercelayer-adyen_paymentbalance-id)
 * [`commercelayer adyen_payment:details ID`](#commercelayer-adyen_paymentdetails-id)
 * [`commercelayer authorization ID`](#commercelayer-authorization-id)
 * [`commercelayer authorization:cancel ID`](#commercelayer-authorizationcancel-id)
@@ -135,6 +136,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer line_item:remove_tags ID`](#commercelayer-line_itemremove_tags-id)
 * [`commercelayer line_item:reserve_stock ID`](#commercelayer-line_itemreserve_stock-id)
 * [`commercelayer line_item:reset_circuit ID`](#commercelayer-line_itemreset_circuit-id)
+* [`commercelayer line_item:reset_restocked_quantity ID`](#commercelayer-line_itemreset_restocked_quantity-id)
 * [`commercelayer line_item_option ID`](#commercelayer-line_item_option-id)
 * [`commercelayer line_item_option:add_tags ID`](#commercelayer-line_item_optionadd_tags-id)
 * [`commercelayer line_item_option:remove_tags ID`](#commercelayer-line_item_optionremove_tags-id)
@@ -380,6 +382,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/adyen_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/authorize.ts)_
+
+### `commercelayer adyen_payment:balance ID`
+
+Send this attribute if you want retrieve the balance remaining on a shopper's gift card.
+
+```sh-session
+USAGE
+  $ commercelayer adyen_payment:balance ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want retrieve the balance remaining on a shopper's gift card.
+```
+
+_See code: [src/commands/adyen_payment/balance.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_payment/balance.ts)_
 
 ### `commercelayer adyen_payment:details ID`
 
@@ -1142,7 +1166,7 @@ _See code: [src/commands/customer/add_tags.ts](https://github.com/commercelayer/
 
 ### `commercelayer customer:cancel_anonymization ID`
 
-Send this attribute if you want to trigger a cancellation of anonymization.
+Send this attribute if you want to trigger a cancellation of anonymization. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1157,7 +1181,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to trigger a cancellation of anonymization.
+  Send this attribute if you want to trigger a cancellation of anonymization. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/customer/cancel_anonymization.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/cancel_anonymization.ts)_
@@ -1187,7 +1211,7 @@ _See code: [src/commands/customer/remove_tags.ts](https://github.com/commercelay
 
 ### `commercelayer customer:request_anonymization ID`
 
-Send this attribute if you want to trigger anonymization.
+Send this attribute if you want to trigger anonymization. Cannot be passed by sales channels.
 
 ```sh-session
 USAGE
@@ -1202,7 +1226,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to trigger anonymization.
+  Send this attribute if you want to trigger anonymization. Cannot be passed by sales channels.
 ```
 
 _See code: [src/commands/customer/request_anonymization.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/customer/request_anonymization.ts)_
@@ -2618,6 +2642,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/line_item/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reset_circuit.ts)_
+
+### `commercelayer line_item:reset_restocked_quantity ID`
+
+Send this attribute if you want to reset the quantity restocked by a return or by an order/shipment cancel. This will allow for multiple returns, albeit you need to adjust the stock manually. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer line_item:reset_restocked_quantity ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to reset the quantity restocked by a return or by an order/shipment cancel. This will
+  allow for multiple returns, albeit you need to adjust the stock manually. Cannot be passed by sales channels.
+```
+
+_See code: [src/commands/line_item/reset_restocked_quantity.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/line_item/reset_restocked_quantity.ts)_
 
 ### `commercelayer line_item_option ID`
 
