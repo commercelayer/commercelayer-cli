@@ -55,7 +55,7 @@
     "generate": "pnpm resources",
     "lint": "eslint src --ext .ts --config .eslintrc",
     "lint:fix": "eslint src --fix",
-    "release": "pnpm upgrade && pnpm resources && pnpm prepack && pnpm postpack"
+    "release": "pnpm upgrade && pnpm generate && pnpm prepack && pnpm postpack"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
@@ -68,21 +68,21 @@
     "@types/chai": "^4.3.20",
     "@types/inquirer": "^8.2.12",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.18.6",
+    "@types/node": "^22.18.10",
     "@types/node-notifier": "^8.0.5",
     "chai": "^4.5.0",
     "eslint": "^8.57.1",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
-    "oclif": "^4.22.22",
+    "oclif": "^4.22.32",
     "semantic-release": "^23.1.1",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.10.3",
     "@commercelayer/cli-ux": "^1.0.10",
-    "@commercelayer/sdk": "^6.46.0",
+    "@commercelayer/sdk": "^6.49.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.7",
     "json-2-csv": "^3.20.0",

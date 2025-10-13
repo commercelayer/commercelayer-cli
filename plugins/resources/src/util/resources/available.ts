@@ -35,6 +35,7 @@ const RESOURCES = [
 	{ name: 'discount_engine', type: 'discount_engines', api: 'discount_engines', model: 'DiscountEngine' },
 	{ name: 'easypost_pickup', type: 'easypost_pickups', api: 'easypost_pickups', model: 'EasypostPickup' },
 	{ name: 'event_callback', type: 'event_callbacks', api: 'event_callbacks', model: 'EventCallback' },
+	{ name: 'event_store', type: 'event_stores', api: 'event_stores', model: 'EventStore' },
 	{ name: 'event', type: 'events', api: 'events', model: 'Event' },
 	{ name: 'export', type: 'exports', api: 'exports', model: 'Export' },
 	{ name: 'external_gateway', type: 'external_gateways', api: 'external_gateways', model: 'ExternalGateway' },
