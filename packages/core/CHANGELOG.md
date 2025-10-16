@@ -1,3 +1,10 @@
+## [5.10.4](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.3...v5.10.4) (2025-10-16)
+
+
+### Bug Fixes
+
+* fix scope in app config ([73f622f](https://github.com/commercelayer/commercelayer-cli-core/commit/73f622f48763dfedb269281cc725bd5ee0c526e0))
+
 ## [5.10.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.2...v5.10.3) (2025-07-23)
 
 
