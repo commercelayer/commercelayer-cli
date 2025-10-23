@@ -15,7 +15,7 @@ export default class MetricsSearch extends BaseResourceCommand {
   static override description = 'perform a search query on the Metrics API endpoint'
 
   static override examples = [
-    'commercelayewr metrics:search orders -l 5 -s asc -b order.placed_at -f order.id,order.number,order.placed_at,customer.email'
+    'commercelayer metrics:search orders -l 5 -s asc -b order.placed_at -f order.id,order.number,order.placed_at,customer.email'
   ]
 
   static override flags = {
