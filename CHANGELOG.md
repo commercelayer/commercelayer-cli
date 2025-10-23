@@ -1,3 +1,11 @@
+# [6.7.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.6.8...v6.7.0) (2025-10-23)
+
+
+### Features
+
+* publish metrics plugin ([47811f5](https://github.com/commercelayer/commercelayer-cli/commit/47811f564247ae51436cf1ec246ddd0fc7805625))
+* publish metrics plugin ([dd5fcdc](https://github.com/commercelayer/commercelayer-cli/commit/dd5fcdcdfb22727987fe0d663c4e00fa9fd595b3))
+
 ## [6.6.8](https://github.com/commercelayer/commercelayer-cli/compare/v6.6.7...v6.6.8) (2025-09-23)
 
 
