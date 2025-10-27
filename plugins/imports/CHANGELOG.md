@@ -1,3 +1,10 @@
+## [4.2.11](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.10...v4.2.11) (2025-10-27)
+
+
+### Bug Fixes
+
+* fix axios vulnerability ([035b0e5](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/035b0e59783301fbfd6a2cb2e505b0ccfb1e721b))
+
 ## [4.2.10](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.9...v4.2.10) (2025-07-23)
 
 
