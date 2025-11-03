@@ -326,29 +326,29 @@ Retrieve a resource or list a set of resources.
 USAGE
   $ commercelayer resources:fetch PATH... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-x <value> | -X <value>] [-e <value>...
-    | ] [-w <value>...] [-p <value>] [-n <value>] [-s <value>...]
+    | ] [-w <value>...] [-p <value>] [-n <value>] [-s <field>,<asc|desc>...]
 
 ARGUMENTS
   PATH...  path (or URL) of the resource(s) to fetch
   ID...    resource id
 
 FLAGS
-  -H, --headers             show response headers
-  -R, --raw                 print out the raw API response
-  -X, --save-path=<value>   save command output to file and create missing path directories
-  -Y, --headers-only        show only response headers
-  -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
-  -i, --include=<value>...  comma separated resources to include
-  -j, --json                convert output in standard JSON format
-  -n, --pageSize=<value>    number of elements per page
-  -p, --page=<value>        page number
-  -s, --sort=<value>...     define results ordering
-  -u, --unformatted         print unformatted JSON output
-  -w, --where=<value>...    comma separated list of query filters
-  -x, --save=<value>        save command output to file
-      --load-args=<value>   load previously saved command arguments
-      --save-args=<value>   save command data to file for future use
+  -H, --headers                     show response headers
+  -R, --raw                         print out the raw API response
+  -X, --save-path=<value>           save command output to file and create missing path directories
+  -Y, --headers-only                show only response headers
+  -e, --extract=<value>...          extract subfields from object attributes
+  -f, --fields=<value>...           comma separeted list of fields in the format [resourceType/]field1,field2,field3
+  -i, --include=<value>...          comma separated resources to include
+  -j, --json                        convert output in standard JSON format
+  -n, --pageSize=<value>            number of elements per page
+  -p, --page=<value>                page number
+  -s, --sort=<field>,<asc|desc>...  define results ordering
+  -u, --unformatted                 print unformatted JSON output
+  -w, --where=<value>...            comma separated list of query filters
+  -x, --save=<value>                save command output to file
+      --load-args=<value>           load previously saved command arguments
+      --save-args=<value>           save command data to file for future use
 
 DOCUMENTATION FLAGS
   -l, --lang=<option>  show the CLI command in the specified language syntax
@@ -409,29 +409,29 @@ Retrieve a resource or list a set of resources.
 USAGE
   $ commercelayer resources:get RESOURCE... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc |
     -R]] [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>...] [-p <value>] [-n
-    <value>] [-s <value>...] [-x <value> | -X <value>] [-e <value>... | ]
+    <value>] [-s <field>,<asc|desc>...] [-x <value> | -X <value>] [-e <value>... | ]
 
 ARGUMENTS
   RESOURCE...  the resource type
   ID...        id of the resource to retrieve
 
 FLAGS
-  -H, --headers             show response headers
-  -R, --raw                 print out the raw API response
-  -X, --save-path=<value>   save command output to file and create missing path directories
-  -Y, --headers-only        show only response headers
-  -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
-  -i, --include=<value>...  comma separated resources to include
-  -j, --json                convert output in standard JSON format
-  -n, --pageSize=<value>    number of elements per page
-  -p, --page=<value>        page number
-  -s, --sort=<value>...     define results ordering
-  -u, --unformatted         print unformatted JSON output
-  -w, --where=<value>...    comma separated list of query filters
-  -x, --save=<value>        save command output to file
-      --load-args=<value>   load previously saved command arguments
-      --save-args=<value>   save command data to file for future use
+  -H, --headers                     show response headers
+  -R, --raw                         print out the raw API response
+  -X, --save-path=<value>           save command output to file and create missing path directories
+  -Y, --headers-only                show only response headers
+  -e, --extract=<value>...          extract subfields from object attributes
+  -f, --fields=<value>...           comma separeted list of fields in the format [resourceType/]field1,field2,field3
+  -i, --include=<value>...          comma separated resources to include
+  -j, --json                        convert output in standard JSON format
+  -n, --pageSize=<value>            number of elements per page
+  -p, --page=<value>                page number
+  -s, --sort=<field>,<asc|desc>...  define results ordering
+  -u, --unformatted                 print unformatted JSON output
+  -w, --where=<value>...            comma separated list of query filters
+  -x, --save=<value>                save command output to file
+      --load-args=<value>           load previously saved command arguments
+      --save-args=<value>           save command data to file for future use
 
 DOCUMENTATION FLAGS
   -l, --lang=<option>  show the CLI command in the specified language syntax
@@ -529,28 +529,28 @@ Fetch a collection of resources.
 USAGE
   $ commercelayer resources:list RESOURCE [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
     [--curl ] [--node ] [--save-args <value>] [--load-args <value>] [-H ] [-Y ] [-w <value>...] [-p <value>] [-n
-    <value>] [-s <value>...] [-x <value> | -X <value>] [-e <value>... | ]
+    <value>] [-s <field>,<asc|desc>...] [-x <value> | -X <value>] [-e <value>... | ]
 
 ARGUMENTS
   RESOURCE  the resource type
 
 FLAGS
-  -H, --headers             show response headers
-  -R, --raw                 print out the raw API response
-  -X, --save-path=<value>   save command output to file and create missing path directories
-  -Y, --headers-only        show only response headers
-  -e, --extract=<value>...  extract subfields from object attributes
-  -f, --fields=<value>...   comma separeted list of fields in the format [resourceType/]field1,field2,field3
-  -i, --include=<value>...  comma separated resources to include
-  -j, --json                convert output in standard JSON format
-  -n, --pageSize=<value>    number of elements per page
-  -p, --page=<value>        page number
-  -s, --sort=<value>...     define results ordering
-  -u, --unformatted         print unformatted JSON output
-  -w, --where=<value>...    comma separated list of query filters
-  -x, --save=<value>        save command output to file
-      --load-args=<value>   load previously saved command arguments
-      --save-args=<value>   save command data to file for future use
+  -H, --headers                     show response headers
+  -R, --raw                         print out the raw API response
+  -X, --save-path=<value>           save command output to file and create missing path directories
+  -Y, --headers-only                show only response headers
+  -e, --extract=<value>...          extract subfields from object attributes
+  -f, --fields=<value>...           comma separeted list of fields in the format [resourceType/]field1,field2,field3
+  -i, --include=<value>...          comma separated resources to include
+  -j, --json                        convert output in standard JSON format
+  -n, --pageSize=<value>            number of elements per page
+  -p, --page=<value>                page number
+  -s, --sort=<field>,<asc|desc>...  define results ordering
+  -u, --unformatted                 print unformatted JSON output
+  -w, --where=<value>...            comma separated list of query filters
+  -x, --save=<value>                save command output to file
+      --load-args=<value>           load previously saved command arguments
+      --save-args=<value>           save command data to file for future use
 
 DOCUMENTATION FLAGS
   -l, --lang=<option>  show the CLI command in the specified language syntax

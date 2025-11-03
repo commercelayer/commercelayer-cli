@@ -38,7 +38,8 @@ export default class ResourcesList extends Command {
     sort: Flags.string({
       char: 's',
       description: 'define results ordering',
-      multiple: true
+      multiple: true,
+      helpValue: '<field>,<asc|desc>'
     }),
     save: Flags.string({
       char: 'x',
