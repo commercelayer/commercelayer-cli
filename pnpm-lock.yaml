@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@commercelayer/cli-core':
-        specifier: ^5.10.4
-        version: 5.10.4
+        specifier: ^5.10.5
+        version: 5.10.5
       '@commercelayer/cli-ux':
-        specifier: ^1.0.10
-        version: 1.0.10(@oclif/core@3.27.0)
+        specifier: ^1.0.11
+        version: 1.0.11(@oclif/core@3.27.0)
       '@commercelayer/provisioning-sdk':
         specifier: ^2.9.0
         version: 2.9.0
@@ -372,8 +372,8 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
-  '@commercelayer/cli-core@5.10.4':
-    resolution: {integrity: sha512-kzjCax835bhwoCXX6uUvPQnSBBInx78g1IRMFIzDjR8tqfb8q8prHExV+L/1Xo6jtq4pnbOtThYS291wHkJuIw==}
+  '@commercelayer/cli-core@5.10.5':
+    resolution: {integrity: sha512-xTXBdeFaghGBFENsE2PLjxUUWzrYCyMZDoQ1fS3wVs3Pq7vkuHKm89oOKUGjzzaJ4zPRgXnN6XbFWN2CZCyl0g==}
     engines: {node: '>=20'}
 
   '@commercelayer/cli-dev@3.0.8':
@@ -381,8 +381,8 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@commercelayer/cli-ux@1.0.10':
-    resolution: {integrity: sha512-HeS2tf6gYfbXBVhaHAlNQJtprxREBogH3saag4pJDkcO8oFeydWkJ6EdvxA929qYru1pkZTvSs8HgGfWyp1dBA==}
+  '@commercelayer/cli-ux@1.0.11':
+    resolution: {integrity: sha512-gRTvVgAR0+CLn8hHab0vsm24qp1gJE5FE7H+fdMaHag02sfxCZfl5+lxPPTfAFq+cxVhscOwIOijhLbXm4kk+w==}
     engines: {node: '>=20'}
     peerDependencies:
       '@oclif/core': 3.27.0
@@ -5104,7 +5104,7 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@commercelayer/cli-core@5.10.4':
+  '@commercelayer/cli-core@5.10.5':
     dependencies:
       '@commercelayer/js-auth': 6.7.2
       '@oclif/core': 3.27.0
@@ -5123,7 +5123,7 @@ snapshots:
       normalize-package-data: 5.0.0
       tslib: 2.8.1
 
-  '@commercelayer/cli-ux@1.0.10(@oclif/core@3.27.0)':
+  '@commercelayer/cli-ux@1.0.11(@oclif/core@3.27.0)':
     dependencies:
       '@oclif/core': 3.27.0
       ansi-escapes: 4.3.2
