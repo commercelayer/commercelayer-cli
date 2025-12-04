@@ -1,5 +1,6 @@
 import { Command } from '@oclif/core'
 
+
 export default class Noc extends Command {
 
   static hidden = true
