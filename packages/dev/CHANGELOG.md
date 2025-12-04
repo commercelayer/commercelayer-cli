@@ -1,3 +1,10 @@
+## [3.0.10](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.9...v3.0.10) (2025-12-04)
+
+
+### Bug Fixes
+
+* fix release setup ([38970cd](https://github.com/commercelayer/commercelayer-cli-dev/commit/38970cd7746ff461f6b37d8edb95628d5a312c9e))
+
 ## [3.0.9](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.8...v3.0.9) (2025-12-04)
 
 
