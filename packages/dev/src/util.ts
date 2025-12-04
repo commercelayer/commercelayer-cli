@@ -1,4 +1,3 @@
-// import _ = require('lodash')
 import _template from 'lodash/template'
 
 
