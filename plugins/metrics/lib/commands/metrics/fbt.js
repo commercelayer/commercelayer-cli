@@ -6,7 +6,7 @@ const base_1 = require("../../base");
 const request_1 = require("../../request");
 const cli_core_1 = require("@commercelayer/cli-core");
 const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
-class MetricsFbt extends base_1.BaseCommand {
+class MetricsFbt extends base_1.BaseFilterCommand {
     static operation = 'fbt';
     static aliases = [MetricsFbt.operation];
     static description = 'perform a Frequently Bought Together query on the Metrics API analysis endpoint';
@@ -18,15 +18,20 @@ class MetricsFbt extends base_1.BaseCommand {
             char: 'i',
             description: 'a list of SKU or bundle IDs associated as line items to one or more orders',
             required: false,
-            multiple: true
+            multiple: true,
+            relationships: [
+                { type: 'some', flags: ['in', 'filter'] }
+            ],
         })
     };
     async run() {
         const { flags } = await this.parse(MetricsFbt);
         this.checkAcessTokenData(flags.accessToken, flags);
         const ids = this.multivalFlag(flags.in);
+        const filterObject = this.filterFlag(flags.filter);
         const query = (ids.length > 0) ? {
             filter: {
+                ...filterObject,
                 line_items: {
                     item_ids: {
                         in: ids

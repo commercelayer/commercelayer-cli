@@ -10,7 +10,7 @@ class MetricsSearch extends base_1.BaseResourceCommand {
     static aliases = [MetricsSearch.operation];
     static description = 'perform a search query on the Metrics API endpoint';
     static examples = [
-        'commercelayewr metrics:search orders -l 5 -s asc -b order.placed_at -f order.id,order.number,order.placed_at,customer.email'
+        'commercelayer metrics:search orders -l 5 -s asc -b order.placed_at -f order.id,order.number,order.placed_at,customer.email'
     ];
     static flags = {
         limit: core_1.Flags.integer({

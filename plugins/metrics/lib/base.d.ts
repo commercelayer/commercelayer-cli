@@ -15,7 +15,16 @@ export declare abstract class BaseCommand extends Command {
     protected multivalFlag(flag?: string[]): string[];
     protected printResponse(response: Response): Promise<void>;
 }
-export declare abstract class BaseResourceCommand extends BaseCommand {
+export declare abstract class BaseFilterCommand extends BaseCommand {
+    static baseFlags: {
+        filter: import("@oclif/core/lib/interfaces").OptionFlag<string | undefined, import("@oclif/core/lib/interfaces").CustomOptions>;
+        organization: import("@oclif/core/lib/interfaces").OptionFlag<string, import("@oclif/core/lib/interfaces").CustomOptions>;
+        domain: import("@oclif/core/lib/interfaces").OptionFlag<string | undefined, import("@oclif/core/lib/interfaces").CustomOptions>;
+        accessToken: import("@oclif/core/lib/interfaces").OptionFlag<string, import("@oclif/core/lib/interfaces").CustomOptions>;
+    };
+    protected filterFlag(flag?: string): MetricsFilter | undefined;
+}
+export declare abstract class BaseResourceCommand extends BaseFilterCommand {
     static baseFlags: {
         filter: import("@oclif/core/lib/interfaces").OptionFlag<string | undefined, import("@oclif/core/lib/interfaces").CustomOptions>;
         organization: import("@oclif/core/lib/interfaces").OptionFlag<string, import("@oclif/core/lib/interfaces").CustomOptions>;
@@ -25,7 +34,6 @@ export declare abstract class BaseResourceCommand extends BaseCommand {
     static args: {
         resource: import("@oclif/core/lib/interfaces").Arg<string, Record<string, unknown>>;
     };
-    protected filterFlag(flag?: string): MetricsFilter | undefined;
 }
 export declare abstract class BaseBreakdownCommand extends BaseResourceCommand {
     static baseFlags: {

@@ -1,5 +1,5 @@
-import { BaseCommand } from '../../base';
-export default class MetricsFbt extends BaseCommand {
+import { BaseFilterCommand } from '../../base';
+export default class MetricsFbt extends BaseFilterCommand {
     static operation: string;
     static aliases: string[];
     static description: string;

@@ -130,10 +130,11 @@ Perform a Frequently Bought Together query on the Metrics API analysis endpoint.
 
 ```sh-session
 USAGE
-  $ commercelayer metrics:fbt [-i <value>...]
+  $ commercelayer metrics:fbt [-F <value>] [-i <value>...]
 
 FLAGS
-  -i, --in=<value>...  a list of SKU or bundle IDs associated as line items to one or more orders
+  -F, --filter=<value>  the filter to apply to the query in JSON format (enclosed in single quotes)
+  -i, --in=<value>...   a list of SKU or bundle IDs associated as line items to one or more orders
 
 DESCRIPTION
   perform a Frequently Bought Together query on the Metrics API analysis endpoint
@@ -173,7 +174,7 @@ ALIASES
   $ commercelayer search
 
 EXAMPLES
-  commercelayewr metrics:search orders -l 5 -s asc -b order.placed_at -f order.id,order.number,order.placed_at,customer.email
+  $ commercelayer metrics:search orders -l 5 -s asc -b order.placed_at -f order.id,order.number,order.placed_at,customer.email
 ```
 
 _See code: [src/commands/metrics/search.ts](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/src/commands/metrics/search.ts)_

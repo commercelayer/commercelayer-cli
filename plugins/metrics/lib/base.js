@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Flags = exports.Args = exports.BaseBreakdownCommand = exports.BaseResourceCommand = exports.BaseCommand = void 0;
+exports.Flags = exports.Args = exports.BaseBreakdownCommand = exports.BaseResourceCommand = exports.BaseFilterCommand = exports.BaseCommand = void 0;
 const tslib_1 = require("tslib");
 const sdk_1 = tslib_1.__importStar(require("@commercelayer/sdk"));
 const core_1 = require("@oclif/core");
@@ -99,16 +99,13 @@ class BaseCommand extends core_1.Command {
     }
 }
 exports.BaseCommand = BaseCommand;
-class BaseResourceCommand extends BaseCommand {
+class BaseFilterCommand extends BaseCommand {
     static baseFlags = {
         ...BaseCommand.baseFlags,
         filter: core_1.Flags.string({
             char: 'F',
             description: 'the filter to apply to the query in JSON format (enclosed in single quotes)'
         })
-    };
-    static args = {
-        resource: core_1.Args.string({ resource: 'the resource name', options: common_1.resources, required: true })
     };
     filterFlag(flag) {
         let filter;
@@ -122,6 +119,15 @@ class BaseResourceCommand extends BaseCommand {
         }
         return filter;
     }
+}
+exports.BaseFilterCommand = BaseFilterCommand;
+class BaseResourceCommand extends BaseFilterCommand {
+    static baseFlags = {
+        ...BaseFilterCommand.baseFlags
+    };
+    static args = {
+        resource: core_1.Args.string({ resource: 'the resource name', options: common_1.resources, required: true })
+    };
 }
 exports.BaseResourceCommand = BaseResourceCommand;
 class BaseBreakdownCommand extends BaseResourceCommand {
