@@ -66,7 +66,7 @@ USAGE
   $ commercelayer tags:add -n <value>... -t <value> -i <value>... [-C <value>] [-v]
 
 FLAGS
-  -C, --create=<value>   create tags if don't exist
+  -C, --create=<value>   create tags if doesn't exist
   -i, --id=<value>...    (required) the IDs of the resources to tag
   -n, --name=<value>...  (required) the tag name
   -t, --type=<value>     (required) the type of the resource to tag
