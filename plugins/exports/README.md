@@ -88,7 +88,7 @@ FLAGS
                             <options: csv|json>
   -O, --open                open automatically the file after a successful export
   -P, --prettify            prettify json output format
-  -S, --size=<value>        max number of records for each export [2000-10000]
+  -S, --size=<value>        max number of records for each export [1000-5000]
   -X, --save-path=<value>   save command output to file and create missing path directories
   -b, --blind               execute in blind mode without showing the progress monitor
   -f, --fields=<value>...   comma separated list of fields to include in the export
