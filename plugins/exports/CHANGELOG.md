@@ -1,3 +1,10 @@
+# [3.8.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.7.6...v3.8.0) (2025-10-13)
+
+
+### Features
+
+* update resources to schema v7.9.8 ([70e503f](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/70e503fe3b57ceb49cf28b32f952beecedbbd42b))
+
 ## [3.7.6](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.7.5...v3.7.6) (2025-09-29)
 
 
