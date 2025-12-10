@@ -41,7 +41,7 @@ export default class ResourcesCount extends BaseCommand {
     const accessToken = flags.accessToken
 
 
-    const cl = CommerceLayer({ organization, domain, accessToken, userAgent: clUtil.userAgent(this.config) })
+    const cl = CommerceLayer({ organization, domain, accessToken, userAgent: clUtil.userAgent(this.config), timeout: 20_000 })
     const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
     this.checkOperation(resSdk)
 
@@ -54,7 +54,7 @@ export default class ResourcesCount extends BaseCommand {
     this.log()
     if (!flags.doc) cliux.action.start(`Counting ${humanized}`)
 
-    const res = await resSdk.list({ filters, pageNumber: 1, pageSize: 1 }) as ListResponse<Resource>
+    const res = await resSdk.list({ filters /* , pageNumber: 1, pageSize: 1 */}) as ListResponse<Resource>
 
     if (res?.recordCount) cliux.action.stop(clColor.yellowBright(res.recordCount.toLocaleString()))
     else {
@@ -85,7 +85,7 @@ export default class ResourcesCount extends BaseCommand {
         const w = wt[0]
         if (!clFilter.available(w)) this.error(`Invalid query filter: ${clColor.style.error(w)}`, {
           suggestions: [`Execute command ${clColor.style.command('resources:filters')} to get a full list of all available filter predicates`],
-          ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates',
+          ref: 'https://docs.commercelayer.io/api/filtering-data#list-of-predicates'
         })
 
         const v = wt[1]
