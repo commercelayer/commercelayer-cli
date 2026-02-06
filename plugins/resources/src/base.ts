@@ -559,6 +559,11 @@ export abstract class BaseQueryCommand extends BaseCommand {
         const vt = rel.split('/')
         if (vt.length === 2) {
           if ((type = vt[0]) === '') this.error('Relationship type is empty')
+          else {
+            const res = findResource(type, { singular: true })
+            if (res) type = res.api
+            else this.error(`Invalid resource type: ${clColor.msg.error(type)}`)
+          }
           if ((id = vt[1]) === '') this.error('Relationship resource id is empty')
         } else {
           id = vt[0]
