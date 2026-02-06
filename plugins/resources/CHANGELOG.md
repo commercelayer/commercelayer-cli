@@ -1,3 +1,10 @@
+## [6.14.4](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.14.3...v6.14.4) (2026-02-06)
+
+
+### Bug Fixes
+
+* fix relationship resource type check ([d37be66](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/d37be6682031593f66c2a088a430498e1d1644fc))
+
 ## [6.14.3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.14.2...v6.14.3) (2025-12-10)
 
 
