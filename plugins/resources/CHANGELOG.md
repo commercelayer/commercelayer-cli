@@ -1,3 +1,10 @@
+## [6.14.3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.14.2...v6.14.3) (2025-12-10)
+
+
+### Bug Fixes
+
+* fix count timeout ([35e7d83](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/35e7d833939666d70a4905512e447fe5924479a5))
+
 ## [6.14.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.14.1...v6.14.2) (2025-12-04)
 
 
