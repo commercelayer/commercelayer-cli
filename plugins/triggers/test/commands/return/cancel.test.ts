@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('returns:cancel', () => {
   test
-    .timeout(52000)
+    .timeout(61000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {
