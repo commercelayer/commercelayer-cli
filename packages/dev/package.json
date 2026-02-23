@@ -68,7 +68,7 @@
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
     "oclif": "^4.22.79",
-    "semantic-release": "^23.1.1",
+    "semantic-release": "^25.0.3",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
