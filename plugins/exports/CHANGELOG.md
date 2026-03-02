@@ -1,3 +1,10 @@
+## [3.8.3](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.8.2...v3.8.3) (2026-03-02)
+
+
+### Bug Fixes
+
+* updatecli-core to latest version ([7f10c99](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/7f10c99fb0ace65989a9b44925c4fbde0511d7cb))
+
 ## [3.8.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.8.1...v3.8.2) (2026-03-02)
 
 
