@@ -1,3 +1,10 @@
+## [4.2.13](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.12...v4.2.13) (2026-03-02)
+
+
+### Bug Fixes
+
+* update dependencies ([8df250e](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/8df250e08a96ec08a81df294998d5a8dd373f166))
+
 ## [4.2.12](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.2.11...v4.2.12) (2025-12-04)
 
 
