@@ -1,3 +1,10 @@
+## [6.7.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.7.3...v6.7.4) (2026-03-02)
+
+
+### Bug Fixes
+
+* updatecli-core to latest version ([c49633f](https://github.com/commercelayer/commercelayer-cli/commit/c49633fce3c0086e88fd0b676f9d4f2251fb470d))
+
 ## [6.7.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.7.2...v6.7.3) (2026-03-02)
 
 
