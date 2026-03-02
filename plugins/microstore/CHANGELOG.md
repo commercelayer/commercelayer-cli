@@ -1,3 +1,10 @@
+## [3.0.10](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.9...v3.0.10) (2026-03-02)
+
+
+### Bug Fixes
+
+* update dependencies ([f9b7d01](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/f9b7d0119f5e02b26a947ad162b4dc4f00913623))
+
 ## [3.0.9](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.8...v3.0.9) (2025-12-04)
 
 
