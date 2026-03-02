@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.7...v1.0.8) (2026-03-02)
+
+
+### Bug Fixes
+
+* update dependencies ([34a57b5](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/34a57b5439d33a1b0eef2175b6c809f90f5cac78))
+
 ## [1.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.6...v1.0.7) (2025-12-05)
 
 
