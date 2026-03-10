@@ -33,6 +33,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer address ID`](#commercelayer-address-id)
 * [`commercelayer address:add_tags ID`](#commercelayer-addressadd_tags-id)
 * [`commercelayer address:remove_tags ID`](#commercelayer-addressremove_tags-id)
+* [`commercelayer adyen_gateway ID`](#commercelayer-adyen_gateway-id)
+* [`commercelayer adyen_gateway:disable ID`](#commercelayer-adyen_gatewaydisable-id)
+* [`commercelayer adyen_gateway:enable ID`](#commercelayer-adyen_gatewayenable-id)
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
 * [`commercelayer adyen_payment:authorize ID`](#commercelayer-adyen_paymentauthorize-id)
 * [`commercelayer adyen_payment:balance ID`](#commercelayer-adyen_paymentbalance-id)
@@ -43,8 +46,14 @@ $ commercelayer plugins:install triggers
 * [`commercelayer authorization:capture_amount_cents ID`](#commercelayer-authorizationcapture_amount_cents-id)
 * [`commercelayer authorization:forward ID`](#commercelayer-authorizationforward-id)
 * [`commercelayer authorization:void ID`](#commercelayer-authorizationvoid-id)
+* [`commercelayer axerve_gateway ID`](#commercelayer-axerve_gateway-id)
+* [`commercelayer axerve_gateway:disable ID`](#commercelayer-axerve_gatewaydisable-id)
+* [`commercelayer axerve_gateway:enable ID`](#commercelayer-axerve_gatewayenable-id)
 * [`commercelayer axerve_payment ID`](#commercelayer-axerve_payment-id)
 * [`commercelayer axerve_payment:update ID`](#commercelayer-axerve_paymentupdate-id)
+* [`commercelayer braintree_gateway ID`](#commercelayer-braintree_gateway-id)
+* [`commercelayer braintree_gateway:disable ID`](#commercelayer-braintree_gatewaydisable-id)
+* [`commercelayer braintree_gateway:enable ID`](#commercelayer-braintree_gatewayenable-id)
 * [`commercelayer bundle ID`](#commercelayer-bundle-id)
 * [`commercelayer bundle:add_tags ID`](#commercelayer-bundleadd_tags-id)
 * [`commercelayer bundle:compute_compare_at_amount ID`](#commercelayer-bundlecompute_compare_at_amount-id)
@@ -60,6 +69,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer capture:forward ID`](#commercelayer-captureforward-id)
 * [`commercelayer capture:refund ID`](#commercelayer-capturerefund-id)
 * [`commercelayer capture:refund_amount_cents ID`](#commercelayer-capturerefund_amount_cents-id)
+* [`commercelayer checkout_com_gateway ID`](#commercelayer-checkout_com_gateway-id)
+* [`commercelayer checkout_com_gateway:disable ID`](#commercelayer-checkout_com_gatewaydisable-id)
+* [`commercelayer checkout_com_gateway:enable ID`](#commercelayer-checkout_com_gatewayenable-id)
 * [`commercelayer checkout_com_payment ID`](#commercelayer-checkout_com_payment-id)
 * [`commercelayer checkout_com_payment:details ID`](#commercelayer-checkout_com_paymentdetails-id)
 * [`commercelayer checkout_com_payment:refresh ID`](#commercelayer-checkout_com_paymentrefresh-id)
@@ -82,6 +94,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer export ID`](#commercelayer-export-id)
 * [`commercelayer export:interrupt ID`](#commercelayer-exportinterrupt-id)
 * [`commercelayer external_gateway ID`](#commercelayer-external_gateway-id)
+* [`commercelayer external_gateway:disable ID`](#commercelayer-external_gatewaydisable-id)
+* [`commercelayer external_gateway:enable ID`](#commercelayer-external_gatewayenable-id)
 * [`commercelayer external_gateway:reset_circuit ID`](#commercelayer-external_gatewayreset_circuit-id)
 * [`commercelayer external_promotion ID`](#commercelayer-external_promotion-id)
 * [`commercelayer external_promotion:add_tags ID`](#commercelayer-external_promotionadd_tags-id)
@@ -128,6 +142,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer in_stock_subscription ID`](#commercelayer-in_stock_subscription-id)
 * [`commercelayer in_stock_subscription:activate ID`](#commercelayer-in_stock_subscriptionactivate-id)
 * [`commercelayer in_stock_subscription:deactivate ID`](#commercelayer-in_stock_subscriptiondeactivate-id)
+* [`commercelayer klarna_gateway ID`](#commercelayer-klarna_gateway-id)
+* [`commercelayer klarna_gateway:disable ID`](#commercelayer-klarna_gatewaydisable-id)
+* [`commercelayer klarna_gateway:enable ID`](#commercelayer-klarna_gatewayenable-id)
 * [`commercelayer klarna_payment ID`](#commercelayer-klarna_payment-id)
 * [`commercelayer klarna_payment:update ID`](#commercelayer-klarna_paymentupdate-id)
 * [`commercelayer line_item ID`](#commercelayer-line_item-id)
@@ -143,6 +160,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer link ID`](#commercelayer-link-id)
 * [`commercelayer link:disable ID`](#commercelayer-linkdisable-id)
 * [`commercelayer link:enable ID`](#commercelayer-linkenable-id)
+* [`commercelayer manual_gateway ID`](#commercelayer-manual_gateway-id)
+* [`commercelayer manual_gateway:disable ID`](#commercelayer-manual_gatewaydisable-id)
+* [`commercelayer manual_gateway:enable ID`](#commercelayer-manual_gatewayenable-id)
 * [`commercelayer market ID`](#commercelayer-market-id)
 * [`commercelayer market:disable ID`](#commercelayer-marketdisable-id)
 * [`commercelayer market:enable ID`](#commercelayer-marketenable-id)
@@ -190,6 +210,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer payment_method ID`](#commercelayer-payment_method-id)
 * [`commercelayer payment_method:disable ID`](#commercelayer-payment_methoddisable-id)
 * [`commercelayer payment_method:enable ID`](#commercelayer-payment_methodenable-id)
+* [`commercelayer paypal_gateway ID`](#commercelayer-paypal_gateway-id)
+* [`commercelayer paypal_gateway:disable ID`](#commercelayer-paypal_gatewaydisable-id)
+* [`commercelayer paypal_gateway:enable ID`](#commercelayer-paypal_gatewayenable-id)
 * [`commercelayer percentage_discount_promotion ID`](#commercelayer-percentage_discount_promotion-id)
 * [`commercelayer percentage_discount_promotion:add_tags ID`](#commercelayer-percentage_discount_promotionadd_tags-id)
 * [`commercelayer percentage_discount_promotion:disable ID`](#commercelayer-percentage_discount_promotiondisable-id)
@@ -216,6 +239,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer return:unarchive ID`](#commercelayer-returnunarchive-id)
 * [`commercelayer return_line_item ID`](#commercelayer-return_line_item-id)
 * [`commercelayer return_line_item:restock ID`](#commercelayer-return_line_itemrestock-id)
+* [`commercelayer satispay_gateway ID`](#commercelayer-satispay_gateway-id)
+* [`commercelayer satispay_gateway:disable ID`](#commercelayer-satispay_gatewaydisable-id)
+* [`commercelayer satispay_gateway:enable ID`](#commercelayer-satispay_gatewayenable-id)
 * [`commercelayer satispay_payment ID`](#commercelayer-satispay_payment-id)
 * [`commercelayer satispay_payment:refresh ID`](#commercelayer-satispay_paymentrefresh-id)
 * [`commercelayer shipment ID`](#commercelayer-shipment-id)
@@ -235,8 +261,10 @@ $ commercelayer plugins:install triggers
 * [`commercelayer shipment:ship ID`](#commercelayer-shipmentship-id)
 * [`commercelayer shipment:upcoming ID`](#commercelayer-shipmentupcoming-id)
 * [`commercelayer shipping_method ID`](#commercelayer-shipping_method-id)
+* [`commercelayer shipping_method:add_tags ID`](#commercelayer-shipping_methodadd_tags-id)
 * [`commercelayer shipping_method:disable ID`](#commercelayer-shipping_methoddisable-id)
 * [`commercelayer shipping_method:enable ID`](#commercelayer-shipping_methodenable-id)
+* [`commercelayer shipping_method:remove_tags ID`](#commercelayer-shipping_methodremove_tags-id)
 * [`commercelayer shipping_method:reset_circuit ID`](#commercelayer-shipping_methodreset_circuit-id)
 * [`commercelayer sku ID`](#commercelayer-sku-id)
 * [`commercelayer sku:add_tags ID`](#commercelayer-skuadd_tags-id)
@@ -259,6 +287,9 @@ $ commercelayer plugins:install triggers
 * [`commercelayer stock_transfer:on_hold ID`](#commercelayer-stock_transferon_hold-id)
 * [`commercelayer stock_transfer:picking ID`](#commercelayer-stock_transferpicking-id)
 * [`commercelayer stock_transfer:upcoming ID`](#commercelayer-stock_transferupcoming-id)
+* [`commercelayer stripe_gateway ID`](#commercelayer-stripe_gateway-id)
+* [`commercelayer stripe_gateway:disable ID`](#commercelayer-stripe_gatewaydisable-id)
+* [`commercelayer stripe_gateway:enable ID`](#commercelayer-stripe_gatewayenable-id)
 * [`commercelayer stripe_payment ID`](#commercelayer-stripe_payment-id)
 * [`commercelayer stripe_payment:refresh ID`](#commercelayer-stripe_paymentrefresh-id)
 * [`commercelayer stripe_payment:update ID`](#commercelayer-stripe_paymentupdate-id)
@@ -338,6 +369,72 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/address/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/address/remove_tags.ts)_
+
+### `commercelayer adyen_gateway ID`
+
+Execute an action on a resource of type adyen_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer adyen_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type adyen_gateways
+```
+
+_See code: [src/commands/adyen_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_gateway/index.ts)_
+
+### `commercelayer adyen_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer adyen_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/adyen_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_gateway/disable.ts)_
+
+### `commercelayer adyen_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer adyen_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/adyen_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_gateway/enable.ts)_
 
 ### `commercelayer adyen_payment ID`
 
@@ -560,6 +657,72 @@ DESCRIPTION
 
 _See code: [src/commands/authorization/void.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/authorization/void.ts)_
 
+### `commercelayer axerve_gateway ID`
+
+Execute an action on a resource of type axerve_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer axerve_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type axerve_gateways
+```
+
+_See code: [src/commands/axerve_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/axerve_gateway/index.ts)_
+
+### `commercelayer axerve_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer axerve_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/axerve_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/axerve_gateway/disable.ts)_
+
+### `commercelayer axerve_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer axerve_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/axerve_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/axerve_gateway/enable.ts)_
+
 ### `commercelayer axerve_payment ID`
 
 Execute an action on a resource of type axerve_payments.
@@ -603,6 +766,72 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/axerve_payment/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/axerve_payment/update.ts)_
+
+### `commercelayer braintree_gateway ID`
+
+Execute an action on a resource of type braintree_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer braintree_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type braintree_gateways
+```
+
+_See code: [src/commands/braintree_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/braintree_gateway/index.ts)_
+
+### `commercelayer braintree_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer braintree_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/braintree_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/braintree_gateway/disable.ts)_
+
+### `commercelayer braintree_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer braintree_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/braintree_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/braintree_gateway/enable.ts)_
 
 ### `commercelayer bundle ID`
 
@@ -940,6 +1169,72 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/capture/refund_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/capture/refund_amount_cents.ts)_
+
+### `commercelayer checkout_com_gateway ID`
+
+Execute an action on a resource of type checkout_com_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer checkout_com_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type checkout_com_gateways
+```
+
+_See code: [src/commands/checkout_com_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_gateway/index.ts)_
+
+### `commercelayer checkout_com_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer checkout_com_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/checkout_com_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_gateway/disable.ts)_
+
+### `commercelayer checkout_com_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer checkout_com_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/checkout_com_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_gateway/enable.ts)_
 
 ### `commercelayer checkout_com_payment ID`
 
@@ -1428,6 +1723,50 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/external_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/index.ts)_
+
+### `commercelayer external_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer external_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/external_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/disable.ts)_
+
+### `commercelayer external_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer external_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/external_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/enable.ts)_
 
 ### `commercelayer external_gateway:reset_circuit ID`
 
@@ -2460,6 +2799,72 @@ DESCRIPTION
 
 _See code: [src/commands/in_stock_subscription/deactivate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/in_stock_subscription/deactivate.ts)_
 
+### `commercelayer klarna_gateway ID`
+
+Execute an action on a resource of type klarna_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer klarna_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type klarna_gateways
+```
+
+_See code: [src/commands/klarna_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/klarna_gateway/index.ts)_
+
+### `commercelayer klarna_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer klarna_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/klarna_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/klarna_gateway/disable.ts)_
+
+### `commercelayer klarna_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer klarna_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/klarna_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/klarna_gateway/enable.ts)_
+
 ### `commercelayer klarna_payment ID`
 
 Execute an action on a resource of type klarna_payments.
@@ -2799,6 +3204,72 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/link/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/link/enable.ts)_
+
+### `commercelayer manual_gateway ID`
+
+Execute an action on a resource of type manual_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer manual_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type manual_gateways
+```
+
+_See code: [src/commands/manual_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/manual_gateway/index.ts)_
+
+### `commercelayer manual_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer manual_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/manual_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/manual_gateway/disable.ts)_
+
+### `commercelayer manual_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer manual_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/manual_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/manual_gateway/enable.ts)_
 
 ### `commercelayer market ID`
 
@@ -3855,6 +4326,72 @@ DESCRIPTION
 
 _See code: [src/commands/payment_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/payment_method/enable.ts)_
 
+### `commercelayer paypal_gateway ID`
+
+Execute an action on a resource of type paypal_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer paypal_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type paypal_gateways
+```
+
+_See code: [src/commands/paypal_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/paypal_gateway/index.ts)_
+
+### `commercelayer paypal_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer paypal_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/paypal_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/paypal_gateway/disable.ts)_
+
+### `commercelayer paypal_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer paypal_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/paypal_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/paypal_gateway/enable.ts)_
+
 ### `commercelayer percentage_discount_promotion ID`
 
 Execute an action on a resource of type percentage_discount_promotions.
@@ -4432,6 +4969,72 @@ DESCRIPTION
 
 _See code: [src/commands/return_line_item/restock.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/return_line_item/restock.ts)_
 
+### `commercelayer satispay_gateway ID`
+
+Execute an action on a resource of type satispay_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer satispay_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type satispay_gateways
+```
+
+_See code: [src/commands/satispay_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/satispay_gateway/index.ts)_
+
+### `commercelayer satispay_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer satispay_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/satispay_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/satispay_gateway/disable.ts)_
+
+### `commercelayer satispay_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer satispay_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/satispay_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/satispay_gateway/enable.ts)_
+
 ### `commercelayer satispay_payment ID`
 
 Execute an action on a resource of type satispay_payments.
@@ -4856,6 +5459,29 @@ DESCRIPTION
 
 _See code: [src/commands/shipping_method/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/index.ts)_
 
+### `commercelayer shipping_method:add_tags ID`
+
+Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer shipping_method:add_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be added. Duplicates, invalid and non existing ones are discarded. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/shipping_method/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/add_tags.ts)_
+
 ### `commercelayer shipping_method:disable ID`
 
 Send this attribute if you want to mark this resource as disabled.
@@ -4899,6 +5525,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/shipping_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/enable.ts)_
+
+### `commercelayer shipping_method:remove_tags ID`
+
+Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer shipping_method:remove_tags ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed
+  by sales channels.
+```
+
+_See code: [src/commands/shipping_method/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/remove_tags.ts)_
 
 ### `commercelayer shipping_method:reset_circuit ID`
 
@@ -5392,6 +6041,72 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/stock_transfer/upcoming.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stock_transfer/upcoming.ts)_
+
+### `commercelayer stripe_gateway ID`
+
+Execute an action on a resource of type stripe_gateways.
+
+```sh-session
+USAGE
+  $ commercelayer stripe_gateway ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type stripe_gateways
+```
+
+_See code: [src/commands/stripe_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_gateway/index.ts)_
+
+### `commercelayer stripe_gateway:disable ID`
+
+Send this attribute if you want to mark this resource as disabled.
+
+```sh-session
+USAGE
+  $ commercelayer stripe_gateway:disable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as disabled.
+```
+
+_See code: [src/commands/stripe_gateway/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_gateway/disable.ts)_
+
+### `commercelayer stripe_gateway:enable ID`
+
+Send this attribute if you want to mark this resource as enabled.
+
+```sh-session
+USAGE
+  $ commercelayer stripe_gateway:enable ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to mark this resource as enabled.
+```
+
+_See code: [src/commands/stripe_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_gateway/enable.ts)_
 
 ### `commercelayer stripe_payment ID`
 
