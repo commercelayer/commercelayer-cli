@@ -1,3 +1,10 @@
+# [4.17.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.16.1...v4.17.0) (2026-03-10)
+
+
+### Features
+
+* add taggable resource shipping_method ([3e2875b](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/3e2875b0a4f4e56681a6822ccbb3164cd0084cd0))
+
 ## [4.16.1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.16.0...v4.16.1) (2026-03-02)
 
 
