@@ -1,3 +1,11 @@
+## [6.8.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.8.0...v6.8.1) (2026-03-12)
+
+
+### Bug Fixes
+
+* add cli dir to output ([a6121eb](https://github.com/commercelayer/commercelayer-cli/commit/a6121eb3e9c292e5de2284ecf6e2e023435982fa))
+* fix lint errors ([3e7dff6](https://github.com/commercelayer/commercelayer-cli/commit/3e7dff6e6be7e31d82ea5d5567bbb4497e62271b))
+
 # [6.8.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.7.4...v6.8.0) (2026-03-12)
 
 
