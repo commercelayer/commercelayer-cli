@@ -1,6 +1,5 @@
 import { clColor } from '@commercelayer/cli-core'
 import { Command } from '@oclif/core'
-import { inspect } from 'util'
 
 
 export default class CliDir extends Command {
