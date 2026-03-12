@@ -1,3 +1,10 @@
+# [6.8.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.7.4...v6.8.0) (2026-03-12)
+
+
+### Features
+
+* add cli:dir command ([6d511e5](https://github.com/commercelayer/commercelayer-cli/commit/6d511e5d3f5a3c926fbfd38feaaa211764f5c0f1))
+
 ## [6.7.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.7.3...v6.7.4) (2026-03-02)
 
 
