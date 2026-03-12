@@ -149,10 +149,12 @@ export default class ExportsCreate extends ExportCommand {
 
       let exp = await this.cl.exports.create(expCreate)
 
+      this.log()
       if (!exp.records_count) {
-        this.log(clColor.italic('\nNo records found\n'))
+        this.log(clColor.italic('No records found'))
         this.exit()
       } else this.log(`Started export ${clColor.style.id(exp.id)}`)
+      this.log()
 
       let jwtData = clToken.decodeAccessToken(accessToken) as any
 
@@ -160,7 +162,7 @@ export default class ExportsCreate extends ExportCommand {
 
       // if (!blindMode) cliux.action.start(`Exporting ${resDesc}`, this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting'))
       const progressBar = blindMode ? blindProgressBar : cliux.progress({
-        format: `Fetching ${resDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
+        format: `Exporting ${resDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
         hideCursor: true
