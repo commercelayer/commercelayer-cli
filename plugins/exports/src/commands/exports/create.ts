@@ -165,16 +165,20 @@ export default class ExportsCreate extends ExportCommand {
         format: `Exporting ${resDesc} ... | ${clColor.greenBright('{bar}')} | ${clColor.yellowBright('{percentage}%')} | {value}/{total} | {duration_formatted} | {eta_formatted}`,
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
-        hideCursor: true
+        hideCursor: true,
+        // autopadding: true,
+        // autopaddingChar: ' '
       })
 
-      progressBar.start(100, 0)
+      const recordsCount = exp.records_count
+      progressBar.start(recordsCount, 0)
    
       while (!['completed', 'interrupted'].includes(exp.status || '')) {
         jwtData = await this.checkAccessToken(jwtData, flags)
         exp = await this.cl.exports.retrieve(exp.id)
+        const current = Math.ceil((recordsCount / 100) * exp.progress)
         // if (!blindMode) cliux.action.status = this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting')
-        progressBar.update(exp.progress || 0)
+        progressBar.update(current || 0)
         await cliux.wait(delay)
       }
       // if (!blindMode) cliux.action.stop(this.exportStatus(exp.status))
