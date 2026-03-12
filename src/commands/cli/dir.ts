@@ -1,15 +1,17 @@
 import { clColor } from '@commercelayer/cli-core'
 import { Command } from '@oclif/core'
+import { inspect } from 'util'
 
 
 export default class CliDir extends Command {
 
   static override description = 'show working directories used by the cli'
 
+  static aliases = ['dir', 'paths', 'cli:paths']
+
   static override examples = [
     'cl cli:dir'
   ]
-
 
   public async run(): Promise<void> {
 
@@ -24,6 +26,9 @@ export default class CliDir extends Command {
     this.log(`🔧 Configuration: ${clColor.dim(configDir)}`)
     this.log(`📦 Data: ${clColor.dim(dataDir)}`)
     this.log(`⚡ Cache: ${clColor.dim(cacheDir)}`)
+
+    this.log()
+    this.log(`CLI directory name: ${clColor.dim(this.config.dirname)}`)
 
     this.log()
 
