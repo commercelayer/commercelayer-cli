@@ -1,3 +1,10 @@
+## [3.0.13](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.12...v3.0.13) (2026-03-13)
+
+
+### Bug Fixes
+
+* update dependencies ([fb29848](https://github.com/commercelayer/commercelayer-cli-dev/commit/fb2984810149074724b1b225742d95512cb41233))
+
 ## [3.0.12](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.11...v3.0.12) (2026-03-02)
 
 
