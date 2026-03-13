@@ -1,3 +1,10 @@
+## [2.1.13](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.12...v2.1.13) (2026-03-13)
+
+
+### Bug Fixes
+
+* update dependencies ([e92a668](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/e92a668a3892da79d183a1c59614c0713fc93513))
+
 ## [2.1.12](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.11...v2.1.12) (2026-03-10)
 
 
