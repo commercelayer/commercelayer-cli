@@ -5,6 +5,21 @@ import type { CommerceLayerClient, QueryParamsList, ListResponse, Resource, Quer
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 import notifier from 'node-notifier'
 
+/*
+import { execSync } from 'child_process'
+
+// All'inizio del run()
+// this.config.windows
+// this.config.platform
+if (process.platform === 'win32') {
+  process.stdout.setDefaultEncoding('utf8')
+  process.stderr.setDefaultEncoding('utf8')
+  try {
+    execSync('chcp 65001', { stdio: 'ignore' }) // forza UTF-8 in PowerShell
+  } catch {}
+}
+*/
+
 
 // const maxPagesWarning = 1000
 const maxItemsWarning = 20000

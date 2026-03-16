@@ -6,7 +6,7 @@ import { clApi, clColor, clText } from '@commercelayer/cli-core'
 
 export default class ResourcesLast extends BaseCommand {
 
-  static description = 'show the last id of a resource type'
+  static description = 'show the last used id of a resource type'
 
   static aliases = ['last', 'res:last']
 
