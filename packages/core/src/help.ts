@@ -47,25 +47,28 @@ export default class CLIBaseHelp extends Help {
 	// display help for a command
 	async showCommandHelp(command: Command.Loadable): Promise<void> {
 		if (PRINT_TRACE) console.log('---------- showCommandHelp')
+			super.showCommandHelp(command)
+			/*
 		const name = command.id
-        const depth = name ? name.split(':').length : 1
-        const subTopics = this.sortedTopics.filter((t: Topic) => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
-        const subCommands = this.sortedCommands.filter((c: Command.Loadable) => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
-        const title = command.description && this.render(command.description).split('\n')[0]
-        if (title) console.log(`${capitalize(title)}\n`)
-        console.log(this.formatCommand(command))
-        console.log('')
-        if (subTopics.length > 0) {
-            console.log(this.formatTopics(subTopics))
-            console.log('')
-        }
-        if (subCommands.length > 0) {
-            console.log(this.formatCommands(subCommands))
-            console.log('')
-        }
+		const depth = name ? name.split(':').length : 1
+		const subTopics = this.sortedTopics.filter((t: Topic) => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1)
+		const subCommands = this.sortedCommands.filter((c: Command.Loadable) => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1)
+		const title = command.description && this.render(command.description).split('\n')[0]
+		if (title) console.log(`${capitalize(title)}\n`)
+		console.log(this.formatCommand(command))
+		console.log('')
+		if (subTopics.length > 0) {
+			console.log(this.formatTopics(subTopics))
+			console.log('')
+		}
+		if (subCommands.length > 0) {
+			console.log(this.formatCommands(subCommands))
+			console.log('')
+		}
+			*/
 	}
 
-	
+
 	// displayed for the root help
 	formatRoot(): string {
 		if (PRINT_TRACE) console.log('---------- formatRoot')
