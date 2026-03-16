@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.0...v1.1.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* ask hidden aliases ([c6c6a7d](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/c6c6a7da106c54989ea9fcd6ecf89f59491d6da8))
+
 # [1.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.9...v1.1.0) (2026-03-13)
 
 
