@@ -1,3 +1,10 @@
+## [5.1.11](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.10...v5.1.11) (2026-03-13)
+
+
+### Bug Fixes
+
+* update dependencies ([3fce210](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/3fce210d7dc7789e63ebc32730fa2cca06f07693))
+
 ## [5.1.10](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.9...v5.1.10) (2026-03-08)
 
 
