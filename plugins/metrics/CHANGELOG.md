@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.1...v1.1.2) (2026-03-16)
+
+
+### Bug Fixes
+
+* ask chat hidden alias ([86a71a2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/86a71a212e2360418ffab96d13e7b776eec9ca78))
+
 ## [1.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.0...v1.1.1) (2026-03-16)
 
 
