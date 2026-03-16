@@ -1,3 +1,10 @@
+## [5.10.8](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.7...v5.10.8) (2026-03-16)
+
+
+### Bug Fixes
+
+* fix command help ([01ec3ee](https://github.com/commercelayer/commercelayer-cli-core/commit/01ec3eec26d0791c258be95e66a5fdd14a905237))
+
 ## [5.10.7](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.6...v5.10.7) (2026-03-13)
 
 
