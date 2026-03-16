@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@commercelayer/cli-core':
-        specifier: ^5.10.7
-        version: 5.10.7
+        specifier: ^5.10.8
+        version: 5.10.8
       '@commercelayer/cli-ux':
         specifier: ^1.0.13
         version: 1.0.13(@oclif/core@3.27.0)
@@ -330,8 +330,8 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
-  '@commercelayer/cli-core@5.10.7':
-    resolution: {integrity: sha512-QZYmDd+IeYKKQoEwtTPwt908W7Sah8+JKsTc4W9BRaQEOpKP5ndI7EY45ZhcnB0BqFDaqlZw7+IPeIkvkiWBtw==}
+  '@commercelayer/cli-core@5.10.8':
+    resolution: {integrity: sha512-n6ZmGSkiiJDoftQMDim3uY+R2+lb47aNw6rvG48PAnEPY5+Er5Red7qO7+/+YSTgPUXTe2LcNJnrj2zkSJKhzQ==}
     engines: {node: '>=20'}
 
   '@commercelayer/cli-dev@3.0.13':
@@ -4812,7 +4812,7 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@commercelayer/cli-core@5.10.7':
+  '@commercelayer/cli-core@5.10.8':
     dependencies:
       '@commercelayer/js-auth': 6.7.2
       '@oclif/core': 3.27.0

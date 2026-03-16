@@ -10,7 +10,7 @@ export default class MetricsDateBreakdown extends BaseBreakdownCommand {
 
   static operation = 'date_breakdown'
 
-  static aliases = ['metrics:breakdate', 'metrics:date', 'breakdate', MetricsDateBreakdown.operation]
+  static aliases = [MetricsDateBreakdown.operation]
 
   static override description = 'perform a date breakdown query on the Metrics API endpoint'
 

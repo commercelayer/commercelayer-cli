@@ -10,7 +10,7 @@ export default class MetricsBreakdown extends BaseBreakdownCommand {
 
   static operation: MetricsOperation = 'breakdown'
 
-  static aliases = ['metrics:break', MetricsBreakdown.operation]
+  static aliases = [MetricsBreakdown.operation]
 
   static override description = 'perform a breakdown query on the Metrics API endpoint'
 
