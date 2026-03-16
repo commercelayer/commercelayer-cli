@@ -10,6 +10,9 @@ import { inspect } from "node:util"
 
 // --------- --------- - CONFIG - --------- ---------
 
+// Debug
+const DEBUG = ['1', 'on', 'true', 'metrics:ask'].includes((process.env.CL_CLI_DEBUG || '').toLowerCase())
+
 // Spinner
 const spinnerEnabled = true
 const spinnerLabel = 'Thinking...'
@@ -23,7 +26,7 @@ const userPrompt = (systemLocale === 'it-IT') ? 'Tu' : 'You'
 const assistantPrompt = '' // 'Assistant'
 
 // Metrics chat endpint
-const metricsChatUrl = "http://localhost:4111/chat/metrics" // "https://ai-agents.commercelayer.co/chat/metrics"
+const metricsChatUrl = /* "http://localhost:4111/chat/metrics" */ "https://ai-agents.commercelayer.co/chat/metrics"
 
 // Agent/LLM system message
 const systemMessage = `You are running inside a terminal CLI. The user reads your output directly in a shell.
@@ -59,7 +62,7 @@ export default class MetricsAsk extends BaseCommand {
 
   static strict: boolean = false
   static hidden: boolean = true
-  
+
   static aliases = ["metrics:chat"]
   static hiddenAliases: ["metrics:chat"]
 
@@ -261,6 +264,9 @@ export default class MetricsAsk extends BaseCommand {
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : String(err)
       this.log(`❌ ${clColor.msg.error('Error:')} ${errorMessage}`)
+
+      if (DEBUG) this.log(inspect(err, false, null, true))
+
       return false
     } finally {
       if (this.spinner.isSpinning) this.spinner.stop()
