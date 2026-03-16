@@ -60,7 +60,7 @@ export default class MetricsAsk extends BaseCommand {
   static strict: boolean = false
   static hidden: boolean = true
   
-  static aliases = ["metrics:chat"]
+  // static aliases = ["metrics:chat"]
   static hiddenAliases: ["metrics:chat"]
 
 
