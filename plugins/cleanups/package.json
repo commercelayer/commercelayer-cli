@@ -56,7 +56,7 @@
   "devDependencies": {
     "@commercelayer/cli-dev": "^3.0.13",
     "@commercelayer/eslint-config-ts": "^1.4.5",
-    "@oclif/plugin-help": "^6.2.37",
+    "@oclif/plugin-help": "^6.2.38",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -69,7 +69,7 @@
     "eslint": "^8.57.1",
     "mocha": "^10.8.2",
     "nyc": "^15.1.0",
-    "oclif": "^4.22.87",
+    "oclif": "^4.22.92",
     "semantic-release": "^24.2.9",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
