@@ -2,16 +2,20 @@
 import readline from "node:readline/promises"
 import { randomUUID } from 'node:crypto'
 import { BaseCommand, Args, Flags } from '../../base'
-import { clColor } from "@commercelayer/cli-core"
+import { clColor, clConfig } from "@commercelayer/cli-core"
 import { createParser } from "eventsource-parser"
 import ora, { type Ora } from 'ora'
 import { inspect } from "node:util"
 
 
-// --------- --------- - CONFIG - --------- ---------
-
 // Debug
 const DEBUG = ['1', 'on', 'true', 'metrics:ask'].includes((process.env.CL_CLI_DEBUG || '').toLowerCase())
+
+
+// --------- --------- - CONFIG - --------- ---------
+
+// Metrics chat endpoint path
+const metricsChatPath = '/chat/metrics'
 
 // Spinner
 const spinnerEnabled = true
@@ -24,9 +28,6 @@ const exitCommands = ["exit", "quit"]
 const systemLocale = Intl.DateTimeFormat().resolvedOptions().locale
 const userPrompt = (systemLocale === 'it-IT') ? 'Tu' : 'You'
 const assistantPrompt = '' // 'Assistant'
-
-// Metrics chat endpint
-const metricsChatUrl = /* "http://localhost:4111/chat/metrics" */ "https://ai-agents.commercelayer.co/chat/metrics"
 
 // Agent/LLM system message
 const systemMessage = `You are running inside a terminal CLI. The user reads your output directly in a shell.
@@ -57,15 +58,29 @@ type AskOptions = {
 }
 
 
+function metricsChatUrl(domain?: string): string {
+
+  let host: string
+
+  if (domain) {
+    if (domain === 'localhost') host = 'http://localhost:4111'
+    else host = `https://ai-agents.${domain}`
+  } else host = `https://ai-agents.${clConfig.api.default_domain}`
+
+  return `${host}${metricsChatPath}`
+
+}
+
+
 
 export default class MetricsAsk extends BaseCommand {
 
-  static strict: boolean = false
   static hidden: boolean = true
-
-  static aliases = ["metrics:chat"]
   static hiddenAliases: ["metrics:chat"]
 
+  static strict: boolean = false
+
+  static aliases = ["metrics:chat"]
 
   static override description = 'start chat to talk with Metrics AI agent'
 
@@ -95,6 +110,7 @@ export default class MetricsAsk extends BaseCommand {
   }
 
 
+  #chatEndpoint!: string
   #accessToken!: string
 
   readonly #options: AskOptions = {
@@ -102,9 +118,12 @@ export default class MetricsAsk extends BaseCommand {
     showDetails: false,
   }
 
-  readonly #spinner = ora(spinnerLabel)
+  readonly #spinner = ora()
 
+  private get accessToken(): string { return this.#accessToken }
   private get spinner(): Ora { return this.#spinner }
+  private get options(): AskOptions { return this.#options }
+  private get chatEndpoint(): string { return this.#chatEndpoint }
 
 
   public async run(): Promise<void> {
@@ -113,9 +132,10 @@ export default class MetricsAsk extends BaseCommand {
 
     this.checkAcessTokenData(flags.accessToken, flags)
     this.#accessToken = flags.accessToken
+    this.#chatEndpoint = metricsChatUrl(flags.domain)
 
-    this.#options.fullResponse = flags.fullResponse
-    this.#options.showDetails = flags.showDetails
+    this.options.fullResponse = flags.fullResponse
+    this.options.showDetails = flags.showDetails
 
     let userInput: string | undefined = argv.join(' ').trim()
     if (exitCommands.includes(userInput)) userInput = undefined
@@ -127,16 +147,42 @@ export default class MetricsAsk extends BaseCommand {
 
 
   private async handleAskError(response: Response): Promise<never> {
-    if (this.spinner.isSpinning) this.spinner.stop()
+
     let errorMessage = ""
     try {
-      const json = await response.json()
+      const json = await response.clone().json()
       errorMessage = json.error
     } catch (err) {
-      errorMessage = ""
+      errorMessage = await response.text()
     }
-    if (!errorMessage) errorMessage = `HTTP ${response.status}: ${await response.text()}`
+
+    if (response.status)
+      switch (response.status) {
+        case 404: {
+          errorMessage = 'Metrics Chat endpoint not found. Please check your configuration and try again.'
+          break
+        }
+      }
+    else
+      switch (errorMessage.toLocaleLowerCase()) {
+        case 'invalid or expired token': {
+          errorMessage = 'Invalid or expired access token. Please log in again to your organization.'
+          break
+        }
+        case 'fetch failed': {
+          errorMessage = 'Failed to connect to the Metrics Chat endpoint.'
+          break
+        }
+        case '404 not found': {
+          errorMessage = 'Metrics Chat endpoint not found. Please check your configuration and try again.'
+          break
+        }
+      }
+
+    if (this.spinner.isSpinning) this.spinner.stop()
+
     throw new Error(errorMessage)
+
   }
 
 
@@ -164,9 +210,12 @@ export default class MetricsAsk extends BaseCommand {
   private handleResponseText(data: any): string | undefined {
 
     switch (data.type) {
-      case 'start': return assistantPrompt ? `${clColor.cyan(assistantPrompt)}:\n` : undefined
+      case 'start': return assistantPrompt ? `${clColor.cyan(assistantPrompt)}:\n\n` : undefined
       case 'start-step': break
-      case 'text-start': break
+      case 'text-start': {
+        if (!this.#options.fullResponse && this.spinner.isSpinning) this.spinner.stop()
+        break
+      }
       case 'text-end': return '\n'
       case 'text-delta': {
         const delta = String(data.delta)
@@ -194,14 +243,14 @@ export default class MetricsAsk extends BaseCommand {
 
         // process.stdout.write(dataType)
 
-        if (data.type.startsWith('tool-') && this.#options.showDetails) {
+        if (data.type.startsWith('tool-') && this.options.showDetails) {
           const details = this.handleResponseTool(data)
           if (details) process.stdout.write(details)
         }
         else {
           const text = this.handleResponseText(data)
           if (text)
-            if (this.#options.fullResponse) fullText += text
+            if (this.options.fullResponse) fullText += text
             else process.stdout.write(text)
         }
 
@@ -225,11 +274,11 @@ export default class MetricsAsk extends BaseCommand {
 
 
   private async callMetricsChat(messageBody: any): Promise<Response> {
-    return await fetch(metricsChatUrl, {
+    return await fetch(this.chatEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.#accessToken}`,
+        "Authorization": `Bearer ${this.accessToken}`,
       },
       body: JSON.stringify(messageBody)
     })
@@ -258,15 +307,12 @@ export default class MetricsAsk extends BaseCommand {
       if (response.ok) fullText = await this.handleAskResponse(response)
       else await this.handleAskError(response)
 
-
-      if (this.#options.fullResponse && fullText) this.log(fullText)
+      if (this.options.fullResponse && fullText) this.log(fullText)
 
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : String(err)
       this.log(`❌ ${clColor.msg.error('Error:')} ${errorMessage}`)
-
       if (DEBUG) this.log(inspect(err, false, null, true))
-
       return false
     } finally {
       if (this.spinner.isSpinning) this.spinner.stop()
@@ -333,7 +379,7 @@ export default class MetricsAsk extends BaseCommand {
       }
 
       this.log()
-      if (this.#options.fullResponse && spinnerEnabled) this.spinner.start()
+      if (spinnerEnabled) this.spinner.start(this.options.fullResponse ? spinnerLabel : '')
 
       const ok = await this.sendPrompt(input)
       if (!ok) {
