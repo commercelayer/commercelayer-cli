@@ -1,6 +1,6 @@
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Args, Flags } from '@oclif/core'
-import { clColor, clConfig, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { clColor, clConfig, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { type MetricsFilter, type MetricsQueryBreakdown, type MetricsQueryBreakdownResponse, operators, resources } from './common'
 import * as cliux from '@commercelayer/cli-ux'
@@ -64,7 +64,7 @@ export abstract class BaseCommand extends Command {
     } else return await super.catch(error as CommandError)
   }
 
-
+/*
   protected commercelayerInit(flags: any): CommerceLayerClient {
 
     const organization = flags.organization
@@ -80,7 +80,7 @@ export abstract class BaseCommand extends Command {
     })
 
   }
-
+*/
 
   protected checkAcessTokenData(accessToken: string, flags?: any): boolean {
 
