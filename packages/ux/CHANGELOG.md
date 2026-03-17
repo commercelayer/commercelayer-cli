@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.13...v1.0.14) (2026-03-17)
+
+
+### Bug Fixes
+
+* update dependencies ([5c16669](https://github.com/commercelayer/commercelayer-cli-ux/commit/5c166696f4565a51321ec9fd064564828b667546))
+
 ## [1.0.13](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.12...v1.0.13) (2026-03-13)
 
 
