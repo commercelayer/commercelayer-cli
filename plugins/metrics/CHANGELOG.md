@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.3...v1.1.4) (2026-03-16)
+
+
+### Bug Fixes
+
+* fix metrics chat endpoint ([8fc7067](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/8fc7067275851493d87aaff0c71bfd5626de4495))
+
 ## [1.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.2...v1.1.3) (2026-03-16)
 
 
