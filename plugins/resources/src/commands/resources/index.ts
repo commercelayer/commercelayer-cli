@@ -1,7 +1,8 @@
-import { Command, Flags, ux as cliux } from '@oclif/core'
+import { Command, Flags } from '@oclif/core'
 import { resourceList } from '../../util/resources'
 import { clUtil, clColor, clConfig } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 export default class ResourcesIndex extends Command {
@@ -33,7 +34,7 @@ export default class ResourcesIndex extends Command {
 
 		cliux.Table.table(resourceArray, {
 				key: { header: 'NAME', minWidth: 35, get: row => clColor.blueBright(row.name) },
-				description: { header: 'ONLINE DOCUMENTATION URL', get: row => row.url },
+				description: { header: 'ONLINE DOCUMENTATION URL', get: row => cliux.hyperlink(row.url, row.url) },
 			}, {
 				printLine: clUtil.log,
 			})
