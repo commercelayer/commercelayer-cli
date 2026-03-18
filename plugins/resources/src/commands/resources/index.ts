@@ -33,7 +33,7 @@ export default class ResourcesIndex extends Command {
 
 		cliux.Table.table(resourceArray, {
 				key: { header: 'NAME', minWidth: 35, get: row => clColor.blueBright(row.name) },
-				description: { header: 'ONLINE DOCUMENTATION URL', get: row => row.url },
+				description: { header: 'ONLINE DOCUMENTATION URL', get: row => cliux.url('Online documentation',row.url) },
 			}, {
 				printLine: clUtil.log,
 			})
