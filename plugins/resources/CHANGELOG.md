@@ -1,3 +1,10 @@
+# [6.16.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.15.0...v6.16.0) (2026-03-18)
+
+
+### Features
+
+* add resources documentation hyperlink ([e949cf3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/e949cf3e732b60c4861c7a790215a50e8d2dac94))
+
 # [6.15.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.14.8...v6.15.0) (2026-03-18)
 
 
