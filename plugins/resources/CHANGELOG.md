@@ -1,3 +1,15 @@
+# [6.15.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.14.8...v6.15.0) (2026-03-18)
+
+
+### Bug Fixes
+
+* revert hyperlink function ([a7b2704](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/a7b27041e64e9bbe07c8fedf913f7fd0713d4b96))
+
+
+### Features
+
+* add hyperlink function ([ebe3eee](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/ebe3eeed7fe661367eb880b61d2e95e5e6da2d80))
+
 ## [6.14.8](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.14.7...v6.14.8) (2026-03-13)
 
 
