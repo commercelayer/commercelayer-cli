@@ -111,11 +111,15 @@ export class ux {
   }
 
   public static url(text: string, uri: string, params = {}): void {
+    this.log(this.hyperlink(text, uri, params))
+  }
+
+  public static hyperlink(text: string, uri: string, params = {}): string {
     const supports = require('supports-hyperlinks')
     if (supports.stdout) {
-      this.log(hyperlinker(text, uri, params))
+      return hyperlinker(text, uri, params)
     } else {
-      this.log(uri)
+      return uri
     }
   }
 
@@ -132,6 +136,7 @@ const {
   debug,
   done,
   flush,
+  hyperlink,
   info,
   log,
   logToStderr,
@@ -159,6 +164,7 @@ export {
   error,
   exit,
   flush,
+  hyperlink,
   info,
   log,
   logToStderr,

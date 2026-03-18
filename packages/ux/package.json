@@ -40,7 +40,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/cli-progress": "^3.11.6",
-    "@types/color": "^3.0.6",
+    "@types/color": "^3.0.7",
     "@types/jest": "^29.5.14",
     "@types/js-yaml": "^3.12.10",
     "@types/node": "^22.19.15",
