@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.14...v1.1.0) (2026-03-18)
+
+
+### Features
+
+* add hyperlink function ([41925d3](https://github.com/commercelayer/commercelayer-cli-ux/commit/41925d30344a98b00c98d738b6e9224bda7baffb))
+
 ## [1.0.14](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.13...v1.0.14) (2026-03-17)
 
 
