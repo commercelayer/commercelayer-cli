@@ -169,10 +169,6 @@ export default class MetricsAsk extends BaseCommand {
           errorMessage = 'Invalid or expired access token. Please log in again to your organization.'
           break
         }
-        case 'fetch failed': {
-          errorMessage = 'Failed to connect to the Metrics Chat endpoint.'
-          break
-        }
         case '404 not found': {
           errorMessage = 'Metrics Chat endpoint not found. Please check your configuration and try again.'
           break
@@ -285,6 +281,33 @@ export default class MetricsAsk extends BaseCommand {
   }
 
 
+  protected override async handleError(error: unknown): Promise<string> {
+
+    let errorMessage: string
+
+    if (error instanceof Error) {
+      if (error.cause && (error.cause instanceof Error) && ('code' in error.cause)) {
+        switch (error.cause.code) {
+          case 'ENOTFOUND':
+          case 'ECONNREFUSED': {
+            errorMessage = 'Failed to connect to the Metrics Chat endpoint.'
+            break
+          }
+          default: {
+            errorMessage = error.cause.message
+          }
+        }
+      } else errorMessage = error.message
+    }
+    else errorMessage = String(error)
+
+    if (DEBUG) this.log(inspect(error, false, null, true))
+    
+    return errorMessage
+
+  }
+
+
   private async sendPrompt(prompt: string): Promise<boolean> {
 
     const messageBody = {
@@ -310,9 +333,8 @@ export default class MetricsAsk extends BaseCommand {
       if (this.options.fullResponse && fullText) this.log(fullText)
 
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : String(err)
+      const errorMessage = await this.handleError(err)
       this.log(`❌ ${clColor.msg.error('Error:')} ${errorMessage}`)
-      if (DEBUG) this.log(inspect(err, false, null, true))
       return false
     } finally {
       if (this.spinner.isSpinning) this.spinner.stop()
