@@ -1,11 +1,12 @@
 import Configstore from 'configstore'
 import { join } from 'node:path'
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'node:fs'
-import type { Config } from '@oclif/core/lib/interfaces/config'
 import { type AppKey, type AppInfo, clApi, clConfig, type AccessToken } from '@commercelayer/cli-core'
+import { type Interfaces } from '@oclif/core'
 
 const packageJson = require('../package.json')
 
+type Config = Interfaces.Config
 
 
 const clicfg = new Configstore(packageJson.name as string, null, { globalConfigPath: true })

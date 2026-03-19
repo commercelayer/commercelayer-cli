@@ -1,9 +1,11 @@
-import { test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
 
 describe('config:set', () => {
-  test
-    .stdout()
-    .command(['config:set', 'fake', 'value'])
-    .catch(/Invalid configuration param/, { raiseIfNotThrown: false })
-    .it('runs config:set')
+  it('runs config:set', async () => {
+    const { error } = await runCommand(['config:set', 'fake', 'value'])
+
+    if (error && !/Invalid configuration param/.test(error.message)) {
+      throw error
+    }
+  })
 })

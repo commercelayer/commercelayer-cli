@@ -1,6 +1,6 @@
-import { Command, Flags, ux as cliux } from '@oclif/core'
+import { Command, Flags, type Interfaces } from '@oclif/core'
 import { clColor, clUtil } from '@commercelayer/cli-core'
-import type { Config } from '@oclif/core/lib/interfaces'
+import * as cliux from '@commercelayer/cli-ux'
 
 
 const PLUGIN_PREFIX = '@commercelayer/cli-plugin-'
@@ -105,12 +105,12 @@ const getAvailablePlugins = (): PluginRelease[] => {
 }
 
 
-const getInstalledPlugins = (config: Config): PluginRelease[] => {
+const getInstalledPlugins = (config: Interfaces.Config): PluginRelease[] => {
   const installed = config.getPluginsList().filter(p => (p.type === 'user') && p.name.startsWith(PLUGIN_PREFIX)).map(p => p.name)
   return AvailablePlugins.filter(p => installed.find(i => i === p.plugin) !== undefined)
 }
 
-const isPluginInstalled = (name: string, config: Config): boolean => {
+const isPluginInstalled = (name: string, config: Interfaces.Config): boolean => {
   const plugin = name.startsWith(PLUGIN_PREFIX) ? name : `${PLUGIN_PREFIX}${name}`
   return (getInstalledPlugins(config).findIndex(p => (p.plugin === plugin)) > -1)
 }

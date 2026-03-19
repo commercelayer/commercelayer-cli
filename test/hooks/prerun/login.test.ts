@@ -1,9 +1,9 @@
-import { expect, test } from '@oclif/test'
+import { expect } from 'chai'
+import { runHook } from '@oclif/test'
 
 describe('hooks', () => {
-  test
-    .stdout()
-    .hook('init', { id: 'noc' })
-    .do(output => expect(output.stdout).to.be.itself)
-    .it('shows a message')
+  it('prerun:login', async () => {
+    const { stdout } = await runHook('prerun', { id: 'noc' })
+    expect(stdout).to.be.itself
+  })
 })

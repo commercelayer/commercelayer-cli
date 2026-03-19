@@ -1,11 +1,9 @@
-import { expect, test } from '@oclif/test'
+import { expect } from 'chai'
+import { runCommand } from '@oclif/test'
 
 describe('plugins:latest', () => {
-  test
-    .stdout()
-    .command(['noc'])
-    .it('runs noc', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
-
+  it('runs noc', async () => {
+    const { stdout } = await runCommand(['noc'])
+    expect(stdout).to.contain('-= NoC =-')
+  })
 })

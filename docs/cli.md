@@ -2,8 +2,31 @@
 
 Core CLI commands.
 
+* [`commercelayer cli:dir`](#commercelayer-clidir)
 * [`commercelayer cli:update`](#commercelayer-cliupdate)
 * [`commercelayer cli:version`](#commercelayer-cliversion)
+
+### `commercelayer cli:dir`
+
+Show working directories used by the cli.
+
+```sh-session
+USAGE
+  $ commercelayer cli:dir
+
+DESCRIPTION
+  show working directories used by the cli
+
+ALIASES
+  $ commercelayer dir
+  $ commercelayer paths
+  $ commercelayer cli:paths
+
+EXAMPLES
+  cl cli:dir
+```
+
+_See code: [src/commands/cli/dir.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/cli/dir.ts)_
 
 ### `commercelayer cli:update`
 

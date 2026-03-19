@@ -90,14 +90,14 @@
     "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*",
     "lint": "eslint src --ext .ts --config .eslintrc",
     "lint:fix": "eslint src --fix",
-    "release": "pnpm upgrade && pnpm prepack && pnpm postpack"
+    "release": "pnpm upgrade && pnpm lint && pnpm test && pnpm prepack && pnpm postpack"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "^3.0.13",
     "@commercelayer/eslint-config-ts": "^1.4.5",
     "@fig/complete-oclif": "^2.0.1",
-    "@oclif/test": "^3.2.15",
+    "@oclif/test": "^4.1.16",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^4.3.20",
@@ -120,11 +120,11 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.10.8",
-    "@commercelayer/cli-ux": "^1.0.13",
+    "@commercelayer/cli-core": "oclif4",
+    "@commercelayer/cli-ux": "oclif4",
     "@commercelayer/provisioning-sdk": "^2.9.1",
     "@commercelayer/sdk": "^6.55.0",
-    "@oclif/core": "^3.27.0",
+    "@oclif/core": "^4.10.0",
     "@oclif/plugin-autocomplete": "^3.2.41",
     "@oclif/plugin-help": "6.2.14",
     "@oclif/plugin-not-found": "^3.2.75",

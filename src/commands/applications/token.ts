@@ -1,8 +1,8 @@
 import Command, { Flags } from '../../base'
 import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
 import { clOutput, type AppKey, clToken, clConfig, clColor, type AccessToken, type CustomToken } from '@commercelayer/cli-core'
-import type { Config } from '@oclif/core/lib/interfaces/config'
 import { printCurrent } from './current'
+import { type Interfaces } from '@oclif/core'
 
 
 
@@ -111,7 +111,7 @@ export default class ApplicationsToken extends Command {
 
 
 
-const newAccessToken = async (config: Config, app: AppKey, save: boolean = false): Promise<AccessToken> => {
+const newAccessToken = async (config: Interfaces.Config, app: AppKey, save: boolean = false): Promise<AccessToken> => {
 
 	const cfg = readConfigFile(config, app)
 	const token = await clToken.getAccessToken(cfg)
@@ -137,7 +137,7 @@ const newAccessToken = async (config: Config, app: AppKey, save: boolean = false
 }
 
 
-const generateAccessToken = (config: Config, app: AppKey, sharedSecret: string, valMinutes?: number): CustomToken => {
+const generateAccessToken = (config: Interfaces.Config, app: AppKey, sharedSecret: string, valMinutes?: number): CustomToken => {
 
 	const savedToken = readTokenFile(config, app)
 	const tokenData = clToken.decodeAccessToken(savedToken.accessToken)
