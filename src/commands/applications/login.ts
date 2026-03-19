@@ -3,9 +3,7 @@ import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-co
 import { clApi, clApplication, clColor, clCommand, clConfig, clToken } from '@commercelayer/cli-core'
 import clprovisioning from '@commercelayer/provisioning-sdk'
 import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
-import { Command, type Config, Flags } from '@oclif/core'
-import { CLIError } from '@oclif/core/lib/errors'
-import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import { Command, type Config, Errors, Flags } from '@oclif/core'
 import { appsDirCreate, ConfigParams, configParam, currentApplication, filterApplications, writeConfigFile, writeTokenFile } from '../../config'
 import { printCurrent } from './current'
 
@@ -84,13 +82,14 @@ export default class ApplicationsLogin extends Command {
 
 	async parse(c: any): Promise<any> {
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+		const parsed = await super.parse(c)
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
 		return parsed
 	}
 
-  
-  
+
+
 	async run(): Promise<any> {
 
 		const { flags } = await this.parse(ApplicationsLogin)
@@ -100,7 +99,6 @@ export default class ApplicationsLogin extends Command {
 
 
 		const scope = checkScope(flags.scope as string[])
-		const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
 
 		const config: AppAuth = {
 			clientId: flags.clientId,
@@ -119,6 +117,8 @@ export default class ApplicationsLogin extends Command {
 
 			const token = await clToken.getAccessToken(config)
 			if (!token?.accessToken) this.error('Unable to get access token')
+
+			const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
 
 			const app = await getApplicationInfo(config, token?.accessToken || '')
 
@@ -172,14 +172,14 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 	if (auth.scope.includes(clConfig.provisioning.scope)) auth.scope = clConfig.provisioning.scope
 
 	const provisioning = clApplication.isProvisioningApp(auth)
-	const api = auth.api || (provisioning? 'provisioning' : 'core')
+	const api = auth.api || (provisioning ? 'provisioning' : 'core')
 
 	let org: Partial<Organization>, app: Partial<Application>, user: any
 	if (provisioning) {
 		const clp = clprovisioning({ domain: auth.domain, accessToken })
 		// User info
 		const usr = await clp.user.retrieve().catch(() => { error(clp.user.type()) })
-		if (usr) user = { name: `${usr.first_name}${(usr.first_name && usr.last_name)? ' ' : ''}${usr.last_name}`, email: usr.email }
+		if (usr) user = { name: `${usr.first_name}${(usr.first_name && usr.last_name) ? ' ' : ''}${usr.last_name}`, email: usr.email }
 		org = { slug: 'provisioning', name: user?.name || 'Provisioning API' }
 		app = { name: 'Provisioning App' }
 	} else { // core
@@ -192,7 +192,8 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	const mode: ApiMode = tokenInfo.test ? 'test' : 'live'
 
-	const appInfo: AppInfo = { ...auth, 
+	const appInfo: AppInfo = {
+		...auth,
 		organization: org.name ?? undefined,
 		key: clApplication.appKey(),
 		slug: org.slug ?? undefined,
@@ -230,7 +231,7 @@ const checkScope = (scopeFlags: string[] | undefined): AuthScope => {
 
 			const scopeCheck = configParam(ConfigParams.scopeCheck)
 			if (scopeCheck && !scopeCheck.includes(scopePrefix))
-				throw new CLIError(`Invalid scope prefix: ${clColor.msg.error(scopePrefix)}`)
+				throw new Errors.CLIError(`Invalid scope prefix: ${clColor.msg.error(scopePrefix)}`)
 
 			scope.push(s)
 

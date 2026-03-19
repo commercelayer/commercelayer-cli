@@ -2,7 +2,6 @@ import { inspect } from 'node:util'
 import { type AppAuth, clApplication, clColor, clCommand, clToken } from '@commercelayer/cli-core'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command } from '@oclif/core'
-import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 import { appsDirCreate, ConfigParams, configParam, writeConfigFile, writeTokenFile } from '../../config'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
 
@@ -30,11 +29,12 @@ export default class ApplicationsAdd extends Command {
 
 
   async parse(c: any): Promise<any> {
-		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
-		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
-		return parsed
-	}
+    clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    const parsed = await super.parse(c)
+    clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
+    return parsed
+  }
 
 
 
@@ -46,7 +46,6 @@ export default class ApplicationsAdd extends Command {
       this.error(`You must provide one of the arguments ${clColor.cli.flag('clientSecret')} and ${clColor.cli.flag('scope')}`)
 
     const scope = checkScope(flags.scope as string[])
-    const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
 
     const config: AppAuth = {
       clientId: flags.clientId,
@@ -66,12 +65,14 @@ export default class ApplicationsAdd extends Command {
       const token = await clToken.getAccessToken(config)
       if (!token?.accessToken) this.error('Unable to get access token')
 
+      const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
+
       const app = await getApplicationInfo(config, token?.accessToken || '')
 
       const typeCheck = configParam(ConfigParams.applicationTypeCheck)
       if (typeCheck) {
         if (!typeCheck.includes(app.kind)) this.error(`The credentials provided are associated to an application of type ${clColor.msg.error(app.kind)} while the only allowed types are: ${clColor.api.kind(typeCheck.join(','))}`
-        // , { suggestions: [`Double check your credentials or access the online dashboard of ${clColor.api.organization(app.organization)} and create a new valid application `] }
+          // , { suggestions: [`Double check your credentials or access the online dashboard of ${clColor.api.organization(app.organization)} and create a new valid application `] }
         )
       }
       app.alias = alias
@@ -90,7 +91,7 @@ export default class ApplicationsAdd extends Command {
       else
         if (CommerceLayerStatic.isApiError(error)) this.error(inspect(error.errors, false, null, true))
         else {
-          const connectMsg = clApplication.isProvisioningApp(config)? clColor.msg.error('Provisioning API') : `organization ${clColor.msg.error(config.slug)}`
+          const connectMsg = clApplication.isProvisioningApp(config) ? clColor.msg.error('Provisioning API') : `organization${config.slug? ` ${clColor.msg.error(config.slug)}` : ''}`
           this.error(`Unable to connect to ${connectMsg}: ${clColor.italic(error.message)}`)
         }
     }

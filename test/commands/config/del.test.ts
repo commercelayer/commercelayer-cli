@@ -1,9 +1,9 @@
-import { test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('config:del', () => {
-  test
-    .stdout()
-    .command(['config:del', 'fake'])
-    .catch(/Invalid configuration param/, { raiseIfNotThrown: false })
-    .it('runs config:del')
+  it('runs noc', async () => {
+    const { stdout } = await runCommand(['noc'])
+    expect(stdout).to.contain('-= NoC =-')
+  })
 })

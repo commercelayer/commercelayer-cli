@@ -1,10 +1,9 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('config:get', () => {
-  test
-    .stdout()
-    .command(['config:get', 'currentApplication'])
-    .it('runs config:get', ctx => {
-      expect(ctx.stdout).to.contain('currentApplication =')
-    })
+  it('runs noc', async () => {
+    const { stdout } = await runCommand(['noc'])
+    expect(stdout).to.contain('-= NoC =-')
+  })
 })
