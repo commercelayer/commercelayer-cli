@@ -1,8 +1,8 @@
-import { Command, Flags, Args } from '@oclif/core'
-import { clOutput, clUpdate, clColor, clToken, type ApiMode, clUtil } from '@commercelayer/cli-core'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import { type ApiMode, clColor, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -75,8 +75,8 @@ export default abstract class extends Command {
     switch (status.toLowerCase()) {
       case 'completed': return clColor.msg.success(status)
       case 'interrupted': return clColor.msg.error(status)
-      case 'pending':
-      case 'in_progress':
+      // case 'pending':
+      // case 'in_progress':
       default: return status
     }
   }
@@ -117,4 +117,4 @@ export default abstract class extends Command {
 }
 
 
-export { Flags, Args, cliux }
+export { Args, cliux, Flags }

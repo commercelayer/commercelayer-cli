@@ -39,7 +39,7 @@ const generateInputs = async (filePath: string, fileFormat: 'csv' | 'json'): Pro
 
   switch (fileFormat) {
     case 'csv':  return generateInputsCSV(filePath)
-    case 'json':
+    // case 'json':
     default:  return generateInputJSON(filePath)
   }
 

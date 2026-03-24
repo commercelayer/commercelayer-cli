@@ -1,7 +1,7 @@
-import Command, { Flags, cliux } from '../../base'
-import Table, { type HorizontalAlignment } from 'cli-table3'
-import type { Import, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
+import type { Import, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
+import Table, { type HorizontalAlignment } from 'cli-table3'
+import Command, { cliux, Flags } from '../../base'
 
 
 const MAX_IMPORTS = 1000

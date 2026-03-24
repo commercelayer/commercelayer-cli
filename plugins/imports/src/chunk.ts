@@ -1,5 +1,5 @@
-import type { ImportCreate } from '@commercelayer/sdk'
 import { clConfig } from '@commercelayer/cli-core'
+import type { ImportCreate } from '@commercelayer/sdk'
 
 
 type Chunk = ImportCreate & {
@@ -125,5 +125,5 @@ const generateGroupUID = (): string => {
 }
 
 
-export { splitImports, splitChunks }
-export type { Chunk, Batch }
+export type { Batch, Chunk }
+export { splitChunks, splitImports }

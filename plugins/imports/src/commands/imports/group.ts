@@ -1,7 +1,7 @@
-import Command, { Args, cliux } from '../../base'
-import Table, { type HorizontalAlignment } from 'cli-table3'
-import type { Import, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
+import type { Import, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
+import Table, { type HorizontalAlignment } from 'cli-table3'
+import Command, { Args, cliux } from '../../base'
 
 
 

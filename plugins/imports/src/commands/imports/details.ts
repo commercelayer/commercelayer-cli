@@ -1,11 +1,11 @@
-import Command, { Flags, Args } from '../../base'
-import Table from 'cli-table3'
-import { clOutput, clColor, clUtil } from '@commercelayer/cli-core'
-import axios from 'axios'
-import { gunzipSync } from 'node:zlib'
-import { dirname } from 'node:path'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { dirname } from 'node:path'
+import { gunzipSync } from 'node:zlib'
+import { clColor, clOutput, clUtil } from '@commercelayer/cli-core'
 import type { Import } from '@commercelayer/sdk'
+import axios from 'axios'
+import Table from 'cli-table3'
+import Command, { Args, Flags } from '../../base'
 
 
 

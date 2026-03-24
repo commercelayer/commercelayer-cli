@@ -1,11 +1,12 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags, cliux } from '../../base'
+
+import { type ApiMode, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
-import { generateInputs } from '../../input'
 import type { SingleBar } from 'cli-progress'
-import { clUtil, clConfig, clColor, type ApiMode, clApi } from '@commercelayer/cli-core'
+import Command, { cliux, Flags } from '../../base'
+import { type Batch, type Chunk, splitChunks, splitImports } from '../../chunk'
+import { generateInputs } from '../../input'
 import { Monitor } from '../../monitor'
-import { type Chunk, type Batch, splitChunks, splitImports } from '../../chunk'
 
 
 
@@ -17,7 +18,7 @@ const SECURITY_DELAY = 50
 
 
 
-const importsDelay = (parallelRequests: number, env?: ApiMode): number => {
+const importsDelay = (_parallelRequests: number, env?: ApiMode): number => {
 
   /*
   const corrFact = (env === 'live')? 1 : 2
