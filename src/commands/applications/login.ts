@@ -118,8 +118,6 @@ export default class ApplicationsLogin extends Command {
 			const token = await clToken.getAccessToken(config)
 			if (!token?.accessToken) this.error('Unable to get access token')
 
-			const alias = checkAlias(flags.alias as string, this.config, flags.organization as string)
-
 			const app = await getApplicationInfo(config, token?.accessToken || '')
 
 			const typeCheck = configParam(ConfigParams.applicationTypeCheck)
@@ -128,7 +126,9 @@ export default class ApplicationsLogin extends Command {
 					// , { suggestions: [`Double check your credentials or access the online dashboard of ${clColor.api.organization(app.organization)} and create a new valid application `] }
 				)
 			}
-			app.alias = alias
+
+			app.alias = checkAlias(flags.alias as string, this.config, app.slug)
+
 
 			appsDirCreate(this.config)
 
