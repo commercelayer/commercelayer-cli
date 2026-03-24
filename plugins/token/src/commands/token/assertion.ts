@@ -1,7 +1,7 @@
-import { Command, Flags } from '@oclif/core'
+import type { KeyValString, OwnerType } from '@commercelayer/cli-core'
 import { clColor, clConfig, clOutput, clToken } from '@commercelayer/cli-core'
-import type { OwnerType, KeyValString } from '@commercelayer/cli-core'
 import { createAssertion, jwtDecode } from '@commercelayer/js-auth'
+import { Command, Flags } from '@oclif/core'
 
 
 export default class TokenAssertion extends Command {

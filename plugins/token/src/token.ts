@@ -1,5 +1,5 @@
-import type { AppAuth, AccessTokenInfo, CustomToken, AccessToken } from '@commercelayer/cli-core'
-import { clToken, clConfig } from '@commercelayer/cli-core'
+import type { AccessToken, AccessTokenInfo, AppAuth, CustomToken } from '@commercelayer/cli-core'
+import { clConfig, clToken } from '@commercelayer/cli-core'
 import commercelayer from '@commercelayer/sdk'
 
 

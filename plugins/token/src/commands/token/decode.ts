@@ -1,7 +1,7 @@
+import type { AccessTokenInfo } from '@commercelayer/cli-core'
 import { jwtDecode } from '@commercelayer/js-auth'
 import Command, { Args, Flags } from '../../base'
 import { decodeAccessToken } from '../../token'
-import type { AccessTokenInfo } from '@commercelayer/cli-core'
 
 
 

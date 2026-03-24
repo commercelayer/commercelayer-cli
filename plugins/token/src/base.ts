@@ -1,5 +1,5 @@
-import { Command, Flags, Args } from '@oclif/core'
-import { type AccessTokenInfo, clColor, clConfig, clOutput, clUpdate, type AuthScope } from '@commercelayer/cli-core'
+import { type AccessTokenInfo, type AuthScope, clColor, clConfig, clOutput, clUpdate } from '@commercelayer/cli-core'
+import { Args, Command, Flags } from '@oclif/core'
 import { CLIError } from '@oclif/core/lib/errors'
 
 
@@ -86,4 +86,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, Args }
+export { Args, Flags }

@@ -1,7 +1,7 @@
-import Command, { Flags } from '../../base'
-import {type AppAuth, clColor, clConfig, clCommand } from '@commercelayer/cli-core'
-import { decodeAccessToken, getAccessToken } from '../../token'
+import {type AppAuth, clColor, clCommand, clConfig } from '@commercelayer/cli-core'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import Command, { Flags } from '../../base'
+import { decodeAccessToken, getAccessToken } from '../../token'
 
 
 

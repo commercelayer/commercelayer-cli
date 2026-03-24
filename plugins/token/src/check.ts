@@ -1,5 +1,5 @@
 import { clColor } from '@commercelayer/cli-core'
-import { VALIDITY_MIN, VALIDITY_MAX } from './token'
+import { VALIDITY_MAX, VALIDITY_MIN } from './token'
 
 
 type Check = (input: any) => string | true
@@ -21,4 +21,4 @@ const checkValidity: Check = (mins: string | number) => {
 }
 
 
-export { checkMandatory, checkList, checkValidity }
+export { checkList, checkMandatory, checkValidity }
