@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.13...v3.2.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([53a0142](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/53a0142e5fd0dda2edab9def157853ef24d5a19c))
+
 ## [3.1.13](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.12...v3.1.13) (2026-03-23)
 
 
