@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.13...v5.2.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([84e0c6d](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/commit/84e0c6d2b10c3a38e6a11ea99a0ed89f07b0ff02))
+
 ## [5.1.13](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/compare/v5.1.12...v5.1.13) (2026-03-23)
 
 
