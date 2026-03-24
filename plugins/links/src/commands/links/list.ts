@@ -1,7 +1,7 @@
-import { BaseCommand, Flags, cliux } from '../../base'
-import Table, { type HorizontalAlignment } from 'cli-table3'
+import { clApi, clColor, clConfig, clUtil, type KeyValSort } from '@commercelayer/cli-core'
 import type { Link, QueryArraySortable, QueryPageSize, QueryParamsList, QueryRecordSortable } from '@commercelayer/sdk'
-import { type KeyValSort, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
+import Table, { type HorizontalAlignment } from 'cli-table3'
+import { BaseCommand, cliux, Flags } from '../../base'
 import { fillUTCDate, formatDate, linkStatus } from '../../util'
 
 
@@ -219,7 +219,7 @@ Examples:
 		const param = params[0]
 
 		const gteq = this.checkDateValue(param)	// check iso format
-		let lt
+		let lt: string
 
 		const dateTime = param.replace('Z', '').split('T')
 		if (dateTime.length === 2) {	// date and time

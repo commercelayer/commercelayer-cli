@@ -1,10 +1,10 @@
+import { clColor } from '@commercelayer/cli-core'
+import type { Link } from '@commercelayer/sdk'
 import { Flags } from '@oclif/core'
-import { BaseIdCommand } from '../../base'
 import Table from 'cli-table3'
 import isEmpty from 'lodash.isempty'
-import { clColor } from '@commercelayer/cli-core'
+import { BaseIdCommand } from '../../base'
 import { formatDate, linkStatus } from '../../util'
-import type { Link } from '@commercelayer/sdk'
 
 
 export default class LinksDetails extends BaseIdCommand {

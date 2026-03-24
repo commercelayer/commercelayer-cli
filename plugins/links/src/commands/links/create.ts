@@ -1,8 +1,8 @@
-import { Flags } from '@oclif/core'
-import { BaseEditCommand } from '../../base'
-import { type LinkCreate } from '@commercelayer/sdk'
 import { clApi, clColor, clOutput, clText } from '@commercelayer/cli-core'
+import type { LinkCreate } from '@commercelayer/sdk'
+import { Flags } from '@oclif/core'
 import open from 'open'
+import { BaseEditCommand } from '../../base'
 
 
 

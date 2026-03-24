@@ -10,7 +10,7 @@ export const linkStatus = (status?: Link['status']): string => {
     case 'active': return clColor.msg.success(status)
     case 'expired': return clColor.msg.warning(status)
     case 'disabled': return clColor.msg.error(status)
-    case 'pending':
+    // case 'pending':
     default: return status
   }
 }

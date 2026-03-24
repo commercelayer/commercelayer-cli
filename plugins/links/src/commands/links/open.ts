@@ -1,6 +1,6 @@
 import { clColor } from '@commercelayer/cli-core'
-import { BaseIdCommand } from '../../base'
 import open from 'open'
+import { BaseIdCommand } from '../../base'
 
 
 export default class LinksOpen extends BaseIdCommand {

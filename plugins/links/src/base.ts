@@ -1,6 +1,6 @@
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type LinkCreate } from '@commercelayer/sdk'
-import { Command, Args, Flags, ux as cliux } from '@oclif/core'
 import { clColor, clConfig, clOutput, clText, clUpdate, clUtil } from '@commercelayer/cli-core'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type LinkCreate } from '@commercelayer/sdk'
+import { Args, Command, ux as cliux, Flags } from '@oclif/core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { DOC_DATE_TIME_STRING_FORMAT, fillUTCDate } from './util'
 
@@ -263,7 +263,7 @@ export abstract class BaseEditCommand extends BaseCommand {
   }
 
 
-  protected checkClientId(value?: string, required: boolean = false): string {
+  protected checkClientId(value?: string, _required: boolean = false): string {
     if (value?.length !== 43) this.error(`Invalid client_id: ${clColor.msg.error(value)}`)
     return value
   }
@@ -285,4 +285,4 @@ export abstract class BaseIdCommand extends BaseCommand {
 
 
 
-export { Args, Flags, cliux }
+export { Args, cliux, Flags }

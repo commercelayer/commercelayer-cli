@@ -1,5 +1,5 @@
-import { BaseIdCommand } from '../../base'
 import { clColor } from '@commercelayer/cli-core'
+import { BaseIdCommand } from '../../base'
 
 export default class LinksDelete extends BaseIdCommand {
 

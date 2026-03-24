@@ -1,6 +1,6 @@
 import { fillUTCDate } from '../src/util'
 
-function checkDateValue(value: string): string {
+function _checkDateValue(value: string): string {
   try {
     const parsed = Date.parse(value)
     if (Number.isNaN(parsed)) throw new Error('Invalid date')
