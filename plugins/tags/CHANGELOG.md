@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.13...v2.2.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([9b20268](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/9b20268c2da1057393d8ef224ffbd3ae60491539))
+
 ## [2.1.13](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.1.12...v2.1.13) (2026-03-13)
 
 
