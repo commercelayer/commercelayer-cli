@@ -1,3 +1,10 @@
+# [7.0.0-oclif4.3](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.2...v7.0.0-oclif4.3) (2026-03-24)
+
+
+### Features
+
+* add biome ([e899e39](https://github.com/commercelayer/commercelayer-cli/commit/e899e3936fe7fb7b838c628891f50a37ef930778))
+
 # [7.0.0-oclif4.2](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.1...v7.0.0-oclif4.2) (2026-03-24)
 
 
