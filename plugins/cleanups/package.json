@@ -22,6 +22,7 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cl-cleanups",
@@ -52,7 +53,6 @@
     "check": "biome check --enforce-assist=true --write",
     "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
-  "types": "lib/index.d.ts",
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
     "@commercelayer/cli-dev": "^3.0.13",
