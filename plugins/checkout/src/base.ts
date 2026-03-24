@@ -1,6 +1,6 @@
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import { Command, Flags, Args } from '@oclif/core'
 import { clColor, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
@@ -108,4 +108,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, Args }
+export { Args, Flags }

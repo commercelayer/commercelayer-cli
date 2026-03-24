@@ -1,8 +1,8 @@
-import Command, { Flags } from '../../base'
-import CheckoutOrder from './order'
-import type { LineItemCreate } from '@commercelayer/sdk'
-import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
 import { clColor, clCommand } from '@commercelayer/cli-core'
+import type { LineItemCreate } from '@commercelayer/sdk'
+import Command, { Flags } from '../../base'
+import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
+import CheckoutOrder from './order'
 
 
 type LineItemType = 'skus' | 'bundles'
@@ -162,7 +162,7 @@ export default class CheckoutIndex extends Command {
 
   private parseItems(itemsFlags?: string[]): string[] {
     const items: string[] = []
-    if (itemsFlags) itemsFlags.forEach((i: string) => items.push(...i.split(',')))
+    if (itemsFlags) itemsFlags.forEach((i: string) => { items.push(...i.split(',')) })
     return items
   }
 

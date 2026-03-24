@@ -1,5 +1,5 @@
-import { clApi, clConfig } from '@commercelayer/cli-core'
 import type { ChildProcess } from 'node:child_process'
+import { clApi, clConfig } from '@commercelayer/cli-core'
 import open from 'open'
 
 

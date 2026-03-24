@@ -1,6 +1,6 @@
+import { clColor, clOutput } from '@commercelayer/cli-core'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import Command, { Args } from '../../base'
-import { clColor, clOutput } from '@commercelayer/cli-core'
 import { buildCheckoutUrl, openCheckoutUrl } from '../../url'
 
 
