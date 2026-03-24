@@ -1,9 +1,9 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
-import { BaseBreakdownCommand, BaseResourceCommand, Flags } from '../../base'
-import { intervals, operatorMap } from '../../common'
-import type { MetricsInterval, MetricsOperator, MetricsQuery, MetricsQueryDateBreakdown, MetricsQueryDateBreakdownResponse, MetricsResource } from '../../common'
-import { metricsRequest } from '../../request'
 import * as cliux from '@commercelayer/cli-ux'
+import { BaseBreakdownCommand, BaseResourceCommand, Flags } from '../../base'
+import type { MetricsInterval, MetricsOperator, MetricsQuery, MetricsQueryDateBreakdown, MetricsQueryDateBreakdownResponse, MetricsResource } from '../../common'
+import { intervals, operatorMap } from '../../common'
+import { metricsRequest } from '../../request'
 
 
 export default class MetricsDateBreakdown extends BaseBreakdownCommand {

@@ -1,9 +1,9 @@
+import { clColor } from '@commercelayer/cli-core'
+import * as cliux from '@commercelayer/cli-ux'
 import { Flags } from '@oclif/core'
 import { BaseResourceCommand } from '../../base'
 import type { MetricsOperation, MetricsOperator, MetricsQuery, MetricsQueryStats, MetricsResource } from '../../common'
 import { operatorMap, operators } from '../../common'
-import * as cliux from '@commercelayer/cli-ux'
-import { clColor } from '@commercelayer/cli-core'
 import { metricsRequest } from '../../request'
 
 

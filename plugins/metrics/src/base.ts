@@ -1,9 +1,9 @@
-import { CommerceLayerStatic } from '@commercelayer/sdk'
-import { Command, Args, Flags } from '@oclif/core'
 import { clColor, clConfig, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
+import * as cliux from '@commercelayer/cli-ux'
+import { CommerceLayerStatic } from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { type MetricsFilter, type MetricsQueryBreakdown, type MetricsQueryBreakdownResponse, operators, resources } from './common'
-import * as cliux from '@commercelayer/cli-ux'
 
 
 
@@ -105,7 +105,7 @@ export abstract class BaseCommand extends Command {
 
     if (flag) {
       const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
-      flagValues.forEach(a => values.push(...a))
+      flagValues.forEach(a => { values.push(...a) })
     }
 
     return values
@@ -143,7 +143,7 @@ export abstract class BaseFilterCommand extends BaseCommand {
     if (flag) {
       try {
         filter = JSON.parse(flag)
-      } catch (error) {
+      } catch (_error) {
         this.error(`Invalid ${clColor.cli.flag('filter')} format. Please provide a valid JSON string`)
       }
     }
@@ -211,7 +211,7 @@ export abstract class BaseBreakdownCommand extends BaseResourceCommand {
     if (flag) {
       try {
         breakdown = JSON.parse(flag)
-      } catch (error) {
+      } catch (_error) {
         this.error(`Invalid ${clColor.msg.error('breakdown')} format. Please provide a valid JSON string`)
       }
     }

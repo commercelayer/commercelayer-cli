@@ -1,11 +1,11 @@
 
-import readline from "node:readline/promises"
 import { randomUUID } from 'node:crypto'
-import { BaseCommand, Args, Flags } from '../../base'
+import readline from "node:readline/promises"
+import { inspect } from "node:util"
 import { clColor, clConfig } from "@commercelayer/cli-core"
 import { createParser } from "eventsource-parser"
 import ora, { type Ora } from 'ora'
-import { inspect } from "node:util"
+import { Args, BaseCommand, Flags } from '../../base'
 
 
 // Debug
@@ -152,14 +152,14 @@ export default class MetricsAsk extends BaseCommand {
     try {
       const json = await response.clone().json()
       errorMessage = json.error
-    } catch (err) {
+    } catch (_err) {
       errorMessage = await response.text()
     }
 
     if (response.status)
       switch (response.status) {
         case 404: {
-          errorMessage = 'Metrics Chat endpoint not found. Please check your configuration and try again.'
+          errorMessage = 'Metrics Chat endpoint not found.'
           break
         }
       }
@@ -170,7 +170,7 @@ export default class MetricsAsk extends BaseCommand {
           break
         }
         case '404 not found': {
-          errorMessage = 'Metrics Chat endpoint not found. Please check your configuration and try again.'
+          errorMessage = 'Metrics Chat endpoint not found.'
           break
         }
       }
@@ -281,7 +281,7 @@ export default class MetricsAsk extends BaseCommand {
   }
 
 
-  protected override async handleError(error: unknown): Promise<string> {
+  protected async handleInnerChatError(error: unknown): Promise<string> {
 
     let errorMessage: string
 
@@ -333,7 +333,7 @@ export default class MetricsAsk extends BaseCommand {
       if (this.options.fullResponse && fullText) this.log(fullText)
 
     } catch (err) {
-      const errorMessage = await this.handleError(err)
+      const errorMessage = await this.handleInnerChatError(err)
       this.log(`❌ ${clColor.msg.error('Error:')} ${errorMessage}`)
       return false
     } finally {

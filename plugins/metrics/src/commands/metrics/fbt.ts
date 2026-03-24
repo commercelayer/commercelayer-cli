@@ -1,9 +1,9 @@
-import { Flags } from '@oclif/core'
-import { BaseFilterCommand } from '../../base'
-import { metricsRequest } from '../../request'
-import type { MetricsQueryFbt } from '../../common'
 import { clColor } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import { Flags } from '@oclif/core'
+import { BaseFilterCommand } from '../../base'
+import type { MetricsQueryFbt } from '../../common'
+import { metricsRequest } from '../../request'
 
 
 export default class MetricsFbt extends BaseFilterCommand {

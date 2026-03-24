@@ -1,6 +1,6 @@
 
-import { expect } from 'chai'
 import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('metrics:breakdown', () => {
   it('runs NoC', async () => {

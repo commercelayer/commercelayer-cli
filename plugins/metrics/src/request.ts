@@ -1,6 +1,6 @@
 import { clApi, clColor, clConfig } from "@commercelayer/cli-core"
-import { analysisOperations, type MetricsOperation, type MetricsResource } from "./common"
 import * as cliux from '@commercelayer/cli-ux'
+import { analysisOperations, type MetricsOperation, type MetricsResource } from "./common"
 
 
 export async function metricsRequest(operation: MetricsOperation, query: any, resource?: MetricsResource, flags?: any): Promise<Response> {

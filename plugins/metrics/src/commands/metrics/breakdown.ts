@@ -1,9 +1,9 @@
 import { clColor } from '@commercelayer/cli-core'
+import * as cliux from '@commercelayer/cli-ux'
 import { BaseBreakdownCommand, BaseResourceCommand, Flags } from '../../base'
 import type { MetricsCondition, MetricsOperation, MetricsOperator, MetricsQuery, MetricsQueryBreakdown, MetricsResource, MetricsSort } from '../../common'
 import { conditions, sorts } from '../../common'
 import { metricsRequest } from '../../request'
-import * as cliux from '@commercelayer/cli-ux'
 
 
 export default class MetricsBreakdown extends BaseBreakdownCommand {

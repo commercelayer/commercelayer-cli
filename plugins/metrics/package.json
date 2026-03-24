@@ -3,6 +3,8 @@
   "description": "Commerce Layer CLI metrics plugin",
   "version": "1.1.7",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-metrics",
+  "repository": "commercelayer/commercelayer-cli-plugin-metrics",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-metrics/issues",
   "engines": {
     "node": ">=20"
@@ -13,7 +15,6 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-metrics",
   "keywords": [
     "ecommerce",
     "cli",
@@ -21,6 +22,7 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cl-metrics",
@@ -40,42 +42,38 @@
     ],
     "topicSeparator": ":"
   },
-  "repository": "commercelayer/commercelayer-cli-plugin-metrics",
   "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
     "build": "rm -rf lib && tsc -b",
-    "prepack": "pnpm build && oclif manifest && pnpm readme",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "test-local": "tsx test/spot.ts",
-    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "lint": "eslint src --ext .ts --config .eslintrc",
-    "lint:fix": "eslint src --fix",
-    "release": "pnpm upgrade && pnpm prepack && pnpm postpack"
+		"prepack": "pnpm build && oclif manifest && pnpm readme",
+		"postpack": "rm -f oclif.manifest.json",
+		"test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+		"posttest": "pnpm lint",
+		"readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+		"lint": "biome check --enforce-assist=true",
+		"check": "biome check --enforce-assist=true --write",
+		"release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
-  "types": "lib/index.d.ts",
   "devDependencies": {
+    "@biomejs/biome": "2.4.8",
     "@commercelayer/cli-dev": "^3.0.13",
-    "@commercelayer/eslint-config-ts": "^2.6.0",
-    "@oclif/plugin-help": "^6.2.38",
-    "@oclif/test": "^4.1.16",
+    "@oclif/plugin-help": "^6.2.40",
+    "@oclif/test": "^4.1.17",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.5.0",
     "chai": "^6.2.2",
-    "eslint": "^8.57.1",
     "mocha": "^11.7.5",
     "nyc": "^18.0.0",
-    "oclif": "^4.22.92",
+    "oclif": "^4.22.96",
     "semantic-release": "^25.0.3",
     "tsx": "^4.21.0",
-    "typescript": "5.9.3"
+    "typescript": "^6.0.2"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.10.8",
-    "@commercelayer/cli-ux": "^1.0.14",
+    "@commercelayer/cli-ux": "^1.1.0",
     "@commercelayer/sdk": "^7.9.0",
     "@oclif/core": "^3.27.0",
     "eventsource-parser": "^3.0.6",

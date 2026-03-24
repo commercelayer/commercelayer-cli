@@ -1,8 +1,8 @@
+import { clColor } from '@commercelayer/cli-core'
 import { Flags } from '@oclif/core'
 import { BaseResourceCommand } from '../../base'
 import type { MetricsOperation, MetricsQuery, MetricsQuerySearch, MetricsResource, MetricsSort } from '../../common'
 import { sorts } from '../../common'
-import { clColor } from '@commercelayer/cli-core'
 import { metricsRequest } from '../../request'
 
 
