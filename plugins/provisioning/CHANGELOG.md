@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.10...v2.1.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([693c4c2](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/693c4c287aac4022123426d2b2fcf30b12394b08))
+
 ## [2.0.10](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.0.9...v2.0.10) (2026-03-13)
 
 
