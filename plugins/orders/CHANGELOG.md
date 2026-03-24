@@ -1,3 +1,10 @@
+## [5.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.6.0...v5.6.1) (2026-03-24)
+
+
+### Bug Fixes
+
+* remove unused config files ([2ea8086](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/2ea8086d923ca291c3b2943439cc8c623e820e5b))
+
 # [5.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.5.0...v5.6.0) (2026-03-24)
 
 
