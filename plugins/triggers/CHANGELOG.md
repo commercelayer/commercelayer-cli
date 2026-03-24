@@ -1,3 +1,10 @@
+# [4.18.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.17.1...v4.18.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([3885480](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/38854800b88134f25fd34cb00214ca315fb4cb69))
+
 ## [4.17.1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.17.0...v4.17.1) (2026-03-13)
 
 
