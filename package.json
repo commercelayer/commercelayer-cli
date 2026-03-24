@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "7.0.0-oclif4.2",
+  "version": "7.0.0-oclif4.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "homepage": "https://github.com/commercelayer/commercelayer-cli",
