@@ -1,8 +1,8 @@
+import { type AccessToken, type AccessTokenInfo, type AppKey, type CustomToken, clColor, clConfig, clOutput, clToken } from '@commercelayer/cli-core'
+import type { Interfaces } from '@oclif/core'
 import Command, { Flags } from '../../base'
-import { readConfigFile, writeTokenFile, configFileExists, readTokenFile, ConfigParams, configParam, currentApplication } from '../../config'
-import { clOutput, type AppKey, clToken, clConfig, clColor, type AccessToken, type CustomToken } from '@commercelayer/cli-core'
+import { ConfigParams, configFileExists, configParam, currentApplication, readConfigFile, readTokenFile, writeTokenFile } from '../../config'
 import { printCurrent } from './current'
-import { type Interfaces } from '@oclif/core'
 
 
 
@@ -62,9 +62,9 @@ export default class ApplicationsToken extends Command {
 
 		try {
 
-			let expMinutes
-			let accessToken
-			let returnData
+			let expMinutes: number | undefined
+			let accessToken: string
+			let returnData: AccessToken | AccessTokenInfo | undefined
 
 			if (flags.shared) {
 				const token = generateAccessToken(this.config, app, flags.shared, flags.minutes)

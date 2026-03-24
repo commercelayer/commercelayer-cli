@@ -1,6 +1,6 @@
-import { Args, Flags, Command, ux as cliux } from '@oclif/core'
-import { type PluginRelease, getAvailablePlugins, getPluginInfo } from './available'
 import { clColor } from '@commercelayer/cli-core'
+import { Args, Command, ux as cliux, Flags } from '@oclif/core'
+import { getAvailablePlugins, getPluginInfo, type PluginRelease } from './available'
 
 export default class PluginsLatest extends Command {
 

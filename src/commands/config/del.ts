@@ -1,5 +1,5 @@
 import { clColor } from '@commercelayer/cli-core'
-import { Command, Flags, Args } from '@oclif/core'
+import { Args, Command, Flags } from '@oclif/core'
 import clicfg, { ConfigParams } from '../../config'
 
 

@@ -1,9 +1,9 @@
 import { type AppInfo, clColor } from '@commercelayer/cli-core'
-import { Command, Flags, Args } from '@oclif/core'
-import { currentApplication, filterApplications, readConfigFile } from '../../config'
-import ApplicationsLogin, { checkScope } from './login'
+import { Args, Command, Flags } from '@oclif/core'
 import { promptApplication } from '../../common'
+import { currentApplication, filterApplications, readConfigFile } from '../../config'
 import { printCurrent } from './current'
+import ApplicationsLogin, { checkScope } from './login'
 
 
 

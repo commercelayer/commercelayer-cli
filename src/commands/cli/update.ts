@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
+import { exec } from 'node:child_process'
 import { clColor } from '@commercelayer/cli-core'
-import { Command, Flags, ux as cliux } from '@oclif/core'
-import { exec } from 'child_process'
+import { Command, ux as cliux, Flags } from '@oclif/core'
 // import { detect as detectPackageManager } from 'detect-package-manager'
 
 
@@ -63,7 +62,7 @@ export default class CliUpdate extends Command {
   }
 
 
-  private getErrorMessage(error: Error | null, stdout: string, stderr: string): string {
+  private getErrorMessage(error: Error | null, _stdout: string, stderr: string): string {
     let errorMessage = ''
     if (error) errorMessage = error.message
     if (stderr && !['Reshimming asdf nodejs', 'WARN', 'warn', 'npm'].some(str => stderr.includes(str))) errorMessage = String(stderr)
@@ -75,7 +74,7 @@ export default class CliUpdate extends Command {
     try {
       const verCmd = await this.config.findCommand('cli:version')?.load()
       await verCmd?.run([]) // without [] the command uses args of command 'version' and it fails
-    } catch (err) { this.log() }
+    } catch (_err) { this.log() }
   }
 
 }

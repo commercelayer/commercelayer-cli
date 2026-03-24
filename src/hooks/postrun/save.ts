@@ -1,8 +1,8 @@
-import type { Hook } from '@oclif/core'
-import { existsSync, mkdirSync, readdirSync, writeFileSync, appendFileSync, unlinkSync } from 'node:fs'
+import { appendFileSync, existsSync, mkdirSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import type { Hook } from '@oclif/core'
 import kebabCase from 'lodash.kebabcase'
-import { configParam, ConfigParams } from '../../config'
+import { ConfigParams, configParam } from '../../config'
 
 
 const hook: Hook<'postrun'> = async function (opts) {
@@ -22,7 +22,7 @@ const hook: Hook<'postrun'> = async function (opts) {
     try {
       const data = JSON.stringify(opts.result, null, 4)
       writeFileSync(filePath, data)
-    } catch (error) {
+    } catch (_error) {
       this.warn(`Error saving ouput for command ${opts.Command.name}`)
     }
 

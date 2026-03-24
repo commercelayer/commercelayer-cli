@@ -1,7 +1,7 @@
+import { inspect } from 'node:util'
+import { clColor } from '@commercelayer/cli-core'
 import { Command } from '@oclif/core'
 import clicfg from '../../config'
-import { inspect } from 'util'
-import { clColor } from '@commercelayer/cli-core'
 
 
 export default class ConfigShow extends Command {

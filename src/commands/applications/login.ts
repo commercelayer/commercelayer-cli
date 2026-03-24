@@ -1,10 +1,10 @@
-import { Command, Errors, Flags, type Config } from '@oclif/core'
-import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
-import clprovisioning from '@commercelayer/provisioning-sdk'
-import { clApplication, clApi, clToken, clColor, clCommand, clConfig } from '@commercelayer/cli-core'
-import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
-import { ConfigParams, appsDirCreate, writeConfigFile, writeTokenFile, configParam, currentApplication, filterApplications } from '../../config'
 import { inspect } from 'node:util'
+import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
+import { clApi, clApplication, clColor, clCommand, clConfig, clToken } from '@commercelayer/cli-core'
+import clprovisioning from '@commercelayer/provisioning-sdk'
+import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
+import { Command, type Config, Errors, Flags } from '@oclif/core'
+import { appsDirCreate, ConfigParams, configParam, currentApplication, filterApplications, writeConfigFile, writeTokenFile } from '../../config'
 import { printCurrent } from './current'
 
 
@@ -174,7 +174,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 	const provisioning = clApplication.isProvisioningApp(auth)
 	const api = auth.api || (provisioning ? 'provisioning' : 'core')
 
-	let org: Partial<Organization>, app: Partial<Application>, user
+	let org: Partial<Organization>, app: Partial<Application>, user: any
 	if (provisioning) {
 		const clp = clprovisioning({ domain: auth.domain, accessToken })
 		// User info
@@ -266,4 +266,4 @@ const checkAlias = (alias: string, config?: Config, organization?: string): stri
 
 
 
-export { getApplicationInfo, checkScope, checkAlias }
+export { checkAlias, checkScope, getApplicationInfo }

@@ -1,5 +1,5 @@
-import { expect } from 'chai'
 import { runHook } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('hooks', () => {
   it('prerun:application', async () => {

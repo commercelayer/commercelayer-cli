@@ -1,7 +1,7 @@
-import Command, { Flags, cliux } from '../../base'
-import { configParam, ConfigParams, filterApplications } from '../../config'
+import { type AppInfo, type AppKey, clApplication, clColor, clOutput, clUtil } from '@commercelayer/cli-core'
+import Command, { cliux, Flags } from '../../base'
 import { printScope } from '../../common'
-import { type AppInfo, type AppKey, clApplication, clOutput, clUtil, clColor } from '@commercelayer/cli-core'
+import { ConfigParams, configParam, filterApplications } from '../../config'
 
 
 export default class ApplicationsIndex extends Command {
@@ -35,7 +35,7 @@ export default class ApplicationsIndex extends Command {
 		let configData: AppInfo[]
 		try {
 			configData = filterApplications(this.config, flags)
-		} catch (error) {
+		} catch (_error) {
 			this.error('No application config file found', { suggestions: ['Execute first login to at least one Commerce Layer application'] })
 		}
 

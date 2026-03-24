@@ -10,7 +10,7 @@ const pkg = require('../../../package.json')
 const UPDATE_COMMAND = 'cli:update'
 
 
-const hook: Hook<'init'> = async function (opts) {
+const hook: Hook<'init'> = async (opts) => {
 
   // Do not check for updates if in invisible mode or running the update command
   if (opts.argv.includes('--blind') || opts.argv.includes('--silent')) return

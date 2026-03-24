@@ -1,4 +1,4 @@
-import { run, handle, flush, settings, type Interfaces} from '@oclif/core'
+import { flush, handle, type Interfaces, run, settings } from '@oclif/core'
 
 
 export async function execute(options: {

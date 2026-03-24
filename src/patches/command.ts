@@ -27,7 +27,7 @@ export const patchCommand = (argv: string[]): string[] => {
 }
 
 
-const patchPluginCommand = (argv: string[], cmd: string, cmdIdx: number, res?: string): string[] => {
+const patchPluginCommand = (argv: string[], cmd: string, cmdIdx: number, _res?: string): string[] => {
 	argv[cmdIdx] = `plugins:${cmd}`
 	return argv
 }

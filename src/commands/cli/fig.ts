@@ -1,9 +1,9 @@
-import { clColor, clText, clUtil } from "@commercelayer/cli-core"
-import { Command, Flags, ux as cliux } from "@oclif/core"
-import { writeFileSync, existsSync } from "node:fs"
-import { join } from "node:path"
-import { format } from 'prettier'
+import { existsSync, writeFileSync } from "node:fs"
 import { homedir } from 'node:os'
+import { join } from "node:path"
+import { clColor, clText, clUtil } from "@commercelayer/cli-core"
+import { Command, ux as cliux, Flags } from "@oclif/core"
+import { format } from 'prettier'
 
 
 const FIG_SPECS_DIR = `${homedir()}/Documents/GitHub/fig-autocomplete/src`

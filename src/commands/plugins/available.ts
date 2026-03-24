@@ -1,6 +1,6 @@
-import { Command, Flags, type Interfaces } from '@oclif/core'
 import { clColor, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import { Command, Flags, type Interfaces } from '@oclif/core'
 
 
 const PLUGIN_PREFIX = '@commercelayer/cli-plugin-'
@@ -83,7 +83,7 @@ const AvailablePlugins: PluginRelease[] = [
 
 const getPluginInfo = (pluginName?: string): PluginRelease | undefined => {
 
-  let plugin
+  let plugin: any
 
   if (pluginName) {
     AvailablePlugins.filter(p => p.enabled).some(p => {
@@ -116,5 +116,5 @@ const isPluginInstalled = (name: string, config: Interfaces.Config): boolean => 
 }
 
 
-export { getPluginInfo, getAvailablePlugins, getInstalledPlugins, isPluginInstalled }
 export type { PluginRelease }
+export { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled }
