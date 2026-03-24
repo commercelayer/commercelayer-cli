@@ -1,7 +1,7 @@
-import { BaseCommand, Flags } from '../../base'
 import { URL } from 'node:url'
 import { clColor } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import { BaseCommand, Flags } from '../../base'
 
 
 export default class WebhooksCreate extends BaseCommand {

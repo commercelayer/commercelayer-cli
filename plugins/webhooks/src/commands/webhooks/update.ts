@@ -1,8 +1,8 @@
-import { BaseIdCommand, Flags } from '../../base'
 import { URL } from 'node:url'
-import type { WebhookUpdate } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
+import type { WebhookUpdate } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import { BaseIdCommand, Flags } from '../../base'
 
 
 export default class WebhooksUpdate extends BaseIdCommand {

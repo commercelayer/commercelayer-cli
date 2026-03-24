@@ -1,9 +1,9 @@
 
-import { Command, Flags, Args } from '@oclif/core'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import { clOutput, clUpdate, clColor, clUtil } from '@commercelayer/cli-core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import { clColor, clOutput, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -98,4 +98,4 @@ export abstract class BaseIdCommand extends BaseCommand {
 
 
 
-export { Flags, Args, cliux }
+export { Args, cliux, Flags }

@@ -1,8 +1,8 @@
-import { BaseCommand, Flags, cliux } from '../../base'
-import Table, { type HorizontalAlignment } from 'cli-table3'
-import type { QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
+import type { QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table, { type HorizontalAlignment } from 'cli-table3'
+import { BaseCommand, cliux, Flags } from '../../base'
 
 
 export default class WebhooksList extends BaseCommand {

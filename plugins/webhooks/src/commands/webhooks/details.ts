@@ -1,10 +1,10 @@
-import { BaseIdCommand, Flags } from '../../base'
+import { clColor, clOutput } from '@commercelayer/cli-core'
+import type { QueryParamsRetrieve } from '@commercelayer/sdk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 import Table from 'cli-table3'
 import isEmpty from 'lodash.isempty'
-import { clOutput, clColor } from '@commercelayer/cli-core'
-import type { QueryParamsRetrieve } from '@commercelayer/sdk'
+import { BaseIdCommand, Flags } from '../../base'
 import { buildEventsTableData } from './events'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 export default class WebhooksDetails extends BaseIdCommand {

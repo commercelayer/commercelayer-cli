@@ -1,8 +1,9 @@
 /* eslint-disable no-await-in-loop */
-import { BaseIdCommand, Flags, cliux } from '../../base'
-import { clUtil, clColor, clOutput } from '@commercelayer/cli-core'
-import { responseCodeColor } from './event'
+
+import { clColor, clOutput, clUtil } from '@commercelayer/cli-core'
 import type { EventCallback } from '@commercelayer/sdk'
+import { BaseIdCommand, cliux, Flags } from '../../base'
+import { responseCodeColor } from './event'
 
 
 const MAX_LISTEN_TIME = 60 * 2	// 2 minutes

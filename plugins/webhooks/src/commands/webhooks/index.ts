@@ -1,6 +1,6 @@
-import { BaseCommand, Args } from '../../base'
-import ListCommand from './list'
+import { Args, BaseCommand } from '../../base'
 import DetailsCommand from './details'
+import ListCommand from './list'
 
 
 export default class WebhooksIndex extends BaseCommand {

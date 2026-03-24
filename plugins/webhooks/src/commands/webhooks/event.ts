@@ -1,8 +1,8 @@
-import { BaseIdCommand, Flags } from '../../base'
-import Table from 'cli-table3'
-import { clOutput, clColor } from '@commercelayer/cli-core'
+import { clColor, clOutput } from '@commercelayer/cli-core'
 import type { EventCallback } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table from 'cli-table3'
+import { BaseIdCommand, Flags } from '../../base'
 
 
 export default class WebhooksEvent extends BaseIdCommand {

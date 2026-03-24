@@ -1,6 +1,6 @@
+import { clColor } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { BaseIdCommand } from '../../base'
-import { clColor } from '@commercelayer/cli-core'
 
 
 export default class WebhooksDestroy extends BaseIdCommand {

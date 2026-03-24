@@ -1,6 +1,6 @@
+import { clColor, clOutput } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { BaseIdCommand, Flags } from '../../base'
-import { clOutput, clColor } from '@commercelayer/cli-core'
 
 
 

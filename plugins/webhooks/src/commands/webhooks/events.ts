@@ -1,9 +1,9 @@
-import { BaseIdCommand, Flags, cliux } from '../../base'
-import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
-import { clConfig, clOutput, clColor, clApi, clUtil } from '@commercelayer/cli-core'
-import { responseCodeColor } from './event'
+import { clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
 import type { EventCallback, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
+import { BaseIdCommand, cliux, Flags } from '../../base'
+import { responseCodeColor } from './event'
 
 
 const MAX_EVENTS = 1000
