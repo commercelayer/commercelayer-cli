@@ -1,3 +1,10 @@
+# [6.17.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.16.0...v6.17.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([9cd4ec3](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/9cd4ec313d87254ff584c6cd55add3c792c5c031))
+
 # [6.16.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.15.0...v6.16.0) (2026-03-18)
 
 
