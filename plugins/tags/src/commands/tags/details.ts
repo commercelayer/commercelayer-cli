@@ -1,7 +1,7 @@
-import { BaseIdCommand } from '../../base'
-import Table from 'cli-table3'
-import { clOutput, clColor } from '@commercelayer/cli-core'
+import { clColor, clOutput } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table from 'cli-table3'
+import { BaseIdCommand } from '../../base'
 
 
 

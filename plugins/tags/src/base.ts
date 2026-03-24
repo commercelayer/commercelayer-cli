@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import { clColor, clToken, clUpdate, clOutput, clConfig, clUtil } from '@commercelayer/cli-core'
-import { Command, Flags, Args } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
-import commercelayer, { CommerceLayerStatic, Bundles, BuyXPayYPromotions, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk'
-import type { CommerceLayerClient, TaggableResource, TaggableResourceType, ListResponse, Tag } from '@commercelayer/sdk'
+import { clColor, clConfig, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import type { CommerceLayerClient, ListResponse, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
+import commercelayer, { Bundles, BuyXPayYPromotions, CommerceLayerStatic, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 
@@ -101,7 +101,7 @@ export default abstract class BaseCommand extends Command {
 
 
 
-  protected handleError(error: CommandError, flags?: any, id?: string): void {
+  protected handleError(error: CommandError, _flags?: any, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -166,9 +166,8 @@ export default abstract class BaseCommand extends Command {
 
   protected async findByFriendlyAttribute(value: string, type: TaggableResourceType): Promise<TaggableResource | undefined> {
 
-    let attribute
+    let attribute: string | undefined
 
-    // eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
     switch (type) {
       case Returns.TYPE:
       case Shipments.TYPE:
@@ -191,7 +190,7 @@ export default abstract class BaseCommand extends Command {
 
     }
 
-    let resource
+    let resource: TaggableResource | undefined
     if (attribute) {
       const client: any = this.cl[type as keyof CommerceLayerClient]
       const resources = await client.list({ filters: { [`${attribute}_eq`]: value }, include: ['tags'] })
@@ -216,4 +215,4 @@ export abstract class BaseIdCommand extends BaseCommand {
 
 
 
-export { Flags, Args, cliux }
+export { Args, cliux, Flags }

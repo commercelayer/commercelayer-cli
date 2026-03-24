@@ -1,8 +1,8 @@
-import Command, { Flags, cliux } from '../../base'
-import Table from 'cli-table3'
-import type { QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
+import type { QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table from 'cli-table3'
+import Command, { cliux, Flags } from '../../base'
 
 
 const MAX_TAGS = 1000

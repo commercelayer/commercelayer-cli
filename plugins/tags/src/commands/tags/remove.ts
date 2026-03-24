@@ -1,6 +1,6 @@
-import BaseCommand, { Flags } from '../../base'
-import type { CommerceLayerClient, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
 import { clApi, clColor, clText } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
+import BaseCommand, { Flags } from '../../base'
 
 
 

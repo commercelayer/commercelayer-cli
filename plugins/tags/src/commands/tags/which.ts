@@ -1,8 +1,8 @@
-import { BaseIdCommand, Flags, cliux } from '../../base'
-import Table from 'cli-table3'
-import type { CommerceLayerClient, QueryParamsList, Tag, ApiResource, ListResponse, TaggableResource, QueryPageSize } from '@commercelayer/sdk'
 import { clApi, clColor, clConfig, clOutput, clText, clUtil } from '@commercelayer/cli-core'
+import type { ApiResource, CommerceLayerClient, ListResponse, QueryPageSize, QueryParamsList, Tag, TaggableResource } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table from 'cli-table3'
+import { BaseIdCommand, cliux, Flags } from '../../base'
 
 
 const MAX_RESOURCES = 1000

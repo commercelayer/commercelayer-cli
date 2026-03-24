@@ -1,7 +1,7 @@
 
+import { clColor } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import { BaseIdCommand, Flags } from '../../base'
-import { clColor } from '@commercelayer/cli-core'
 
 
 

@@ -1,8 +1,8 @@
-import { BaseIdCommand, Flags, cliux } from '../../base'
-import Table from 'cli-table3'
 import { clColor, clConfig } from '@commercelayer/cli-core'
-import type { CommerceLayerClient, TaggableResource, TaggableResourceType, ApiResource } from '@commercelayer/sdk'
+import type { ApiResource, CommerceLayerClient, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table from 'cli-table3'
+import { BaseIdCommand, cliux, Flags } from '../../base'
 
 
 
@@ -74,7 +74,7 @@ export default class TagsCount extends BaseIdCommand {
 
       let output = ''
 
-      const rows = Object.entries(taggedResources).filter(([key, val]) => ((val !== 0) || flags.zero || resType))
+      const rows = Object.entries(taggedResources).filter(([_key, val]) => ((val !== 0) || flags.zero || resType))
       if (rows.length === 0) {
         output = 'No resources found with this tag'
       }
