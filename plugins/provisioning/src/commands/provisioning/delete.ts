@@ -1,72 +1,80 @@
-import Command, { Args } from '../../base'
-import { type CommerceLayerProvisioningClient } from '@commercelayer/provisioning-sdk'
-import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { clCommand, clColor } from '@commercelayer/cli-core'
+import { clColor, clCommand } from "@commercelayer/cli-core";
+import type { CommerceLayerProvisioningClient } from "@commercelayer/provisioning-sdk";
+import Command, { Args } from "../../base";
+import { addRequestReader, isRequestInterrupted } from "../../lang";
 
-
-const OPERATION = 'delete'
+const OPERATION = "delete";
 
 export default class ProvisioningDelete extends Command {
+	static description = "delete an existing resource";
 
-	static description = 'delete an existing resource'
-
-	static aliases = ['prov:delete', 'pd', 'pdelete', 'pdel']
+	static aliases = ["prov:delete", "pd", "pdelete", "pdel"];
 
 	static examples = [
-		'$ commercelayer provisioning:delete api_credentials/<id>',
-		'$ cl prov:delete api_credentials <id>',
-	]
+		"$ commercelayer provisioning:delete api_credentials/<id>",
+		"$ cl prov:delete api_credentials <id>",
+	];
 
 	static flags = {
-		...(clCommand.commandFlags(Command.flags, [/* FLAG_SAVE_PARAMS, FLAG_LOAD_PARAMS, */'fields', 'include', 'json', 'unformatted']))
-	}
+		...clCommand.commandFlags(Command.flags, [
+			/* FLAG_SAVE_PARAMS, FLAG_LOAD_PARAMS, */ "fields",
+			"include",
+			"json",
+			"unformatted",
+		]),
+	};
 
 	static args = {
 		...Command.args,
-		id: Args.string({ name: 'id', description: 'id of the resource to delete', required: false })
-	}
-
+		id: Args.string({
+			name: "id",
+			description: "id of the resource to delete",
+			required: false,
+		}),
+	};
 
 	async run(): Promise<any> {
+		const { args, flags } = await this.parse(ProvisioningDelete);
 
-		const { args, flags } = await this.parse(ProvisioningDelete)
+		const invalidFlags: string[] = ["fields", "include"];
+		invalidFlags.forEach((x) => {
+			if (flags[x as keyof typeof flags])
+				this.error(
+					`Flag not supported in ${clColor.cli.command(OPERATION)} operation: ${clColor.style.error(x)}`,
+				);
+		});
 
-		const invalidFlags: string[] = ['fields', 'include']
-		invalidFlags.forEach(x => {
-			if (flags[x as keyof typeof flags]) this.error(`Flag not supported in ${clColor.cli.command(OPERATION)} operation: ${clColor.style.error(x)}`)
-		})
+		const { res, id } = this.checkResourceId(args.resource, args.id);
 
+		const resource = this.checkResource(res, { singular: true });
 
-		const { res, id } = this.checkResourceId(args.resource, args.id)
+		const showHeaders = flags.headers || flags["headers-only"];
 
-		const resource = this.checkResource(res, { singular: true })
+		const cl = this.initCommerceLayer(flags);
 
-		const showHeaders = flags.headers || flags['headers-only']
-
-
-		const cl = this.initCommerceLayer(flags)
-
-		const rawReader = (flags.raw && showHeaders) ? cl.addRawResponseReader({ headers: showHeaders }) : undefined
-		const reqReader = flags.doc ? addRequestReader(cl) : undefined
+		const rawReader =
+			flags.raw && showHeaders
+				? cl.addRawResponseReader({ headers: showHeaders })
+				: undefined;
+		const reqReader = flags.doc ? addRequestReader(cl) : undefined;
 
 		try {
+			const resSdk: any =
+				cl[resource.api as keyof CommerceLayerProvisioningClient];
+			this.checkOperation(resSdk, OPERATION);
 
-			const resSdk: any = cl[resource.api as keyof CommerceLayerProvisioningClient]
-			this.checkOperation(resSdk, OPERATION)
+			await resSdk.delete(id);
 
-			await resSdk.delete(id)
+			if (showHeaders) this.printHeaders(rawReader?.headers, flags);
 
-			if (showHeaders) this.printHeaders(rawReader?.headers, flags)
-
-			this.log(`\n${clColor.style.success('Successfully')} deleted resource of type ${clColor.style.resource(resource.type)} with id ${clColor.style.id(id)}\n`)
-
+			this.log(
+				`\n${clColor.style.success("Successfully")} deleted resource of type ${clColor.style.resource(resource.type)} with id ${clColor.style.id(id)}\n`,
+			);
 		} catch (error) {
 			if (isRequestInterrupted(error) && reqReader) {
-				await this.showLiveDocumentation(reqReader.request, undefined, flags)
-				cl.removeInterceptor('request', reqReader.id)
-			} else this.printError(error, flags, args)
+				await this.showLiveDocumentation(reqReader.request, undefined, flags);
+				cl.removeInterceptor("request", reqReader.id);
+			} else this.printError(error, flags, args);
 		}
-
 	}
-
 }

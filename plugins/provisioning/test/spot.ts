@@ -1,13 +1,10 @@
-import fs from 'fs'
-
-
+import { writeFileSync } from "node:fs"
 
 const numSkus = 15000
-const filePath = '/Users/pierlu/Desktop/skus.csv'
+const filePath = "/Users/pierlu/Desktop/skus.csv"
 
-
-let skus = 'code,name,shipping_category_id'
+let skus = "code,name,shipping_category_id"
 
 for (let i = 0; i < numSkus; i++) skus += `\nSKU${i},Sku ${i},rNmdOFXgRK`
 
-fs.writeFileSync(filePath, skus)
+writeFileSync(filePath, skus)
