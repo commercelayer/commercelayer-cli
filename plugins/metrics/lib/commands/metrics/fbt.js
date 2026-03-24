@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
+const cli_core_1 = require("@commercelayer/cli-core");
+const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
 const core_1 = require("@oclif/core");
 const base_1 = require("../../base");
 const request_1 = require("../../request");
-const cli_core_1 = require("@commercelayer/cli-core");
-const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
 class MetricsFbt extends base_1.BaseFilterCommand {
     static operation = 'fbt';
     static aliases = [MetricsFbt.operation];

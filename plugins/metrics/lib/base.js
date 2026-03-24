@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Flags = exports.Args = exports.BaseBreakdownCommand = exports.BaseResourceCommand = exports.BaseFilterCommand = exports.BaseCommand = void 0;
 const tslib_1 = require("tslib");
-const sdk_1 = tslib_1.__importStar(require("@commercelayer/sdk"));
+const cli_core_1 = require("@commercelayer/cli-core");
+const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
+const sdk_1 = require("@commercelayer/sdk");
 const core_1 = require("@oclif/core");
 Object.defineProperty(exports, "Args", { enumerable: true, get: function () { return core_1.Args; } });
 Object.defineProperty(exports, "Flags", { enumerable: true, get: function () { return core_1.Flags; } });
-const cli_core_1 = require("@commercelayer/cli-core");
 const common_1 = require("./common");
-const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
 const pkg = require('../package.json');
 const REQUIRED_APP_KIND = cli_core_1.clConfig.metrics.applications;
 class BaseCommand extends core_1.Command {
@@ -56,18 +56,23 @@ class BaseCommand extends core_1.Command {
         else
             return await super.catch(error);
     }
-    commercelayerInit(flags) {
-        const organization = flags.organization;
-        const domain = flags.domain;
-        const accessToken = flags.accessToken;
-        const userAgent = cli_core_1.clUtil.userAgent(this.config);
-        return (0, sdk_1.default)({
-            organization,
-            domain,
-            accessToken,
-            userAgent
-        });
-    }
+    /*
+      protected commercelayerInit(flags: any): CommerceLayerClient {
+    
+        const organization = flags.organization
+        const domain = flags.domain
+        const accessToken = flags.accessToken
+        const userAgent = clUtil.userAgent(this.config)
+    
+        return commercelayer({
+          organization,
+          domain,
+          accessToken,
+          userAgent
+        })
+    
+      }
+    */
     checkAcessTokenData(accessToken, flags) {
         const info = cli_core_1.clToken.decodeAccessToken(accessToken);
         if (info === null)
@@ -82,7 +87,7 @@ class BaseCommand extends core_1.Command {
         const values = [];
         if (flag) {
             const flagValues = flag.map(f => f.split(',').map(t => t.trim()));
-            flagValues.forEach(a => values.push(...a));
+            flagValues.forEach(a => { values.push(...a); });
         }
         return values;
     }
@@ -113,7 +118,7 @@ class BaseFilterCommand extends BaseCommand {
             try {
                 filter = JSON.parse(flag);
             }
-            catch (error) {
+            catch (_error) {
                 this.error(`Invalid ${cli_core_1.clColor.cli.flag('filter')} format. Please provide a valid JSON string`);
             }
         }
@@ -166,7 +171,7 @@ class BaseBreakdownCommand extends BaseResourceCommand {
             try {
                 breakdown = JSON.parse(flag);
             }
-            catch (error) {
+            catch (_error) {
                 this.error(`Invalid ${cli_core_1.clColor.msg.error('breakdown')} format. Please provide a valid JSON string`);
             }
         }

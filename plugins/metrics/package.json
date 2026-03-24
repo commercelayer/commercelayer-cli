@@ -44,14 +44,14 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc -b",
-		"prepack": "pnpm build && oclif manifest && pnpm readme",
-		"postpack": "rm -f oclif.manifest.json",
-		"test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-		"posttest": "pnpm lint",
-		"readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-		"lint": "biome check --enforce-assist=true",
-		"check": "biome check --enforce-assist=true --write",
-		"release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "posttest": "pnpm lint",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write",
+    "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
@@ -74,7 +74,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "^5.10.8",
     "@commercelayer/cli-ux": "^1.1.0",
-    "@commercelayer/sdk": "^7.9.0",
+    "@commercelayer/sdk": "^6.55.0",
     "@oclif/core": "^3.27.0",
     "eventsource-parser": "^3.0.6",
     "ora": "^9.3.0",

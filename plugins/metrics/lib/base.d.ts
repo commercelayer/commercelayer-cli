@@ -1,5 +1,4 @@
-import { type CommerceLayerClient } from '@commercelayer/sdk';
-import { Command, Args, Flags } from '@oclif/core';
+import { Args, Command, Flags } from '@oclif/core';
 import { type MetricsFilter, type MetricsQueryBreakdown } from './common';
 export declare abstract class BaseCommand extends Command {
     static baseFlags: {
@@ -10,7 +9,6 @@ export declare abstract class BaseCommand extends Command {
     init(): Promise<any>;
     catch(error: any): Promise<any>;
     protected handleError(error: any, flags?: any): Promise<any>;
-    protected commercelayerInit(flags: any): CommerceLayerClient;
     protected checkAcessTokenData(accessToken: string, flags?: any): boolean;
     protected multivalFlag(flag?: string[]): string[];
     protected printResponse(response: Response): Promise<void>;

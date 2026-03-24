@@ -56,7 +56,6 @@ DESCRIPTION
   perform a breakdown query on the Metrics API endpoint
 
 ALIASES
-  $ commercelayer metrics:break
   $ commercelayer breakdown
 
 EXAMPLES
@@ -104,9 +103,6 @@ DESCRIPTION
   perform a date breakdown query on the Metrics API endpoint
 
 ALIASES
-  $ commercelayer metrics:breakdate
-  $ commercelayer metrics:date
-  $ commercelayer breakdate
   $ commercelayer date_breakdown
 
 EXAMPLES

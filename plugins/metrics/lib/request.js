@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.metricsRequest = metricsRequest;
 const tslib_1 = require("tslib");
 const cli_core_1 = require("@commercelayer/cli-core");
-const common_1 = require("./common");
 const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
+const common_1 = require("./common");
 async function metricsRequest(operation, query, resource, flags) {
     console.log();
     cliux.action.start(`Performing ${cli_core_1.clColor.yellow(operation)} operation ${resource ? `on ${cli_core_1.clColor.api.resource(resource)}` : ''}`);

@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const cli_core_1 = require("@commercelayer/cli-core");
+const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
 const base_1 = require("../../base");
 const common_1 = require("../../common");
 const request_1 = require("../../request");
-const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
 class MetricsDateBreakdown extends base_1.BaseBreakdownCommand {
     static operation = 'date_breakdown';
-    static aliases = ['metrics:breakdate', 'metrics:date', 'breakdate', MetricsDateBreakdown.operation];
+    static aliases = [MetricsDateBreakdown.operation];
     static description = 'perform a date breakdown query on the Metrics API endpoint';
     static examples = [
         'commercelayer metrics:date_breakdown orders -b order.placed_at -f order.total_amount_with_taxes -O stats -i month'

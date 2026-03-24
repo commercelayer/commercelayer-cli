@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
+const cli_core_1 = require("@commercelayer/cli-core");
+const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
 const core_1 = require("@oclif/core");
 const base_1 = require("../../base");
 const common_1 = require("../../common");
-const cliux = tslib_1.__importStar(require("@commercelayer/cli-ux"));
-const cli_core_1 = require("@commercelayer/cli-core");
 const request_1 = require("../../request");
 class MetricsStats extends base_1.BaseResourceCommand {
     static operation = 'stats';
