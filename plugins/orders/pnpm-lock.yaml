@@ -12,8 +12,8 @@ importers:
         specifier: ^5.10.8
         version: 5.10.8
       '@commercelayer/cli-ux':
-        specifier: 1.0.6
-        version: 1.0.6(@oclif/core@3.27.0)
+        specifier: ^1.1.0
+        version: 1.1.0(@oclif/core@3.27.0)
       '@commercelayer/sdk':
         specifier: ^6.55.0
         version: 6.55.0
@@ -402,8 +402,8 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@commercelayer/cli-ux@1.0.6':
-    resolution: {integrity: sha512-aVLtkhdHHaoYm5XUYFdZpzvjmDmlXe9yE2siWlZ/nSzOIcmabNg5dbbBqYsPPuyH0mmFlWPAuZh+Eeap38A1rQ==}
+  '@commercelayer/cli-ux@1.1.0':
+    resolution: {integrity: sha512-Cis4Kl7eScp3UjMY3I9NjKFvLbBp8ag2C0e8djXKE+VvQjrGs9rlng4sGUyNbkN38HwbAqdjHSQaxqZ4CX9zvQ==}
     engines: {node: '>=20'}
     peerDependencies:
       '@oclif/core': 3.27.0
@@ -4202,7 +4202,7 @@ snapshots:
       normalize-package-data: 5.0.0
       tslib: 2.8.1
 
-  '@commercelayer/cli-ux@1.0.6(@oclif/core@3.27.0)':
+  '@commercelayer/cli-ux@1.1.0(@oclif/core@3.27.0)':
     dependencies:
       '@oclif/core': 3.27.0
       ansi-escapes: 4.3.2
