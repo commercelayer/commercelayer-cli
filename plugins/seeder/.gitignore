@@ -10,3 +10,4 @@ node_modules
 .editorconfig
 .oclif.manifest.json
 /package-lock.json
+tsconfig.tsbuildinfo
