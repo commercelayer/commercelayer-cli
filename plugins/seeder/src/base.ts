@@ -1,14 +1,14 @@
-import { Command, Flags } from '@oclif/core'
+import { type ApiMode, clApi, clColor, clToken, clUpdate, clUtil, type Method } from '@commercelayer/cli-core'
+import * as cliux from '@commercelayer/cli-ux'
+import type { CommerceLayerClient, ListResponse, QueryParamsList, Resource, ResourceId } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import config from './config'
-import { clUpdate, clColor, clToken, type ApiMode, clUtil, clApi, type Method } from '@commercelayer/cli-core'
+import { Command, Flags } from '@oclif/core'
+import type { CLIError } from '@oclif/core/lib/errors'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 import { isRemotePath, pathJoin } from './common'
+import config from './config'
 import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
-import type { CommerceLayerClient, ListResponse, ResourceId, QueryParamsList, Resource } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
-import type { CLIError } from '@oclif/core/lib/errors'
-import * as cliux from '@commercelayer/cli-ux'
 
 
 const pkg: clUpdate.Package = require('../package.json')

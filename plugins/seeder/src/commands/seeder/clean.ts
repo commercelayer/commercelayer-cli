@@ -1,11 +1,12 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags } from '../../base'
-import Listr from 'listr'
-import { type BusinessModel, readResourceData, type SeederResource } from '../../data'
-import { type CommerceLayerClient, CommerceLayerStatic, type ResourceId } from '@commercelayer/sdk'
-import { checkResourceType } from './check'
+
 import { clApi, clColor, clText } from '@commercelayer/cli-core'
+import { type CommerceLayerClient, CommerceLayerStatic, type ResourceId } from '@commercelayer/sdk'
+import Listr from 'listr'
+import Command, { Flags } from '../../base'
 import { type ResourceTypeNumber, requestsDelay } from '../../common'
+import { type BusinessModel, readResourceData, type SeederResource } from '../../data'
+import { checkResourceType } from './check'
 
 
 export default class SeederClean extends Command {
@@ -179,7 +180,7 @@ export default class SeederClean extends Command {
         }
 
       }
-    } catch (error) {
+    } catch (_error) {
       resources = {
         cacheable: 0,
         uncacheable: 0

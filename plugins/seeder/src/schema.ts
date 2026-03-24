@@ -1,6 +1,6 @@
-import config from './config'
-import { getCommerceLayerDataFile, pathJoin } from './common'
 import { CLIError } from '@oclif/core/lib/errors'
+import { getCommerceLayerDataFile, pathJoin } from './common'
+import config from './config'
 
 
 type SchemaModel = {

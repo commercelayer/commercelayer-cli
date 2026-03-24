@@ -1,10 +1,11 @@
 /* eslint-disable no-await-in-loop */
-import Command, { Flags } from '../../base'
-import { type BusinessModel, getResource, modelIndex, type ResourceData, type SeederResource, readResourceData } from '../../data'
-import Listr from 'listr'
-import { attributeType, relationshipType } from '../../schema'
-import { CommerceLayerStatic } from '@commercelayer/sdk'
+
 import { clColor, clText } from '@commercelayer/cli-core'
+import { CommerceLayerStatic } from '@commercelayer/sdk'
+import Listr from 'listr'
+import Command, { Flags } from '../../base'
+import { type BusinessModel, getResource, modelIndex, type ResourceData, readResourceData, type SeederResource } from '../../data'
+import { attributeType, relationshipType } from '../../schema'
 
 
 

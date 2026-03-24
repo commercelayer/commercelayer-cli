@@ -1,7 +1,7 @@
 
-import config from './config'
-import { getCommerceLayerDataFile, isRemotePath, pathJoin } from './common'
 import { clColor } from '@commercelayer/cli-core'
+import { getCommerceLayerDataFile, isRemotePath, pathJoin } from './common'
+import config from './config'
 
 
 
@@ -32,7 +32,7 @@ type ResourceMap = Record<string, ResourceData>
 type ResourceCache = Record<string, ResourceMap>
 
 
-export type { SeederResource, ResourceData, BusinessModel }
+export type { BusinessModel, ResourceData, SeederResource }
 
 
 const fileCache: ResourceCache = {}
@@ -106,4 +106,4 @@ const modelIndex = (model: BusinessModel, type: string, reference: string): numb
 
 
 
-export { readModelData, readResourceData, getResource, modelIndex }
+export { getResource, modelIndex, readModelData, readResourceData }

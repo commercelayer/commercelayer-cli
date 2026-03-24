@@ -1,5 +1,5 @@
-import { join, resolve } from 'path'
-import { readFileSync } from 'fs'
+import { readFileSync } from 'node:fs'
+import { join, resolve } from 'node:path'
 import { type ApiMode, clApi } from '@commercelayer/cli-core'
 
 
@@ -67,5 +67,5 @@ const requestsDelay = (resources: ResourceTypeNumber, env?: ApiMode): ResourceTy
 }
 
 
-export { getCommerceLayerDataFile, isRemotePath, pathJoin, requestsDelay }
 export type { ResourceTypeNumber }
+export { getCommerceLayerDataFile, isRemotePath, pathJoin, requestsDelay }
