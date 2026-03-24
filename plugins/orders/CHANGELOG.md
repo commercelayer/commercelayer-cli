@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.5.0...v5.6.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([8d5a06f](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/8d5a06f512bd7222fb2b8a007f7f4121e2b4a21e))
+
 # [5.5.0](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.4.10...v5.5.0) (2026-03-24)
 
 
