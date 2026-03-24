@@ -1,6 +1,6 @@
+import { clColor, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import { Command, Flags } from '@oclif/core'
-import { clColor, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 
 

@@ -1,6 +1,6 @@
+import { clColor } from '@commercelayer/cli-core'
 import Command, { Flags } from '../../base'
 import { buildMicrostoreUrl, openMicrostoreUrl } from '../../url'
-import { clColor } from '@commercelayer/cli-core'
 
 
 export default class MicrostoreIndex extends Command {
