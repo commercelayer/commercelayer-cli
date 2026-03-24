@@ -1,3 +1,10 @@
+## [5.0.16](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.15...v5.0.16) (2026-03-24)
+
+
+### Bug Fixes
+
+* add biome ([5eceb91](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/5eceb9161c878f989744a4ed70ba8271d3668097))
+
 ## [5.0.15](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.14...v5.0.15) (2026-03-13)
 
 
