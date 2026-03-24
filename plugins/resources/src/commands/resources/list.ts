@@ -1,8 +1,8 @@
-import Command, { Flags, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, cliux } from '../../base'
-import type { QueryPageSize, CommerceLayerClient, QueryParamsList } from '@commercelayer/sdk'
-import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { mergeCommandParams } from '../../commands'
 import { clColor } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
+import Command, { cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, Flags } from '../../base'
+import { mergeCommandParams } from '../../commands'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 
 
 const OPERATION = 'list'

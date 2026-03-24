@@ -1,7 +1,7 @@
+import { clApi, clColor, clCommand, clConfig } from '@commercelayer/cli-core'
+import type { CommerceLayerClient } from '@commercelayer/sdk'
 import Command, { Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import { type CommerceLayerClient } from '@commercelayer/sdk'
 import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { clCommand, clColor, clConfig, clApi } from '@commercelayer/cli-core'
 
 
 

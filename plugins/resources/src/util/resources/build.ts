@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
-import type { ApiResource } from '../resources'
-import { CommerceLayerStatic, type ResourceTypeLock } from '@commercelayer/sdk'
-import { join } from 'node:path'
 import { writeFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { clText } from '@commercelayer/cli-core'
+import { CommerceLayerStatic, type ResourceTypeLock } from '@commercelayer/sdk'
+import type { ApiResource } from '../resources'
 
 const resUrl = 'https://core.commercelayer.io/api/public/resources'
 const resFile = join(__dirname, 'schema.json')
@@ -12,14 +12,14 @@ const resFile = join(__dirname, 'schema.json')
 
 const getResourcesJson = async (): Promise<any> => {
 
-	let resources
+	let resources: any
 
 	try {
 		console.log(`Loading resources from remote url ${resUrl} ...`)
 		const response = await fetch(resUrl)
 		resources = await response.json()
 		writeFileSync(resFile, resources, { encoding: 'utf-8' })
-	} catch (error) {
+	} catch (_error) {
 		console.log('Error loading resources from ' + resUrl)
 		resources = undefined
 	}
@@ -27,7 +27,7 @@ const getResourcesJson = async (): Promise<any> => {
 	if (!resources) try {
 		console.log(`Loading resources from local file ${resFile} ...`)
 		resources = require(resFile)
-	} catch (error) {
+	} catch (_error) {
 		console.log('Error loading resources from ' + resFile)
 		resources = undefined
 	}

@@ -1,6 +1,6 @@
-import { type KeyValString, clColor, clApi, clUtil, clFilter } from '@commercelayer/cli-core'
+import { clApi, clColor, clFilter, clUtil, type KeyValString } from '@commercelayer/cli-core'
 import { CommerceLayer, type CommerceLayerClient, type ListResponse, type Resource } from '@commercelayer/sdk'
-import { BaseCommand, Flags, Args, cliux } from '../../base'
+import { Args, BaseCommand, cliux, Flags } from '../../base'
 
 
 export default class ResourcesCount extends BaseCommand {

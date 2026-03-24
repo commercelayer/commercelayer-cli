@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
-import { json2csvAsync } from 'json-2-csv'
 import { writeFileSync } from 'node:fs'
-import { type KeyValString, clOutput } from '@commercelayer/cli-core'
+import { clOutput, type KeyValString } from '@commercelayer/cli-core'
+import { json2csvAsync } from 'json-2-csv'
 
 
 
@@ -19,7 +19,7 @@ const analyzeItem = (name: string | undefined, item: object, flags: any): Set<st
     if (Array.isArray(item)) {
       for (const i of item) {
         const ks = analyzeItem(name, i, flags)
-        ks.forEach(k => keys.add(k))
+        ks.forEach(k => { keys.add(k) })
       }
     } else if (typeof item === 'object') {
 
@@ -36,7 +36,7 @@ const analyzeItem = (name: string | undefined, item: object, flags: any): Set<st
         // exclude 'id' fields that are not explicitly included
         if ((k === 'id') && !fields.includes(k)) continue
         const ks = analyzeItem(`${name ? name + '.' : ''}${k}`, v, flags)
-        ks.forEach(k => keys.add(k))
+        ks.forEach(k => { keys.add(k) })
       }
 
     } else if (name && (name !== 'type') && !name.endsWith('.type')) {
@@ -74,7 +74,7 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
   }
   if (flags.include) {
     const include: string[] = []
-    flags.include.forEach((i: string) => include.push(...i.split(',')))
+    flags.include.forEach((i: string) => { include.push(...i.split(',')) })
     include.forEach((i: string) => {
       // excludeKeys.push(`${i}.id`)
       excludeKeys.push(`${i}.type`)
@@ -111,4 +111,4 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
 
 
 
-export { formatCsv, exportCsv }
+export { exportCsv, formatCsv }

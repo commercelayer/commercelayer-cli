@@ -1,7 +1,7 @@
-import Command, { Flags, Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
 import type { CommerceLayerClient, QueryParamsRetrieve } from '@commercelayer/sdk'
-import { addRequestReader, isRequestInterrupted } from '../../lang'
+import Command, { Args, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, Flags } from '../../base'
 import { mergeCommandParams } from '../../commands'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
 
 
 const OPERATION = 'retrieve'

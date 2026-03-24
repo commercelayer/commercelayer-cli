@@ -1,6 +1,6 @@
-import { Command } from '@oclif/core'
-import { CommerceLayerStatic } from '@commercelayer/sdk'
 import { clColor } from '@commercelayer/cli-core'
+import { CommerceLayerStatic } from '@commercelayer/sdk'
+import { Command } from '@oclif/core'
 
 
 export default class ResourcesSchema extends Command {

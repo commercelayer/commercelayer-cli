@@ -1,6 +1,6 @@
-import type { ResourceTypeLock } from "@commercelayer/sdk"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { join } from "node:path"
+import type { ResourceTypeLock } from "@commercelayer/sdk"
 
 
 

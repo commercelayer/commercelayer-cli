@@ -1,9 +1,9 @@
-import { Command, Flags, ux as cliux } from '@oclif/core'
-import { findResource, type ApiResource } from '../../util/resources'
-import { deleteArgsFile, loadCommandData, readCommandArgs, type ResourceOperation } from '../../commands'
-import { formatOutput } from '../../output'
+import { clColor, clOutput, clUtil } from '@commercelayer/cli-core'
 import type { QueryParamsList } from '@commercelayer/sdk'
-import { clOutput, clUtil, clColor } from '@commercelayer/cli-core'
+import { Command, ux as cliux, Flags } from '@oclif/core'
+import { deleteArgsFile, loadCommandData, type ResourceOperation, readCommandArgs } from '../../commands'
+import { formatOutput } from '../../output'
+import { type ApiResource, findResource } from '../../util/resources'
 
 
 export default class ResourcesArgs extends Command {

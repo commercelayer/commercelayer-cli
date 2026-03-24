@@ -1,6 +1,6 @@
+import { clApi, clColor, clText } from '@commercelayer/cli-core'
 import type { CommerceLayerClient } from '@commercelayer/sdk'
 import Command, { BaseCommand } from '../../base'
-import { clApi, clColor, clText } from '@commercelayer/cli-core'
 
 
 

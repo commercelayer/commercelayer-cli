@@ -1,7 +1,7 @@
-import { Command, Flags, Args } from '@oclif/core'
-import { findResource } from '../../util/resources'
 import { clColor, clConfig } from '@commercelayer/cli-core'
+import { Args, Command, Flags } from '@oclif/core'
 import open from 'open'
+import { findResource } from '../../util/resources'
 
 
 export default class ResourcesDoc extends Command {

@@ -1,5 +1,5 @@
-import { type CommerceLayerClient, CommerceLayerStatic, type RequestObj } from '@commercelayer/sdk'
 import { clText, type KeyValString } from '@commercelayer/cli-core'
+import { type CommerceLayerClient, CommerceLayerStatic, type RequestObj } from '@commercelayer/sdk'
 
 
 type RequestData = {
@@ -76,8 +76,8 @@ const isRequestInterrupted = (error: unknown): boolean => {
 }
 
 
+export type { OperationData, RequestData, RequestReader }
 export { addRequestReader, isRequestInterrupted }
-export type { RequestReader, RequestData, OperationData }
 
 
 export const getMethod = (request: RequestData): string => {

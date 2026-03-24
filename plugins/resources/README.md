@@ -495,7 +495,7 @@ _See code: [src/commands/resources/history.ts](https://github.com/commercelayer/
 
 ### `commercelayer resources:last RESOURCE`
 
-Show the last id of a resource type.
+Show the last used id of a resource type.
 
 ```sh-session
 USAGE
@@ -505,7 +505,7 @@ ARGUMENTS
   RESOURCE  the resource type
 
 DESCRIPTION
-  show the last id of a resource type
+  show the last used id of a resource type
 
 ALIASES
   $ commercelayer last

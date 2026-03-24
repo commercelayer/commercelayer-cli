@@ -1,17 +1,17 @@
-import { Command, Flags, Args, type Config } from '@oclif/core'
-import { findResource, type ApiResource } from './util/resources'
-import { formatOutput, exportOutput } from './output'
-import { exportCsv } from './csv'
 import { existsSync } from 'node:fs'
-import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import type { ResourceId, ResourceType, CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceTypeLock } from '@commercelayer/sdk'
-import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
-import { clToken, clUpdate, clColor, clUtil, clConfig, clCommand, clFilter, clText } from '@commercelayer/cli-core'
-import type { KeyValRel, KeyValObj, KeyValArray, KeyValString, KeyValSort, ResAttributes, KeyVal } from '@commercelayer/cli-core'
-import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
-import type { CommandError } from '@oclif/core/lib/interfaces'
-import { lastResources, type LastResources } from './last'
+import type { KeyVal, KeyValArray, KeyValObj, KeyValRel, KeyValSort, KeyValString, ResAttributes } from '@commercelayer/cli-core'
+import { clColor, clCommand, clConfig, clFilter, clText, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import type { CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId, ResourceType, ResourceTypeLock } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
+import { Args, Command, type Config, Flags } from '@oclif/core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
+import { aliasExists, type CommandParams, checkAlias, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
+import { exportCsv } from './csv'
+import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
+import { type LastResources, lastResources } from './last'
+import { exportOutput, formatOutput } from './output'
+import { type ApiResource, findResource } from './util/resources'
 
 
 
@@ -304,7 +304,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
 
     if (flag) {
       const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
-      flagValues.forEach(a => values.push(...a))
+      flagValues.forEach(a => { values.push(...a) })
       if (values.some(f => f.split('.').length > 3) && !force) this.error('Only resources within the 3rd depth level can be included')
     }
 
@@ -369,7 +369,7 @@ export abstract class BaseQueryCommand extends BaseCommand {
       if (objects?.[k]) this.warn(`Object ${clColor.msg.warning(k)} has already been defined`)
       try {
         json[k] = (v === 'null') ? null : JSON.parse(v)
-      } catch (error) {
+      } catch (_error) {
         this.error(`Invalid JSON value for object ${clColor.msg.error(k)}`)
       }
     })
@@ -812,4 +812,4 @@ export default abstract class extends BaseQueryCommand {
 
 
 
-export { Flags, Args, cliux }
+export { Args, cliux, Flags }

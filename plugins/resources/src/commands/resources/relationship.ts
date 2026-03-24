@@ -1,9 +1,9 @@
-import Command, { Args, cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
-import type { CommerceLayerClient, QueryParamsList, QueryPageSize } from '@commercelayer/sdk'
-import { addRequestReader, isRequestInterrupted } from '../../lang'
-import { mergeCommandParams } from '../../commands'
-import ResourcesList from './list'
 import { clColor, clText } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
+import Command, { Args, cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS } from '../../base'
+import { mergeCommandParams } from '../../commands'
+import { addRequestReader, isRequestInterrupted } from '../../lang'
+import ResourcesList from './list'
 
 
 const OPERATION = 'relationship'

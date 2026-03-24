@@ -1,8 +1,8 @@
+import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { clColor, clOutput, type KeyValArray, type KeyValSort } from '@commercelayer/cli-core'
 import type { QueryParams, QueryParamsList } from '@commercelayer/sdk'
 import type { Config } from '@oclif/core'
-import { join } from 'node:path'
-import { readdirSync, readFileSync, existsSync, mkdirSync, writeFileSync, unlinkSync } from 'node:fs'
-import { clOutput, clColor, type KeyValSort, type KeyValArray } from '@commercelayer/cli-core'
 
 
 const COMMANDS_DIR = 'commands'
@@ -22,7 +22,7 @@ type CommandParams = {
 }
 
 
-export type { ResourceOperation, CommandParams }
+export type { CommandParams, ResourceOperation }
 
 
 const checkAlias = (alias: string): boolean => {
@@ -84,7 +84,7 @@ const loadCommandData = (alias: string, config: Config, resource: string, operat
   try {
     const cmdData = readFileSync(join(saveDir, fileName), { encoding: 'utf-8' })
     return cmdData ? JSON.parse(cmdData) : undefined
-  } catch (error) {
+  } catch (_error) {
     return undefined
   }
 
@@ -106,7 +106,7 @@ const deleteArgsFile = (alias: string, config: Config, resource: string, operati
 
 
 
-export { saveCommandData, loadCommandData, checkAlias, aliasExists, readCommandArgs, deleteArgsFile }
+export { aliasExists, checkAlias, deleteArgsFile, loadCommandData, readCommandArgs, saveCommandData }
 
 
 
@@ -118,16 +118,16 @@ export const mergeCommandParams = (params: QueryParams, saved: QueryParams): voi
   })
 
   const fields = saved.fields || {}
-  if (params.fields) Object.entries(params.fields).forEach(([k, v]) => Object.assign((fields as KeyValArray)[k] || {}, v))
+  if (params.fields) Object.entries(params.fields).forEach(([k, v]) => { Object.assign((fields as KeyValArray)[k] || {}, v) })
 
   const sl = saved as QueryParamsList
   const pl = params as QueryParamsList
 
   const sort = (sl.sort || {}) as KeyValSort
-  if (pl.sort) Object.entries(pl.sort).forEach(([k, v]) => Object.assign(sort[k] || {}, v))
+  if (pl.sort) Object.entries(pl.sort).forEach(([k, v]) => { Object.assign(sort[k] || {}, v) })
 
   const filters = sl.filters || {}
-  if (pl.filters) Object.entries(pl.filters).forEach(([k, v]) => Object.assign(filters[k] || {}, v))
+  if (pl.filters) Object.entries(pl.filters).forEach(([k, v]) => { Object.assign(filters[k] || {}, v) })
 
   const pageSize = pl.pageSize || sl.pageSize
 

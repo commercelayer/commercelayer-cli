@@ -16,4 +16,4 @@ const exportOutput = async (output: any, flags: any, filePath: string): Promise<
 
 
 
-export { formatOutput, exportOutput }
+export { exportOutput, formatOutput }

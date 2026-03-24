@@ -29,4 +29,4 @@ const resourceList = (field: 'name' | 'api' | 'model'): string[] => {
 }
 
 
-export { findResource, resourceList, type ApiResource }
+export { type ApiResource, findResource, resourceList }

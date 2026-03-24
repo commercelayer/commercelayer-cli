@@ -1,8 +1,8 @@
-import { BaseQueryCommand, Args } from '../../base'
-import RetrieveCommand from './retrieve'
+import { Args, BaseQueryCommand } from '../../base'
+import GetCommand from './get'
 import ListCommand from './list'
 import RelationshipCommand from './relationship'
-import GetCommand from './get'
+import RetrieveCommand from './retrieve'
 
 
 export default class ResourcesFetch extends BaseQueryCommand {

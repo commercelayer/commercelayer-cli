@@ -1,6 +1,6 @@
-import type { QueryParams } from '@commercelayer/sdk'
 import { clOutput } from '@commercelayer/cli-core'
-import { type RequestData, getOperation } from './request'
+import type { QueryParams } from '@commercelayer/sdk'
+import { getOperation, type RequestData } from './request'
 
 
 const buildTypescript = (request: RequestData, params?: QueryParams, flags?: any): string => {

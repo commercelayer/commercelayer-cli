@@ -1,9 +1,8 @@
 
-import Command, { Flags, cliux } from '../../base'
-import { clApi, clToken, clColor, clUtil, clCommand, clConfig } from '@commercelayer/cli-core'
-import type { CommerceLayerClient, QueryParamsList, ListResponse, Resource, QueryPageSize } from '@commercelayer/sdk'
-import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import { clApi, clColor, clCommand, clConfig, clToken, clUtil } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, ListResponse, QueryPageSize, QueryParamsList, Resource } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
+import Command, { cliux, Flags } from '../../base'
 
 /*
 import { execSync } from 'child_process'
@@ -178,7 +177,7 @@ export default class ResourcesAll extends Command {
 
   async parse(c: any): Promise<any> {
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId)
-		const parsed = await super.parse(c as Input<FlagOutput, FlagOutput, ArgOutput>)
+		const parsed = await super.parse(c)
 		clCommand.fixDashedFlagValue(this.argv, c.flags.clientId, 'i', parsed)
 		return parsed
 	}

@@ -1,7 +1,7 @@
 import { clApi, clColor, clConfig, clOutput } from '@commercelayer/cli-core'
-import Command, { Args, BaseCommand, cliux } from '../../base'
 import type { CommerceLayerClient, QueryPageSize, QueryParamsRetrieve, Version, VersionableResource } from '@commercelayer/sdk'
 import inquirer from 'inquirer'
+import Command, { Args, BaseCommand, cliux } from '../../base'
 
 
 const OPERATION = 'versions'
@@ -78,6 +78,7 @@ export default class ResourcesHistory extends BaseCommand {
         const k = await cliux.anykey(`Press any key to return to versions history or ${clColor.yellowBright('q')} to exit`)
         if (k !== 'q') console.clear()
 
+      // biome-ignore lint/correctness/noConstantCondition: infinite loop needed
       } while (true)
       else this.log(clColor.dim.italic(`\nNo versions found for ${clApi.humanizeResource(res.type, true)} ${clColor.api.id(res.id)}\n`))
 

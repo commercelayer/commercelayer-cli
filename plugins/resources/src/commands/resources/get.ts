@@ -1,6 +1,6 @@
 import Command from '../../base'
-import RetrieveCommand from './retrieve'
 import ListCommand from './list'
+import RetrieveCommand from './retrieve'
 
 
 export default class ResourcesGet extends Command {
