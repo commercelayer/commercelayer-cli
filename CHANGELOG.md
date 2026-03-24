@@ -1,3 +1,10 @@
+# [7.0.0-oclif4.2](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.1...v7.0.0-oclif4.2) (2026-03-24)
+
+
+### Bug Fixes
+
+* fix alias check and dependencie ([77503cb](https://github.com/commercelayer/commercelayer-cli/commit/77503cba0c8c2aaa83cb0c6af57421b7de5dd929))
+
 # [7.0.0-oclif4.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.8.3...v7.0.0-oclif4.1) (2026-03-19)
 
 
