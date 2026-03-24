@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.2.11...v4.3.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([e7f05d1](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/e7f05d19b42034e85f837293325fb9b18805b6ca))
+
 ## [4.2.11](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.2.10...v4.2.11) (2026-03-13)
 
 
