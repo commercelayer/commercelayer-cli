@@ -49,7 +49,7 @@
     "prepack": "pnpm resources && pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "posttest": "pnpm lint",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "resources": "pnpm update @commercelayer/sdk && tsx src/util/resources/build.ts",
     "generate": "pnpm resources",
