@@ -1,10 +1,10 @@
 import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
-import Command, { Flags } from '../../base'
-import { commercelayerInit } from '../../init'
+import * as cliux from '@commercelayer/cli-ux'
 import type { QueryPageSize, QuerySort, Version } from '@commercelayer/sdk'
 import inquirer from 'inquirer'
-import * as cliux from '@commercelayer/cli-ux'
+import Command, { Flags } from '../../base'
 import { checkOrder } from '../../exec'
+import { commercelayerInit } from '../../init'
 
 
 const VERSIONS_TO_SHOW = clConfig.api.page_max_size as QueryPageSize
@@ -79,6 +79,7 @@ export default class OrdersIndex extends Command {
       const k = await cliux.anykey(`Press any key to return to versions history or ${clColor.yellowBright('q')} to exit`)
       if (k !== 'q') console.clear()
 
+    // biome-ignore lint/correctness/noConstantCondition: infinite loop needed
     } while (true)
 
   }

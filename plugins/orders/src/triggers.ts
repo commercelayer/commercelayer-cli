@@ -175,7 +175,7 @@ const triggers: Record<string, Trigger> = {
 }
 
 
-export { triggers, type Trigger }
+export { type Trigger, triggers }
 
 
 

@@ -1,8 +1,8 @@
+import { clColor } from '@commercelayer/cli-core'
+import inquirer from 'inquirer'
 import Command from '../../base'
 import exec from '../../exec'
-import inquirer from 'inquirer'
 import { type ActionType, triggers } from '../../triggers'
-import { clColor } from '@commercelayer/cli-core'
 
 
 export default class OrdersIndex extends Command {

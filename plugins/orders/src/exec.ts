@@ -1,9 +1,9 @@
-import type { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
-import type { ActionType } from './triggers'
-import type { Config } from '@oclif/core/lib/interfaces'
 import { clColor } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
 import { CLIError } from '@oclif/core/lib/errors'
+import type { Config } from '@oclif/core/lib/interfaces'
 import { commercelayerInit } from './init'
+import type { ActionType } from './triggers'
 
 
 

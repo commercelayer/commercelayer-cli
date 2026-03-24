@@ -1,8 +1,8 @@
-/* eslint-disable no-console, no-eval */
-import fs from 'fs'
-import { join } from 'path'
-import snakeCase from 'lodash.snakecase'
+
+import fs from 'node:fs'
+import { join } from 'node:path'
 import { clSchema } from '@commercelayer/cli-core'
+import snakeCase from 'lodash.snakecase'
 
 const Inflector = require('inflector-js')
 
@@ -79,6 +79,7 @@ const updateTriggers = async (): Promise<any> => {
 
   fs.writeFileSync('src/triggers.ts', triggers)
 
+  // biome-ignore lint/security/noGlobalEval: left for compatibility with old linter
   return eval(`({${actionsObject}})`)
 
 }
