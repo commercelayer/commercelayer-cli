@@ -1,16 +1,16 @@
-import { clColor, clToken, clUpdate, clFilter, clOutput, clUtil, clApi } from '@commercelayer/cli-core'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { rename } from 'node:fs/promises'
+import { join } from 'node:path'
+import { gunzipSync, type InputType } from 'node:zlib'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
-import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
-import { Command, Flags, Args } from '@oclif/core'
-import { existsSync, readFileSync, writeFileSync } from 'fs'
-import axios from 'axios'
-import { type InputType, gunzipSync } from 'zlib'
-import { rename } from 'fs/promises'
-import type { CommandError } from '@oclif/core/lib/interfaces'
-import notifier from 'node-notifier'
+import { clApi, clColor, clFilter, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import { join } from 'path'
+import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
+import axios from 'axios'
+import notifier from 'node-notifier'
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -130,14 +130,14 @@ export default abstract class BaseCommand extends Command {
     switch (status.toLowerCase()) {
       case 'completed': return clColor.msg.success(status)
       case 'interrupted': return clColor.msg.error(status)
-      case 'pending':
-      case 'in_progress':
+      // case 'pending':
+      // case 'in_progress':
       default: return status
     }
   }
 
 
-  protected handleError(error: CommandError, flags?: any, id?: string): void {
+  protected handleError(error: CommandError, _flags?: any, id?: string): void {
     if (CommerceLayerStatic.isApiError(error)) {
       if (error.status === 401) {
         const err = error.first()
@@ -278,7 +278,7 @@ export abstract class ExportCommand extends BaseCommand {
 
     if (flag) {
       const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
-      flagValues.forEach(a => values.push(...a))
+      flagValues.forEach(a => { values.push(...a) })
       if (values.some(f => f.split('.').length > 3) && !force) this.error('Can be only included resources within the 3rd level of depth')
     }
 
@@ -360,6 +360,6 @@ export abstract class ExportCommand extends BaseCommand {
 
 
 
-export { Flags, Args }
+export { Args, Flags }
 
 export type ExportFormat = 'json' | 'csv'

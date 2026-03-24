@@ -1,10 +1,10 @@
 
-import { ExportCommand, Flags, computeDelay, notify } from '../../base'
-import { clToken, clColor } from '@commercelayer/cli-core'
+import { clColor, clToken } from '@commercelayer/cli-core'
+import * as cliux from '@commercelayer/cli-ux'
 import type { ExportCreate, ResourceTypeLock } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import open from 'open'
-import * as cliux from '@commercelayer/cli-ux'
+import { computeDelay, ExportCommand, Flags, notify } from '../../base'
 
 
 

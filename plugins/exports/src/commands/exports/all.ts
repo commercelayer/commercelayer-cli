@@ -1,13 +1,13 @@
-import ExportsCreate from './create'
-import { ExportCommand, notify, Flags, encoding, type ExportFormat } from '../../base'
-import { type KeyValString, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
-import type { Export, ExportCreate, ListableResourceType, QueryParamsList, ResourceTypeLock } from '@commercelayer/sdk'
-import Spinnies from 'spinnies'
-import open from 'open'
 import { readFileSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import { clApi, clColor, clConfig, clUtil, type KeyValString } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import type { Export, ExportCreate, ListableResourceType, QueryParamsList, ResourceTypeLock } from '@commercelayer/sdk'
+import type { CommandError } from '@oclif/core/lib/interfaces'
+import open from 'open'
+import Spinnies from 'spinnies'
+import { ExportCommand, type ExportFormat, encoding, Flags, notify } from '../../base'
+import ExportsCreate from './create'
 
 
 
@@ -46,8 +46,7 @@ const exportCompleted = (exports: Export[] | Export): boolean => {
   else return exports.status === 'completed'
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const countCompleted = (exports: Export[] | ExportJob): number => {
+const _countCompleted = (exports: Export[] | ExportJob): number => {
   let completed = 0
   for (const e of (Array.isArray(exports) ? exports : exports.exports)) if (e.status === 'completed') completed++
   return completed

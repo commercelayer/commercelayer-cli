@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 import Command, { Args } from '../../base'
-import ListCommand from './list'
 import DetailsCommand from './details'
+import ListCommand from './list'
 
 
 export default class ExportsIndex extends Command {
