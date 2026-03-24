@@ -1,4 +1,5 @@
-import fs from 'fs'
+import { writeFileSync } from "node:fs"
+
 
 
 
@@ -10,4 +11,4 @@ let skus = 'code,name,shipping_category_id'
 
 for (let i = 0; i < numSkus; i++) skus += `\nSKU${i},Sku ${i},rNmdOFXgRK`
 
-fs.writeFileSync(filePath, skus)
+writeFileSync(filePath, skus)

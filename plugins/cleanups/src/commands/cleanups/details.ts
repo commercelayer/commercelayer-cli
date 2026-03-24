@@ -1,7 +1,7 @@
-import Command, { Flags, Args } from '../../base'
-import Table from 'cli-table3'
-import { clOutput, clColor, clText } from '@commercelayer/cli-core'
+import { clColor, clOutput, clText } from '@commercelayer/cli-core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import Table from 'cli-table3'
+import Command, { Args, Flags } from '../../base'
 
 
 

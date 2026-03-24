@@ -1,10 +1,10 @@
-import Command, { Flags, cliux } from '../../base'
+import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 import type { Cleanup, CommerceLayerClient } from '@commercelayer/sdk'
-import type { SingleBar } from 'cli-progress'
-import { clUtil, clConfig, clColor, clApi } from '@commercelayer/cli-core'
-import { Monitor } from '../../monitor'
-import { type Chunk, type Batch, splitChunks, splitRecords, MAX_QUEUE_LENGTH } from '../../chunk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { SingleBar } from 'cli-progress'
+import Command, { cliux, Flags } from '../../base'
+import { type Batch, type Chunk, MAX_QUEUE_LENGTH, splitChunks, splitRecords } from '../../chunk'
+import { Monitor } from '../../monitor'
 
 
 

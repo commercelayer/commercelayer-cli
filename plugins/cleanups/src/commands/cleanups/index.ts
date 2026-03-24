@@ -1,6 +1,6 @@
 import Command, { Args } from '../../base'
-import ListCommand from './list'
 import DetailsCommand from './details'
+import ListCommand from './list'
 
 
 export default class CleanupsIndex extends Command {

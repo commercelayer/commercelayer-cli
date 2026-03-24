@@ -1,10 +1,11 @@
-import type { CleanupCreate } from '@commercelayer/sdk'
 import { clConfig } from '@commercelayer/cli-core'
+import type { CleanupCreate } from '@commercelayer/sdk'
 
 
 const MAX_QUEUE_LENGTH = clConfig.cleanups.max_queue_length
 const MAX_CLEANUP_SIZE = clConfig.cleanups.max_size
-export { MAX_QUEUE_LENGTH, MAX_CLEANUP_SIZE }
+
+export { MAX_CLEANUP_SIZE, MAX_QUEUE_LENGTH }
 
 
 type Chunk = CleanupCreate & {
@@ -121,5 +122,5 @@ const generateGroupUID = (): string => {
 }
 
 
-export { splitRecords, splitChunks }
-export type { Chunk, Batch }
+export type { Batch, Chunk }
+export { splitChunks, splitRecords }

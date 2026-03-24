@@ -1,8 +1,8 @@
-import { clColor, clToken, clUpdate, clFilter, type KeyValRel, type KeyValString, clOutput, clUtil } from '@commercelayer/cli-core'
-import { Command, Flags, Args } from '@oclif/core'
-import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import { clColor, clFilter, clOutput, clToken, clUpdate, clUtil, type KeyValRel, type KeyValString } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -53,7 +53,7 @@ export default abstract class extends Command {
 
     if (flag) {
       const flagValues = flag.map(f => f.split(',').map(t => t.trim()))
-      flagValues.forEach(a => values.push(...a))
+      flagValues.forEach(a => { values.push(...a) })
       if (values.some(f => f.split('.').length > 3) && !force) this.error('Can be only included resources within the 3rd level of depth')
     }
 
@@ -132,8 +132,8 @@ export default abstract class extends Command {
     switch (status.toLowerCase()) {
       case 'completed': return clColor.msg.success(status)
       case 'interrupted': return clColor.msg.error(status)
-      case 'pending':
-      case 'in_progress':
+      // case 'pending':
+      // case 'in_progress':
       default: return status
     }
   }
@@ -157,4 +157,4 @@ export default abstract class extends Command {
 
 
 
-export { Flags, Args, cliux }
+export { Args, cliux, Flags }

@@ -1,6 +1,6 @@
-import cliProgress, { type SingleBar, type MultiBar } from 'cli-progress'
+import { clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
+import cliProgress, { type MultiBar, type SingleBar } from 'cli-progress'
 import type { Chunk } from './chunk'
-import { clOutput, clConfig, clColor, clUtil } from '@commercelayer/cli-core'
 
 
 
@@ -39,6 +39,7 @@ class Monitor {
 
 	private readonly multibar: MultiBar
 
+	// biome-ignore lint/correctness/noUnusedPrivateClassMembers: left for compatibility with old linter
 	private readonly totalItems: number
 
 	private readonly style: MonitorStyle
