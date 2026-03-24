@@ -42,11 +42,11 @@
     "topicSeparator": ":"
   },
   "scripts": {
-    "postpack": "rm -f oclif.manifest.json",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
     "build": "rm -rf lib && tsc -b",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
