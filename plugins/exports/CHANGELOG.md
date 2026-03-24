@@ -1,3 +1,10 @@
+# [3.9.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.8.3...v3.9.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([21f58cc](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/21f58cc82c48fb4d259f684d05c4984200898963))
+
 ## [3.8.3](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.8.2...v3.8.3) (2026-03-02)
 
 
