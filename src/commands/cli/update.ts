@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
-
 import { exec } from 'node:child_process'
 import { clColor } from '@commercelayer/cli-core'
 import { Command, ux as cliux, Flags } from '@oclif/core'
