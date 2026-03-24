@@ -1,87 +1,87 @@
 {
-  "name": "@commercelayer/cli-plugin-token",
-  "description": "Commerce Layer CLI Token plugin",
-  "version": "8.0.11",
-  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-token",
-  "repository": "commercelayer/commercelayer-cli-plugin-token",
-  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-token/issues",
-  "engines": {
-    "node": ">=20"
-  },
-  "files": [
-    "/bin/run.*",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
-  "keywords": [
-    "ecommerce",
-    "cli",
-    "commercelayer"
-  ],
-  "license": "MIT",
-  "main": "lib/index.js",
-  "oclif": {
-    "commands": "./lib/commands",
-    "bin": "cl-token",
-    "devPlugins": [
-      "@oclif/plugin-help"
-    ],
-    "plugins": [],
-    "topics": {
-      "token": {
-        "description": "Manage Commerce Layer access tokens",
-        "hidden": false
-      }
-    },
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
-    "additionalHelpFlags": [
-      "-h"
-    ],
-    "topicSeparator": ":"
-  },
-  "scripts": {
-    "build": "rm -rf lib && tsc -b",
-    "prepack": "pnpm build && oclif manifest && pnpm readme",
-    "postpack": "rm -f oclif.manifest.json",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "posttest": "pnpm lint",
-    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
-  },
-  "types": "lib/index.d.ts",
-  "devDependencies": {
-    "@biomejs/biome": "2.4.8",
-    "@commercelayer/cli-dev": "^3.0.13",
-    "@oclif/plugin-help": "^6.2.40",
-    "@oclif/test": "^3.2.15",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@types/chai": "^4.3.20",
-    "@types/inquirer": "^8.2.12",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^25.5.0",
-    "chai": "^4.5.0",
-    "mocha": "^11.7.5",
-    "nyc": "^15.1.0",
-    "oclif": "^4.22.96",
-    "semantic-release": "^25.0.3",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.2"
-  },
-  "dependencies": {
-    "@commercelayer/cli-core": "^5.10.8",
-    "@commercelayer/cli-ux": "^1.1.0",
-    "@commercelayer/js-auth": "^7.3.0",
-    "@commercelayer/sdk": "^6.55.0",
-    "@oclif/core": "^3.27.0",
-    "inquirer": "^8.2.7",
-    "tslib": "^2.8.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@commercelayer/cli-plugin-token",
+	"description": "Commerce Layer CLI Token plugin",
+	"version": "8.1.0",
+	"author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+	"homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-token",
+	"repository": "commercelayer/commercelayer-cli-plugin-token",
+	"bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-token/issues",
+	"engines": {
+		"node": ">=20"
+	},
+	"files": [
+		"/bin/run.*",
+		"/lib",
+		"/npm-shrinkwrap.json",
+		"/oclif.manifest.json"
+	],
+	"keywords": [
+		"ecommerce",
+		"cli",
+		"commercelayer"
+	],
+	"license": "MIT",
+	"main": "lib/index.js",
+	"oclif": {
+		"commands": "./lib/commands",
+		"bin": "cl-token",
+		"devPlugins": [
+			"@oclif/plugin-help"
+		],
+		"plugins": [],
+		"topics": {
+			"token": {
+				"description": "Manage Commerce Layer access tokens",
+				"hidden": false
+			}
+		},
+		"repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+		"additionalHelpFlags": [
+			"-h"
+		],
+		"topicSeparator": ":"
+	},
+	"scripts": {
+		"build": "rm -rf lib && tsc -b",
+		"prepack": "pnpm build && oclif manifest && pnpm readme",
+		"postpack": "rm -f oclif.manifest.json",
+		"test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+		"posttest": "pnpm lint",
+		"readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+		"lint": "biome check --enforce-assist=true",
+		"check": "biome check --enforce-assist=true --write",
+		"release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
+	},
+	"types": "lib/index.d.ts",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.8",
+		"@commercelayer/cli-dev": "^3.0.13",
+		"@oclif/plugin-help": "^6.2.40",
+		"@oclif/test": "^3.2.15",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
+		"@types/chai": "^4.3.20",
+		"@types/inquirer": "^8.2.12",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^25.5.0",
+		"chai": "^4.5.0",
+		"mocha": "^11.7.5",
+		"nyc": "^15.1.0",
+		"oclif": "^4.22.96",
+		"semantic-release": "^25.0.3",
+		"tsx": "^4.21.0",
+		"typescript": "^6.0.2"
+	},
+	"dependencies": {
+		"@commercelayer/cli-core": "^5.10.8",
+		"@commercelayer/cli-ux": "^1.1.0",
+		"@commercelayer/js-auth": "^7.3.0",
+		"@commercelayer/sdk": "^6.55.0",
+		"@oclif/core": "^3.27.0",
+		"inquirer": "^8.2.7",
+		"tslib": "^2.8.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

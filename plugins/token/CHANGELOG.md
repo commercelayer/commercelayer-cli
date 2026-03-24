@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.0.11...v8.1.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([95f9037](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/95f9037641cb27393c020b318f1a7b4c37c14152))
+
 ## [8.0.11](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.0.10...v8.0.11) (2026-03-13)
 
 
