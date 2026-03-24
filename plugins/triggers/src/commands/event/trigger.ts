@@ -1,6 +1,6 @@
+import type { Event } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/events'
-import { type Event } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'trigger'

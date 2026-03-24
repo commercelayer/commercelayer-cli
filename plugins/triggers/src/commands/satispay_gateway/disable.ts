@@ -1,6 +1,6 @@
+import type { SatispayGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/satispay_gateways'
-import { type SatispayGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

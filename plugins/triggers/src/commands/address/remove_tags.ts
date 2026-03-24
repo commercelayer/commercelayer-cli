@@ -1,6 +1,6 @@
+import type { Address } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/addresses'
-import { type Address } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'remove_tags'

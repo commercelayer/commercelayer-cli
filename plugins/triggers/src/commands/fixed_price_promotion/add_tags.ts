@@ -1,6 +1,6 @@
+import type { FixedPricePromotion } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/fixed_price_promotions'
-import { type FixedPricePromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'add_tags'

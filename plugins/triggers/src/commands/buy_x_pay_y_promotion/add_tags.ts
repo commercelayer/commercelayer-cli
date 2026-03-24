@@ -1,6 +1,6 @@
+import type { BuyXPayYPromotion } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/buy_x_pay_y_promotions'
-import { type BuyXPayYPromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'add_tags'

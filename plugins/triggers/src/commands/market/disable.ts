@@ -1,6 +1,6 @@
+import type { Market } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/markets'
-import { type Market } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

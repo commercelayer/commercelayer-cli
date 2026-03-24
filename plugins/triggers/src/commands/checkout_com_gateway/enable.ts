@@ -1,6 +1,6 @@
+import type { CheckoutComGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/checkout_com_gateways'
-import { type CheckoutComGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'

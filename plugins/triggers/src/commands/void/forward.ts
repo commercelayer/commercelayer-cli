@@ -1,6 +1,6 @@
+import type { Void } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/voids'
-import { type Void } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'forward'

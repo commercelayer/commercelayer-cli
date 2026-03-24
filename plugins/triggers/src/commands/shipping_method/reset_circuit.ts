@@ -1,6 +1,6 @@
+import type { ShippingMethod } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/shipping_methods'
-import { type ShippingMethod } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'reset_circuit'

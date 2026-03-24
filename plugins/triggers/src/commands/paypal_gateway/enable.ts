@@ -1,6 +1,6 @@
+import type { PaypalGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/paypal_gateways'
-import { type PaypalGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'

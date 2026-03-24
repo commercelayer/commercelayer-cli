@@ -1,6 +1,6 @@
+import type { FixedAmountPromotion } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/fixed_amount_promotions'
-import { type FixedAmountPromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'

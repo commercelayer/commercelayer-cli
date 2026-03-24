@@ -1,6 +1,6 @@
+import type { CheckoutComPayment } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/checkout_com_payments'
-import { type CheckoutComPayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'details'

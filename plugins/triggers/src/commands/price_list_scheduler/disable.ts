@@ -1,6 +1,6 @@
+import type { PriceListScheduler } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/price_list_schedulers'
-import { type PriceListScheduler } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

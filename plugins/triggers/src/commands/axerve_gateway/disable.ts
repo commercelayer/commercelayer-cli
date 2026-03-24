@@ -1,6 +1,6 @@
+import type { AxerveGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/axerve_gateways'
-import { type AxerveGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

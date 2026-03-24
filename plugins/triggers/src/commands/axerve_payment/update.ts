@@ -1,6 +1,6 @@
+import type { AxervePayment } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/axerve_payments'
-import { type AxervePayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'update'

@@ -1,6 +1,6 @@
+import type { ManualGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/manual_gateways'
-import { type ManualGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'

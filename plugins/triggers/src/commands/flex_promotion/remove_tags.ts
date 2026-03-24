@@ -1,6 +1,6 @@
+import type { FlexPromotion } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/flex_promotions'
-import { type FlexPromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'remove_tags'

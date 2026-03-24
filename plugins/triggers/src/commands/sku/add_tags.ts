@@ -1,6 +1,6 @@
+import type { Sku } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/skus'
-import { type Sku } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'add_tags'

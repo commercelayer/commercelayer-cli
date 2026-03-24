@@ -1,6 +1,6 @@
+import type { Webhook } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/webhooks'
-import { type Webhook } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

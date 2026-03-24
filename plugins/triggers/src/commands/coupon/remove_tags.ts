@@ -1,6 +1,6 @@
+import type { Coupon } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/coupons'
-import { type Coupon } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'remove_tags'

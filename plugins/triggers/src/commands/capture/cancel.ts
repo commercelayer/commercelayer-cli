@@ -1,6 +1,6 @@
+import type { Capture } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/captures'
-import { type Capture } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'cancel'

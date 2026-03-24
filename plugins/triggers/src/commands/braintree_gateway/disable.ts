@@ -1,6 +1,6 @@
+import type { BraintreeGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/braintree_gateways'
-import { type BraintreeGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

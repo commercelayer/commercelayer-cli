@@ -1,6 +1,6 @@
+import type { AdyenGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/adyen_gateways'
-import { type AdyenGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

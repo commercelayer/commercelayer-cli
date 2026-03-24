@@ -1,6 +1,6 @@
+import type { FreeShippingPromotion } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/free_shipping_promotions'
-import { type FreeShippingPromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'

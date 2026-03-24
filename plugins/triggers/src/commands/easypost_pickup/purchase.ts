@@ -1,6 +1,6 @@
+import type { EasypostPickup } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/easypost_pickups'
-import { type EasypostPickup } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'purchase'

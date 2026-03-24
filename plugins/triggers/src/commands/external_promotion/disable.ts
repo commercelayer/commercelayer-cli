@@ -1,6 +1,6 @@
+import type { ExternalPromotion } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/external_promotions'
-import { type ExternalPromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

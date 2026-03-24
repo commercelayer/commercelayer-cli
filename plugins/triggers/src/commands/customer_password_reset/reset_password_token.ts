@@ -1,6 +1,6 @@
+import type { CustomerPasswordReset } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/customer_password_resets'
-import { type CustomerPasswordReset } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'reset_password_token'

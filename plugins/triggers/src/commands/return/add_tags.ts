@@ -1,6 +1,6 @@
+import type { Return } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/returns'
-import { type Return } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'add_tags'

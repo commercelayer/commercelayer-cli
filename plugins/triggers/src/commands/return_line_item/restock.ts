@@ -1,6 +1,6 @@
+import type { ReturnLineItem } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/return_line_items'
-import { type ReturnLineItem } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'restock'

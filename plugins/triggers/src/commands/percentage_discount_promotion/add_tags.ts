@@ -1,6 +1,6 @@
+import type { PercentageDiscountPromotion } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/percentage_discount_promotions'
-import { type PercentageDiscountPromotion } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'add_tags'

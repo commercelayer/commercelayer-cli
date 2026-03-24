@@ -1,8 +1,8 @@
 import { clApi, clColor, clText, clUtil } from '@commercelayer/cli-core'
+import type { CommerceLayerClient, QueryParamsRetrieve, QueryRecordFields, Resource } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import type { CommerceLayerClient, Resource, QueryParamsRetrieve, QueryRecordFields } from '@commercelayer/sdk'
 import { CLIError } from '@oclif/core/lib/errors'
-import { type Config } from '@oclif/core/lib/interfaces'
+import type { Config } from '@oclif/core/lib/interfaces'
 
 
 

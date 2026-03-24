@@ -1,6 +1,6 @@
+import type { Import } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/imports'
-import { type Import } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'interrupt'

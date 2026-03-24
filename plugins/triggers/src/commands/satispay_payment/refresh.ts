@@ -1,6 +1,6 @@
+import type { SatispayPayment } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/satispay_payments'
-import { type SatispayPayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'refresh'

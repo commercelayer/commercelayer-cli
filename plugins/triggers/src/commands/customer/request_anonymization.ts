@@ -1,6 +1,6 @@
+import type { Customer } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/customers'
-import { type Customer } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'request_anonymization'

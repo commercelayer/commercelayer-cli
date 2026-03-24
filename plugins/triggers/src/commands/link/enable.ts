@@ -1,6 +1,6 @@
+import type { Link } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/links'
-import { type Link } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'

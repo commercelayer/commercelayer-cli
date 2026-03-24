@@ -1,7 +1,7 @@
+import { clColor } from '@commercelayer/cli-core'
+import inquirer from 'inquirer'
 import Command from '../../base'
 import exec from '../../exec'
-import inquirer from 'inquirer'
-import { clColor } from '@commercelayer/cli-core'
 import { triggers } from '../../triggers/line_item_options'
 
 

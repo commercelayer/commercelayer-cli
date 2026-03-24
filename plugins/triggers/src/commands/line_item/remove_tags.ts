@@ -1,6 +1,6 @@
+import type { LineItem } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/line_items'
-import { type LineItem } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'remove_tags'

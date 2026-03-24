@@ -1,6 +1,6 @@
+import type { KlarnaGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/klarna_gateways'
-import { type KlarnaGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

@@ -1,6 +1,6 @@
+import type { PaymentMethod } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/payment_methods'
-import { type PaymentMethod } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'enable'

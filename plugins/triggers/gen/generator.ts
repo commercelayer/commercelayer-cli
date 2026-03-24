@@ -1,8 +1,8 @@
-/* eslint-disable no-console, no-eval */
-import fs from 'fs'
-import snakeCase from 'lodash.snakecase'
+import { execSync } from 'node:child_process'
+import fs from 'node:fs'
 import { join } from 'node:path'
 import { clSchema } from '@commercelayer/cli-core'
+import snakeCase from 'lodash.snakecase'
 
 const Inflector = require('inflector-js')
 
@@ -17,17 +17,17 @@ const clean = () => {
 
   // Clean triggers dir
   const triggers = fs.readdirSync(TRIGGERS_DIR)
-  triggers.forEach(f => fs.unlinkSync(join(TRIGGERS_DIR, f)))
+  triggers.forEach(f => { fs.unlinkSync(join(TRIGGERS_DIR, f)) })
   console.log('Deleted trigger files')
 
   // Clean commands dir
   const files = fs.readdirSync(COMMANDS_DIR)
-  files.forEach(f => fs.rmSync(join(COMMANDS_DIR, f), { recursive: true, force: true }))
+  files.forEach(f => { fs.rmSync(join(COMMANDS_DIR, f), { recursive: true, force: true }) })
   console.log('Deleted command files')
 
   // Clean specs dir
   const specs = fs.readdirSync(SPECS_DIR)
-  specs.forEach(f => fs.rmSync(join(SPECS_DIR, f), { recursive: true, force: true }))
+  specs.forEach(f => { fs.rmSync(join(SPECS_DIR, f), { recursive: true, force: true }) })
   console.log('Deleted spec files')
 
 }
@@ -90,7 +90,9 @@ const updateTriggers = async (): Promise<{ [k: string]: any }> => {
 
     fs.writeFileSync(join(TRIGGERS_DIR, `${resType}.ts`), triggers, { encoding: 'utf-8' })
 
+    // biome-ignore lint/security/noGlobalEval: left for compatibility with old linter
     generatedTriggers[r] = eval(`({${actionsObject}})`)
+
 
     console.log(`Updated ${r} triggers`)
 
@@ -108,6 +110,16 @@ const FLAG_VALUE_STR = `value: Flags.string({
       multiple: false,
       required: true,
     }),`
+
+
+function formatCode(sourcePath: string): void {
+  try {
+    console.log(`- Formatting source code: ${sourcePath}`)
+    execSync(`pnpm biome check --write ${sourcePath}`, { encoding: "utf-8" })
+  } catch (error) {
+    console.error("Formatter error:", error)
+  }
+}
 
 
 const generate = async () => {
@@ -182,6 +194,10 @@ const generate = async () => {
   Manifest.run().then(() => console.log('Generated commands manifest'))
     .then(() => console.log('Order commands generation completed.'))
   */
+
+  formatCode(COMMANDS_DIR)
+  formatCode(SPECS_DIR)
+  formatCode(TRIGGERS_DIR)
 
 }
 

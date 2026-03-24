@@ -1,6 +1,6 @@
+import type { StockLineItem } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/stock_line_items'
-import { type StockLineItem } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'decrement_stock'

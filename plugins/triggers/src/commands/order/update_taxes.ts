@@ -1,6 +1,6 @@
+import type { Order } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/orders'
-import { type Order } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'update_taxes'

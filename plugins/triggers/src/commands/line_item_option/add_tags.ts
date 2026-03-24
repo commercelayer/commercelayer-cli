@@ -1,6 +1,6 @@
+import type { LineItemOption } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/line_item_options'
-import { type LineItemOption } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'add_tags'

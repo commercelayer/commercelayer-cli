@@ -1,6 +1,6 @@
+import type { KlarnaPayment } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/klarna_payments'
-import { type KlarnaPayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'update'

@@ -1,6 +1,6 @@
+import type { Refund } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/refunds'
-import { type Refund } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'forward'

@@ -1,8 +1,8 @@
-import { CommerceLayerStatic, type Resource } from '@commercelayer/sdk'
-import { Command, Flags, Args } from '@oclif/core'
 import { clApi, clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import { CommerceLayerStatic, type Resource } from '@commercelayer/sdk'
+import { Args, Command, Flags } from '@oclif/core'
 import type { CLIError } from '@oclif/core/lib/errors'
+import type { CommandError } from '@oclif/core/lib/interfaces'
 import exec from './exec'
 
 

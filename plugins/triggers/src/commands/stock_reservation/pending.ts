@@ -1,6 +1,6 @@
+import type { StockReservation } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/stock_reservations'
-import { type StockReservation } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'pending'

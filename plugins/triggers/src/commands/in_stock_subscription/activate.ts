@@ -1,6 +1,6 @@
+import type { InStockSubscription } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/in_stock_subscriptions'
-import { type InStockSubscription } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'activate'

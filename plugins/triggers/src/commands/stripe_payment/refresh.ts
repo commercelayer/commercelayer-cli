@@ -1,6 +1,6 @@
+import type { StripePayment } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/stripe_payments'
-import { type StripePayment } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'refresh'

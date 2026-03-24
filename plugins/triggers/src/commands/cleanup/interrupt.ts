@@ -1,6 +1,6 @@
+import type { Cleanup } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/cleanups'
-import { type Cleanup } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'interrupt'

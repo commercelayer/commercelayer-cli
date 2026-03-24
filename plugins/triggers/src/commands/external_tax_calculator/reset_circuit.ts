@@ -1,6 +1,6 @@
+import type { ExternalTaxCalculator } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/external_tax_calculators'
-import { type ExternalTaxCalculator } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'reset_circuit'

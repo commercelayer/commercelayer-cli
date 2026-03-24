@@ -1,6 +1,6 @@
+import type { StockTransfer } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/stock_transfers'
-import { type StockTransfer } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'upcoming'

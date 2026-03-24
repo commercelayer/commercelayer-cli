@@ -1,6 +1,6 @@
+import type { VertexAccount } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/vertex_accounts'
-import { type VertexAccount } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'refresh_token'

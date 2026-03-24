@@ -1,6 +1,6 @@
+import type { Authorization } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/authorizations'
-import { type Authorization } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'forward'

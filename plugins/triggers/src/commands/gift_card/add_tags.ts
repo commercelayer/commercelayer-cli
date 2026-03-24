@@ -1,6 +1,6 @@
+import type { GiftCard } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/gift_cards'
-import { type GiftCard } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'add_tags'

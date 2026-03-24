@@ -1,6 +1,6 @@
+import type { Bundle } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/bundles'
-import { type Bundle } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'compute_compare_at_amount'

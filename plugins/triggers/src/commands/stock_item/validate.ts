@@ -1,6 +1,6 @@
+import type { StockItem } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/stock_items'
-import { type StockItem } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'validate'

@@ -1,6 +1,6 @@
+import type { ExternalGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/external_gateways'
-import { type ExternalGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'

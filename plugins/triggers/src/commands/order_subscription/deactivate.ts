@@ -1,6 +1,6 @@
+import type { OrderSubscription } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/order_subscriptions'
-import { type OrderSubscription } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'deactivate'

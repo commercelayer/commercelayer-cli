@@ -1,6 +1,6 @@
+import type { SkuOption } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/sku_options'
-import { type SkuOption } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'remove_tags'

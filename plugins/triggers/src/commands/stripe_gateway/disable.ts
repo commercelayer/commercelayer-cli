@@ -1,6 +1,6 @@
+import type { StripeGateway } from '@commercelayer/sdk'
 import Command from '../../base'
 import { triggers } from '../../triggers/stripe_gateways'
-import { type StripeGateway } from '@commercelayer/sdk'
 
 
 const TRIGGER = 'disable'
