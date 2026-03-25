@@ -1,9 +1,10 @@
 {
   "name": "@commercelayer/cli-core",
   "version": "5.10.8",
+  "description": "Commerce Layer Javascript CLI core lib",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
-  "description": "Commerce Layer Javascript CLI core lib",
+  "repository": "github:commercelayer/commercelayer-cli-core",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "lib/index.mjs",
@@ -24,7 +25,6 @@
   },
   "keywords": [
     "ecommerce",
-    "jamstack",
     "commercelayer"
   ],
   "files": [
@@ -57,7 +57,6 @@
     "jsonwebtoken": "^9.0.3",
     "update-notifier-cjs": "^5.1.7"
   },
-  "repository": "github:commercelayer/commercelayer-cli-core",
   "publishConfig": {
     "access": "public"
   }
