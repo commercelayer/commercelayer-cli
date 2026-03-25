@@ -1,3 +1,15 @@
+# [5.11.0](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.8...v5.11.0) (2026-03-25)
+
+
+### Bug Fixes
+
+* fix linter errors ([aebd346](https://github.com/commercelayer/commercelayer-cli-core/commit/aebd3469c6a9ebe2a3f5ef1c0e63bfec54e77d53))
+
+
+### Features
+
+* add biome ([d4819e7](https://github.com/commercelayer/commercelayer-cli-core/commit/d4819e732dd1194cf3906eb03889845c579a976a))
+
 ## [5.10.8](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.10.7...v5.10.8) (2026-03-16)
 
 
