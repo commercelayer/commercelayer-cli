@@ -1,9 +1,9 @@
+import { type AuthenticateOptions, authenticate, revoke } from '@commercelayer/js-auth'
 import jwt from 'jsonwebtoken'
-import config from './config'
-import { type AppAuth } from './application'
-import { type ApiMode } from './api'
-import { authenticate, revoke, type AuthenticateOptions } from '@commercelayer/js-auth'
+import type { ApiMode } from './api'
+import type { AppAuth } from './application'
 import type { KeyValObj, KeyValString } from './command'
+import config from './config'
 import { dotNotationToObject } from './util'
 
 
@@ -99,7 +99,7 @@ const generateAccessToken = (token: AccessTokenInfo, sharedSecret: string, minut
 
 const getAccessToken = async (auth: AppAuth): Promise<AccessToken> => {
 
-  let accessToken
+  let accessToken: AccessToken | AccessTokenInfo
 
   const scope = auth.scope ? (Array.isArray(auth.scope) ? auth.scope.map(s => s.trim()).join(',') : auth.scope) : ''
 
@@ -159,7 +159,7 @@ const getTokenEnvironment = (token: string | AccessTokenInfo): ApiMode => {
 }
 
 
-export { decodeAccessToken, generateAccessToken, getAccessToken, revokeAccessToken, isAccessTokenExpiring, getTokenEnvironment }
+export { decodeAccessToken, generateAccessToken, getAccessToken, getTokenEnvironment, isAccessTokenExpiring, revokeAccessToken }
 
 
 export const buildAssertionPayload = (ownerType: OwnerType, ownerId: string, customClaim?: KeyValString): any => {

@@ -1,8 +1,8 @@
-import { format, inspect } from 'util'
-import { sep, dirname } from 'path'
-import { homedir } from 'os'
-import { existsSync, mkdirSync } from 'fs'
 import type { Config } from '@oclif/core/lib/interfaces'
+import { existsSync, mkdirSync } from 'fs'
+import { homedir } from 'os'
+import { dirname, sep } from 'path'
+import { format, inspect } from 'util'
 import type { KeyValObj } from './command'
 
 
@@ -42,7 +42,7 @@ export const specialFolder = (filePath: string, createIfNotExists: boolean = fal
 
 	// Special directory (home / desktop)
 	// eslint-disable-next-line no-useless-escape
-	const root = filePath.toLowerCase().split(/[\\\/]/g)[0]
+	const root = filePath.toLowerCase().split(/[\\/]/g)[0]
 	if (specialFolders.includes(root)) {
 		let filePrefix = homedir()
 		if (root === 'desktop') filePrefix += `${sep}Desktop`

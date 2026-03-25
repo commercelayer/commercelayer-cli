@@ -70,7 +70,7 @@ const _Inflector = {
 	uppercase: /([A-Z])/g,
 	underbarPrefix: /^_/,
 
-	applyRules: function (str: string, rules: Array<Array<string | RegExp>>, skip: string[], override?: string): string {
+	applyRules: (str: string, rules: Array<Array<string | RegExp>>, skip: string[], override?: string): string => {
 		if (override) {
 			str = override
 		} else {
@@ -94,14 +94,12 @@ const _Inflector = {
 	Inflector.pluralize('Hat')              -> 'Hats'
 	Inflector.pluralize('person', 'guys')   -> 'guys'    
 	*/
-	pluralize: function (str: string, plural?: string): string {
-		return _Inflector.applyRules(
+	pluralize: (str: string, plural?: string): string => _Inflector.applyRules(
 			str,
 			_Inflector.pluralRules,
 			_Inflector.uncountableWords,
 			plural
-		)
-	},
+		),
 
 	/*
 	Inflector.singularize('person')         -> 'person'
@@ -109,20 +107,18 @@ const _Inflector = {
 	Inflector.singularize('hats')           -> 'hat'
 	Inflector.singularize('guys', 'person') -> 'person'
 	*/
-	singularize: function (str: string, singular?: string): string {
-		return _Inflector.applyRules(
+	singularize: (str: string, singular?: string): string => _Inflector.applyRules(
 			str,
 			_Inflector.singularRules,
 			_Inflector.uncountableWords,
 			singular
-		)
-	},
+		),
 
 	/*
 	Inflector.camelize('message_properties')        -> 'MessageProperties'
 	Inflector.camelize('message_properties', true)  -> 'messageProperties'
 	*/
-	camelize: function (str: string, lowFirstLetter?: boolean): string {
+	camelize: (str: string, lowFirstLetter?: boolean): string => {
 		// str = str.toLowerCase()
 		const strPath = str.split('/')
 		for (let i = 0; i < strPath.length; i++) {
@@ -149,7 +145,7 @@ const _Inflector = {
 	Inflector.underscore('MessageProperties')       -> 'message_properties'
 	Inflector.underscore('messageProperties')       -> 'message_properties'
 	*/
-	underscore: function (str: string): string {
+	underscore: (str: string): string => {
 		const strPath = str.split('::')
 		for (let i = 0; i < strPath.length; i++) {
 			strPath[i] = strPath[i].replace(_Inflector.uppercase, '_$1')
@@ -163,7 +159,7 @@ const _Inflector = {
 	Inflector.humanize('message_properties')        -> 'Message properties'
 	Inflector.humanize('message_properties')        -> 'message properties'
 	*/
-	humanize: function (str: string, lowFirstLetter: boolean): string {
+	humanize: (str: string, lowFirstLetter: boolean): string => {
 		str = str.toLowerCase()
 		str = str.replace(_Inflector.idSuffix, '')
 		str = str.replace(_Inflector.underbar, ' ')
@@ -177,7 +173,7 @@ const _Inflector = {
 	Inflector.capitalize('message_properties')      -> 'Message_properties'
 	Inflector.capitalize('message properties')      -> 'Message properties'
 	*/
-	capitalize: function (str: string): string {
+	capitalize: (str: string): string => {
 		str = str.toLowerCase()
 		str = str.substring(0, 1).toUpperCase() + str.substring(1)
 		return str
@@ -187,7 +183,7 @@ const _Inflector = {
 	Inflector.dasherize('message_properties')       -> 'message-properties'
 	Inflector.dasherize('message properties')       -> 'message-properties'
 	*/
-	dasherize: function (str: string): string {
+	dasherize: (str: string): string => {
 		str = str.replace(_Inflector.spaceOrUnderbar, '-')
 		return str
 	},
@@ -197,7 +193,7 @@ const _Inflector = {
 	Inflector.camel2words('message properties')         -> 'Message Properties'
 	Inflactor.camel2words('Message_propertyId', true)   -> 'Message Properties Id'
 	*/
-	camel2words: function (str: string, allFirstUpper: boolean): string {
+	camel2words: (str: string, allFirstUpper: boolean): string => {
 		// str = str.toLowerCase()
 		if (allFirstUpper) {
 			str = _Inflector.camelize(str)
@@ -225,7 +221,7 @@ const _Inflector = {
 	/*
 	Inflector.demodulize('Message::Bus::Properties')    -> 'Properties'
 	*/
-	demodulize: function (str: string): string {
+	demodulize: (str: string): string => {
 		const strArr = str.split('::')
 		str = strArr[strArr.length - 1]
 		return str
@@ -234,7 +230,7 @@ const _Inflector = {
 	/*
 	Inflector.tableize('MessageBusProperty')    -> 'message_bus_properties'
 	*/
-	tableize: function (str: string): string {
+	tableize: (str: string): string => {
 		str = _Inflector.pluralize(_Inflector.underscore(str))
 		return str
 	},
@@ -242,7 +238,7 @@ const _Inflector = {
 	/*
 	Inflector.classify('message_bus_properties')    -> 'MessageBusProperty'
 	*/
-	classify: function (str: string): string {
+	classify: (str: string): string => {
 		str = _Inflector.singularize(_Inflector.camelize(str))
 		return str
 	},
@@ -251,7 +247,7 @@ const _Inflector = {
 	Inflector.foreignKey('MessageBusProperty')       -> 'message_bus_property_id'
 	Inflector.foreignKey('MessageBusProperty', true) -> 'message_bus_propertyid'
 	*/
-	foreignKey: function (str: string, dropIdUbar: boolean) {
+	foreignKey: (str: string, dropIdUbar: boolean) => {
 		str = _Inflector.underscore(_Inflector.demodulize(str)) + (dropIdUbar ? ('') : ('_')) + 'id'
 		return str
 	},
@@ -259,7 +255,7 @@ const _Inflector = {
 	/*
 	Inflector.ordinalize('the 1 pitch')     -> 'the 1st pitch'
 	*/
-	ordinalize: function (str: string): string {
+	ordinalize: (str: string): string => {
 		const strArr = str.split(' ')
 		for (let x = 0; x < strArr.length; x++) {
 			const i = parseInt(strArr[x])

@@ -63,4 +63,4 @@ enum Operation {
 
 
 
-export { readDataFile, rawRequest, Operation }
+export { Operation, rawRequest, readDataFile }

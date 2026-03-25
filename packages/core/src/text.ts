@@ -24,5 +24,5 @@ const camelize = (str: string, lowFirstLetter?: boolean): string => { return Inf
 
 
 
-export { capitalize, pluralize, singularize, camelize, dasherize, underscorize }
 export { symbols } from './symbol'
+export { camelize, capitalize, dasherize, pluralize, singularize, underscorize }

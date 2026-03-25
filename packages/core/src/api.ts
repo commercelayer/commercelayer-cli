@@ -1,12 +1,13 @@
 import config from './config'
-import { rawRequest, readDataFile, Operation } from './raw'
-import { denormalize } from './jsonapi'
-import type { Method } from './types'
 import inflector from './inflector'
+import { denormalize } from './jsonapi'
+import { Operation, rawRequest, readDataFile } from './raw'
+import type { Method } from './types'
 
 
 type ApiMode = 'test' | 'live'
 type ApiType = 'core' | 'provisioning' | 'metrics' | 'auth'
+
 export type { ApiMode, ApiType }
 
 
@@ -37,7 +38,7 @@ const humanizeResource = (type: string, singular?: boolean): string => {
 }
 
 
-export { baseURL, extractDomain, execMode, humanizeResource }
+export { baseURL, execMode, extractDomain, humanizeResource }
 
 
 const CACHEABLE_RESOURCES = [
@@ -128,8 +129,7 @@ export const requestRateLimitDelay = (options?: DelayOptions): number => {
 }
 
 
-export { rawRequest as requestRaw, readDataFile as requestDataFile, Operation }
-export { denormalize as responseDenormalize }
+export { denormalize as responseDenormalize, Operation, rawRequest as requestRaw, readDataFile as requestDataFile }
 
 
 export const request = {

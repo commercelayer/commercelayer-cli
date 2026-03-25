@@ -1,6 +1,6 @@
 
-import { AccessToken, AccessTokenInfo, getAccessToken, isAccessTokenExpiring } from '../src/token'
 import dotenv from 'dotenv'
+import { AccessToken, AccessTokenInfo, getAccessToken, isAccessTokenExpiring } from '../src/token'
 
 dotenv.config()
 

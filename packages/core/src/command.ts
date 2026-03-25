@@ -140,4 +140,4 @@ const checkISODateTimeValue = (value?: string): Date => {
 }
 
 
-export { fixValueType, findLongStringFlag, fixDashedFlagValue, checkISODateTimeValue }
+export { checkISODateTimeValue, findLongStringFlag, fixDashedFlagValue, fixValueType }

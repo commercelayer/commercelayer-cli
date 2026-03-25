@@ -33,7 +33,7 @@ interface AppInfo extends AppKey, AppAuth {
 }
 
 
-export type { AppKey, AppAuth, AppInfo }
+export type { AppAuth, AppInfo, AppKey }
 
 
 /** Build application key */
@@ -70,4 +70,4 @@ const isProvisioningApp = (app: AppAuth): boolean => {
 }
 
 
-export { appKey, appKeyValid, appKeyMatch, arrayScope, isProvisioningApp }
+export { appKey, appKeyMatch, appKeyValid, arrayScope, isProvisioningApp }

@@ -91,9 +91,9 @@ const filters = (): Filter[] => {
 
 
 
-export { type Filter, documentation,
+export { 
+	applyFilter as apply,documentation,type Filter, 
 	filterAvailable as available,
 	filterList as list,
-	applyFilter as apply,
 	filters
 }

@@ -83,4 +83,4 @@ const formatError = (error: any, flags?: any): string => {
 }
 
 
-export { printObject, printJSON, printCSV, center, maxLength, cleanDate, localeDate, formatOutput, formatError }
+export { center, cleanDate, formatError, formatOutput, localeDate, maxLength, printCSV, printJSON, printObject }
