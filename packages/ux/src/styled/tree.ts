@@ -4,7 +4,7 @@ export class Tree {
   nodes: Record<string, Tree> = {}
 
   display(logger: any = console.log): void {
-    const addNodes = function (nodes: any): Record<string, any> {
+    const addNodes = (nodes: any): Record<string, any> => {
       const tree: Record<string, any> = {}
       for (const p of Object.keys(nodes as object)) {
         tree[p] = addNodes(nodes[p].nodes)

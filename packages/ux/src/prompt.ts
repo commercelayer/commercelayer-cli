@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import chalk from 'chalk'
 
-import { config } from './config'
 import { Errors } from '@oclif/core'
+import chalk from 'chalk'
+import { config } from './config'
 
 
 export interface IPromptOptions {

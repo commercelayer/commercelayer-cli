@@ -1,19 +1,14 @@
-/* eslint-disable @typescript-eslint/method-signature-style */
-/* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-/* eslint-disable @typescript-eslint/unbound-method */
+
+import { inspect } from 'node:util'
+import { Flags as F, type Interfaces } from '@oclif/core'
 import chalk from 'chalk'
 import { safeDump } from 'js-yaml'
 import { orderBy } from 'natural-orderby'
-import { inspect } from 'node:util'
 import sliceAnsi from 'slice-ansi'
 import sw from 'string-width'
-
 import { stdtermwidth } from '../screen'
 import { capitalize, sumBy } from '../util'
 import write from '../write'
-import { type Interfaces, Flags as F } from '@oclif/core'
 
 
 class Table<T extends Record<string, unknown>> {

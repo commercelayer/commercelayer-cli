@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import chalk from 'chalk'
-import { format as utilFormat } from 'node:util'
 
+import { format as utilFormat } from 'node:util'
+import { Errors } from '@oclif/core'
+import chalk from 'chalk'
 import type { ActionBase } from './action/base'
 import { config } from './config'
 import { flush as _flush } from './flush'
@@ -10,10 +11,11 @@ import * as uxPrompt from './prompt'
 import * as styled from './styled'
 import uxWait from './wait'
 import write from './write'
-import { Errors } from '@oclif/core'
+
 const hyperlinker = require('hyperlinker')
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
+
+// biome-ignore lint/complexity/noStaticOnlyClass: left for compatibility with old linter
 export class ux {
   public static config = config
 
@@ -25,9 +27,9 @@ export class ux {
     const supports = require('supports-hyperlinks')
     if (supports.stdout) {
       // \u001b]8;;https://google.com\u0007sometext\u001b]8;;\u0007
-      this.log(`\u001B]1337;AddAnnotation=${text.length}|${annotation}\u0007${text}`)
+      ux.log(`\u001B]1337;AddAnnotation=${text.length}|${annotation}\u0007${text}`)
     } else {
-      this.log(text)
+      ux.log(text)
     }
   }
 
@@ -43,8 +45,8 @@ export class ux {
   }
 
   public static debug(format: string, ...args: string[]): void {
-    if (['debug', 'trace'].includes(this.config.outputLevel)) {
-      this.info(utilFormat(format, ...args) + '\n')
+    if (['debug', 'trace'].includes(ux.config.outputLevel)) {
+      ux.info(utilFormat(format, ...args) + '\n')
     }
   }
 
@@ -61,7 +63,7 @@ export class ux {
   }
 
   public static log(format?: string, ...args: string[]): void {
-    this.info(format || '', ...args)
+    ux.info(format || '', ...args)
   }
 
   public static logToStderr(format?: string, ...args: string[]): void {
@@ -77,23 +79,23 @@ export class ux {
   }
 
   public static styledHeader(header: string): void {
-    this.info(chalk.dim('=== ') + chalk.bold(header) + '\n')
+    ux.info(chalk.dim('=== ') + chalk.bold(header) + '\n')
   }
 
   public static styledJSON(obj: unknown): void {
     const json = JSON.stringify(obj, null, 2)
     if (!chalk.level) {
-      this.info(json)
+      ux.info(json)
       return
     }
 
     const cardinal = require('cardinal')
     const theme = require('cardinal/themes/jq')
-    this.info(cardinal.highlight(json, { json: true, theme }))
+    ux.info(cardinal.highlight(json, { json: true, theme }))
   }
 
   public static styledObject(obj: any, keys?: string[]): void {
-    this.info(styled.styledObject(obj, keys))
+    ux.info(styled.styledObject(obj, keys))
   }
 
   public static get table(): typeof styled.Table.table {
@@ -101,8 +103,8 @@ export class ux {
   }
 
   public static trace(format: string, ...args: string[]): void {
-    if (this.config.outputLevel === 'trace') {
-      this.info(utilFormat(format, ...args) + '\n')
+    if (ux.config.outputLevel === 'trace') {
+      ux.info(utilFormat(format, ...args) + '\n')
     }
   }
 
@@ -111,7 +113,7 @@ export class ux {
   }
 
   public static url(text: string, uri: string, params = {}): void {
-    this.log(this.hyperlink(text, uri, params))
+    ux.log(ux.hyperlink(text, uri, params))
   }
 
   public static hyperlink(text: string, uri: string, params = {}): string {
