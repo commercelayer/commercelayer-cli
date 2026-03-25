@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.13...v3.1.0) (2026-03-25)
+
+
+### Features
+
+* add biome ([7bd3704](https://github.com/commercelayer/commercelayer-cli-dev/commit/7bd37048369ec48575eec0e8470b6859481a7b3c))
+
 ## [3.0.13](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.0.12...v3.0.13) (2026-03-13)
 
 
