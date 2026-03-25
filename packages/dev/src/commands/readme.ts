@@ -1,12 +1,11 @@
 
-import { Command, Config, Flags, type HelpBase, type Interfaces, loadHelpClass, Plugin } from '@oclif/core'
-import * as fs from 'fs-extra'
 import * as path from 'node:path'
 import { URL } from 'node:url'
+import { Command, Config, Flags, type HelpBase, type Interfaces, loadHelpClass, Plugin } from '@oclif/core'
+import * as fs from 'fs-extra'
 import _template from 'lodash/template'
-
-import { castArray, compact, sortBy, template, uniqBy } from '../util'
 import { HelpCompatibilityWrapper } from '../help-compatibility'
+import { castArray, compact, sortBy, template, uniqBy } from '../util'
 
 
 const normalize = require('normalize-package-data')

@@ -3,6 +3,7 @@
   "description": "Commerce Layer CLI development tools and helpers",
   "version": "3.0.13",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-dev",
   "repository": "commercelayer/commercelayer-cli-dev",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-dev/issues",
@@ -23,8 +24,8 @@
     "cli",
     "commercelayer"
   ],
-  "license": "MIT",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "oclif": {
     "commands": "./lib/commands",
     "bin": "cl-cli-dev",
@@ -46,13 +47,12 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "readme": "./bin/run.js readme && git add README.md",
-    "lint": "eslint . --ext .ts --config .eslintrc",
-    "lintspec": "eslint ./specs/ --ext .spec.ts",
-    "lint:fix": "eslint src --fix"
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write",
+    "release": "pnpm upgrade && pnpm lint && pnpm build"
   },
-  "types": "lib/index.d.ts",
   "devDependencies": {
-    "@commercelayer/eslint-config-ts": "^1.4.5",
+    "@biomejs/biome": "2.4.8",
     "@oclif/plugin-help": "^5.2.20",
     "@oclif/test": "^2.5.6",
     "@semantic-release/changelog": "^6.0.3",
@@ -61,16 +61,15 @@
     "@types/fs-extra": "^9.0.13",
     "@types/lodash": "^4.17.24",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^20.19.37",
-    "chai": "^4.5.0",
-    "eslint": "^8.57.1",
+    "@types/node": "^25.5.0",
+    "chai": "^6.2.2",
     "globby": "^10.0.2",
-    "mocha": "^10.8.2",
-    "nyc": "^15.1.0",
+    "mocha": "^11.7.5",
+    "nyc": "^18.0.0",
     "oclif": "^4.22.87",
     "semantic-release": "^25.0.3",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "dependencies": {
     "@oclif/core": "^3.27.0",

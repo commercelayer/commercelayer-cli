@@ -1,4 +1,4 @@
-import type { HelpBase, Command } from '@oclif/core'
+import type { Command, HelpBase } from '@oclif/core'
 
 
 interface MaybeCompatibleHelp extends HelpBase {
