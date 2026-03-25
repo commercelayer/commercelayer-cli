@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-ux",
-  "version": "1.1.0",
   "description": "Commerce Layer Javascript CLI ux lib",
+  "version": "1.1.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "repository": "github:commercelayer/commercelayer-cli-ux",
