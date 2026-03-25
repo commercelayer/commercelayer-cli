@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.1.0...v1.2.0) (2026-03-25)
+
+
+### Features
+
+* add biome ([b5eae26](https://github.com/commercelayer/commercelayer-cli-ux/commit/b5eae26194918f406ae450f369d61f9309eb7177))
+
 # [1.1.0](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.0.14...v1.1.0) (2026-03-18)
 
 
