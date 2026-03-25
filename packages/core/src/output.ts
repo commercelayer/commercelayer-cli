@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { inspect } from 'node:util'
 import type { KeyValObj } from './command'
 

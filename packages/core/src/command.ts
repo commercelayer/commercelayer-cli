@@ -43,8 +43,9 @@ const fixValueType = (val: string): string | number | boolean | null | undefined
 
 	if (v === 'null') v = null	// null check
 	else
-		// eslint-disable-next-line eqeqeq
-		if (Number(v) == v) v = Number(v)	// number check
+		
+		// biome-ignore lint/suspicious/noDoubleEquals: intentional type coercion for number check
+				if (Number(v) == v) v = Number(v)	// number check
 		else v = (v === 'true') ? true : (v === 'false') ? false : v	// boolean check
 
 	return v
@@ -115,7 +116,7 @@ const fixDashedFlagValue = (argv: string[], flag: any, name?: string, parsed?: a
 
 		if (flagValue.startsWith(TEMP_PREFIX) && parsed) {
 			const nameKey = name_ ? name_.replace('--', '') : undefined
-			const parsedFlag = Object.entries(parsed.flags).find(([k, v]) => v === flagValue)
+			const parsedFlag = Object.entries(parsed.flags).find(([_k, v]) => v === flagValue)
 			if (parsedFlag && (!nameKey || nameKey === parsedFlag[0])) parsed.flags[parsedFlag[0]] = val
 			const parsedRawFlag = Object.values(parsed.raw).find((f: any) => (f.type === 'flag') && (f.input === flagValue)) as any
 			if (parsedRawFlag && (!nameKey || nameKey === parsedRawFlag.flag)) parsedRawFlag.input = val
@@ -134,7 +135,7 @@ const checkISODateTimeValue = (value?: string): Date => {
 		const parsed = Date.parse(value)
 		if (Number.isNaN(parsed)) throw new Error('Invalid date')
 		return new Date(parsed)
-	} catch (err: any) {
+	} catch (_err: any) {
 		throw new Error('Error parsing date: ' + value)
 	}
 }

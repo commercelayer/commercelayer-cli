@@ -1,7 +1,6 @@
 import clConfig from './config'
 
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const downloadSchema = async (version?: string): Promise<any> => {
 
 	const domain = clConfig.api.default_app_domain

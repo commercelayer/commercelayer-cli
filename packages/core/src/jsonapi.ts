@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 
 const findIncluded = (rel: any, included: any[]): any => {
 	return included.find(inc => {
@@ -30,7 +29,7 @@ const denormalizeResource = (res: any, included: any[]): any => {
 
 const denormalize = (response: any): any => {
 
-	let denormalizedResponse
+	let denormalizedResponse: any
 
 	if (response.links) delete response.links
 

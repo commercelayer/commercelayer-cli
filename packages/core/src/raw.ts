@@ -1,5 +1,5 @@
 
-import { readFileSync } from 'fs'
+import { readFileSync } from 'node:fs'
 import { clColor } from '.'
 
 
@@ -40,12 +40,12 @@ const readDataFile = (file: string): any => {
 
   try {
     dataFile = readFileSync(file, 'utf-8')
-  } catch (error) {
+  } catch (_error) {
     throw new Error(`Unable to find or open the data file ${clColor.msg.error(file)}`)
   }
   try {
     dataJson = JSON.parse(dataFile)
-  } catch (error) {
+  } catch (_error) {
     throw new Error(`Unable to parse the data file ${clColor.msg.error(file)}: invalid JSON format`)
   }
 

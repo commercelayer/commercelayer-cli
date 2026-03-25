@@ -1,8 +1,8 @@
+import { existsSync, mkdirSync } from 'node:fs'
+import { homedir } from 'node:os'
+import { dirname, sep } from 'node:path'
+import { format, inspect } from 'node:util'
 import type { Config } from '@oclif/core/lib/interfaces'
-import { existsSync, mkdirSync } from 'fs'
-import { homedir } from 'os'
-import { dirname, sep } from 'path'
-import { format, inspect } from 'util'
 import type { KeyValObj } from './command'
 
 
