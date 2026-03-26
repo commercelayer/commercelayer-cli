@@ -1,3 +1,16 @@
+# [7.0.0-oclif4.4](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.3...v7.0.0-oclif4.4) (2026-03-26)
+
+
+### Bug Fixes
+
+* fix test script ([af84073](https://github.com/commercelayer/commercelayer-cli/commit/af840734e7143d0033a8a5cb7e3a2bf2c70ab863))
+* fix typescript version ([ded2ce2](https://github.com/commercelayer/commercelayer-cli/commit/ded2ce202b94fccca51e5b7d8d92b0b409834279))
+
+
+### Features
+
+* add biome and update actions ([f774195](https://github.com/commercelayer/commercelayer-cli/commit/f774195958782e2ea9cff565f3cc415d41720aa8))
+
 # [7.0.0-oclif4.3](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.2...v7.0.0-oclif4.3) (2026-03-24)
 
 
