@@ -105,6 +105,13 @@ export default class ImportsCreate extends Command {
       description: 'execute command without showing warning messages',
       exclusive: ['blind'],
     }),
+    size: Flags.integer({
+      char: 's',
+      description: 'the maximum number of items for each import',
+      hidden: true,
+      min: 100,
+      max: clConfig.imports.max_size,
+    }),
   }
 
 
@@ -118,6 +125,8 @@ export default class ImportsCreate extends Command {
   async run(): Promise<any> {
 
     const { flags } = await this.parse(ImportsCreate)
+
+    const importMaxSize: number | undefined = flags.size
 
     // Check application kind
     this.checkApplication(flags.accessToken, ['integration', 'cli'])
@@ -164,7 +173,7 @@ export default class ImportsCreate extends Command {
         parent_resource_id: parentId,
         // cleanup_records: flags.cleanup,
         inputs
-      }, format)
+      }, format, importMaxSize)
 
       // Split chunks
       const batches: Batch[] = splitChunks(chunks, MAX_CHUNKS)
@@ -179,7 +188,7 @@ export default class ImportsCreate extends Command {
         // Multi chunk message
         if (multiChunk) {
           const groupId = chunks[0]?.group_id
-          const msg1 = `The input file contains ${clColor.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${clConfig.imports.max_size} elements allowed for each single import.`
+          const msg1 = `The input file contains ${clColor.yellowBright(String(inputsLength))} ${resource}, more than the maximun ${importMaxSize ?? clConfig.imports.max_size} elements allowed for each single import.`
           const msg2 = `The import will be split into a set of ${clColor.yellowBright(String(chunks.length))} distinct chunks with the same unique group ID ${clColor.underline.yellowBright(groupId)}.`
           const msg3 = `Execute the command ${clColor.cli.command(`imports:group ${groupId}`)} to retrieve all the related imports`
           this.log(`\n${msg1} ${msg2} ${msg3}`)
@@ -321,6 +330,7 @@ export default class ImportsCreate extends Command {
       return imp
 
     }).catch(async error => {
+      console.log(error)
       this.monitor.updateBar(bar, undefined, { message: this.monitor.message(/* error.message || */'Error', 'error') })
       // console.log(error)
       return Promise.reject(error)
