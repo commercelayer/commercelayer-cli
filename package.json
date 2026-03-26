@@ -13,7 +13,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "files": [
     "/bin/run.*",
@@ -94,7 +94,7 @@
     "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.9",
+    "@biomejs/biome": "^2.4.9",
     "@commercelayer/cli-dev": "oclif4",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^4.1.17",
