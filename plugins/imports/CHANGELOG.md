@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.3.1...v4.4.0) (2026-03-26)
+
+
+### Features
+
+* add import size flag ([4fa5433](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/4fa54337c699c0d959b9093eb2e1c9f293b5a53f))
+
 ## [4.3.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.3.0...v4.3.1) (2026-03-24)
 
 
