@@ -1,6 +1,5 @@
 import { inspect } from 'node:util'
-import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
-import { clApi, clApplication, clColor, clCommand, clConfig, clToken } from '@commercelayer/cli-core'
+import { type ApiMode, type AppAuth, type AppInfo, type AuthScope, clApi, clApplication, clColor, clCommand, clConfig, clToken } from '@commercelayer/cli-core'
 import clprovisioning from '@commercelayer/provisioning-sdk'
 import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
 import { Command, type Config, Errors, Flags } from '@oclif/core'

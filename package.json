@@ -3,6 +3,7 @@
   "description": "Commerce Layer CLI",
   "version": "7.0.0-oclif4.3",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
   "homepage": "https://github.com/commercelayer/commercelayer-cli",
   "repository": "https://github.com/commercelayer/commercelayer-cli",
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
@@ -25,7 +26,6 @@
     "cli",
     "commercelayer"
   ],
-  "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "oclif": {
@@ -94,7 +94,7 @@
     "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.8",
+    "@biomejs/biome": "2.4.9",
     "@commercelayer/cli-dev": "oclif4",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^4.1.17",
