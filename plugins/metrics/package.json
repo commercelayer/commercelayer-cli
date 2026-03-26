@@ -51,7 +51,7 @@
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
+    "release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
