@@ -87,7 +87,7 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --require dotenv/config",
-    "posttest": "pnpm linter",
+    "posttest": "pnpm lint",
     "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
