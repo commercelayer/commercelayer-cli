@@ -116,7 +116,7 @@
     "prettier": "^3.8.1",
     "semantic-release": "^25.0.3",
     "tsx": "^4.21.0",
-    "typescript": "^6.0.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@commercelayer/cli-core": "^5.11.0",
