@@ -36,6 +36,23 @@
 
 * add biome and update actions ([f774195](https://github.com/commercelayer/commercelayer-cli/commit/f774195958782e2ea9cff565f3cc415d41720aa8))
 
+# [7.0.0-oclif4.5](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.4...v7.0.0-oclif4.5) (2026-03-26)
+
+
+### Bug Fixes
+
+* update dependencies ([0633985](https://github.com/commercelayer/commercelayer-cli/commit/06339853a7fecc14d4316d2aaad93c529a94c8bb))
+
+
+### Features
+
+* require node to v22 ([3a38321](https://github.com/commercelayer/commercelayer-cli/commit/3a383219c6016e4ded73c1fa39e35cb15c3ac968))
+
+
+### BREAKING CHANGES
+
+* require node to v22
+
 # [7.0.0-oclif4.4](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.3...v7.0.0-oclif4.4) (2026-03-26)
 
 
