@@ -1,10 +1,10 @@
-import { Command } from '@oclif/core'
+import { inspect } from 'node:util'
+import { type AppAuth, clApplication, clColor, clCommand, clToken } from '@commercelayer/cli-core'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
-import { ConfigParams, appsDirCreate, writeConfigFile, writeTokenFile, configParam } from '../../config'
-import { inspect } from 'util'
-import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
-import { type AppAuth, clColor, clToken, clApplication, clCommand } from '@commercelayer/cli-core'
+import { Command } from '@oclif/core'
 import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import { appsDirCreate, ConfigParams, configParam, writeConfigFile, writeTokenFile } from '../../config'
+import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
 
 
 

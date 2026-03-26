@@ -1,7 +1,7 @@
-import { Command, Flags, Args } from '@oclif/core'
-import { paramExists, paramEditable, configParam, ConfigParams } from '../../config'
-import { inspect } from 'util'
+import { inspect } from 'node:util'
 import { clColor } from '@commercelayer/cli-core'
+import { Args, Command, Flags } from '@oclif/core'
+import { ConfigParams, configParam, paramEditable, paramExists } from '../../config'
 
 
 export default class ConfigSet extends Command {

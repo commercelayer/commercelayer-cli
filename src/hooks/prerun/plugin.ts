@@ -1,9 +1,9 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
 import type { Hook } from '@oclif/core'
-import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
-import inquirer from 'inquirer'
-import type { Config } from '@oclif/core/lib/interfaces'
 import { CLIError } from '@oclif/core/lib/errors'
+import type { Config } from '@oclif/core/lib/interfaces'
+import inquirer from 'inquirer'
+import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
 
 
 
@@ -22,7 +22,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
     // Check tag flag
     const tgIndex = opts.argv.indexOf('--tag')
-    let tag
+    let tag: any
     if (tgIndex > -1) {
       tag = opts.argv[tgIndex + 1]
       opts.argv.splice(tgIndex, 2)

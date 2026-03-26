@@ -1,6 +1,6 @@
 
-import ApplicationsIndex from '.'
 import { isPluginInstalled } from '../plugins/available'
+import ApplicationsIndex from '.'
 
 
 

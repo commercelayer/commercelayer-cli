@@ -1,8 +1,8 @@
-import Configstore from 'configstore'
+import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'node:fs'
+import { type AccessToken, type AppInfo, type AppKey, clApi, clConfig } from '@commercelayer/cli-core'
 import type { Config } from '@oclif/core/lib/interfaces/config'
-import { type AppKey, type AppInfo, clApi, clConfig, type AccessToken } from '@commercelayer/cli-core'
+import Configstore from 'configstore'
 
 const packageJson = require('../package.json')
 
@@ -122,9 +122,7 @@ const appsDirRead = (config: Config, filter: { key?: string }): AppInfo[] => {
 }
 
 
-export { appsDirCreate, appsDirRead, appsDir, appsDirExists }
-export { configFilePath, configFileExists, writeConfigFile, readConfigFile, deleteConfigFile }
-export { tokenFilePath, tokenFileExists, writeTokenFile, readTokenFile, deleteTokenFile }
+export { appsDir, appsDirCreate, appsDirExists, appsDirRead, configFileExists, configFilePath, deleteConfigFile, deleteTokenFile, readConfigFile, readTokenFile, tokenFileExists, tokenFilePath, writeConfigFile, writeTokenFile }
 
 
 
@@ -226,5 +224,4 @@ const configParam = (param: ConfigParams, value?: any): any => {
 }
 
 
-export { ConfigParams, ConfigParamsEditable }
-export { configParam, paramEditable, paramExists, paramDefault }
+export { ConfigParams, ConfigParamsEditable, configParam, paramDefault, paramEditable, paramExists }

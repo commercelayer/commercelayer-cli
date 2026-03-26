@@ -1,8 +1,8 @@
-import { type Hook} from '@oclif/core'
-import { tokenFileExists, readTokenFile, ConfigParams, configParam, readConfigFile, configFileExists } from '../../config'
-import { clApplication, type AppKey, clToken, clColor, clCommand } from '@commercelayer/cli-core'
-import { newAccessToken } from '../../commands/applications/token'
+import { type AppInfo, type AppKey, clApplication, clColor, clCommand, clToken } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import type { Hook} from '@oclif/core'
+import { newAccessToken } from '../../commands/applications/token'
+import { ConfigParams, configFileExists, configParam, readConfigFile, readTokenFile, tokenFileExists } from '../../config'
 
 
 
@@ -47,7 +47,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 		mode: 'test', // execMode(flags.live),
 	}
 
-	let configData
+	let configData: AppInfo | undefined
 
 	// No appkey passed io command line, looking for saved current application
 	if (!clApplication.appKeyValid(app)) {

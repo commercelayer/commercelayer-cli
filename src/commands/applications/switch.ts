@@ -1,7 +1,7 @@
+import { clColor } from '@commercelayer/cli-core'
 import Command from '../../base'
 import { currentApplication } from '../../config'
 import { printCurrent } from './current'
-import { clColor } from '@commercelayer/cli-core'
 
 
 

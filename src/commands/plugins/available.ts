@@ -1,5 +1,6 @@
-import { Command, Flags, ux as cliux } from '@oclif/core'
 import { clColor, clUtil } from '@commercelayer/cli-core'
+import cliux from '@commercelayer/cli-ux'
+import { Command, Flags } from '@oclif/core'
 import type { Config } from '@oclif/core/lib/interfaces'
 
 
@@ -83,7 +84,7 @@ const AvailablePlugins: PluginRelease[] = [
 
 const getPluginInfo = (pluginName?: string): PluginRelease | undefined => {
 
-  let plugin
+  let plugin: any
 
   if (pluginName) {
     AvailablePlugins.filter(p => p.enabled).some(p => {
@@ -116,5 +117,5 @@ const isPluginInstalled = (name: string, config: Config): boolean => {
 }
 
 
-export { getPluginInfo, getAvailablePlugins, getInstalledPlugins, isPluginInstalled }
 export type { PluginRelease }
+export { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled }

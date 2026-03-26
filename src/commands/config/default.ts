@@ -1,6 +1,6 @@
 import { clColor } from '@commercelayer/cli-core'
 import { Command, Flags } from '@oclif/core'
-import clicfg, { ConfigParamsEditable, configParam, paramDefault, type ConfigParams } from '../../config'
+import clicfg, { type ConfigParams, ConfigParamsEditable, configParam, paramDefault } from '../../config'
 
 
 export default class ConfigDefault extends Command {
@@ -29,7 +29,7 @@ export default class ConfigDefault extends Command {
 
 
     // Set default value for all editable properties
-    Object.keys(ConfigParamsEditable).forEach(k => configParam(k as ConfigParams, paramDefault(k as unknown as ConfigParamsEditable)))
+    Object.keys(ConfigParamsEditable).forEach(k => { configParam(k as ConfigParams, paramDefault(k as unknown as ConfigParamsEditable)) })
     // Delete all test params
     Object.keys(ConfigParamsEditable).filter(k => k.startsWith('test')).forEach(k => { clicfg.delete(k) })
 

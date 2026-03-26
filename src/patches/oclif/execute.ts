@@ -1,4 +1,4 @@
-import { run, handle, flush, settings} from '@oclif/core'
+import { flush, handle, run, settings} from '@oclif/core'
 import type { LoadOptions } from '@oclif/core/lib/interfaces'
 
 
