@@ -13,7 +13,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "files": [
     "/bin/run.*",
