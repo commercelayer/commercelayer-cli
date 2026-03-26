@@ -91,7 +91,7 @@
     "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm test && pnpm prepack && pnpm postpack"
+    "release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
