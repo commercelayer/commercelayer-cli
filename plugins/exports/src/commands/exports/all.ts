@@ -118,7 +118,7 @@ export default class ExportsAll extends ExportCommand {
 
   public async run(): Promise<void> {
 
-    if (ExportsAll.disabled) this.error(`This command has been deprecated, please use instead the updated version of the command ${clColor.cli.command('exports:create')} that now supports big exports`, { exit: 2 })
+    if (ExportsAll.disabled) this.error(`This command is deprecated, please use the updated version of the command ${clColor.cli.command('exports:create')} that now supports big exports`, { exit: 2 })
 
     const { flags } = await this.parse(ExportsAll)
 
