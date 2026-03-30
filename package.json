@@ -94,7 +94,7 @@
     "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.9",
+    "@biomejs/biome": "^2.4.10",
     "@commercelayer/cli-dev": "^3.1.1",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^3.2.15",
@@ -124,9 +124,9 @@
     "@commercelayer/provisioning-sdk": "^2.10.1",
     "@commercelayer/sdk": "^6.55.0",
     "@oclif/core": "^3.27.0",
-    "@oclif/plugin-autocomplete": "^3.2.42",
-    "@oclif/plugin-help": "^6.2.40",
-    "@oclif/plugin-not-found": "^3.2.77",
+    "@oclif/plugin-autocomplete": "^3.2.43",
+    "@oclif/plugin-help": "^6.2.41",
+    "@oclif/plugin-not-found": "^3.2.78",
     "@oclif/plugin-plugins": "^5.4.59",
     "configstore": "^5.0.1",
     "inquirer": "^8.2.7",
