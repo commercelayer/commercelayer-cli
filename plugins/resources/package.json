@@ -60,8 +60,8 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
-    "@commercelayer/cli-dev": "^3.0.13",
-    "@oclif/plugin-help": "^6.2.40",
+    "@commercelayer/cli-dev": "^3.1.1",
+    "@oclif/plugin-help": "^6.2.41",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -79,8 +79,8 @@
     "typescript": "^6.0.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.10.8",
-    "@commercelayer/cli-ux": "^1.1.0",
+    "@commercelayer/cli-core": "^5.11.0",
+    "@commercelayer/cli-ux": "^1.2.0",
     "@commercelayer/sdk": "^6.55.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.7",
