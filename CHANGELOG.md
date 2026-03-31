@@ -1,3 +1,11 @@
+## [6.9.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.0...v6.9.1) (2026-03-31)
+
+
+### Bug Fixes
+
+* fix overrides ([f05baf9](https://github.com/commercelayer/commercelayer-cli/commit/f05baf9efef7b32e71c640c3c4db0c3b23dce19a))
+* fix overrides ([f05810a](https://github.com/commercelayer/commercelayer-cli/commit/f05810afc7f8fbf07aca105dff0067abe28f4c39))
+
 # [6.9.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.8.3...v6.9.0) (2026-03-26)
 
 
