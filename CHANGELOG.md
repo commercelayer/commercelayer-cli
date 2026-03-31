@@ -36,6 +36,13 @@
 
 * add biome and update actions ([f774195](https://github.com/commercelayer/commercelayer-cli/commit/f774195958782e2ea9cff565f3cc415d41720aa8))
 
+# [7.0.0-oclif4.6](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.5...v7.0.0-oclif4.6) (2026-03-31)
+
+
+### Bug Fixes
+
+* fix config command tests to exercise their respective commands ([4b10056](https://github.com/commercelayer/commercelayer-cli/commit/4b10056d619095e0c80a3f1ec4e2448925bcfa27))
+
 # [7.0.0-oclif4.5](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.4...v7.0.0-oclif4.5) (2026-03-26)
 
 
