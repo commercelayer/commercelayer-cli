@@ -1,3 +1,4 @@
 {
-  "import": "tsx"
+  "import": "tsx",
+  "timeout": 10000
 }

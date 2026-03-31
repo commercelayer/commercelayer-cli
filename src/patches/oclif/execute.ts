@@ -1,12 +1,11 @@
-import { flush, handle, run, settings} from '@oclif/core'
-import type { LoadOptions } from '@oclif/core/lib/interfaces'
+import { flush, handle, type Interfaces, run, settings } from '@oclif/core'
 
 
 export async function execute(options: {
   args?: string[]
   development?: boolean
   dir: string
-  loadOptions?: LoadOptions
+  loadOptions?: Interfaces.LoadOptions
 }): Promise<unknown> {
 
   if (options.development) {

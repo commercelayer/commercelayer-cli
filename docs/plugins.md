@@ -140,7 +140,7 @@ USAGE
   $ commercelayer plugins:latest [PLUGIN] [-b]
 
 ARGUMENTS
-  PLUGIN  the name of the plugin
+  [PLUGIN]  the name of the plugin
 
 FLAGS
   -b, --beta  retrieve latest version from beta channel
@@ -211,7 +211,7 @@ USAGE
   $ commercelayer plugins:uninstall [PLUGIN...] [-h] [-v]
 
 ARGUMENTS
-  PLUGIN...  plugin to uninstall
+  [PLUGIN...]  plugin to uninstall
 
 FLAGS
   -h, --help     Show CLI help.
