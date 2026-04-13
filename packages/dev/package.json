@@ -52,7 +52,7 @@
     "release": "pnpm upgrade && pnpm lint && pnpm build"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.8",
+    "@biomejs/biome": "^2.4.11",
     "@oclif/plugin-help": "^5.2.20",
     "@oclif/test": "^2.5.6",
     "@semantic-release/changelog": "^6.0.3",
