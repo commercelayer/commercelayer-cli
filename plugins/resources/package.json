@@ -7,7 +7,7 @@
   "repository": "commercelayer/commercelayer-cli-plugin-resources",
   "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
   "engines": {
-    "node": ">=20"
+    "node": ">=20.18.1"
   },
   "files": [
     "/bin/run.*",
@@ -60,28 +60,28 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
-    "@commercelayer/cli-dev": "^3.0.13",
-    "@oclif/plugin-help": "^6.2.40",
+    "@commercelayer/cli-dev": "^3.1.1",
+    "@oclif/plugin-help": "^6.2.44",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/chai": "^5.2.3",
     "@types/inquirer": "^8.2.12",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.6.0",
     "@types/node-notifier": "^8.0.5",
     "chai": "^6.2.2",
     "mocha": "^11.7.5",
     "nyc": "^18.0.0",
-    "oclif": "^4.22.96",
+    "oclif": "^4.23.0",
     "semantic-release": "^25.0.3",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.10.8",
-    "@commercelayer/cli-ux": "^1.1.0",
-    "@commercelayer/sdk": "^6.55.0",
+    "@commercelayer/cli-core": "^5.11.0",
+    "@commercelayer/cli-ux": "^1.2.0",
+    "@commercelayer/sdk": "^6.56.0",
     "@oclif/core": "^3.27.0",
     "inquirer": "^8.2.7",
     "json-2-csv": "^3.20.0",
