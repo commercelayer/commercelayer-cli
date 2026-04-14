@@ -127,7 +127,7 @@
     "@oclif/plugin-autocomplete": "^3.2.45",
     "@oclif/plugin-help": "^6.2.44",
     "@oclif/plugin-not-found": "^3.2.80",
-    "@oclif/plugin-plugins": "^5.4.60",
+    "@oclif/plugin-plugins": "^5.4.61",
     "configstore": "^5.0.1",
     "inquirer": "^8.2.7",
     "lodash.kebabcase": "^4.1.1",
