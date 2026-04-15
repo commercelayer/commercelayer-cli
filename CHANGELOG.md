@@ -1,3 +1,12 @@
+## [6.9.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.1...v6.9.2) (2026-04-15)
+
+
+### Bug Fixes
+
+* run tests in updates workflow ([e7d89c5](https://github.com/commercelayer/commercelayer-cli/commit/e7d89c5b3061ff7b054fa10e41b0d81fbb62f4ff))
+* update dependencies ([d10fab4](https://github.com/commercelayer/commercelayer-cli/commit/d10fab4e65cb77c6695600fd7b91ca0a1d18785a))
+* update dependencies and add updates workflow ([242e14a](https://github.com/commercelayer/commercelayer-cli/commit/242e14ab543a76d809b8283efdf16ad9412649e8))
+
 ## [6.9.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.0...v6.9.1) (2026-03-31)
 
 
