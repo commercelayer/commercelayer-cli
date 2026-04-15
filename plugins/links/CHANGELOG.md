@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-links/compare/v1.1.1...v1.1.2) (2026-04-15)
+
+
+### Bug Fixes
+
+* run tests in updates workflow ([8083adf](https://github.com/commercelayer/commercelayer-cli-plugin-links/commit/8083adfd761d911be9deecb2762e4b7eb550bc60))
+* update dependencies and add updates workflow ([de1ba34](https://github.com/commercelayer/commercelayer-cli-plugin-links/commit/de1ba3499cfdf4c60e6b8575f9a298d705667ddd))
+
 ## [1.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-links/compare/v1.1.0...v1.1.1) (2026-03-24)
 
 
