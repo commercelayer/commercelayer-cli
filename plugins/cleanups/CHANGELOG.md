@@ -1,3 +1,11 @@
+## [3.2.3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.2...v3.2.3) (2026-04-15)
+
+
+### Bug Fixes
+
+* run tests in updates workflow ([474fa5e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/474fa5e8a2358ffcccd6afeac9127e96a4d0d736))
+* update dependencies and add updates workflow ([c6c0583](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c6c0583a579cd52f4e69c5894b3fc0c14c931b3c))
+
 ## [3.2.2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.1...v3.2.2) (2026-03-24)
 
 
