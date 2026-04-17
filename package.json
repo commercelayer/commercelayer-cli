@@ -94,7 +94,7 @@
     "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.11",
+    "@biomejs/biome": "^2.4.12",
     "@commercelayer/cli-dev": "^3.1.1",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^3.2.15",
@@ -113,7 +113,7 @@
     "mocha": "^10.8.2",
     "nyc": "^18.0.0",
     "oclif": "^4.23.0",
-    "prettier": "^3.8.2",
+    "prettier": "^3.8.3",
     "semantic-release": "^25.0.3",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
@@ -122,7 +122,7 @@
     "@commercelayer/cli-core": "^5.11.1",
     "@commercelayer/cli-ux": "^1.2.1",
     "@commercelayer/provisioning-sdk": "^2.10.2",
-    "@commercelayer/sdk": "^6.56.0",
+    "@commercelayer/sdk": "^6.57.0",
     "@oclif/core": "^3.27.0",
     "@oclif/plugin-autocomplete": "^3.2.45",
     "@oclif/plugin-help": "^6.2.44",
@@ -136,12 +136,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "pnpm": {
-    "overrides": {
-      "brace-expansion@>=2.0.0 <2.0.3": "2.0.3",
-      "handlebars@>=4.0.0 <4.7.9": "4.7.9",
-      "serialize-javascript@<7.0.5": "7.0.5"
-    }
   }
 }

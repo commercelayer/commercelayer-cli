@@ -1,5 +1,5 @@
 import { clColor, clUtil } from '@commercelayer/cli-core'
-import cliux from '@commercelayer/cli-ux'
+import * as cliux from '@commercelayer/cli-ux'
 import { Command, Flags } from '@oclif/core'
 import type { Config } from '@oclif/core/lib/interfaces'
 
