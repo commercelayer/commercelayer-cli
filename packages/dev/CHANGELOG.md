@@ -1,3 +1,11 @@
+## [3.1.3](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.2...v3.1.3) (2026-04-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([bba8ecf](https://github.com/commercelayer/commercelayer-cli-dev/commit/bba8ecfcad01160906ed320a970570c26de26c44))
+* update dependencies ([66fdc13](https://github.com/commercelayer/commercelayer-cli-dev/commit/66fdc1380340465bcb6d6acfea5cd799eaed12a5))
+
 ## [3.1.2](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.1...v3.1.2) (2026-04-20)
 
 
