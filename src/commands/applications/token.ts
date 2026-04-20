@@ -64,7 +64,7 @@ export default class ApplicationsToken extends Command {
 
 			let expMinutes: number | undefined
 			let accessToken: string
-			let returnData: AccessToken | AccessTokenInfo
+			let returnData: AccessToken | AccessTokenInfo | undefined
 
 			if (flags.shared) {
 				const token = generateAccessToken(this.config, app, flags.shared, flags.minutes)

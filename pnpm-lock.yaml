@@ -852,6 +852,8 @@ packages:
   '@oclif/plugin-warn-if-update-available@3.1.60':
     resolution: {integrity: sha512-cRKBZm14IuA6G8W84dfd3iXj3BTAoxQ5o3pUE8DKEQ4n/tVha20t5nkVeD+ISC68e0Fuw5koTMvRwXb1lJSnzg==}
     engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@oclif/core': '>= 3.0.0'
 
   '@oclif/test@4.1.18':
     resolution: {integrity: sha512-SIy/8x8OHKh5Z32aS8jpzTDc+FC9531mMyypoH5HiZ0vXNjKJ9+SpbW4nYK2c/X44WcPdmjIImStZ/Wgc2zZnQ==}
@@ -4620,6 +4622,15 @@ snapshots:
   '@inquirer/type@3.0.10(@types/node@25.6.0)':
     optionalDependencies:
       '@types/node': 25.6.0
+
+  '@isaacs/cliui@8.0.2':
+    dependencies:
+      string-width: 5.1.2
+      string-width-cjs: string-width@4.2.3
+      strip-ansi: 7.2.0
+      strip-ansi-cjs: strip-ansi@6.0.1
+      wrap-ansi: 8.1.0
+      wrap-ansi-cjs: wrap-ansi@7.0.0
 
   '@isaacs/cliui@8.0.2':
     dependencies:

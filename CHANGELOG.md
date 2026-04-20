@@ -1,27 +1,71 @@
-## [6.9.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.2...v6.9.3) (2026-04-17)
+# [7.0.0-oclif4.6](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.5...v7.0.0-oclif4.6) (2026-03-31)
 
 
 ### Bug Fixes
 
-* fix plugins:available command and update dependencies ([83e9400](https://github.com/commercelayer/commercelayer-cli/commit/83e9400f148f52beaa7a436ff1b035775223f593))
-* remove dependencies overrides ([59b8aa3](https://github.com/commercelayer/commercelayer-cli/commit/59b8aa3497c3ced5f264c8878edcc4326737dc67))
+* fix config command tests to exercise their respective commands ([4b10056](https://github.com/commercelayer/commercelayer-cli/commit/4b10056d619095e0c80a3f1ec4e2448925bcfa27))
 
-## [6.9.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.1...v6.9.2) (2026-04-15)
-
-
-### Bug Fixes
-
-* run tests in updates workflow ([e7d89c5](https://github.com/commercelayer/commercelayer-cli/commit/e7d89c5b3061ff7b054fa10e41b0d81fbb62f4ff))
-* update dependencies ([d10fab4](https://github.com/commercelayer/commercelayer-cli/commit/d10fab4e65cb77c6695600fd7b91ca0a1d18785a))
-* update dependencies and add updates workflow ([242e14a](https://github.com/commercelayer/commercelayer-cli/commit/242e14ab543a76d809b8283efdf16ad9412649e8))
-
-## [6.9.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.0...v6.9.1) (2026-03-31)
+# [7.0.0-oclif4.5](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.4...v7.0.0-oclif4.5) (2026-03-26)
 
 
 ### Bug Fixes
 
-* fix overrides ([f05baf9](https://github.com/commercelayer/commercelayer-cli/commit/f05baf9efef7b32e71c640c3c4db0c3b23dce19a))
-* fix overrides ([f05810a](https://github.com/commercelayer/commercelayer-cli/commit/f05810afc7f8fbf07aca105dff0067abe28f4c39))
+* update dependencies ([0633985](https://github.com/commercelayer/commercelayer-cli/commit/06339853a7fecc14d4316d2aaad93c529a94c8bb))
+
+
+### Features
+
+* require node to v22 ([3a38321](https://github.com/commercelayer/commercelayer-cli/commit/3a383219c6016e4ded73c1fa39e35cb15c3ac968))
+
+
+### BREAKING CHANGES
+
+* require node to v22
+
+# [7.0.0-oclif4.4](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.3...v7.0.0-oclif4.4) (2026-03-26)
+
+
+### Bug Fixes
+
+* fix test script ([af84073](https://github.com/commercelayer/commercelayer-cli/commit/af840734e7143d0033a8a5cb7e3a2bf2c70ab863))
+* fix typescript version ([ded2ce2](https://github.com/commercelayer/commercelayer-cli/commit/ded2ce202b94fccca51e5b7d8d92b0b409834279))
+
+
+### Features
+
+* add biome and update actions ([f774195](https://github.com/commercelayer/commercelayer-cli/commit/f774195958782e2ea9cff565f3cc415d41720aa8))
+
+# [7.0.0-oclif4.3](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.2...v7.0.0-oclif4.3) (2026-03-24)
+
+
+### Features
+
+* add biome ([e899e39](https://github.com/commercelayer/commercelayer-cli/commit/e899e3936fe7fb7b838c628891f50a37ef930778))
+
+# [7.0.0-oclif4.2](https://github.com/commercelayer/commercelayer-cli/compare/v7.0.0-oclif4.1...v7.0.0-oclif4.2) (2026-03-24)
+
+
+### Bug Fixes
+
+* fix alias check and dependencie ([77503cb](https://github.com/commercelayer/commercelayer-cli/commit/77503cba0c8c2aaa83cb0c6af57421b7de5dd929))
+
+# [7.0.0-oclif4.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.8.3...v7.0.0-oclif4.1) (2026-03-19)
+
+
+### Bug Fixes
+
+* fix login test ([4e31a78](https://github.com/commercelayer/commercelayer-cli/commit/4e31a7852a9317bb7fc682a2e68089f63f87500f))
+* fix test config ([e5c0fa7](https://github.com/commercelayer/commercelayer-cli/commit/e5c0fa7b73ee0688053aa3636adb480ffe9ddaf3))
+
+
+### Features
+
+* upgrade oclif core and test to v4 ([f19f72c](https://github.com/commercelayer/commercelayer-cli/commit/f19f72c61009a721d044b515da0c39892beb9d90))
+
+
+### BREAKING CHANGES
+
+* upgrade oclif core and test to v4
 
 # [6.9.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.8.3...v6.9.0) (2026-03-26)
 
