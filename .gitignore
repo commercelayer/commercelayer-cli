@@ -13,4 +13,5 @@ node_modules
 /tsconfig.tsbuildinfo
 test_data*
 *.env
+tsconfig.tsbuildinfo
 

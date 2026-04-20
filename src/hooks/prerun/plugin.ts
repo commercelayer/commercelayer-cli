@@ -1,9 +1,8 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
-import type { Hook } from '@oclif/core'
-import { CLIError } from '@oclif/core/lib/errors'
-import type { Config } from '@oclif/core/lib/interfaces'
+import { Errors, type Hook, type Interfaces } from '@oclif/core'
 import inquirer from 'inquirer'
 import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
+
 
 
 
@@ -22,7 +21,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
     // Check tag flag
     const tgIndex = opts.argv.indexOf('--tag')
-    let tag: any
+    let tag: string | undefined
     if (tgIndex > -1) {
       tag = opts.argv[tgIndex + 1]
       opts.argv.splice(tgIndex, 2)
@@ -34,7 +33,7 @@ const hook: Hook<'prerun'> = async function (opts) {
       if (arg) opts.argv[0] = arg
       else {
         this.log(`\nAll Commerce Layer CLI plugins have already been ${command}ed\n`)
-        throw new CLIError('HOOK_EXIT')
+        throw new Errors.CLIError('HOOK_EXIT')
       }
     }
 
@@ -67,7 +66,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 
       if (errMsg) {
         this.log(`\n${errMsg}: ${clColor.cli.plugin(pluginArg)}\n`)
-        throw new CLIError('HOOK_EXIT')
+        throw new Errors.CLIError('HOOK_EXIT')
       } else this.log('')
 
 
@@ -84,7 +83,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 }
 
 
-const promptPlugin = async (config: Config, command: string): Promise<string> => {
+const promptPlugin = async (config: Interfaces.Config, command: string): Promise<string> => {
 
   const installed = getInstalledPlugins(config)
   const plugins = (command === 'install') ? getAvailablePlugins().filter(p => !installed.includes(p) && !p.hidden) : installed
