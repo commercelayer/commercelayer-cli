@@ -1,3 +1,12 @@
+## [3.1.2](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.1...v3.1.2) (2026-04-20)
+
+
+### Bug Fixes
+
+* fix biome dependency ([c411c55](https://github.com/commercelayer/commercelayer-cli-dev/commit/c411c55aea6c21137ef47b652e76e1b4d7c53584))
+* fix dependencies and add vulnerability-updates-workflow ([dea9ddb](https://github.com/commercelayer/commercelayer-cli-dev/commit/dea9ddb12e386b0240ad9b7df01c5c62561f6b42))
+* run tests in updates workflow ([9d141dc](https://github.com/commercelayer/commercelayer-cli-dev/commit/9d141dc98a671aea75d2307db8de45ba5a1b2da2))
+
 ## [3.1.1](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.0...v3.1.1) (2026-03-25)
 
 
