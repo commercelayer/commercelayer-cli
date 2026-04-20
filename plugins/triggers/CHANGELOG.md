@@ -1,3 +1,12 @@
+## [4.18.2](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.18.1...v4.18.2) (2026-04-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([56f7f73](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/56f7f73cb0288704efedba90ee1f6e385cc7c6cd))
+* run tests in updates workflow ([14d59c9](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/14d59c9af4fa6c3170d5655043e989cd8c73edb0))
+* update dependencies and add updates workflow ([970afd1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/970afd19b9f056fb4678694bbd39dee04a3ad840))
+
 ## [4.18.1](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.18.0...v4.18.1) (2026-03-24)
 
 
