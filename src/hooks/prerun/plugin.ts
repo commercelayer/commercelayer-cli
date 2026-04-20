@@ -1,7 +1,7 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
 import { Errors, type Hook, type Interfaces } from '@oclif/core'
-import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
 import inquirer from 'inquirer'
+import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
 
 
 

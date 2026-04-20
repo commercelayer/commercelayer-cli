@@ -413,7 +413,7 @@ EXAMPLES
   $ commercelayer autocomplete --refresh-cache
 ```
 
-_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v3.2.42/src/commands/autocomplete/index.ts)_
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v3.2.45/src/commands/autocomplete/index.ts)_
 
 ### `commercelayer cli:dir`
 
@@ -502,7 +502,7 @@ DESCRIPTION
   Display help for commercelayer.
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/6.2.40/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v6.2.14/src/commands/help.ts)_
 
 ### `commercelayer plugins`
 
@@ -525,7 +525,7 @@ EXAMPLES
   $ commercelayer plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.59/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.61/src/commands/plugins/index.ts)_
 
 ### `commercelayer plugins:available`
 
@@ -572,7 +572,7 @@ EXAMPLES
   $ commercelayer plugins:inspect myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.59/src/commands/plugins/inspect.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.61/src/commands/plugins/inspect.ts)_
 
 ### `commercelayer plugins:install PLUGIN`
 
@@ -621,7 +621,7 @@ EXAMPLES
     $ commercelayer plugins:install someuser/someplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.59/src/commands/plugins/install.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.61/src/commands/plugins/install.ts)_
 
 ### `commercelayer plugins:latest [PLUGIN]`
 
@@ -677,7 +677,7 @@ EXAMPLES
   $ commercelayer plugins:link myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.59/src/commands/plugins/link.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.61/src/commands/plugins/link.ts)_
 
 ### `commercelayer plugins:reset`
 
@@ -692,7 +692,7 @@ FLAGS
   --reinstall  Reinstall all plugins after uninstalling.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.59/src/commands/plugins/reset.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.61/src/commands/plugins/reset.ts)_
 
 ### `commercelayer plugins:uninstall [PLUGIN]`
 
@@ -720,7 +720,7 @@ EXAMPLES
   $ commercelayer plugins:uninstall myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.59/src/commands/plugins/uninstall.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.61/src/commands/plugins/uninstall.ts)_
 
 ### `commercelayer plugins:update`
 
@@ -738,7 +738,7 @@ DESCRIPTION
   Update installed plugins.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.59/src/commands/plugins/update.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/5.4.61/src/commands/plugins/update.ts)_
 <!-- commandsstop -->
 
 ## Plugins
