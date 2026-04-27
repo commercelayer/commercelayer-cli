@@ -100,11 +100,14 @@ DESCRIPTION
 
 ALIASES
   $ commercelayer exp:create
+  $ commercelayer export
 
 EXAMPLES
   $ commercelayer exports:create -t orders -f number -X <output-file-path>
 
   $ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv
+
+  $ cl export -t return -f number -X desktop/returns.json
 ```
 
 _See code: [src/commands/exports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/create.ts)_

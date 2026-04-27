@@ -26,7 +26,7 @@ export default class ExportsCreate extends ExportCommand {
   static examples = [
     '$ commercelayer exports:create -t orders -f number -X <output-file-path>',
     '$ cl exp:create -t customers -i customer_subscriptions -w email_end=@test.org -X <output-file-path> --csv',
-    '$ cl export -t return -f number -X desktop/returna.json'
+    '$ cl export -t return -f number -X desktop/returns.json'
   ]
 
   static flags = {
@@ -176,7 +176,7 @@ export default class ExportsCreate extends ExportCommand {
       while (!['completed', 'interrupted'].includes(exp.status || '')) {
         jwtData = await this.checkAccessToken(jwtData, flags)
         exp = await this.cl.exports.retrieve(exp.id)
-        const current = Math.ceil((recordsCount / 100) * exp.progress)
+        const current = Math.ceil((recordsCount / 100) * (exp.progress || 0))
         // if (!blindMode) cliux.action.status = this.exportStatus(exp.status?.replace(/_/g, ' ') || 'waiting')
         progressBar.update(current || 0)
         await cliux.wait(delay)
