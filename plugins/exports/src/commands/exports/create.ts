@@ -149,6 +149,13 @@ export default class ExportsCreate extends ExportCommand {
 
       let exp = await this.cl.exports.create(expCreate)
 
+      // Await for asyncronous export to be ready
+      this.log()
+      cliux.action.start(`Initializing export ${exp.id}`)
+      await cliux.wait(2000)
+      cliux.action.stop()
+      exp = await this.cl.exports.retrieve(exp)
+
       this.log()
       if (!exp.records_count) {
         this.log(clColor.italic('No records found'))
