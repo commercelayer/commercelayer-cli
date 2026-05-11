@@ -82,11 +82,12 @@ const generateGroupUID = (): string => {
 
 export default class ExportsAll extends ExportCommand {
 
-  static hidden = false
+  static hidden = true
+  static disabled = true
 
   static description = 'export all the records'
 
-  static aliases = ['exp:all', 'export']
+  static aliases = ['exp:all'/*, 'export'*/]
 
   static examples = [
     '$ commercelayer exports:all -t orders -f number -X <output-file-path>',
@@ -116,6 +117,8 @@ export default class ExportsAll extends ExportCommand {
 
 
   public async run(): Promise<void> {
+
+    if (ExportsAll.disabled) this.error(`This command is deprecated, please use the updated version of the command ${clColor.cli.command('exports:create')} that now supports big exports`, { exit: 2 })
 
     const { flags } = await this.parse(ExportsAll)
 
