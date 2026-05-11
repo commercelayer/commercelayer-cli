@@ -1,3 +1,38 @@
+# [4.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.9.2...v4.0.0) (2026-05-11)
+
+
+### breaking
+
+* Disabled deprecated exports:all commands ([c08872b](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/c08872b49516670979bc539412f13c36f9ac802b))
+* Disabled deprecated exports:all commands ([646ab38](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/646ab38028c869d3682b6a1e74edf88ec7a80f5f))
+
+
+### Bug Fixes
+
+* add pnpm-workspace.yaml to allow builds ([5478401](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/547840108bbcb47b613c4bb20870b7a4c801b105))
+* fix command example ([afb9c90](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/afb9c9007453cedf16198e6ffe77579f01db3e64))
+* fix dependencies ([ed85c48](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/ed85c483d54833a71ff66544b9fe80339c5cf651))
+* fix dependencies warning ([6d67bcb](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/6d67bcb5c4268bff25dbbd185812015d1c30d577))
+* fix export output ([e0294e5](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/e0294e5cf8d939af5ea3746b0812153ddca3b6ef))
+* fix export output ([ae31477](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/ae3147757977598fe9686d6295491dee3361ca73))
+* fix processed records count ([c0779e6](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/c0779e68b048aa57de425b4a0b94f982bbed2eb6))
+* fix processed records count ([9353862](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/935386243c3201054248174503cc9b6f1e17afb1))
+* update dependencies ([62283e3](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/62283e35828325cb17d5f7a8abc7632b6a0da1e1))
+* update dependencies ([df3fecd](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/df3fecdba0edc65ed5a3887e22ea685b35c7acb4))
+
+
+### Features
+
+* disable multiple exports and allow creation of big exports ([9342d5f](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/9342d5fac26d2a74f91130d6ba5cc9e6b3006322))
+* disable multiple exports and allow creation of big exports ([452e03e](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/452e03ec3fb6971ae6daaec8dc3f5087d8817f6b))
+* update dependencies ([ed7d090](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/ed7d090dfc0170c98fda265658eec9cba5b7bd25))
+
+
+### BREAKING CHANGES
+
+* exports:all command is not more available and export:create command now supports big exports
+* exports:all command is not more available and export:create command now supports big exports
+
 ## [3.9.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.9.1...v3.9.2) (2026-03-24)
 
 
