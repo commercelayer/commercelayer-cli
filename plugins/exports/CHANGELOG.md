@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v4.0.0...v4.0.1) (2026-05-11)
+
+
+### Bug Fixes
+
+* fix async export initialization ([d8a21e8](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/d8a21e897ff249b07e5331cbfb9d0f786f31ecff))
+
 # [4.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v3.9.2...v4.0.0) (2026-05-11)
 
 
