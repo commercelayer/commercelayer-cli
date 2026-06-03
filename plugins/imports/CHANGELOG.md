@@ -1,3 +1,10 @@
+## [4.4.2](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.1...v4.4.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* fix lockfile ([318ee92](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/318ee92fedf692ea2e5b2375f6706c9540aedfed))
+
 ## [4.4.1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.0...v4.4.1) (2026-04-15)
 
 
