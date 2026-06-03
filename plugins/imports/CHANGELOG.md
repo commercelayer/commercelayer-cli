@@ -1,3 +1,10 @@
+## [4.4.3](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.2...v4.4.3) (2026-06-03)
+
+
+### Bug Fixes
+
+* fix minimumReleaseAge ([7e1c158](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/7e1c1580f4d93c149d253b6bd4c2455b1f07cc25))
+
 ## [4.4.2](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.1...v4.4.2) (2026-06-03)
 
 
