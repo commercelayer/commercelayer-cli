@@ -1,3 +1,13 @@
+## [3.1.4](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.3...v3.1.4) (2026-06-03)
+
+
+### Bug Fixes
+
+* fix dependencies ([8df6318](https://github.com/commercelayer/commercelayer-cli-dev/commit/8df6318f3992fa088d934eaf38ba6a0450287115))
+* fix dependencies install ([c5bafc7](https://github.com/commercelayer/commercelayer-cli-dev/commit/c5bafc70a41a6ceadfdf7875b884639c6e160976))
+* fix minimumReleaseAge ([ddfb471](https://github.com/commercelayer/commercelayer-cli-dev/commit/ddfb4714d2ebd58ec30e1313caf2da20a812519a))
+* fix package manager ([42bb60d](https://github.com/commercelayer/commercelayer-cli-dev/commit/42bb60d4ce12e4511272e53acef72e06334bced9))
+
 ## [3.1.3](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.2...v3.1.3) (2026-04-20)
 
 
