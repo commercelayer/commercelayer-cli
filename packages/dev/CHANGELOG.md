@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.4...v3.1.5) (2026-06-10)
+
+
+### Bug Fixes
+
+* fix lockfile ([4108b95](https://github.com/commercelayer/commercelayer-cli-dev/commit/4108b95a538cf88d976f23f94b6e2a35b7901b00))
+
 ## [3.1.4](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.3...v3.1.4) (2026-06-03)
 
 
