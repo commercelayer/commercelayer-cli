@@ -1,3 +1,12 @@
+## [4.4.5](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.4...v4.4.5) (2026-07-07)
+
+
+### Bug Fixes
+
+* fix action version ([2941173](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/294117332f0cc658131e87c4de73fe79f9906a3f))
+* fix publish script ([0940405](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/09404056fbef982800ad135e05c3df15548fc444))
+* fix publish workflow ([51d7cd4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/51d7cd415acaed73b531ce2a647d0118835b8f42))
+
 ## [4.4.4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.3...v4.4.4) (2026-07-07)
 
 
