@@ -11,6 +11,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v3
         with:
+          webhook-type: incoming-webhook
           payload: |
             {
             "text": "New release ${{github.ref_name}} for ${{github.event.repository.name}}.",
