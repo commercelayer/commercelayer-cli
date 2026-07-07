@@ -1,3 +1,10 @@
+## [4.4.4](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.3...v4.4.4) (2026-07-07)
+
+
+### Bug Fixes
+
+* fix biome settings and types ([fab7ec1](https://github.com/commercelayer/commercelayer-cli-plugin-imports/commit/fab7ec17594d7fd9aa7783ebff1f912161b04e48))
+
 ## [4.4.3](https://github.com/commercelayer/commercelayer-cli-plugin-imports/compare/v4.4.2...v4.4.3) (2026-06-03)
 
 
