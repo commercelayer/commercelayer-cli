@@ -127,7 +127,6 @@ const RESOURCES = [
 	{ name: 'tax_rule', type: 'tax_rules', api: 'tax_rules', model: 'TaxRule' },
 	{ name: 'taxjar_account', type: 'taxjar_accounts', api: 'taxjar_accounts', model: 'TaxjarAccount' },
 	{ name: 'transaction', type: 'transactions', api: 'transactions', model: 'Transaction' },
-	{ name: 'version', type: 'versions', api: 'versions', model: 'Version' },
 	{ name: 'vertex_account', type: 'vertex_accounts', api: 'vertex_accounts', model: 'VertexAccount' },
 	{ name: 'void', type: 'voids', api: 'voids', model: 'Void' },
 	{ name: 'webhook', type: 'webhooks', api: 'webhooks', model: 'Webhook' },
