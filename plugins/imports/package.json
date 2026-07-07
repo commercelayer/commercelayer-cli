@@ -55,7 +55,7 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@biomejs/biome": "^2.5.2",
-    "@commercelayer/cli-dev": "^3.1.5",
+    "@commercelayer/cli-dev": "^3.1.6",
     "@oclif/plugin-help": "^6.2.53",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",

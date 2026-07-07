@@ -43,7 +43,7 @@ importers:
         specifier: ^2.5.2
         version: 2.5.2
       '@commercelayer/cli-dev':
-        specifier: ^3.1.5
+        specifier: ^3.1.6
         version: 3.1.6
       '@oclif/plugin-help':
         specifier: ^6.2.53

@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 
 import { type ApiMode, clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
-import type { CommerceLayerClient, Import } from '@commercelayer/sdk'
+import type { CommerceLayerClient, Import, ImportCreate } from '@commercelayer/sdk'
 import type { SingleBar } from 'cli-progress'
 import Command, { cliux, Flags } from '../../base'
 import { type Batch, type Chunk, splitChunks, splitImports } from '../../chunk'
@@ -169,7 +169,7 @@ export default class ImportsCreate extends Command {
 
       // Split input
       const chunks: Chunk[] = splitImports({
-        resource_type: type,
+        resource_type: type as ImportCreate['resource_type'],
         parent_resource_id: parentId,
         // cleanup_records: flags.cleanup,
         inputs
