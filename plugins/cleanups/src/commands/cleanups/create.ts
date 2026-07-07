@@ -1,5 +1,5 @@
 import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
-import type { Cleanup, CommerceLayerClient } from '@commercelayer/sdk'
+import type { Cleanup, CleanupCreate, CommerceLayerClient } from '@commercelayer/sdk'
 import type { CommandError } from '@oclif/core/lib/interfaces'
 import type { SingleBar } from 'cli-progress'
 import Command, { cliux, Flags } from '../../base'
@@ -131,7 +131,7 @@ export default class CleanupsCreate extends Command {
 
 
       // Split input
-      const chunks: Chunk[] = await splitRecords(resSdk, { resource_type: type, filters: wheres }, cleanupsLength)
+      const chunks: Chunk[] = await splitRecords(resSdk, { resource_type: type as CleanupCreate['resource_type'], filters: wheres }, cleanupsLength)
 
       // Split chunks
       const batches: Batch[] = splitChunks(chunks)
