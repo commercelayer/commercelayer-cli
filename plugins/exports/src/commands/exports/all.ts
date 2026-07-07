@@ -286,7 +286,7 @@ export default class ExportsAll extends ExportCommand {
     const resSdk = this.cl[expJob.resourceType as ListableResourceType] as any
 
     const expCreate: ExportCreate = {
-      resource_type: expJob.resourceType,
+      resource_type: expJob.resourceType as ExportCreate['resource_type'],
       format: expJob.format,
       dry_data: expJob.dryData,
       reference: expJob.groupId,
@@ -306,7 +306,7 @@ export default class ExportsAll extends ExportCommand {
 
     // Initialize local export queue
     for (let curExp = 0; curExp < expJob.totalExports; curExp++) {
-      exports.push({ type: 'exports', id: '', resource_type: expJob.resourceType, status: 'pending', created_at: '', updated_at: '' })
+      exports.push({ type: 'exports', id: '', resource_type: expJob.resourceType as Export['resource_type'], status: 'pending', created_at: '', updated_at: '' })
     }
     expJob.exports = exports
 
