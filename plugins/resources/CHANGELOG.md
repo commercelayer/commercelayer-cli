@@ -1,3 +1,10 @@
+## [6.18.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.18.0...v6.18.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* update dependencies ([e03c960](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/e03c960b42686d75f406c3306fe74eb7f66e852a))
+
 # [6.18.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.17.2...v6.18.0) (2026-07-07)
 
 
