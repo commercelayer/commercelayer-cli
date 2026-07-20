@@ -1,3 +1,10 @@
+## [4.3.4](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.3.3...v4.3.4) (2026-07-20)
+
+
+### Bug Fixes
+
+* update dependencies and codeql ([b284ce6](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/commit/b284ce699712ced8a0938c3768b3abe9f8791f42))
+
 ## [4.3.3](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/compare/v4.3.2...v4.3.3) (2026-04-20)
 
 
