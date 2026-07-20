@@ -1,3 +1,10 @@
+## [4.18.3](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.18.2...v4.18.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* update dependencies and codeql ([3e66175](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/3e66175b417f6ae617d2d3c243faf9f9004e897b))
+
 ## [4.18.2](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.18.1...v4.18.2) (2026-04-20)
 
 
