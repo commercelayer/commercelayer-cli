@@ -133,7 +133,7 @@ export default class ExportsCreate extends ExportCommand {
 
 
     const expCreate: ExportCreate = {
-      resource_type: resType,
+      resource_type: resType as ExportCreate['resource_type'],
       format,
       dry_data: flags['dry-data']
     }
