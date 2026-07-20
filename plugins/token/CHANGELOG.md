@@ -1,3 +1,12 @@
+## [8.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.1.2...v8.1.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([758bdc0](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/758bdc01bf99dae3f1714ae1c9d3cd9a98b40d93))
+* run tests in updates workflow ([7354a2c](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/7354a2cec98199f0774a4c9442b52b565c0b7ddb))
+* update dependencies and codeql ([30dacdf](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/30dacdf212ea84114e91d55ea5414ae768c60287))
+
 ## [8.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.1.1...v8.1.2) (2026-04-14)
 
 
