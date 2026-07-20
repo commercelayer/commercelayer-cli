@@ -1,3 +1,10 @@
+## [5.6.3](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.6.2...v5.6.3) (2026-04-14)
+
+
+### Bug Fixes
+
+* update dependencies and add updates worflow ([3731ce6](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/3731ce625bcf145c65f92550425173ef2330393f))
+
 ## [5.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.6.1...v5.6.2) (2026-03-24)
 
 
