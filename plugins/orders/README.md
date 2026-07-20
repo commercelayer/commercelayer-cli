@@ -46,7 +46,6 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:customer_payment_source_id ID`](#commercelayer-orderscustomer_payment_source_id-id)
 * [`commercelayer orders:fix_payment_source ID`](#commercelayer-ordersfix_payment_source-id)
 * [`commercelayer orders:fulfill ID`](#commercelayer-ordersfulfill-id)
-* [`commercelayer orders:history ID`](#commercelayer-ordershistory-id)
 * [`commercelayer orders:nullify_payment_source ID`](#commercelayer-ordersnullify_payment_source-id)
 * [`commercelayer orders:pending ID`](#commercelayer-orderspending-id)
 * [`commercelayer orders:place ID`](#commercelayer-ordersplace-id)
@@ -425,29 +424,6 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fulfill.ts)_
-
-### `commercelayer orders:history ID`
-
-Show history of specific order.
-
-```sh-session
-USAGE
-  $ commercelayer orders:history ID [-u [-j -p]] [-S]
-
-ARGUMENTS
-  ID  the unique id of the order
-
-FLAGS
-  -S, --status       show only status changes
-  -j, --json         print result in JSON format
-  -p, --print        print out the modified order
-  -u, --unformatted  print JSON output without indentation
-
-DESCRIPTION
-  show history of specific order
-```
-
-_See code: [src/commands/orders/history.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/history.ts)_
 
 ### `commercelayer orders:nullify_payment_source ID`
 
