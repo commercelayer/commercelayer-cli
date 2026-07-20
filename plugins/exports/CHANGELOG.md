@@ -1,3 +1,15 @@
+## [4.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v4.0.1...v4.0.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix dependencies ([16e7b9a](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/16e7b9ab7b1a2392621592a6b77f86365cdcaf09))
+* fix publish workflow ([8c23e47](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/8c23e47999facd766c3bd8cd132270daf76000c7))
+* fix type errors ([989b6f6](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/989b6f6d288de551106200bb7e3db3a9251fcbf6))
+* run tests in updates workflow ([f8c64cd](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/f8c64cd7655961d0ba4a38d85b6e4ca25a1ec1d4))
+* update dependencies ([8c01574](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/8c01574bc33a8edd2d5f50b7ef05287acf05b3d7))
+* update dependencies and add updates workflow ([6a7b3e5](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/6a7b3e5f0a2e5867431b525ffb3dfa7c3c709277))
+
 ## [4.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v4.0.0...v4.0.1) (2026-05-11)
 
 
