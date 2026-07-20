@@ -59,7 +59,7 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@biomejs/biome": "^2.5.2",
+    "@biomejs/biome": "^2.5.4",
     "@commercelayer/cli-dev": "^3.1.6",
     "@oclif/plugin-help": "^6.2.53",
     "@oclif/test": "^3.2.15",
@@ -68,14 +68,14 @@
     "@types/chai": "^5.2.3",
     "@types/inquirer": "^8.2.13",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.9.4",
+    "@types/node": "^25.9.5",
     "@types/node-notifier": "^8.0.5",
     "chai": "^6.2.2",
     "mocha": "^11.7.6",
     "nyc": "^18.0.0",
     "oclif": "^4.23.27",
-    "semantic-release": "^25.0.5",
-    "tsx": "^4.23.0",
+    "semantic-release": "^25.0.8",
+    "tsx": "^4.23.1",
     "typescript": "^6.0.3"
   },
   "dependencies": {
