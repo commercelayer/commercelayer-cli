@@ -1,3 +1,13 @@
+## [5.6.4](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.6.3...v5.6.4) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([461eb45](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/461eb45dc469d9ae04be0d35f038f16f8e01e0a9))
+* remove history command ([c074046](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/c07404642eea2240ed39332ad5a1843e4da81729))
+* run tests in updates workflow ([9249a6b](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/9249a6b6e41aa0bd614721eb3efc2c00e5ecc976))
+* update dependencies and codeql ([8bcf3a7](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/8bcf3a7de824aa1a70d1851c3ff423d54bbb820f))
+
 ## [5.6.3](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.6.2...v5.6.3) (2026-04-14)
 
 
