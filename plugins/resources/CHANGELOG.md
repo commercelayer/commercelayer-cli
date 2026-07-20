@@ -1,3 +1,24 @@
+## [6.18.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.18.0...v6.18.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* update dependencies ([e03c960](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/e03c960b42686d75f406c3306fe74eb7f66e852a))
+
+# [6.18.0](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.17.2...v6.18.0) (2026-07-07)
+
+
+### Features
+
+* fix publish script, biome error and remove history command ([6e53312](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/6e53312fab51369973e7a6f92386fbd68962a7b2))
+
+## [6.17.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.17.1...v6.17.2) (2026-04-13)
+
+
+### Bug Fixes
+
+* update dependencies ([616bd80](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/616bd805241f8c419c3c4cb1699f2fd2553d7ef2))
+
 ## [6.17.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.17.0...v6.17.1) (2026-03-24)
 
 
