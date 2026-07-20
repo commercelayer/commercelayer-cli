@@ -1,3 +1,13 @@
+## [1.2.1](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.2.0...v1.2.1) (2026-04-14)
+
+
+### Bug Fixes
+
+* fix biome dependency ([946d85a](https://github.com/commercelayer/commercelayer-cli-ux/commit/946d85a5c9afe5861198c043575ea835b6d7d578))
+* fix dependencies ([57f1891](https://github.com/commercelayer/commercelayer-cli-ux/commit/57f18917e5db167f921d3f1a2eb87a6cccbd7ece))
+* fix indentation of $schema in biome.json ([a3f10ca](https://github.com/commercelayer/commercelayer-cli-ux/commit/a3f10ca0df2db0b0ae99791b788fdacd4e0a9980))
+* update dependencies ([d330188](https://github.com/commercelayer/commercelayer-cli-ux/commit/d330188163abf3c896ecc2650e833ea1ace23c95))
+
 # [1.2.0](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.1.0...v1.2.0) (2026-03-25)
 
 
