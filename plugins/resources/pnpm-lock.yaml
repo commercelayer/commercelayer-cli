@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@commercelayer/cli-core':
         specifier: ^5.11.1
-        version: 5.11.1
+        version: 5.11.1(encoding@0.1.13)
       '@commercelayer/cli-ux':
         specifier: ^1.2.1
         version: 1.2.1(@oclif/core@3.27.0)
@@ -1416,6 +1416,9 @@ packages:
   emojilib@2.4.0:
     resolution: {integrity: sha512-5U0rVMU5Y2n2+ykNLQqMoqklN9ICBT/KsvC1Gz6vqHbz2AXXGkG+Pm5rMWk/8Vjrr/mY9985Hi8DYzn1F09Nyw==}
 
+  encoding@0.1.13:
+    resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+
   env-ci@11.2.0:
     resolution: {integrity: sha512-D5kWfzkmaOQDioPmiviWAVtKmpPT4/iJmMVQxWxMPJTFyTkdc5JQUfc5iXEeWxcOdsYTKSAiA/Age4NUOqKsRA==}
     engines: {node: ^18.17 || >=20.6.1}
@@ -1755,6 +1758,10 @@ packages:
   hyperlinker@1.0.0:
     resolution: {integrity: sha512-Ty8UblRWFEcfSuIaajM34LdPXIhbs1ajEX/BBPv24J+enSVaEVY63xQ6lTO9VRYS5LAoghIG0IDJ+p+IPzKUQQ==}
     engines: {node: '>=4'}
+
+  iconv-lite@0.6.3:
+    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
+    engines: {node: '>=0.10.0'}
 
   iconv-lite@0.7.3:
     resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
@@ -3557,13 +3564,13 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@commercelayer/cli-core@5.11.1':
+  '@commercelayer/cli-core@5.11.1(encoding@0.1.13)':
     dependencies:
       '@commercelayer/js-auth': 6.7.2
       '@oclif/core': 3.27.0
       chalk: 4.1.2
       jsonwebtoken: 9.0.3
-      update-notifier-cjs: 5.1.7
+      update-notifier-cjs: 5.1.7(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
 
@@ -4745,6 +4752,11 @@ snapshots:
 
   emojilib@2.4.0: {}
 
+  encoding@0.1.13:
+    dependencies:
+      iconv-lite: 0.6.3
+    optional: true
+
   env-ci@11.2.0:
     dependencies:
       execa: 8.0.1
@@ -5145,6 +5157,11 @@ snapshots:
 
   hyperlinker@1.0.0: {}
 
+  iconv-lite@0.6.3:
+    dependencies:
+      safer-buffer: 2.1.2
+    optional: true
+
   iconv-lite@0.7.3:
     dependencies:
       safer-buffer: 2.1.2
@@ -5270,9 +5287,9 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isomorphic-fetch@3.0.0:
+  isomorphic-fetch@3.0.0(encoding@0.1.13):
     dependencies:
-      node-fetch: 2.7.0
+      node-fetch: 2.7.0(encoding@0.1.13)
       whatwg-fetch: 3.6.20
     transitivePeerDependencies:
       - encoding
@@ -5625,9 +5642,11 @@ snapshots:
       emojilib: 2.4.0
       skin-tone: 2.0.0
 
-  node-fetch@2.7.0:
+  node-fetch@2.7.0(encoding@0.1.13):
     dependencies:
       whatwg-url: 5.0.0
+    optionalDependencies:
+      encoding: 0.1.13
 
   node-notifier@10.0.1:
     dependencies:
@@ -6425,7 +6444,7 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  update-notifier-cjs@5.1.7:
+  update-notifier-cjs@5.1.7(encoding@0.1.13):
     dependencies:
       boxen: 5.1.2
       chalk: 4.1.2
@@ -6436,7 +6455,7 @@ snapshots:
       is-installed-globally: 0.4.0
       is-npm: 5.0.0
       is-yarn-global: 0.3.0
-      isomorphic-fetch: 3.0.0
+      isomorphic-fetch: 3.0.0(encoding@0.1.13)
       pupa: 2.1.1
       registry-auth-token: 5.1.1
       registry-url: 5.1.0
