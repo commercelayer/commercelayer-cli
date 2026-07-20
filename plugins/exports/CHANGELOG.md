@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v4.0.2...v4.0.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* update codeql to v4 ([424addc](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/424addcf1c2162e17d90c37c73f9aad580fa510c))
+
 ## [4.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v4.0.1...v4.0.2) (2026-07-20)
 
 
