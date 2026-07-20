@@ -1,3 +1,12 @@
+## [6.18.2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.18.1...v6.18.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([3db22b2](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/3db22b228f0dd4aaa5fa843bead0004571c4df5a))
+* run tests in updates workflow ([ff928ce](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/ff928ceb7507919f528b3f069b06a3b68bae5186))
+* update dependencies ([5e4e678](https://github.com/commercelayer/commercelayer-cli-plugin-resources/commit/5e4e67826070497d4953f4c6c4259de21add8e2e))
+
 ## [6.18.1](https://github.com/commercelayer/commercelayer-cli-plugin-resources/compare/v6.18.0...v6.18.1) (2026-07-20)
 
 
