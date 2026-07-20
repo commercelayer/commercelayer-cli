@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.2.1...v1.2.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([0f8ac3c](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/0f8ac3cc400de1034758574f4260295faff87308))
+* update dependencies and codeql ([fa20c8c](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/fa20c8cb8e0c04a6850a34f8748bb6c557aba0db))
+
 ## [1.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.2.0...v1.2.1) (2026-04-15)
 
 
