@@ -1,3 +1,13 @@
+## [1.2.2](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.2.1...v1.2.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([03256cb](https://github.com/commercelayer/commercelayer-cli-ux/commit/03256cb3c1275556e8bdd42333ed5f2791aa7a76))
+* fix updates workflow ([656deb4](https://github.com/commercelayer/commercelayer-cli-ux/commit/656deb4dc9bdc2eab4d3ce24f85f00fb45f22cee))
+* run tests in updates workflow ([c398fc5](https://github.com/commercelayer/commercelayer-cli-ux/commit/c398fc5b3dade7ead32a3c7ceeb405712f047627))
+* update dependencies and codeql ([4d443f7](https://github.com/commercelayer/commercelayer-cli-ux/commit/4d443f7445646f12da1f4858f8629706a5baa01d))
+
 ## [1.2.1](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.2.0...v1.2.1) (2026-04-14)
 
 
