@@ -1,3 +1,12 @@
+## [5.11.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.11.1...v5.11.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([0037985](https://github.com/commercelayer/commercelayer-cli-core/commit/00379856c3df84cafa39dee157afb01bbb3dc82a))
+* run tests in updates workflow ([6531db3](https://github.com/commercelayer/commercelayer-cli-core/commit/6531db3f57a15622fb39994cdcb63d1e969fc27b))
+* update dependencies and codeql ([9712a5a](https://github.com/commercelayer/commercelayer-cli-core/commit/9712a5afa63d43d0898f1c45ce72a3baf1ccc334))
+
 ## [5.11.1](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.11.0...v5.11.1) (2026-04-14)
 
 
