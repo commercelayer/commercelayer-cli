@@ -1,3 +1,10 @@
+## [3.1.9](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.8...v3.1.9) (2026-07-29)
+
+
+### Bug Fixes
+
+* update dependencies and fix biome recommended ([be918db](https://github.com/commercelayer/commercelayer-cli-dev/commit/be918db6aae3ebe6ad7b73033ec66325c7910195))
+
 ## [3.1.8](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.7...v3.1.8) (2026-07-20)
 
 
