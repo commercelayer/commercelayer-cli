@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v4.0.3...v4.0.4) (2026-07-29)
+
+
+### Bug Fixes
+
+* update dependencies end fix biome recommended ([c470386](https://github.com/commercelayer/commercelayer-cli-plugin-exports/commit/c4703864d282e94c4e99fce520fb3d487eff8dd5))
+
 ## [4.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-exports/compare/v4.0.2...v4.0.3) (2026-07-20)
 
 
