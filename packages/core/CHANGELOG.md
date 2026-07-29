@@ -1,3 +1,10 @@
+## [5.11.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.11.2...v5.11.3) (2026-07-29)
+
+
+### Bug Fixes
+
+* update dependencies and fix biome recommended ([980475b](https://github.com/commercelayer/commercelayer-cli-core/commit/980475bf1e74eb2db20d19dad4795bc172fa7d48))
+
 ## [5.11.2](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.11.1...v5.11.2) (2026-07-20)
 
 
