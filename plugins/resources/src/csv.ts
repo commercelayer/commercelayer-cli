@@ -2,7 +2,7 @@
 
 import { writeFileSync } from 'node:fs'
 import { clOutput, type KeyValString } from '@commercelayer/cli-core'
-import { json2csvAsync } from 'json-2-csv'
+import { json2csv } from 'json-2-csv'
 
 
 
@@ -86,7 +86,7 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
   if (delimiter && (delimiter === 'TAB')) delimiter = '\t'
 
 
-  await json2csvAsync(output, {
+  const csv = json2csv(output, {
     excelBOM: true,
     expandArrayObjects: true,
     prependHeader: true,
@@ -99,11 +99,9 @@ const exportCsv = async (output: any, flags: any, path: string): Promise<boolean
     delimiter: {
       field: delimiter,
     },
-  }).then(csv => {
-    writeFileSync(path, csv)
-  }).catch(error => {
-    throw error
   })
+
+  writeFileSync(path, csv)
 
   return await Promise.resolve(true)
 
