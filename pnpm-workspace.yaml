@@ -1,3 +1,9 @@
 allowBuilds:
   esbuild: true
   yarn: true
+
+# Security overrides: transitive dependencies whose parents still pin a
+# vulnerable range upstream. Remove each entry once the parent releases a fix.
+overrides:
+  # GHSA RCE + DoS - mocha pins serialize-javascript ^6.0.2
+  serialize-javascript@<7.0.5: ^7.1.0
