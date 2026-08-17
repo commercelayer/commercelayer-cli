@@ -1,3 +1,10 @@
+## [6.9.7](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.6...v6.9.7) (2026-08-17)
+
+
+### Bug Fixes
+
+* fix security vulnerabilities ([84eed2e](https://github.com/commercelayer/commercelayer-cli/commit/84eed2eb82e50750804798901cb6ccf9d08df33b))
+
 ## [6.9.6](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.5...v6.9.6) (2026-08-17)
 
 
