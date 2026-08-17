@@ -1,3 +1,10 @@
+## [6.9.6](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.5...v6.9.6) (2026-08-17)
+
+
+### Bug Fixes
+
+* update dependencies and fix biome linter preset ([ca4c386](https://github.com/commercelayer/commercelayer-cli/commit/ca4c386d19e26059e33a879386c23fa9f969a0ec))
+
 ## [6.9.5](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.4...v6.9.5) (2026-07-20)
 
 
