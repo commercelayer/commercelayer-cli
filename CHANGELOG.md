@@ -1,3 +1,42 @@
+## [6.9.5](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.4...v6.9.5) (2026-07-20)
+
+
+### Bug Fixes
+
+* update dependencies ([9890a8d](https://github.com/commercelayer/commercelayer-cli/commit/9890a8d229300be0c5ab3aeed62c95df22223e94))
+
+## [6.9.4](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.3...v6.9.4) (2026-07-03)
+
+
+### Bug Fixes
+
+* fix dependencies ([2ea7620](https://github.com/commercelayer/commercelayer-cli/commit/2ea7620e8ebe0c8cb2f118539a3e1db12ad5fe1a))
+
+## [6.9.3](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.2...v6.9.3) (2026-04-17)
+
+
+### Bug Fixes
+
+* fix plugins:available command and update dependencies ([83e9400](https://github.com/commercelayer/commercelayer-cli/commit/83e9400f148f52beaa7a436ff1b035775223f593))
+* remove dependencies overrides ([59b8aa3](https://github.com/commercelayer/commercelayer-cli/commit/59b8aa3497c3ced5f264c8878edcc4326737dc67))
+
+## [6.9.2](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.1...v6.9.2) (2026-04-15)
+
+
+### Bug Fixes
+
+* run tests in updates workflow ([e7d89c5](https://github.com/commercelayer/commercelayer-cli/commit/e7d89c5b3061ff7b054fa10e41b0d81fbb62f4ff))
+* update dependencies ([d10fab4](https://github.com/commercelayer/commercelayer-cli/commit/d10fab4e65cb77c6695600fd7b91ca0a1d18785a))
+* update dependencies and add updates workflow ([242e14a](https://github.com/commercelayer/commercelayer-cli/commit/242e14ab543a76d809b8283efdf16ad9412649e8))
+
+## [6.9.1](https://github.com/commercelayer/commercelayer-cli/compare/v6.9.0...v6.9.1) (2026-03-31)
+
+
+### Bug Fixes
+
+* fix overrides ([f05baf9](https://github.com/commercelayer/commercelayer-cli/commit/f05baf9efef7b32e71c640c3c4db0c3b23dce19a))
+* fix overrides ([f05810a](https://github.com/commercelayer/commercelayer-cli/commit/f05810afc7f8fbf07aca105dff0067abe28f4c39))
+
 # [6.9.0](https://github.com/commercelayer/commercelayer-cli/compare/v6.8.3...v6.9.0) (2026-03-26)
 
 
