@@ -1,3 +1,10 @@
+## [2.2.5](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.2.4...v2.2.5) (2026-08-18)
+
+
+### Bug Fixes
+
+* fix dependencies and biome config ([dee3a28](https://github.com/commercelayer/commercelayer-cli-plugin-tags/commit/dee3a28ddca066b57749311b54999f4be7f34ad9))
+
 ## [2.2.4](https://github.com/commercelayer/commercelayer-cli-plugin-tags/compare/v2.2.3...v2.2.4) (2026-07-20)
 
 
