@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-links/compare/v1.1.3...v1.1.4) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix security vulnerabilities ([98c34bc](https://github.com/commercelayer/commercelayer-cli-plugin-links/commit/98c34bc74d13f873c29fe80b779a4c1e0bea9cf2))
+
 ## [1.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-links/compare/v1.1.2...v1.1.3) (2026-07-20)
 
 
