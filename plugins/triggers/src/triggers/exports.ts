@@ -3,7 +3,12 @@ import type { Trigger } from '../common'
 
 
 export const triggers: Record<string, Trigger> = {
-  interrupt: {
+  start: {
+      action: 'start',
+      trigger: '_start',
+      description: 'Send this attribute if you want to restart an \'interrupted\' export.',
+    },
+	interrupt: {
       action: 'interrupt',
       trigger: '_interrupt',
       description: 'Send this attribute if you want to mark status as \'interrupted\'.',
@@ -12,4 +17,5 @@ export const triggers: Record<string, Trigger> = {
 
 
 export type ActionType =
-  'interrupt'
+  'start' |
+	'interrupt'
