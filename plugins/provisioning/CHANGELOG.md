@@ -1,3 +1,11 @@
+## [2.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.1.3...v2.1.4) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix dependencies and biome config ([0374b3a](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/0374b3aefb08267b99b1401c6bb8d9e7b673265e))
+* resolve dev-dependency vulnerabilities via pnpm overrides ([f436c73](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/commit/f436c73ef591f6804e1d6cc1632f237f52fef5d9))
+
 ## [2.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/compare/v2.1.2...v2.1.3) (2026-07-20)
 
 
