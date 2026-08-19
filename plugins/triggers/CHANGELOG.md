@@ -1,3 +1,15 @@
+# [4.19.0](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.18.3...v4.19.0) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix security vulnerabilities ([04de0c5](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/04de0c53847ab30a542e4bac2882f97b73b72caa))
+
+
+### Features
+
+* add new triggers ([9231625](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/commit/9231625050cd63900b7a73bb07c5942e6c8a3cb8))
+
 ## [4.18.3](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/compare/v4.18.2...v4.18.3) (2026-07-20)
 
 
