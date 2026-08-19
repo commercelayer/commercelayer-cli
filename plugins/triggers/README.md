@@ -34,6 +34,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer address:add_tags ID`](#commercelayer-addressadd_tags-id)
 * [`commercelayer address:remove_tags ID`](#commercelayer-addressremove_tags-id)
 * [`commercelayer adyen_gateway ID`](#commercelayer-adyen_gateway-id)
+* [`commercelayer adyen_gateway:check ID`](#commercelayer-adyen_gatewaycheck-id)
 * [`commercelayer adyen_gateway:disable ID`](#commercelayer-adyen_gatewaydisable-id)
 * [`commercelayer adyen_gateway:enable ID`](#commercelayer-adyen_gatewayenable-id)
 * [`commercelayer adyen_payment ID`](#commercelayer-adyen_payment-id)
@@ -52,6 +53,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer axerve_payment ID`](#commercelayer-axerve_payment-id)
 * [`commercelayer axerve_payment:update ID`](#commercelayer-axerve_paymentupdate-id)
 * [`commercelayer braintree_gateway ID`](#commercelayer-braintree_gateway-id)
+* [`commercelayer braintree_gateway:check ID`](#commercelayer-braintree_gatewaycheck-id)
 * [`commercelayer braintree_gateway:disable ID`](#commercelayer-braintree_gatewaydisable-id)
 * [`commercelayer braintree_gateway:enable ID`](#commercelayer-braintree_gatewayenable-id)
 * [`commercelayer bundle ID`](#commercelayer-bundle-id)
@@ -70,9 +72,12 @@ $ commercelayer plugins:install triggers
 * [`commercelayer capture:refund ID`](#commercelayer-capturerefund-id)
 * [`commercelayer capture:refund_amount_cents ID`](#commercelayer-capturerefund_amount_cents-id)
 * [`commercelayer checkout_com_gateway ID`](#commercelayer-checkout_com_gateway-id)
+* [`commercelayer checkout_com_gateway:check ID`](#commercelayer-checkout_com_gatewaycheck-id)
 * [`commercelayer checkout_com_gateway:disable ID`](#commercelayer-checkout_com_gatewaydisable-id)
 * [`commercelayer checkout_com_gateway:enable ID`](#commercelayer-checkout_com_gatewayenable-id)
+* [`commercelayer checkout_com_gateway:update_webhooks ID`](#commercelayer-checkout_com_gatewayupdate_webhooks-id)
 * [`commercelayer checkout_com_payment ID`](#commercelayer-checkout_com_payment-id)
+* [`commercelayer checkout_com_payment:authorize ID`](#commercelayer-checkout_com_paymentauthorize-id)
 * [`commercelayer checkout_com_payment:details ID`](#commercelayer-checkout_com_paymentdetails-id)
 * [`commercelayer checkout_com_payment:refresh ID`](#commercelayer-checkout_com_paymentrefresh-id)
 * [`commercelayer cleanup ID`](#commercelayer-cleanup-id)
@@ -93,17 +98,21 @@ $ commercelayer plugins:install triggers
 * [`commercelayer event:trigger ID`](#commercelayer-eventtrigger-id)
 * [`commercelayer export ID`](#commercelayer-export-id)
 * [`commercelayer export:interrupt ID`](#commercelayer-exportinterrupt-id)
+* [`commercelayer export:start ID`](#commercelayer-exportstart-id)
 * [`commercelayer external_gateway ID`](#commercelayer-external_gateway-id)
 * [`commercelayer external_gateway:disable ID`](#commercelayer-external_gatewaydisable-id)
 * [`commercelayer external_gateway:enable ID`](#commercelayer-external_gatewayenable-id)
+* [`commercelayer external_gateway:regenerate_shared_secret ID`](#commercelayer-external_gatewayregenerate_shared_secret-id)
 * [`commercelayer external_gateway:reset_circuit ID`](#commercelayer-external_gatewayreset_circuit-id)
 * [`commercelayer external_promotion ID`](#commercelayer-external_promotion-id)
 * [`commercelayer external_promotion:add_tags ID`](#commercelayer-external_promotionadd_tags-id)
 * [`commercelayer external_promotion:disable ID`](#commercelayer-external_promotiondisable-id)
 * [`commercelayer external_promotion:enable ID`](#commercelayer-external_promotionenable-id)
+* [`commercelayer external_promotion:regenerate_shared_secret ID`](#commercelayer-external_promotionregenerate_shared_secret-id)
 * [`commercelayer external_promotion:remove_tags ID`](#commercelayer-external_promotionremove_tags-id)
 * [`commercelayer external_promotion:reset_circuit ID`](#commercelayer-external_promotionreset_circuit-id)
 * [`commercelayer external_tax_calculator ID`](#commercelayer-external_tax_calculator-id)
+* [`commercelayer external_tax_calculator:regenerate_shared_secret ID`](#commercelayer-external_tax_calculatorregenerate_shared_secret-id)
 * [`commercelayer external_tax_calculator:reset_circuit ID`](#commercelayer-external_tax_calculatorreset_circuit-id)
 * [`commercelayer fixed_amount_promotion ID`](#commercelayer-fixed_amount_promotion-id)
 * [`commercelayer fixed_amount_promotion:add_tags ID`](#commercelayer-fixed_amount_promotionadd_tags-id)
@@ -166,6 +175,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer market ID`](#commercelayer-market-id)
 * [`commercelayer market:disable ID`](#commercelayer-marketdisable-id)
 * [`commercelayer market:enable ID`](#commercelayer-marketenable-id)
+* [`commercelayer market:regenerate_shared_secret ID`](#commercelayer-marketregenerate_shared_secret-id)
 * [`commercelayer order ID`](#commercelayer-order-id)
 * [`commercelayer order:add_tags ID`](#commercelayer-orderadd_tags-id)
 * [`commercelayer order:approve ID`](#commercelayer-orderapprove-id)
@@ -186,6 +196,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer order:pending ID`](#commercelayer-orderpending-id)
 * [`commercelayer order:place ID`](#commercelayer-orderplace-id)
 * [`commercelayer order:refresh ID`](#commercelayer-orderrefresh-id)
+* [`commercelayer order:refresh_prices ID`](#commercelayer-orderrefresh_prices-id)
 * [`commercelayer order:refund ID`](#commercelayer-orderrefund-id)
 * [`commercelayer order:refund_invoice ID`](#commercelayer-orderrefund_invoice-id)
 * [`commercelayer order:remove_tags ID`](#commercelayer-orderremove_tags-id)
@@ -211,6 +222,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer payment_method:disable ID`](#commercelayer-payment_methoddisable-id)
 * [`commercelayer payment_method:enable ID`](#commercelayer-payment_methodenable-id)
 * [`commercelayer paypal_gateway ID`](#commercelayer-paypal_gateway-id)
+* [`commercelayer paypal_gateway:check ID`](#commercelayer-paypal_gatewaycheck-id)
 * [`commercelayer paypal_gateway:disable ID`](#commercelayer-paypal_gatewaydisable-id)
 * [`commercelayer paypal_gateway:enable ID`](#commercelayer-paypal_gatewayenable-id)
 * [`commercelayer percentage_discount_promotion ID`](#commercelayer-percentage_discount_promotion-id)
@@ -264,6 +276,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer shipping_method:add_tags ID`](#commercelayer-shipping_methodadd_tags-id)
 * [`commercelayer shipping_method:disable ID`](#commercelayer-shipping_methoddisable-id)
 * [`commercelayer shipping_method:enable ID`](#commercelayer-shipping_methodenable-id)
+* [`commercelayer shipping_method:regenerate_shared_secret ID`](#commercelayer-shipping_methodregenerate_shared_secret-id)
 * [`commercelayer shipping_method:remove_tags ID`](#commercelayer-shipping_methodremove_tags-id)
 * [`commercelayer shipping_method:reset_circuit ID`](#commercelayer-shipping_methodreset_circuit-id)
 * [`commercelayer sku ID`](#commercelayer-sku-id)
@@ -288,6 +301,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer stock_transfer:picking ID`](#commercelayer-stock_transferpicking-id)
 * [`commercelayer stock_transfer:upcoming ID`](#commercelayer-stock_transferupcoming-id)
 * [`commercelayer stripe_gateway ID`](#commercelayer-stripe_gateway-id)
+* [`commercelayer stripe_gateway:check ID`](#commercelayer-stripe_gatewaycheck-id)
 * [`commercelayer stripe_gateway:disable ID`](#commercelayer-stripe_gatewaydisable-id)
 * [`commercelayer stripe_gateway:enable ID`](#commercelayer-stripe_gatewayenable-id)
 * [`commercelayer stripe_payment ID`](#commercelayer-stripe_payment-id)
@@ -300,6 +314,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer webhook ID`](#commercelayer-webhook-id)
 * [`commercelayer webhook:disable ID`](#commercelayer-webhookdisable-id)
 * [`commercelayer webhook:enable ID`](#commercelayer-webhookenable-id)
+* [`commercelayer webhook:regenerate_shared_secret ID`](#commercelayer-webhookregenerate_shared_secret-id)
 * [`commercelayer webhook:reset_circuit ID`](#commercelayer-webhookreset_circuit-id)
 
 ### `commercelayer address ID`
@@ -391,6 +406,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/adyen_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_gateway/index.ts)_
+
+### `commercelayer adyen_gateway:check ID`
+
+Send this attribute if you want to check the credentials against the payment gateway's APIs.
+
+```sh-session
+USAGE
+  $ commercelayer adyen_gateway:check ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to check the credentials against the payment gateway's APIs.
+```
+
+_See code: [src/commands/adyen_gateway/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/adyen_gateway/check.ts)_
 
 ### `commercelayer adyen_gateway:disable ID`
 
@@ -788,6 +825,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/braintree_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/braintree_gateway/index.ts)_
+
+### `commercelayer braintree_gateway:check ID`
+
+Send this attribute if you want to check the credentials against the payment gateway's APIs.
+
+```sh-session
+USAGE
+  $ commercelayer braintree_gateway:check ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to check the credentials against the payment gateway's APIs.
+```
+
+_See code: [src/commands/braintree_gateway/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/braintree_gateway/check.ts)_
 
 ### `commercelayer braintree_gateway:disable ID`
 
@@ -1192,6 +1251,28 @@ DESCRIPTION
 
 _See code: [src/commands/checkout_com_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_gateway/index.ts)_
 
+### `commercelayer checkout_com_gateway:check ID`
+
+Send this attribute if you want to check the credentials against the payment gateway's APIs.
+
+```sh-session
+USAGE
+  $ commercelayer checkout_com_gateway:check ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to check the credentials against the payment gateway's APIs.
+```
+
+_See code: [src/commands/checkout_com_gateway/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_gateway/check.ts)_
+
 ### `commercelayer checkout_com_gateway:disable ID`
 
 Send this attribute if you want to mark this resource as disabled.
@@ -1236,6 +1317,28 @@ DESCRIPTION
 
 _See code: [src/commands/checkout_com_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_gateway/enable.ts)_
 
+### `commercelayer checkout_com_gateway:update_webhooks ID`
+
+Send this attribute if you want to sync the gateway webhook endpoint with the Checkout.com workflow.
+
+```sh-session
+USAGE
+  $ commercelayer checkout_com_gateway:update_webhooks ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to sync the gateway webhook endpoint with the Checkout.com workflow.
+```
+
+_See code: [src/commands/checkout_com_gateway/update_webhooks.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_gateway/update_webhooks.ts)_
+
 ### `commercelayer checkout_com_payment ID`
 
 Execute an action on a resource of type checkout_com_payments.
@@ -1257,6 +1360,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/checkout_com_payment/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/index.ts)_
+
+### `commercelayer checkout_com_payment:authorize ID`
+
+Send this attribute if you want to authorize the payment.
+
+```sh-session
+USAGE
+  $ commercelayer checkout_com_payment:authorize ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to authorize the payment.
+```
+
+_See code: [src/commands/checkout_com_payment/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/checkout_com_payment/authorize.ts)_
 
 ### `commercelayer checkout_com_payment:details ID`
 
@@ -1702,6 +1827,28 @@ DESCRIPTION
 
 _See code: [src/commands/export/interrupt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/export/interrupt.ts)_
 
+### `commercelayer export:start ID`
+
+Send this attribute if you want to restart an 'interrupted' export.
+
+```sh-session
+USAGE
+  $ commercelayer export:start ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to restart an 'interrupted' export.
+```
+
+_See code: [src/commands/export/start.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/export/start.ts)_
+
 ### `commercelayer external_gateway ID`
 
 Execute an action on a resource of type external_gateways.
@@ -1767,6 +1914,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/external_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/enable.ts)_
+
+### `commercelayer external_gateway:regenerate_shared_secret ID`
+
+Send this attribute if you want to regenerate the shared secret.
+
+```sh-session
+USAGE
+  $ commercelayer external_gateway:regenerate_shared_secret ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to regenerate the shared secret.
+```
+
+_See code: [src/commands/external_gateway/regenerate_shared_secret.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_gateway/regenerate_shared_secret.ts)_
 
 ### `commercelayer external_gateway:reset_circuit ID`
 
@@ -1880,6 +2049,28 @@ DESCRIPTION
 
 _See code: [src/commands/external_promotion/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/enable.ts)_
 
+### `commercelayer external_promotion:regenerate_shared_secret ID`
+
+Send this attribute if you want to regenerate the shared secret.
+
+```sh-session
+USAGE
+  $ commercelayer external_promotion:regenerate_shared_secret ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to regenerate the shared secret.
+```
+
+_See code: [src/commands/external_promotion/regenerate_shared_secret.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_promotion/regenerate_shared_secret.ts)_
+
 ### `commercelayer external_promotion:remove_tags ID`
 
 Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
@@ -1947,6 +2138,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/external_tax_calculator/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_tax_calculator/index.ts)_
+
+### `commercelayer external_tax_calculator:regenerate_shared_secret ID`
+
+Send this attribute if you want to regenerate the shared secret.
+
+```sh-session
+USAGE
+  $ commercelayer external_tax_calculator:regenerate_shared_secret ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to regenerate the shared secret.
+```
+
+_See code: [src/commands/external_tax_calculator/regenerate_shared_secret.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/external_tax_calculator/regenerate_shared_secret.ts)_
 
 ### `commercelayer external_tax_calculator:reset_circuit ID`
 
@@ -3337,6 +3550,28 @@ DESCRIPTION
 
 _See code: [src/commands/market/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/market/enable.ts)_
 
+### `commercelayer market:regenerate_shared_secret ID`
+
+Send this attribute if you want to regenerate the shared secret.
+
+```sh-session
+USAGE
+  $ commercelayer market:regenerate_shared_secret ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to regenerate the shared secret.
+```
+
+_See code: [src/commands/market/regenerate_shared_secret.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/market/regenerate_shared_secret.ts)_
+
 ### `commercelayer order ID`
 
 Execute an action on a resource of type orders.
@@ -3784,6 +4019,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/order/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refresh.ts)_
+
+### `commercelayer order:refresh_prices ID`
+
+Send this attribute if you want to refresh the prices of the line items associated to this order. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer order:refresh_prices ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refresh the prices of the line items associated to this order. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/order/refresh_prices.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/order/refresh_prices.ts)_
 
 ### `commercelayer order:refund ID`
 
@@ -4347,6 +4605,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/paypal_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/paypal_gateway/index.ts)_
+
+### `commercelayer paypal_gateway:check ID`
+
+Send this attribute if you want to check the credentials against the payment gateway's APIs.
+
+```sh-session
+USAGE
+  $ commercelayer paypal_gateway:check ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to check the credentials against the payment gateway's APIs.
+```
+
+_See code: [src/commands/paypal_gateway/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/paypal_gateway/check.ts)_
 
 ### `commercelayer paypal_gateway:disable ID`
 
@@ -5526,6 +5806,28 @@ DESCRIPTION
 
 _See code: [src/commands/shipping_method/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/enable.ts)_
 
+### `commercelayer shipping_method:regenerate_shared_secret ID`
+
+Send this attribute if you want to regenerate the shared secret.
+
+```sh-session
+USAGE
+  $ commercelayer shipping_method:regenerate_shared_secret ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to regenerate the shared secret.
+```
+
+_See code: [src/commands/shipping_method/regenerate_shared_secret.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/shipping_method/regenerate_shared_secret.ts)_
+
 ### `commercelayer shipping_method:remove_tags ID`
 
 Comma separated list of tags to be removed. Duplicates, invalid and non existing ones are discarded. Cannot be passed by sales channels.
@@ -6064,6 +6366,28 @@ DESCRIPTION
 
 _See code: [src/commands/stripe_gateway/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_gateway/index.ts)_
 
+### `commercelayer stripe_gateway:check ID`
+
+Send this attribute if you want to check the credentials against the payment gateway's APIs.
+
+```sh-session
+USAGE
+  $ commercelayer stripe_gateway:check ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to check the credentials against the payment gateway's APIs.
+```
+
+_See code: [src/commands/stripe_gateway/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/stripe_gateway/check.ts)_
+
 ### `commercelayer stripe_gateway:disable ID`
 
 Send this attribute if you want to mark this resource as disabled.
@@ -6328,6 +6652,28 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/webhook/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/enable.ts)_
+
+### `commercelayer webhook:regenerate_shared_secret ID`
+
+Send this attribute if you want to regenerate the shared secret.
+
+```sh-session
+USAGE
+  $ commercelayer webhook:regenerate_shared_secret ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to regenerate the shared secret.
+```
+
+_See code: [src/commands/webhook/regenerate_shared_secret.ts](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/src/commands/webhook/regenerate_shared_secret.ts)_
 
 ### `commercelayer webhook:reset_circuit ID`
 

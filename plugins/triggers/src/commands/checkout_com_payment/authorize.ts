@@ -1,0 +1,36 @@
+import type { CheckoutComPayment } from '@commercelayer/sdk'
+import Command from '../../base'
+import { triggers } from '../../triggers/checkout_com_payments'
+
+
+const TRIGGER = 'authorize'
+
+
+export default class CheckoutComPaymentAuthorize extends Command {
+
+	static description = triggers[TRIGGER].description
+
+  static flags = {
+		
+	}
+
+	static args = {
+		...Command.args,
+  }
+
+
+	async run(): Promise<any> {
+
+    const { args, flags } = await this.parse(CheckoutComPaymentAuthorize)
+
+		const res = await this.executeAction<CheckoutComPayment>('checkout_com_payments', args.id, TRIGGER, flags)
+
+    if (flags.print) this.printOutput(res, flags)
+
+    this.successMessage('checkout_com_payment', TRIGGER, res.id)
+
+    return res
+
+	}
+
+}
