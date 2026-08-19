@@ -1,3 +1,11 @@
+## [8.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.1.3...v8.1.4) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix dependencies and biome config ([8dbcbfe](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/8dbcbfe6461d9645c2e07aacfd87243d23d3cdea))
+* fix security vulnerabilities ([4dda209](https://github.com/commercelayer/commercelayer-cli-plugin-token/commit/4dda209be3f44da655a2ade25c969795bc744602))
+
 ## [8.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-token/compare/v8.1.2...v8.1.3) (2026-07-20)
 
 
