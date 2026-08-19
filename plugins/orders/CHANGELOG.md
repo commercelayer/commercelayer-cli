@@ -1,3 +1,10 @@
+## [5.6.5](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.6.4...v5.6.5) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix security vulnerabilities ([03bcd98](https://github.com/commercelayer/commercelayer-cli-plugin-orders/commit/03bcd9868270046e053509b3aa76cc68ecbbb994))
+
 ## [5.6.4](https://github.com/commercelayer/commercelayer-cli-plugin-orders/compare/v5.6.3...v5.6.4) (2026-07-20)
 
 
