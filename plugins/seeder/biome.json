@@ -6,12 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": [
-      "./src/**",
-      "./test/**",
-      "./specs/**",
-      "./gen/**"
-    ]
+    "includes": ["./src/**", "./test/**", "./specs/**", "./gen/**"]
   },
   "formatter": {
     "enabled": false,
@@ -22,7 +17,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "suspicious": {
         "noAssignInExpressions": "off",
         "noExplicitAny": "off"
