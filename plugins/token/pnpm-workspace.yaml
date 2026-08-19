@@ -1,2 +1,10 @@
 allowBuilds:
   esbuild: true
+
+# Security overrides: transitive dependencies whose parents still pin a
+# vulnerable range upstream. Remove each entry once the parent releases a fix.
+overrides:
+  # GHSA RCE + DoS - mocha pins serialize-javascript ^6.0.2
+  serialize-javascript@<7.0.5: ^7.1.0
+  # GHSA DoS in parsePatch/applyPatch - mocha pins diff ^7.0.0
+  diff@<8.0.3: ^8.0.3
