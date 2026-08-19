@@ -1,3 +1,11 @@
+## [1.2.3](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.2.2...v1.2.3) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix dependencies and biome config ([862c987](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/862c9874e303539fb83a8966e235631ae5ea9c53))
+* fix dependencies and biome config ([e0b1404](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/e0b1404b16b1cd9024bb4462cf9a21d5707e8620))
+
 ## [1.2.2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.2.1...v1.2.2) (2026-07-20)
 
 
