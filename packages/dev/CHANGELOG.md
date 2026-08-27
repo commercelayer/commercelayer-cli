@@ -1,3 +1,10 @@
+## [3.1.11](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.10...v3.1.11) (2026-08-27)
+
+
+### Bug Fixes
+
+* pin recently-published deps to satisfy minimumReleaseAge policy ([faf9366](https://github.com/commercelayer/commercelayer-cli-dev/commit/faf9366c9a27c2dabb155053062e7f4b2749d3e4))
+
 ## [3.1.10](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.9...v3.1.10) (2026-08-27)
 
 
