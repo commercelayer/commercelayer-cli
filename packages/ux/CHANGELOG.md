@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.2.3...v1.2.4) (2026-08-27)
+
+
+### Bug Fixes
+
+* pin recently-published deps to satisfy minimumReleaseAge policy ([301bfda](https://github.com/commercelayer/commercelayer-cli-ux/commit/301bfdab9d3614657274d3a6110d76c8de7f9671))
+
 ## [1.2.3](https://github.com/commercelayer/commercelayer-cli-ux/compare/v1.2.2...v1.2.3) (2026-07-29)
 
 
