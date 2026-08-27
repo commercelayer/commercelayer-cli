@@ -1,3 +1,10 @@
+## [5.11.4](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.11.3...v5.11.4) (2026-08-27)
+
+
+### Bug Fixes
+
+* pin recently-published deps to satisfy minimumReleaseAge policy ([839457f](https://github.com/commercelayer/commercelayer-cli-core/commit/839457f65075afa7651ea301fb189d481425561d))
+
 ## [5.11.3](https://github.com/commercelayer/commercelayer-cli-core/compare/v5.11.2...v5.11.3) (2026-07-29)
 
 
