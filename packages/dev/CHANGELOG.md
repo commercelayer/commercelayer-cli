@@ -1,3 +1,10 @@
+## [3.1.12](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.11...v3.1.12) (2026-09-14)
+
+
+### Bug Fixes
+
+* patch js-yaml and serialize-javascript vulnerabilities, pin pnpm ([60d2292](https://github.com/commercelayer/commercelayer-cli-dev/commit/60d2292fd853c861c9bbbe137b8dabac6c288012)), closes [#91](https://github.com/commercelayer/commercelayer-cli-dev/issues/91) [#90](https://github.com/commercelayer/commercelayer-cli-dev/issues/90) [#70](https://github.com/commercelayer/commercelayer-cli-dev/issues/70)
+
 ## [3.1.11](https://github.com/commercelayer/commercelayer-cli-dev/compare/v3.1.10...v3.1.11) (2026-08-27)
 
 
