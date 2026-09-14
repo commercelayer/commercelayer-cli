@@ -2,6 +2,7 @@
   "name": "@commercelayer/cli-dev",
   "description": "Commerce Layer CLI development tools and helpers",
   "version": "3.1.11",
+  "packageManager": "pnpm@11.20.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "homepage": "https://github.com/commercelayer/commercelayer-cli-dev",
@@ -52,7 +53,7 @@
     "release": "pnpm upgrade && pnpm lint && pnpm build"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.10",
+    "@biomejs/biome": "^2.5.11",
     "@oclif/plugin-help": "^5.2.20",
     "@oclif/test": "^2.5.6",
     "@semantic-release/changelog": "^6.0.3",
@@ -68,7 +69,7 @@
     "nyc": "^18.0.0",
     "oclif": "^4.24.0",
     "semantic-release": "^25.0.9",
-    "tsx": "^4.23.12",
+    "tsx": "^4.23.13",
     "typescript": "^6.0.3"
   },
   "dependencies": {
