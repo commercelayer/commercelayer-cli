@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('fixed_price_promotions:disable', () => {
   test
-    .timeout(61000)
+    .timeout(62000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

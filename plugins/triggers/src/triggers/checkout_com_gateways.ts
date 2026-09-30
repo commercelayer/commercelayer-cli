@@ -21,7 +21,12 @@ export const triggers: Record<string, Trigger> = {
 	update_webhooks: {
       action: 'update_webhooks',
       trigger: '_update_webhooks',
-      description: 'Send this attribute if you want to sync the gateway webhook endpoint with the Checkout.com workflow.',
+      description: 'Send this attribute if you want to sync the gateway webhook endpoint subscribed event topics.',
+    },
+	refresh_webhook_secrets: {
+      action: 'refresh_webhook_secrets',
+      trigger: '_refresh_webhook_secrets',
+      description: 'Send this attribute if you want to refresh the gateway webhook endpoint secret.',
     },
 }
 
@@ -30,4 +35,5 @@ export type ActionType =
   'disable' |
 	'enable' |
 	'check' |
-	'update_webhooks'
+	'update_webhooks' |
+	'refresh_webhook_secrets'

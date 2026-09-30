@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('braintree_gateways:check', () => {
   test
-    .timeout(61000)
+    .timeout(62000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

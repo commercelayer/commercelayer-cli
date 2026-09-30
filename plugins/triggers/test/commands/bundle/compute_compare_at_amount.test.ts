@@ -2,7 +2,7 @@ import { expect, test } from '@oclif/test'
 
 describe('bundles:compute_compare_at_amount', () => {
   test
-    .timeout(61000)
+    .timeout(62000)
     .stdout()
     .command(['noc'])
     .it('runs NoC', ctx => {

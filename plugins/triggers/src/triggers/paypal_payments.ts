@@ -1,0 +1,15 @@
+
+import type { Trigger } from '../common'
+
+
+export const triggers: Record<string, Trigger> = {
+  refresh: {
+      action: 'refresh',
+      trigger: '_refresh',
+      description: 'Send this attribute if you want to refresh the payment\'s pending transactions and reconcile their status with PayPal.',
+    },
+}
+
+
+export type ActionType =
+  'refresh'

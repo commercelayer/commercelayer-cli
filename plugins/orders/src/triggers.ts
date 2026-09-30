@@ -137,6 +137,11 @@ const triggers: Record<string, Trigger> = {
     trigger: '_refresh',
     description: 'Send this attribute if you want to manually refresh the order.',
   },
+	refresh_prices: {
+    action: 'refresh_prices',
+    trigger: '_refresh_prices',
+    description: 'Send this attribute if you want to refresh the prices of the line items associated to this order. Cannot be passed by sales channels.',
+  },
 	validate: {
     action: 'validate',
     trigger: '_validate',
@@ -175,7 +180,7 @@ const triggers: Record<string, Trigger> = {
 }
 
 
-export { type Trigger, triggers }
+export { triggers, type Trigger }
 
 
 
@@ -206,6 +211,7 @@ export type ActionType =
 	'save_shipping_address_to_customer_address_book' |
 	'save_billing_address_to_customer_address_book' |
 	'refresh' |
+	'refresh_prices' |
 	'validate' |
 	'create_subscriptions' |
 	'start_editing' |
