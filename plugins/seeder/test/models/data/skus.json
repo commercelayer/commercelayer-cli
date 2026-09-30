@@ -1,0 +1,2002 @@
+[
+	{
+		"reference": "sku_1",
+		"code": "5PANECAP000000FFFFFFXXXX",
+		"name": "Black Five-Panel Cap with White Logo",
+		"description": "Soft-structured, five-panel, low-profile cap. 100% cotton, metal eyelets, nylon strap clip closure.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/5PANECAP000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_2",
+		"code": "5PANECAP9D9CA1FFFFFFXXXX",
+		"name": "Gray Five-Panel Cap with White Logo",
+		"description": "Soft-structured, five-panel, low-profile cap. 100% cotton, metal eyelets, nylon strap clip closure.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/5PANECAP9D9CA1FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_3",
+		"code": "APRONXXX000000FFFFFFXXXX",
+		"name": "Black Apron with White Logo",
+		"description": "This apron has a neck loop and long ties that are easy to adjust for any size. The two front pockets provide additional space for some much-needed cooking utensils, and together with our embroidered logo give the apron a sleek premium look.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/APRONXXX000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_4",
+		"code": "APRONXXXFFFFFF000000XXXX",
+		"name": "White Apron with Black Logo",
+		"description": "This apron has a neck loop and long ties that are easy to adjust for any size. The two front pockets provide additional space for some much-needed cooking utensils, and together with our embroidered logo give the apron a sleek premium look.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/APRONXXXFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_5",
+		"code": "BABYBIBXA19D9D000000XXXX",
+		"name": "Gray Baby Bib with Black Logo",
+		"description": "Avoid getting food stains on child’s clothes with this baby bib. The reinforced hook & loop closure makes it easy to put on, but hard for baby to take off. 4x4\" embroidered logo.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BABYBIBXA19D9D000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_6",
+		"code": "BACKPACK000000FFFFFFXXXX",
+		"name": "Black Backpack with White Logo",
+		"description": "Medium size backpack with plenty of room plus a big inner pocket, a separate section for a 15'' laptop, a front pocket, and a hidden pocket at the back. Made of a water-resistant material. The soft, padded mesh material on the back and the black handles make it perfect for daily use or sports activities.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BACKPACK000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_7",
+		"code": "BACKPACK818488000000XXXX",
+		"name": "Gray Backpack with Black Logo",
+		"description": "Two-color backpack made from a water-resistant material. It has a soft, padded back and a top carry handle, making it the perfect small size backpack for daily use or sports. Embroidered logo.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BACKPACK818488000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_8",
+		"code": "BACKPACKFFFFFF000000XXXX",
+		"name": "White Backpack with Black Logo",
+		"description": "Medium size backpack with plenty of room plus a big inner pocket, a separate section for a 15'' laptop, a front pocket, and a hidden pocket at the back. Made of a water-resistant material. The soft, padded mesh material on the back and the black handles make it perfect for daily use or sports activities.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BACKPACKFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_9",
+		"code": "BASEBHAT000000FFFFFFXXXX",
+		"name": "Black Baseball Hat with White Logo",
+		"description": "Step up your accessory game with a new washed twill dad cap. Pair our embroidery logo design with a sporty feel and create a unique premium baseball hat that's bound to become a favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BASEBHAT000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_10",
+		"code": "BASEBHATFFFFFF000000XXXX",
+		"name": "White Baseball Hat with Black Logo",
+		"description": "Step up your accessory game with a new washed twill dad cap. Pair our embroidery logo design with a sporty feel and create a unique premium baseball hat that's bound to become a favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BASEBHATFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_11",
+		"code": "BEACHAIR000000FFFFFFXXXX",
+		"name": "Black Bean Chair with White Logo",
+		"description": "Bean bags are the ultimate interior design item to have, and this one's as good as they come! Comfy, sturdy, with a big all-over printed logo.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BEACHAIR000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_12",
+		"code": "BEACHAIRFFFFFF000000XXXX",
+		"name": "White Bean Chair with Black Logo",
+		"description": "Bean bags are the ultimate interior design item to have, and this one's as good as they come! Comfy, sturdy, with a big all-over printed logo.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BEACHAIRFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_13",
+		"code": "BEACHBAG000000FFFFFFXXXX",
+		"name": "Black Beach Bag with White Logo",
+		"description": "Meet your companion for a sunny summer day — our beach bag! It's large, comfy, and you can match it with our towel to create the perfect beach combo.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BEACHBAG000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_14",
+		"code": "BEACHBAGFFFFFF000000XXXX",
+		"name": "White Beach Bag with Black Logo",
+		"description": "Meet your companion for a sunny summer day — our beach bag! It's large, comfy, and you can match it with our towel to create the perfect beach combo.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BEACHBAGFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_15",
+		"code": "BEANIEXX000000FFFFFFXXXX",
+		"name": "Black Beanie with White Logo",
+		"description": "Soft double-layered customizable beanie. 95% polyester, 5% spandex. Regular fit. Accurately printed, cut, and hand-sewn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BEANIEXX000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_16",
+		"code": "BEANIEXXFFFFFF000000XXXX",
+		"name": "White Beanie with Black Logo",
+		"description": "Soft double-layered customizable beanie. 95% polyester, 5% spandex. Regular fit. Accurately printed, cut, and hand-sewn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BEANIEXXFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_17",
+		"code": "BODYBSSS000000FFFFFF12MX",
+		"name": "Black Baby Short Sleeve Bodysuit with White Logo (12 months)",
+		"description": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BODYBSSS000000FFFFFF12MX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_18",
+		"code": "BODYBSSS000000FFFFFF6MXX",
+		"name": "Black Baby Short Sleeve Bodysuit with White Logo (6 months)",
+		"description": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BODYBSSS000000FFFFFF6MXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_19",
+		"code": "BODYBSSSFFFFFF00000012MX",
+		"name": "White Baby Short Sleeve Bodysuit with Black Logo (12 months)",
+		"description": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BODYBSSSFFFFFF00000012MX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_20",
+		"code": "BODYBSSSFFFFFF0000006MXX",
+		"name": "White Baby Short Sleeve Bodysuit with Black Logo (6 months)",
+		"description": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BODYBSSSFFFFFF0000006MXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_21",
+		"code": "BOTT17OZFFFFFF000000XXXX",
+		"name": "White Water Bottle with Black Logo (17oz)",
+		"description": "Beautifully designed water bottle, made from high-grade stainless steel. Its double-wall construction makes it perfect for storing both hot and cold liquids.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BOTT17OZFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_22",
+		"code": "BTOW3060000000FFFFFFXXXX",
+		"name": "Black Beach Towel with White Logo (30x60)",
+		"description": "Lightweight beach towel to match your summer. 100% super soft & absorbent cotton velour. Reactive dye that helps prevent fading. One-sided print.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BTOW3060000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_23",
+		"code": "BTOW3060FFFFFF000000XXXX",
+		"name": "White Beach Towel with Black Logo (30x60)",
+		"description": "Lightweight beach towel to match your summer. 100% super soft & absorbent cotton velour. Reactive dye that helps prevent fading. One-sided print.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/BTOW3060FFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_24",
+		"code": "CROPTOPW000000FFFFFFLXXX",
+		"name": "Black Women Crop Top with White Logo (L)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPW000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_25",
+		"code": "CROPTOPW000000FFFFFFMXXX",
+		"name": "Black Women Crop Top with White Logo (M)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPW000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_26",
+		"code": "CROPTOPW000000FFFFFFSXXX",
+		"name": "Black Women Crop Top with White Logo (S)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPW000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_27",
+		"code": "CROPTOPW000000FFFFFFXSXX",
+		"name": "Black Women Crop Top with White Logo (XS)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPW000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_28",
+		"code": "CROPTOPWE8E8E8000000LXXX",
+		"name": "Gray Women Crop Top with Black Logo (L)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWE8E8E8000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_29",
+		"code": "CROPTOPWE8E8E8000000MXXX",
+		"name": "Gray Women Crop Top with Black Logo (M)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWE8E8E8000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_30",
+		"code": "CROPTOPWE8E8E8000000SXXX",
+		"name": "Gray Women Crop Top with Black Logo (S)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWE8E8E8000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_31",
+		"code": "CROPTOPWE8E8E8000000XSXX",
+		"name": "Gray Women Crop Top with Black Logo (XS)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWE8E8E8000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_32",
+		"code": "CROPTOPWFFFFFF000000LXXX",
+		"name": "White Women Crop Top with Black Logo (L)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_33",
+		"code": "CROPTOPWFFFFFF000000MXXX",
+		"name": "White Women Crop Top with Black Logo (M)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_34",
+		"code": "CROPTOPWFFFFFF000000SXXX",
+		"name": "White Women Crop Top with Black Logo (S)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_35",
+		"code": "CROPTOPWFFFFFF000000XSXX",
+		"name": "White Women Crop Top with Black Logo (XS)",
+		"description": "Body-hugging crop top that will become the centerpiece of any summer outfit! 82% polyester, 18% spandex. Made with a smooth and comfortable microfiber yarn.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CROPTOPWFFFFFF000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_36",
+		"code": "CUFFBEAN000000FFFFFFXXXX",
+		"name": "Black Cuffed Beanie with White Logo",
+		"description": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CUFFBEAN000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_37",
+		"code": "CUFFBEANA6A5A0000000XXXX",
+		"name": "Gray Cuffed Beanie with Black Logo",
+		"description": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CUFFBEANA6A5A0000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_38",
+		"code": "CUFFBEANFFFFFF000000XXXX",
+		"name": "White Cuffed Beanie with Black Logo",
+		"description": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/CUFFBEANFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_39",
+		"code": "DRAWSBAG000000FFFFFFXXXX",
+		"name": "Black Drawstring Bag with White Logo",
+		"description": "Gym bag, drawstring bag or backpack? Call it as you like! It's a must-have gym essential that can be worn as a backpack with drawstring closure at top, and narrow, contrasting shoulder straps.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/DRAWSBAG000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_40",
+		"code": "DRAWSBAGFFFFFF000000XXXX",
+		"name": "White Drawstring Bag with Black Logo",
+		"description": "Gym bag, drawstring bag or backpack? Call it as you like! It's a must-have gym essential that can be worn as a backpack with drawstring closure at top, and narrow, contrasting shoulder straps.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/DRAWSBAGFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_41",
+		"code": "DUFFLBAG000000FFFFFFXXXX",
+		"name": "Black Duffle Bag with White Logo",
+		"description": "The perfect spacious bag no matter the occasion. It’s great for packing exercise gear when heading to the gym, or throwing in necessities and going on an adventure.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/DUFFLBAG000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_42",
+		"code": "DUFFLBAGFFFFFF000000XXXX",
+		"name": "White Duffle Bag with Black Logo",
+		"description": "The perfect spacious bag no matter the occasion. It’s great for packing exercise gear when heading to the gym, or throwing in necessities and going on an adventure.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/DUFFLBAGFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_43",
+		"code": "EMUG12OZFFFFFF000000XXXX",
+		"name": "Enamel Mug with Black Logo (12oz)",
+		"description": "Lightweight and durable, this mug is a must-have for every devoted camper. Use it for your favorite beverage or a hot meal, and attach it to your bag for easy access on a hike. Ready for your next camping trip?",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/EMUG12OZFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_44",
+		"code": "FACEMASK000000FFFFFFXXXX",
+		"name": "Black Face Mask with White Logo",
+		"description": "Durable double-layer, washable cloth face mask. The center seam and elastic ear loops give the mask a close fit, and the treated fabric ensures that it will serve you well.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FACEMASK000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_45",
+		"code": "FACEMASKFFFFFF000000XXXX",
+		"name": "White Face Mask with Black Logo",
+		"description": "Durable double-layer, washable cloth face mask. The center seam and elastic ear loops give the mask a close fit, and the treated fabric ensures that it will serve you well.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FACEMASKFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_46",
+		"code": "FANNPACK000000FFFFFFXXXX",
+		"name": "Black Fanny Pack with White Logo",
+		"description": "Fanny pack is the ultimate accessory for people on the go. And this customizable waist bag has everything — the right size, inside pocket, and adjustable straps — to become a favorite among festival-goers, tourists, or fashion trend enthusiasts.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FANNPACK000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_47",
+		"code": "FANNPACKFFFFFF000000XXXX",
+		"name": "White Fanny Pack with Black Logo",
+		"description": "Fanny pack is the ultimate accessory for people on the go. And this customizable waist bag has everything — the right size, inside pocket, and adjustable straps — to become a favorite among festival-goers, tourists, or fashion trend enthusiasts.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FANNPACKFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_48",
+		"code": "FLIPFLOP000000FFFFFF75XX",
+		"name": "Black Flip Flops with White Logo (7.5)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOP000000FFFFFF75XX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_49",
+		"code": "FLIPFLOP000000FFFFFF7XXX",
+		"name": "Black Flip Flops with White Logo (7)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOP000000FFFFFF7XXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_50",
+		"code": "FLIPFLOP000000FFFFFF85XX",
+		"name": "Black Flip Flops with White Logo (8.5)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOP000000FFFFFF85XX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_51",
+		"code": "FLIPFLOP000000FFFFFF8XXX",
+		"name": "Black Flip Flops with White Logo (8)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOP000000FFFFFF8XXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_52",
+		"code": "FLIPFLOP000000FFFFFF9XXX",
+		"name": "Black Flip Flops with White Logo (9)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOP000000FFFFFF9XXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_53",
+		"code": "FLIPFLOPFFFFFF00000075XX",
+		"name": "White Flip Flops with Black Logo (7.5)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOPFFFFFF00000075XX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_54",
+		"code": "FLIPFLOPFFFFFF0000007XXX",
+		"name": "White Flip Flops with Black Logo (7)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOPFFFFFF0000007XXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_55",
+		"code": "FLIPFLOPFFFFFF00000085XX",
+		"name": "White Flip Flops with Black Logo (8.5)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOPFFFFFF00000085XX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_56",
+		"code": "FLIPFLOPFFFFFF0000008XXX",
+		"name": "White Flip Flops with Black Logo (8)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOPFFFFFF0000008XXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_57",
+		"code": "FLIPFLOPFFFFFF0000009XXX",
+		"name": "White Flip Flops with Black Logo (9)",
+		"description": "Super comfy flip-flops with rubber sole lined with a soft polyester fabric that will look great with your vivid prints on it. Let your craziest summer dreams run wild.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/FLIPFLOPFFFFFF0000009XXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_58",
+		"code": "GLCS21PXXXXXXXFFFFFFXXXX",
+		"name": "Samsung Galaxy S21 Plus Case with White Logo",
+		"description": "A must-have accessory for your Samsung that goes beyond style. This scratch-resistant case will also protect your phone from dust, oil, and dirt.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/GLCS21PXXXXXXXFFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_59",
+		"code": "GLCS21UXXXXXXXFFFFFFXXXX",
+		"name": "Samsung Galaxy S21 Ultra Case with White Logo",
+		"description": "A must-have accessory for your Samsung that goes beyond style. This scratch-resistant case will also protect your phone from dust, oil, and dirt.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/GLCS21UXXXXXXXFFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_60",
+		"code": "GMUG11OZFFFFFF000000XXXX",
+		"name": "White Glossy Mug with Black Logo (11oz)",
+		"description": "This sturdy mug is perfect for your morning coffee, afternoon tea, or whatever hot beverage you enjoy. It's glossy white and yields vivid prints that retain their quality when dish-washed and microwaved.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/GMUG11OZFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_61",
+		"code": "GMUG15OZFFFFFF000000XXXX",
+		"name": "White Glossy Mug with Black Logo (15oz)",
+		"description": "This sturdy mug is perfect for your morning coffee, afternoon tea, or whatever hot beverage you enjoy. It's glossy white and yields vivid prints that retain their quality when dish-washed and microwaved.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/GMUG15OZFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_62",
+		"code": "HDRESSWX000000FFFFFFLXXX",
+		"name": "Black Women Hoodie Dress with White Logo (L)",
+		"description": "Feeling cozy? This hoodie dress gives cozy a whole new meaning. It’s made from 85% organic ring-spun cotton and 15% recycled polyester, making it an eco-conscious choice.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HDRESSWX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_63",
+		"code": "HDRESSWX000000FFFFFFMXXX",
+		"name": "Black Women Hoodie Dress with White Logo (M)",
+		"description": "Feeling cozy? This hoodie dress gives cozy a whole new meaning. It’s made from 85% organic ring-spun cotton and 15% recycled polyester, making it an eco-conscious choice.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HDRESSWX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_64",
+		"code": "HDRESSWX000000FFFFFFSXXX",
+		"name": "Black Women Hoodie Dress with White Logo (S)",
+		"description": "Feeling cozy? This hoodie dress gives cozy a whole new meaning. It’s made from 85% organic ring-spun cotton and 15% recycled polyester, making it an eco-conscious choice.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HDRESSWX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_65",
+		"code": "HOODIEMX000000FFFFFFLXXX",
+		"name": "Black Men Hoodie with White Logo (L)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_66",
+		"code": "HOODIEMX000000FFFFFFMXXX",
+		"name": "Black Men Hoodie with White Logo (M)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_67",
+		"code": "HOODIEMX000000FFFFFFSXXX",
+		"name": "Black Men Hoodie with White Logo (S)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_68",
+		"code": "HOODIEMX000000FFFFFFXLXX",
+		"name": "Black Men Hoodie with White Logo (XL)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_69",
+		"code": "HOODIEMX7F7F7F000000LXXX",
+		"name": "Gray Men Hoodie with Black Logo (L)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX7F7F7F000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_70",
+		"code": "HOODIEMX7F7F7F000000MXXX",
+		"name": "Gray Men Hoodie with Black Logo (M)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX7F7F7F000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_71",
+		"code": "HOODIEMX7F7F7F000000SXXX",
+		"name": "Gray Men Hoodie with Black Logo (S)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX7F7F7F000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_72",
+		"code": "HOODIEMX7F7F7F000000XLXX",
+		"name": "Gray Men Hoodie with Black Logo (XL)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMX7F7F7F000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_73",
+		"code": "HOODIEMXFFFFFF000000LXXX",
+		"name": "White Men Hoodie with Black Logo (L)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMXFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_74",
+		"code": "HOODIEMXFFFFFF000000MXXX",
+		"name": "White Men Hoodie with Black Logo (M)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMXFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_75",
+		"code": "HOODIEMXFFFFFF000000SXXX",
+		"name": "White Men Hoodie with Black Logo (S)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMXFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_76",
+		"code": "HOODIEMXFFFFFF000000XLXX",
+		"name": "White Men Hoodie with Black Logo (XL)",
+		"description": "With a large front pouch pocket and drawstrings in a matching color, this hoodie is a sure crowd-favorite. It’s soft, stylish, and perfect for the cooler evenings.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEMXFFFFFF000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_77",
+		"code": "HOODIEUL000000FFFFFFLXXX",
+		"name": "Black Unisex Lightweight Hoodie with White Logo (L)",
+		"description": "Soft fleece fabric for this trendy, comfy lightweight hoodi that's bound to become a wardrobe favorite. It's pre-shrunk, so it would last for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUL000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_78",
+		"code": "HOODIEUL000000FFFFFFMXXX",
+		"name": "Black Unisex Lightweight Hoodie with White Logo (M)",
+		"description": "Soft fleece fabric for this trendy, comfy lightweight hoodi that's bound to become a wardrobe favorite. It's pre-shrunk, so it would last for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUL000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_79",
+		"code": "HOODIEUL000000FFFFFFSXXX",
+		"name": "Black Unisex Lightweight Hoodie with White Logo (S)",
+		"description": "Soft fleece fabric for this trendy, comfy lightweight hoodi that's bound to become a wardrobe favorite. It's pre-shrunk, so it would last for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUL000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_80",
+		"code": "HOODIEUL000000FFFFFFXLXX",
+		"name": "Black Unisex Lightweight Hoodie with White Logo (XL)",
+		"description": "Soft fleece fabric for this trendy, comfy lightweight hoodi that's bound to become a wardrobe favorite. It's pre-shrunk, so it would last for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUL000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_81",
+		"code": "HOODIEUL000000FFFFFFXSXX",
+		"name": "Black Unisex Lightweight Hoodie with White Logo (XS)",
+		"description": "Soft fleece fabric for this trendy, comfy lightweight hoodi that's bound to become a wardrobe favorite. It's pre-shrunk, so it would last for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUL000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_82",
+		"code": "HOODIEUZ000000FFFFFFLXXX",
+		"name": "Black Unisex Zip Hoodie with White Logo (L)",
+		"description": "This zip hoodie features a drawcord for a stylish retro look. It is extremely comfortable, long lasting and durable. Flex Fleece (50% Polyester / 50% Cotton Fleece) construction. Metal zipper.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUZ000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_83",
+		"code": "HOODIEUZ000000FFFFFFMXXX",
+		"name": "Black Unisex Zip Hoodie with White Logo (M)",
+		"description": "This zip hoodie features a drawcord for a stylish retro look. It is extremely comfortable, long lasting and durable. Flex Fleece (50% Polyester / 50% Cotton Fleece) construction. Metal zipper.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUZ000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_84",
+		"code": "HOODIEUZ000000FFFFFFSXXX",
+		"name": "Black Unisex Zip Hoodie with White Logo (S)",
+		"description": "This zip hoodie features a drawcord for a stylish retro look. It is extremely comfortable, long lasting and durable. Flex Fleece (50% Polyester / 50% Cotton Fleece) construction. Metal zipper.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUZ000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_85",
+		"code": "HOODIEUZ000000FFFFFFXLXX",
+		"name": "Black Unisex Zip Hoodie with White Logo (XL)",
+		"description": "This zip hoodie features a drawcord for a stylish retro look. It is extremely comfortable, long lasting and durable. Flex Fleece (50% Polyester / 50% Cotton Fleece) construction. Metal zipper.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUZ000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_86",
+		"code": "HOODIEUZ000000FFFFFFXSXX",
+		"name": "Black Unisex Zip Hoodie with White Logo (XS)",
+		"description": "This zip hoodie features a drawcord for a stylish retro look. It is extremely comfortable, long lasting and durable. Flex Fleece (50% Polyester / 50% Cotton Fleece) construction. Metal zipper.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEUZ000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_87",
+		"code": "HOODIEWC000000FFFFFFLXXX",
+		"name": "Black Women Cropped Hoodie with White Logo (L)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_88",
+		"code": "HOODIEWC000000FFFFFFMXXX",
+		"name": "Black Women Cropped Hoodie with White Logo (M)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_89",
+		"code": "HOODIEWC000000FFFFFFSXXX",
+		"name": "Black Women Cropped Hoodie with White Logo (S)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_90",
+		"code": "HOODIEWC000000FFFFFFXSXX",
+		"name": "Black Women Cropped Hoodie with White Logo (XS)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_91",
+		"code": "HOODIEWC575C51000000LXXX",
+		"name": "Gray Women Cropped Hoodie with Black Logo (L)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC575C51000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_92",
+		"code": "HOODIEWC575C51000000MXXX",
+		"name": "Gray Women Cropped Hoodie with Black Logo (M)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC575C51000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_93",
+		"code": "HOODIEWC575C51000000SXXX",
+		"name": "Gray Women Cropped Hoodie with Black Logo (S)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC575C51000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_94",
+		"code": "HOODIEWC575C51000000XSXX",
+		"name": "Gray Women Cropped Hoodie with Black Logo (XS)",
+		"description": "Comfort and style rolled in one — that's the easiest way to describe this fashion-forward hoodie. It serves as a great statement piece in any wardrobe, and with its trendy raw hem and matching drawstrings the hoodie is bound to become a true favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/HOODIEWC575C51000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_95",
+		"code": "IPC11PXX000000FFFFFFXXXX",
+		"name": "iPhone 11 Pro Case with White Logo",
+		"description": "This biodegradable case looks sleek, but it's tough. Its solid construction fits your iPhone perfectly, and it protects from scratches, dust, oil, and dirt. The smooth finish also makes it stylish and easy to hold.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/IPC11PXX000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_96",
+		"code": "IPC11XXX000000FFFFFFXXXX",
+		"name": "iPhone 11 Case with White Logo",
+		"description": "This biodegradable case looks sleek, but it's tough. Its solid construction fits your iPhone perfectly, and it protects from scratches, dust, oil, and dirt. The smooth finish also makes it stylish and easy to hold.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/IPC11XXX000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_97",
+		"code": "IPC12PMXXXXXXX000000XXXX",
+		"name": "iPhone 12 Pro Max Case with Black Logo",
+		"description": "This case looks sleek, but it's tough. Its solid construction fits your iPhone perfectly, and it protects from scratches, dust, oil, and dirt. The smooth finish also makes it stylish and easy to hold.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/IPC12PMXXXXXXX000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_98",
+		"code": "LAPTSL13000000FFFFFFXXXX",
+		"name": "Black Laptop Sleeve with White Logo (13in)",
+		"description": "This lightweight, form-fitting laptop sleeve is a must-have for any laptop owner on the go. To prevent any scratches, it contains a padded zipper binding and its interior is lined with faux fur.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/LAPTSL13000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_99",
+		"code": "LAPTSL15000000FFFFFFXXXX",
+		"name": "Black Laptop Sleeve with White Logo (15in)",
+		"description": "This lightweight, form-fitting laptop sleeve is a must-have for any laptop owner on the go. To prevent any scratches, it contains a padded zipper binding and its interior is lined with faux fur.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/LAPTSL15000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_100",
+		"code": "MESHBACK323230FFFFFFXXXX",
+		"name": "Gray Mesh Back Snapback with White Logo",
+		"description": "Ready to hit the streets in style? This high-profile mesh back snapback consists of five panels with a pro stitch on the crown. The hat has an adjustable strap at the back and four embroidered eyelets.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/MESHBACK323230FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_101",
+		"code": "NOTEBOOK000000FFFFFFXXXX",
+		"name": "Black Spiral Notebook with White Logo",
+		"description": "Write down your to-do lists, ideas, and anything else that comes to your mind in this spiral notebook. The 140 dotted pages of this product are also great for little drawings and doodles.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/NOTEBOOK000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_102",
+		"code": "NOTEBOOKFFFFFF000000XXXX",
+		"name": "White Spiral Notebook with Black Logo",
+		"description": "Write down your to-do lists, ideas, and anything else that comes to your mind in this spiral notebook. The 140 dotted pages of this product are also great for little drawings and doodles.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/NOTEBOOKFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_103",
+		"code": "PILL1818000000FFFFFFXXXX",
+		"name": "Black Pillow with White Logo (18x18)",
+		"description": "These throw pillows are precision-cut and hand-sewn to serve as the perfect canvas for our logo. A good reason to rest your head can freshen up any interior.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/PILL1818000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_104",
+		"code": "PILL1818FFFFFF000000XXXX",
+		"name": "White Pillow with Black Logo (18x18)",
+		"description": "These throw pillows are precision-cut and hand-sewn to serve as the perfect canvas for our logo. A good reason to rest your head can freshen up any interior.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/PILL1818FFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_105",
+		"code": "PILL2012000000FFFFFFXXXX",
+		"name": "Black Pillow with White Logo (20x12)",
+		"description": "These throw pillows are precision-cut and hand-sewn to serve as the perfect canvas for our logo. A good reason to rest your head can freshen up any interior.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/PILL2012000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_106",
+		"code": "PILL2012FFFFFF000000XXXX",
+		"name": "White Pillow with Black Logo (20x12)",
+		"description": "These throw pillows are precision-cut and hand-sewn to serve as the perfect canvas for our logo. A good reason to rest your head can freshen up any interior.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/PILL2012FFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_107",
+		"code": "POLOMXXX000000FFFFFFLXXX",
+		"name": "Black Men Polo with White Logo (L)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_108",
+		"code": "POLOMXXX000000FFFFFFMXXX",
+		"name": "Black Men Polo with White Logo (M)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_109",
+		"code": "POLOMXXX000000FFFFFFSXXX",
+		"name": "Black Men Polo with White Logo (S)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_110",
+		"code": "POLOMXXXC2C2C2000000LXXX",
+		"name": "Gray Men Polo with Black Logo (L)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXXC2C2C2000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_111",
+		"code": "POLOMXXXC2C2C2000000MXXX",
+		"name": "Gray Men Polo with Black Logo (M)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXXC2C2C2000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_112",
+		"code": "POLOMXXXC2C2C2000000SXXX",
+		"name": "Gray Men Polo with Black Logo (S)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXXC2C2C2000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_113",
+		"code": "POLOMXXXFFFFFF000000LXXX",
+		"name": "White Men Polo with Black Logo (L)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXXFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_114",
+		"code": "POLOMXXXFFFFFF000000MXXX",
+		"name": "White Men Polo with Black Logo (M)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXXFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_115",
+		"code": "POLOMXXXFFFFFF000000SXXX",
+		"name": "White Men Polo with Black Logo (S)",
+		"description": "Thanks to the quarter-turned cotton fabric, this polo shirt has a comfortable, relaxed fit. It's pre-shrunk and maintains its shape after washing, so it can be a favorite in your wardrobe for a long time.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOMXXXFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_116",
+		"code": "POLOWXXX000000FFFFFFLXXX",
+		"name": "Black Women Polo with White Logo (L)",
+		"description": "This semi-fitted premium cotton women's polo shirt is just the right mix of relaxed and sporty. Make it stand out with a vivid embroidery accent, and it'll definitely turn heads!",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOWXXX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_117",
+		"code": "POLOWXXX000000FFFFFFMXXX",
+		"name": "Black Women Polo with White Logo (M)",
+		"description": "This semi-fitted premium cotton women's polo shirt is just the right mix of relaxed and sporty. Make it stand out with a vivid embroidery accent, and it'll definitely turn heads!",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOWXXX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_118",
+		"code": "POLOWXXX000000FFFFFFSXXX",
+		"name": "Black Women Polo with White Logo (S)",
+		"description": "This semi-fitted premium cotton women's polo shirt is just the right mix of relaxed and sporty. Make it stand out with a vivid embroidery accent, and it'll definitely turn heads!",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOWXXX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_119",
+		"code": "POLOWXXXFFFFFF000000LXXX",
+		"name": "White Women Polo with Black Logo (L)",
+		"description": "This semi-fitted premium cotton women's polo shirt is just the right mix of relaxed and sporty. Make it stand out with a vivid embroidery accent, and it'll definitely turn heads!",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOWXXXFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_120",
+		"code": "POLOWXXXFFFFFF000000MXXX",
+		"name": "White Women Polo with Black Logo (M)",
+		"description": "This semi-fitted premium cotton women's polo shirt is just the right mix of relaxed and sporty. Make it stand out with a vivid embroidery accent, and it'll definitely turn heads!",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOWXXXFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_121",
+		"code": "POLOWXXXFFFFFF000000SXXX",
+		"name": "White Women Polo with Black Logo (S)",
+		"description": "This semi-fitted premium cotton women's polo shirt is just the right mix of relaxed and sporty. Make it stand out with a vivid embroidery accent, and it'll definitely turn heads!",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POLOWXXXFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_122",
+		"code": "POST2130000000000000XXXX",
+		"name": "Black Framed Poster with Black Logo (21x30)",
+		"description": "Our premium photo paper is between a gloss and matte finish, providing you with a highly saturated look and maximum ink coverage. Due to its rich colors, it's a popular choice for giclée quality photographic prints. What’s more, this poster is framed in an alder, semi-hardwood frame, and comes ready to hang on the wall.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POST2130000000000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_123",
+		"code": "POST2130FFFFFF000000XXXX",
+		"name": "White Framed Poster with Black Logo (21x30)",
+		"description": "Our premium photo paper is between a gloss and matte finish, providing you with a highly saturated look and maximum ink coverage. Due to its rich colors, it's a popular choice for giclée quality photographic prints. What’s more, this poster is framed in an alder, semi-hardwood frame, and comes ready to hang on the wall.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POST2130FFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_124",
+		"code": "POST6191000000000000XXXX",
+		"name": "Black Framed Poster with Black Logo (61x91)",
+		"description": "Our premium photo paper is between a gloss and matte finish, providing you with a highly saturated look and maximum ink coverage. Due to its rich colors, it's a popular choice for giclée quality photographic prints. What’s more, this poster is framed in an alder, semi-hardwood frame, and comes ready to hang on the wall.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POST6191000000000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_125",
+		"code": "POST6191FFFFFF000000XXXX",
+		"name": "White Framed Poster with Black Logo (61x91)",
+		"description": "Our premium photo paper is between a gloss and matte finish, providing you with a highly saturated look and maximum ink coverage. Due to its rich colors, it's a popular choice for giclée quality photographic prints. What’s more, this poster is framed in an alder, semi-hardwood frame, and comes ready to hang on the wall.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/POST6191FFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_126",
+		"code": "PPOMBEAN000000FFFFFFXXXX",
+		"name": "Black Pom-Pom Beanie with White Logo",
+		"description": "Spruce up your cold-weather collection with a custom beanie! The thick knit offers tons of warmth and comfort while the fold-over cuff showcases our embroiudere logo and gives the hat a personal flair. Finished with a pom-pom on top for a classic silhouette, this beanie is an instant crowd-favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/PPOMBEAN000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_127",
+		"code": "PPOMBEAN74736EFFFFFFXXXX",
+		"name": "Gray Pom-Pom Beanie with White Logo",
+		"description": "Spruce up your cold-weather collection with a custom beanie! The thick knit offers tons of warmth and comfort while the fold-over cuff showcases our embroiudere logo and gives the hat a personal flair. Finished with a pom-pom on top for a classic silhouette, this beanie is an instant crowd-favorite.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/PPOMBEAN74736EFFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_128",
+		"code": "SHIRT34S000000FFFFFFLXXX",
+		"name": "Black Unisex 3/4 Sleeve Shirt with White Logo (L)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34S000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_129",
+		"code": "SHIRT34S000000FFFFFFMXXX",
+		"name": "Black Unisex 3/4 Sleeve Shirt with White Logo (M)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34S000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_130",
+		"code": "SHIRT34S000000FFFFFFSXXX",
+		"name": "Black Unisex 3/4 Sleeve Shirt with White Logo (S)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34S000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_131",
+		"code": "SHIRT34S000000FFFFFFXLXX",
+		"name": "Black Unisex 3/4 Sleeve Shirt with White Logo (XL)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34S000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_132",
+		"code": "SHIRT34S000000FFFFFFXSXX",
+		"name": "Black Unisex 3/4 Sleeve Shirt with White Logo (XS)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34S000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_133",
+		"code": "SHIRT34SFFFFFF000000LXXX",
+		"name": "White Unisex 3/4 Sleeve Shirt with Black Logo (L)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34SFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_134",
+		"code": "SHIRT34SFFFFFF000000MXXX",
+		"name": "White Unisex 3/4 Sleeve Shirt with Black Logo (M)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34SFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_135",
+		"code": "SHIRT34SFFFFFF000000SXXX",
+		"name": "White Unisex 3/4 Sleeve Shirt with Black Logo (S)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34SFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_136",
+		"code": "SHIRT34SFFFFFF000000XLXX",
+		"name": "White Unisex 3/4 Sleeve Shirt with Black Logo (XL)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34SFFFFFF000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_137",
+		"code": "SHIRT34SFFFFFF000000XSXX",
+		"name": "White Unisex 3/4 Sleeve Shirt with Black Logo (XS)",
+		"description": "This 3/4 sleeve raglan tee is a classic piece made from 100% ring-spun cotton and with a modern color blocking look. Reactive-dyed for longer-lasting color. Prewashed to minimize shrinkage.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRT34SFFFFFF000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_138",
+		"code": "SHIRTMLS000000FFFFFFLXXX",
+		"name": "Black Men Long Sleeve Shirt with White Logo (L)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_139",
+		"code": "SHIRTMLS000000FFFFFFMXXX",
+		"name": "Black Men Long Sleeve Shirt with White Logo (M)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_140",
+		"code": "SHIRTMLS000000FFFFFFSXXX",
+		"name": "Black Men Long Sleeve Shirt with White Logo (S)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_141",
+		"code": "SHIRTMLS000000FFFFFFXLXX",
+		"name": "Black Men Long Sleeve Shirt with White Logo (XL)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_142",
+		"code": "SHIRTMLS9B969C000000LXXX",
+		"name": "Gray Men Long Sleeve Shirt with Black Logo (L)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS9B969C000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_143",
+		"code": "SHIRTMLS9B969C000000MXXX",
+		"name": "Gray Men Long Sleeve Shirt with Black Logo (M)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS9B969C000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_144",
+		"code": "SHIRTMLS9B969C000000SXXX",
+		"name": "Gray Men Long Sleeve Shirt with Black Logo (S)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS9B969C000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_145",
+		"code": "SHIRTMLS9B969C000000XLXX",
+		"name": "Gray Men Long Sleeve Shirt with Black Logo (XL)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLS9B969C000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_146",
+		"code": "SHIRTMLSFFFFFF000000LXXX",
+		"name": "White Men Long Sleeve Shirt with Black Logo (L)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLSFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_147",
+		"code": "SHIRTMLSFFFFFF000000MXXX",
+		"name": "White Men Long Sleeve Shirt with Black Logo (M)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLSFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_148",
+		"code": "SHIRTMLSFFFFFF000000SXXX",
+		"name": "White Men Long Sleeve Shirt with Black Logo (S)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLSFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_149",
+		"code": "SHIRTMLSFFFFFF000000XLXX",
+		"name": "White Men Long Sleeve Shirt with Black Logo (XL)",
+		"description": "This long-sleeved shirt is made of the ultra-smooth cotton, and it has comfy long sleeves to protect you from the elements. The sleeves are cuffed at the hand for a tapered look that adds a little flair.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMLSFFFFFF000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_150",
+		"code": "SHIRTMMX000000FFFFFFLXXX",
+		"name": "Black Men Muscle Shirt with White Logo (L)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_151",
+		"code": "SHIRTMMX000000FFFFFFMXXX",
+		"name": "Black Men Muscle Shirt with White Logo (M)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_152",
+		"code": "SHIRTMMX000000FFFFFFSXXX",
+		"name": "Black Men Muscle Shirt with White Logo (S)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_153",
+		"code": "SHIRTMMX8E8C8D000000LXXX",
+		"name": "Gray Men Muscle Shirt with Black Logo (L)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMX8E8C8D000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_154",
+		"code": "SHIRTMMX8E8C8D000000MXXX",
+		"name": "Gray Men Muscle Shirt with Black Logo (M)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMX8E8C8D000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_155",
+		"code": "SHIRTMMX8E8C8D000000SXXX",
+		"name": "Gray Men Muscle Shirt with Black Logo (S)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMX8E8C8D000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_156",
+		"code": "SHIRTMMXFFFFFF000000LXXX",
+		"name": "White Men Muscle Shirt with Black Logo (L)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMXFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_157",
+		"code": "SHIRTMMXFFFFFF000000MXXX",
+		"name": "White Men Muscle Shirt with Black Logo (M)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMXFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_158",
+		"code": "SHIRTMMXFFFFFF000000SXXX",
+		"name": "White Men Muscle Shirt with Black Logo (S)",
+		"description": "Thanks to the relaxed fit and soft fabric this sleeveless tank has all the features to become a true crowd-favorite, especially when paired with a bright print of our logo on the chest. Enhance your casual everyday look, or your sports outfit.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTMMXFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_159",
+		"code": "SHIRTWLS000000FFFFFFLXXX",
+		"name": "Black Women Long Sleeve Shirt with White Logo (L)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_160",
+		"code": "SHIRTWLS000000FFFFFFMXXX",
+		"name": "Black Women Long Sleeve Shirt with White Logo (M)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_161",
+		"code": "SHIRTWLS000000FFFFFFSXXX",
+		"name": "Black Women Long Sleeve Shirt with White Logo (S)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_162",
+		"code": "SHIRTWLS000000FFFFFFXSXX",
+		"name": "Black Women Long Sleeve Shirt with White Logo (XS)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_163",
+		"code": "SHIRTWLS9397A0000000LXXX",
+		"name": "Gray Women Long Sleeve Shirt with Black Logo (L)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS9397A0000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_164",
+		"code": "SHIRTWLS9397A0000000MXXX",
+		"name": "Gray Women Long Sleeve Shirt with Black Logo (M)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS9397A0000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_165",
+		"code": "SHIRTWLS9397A0000000SXXX",
+		"name": "Gray Women Long Sleeve Shirt with Black Logo (S)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS9397A0000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_166",
+		"code": "SHIRTWLS9397A0000000XSXX",
+		"name": "Gray Women Long Sleeve Shirt with Black Logo (XS)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLS9397A0000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_167",
+		"code": "SHIRTWLSFFFFFF000000LXXX",
+		"name": "White Women Long Sleeve Shirt with Black Logo (L)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLSFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_168",
+		"code": "SHIRTWLSFFFFFF000000MXXX",
+		"name": "White Women Long Sleeve Shirt with Black Logo (M)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLSFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_169",
+		"code": "SHIRTWLSFFFFFF000000SXXX",
+		"name": "White Women Long Sleeve Shirt with Black Logo (S)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLSFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_170",
+		"code": "SHIRTWLSFFFFFF000000XSXX",
+		"name": "White Women Long Sleeve Shirt with Black Logo (XS)",
+		"description": "This relaxed long sleeve tee combines the best of both worlds, proving that cozy can also be chic. 65/35 polyester/viscose. Drop shoulder. Curved bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SHIRTWLSFFFFFF000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_171",
+		"code": "SOCKSXXX000000FFFFFFLXXX",
+		"name": "Black Socks with White Logo (L)",
+		"description": "These socks are extra comfortable thanks to their cushioned bottom. 60% nylon, 22% cotton, 18% spandex.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SOCKSXXX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_172",
+		"code": "SOCKSXXX000000FFFFFFMXXX",
+		"name": "Black Socks with White Logo (M)",
+		"description": "These socks are extra comfortable thanks to their cushioned bottom. 60% nylon, 22% cotton, 18% spandex.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SOCKSXXX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_173",
+		"code": "SOCKSXXX000000FFFFFFSXXX",
+		"name": "Black Socks with White Logo (S)",
+		"description": "These socks are extra comfortable thanks to their cushioned bottom. 60% nylon, 22% cotton, 18% spandex.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SOCKSXXX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_174",
+		"code": "SOCKSXXXFFFFFF000000LXXX",
+		"name": "White Socks with Black Logo (L)",
+		"description": "These socks are extra comfortable thanks to their cushioned bottom. 60% nylon, 22% cotton, 18% spandex.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SOCKSXXXFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_175",
+		"code": "SOCKSXXXFFFFFF000000MXXX",
+		"name": "White Socks with Black Logo (M)",
+		"description": "These socks are extra comfortable thanks to their cushioned bottom. 60% nylon, 22% cotton, 18% spandex.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SOCKSXXXFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_176",
+		"code": "SOCKSXXXFFFFFF000000SXXX",
+		"name": "White Socks with Black Logo (S)",
+		"description": "These socks are extra comfortable thanks to their cushioned bottom. 60% nylon, 22% cotton, 18% spandex.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SOCKSXXXFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_177",
+		"code": "SWEATMXX000000FFFFFFLXXX",
+		"name": "Black Men Sweatshirt with White Logo (L)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_178",
+		"code": "SWEATMXX000000FFFFFFMXXX",
+		"name": "Black Men Sweatshirt with White Logo (M)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_179",
+		"code": "SWEATMXX000000FFFFFFSXXX",
+		"name": "Black Men Sweatshirt with White Logo (S)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_180",
+		"code": "SWEATMXX000000FFFFFFXLXX",
+		"name": "Black Men Sweatshirt with White Logo (XL)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_181",
+		"code": "SWEATMXX9B969C000000LXXX",
+		"name": "Gray Men Sweatshirt with Black Logo (L)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX9B969C000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_182",
+		"code": "SWEATMXX9B969C000000MXXX",
+		"name": "Gray Men Sweatshirt with Black Logo (M)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX9B969C000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_183",
+		"code": "SWEATMXX9B969C000000SXXX",
+		"name": "Gray Men Sweatshirt with Black Logo (S)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX9B969C000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_184",
+		"code": "SWEATMXX9B969C000000XLXX",
+		"name": "Gray Men Sweatshirt with Black Logo (XL)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXX9B969C000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_185",
+		"code": "SWEATMXXFFFFFF000000LXXX",
+		"name": "White Men Sweatshirt with Black Logo (L)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXXFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_186",
+		"code": "SWEATMXXFFFFFF000000MXXX",
+		"name": "White Men Sweatshirt with Black Logo (M)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXXFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_187",
+		"code": "SWEATMXXFFFFFF000000SXXX",
+		"name": "White Men Sweatshirt with Black Logo (S)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXXFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_188",
+		"code": "SWEATMXXFFFFFF000000XLXX",
+		"name": "White Men Sweatshirt with Black Logo (XL)",
+		"description": "This well-loved sweatshirt is the perfect addition to any man's wardrobe. It has a crew neck, and it's made from air-jet spun yarn and quarter-turned fabric, which eliminates a center crease, reduces pilling, and gives the sweatshirt a soft, comfortable feel.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATMXXFFFFFF000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_189",
+		"code": "SWEATWCX000000FFFFFFLXXX",
+		"name": "Black Women Cropped Sweatshirt with White Logo (L)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_190",
+		"code": "SWEATWCX000000FFFFFFMXXX",
+		"name": "Black Women Cropped Sweatshirt with White Logo (M)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_191",
+		"code": "SWEATWCX000000FFFFFFSXXX",
+		"name": "Black Women Cropped Sweatshirt with White Logo (S)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_192",
+		"code": "SWEATWCX000000FFFFFFXSXX",
+		"name": "Black Women Cropped Sweatshirt with White Logo (XS)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_193",
+		"code": "SWEATWCX9B9A9F000000LXXX",
+		"name": "Gray Women Cropped Sweatshirt with Black Logo (L)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX9B9A9F000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_194",
+		"code": "SWEATWCX9B9A9F000000MXXX",
+		"name": "Gray Women Cropped Sweatshirt with Black Logo (M)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX9B9A9F000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_195",
+		"code": "SWEATWCX9B9A9F000000SXXX",
+		"name": "Gray Women Cropped Sweatshirt with Black Logo (S)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX9B9A9F000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_196",
+		"code": "SWEATWCX9B9A9F000000XSXX",
+		"name": "Gray Women Cropped Sweatshirt with Black Logo (XS)",
+		"description": "There's a reason why everybody loves fleece — it's soft, warm, and looks great! That's why this trendy fleece cropped sweatshirt is the way to go to look fashionable while feeling perfectly comfy.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/SWEATWCX9B9A9F000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_197",
+		"code": "TANKTOPM000000FFFFFFLXXX",
+		"name": "Black Men Tank Top with White Logo (L)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_198",
+		"code": "TANKTOPM000000FFFFFFMXXX",
+		"name": "Black Men Tank Top with White Logo (M)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_199",
+		"code": "TANKTOPM000000FFFFFFSXXX",
+		"name": "Black Men Tank Top with White Logo (S)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_200",
+		"code": "TANKTOPM000000FFFFFFXLXX",
+		"name": "Black Men Tank Top with White Logo (XL)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_201",
+		"code": "TANKTOPM7E7F84000000LXXX",
+		"name": "Gray Men Tank Top with Black Logo (L)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM7E7F84000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_202",
+		"code": "TANKTOPM7E7F84000000MXXX",
+		"name": "Gray Men Tank Top with Black Logo (M)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM7E7F84000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_203",
+		"code": "TANKTOPM7E7F84000000SXXX",
+		"name": "Gray Men Tank Top with Black Logo (S)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM7E7F84000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_204",
+		"code": "TANKTOPM7E7F84000000XLXX",
+		"name": "Gray Men Tank Top with Black Logo (XL)",
+		"description": "Classic cotton jersey knit top that evokes a sense of durability and strength. What's more, it's quarter-turned to eliminate center creasing.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPM7E7F84000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_205",
+		"code": "TANKTOPW000000FFFFFFMXXX",
+		"name": "Black Women Tank Top with White Logo (M)",
+		"description": "Tri-blend racerback tank is soft and comfortable. Plus the relaxed fit and raw seams give it an edgy look. 50% polyester, 25% combed and ringspun cotton, 25% rayon.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPW000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_206",
+		"code": "TANKTOPW000000FFFFFFSXXX",
+		"name": "Black Women Tank Top with White Logo (S)",
+		"description": "Tri-blend racerback tank is soft and comfortable. Plus the relaxed fit and raw seams give it an edgy look. 50% polyester, 25% combed and ringspun cotton, 25% rayon.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPW000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_207",
+		"code": "TANKTOPW000000FFFFFFXSXX",
+		"name": "Black Women Tank Top with White Logo (XS)",
+		"description": "Tri-blend racerback tank is soft and comfortable. Plus the relaxed fit and raw seams give it an edgy look. 50% polyester, 25% combed and ringspun cotton, 25% rayon.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPW000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_208",
+		"code": "TANKTOPWFFFFFF000000MXXX",
+		"name": "White Women Tank Top with Black Logo (M)",
+		"description": "Tri-blend racerback tank is soft and comfortable. Plus the relaxed fit and raw seams give it an edgy look. 50% polyester, 25% combed and ringspun cotton, 25% rayon.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPWFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_209",
+		"code": "TANKTOPWFFFFFF000000SXXX",
+		"name": "White Women Tank Top with Black Logo (S)",
+		"description": "Tri-blend racerback tank is soft and comfortable. Plus the relaxed fit and raw seams give it an edgy look. 50% polyester, 25% combed and ringspun cotton, 25% rayon.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPWFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_210",
+		"code": "TANKTOPWFFFFFF000000XSXX",
+		"name": "White Women Tank Top with Black Logo (XS)",
+		"description": "Tri-blend racerback tank is soft and comfortable. Plus the relaxed fit and raw seams give it an edgy look. 50% polyester, 25% combed and ringspun cotton, 25% rayon.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TANKTOPWFFFFFF000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_211",
+		"code": "TOTEBAGL000000FFFFFFXXXX",
+		"name": "Large Black Tote Bag with White Logo",
+		"description": "Combine eco-friendliness and comfort with your personal style! Spacious organic twill tote bag made from sturdy fabric, with dual straps, and flat bottom. This tote can fit a whole lot of groceries, books, and other essentials.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TOTEBAGL000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_212",
+		"code": "TOTEBAGLE7DDC7000000XXXX",
+		"name": "Large Eco Tote Bag with Black Logo",
+		"description": "Combine eco-friendliness and comfort with your personal style! Spacious organic twill tote bag made from sturdy fabric, with dual straps, and flat bottom. This tote can fit a whole lot of groceries, books, and other essentials.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TOTEBAGLE7DDC7000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_213",
+		"code": "TOTEBAGX000000FFFFFFXXXX",
+		"name": "Black Tote Bag with White Logo",
+		"description": "Combine eco-friendliness and comfort with your personal style! Spacious organic twill tote bag made from sturdy fabric, with dual straps, and flat bottom. This tote can fit a whole lot of groceries, books, and other essentials.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TOTEBAGX000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_214",
+		"code": "TOTEBAGXE7DDC7000000XXXX",
+		"name": "Eco Tote Bag with Black Logo",
+		"description": "Combine eco-friendliness and comfort with your personal style! Spacious organic twill tote bag made from sturdy fabric, with dual straps, and flat bottom. This tote can fit a whole lot of groceries, books, and other essentials.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TOTEBAGXE7DDC7000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_215",
+		"code": "TSHIRTMS000000FFFFFFLXXX",
+		"name": "Black Men T-Shirt with White Logo (L)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMS000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_216",
+		"code": "TSHIRTMS000000FFFFFFMXXX",
+		"name": "Black Men T-Shirt with White Logo (M)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMS000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_217",
+		"code": "TSHIRTMS000000FFFFFFSXXX",
+		"name": "Black Men T-Shirt with White Logo (S)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMS000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_218",
+		"code": "TSHIRTMS000000FFFFFFXLXX",
+		"name": "Black Men T-Shirt with White Logo (XL)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMS000000FFFFFFXLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_219",
+		"code": "TSHIRTMSB0B0B2000000LXXX",
+		"name": "Gray Men T-Shirt with Black Logo (L)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSB0B0B2000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_220",
+		"code": "TSHIRTMSB0B0B2000000MXXX",
+		"name": "Gray Men T-Shirt with Black Logo (M)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSB0B0B2000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_221",
+		"code": "TSHIRTMSB0B0B2000000SXXX",
+		"name": "Gray Men T-Shirt with Black Logo (S)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSB0B0B2000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_222",
+		"code": "TSHIRTMSB0B0B2000000XLXX",
+		"name": "Gray Men T-Shirt with Black Logo (XL)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSB0B0B2000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_223",
+		"code": "TSHIRTMSFFFFFF000000LXXX",
+		"name": "White Men T-Shirt with Black Logo (L)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_224",
+		"code": "TSHIRTMSFFFFFF000000MXXX",
+		"name": "White Men T-Shirt with Black Logo (M)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_225",
+		"code": "TSHIRTMSFFFFFF000000SXXX",
+		"name": "White Men T-Shirt with Black Logo (S)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_226",
+		"code": "TSHIRTMSFFFFFF000000XLXX",
+		"name": "White Men T-Shirt with Black Logo (XL)",
+		"description": "This is THE classic t-shirt. Its fine jersey cotton construction makes it extremely soft and comfortable to wear, so it's a good choice for a day-to-day outfit — it's durable and can withstand several washings while retaining its shape and color.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTMSFFFFFF000000XLXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_227",
+		"code": "TSHIRTWK000000FFFFFFMXXX",
+		"name": "Black Women Cropped T-Shirt with White Logo (M)",
+		"description": "The season's trendiest garment — the crop top. This top is tight-fitting and hits just above the navel. 52/48 combed and ringspun cotton/polyester. Form fitting. Side seamed.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWK000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_228",
+		"code": "TSHIRTWK000000FFFFFFSXXX",
+		"name": "Black Women Cropped T-Shirt with White Logo (S)",
+		"description": "The season's trendiest garment — the crop top. This top is tight-fitting and hits just above the navel. 52/48 combed and ringspun cotton/polyester. Form fitting. Side seamed.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWK000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_229",
+		"code": "TSHIRTWK000000FFFFFFXSXX",
+		"name": "Black Women Cropped T-Shirt with White Logo (XS)",
+		"description": "The season's trendiest garment — the crop top. This top is tight-fitting and hits just above the navel. 52/48 combed and ringspun cotton/polyester. Form fitting. Side seamed.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWK000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_230",
+		"code": "TSHIRTWKFFFFFF000000MXXX",
+		"name": "White Women Cropped T-Shirt with Black Logo (M)",
+		"description": "The season's trendiest garment — the crop top. This top is tight-fitting and hits just above the navel. 52/48 combed and ringspun cotton/polyester. Form fitting. Side seamed.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWKFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_231",
+		"code": "TSHIRTWKFFFFFF000000SXXX",
+		"name": "White Women Cropped T-Shirt with Black Logo (S)",
+		"description": "The season's trendiest garment — the crop top. This top is tight-fitting and hits just above the navel. 52/48 combed and ringspun cotton/polyester. Form fitting. Side seamed.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWKFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_232",
+		"code": "TSHIRTWKFFFFFF000000XSXX",
+		"name": "White Women Cropped T-Shirt with Black Logo (XS)",
+		"description": "The season's trendiest garment — the crop top. This top is tight-fitting and hits just above the navel. 52/48 combed and ringspun cotton/polyester. Form fitting. Side seamed.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWKFFFFFF000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_233",
+		"code": "TSHIRTWS000000FFFFFFLXXX",
+		"name": "Black Women T-Shirt with White Logo (L)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWS000000FFFFFFLXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_234",
+		"code": "TSHIRTWS000000FFFFFFMXXX",
+		"name": "Black Women T-Shirt with White Logo (M)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWS000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_235",
+		"code": "TSHIRTWS000000FFFFFFSXXX",
+		"name": "Black Women T-Shirt with White Logo (S)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWS000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_236",
+		"code": "TSHIRTWS000000FFFFFFXSXX",
+		"name": "Black Women T-Shirt with White Logo (XS)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWS000000FFFFFFXSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_237",
+		"code": "TSHIRTWSB5B1B2000000LXXX",
+		"name": "Gray Women T-Shirt with Black Logo (L)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSB5B1B2000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_238",
+		"code": "TSHIRTWSB5B1B2000000MXXX",
+		"name": "Gray Women T-Shirt with Black Logo (M)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSB5B1B2000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_239",
+		"code": "TSHIRTWSB5B1B2000000SXXX",
+		"name": "Gray Women T-Shirt with Black Logo (S)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSB5B1B2000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_240",
+		"code": "TSHIRTWSB5B1B2000000XSXX",
+		"name": "Gray Women T-Shirt with Black Logo (XS)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSB5B1B2000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_241",
+		"code": "TSHIRTWSFFFFFF000000LXXX",
+		"name": "White Women T-Shirt with Black Logo (L)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSFFFFFF000000LXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_242",
+		"code": "TSHIRTWSFFFFFF000000MXXX",
+		"name": "White Women T-Shirt with Black Logo (M)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSFFFFFF000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_243",
+		"code": "TSHIRTWSFFFFFF000000SXXX",
+		"name": "White Women T-Shirt with Black Logo (S)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSFFFFFF000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_244",
+		"code": "TSHIRTWSFFFFFF000000XSXX",
+		"name": "White Women T-Shirt with Black Logo (XS)",
+		"description": "You can't help but feel great in this fashionable, feminine cut, ring-spun tee. It's soft, light and will hold up to repeated washings. Made of 100% combed ring-spun cotton, features a classic semi-contoured silhouette with side seam. Double-needle stitched sleeves and bottom hem.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWSFFFFFF000000XSXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_245",
+		"code": "TSHIRTWV000000FFFFFFMXXX",
+		"name": "Black Women V-Neck T-Shirt with White Logo (M)",
+		"description": "This wonderful women's V-neck fits in anywhere — be it a casual morning stroll or the summer's hippest festival. It's made from 100% cotton and has a semi-fitted contoured silhouette.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWV000000FFFFFFMXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_246",
+		"code": "TSHIRTWV000000FFFFFFSXXX",
+		"name": "Black Women V-Neck T-Shirt with White Logo (S)",
+		"description": "This wonderful women's V-neck fits in anywhere — be it a casual morning stroll or the summer's hippest festival. It's made from 100% cotton and has a semi-fitted contoured silhouette.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWV000000FFFFFFSXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_247",
+		"code": "TSHIRTWVCDCDCD000000MXXX",
+		"name": "Gray Women V-Neck T-Shirt with Black Logo (M)",
+		"description": "This wonderful women's V-neck fits in anywhere — be it a casual morning stroll or the summer's hippest festival. It's made from 100% cotton and has a semi-fitted contoured silhouette.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWVCDCDCD000000MXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_248",
+		"code": "TSHIRTWVCDCDCD000000SXXX",
+		"name": "Gray Women V-Neck T-Shirt with Black Logo (S)",
+		"description": "This wonderful women's V-neck fits in anywhere — be it a casual morning stroll or the summer's hippest festival. It's made from 100% cotton and has a semi-fitted contoured silhouette.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/TSHIRTWVCDCDCD000000SXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_249",
+		"code": "VFLEXFIT000000FFFFFFXXXX",
+		"name": "Black Visor Flexfit with White Logo",
+		"description": "A visor is perfect for the days when you’re not in the mood for a cap, but you still want to protect your peepers from the blinding sun. Made of a quick-drying fabric, it’ll be right for sports activities or just a casual stroll around.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/VFLEXFIT000000FFFFFFXXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	},
+	{
+		"reference": "sku_250",
+		"code": "VFLEXFITFFFFFF000000XXXX",
+		"name": "White Visor Flexfit with Black Logo",
+		"description": "A visor is perfect for the days when you’re not in the mood for a cap, but you still want to protect your peepers from the blinding sun. Made of a quick-drying fabric, it’ll be right for sports activities or just a casual stroll around.",
+		"image_url": "https://data.commercelayer.app/seed/images/skus/VFLEXFITFFFFFF000000XXXX_FLAT.png",
+		"shipping_category": "shipping_category_1"
+	}
+]
