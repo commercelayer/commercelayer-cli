@@ -2,11 +2,10 @@ import { expect, test } from '@oclif/test'
 
 describe('imports:types', () => {
   test
-    .timeout(5000)
     .stdout()
-    .command(['imports:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
+    .command(['imports:types'])
+    .it('lists the supported import types', (ctx) => {
+      expect(ctx.stdout).to.contain('Supported import types')
+      expect(ctx.stdout).to.contain('skus')
     })
-
 })

@@ -55,6 +55,7 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "workspace:^",
+    "@commercelayer/cli-test-utils": "workspace:*",
     "@oclif/plugin-help": "catalog:",
     "@oclif/test": "catalog:",
     "@types/chai": "catalog:",
@@ -63,6 +64,7 @@
     "@types/node": "catalog:",
     "chai": "catalog:",
     "mocha": "catalog:",
+    "nock": "catalog:",
     "nyc": "catalog:",
     "oclif": "catalog:",
     "tsx": "catalog:",
