@@ -30,7 +30,11 @@ jobs:
     name: Regenerate against ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
+      # Pushes and PRs made with the default GITHUB_TOKEN don't trigger other
+      # workflows: use the CI token, so Verify runs on the regeneration PR
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.COMMERCELAYER_CI_TOKEN }}
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with: { node-version: 'lts/*', cache: 'pnpm' }
@@ -47,7 +51,7 @@ jobs:
 
       - name: Open a pull request
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.COMMERCELAYER_CI_TOKEN }}
         run: |
           set -euo pipefail
           if [ -z "$(git status --porcelain)" ]; then
