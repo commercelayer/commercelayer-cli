@@ -1,28 +1,25 @@
 import { join } from 'node:path'
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 import { MODEL, mockOpenApiSchema, useMockedApi } from '../../helpers'
 
 describe('seeder:check', () => {
   useMockedApi()
 
-  test
-    .timeout(20000)
-    .do(mockOpenApiSchema)
-    .stdout()
-    .stderr()
-    .command(['seeder:check', ...MODEL])
-    .it('checks the model data against the API schema', (ctx) => {
-      expect(ctx.stdout).to.contain('SUCCESS')
-      expect(ctx.stdout).to.contain('Data check completed')
-    })
+  it('checks the model data against the API schema', async function () {
+    this.timeout(20000)
+    await mockOpenApiSchema()
+    const ctx = await runCommand(['seeder:check', ...MODEL])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('SUCCESS')
+    expect(ctx.stdout).to.contain('Data check completed')
+  })
 
-  test
-    .timeout(20000)
-    .do(mockOpenApiSchema)
-    .stdout()
-    .stderr()
-    .command(['seeder:check', '-u', join(__dirname, '..', '..', 'fixtures', 'model'), '-b', 'custom', '-n', 'broken_model'])
-    .it('reports fields unknown to the API schema', (ctx) => {
-      expect(ctx.stdout + ctx.stderr).to.contain('Data check completed with errors')
-    })
+  it('reports fields unknown to the API schema', async function () {
+    this.timeout(20000)
+    await mockOpenApiSchema()
+    const ctx = await runCommand(['seeder:check', '-u', join(__dirname, '..', '..', 'fixtures', 'model'), '-b', 'custom', '-n', 'broken_model'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout + ctx.stderr).to.contain('Data check completed with errors')
+  })
 })

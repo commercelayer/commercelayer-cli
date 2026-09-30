@@ -1,4 +1,5 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 const payloadOf = (stdout: string) => {
   const jwt = stdout
@@ -9,33 +10,31 @@ const payloadOf = (stdout: string) => {
 }
 
 describe('token:assertion', () => {
-  test
-    .stdout()
-    .command(['token:assertion', '-c', '-o', 'cust1'])
-    .it('creates an assertion for a customer', (ctx) => {
-      expect(ctx.stdout).to.contain('-= Assertion =-')
-      const payload = payloadOf(ctx.stdout)
-      expect(JSON.stringify(payload)).to.contain('"Customer"')
-      expect(JSON.stringify(payload)).to.contain('cust1')
-    })
+  it('creates an assertion for a customer', async () => {
+    const ctx = await runCommand(['token:assertion', '-c', '-o', 'cust1'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('-= Assertion =-')
+    const payload = payloadOf(ctx.stdout)
+    expect(JSON.stringify(payload)).to.contain('"Customer"')
+    expect(JSON.stringify(payload)).to.contain('cust1')
+  })
 
-  test
-    .stdout()
-    .command(['token:assertion', '-t', 'User', '-o', 'usr1', '-C', 'department=sales', '-C', 'level=3'])
-    .it('creates an assertion for a user with custom claims', (ctx) => {
-      const payload = JSON.stringify(payloadOf(ctx.stdout))
-      expect(payload).to.contain('"User"')
-      expect(payload).to.contain('usr1')
-      expect(payload).to.contain('sales')
-    })
+  it('creates an assertion for a user with custom claims', async () => {
+    const ctx = await runCommand(['token:assertion', '-t', 'User', '-o', 'usr1', '-C', 'department=sales', '-C', 'level=3'])
+    if (ctx.error) throw ctx.error
+    const payload = JSON.stringify(payloadOf(ctx.stdout))
+    expect(payload).to.contain('"User"')
+    expect(payload).to.contain('usr1')
+    expect(payload).to.contain('sales')
+  })
 
-  test
-    .command(['token:assertion', '-c', '-o', 'cust1', '-C', 'novalue'])
-    .catch(/Invalid custom claim attribute novalue/)
-    .it('rejects a custom claim without a value')
+  it('rejects a custom claim without a value', async () => {
+    const ctx = await runCommand(['token:assertion', '-c', '-o', 'cust1', '-C', 'novalue'])
+    expect(ctx.error?.message).to.match(/Invalid custom claim attribute novalue/)
+  })
 
-  test
-    .command(['token:assertion', '-o', 'cust1'])
-    .catch(/type|customer|user/)
-    .it('requires the owner type')
+  it('requires the owner type', async () => {
+    const ctx = await runCommand(['token:assertion', '-o', 'cust1'])
+    expect(ctx.error?.message).to.match(/type|customer|user/)
+  })
 })

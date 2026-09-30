@@ -1,7 +1,7 @@
 import { clApi, clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 import { CommerceLayerStatic, type Resource } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
-import { Args, Command, Errors, Flags } from '@oclif/core'
+import { Args, Command, type Errors, Flags } from '@oclif/core'
 import exec from './exec'
 
 type CLIError = InstanceType<typeof Errors.CLIError>
