@@ -1,0 +1,309 @@
+## [3.2.7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.6...v3.2.7) (2026-08-17)
+
+
+### Bug Fixes
+
+* update dependencies and fix security vulnerabilities ([75c8fe5](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/75c8fe5cef4a143d088157f7f79419f471b1700d))
+
+## [3.2.6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.5...v3.2.6) (2026-07-29)
+
+
+### Bug Fixes
+
+* update dependencies ([2c90b62](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/2c90b62502e8628b2acce39e0799ac6d0f36e168))
+
+## [3.2.5](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.4...v3.2.5) (2026-07-20)
+
+
+### Bug Fixes
+
+* update codeql to v4 ([c9280bf](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c9280bf6dc34eb81ab3592e71c27a5263ffb0502))
+
+## [3.2.4](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.3...v3.2.4) (2026-07-07)
+
+
+### Bug Fixes
+
+* fix biome errors, updates and type errors ([fdabdd3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/fdabdd30855d6457dca9bc419cabed9a55208b42))
+
+## [3.2.3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.2...v3.2.3) (2026-04-15)
+
+
+### Bug Fixes
+
+* run tests in updates workflow ([474fa5e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/474fa5e8a2358ffcccd6afeac9127e96a4d0d736))
+* update dependencies and add updates workflow ([c6c0583](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c6c0583a579cd52f4e69c5894b3fc0c14c931b3c))
+
+## [3.2.2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.1...v3.2.2) (2026-03-24)
+
+
+### Bug Fixes
+
+* update dependencies ([f142788](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/f142788e4ce7a7f16de5b3d7b63edf830eeef8af))
+
+## [3.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.2.0...v3.2.1) (2026-03-24)
+
+
+### Bug Fixes
+
+* fix dependencies ([3bdce9b](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3bdce9b71067e910c804e9c729677fd2d75afb16))
+
+# [3.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.13...v3.2.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([53a0142](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/53a0142e5fd0dda2edab9def157853ef24d5a19c))
+
+## [3.1.13](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.12...v3.1.13) (2026-03-23)
+
+
+### Bug Fixes
+
+* fix dependencies ([c74a7aa](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c74a7aa87d184e16c637196484cd7885957fad1b))
+
+## [3.1.12](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.11...v3.1.12) (2026-03-16)
+
+
+### Bug Fixes
+
+* update dependencies ([f9ea334](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/f9ea3341c2a9a6ba53f0a82b2e992b4d23126551))
+
+## [3.1.11](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.10...v3.1.11) (2026-03-13)
+
+
+### Bug Fixes
+
+* update dependencies ([ac7b3fd](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/ac7b3fd7a2f9e588542675931e7905009b5a2ee2))
+
+## [3.1.10](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.9...v3.1.10) (2026-03-08)
+
+
+### Bug Fixes
+
+* update dependencies ([2bf10e5](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/2bf10e5b721939aeede3b48c6d02ddaf4a49b6d1))
+
+## [3.1.9](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.8...v3.1.9) (2026-03-02)
+
+
+### Bug Fixes
+
+* updatecli-core to latest version ([1330c9d](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/1330c9db0f16312724313417cdc721aaeabd9d6c))
+
+## [3.1.8](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.7...v3.1.8) (2026-03-02)
+
+
+### Bug Fixes
+
+* update dependencies ([adc2397](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/adc23972c563eed80f7bd1786f087f2ec3c80738))
+
+## [3.1.7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.6...v3.1.7) (2025-12-05)
+
+
+### Bug Fixes
+
+* update dependencies ([8f8090b](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/8f8090b49bf9a53824f0bfdf923a3ffb2df7284c))
+
+## [3.1.6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.5...v3.1.6) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([fac346e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/fac346e4c32ffb46c7ece1b9a72c1954edf29897))
+
+## [3.1.5](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.4...v3.1.5) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([14a7d2f](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/14a7d2fee9541171f455cff216510a66e5199613))
+
+## [3.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.3...v3.1.4) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix vulnerability issues ([e862cfa](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/e862cfa780b63a35e1cd282a058296db6814ff5d))
+
+## [3.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.2...v3.1.3) (2025-01-31)
+
+
+### Bug Fixes
+
+* update readme and dependencies ([35524fd](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/35524fd8f075665cb9e3ac3cedc2b5c76f934b0f))
+
+## [3.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.1...v3.1.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([c4a1f9e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c4a1f9e491cd3a58255c3df7264340e30a0d8e9e))
+
+## [3.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.1.0...v3.1.1) (2024-10-21)
+
+
+### Bug Fixes
+
+* fix security issue ([e8a130b](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/e8a130bdbc7bd7ac135d5ae7254c43310726fa3d))
+
+# [3.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.1...v3.1.0) (2024-08-23)
+
+
+### Features
+
+* remove oclif ux ([19f74a7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/19f74a795c335b4431b7e663aa786ca330702ac7))
+
+## [3.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0...v3.0.1) (2024-05-20)
+
+
+### Bug Fixes
+
+* fix monitor counting ([5015ca8](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/5015ca8313a54bc9e5af29a7c9f3d978c5246af9))
+
+# [3.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.3.0...v3.0.0) (2024-04-30)
+
+
+### Bug Fixes
+
+* fix dependencies ([e502702](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/e502702b4c876ae427751e33b11ed0cd8fc13760))
+* fix linter ([9ba7eb6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/9ba7eb6edda684a6e3f89b7f45421663d327da86))
+* fix linter errors ([21aafee](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/21aafee214e590d360548ffb9da458ec78debbbc))
+* fix release config ([3370ffe](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3370ffe258da60884bb63bb4c3318574625fe4df))
+* fix sdk dependency ([993bceb](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/993bceb1559fc11030025dfd6b08ab672c125c32))
+* fix sdk6 types ([c12df7a](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c12df7ac34efe2d9ab57ad1b559bbce14aa78277))
+* fix ts-node ([3e9406d](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3e9406debbe0e70e471a74cf5a26db9c4d8f801a))
+* fix update package ([52ce543](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/52ce543f5b7afec441d5c5732af33d5cc0642420))
+* update dependencies ([96ef1a7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/96ef1a7fe346426dce236909f5a202b7901f823c))
+
+
+### Features
+
+* prerelease ([37cdf9e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/37cdf9e909eed219a7e12b2808da77ab1549cc9b))
+
+
+### Performance Improvements
+
+* update engine ([50ce353](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/50ce353cb9730d19b71f6a14b5bff981b70a80c8))
+* upgrade to oclif 3 ([dd4b1d2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/dd4b1d213c3ba93ed8ade4ef29b8e870fbcf8c8b))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
+# [3.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-rc.2...v3.0.0-rc.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* update dependencies ([96ef1a7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/96ef1a7fe346426dce236909f5a202b7901f823c))
+
+# [3.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-rc.1...v3.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix dependencies ([e502702](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/e502702b4c876ae427751e33b11ed0cd8fc13760))
+
+# [3.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.3.0...v3.0.0-rc.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix linter ([9ba7eb6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/9ba7eb6edda684a6e3f89b7f45421663d327da86))
+* fix linter errors ([21aafee](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/21aafee214e590d360548ffb9da458ec78debbbc))
+* fix release config ([3370ffe](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3370ffe258da60884bb63bb4c3318574625fe4df))
+* fix sdk6 types ([c12df7a](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c12df7ac34efe2d9ab57ad1b559bbce14aa78277))
+* fix ts-node ([3e9406d](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3e9406debbe0e70e471a74cf5a26db9c4d8f801a))
+* fix update package ([52ce543](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/52ce543f5b7afec441d5c5732af33d5cc0642420))
+
+
+### Features
+
+* prerelease ([37cdf9e](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/37cdf9e909eed219a7e12b2808da77ab1549cc9b))
+
+
+### Performance Improvements
+
+* update engine ([50ce353](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/50ce353cb9730d19b71f6a14b5bff981b70a80c8))
+* upgrade to oclif 3 ([dd4b1d2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/dd4b1d213c3ba93ed8ade4ef29b8e870fbcf8c8b))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
+# [3.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.7...v3.0.0-oclif3.8) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([3370ffe](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3370ffe258da60884bb63bb4c3318574625fe4df))
+
+# [3.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.6...v3.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([3e9406d](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/3e9406debbe0e70e471a74cf5a26db9c4d8f801a))
+
+# [3.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.5...v3.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix sdk6 types ([c12df7a](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c12df7ac34efe2d9ab57ad1b559bbce14aa78277))
+
+# [3.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.4...v3.0.0-oclif3.5) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix update package ([52ce543](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/52ce543f5b7afec441d5c5732af33d5cc0642420))
+
+# [3.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.3...v3.0.0-oclif3.4) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([50ce353](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/50ce353cb9730d19b71f6a14b5bff981b70a80c8))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
+# [3.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.2...v3.0.0-oclif3.3) (2024-02-16)
+
+
+### Bug Fixes
+
+* fix linter ([9ba7eb6](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/9ba7eb6edda684a6e3f89b7f45421663d327da86))
+
+# [3.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v3.0.0-oclif3.1...v3.0.0-oclif3.2) (2024-02-15)
+
+
+### Bug Fixes
+
+* fix linter errors ([21aafee](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/21aafee214e590d360548ffb9da458ec78debbbc))
+
+# [3.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.3.0...v3.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([dd4b1d2](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/dd4b1d213c3ba93ed8ade4ef29b8e870fbcf8c8b))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
+# [2.3.0](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/compare/v2.2.0...v2.3.0) (2023-11-22)
+
+
+### Features
+
+* add semantic-release ([c67d7ef](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/commit/c67d7ef00f3ad57ea56ca8a4c962af375c6a4ba6))
