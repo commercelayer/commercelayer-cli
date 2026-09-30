@@ -253,7 +253,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resources to delete (max 20)
+  [ID]      id of the resources to delete (max 20)
 
 FLAGS
   -H, --headers       show response headers
@@ -329,7 +329,7 @@ USAGE
 
 ARGUMENTS
   PATH...  path (or URL) of the resource(s) to fetch
-  ID...    resource id
+  [ID...]  resource id
 
 FLAGS
   -H, --headers                     show response headers
@@ -412,7 +412,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE...  the resource type
-  ID...        id of the resource to retrieve
+  [ID...]      id of the resource to retrieve
 
 FLAGS
   -H, --headers                     show response headers
@@ -555,7 +555,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource to retrieve
+  [ID]      id of the resource to retrieve
 
 FLAGS
   -H, --headers             show response headers
@@ -634,7 +634,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource to update
+  [ID]      id of the resource to update
 
 FLAGS
   -D, --data=<value>                 the data file to use as request body

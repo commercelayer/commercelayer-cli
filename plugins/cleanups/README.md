@@ -42,7 +42,7 @@ USAGE
     in_progress|pending|completed|interrupted]
 
 ARGUMENTS
-  ID  unique id of the cleanup to be retrieved
+  [ID]  unique id of the cleanup to be retrieved
 
 FLAGS
   -A, --all              show all cleanups instead of first 25 only
