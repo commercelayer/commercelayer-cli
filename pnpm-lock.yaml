@@ -394,6 +394,28 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
 
+  packages/generator:
+    dependencies:
+      inflector-js:
+        specifier: ^1.0.1
+        version: 1.0.1
+      lodash.snakecase:
+        specifier: ^4.1.1
+        version: 4.1.1
+    devDependencies:
+      '@types/lodash.snakecase':
+        specifier: ^4.1.9
+        version: 4.1.9
+      '@types/node':
+        specifier: ^25.9.5
+        version: 25.9.8
+      tsx:
+        specifier: ^4.23.12
+        version: 4.23.15
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   packages/ux:
     dependencies:
       ansi-escapes:
@@ -975,6 +997,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-generator':
+        specifier: workspace:*
+        version: link:../../packages/generator
       '@oclif/plugin-help':
         specifier: ^6.2.58
         version: 6.3.0
@@ -987,9 +1012,6 @@ importers:
       '@types/inquirer':
         specifier: ^8.2.13
         version: 8.2.13
-      '@types/lodash.snakecase':
-        specifier: ^4.1.9
-        version: 4.1.9
       '@types/mocha':
         specifier: ^10.0.10
         version: 10.0.10
@@ -999,12 +1021,6 @@ importers:
       chai:
         specifier: ^4.5.0
         version: 4.5.0
-      inflector-js:
-        specifier: ^1.0.1
-        version: 1.0.1
-      lodash.snakecase:
-        specifier: ^4.1.1
-        version: 4.1.1
       mocha:
         specifier: ^11.8.0
         version: 11.8.0
@@ -1045,6 +1061,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-generator':
+        specifier: workspace:*
+        version: link:../../packages/generator
       '@oclif/plugin-help':
         specifier: ^6.3.0
         version: 6.3.0
@@ -1115,6 +1134,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-generator':
+        specifier: workspace:*
+        version: link:../../packages/generator
       '@oclif/plugin-help':
         specifier: ^6.2.58
         version: 6.3.0
@@ -1362,6 +1384,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-generator':
+        specifier: workspace:*
+        version: link:../../packages/generator
       '@oclif/plugin-help':
         specifier: ^6.2.58
         version: 6.3.0
@@ -1374,9 +1399,6 @@ importers:
       '@types/inquirer':
         specifier: ^8.2.13
         version: 8.2.13
-      '@types/lodash.snakecase':
-        specifier: ^4.1.9
-        version: 4.1.9
       '@types/mocha':
         specifier: ^10.0.10
         version: 10.0.10
@@ -1386,12 +1408,6 @@ importers:
       chai:
         specifier: ^6.2.2
         version: 6.2.2
-      inflector-js:
-        specifier: ^1.0.1
-        version: 1.0.1
-      lodash.snakecase:
-        specifier: ^4.1.1
-        version: 4.1.1
       mocha:
         specifier: ^11.8.0
         version: 11.8.0

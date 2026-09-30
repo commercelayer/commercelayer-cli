@@ -8,6 +8,7 @@ Monorepo for the [Commerce Layer](https://commercelayer.io) CLI, its shared libr
 | CLI core library | [`packages/core`](packages/core) | [`@commercelayer/cli-core`](https://www.npmjs.com/package/@commercelayer/cli-core) |
 | CLI UX library | [`packages/ux`](packages/ux) | [`@commercelayer/cli-ux`](https://www.npmjs.com/package/@commercelayer/cli-ux) |
 | CLI development tools | [`packages/dev`](packages/dev) | [`@commercelayer/cli-dev`](https://www.npmjs.com/package/@commercelayer/cli-dev) |
+| Code generator (private) | [`packages/generator`](packages/generator) | not published |
 | Checkout plugin | [`plugins/checkout`](plugins/checkout) | [`@commercelayer/cli-plugin-checkout`](https://www.npmjs.com/package/@commercelayer/cli-plugin-checkout) |
 | Cleanups plugin | [`plugins/cleanups`](plugins/cleanups) | [`@commercelayer/cli-plugin-cleanups`](https://www.npmjs.com/package/@commercelayer/cli-plugin-cleanups) |
 | Exports plugin | [`plugins/exports`](plugins/exports) | [`@commercelayer/cli-plugin-exports`](https://www.npmjs.com/package/@commercelayer/cli-plugin-exports) |
@@ -38,6 +39,17 @@ pnpm lint      # lint the whole repository
 ```
 
 Run a single package's script with `pnpm --filter <package name> <script>`, for example `pnpm --filter @commercelayer/cli test`.
+
+## Generated code
+
+Some plugins generate part of their code: `triggers` and `orders` generate a command for each API trigger, and `resources` and `provisioning` generate their resource list. Each of them declares its generator in a `gen.config.ts`, run by the private [`packages/generator`](packages/generator) (`cl-generate`), in the same way as `commercelayer-sdk` does with its `sdk.config.ts`:
+
+- `pnpm generate` (at the root or in a plugin) downloads the schema, updates the plugin's snapshot (`gen/triggers.json`) and regenerates the code.
+- `pnpm generate-local` regenerates from the committed snapshot, offline. `resources` and `provisioning` read the installed SDK instead, so there both commands do the same thing.
+- CI (`verify.yml`) regenerates everything with `generate-local` and fails if the result differs from what is committed.
+- The [Regenerate code](.github/workflows/generate.yml) workflow (manual dispatch) regenerates against an API environment and opens a pull request when something changed.
+
+Don't edit generated files by hand: change the templates (`gen/templates`) or the generator, then regenerate.
 
 ## Releasing
 

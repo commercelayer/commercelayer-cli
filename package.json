@@ -16,7 +16,9 @@
     "release:version": "node scripts/finish-version.mjs",
     "release:tag": "node scripts/tag.mjs",
     "release:config": "node scripts/gen-release-config.mjs",
-    "release:publish": "node scripts/publish.mjs"
+    "release:publish": "node scripts/publish.mjs",
+    "generate": "pnpm -r --if-present generate",
+    "generate-local": "pnpm -r --if-present generate-local"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14"

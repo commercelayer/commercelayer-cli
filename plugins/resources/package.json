@@ -55,15 +55,16 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "pnpm lint",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "resources": "pnpm update @commercelayer/sdk && tsx src/util/resources/build.ts",
-    "generate": "pnpm resources",
+    "generate": "cl-generate",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm generate && pnpm lint && pnpm prepack && pnpm postpack"
+    "release": "pnpm upgrade && pnpm generate && pnpm lint && pnpm prepack && pnpm postpack",
+    "generate-local": "cl-generate --local"
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@commercelayer/cli-dev": "workspace:^",
+    "@commercelayer/cli-generator": "workspace:*",
     "@oclif/plugin-help": "^6.2.58",
     "@oclif/test": "^3.2.15",
     "@types/chai": "^5.2.3",
