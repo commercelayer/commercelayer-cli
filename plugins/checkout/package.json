@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-checkout",
   "description": "Commerce Layer CLI Checkout plugin",
-  "version": "5.0.20",
+  "version": "6.0.0-beta.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/checkout",
   "repository": {
