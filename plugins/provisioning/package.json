@@ -67,6 +67,7 @@
     "@types/node": "catalog:",
     "chai": "catalog:",
     "mocha": "catalog:",
+    "nock": "catalog:",
     "nyc": "catalog:",
     "oclif": "catalog:",
     "tsx": "catalog:",
