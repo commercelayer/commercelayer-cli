@@ -9,6 +9,9 @@ const MAX_RESOURCES = 1000
 
 export default class TagsWhich extends BaseIdCommand {
 
+  // oclif reads the command options with a spread, which skips inherited statics
+  static args = { ...BaseIdCommand.args }
+
 	static description = 'show all the resources with this tag'
 
 	static examples = [
@@ -43,7 +46,7 @@ export default class TagsWhich extends BaseIdCommand {
 		this.checkResourceType(resType)
 
 		const limit = flags.limit
-		if (limit && (limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
+		if ((limit !== undefined) && (limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		this.commercelayerInit(flags)
 
