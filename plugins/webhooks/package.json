@@ -1,0 +1,88 @@
+{
+  "name": "@commercelayer/cli-plugin-webhooks",
+  "description": "Commerce Layer CLI Webhooks plugin",
+  "version": "4.3.5",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks",
+  "repository": "commercelayer/commercelayer-cli-plugin-webhooks",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-webhooks",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "webhooks": {
+        "description": "Manage Commerce Layer webhooks",
+        "hidden": false
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "posttest": "pnpm lint",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write",
+    "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
+  },
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.8",
+    "@commercelayer/cli-dev": "^3.1.9",
+    "@oclif/plugin-help": "^6.2.58",
+    "@oclif/test": "^3.2.15",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^5.2.3",
+    "@types/lodash.isempty": "^4.4.9",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.9.5",
+    "chai": "^6.2.2",
+    "mocha": "^11.8.0",
+    "nyc": "^18.0.0",
+    "oclif": "^4.23.30",
+    "semantic-release": "^25.0.9",
+    "tsx": "^4.23.12",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "^5.11.3",
+    "@commercelayer/cli-ux": "^1.2.3",
+    "@commercelayer/sdk": "^6.58.0",
+    "@oclif/core": "^3.27.0",
+    "cli-table3": "^0.6.5",
+    "lodash.isempty": "^4.4.0",
+    "open": "^8.4.2",
+    "tslib": "^2.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
