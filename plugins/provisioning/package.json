@@ -1,0 +1,87 @@
+{
+	"name": "@commercelayer/cli-plugin-provisioning",
+	"description": "Commerce Layer CLI Provisioning plugin",
+	"version": "2.1.4",
+	"author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+	"homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-provisioning",
+	"repository": "commercelayer/commercelayer-cli-plugin-provisioning",
+	"bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/issues",
+	"engines": {
+		"node": ">=20"
+	},
+	"files": [
+		"/bin/run.*",
+		"/lib",
+		"/npm-shrinkwrap.json",
+		"/oclif.manifest.json"
+	],
+	"keywords": [
+		"ecommerce",
+		"cli",
+		"commercelayer"
+	],
+	"license": "MIT",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"oclif": {
+		"commands": "./lib/commands",
+		"bin": "cl-provisioning",
+		"devPlugins": [
+			"@oclif/plugin-help"
+		],
+		"plugins": [],
+		"topics": {
+			"cleanups": {
+				"description": "Execute provisioning operations in Commerce Layer",
+				"hidden": false
+			}
+		},
+		"repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+		"additionalHelpFlags": [
+			"-h"
+		],
+		"topicSeparator": ":",
+		"hooks": {}
+	},
+	"scripts": {
+		"build": "rm -rf lib && tsc -b",
+		"prepack": "pnpm build && oclif manifest && pnpm readme",
+		"postpack": "rm -f oclif.manifest.json",
+		"test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+		"posttest": "pnpm lint",
+		"readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+		"lint": "biome check --enforce-assist=true",
+		"check": "biome check --enforce-assist=true --write",
+		"release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.14",
+		"@commercelayer/cli-dev": "^3.1.12",
+		"@oclif/plugin-help": "^6.3.0",
+		"@oclif/test": "^3.2.15",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
+		"@types/chai": "^5.2.3",
+		"@types/inquirer": "^8.2.13",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "^25.9.8",
+		"chai": "^6.2.2",
+		"mocha": "^11.8.0",
+		"nyc": "^18.0.0",
+		"oclif": "^4.24.0",
+		"semantic-release": "^25.0.9",
+		"tsx": "^4.23.15",
+		"typescript": "^6.0.3"
+	},
+	"dependencies": {
+		"@commercelayer/cli-core": "^5.11.4",
+		"@commercelayer/provisioning-sdk": "^2.10.2",
+		"@oclif/core": "^3.27.0",
+		"inquirer": "^8.2.7",
+		"json-2-csv": "^5.6.0",
+		"tslib": "^2.8.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
