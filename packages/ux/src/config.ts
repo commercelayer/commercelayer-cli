@@ -1,4 +1,3 @@
-import Cache from '@oclif/core/lib/cache'
 import type { ActionBase } from './action/base'
 import simple from './action/simple'
 import spinner from './action/spinner'
@@ -51,9 +50,17 @@ export class Config {
   }
 }
 
+function oclifCoreVersion(): string | undefined {
+  try {
+    return require('@oclif/core/package.json').version
+  } catch {
+    return undefined
+  }
+}
+
 function fetch(): any {
-  const core = Cache.getInstance().get('@oclif/core')
-  const major = core?.version.split('.')[0] || 'unknown'
+  // One config per oclif major (formerly read from oclif's internal cache)
+  const major = oclifCoreVersion()?.split('.')[0] || 'unknown'
   if (globals[major]) return globals[major]
   globals[major] = new Config()
   return globals[major]

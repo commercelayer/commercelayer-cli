@@ -4,14 +4,16 @@ import { clColor, clCommand, clConfig, clFilter, clText, clToken, clUpdate, clUt
 import * as cliux from '@commercelayer/cli-ux'
 import type { CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId, ResourceType, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Args, Command, type Config, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 import { aliasExists, type CommandParams, checkAlias, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import { exportCsv } from './csv'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
 import { type LastResources, lastResources } from './last'
 import { exportOutput, formatOutput } from './output'
 import { type ApiResource, findResource } from './util/resources'
+
+type CommandError = Interfaces.CommandError
 
 
 

@@ -3,11 +3,16 @@ import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-co
 import { clApi, clApplication, clColor, clCommand, clConfig, clToken } from '@commercelayer/cli-core'
 import clprovisioning from '@commercelayer/provisioning-sdk'
 import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
-import { Command, type Config, Flags } from '@oclif/core'
-import { CLIError } from '@oclif/core/lib/errors'
-import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import type { Interfaces } from '@oclif/core'
+import { Command, type Config, Errors, Flags } from '@oclif/core'
 import { appsDirCreate, ConfigParams, configParam, currentApplication, filterApplications, writeConfigFile, writeTokenFile } from '../../config'
 import { printCurrent } from './current'
+
+type ArgOutput = Record<string, any>
+type FlagOutput = Record<string, any>
+const { CLIError } = Errors
+type CLIError = InstanceType<typeof Errors.CLIError>
+type Input<F extends FlagOutput, B extends FlagOutput, A extends ArgOutput> = Interfaces.Input<F, B, A>
 
 
 

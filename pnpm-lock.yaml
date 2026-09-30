@@ -177,14 +177,14 @@ catalogs:
       specifier: ^6.58.0
       version: 6.58.0
     '@oclif/core':
-      specifier: ^3.27.0
-      version: 3.27.0
+      specifier: ^5.1.2
+      version: 5.1.2
     '@oclif/plugin-help':
-      specifier: ^6.3.0
-      version: 6.3.0
+      specifier: ^7.0.2
+      version: 7.0.2
     '@oclif/test':
-      specifier: ^3.2.15
-      version: 3.2.15
+      specifier: ^5.0.1
+      version: 5.0.1
     '@types/chai':
       specifier: ^5.2.3
       version: 5.2.3
@@ -252,8 +252,8 @@ catalogs:
       specifier: ^18.0.0
       version: 18.0.0
     oclif:
-      specifier: ^4.24.0
-      version: 4.24.0
+      specifier: ^6.0.2
+      version: 6.0.2
     open:
       specifier: ^8.4.2
       version: 8.4.2
@@ -302,19 +302,19 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       '@oclif/plugin-autocomplete':
-        specifier: ^3.2.56
-        version: 3.3.0(supports-color@8.1.1)
+        specifier: ^4.0.2
+        version: 4.0.2(supports-color@8.1.1)
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/plugin-not-found':
-        specifier: ^3.2.93
-        version: 3.3.0(@types/node@25.9.8)
+        specifier: ^4.0.2
+        version: 4.0.2(@types/node@25.9.8)
       '@oclif/plugin-plugins':
-        specifier: ^5.4.87
-        version: 5.5.2(supports-color@8.1.1)
+        specifier: ^7.0.3
+        version: 7.0.3(supports-color@8.1.1)
       configstore:
         specifier: ^5.0.1
         version: 5.0.1
@@ -339,7 +339,7 @@ importers:
         version: 2.0.1(@types/node@25.9.8)(typescript@6.0.3)
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -378,7 +378,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       prettier:
         specifier: ^3.9.6
         version: 3.9.9
@@ -396,7 +396,7 @@ importers:
         version: 6.7.2
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       chalk:
         specifier: 'catalog:'
         version: 4.1.2
@@ -430,7 +430,7 @@ importers:
         version: 29.7.0(@types/node@25.9.8)(node-notifier@10.0.1)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@25.9.8)(typescript@5.9.3))
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsup:
         specifier: 'catalog:'
         version: 8.5.1(supports-color@8.1.1)(tsx@4.23.15)(typescript@5.9.3)
@@ -445,7 +445,7 @@ importers:
     dependencies:
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       fs-extra:
         specifier: ^10.1.0
         version: 10.1.0
@@ -464,10 +464,10 @@ importers:
     devDependencies:
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -497,7 +497,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -605,7 +605,7 @@ importers:
         version: 7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       '@types/cli-progress':
         specifier: 'catalog:'
         version: 3.11.6
@@ -635,7 +635,7 @@ importers:
         version: 29.7.0(@types/node@25.9.8)(node-notifier@10.0.1)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@25.9.8)(typescript@5.9.3))
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsup:
         specifier: 'catalog:'
         version: 8.5.1(supports-color@8.1.1)(tsx@4.23.15)(typescript@5.9.3)
@@ -656,7 +656,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       open:
         specifier: 'catalog:'
         version: 8.4.2
@@ -672,10 +672,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -699,7 +699,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -720,7 +720,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       cli-progress:
         specifier: 'catalog:'
         version: 3.12.0
@@ -745,10 +745,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -778,7 +778,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -799,7 +799,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       axios:
         specifier: 'catalog:'
         version: 1.20.0(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
@@ -827,10 +827,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -857,7 +857,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -881,7 +881,7 @@ importers:
         version: 4.3.6
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       axios:
         specifier: 'catalog:'
         version: 1.20.0(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
@@ -906,10 +906,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -936,7 +936,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -954,7 +954,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       cli-table3:
         specifier: 'catalog:'
         version: 0.6.5
@@ -976,10 +976,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1006,7 +1006,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1027,7 +1027,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       eventsource-parser:
         specifier: ^3.1.1
         version: 3.1.1
@@ -1046,10 +1046,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
-        specifier: ^4.1.22
-        version: 4.2.0(@oclif/core@3.27.0)(supports-color@8.1.1)
+        specifier: 'catalog:'
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1073,7 +1073,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1091,7 +1091,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       open:
         specifier: 'catalog:'
         version: 8.4.2
@@ -1107,10 +1107,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1134,7 +1134,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1155,7 +1155,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       inquirer:
         specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
@@ -1174,10 +1174,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1204,7 +1204,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1217,12 +1217,15 @@ importers:
       '@commercelayer/cli-core':
         specifier: workspace:^
         version: link:../../packages/core
+      '@commercelayer/cli-ux':
+        specifier: workspace:^
+        version: link:../../packages/ux
       '@commercelayer/provisioning-sdk':
         specifier: 'catalog:'
         version: 2.10.2
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       inquirer:
         specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
@@ -1244,10 +1247,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1274,7 +1277,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1295,7 +1298,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       inquirer:
         specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
@@ -1323,10 +1326,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1356,7 +1359,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1377,7 +1380,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       listr:
         specifier: ^0.14.3
         version: 0.14.3
@@ -1393,10 +1396,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1423,7 +1426,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1444,7 +1447,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       cli-table3:
         specifier: 'catalog:'
         version: 0.6.5
@@ -1463,10 +1466,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1490,7 +1493,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1514,7 +1517,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       inquirer:
         specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
@@ -1530,10 +1533,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1560,7 +1563,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1578,7 +1581,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       inquirer:
         specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
@@ -1597,10 +1600,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1627,7 +1630,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -1648,7 +1651,7 @@ importers:
         version: 6.58.0
       '@oclif/core':
         specifier: 'catalog:'
-        version: 3.27.0
+        version: 5.1.2
       cli-table3:
         specifier: 'catalog:'
         version: 0.6.5
@@ -1670,10 +1673,10 @@ importers:
         version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
-        version: 6.3.0
+        version: 7.0.2
       '@oclif/test':
         specifier: 'catalog:'
-        version: 3.2.15(supports-color@8.1.1)
+        version: 5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3
@@ -1700,7 +1703,7 @@ importers:
         version: 18.0.0(supports-color@8.1.1)
       oclif:
         specifier: 'catalog:'
-        version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
+        version: 6.0.2(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
         specifier: 'catalog:'
         version: 4.23.15
@@ -3064,43 +3067,35 @@ packages:
     resolution: {integrity: sha512-dL6atBH0zCZl1A1IXCKJgLPrM/wR7K+Wi401E/IvqsK8m2iCHW+0TEOGrans/cuN3oTW+uxIyJFHJ8Im0k4qBw==}
     engines: {node: '>=14.0.0'}
 
-  '@oclif/core@3.27.0':
-    resolution: {integrity: sha512-Fg93aNFvXzBq5L7ztVHFP2nYwWU1oTCq48G0TjF/qC1UN36KWa2H5Hsm72kERd5x/sjy2M2Tn4kDEorUlpXOlw==}
-    engines: {node: '>=18.0.0'}
-
-  '@oclif/core@4.14.0':
-    resolution: {integrity: sha512-QCJIZoVJxV7jywgVAUlsQwl3dr3Sa21kfi5z9KrYolbexWJUtFSEtMoNiBWojD05mYycLnB50gp/VxlGdaOCRA==}
-    engines: {node: '>=18.0.0'}
-
-  '@oclif/plugin-autocomplete@3.3.0':
-    resolution: {integrity: sha512-5CRpSH9FNub2IwAej2PxR6GEbQNLCy0XTzp/KqpZh6U4qiCTLPz20IXcUx9luarJBKRe2qu1cy1acHggo2MMcQ==}
+  '@oclif/core@5.1.2':
+    resolution: {integrity: sha512-vgbWWFKjjsf7oAbJONFPnDkVNeqmy70DTBUjsprW/HRiTrXe8sMlFc0ih8GjpU+dn+m6V2ksaZjBV9HgnsmWVg==}
     engines: {node: '>=22.0.0'}
 
-  '@oclif/plugin-help@6.3.0':
-    resolution: {integrity: sha512-cpSRv7tyHHFPv39HrV22eNmu8ylrwjmPvqdlNo3URp79+p5319p+a8PI/3ez6A6GZmjwBj1EWUdVz1aPUAsSmw==}
-    engines: {node: '>=18.0.0'}
+  '@oclif/plugin-autocomplete@4.0.2':
+    resolution: {integrity: sha512-z/aj70Ri5e2/TYS2llTI9QF9Glxv/Hj4xD0mMEF41NHHeV/4V694h3nvERn7GSLP2zp8BpvfdK3p1YZdQ5MDLQ==}
+    engines: {node: '>=22.0.0'}
 
-  '@oclif/plugin-not-found@3.3.0':
-    resolution: {integrity: sha512-GbdWJOmmBO3xmrVjDXeWG7tXl4vzeGZ+af9ztCfAmhOPEkd/+eeAAadzQPeZoygedqCvsdux3QLq9/MAxusPKg==}
-    engines: {node: '>=18.0.0'}
+  '@oclif/plugin-help@7.0.2':
+    resolution: {integrity: sha512-xqYsSECa7HrO+yb20ukcRzlz86Tq6f7Ft48kp4YLka0/4X5WbehOCSLdKlV8ejdcfK5gQzC4erMNeIXxyF5aXQ==}
+    engines: {node: '>=22.0.0'}
 
-  '@oclif/plugin-plugins@5.5.2':
-    resolution: {integrity: sha512-Nyz6XBKcWRvjHCihPUCP0ubOj/k9pWwldzW39yK36t17RVYf+nVcYMLV+Kd1otB4qHKrsmt8pZI/nry6Fg5+Tg==}
-    engines: {node: '>=18.0.0'}
+  '@oclif/plugin-not-found@4.0.2':
+    resolution: {integrity: sha512-SeX1h6Ee/LQit8gWCZDleHB3g0JBd5a/sG3qT2IupJBw0soJ/kBhBNRd85AkMymOKXCN9AbtAeIhIVnNtmDoOQ==}
+    engines: {node: '>=22.0.0'}
 
-  '@oclif/plugin-warn-if-update-available@3.2.0':
-    resolution: {integrity: sha512-E7l+/NTjddOi32Q9G1CWzEtuh0EwNylVHfTRlFxlZD50v1oBqBpziWh+Dzz6oAIe4ee5U7EUc7lP22aLxpW3vA==}
-    engines: {node: '>=18.0.0'}
+  '@oclif/plugin-plugins@7.0.3':
+    resolution: {integrity: sha512-ufjwLdKbw5AC8BjguvRGRBFoSc8RGXV1TVjxMDr8smJuN8QM4yhZIvKCoSVQC24BX71pF75LrvQEWpwQJbwpQA==}
+    engines: {node: '>=22.0.0'}
 
-  '@oclif/test@3.2.15':
-    resolution: {integrity: sha512-XqG3RosozNqySkxSXInU12Xec2sPSOkqYHJDfdFZiWG3a8Cxu4dnPiAQvms+BJsOlLQmfEQlSHqiyVUKOMHhXA==}
-    engines: {node: '>=18.0.0'}
+  '@oclif/plugin-warn-if-update-available@4.0.1':
+    resolution: {integrity: sha512-zX0iNZT5JiHXdzQ7ORQCRAqwydG119LZDf6Pet+5HEeONHJu/byWAA99n2HLTOZmWMwJ65bLSp3ZajOHtJaSkw==}
+    engines: {node: '>=22.0.0'}
 
-  '@oclif/test@4.2.0':
-    resolution: {integrity: sha512-CPNWjgtRnvLs9R2lKggIWg3wZM7TcV5LEymgnF6y9N7NkgiTF/YLo9sZR+FeIsn7b/6iffHcsdwuue0g1CGebQ==}
-    engines: {node: '>=18.0.0'}
+  '@oclif/test@5.0.1':
+    resolution: {integrity: sha512-BjHZZvkEo8udP1rLSeP8QpdMwqzwbiF4bW248CJgvaPE0lHewzXjmtwh+OvMFwRlwE4t5sAhCfQ1JBFQP4Mnpw==}
+    engines: {node: '>=22.0.0'}
     peerDependencies:
-      '@oclif/core': '>= 3.0.0'
+      '@oclif/core': ^5.0.0
 
   '@open-draft/deferred-promise@2.2.0':
     resolution: {integrity: sha512-CecwLWx3rhxVQF6V4bAgPS5t+So2sTbPgAzafKkVizyi7tlwpcFpdFqq+wqF2OwNBmqFuu6tOyouTuxgpMfzmA==}
@@ -3290,18 +3285,6 @@ packages:
   '@sinonjs/fake-timers@10.3.0':
     resolution: {integrity: sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==}
 
-  '@sinonjs/fake-timers@11.3.1':
-    resolution: {integrity: sha512-EVJO7nW5M/F5Tur0Rf2z/QoMo+1Ia963RiMtapiQrEWvY0iBUvADo8Beegwjpnle5BHkyHuoxSTW3jF43H1XRA==}
-
-  '@sinonjs/samsam@8.0.3':
-    resolution: {integrity: sha512-hw6HbX+GyVZzmaYNh82Ecj1vdGZrqVIn/keDTg63IgAwiQPO+xCz99uG6Woqgb4tM0mUiFENKZ4cqd7IX94AXQ==}
-
-  '@sinonjs/text-encoding@0.7.3':
-    resolution: {integrity: sha512-DE427ROAphMQzU4ENbliGYrBSYPXF+TtLg9S8vzeA+OF4ZKzoDdzfL8sxuMUGS/lgRhM6j1URSk9ghf7Xo1tyA==}
-    deprecated: |-
-      Deprecated: no longer maintained and no longer used by Sinon packages. See
-        https://github.com/sinonjs/nise/issues/243 for replacement details.
-
   '@smithy/core@3.35.0':
     resolution: {integrity: sha512-zRMhfkByhT2snNdr1si24vJitU6Cr9ix2MikUfWmkAgp4jrNP0GcKSP5YvwQ+TlI8AZXER5QOGJn3JsVtSD9/A==}
     engines: {node: '>=18.0.0'}
@@ -3451,12 +3434,6 @@ packages:
   '@types/node@25.9.8':
     resolution: {integrity: sha512-VfMrScDmMhUJQmd5hArdQnFvK0OIeD36uN2Va1FcpYaLB/BgkgM8Ulc50XtYISPMz7APJ30+N0T5EM0jlcdfRw==}
 
-  '@types/sinon@22.0.0':
-    resolution: {integrity: sha512-TDbVpbccc2HfiqHR09Argj3mHV1KMW7sCCKj52fsl8lbRLkEn7fB1966EWhOKWUBcqfBueZuPoA7/OK1CKiy3g==}
-
-  '@types/sinonjs__fake-timers@15.0.1':
-    resolution: {integrity: sha512-Ko2tjWJq8oozHzHV+reuvS5KYIRAokHnGbDwGh/J64LntgpbuylF74ipEL24HCyRjf9FOlBiBHWBR1RlVKsI1w==}
-
   '@types/slice-ansi@4.0.0':
     resolution: {integrity: sha512-+OpjSaq85gvlZAYINyzKpLeiFkSC4EsC6IIiT6v6TLSU5k5U83fHGj9Lel8oKEXM0HqgrMVCjXPDPVICtxF7EQ==}
 
@@ -3600,9 +3577,6 @@ packages:
   array-union@2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
     engines: {node: '>=8'}
-
-  assertion-error@1.1.0:
-    resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
 
   assertion-error@2.0.1:
     resolution: {integrity: sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==}
@@ -3778,10 +3752,6 @@ packages:
     resolution: {integrity: sha512-JSr5eOgoEymtYHBjNWyjrMqet9Am2miJhlfKNdqLp6zoeAh0KN5dRAcxlecj5mAJrmQomgiOBj35xHLrFjqBpw==}
     hasBin: true
 
-  chai@4.5.0:
-    resolution: {integrity: sha512-RITGBfijLkBddZvnn8jdqoTypxvqbOLYQkGGxXzeFjVHvudaPw0HNFD9x928/eUwYWd2dPCugVqspGALTZZQKw==}
-    engines: {node: '>=4'}
-
   chai@6.2.2:
     resolution: {integrity: sha512-NUPRluOfOiTKBKvWPtSD4PhFvWCqOi0BGStNWs57X9js7XGTprSmFoz5F0tWhR4WPjNeR9jXqdC7/UpSJTnlRg==}
     engines: {node: '>=18'}
@@ -3815,9 +3785,6 @@ packages:
 
   chardet@2.2.0:
     resolution: {integrity: sha512-rddelWYNPRrXq6PtNEN2S3f6t9ILzvqaN5pVgi4kqt9jHQaXIial9PznB5iSPVlQSLNaaH22ItWz3EJtQ10+OA==}
-
-  check-error@1.0.3:
-    resolution: {integrity: sha512-iKEoDYaRmd1mxM90a2OEfWhjsjPpYPuQ+lMYsoxB126+t8fw7ySEO48nmDg5COTjxDI65/Y2OWpeEHk3ZOe8zg==}
 
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
@@ -4024,10 +3991,6 @@ packages:
     resolution: {integrity: sha512-D/o0k3pCG1aI1cxb/dDiWmtMc4Rh7ZQBybXpfMsw9Rbtqwg8kUA9SpYkWcw0pAUjZSnPm8MluctiS0o68r69jQ==}
     engines: {node: '>= 16'}
 
-  deep-eql@4.1.4:
-    resolution: {integrity: sha512-SUwdGfqdKOwxCPeVYjwSyRpJ7Z+fhpwIAtmCUdZIWZ/YP5R9WAsyuSgpLVDi9bjWoN2LXHNss/dk3urXtdQxGg==}
-    engines: {node: '>=6'}
-
   deep-extend@0.6.0:
     resolution: {integrity: sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==}
     engines: {node: '>=4.0.0'}
@@ -4200,11 +4163,6 @@ packages:
     resolution: {integrity: sha512-2Zks0hf1VLFYI1kbh0I5jP3KHHyCHpkfyHBzsSXRFgl/Bg9mWYfMW8oD+PdMPlEwy5HNsR9JutYy6pMeOh61nw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  fancy-test@3.0.16:
-    resolution: {integrity: sha512-y1xZFpyYbE2TMiT+agOW2Emv8gr73zvDrKKbcXc8L+gMyIVJFn71cc4ICfzu2zEXjHirpHpdDJN0JBX99wwDXQ==}
-    engines: {node: '>=18.0.0'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-
   fast-glob@3.3.3:
     resolution: {integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==}
     engines: {node: '>=8.6.0'}
@@ -4333,9 +4291,6 @@ packages:
   get-east-asian-width@1.7.0:
     resolution: {integrity: sha512-XjH1AECxf0giL2V1aU8vKyRR2ppRUb5c0EvT7zuJTokQ74bNo52zOtghqdWIqrhUD79fo3x0WfKZdOqxF6LG1Q==}
     engines: {node: '>=18'}
-
-  get-func-name@2.0.2:
-    resolution: {integrity: sha512-8vXOvuE167CtIc3OyItco7N/dpRtBbYOsPsXCz7X/PMnlGjYjSGuZJgM1Y7mmew7BKf9BqvLX2tnOVy1BBUsxQ==}
 
   get-intrinsic@1.3.0:
     resolution: {integrity: sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==}
@@ -4894,9 +4849,6 @@ packages:
     resolution: {integrity: sha512-MT/xP0CrubFRNLNKvxJ2BYfy53Zkm++5bX9dtuPbqAeQpTVe0MQTFhao8+Cp//EmJp244xt6Drw/GVEGCUj40g==}
     engines: {node: '>=12', npm: '>=6'}
 
-  just-extend@6.2.0:
-    resolution: {integrity: sha512-cYofQu2Xpom82S6qD778jBDpwvvy39s1l/hrYij2u9AMdQcGRpaBu6kY4mVhuno5kJVi1DAz4aiphA2WI1/OAw==}
-
   jwa@2.0.1:
     resolution: {integrity: sha512-hRF04fqJIP8Abbkq5NKGN0Bbr3JxlQ+qhZufXVr0DvujKy93ZCbXZMHDL4EOtodSbCWxOqR8MS1tXA5hwqCXDg==}
 
@@ -5024,9 +4976,6 @@ packages:
     resolution: {integrity: sha512-vlP11XfFGyeNQlmEn9tJ66rEW1coA/79m5z6BCkudjbAGE83uhAcGYrBFwfs3AdLiLzGRusRPAbSPK9xZteCmg==}
     engines: {node: '>=4'}
 
-  loupe@2.3.7:
-    resolution: {integrity: sha512-zSMINGVYkdpYSOBmLi0D1Uo7JU9nVdQKrHxC8eYlV+9YKK9WePqAlL7lSlorG/U2Fw1w0hTBmaa/jrQ3UbPHtA==}
-
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
 
@@ -5138,9 +5087,6 @@ packages:
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     hasBin: true
 
-  mock-stdin@1.0.0:
-    resolution: {integrity: sha512-tukRdb9Beu27t6dN+XztSRHq9J0B/CoAOySGzHfn8UTfmqipA5yNT/sDUEyYdAV3Hpka6Wx6kOMxuObdOex60Q==}
-
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
@@ -5164,15 +5110,8 @@ packages:
   natural-orderby@2.0.3:
     resolution: {integrity: sha512-p7KTHxU0CUrcOXe62Zfrb5Z13nLvPhSWR/so3kFulUQU0sgUll2Z0LwpsLN351eOOD+hRGu/F1g+6xDfPeD++Q==}
 
-  nise@5.1.9:
-    resolution: {integrity: sha512-qOnoujW4SV6e40dYxJOb3uvuoPHtmLzIk4TFo+j0jPJoC+5Z9xja5qH5JZobEPsa8+YYphMrOSwnrshEhG2qww==}
-
   no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
-
-  nock@13.5.6:
-    resolution: {integrity: sha512-o2zOYiCpzRqSzPj0Zt/dQ/DqZeYoaQ7TUonc/xUPjCGl9WeHpNbxgVvOquXYAaJzI0M9BXV3HTzG0p8IUAbBTQ==}
-    engines: {node: '>= 10.13'}
 
   nock@14.0.17:
     resolution: {integrity: sha512-EjRr1weMa4ALQX35AgZTEnP+weJJjlW1KGDiNM2IQC2069YDHas4f4B4UUYR+TTLyKWxJvOz2wObDKQs/LNreA==}
@@ -5321,9 +5260,9 @@ packages:
     resolution: {integrity: sha512-Y6tg5rHfsefSkfKujv2SwHulInROy/rCL5F4w0QOWxut8AnxYxf0YmNhTh95Zfyxpsudo66uqkux0ACFnyMSgQ==}
     engines: {node: '>= 16'}
 
-  oclif@4.24.0:
-    resolution: {integrity: sha512-qBSOMDV7T9G7QkJM1XXeC08jVnGjXK/EQaol6MpkXN1ELEOzi/9SeuwElH3zQuCRVEE+MlJLME6nQzNlwN5zVw==}
-    engines: {node: '>=18.0.0'}
+  oclif@6.0.2:
+    resolution: {integrity: sha512-y0UuI6AEb8yjms2TPBHBInCDXoFwOiZ2EitGxv5pascylvowQbZSRd3ViOs2ZBXAJD9X5DlnHP8gppc0umkb/Q==}
+    engines: {node: '>=22.0.0'}
     hasBin: true
 
   once@1.4.0:
@@ -5442,18 +5381,12 @@ packages:
     resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
     engines: {node: 18 || 20 || >=22}
 
-  path-to-regexp@6.3.0:
-    resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
-
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
-
-  pathval@1.1.1:
-    resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -5718,9 +5651,6 @@ packages:
   simple-swizzle@0.2.4:
     resolution: {integrity: sha512-nAu1WFPQSMNr2Zn9PGSZK9AGn4t/y97lEm+MXTtUDwfP0ksAIX4nO+6ruD9Jwut4C49SB1Ws+fbXsm/yScWOHw==}
 
-  sinon@16.1.3:
-    resolution: {integrity: sha512-mjnWWeyxcAf9nC0bXcPmiDut+oE8HYridTNzBbF98AYVLmWwGRp2ISEpyhYflG1ifILT+eNn3BmKUJPxjXUPlA==}
-
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
@@ -5779,10 +5709,6 @@ packages:
   stdin-discarder@0.3.2:
     resolution: {integrity: sha512-eCPu1qRxPVkl5605OTWF8Wz40b4Mf45NY5LQmVPQ599knfs5QhASUm9GbJ5BDMDOXgrnh0wyEdvzmL//YMlw0A==}
     engines: {node: '>=18'}
-
-  stdout-stderr@0.1.13:
-    resolution: {integrity: sha512-Xnt9/HHHYfjZ7NeQLvuQDyL1LnbsbddgMFKCuaQKwGCdJm8LnstZIXop+uOY36UR1UXXoHXfMbC1KlVdVd2JLA==}
-    engines: {node: '>=8.0.0'}
 
   strict-event-emitter@0.5.1:
     resolution: {integrity: sha512-vMgjE/GGEPEFnhFub6pa4FmJBRBVOLpIII2hvCZ8Kzb7K0hlHo7mQv6xYrBvCL2LtAIBwFUK8wvuJgTVSQ5MFQ==}
@@ -5981,10 +5907,6 @@ packages:
 
   type-detect@4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}
-    engines: {node: '>=4'}
-
-  type-detect@4.1.0:
-    resolution: {integrity: sha512-Acylog8/luQ8L7il+geoSxhEkazvkslg7PSNKOX59mbB9cOveP5aq9h74Y7YU8yDpJwetzQQrfIwtf4Wp4LKcw==}
     engines: {node: '>=4'}
 
   type-fest@0.20.2:
@@ -7813,38 +7735,7 @@ snapshots:
       - '@types/node'
       - typescript
 
-  '@oclif/core@3.27.0':
-    dependencies:
-      '@types/cli-progress': 3.11.6
-      ansi-escapes: 4.3.2
-      ansi-styles: 4.3.0
-      cardinal: 2.1.1
-      chalk: 4.1.2
-      clean-stack: 3.0.1
-      cli-progress: 3.12.0
-      color: 4.2.3
-      debug: 4.4.3(supports-color@8.1.1)
-      ejs: 3.1.10
-      get-package-type: 0.1.0
-      globby: 11.1.0
-      hyperlinker: 1.0.0
-      indent-string: 4.0.0
-      is-wsl: 2.2.0
-      js-yaml: 3.15.2
-      minimatch: 9.0.9
-      natural-orderby: 2.0.3
-      object-treeify: 1.1.33
-      password-prompt: 1.1.3
-      slice-ansi: 4.0.0
-      string-width: 4.2.3
-      strip-ansi: 6.0.1
-      supports-color: 8.1.1
-      supports-hyperlinks: 2.3.0
-      widest-line: 3.1.0
-      wordwrap: 1.0.0
-      wrap-ansi: 7.0.0
-
-  '@oclif/core@4.14.0':
+  '@oclif/core@5.1.2':
     dependencies:
       ansi-escapes: 4.3.2
       ansis: 3.17.0
@@ -7865,31 +7756,31 @@ snapshots:
       wrap-ansi: 7.0.0
       wsl-utils: 0.4.0
 
-  '@oclif/plugin-autocomplete@3.3.0(supports-color@8.1.1)':
+  '@oclif/plugin-autocomplete@4.0.2(supports-color@8.1.1)':
     dependencies:
-      '@oclif/core': 4.14.0
+      '@oclif/core': 5.1.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       ejs: 3.1.10
     transitivePeerDependencies:
       - supports-color
 
-  '@oclif/plugin-help@6.3.0':
+  '@oclif/plugin-help@7.0.2':
     dependencies:
-      '@oclif/core': 4.14.0
+      '@oclif/core': 5.1.2
 
-  '@oclif/plugin-not-found@3.3.0(@types/node@25.9.8)':
+  '@oclif/plugin-not-found@4.0.2(@types/node@25.9.8)':
     dependencies:
       '@inquirer/prompts': 7.10.1(@types/node@25.9.8)
-      '@oclif/core': 4.14.0
+      '@oclif/core': 5.1.2
       ansis: 3.17.0
       fast-levenshtein: 3.0.0
     transitivePeerDependencies:
       - '@types/node'
 
-  '@oclif/plugin-plugins@5.5.2(supports-color@8.1.1)':
+  '@oclif/plugin-plugins@7.0.3(supports-color@8.1.1)':
     dependencies:
-      '@oclif/core': 4.14.0
+      '@oclif/core': 5.1.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       npm: 11.20.0
@@ -7903,9 +7794,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@oclif/plugin-warn-if-update-available@3.2.0(supports-color@8.1.1)':
+  '@oclif/plugin-warn-if-update-available@4.0.1(supports-color@8.1.1)':
     dependencies:
-      '@oclif/core': 4.14.0
+      '@oclif/core': 5.1.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
       http-call: 5.3.0(supports-color@8.1.1)
@@ -7914,17 +7805,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@oclif/test@3.2.15(supports-color@8.1.1)':
+  '@oclif/test@5.0.1(@oclif/core@5.1.2)(supports-color@8.1.1)':
     dependencies:
-      '@oclif/core': 3.27.0
-      chai: 4.5.0
-      fancy-test: 3.0.16(supports-color@8.1.1)
-    transitivePeerDependencies:
-      - supports-color
-
-  '@oclif/test@4.2.0(@oclif/core@3.27.0)(supports-color@8.1.1)':
-    dependencies:
-      '@oclif/core': 3.27.0
+      '@oclif/core': 5.1.2
       ansis: 3.17.0
       debug: 4.4.3(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -8048,17 +7931,6 @@ snapshots:
   '@sinonjs/fake-timers@10.3.0':
     dependencies:
       '@sinonjs/commons': 3.0.1
-
-  '@sinonjs/fake-timers@11.3.1':
-    dependencies:
-      '@sinonjs/commons': 3.0.1
-
-  '@sinonjs/samsam@8.0.3':
-    dependencies:
-      '@sinonjs/commons': 3.0.1
-      type-detect: 4.1.0
-
-  '@sinonjs/text-encoding@0.7.3': {}
 
   '@smithy/core@3.35.0':
     dependencies:
@@ -8238,12 +8110,6 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
-  '@types/sinon@22.0.0':
-    dependencies:
-      '@types/sinonjs__fake-timers': 15.0.1
-
-  '@types/sinonjs__fake-timers@15.0.1': {}
-
   '@types/slice-ansi@4.0.0': {}
 
   '@types/stack-utils@2.0.3': {}
@@ -8352,8 +8218,6 @@ snapshots:
   argparse@2.0.1: {}
 
   array-union@2.1.0: {}
-
-  assertion-error@1.1.0: {}
 
   assertion-error@2.0.1: {}
 
@@ -8589,16 +8453,6 @@ snapshots:
       ansicolors: 0.3.2
       redeyed: 2.1.1
 
-  chai@4.5.0:
-    dependencies:
-      assertion-error: 1.1.0
-      check-error: 1.0.3
-      deep-eql: 4.1.4
-      get-func-name: 2.0.2
-      loupe: 2.3.7
-      pathval: 1.1.1
-      type-detect: 4.1.0
-
   chai@6.2.2: {}
 
   chalk@1.1.3:
@@ -8645,10 +8499,6 @@ snapshots:
   char-regex@1.0.2: {}
 
   chardet@2.2.0: {}
-
-  check-error@1.0.3:
-    dependencies:
-      get-func-name: 2.0.2
 
   chokidar@4.0.3:
     dependencies:
@@ -8833,10 +8683,6 @@ snapshots:
   dedent@1.7.2: {}
 
   deeks@3.2.1: {}
-
-  deep-eql@4.1.4:
-    dependencies:
-      type-detect: 4.1.0
 
   deep-extend@0.6.0: {}
 
@@ -9024,20 +8870,6 @@ snapshots:
       jest-message-util: 29.7.0
       jest-util: 29.7.0
 
-  fancy-test@3.0.16(supports-color@8.1.1):
-    dependencies:
-      '@types/chai': 5.2.3
-      '@types/lodash': 4.17.25
-      '@types/node': 25.9.8
-      '@types/sinon': 22.0.0
-      lodash: 4.18.1
-      mock-stdin: 1.0.0
-      nock: 13.5.6(supports-color@8.1.1)
-      sinon: 16.1.3
-      stdout-stderr: 0.1.13(supports-color@8.1.1)
-    transitivePeerDependencies:
-      - supports-color
-
   fast-glob@3.3.3:
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -9165,8 +8997,6 @@ snapshots:
   get-caller-file@2.0.5: {}
 
   get-east-asian-width@1.7.0: {}
-
-  get-func-name@2.0.2: {}
 
   get-intrinsic@1.3.0:
     dependencies:
@@ -9922,8 +9752,6 @@ snapshots:
       ms: 2.1.3
       semver: 7.8.5
 
-  just-extend@6.2.0: {}
-
   jwa@2.0.1:
     dependencies:
       buffer-equal-constant-time: 1.0.1
@@ -10051,10 +9879,6 @@ snapshots:
       cli-cursor: 2.1.0
       wrap-ansi: 3.0.1
 
-  loupe@2.3.7:
-    dependencies:
-      get-func-name: 2.0.2
-
   lower-case@2.0.2:
     dependencies:
       tslib: 2.8.1
@@ -10167,8 +9991,6 @@ snapshots:
       yargs-parser: 21.1.1
       yargs-unparser: 2.0.0
 
-  mock-stdin@1.0.0: {}
-
   ms@2.1.3: {}
 
   mute-stream@0.0.8: {}
@@ -10187,26 +10009,10 @@ snapshots:
 
   natural-orderby@2.0.3: {}
 
-  nise@5.1.9:
-    dependencies:
-      '@sinonjs/commons': 3.0.1
-      '@sinonjs/fake-timers': 11.3.1
-      '@sinonjs/text-encoding': 0.7.3
-      just-extend: 6.2.0
-      path-to-regexp: 6.3.0
-
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
       tslib: 2.8.1
-
-  nock@13.5.6(supports-color@8.1.1):
-    dependencies:
-      debug: 4.4.3(supports-color@8.1.1)
-      json-stringify-safe: 5.0.1
-      propagate: 2.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   nock@14.0.17:
     dependencies:
@@ -10309,17 +10115,17 @@ snapshots:
 
   object-treeify@4.0.1: {}
 
-  oclif@4.24.0(@types/node@25.9.8)(supports-color@8.1.1):
+  oclif@6.0.2(@types/node@25.9.8)(supports-color@8.1.1):
     dependencies:
       '@aws-sdk/client-cloudfront': 3.1142.0
       '@aws-sdk/client-s3': 3.1142.0
       '@inquirer/confirm': 3.2.0
       '@inquirer/input': 2.3.0
       '@inquirer/select': 2.5.0
-      '@oclif/core': 4.14.0
-      '@oclif/plugin-help': 6.3.0
-      '@oclif/plugin-not-found': 3.3.0(@types/node@25.9.8)
-      '@oclif/plugin-warn-if-update-available': 3.2.0(supports-color@8.1.1)
+      '@oclif/core': 5.1.2
+      '@oclif/plugin-help': 7.0.2
+      '@oclif/plugin-not-found': 4.0.2(@types/node@25.9.8)
+      '@oclif/plugin-warn-if-update-available': 4.0.1(supports-color@8.1.1)
       ansis: 3.17.0
       async-retry: 1.3.3
       change-case: 4.1.2
@@ -10472,13 +10278,9 @@ snapshots:
       lru-cache: 11.5.3
       minipass: 7.1.3
 
-  path-to-regexp@6.3.0: {}
-
   path-type@4.0.0: {}
 
   pathe@2.0.3: {}
-
-  pathval@1.1.1: {}
 
   picocolors@1.1.1: {}
 
@@ -10728,15 +10530,6 @@ snapshots:
     dependencies:
       is-arrayish: 0.3.4
 
-  sinon@16.1.3:
-    dependencies:
-      '@sinonjs/commons': 3.0.1
-      '@sinonjs/fake-timers': 10.3.0
-      '@sinonjs/samsam': 8.0.3
-      diff: 8.0.4
-      nise: 5.1.9
-      supports-color: 7.2.0
-
   sisteransi@1.0.5: {}
 
   slash@3.0.0: {}
@@ -10800,13 +10593,6 @@ snapshots:
       escape-string-regexp: 2.0.0
 
   stdin-discarder@0.3.2: {}
-
-  stdout-stderr@0.1.13(supports-color@8.1.1):
-    dependencies:
-      debug: 4.4.3(supports-color@8.1.1)
-      strip-ansi: 6.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   strict-event-emitter@0.5.1: {}
 
@@ -11032,8 +10818,6 @@ snapshots:
       safe-buffer: 5.2.1
 
   type-detect@4.0.8: {}
-
-  type-detect@4.1.0: {}
 
   type-fest@0.20.2: {}
 

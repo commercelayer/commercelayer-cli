@@ -1,8 +1,10 @@
 import { clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import type { Interfaces } from '@oclif/core'
 import { Command, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 import { resourceList } from '../../util/resources'
+
+type CommandError = Interfaces.CommandError
 
 
 export default class ResourcesIndex extends Command {

@@ -11,7 +11,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "files": [
     "/bin/run.*",

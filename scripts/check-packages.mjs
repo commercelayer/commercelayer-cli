@@ -31,7 +31,6 @@ const OCLIF_FILES = ['/bin/run.*', '/lib', '/npm-shrinkwrap.json', '/oclif.manif
 const EXCEPTIONS = {
   'core:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
   'ux:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
-  'metrics:@oclif/test': 'already on @oclif/test 4, the others move with the oclif upgrade',
 }
 
 // `catalog:` entries of pnpm-workspace.yaml (flat `  name: version` lines)

@@ -3,11 +3,13 @@ import { join } from 'node:path'
 import { clApi, clColor, clConfig, clUtil, type KeyValString } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import type { Export, ExportCreate, ListableResourceType, QueryParamsList, ResourceTypeLock } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import open from 'open'
 import Spinnies from 'spinnies'
 import { ExportCommand, type ExportFormat, encoding, Flags, notify } from '../../base'
 import ExportsCreate from './create'
+
+type CommandError = Interfaces.CommandError
 
 
 

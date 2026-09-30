@@ -1,9 +1,13 @@
 import { clColor } from '@commercelayer/cli-core'
 import type { CommerceLayerClient, Order, OrderUpdate, QueryParamsRetrieve } from '@commercelayer/sdk'
-import { CLIError } from '@oclif/core/lib/errors'
-import type { Config } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
+import { Errors } from '@oclif/core'
 import { commercelayerInit } from './init'
 import type { ActionType } from './triggers'
+
+const { CLIError } = Errors
+type CLIError = InstanceType<typeof Errors.CLIError>
+type Config = Interfaces.Config
 
 
 

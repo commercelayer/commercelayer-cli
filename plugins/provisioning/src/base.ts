@@ -22,8 +22,11 @@ import commercelayer, {
 	CommerceLayerProvisioningStatic,
 	type QueryParams,
 } from "@commercelayer/provisioning-sdk"
+import type { Interfaces } from "@oclif/core"
 import { Args, Command, ux as cliux, Flags } from "@oclif/core"
-import type { CommandError } from "@oclif/core/lib/interfaces"
+
+type CommandError = Interfaces.CommandError
+
 import { exportCsv } from "./csv"
 import {
 	availableLanguages,
@@ -35,6 +38,7 @@ import {
 } from "./lang"
 import { exportOutput, formatOutput } from "./output"
 import { findResource, type Resource } from "./util/resources"
+
 
 // import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 // import type { ResourceId, ResourceType } from '@commercelayer/provisioning-sdk/lib/cjs/resource'

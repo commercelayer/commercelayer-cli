@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
-import type { Command } from "@oclif/core"
-import type { FlagInput } from "@oclif/core/lib/interfaces/parser"
+import type { Command, Interfaces } from "@oclif/core"
+
+type FlagInput = Interfaces.FlagInput
+
 
 
 /* Copy command flags excluding a subset */

@@ -17,7 +17,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "files": [
     "/bin/run.*",
@@ -120,10 +120,10 @@
     "@commercelayer/provisioning-sdk": "catalog:",
     "@commercelayer/sdk": "catalog:",
     "@oclif/core": "catalog:",
-    "@oclif/plugin-autocomplete": "^3.2.56",
+    "@oclif/plugin-autocomplete": "^4.0.2",
     "@oclif/plugin-help": "catalog:",
-    "@oclif/plugin-not-found": "^3.2.93",
-    "@oclif/plugin-plugins": "^5.4.87",
+    "@oclif/plugin-not-found": "^4.0.2",
+    "@oclif/plugin-plugins": "^7.0.3",
     "configstore": "^5.0.1",
     "inquirer": "catalog:",
     "lodash.kebabcase": "^4.1.1",
