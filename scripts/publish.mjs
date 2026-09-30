@@ -1,28 +1,33 @@
 #!/usr/bin/env node
 /**
- * Publishes the single package a release tag points at.
+ * Publishes the package a release tag points at, together with the workspace
+ * dependencies it needs.
  *
- * Only that package is published, never "everything whose version is not on
- * npm": publishing one draft release must not publish the others.
+ * Never "everything whose version is not on npm": publishing one draft
+ * release publishes only that package, plus the workspace dependencies
+ * (cli-core, cli-ux, …) whose required version isn't on npm yet. Those are
+ * released in the same `chore(release)` PR (scripts/finish-version.mjs), so
+ * their tags exist on the same commit; they are published first, from that
+ * tree, and reported so publish.yml can mark their draft releases published.
+ * A dependency version without a release tag was bumped outside the release
+ * flow, and publishing stops.
  *
- * Before publishing it checks that every workspace dependency the package
- * declares (`workspace:` ranges) is already on npm at its current version, so
- * a plugin never ships depending on a cli-core that was bumped but not
- * published yet: publish the dependency's release first.
+ * A package already on npm is skipped: it may have been published as the
+ * dependency of another one.
  *
- * `pnpm pack` builds the tarball (running prepack, and rewriting `workspace:`
- * ranges to real versions); `npm publish` uploads it, which lets npm do the
- * OIDC trusted-publishing exchange and attach provenance in CI.
+ * `pnpm pack` builds each tarball (running prepack, and rewriting
+ * `workspace:` ranges to real versions); `npm publish` uploads it, which lets
+ * npm do the OIDC trusted-publishing exchange and attach provenance in CI.
  *
  * The package and its workspace dependencies must be built first.
  *
  * Usage:  node scripts/publish.mjs <tag> [--dry-run]
  */
 import { execFileSync } from 'node:child_process'
-import { mkdtempSync, rmSync } from 'node:fs'
+import { appendFileSync, mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import { listPackages, resolveTag } from './lib/workspace.mjs'
+import { git, listPackages, resolveTag, tagOf } from './lib/workspace.mjs'
 
 const [tag, ...rest] = process.argv.slice(2)
 const DRY = rest.includes('--dry-run')
@@ -44,28 +49,53 @@ const onNpm = (name, version) => {
   }
 }
 
-if (onNpm(pkg.name, pkg.version)) fail(`${pkg.name}@${pkg.version} is already on npm`)
-
-const workspace = new Map(listPackages().map((p) => [p.name, p]))
-const { dependencies = {}, peerDependencies = {}, optionalDependencies = {} } = pkg.manifest
-const missing = Object.entries({ ...dependencies, ...peerDependencies, ...optionalDependencies })
-  .filter(([, range]) => range.startsWith('workspace:'))
-  .map(([name]) => workspace.get(name))
-  .filter((dep) => dep && !onNpm(dep.name, dep.version))
-  .map((dep) => `${dep.name}@${dep.version}`)
-if (missing.length > 0) fail(`${pkg.name} depends on ${missing.join(', ')}, not on npm yet. Publish that release first.`)
-
-const out = mkdtempSync(join(tmpdir(), 'publish-'))
-try {
-  console.log(`› Packing ${pkg.name}@${pkg.version}`)
-  run('pnpm', ['pack', '--pack-destination', out], { cwd: pkg.path, stdio: 'inherit' })
-  const tarball = run('ls', [out]).trim().split('\n')[0]
-  const args = ['publish', resolve(out, tarball), '--access', 'public', '--tag', pkg.distTag]
-  if (process.env.CI) args.push('--provenance')
-  if (DRY) args.push('--dry-run')
-  console.log(`› npm ${args.join(' ')}`)
-  run('npm', args, { stdio: 'inherit' })
-  console.log(`✓ ${DRY ? 'Would publish' : 'Published'} ${pkg.name}@${pkg.version} (dist-tag ${pkg.distTag})`)
-} finally {
-  rmSync(out, { recursive: true, force: true })
+if (onNpm(pkg.name, pkg.version)) {
+  console.log(`${pkg.name}@${pkg.version} is already on npm, nothing to publish`)
+  process.exit(0)
 }
+
+// Workspace dependencies not on npm at the required version, dependencies first
+const workspace = new Map(listPackages().map((p) => [p.name, p]))
+const tags = new Set(git('tag', '--list', '*-v*').split('\n'))
+const toPublish = []
+const visit = (p, chain) => {
+  const { dependencies = {}, peerDependencies = {}, optionalDependencies = {} } = p.manifest
+  for (const [name, range] of Object.entries({ ...dependencies, ...peerDependencies, ...optionalDependencies })) {
+    const dep = workspace.get(name)
+    if (!range.startsWith('workspace:') || !dep || toPublish.includes(dep) || onNpm(dep.name, dep.version)) continue
+    if (dep.private) fail(`${p.name} depends on the private ${dep.name}`)
+    const depTag = tagOf(dep)
+    if (!tags.has(depTag)) fail(`${[...chain, p.name].join(' → ')} needs ${dep.name}@${dep.version}, which is not on npm and has no ${depTag} release tag. Release it with \`pnpm release:version\`.`)
+    visit(dep, [...chain, p.name])
+    toPublish.push(dep)
+  }
+}
+visit(pkg, [])
+
+const publish = (p) => {
+  const target = resolveTag(tagOf(p))
+  if (target.error) fail(target.error)
+  const out = mkdtempSync(join(tmpdir(), 'publish-'))
+  try {
+    console.log(`› Packing ${p.name}@${p.version}`)
+    run('pnpm', ['pack', '--pack-destination', out], { cwd: p.path, stdio: 'inherit' })
+    const tarball = run('ls', [out]).trim().split('\n')[0]
+    const args = ['publish', resolve(out, tarball), '--access', 'public', '--tag', target.distTag]
+    if (process.env.CI) args.push('--provenance')
+    if (DRY) args.push('--dry-run')
+    console.log(`› npm ${args.join(' ')}`)
+    run('npm', args, { stdio: 'inherit' })
+    console.log(`✓ ${DRY ? 'Would publish' : 'Published'} ${p.name}@${p.version} (dist-tag ${target.distTag})`)
+  } finally {
+    rmSync(out, { recursive: true, force: true })
+  }
+}
+
+for (const dep of toPublish) {
+  console.log(`› ${pkg.name} needs ${dep.name}@${dep.version}, not on npm yet: publishing it first`)
+  publish(dep)
+}
+publish(pkg)
+
+// Tags of the dependencies published along, for publish.yml
+if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `published_deps=${toPublish.map((d) => tagOf(d)).join(' ')}\n`)
