@@ -74,6 +74,13 @@ const flagPlaceholders = (action: string) => ({
 
 const specName = (fileName: string) => fileName.replace(/\.ts$/, '.test.ts')
 
+/**
+ * Spec placeholders for the trigger value: `_<action>_id` triggers take a
+ * value (-v), the others are sent as `true`.
+ */
+const specValuePlaceholders = (action: string) =>
+  action.endsWith('_id') ? { TRIGGER_VALUE: "'vAlUe1'", TRIGGER_VALUE_ARGS: ", '-v', 'vAlUe1'" } : { TRIGGER_VALUE: 'true', TRIGGER_VALUE_ARGS: '' }
+
 export const triggerCommands =
   (options: TriggerCommandsOptions) =>
   (ctx: Context): void => {
@@ -115,7 +122,10 @@ export const triggerCommands =
             flagPlaceholders(action),
           )
           ctx.write(join(cmdDir, fileName), generated(command))
-          ctx.write(join(spcDir, specName(fileName)), generated(render(specTpl, { ACTION_ID: action, RESOURCE_TYPE: resType, SPEC_TIMEOUT: specTimeout })))
+          ctx.write(
+            join(spcDir, specName(fileName)),
+            generated(render(specTpl, { ACTION_ID: action, RESOURCE_NAME: resource, RESOURCE_TYPE: resType, SPEC_TIMEOUT: specTimeout, ...specValuePlaceholders(action) })),
+          )
         }
         ctx.log(`Created ${triggers.length} ${resource} command(s)`)
       }
@@ -140,7 +150,10 @@ export const triggerCommands =
     for (const { action } of triggers) {
       const fileName = `${snakeCase(action)}.ts`
       ctx.write(join(options.commandsDir, fileName), generated(render(actionTpl, { ACTION_ID: action, ACTION_NAME: Inflector.camelize(action) }, flagPlaceholders(action))))
-      ctx.write(join(options.specsDir, specName(fileName)), generated(render(specTpl, { ACTION_ID: action, SPEC_TIMEOUT: specTimeout })))
+      ctx.write(
+        join(options.specsDir, specName(fileName)),
+        generated(render(specTpl, { ACTION_ID: action, SPEC_TIMEOUT: specTimeout, ...specValuePlaceholders(action) })),
+      )
     }
     ctx.log(`Created ${triggers.length} ${options.resource} command(s)`)
   }
