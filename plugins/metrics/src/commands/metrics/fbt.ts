@@ -49,7 +49,7 @@ export default class MetricsFbt extends BaseFilterCommand {
           }
         }
       }
-    } : {}
+    } : { filter: filterObject }
 
     const response = await metricsRequest(MetricsFbt.operation, query, undefined, flags)
 
