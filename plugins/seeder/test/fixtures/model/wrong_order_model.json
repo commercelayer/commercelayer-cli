@@ -1,0 +1,4 @@
+[
+  { "resourceType": "skus", "referenceKeys": ["SKU1"] },
+  { "resourceType": "shipping_categories", "importAll": true }
+]
