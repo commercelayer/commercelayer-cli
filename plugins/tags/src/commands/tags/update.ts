@@ -7,6 +7,9 @@ import { BaseIdCommand, Flags } from '../../base'
 
 export default class TagsUpdate extends BaseIdCommand {
 
+  // oclif reads the command options with a spread, which skips inherited statics
+  static args = { ...BaseIdCommand.args }
+
   static description = 'update an existing tag'
 
   static examples = [

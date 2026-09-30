@@ -7,6 +7,9 @@ import { BaseIdCommand } from '../../base'
 
 export default class TagsDetails extends BaseIdCommand {
 
+  // oclif reads the command options with a spread, which skips inherited statics
+  static args = { ...BaseIdCommand.args }
+
   static description = 'show the details of an existing tag'
 
   static examples = [

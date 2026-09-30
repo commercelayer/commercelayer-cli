@@ -8,6 +8,9 @@ import { BaseIdCommand, cliux, Flags } from '../../base'
 
 export default class TagsCount extends BaseIdCommand {
 
+  // oclif reads the command options with a spread, which skips inherited statics
+  static args = { ...BaseIdCommand.args }
+
 	static description = 'count resources tagged with a specific tag'
 
 	static examples = [
