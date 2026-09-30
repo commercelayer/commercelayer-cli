@@ -1,4 +1,4 @@
-import { readFileSync, statSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { clApi, clColor, clConfig, clUtil, type KeyValString } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
@@ -468,6 +468,8 @@ export default class ExportsAll extends ExportCommand {
   private async mergeExportFiles(exports: Export[], flags: any): Promise<string> {
 
     const tmpDir = this.config.cacheDir
+    // Missing on first use
+    mkdirSync(tmpDir, { recursive: true })
     const format = this.getFileFormat(flags)
 
     const mergedFile = join(tmpDir, `${exports[0].reference?.split('-')[0] ?? ''}.${format}`)
