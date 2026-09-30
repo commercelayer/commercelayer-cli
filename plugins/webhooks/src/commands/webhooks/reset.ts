@@ -28,7 +28,7 @@ export default class WebhooksReset extends BaseIdCommand {
 
     const cl = this.commercelayerInit(flags)
 
-    cl.webhooks.update({ id, _reset_circuit: true })
+    await cl.webhooks.update({ id, _reset_circuit: true })
       .then(() => { this.log(`\nThe circuit breaker associated to the webhook ${clColor.api.id(id)} has been ${clColor.msg.success('successfully')} reset\n`) })
       .catch(error => { this.handleError(error as CommandError, flags, id) })
 

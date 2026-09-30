@@ -41,7 +41,7 @@ export default class WebhooksEvents extends BaseIdCommand {
 
 		const { args, flags } = await this.parse(WebhooksEvents)
 
-		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
+		if ((flags.limit !== undefined) && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		const id = args.id
 

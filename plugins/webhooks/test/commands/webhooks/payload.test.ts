@@ -1,12 +1,16 @@
 import { expect, test } from '@oclif/test'
+import { AUTH, api, eventCallback, list, useMockedApi } from '../../helpers'
 
 describe('webhooks:payload', () => {
-  test
-    .timeout(5000)
-    .stdout()
-    .command(['webhooks:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
+  useMockedApi()
 
+  test
+    .do(() => {
+      api().get('/api/event_callbacks').query(true).reply(200, list([eventCallback('eVt1')]))
+    })
+    .stdout()
+    .command(['webhooks:payload', 'eVt1', ...AUTH])
+    .it('prints the payload as JSON', (ctx) => {
+      expect(JSON.parse(ctx.stdout)).to.deep.equal({ data: { id: 'oRd1', type: 'orders' } })
+    })
 })
