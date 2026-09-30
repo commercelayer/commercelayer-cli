@@ -24,8 +24,8 @@ export default class ResourcesFetch extends BaseFilterCommand {
 		...ListCommand.flags,
 	};
 
+	// Only path and id: the resource type is part of the path
 	static args = {
-		...ListCommand.args,
 		path: Args.string({
 			name: "path",
 			description: "path (or URL) of the resource(s) to fetch",
