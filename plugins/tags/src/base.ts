@@ -3,8 +3,10 @@ import { clColor, clConfig, clOutput, clToken, clUpdate, clUtil } from '@commerc
 import * as cliux from '@commercelayer/cli-ux'
 import type { CommerceLayerClient, ListResponse, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
 import commercelayer, { Bundles, BuyXPayYPromotions, CommerceLayerStatic, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+
+type CommandError = Interfaces.CommandError
 
 
 

@@ -1,9 +1,11 @@
 import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
 import { CommerceLayerStatic, type Order } from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 import exec from './exec'
 import type { ActionType } from './triggers'
+
+type CommandError = Interfaces.CommandError
 
 
 const pkg: clUpdate.Package = require('../package.json')

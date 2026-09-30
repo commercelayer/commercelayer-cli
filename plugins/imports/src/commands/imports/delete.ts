@@ -30,7 +30,7 @@ export default class ImportsDelete extends Command {
 		const cl = this.commercelayerInit(flags)
 
 
-		cl.imports.delete(id)
+		await cl.imports.delete(id)
 			.then(() => { this.log(`\n${clColor.msg.success('Successfully')} deleted import with id ${clColor.api.id(id)}\n`) })
 			.catch(error => this.handleError(error as Error, flags, id))
 

@@ -1,13 +1,18 @@
 import { clApi, clColor, clConfig, clOutput, clText, clUtil } from '@commercelayer/cli-core'
 import type { ApiResource, CommerceLayerClient, ListResponse, QueryPageSize, QueryParamsList, Tag, TaggableResource } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table from 'cli-table3'
 import { BaseIdCommand, cliux, Flags } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 const MAX_RESOURCES = 1000
 
 export default class TagsWhich extends BaseIdCommand {
+
+  // oclif reads the command options with a spread, which skips inherited statics
+  static args = { ...BaseIdCommand.args }
 
 	static description = 'show all the resources with this tag'
 
@@ -43,7 +48,7 @@ export default class TagsWhich extends BaseIdCommand {
 		this.checkResourceType(resType)
 
 		const limit = flags.limit
-		if (limit && (limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
+		if ((limit !== undefined) && (limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		this.commercelayerInit(flags)
 

@@ -1,11 +1,11 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('links:resources', () => {
-  test
-    .stdout()
-    .command(['links:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
-
+  it('lists the linkable resource types', async () => {
+    const ctx = await runCommand(['links:resources'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('Supported linkable resources')
+    expect(ctx.stdout).to.contain('skus')
+  })
 })

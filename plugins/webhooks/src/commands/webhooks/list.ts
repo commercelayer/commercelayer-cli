@@ -1,8 +1,10 @@
 import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 import type { QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import { BaseCommand, cliux, Flags } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 export default class WebhooksList extends BaseCommand {

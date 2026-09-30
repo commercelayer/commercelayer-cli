@@ -17,7 +17,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "files": [
     "/bin/run.*",
@@ -91,48 +91,44 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --require dotenv/config",
-    "posttest": "pnpm lint",
-    "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
+    "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*"
   },
   "devDependencies": {
     "@commercelayer/cli-dev": "workspace:^",
     "@fig/complete-oclif": "^2.0.1",
-    "@oclif/test": "^3.2.15",
-    "@types/chai": "^5.2.3",
+    "@oclif/test": "catalog:",
+    "@types/chai": "catalog:",
     "@types/configstore": "^4.0.0",
-    "@types/inquirer": "^8.2.13",
+    "@types/inquirer": "catalog:",
     "@types/lodash.kebabcase": "^4.1.9",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^25.9.5",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
     "@types/update-notifier": "^5.1.0",
     "@withfig/autocomplete-types": "^1.31.0",
-    "chai": "^6.2.2",
-    "dotenv": "^17.4.2",
-    "mocha": "^10.8.2",
-    "nyc": "^18.0.0",
-    "oclif": "^4.23.30",
+    "chai": "catalog:",
+    "dotenv": "catalog:",
+    "mocha": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
     "prettier": "^3.9.6",
-    "tsx": "^4.23.12",
-    "typescript": "^5.9.3"
+    "tsx": "catalog:",
+    "typescript": "catalog:"
   },
   "dependencies": {
     "@commercelayer/cli-core": "workspace:^",
     "@commercelayer/cli-ux": "workspace:^",
-    "@commercelayer/provisioning-sdk": "^2.10.2",
-    "@commercelayer/sdk": "^6.58.0",
-    "@oclif/core": "^3.27.0",
-    "@oclif/plugin-autocomplete": "^3.2.56",
-    "@oclif/plugin-help": "^6.2.58",
-    "@oclif/plugin-not-found": "^3.2.93",
-    "@oclif/plugin-plugins": "^5.4.87",
+    "@commercelayer/provisioning-sdk": "catalog:",
+    "@commercelayer/sdk": "catalog:",
+    "@oclif/core": "catalog:",
+    "@oclif/plugin-autocomplete": "^4.0.2",
+    "@oclif/plugin-help": "catalog:",
+    "@oclif/plugin-not-found": "^4.0.2",
+    "@oclif/plugin-plugins": "^7.0.3",
     "configstore": "^5.0.1",
-    "inquirer": "^8.2.7",
+    "inquirer": "catalog:",
     "lodash.kebabcase": "^4.1.1",
-    "tslib": "^2.8.1",
-    "update-notifier-cjs": "^5.1.7"
+    "tslib": "catalog:",
+    "update-notifier-cjs": "catalog:"
   },
   "publishConfig": {
     "access": "public"

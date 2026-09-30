@@ -1,8 +1,11 @@
 import { clApi, clColor, clText, clUtil } from '@commercelayer/cli-core'
 import type { CommerceLayerClient, QueryParamsRetrieve, QueryRecordFields, Resource } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { CLIError } from '@oclif/core/lib/errors'
-import type { Config } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
+import { Errors } from '@oclif/core'
+
+const { CLIError } = Errors
+type Config = Interfaces.Config
 
 
 

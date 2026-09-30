@@ -18,13 +18,14 @@
     "release:config": "node scripts/gen-release-config.mjs",
     "release:publish": "node scripts/publish.mjs",
     "generate": "pnpm -r --if-present generate",
-    "generate-local": "pnpm -r --if-present generate-local"
+    "generate-local": "pnpm -r --if-present generate-local",
+    "check:packages": "node scripts/check-packages.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "packageManager": "pnpm@12.5.1"
 }

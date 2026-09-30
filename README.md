@@ -5,10 +5,11 @@ Monorepo for the [Commerce Layer](https://commercelayer.io) CLI, its shared libr
 | Package | Path | npm |
 | --- | --- | --- |
 | Commerce Layer CLI | [`packages/cli`](packages/cli) | [`@commercelayer/cli`](https://www.npmjs.com/package/@commercelayer/cli) |
-| CLI core library | [`packages/core`](packages/core) | [`@commercelayer/cli-core`](https://www.npmjs.com/package/@commercelayer/cli-core) |
-| CLI UX library | [`packages/ux`](packages/ux) | [`@commercelayer/cli-ux`](https://www.npmjs.com/package/@commercelayer/cli-ux) |
-| CLI development tools | [`packages/dev`](packages/dev) | [`@commercelayer/cli-dev`](https://www.npmjs.com/package/@commercelayer/cli-dev) |
+| CLI core library (internal) | [`packages/core`](packages/core) | [`@commercelayer/cli-core`](https://www.npmjs.com/package/@commercelayer/cli-core) |
+| CLI UX library (internal) | [`packages/ux`](packages/ux) | [`@commercelayer/cli-ux`](https://www.npmjs.com/package/@commercelayer/cli-ux) |
+| CLI development tools (private) | [`packages/dev`](packages/dev) | not published |
 | Code generator (private) | [`packages/generator`](packages/generator) | not published |
+| Test utilities (private) | [`packages/test-utils`](packages/test-utils) | not published |
 | Checkout plugin | [`plugins/checkout`](plugins/checkout) | [`@commercelayer/cli-plugin-checkout`](https://www.npmjs.com/package/@commercelayer/cli-plugin-checkout) |
 | Cleanups plugin | [`plugins/cleanups`](plugins/cleanups) | [`@commercelayer/cli-plugin-cleanups`](https://www.npmjs.com/package/@commercelayer/cli-plugin-cleanups) |
 | Exports plugin | [`plugins/exports`](plugins/exports) | [`@commercelayer/cli-plugin-exports`](https://www.npmjs.com/package/@commercelayer/cli-plugin-exports) |
@@ -37,6 +38,8 @@ pnpm build     # build every package
 pnpm test      # run every package's tests
 pnpm lint      # lint the whole repository
 ```
+
+Shared dependency versions live in the `catalog:` of `pnpm-workspace.yaml`: packages declare `"<name>": "catalog:"`. `pnpm check:packages` (also run in CI) checks that the packages stay consistent: catalog and workspace dependencies, repository fields, oclif settings, scripts.
 
 Run a single package's script with `pnpm --filter <package name> <script>`, for example `pnpm --filter @commercelayer/cli test`.
 

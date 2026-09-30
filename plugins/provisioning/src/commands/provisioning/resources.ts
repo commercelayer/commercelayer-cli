@@ -1,7 +1,12 @@
 import { clColor, clConfig, clUtil } from "@commercelayer/cli-core";
-import { Command, ux as cliux, Flags } from "@oclif/core";
-import type { CommandError } from "@oclif/core/lib/interfaces";
+import * as cliux from "@commercelayer/cli-ux";
+import type { Interfaces } from "@oclif/core";
+import { Command, Flags } from "@oclif/core";
+
+type CommandError = Interfaces.CommandError;
+
 import { resourceList } from "../../util/resources";
+
 
 export default class ProvisioningResources extends Command {
 	static description = "list all the available Provisioning API resources";

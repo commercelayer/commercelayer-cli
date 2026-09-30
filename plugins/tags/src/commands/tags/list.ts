@@ -1,8 +1,10 @@
 import { clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
 import type { QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table from 'cli-table3'
 import Command, { cliux, Flags } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 const MAX_TAGS = 1000
@@ -34,7 +36,7 @@ export default class TagsList extends Command {
 
 		const { flags } = await this.parse(TagsList)
 
-		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
+		if ((flags.limit !== undefined) && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		this.commercelayerInit(flags)
 

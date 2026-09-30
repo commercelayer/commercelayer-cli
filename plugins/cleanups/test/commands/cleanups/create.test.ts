@@ -1,11 +1,56 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
+import { AUTH, api, apiError, cleanup, list, ORG, resource, single, token, useMockedApi } from '../../helpers'
 
 describe('cleanups:create', () => {
-  test
-    .timeout(15000)
-    .stdout()
-    .command(['cleanups:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
+  useMockedApi()
+
+  const application = () => api().get('/api/application').reply(200, single(resource('application', 'AppId', { kind: 'integration' })))
+  const count = (n: number) =>
+    api()
+      .get('/api/skus')
+      .query((q) => q['filter[q][code_start]'] === 'OLD' && q['page[size]'] === '1' && !q.sort)
+      .reply(200, { ...list([resource('skus', 'sku1')]), meta: { record_count: n, page_count: n } })
+
+  it('starts a cleanup of the filtered records', async () => {
+    application()
+    count(3)
+    api()
+      .get('/api/skus')
+      .query((q) => q['page[number]'] === '3' && q.sort === 'id')
+      .reply(200, list([resource('skus', 'sku3')]))
+      .post('/api/cleanups', (body) => {
+        const { attributes } = body.data
+        return (
+          attributes.resource_type === 'skus' &&
+          attributes.filters.code_start === 'OLD' &&
+          attributes.filters.id_lteq === 'sku3' &&
+          attributes.reference_origin === 'cli-plugin-cleanups' &&
+          /-0001$/.test(attributes.reference) &&
+          attributes.metadata.group_id === attributes.reference.replace(/-0001$/, '')
+        )
+      })
+      .reply(201, single(cleanup('cLn9', { status: 'pending' })))
+    const ctx = await runCommand(['cleanups:create', ...AUTH, '-t', 'skus', '-w', 'code_start=OLD', '--blind'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('The cleanup of 3 skus has been started')
+  })
+
+  it('stops when nothing matches', async () => {
+    application()
+    count(0)
+    const ctx = await runCommand(['cleanups:create', ...AUTH, '-t', 'skus', '-w', 'code_start=OLD', '--blind'])
+    expect(ctx.error?.message).to.match(/No skus to cleanup/)
+  })
+
+  it('checks the access token first', async () => {
+    api().get('/api/application').reply(401, apiError(401, 'Invalid token', 'The access token you provided is invalid.'))
+    const ctx = await runCommand(['cleanups:create', ...AUTH, '-t', 'skus', '--blind'])
+    expect(ctx.error?.message).to.match(/Invalid token: The access token you provided is invalid/)
+  })
+
+  it('requires an integration or cli token', async () => {
+    const ctx = await runCommand(['cleanups:create', '-o', ORG, '--accessToken', token('sales_channel'), '-t', 'skus', '--blind'])
+    expect(ctx.error?.message).to.match(/Invalid application kind: sales_channel/)
+  })
 })

@@ -1,8 +1,10 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
 import type { EventCallback } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table from 'cli-table3'
 import { BaseIdCommand, Flags } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 export default class WebhooksEvent extends BaseIdCommand {

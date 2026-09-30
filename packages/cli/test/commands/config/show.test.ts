@@ -1,10 +1,10 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('config:show', () => {
-  test
-    .stdout()
-    .command(['config:show'])
-    .it('runs config:show', ctx => {
-      expect(ctx.stdout).to.contain('currentApplication:')
-    })
+  it('runs config:show', async () => {
+    const ctx = await runCommand(['config:show'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('currentApplication:')
+  })
 })

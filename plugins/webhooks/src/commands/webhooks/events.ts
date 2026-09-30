@@ -1,9 +1,11 @@
 import { clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
 import type { EventCallback, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
 import { BaseIdCommand, cliux, Flags } from '../../base'
 import { responseCodeColor } from './event'
+
+type CommandError = Interfaces.CommandError
 
 
 const MAX_EVENTS = 1000
@@ -41,7 +43,7 @@ export default class WebhooksEvents extends BaseIdCommand {
 
 		const { args, flags } = await this.parse(WebhooksEvents)
 
-		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
+		if ((flags.limit !== undefined) && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		const id = args.id
 

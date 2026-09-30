@@ -11,7 +11,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "files": [
     "/bin/run.*",
@@ -51,34 +51,32 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "posttest": "pnpm lint",
-    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test"
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
   },
   "devDependencies": {
     "@commercelayer/cli-dev": "workspace:^",
-    "@oclif/plugin-help": "^6.2.58",
-    "@oclif/test": "^4.1.22",
-    "@types/chai": "^5.2.3",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^25.9.5",
-    "chai": "^6.2.2",
-    "mocha": "^11.8.0",
-    "nyc": "^18.0.0",
-    "oclif": "^4.23.30",
-    "tsx": "^4.23.12",
-    "typescript": "^6.0.3"
+    "@commercelayer/cli-test-utils": "workspace:*",
+    "@oclif/plugin-help": "catalog:",
+    "@oclif/test": "catalog:",
+    "@types/chai": "catalog:",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
+    "chai": "catalog:",
+    "mocha": "catalog:",
+    "nock": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
   },
   "dependencies": {
     "@commercelayer/cli-core": "workspace:^",
     "@commercelayer/cli-ux": "workspace:^",
-    "@commercelayer/sdk": "^6.58.0",
-    "@oclif/core": "^3.27.0",
+    "@commercelayer/sdk": "catalog:",
+    "@oclif/core": "catalog:",
     "eventsource-parser": "^3.1.1",
     "ora": "^9.4.1",
-    "tslib": "^2.8.1"
+    "tslib": "catalog:"
   },
   "publishConfig": {
     "access": "public"

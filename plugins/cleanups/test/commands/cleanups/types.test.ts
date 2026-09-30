@@ -1,11 +1,11 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('cleanups:types', () => {
-  test
-    .timeout(15000)
-    .stdout()
-    .command(['cleanups:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
+  it('lists the supported cleanup types', async () => {
+    const ctx = await runCommand(['cleanups:types'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('Supported cleanup types')
+    expect(ctx.stdout).to.contain('skus')
+  })
 })

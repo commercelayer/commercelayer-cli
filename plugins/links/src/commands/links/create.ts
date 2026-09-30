@@ -51,7 +51,7 @@ export default class LinksCreate extends BaseEditCommand {
 
     const scope = this.checkScope(this.checkRequired<string[]>(flags, 'link_scope', 'Scope'))
     const name = this.checkRequired(flags, 'name')
-    const domain = flags.domain
+    const domain = flags.link_domain
 
     const linkCreate: LinkCreate = {
       client_id,
@@ -59,7 +59,7 @@ export default class LinksCreate extends BaseEditCommand {
       scope,
       starts_at,
       expires_at,
-      item,
+      item: { type: item.type, id: item.id },
       domain
     }
 

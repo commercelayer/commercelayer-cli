@@ -19,7 +19,6 @@ changelog:
           - 'pkg:cleanups'
           - 'pkg:cli'
           - 'pkg:core'
-          - 'pkg:dev'
           - 'pkg:exports'
           - 'pkg:imports'
           - 'pkg:links'

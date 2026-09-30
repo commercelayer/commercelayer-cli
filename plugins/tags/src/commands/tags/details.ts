@@ -1,11 +1,16 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table from 'cli-table3'
 import { BaseIdCommand } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 
 export default class TagsDetails extends BaseIdCommand {
+
+  // oclif reads the command options with a spread, which skips inherited statics
+  static args = { ...BaseIdCommand.args }
 
   static description = 'show the details of an existing tag'
 

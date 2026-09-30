@@ -57,7 +57,7 @@ export default class LinksDetails extends BaseIdCommand {
       if (this.cl.isApiError(err) && (err.status === 404)) {
         this.log(`\nLink ${clColor.api.id(id)} not found\n`)
         this.exit()
-      }
+      } else throw err
     })
     if (!link) return
 

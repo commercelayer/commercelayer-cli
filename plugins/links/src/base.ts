@@ -1,8 +1,10 @@
 import { clColor, clConfig, clOutput, clText, clUpdate, clUtil } from '@commercelayer/cli-core'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type LinkCreate } from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Args, Command, ux as cliux, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 import { DOC_DATE_TIME_STRING_FORMAT, fillUTCDate } from './util'
+
+type CommandError = Interfaces.CommandError
 
 
 

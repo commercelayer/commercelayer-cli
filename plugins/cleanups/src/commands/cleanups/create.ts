@@ -1,10 +1,12 @@
 import { clApi, clColor, clConfig, clUtil } from '@commercelayer/cli-core'
 import type { Cleanup, CleanupCreate, CommerceLayerClient } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import type { SingleBar } from 'cli-progress'
 import Command, { cliux, Flags } from '../../base'
 import { type Batch, type Chunk, MAX_QUEUE_LENGTH, splitChunks, splitRecords } from '../../chunk'
 import { Monitor } from '../../monitor'
+
+type CommandError = Interfaces.CommandError
 
 
 

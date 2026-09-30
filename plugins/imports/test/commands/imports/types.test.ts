@@ -1,12 +1,11 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('imports:types', () => {
-  test
-    .timeout(5000)
-    .stdout()
-    .command(['imports:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
-
+  it('lists the supported import types', async () => {
+    const ctx = await runCommand(['imports:types'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('Supported import types')
+    expect(ctx.stdout).to.contain('skus')
+  })
 })

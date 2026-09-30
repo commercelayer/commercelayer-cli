@@ -1,8 +1,10 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { type AccessToken, type AppInfo, type AppKey, clApi, clConfig } from '@commercelayer/cli-core'
-import type { Config } from '@oclif/core/lib/interfaces/config'
+import type { Interfaces } from '@oclif/core'
 import Configstore from 'configstore'
+
+type Config = Interfaces.Config
 
 const packageJson = require('../package.json')
 

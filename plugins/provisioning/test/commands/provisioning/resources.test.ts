@@ -1,11 +1,11 @@
-import { expect, test } from "@oclif/test";
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
-describe("provisioning:resources", () => {
-	test
-		.timeout(15000)
-		.stdout()
-		.command(["provisioning:noc"])
-		.it("runs NoC", (ctx) => {
-			expect(ctx.stdout).to.contain("-= NoC =-");
-		});
-});
+describe('provisioning:resources', () => {
+  it('lists the available resources', async () => {
+    const ctx = await runCommand(['provisioning:resources'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('roles')
+    expect(ctx.stdout).to.contain('memberships')
+  })
+})

@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { rename } from 'node:fs/promises'
 import { join } from 'node:path'
 import { gunzipSync, type InputType } from 'node:zlib'
@@ -7,10 +7,12 @@ import { clApi, clColor, clFilter, clOutput, clToken, clUpdate, clUtil } from '@
 import * as cliux from '@commercelayer/cli-ux'
 import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 import axios from 'axios'
 import notifier from 'node-notifier'
+
+type CommandError = Interfaces.CommandError
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -189,6 +191,8 @@ export abstract class ExportCommand extends BaseCommand {
   protected async singleExportFile(exp: Export, flags: any): Promise<string> {
 
     const tmpDir = this.config.cacheDir
+    // Missing on first use
+    mkdirSync(tmpDir, { recursive: true })
     const format = this.getFileFormat(flags)
 
     // Export just completed, no need to refresh attachment url
@@ -347,13 +351,13 @@ export abstract class ExportCommand extends BaseCommand {
   protected handleExportError(error: any, resDesc: string): void {
     const err = error.first()
     const errMeta = err?.meta
-    if (errMeta.error === 'less_than_or_equal_to') this.error(`Too many ${resDesc} to export: ${clColor.msg.error(errMeta.value)}`, {
+    if (errMeta?.error === 'less_than_or_equal_to') this.error(`Too many ${resDesc} to export: ${clColor.msg.error(errMeta.value)}`, {
       suggestions: [`The maximum number of exportable records is ${clColor.yellowBright(errMeta?.count)}, add more filters and re-run the command`]
     })
-    else if (errMeta.error === 'greater_than') {
+    else if (errMeta?.error === 'greater_than') {
       this.log(clColor.italic(`\nNo ${resDesc} found\n`))
       this.exit()
-    } else this.error(`${error.statusText}: ${err.title}`)
+    } else this.error(clOutput.formatError(error))
   }
 
 }

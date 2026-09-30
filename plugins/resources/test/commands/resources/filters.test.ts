@@ -1,11 +1,12 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('resources:filters', () => {
-  test
-    .timeout(15000)
-    .stdout()
-    .command(['resources:filters'])
-    .it('runs resources:filters', ctx => {
-      expect(ctx.stdout).to.contain('-= Commerce Layer API available resource filters =-').and.contain('*_eq')
-    })
+  it('lists the available filter predicates', async () => {
+    const ctx = await runCommand(['resources:filters'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('available resource filters')
+    expect(ctx.stdout).to.contain('eq')
+    expect(ctx.stdout).to.contain('cont')
+  })
 })

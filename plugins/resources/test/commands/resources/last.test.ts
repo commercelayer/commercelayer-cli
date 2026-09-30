@@ -1,11 +1,10 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
+import { AUTH } from '../../helpers'
 
 describe('resources:last', () => {
-  test
-    .timeout(15000)
-    .stdout()
-    .command(['resources:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
+  it('rejects an unknown resource', async () => {
+    const ctx = await runCommand(['resources:last', 'unicorns', ...AUTH])
+    expect(ctx.error?.message).to.match(/Invalid resource unicorns/)
+  })
 })

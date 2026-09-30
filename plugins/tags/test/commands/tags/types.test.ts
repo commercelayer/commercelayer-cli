@@ -1,11 +1,12 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('tags:types', () => {
-  test
-    .timeout(15000)
-    .stdout()
-    .command(['tags:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
+  it('lists the taggable resource types', async () => {
+    const ctx = await runCommand(['tags:types'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('Taggable resources')
+    expect(ctx.stdout).to.contain('customers')
+    expect(ctx.stdout).to.contain('orders')
+  })
 })
