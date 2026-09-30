@@ -2,10 +2,10 @@ import { expect, test } from '@oclif/test'
 
 describe('exports:types', () => {
   test
-    .timeout(15000)
     .stdout()
-    .command(['exports:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
+    .command(['exports:types'])
+    .it('lists the exportable resource types', (ctx) => {
+      expect(ctx.stdout).to.contain('skus')
+      expect(ctx.stdout).to.contain('orders')
     })
 })
