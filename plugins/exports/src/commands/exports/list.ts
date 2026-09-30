@@ -50,7 +50,7 @@ export default class ExportsList extends Command {
 
 		const { flags } = await this.parse(ExportsList)
 
-		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
+		if ((flags.limit !== undefined) && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		this.commercelayerInit(flags)
 
