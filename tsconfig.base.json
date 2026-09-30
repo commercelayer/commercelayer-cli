@@ -3,14 +3,9 @@
     "declaration": true,
     "importHelpers": true,
     "module": "commonjs",
-    "outDir": "lib",
-    "rootDir": "src",
     "strict": true,
     "target": "ES2022",
     "esModuleInterop": true,
     "resolveJsonModule": true
-  },
-  "include": [
-    "src/**/*"
-  ]
+  }
 }

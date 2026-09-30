@@ -1,3 +1,7 @@
+packages:
+  - 'packages/*'
+  - 'plugins/*'
+
 allowBuilds:
   esbuild: true
   yarn: true

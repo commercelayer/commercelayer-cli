@@ -1,0 +1,143 @@
+{
+  "name": "@commercelayer/cli",
+  "description": "Commerce Layer CLI",
+  "version": "6.9.7",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/packages/cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "packages/cli"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "bin": {
+    "commercelayer": "./bin/run.js",
+    "cl": "./bin/run.js",
+    "clayer": "./bin/run.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "commercelayer",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-plugins",
+      "@oclif/plugin-autocomplete"
+    ],
+    "devPlugins": [],
+    "aliases": {
+      "blocked": null
+    },
+    "hooks": {
+      "init": [
+        "./lib/hooks/init/update"
+      ],
+      "prerun": [
+        "./lib/hooks/prerun/login",
+        "./lib/hooks/prerun/plugin",
+        "./lib/hooks/prerun/application"
+      ],
+      "postrun": [
+        "./lib/hooks/postrun/save",
+        "./lib/hooks/postrun/autocomplete",
+        "./lib/hooks/postrun/plugins_update"
+      ]
+    },
+    "topics": {
+      "applications": {
+        "description": "Manage login to CLI applications"
+      },
+      "plugins": {
+        "description": "Manage CLI plugins"
+      },
+      "config": {
+        "description": "Manage CLI configuration",
+        "hidden": true
+      },
+      "cli": {
+        "description": "Core CLI commands",
+        "hidden": false
+      }
+    },
+    "helpClass": "./lib/help",
+    "repositoryPrefix": "<%- repo %>/blob/main/packages/cli/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "additionalVersionFlags": [
+      "-v"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --require dotenv/config",
+    "posttest": "pnpm lint",
+    "readme": "cl-cli-dev readme --multi && git add README.md && git add docs/*",
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write",
+    "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
+  },
+  "devDependencies": {
+    "@commercelayer/cli-dev": "^3.1.9",
+    "@fig/complete-oclif": "^2.0.1",
+    "@oclif/test": "^3.2.15",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^5.2.3",
+    "@types/configstore": "^4.0.0",
+    "@types/inquirer": "^8.2.13",
+    "@types/lodash.kebabcase": "^4.1.9",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.9.5",
+    "@types/update-notifier": "^5.1.0",
+    "@withfig/autocomplete-types": "^1.31.0",
+    "chai": "^6.2.2",
+    "dotenv": "^17.4.2",
+    "mocha": "^10.8.2",
+    "nyc": "^18.0.0",
+    "oclif": "^4.23.30",
+    "prettier": "^3.9.6",
+    "semantic-release": "^25.0.9",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "^5.11.3",
+    "@commercelayer/cli-ux": "^1.2.3",
+    "@commercelayer/provisioning-sdk": "^2.10.2",
+    "@commercelayer/sdk": "^6.58.0",
+    "@oclif/core": "^3.27.0",
+    "@oclif/plugin-autocomplete": "^3.2.56",
+    "@oclif/plugin-help": "^6.2.58",
+    "@oclif/plugin-not-found": "^3.2.93",
+    "@oclif/plugin-plugins": "^5.4.87",
+    "configstore": "^5.0.1",
+    "inquirer": "^8.2.7",
+    "lodash.kebabcase": "^4.1.1",
+    "tslib": "^2.8.1",
+    "update-notifier-cjs": "^5.1.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
