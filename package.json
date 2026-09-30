@@ -1,0 +1,23 @@
+{
+  "name": "@commercelayer/cli-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Commerce Layer CLI monorepo",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli",
+  "repository": "https://github.com/commercelayer/commercelayer-cli",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.8"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

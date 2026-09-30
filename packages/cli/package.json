@@ -4,8 +4,12 @@
   "version": "6.9.7",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli",
-  "repository": "https://github.com/commercelayer/commercelayer-cli",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/packages/cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "packages/cli"
+  },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "bin": {
     "commercelayer": "./bin/run.js",
@@ -73,7 +77,7 @@
       }
     },
     "helpClass": "./lib/help",
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "repositoryPrefix": "<%- repo %>/blob/main/packages/cli/<%- commandPath %>",
     "additionalHelpFlags": [
       "-h"
     ],
@@ -94,7 +98,6 @@
     "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.8",
     "@commercelayer/cli-dev": "^3.1.9",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^3.2.15",
