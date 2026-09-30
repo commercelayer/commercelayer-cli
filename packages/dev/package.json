@@ -47,14 +47,10 @@
   "scripts": {
     "pretest": "tsc --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "posttest": "pnpm lint",
     "build": "rm -rf lib && tsc",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
-    "readme": "./bin/run.js readme && git add README.md",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm lint && pnpm build"
+    "readme": "./bin/run.js readme && git add README.md"
   },
   "devDependencies": {
     "@oclif/plugin-help": "catalog:",

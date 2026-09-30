@@ -22,10 +22,7 @@
     "start": "tsx src/index.ts",
     "test": "jest --passWithNoTests",
     "test-local": "tsx test/spot.ts",
-    "coverage": "jest --coverage",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm lint && pnpm build"
+    "coverage": "jest --coverage"
   },
   "keywords": [
     "ecommerce",

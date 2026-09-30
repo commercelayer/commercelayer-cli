@@ -53,12 +53,8 @@
     "prepack": "pnpm resources && pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "posttest": "pnpm lint",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "generate": "cl-generate",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm generate && pnpm lint && pnpm prepack && pnpm postpack",
     "generate-local": "cl-generate --local"
   },
   "types": "lib/index.d.ts",
