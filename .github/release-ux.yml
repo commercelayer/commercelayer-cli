@@ -15,10 +15,16 @@ changelog:
         - '*'
       exclude:
         labels:
+          - 'pkg:checkout'
+          - 'pkg:cleanups'
           - 'pkg:cli'
           - 'pkg:core'
           - 'pkg:dev'
+          - 'pkg:exports'
           - 'pkg:links'
           - 'pkg:metrics'
+          - 'pkg:microstore'
           - 'pkg:provisioning'
           - 'pkg:tags'
+          - 'pkg:token'
+          - 'pkg:triggers'

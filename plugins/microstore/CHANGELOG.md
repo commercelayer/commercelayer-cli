@@ -1,0 +1,340 @@
+## [3.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.1.3...v3.1.4) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix security vulnerabilities ([d464fda](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/d464fda299eac71908264d90c33b0daaacf400af))
+
+## [3.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.1.2...v3.1.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([64b2f74](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/64b2f74602d07c0bb80c7017c337b5f46dc8cc31))
+* run tests in updates workflow ([178838a](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/178838a2e2bb4011df309e8d2c178399357c680b))
+* update dependencies and codeql ([5da6d89](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/5da6d89731a2b9ad4172333178112f21659780d1))
+
+## [3.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.1.1...v3.1.2) (2026-04-14)
+
+
+### Bug Fixes
+
+* update dependencies and add updates workflow ([686f241](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/686f24152269fa376fe7f7759705eb7d1eb608cf))
+
+## [3.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.1.0...v3.1.1) (2026-03-24)
+
+
+### Bug Fixes
+
+* update dependencies ([b14c75b](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/b14c75bb9bd173c30b976c8f70742b843b729113))
+
+# [3.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.14...v3.1.0) (2026-03-24)
+
+
+### Features
+
+* add biome ([d8f9737](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/d8f973739c334356df1daca3b07c1b27b1c9cc00))
+
+## [3.0.14](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.13...v3.0.14) (2026-03-16)
+
+
+### Bug Fixes
+
+* update dependencies ([17a9b38](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/17a9b3807be06369ecdefe1a1db921f624a630b7))
+
+## [3.0.13](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.12...v3.0.13) (2026-03-13)
+
+
+### Bug Fixes
+
+* update dependencies ([e9952dd](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/e9952ddcdac8725099908d13516a41b6d6c85c27))
+
+## [3.0.12](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.11...v3.0.12) (2026-03-08)
+
+
+### Bug Fixes
+
+* update dependencies ([a043fb1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a043fb16a8ae7302c437a1781ddd18585e62892e))
+
+## [3.0.11](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.10...v3.0.11) (2026-03-02)
+
+
+### Bug Fixes
+
+* updatecli-core to latest version ([3976371](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/3976371428770be23443ac77d86a244cfb6590fe))
+
+## [3.0.10](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.9...v3.0.10) (2026-03-02)
+
+
+### Bug Fixes
+
+* update dependencies ([f9b7d01](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/f9b7d0119f5e02b26a947ad162b4dc4f00913623))
+
+## [3.0.9](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.8...v3.0.9) (2025-12-04)
+
+
+### Bug Fixes
+
+* update dependencies ([cadca75](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/cadca75f65be4523e4dfa88304090148baf3e224))
+
+## [3.0.8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.7...v3.0.8) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([2db9f1d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2db9f1dd9821bbf659d8b11ff4b59cef61911f0a))
+
+## [3.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.6...v3.0.7) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([67db9fc](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/67db9fca13a09823b8af63a6a790450ae5448b16))
+
+## [3.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.5...v3.0.6) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix vulnerability issues ([948914b](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/948914b2d06a75f171b405ed6991dadf0d9a22c6))
+
+## [3.0.5](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.4...v3.0.5) (2025-01-31)
+
+
+### Bug Fixes
+
+* update readme and dependencies ([34211ca](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/34211cad7eee169869ac0f4f9d2d66e5ee427b8b))
+
+## [3.0.4](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.3...v3.0.4) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([1ebc036](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/1ebc036b7644650b43aaa461d1fd03e966bb0fdf))
+
+## [3.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.2...v3.0.3) (2024-10-21)
+
+
+### Bug Fixes
+
+* fix security issue ([657072c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/657072c723d265fe8f175246d8f9000c53430832))
+
+## [3.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.1...v3.0.2) (2024-08-23)
+
+
+### Bug Fixes
+
+* update dependencies ([d5a5b39](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/d5a5b39a65b30cdcea21e0fb8d1ff52c01619aef))
+
+## [3.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v3.0.0...v3.0.1) (2024-06-19)
+
+
+### Bug Fixes
+
+* fix output url ([668a1d3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/668a1d3badaecfd38feea01daac19c0cb07360e3))
+
+# [3.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.1...v3.0.0) (2024-04-29)
+
+
+### Bug Fixes
+
+* fix dependencies ([af51013](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/af51013d5103b9491ddb325d19f06349bf1727c6))
+* fix dependencies ([78e4666](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/78e4666cd733a96e404f492ef0d7fb17b5b50b93))
+* fix release config ([26e390d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/26e390d6f6a3b4e40d08cfca27871a239e538385))
+* fix sdk dependency ([0a5e0a2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/0a5e0a263d5e949630d99d101b6e4a43228eaf1c))
+* fix ts-node ([fa1b53c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/fa1b53c3b6f1acc3dae7e4e52794ab5cf03855bd))
+* fix update package ([5db682c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/5db682c441f98426a5414926e52de17c113e56a8))
+* replace ts-node with tsx ([9d9707c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/9d9707c128112ce78706ca62c1a25008e7b96994))
+* update cli dependencies ([a6d1c17](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a6d1c17768e4673c71c2c187db99771443f9a2ab))
+* update dependencies ([a67a0c1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a67a0c197fd011e8efb2363e0e85f029beba146b))
+* update dependencies ([4f1a3c0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/4f1a3c0a8a6f96dd238a5a031212832adc20de65))
+* update dependencies ([7dde2e8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7dde2e87ff8f618725b56d24c761189fb71ce717))
+
+
+### Features
+
+* prerelease ([80bd0a1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/80bd0a199faa44a5eaa2eca13f46a5c5980f7854))
+
+
+### Performance Improvements
+
+* update engine ([2b41c33](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2b41c33ef8f5cc737a280d850ee4b5a6e43d698a))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
+# [3.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.1...v3.0.0-rc.1) (2024-04-23)
+
+
+### Bug Fixes
+
+* fix dependencies ([af51013](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/af51013d5103b9491ddb325d19f06349bf1727c6))
+* fix dependencies ([78e4666](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/78e4666cd733a96e404f492ef0d7fb17b5b50b93))
+* fix release config ([26e390d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/26e390d6f6a3b4e40d08cfca27871a239e538385))
+* fix ts-node ([fa1b53c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/fa1b53c3b6f1acc3dae7e4e52794ab5cf03855bd))
+* fix update package ([5db682c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/5db682c441f98426a5414926e52de17c113e56a8))
+* replace ts-node with tsx ([9d9707c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/9d9707c128112ce78706ca62c1a25008e7b96994))
+* update cli dependencies ([a6d1c17](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a6d1c17768e4673c71c2c187db99771443f9a2ab))
+* update dependencies ([a67a0c1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a67a0c197fd011e8efb2363e0e85f029beba146b))
+* update dependencies ([4f1a3c0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/4f1a3c0a8a6f96dd238a5a031212832adc20de65))
+* update dependencies ([7dde2e8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7dde2e87ff8f618725b56d24c761189fb71ce717))
+
+
+### Features
+
+* prerelease ([80bd0a1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/80bd0a199faa44a5eaa2eca13f46a5c5980f7854))
+
+
+### Performance Improvements
+
+* update engine ([2b41c33](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2b41c33ef8f5cc737a280d850ee4b5a6e43d698a))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
+# [2.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-rc.3...v2.0.0-rc.4) (2024-04-15)
+
+
+### Bug Fixes
+
+* update dependencies ([a67a0c1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a67a0c197fd011e8efb2363e0e85f029beba146b))
+
+# [2.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-rc.2...v2.0.0-rc.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* update cli dependencies ([a6d1c17](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/a6d1c17768e4673c71c2c187db99771443f9a2ab))
+
+# [2.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix dependencies ([af51013](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/af51013d5103b9491ddb325d19f06349bf1727c6))
+* fix dependencies ([78e4666](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/78e4666cd733a96e404f492ef0d7fb17b5b50b93))
+
+# [2.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.2...v2.0.0-rc.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([26e390d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/26e390d6f6a3b4e40d08cfca27871a239e538385))
+* fix ts-node ([fa1b53c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/fa1b53c3b6f1acc3dae7e4e52794ab5cf03855bd))
+* fix update package ([5db682c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/5db682c441f98426a5414926e52de17c113e56a8))
+* replace ts-node with tsx ([9d9707c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/9d9707c128112ce78706ca62c1a25008e7b96994))
+* update dependencies ([4f1a3c0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/4f1a3c0a8a6f96dd238a5a031212832adc20de65))
+* update dependencies ([7dde2e8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7dde2e87ff8f618725b56d24c761189fb71ce717))
+
+
+### Features
+
+* prerelease ([80bd0a1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/80bd0a199faa44a5eaa2eca13f46a5c5980f7854))
+
+
+### Performance Improvements
+
+* update engine ([2b41c33](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2b41c33ef8f5cc737a280d850ee4b5a6e43d698a))
+* upgrade to oclif 3 ([7a64c49](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7a64c496c8c6645251299a853d5280837d577a3d))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
+# [2.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.7...v2.0.0-oclif3.8) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([26e390d](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/26e390d6f6a3b4e40d08cfca27871a239e538385))
+
+# [2.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.6...v2.0.0-oclif3.7) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([fa1b53c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/fa1b53c3b6f1acc3dae7e4e52794ab5cf03855bd))
+
+# [2.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.5...v2.0.0-oclif3.6) (2024-04-11)
+
+
+### Bug Fixes
+
+* replace ts-node with tsx ([9d9707c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/9d9707c128112ce78706ca62c1a25008e7b96994))
+
+# [2.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.4...v2.0.0-oclif3.5) (2024-04-11)
+
+
+### Bug Fixes
+
+* update dependencies ([4f1a3c0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/4f1a3c0a8a6f96dd238a5a031212832adc20de65))
+
+# [2.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.3...v2.0.0-oclif3.4) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix update package ([5db682c](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/5db682c441f98426a5414926e52de17c113e56a8))
+
+# [2.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.2...v2.0.0-oclif3.3) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([2b41c33](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/2b41c33ef8f5cc737a280d850ee4b5a6e43d698a))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
+# [2.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v2.0.0-oclif3.1...v2.0.0-oclif3.2) (2024-02-21)
+
+
+### Bug Fixes
+
+* update dependencies ([7dde2e8](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7dde2e87ff8f618725b56d24c761189fb71ce717))
+
+# [2.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.2...v2.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([7a64c49](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/7a64c496c8c6645251299a853d5280837d577a3d))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
+## [1.6.2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.1...v1.6.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix lint errors ([81c7fc2](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/81c7fc2109669c27c89e002b27fb987aa083dda2))
+
+## [1.6.1](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.6.0...v1.6.1) (2023-11-22)
+
+
+### Bug Fixes
+
+* update typescript ([acca955](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/acca955716104e55d0c51d65b1b4ca546c66eec6))
+
+# [1.6.0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/compare/v1.5.0...v1.6.0) (2023-11-22)
+
+
+### Bug Fixes
+
+* fix semantic-release dependencies ([b85d9a3](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/b85d9a365cd15c81101505860bd0dc052616cebb))
+
+
+### Features
+
+* add semantic-release ([420d9a0](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/commit/420d9a04c5d1a75e22ac9b72a36a6a613eb1ad05))

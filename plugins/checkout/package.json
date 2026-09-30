@@ -1,0 +1,84 @@
+{
+  "name": "@commercelayer/cli-plugin-checkout",
+  "description": "Commerce Layer CLI Checkout plugin",
+  "version": "5.0.20",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/checkout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/checkout"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-checkout",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "checkout": {
+        "description": "Generate checkout URLs",
+        "hidden": false
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/checkout/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "posttest": "pnpm lint",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write",
+    "release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test"
+  },
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@commercelayer/cli-dev": "workspace:^",
+    "@oclif/plugin-help": "^6.2.58",
+    "@oclif/test": "^3.2.15",
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.9.5",
+    "chai": "^6.2.2",
+    "mocha": "^11.8.0",
+    "nyc": "^18.0.0",
+    "oclif": "^4.23.30",
+    "tsx": "^4.23.12",
+    "typescript": "6.0.2"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/sdk": "^6.58.0",
+    "@oclif/core": "^3.27.0",
+    "open": "^8.4.2",
+    "tslib": "^2.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
