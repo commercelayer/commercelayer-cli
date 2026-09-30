@@ -527,6 +527,22 @@ importers:
         specifier: 'catalog:'
         version: 6.0.3
 
+  packages/test-utils:
+    dependencies:
+      nock:
+        specifier: 'catalog:'
+        version: 14.0.17
+    devDependencies:
+      '@types/mocha':
+        specifier: 'catalog:'
+        version: 10.0.10
+      '@types/node':
+        specifier: 'catalog:'
+        version: 25.9.8
+      typescript:
+        specifier: 'catalog:'
+        version: 6.0.3
+
   packages/ux:
     dependencies:
       ansi-escapes:
@@ -651,6 +667,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -934,6 +953,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -1001,6 +1023,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -1059,6 +1084,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -1187,6 +1215,9 @@ importers:
       '@commercelayer/cli-generator':
         specifier: workspace:*
         version: link:../../packages/generator
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -1391,6 +1422,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -1455,6 +1489,9 @@ importers:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0

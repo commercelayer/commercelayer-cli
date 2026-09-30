@@ -1,48 +1,28 @@
-/**
- * Test helpers: the commands run for real against a mocked OAuth endpoint.
- *
- * Real network access is disabled, so a missing mock fails the test instead
- * of reaching the API.
- */
-import nock from 'nock'
+/** Test helpers: the shared ones from @commercelayer/cli-test-utils, plus this plugin's own. */
+import { AUTH_API, api, jwt, ORG } from '@commercelayer/cli-test-utils'
 
-export const ORG = 'test-org'
-export const AUTH_API = 'https://auth.commercelayer.io'
+export { AUTH_API, ORG, useMockedApi } from '@commercelayer/cli-test-utils'
+
 export const CLIENT_ID = 'clientIdXYZ'
 export const CLIENT_SECRET = 'clientSecretXYZ'
 
-/** An unsigned access token: the commands only decode it */
+/** A complete access token, header included */
 export const token = (payload: Record<string, unknown> = {}) =>
-  [
-    Buffer.from(JSON.stringify({ alg: 'HS512', typ: 'JWT', kid: 'kid1' })).toString('base64url'),
-    Buffer.from(
-      JSON.stringify({
-        organization: { id: 'OrgId', slug: ORG, enterprise: false, region: 'eu-west-1' },
-        application: { id: 'AppId', client_id: CLIENT_ID, kind: 'integration', public: false },
-        scope: 'market:all',
-        test: true,
-        exp: 4102444800, // 2100-01-01
-        rand: 0.5,
-        ...payload,
-      }),
-    ).toString('base64url'),
-    'signature',
-  ].join('.')
+  jwt(
+    {
+      organization: { id: 'OrgId', slug: ORG, enterprise: false, region: 'eu-west-1' },
+      application: { id: 'AppId', client_id: CLIENT_ID, kind: 'integration', public: false },
+      scope: 'market:all',
+      test: true,
+      exp: 4102444800, // 2100-01-01
+      rand: 0.5,
+      ...payload,
+    },
+    { alg: 'HS512', typ: 'JWT', kid: 'kid1' },
+  )
 
-/** Registers the hooks that block the network and reset the mocks */
-export const useMockedApi = (): void => {
-  before(() => {
-    nock.disableNetConnect()
-  })
-  afterEach(() => {
-    nock.cleanAll()
-  })
-  after(() => {
-    nock.enableNetConnect()
-  })
-}
-
-export const auth = (): nock.Scope => nock(AUTH_API)
+/** A nock scope on the OAuth endpoint */
+export const auth = () => api(AUTH_API)
 
 export const tokenResponse = (accessToken = token()) => ({
   access_token: accessToken,
