@@ -1,4 +1,7 @@
-import { error } from "@oclif/core/lib/errors"
+import { Errors } from "@oclif/core"
+
+const { error } = Errors
+
 
 
 async function timeout(p: Promise<any>, ms: number): Promise<any> {

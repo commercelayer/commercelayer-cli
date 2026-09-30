@@ -1,43 +1,36 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 import { AUTH, api, apiError, list, resource, useMockedApi } from '../../helpers'
 
 describe('resources:list', () => {
   useMockedApi()
 
-  test
-    .do(() => {
-      api().get('/api/customers').query(true).reply(200, list([resource('customers', 'cUs1', { email: 'jane@example.com' }), resource('customers', 'cUs2', { email: 'john@example.com' })]))
-    })
-    .stdout()
-    .command(['resources:list', 'customers', ...AUTH])
-    .it('lists the resources', (ctx) => {
-      expect(ctx.stdout).to.contain('jane@example.com')
-      expect(ctx.stdout).to.contain('cUs2')
-    })
+  it('lists the resources', async () => {
+    api().get('/api/customers').query(true).reply(200, list([resource('customers', 'cUs1', { email: 'jane@example.com' }), resource('customers', 'cUs2', { email: 'john@example.com' })]))
+    const ctx = await runCommand(['resources:list', 'customers', ...AUTH])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('jane@example.com')
+    expect(ctx.stdout).to.contain('cUs2')
+  })
 
-  test
-    .do(() => {
-      api()
-        .get('/api/customers')
-        .query((q) => q['filter[q][email_end]'] === 'example.com' && q.sort === '-created_at' && q['page[size]'] === '5' && q['page[number]'] === '2' && q['fields[customers]'] === 'email' && q.include === 'customer_group')
-        .reply(200, list([resource('customers', 'cUs1', { email: 'jane@example.com' })]))
-    })
-    .stdout()
-    .command(['resources:list', 'customers', ...AUTH, '-w', 'email_end=example.com', '-s', '-created_at', '-n', '5', '-p', '2', '-f', 'email', '-i', 'customer_group'])
-    .it('passes filters, sort, paging, fields and includes to the API', (ctx) => {
-      expect(ctx.stdout).to.contain('cUs1')
-    })
+  it('passes filters, sort, paging, fields and includes to the API', async () => {
+    api()
+      .get('/api/customers')
+      .query((q) => q['filter[q][email_end]'] === 'example.com' && q.sort === '-created_at' && q['page[size]'] === '5' && q['page[number]'] === '2' && q['fields[customers]'] === 'email' && q.include === 'customer_group')
+      .reply(200, list([resource('customers', 'cUs1', { email: 'jane@example.com' })]))
+    const ctx = await runCommand(['resources:list', 'customers', ...AUTH, '-w', 'email_end=example.com', '-s', '-created_at', '-n', '5', '-p', '2', '-f', 'email', '-i', 'customer_group'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('cUs1')
+  })
 
-  test
-    .command(['resources:list', 'unicorns', ...AUTH])
-    .catch(/Invalid resource unicorns/)
-    .it('rejects an unknown resource')
+  it('rejects an unknown resource', async () => {
+    const ctx = await runCommand(['resources:list', 'unicorns', ...AUTH])
+    expect(ctx.error?.message).to.match(/Invalid resource unicorns/)
+  })
 
-  test
-    .do(() => {
-      api().get('/api/customers').query(true).reply(401, apiError(401, 'Invalid token'))
-    })
-    .command(['resources:list', 'customers', ...AUTH])
-    .catch(/Invalid token/)
-    .it('reports the API error')
+  it('reports the API error', async () => {
+    api().get('/api/customers').query(true).reply(401, apiError(401, 'Invalid token'))
+    const ctx = await runCommand(['resources:list', 'customers', ...AUTH])
+    expect(ctx.error?.message).to.match(/Invalid token/)
+  })
 })

@@ -7,10 +7,12 @@ import { clApi, clColor, clFilter, clOutput, clToken, clUpdate, clUtil } from '@
 import * as cliux from '@commercelayer/cli-ux'
 import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 import axios from 'axios'
 import notifier from 'node-notifier'
+
+type CommandError = Interfaces.CommandError
 
 
 const pkg: clUpdate.Package = require('../package.json')

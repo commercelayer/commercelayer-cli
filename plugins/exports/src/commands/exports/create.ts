@@ -1,10 +1,11 @@
-
 import { clColor, clToken } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import type { ExportCreate, ResourceTypeLock } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import open from 'open'
 import { computeDelay, ExportCommand, Flags, notify } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 

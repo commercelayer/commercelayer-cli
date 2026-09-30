@@ -1,9 +1,11 @@
 import { clColor, clOutput } from '@commercelayer/cli-core'
-import type { Hook } from '@oclif/core'
-import { CLIError } from '@oclif/core/lib/errors'
-import type { Config } from '@oclif/core/lib/interfaces'
+import type { Hook, Interfaces } from '@oclif/core'
+import { Errors } from '@oclif/core'
 import inquirer from 'inquirer'
 import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
+
+const { CLIError } = Errors
+type Config = Interfaces.Config
 
 
 

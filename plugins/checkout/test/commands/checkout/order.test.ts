@@ -1,4 +1,5 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 import { AUTH, api, apiError, ORG, resource, single, TOKEN, token, useMockedApi } from '../../helpers'
 
 describe('checkout:order', () => {
@@ -6,35 +7,30 @@ describe('checkout:order', () => {
 
   const URL = `https://${ORG}.commercelayer.app/checkout/oRd1?accessToken=${TOKEN}`
 
-  test
-    .do(() => {
-      api()
-        .get('/api/orders/oRd1')
-        .query((q) => q['fields[orders]'] === 'id,number')
-        .reply(200, single(resource('orders', 'oRd1', { number: '1234' })))
-    })
-    .stdout()
-    .command(['checkout:order', 'oRd1', ...AUTH])
-    .it('prints the checkout URL of the order', (ctx) => {
-      expect(ctx.stdout).to.contain('Checkout URL for order oRd1')
-      expect(ctx.stdout).to.contain(URL)
-    })
+  it('prints the checkout URL of the order', async () => {
+    api()
+      .get('/api/orders/oRd1')
+      .query((q) => q['fields[orders]'] === 'id,number')
+      .reply(200, single(resource('orders', 'oRd1', { number: '1234' })))
+    const ctx = await runCommand(['checkout:order', 'oRd1', ...AUTH])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('Checkout URL for order oRd1')
+    expect(ctx.stdout).to.contain(URL)
+  })
 
-  test
-    .do(() => {
-      api().get('/api/orders/nope').query(true).reply(404, apiError(404, 'Record not found'))
-    })
-    .command(['checkout:order', 'nope', ...AUTH])
-    .catch(/Record not found/)
-    .it('reports a missing order')
+  it('reports a missing order', async () => {
+    api().get('/api/orders/nope').query(true).reply(404, apiError(404, 'Record not found'))
+    const ctx = await runCommand(['checkout:order', 'nope', ...AUTH])
+    expect(ctx.error?.message).to.match(/Record not found/)
+  })
 
-  test
-    .command(['checkout:order', 'oRd1', '-o', ORG, '-a', token('integration')])
-    .catch(/Invalid application kind: integration/)
-    .it('requires a sales channel token')
+  it('requires a sales channel token', async () => {
+    const ctx = await runCommand(['checkout:order', 'oRd1', '-o', ORG, '-a', token('integration')])
+    expect(ctx.error?.message).to.match(/Invalid application kind: integration/)
+  })
 
-  test
-    .command(['checkout:order', 'oRd1', '-o', ORG, '-a', token('sales_channel', 'other-org')])
-    .catch(/belongs to a wrong organization: other-org/)
-    .it('rejects a token of another organization')
+  it('rejects a token of another organization', async () => {
+    const ctx = await runCommand(['checkout:order', 'oRd1', '-o', ORG, '-a', token('sales_channel', 'other-org')])
+    expect(ctx.error?.message).to.match(/belongs to a wrong organization: other-org/)
+  })
 })

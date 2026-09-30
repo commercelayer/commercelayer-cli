@@ -1,16 +1,14 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 import { AUTH, api, eventCallback, list, useMockedApi } from '../../helpers'
 
 describe('webhooks:payload', () => {
   useMockedApi()
 
-  test
-    .do(() => {
-      api().get('/api/event_callbacks').query(true).reply(200, list([eventCallback('eVt1')]))
-    })
-    .stdout()
-    .command(['webhooks:payload', 'eVt1', ...AUTH])
-    .it('prints the payload as JSON', (ctx) => {
-      expect(JSON.parse(ctx.stdout)).to.deep.equal({ data: { id: 'oRd1', type: 'orders' } })
-    })
+  it('prints the payload as JSON', async () => {
+    api().get('/api/event_callbacks').query(true).reply(200, list([eventCallback('eVt1')]))
+    const ctx = await runCommand(['webhooks:payload', 'eVt1', ...AUTH])
+    if (ctx.error) throw ctx.error
+    expect(JSON.parse(ctx.stdout)).to.deep.equal({ data: { id: 'oRd1', type: 'orders' } })
+  })
 })

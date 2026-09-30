@@ -1,5 +1,6 @@
 import { clColor, clFilter, clUtil } from '@commercelayer/cli-core'
-import { Command, ux as cliux } from '@oclif/core'
+import * as cliux from '@commercelayer/cli-ux'
+import { Command } from '@oclif/core'
 
 
 

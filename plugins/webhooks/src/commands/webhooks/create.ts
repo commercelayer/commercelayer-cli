@@ -1,7 +1,9 @@
 import { URL } from 'node:url'
 import { clColor } from '@commercelayer/cli-core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import { BaseCommand, Flags } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 export default class WebhooksCreate extends BaseCommand {

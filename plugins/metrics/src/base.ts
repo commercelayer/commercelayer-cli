@@ -1,9 +1,11 @@
 import { clColor, clConfig, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
 import { type MetricsFilter, type MetricsQueryBreakdown, type MetricsQueryBreakdownResponse, operators, resources } from './common'
+
+type CommandError = Interfaces.CommandError
 
 
 

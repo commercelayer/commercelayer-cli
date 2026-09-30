@@ -1,6 +1,7 @@
 import { type AccessTokenInfo, type AuthScope, clColor, clConfig, clOutput, clUpdate } from '@commercelayer/cli-core'
-import { Args, Command, Flags } from '@oclif/core'
-import { CLIError } from '@oclif/core/lib/errors'
+import { Args, Command, Errors, Flags } from '@oclif/core'
+
+const { CLIError } = Errors
 
 
 const pkg: clUpdate.Package = require('../package.json')

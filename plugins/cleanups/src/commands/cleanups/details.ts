@@ -1,7 +1,9 @@
 import { clColor, clOutput, clText } from '@commercelayer/cli-core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table from 'cli-table3'
 import Command, { Args, Flags } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 

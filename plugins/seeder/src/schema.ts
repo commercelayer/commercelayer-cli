@@ -1,6 +1,8 @@
-import { CLIError } from '@oclif/core/lib/errors'
+import { Errors } from '@oclif/core'
 import { getCommerceLayerDataFile, pathJoin } from './common'
 import config from './config'
+
+const { CLIError } = Errors
 
 
 type SchemaModel = {

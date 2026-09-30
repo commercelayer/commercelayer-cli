@@ -11,7 +11,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "files": [
     "/bin/run.*",
@@ -76,6 +76,7 @@
   },
   "dependencies": {
     "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/cli-ux": "workspace:^",
     "@commercelayer/provisioning-sdk": "catalog:",
     "@oclif/core": "catalog:",
     "inquirer": "catalog:",
