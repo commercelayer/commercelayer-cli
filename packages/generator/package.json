@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@types/lodash.snakecase": "^4.1.9",
-    "@types/node": "^25.9.5",
-    "tsx": "^4.23.12",
+    "@types/node": "catalog:",
+    "tsx": "catalog:",
     "typescript": "^5.9.3"
   },
   "engines": {

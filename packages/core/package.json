@@ -38,24 +38,24 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.29.7",
-    "@babel/preset-typescript": "^7.29.7",
-    "@types/jest": "^29.5.14",
+    "@babel/preset-env": "catalog:",
+    "@babel/preset-typescript": "catalog:",
+    "@types/jest": "catalog:",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^25.9.8",
+    "@types/node": "catalog:",
     "dotenv": "^16.6.1",
-    "jest": "^29.7.0",
-    "oclif": "^4.24.0",
-    "tsup": "^8.5.1",
-    "tsx": "^4.23.15",
+    "jest": "catalog:",
+    "oclif": "catalog:",
+    "tsup": "catalog:",
+    "tsx": "catalog:",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "@commercelayer/js-auth": "^6.7.2",
-    "@oclif/core": "^3.27.0",
-    "chalk": "^4.1.2",
+    "@oclif/core": "catalog:",
+    "chalk": "catalog:",
     "jsonwebtoken": "^9.0.3",
-    "update-notifier-cjs": "^5.1.7"
+    "update-notifier-cjs": "catalog:"
   },
   "publishConfig": {
     "access": "public"

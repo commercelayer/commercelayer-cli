@@ -162,6 +162,114 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@babel/preset-env':
+      specifier: ^7.29.7
+      version: 7.29.7
+    '@babel/preset-typescript':
+      specifier: ^7.29.7
+      version: 7.29.7
+    '@commercelayer/provisioning-sdk':
+      specifier: ^2.10.2
+      version: 2.10.2
+    '@commercelayer/sdk':
+      specifier: ^6.58.0
+      version: 6.58.0
+    '@oclif/core':
+      specifier: ^3.27.0
+      version: 3.27.0
+    '@oclif/plugin-help':
+      specifier: ^6.3.0
+      version: 6.3.0
+    '@oclif/test':
+      specifier: ^3.2.15
+      version: 3.2.15
+    '@types/chai':
+      specifier: ^5.2.3
+      version: 5.2.3
+    '@types/cli-progress':
+      specifier: ^3.11.6
+      version: 3.11.6
+    '@types/inquirer':
+      specifier: ^8.2.13
+      version: 8.2.13
+    '@types/jest':
+      specifier: ^29.5.14
+      version: 29.5.14
+    '@types/lodash.isempty':
+      specifier: ^4.4.9
+      version: 4.4.9
+    '@types/mocha':
+      specifier: ^10.0.10
+      version: 10.0.10
+    '@types/node':
+      specifier: ^25.9.8
+      version: 25.9.8
+    '@types/node-notifier':
+      specifier: ^8.0.5
+      version: 8.0.5
+    axios:
+      specifier: ^1.19.0
+      version: 1.20.0
+    chai:
+      specifier: ^6.2.2
+      version: 6.2.2
+    chalk:
+      specifier: ^4.1.2
+      version: 4.1.2
+    cli-progress:
+      specifier: ^3.12.0
+      version: 3.12.0
+    cli-table3:
+      specifier: ^0.6.5
+      version: 0.6.5
+    dotenv:
+      specifier: ^17.4.2
+      version: 17.4.2
+    inquirer:
+      specifier: ^8.2.7
+      version: 8.2.7
+    jest:
+      specifier: ^29.7.0
+      version: 29.7.0
+    json-2-csv:
+      specifier: ^5.6.0
+      version: 5.6.0
+    lodash.isempty:
+      specifier: ^4.4.0
+      version: 4.4.0
+    mocha:
+      specifier: ^11.8.0
+      version: 11.8.0
+    node-notifier:
+      specifier: ^10.0.1
+      version: 10.0.1
+    nyc:
+      specifier: ^18.0.0
+      version: 18.0.0
+    oclif:
+      specifier: ^4.24.0
+      version: 4.24.0
+    open:
+      specifier: ^8.4.2
+      version: 8.4.2
+    tslib:
+      specifier: ^2.8.1
+      version: 2.8.1
+    tsup:
+      specifier: ^8.5.1
+      version: 8.5.1
+    tsx:
+      specifier: ^4.23.15
+      version: 4.23.15
+    typescript:
+      specifier: ^6.0.3
+      version: 6.0.3
+    update-notifier-cjs:
+      specifier: ^5.1.7
+      version: 5.1.7
+
 overrides:
   serialize-javascript@<7.0.5: ^7.1.0
   diff@<8.0.3: ^8.0.4
@@ -184,19 +292,19 @@ importers:
         specifier: workspace:^
         version: link:../ux
       '@commercelayer/provisioning-sdk':
-        specifier: ^2.10.2
+        specifier: 'catalog:'
         version: 2.10.2
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       '@oclif/plugin-autocomplete':
         specifier: ^3.2.56
         version: 3.3.0(supports-color@8.1.1)
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/plugin-not-found':
         specifier: ^3.2.93
@@ -208,16 +316,16 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1
       inquirer:
-        specifier: ^8.2.7
+        specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
       lodash.kebabcase:
         specifier: ^4.1.1
         version: 4.1.1
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
       update-notifier-cjs:
-        specifier: ^5.1.7
+        specifier: 'catalog:'
         version: 5.1.7
     devDependencies:
       '@commercelayer/cli-dev':
@@ -227,25 +335,25 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(@types/node@25.9.8)(typescript@5.9.3)
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/configstore':
         specifier: ^4.0.0
         version: 4.0.0
       '@types/inquirer':
-        specifier: ^8.2.13
+        specifier: 'catalog:'
         version: 8.2.13
       '@types/lodash.kebabcase':
         specifier: ^4.1.9
         version: 4.1.9
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       '@types/update-notifier':
         specifier: ^5.1.0
@@ -254,25 +362,25 @@ importers:
         specifier: ^1.31.0
         version: 1.31.0
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       dotenv:
-        specifier: ^17.4.2
+        specifier: 'catalog:'
         version: 17.4.2
       mocha:
         specifier: ^10.8.2
         version: 10.8.2
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       prettier:
         specifier: ^3.9.6
         version: 3.9.9
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
         specifier: ^5.9.3
@@ -284,47 +392,47 @@ importers:
         specifier: ^6.7.2
         version: 6.7.2
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       chalk:
-        specifier: ^4.1.2
+        specifier: 'catalog:'
         version: 4.1.2
       jsonwebtoken:
         specifier: ^9.0.3
         version: 9.0.3
       update-notifier-cjs:
-        specifier: ^5.1.7
+        specifier: 'catalog:'
         version: 5.1.7
     devDependencies:
       '@babel/preset-env':
-        specifier: ^7.29.7
+        specifier: 'catalog:'
         version: 7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
       '@babel/preset-typescript':
-        specifier: ^7.29.7
+        specifier: 'catalog:'
         version: 7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
       '@types/jest':
-        specifier: ^29.5.14
+        specifier: 'catalog:'
         version: 29.5.14
       '@types/jsonwebtoken':
         specifier: ^9.0.10
         version: 9.0.10
       '@types/node':
-        specifier: ^25.9.8
+        specifier: 'catalog:'
         version: 25.9.8
       dotenv:
         specifier: ^16.6.1
         version: 16.6.1
       jest:
-        specifier: ^29.7.0
+        specifier: 'catalog:'
         version: 29.7.0(@types/node@25.9.8)(node-notifier@10.0.1)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@25.9.8)(typescript@5.9.3))
       oclif:
-        specifier: ^4.24.0
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsup:
-        specifier: ^8.5.1
+        specifier: 'catalog:'
         version: 8.5.1(supports-color@8.1.1)(tsx@4.23.15)(typescript@5.9.3)
       tsx:
-        specifier: ^4.23.15
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
         specifier: ^5.9.3
@@ -333,7 +441,7 @@ importers:
   packages/dev:
     dependencies:
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       fs-extra:
         specifier: ^10.1.0
@@ -348,7 +456,7 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@oclif/plugin-help':
@@ -367,31 +475,31 @@ importers:
         specifier: ^4.17.25
         version: 4.17.25
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       globby:
         specifier: ^10.0.2
         version: 10.0.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.24.0
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.13
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   packages/generator:
@@ -407,10 +515,10 @@ importers:
         specifier: ^4.1.9
         version: 4.1.9
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
         specifier: ^5.9.3
@@ -428,10 +536,10 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       chalk:
-        specifier: ^4.1.2
+        specifier: 'catalog:'
         version: 4.1.2
       cli-progress:
-        specifier: ^3.12.0
+        specifier: 'catalog:'
         version: 3.12.0
       color:
         specifier: ^4.2.3
@@ -471,22 +579,22 @@ importers:
         version: 1.0.0
     devDependencies:
       '@babel/preset-env':
-        specifier: ^7.29.7
+        specifier: 'catalog:'
         version: 7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
       '@babel/preset-typescript':
-        specifier: ^7.29.7
+        specifier: 'catalog:'
         version: 7.29.7(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1)
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       '@types/cli-progress':
-        specifier: ^3.11.6
+        specifier: 'catalog:'
         version: 3.11.6
       '@types/color':
         specifier: ^3.0.7
         version: 3.0.7
       '@types/jest':
-        specifier: ^29.5.14
+        specifier: 'catalog:'
         version: 29.5.14
       '@types/js-yaml':
         specifier: ^3.12.10
@@ -504,16 +612,16 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       jest:
-        specifier: ^29.7.0
+        specifier: 'catalog:'
         version: 29.7.0(@types/node@20.19.43)(node-notifier@10.0.1)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@20.19.43)(typescript@5.9.3))
       oclif:
-        specifier: ^4.24.0
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@20.19.43)(supports-color@8.1.1)
       tsup:
-        specifier: ^8.5.1
+        specifier: 'catalog:'
         version: 8.5.1(supports-color@8.1.1)(tsx@4.23.15)(typescript@5.9.3)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
         specifier: ^5.9.3
@@ -525,54 +633,54 @@ importers:
         specifier: workspace:^
         version: link:../../packages/core
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: 6.0.2
-        version: 6.0.2
+        specifier: 'catalog:'
+        version: 6.0.3
 
   plugins/cleanups:
     dependencies:
@@ -583,68 +691,68 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       cli-progress:
-        specifier: ^3.12.0
+        specifier: 'catalog:'
         version: 3.12.0
       cli-table3:
-        specifier: ^0.6.5
+        specifier: 'catalog:'
         version: 0.6.5
       node-notifier:
-        specifier: ^10.0.1
+        specifier: 'catalog:'
         version: 10.0.1
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/cli-progress':
-        specifier: ^3.11.6
+        specifier: 'catalog:'
         version: 3.11.6
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       '@types/node-notifier':
-        specifier: ^8.0.5
+        specifier: 'catalog:'
         version: 8.0.5
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/exports:
@@ -656,68 +764,68 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       axios:
-        specifier: ^1.19.0
+        specifier: 'catalog:'
         version: 1.20.0(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       cli-table3:
-        specifier: ^0.6.5
+        specifier: 'catalog:'
         version: 0.6.5
       node-notifier:
-        specifier: ^10.0.1
+        specifier: 'catalog:'
         version: 10.0.1
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       spinnies:
         specifier: ^0.5.1
         version: 0.5.1
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       '@types/node-notifier':
-        specifier: ^8.0.5
+        specifier: 'catalog:'
         version: 8.0.5
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/imports:
@@ -729,68 +837,68 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@fast-csv/parse':
         specifier: ^4.3.6
         version: 4.3.6
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       axios:
-        specifier: ^1.19.0
+        specifier: 'catalog:'
         version: 1.20.0(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       cli-progress:
-        specifier: ^3.12.0
+        specifier: 'catalog:'
         version: 3.12.0
       cli-table3:
-        specifier: ^0.6.5
+        specifier: 'catalog:'
         version: 0.6.5
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/cli-progress':
-        specifier: ^3.11.6
+        specifier: 'catalog:'
         version: 3.11.6
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/links:
@@ -799,62 +907,62 @@ importers:
         specifier: workspace:^
         version: link:../../packages/core
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       cli-table3:
-        specifier: ^0.6.5
+        specifier: 'catalog:'
         version: 0.6.5
       lodash.isempty:
-        specifier: ^4.4.0
+        specifier: 'catalog:'
         version: 4.4.0
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/lodash.isempty':
-        specifier: ^4.4.9
+        specifier: 'catalog:'
         version: 4.4.9
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/metrics:
@@ -866,10 +974,10 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       eventsource-parser:
         specifier: ^3.1.1
@@ -878,44 +986,44 @@ importers:
         specifier: ^9.4.1
         version: 9.4.1
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
         specifier: ^4.1.22
         version: 4.2.0(@oclif/core@3.27.0)(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/microstore:
@@ -924,53 +1032,53 @@ importers:
         specifier: workspace:^
         version: link:../../packages/core
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/orders:
@@ -982,16 +1090,16 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       inquirer:
-        specifier: ^8.2.7
+        specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
@@ -1001,40 +1109,40 @@ importers:
         specifier: workspace:*
         version: link:../../packages/generator
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
         specifier: ^4.3.20
         version: 4.3.20
       '@types/inquirer':
-        specifier: ^8.2.13
+        specifier: 'catalog:'
         version: 8.2.13
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
         specifier: ^4.5.0
         version: 4.5.0
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
         specifier: ^15.1.0
         version: 15.1.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/provisioning:
@@ -1043,19 +1151,19 @@ importers:
         specifier: workspace:^
         version: link:../../packages/core
       '@commercelayer/provisioning-sdk':
-        specifier: ^2.10.2
+        specifier: 'catalog:'
         version: 2.10.2
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       inquirer:
-        specifier: ^8.2.7
+        specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
       json-2-csv:
-        specifier: ^5.6.0
+        specifier: 'catalog:'
         version: 5.6.0
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
@@ -1065,40 +1173,40 @@ importers:
         specifier: workspace:*
         version: link:../../packages/generator
       '@oclif/plugin-help':
-        specifier: ^6.3.0
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/inquirer':
-        specifier: ^8.2.13
+        specifier: 'catalog:'
         version: 8.2.13
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.8
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.24.0
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.15
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/resources:
@@ -1110,25 +1218,25 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       inquirer:
-        specifier: ^8.2.7
+        specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
       json-2-csv:
-        specifier: ^5.5.11
+        specifier: 'catalog:'
         version: 5.6.0
       node-notifier:
-        specifier: ^10.0.1
+        specifier: 'catalog:'
         version: 10.0.1
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
@@ -1138,43 +1246,43 @@ importers:
         specifier: workspace:*
         version: link:../../packages/generator
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/inquirer':
-        specifier: ^8.2.13
+        specifier: 'catalog:'
         version: 8.2.13
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       '@types/node-notifier':
-        specifier: ^8.0.5
+        specifier: 'catalog:'
         version: 8.0.5
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/seeder:
@@ -1186,56 +1294,56 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       listr:
         specifier: ^0.14.3
         version: 0.14.3
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.3.0
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/listr':
         specifier: ^0.14.10
         version: 0.14.10
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.8
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.24.0
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.15
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/tags:
@@ -1247,56 +1355,56 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       cli-table3:
-        specifier: ^0.6.5
+        specifier: 'catalog:'
         version: 0.6.5
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.3.0
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.8
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.24.0
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.15
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/token:
@@ -1311,56 +1419,56 @@ importers:
         specifier: ^7.4.2
         version: 7.4.2
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       inquirer:
-        specifier: ^8.2.7
+        specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/inquirer':
-        specifier: ^8.2.13
+        specifier: 'catalog:'
         version: 8.2.13
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/triggers:
@@ -1369,16 +1477,16 @@ importers:
         specifier: workspace:^
         version: link:../../packages/core
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       inquirer:
-        specifier: ^8.2.7
+        specifier: 'catalog:'
         version: 8.2.7(@types/node@25.9.8)
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
@@ -1388,40 +1496,40 @@ importers:
         specifier: workspace:*
         version: link:../../packages/generator
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/inquirer':
-        specifier: ^8.2.13
+        specifier: 'catalog:'
         version: 8.2.13
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   plugins/webhooks:
@@ -1433,62 +1541,62 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: ^6.58.0
+        specifier: 'catalog:'
         version: 6.58.0
       '@oclif/core':
-        specifier: ^3.27.0
+        specifier: 'catalog:'
         version: 3.27.0
       cli-table3:
-        specifier: ^0.6.5
+        specifier: 'catalog:'
         version: 0.6.5
       lodash.isempty:
-        specifier: ^4.4.0
+        specifier: 'catalog:'
         version: 4.4.0
       open:
-        specifier: ^8.4.2
+        specifier: 'catalog:'
         version: 8.4.2
       tslib:
-        specifier: ^2.8.1
+        specifier: 'catalog:'
         version: 2.8.1
     devDependencies:
       '@commercelayer/cli-dev':
         specifier: workspace:^
         version: link:../../packages/dev
       '@oclif/plugin-help':
-        specifier: ^6.2.58
+        specifier: 'catalog:'
         version: 6.3.0
       '@oclif/test':
-        specifier: ^3.2.15
+        specifier: 'catalog:'
         version: 3.2.15(supports-color@8.1.1)
       '@types/chai':
-        specifier: ^5.2.3
+        specifier: 'catalog:'
         version: 5.2.3
       '@types/lodash.isempty':
-        specifier: ^4.4.9
+        specifier: 'catalog:'
         version: 4.4.9
       '@types/mocha':
-        specifier: ^10.0.10
+        specifier: 'catalog:'
         version: 10.0.10
       '@types/node':
-        specifier: ^25.9.5
+        specifier: 'catalog:'
         version: 25.9.8
       chai:
-        specifier: ^6.2.2
+        specifier: 'catalog:'
         version: 6.2.2
       mocha:
-        specifier: ^11.8.0
+        specifier: 'catalog:'
         version: 11.8.0
       nyc:
-        specifier: ^18.0.0
+        specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)
       oclif:
-        specifier: ^4.23.30
+        specifier: 'catalog:'
         version: 4.24.0(@types/node@25.9.8)(supports-color@8.1.1)
       tsx:
-        specifier: ^4.23.12
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
 packages:
@@ -5839,11 +5947,6 @@ packages:
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
-  typescript@6.0.2:
-    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -11394,8 +11497,6 @@ snapshots:
       is-typedarray: 1.0.0
 
   typescript@5.9.3: {}
-
-  typescript@6.0.2: {}
 
   typescript@6.0.3: {}
 
