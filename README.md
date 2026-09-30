@@ -38,6 +38,8 @@ pnpm test      # run every package's tests
 pnpm lint      # lint the whole repository
 ```
 
+Shared dependency versions live in the `catalog:` of `pnpm-workspace.yaml`: packages declare `"<name>": "catalog:"`. `pnpm check:packages` (also run in CI) checks that the packages stay consistent: catalog and workspace dependencies, repository fields, oclif settings, scripts.
+
 Run a single package's script with `pnpm --filter <package name> <script>`, for example `pnpm --filter @commercelayer/cli test`.
 
 ## Generated code
