@@ -1,0 +1,5 @@
+--rimport tsx
+--watch-extensions ts
+--recursive
+--reporter spec
+--timeout 5000
