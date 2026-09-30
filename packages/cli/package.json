@@ -101,8 +101,6 @@
     "@commercelayer/cli-dev": "workspace:^",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^3.2.15",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/chai": "^5.2.3",
     "@types/configstore": "^4.0.0",
     "@types/inquirer": "^8.2.13",
@@ -117,7 +115,6 @@
     "nyc": "^18.0.0",
     "oclif": "^4.23.30",
     "prettier": "^3.9.6",
-    "semantic-release": "^25.0.9",
     "tsx": "^4.23.12",
     "typescript": "^5.9.3"
   },

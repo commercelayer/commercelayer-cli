@@ -12,12 +12,17 @@
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write"
+    "check": "biome check --enforce-assist=true --write",
+    "release:version": "node scripts/finish-version.mjs",
+    "release:tag": "node scripts/tag.mjs",
+    "release:config": "node scripts/gen-release-config.mjs",
+    "release:publish": "node scripts/publish.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.14"
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "packageManager": "pnpm@12.5.1"
 }

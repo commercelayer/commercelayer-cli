@@ -1,0 +1,57 @@
+name: Publish preview packages
+
+# Publishes installable previews of the packages a pull request changes
+# (plus the packages depending on them) to pkg.pr.new. Nothing goes to npm:
+# this replaces the `-auto-deps-*` npm prereleases of the single repositories.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  preview:
+    name: pkg.pr.new
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - name: Select packages
+        id: select
+        run: |
+          set -euo pipefail
+          PATHS=$(pnpm --filter "...[origin/${{ github.base_ref }}]" list --depth -1 --json \
+            | node -e 'for (const p of JSON.parse(require("fs").readFileSync(0))) if (!p.private) console.log("./" + require("path").relative(process.cwd(), p.path))')
+          echo "paths=$(echo $PATHS)" >> "$GITHUB_OUTPUT"
+          echo "Previewing: ${PATHS:-nothing}"
+
+      - name: Publish previews
+        if: steps.select.outputs.paths != ''
+        # --pnpm packs with pnpm, which rewrites workspace: ranges
+        run: npx pkg-pr-new publish --pnpm --no-template ${{ steps.select.outputs.paths }}
+
+      - name: Install URLs
+        if: steps.select.outputs.paths != ''
+        # The short `@scope/name@sha` form resolves through pkg.pr.new's
+        # package -> repository mapping, which still points the plugins at
+        # their old repositories. The fully-qualified form always works.
+        run: |
+          SHA='${{ github.event.pull_request.head.sha }}'
+          {
+            echo '### Preview packages'
+            echo '```'
+            for path in ${{ steps.select.outputs.paths }}; do
+              NAME=$(node -p "require('$path/package.json').name")
+              echo "npm i https://pkg.pr.new/${GITHUB_REPOSITORY}/${NAME}@${SHA:0:7}"
+            done
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,26 +1,81 @@
 name: Publish
+
+# Publishes to npm when a human publishes a draft release created by
+# release.yml, then announces it on Slack. Only the tagged package is
+# published (scripts/publish.mjs), built and tested from exactly the tag.
+#
+# npm authentication is OIDC trusted publishing, no NPM_TOKEN: each package's
+# trusted publisher must name the repository commercelayer/commercelayer-cli
+# and this workflow file (publish.yml).
 on:
   release:
-    types: [ published ]
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to (re)publish, e.g. orders-v5.7.0'
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   publish:
-    name: Publish
+    name: Publish to npm
     runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TAG }}
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          registry-url: https://registry.npmjs.org
+          cache: 'pnpm'
+      - name: npm with trusted publishing support
+        run: npm install -g npm@^11.5.1
+
+      - name: Resolve package
+        id: meta
+        run: node scripts/resolve-tag.mjs "$TAG" | tee -a "$GITHUB_OUTPUT"
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build the package and its workspace dependencies
+        run: pnpm --filter '${{ steps.meta.outputs.package }}...' build
+
+      - name: Run specs
+        env:
+          CL_CLI_ORGANIZATION: cli-test-org
+          CL_CLI_CLIENT_ID: ${{ secrets.CL_CLI_CLIENT_ID }}
+          CL_CLI_CLIENT_SECRET: ${{ secrets.CL_CLI_CLIENT_SECRET }}
+        run: pnpm --filter '${{ steps.meta.outputs.package }}' test
+
+      - name: Command surface vs npm
+        run: node scripts/check-manifest.mjs '${{ steps.meta.outputs.dir }}'
+
+      - name: Publish
+        run: node scripts/publish.mjs "$TAG"
+
       - name: Post to a Slack channel
-        id: slack
         uses: slackapi/slack-github-action@v3
         with:
           webhook-type: incoming-webhook
           payload: |
             {
-            "text": "New release ${{github.ref_name}} for ${{github.event.repository.name}}.",
+            "text": "New release ${{ steps.meta.outputs.package }} v${{ steps.meta.outputs.version }}.",
             "blocks": [
               {
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "New release for <${{github.event.repository.html_url}}|`${{github.event.repository.name}}`>\n*<${{github.event.release.html_url}}|release notes>*"
+                "text": "New release for <${{ github.event.repository.html_url }}|`${{ steps.meta.outputs.package }}`>\n*<${{ github.event.repository.html_url }}/releases/tag/${{ env.TAG }}|release notes>*"
               }
               },
               {
@@ -28,11 +83,11 @@ jobs:
               "fields": [
                 {
                 "type": "mrkdwn",
-                "text": "*Project:*\n${{github.event.repository.name}}"
+                "text": "*Package:*\n${{ steps.meta.outputs.package }}"
                 },
                 {
                 "type": "mrkdwn",
-                "text": "*Version:*\n${{github.ref_name}}"
+                "text": "*Version:*\n${{ steps.meta.outputs.version }} (`${{ steps.meta.outputs.dist_tag }}`)"
                 }
               ]
               },
@@ -41,12 +96,12 @@ jobs:
               "elements": [
                 {
                 "type": "image",
-                "image_url": "${{github.event.sender.avatar_url}}",
-                "alt_text": "${{github.event.sender.login}}"
+                "image_url": "${{ github.event.sender.avatar_url }}",
+                "alt_text": "${{ github.event.sender.login }}"
                 },
                 {
                 "type": "mrkdwn",
-                "text": "*${{github.event.sender.login}}* has triggered this release."
+                "text": "*${{ github.event.sender.login }}* has triggered this release."
                 }
               ]
               }
