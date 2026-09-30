@@ -1,0 +1,351 @@
+## [5.0.20](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.19...v5.0.20) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix security vulnerabilities ([9fafd68](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/9fafd6877a4e1bf3154a3902d4851365e53c6fa2))
+
+## [5.0.19](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.18...v5.0.19) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix update workflow ([110a043](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/110a043e321c13333ba914178020984c6da72a09))
+* run tests in updates workflow ([59b41cc](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/59b41cc24e01fdb95e429d4f1b97da144e2b8e94))
+* update dependencies and codeql ([5f20c21](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/5f20c218a6961462922c4d3cf17b145efc81efa6))
+
+## [5.0.18](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.17...v5.0.18) (2026-04-14)
+
+
+### Bug Fixes
+
+* fix release script ([0609437](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/06094375da448a8ab94a8c340159fc2e202019df))
+* update dependencies and add updates workflow ([543b426](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/543b42671ae266615b9db7ce6db16d68f1d4f465))
+
+## [5.0.17](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.16...v5.0.17) (2026-03-24)
+
+
+### Bug Fixes
+
+* update dependencies ([1df2f03](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/1df2f03448181800269da0726604843dcbaaf76f))
+
+## [5.0.16](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.15...v5.0.16) (2026-03-24)
+
+
+### Bug Fixes
+
+* add biome ([5eceb91](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/5eceb9161c878f989744a4ed70ba8271d3668097))
+
+## [5.0.15](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.14...v5.0.15) (2026-03-13)
+
+
+### Bug Fixes
+
+* update dependencies ([d512d70](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/d512d70ece08e63bcc8e880492cb438d35db7347))
+
+## [5.0.14](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.13...v5.0.14) (2026-03-02)
+
+
+### Bug Fixes
+
+* updatecli-core to latest version ([d7ccbfd](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/d7ccbfdf68f5e372edc312a1ec45a64e10ffbcde))
+
+## [5.0.13](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.12...v5.0.13) (2026-03-02)
+
+
+### Bug Fixes
+
+* update dependencies ([22486d8](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/22486d8c36f85980277618bd8993e2ae862ecfa0))
+
+## [5.0.12](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.11...v5.0.12) (2026-02-23)
+
+
+### Bug Fixes
+
+* update dependencies ([ef7296b](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/ef7296b2240d8803562254eadd3aa377159b89af))
+
+## [5.0.11](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.10...v5.0.11) (2025-12-04)
+
+
+### Bug Fixes
+
+* update dependencies ([e00d21b](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/e00d21b98efcc6c1be9400225d70e7cc6560a5cd))
+
+## [5.0.10](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.9...v5.0.10) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([aac2913](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/aac2913666ea76b147c1daf608eeff7cb63ab55a))
+
+## [5.0.9](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.8...v5.0.9) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([661395f](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/661395f6bec319b537ca81b5d62d8bca305a93ed))
+
+## [5.0.8](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.7...v5.0.8) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix vulnerability issues ([6931eed](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/6931eed18a67d5d1d5d3fc66a3801b98cd263db0))
+
+## [5.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.6...v5.0.7) (2025-07-21)
+
+
+### Bug Fixes
+
+* fix staging checkout url ([d398601](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/d398601874c46190d3127c59b7187407ed25f5d1))
+
+## [5.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.5...v5.0.6) (2025-01-31)
+
+
+### Bug Fixes
+
+* update readme and dependencies ([7764d52](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/7764d52813588d62eaee562174f8458e852af979))
+
+## [5.0.5](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.4...v5.0.5) (2024-12-06)
+
+
+### Bug Fixes
+
+* fix security issue ([05ac93c](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/05ac93c67f0fe355b8948f0f2b181ccd12e2c054))
+
+## [5.0.4](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.3...v5.0.4) (2024-10-21)
+
+
+### Bug Fixes
+
+* fix security issue ([49c3964](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/49c3964e73db99f4ab771313b043ea19cc9edac1))
+
+## [5.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.2...v5.0.3) (2024-08-23)
+
+
+### Bug Fixes
+
+* update dependencies ([9c9613c](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/9c9613cef9bc6082413420232119bc6a97f8aa2a))
+
+## [5.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.1...v5.0.2) (2024-06-19)
+
+
+### Bug Fixes
+
+* fix output url ([369a5d7](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/369a5d778f84fcfba26d880560b54c876b62071f))
+* fix url building ([40e5503](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/40e55037f350921c41c8d501ea3bf5a2b70173f7))
+
+## [5.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0...v5.0.1) (2024-05-30)
+
+
+### Bug Fixes
+
+* fix flags inheritance ([75ffa8a](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/75ffa8ab84ff4307e282add54520b983e748320b))
+
+# [5.0.0](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.2...v5.0.0) (2024-04-29)
+
+
+### Bug Fixes
+
+* fix checkout order command ([3871c01](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/3871c014757edf776c0465894b888bb6d68b831d))
+* fix dependencies ([931bf98](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/931bf98fce1d0f8a1db113c3ae458152205c557b))
+* fix dependencies ([62427e6](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/62427e65fc5eed5f0116b0fb6357925c0e6b3d4c))
+* fix dependencies ([5dcdb22](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/5dcdb229726ee5db11ec6a48370807cc47ff88d1))
+* fix engine version ([26cb6a5](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/26cb6a516b2166857238ca090f6bcf884545e2ce))
+* fix node eng ([74914f0](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/74914f0b31169785ca0138cebb852b3fbf88ba4d))
+* fix release config ([e4eecae](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/e4eecae09fa2c312adafd2ed7e896dc5a14dc7a3))
+* fix sdk dependency ([a9ca314](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/a9ca314c24773693f29cf3e488e6636af53d684e))
+* fix ts-node ([15430cf](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/15430cfde68522fa3da584bf601f68cc22dbec52))
+* fix update package ([acff413](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/acff4130e6db02b45114285e724a9d8ae592774a))
+* replace ts-node with tsx ([af8e672](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/af8e672a766af063c3956233c18aec6203690d1c))
+* update cli dependencies ([9e22a41](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/9e22a418d63cc473449a4fb3dec663d168febd4c))
+* update dependencies ([84a91ee](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/84a91ee7e8995234a4be161535a851be163e45f3))
+* update dependencies ([297c360](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/297c360b1d4b0ddf542320116fae909f997f8360))
+* update dependencies ([2440f02](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/2440f02be202dc190d8f0b2adbff99ee71822172))
+* update dependencies ([8da8251](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/8da8251d677b58198d8475792361a3b44c64b29f))
+
+
+### Features
+
+* prerelease ([5f0e634](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/5f0e6341df52c6253960ca8e0391dfc99db2b6ef))
+
+
+### Performance Improvements
+
+* update engine ([59972bb](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/59972bb835f72cbb2526cef3957439310e3ebd6c))
+* upgrade to oclif 3 ([8d53c24](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/8d53c242d8c9553b0b68ed97907d640d9551459f))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
+# [5.0.0-rc.4](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-rc.3...v5.0.0-rc.4) (2024-04-15)
+
+
+### Bug Fixes
+
+* update dependencies ([84a91ee](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/84a91ee7e8995234a4be161535a851be163e45f3))
+* update dependencies ([297c360](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/297c360b1d4b0ddf542320116fae909f997f8360))
+
+# [5.0.0-rc.3](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-rc.2...v5.0.0-rc.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* update cli dependencies ([9e22a41](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/9e22a418d63cc473449a4fb3dec663d168febd4c))
+
+# [5.0.0-rc.2](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-rc.1...v5.0.0-rc.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* fix dependencies ([931bf98](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/931bf98fce1d0f8a1db113c3ae458152205c557b))
+* fix dependencies ([62427e6](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/62427e65fc5eed5f0116b0fb6357925c0e6b3d4c))
+* fix dependencies ([5dcdb22](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/5dcdb229726ee5db11ec6a48370807cc47ff88d1))
+
+# [5.0.0-rc.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.2...v5.0.0-rc.1) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix checkout order command ([3871c01](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/3871c014757edf776c0465894b888bb6d68b831d))
+* fix engine version ([26cb6a5](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/26cb6a516b2166857238ca090f6bcf884545e2ce))
+* fix node eng ([74914f0](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/74914f0b31169785ca0138cebb852b3fbf88ba4d))
+* fix release config ([e4eecae](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/e4eecae09fa2c312adafd2ed7e896dc5a14dc7a3))
+* fix ts-node ([15430cf](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/15430cfde68522fa3da584bf601f68cc22dbec52))
+* fix update package ([acff413](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/acff4130e6db02b45114285e724a9d8ae592774a))
+* replace ts-node with tsx ([af8e672](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/af8e672a766af063c3956233c18aec6203690d1c))
+* update dependencies ([2440f02](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/2440f02be202dc190d8f0b2adbff99ee71822172))
+* update dependencies ([8da8251](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/8da8251d677b58198d8475792361a3b44c64b29f))
+
+
+### Features
+
+* prerelease ([5f0e634](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/5f0e6341df52c6253960ca8e0391dfc99db2b6ef))
+
+
+### Performance Improvements
+
+* update engine ([59972bb](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/59972bb835f72cbb2526cef3957439310e3ebd6c))
+* upgrade to oclif 3 ([8d53c24](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/8d53c242d8c9553b0b68ed97907d640d9551459f))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+* the framework oclif and its plugins have been migrated to next major version
+
+# [5.0.0-oclif3.11](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.10...v5.0.0-oclif3.11) (2024-04-12)
+
+
+### Bug Fixes
+
+* fix release config ([e4eecae](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/e4eecae09fa2c312adafd2ed7e896dc5a14dc7a3))
+
+# [5.0.0-oclif3.10](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.9...v5.0.0-oclif3.10) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix ts-node ([15430cf](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/15430cfde68522fa3da584bf601f68cc22dbec52))
+
+# [5.0.0-oclif3.9](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.8...v5.0.0-oclif3.9) (2024-04-11)
+
+
+### Bug Fixes
+
+* replace ts-node with tsx ([af8e672](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/af8e672a766af063c3956233c18aec6203690d1c))
+
+# [5.0.0-oclif3.8](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.7...v5.0.0-oclif3.8) (2024-04-11)
+
+
+### Bug Fixes
+
+* update dependencies ([2440f02](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/2440f02be202dc190d8f0b2adbff99ee71822172))
+
+# [5.0.0-oclif3.7](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.6...v5.0.0-oclif3.7) (2024-04-08)
+
+
+### Bug Fixes
+
+* fix checkout order command ([3871c01](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/3871c014757edf776c0465894b888bb6d68b831d))
+
+# [5.0.0-oclif3.6](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.5...v5.0.0-oclif3.6) (2024-02-23)
+
+
+### Bug Fixes
+
+* fix update package ([acff413](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/acff4130e6db02b45114285e724a9d8ae592774a))
+
+# [5.0.0-oclif3.5](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.4...v5.0.0-oclif3.5) (2024-02-22)
+
+
+### Bug Fixes
+
+* fix engine version ([26cb6a5](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/26cb6a516b2166857238ca090f6bcf884545e2ce))
+
+# [5.0.0-oclif3.4](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.3...v5.0.0-oclif3.4) (2024-02-22)
+
+
+### Performance Improvements
+
+* update engine ([59972bb](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/59972bb835f72cbb2526cef3957439310e3ebd6c))
+
+
+### BREAKING CHANGES
+
+* remove support for node.js <20
+
+# [5.0.0-oclif3.3](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.2...v5.0.0-oclif3.3) (2024-02-21)
+
+
+### Bug Fixes
+
+* update dependencies ([8da8251](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/8da8251d677b58198d8475792361a3b44c64b29f))
+
+# [5.0.0-oclif3.2](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v5.0.0-oclif3.1...v5.0.0-oclif3.2) (2024-02-13)
+
+
+### Bug Fixes
+
+* fix node eng ([74914f0](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/74914f0b31169785ca0138cebb852b3fbf88ba4d))
+
+# [5.0.0-oclif3.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.2...v5.0.0-oclif3.1) (2024-02-13)
+
+
+### Performance Improvements
+
+* upgrade to oclif 3 ([8d53c24](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/8d53c242d8c9553b0b68ed97907d640d9551459f))
+
+
+### BREAKING CHANGES
+
+* the framework oclif and its plugins have been migrated to next major version
+
+## [4.7.2](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.1...v4.7.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* fix lint errors ([471e29f](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/471e29f4710268c554bb81b5027357bc1f268459))
+
+## [4.7.1](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.7.0...v4.7.1) (2023-11-22)
+
+
+### Bug Fixes
+
+* update typescript ([1cd4838](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/1cd4838750982029541d67ecf6ad002db837f57d))
+
+# [4.7.0](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/compare/v4.6.0...v4.7.0) (2023-11-22)
+
+
+### Bug Fixes
+
+* tests configuration ([80543c2](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/80543c2506d279e0ba9dd47c3b352cf2a78ac7f0))
+
+
+### Features
+
+* add semantic-release ([fa3aee5](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/commit/fa3aee569205bf7260ddc626b0f3e6523ef8a6d1))
