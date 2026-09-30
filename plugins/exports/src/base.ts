@@ -347,13 +347,13 @@ export abstract class ExportCommand extends BaseCommand {
   protected handleExportError(error: any, resDesc: string): void {
     const err = error.first()
     const errMeta = err?.meta
-    if (errMeta.error === 'less_than_or_equal_to') this.error(`Too many ${resDesc} to export: ${clColor.msg.error(errMeta.value)}`, {
+    if (errMeta?.error === 'less_than_or_equal_to') this.error(`Too many ${resDesc} to export: ${clColor.msg.error(errMeta.value)}`, {
       suggestions: [`The maximum number of exportable records is ${clColor.yellowBright(errMeta?.count)}, add more filters and re-run the command`]
     })
-    else if (errMeta.error === 'greater_than') {
+    else if (errMeta?.error === 'greater_than') {
       this.log(clColor.italic(`\nNo ${resDesc} found\n`))
       this.exit()
-    } else this.error(`${error.statusText}: ${err.title}`)
+    } else this.error(clOutput.formatError(error))
   }
 
 }
