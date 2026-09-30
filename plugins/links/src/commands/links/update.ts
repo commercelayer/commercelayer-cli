@@ -52,7 +52,8 @@ export default class LinksUpdate extends BaseEditCommand {
 
     const scope = this.checkScope(flags.link_scope) || undefined
     const name = flags.name
-    const domain = flags.domain
+    // link_domain has a default: only an explicit flag updates the link's domain
+    const domain = this.argv.some((a) => /^(-D|--link_domain)(=|$)/.test(a)) ? flags.link_domain : undefined
 
     if (!itemType && !itemId && !client_id && ! starts_at && !expires_at && !scope && !name && !domain)
       this.error(`At least one field of link ${clColor.bold.yellowBright(id)} must be updated`)
@@ -64,7 +65,7 @@ export default class LinksUpdate extends BaseEditCommand {
       scope,
       starts_at,
       expires_at,
-      item,
+      item: item ? { type: item.type, id: item.id } : undefined,
       domain
     }
 
