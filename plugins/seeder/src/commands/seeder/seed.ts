@@ -185,7 +185,7 @@ export default class SeederSeed extends Command {
           if (!resources.cacheableTypes?.includes(res.resourceType)) resources.cacheableTypes?.push(res.resourceType)
         } else {
           resources.uncacheable += gets
-          if (resources.uncacheableTypes?.includes(res.resourceType)) resources.uncacheableTypes?.push(res.resourceType)
+          if (!resources.uncacheableTypes?.includes(res.resourceType)) resources.uncacheableTypes?.push(res.resourceType)
         }
         // Posts and patches are always uncacheable
         resources.uncacheable += paps
