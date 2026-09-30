@@ -25,7 +25,7 @@ const printJSON = (obj: any, options?: { unformatted?: boolean; tabSize?: number
 const printCSV = (obj: object[], flags?: any): string => {
 	if (!obj || (obj.length === 0)) return ''
 	const fields = Object.keys(obj[0]).filter(f => {
-		if (['id', 'type'].includes(f)) return flags?.fields.includes(f)
+		if (['id', 'type'].includes(f)) return flags?.fields?.includes(f)
 		return true
 	})
 	let csv = fields.map(f => f.toUpperCase().replace(/_/g, ' ')).join(';') + '\n'
@@ -54,7 +54,9 @@ const maxLength = (values: any[], field: string): number => {
 /** Clean ISO string date */
 const cleanDate = (date: string): string => {
 	if (!date) return ''
-	return date.replace('T', ' ').replace('Z', '').substring(0, date.lastIndexOf('.'))
+	const clean = date.replace('T', ' ').replace('Z', '')
+	const ms = clean.lastIndexOf('.')
+	return (ms < 0) ? clean : clean.substring(0, ms)
 }
 
 /** Localized string date */
