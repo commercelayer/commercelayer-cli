@@ -1,6 +1,5 @@
+import { ux as oclifUx } from '@oclif/core'
 import type { ActionBase } from './action/base'
-import simple from './action/simple'
-import spinner from './action/spinner'
 
 export type Levels = 'debug' | 'error' | 'fatal' | 'info' | 'trace' | 'warn'
 
@@ -13,19 +12,13 @@ export interface ConfigMessage {
 const g: any = global
 const globals = g.ux || (g.ux = {})
 
-const actionType =
-  (Boolean(process.stderr.isTTY) &&
-    !process.env.CI &&
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    !['dumb', 'emacs-color'].includes(process.env.TERM!) &&
-    'spinner') ||
-  'simple'
-
-const Action = actionType === 'spinner' ? spinner : simple
-
-
 export class Config {
-  action: ActionBase = new Action()
+  /**
+   * oclif's own action (spinner): oclif stops it when a command fails, which
+   * restores stdout / stderr. A separate cli-ux spinner kept them buffered
+   * after an error, and the error message was never printed.
+   */
+  action: ActionBase = oclifUx.action as unknown as ActionBase
 
   errorsHandled = false
 
