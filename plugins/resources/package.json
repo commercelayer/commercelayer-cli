@@ -50,7 +50,7 @@
   },
   "scripts": {
     "build": "rm -rf lib && tsc -b",
-    "prepack": "pnpm resources && pnpm build && oclif manifest && pnpm readme",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
