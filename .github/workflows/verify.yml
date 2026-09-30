@@ -1,0 +1,84 @@
+name: Verify
+
+# The gate for every change: lint, build and tests.
+#
+# Lint and build always cover the whole workspace (both are fast). Tests only
+# run for the packages a pull request changed plus the packages depending on
+# them, so a cli-core change also tests the CLI and every plugin, while a
+# change to one plugin tests just that plugin. A change outside packages/ and
+# plugins/ (lockfile, root config, workflows) tests everything.
+on:
+  pull_request:
+  push:
+    branches: [main, monorepo]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - name: Release config is up to date
+        run: node scripts/gen-release-config.mjs --check
+
+  test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The base commit has to be present to compute the changed packages
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - name: Select packages to test
+        id: select
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = pull_request ]; then
+            BASE="origin/${{ github.base_ref }}"
+          else
+            BASE="${{ github.event.before }}"
+          fi
+          if [ -z "$BASE" ] || [ "$BASE" = 0000000000000000000000000000000000000000 ] || ! git rev-parse -q --verify "$BASE^{commit}" >/dev/null; then
+            echo "No usable base, testing everything"
+            echo "filter=*" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          CHANGED=$(git diff --name-only "$BASE"...HEAD)
+          if echo "$CHANGED" | grep -vE '^(packages|plugins)/|\.md$' | grep -q .; then
+            echo "Changes outside the packages, testing everything"
+            echo "filter=*" >> "$GITHUB_OUTPUT"
+          else
+            echo "filter=...[$BASE]" >> "$GITHUB_OUTPUT"
+          fi
+          echo "base=$BASE" >> "$GITHUB_OUTPUT"
+
+      - name: Run specs
+        env:
+          CL_CLI_ORGANIZATION: cli-test-org
+          CL_CLI_CLIENT_ID: ${{ secrets.CL_CLI_CLIENT_ID }}
+          CL_CLI_CLIENT_SECRET: ${{ secrets.CL_CLI_CLIENT_SECRET }}
+        # One package at a time: the CLI suites share the test organization
+        run: pnpm --filter '${{ steps.select.outputs.filter }}' --filter '!@commercelayer/cli-monorepo' --workspace-concurrency=1 test
+
+      - name: Command surface vs npm
+        # Informational on pull requests; publish.yml enforces it
+        run: |
+          set -euo pipefail
+          for path in $(pnpm --filter '${{ steps.select.outputs.filter }}' --filter '!@commercelayer/cli-monorepo' list --depth -1 --json | node -e 'for (const p of JSON.parse(require("fs").readFileSync(0))) console.log(require("path").relative(process.cwd(), p.path))'); do
+            [ "$path" = "" ] && continue
+            node scripts/check-manifest.mjs "$(basename "$path")" --warn
+          done

@@ -1,0 +1,57 @@
+name: Release
+
+# Drafts a GitHub release when a package tag is pushed. Nothing reaches npm
+# here: publish.yml publishes once someone publishes the draft.
+#
+# Tags are `<dir>-v<version>`, where <dir> is the package's directory under
+# packages/ or plugins/ (scripts/tag.mjs creates them). The package is derived
+# from the tag, so adding a package needs no change here. Legacy bare `v*`
+# tags don't match `*-v*` and stay inert.
+#
+# Release notes are GitHub's, built from PR titles and labels, with the
+# package's own config (.github/release-<dir>.yml) so each release lists only
+# the PRs that touched that package (see scripts/gen-release-config.mjs).
+on:
+  push:
+    tags:
+      - '*-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  draft:
+    name: Draft GitHub release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history and tags: the package's previous tag must be found
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*' }
+
+      - name: Resolve package
+        id: meta
+        run: node scripts/resolve-tag.mjs "$GITHUB_REF_NAME" | tee -a "$GITHUB_OUTPUT"
+
+      - name: Generate release notes for this package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ARGS=(-f "tag_name=${GITHUB_REF_NAME}" -f "configuration_file_path=.github/release-${{ steps.meta.outputs.dir }}.yml")
+          if [ -n "${{ steps.meta.outputs.previous_tag }}" ]; then
+            ARGS+=(-f "previous_tag_name=${{ steps.meta.outputs.previous_tag }}")
+          fi
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/releases/generate-notes" "${ARGS[@]}" --jq .body > release-notes.md
+          cat release-notes.md
+
+      - name: Create draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ steps.meta.outputs.package }} v${{ steps.meta.outputs.version }}
+          draft: true
+          prerelease: ${{ steps.meta.outputs.prerelease }}
+          body_path: release-notes.md
