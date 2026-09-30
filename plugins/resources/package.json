@@ -1,0 +1,95 @@
+{
+  "name": "@commercelayer/cli-plugin-resources",
+  "description": "Commerce Layer CLI Resources plugin",
+  "version": "6.18.5",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-resources",
+  "repository": "commercelayer/commercelayer-cli-plugin-resources",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-resources/issues",
+  "engines": {
+    "node": ">=20.18.1"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-resources",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "resources": {
+        "description": "Execute CRUD operations on API resources"
+      },
+      "order": {
+        "description": "Execute special operations on orders",
+        "hidden": true
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm resources && pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "posttest": "pnpm lint",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+    "resources": "pnpm update @commercelayer/sdk && tsx src/util/resources/build.ts",
+    "generate": "pnpm resources",
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write",
+    "release": "pnpm upgrade && pnpm generate && pnpm lint && pnpm prepack && pnpm postpack"
+  },
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.8",
+    "@commercelayer/cli-dev": "^3.1.9",
+    "@oclif/plugin-help": "^6.2.58",
+    "@oclif/test": "^3.2.15",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^5.2.3",
+    "@types/inquirer": "^8.2.13",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.9.5",
+    "@types/node-notifier": "^8.0.5",
+    "chai": "^6.2.2",
+    "mocha": "^11.8.0",
+    "nyc": "^18.0.0",
+    "oclif": "^4.23.30",
+    "semantic-release": "^25.0.9",
+    "tsx": "^4.23.12",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "^5.11.3",
+    "@commercelayer/cli-ux": "^1.2.3",
+    "@commercelayer/sdk": "^6.58.0",
+    "@oclif/core": "^3.27.0",
+    "inquirer": "^8.2.7",
+    "json-2-csv": "^5.5.11",
+    "node-notifier": "^10.0.1",
+    "open": "^8.4.2",
+    "tslib": "^2.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
