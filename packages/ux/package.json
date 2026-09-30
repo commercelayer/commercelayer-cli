@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-ux",
-  "description": "Commerce Layer Javascript CLI ux lib",
+  "description": "Internal package of the Commerce Layer CLI: terminal IO utilities shared by the CLI and its plugins. Not intended for direct use.",
   "version": "1.2.4",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
@@ -22,10 +22,7 @@
     "start": "tsx src/index.ts",
     "test": "jest --passWithNoTests",
     "test-local": "tsx test/spot.ts",
-    "coverage": "jest --coverage",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm lint && pnpm build"
+    "coverage": "jest --coverage"
   },
   "keywords": [
     "ecommerce",

@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-dev",
-  "description": "Commerce Layer CLI development tools and helpers",
+  "description": "Development tools of the Commerce Layer CLI (README generation). Private workspace package, not published.",
   "version": "3.1.12",
   "packageManager": "pnpm@11.20.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
@@ -47,14 +47,10 @@
   "scripts": {
     "pretest": "tsc --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "posttest": "pnpm lint",
     "build": "rm -rf lib && tsc",
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
-    "readme": "./bin/run.js readme && git add README.md",
-    "lint": "biome check --enforce-assist=true",
-    "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm lint && pnpm build"
+    "readme": "./bin/run.js readme && git add README.md"
   },
   "devDependencies": {
     "@oclif/plugin-help": "catalog:",
@@ -80,7 +76,5 @@
     "normalize-package-data": "^5.0.0",
     "tslib": "catalog:"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "private": true
 }

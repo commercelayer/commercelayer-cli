@@ -9,10 +9,12 @@ tmp
 /yarn.lock
 node_modules
 .DS_Store
-.editorconfig
 oclif.manifest.json
 /package-lock.json
 tsconfig.tsbuildinfo
 test_data*
 *.env
 
+coverage
+temp/
+*.tgz

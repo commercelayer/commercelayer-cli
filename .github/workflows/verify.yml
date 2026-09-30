@@ -28,6 +28,8 @@ jobs:
       - run: pnpm lint
       - name: Release config is up to date
         run: node scripts/gen-release-config.mjs --check
+      - name: Packages are consistent
+        run: node scripts/check-packages.mjs
 
   test:
     name: Build and test

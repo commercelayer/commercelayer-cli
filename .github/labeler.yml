@@ -20,11 +20,6 @@
       - any-glob-to-any-file:
           - 'packages/core/**'
 
-'pkg:dev':
-  - changed-files:
-      - any-glob-to-any-file:
-          - 'packages/dev/**'
-
 'pkg:exports':
   - changed-files:
       - any-glob-to-any-file:
