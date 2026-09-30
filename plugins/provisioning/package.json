@@ -56,10 +56,13 @@
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
-    "release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test"
+    "release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test",
+    "generate": "cl-generate",
+    "generate-local": "cl-generate --local"
   },
   "devDependencies": {
     "@commercelayer/cli-dev": "workspace:^",
+    "@commercelayer/cli-generator": "workspace:*",
     "@oclif/plugin-help": "^6.3.0",
     "@oclif/test": "^3.2.15",
     "@types/chai": "^5.2.3",

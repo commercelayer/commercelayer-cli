@@ -82,3 +82,32 @@ jobs:
             [ "$path" = "" ] && continue
             node scripts/check-manifest.mjs "$(basename "$path")" --warn
           done
+
+  generated:
+    name: Generated code is reproducible
+    runs-on: ubuntu-latest
+    # Regenerates every plugin from its committed snapshot (or installed SDK)
+    # and fails if anything differs: a generated file was edited by hand, or
+    # a snapshot/SDK update was committed without regenerating.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
+      # gen.config.ts files import cli-core, which resolves to its build
+      - run: pnpm --filter @commercelayer/cli-core build
+      - run: pnpm generate-local
+      - name: Fail on any difference
+        run: |
+          if ! git diff --exit-code --stat; then
+            echo '::error::Generated code is not reproducible from the committed snapshots.'
+            echo 'Either a generated file was edited by hand, or the output is stale: run `pnpm generate-local` and commit the result.'
+            exit 1
+          fi
+          untracked=$(git ls-files --others --exclude-standard)
+          if [ -n "$untracked" ]; then
+            echo '::error::Regeneration produced untracked files:'
+            echo "$untracked"
+            exit 1
+          fi

@@ -8,6 +8,7 @@
 	"files": {
 		"includes": [
 			"scripts/**",
+			"**/gen.config.ts",
 			"**/src/**",
 			"**/test/**",
 			"**/specs/**",
