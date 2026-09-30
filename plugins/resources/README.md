@@ -6,7 +6,7 @@ Commerce Layer CLI Resources plugin
 [![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-resources.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-resources)
 [![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-resources.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-resources)
 [![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-resources.svg)](https://github.com/commercelayer/cli-plugin-resources/blob/master/package.json)
-[![CodeQL](https://github.com/commercelayer/commercelayer-cli-plugin-resources/actions/workflows/codeql.yml/badge.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-resources/actions/workflows/codeql.yml)
+[![CodeQL](https://github.com/commercelayer/commercelayer-cli/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/commercelayer/commercelayer-cli/actions/workflows/codeql-analysis.yml)
 
 <!-- toc -->
 
@@ -71,7 +71,7 @@ EXAMPLES
   $ cl resources
 ```
 
-_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/index.ts)_
+_See code: [src/commands/resources/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/index.ts)_
 
 ### `commercelayer resources:all RESOURCE`
 
@@ -128,7 +128,7 @@ EXAMPLES
   $ cl all customers -s -created_at --json
 ```
 
-_See code: [src/commands/resources/all.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/all.ts)_
+_See code: [src/commands/resources/all.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/all.ts)_
 
 ### `commercelayer resources:args`
 
@@ -152,7 +152,7 @@ ALIASES
   $ commercelayer res:args
 ```
 
-_See code: [src/commands/resources/args.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/args.ts)_
+_See code: [src/commands/resources/args.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/args.ts)_
 
 ### `commercelayer resources:count RESOURCE`
 
@@ -182,7 +182,7 @@ EXAMPLES
   cl count customers -w customer_group_name_eq=<customer-group-name>
 ```
 
-_See code: [src/commands/resources/count.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/count.ts)_
+_See code: [src/commands/resources/count.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/count.ts)_
 
 ### `commercelayer resources:create RESOURCE`
 
@@ -241,7 +241,7 @@ EXAMPLES
   $ cl rc customers -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/create.ts)_
+_See code: [src/commands/resources/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/create.ts)_
 
 ### `commercelayer resources:delete RESOURCE [ID]`
 
@@ -283,7 +283,7 @@ EXAMPLES
   $ cl rd customers <customerId-1>,<customerId-2>,<customerId-3>
 ```
 
-_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/delete.ts)_
+_See code: [src/commands/resources/delete.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/delete.ts)_
 
 ### `commercelayer resources:doc RESOURCE`
 
@@ -315,7 +315,7 @@ EXAMPLES
   $ cl doc customers -p create
 ```
 
-_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/doc.ts)_
+_See code: [src/commands/resources/doc.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/doc.ts)_
 
 ### `commercelayer resources:fetch PATH [ID]`
 
@@ -376,7 +376,7 @@ EXAMPLES
   $ cl fetch customers/{customerId}/orders aBcdEkYWx
 ```
 
-_See code: [src/commands/resources/fetch.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/fetch.ts)_
+_See code: [src/commands/resources/fetch.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/fetch.ts)_
 
 ### `commercelayer resources:filters`
 
@@ -398,7 +398,7 @@ EXAMPLES
   $ cl res:filters
 ```
 
-_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/filters.ts)_
+_See code: [src/commands/resources/filters.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/filters.ts)_
 
 ### `commercelayer resources:get RESOURCE [ID]`
 
@@ -457,7 +457,7 @@ EXAMPLES
   $ cl get customers <customerId>
 ```
 
-_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/get.ts)_
+_See code: [src/commands/resources/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/get.ts)_
 
 ### `commercelayer resources:last RESOURCE`
 
@@ -485,7 +485,7 @@ EXAMPLES
   $ cl res:last customers
 ```
 
-_See code: [src/commands/resources/last.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/last.ts)_
+_See code: [src/commands/resources/last.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/last.ts)_
 
 ### `commercelayer resources:list RESOURCE`
 
@@ -541,7 +541,7 @@ EXAMPLES
   $ cl list customers -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/list.ts)_
+_See code: [src/commands/resources/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/list.ts)_
 
 ### `commercelayer resources:retrieve RESOURCE [ID]`
 
@@ -596,7 +596,7 @@ EXAMPLES
   $ clayer rr customers/<customerId>
 ```
 
-_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/retrieve.ts)_
+_See code: [src/commands/resources/retrieve.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/retrieve.ts)_
 
 ### `commercelayer resources:schema`
 
@@ -620,7 +620,7 @@ EXAMPLES
   cl res:schema
 ```
 
-_See code: [src/commands/resources/schema.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/schema.ts)_
+_See code: [src/commands/resources/schema.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/schema.ts)_
 
 ### `commercelayer resources:update RESOURCE [ID]`
 
@@ -689,5 +689,5 @@ EXAMPLES
   $ cl update customer <customerId> -r customer_group=<customerGroupId>
 ```
 
-_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/src/commands/resources/update.ts)_
+_See code: [src/commands/resources/update.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/src/commands/resources/update.ts)_
 <!-- commandsstop -->

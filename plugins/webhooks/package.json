@@ -3,9 +3,13 @@
   "description": "Commerce Layer CLI Webhooks plugin",
   "version": "4.3.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks",
-  "repository": "commercelayer/commercelayer-cli-plugin-webhooks",
-  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/issues",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/webhooks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/webhooks"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
     "node": ">=20"
   },
@@ -35,7 +39,7 @@
         "hidden": false
       }
     },
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/webhooks/<%- commandPath %>",
     "additionalHelpFlags": [
       "-h"
     ],
@@ -54,12 +58,9 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@biomejs/biome": "^2.5.8",
-    "@commercelayer/cli-dev": "^3.1.9",
+    "@commercelayer/cli-dev": "workspace:^",
     "@oclif/plugin-help": "^6.2.58",
     "@oclif/test": "^3.2.15",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/chai": "^5.2.3",
     "@types/lodash.isempty": "^4.4.9",
     "@types/mocha": "^10.0.10",
@@ -68,13 +69,12 @@
     "mocha": "^11.8.0",
     "nyc": "^18.0.0",
     "oclif": "^4.23.30",
-    "semantic-release": "^25.0.9",
     "tsx": "^4.23.12",
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.11.3",
-    "@commercelayer/cli-ux": "^1.2.3",
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/cli-ux": "workspace:^",
     "@commercelayer/sdk": "^6.58.0",
     "@oclif/core": "^3.27.0",
     "cli-table3": "^0.6.5",

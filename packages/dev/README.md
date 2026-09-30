@@ -54,5 +54,5 @@ DESCRIPTION
   Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
 ```
 
-_See code: [src/commands/readme.ts](https://github.com/commercelayer/commercelayer-cli-dev/blob/main/src/commands/readme.ts)_
+_See code: [src/commands/readme.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/packages/dev/src/commands/readme.ts)_
 <!-- commandsstop -->

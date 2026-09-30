@@ -61,7 +61,7 @@ DESCRIPTION
   list all the registered webhooks or the details of a single webhook
 ```
 
-_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/index.ts)_
+_See code: [src/commands/webhooks/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/index.ts)_
 
 ### `commercelayer webhooks:create`
 
@@ -89,7 +89,7 @@ EXAMPLES
   $ cl wh:create -t orders.place -u http://myurl.com
 ```
 
-_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/create.ts)_
+_See code: [src/commands/webhooks/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/create.ts)_
 
 ### `commercelayer webhooks:destroy ID`
 
@@ -116,7 +116,7 @@ EXAMPLES
   $ cl wh:destroy <webhook-id>>
 ```
 
-_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/destroy.ts)_
+_See code: [src/commands/webhooks/destroy.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/destroy.ts)_
 
 ### `commercelayer webhooks:details ID`
 
@@ -147,7 +147,7 @@ EXAMPLES
   $ cl wh:details <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/details.ts)_
+_See code: [src/commands/webhooks/details.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/details.ts)_
 
 ### `commercelayer webhooks:disable ID`
 
@@ -172,7 +172,7 @@ EXAMPLES
   $ cl wh:disable <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/disable.ts)_
+_See code: [src/commands/webhooks/disable.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/disable.ts)_
 
 ### `commercelayer webhooks:enable ID`
 
@@ -197,7 +197,7 @@ EXAMPLES
   $ cl wh:enable <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/enable.ts)_
+_See code: [src/commands/webhooks/enable.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/enable.ts)_
 
 ### `commercelayer webhooks:event ID`
 
@@ -226,7 +226,7 @@ EXAMPLES
   $ cl wh:event <event-id> -p
 ```
 
-_See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/event.ts)_
+_See code: [src/commands/webhooks/event.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/event.ts)_
 
 ### `commercelayer webhooks:events ID`
 
@@ -255,7 +255,7 @@ EXAMPLES
   $ cl wh:events <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/events.ts)_
+_See code: [src/commands/webhooks/events.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/events.ts)_
 
 ### `commercelayer webhooks:list`
 
@@ -284,7 +284,7 @@ EXAMPLES
   $ cl wh:list
 ```
 
-_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/list.ts)_
+_See code: [src/commands/webhooks/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/list.ts)_
 
 ### `commercelayer webhooks:listen ID`
 
@@ -312,7 +312,7 @@ EXAMPLES
   $ cl wh:listen <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/listen.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/listen.ts)_
+_See code: [src/commands/webhooks/listen.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/listen.ts)_
 
 ### `commercelayer webhooks:payload ID`
 
@@ -340,7 +340,7 @@ EXAMPLES
   $ cl wh:payload <event-id> -f
 ```
 
-_See code: [src/commands/webhooks/payload.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/payload.ts)_
+_See code: [src/commands/webhooks/payload.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/payload.ts)_
 
 ### `commercelayer webhooks:reset ID`
 
@@ -365,7 +365,7 @@ EXAMPLES
   $ cl wh:reset <webhook-id>
 ```
 
-_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/reset.ts)_
+_See code: [src/commands/webhooks/reset.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/reset.ts)_
 
 ### `commercelayer webhooks:topics`
 
@@ -387,7 +387,7 @@ EXAMPLES
   $ cl wh:topics
 ```
 
-_See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/topics.ts)_
+_See code: [src/commands/webhooks/topics.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/topics.ts)_
 
 ### `commercelayer webhooks:update ID`
 
@@ -418,5 +418,5 @@ EXAMPLES
   $ cl wh:update <webhook-id> -t orders.place -u http://myurl.com
 ```
 
-_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/src/commands/webhooks/update.ts)_
+_See code: [src/commands/webhooks/update.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/src/commands/webhooks/update.ts)_
 <!-- commandsstop -->

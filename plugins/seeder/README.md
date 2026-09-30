@@ -52,7 +52,7 @@ EXAMPLES
   $ cl seeder:check -b single_sku
 ```
 
-_See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/check.ts)_
+_See code: [src/commands/seeder/check.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/seeder/src/commands/seeder/check.ts)_
 
 ### `commercelayer seeder:clean`
 
@@ -77,7 +77,7 @@ EXAMPLES
   $ cl seeder:clean -b multi_market
 ```
 
-_See code: [src/commands/seeder/clean.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/clean.ts)_
+_See code: [src/commands/seeder/clean.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/seeder/src/commands/seeder/clean.ts)_
 
 ### `commercelayer seeder:seed`
 
@@ -106,5 +106,5 @@ EXAMPLES
   $ cl seed -b multi_market
 ```
 
-_See code: [src/commands/seeder/seed.ts](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/src/commands/seeder/seed.ts)_
+_See code: [src/commands/seeder/seed.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/seeder/src/commands/seeder/seed.ts)_
 <!-- commandsstop -->

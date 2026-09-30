@@ -11,13 +11,18 @@ Monorepo for the [Commerce Layer](https://commercelayer.io) CLI, its shared libr
 | Checkout plugin | [`plugins/checkout`](plugins/checkout) | [`@commercelayer/cli-plugin-checkout`](https://www.npmjs.com/package/@commercelayer/cli-plugin-checkout) |
 | Cleanups plugin | [`plugins/cleanups`](plugins/cleanups) | [`@commercelayer/cli-plugin-cleanups`](https://www.npmjs.com/package/@commercelayer/cli-plugin-cleanups) |
 | Exports plugin | [`plugins/exports`](plugins/exports) | [`@commercelayer/cli-plugin-exports`](https://www.npmjs.com/package/@commercelayer/cli-plugin-exports) |
+| Imports plugin | [`plugins/imports`](plugins/imports) | [`@commercelayer/cli-plugin-imports`](https://www.npmjs.com/package/@commercelayer/cli-plugin-imports) |
 | Links plugin | [`plugins/links`](plugins/links) | [`@commercelayer/cli-plugin-links`](https://www.npmjs.com/package/@commercelayer/cli-plugin-links) |
 | Metrics plugin | [`plugins/metrics`](plugins/metrics) | [`@commercelayer/cli-plugin-metrics`](https://www.npmjs.com/package/@commercelayer/cli-plugin-metrics) |
 | Microstore plugin | [`plugins/microstore`](plugins/microstore) | [`@commercelayer/cli-plugin-microstore`](https://www.npmjs.com/package/@commercelayer/cli-plugin-microstore) |
+| Orders plugin | [`plugins/orders`](plugins/orders) | [`@commercelayer/cli-plugin-orders`](https://www.npmjs.com/package/@commercelayer/cli-plugin-orders) |
 | Provisioning plugin | [`plugins/provisioning`](plugins/provisioning) | [`@commercelayer/cli-plugin-provisioning`](https://www.npmjs.com/package/@commercelayer/cli-plugin-provisioning) |
+| Resources plugin | [`plugins/resources`](plugins/resources) | [`@commercelayer/cli-plugin-resources`](https://www.npmjs.com/package/@commercelayer/cli-plugin-resources) |
+| Seeder plugin | [`plugins/seeder`](plugins/seeder) | [`@commercelayer/cli-plugin-seeder`](https://www.npmjs.com/package/@commercelayer/cli-plugin-seeder) |
 | Tags plugin | [`plugins/tags`](plugins/tags) | [`@commercelayer/cli-plugin-tags`](https://www.npmjs.com/package/@commercelayer/cli-plugin-tags) |
 | Token plugin | [`plugins/token`](plugins/token) | [`@commercelayer/cli-plugin-token`](https://www.npmjs.com/package/@commercelayer/cli-plugin-token) |
 | Triggers plugin | [`plugins/triggers`](plugins/triggers) | [`@commercelayer/cli-plugin-triggers`](https://www.npmjs.com/package/@commercelayer/cli-plugin-triggers) |
+| Webhooks plugin | [`plugins/webhooks`](plugins/webhooks) | [`@commercelayer/cli-plugin-webhooks`](https://www.npmjs.com/package/@commercelayer/cli-plugin-webhooks) |
 
 See [`packages/cli/README.md`](packages/cli/README.md) for installation and usage.
 

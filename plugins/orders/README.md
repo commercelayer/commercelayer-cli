@@ -85,7 +85,7 @@ DESCRIPTION
   execute an action on an order
 ```
 
-_See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/index.ts)_
+_See code: [src/commands/orders/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/index.ts)_
 
 ### `commercelayer orders:add_tags ID`
 
@@ -108,7 +108,7 @@ DESCRIPTION
   sales channels.
 ```
 
-_See code: [src/commands/orders/add_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/add_tags.ts)_
+_See code: [src/commands/orders/add_tags.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/add_tags.ts)_
 
 ### `commercelayer orders:approve ID`
 
@@ -130,7 +130,7 @@ DESCRIPTION
   Send this attribute if you want to approve a placed order. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve.ts)_
+_See code: [src/commands/orders/approve.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/approve.ts)_
 
 ### `commercelayer orders:approve_and_capture ID`
 
@@ -152,7 +152,7 @@ DESCRIPTION
   Send this attribute if you want to approve and capture a placed order. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/approve_and_capture.ts)_
+_See code: [src/commands/orders/approve_and_capture.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/approve_and_capture.ts)_
 
 ### `commercelayer orders:archive ID`
 
@@ -174,7 +174,7 @@ DESCRIPTION
   Send this attribute if you want to archive the order.
 ```
 
-_See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/archive.ts)_
+_See code: [src/commands/orders/archive.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/archive.ts)_
 
 ### `commercelayer orders:authorization_amount_cents ID`
 
@@ -196,7 +196,7 @@ DESCRIPTION
   Send this attribute as a value in cents if you want to overwrite the amount to be authorized.
 ```
 
-_See code: [src/commands/orders/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorization_amount_cents.ts)_
+_See code: [src/commands/orders/authorization_amount_cents.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/authorization_amount_cents.ts)_
 
 ### `commercelayer orders:authorize ID`
 
@@ -218,7 +218,7 @@ DESCRIPTION
   Send this attribute if you want to authorize the order's payment source.
 ```
 
-_See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/authorize.ts)_
+_See code: [src/commands/orders/authorize.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/authorize.ts)_
 
 ### `commercelayer orders:billing_address_clone_id ID`
 
@@ -241,7 +241,7 @@ DESCRIPTION
   The id of the address that you want to clone to create the order's billing address.
 ```
 
-_See code: [src/commands/orders/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/billing_address_clone_id.ts)_
+_See code: [src/commands/orders/billing_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/billing_address_clone_id.ts)_
 
 ### `commercelayer orders:billing_address_same_as_shipping ID`
 
@@ -263,7 +263,7 @@ DESCRIPTION
   Send this attribute if you want the billing address to be cloned from the order's shipping address.
 ```
 
-_See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/billing_address_same_as_shipping.ts)_
+_See code: [src/commands/orders/billing_address_same_as_shipping.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/billing_address_same_as_shipping.ts)_
 
 ### `commercelayer orders:cancel ID`
 
@@ -285,7 +285,7 @@ DESCRIPTION
   Send this attribute if you want to cancel a placed order. The order's authorization will be automatically voided.
 ```
 
-_See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/cancel.ts)_
+_See code: [src/commands/orders/cancel.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/cancel.ts)_
 
 ### `commercelayer orders:capture ID`
 
@@ -307,7 +307,7 @@ DESCRIPTION
   Send this attribute if you want to capture an authorized order. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/capture.ts)_
+_See code: [src/commands/orders/capture.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/capture.ts)_
 
 ### `commercelayer orders:commit_invoice ID`
 
@@ -330,7 +330,7 @@ DESCRIPTION
   Avalara).
 ```
 
-_See code: [src/commands/orders/commit_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/commit_invoice.ts)_
+_See code: [src/commands/orders/commit_invoice.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/commit_invoice.ts)_
 
 ### `commercelayer orders:create_subscriptions ID`
 
@@ -353,7 +353,7 @@ DESCRIPTION
   have a frequency.
 ```
 
-_See code: [src/commands/orders/create_subscriptions.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/create_subscriptions.ts)_
+_See code: [src/commands/orders/create_subscriptions.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/create_subscriptions.ts)_
 
 ### `commercelayer orders:customer_payment_source_id ID`
 
@@ -376,7 +376,7 @@ DESCRIPTION
   The id of the customer payment source (i.e. credit card) that you want to use as the order's payment source.
 ```
 
-_See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/customer_payment_source_id.ts)_
+_See code: [src/commands/orders/customer_payment_source_id.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/customer_payment_source_id.ts)_
 
 ### `commercelayer orders:fix_payment_source ID`
 
@@ -400,7 +400,7 @@ DESCRIPTION
   is done before approval automatically. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/fix_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fix_payment_source.ts)_
+_See code: [src/commands/orders/fix_payment_source.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/fix_payment_source.ts)_
 
 ### `commercelayer orders:fulfill ID`
 
@@ -423,7 +423,7 @@ DESCRIPTION
   alternatively order must be approved). Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/fulfill.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/fulfill.ts)_
+_See code: [src/commands/orders/fulfill.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/fulfill.ts)_
 
 ### `commercelayer orders:nullify_payment_source ID`
 
@@ -445,7 +445,7 @@ DESCRIPTION
   Send this attribute if you want to nullify the payment source for this order.
 ```
 
-_See code: [src/commands/orders/nullify_payment_source.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/nullify_payment_source.ts)_
+_See code: [src/commands/orders/nullify_payment_source.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/nullify_payment_source.ts)_
 
 ### `commercelayer orders:pending ID`
 
@@ -467,7 +467,7 @@ DESCRIPTION
   Send this attribute if you want to move a draft or placing order to pending. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/pending.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/pending.ts)_
+_See code: [src/commands/orders/pending.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/pending.ts)_
 
 ### `commercelayer orders:place ID`
 
@@ -489,7 +489,7 @@ DESCRIPTION
   Send this attribute if you want to place the order.
 ```
 
-_See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/place.ts)_
+_See code: [src/commands/orders/place.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/place.ts)_
 
 ### `commercelayer orders:refresh ID`
 
@@ -511,7 +511,7 @@ DESCRIPTION
   Send this attribute if you want to manually refresh the order.
 ```
 
-_See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refresh.ts)_
+_See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/refresh.ts)_
 
 ### `commercelayer orders:refund ID`
 
@@ -533,7 +533,7 @@ DESCRIPTION
   Send this attribute if you want to refund a captured order. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund.ts)_
+_See code: [src/commands/orders/refund.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/refund.ts)_
 
 ### `commercelayer orders:refund_invoice ID`
 
@@ -556,7 +556,7 @@ DESCRIPTION
   Avalara).
 ```
 
-_See code: [src/commands/orders/refund_invoice.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/refund_invoice.ts)_
+_See code: [src/commands/orders/refund_invoice.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/refund_invoice.ts)_
 
 ### `commercelayer orders:remove_tags ID`
 
@@ -579,7 +579,7 @@ DESCRIPTION
   by sales channels.
 ```
 
-_See code: [src/commands/orders/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/remove_tags.ts)_
+_See code: [src/commands/orders/remove_tags.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/remove_tags.ts)_
 
 ### `commercelayer orders:reset_circuit ID`
 
@@ -602,7 +602,7 @@ DESCRIPTION
   failures count. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/reset_circuit.ts)_
+_See code: [src/commands/orders/reset_circuit.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/reset_circuit.ts)_
 
 ### `commercelayer orders:save_billing_address_to_customer_address_book ID`
 
@@ -625,7 +625,7 @@ DESCRIPTION
   address.
 ```
 
-_See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_billing_address_to_customer_address_book.ts)_
+_See code: [src/commands/orders/save_billing_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/save_billing_address_to_customer_address_book.ts)_
 
 ### `commercelayer orders:save_payment_source_to_customer_wallet ID`
 
@@ -648,7 +648,7 @@ DESCRIPTION
   source.
 ```
 
-_See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_payment_source_to_customer_wallet.ts)_
+_See code: [src/commands/orders/save_payment_source_to_customer_wallet.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/save_payment_source_to_customer_wallet.ts)_
 
 ### `commercelayer orders:save_shipping_address_to_customer_address_book ID`
 
@@ -671,7 +671,7 @@ DESCRIPTION
   address.
 ```
 
-_See code: [src/commands/orders/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/save_shipping_address_to_customer_address_book.ts)_
+_See code: [src/commands/orders/save_shipping_address_to_customer_address_book.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/save_shipping_address_to_customer_address_book.ts)_
 
 ### `commercelayer orders:shipping_address_clone_id ID`
 
@@ -694,7 +694,7 @@ DESCRIPTION
   The id of the address that you want to clone to create the order's shipping address.
 ```
 
-_See code: [src/commands/orders/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_clone_id.ts)_
+_See code: [src/commands/orders/shipping_address_clone_id.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/shipping_address_clone_id.ts)_
 
 ### `commercelayer orders:shipping_address_same_as_billing ID`
 
@@ -716,7 +716,7 @@ DESCRIPTION
   Send this attribute if you want the shipping address to be cloned from the order's billing address.
 ```
 
-_See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/shipping_address_same_as_billing.ts)_
+_See code: [src/commands/orders/shipping_address_same_as_billing.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/shipping_address_same_as_billing.ts)_
 
 ### `commercelayer orders:start_editing ID`
 
@@ -739,7 +739,7 @@ DESCRIPTION
   amount. Cannot be passed by sales channels.
 ```
 
-_See code: [src/commands/orders/start_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/start_editing.ts)_
+_See code: [src/commands/orders/start_editing.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/start_editing.ts)_
 
 ### `commercelayer orders:stop_editing ID`
 
@@ -762,7 +762,7 @@ DESCRIPTION
   channels.
 ```
 
-_See code: [src/commands/orders/stop_editing.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/stop_editing.ts)_
+_See code: [src/commands/orders/stop_editing.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/stop_editing.ts)_
 
 ### `commercelayer orders:unarchive ID`
 
@@ -784,7 +784,7 @@ DESCRIPTION
   Send this attribute if you want to unarchive the order.
 ```
 
-_See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/unarchive.ts)_
+_See code: [src/commands/orders/unarchive.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/unarchive.ts)_
 
 ### `commercelayer orders:update_taxes ID`
 
@@ -807,7 +807,7 @@ DESCRIPTION
   order's market).
 ```
 
-_See code: [src/commands/orders/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/update_taxes.ts)_
+_See code: [src/commands/orders/update_taxes.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/update_taxes.ts)_
 
 ### `commercelayer orders:validate ID`
 
@@ -829,5 +829,5 @@ DESCRIPTION
   Send this attribute if you want to trigger the external validation for the order.
 ```
 
-_See code: [src/commands/orders/validate.ts](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/src/commands/orders/validate.ts)_
+_See code: [src/commands/orders/validate.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/validate.ts)_
 <!-- commandsstop -->

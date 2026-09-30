@@ -65,7 +65,7 @@ DESCRIPTION
   list all the created imports or show details of a single import
 ```
 
-_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/index.ts)_
+_See code: [src/commands/imports/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/src/commands/imports/index.ts)_
 
 ### `commercelayer imports:create`
 
@@ -100,7 +100,7 @@ EXAMPLES
   $ cl imp:create -t skus -i <input-file-path>
 ```
 
-_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/create.ts)_
+_See code: [src/commands/imports/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/src/commands/imports/create.ts)_
 
 ### `commercelayer imports:delete ID`
 
@@ -125,7 +125,7 @@ EXAMPLES
   $ cl imp:delete <import-id>>
 ```
 
-_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/delete.ts)_
+_See code: [src/commands/imports/delete.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/src/commands/imports/delete.ts)_
 
 ### `commercelayer imports:details ID`
 
@@ -157,7 +157,7 @@ EXAMPLES
   $ cl imp:details <import-id> -i -l
 ```
 
-_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/details.ts)_
+_See code: [src/commands/imports/details.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/src/commands/imports/details.ts)_
 
 ### `commercelayer imports:group GROUP_ID`
 
@@ -182,7 +182,7 @@ EXAMPLES
   $ cl imp:group <group-id>
 ```
 
-_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/group.ts)_
+_See code: [src/commands/imports/group.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/src/commands/imports/group.ts)_
 
 ### `commercelayer imports:list`
 
@@ -224,7 +224,7 @@ EXAMPLES
   $ cl imp:list
 ```
 
-_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/list.ts)_
+_See code: [src/commands/imports/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/src/commands/imports/list.ts)_
 
 ### `commercelayer imports:types`
 
@@ -249,5 +249,5 @@ EXAMPLES
   $ cl imp:types
 ```
 
-_See code: [src/commands/imports/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/src/commands/imports/types.ts)_
+_See code: [src/commands/imports/types.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/src/commands/imports/types.ts)_
 <!-- commandsstop -->
