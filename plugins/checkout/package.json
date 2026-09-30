@@ -3,9 +3,13 @@
   "description": "Commerce Layer CLI Checkout plugin",
   "version": "5.0.20",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout",
-  "repository": "commercelayer/commercelayer-cli-plugin-checkout",
-  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-checkout/issues",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/checkout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/checkout"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
     "node": ">=20"
   },
@@ -35,7 +39,7 @@
         "hidden": false
       }
     },
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/checkout/<%- commandPath %>",
     "additionalHelpFlags": [
       "-h"
     ],
@@ -54,12 +58,9 @@
   },
   "types": "lib/index.d.ts",
   "devDependencies": {
-    "@biomejs/biome": "^2.5.9",
-    "@commercelayer/cli-dev": "^3.1.9",
+    "@commercelayer/cli-dev": "workspace:^",
     "@oclif/plugin-help": "^6.2.58",
     "@oclif/test": "^3.2.15",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.9.5",
@@ -67,12 +68,11 @@
     "mocha": "^11.8.0",
     "nyc": "^18.0.0",
     "oclif": "^4.23.30",
-    "semantic-release": "^25.0.9",
     "tsx": "^4.23.12",
     "typescript": "6.0.2"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.11.3",
+    "@commercelayer/cli-core": "workspace:^",
     "@commercelayer/sdk": "^6.58.0",
     "@oclif/core": "^3.27.0",
     "open": "^8.4.2",

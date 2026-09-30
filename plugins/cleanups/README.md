@@ -56,7 +56,7 @@ DESCRIPTION
   list all the created cleanups or show details of a single cleanup
 ```
 
-_See code: [src/commands/cleanups/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/index.ts)_
+_See code: [src/commands/cleanups/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/cleanups/src/commands/cleanups/index.ts)_
 
 ### `commercelayer cleanups:create`
 
@@ -87,7 +87,7 @@ EXAMPLES
   $ cl cleanup -t skus -w reference_origin_eq=<ref-id>
 ```
 
-_See code: [src/commands/cleanups/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/create.ts)_
+_See code: [src/commands/cleanups/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/cleanups/src/commands/cleanups/create.ts)_
 
 ### `commercelayer cleanups:details ID`
 
@@ -115,7 +115,7 @@ EXAMPLES
   $ cl clp:details <cleanup-id>
 ```
 
-_See code: [src/commands/cleanups/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/details.ts)_
+_See code: [src/commands/cleanups/details.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/cleanups/src/commands/cleanups/details.ts)_
 
 ### `commercelayer cleanups:group GROUP_ID`
 
@@ -140,7 +140,7 @@ EXAMPLES
   $ cl clp:group <group-id>
 ```
 
-_See code: [src/commands/cleanups/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/group.ts)_
+_See code: [src/commands/cleanups/group.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/cleanups/src/commands/cleanups/group.ts)_
 
 ### `commercelayer cleanups:list`
 
@@ -174,7 +174,7 @@ EXAMPLES
   $ cl clp:list
 ```
 
-_See code: [src/commands/cleanups/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/list.ts)_
+_See code: [src/commands/cleanups/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/cleanups/src/commands/cleanups/list.ts)_
 
 ### `commercelayer cleanups:types`
 
@@ -199,5 +199,5 @@ EXAMPLES
   $ cl clp:types
 ```
 
-_See code: [src/commands/cleanups/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/src/commands/cleanups/types.ts)_
+_See code: [src/commands/cleanups/types.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/cleanups/src/commands/cleanups/types.ts)_
 <!-- commandsstop -->

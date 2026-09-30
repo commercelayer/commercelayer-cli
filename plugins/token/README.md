@@ -55,7 +55,7 @@ EXAMPLES
   cl token:assertion -to <ownerId> -C key1=value1 -C key2=value2 key3=value3
 ```
 
-_See code: [src/commands/token/assertion.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/assertion.ts)_
+_See code: [src/commands/token/assertion.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/token/src/commands/token/assertion.ts)_
 
 ### `commercelayer token:decode TOKEN`
 
@@ -83,7 +83,7 @@ EXAMPLES
   $ cl token:info <accessToken> -f
 ```
 
-_See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/decode.ts)_
+_See code: [src/commands/token/decode.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/token/src/commands/token/decode.ts)_
 
 ### `commercelayer token:get`
 
@@ -115,7 +115,7 @@ EXAMPLES
   $ cl token:get -i <clientId> -s <clientSecret> -a <jwtAssertion>
 ```
 
-_See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/get.ts)_
+_See code: [src/commands/token/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/token/src/commands/token/get.ts)_
 
 ### `commercelayer token:revoke TOKEN`
 
@@ -143,5 +143,5 @@ EXAMPLES
   $ cl token:revoke -o <organizationSlug> <accessToken> -i <clientId> -s <clientSecret>
 ```
 
-_See code: [src/commands/token/revoke.ts](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/src/commands/token/revoke.ts)_
+_See code: [src/commands/token/revoke.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/token/src/commands/token/revoke.ts)_
 <!-- commandsstop -->

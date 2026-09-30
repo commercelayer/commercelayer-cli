@@ -59,5 +59,5 @@ EXAMPLES
   $ cl microstore -S <sku-list-id> --cart --inline --open
 ```
 
-_See code: [src/commands/microstore/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/blob/main/src/commands/microstore/index.ts)_
+_See code: [src/commands/microstore/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/microstore/src/commands/microstore/index.ts)_
 <!-- commandsstop -->

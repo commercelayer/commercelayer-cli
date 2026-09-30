@@ -69,7 +69,7 @@ DESCRIPTION
   list all the created exports or show details of a single export
 ```
 
-_See code: [src/commands/exports/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/index.ts)_
+_See code: [src/commands/exports/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/src/commands/exports/index.ts)_
 
 ### `commercelayer exports:create`
 
@@ -110,7 +110,7 @@ EXAMPLES
   $ cl export -t return -f number -X desktop/returns.json
 ```
 
-_See code: [src/commands/exports/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/create.ts)_
+_See code: [src/commands/exports/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/src/commands/exports/create.ts)_
 
 ### `commercelayer exports:details ID`
 
@@ -135,7 +135,7 @@ EXAMPLES
   $ cl exp:details <export-id>
 ```
 
-_See code: [src/commands/exports/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/details.ts)_
+_See code: [src/commands/exports/details.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/src/commands/exports/details.ts)_
 
 ### `commercelayer exports:group GROUP_ID`
 
@@ -160,7 +160,7 @@ EXAMPLES
   $ cl exp:group <group-id>
 ```
 
-_See code: [src/commands/exports/group.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/group.ts)_
+_See code: [src/commands/exports/group.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/src/commands/exports/group.ts)_
 
 ### `commercelayer exports:interrupt ID`
 
@@ -188,7 +188,7 @@ EXAMPLES
   $ cl exp:interrupt <export-id>
 ```
 
-_See code: [src/commands/exports/interrupt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/interrupt.ts)_
+_See code: [src/commands/exports/interrupt.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/src/commands/exports/interrupt.ts)_
 
 ### `commercelayer exports:list`
 
@@ -234,7 +234,7 @@ EXAMPLES
   $ cl exp:list
 ```
 
-_See code: [src/commands/exports/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/list.ts)_
+_See code: [src/commands/exports/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/src/commands/exports/list.ts)_
 
 ### `commercelayer exports:types`
 
@@ -259,5 +259,5 @@ EXAMPLES
   $ cl exp:types
 ```
 
-_See code: [src/commands/exports/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/src/commands/exports/types.ts)_
+_See code: [src/commands/exports/types.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/src/commands/exports/types.ts)_
 <!-- commandsstop -->

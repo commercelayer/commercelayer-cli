@@ -63,7 +63,7 @@ EXAMPLES
   $ cl checkout -S <sku-code-1> -S <sku-code-2> -m <market-id>
 ```
 
-_See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/src/commands/checkout/index.ts)_
+_See code: [src/commands/checkout/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/checkout/src/commands/checkout/index.ts)_
 
 ### `commercelayer checkout:order ID`
 
@@ -87,5 +87,5 @@ EXAMPLES
   $ commercelayer checkout:order <order-id>
 ```
 
-_See code: [src/commands/checkout/order.ts](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/src/commands/checkout/order.ts)_
+_See code: [src/commands/checkout/order.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/checkout/src/commands/checkout/order.ts)_
 <!-- commandsstop -->
