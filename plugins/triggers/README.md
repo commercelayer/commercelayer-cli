@@ -5,7 +5,7 @@ Commerce Layer CLI Triggers plugin
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/@commercelayer/cli-plugin-triggers.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-triggers)
 [![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli-plugin-triggers.svg)](https://npmjs.org/package/@commercelayer/cli-plugin-triggers)
-[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-triggers.svg)](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/@commercelayer/cli-plugin-triggers.svg)](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/package.json)
 
 <!-- toc -->
 

@@ -1,0 +1,30 @@
+ /*
+let [id, ...argv] = this.argv
+    this.parse({strict: false, '--': false, ...this.ctor as any})
+    if (!this.config.findCommand(id)) {
+      const topic = this.config.findTopic(id)
+      if (topic) return this._help()
+      if (this.config.findCommand(ROOT_INDEX_CMD_ID)) {
+        id = ROOT_INDEX_CMD_ID
+        argv = this.argv
+      }
+    }
+    await this.config.runCommand(id, argv)
+    */
+
+
+
+    /*
+    const savedId = 'apps'
+    const savedArgs = ['-a', 'admin']
+
+    const cmd = this.config.findCommand(savedId)
+    if (!cmd) this.error('Command not found')
+
+    const command = cmd.load()
+    await command.run(savedArgs, this.config)
+
+    this.log(inspect({
+      command: this.argv,
+    }, false, null, true))
+*/

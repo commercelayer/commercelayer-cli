@@ -30,6 +30,11 @@
       - any-glob-to-any-file:
           - 'plugins/exports/**'
 
+'pkg:imports':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/imports/**'
+
 'pkg:links':
   - changed-files:
       - any-glob-to-any-file:
@@ -45,10 +50,25 @@
       - any-glob-to-any-file:
           - 'plugins/microstore/**'
 
+'pkg:orders':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/orders/**'
+
 'pkg:provisioning':
   - changed-files:
       - any-glob-to-any-file:
           - 'plugins/provisioning/**'
+
+'pkg:resources':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/resources/**'
+
+'pkg:seeder':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/seeder/**'
 
 'pkg:tags':
   - changed-files:
@@ -69,3 +89,8 @@
   - changed-files:
       - any-glob-to-any-file:
           - 'packages/ux/**'
+
+'pkg:webhooks':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/webhooks/**'

@@ -1,0 +1,66 @@
+[
+  {
+    "resourceType": "addresses",
+    "importAll": true
+  },
+  {
+    "resourceType": "merchants",
+    "importAll": true
+  },
+  {
+    "resourceType": "stock_locations",
+    "importAll": true
+  },
+  {
+    "resourceType": "inventory_models",
+    "importAll": true
+  },
+  {
+    "resourceType": "inventory_stock_locations",
+    "importAll": true
+  },
+  {
+    "resourceType": "inventory_return_locations",
+    "importAll": true
+  },
+  {
+    "resourceType": "price_lists",
+    "importAll": true
+  },
+  {
+    "resourceType": "markets",
+    "importAll": true
+  },
+  {
+    "resourceType": "shipping_categories",
+    "importAll": true
+  },
+  {
+    "resourceType": "shipping_zones",
+    "importAll": true
+  },
+  {
+    "resourceType": "shipping_methods",
+    "importAll": true
+  },
+  {
+    "resourceType": "payment_gateways",
+    "importAll": true
+  },
+  {
+    "resourceType": "payment_methods",
+    "importAll": true
+  },
+  {
+    "resourceType": "skus",
+    "importAll": true
+  },
+  {
+    "resourceType": "stock_items",
+    "importAll": true
+  },
+  {
+    "resourceType": "prices",
+    "importAll": true
+  }
+]

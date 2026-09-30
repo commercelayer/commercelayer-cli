@@ -77,21 +77,21 @@ The Commerce Layer CLI supports the following commands:
 
 The Commerce Layer CLI currently supports the following plugins:
 
-* [`resources`](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/README.md) - Execute CRUD operations on API resources.
-* [`seeder`](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/README.md) - Execute Commerce Layer seeder.
-* [`imports`](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/README.md) - Import resources in Commerce Layer.
-* [`webhooks`](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/README.md) - Manage webhooks in Commerce Layer.
-* [`orders`](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/README.md) - Execute actions on orders in Commerce Layer.
-* [`checkout`](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/README.md) - Generate checkout URLs.
-* [`triggers`](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/README.md) - Execute actions on resources in Commerce Layer.
-* [`token`](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/README.md) - Manage Commerce Layer access tokens.
-* [`microstore`](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/blob/main/README.md) - Generate Microstore URLs.
-* [`exports`](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/README.md) - Export resources from Commerce Layer.
-* [`cleanups`](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/README.md) - Cleanup resources from Commerce Layer.
-* [`tags`](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/README.md) - Manage resources tags in Commerce Layer.
-* [`provisioning`](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/README.md) - Make requests to Commerce Layer's Provisioning API.
-* [`links`](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/README.md) - Generate short links for shoppable resources.
-* [`metrics`](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/README.md) - Make requests to Commerce Layer's Metrics API.
+* [`resources`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/resources/README.md) - Execute CRUD operations on API resources.
+* [`seeder`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/seeder/README.md) - Execute Commerce Layer seeder.
+* [`imports`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/imports/README.md) - Import resources in Commerce Layer.
+* [`webhooks`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/webhooks/README.md) - Manage webhooks in Commerce Layer.
+* [`orders`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/README.md) - Execute actions on orders in Commerce Layer.
+* [`checkout`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/checkout/README.md) - Generate checkout URLs.
+* [`triggers`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/README.md) - Execute actions on resources in Commerce Layer.
+* [`token`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/token/README.md) - Manage Commerce Layer access tokens.
+* [`microstore`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/microstore/README.md) - Generate Microstore URLs.
+* [`exports`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/exports/README.md) - Export resources from Commerce Layer.
+* [`cleanups`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/cleanups/README.md) - Cleanup resources from Commerce Layer.
+* [`tags`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/README.md) - Manage resources tags in Commerce Layer.
+* [`provisioning`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/README.md) - Make requests to Commerce Layer's Provisioning API.
+* [`links`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/README.md) - Generate short links for shoppable resources.
+* [`metrics`](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/metrics/README.md) - Make requests to Commerce Layer's Metrics API.
 
 You can run the command below to get a list of all available CLI plugins:
 
