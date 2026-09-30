@@ -6,7 +6,6 @@ import { commercelayerInit } from './init'
 import type { ActionType } from './triggers'
 
 const { CLIError } = Errors
-type CLIError = InstanceType<typeof Errors.CLIError>
 type Config = Interfaces.Config
 
 

@@ -5,7 +5,6 @@ import type { Interfaces } from '@oclif/core'
 import { Errors } from '@oclif/core'
 
 const { CLIError } = Errors
-type CLIError = InstanceType<typeof Errors.CLIError>
 type Config = Interfaces.Config
 
 

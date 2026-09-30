@@ -3,7 +3,6 @@ import { getCommerceLayerDataFile, pathJoin } from './common'
 import config from './config'
 
 const { CLIError } = Errors
-type CLIError = InstanceType<typeof Errors.CLIError>
 
 
 type SchemaModel = {

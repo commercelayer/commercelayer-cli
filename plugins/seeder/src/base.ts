@@ -9,7 +9,6 @@ import config from './config'
 import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
 
-const { CLIError } = Errors
 type CLIError = InstanceType<typeof Errors.CLIError>
 type CommandError = Interfaces.CommandError
 

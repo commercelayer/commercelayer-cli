@@ -5,7 +5,6 @@ import inquirer from 'inquirer'
 import { getAvailablePlugins, getInstalledPlugins, getPluginInfo, isPluginInstalled } from '../../commands/plugins/available'
 
 const { CLIError } = Errors
-type CLIError = InstanceType<typeof Errors.CLIError>
 type Config = Interfaces.Config
 
 

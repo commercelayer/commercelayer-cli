@@ -4,7 +4,6 @@ import type { Interfaces } from '@oclif/core'
 import { Args, Command, Errors, Flags } from '@oclif/core'
 import exec from './exec'
 
-const { CLIError } = Errors
 type CLIError = InstanceType<typeof Errors.CLIError>
 type CommandError = Interfaces.CommandError
 

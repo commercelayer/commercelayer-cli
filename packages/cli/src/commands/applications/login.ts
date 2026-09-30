@@ -11,7 +11,6 @@ import { printCurrent } from './current'
 type ArgOutput = Record<string, any>
 type FlagOutput = Record<string, any>
 const { CLIError } = Errors
-type CLIError = InstanceType<typeof Errors.CLIError>
 type Input<F extends FlagOutput, B extends FlagOutput, A extends ArgOutput> = Interfaces.Input<F, B, A>
 
 

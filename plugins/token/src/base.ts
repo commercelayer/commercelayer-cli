@@ -2,7 +2,6 @@ import { type AccessTokenInfo, type AuthScope, clColor, clConfig, clOutput, clUp
 import { Args, Command, Errors, Flags } from '@oclif/core'
 
 const { CLIError } = Errors
-type CLIError = InstanceType<typeof Errors.CLIError>
 
 
 const pkg: clUpdate.Package = require('../package.json')
