@@ -45,7 +45,7 @@ USAGE
     [-w]
 
 ARGUMENTS
-  ID  unique id of the import to be retrieved
+  [ID]  unique id of the import to be retrieved
 
 FLAGS
   -A, --all              show all imports instead of first 25 only

@@ -45,7 +45,7 @@ USAGE
     [--sort <value>...] [-L] [-H]
 
 ARGUMENTS
-  ID  unique id of the link to get a single link
+  [ID]  unique id of the link to get a single link
 
 FLAGS
   -A, --all                 show all links instead of first 25 only

@@ -45,7 +45,7 @@ USAGE
     ax_categories|transactions|voids] [-s in_progress|pending|completed|interrupted]
 
 ARGUMENTS
-  ID  unique id of the export to be retrieved
+  [ID]  unique id of the export to be retrieved
 
 FLAGS
   -A, --all

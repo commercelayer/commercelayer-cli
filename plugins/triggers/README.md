@@ -75,6 +75,7 @@ $ commercelayer plugins:install triggers
 * [`commercelayer checkout_com_gateway:check ID`](#commercelayer-checkout_com_gatewaycheck-id)
 * [`commercelayer checkout_com_gateway:disable ID`](#commercelayer-checkout_com_gatewaydisable-id)
 * [`commercelayer checkout_com_gateway:enable ID`](#commercelayer-checkout_com_gatewayenable-id)
+* [`commercelayer checkout_com_gateway:refresh_webhook_secrets ID`](#commercelayer-checkout_com_gatewayrefresh_webhook_secrets-id)
 * [`commercelayer checkout_com_gateway:update_webhooks ID`](#commercelayer-checkout_com_gatewayupdate_webhooks-id)
 * [`commercelayer checkout_com_payment ID`](#commercelayer-checkout_com_payment-id)
 * [`commercelayer checkout_com_payment:authorize ID`](#commercelayer-checkout_com_paymentauthorize-id)
@@ -225,6 +226,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer paypal_gateway:check ID`](#commercelayer-paypal_gatewaycheck-id)
 * [`commercelayer paypal_gateway:disable ID`](#commercelayer-paypal_gatewaydisable-id)
 * [`commercelayer paypal_gateway:enable ID`](#commercelayer-paypal_gatewayenable-id)
+* [`commercelayer paypal_payment ID`](#commercelayer-paypal_payment-id)
+* [`commercelayer paypal_payment:refresh ID`](#commercelayer-paypal_paymentrefresh-id)
 * [`commercelayer percentage_discount_promotion ID`](#commercelayer-percentage_discount_promotion-id)
 * [`commercelayer percentage_discount_promotion:add_tags ID`](#commercelayer-percentage_discount_promotionadd_tags-id)
 * [`commercelayer percentage_discount_promotion:disable ID`](#commercelayer-percentage_discount_promotiondisable-id)
@@ -304,6 +307,8 @@ $ commercelayer plugins:install triggers
 * [`commercelayer stripe_gateway:check ID`](#commercelayer-stripe_gatewaycheck-id)
 * [`commercelayer stripe_gateway:disable ID`](#commercelayer-stripe_gatewaydisable-id)
 * [`commercelayer stripe_gateway:enable ID`](#commercelayer-stripe_gatewayenable-id)
+* [`commercelayer stripe_gateway:refresh_webhook_secrets ID`](#commercelayer-stripe_gatewayrefresh_webhook_secrets-id)
+* [`commercelayer stripe_gateway:update_webhooks ID`](#commercelayer-stripe_gatewayupdate_webhooks-id)
 * [`commercelayer stripe_payment ID`](#commercelayer-stripe_payment-id)
 * [`commercelayer stripe_payment:refresh ID`](#commercelayer-stripe_paymentrefresh-id)
 * [`commercelayer stripe_payment:update ID`](#commercelayer-stripe_paymentupdate-id)
@@ -1317,9 +1322,31 @@ DESCRIPTION
 
 _See code: [src/commands/checkout_com_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/checkout_com_gateway/enable.ts)_
 
+### `commercelayer checkout_com_gateway:refresh_webhook_secrets ID`
+
+Send this attribute if you want to refresh the gateway webhook endpoint secret.
+
+```sh-session
+USAGE
+  $ commercelayer checkout_com_gateway:refresh_webhook_secrets ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refresh the gateway webhook endpoint secret.
+```
+
+_See code: [src/commands/checkout_com_gateway/refresh_webhook_secrets.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/checkout_com_gateway/refresh_webhook_secrets.ts)_
+
 ### `commercelayer checkout_com_gateway:update_webhooks ID`
 
-Send this attribute if you want to sync the gateway webhook endpoint with the Checkout.com workflow.
+Send this attribute if you want to sync the gateway webhook endpoint subscribed event topics.
 
 ```sh-session
 USAGE
@@ -1334,7 +1361,7 @@ FLAGS
   -u, --unformatted  print JSON output without indentation
 
 DESCRIPTION
-  Send this attribute if you want to sync the gateway webhook endpoint with the Checkout.com workflow.
+  Send this attribute if you want to sync the gateway webhook endpoint subscribed event topics.
 ```
 
 _See code: [src/commands/checkout_com_gateway/update_webhooks.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/checkout_com_gateway/update_webhooks.ts)_
@@ -4672,6 +4699,50 @@ DESCRIPTION
 
 _See code: [src/commands/paypal_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/paypal_gateway/enable.ts)_
 
+### `commercelayer paypal_payment ID`
+
+Execute an action on a resource of type paypal_payments.
+
+```sh-session
+USAGE
+  $ commercelayer paypal_payment ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  execute an action on a resource of type paypal_payments
+```
+
+_See code: [src/commands/paypal_payment/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/paypal_payment/index.ts)_
+
+### `commercelayer paypal_payment:refresh ID`
+
+Send this attribute if you want to refresh the payment's pending transactions and reconcile their status with PayPal.
+
+```sh-session
+USAGE
+  $ commercelayer paypal_payment:refresh ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refresh the payment's pending transactions and reconcile their status with PayPal.
+```
+
+_See code: [src/commands/paypal_payment/refresh.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/paypal_payment/refresh.ts)_
+
 ### `commercelayer percentage_discount_promotion ID`
 
 Execute an action on a resource of type percentage_discount_promotions.
@@ -6431,6 +6502,50 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/stripe_gateway/enable.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/stripe_gateway/enable.ts)_
+
+### `commercelayer stripe_gateway:refresh_webhook_secrets ID`
+
+Send this attribute if you want to refresh the gateway webhook endpoint ID and secret.
+
+```sh-session
+USAGE
+  $ commercelayer stripe_gateway:refresh_webhook_secrets ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refresh the gateway webhook endpoint ID and secret.
+```
+
+_See code: [src/commands/stripe_gateway/refresh_webhook_secrets.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/stripe_gateway/refresh_webhook_secrets.ts)_
+
+### `commercelayer stripe_gateway:update_webhooks ID`
+
+Send this attribute if you want to sync the gateway webhook endpoint subscribed event topics.
+
+```sh-session
+USAGE
+  $ commercelayer stripe_gateway:update_webhooks ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the resource
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified resource
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to sync the gateway webhook endpoint subscribed event topics.
+```
+
+_See code: [src/commands/stripe_gateway/update_webhooks.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/triggers/src/commands/stripe_gateway/update_webhooks.ts)_
 
 ### `commercelayer stripe_payment ID`
 
