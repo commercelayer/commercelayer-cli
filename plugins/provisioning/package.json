@@ -59,6 +59,7 @@
   "devDependencies": {
     "@commercelayer/cli-dev": "workspace:^",
     "@commercelayer/cli-generator": "workspace:*",
+    "@commercelayer/cli-test-utils": "workspace:*",
     "@oclif/plugin-help": "catalog:",
     "@oclif/test": "catalog:",
     "@types/chai": "catalog:",

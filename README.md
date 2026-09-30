@@ -9,6 +9,7 @@ Monorepo for the [Commerce Layer](https://commercelayer.io) CLI, its shared libr
 | CLI UX library (internal) | [`packages/ux`](packages/ux) | [`@commercelayer/cli-ux`](https://www.npmjs.com/package/@commercelayer/cli-ux) |
 | CLI development tools (private) | [`packages/dev`](packages/dev) | not published |
 | Code generator (private) | [`packages/generator`](packages/generator) | not published |
+| Test utilities (private) | [`packages/test-utils`](packages/test-utils) | not published |
 | Checkout plugin | [`plugins/checkout`](plugins/checkout) | [`@commercelayer/cli-plugin-checkout`](https://www.npmjs.com/package/@commercelayer/cli-plugin-checkout) |
 | Cleanups plugin | [`plugins/cleanups`](plugins/cleanups) | [`@commercelayer/cli-plugin-cleanups`](https://www.npmjs.com/package/@commercelayer/cli-plugin-cleanups) |
 | Exports plugin | [`plugins/exports`](plugins/exports) | [`@commercelayer/cli-plugin-exports`](https://www.npmjs.com/package/@commercelayer/cli-plugin-exports) |
