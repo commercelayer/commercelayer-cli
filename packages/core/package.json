@@ -20,9 +20,8 @@
   "scripts": {
     "build": "tsup",
     "start": "tsx src/index.ts",
-    "test": "jest --passWithNoTests",
-    "test-local": "tsx test/spot.ts",
-    "coverage": "jest --coverage"
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test-local": "tsx test/spot.ts"
   },
   "keywords": [
     "ecommerce",
@@ -35,13 +34,16 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "@babel/preset-env": "catalog:",
-    "@babel/preset-typescript": "catalog:",
-    "@types/jest": "catalog:",
+    "@commercelayer/cli-test-utils": "workspace:*",
+    "@types/chai": "catalog:",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/mocha": "catalog:",
     "@types/node": "catalog:",
+    "chai": "catalog:",
     "dotenv": "catalog:",
-    "jest": "catalog:",
+    "mocha": "catalog:",
+    "nock": "catalog:",
+    "nyc": "catalog:",
     "oclif": "catalog:",
     "tsup": "catalog:",
     "tsx": "catalog:",
