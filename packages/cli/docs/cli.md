@@ -26,7 +26,7 @@ EXAMPLES
   cl cli:dir
 ```
 
-_See code: [src/commands/cli/dir.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/cli/dir.ts)_
+_See code: [src/commands/cli/dir.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/packages/cli/src/commands/cli/dir.ts)_
 
 ### `commercelayer cli:update`
 
@@ -50,7 +50,7 @@ EXAMPLES
   $ commercelayer cli:update --version=<version-or-tag>
 ```
 
-_See code: [src/commands/cli/update.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/cli/update.ts)_
+_See code: [src/commands/cli/update.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/packages/cli/src/commands/cli/update.ts)_
 
 ### `commercelayer cli:version`
 
@@ -73,4 +73,4 @@ EXAMPLES
   $ commercelayer cli:version
 ```
 
-_See code: [src/commands/cli/version.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/src/commands/cli/version.ts)_
+_See code: [src/commands/cli/version.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/packages/cli/src/commands/cli/version.ts)_

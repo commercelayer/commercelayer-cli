@@ -5,9 +5,13 @@
   "packageManager": "pnpm@11.20.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-dev",
-  "repository": "commercelayer/commercelayer-cli-dev",
-  "bugs": "https://github.com/commercelayer/commercelayer-cli-dev/issues",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/packages/dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "packages/dev"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "bin": {
     "cl-cli-dev": "./bin/run.js"
   },
@@ -34,14 +38,14 @@
       "@oclif/plugin-help"
     ],
     "plugins": [],
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "repositoryPrefix": "<%- repo %>/blob/main/packages/dev/<%- commandPath %>",
     "additionalHelpFlags": [
       "-h"
     ],
     "topicSeparator": ":"
   },
   "scripts": {
-    "pretest": "pnpm build --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
+    "pretest": "tsc --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "posttest": "pnpm lint",
     "build": "rm -rf lib && tsc",
@@ -53,7 +57,6 @@
     "release": "pnpm upgrade && pnpm lint && pnpm build"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.11",
     "@oclif/plugin-help": "^5.2.20",
     "@oclif/test": "^2.5.6",
     "@semantic-release/changelog": "^6.0.3",

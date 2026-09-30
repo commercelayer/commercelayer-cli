@@ -98,7 +98,7 @@
     "release": "pnpm upgrade && pnpm lint && pnpm prepack && pnpm postpack"
   },
   "devDependencies": {
-    "@commercelayer/cli-dev": "^3.1.9",
+    "@commercelayer/cli-dev": "workspace:^",
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "^3.2.15",
     "@semantic-release/changelog": "^6.0.3",
@@ -122,8 +122,8 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.11.3",
-    "@commercelayer/cli-ux": "^1.2.3",
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/cli-ux": "workspace:^",
     "@commercelayer/provisioning-sdk": "^2.10.2",
     "@commercelayer/sdk": "^6.58.0",
     "@oclif/core": "^3.27.0",
