@@ -1,12 +1,26 @@
 import { expect, test } from '@oclif/test'
+import { AUTH, api, importJob, list, single, useMockedApi } from '../../helpers'
 
-describe('imports:index', () => {
+describe('imports', () => {
+  useMockedApi()
+
   test
-    .timeout(5000)
+    .do(() => {
+      api().get('/api/imports').query(true).reply(200, list([importJob('iMp1')]))
+    })
     .stdout()
-    .command(['imports:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
+    .command(['imports', ...AUTH])
+    .it('lists the imports without an ID', (ctx) => {
+      expect(ctx.stdout).to.contain('iMp1')
     })
 
+  test
+    .do(() => {
+      api().get('/api/imports/iMp1').reply(200, single(importJob('iMp1')))
+    })
+    .stdout()
+    .command(['imports', 'iMp1', ...AUTH])
+    .it('shows the details with an ID', (ctx) => {
+      expect(ctx.stdout).to.contain('iMp1')
+    })
 })
