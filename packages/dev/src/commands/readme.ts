@@ -1,0 +1,336 @@
+
+import * as path from 'node:path'
+import { URL } from 'node:url'
+import { Command, Config, Flags, type HelpBase, type Interfaces, loadHelpClass, Plugin } from '@oclif/core'
+import * as fs from 'fs-extra'
+import _template from 'lodash/template'
+import { HelpCompatibilityWrapper } from '../help-compatibility'
+import { castArray, compact, sortBy, template, uniqBy } from '../util'
+
+
+const normalize = require('normalize-package-data')
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const columns = Number.parseInt(process.env.COLUMNS!, 10) || 120
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+const slugify = new (require('github-slugger') as any)()
+
+interface HelpBaseDerived {
+  // eslint-disable-next-line @typescript-eslint/prefer-function-type
+  new(config: Interfaces.Config, opts?: Partial<Interfaces.HelpOptions>): HelpBase;
+}
+
+
+const formatDescription = (d: string | undefined): string => {
+  let desc = d ? `${d.charAt(0).toUpperCase()}${d.substring(1)}` : ''
+  if ((desc !== '') && !desc.endsWith('.')) desc += '.'
+  return desc
+}
+
+
+export default class Readme extends Command {
+  static description = `adds commands to README.md in current directory
+The readme must have any of the following tags inside of it for it to be replaced or else it will do nothing:
+## Usage
+<!-- usage -->
+## Commands
+<!-- commands -->
+
+Customize the code URL prefix by setting oclif.repositoryPrefix in package.json.
+`
+
+  static flags = {
+    dir: Flags.string({ description: 'output directory for multi docs', default: 'docs', required: true }),
+    multi: Flags.boolean({ description: 'create a different markdown page for each topic' }),
+    plugin: Flags.boolean({ description: 'create a plugin readme doc' }),
+    bin: Flags.string({ description: 'optional main cli command', dependsOn: ['plugin'] })
+  }
+
+  private HelpClass!: HelpBaseDerived
+
+
+  async run(): Promise<void> {
+
+    const { flags } = await this.parse(Readme)
+
+    const cwd = process.cwd()
+    const readmePath = path.resolve(cwd, 'README.md')
+    const config = await Config.load({ root: cwd, devPlugins: false, userPlugins: false })
+
+    if (flags.bin) config.bin = flags.bin
+
+    try {
+      const p = require.resolve('@oclif/plugin-legacy', { paths: [cwd] })
+      const plugin = new Plugin({ root: p, type: 'core' })
+      await plugin.load()
+      config.plugins.set(plugin.name, plugin)
+    } catch { }
+
+    await (config).runHook('init', { id: 'readme', argv: this.argv })
+
+    this.HelpClass = await loadHelpClass(config)
+
+    let readme = await fs.readFile(readmePath, 'utf8')
+
+    let commands = config.commands
+    commands = commands.filter(c => !c.hidden)
+    commands = commands.filter(c => c.pluginType === 'core')
+    commands = commands.filter(c => !c.aliases.includes(c.id))
+    this.debug('commands:', commands.map(c => c.id).length)
+    commands = uniqBy(commands, c => c.id)
+    commands = sortBy(commands, c => c.id)
+    readme = this.replaceTag(readme, 'usage', flags.plugin ? this.usagePlugin(config) : this.usage(config))
+    readme = this.replaceTag(readme, 'commands', flags.multi ? this.multiCommands(config, commands, flags.dir) : this.commands(config, commands))
+    readme = this.replaceTag(readme, 'toc', this.toc(config, readme))
+
+    readme = readme.trimEnd()
+    readme += '\n'
+
+    await fs.outputFile(readmePath, readme)
+
+  }
+
+
+  replaceTag(readme: string, tag: string, body: string): string {
+
+    if (readme.includes(`<!-- ${tag} -->`)) {
+      if (readme.includes(`<!-- ${tag}stop -->`)) {
+        readme = readme.replace(new RegExp(`<!-- ${tag} -->(.|\n)*<!-- ${tag}stop -->`, 'm'), `<!-- ${tag} -->`)
+      }
+
+      this.log(`replacing <!-- ${tag} --> in README.md`)
+    }
+
+   // return readme.replace(`<!-- ${tag} -->`, `<!-- ${tag} -->\n${body}\n<!-- ${tag}stop -->`)
+   const fixedBody = (body.trim().length === 0)? body : `\n${body}\n`
+   return readme.replace(`<!-- ${tag} -->`, `<!-- ${tag} -->\n${fixedBody}<!-- ${tag}stop -->`)
+
+  }
+
+
+  toc(__: Interfaces.Config, readme: string): string {
+    // return readme.split('\n').filter(l => l.startsWith('# '))
+    return readme.split('\n').filter(l => l.startsWith('## ') && !l.includes('Table of contents') && !l.includes('What is Commerce Layer'))
+      .map(l => l.slice(2).trim())
+      .map(l => `* [${l}](#${slugify.slug(l)})`)
+      .join('\n')
+  }
+
+
+  usage(config: Interfaces.Config): string {
+
+    /*
+    const versionFlags = ['--version', ...(config.pjson.oclif.additionalVersionFlags ?? []).sort()]
+    const versionFlagsString = `(${versionFlags.join('|')})`
+    */
+
+    return [
+      `\`\`\`sh-session
+${config.bin} COMMAND
+
+${config.bin} (-v | version | --version) to check the version of the CLI you have installed.
+
+${config.bin} [COMMAND] (--help | -h) for detailed information about CLI commands.
+\`\`\`\n`,
+    ].join('\n').trim()
+
+  }
+
+
+  usagePlugin(config: Interfaces.Config): string {
+    return [
+`\`\`\`sh-session
+${config.bin} COMMAND
+
+${config.bin} [COMMAND] (--help | -h) for detailed information about plugin commands.
+\`\`\`\n`,
+    ].join('\n').trim()
+  }
+
+
+  multiCommands(config: Interfaces.Config, commands: Command.Cached[], dir: string): string {
+
+    let topics = config.topics
+    topics = topics.filter(t => !t.hidden && !t.name.includes(':'))
+    topics = topics.filter(t => commands.find(c => c.id.startsWith(t.name)))
+    topics = sortBy(topics, t => t.name)
+    topics = uniqBy(topics, t => t.name)
+    for (const topic of topics) {
+      this.createTopicFile(
+        path.join('.', dir, topic.name.replace(/:/g, '/') + '.md'),
+        config,
+        topic,
+        commands.filter(c => c.id === topic.name || c.id.startsWith(topic.name + ':')),
+      )
+    }
+
+    return [
+      '\n',
+      // '# Command Topics\n',
+      ...topics.map(t => {
+        return compact([
+          `* [\`${config.bin} ${t.name}\`](${dir}/${t.name.replace(/:/g, '/')}.md)`,
+          template({ config })(formatDescription(t.description)).trim().split('\n')[0],
+        ]).join(' - ')
+      }),
+    ].join('\n').trim() + '\n'
+
+  }
+
+
+  createTopicFile(file: string, config: Interfaces.Config, topic: Interfaces.Topic, commands: Command.Cached[]): void {
+    const bin = `\`${config.bin} ${topic.name}\``
+    const t = topic
+    const doc = [
+      '# ' + bin,
+      '',
+      template({ config })(formatDescription(t.description)).trim(),
+      '',
+      this.commands(config, commands),
+    ].join('\n').trim() + '\n'
+    fs.outputFileSync(file, doc)
+  }
+
+
+  commands(config: Interfaces.Config, commands: Command.Cached[]): string {
+    return [
+      ...commands.map(c => {
+        const usage = this.commandUsage(config, c)
+        return `* [\`${config.bin} ${usage}\`](#${slugify.slug(`${config.bin}-${usage}`)})`
+      }),
+      '',
+      ...commands.map(c => this.renderCommand(config, c)).map(s => s.trim() + '\n'),
+    ].join('\n').trim()
+  }
+
+
+  renderCommand(config: Interfaces.Config, c: Command.Cached): string {
+
+    this.debug('rendering command', c.id)
+    const title = template({ config, command: c })(formatDescription(c.summary || c.description)).trim().split('\n')[0]
+    const help = new this.HelpClass(config, { stripAnsi: true, maxWidth: columns })
+    const wrapper = new HelpCompatibilityWrapper(help)
+
+   // const header = () => `## \`${config.bin} ${this.commandUsage(config, c)}\``
+   const header = (): string => `### \`${config.bin} ${this.commandUsage(config, c)}\``
+
+    try {
+
+      const commandFormatted = wrapper.formatCommand(c).trim()// .replace(/\$ /g, '')
+
+      return compact([
+        header(),
+        title,
+        '```sh-session\n' + commandFormatted + '\n```',
+        this.commandCode(config, c),
+      ]).join('\n\n')
+
+    } catch (error: any) {
+      this.error(error.message as string)
+    }
+
+  }
+
+
+  commandCode(config: Interfaces.Config, c: Command.Cached): string | undefined {
+
+    const pluginName = c.pluginName
+    if (!pluginName) return
+    const plugin = config.getPluginsList().find(p => p.name === c.pluginName)
+    if (!plugin) return
+    const repo = this.repo(plugin)
+    if (!repo) return
+    let label = plugin.name
+    let version = plugin.version
+    const commandPath = this.commandPath(plugin, c)
+    if (!commandPath) return
+    if (config.name === plugin.name) {
+      label = commandPath
+      version = process.env.OCLIF_NEXT_VERSION || version
+    }
+
+    const template = plugin.pjson.oclif.repositoryPrefix || '<%- repo %>/blob/v<%- version %>/<%- commandPath %>'
+
+    return `_See code: [${label}](${_template(template)({ repo, version, commandPath, config, c })})_`
+
+  }
+
+
+  private repo(plugin: Interfaces.Plugin): string | undefined {
+
+    const pjson = { ...plugin.pjson }
+    normalize(pjson)
+    const repo: string = pjson.repository?.url
+    if (!repo) return
+    const url = new URL(repo)
+    if (!['github.com', 'gitlab.com'].includes(url.hostname) && !pjson.oclif.repositoryPrefix) return
+
+    return `https://${url.hostname}${url.pathname.replace(/\.git$/, '')}`
+
+  }
+
+
+  // eslint-disable-next-line valid-jsdoc
+  /**
+   * fetches the path to a command
+   */
+  private commandPath(plugin: Interfaces.Plugin, c: Command.Cached): string | undefined {
+
+    const commandsDir = plugin.pjson.oclif.commands
+    if (!commandsDir) return
+
+    let p = path.join(plugin.root, String(commandsDir), ...c.id.split(':'))
+    const libRegex = new RegExp('^lib' + (path.sep === '\\' ? '\\\\' : path.sep))
+
+    if (fs.pathExistsSync(path.join(p, 'index.js'))) {
+      p = path.join(p, 'index.js')
+    } else if (fs.pathExistsSync(p + '.js')) {
+      p += '.js'
+    } else if (plugin.pjson.devDependencies?.typescript) {
+      // check if non-compiled scripts are available
+      const base = p.replace(plugin.root + path.sep, '')
+      p = path.join(plugin.root, base.replace(libRegex, 'src' + path.sep))
+      if (fs.pathExistsSync(path.join(p, 'index.ts'))) {
+        p = path.join(p, 'index.ts')
+      } else if (fs.pathExistsSync(p + '.ts')) {
+        p += '.ts'
+      } else return
+    } else return
+
+    p = p.replace(plugin.root + path.sep, '')
+    if (plugin.pjson.devDependencies?.typescript) {
+      p = p.replace(libRegex, 'src' + path.sep)
+      p = p.replace(/\.js$/, '.ts')
+    }
+
+    p = p.replace(/\\/g, '/') // Replace windows '\' by '/'
+
+    return p
+
+  }
+
+
+  private commandUsage(config: Interfaces.Config, command: Command.Cached): string {
+
+    const arg = (arg: any): string => {
+      const name = arg.name.toUpperCase()
+      if (arg.required) return `${name}`
+      return `[${name}]`
+    }
+
+    const id = config.topicSeparator ? command.id.replace(/:/g, config.topicSeparator) : command.id
+    const defaultUsage = (): string => {
+       // const flags = Object.entries(command.flags)
+      // .filter(([, v]) => !v.hidden)
+      return compact([
+        id,
+        Object.values(command.args).filter(a => !a.hidden).map(a => arg(a)).join(' '),
+      ]).join(' ')
+    }
+
+    const usages = castArray(command.usage)
+
+    return template({ config, command })(usages.length === 0 ? defaultUsage() : usages[0])
+
+  }
+
+}

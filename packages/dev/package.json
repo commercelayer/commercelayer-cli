@@ -1,0 +1,89 @@
+{
+  "name": "@commercelayer/cli-dev",
+  "description": "Commerce Layer CLI development tools and helpers",
+  "version": "3.1.12",
+  "packageManager": "pnpm@11.20.0",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/packages/dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "packages/dev"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "bin": {
+    "cl-cli-dev": "./bin/run.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-cli-dev",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "repositoryPrefix": "<%- repo %>/blob/main/packages/dev/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "pretest": "tsc --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "posttest": "pnpm lint",
+    "build": "rm -rf lib && tsc",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "readme": "./bin/run.js readme && git add README.md",
+    "lint": "biome check --enforce-assist=true",
+    "check": "biome check --enforce-assist=true --write",
+    "release": "pnpm upgrade && pnpm lint && pnpm build"
+  },
+  "devDependencies": {
+    "@oclif/plugin-help": "^5.2.20",
+    "@oclif/test": "^2.5.6",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^4.3.20",
+    "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.17.25",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.9.5",
+    "chai": "^6.2.2",
+    "globby": "^10.0.2",
+    "mocha": "^11.8.0",
+    "nyc": "^18.0.0",
+    "oclif": "^4.24.0",
+    "semantic-release": "^25.0.9",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@oclif/core": "^3.27.0",
+    "fs-extra": "^10.1.0",
+    "github-slugger": "^1.5.0",
+    "lodash": "^4.18.1",
+    "normalize-package-data": "^5.0.0",
+    "tslib": "^2.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
