@@ -16,7 +16,7 @@ export default defineConfig({
     commandsDir: 'src/commands',
     specsDir: 'test/commands',
     triggersPath: 'src/triggers',
-    nocTemplate: 'gen/templates/noc.tpl',
+    nocTemplate: 'noc',
     indent: 6,
   }),
 })

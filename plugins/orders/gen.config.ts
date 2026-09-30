@@ -11,6 +11,7 @@ export default defineConfig({
   environments: { production: 'commercelayer.app' },
   schema: { kind: 'openapi', snapshot: 'gen/triggers.json', extract: (openapi) => ({ order: extractTriggers(openapi).order }) },
   outputs: ['src/triggers.ts', 'src/commands/orders', 'test/commands/orders'],
+  format: ['src/triggers.ts', 'src/commands/orders', 'test/commands/orders'],
   generate: triggerCommands({
     mode: 'single-resource',
     resource: 'order',

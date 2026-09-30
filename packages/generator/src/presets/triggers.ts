@@ -14,7 +14,7 @@
 import { join } from 'node:path'
 import snakeCase from 'lodash.snakecase'
 import type { Context } from '../context'
-import { render } from '../context'
+import { generated, render } from '../context'
 import type { Trigger } from '../schema'
 
 const Inflector: any = require('inflector-js')
@@ -24,6 +24,8 @@ type Common = {
   specsDir: string
   /** Indentation of the trigger entries in the generated trigger modules */
   indent: number
+  /** Mocha timeout of the generated specs, in ms (default 15000) */
+  specTimeout?: number
 }
 
 export type TriggerCommandsOptions =
@@ -31,7 +33,7 @@ export type TriggerCommandsOptions =
       mode: 'per-resource'
       /** Folder of the per-resource trigger modules */
       triggersPath: string
-      /** Template copied to `<commandsDir>/noc.ts` */
+      /** Template (name in the templates folder) rendered to `<commandsDir>/noc.ts` */
       nocTemplate?: string
     })
   | (Common & {
@@ -62,7 +64,7 @@ ${pad}description: '${t.description.replace(/'/g, "\\'")}',
 ${close}},`,
     )
     .join('\n\t')
-  return render(template, {}, { TRIGGERS: entries, ACTION: triggers.map((t) => `'${t.action}'`).join(' |\n\t') })
+  return generated(render(template, {}, { TRIGGERS: entries, ACTION: triggers.map((t) => `'${t.action}'`).join(' |\n\t') }))
 }
 
 const flagPlaceholders = (action: string) => ({
@@ -70,7 +72,7 @@ const flagPlaceholders = (action: string) => ({
   FLAGS_IMPORT: action.endsWith('_id') ? ', { Flags }' : '',
 })
 
-const specName = (fileName: string) => fileName.replace(/.ts/g, '.test.ts')
+const specName = (fileName: string) => fileName.replace(/\.ts$/, '.test.ts')
 
 export const triggerCommands =
   (options: TriggerCommandsOptions) =>
@@ -86,7 +88,7 @@ export const triggerCommands =
       const actionTpl = ctx.template('action')
       const specTpl = ctx.template('spec')
       const triggersTpl = ctx.template('triggers')
-      const specTimeout = String(1000 * Object.keys(all).length)
+      const specTimeout = String(options.specTimeout ?? 15000)
 
       for (const [resource, triggers] of Object.entries(all)) {
         const resType = Inflector.pluralize(resource)
@@ -102,7 +104,7 @@ export const triggerCommands =
 
         ctx.write(
           join(cmdDir, 'index.ts'),
-          render(indexTpl, { RESOURCE_NAME: resource.replace(/_/g, ' '), RESOURCE_TYPE: resType, RESOURCE_CLASS: resClass }),
+          generated(render(indexTpl, { RESOURCE_NAME: resource.replace(/_/g, ' '), RESOURCE_TYPE: resType, RESOURCE_CLASS: resClass })),
         )
 
         for (const { action } of triggers) {
@@ -112,13 +114,13 @@ export const triggerCommands =
             { ACTION_ID: action, ACTION_NAME: Inflector.camelize(action), RESOURCE_NAME: resource, RESOURCE_TYPE: resType, RESOURCE_CLASS: resClass },
             flagPlaceholders(action),
           )
-          ctx.write(join(cmdDir, fileName), command)
-          ctx.write(join(spcDir, specName(fileName)), render(specTpl, { ACTION_ID: action, RESOURCE_TYPE: resType, SPEC_TIMEOUT: specTimeout }))
+          ctx.write(join(cmdDir, fileName), generated(command))
+          ctx.write(join(spcDir, specName(fileName)), generated(render(specTpl, { ACTION_ID: action, RESOURCE_TYPE: resType, SPEC_TIMEOUT: specTimeout })))
         }
         ctx.log(`Created ${triggers.length} ${resource} command(s)`)
       }
 
-      if (options.nocTemplate) ctx.copy(options.nocTemplate, join(options.commandsDir, 'noc.ts'))
+      if (options.nocTemplate) ctx.write(join(options.commandsDir, 'noc.ts'), generated(ctx.template(options.nocTemplate)))
       return
     }
 
@@ -133,12 +135,12 @@ export const triggerCommands =
 
     const actionTpl = ctx.template('action')
     const specTpl = ctx.template('spec')
-    const specTimeout = String(1000 * triggers.length)
+    const specTimeout = String(options.specTimeout ?? 15000)
 
     for (const { action } of triggers) {
       const fileName = `${snakeCase(action)}.ts`
-      ctx.write(join(options.commandsDir, fileName), render(actionTpl, { ACTION_ID: action, ACTION_NAME: Inflector.camelize(action) }, flagPlaceholders(action)))
-      ctx.write(join(options.specsDir, specName(fileName)), render(specTpl, { ACTION_ID: action, SPEC_TIMEOUT: specTimeout }))
+      ctx.write(join(options.commandsDir, fileName), generated(render(actionTpl, { ACTION_ID: action, ACTION_NAME: Inflector.camelize(action) }, flagPlaceholders(action))))
+      ctx.write(join(options.specsDir, specName(fileName)), generated(render(specTpl, { ACTION_ID: action, SPEC_TIMEOUT: specTimeout })))
     }
     ctx.log(`Created ${triggers.length} ${options.resource} command(s)`)
   }

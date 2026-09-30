@@ -4,6 +4,7 @@
  * helpers, so the list follows the installed SDK version).
  */
 import type { Context } from '../context'
+import { generated } from '../context'
 
 export type ResourceEntry = { name: string; type: string; api: string; model: string; singleton?: boolean }
 
@@ -17,11 +18,11 @@ export type ResourceListOptions = {
 export const resourceList =
   (options: ResourceListOptions) =>
   (ctx: Context): void => {
-    const lines = ['', `const ${options.name} = [`]
+    const lines = [`const ${options.name} = [`]
     for (const r of options.resources()) {
       lines.push(`\t{ name: '${r.name}', type: '${r.type}', api: '${r.api}', model: '${r.model}'${r.singleton ? ', singleton: true' : ''} },`)
     }
     lines.push(`] as const\n`, `\n\nexport default ${options.name}\n`)
-    ctx.write(options.output, lines.join('\n'))
+    ctx.write(options.output, generated(lines.join('\n')))
     ctx.log(`Generated ${options.output}`)
   }
