@@ -1,0 +1,4 @@
+[
+  { "reference": "SKU1", "code": "TSHIRT", "name": "T-shirt", "shipping_category": "SC1" },
+  { "reference": "SKU_BAD", "code": "BAD", "colour": "red" }
+]
