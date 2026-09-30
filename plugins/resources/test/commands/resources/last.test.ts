@@ -1,11 +1,10 @@
-import { expect, test } from '@oclif/test'
+import { test } from '@oclif/test'
+import { AUTH } from '../../helpers'
 
 describe('resources:last', () => {
   test
-    .timeout(15000)
     .stdout()
-    .command(['resources:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
-    })
+    .command(['resources:last', 'unicorns', ...AUTH])
+    .catch(/Invalid resource unicorns/)
+    .it('rejects an unknown resource')
 })

@@ -56,7 +56,7 @@ export default class ResourcesCount extends BaseCommand {
 
     const res = await resSdk.list({ filters /* , pageNumber: 1, pageSize: 1 */}) as ListResponse<Resource>
 
-    if (res?.recordCount) cliux.action.stop(clColor.yellowBright(res.recordCount.toLocaleString()))
+    if (typeof res?.recordCount === 'number') cliux.action.stop(clColor.yellowBright(res.recordCount.toLocaleString()))
     else {
       cliux.action.stop(clColor.msg.error('error'))
       this.error(`\nError counting ${humanized}`)
