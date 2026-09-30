@@ -145,6 +145,36 @@ if (INTERACTIVE) {
 }
 rl?.close()
 
+// A package released with a change in a workspace dependency (cli-core,
+// cli-ux, …) needs that change on npm too: unreleased changes of runtime
+// workspace dependencies are always released with it, so nobody has to
+// release and publish them first by hand.
+const runtimeDeps = (pkg) =>
+  Object.entries({ ...pkg.manifest.dependencies, ...pkg.manifest.peerDependencies })
+    .filter(([, range]) => range.startsWith('workspace:'))
+    .map(([name]) => name)
+for (let added = true; added; ) {
+  added = false
+  for (const s of [...selected]) {
+    for (const name of runtimeDeps(s.pkg)) {
+      if (selected.some((x) => x.pkg.name === name)) continue
+      const dep = candidates.find((c) => c.pkg.name === name)
+      if (!dep) continue
+      selected.push({ ...dep, version: dep.next })
+      console.log(`+ ${dep.pkg.name} ${dep.pkg.version} → ${dep.next}: unreleased changes, required by ${s.pkg.name}`)
+      added = true
+    }
+  }
+}
+// Dependencies first, so tags, drafts and publishing follow the same order
+const depth = (s, seen = new Set()) => {
+  if (seen.has(s.pkg.name)) return 0
+  seen.add(s.pkg.name)
+  const deps = selected.filter((x) => runtimeDeps(s.pkg).includes(x.pkg.name))
+  return deps.length === 0 ? 0 : 1 + Math.max(...deps.map((d) => depth(d, seen)))
+}
+selected.sort((a, b) => depth(a) - depth(b) || a.pkg.dir.localeCompare(b.pkg.dir))
+
 if (selected.length === 0) {
   console.log('\nNothing selected.')
   process.exit(0)
