@@ -111,12 +111,12 @@
     "@withfig/autocomplete-types": "^1.31.0",
     "chai": "catalog:",
     "dotenv": "catalog:",
-    "mocha": "^10.8.2",
+    "mocha": "catalog:",
     "nyc": "catalog:",
     "oclif": "catalog:",
     "prettier": "^3.9.6",
     "tsx": "catalog:",
-    "typescript": "^5.9.3"
+    "typescript": "catalog:"
   },
   "dependencies": {
     "@commercelayer/cli-core": "workspace:^",

@@ -43,7 +43,7 @@
     "@types/jest": "catalog:",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "catalog:",
-    "dotenv": "^16.6.1",
+    "dotenv": "catalog:",
     "jest": "catalog:",
     "oclif": "catalog:",
     "tsup": "catalog:",
