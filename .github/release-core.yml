@@ -17,4 +17,8 @@ changelog:
         labels:
           - 'pkg:cli'
           - 'pkg:dev'
+          - 'pkg:links'
+          - 'pkg:metrics'
+          - 'pkg:provisioning'
+          - 'pkg:tags'
           - 'pkg:ux'
