@@ -13,10 +13,11 @@ describe('metrics:fbt', () => {
     expect(stdout).to.not.contain('No data found')
   })
 
-  it('keeps the filter when no item IDs are given', async () => {
+  it('sends an empty query without item IDs', async () => {
     const q = mockQuery('analysis/fbt', 200, { data: [] })
     const { stdout } = await runCommand(['metrics:fbt', ...AUTH, '-F', '{"order":{"market_code_eq":"EU"}}'])
-    expect(q.body).to.deep.equal({ filter: { order: { market_code_eq: 'EU' } } })
+    // MetricsQueryFbt only allows a filter on line_items.item_ids
+    expect(q.body).to.deep.equal({})
     expect(stdout).to.contain('No data found')
   })
 })
