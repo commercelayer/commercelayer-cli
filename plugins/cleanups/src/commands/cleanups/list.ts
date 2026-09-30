@@ -49,7 +49,7 @@ export default class CleanupsList extends Command {
 
 		const { flags } = await this.parse(CleanupsList)
 
-		if (flags.limit && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
+		if ((flags.limit !== undefined) && (flags.limit < 1)) this.error(clColor.italic('Limit') + ' must be a positive integer')
 
 		const cl = this.commercelayerInit(flags)
 
