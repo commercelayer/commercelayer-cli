@@ -18,3 +18,7 @@ changelog:
           - 'pkg:cli'
           - 'pkg:core'
           - 'pkg:dev'
+          - 'pkg:links'
+          - 'pkg:metrics'
+          - 'pkg:provisioning'
+          - 'pkg:tags'

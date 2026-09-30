@@ -79,7 +79,7 @@ FLAG DESCRIPTIONS
     Look at the description of flag 'expires' for details
 ```
 
-_See code: [src/commands/links/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/index.ts)_
+_See code: [src/commands/links/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/index.ts)_
 
 ### `commercelayer links:create`
 
@@ -123,7 +123,7 @@ FLAG DESCRIPTIONS
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format
 ```
 
-_See code: [src/commands/links/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/create.ts)_
+_See code: [src/commands/links/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/create.ts)_
 
 ### `commercelayer links:delete ID`
 
@@ -143,7 +143,7 @@ EXAMPLES
   $ commercelayer links:delete <link-id>
 ```
 
-_See code: [src/commands/links/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/delete.ts)_
+_See code: [src/commands/links/delete.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/delete.ts)_
 
 ### `commercelayer links:details ID`
 
@@ -175,7 +175,7 @@ EXAMPLES
   $ cl links:show <link-id>
 ```
 
-_See code: [src/commands/links/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/details.ts)_
+_See code: [src/commands/links/details.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/details.ts)_
 
 ### `commercelayer links:disable ID`
 
@@ -195,7 +195,7 @@ EXAMPLES
   $ commercelayer links:disable <link-id>
 ```
 
-_See code: [src/commands/links/disable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/disable.ts)_
+_See code: [src/commands/links/disable.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/disable.ts)_
 
 ### `commercelayer links:enable ID`
 
@@ -215,7 +215,7 @@ EXAMPLES
   $ commercelayer links:enable <link-id>
 ```
 
-_See code: [src/commands/links/enable.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/enable.ts)_
+_See code: [src/commands/links/enable.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/enable.ts)_
 
 ### `commercelayer links:list`
 
@@ -264,7 +264,7 @@ FLAG DESCRIPTIONS
     Look at the description of flag 'expires' for details
 ```
 
-_See code: [src/commands/links/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/list.ts)_
+_See code: [src/commands/links/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/list.ts)_
 
 ### `commercelayer links:open ID`
 
@@ -284,7 +284,7 @@ EXAMPLES
   $ commercelayer links:open <link-id>
 ```
 
-_See code: [src/commands/links/open.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/open.ts)_
+_See code: [src/commands/links/open.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/open.ts)_
 
 ### `commercelayer links:resources`
 
@@ -304,7 +304,7 @@ EXAMPLES
   $ commercelayer links:resources
 ```
 
-_See code: [src/commands/links/resources.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/resources.ts)_
+_See code: [src/commands/links/resources.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/resources.ts)_
 
 ### `commercelayer links:update ID`
 
@@ -348,5 +348,5 @@ FLAG DESCRIPTIONS
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format
 ```
 
-_See code: [src/commands/links/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/src/commands/links/update.ts)_
+_See code: [src/commands/links/update.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/links/src/commands/links/update.ts)_
 <!-- commandsstop -->

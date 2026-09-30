@@ -55,7 +55,7 @@ DESCRIPTION
   list all the created tags or show details of a single tag
 ```
 
-_See code: [src/commands/tags/index.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/index.ts)_
+_See code: [src/commands/tags/index.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/index.ts)_
 
 ### `commercelayer tags:add`
 
@@ -84,7 +84,7 @@ EXAMPLES
   $ cl tag -t customers -i aBcDeFghIL mnOPqRstUV -n groupA
 ```
 
-_See code: [src/commands/tags/add.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/add.ts)_
+_See code: [src/commands/tags/add.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/add.ts)_
 
 ### `commercelayer tags:count ID_NAME`
 
@@ -110,7 +110,7 @@ EXAMPLES
   $ cl tags:count -t <resource-type>
 ```
 
-_See code: [src/commands/tags/count.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/count.ts)_
+_See code: [src/commands/tags/count.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/count.ts)_
 
 ### `commercelayer tags:create`
 
@@ -132,7 +132,7 @@ EXAMPLES
   $ cl tags:create -n flag1 flag2 flag3
 ```
 
-_See code: [src/commands/tags/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/create.ts)_
+_See code: [src/commands/tags/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/create.ts)_
 
 ### `commercelayer tags:delete`
 
@@ -154,7 +154,7 @@ EXAMPLES
   $ cl tags:delete -n flag1 flag2 flag3
 ```
 
-_See code: [src/commands/tags/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/delete.ts)_
+_See code: [src/commands/tags/delete.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/delete.ts)_
 
 ### `commercelayer tags:details ID_NAME`
 
@@ -174,7 +174,7 @@ EXAMPLES
   $ commercelayer tags:details <tag-id/tag-name>
 ```
 
-_See code: [src/commands/tags/details.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/details.ts)_
+_See code: [src/commands/tags/details.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/details.ts)_
 
 ### `commercelayer tags:list`
 
@@ -197,7 +197,7 @@ EXAMPLES
   $ cl tags:list -A
 ```
 
-_See code: [src/commands/tags/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/list.ts)_
+_See code: [src/commands/tags/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/list.ts)_
 
 ### `commercelayer tags:remove`
 
@@ -222,7 +222,7 @@ EXAMPLES
   $ cl tags:rm -t customers -i aBcDeFghIL mnOPqRstUV -n groupA
 ```
 
-_See code: [src/commands/tags/remove.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/remove.ts)_
+_See code: [src/commands/tags/remove.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/remove.ts)_
 
 ### `commercelayer tags:types`
 
@@ -242,7 +242,7 @@ EXAMPLES
   $ commercelayer tags:types
 ```
 
-_See code: [src/commands/tags/types.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/types.ts)_
+_See code: [src/commands/tags/types.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/types.ts)_
 
 ### `commercelayer tags:update ID_NAME`
 
@@ -265,7 +265,7 @@ EXAMPLES
   $ commercelayer tags:update <tag-id> -n <tag-name>
 ```
 
-_See code: [src/commands/tags/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/update.ts)_
+_See code: [src/commands/tags/update.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/update.ts)_
 
 ### `commercelayer tags:which ID_NAME`
 
@@ -292,5 +292,5 @@ EXAMPLES
   $ cl tags:which groupA -t customers -A
 ```
 
-_See code: [src/commands/tags/which.ts](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/src/commands/tags/which.ts)_
+_See code: [src/commands/tags/which.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/tags/src/commands/tags/which.ts)_
 <!-- commandsstop -->

@@ -85,7 +85,7 @@ EXAMPLES
   $ cl pc roles -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/provisioning/create.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/create.ts)_
+_See code: [src/commands/provisioning/create.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/create.ts)_
 
 ### `commercelayer provisioning:delete RESOURCE [ID]`
 
@@ -126,7 +126,7 @@ EXAMPLES
   $ cl prov:delete api_credentials <id>
 ```
 
-_See code: [src/commands/provisioning/delete.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/delete.ts)_
+_See code: [src/commands/provisioning/delete.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/delete.ts)_
 
 ### `commercelayer provisioning:exec RESOURCE [ID] [ACTION]`
 
@@ -158,7 +158,7 @@ EXAMPLES
   $ cl prov:exec memberships <membershipId> resend
 ```
 
-_See code: [src/commands/provisioning/exec.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/exec.ts)_
+_See code: [src/commands/provisioning/exec.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/exec.ts)_
 
 ### `commercelayer provisioning:fetch RESOURCE PATH [ID]`
 
@@ -215,7 +215,7 @@ EXAMPLES
   $ cl pf roles/{roleId}/permissions aBcdEkYWx
 ```
 
-_See code: [src/commands/provisioning/fetch.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/fetch.ts)_
+_See code: [src/commands/provisioning/fetch.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/fetch.ts)_
 
 ### `commercelayer provisioning:get RESOURCE [ID]`
 
@@ -269,7 +269,7 @@ EXAMPLES
   $ cl prov:get roles <roleId>
 ```
 
-_See code: [src/commands/provisioning/get.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/get.ts)_
+_See code: [src/commands/provisioning/get.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/get.ts)_
 
 ### `commercelayer provisioning:list RESOURCE`
 
@@ -321,7 +321,7 @@ EXAMPLES
   $ cl prov:list roles -p 5 -n 10 -s -created_at --raw
 ```
 
-_See code: [src/commands/provisioning/list.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/list.ts)_
+_See code: [src/commands/provisioning/list.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/list.ts)_
 
 ### `commercelayer provisioning:resources`
 
@@ -347,7 +347,7 @@ EXAMPLES
   $ cl prov:resources
 ```
 
-_See code: [src/commands/provisioning/resources.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/resources.ts)_
+_See code: [src/commands/provisioning/resources.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/resources.ts)_
 
 ### `commercelayer provisioning:retrieve RESOURCE [ID]`
 
@@ -397,7 +397,7 @@ EXAMPLES
   $ clayer pr roles/<roleId>
 ```
 
-_See code: [src/commands/provisioning/retrieve.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/retrieve.ts)_
+_See code: [src/commands/provisioning/retrieve.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/retrieve.ts)_
 
 ### `commercelayer provisioning:update RESOURCE [ID]`
 
@@ -458,5 +458,5 @@ EXAMPLES
   $ clayer prov:update roles <roleId> -D /path/to/data/file/data.json
 ```
 
-_See code: [src/commands/provisioning/update.ts](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/src/commands/provisioning/update.ts)_
+_See code: [src/commands/provisioning/update.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/update.ts)_
 <!-- commandsstop -->

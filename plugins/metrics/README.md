@@ -78,7 +78,7 @@ FLAG DESCRIPTIONS
     numeric (float or integer) values.
 ```
 
-_See code: [src/commands/metrics/breakdown.ts](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/src/commands/metrics/breakdown.ts)_
+_See code: [src/commands/metrics/breakdown.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/metrics/src/commands/metrics/breakdown.ts)_
 
 ### `commercelayer metrics:date_breakdown RESOURCE`
 
@@ -118,7 +118,7 @@ FLAG DESCRIPTIONS
     the list of valid operators depends on the value of the field key
 ```
 
-_See code: [src/commands/metrics/date_breakdown.ts](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/src/commands/metrics/date_breakdown.ts)_
+_See code: [src/commands/metrics/date_breakdown.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/metrics/src/commands/metrics/date_breakdown.ts)_
 
 ### `commercelayer metrics:fbt`
 
@@ -142,7 +142,7 @@ EXAMPLES
   $ commercelayer metrics:fbt --in xYZkjABcde,yzXKjYzaCx
 ```
 
-_See code: [src/commands/metrics/fbt.ts](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/src/commands/metrics/fbt.ts)_
+_See code: [src/commands/metrics/fbt.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/metrics/src/commands/metrics/fbt.ts)_
 
 ### `commercelayer metrics:search RESOURCE`
 
@@ -173,7 +173,7 @@ EXAMPLES
   $ commercelayer metrics:search orders -l 5 -s asc -b order.placed_at -f order.id,order.number,order.placed_at,customer.email
 ```
 
-_See code: [src/commands/metrics/search.ts](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/src/commands/metrics/search.ts)_
+_See code: [src/commands/metrics/search.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/metrics/src/commands/metrics/search.ts)_
 
 ### `commercelayer metrics:stats RESOURCE`
 
@@ -202,5 +202,5 @@ EXAMPLES
   cl stats orders -f order.total_amount_with_taxes -O stats
 ```
 
-_See code: [src/commands/metrics/stats.ts](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/src/commands/metrics/stats.ts)_
+_See code: [src/commands/metrics/stats.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/metrics/src/commands/metrics/stats.ts)_
 <!-- commandsstop -->

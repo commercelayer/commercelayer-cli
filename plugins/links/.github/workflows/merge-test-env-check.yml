@@ -1,8 +1,0 @@
-name: merge-test-env-check
-on:
-  pull_request:
-    branches:
-      - main
-jobs:
-  test:
-    uses: commercelayer/.github/.github/workflows/list-licenses.yml@main

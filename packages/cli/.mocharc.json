@@ -1,3 +1,6 @@
 {
-  "import": "tsx"
+  "import": "tsx",
+  "require": [
+    "../../scripts/test/oclif-root.cjs"
+  ]
 }

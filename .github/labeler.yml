@@ -15,6 +15,26 @@
       - any-glob-to-any-file:
           - 'packages/dev/**'
 
+'pkg:links':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/links/**'
+
+'pkg:metrics':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/metrics/**'
+
+'pkg:provisioning':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/provisioning/**'
+
+'pkg:tags':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'plugins/tags/**'
+
 'pkg:ux':
   - changed-files:
       - any-glob-to-any-file:

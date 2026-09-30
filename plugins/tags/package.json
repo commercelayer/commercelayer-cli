@@ -3,9 +3,13 @@
   "description": "Commerce Layer CLI Tags plugin",
   "version": "2.2.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
-  "homepage": "https://github.com/commercelayer/commercelayer-cli-plugin-tags",
-  "repository": "commercelayer/commercelayer-cli-plugin-tags",
-  "bugs": "https://github.com/commercelayer/commercelayer-cli-plugin-tags/issues",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/tags",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/tags"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
     "node": ">=20"
   },
@@ -36,7 +40,7 @@
         "hidden": false
       }
     },
-    "repositoryPrefix": "<%- repo %>/blob/main/<%- commandPath %>",
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/tags/<%- commandPath %>",
     "additionalHelpFlags": [
       "-h"
     ],
@@ -54,12 +58,9 @@
     "release": "pnpm upgrade && pnpm prepack && pnpm postpack && pnpm test"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.14",
-    "@commercelayer/cli-dev": "^3.1.12",
+    "@commercelayer/cli-dev": "workspace:^",
     "@oclif/plugin-help": "^6.3.0",
     "@oclif/test": "^3.2.15",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@types/chai": "^5.2.3",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.9.8",
@@ -67,13 +68,12 @@
     "mocha": "^11.8.0",
     "nyc": "^18.0.0",
     "oclif": "^4.24.0",
-    "semantic-release": "^25.0.9",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@commercelayer/cli-core": "^5.11.4",
-    "@commercelayer/cli-ux": "^1.2.4",
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/cli-ux": "workspace:^",
     "@commercelayer/sdk": "^6.58.0",
     "@oclif/core": "^3.27.0",
     "cli-table3": "^0.6.5",
