@@ -26,7 +26,7 @@ export default class LinksEnable extends BaseIdCommand {
 
     const link = await this.cl.links.update({ id, _enable: true })
 
-    this.log(`\n${clColor.style.success('Successfully')} deleted link with id ${clColor.style.id(link.id)}\n`)
+    this.log(`\n${clColor.style.success('Successfully')} enabled link with id ${clColor.style.id(link.id)}\n`)
 
   }
 
