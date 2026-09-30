@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-core",
   "version": "5.11.4",
-  "description": "Commerce Layer Javascript CLI core lib",
+  "description": "Internal package of the Commerce Layer CLI: core utilities shared by the CLI and its plugins. Not intended for direct use.",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "repository": {

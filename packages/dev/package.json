@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-dev",
-  "description": "Commerce Layer CLI development tools and helpers",
+  "description": "Development tools of the Commerce Layer CLI (README generation). Private workspace package, not published.",
   "version": "3.1.12",
   "packageManager": "pnpm@11.20.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
@@ -76,7 +76,5 @@
     "normalize-package-data": "^5.0.0",
     "tslib": "catalog:"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "private": true
 }

@@ -1,7 +1,8 @@
-cli-ux
-======
+# @commercelayer/cli-ux
 
-cli IO utilities
+> **Internal package** of the [Commerce Layer CLI](https://github.com/commercelayer/commercelayer-cli), published only because the CLI and its plugins depend on it at runtime. It is not intended for direct use and its API may change without notice.
+
+CLI IO utilities.
 
 [![Version](https://img.shields.io/npm/v/cli-ux.svg)](https://npmjs.org/package/cli-ux)
 [![CircleCI](https://circleci.com/gh/oclif/cli-ux/tree/main.svg?style=svg)](https://circleci.com/gh/oclif/cli-ux/tree/main)

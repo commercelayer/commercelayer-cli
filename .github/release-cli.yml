@@ -18,7 +18,6 @@ changelog:
           - 'pkg:checkout'
           - 'pkg:cleanups'
           - 'pkg:core'
-          - 'pkg:dev'
           - 'pkg:exports'
           - 'pkg:imports'
           - 'pkg:links'

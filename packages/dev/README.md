@@ -1,6 +1,6 @@
-# @oclif/dev-cli
+# @commercelayer/cli-dev
 
-helpers for oclif CLIs
+Development tools of the Commerce Layer CLI (README generation for the CLI and its plugins). Private workspace package of the [monorepo](https://github.com/commercelayer/commercelayer-cli), not published anymore.
 
 [![Version](https://img.shields.io/npm/v/@commercelayer/cli-dev.svg)](https://npmjs.org/package/@commercelayer/cli-dev)
 [![Known Vulnerabilities](https://snyk.io/test/npm/@commercelayer/cli-dev/badge.svg)](https://snyk.io/test/npm/@commercelayer/cli-dev)

@@ -28,6 +28,10 @@ if (!pkg) {
   console.error(`No package in packages/ or plugins/ named '${dir}'`)
   process.exit(1)
 }
+if (pkg.private) {
+  console.log(`${pkg.name}: private, skipped`)
+  process.exit(0)
+}
 if (!pkg.manifest.oclif?.commands) {
   console.log(`${pkg.name}: no oclif commands, skipped`)
   process.exit(0)
