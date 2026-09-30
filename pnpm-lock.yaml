@@ -1312,6 +1312,9 @@ importers:
       '@commercelayer/cli-generator':
         specifier: workspace:*
         version: link:../../packages/generator
+      '@commercelayer/cli-test-utils':
+        specifier: workspace:*
+        version: link:../../packages/test-utils
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -1339,6 +1342,9 @@ importers:
       mocha:
         specifier: 'catalog:'
         version: 11.8.0
+      nock:
+        specifier: 'catalog:'
+        version: 14.0.17
       nyc:
         specifier: 'catalog:'
         version: 18.0.0(supports-color@8.1.1)

@@ -2,10 +2,9 @@ import { expect, test } from '@oclif/test'
 
 describe('resources:schema', () => {
   test
-    .timeout(15000)
     .stdout()
-    .command(['resources:noc'])
-    .it('runs NoC', ctx => {
-      expect(ctx.stdout).to.contain('-= NoC =-')
+    .command(['resources:schema'])
+    .it('prints the schema version of the SDK', (ctx) => {
+      expect(ctx.stdout).to.match(/Current schema version: \d+\.\d+\.\d+/)
     })
 })
