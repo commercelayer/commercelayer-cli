@@ -25,6 +25,16 @@ const extractDomain = (baseUrl: string): string | undefined => {
 }
 
 
+/**
+ * Core API version of the requests: the --api-version flag, then CL_CLI_API_VERSION.
+ * SDK 8 puts a version in the path (/api/<version>/…), which the production API
+ * doesn't serve yet: without one the requests stay unversioned (/api/…).
+ */
+const apiVersion = (flags?: Record<string, any>): string | undefined => {
+	return flags?.['api-version'] || process.env.CL_CLI_API_VERSION || undefined
+}
+
+
 /** Decode API execution mode */
 const execMode = (liveFlag: string | boolean | undefined): ApiMode => {
 	return ((liveFlag === true) || (liveFlag === 'live')) ? 'live' : 'test'
@@ -38,7 +48,7 @@ const humanizeResource = (type: string, singular?: boolean): string => {
 }
 
 
-export { baseURL, execMode, extractDomain, humanizeResource }
+export { apiVersion, baseURL, execMode, extractDomain, humanizeResource }
 
 
 const CACHEABLE_RESOURCES = [

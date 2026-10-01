@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import { api, coreApi, useMockedApi } from '@commercelayer/cli-test-utils'
 import { expect } from 'chai'
 import {
+  apiVersion,
   baseURL,
   execMode,
   extractDomain,
@@ -45,6 +46,29 @@ describe('api', () => {
     expect(execMode(undefined)).to.equal('test')
     expect(liveEnvironment('live')).to.equal(true)
     expect(liveEnvironment('test')).to.equal(false)
+  })
+
+  describe('apiVersion', () => {
+    let env: string | undefined
+    beforeEach(() => {
+      env = process.env.CL_CLI_API_VERSION
+      delete process.env.CL_CLI_API_VERSION
+    })
+    afterEach(() => {
+      if (env === undefined) delete process.env.CL_CLI_API_VERSION
+      else process.env.CL_CLI_API_VERSION = env
+    })
+
+    it('is unversioned by default', () => {
+      expect(apiVersion()).to.equal(undefined)
+      expect(apiVersion({})).to.equal(undefined)
+    })
+
+    it('takes the flag, then the environment', () => {
+      process.env.CL_CLI_API_VERSION = '2017-08'
+      expect(apiVersion()).to.equal('2017-08')
+      expect(apiVersion({ 'api-version': '2026-05' })).to.equal('2026-05')
+    })
   })
 
   it('humanizes resource types', () => {
