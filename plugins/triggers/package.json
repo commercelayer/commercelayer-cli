@@ -11,7 +11,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.13"
   },
   "files": [
     "/bin/run.*",
@@ -62,7 +62,6 @@
     "@oclif/plugin-help": "catalog:",
     "@oclif/test": "catalog:",
     "@types/chai": "catalog:",
-    "@types/inquirer": "catalog:",
     "@types/mocha": "catalog:",
     "@types/node": "catalog:",
     "chai": "catalog:",

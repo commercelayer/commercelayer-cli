@@ -9,7 +9,7 @@ import { triggers } from '../../triggers/gift_cards'
 
 const promptAction = async (id: string): Promise<string> => {
   const answers = await inquirer.prompt([{
-    type: 'list',
+    type: 'select',
     name: 'trigger',
     message: `Select an action to execute on gift card ${clColor.api.id(id)}:`,
     choices: Object.keys(triggers).sort().map(a => {

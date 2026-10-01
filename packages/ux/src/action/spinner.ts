@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
+import ansiEscapes from 'ansi-escapes'
 import ansiStyles from 'ansi-styles'
 import chalk from 'chalk'
 import stripAnsi from 'strip-ansi'
-import * as supportsColor from 'supports-color'
+import supportsColor from 'supports-color'
 
 import { errtermwidth } from '../screen'
 import { ActionBase, type ActionType } from './base'
 import spinners from './spinners'
 import type { Options } from './types'
-
-const ansiEscapes = require('ansi-escapes')
 
 function color(s: string): string {
   if (!supportsColor) return s

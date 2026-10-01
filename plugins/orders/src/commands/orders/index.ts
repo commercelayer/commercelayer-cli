@@ -44,7 +44,7 @@ export default class OrdersIndex extends Command {
 
 const promptAction = async (id: string): Promise<ActionType> => {
   const answers = await inquirer.prompt([{
-    type: 'list',
+    type: 'select',
     name: 'trigger',
     message: `Select an action to execute on order ${clColor.yellowBright(id)}:`,
     choices: Object.keys(triggers).sort().map(a => {

@@ -2,7 +2,7 @@
 import { inspect } from 'node:util'
 import { Flags as F, type Interfaces } from '@oclif/core'
 import chalk from 'chalk'
-import { safeDump } from 'js-yaml'
+import { dump } from 'js-yaml'
 import { orderBy } from 'natural-orderby'
 import sliceAnsi from 'slice-ansi'
 import sw from 'string-width'
@@ -305,7 +305,7 @@ class Table<T extends Record<string, unknown>> {
   }
 
   private outputYAML(): void {
-    this.options.printLine(safeDump(this.resolveColumnsToObjectArray()))
+    this.options.printLine(dump(this.resolveColumnsToObjectArray()))
   }
 
   private resolveColumnsToObjectArray(): any {

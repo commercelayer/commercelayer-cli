@@ -3,6 +3,7 @@ import * as path from 'node:path'
 import { URL } from 'node:url'
 import { Command, Config, Flags, type HelpBase, type Interfaces, loadHelpClass, Plugin } from '@oclif/core'
 import * as fs from 'fs-extra'
+import GithubSlugger from 'github-slugger'
 import _template from 'lodash/template'
 import { HelpCompatibilityWrapper } from '../help-compatibility'
 import { castArray, compact, sortBy, template, uniqBy } from '../util'
@@ -11,8 +12,7 @@ import { castArray, compact, sortBy, template, uniqBy } from '../util'
 const normalize = require('normalize-package-data')
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const columns = Number.parseInt(process.env.COLUMNS!, 10) || 120
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-const slugify = new (require('github-slugger') as any)()
+const slugify = new GithubSlugger()
 
 interface HelpBaseDerived {
   // eslint-disable-next-line @typescript-eslint/prefer-function-type

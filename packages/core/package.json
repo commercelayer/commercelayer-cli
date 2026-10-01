@@ -31,7 +31,7 @@
     "lib/**/*"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=22.13"
   },
   "devDependencies": {
     "@commercelayer/cli-test-utils": "workspace:*",
@@ -47,10 +47,10 @@
     "oclif": "catalog:",
     "tsup": "catalog:",
     "tsx": "catalog:",
-    "typescript": "^5.9.3"
+    "typescript": "catalog:"
   },
   "dependencies": {
-    "@commercelayer/js-auth": "^6.7.2",
+    "@commercelayer/js-auth": "catalog:",
     "@oclif/core": "catalog:",
     "chalk": "catalog:",
     "jsonwebtoken": "^9.0.3",

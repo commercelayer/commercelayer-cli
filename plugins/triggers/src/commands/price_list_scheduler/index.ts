@@ -9,7 +9,7 @@ import { triggers } from '../../triggers/price_list_schedulers'
 
 const promptAction = async (id: string): Promise<string> => {
   const answers = await inquirer.prompt([{
-    type: 'list',
+    type: 'select',
     name: 'trigger',
     message: `Select an action to execute on price list scheduler ${clColor.api.id(id)}:`,
     choices: Object.keys(triggers).sort().map(a => {
