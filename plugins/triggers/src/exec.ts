@@ -1,5 +1,5 @@
 import { clApi, clColor, clText, clUtil } from '@commercelayer/cli-core'
-import type { CommerceLayerClient, QueryParamsRetrieve, Resource } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, QueryParamsRetrieve, Resource } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Errors } from '@oclif/core'
@@ -18,6 +18,7 @@ const commercelayerInit = (flags: any, config?: Config): CommerceLayerClient => 
   const userAgent = config? clUtil.userAgent(config) : undefined
 
   return commercelayer({
+    apiVersion: clApi.apiVersion(flags) as ApiVersion,
     organization,
     domain,
     accessToken,

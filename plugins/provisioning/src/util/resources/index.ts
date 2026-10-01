@@ -1,4 +1,4 @@
-import type { ResourceTypeLock } from "@commercelayer/provisioning-sdk";
+import type { ResourceTypeLock } from "../../sdk";
 import RESOURCES from "./available";
 
 interface ApiResource {

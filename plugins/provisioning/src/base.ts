@@ -17,13 +17,13 @@ import {
 	clUpdate,
 	clUtil,
 } from "@commercelayer/cli-core"
+import type { Interfaces } from "@oclif/core"
+import { Args, Command, ux as cliux, Flags } from "@oclif/core"
 import commercelayer, {
 	type CommerceLayerProvisioningClient,
 	CommerceLayerProvisioningStatic,
 	type QueryParams,
-} from "@commercelayer/provisioning-sdk"
-import type { Interfaces } from "@oclif/core"
-import { Args, Command, ux as cliux, Flags } from "@oclif/core"
+} from "./sdk"
 
 type CommandError = Interfaces.CommandError
 

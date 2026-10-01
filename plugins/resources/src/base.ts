@@ -1,8 +1,8 @@
 import { existsSync } from 'node:fs'
 import type { KeyVal, KeyValArray, KeyValObj, KeyValRel, KeyValSort, KeyValString, ResAttributes } from '@commercelayer/cli-core'
-import { clColor, clCommand, clConfig, clFilter, clText, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { clApi, clColor, clCommand, clConfig, clFilter, clText, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId, ResourceType, ResourceTypeLock } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId, ResourceType, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Command, type Config, Flags } from '@oclif/core'
@@ -41,6 +41,7 @@ export abstract class BaseCommand extends Command {
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN'
     }),
+    'api-version': clCommand.apiVersionFlag(),
     accessToken: Flags.string({
       hidden: true,
       required: true,
@@ -57,7 +58,7 @@ export abstract class BaseCommand extends Command {
     const userAgent = clUtil.userAgent(this.config)
 
 
-    const cl = commercelayer({ organization, domain, accessToken, userAgent, ...options })
+    const cl = commercelayer({ apiVersion: clApi.apiVersion(flags) as ApiVersion, organization, domain, accessToken, userAgent, ...options })
 
     if ('cl' in this) this.cl = cl
 

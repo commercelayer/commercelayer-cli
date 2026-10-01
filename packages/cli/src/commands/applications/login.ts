@@ -2,6 +2,7 @@ import { inspect } from 'node:util'
 import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
 import { clApi, clApplication, clColor, clCommand, clConfig, clToken } from '@commercelayer/cli-core'
 import clprovisioning from '@commercelayer/provisioning-sdk'
+import type { ApiVersion } from '@commercelayer/sdk'
 import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Command, type Config, Errors, Flags } from '@oclif/core'
@@ -187,7 +188,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		org = { slug: 'provisioning', name: user?.name || 'Provisioning API' }
 		app = { name: 'Provisioning App' }
 	} else { // core
-		const cl = commercelayer({ organization: auth.slug || '', domain: auth.domain, accessToken })
+		const cl = commercelayer({ apiVersion: clApi.apiVersion() as ApiVersion, organization: auth.slug || '', domain: auth.domain, accessToken })
 		// Organization info
 		org = await cl.organization.retrieve().catch(() => { error(cl.organization.type()) })
 		// Application info

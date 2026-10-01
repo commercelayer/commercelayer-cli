@@ -3,7 +3,7 @@ import {
 	type CommerceLayerProvisioningClient,
 	CommerceLayerProvisioningStatic,
 	type RequestObj,
-} from "@commercelayer/provisioning-sdk";
+} from "../sdk";
 
 type RequestData = {
 	baseUrl: string;

@@ -1,6 +1,9 @@
 
 import { clText } from "@commercelayer/cli-core"
-import { CommerceLayerProvisioningStatic } from "@commercelayer/provisioning-sdk"
+
+// The CommonJS declarations of the provisioning-sdk preview hide its named exports
+// behind export=: the value comes from require(), typed with the ESM declarations
+const { CommerceLayerProvisioningStatic } = require('@commercelayer/provisioning-sdk') as typeof import('@commercelayer/provisioning-sdk', { with: { 'resolution-mode': 'import' } })
 
 
 const PROVISIONING = true

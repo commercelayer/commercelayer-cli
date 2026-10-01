@@ -3,9 +3,9 @@ import { rename } from 'node:fs/promises'
 import { join } from 'node:path'
 import { gunzipSync, type InputType } from 'node:zlib'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
-import { clApi, clColor, clFilter, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { clApi, clColor, clCommand, clFilter, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
@@ -63,6 +63,7 @@ export default abstract class BaseCommand extends Command {
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN'
     }),
+    'api-version': clCommand.apiVersionFlag(),
     accessToken: Flags.string({
       hidden: true,
       required: true,
@@ -116,6 +117,7 @@ export default abstract class BaseCommand extends Command {
     this.environment = clToken.getTokenEnvironment(accessToken)
 
     this.cl = commercelayer({
+      apiVersion: clApi.apiVersion(flags) as ApiVersion,
       organization,
       domain,
       accessToken,

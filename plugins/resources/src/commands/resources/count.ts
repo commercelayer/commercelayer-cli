@@ -1,4 +1,5 @@
 import { clApi, clColor, clFilter, clUtil, type KeyValString } from '@commercelayer/cli-core'
+import type { ApiVersion } from '@commercelayer/sdk'
 import { CommerceLayer, type CommerceLayerClient, type ListResponse, type Resource } from '@commercelayer/sdk'
 import { Args, BaseCommand, cliux, Flags } from '../../base'
 
@@ -41,7 +42,7 @@ export default class ResourcesCount extends BaseCommand {
     const accessToken = flags.accessToken
 
 
-    const cl = CommerceLayer({ organization, domain, accessToken, userAgent: clUtil.userAgent(this.config), timeout: 20_000 })
+    const cl = CommerceLayer({ apiVersion: clApi.apiVersion(flags) as ApiVersion, organization, domain, accessToken, userAgent: clUtil.userAgent(this.config), timeout: 20_000 })
     const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
     this.checkOperation(resSdk)
 

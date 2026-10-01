@@ -6,8 +6,8 @@ packages:
 # `"<name>": "catalog:"` and the version lives only here.
 catalog:
   '@commercelayer/js-auth': ^8.0.1
-  '@commercelayer/provisioning-sdk': ^2.10.2
-  '@commercelayer/sdk': ^6.58.0
+  '@commercelayer/provisioning-sdk': https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929
+  '@commercelayer/sdk': https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
   '@oclif/core': ^5.1.2
   '@oclif/plugin-help': ^7.0.2
   '@oclif/test': ^5.0.1

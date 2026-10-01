@@ -168,11 +168,11 @@ catalogs:
       specifier: ^8.0.1
       version: 8.0.1
     '@commercelayer/provisioning-sdk':
-      specifier: ^2.10.2
-      version: 2.10.2
+      specifier: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929
+      version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929
     '@commercelayer/sdk':
-      specifier: ^6.58.0
-      version: 6.58.0
+      specifier: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
+      version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
     '@oclif/core':
       specifier: ^5.1.2
       version: 5.1.2
@@ -285,10 +285,10 @@ importers:
         version: link:../ux
       '@commercelayer/provisioning-sdk':
         specifier: 'catalog:'
-        version: 2.10.2
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -636,7 +636,7 @@ importers:
         version: link:../../packages/core
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -700,7 +700,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -779,7 +779,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -858,7 +858,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -931,7 +931,7 @@ importers:
         version: link:../../packages/core
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1004,7 +1004,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1068,7 +1068,7 @@ importers:
         version: link:../../packages/core
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1132,7 +1132,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1199,7 +1199,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/provisioning-sdk':
         specifier: 'catalog:'
-        version: 2.10.2
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1269,7 +1269,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1348,7 +1348,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1415,7 +1415,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1485,7 +1485,7 @@ importers:
         version: 8.0.1
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1546,7 +1546,7 @@ importers:
         version: link:../../packages/core
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1613,7 +1613,7 @@ importers:
         version: link:../../packages/ux
       '@commercelayer/sdk':
         specifier: 'catalog:'
-        version: 6.58.0
+        version: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929
       '@oclif/core':
         specifier: 'catalog:'
         version: 5.1.2
@@ -1886,12 +1886,14 @@ packages:
     resolution: {integrity: sha512-5lt18iBdvvSsjIgLXvfkdEWGyW/f92ulTFu8y8MzkUSdBQS5wjXyHRexpZeDd4/UTn9jBp4znjqPiHOPi9g+FQ==}
     engines: {node: '>=20.0.0'}
 
-  '@commercelayer/provisioning-sdk@2.10.2':
-    resolution: {integrity: sha512-5uqqH5CXXAQPuMrz+IGbF2HcQaKzgMzF7z4ye/mdo9Ygp8uMMNYH5jnaPB4QvYBVOMSi8r20egF3B9sFvqILLQ==}
+  '@commercelayer/provisioning-sdk@https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929':
+    resolution: {integrity: sha512-hlp61OGrVVuTi3n0HdRIw6f5O8B6uoTiJ3ub2W6Z83gjGrxB0LR84ApddJf6Xiz/EWJDn9RDBw5KmPURPuRTmw==, tarball: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929}
+    version: 3.0.0-beta.1
     engines: {node: '>=20'}
 
-  '@commercelayer/sdk@6.58.0':
-    resolution: {integrity: sha512-AoTMeIXim3/JNbuffvMtE4XY0eGn7qVOxdTFpVvuQrz5LVSimJYEFL/VMzqMap4vukHsZdYq4p5X+ZzXXP/Jbg==}
+  '@commercelayer/sdk@https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929':
+    resolution: {integrity: sha512-KRF6CGX7KfDUTmNR14n8IJIdxQoEndGFgmOGOHPohvFxadvnexhTgsA2DCNh8JrPdnHHCbGZx/upLlrqLlKm0Q==, tarball: https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929}
+    version: 8.0.0-beta.13
     engines: {node: '>=20'}
 
   '@cspotcode/source-map-support@0.8.1':
@@ -5239,9 +5241,9 @@ snapshots:
 
   '@commercelayer/js-auth@8.0.1': {}
 
-  '@commercelayer/provisioning-sdk@2.10.2': {}
+  '@commercelayer/provisioning-sdk@https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/provisioning-sdk@5259929': {}
 
-  '@commercelayer/sdk@6.58.0': {}
+  '@commercelayer/sdk@https://pkg.pr.new/commercelayer/commercelayer-sdk/@commercelayer/sdk@5259929': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:

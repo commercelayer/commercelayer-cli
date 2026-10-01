@@ -1,3 +1,5 @@
+import { clApi } from '@commercelayer/cli-core'
+import type { ApiVersion } from '@commercelayer/sdk'
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable prefer-regex-literals */
@@ -129,6 +131,7 @@ async function fix(): Promise<void> {
 
 
   const cl = commercelayer({
+    apiVersion: clApi.apiVersion() as ApiVersion,
     organization: process.env.CL_CLI_ORGANIZATION || 'cli-test-org',
     accessToken: process.env.CL_CLI_ACCESS_TOKEN || '',
   })
