@@ -1,5 +1,5 @@
 import { clApi, clColor, clText, clUtil } from '@commercelayer/cli-core'
-import type { CommerceLayerClient, QueryParamsRetrieve, QueryRecordFields, Resource } from '@commercelayer/sdk'
+import type { CommerceLayerClient, QueryParamsRetrieve, Resource } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Errors } from '@oclif/core'
@@ -42,8 +42,7 @@ const exec = async <R extends Resource>(resourceType: string, id: string, action
   const res: any = { id, [`_${action}`]: flags.value || true }
   const params: QueryParamsRetrieve = {}
   if (fields && (fields.length > 0)) {
-    params.fields = {}
-    params.fields[resourceType as R['type']] = fields as QueryRecordFields[R['type']]
+    params.fields = { [resourceType]: fields } as QueryParamsRetrieve['fields']
   }
 
   const result = resSdk.update(res, params).catch((error: unknown) => {

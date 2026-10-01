@@ -1,5 +1,5 @@
 import { clApi, clColor, clConfig, clUtil, type KeyValSort } from '@commercelayer/cli-core'
-import type { Link, QueryArraySortable, QueryPageSize, QueryParamsList, QueryRecordSortable } from '@commercelayer/sdk'
+import type { Link, QueryPageSize, QueryParamsList, QuerySort } from '@commercelayer/sdk'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import { BaseCommand, cliux, Flags } from '../../base'
 import { fillUTCDate, formatDate, linkStatus } from '../../util'
@@ -96,7 +96,7 @@ Examples:
 		if (flags.expires) expiresFilter.push(...this.comparisonParam(flags.expires, 'expires'))
 
 		const sortBy = this.sortFlag(flags.sort)
-		const sort: QueryArraySortable<Link> | QueryRecordSortable<Link> = (sortBy && (Object.keys(sortBy).length > 0)) ? sortBy : ['-expires_at', '-starts_at']
+		const sort: QuerySort<Link> = (sortBy && (Object.keys(sortBy).length > 0)) ? sortBy : ['-expires_at', '-starts_at']
 
 		this.commercelayerInit(flags)
 
