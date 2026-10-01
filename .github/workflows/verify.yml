@@ -32,8 +32,17 @@ jobs:
         run: node scripts/check-packages.mjs
 
   test:
-    name: Build and test
+    # The current LTS, and the minimum Node of the packages (engines), where
+    # require() of the ESM-only dependencies must work too. The LTS job keeps
+    # the plain name, which branch protection refers to.
+    name: Build and test${{ matrix.node != 'lts/*' && format(' (Node {0})', matrix.node) || '' }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      # One at a time: the CLI suites share the test organization
+      max-parallel: 1
+      matrix:
+        node: ['lts/*', '22.13']
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,7 +50,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 'lts/*', cache: 'pnpm' }
+        with: { node-version: '${{ matrix.node }}', cache: 'pnpm' }
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
@@ -77,6 +86,7 @@ jobs:
         run: pnpm --filter '${{ steps.select.outputs.filter }}' --filter '!@commercelayer/cli-monorepo' --workspace-concurrency=1 test
 
       - name: Command surface vs npm
+        if: matrix.node == 'lts/*'
         # Informational on pull requests; publish.yml enforces it
         run: |
           set -euo pipefail

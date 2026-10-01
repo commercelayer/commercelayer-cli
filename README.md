@@ -30,7 +30,7 @@ See [`packages/cli/README.md`](packages/cli/README.md) for installation and usag
 
 ## Development
 
-Requires Node.js 20+ and [pnpm](https://pnpm.io).
+Requires Node.js 22.13+ and [pnpm](https://pnpm.io).
 
 ```sh
 pnpm install   # install all workspace packages
