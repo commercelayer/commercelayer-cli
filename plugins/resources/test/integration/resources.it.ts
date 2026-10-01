@@ -57,7 +57,11 @@ describeLive('resources', () => {
   it('fetches a path and a relationship', async function () {
     if (!skuId) this.skip()
     expect(await json(['resources:fetch', `skus/${skuId}`])).to.include({ id: skuId })
-    expect(await json(['resources:fetch', `skus/${skuId}/prices`])).to.be.an('array')
+    // The SKU may have no prices: the command says so instead of printing an empty list
+    const ctx = await runCommand(['resources:fetch', `skus/${skuId}/prices`, ...(await liveAuth()), '-j'])
+    if (ctx.error) throw ctx.error
+    if (/Relationship skus\.prices is empty/.test(ctx.stdout)) return
+    expect(JSON.parse(jsonBlock(ctx.stdout))).to.be.an('array')
   })
 
   it('counts the resources', async () => {
