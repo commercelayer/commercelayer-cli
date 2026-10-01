@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-ux",
   "description": "Internal package of the Commerce Layer CLI: terminal IO utilities shared by the CLI and its plugins. Not intended for direct use.",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "repository": {

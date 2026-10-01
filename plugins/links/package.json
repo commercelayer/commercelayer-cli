@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-links",
   "description": "Commerce Layer CLI links plugin",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/links",
   "repository": {
