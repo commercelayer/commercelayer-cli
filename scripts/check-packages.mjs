@@ -34,10 +34,7 @@ const OCLIF_FILES = ['/bin/run.*', '/lib', '/npm-shrinkwrap.json', '/oclif.manif
 const PNPM_COMMANDS = new Set(['add', 'dlx', 'exec', 'install', 'pack', 'publish'])
 
 /** Dependencies deliberately not on the catalog version: `<package dir>:<dependency>` */
-const EXCEPTIONS = {
-  'core:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
-  'ux:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
-}
+const EXCEPTIONS = {}
 
 // `catalog:` entries of pnpm-workspace.yaml (flat `  name: version` lines)
 const catalog = new Set()

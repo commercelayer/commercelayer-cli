@@ -47,7 +47,7 @@
     "oclif": "catalog:",
     "tsup": "catalog:",
     "tsx": "catalog:",
-    "typescript": "^5.9.3"
+    "typescript": "catalog:"
   },
   "dependencies": {
     "@commercelayer/js-auth": "catalog:",
