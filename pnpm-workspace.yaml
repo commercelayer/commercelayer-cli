@@ -51,3 +51,5 @@ overrides:
   diff@<8.0.3: ^8.0.4
   # GHSA buffer bounds check - nyc pins istanbul-lib-processinfo, which pins uuid@8.3.2
   uuid@<11.1.1: ^11.1.1
+  # GHSA-g7r4-m6w7-qqqr (low) - tsup pins esbuild ^0.27, fixed in 0.28.1
+  esbuild@<0.28.1: ^0.28.1
