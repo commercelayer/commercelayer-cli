@@ -43,6 +43,16 @@ Shared dependency versions live in the `catalog:` of `pnpm-workspace.yaml`: pack
 
 Run a single package's script with `pnpm --filter <package name> <script>`, for example `pnpm --filter @commercelayer/cli test`.
 
+### Tests against the real API
+
+`pnpm test` runs against a mocked API, with no credentials. The integration suites (`test/integration/*.it.ts`) run read-only commands against the real Core API of a test organization; they are skipped unless its credentials are set:
+
+```sh
+CL_CLI_ORGANIZATION=<org slug> CL_CLI_CLIENT_ID=<client id> CL_CLI_CLIENT_SECRET=<client secret> pnpm test:integration
+```
+
+Use an integration application of a test organization, never a production one. In CI, [integration.yml](.github/workflows/integration.yml) runs them against `cli-test-org` on pushes to `monorepo` and `main`, every night, on demand, and on pull requests that change the suites. Only commands that read data belong there, and they assert on the shape of the output, not on specific records.
+
 ## Generated code
 
 Some plugins generate part of their code: `triggers` and `orders` generate a command for each API trigger, and `resources` and `provisioning` generate their resource list. Each of them declares its generator in a `gen.config.ts`, run by the private [`packages/generator`](packages/generator) (`cl-generate`), in the same way as `commercelayer-sdk` does with its `sdk.config.ts`:

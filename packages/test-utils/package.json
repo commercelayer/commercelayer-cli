@@ -2,7 +2,7 @@
   "name": "@commercelayer/cli-test-utils",
   "version": "0.0.0",
   "private": true,
-  "description": "Test utilities shared by the Commerce Layer CLI packages: mocked API, fake access tokens, JSON:API builders. Private workspace package, not published.",
+  "description": "Test utilities shared by the Commerce Layer CLI packages: mocked API, fake access tokens, JSON:API builders, live API helpers for the integration suites. Private workspace package, not published.",
   "license": "MIT",
   "main": "src/index.ts",
   "types": "src/index.ts",
