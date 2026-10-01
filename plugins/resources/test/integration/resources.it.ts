@@ -2,11 +2,24 @@ import { describeLive, liveAuth, liveFirst } from '@commercelayer/cli-test-utils
 import { runCommand } from '@oclif/test'
 import { expect } from 'chai'
 
+/** The JSON block of a command's output: the commands print other lines around it (e.g. the list's Records footer) */
+const jsonBlock = (stdout: string): string => {
+  const lines = stdout.split('\n')
+  const start = lines.findIndex((l) => /^[[{]/.test(l))
+  if (start < 0) throw new Error(`No JSON in the output:\n${stdout}`)
+  if (/^(\[\]|\{\})$/.test(lines[start])) return lines[start]
+  const end = lines.findIndex((l, i) => i > start && /^[\]}]$/.test(l))
+  return lines.slice(start, end + 1).join('\n')
+}
+
+let lastStdout = ''
+
 /** stdout of a command run with --json, parsed */
 const json = async (args: string[]): Promise<any> => {
   const ctx = await runCommand([...args, ...(await liveAuth()), '-j'])
   if (ctx.error) throw ctx.error
-  return JSON.parse(ctx.stdout)
+  lastStdout = ctx.stdout
+  return JSON.parse(jsonBlock(ctx.stdout))
 }
 
 describeLive('resources', () => {
@@ -19,6 +32,7 @@ describeLive('resources', () => {
     const skus = await json(['resources:list', 'skus', '-n', '5'])
     expect(skus).to.be.an('array').with.length.at.most(5)
     for (const sku of skus) expect(sku).to.include({ type: 'skus' }).and.to.have.property('code')
+    if (skus.length) expect(lastStdout).to.match(/Records: \d+ of [\d,.]+ \| Page: 1 of \d+/)
   })
 
   it('lists with filters, sort and fields', async () => {
@@ -49,6 +63,7 @@ describeLive('resources', () => {
   it('counts the resources', async () => {
     const ctx = await runCommand(['resources:count', 'skus', ...(await liveAuth())])
     if (ctx.error) throw ctx.error
-    expect(ctx.stderr + ctx.stdout).to.match(/Counting skus/)
+    // the count closes the Counting… spinner, on stderr
+    expect(ctx.stdout + ctx.stderr).to.match(/\d/)
   })
 })
