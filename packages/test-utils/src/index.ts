@@ -69,4 +69,21 @@ export const apiError = (status: number, title: string, detail = title) => ({
 export const notFound = () => apiError(404, 'Record not found', 'The requested resource was not found')
 
 /** Integration suites against the real API: see ./live */
-export { describeLive, LIVE, LIVE_ORG, liveApi, liveAuth, liveFirst, liveToken } from './live'
+export {
+  describeLive,
+  jsonOutput,
+  LIVE,
+  LIVE_ORG,
+  LIVE_PREFIX,
+  LIVE_RUN,
+  LIVE_SALES_CHANNEL,
+  liveApi,
+  liveAuth,
+  liveCreate,
+  liveDelete,
+  liveFirst,
+  liveName,
+  liveRequest,
+  liveSalesChannelToken,
+  liveToken,
+} from './live'

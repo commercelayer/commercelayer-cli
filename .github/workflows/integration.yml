@@ -1,8 +1,9 @@
 name: Integration
 
-# Runs the integration suites (test/integration/*.it.ts): read-only commands
-# against the real Core API of the test organization, with the credentials
-# of its integration application. Not on every pull request, to spare the
+# Runs the integration suites (test/integration/*.it.ts) against the real
+# Core API of the test organization, with the credentials of its integration
+# application: read-only commands, and commands that change data on
+# resources the suites create and delete themselves (named cli-it-…). Not on every pull request, to spare the
 # rate limits and keep reviews independent of the organization's data: on
 # pushes to the integration and main branches, every night, on demand, and
 # on pull requests that change the suites themselves.
@@ -21,9 +22,11 @@ on:
 permissions:
   contents: read
 
+# One run at a time on the shared organization, and never cancelled halfway:
+# a cancelled run would leave its test resources behind
 concurrency:
-  group: integration-${{ github.ref }}
-  cancel-in-progress: true
+  group: integration
+  cancel-in-progress: false
 
 jobs:
   integration:
@@ -39,11 +42,17 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
-      - name: Run integration suites
-        env:
+      - name: Remove test resources left by earlier runs
+        env: &credentials
           CL_CLI_ORGANIZATION: cli-test-org
           CL_CLI_CLIENT_ID: ${{ secrets.CL_CLI_CLIENT_ID }}
           CL_CLI_CLIENT_SECRET: ${{ secrets.CL_CLI_CLIENT_SECRET }}
+          # Optional: the checkout and links suites are skipped without it
+          CL_CLI_SALES_CHANNEL_CLIENT_ID: ${{ secrets.CL_CLI_SALES_CHANNEL_CLIENT_ID }}
+        run: node scripts/test/live-sweep.mjs
+
+      - name: Run integration suites
+        env: *credentials
         run: |
           # Without credentials the suites are skipped, and the job would pass without testing anything
           if [ -z "$CL_CLI_CLIENT_ID" ] || [ -z "$CL_CLI_CLIENT_SECRET" ]; then
@@ -51,3 +60,8 @@ jobs:
             exit 1
           fi
           pnpm test:integration
+
+      - name: Remove this run's test resources
+        if: always()
+        env: *credentials
+        run: node scripts/test/live-sweep.mjs
