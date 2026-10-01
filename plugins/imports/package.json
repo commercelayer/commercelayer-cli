@@ -50,6 +50,7 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test:integration": "mocha --forbid-only \"test/integration/**/*.it.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
   },
   "types": "lib/index.d.ts",
