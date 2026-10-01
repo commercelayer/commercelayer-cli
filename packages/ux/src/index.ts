@@ -4,6 +4,7 @@
 import { format as utilFormat } from 'node:util'
 import { Errors } from '@oclif/core'
 import chalk from 'chalk'
+import supportsHyperlinks from 'supports-hyperlinks'
 import type { ActionBase } from './action/base'
 import { config } from './config'
 import { flush as _flush } from './flush'
@@ -24,8 +25,7 @@ export class ux {
   }
 
   public static annotation(text: string, annotation: string): void {
-    const supports = require('supports-hyperlinks')
-    if (supports.stdout) {
+    if (supportsHyperlinks.stdout) {
       // \u001b]8;;https://google.com\u0007sometext\u001b]8;;\u0007
       ux.log(`\u001B]1337;AddAnnotation=${text.length}|${annotation}\u0007${text}`)
     } else {
@@ -117,8 +117,7 @@ export class ux {
   }
 
   public static hyperlink(text: string, uri: string, params = {}): string {
-    const supports = require('supports-hyperlinks')
-    if (supports.stdout) {
+    if (supportsHyperlinks.stdout) {
       return hyperlinker(text, uri, params)
     } else {
       return uri

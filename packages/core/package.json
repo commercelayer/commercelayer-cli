@@ -50,7 +50,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@commercelayer/js-auth": "^6.7.2",
+    "@commercelayer/js-auth": "catalog:",
     "@oclif/core": "catalog:",
     "chalk": "catalog:",
     "jsonwebtoken": "^9.0.3",

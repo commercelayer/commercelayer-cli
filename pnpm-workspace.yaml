@@ -5,6 +5,7 @@ packages:
 # One version for the dependencies the packages share: they declare
 # `"<name>": "catalog:"` and the version lives only here.
 catalog:
+  '@commercelayer/js-auth': ^8.0.1
   '@commercelayer/provisioning-sdk': ^2.10.2
   '@commercelayer/sdk': ^6.58.0
   '@oclif/core': ^5.1.2
@@ -19,7 +20,7 @@ catalog:
   '@types/node-notifier': ^8.0.5
   'axios': ^1.19.0
   'chai': ^6.2.2
-  'chalk': ^4.1.2
+  'chalk': ^6.0.1
   'cli-progress': ^3.12.0
   'cli-table3': ^0.6.5
   'dotenv': ^17.4.2
@@ -51,3 +52,6 @@ overrides:
   diff@<8.0.3: ^8.0.4
   # GHSA buffer bounds check - nyc pins istanbul-lib-processinfo, which pins uuid@8.3.2
   uuid@<11.1.1: ^11.1.1
+
+minimumReleaseAgeExclude:
+  - supports-hyperlinks@4.6.0

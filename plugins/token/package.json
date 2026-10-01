@@ -73,7 +73,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "workspace:^",
     "@commercelayer/cli-ux": "workspace:^",
-    "@commercelayer/js-auth": "^7.4.2",
+    "@commercelayer/js-auth": "catalog:",
     "@commercelayer/sdk": "catalog:",
     "@oclif/core": "catalog:",
     "inquirer": "catalog:",
