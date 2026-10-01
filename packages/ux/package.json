@@ -31,7 +31,7 @@
     "lib/**/*"
   ],
   "engines": {
-    "node": ">=22.12"
+    "node": ">=22.13"
   },
   "devDependencies": {
     "@commercelayer/cli-test-utils": "workspace:*",
@@ -66,7 +66,7 @@
     "string-width": "^8.3.0",
     "strip-ansi": "^7.2.0",
     "supports-color": "^11.0.0",
-    "supports-hyperlinks": "^4.6.0",
+    "supports-hyperlinks": "^4.5.0",
     "wordwrap": "^1.0.0"
   },
   "peerDependencies": {

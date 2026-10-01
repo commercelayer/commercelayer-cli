@@ -17,7 +17,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=22.12"
+    "node": ">=22.13"
   },
   "files": [
     "/bin/run.*",
@@ -98,12 +98,9 @@
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "catalog:",
     "@types/chai": "catalog:",
-    "@types/configstore": "^4.0.0",
-    "@types/inquirer": "catalog:",
     "@types/lodash.kebabcase": "^4.1.9",
     "@types/mocha": "catalog:",
     "@types/node": "catalog:",
-    "@types/update-notifier": "^5.1.0",
     "@withfig/autocomplete-types": "^1.31.0",
     "chai": "catalog:",
     "dotenv": "catalog:",
@@ -124,7 +121,7 @@
     "@oclif/plugin-help": "catalog:",
     "@oclif/plugin-not-found": "^4.0.2",
     "@oclif/plugin-plugins": "^7.0.3",
-    "configstore": "^5.0.1",
+    "configstore": "^8.0.0",
     "inquirer": "catalog:",
     "lodash.kebabcase": "^4.1.1",
     "tslib": "catalog:",

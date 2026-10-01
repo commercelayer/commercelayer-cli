@@ -1,4 +1,5 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
+import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { type AccessToken, type AppInfo, type AppKey, clApi, clConfig } from '@commercelayer/cli-core'
 import type { Interfaces } from '@oclif/core'
@@ -10,7 +11,10 @@ const packageJson = require('../package.json')
 
 
 
-const clicfg = new Configstore(packageJson.name as string, null, { globalConfigPath: true })
+// configstore >=6 rejects ids with a slash: keep the file where globalConfigPath put it
+// ($XDG_CONFIG_HOME or ~/.config, then @commercelayer/cli/config.json)
+const configHome = process.env.XDG_CONFIG_HOME || join(homedir(), '.config')
+const clicfg = new Configstore(packageJson.name as string, undefined, { configPath: join(configHome, packageJson.name as string, 'config.json') })
 export default clicfg
 
 
@@ -147,7 +151,7 @@ const currentApplication = (app?: AppInfo): AppInfo | undefined => {
 }
 
 const currentOrganization = (): string | undefined => {
-	const current = clicfg.get(ConfigParams.currentApplication)
+	const current = clicfg.get<AppKey & { slug?: string }>(ConfigParams.currentApplication)
 	return current?.slug
 }
 

@@ -13,7 +13,7 @@
     "ts:check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "inflector-js": "^1.0.1",
+    "inflector-js": "^2.0.1",
     "lodash.snakecase": "^4.1.1"
   },
   "devDependencies": {
@@ -23,6 +23,6 @@
     "typescript": "catalog:"
   },
   "engines": {
-    "node": ">=22.12"
+    "node": ">=22.13"
   }
 }

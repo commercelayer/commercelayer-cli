@@ -13,26 +13,25 @@ catalog:
   '@oclif/test': ^5.0.1
   '@types/chai': ^5.2.3
   '@types/cli-progress': ^3.11.6
-  '@types/inquirer': ^8.2.13
   '@types/lodash.isempty': ^4.4.9
   '@types/mocha': ^10.0.10
-  '@types/node': ^25.9.8
+  '@types/node': ^26.6.3
   '@types/node-notifier': ^8.0.5
   'axios': ^1.19.0
   'chai': ^6.2.2
   'chalk': ^6.0.1
   'cli-progress': ^3.12.0
   'cli-table3': ^0.6.5
-  'dotenv': ^17.4.2
-  'inquirer': ^8.2.7
+  'dotenv': ^18.0.4
+  'inquirer': ^14.2.2
   'json-2-csv': ^5.6.0
   'lodash.isempty': ^4.4.0
-  'mocha': ^11.8.0
+  'mocha': ^12.0.2
   'nock': ^14.0.17
   'node-notifier': ^10.0.1
   'nyc': ^18.0.0
   'oclif': ^6.0.2
-  'open': ^8.4.2
+  'open': ^11.0.4
   'tslib': ^2.8.1
   'tsup': ^8.5.1
   'tsx': ^4.23.15
@@ -52,6 +51,3 @@ overrides:
   diff@<8.0.3: ^8.0.4
   # GHSA buffer bounds check - nyc pins istanbul-lib-processinfo, which pins uuid@8.3.2
   uuid@<11.1.1: ^11.1.1
-
-minimumReleaseAgeExclude:
-  - supports-hyperlinks@4.6.0

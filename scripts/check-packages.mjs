@@ -11,7 +11,7 @@
  *   - no per-package lint / check / posttest / release scripts (run from the root)
  *   - scripts only run (`pnpm <name>`) scripts the package has
  * Every public package:
- *   - license, author, bugs, publishConfig, engines (Node >= 22.12)
+ *   - license, author, bugs, publishConfig, engines (Node >= 22.13)
  *   - repository points at this monorepo with its directory, homepage at its folder
  *   - a LICENSE file
  * Every public oclif package (CLI and plugins):
@@ -26,8 +26,8 @@ import { listPackages } from './lib/workspace.mjs'
 
 const REPO = 'https://github.com/commercelayer/commercelayer-cli'
 const AUTHOR = 'Pierluigi Viti <pierluigi@commercelayer.io>'
-// require(esm) without a flag: the ESM-only dependencies load from our CommonJS
-const NODE = '>=22.12'
+// require(esm) without a flag (22.12), and the floor of inquirer 14 (22.13)
+const NODE = '>=22.13'
 const OCLIF_FILES = ['/bin/run.*', '/lib', '/npm-shrinkwrap.json', '/oclif.manifest.json']
 
 /** pnpm commands that scripts may run, as opposed to the package's own scripts */

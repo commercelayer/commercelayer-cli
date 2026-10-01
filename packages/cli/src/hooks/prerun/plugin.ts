@@ -98,7 +98,7 @@ const promptPlugin = async (config: Config, command: string): Promise<string> =>
   plugins.sort((a, b) => a.name.localeCompare(b.name))
 
   const answers = await inquirer.prompt([{
-    type: 'list',
+    type: 'select',
     name: 'plugin',
     message: `Select a plugin to ${command}:`,
     choices: plugins.map(p => {
