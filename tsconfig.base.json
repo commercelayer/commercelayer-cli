@@ -2,13 +2,14 @@
   "compilerOptions": {
     "declaration": true,
     "importHelpers": true,
-    "module": "commonjs",
+    "module": "nodenext",
     "strict": true,
     "target": "ES2022",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": [
       "node"
-    ]
+    ],
+    "moduleResolution": "nodenext"
   }
 }

@@ -17,7 +17,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12"
   },
   "files": [
     "/bin/run.*",

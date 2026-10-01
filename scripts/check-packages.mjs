@@ -11,7 +11,7 @@
  *   - no per-package lint / check / posttest / release scripts (run from the root)
  *   - scripts only run (`pnpm <name>`) scripts the package has
  * Every public package:
- *   - license, author, bugs, publishConfig, engines (Node >= 20)
+ *   - license, author, bugs, publishConfig, engines (Node >= 22.12)
  *   - repository points at this monorepo with its directory, homepage at its folder
  *   - a LICENSE file
  * Every public oclif package (CLI and plugins):
@@ -26,6 +26,8 @@ import { listPackages } from './lib/workspace.mjs'
 
 const REPO = 'https://github.com/commercelayer/commercelayer-cli'
 const AUTHOR = 'Pierluigi Viti <pierluigi@commercelayer.io>'
+// require(esm) without a flag: the ESM-only dependencies load from our CommonJS
+const NODE = '>=22.12'
 const OCLIF_FILES = ['/bin/run.*', '/lib', '/npm-shrinkwrap.json', '/oclif.manifest.json']
 
 /** pnpm commands that scripts may run, as opposed to the package's own scripts */
@@ -81,7 +83,7 @@ for (const pkg of packages) {
   check(pkg, m.author === AUTHOR, `author must be '${AUTHOR}'`)
   check(pkg, m.bugs === `${REPO}/issues`, `bugs must be ${REPO}/issues`)
   check(pkg, m.publishConfig?.access === 'public', 'publishConfig.access must be public')
-  check(pkg, /^>=\s*2\d/.test(m.engines?.node ?? ''), `engines.node must be >=20 or stricter (is ${m.engines?.node})`)
+  check(pkg, m.engines?.node === NODE, `engines.node must be ${NODE} (is ${m.engines?.node})`)
   check(
     pkg,
     m.repository?.url === `${REPO}.git` && m.repository?.directory === pkg.path,
