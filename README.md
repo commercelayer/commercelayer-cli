@@ -63,7 +63,7 @@ Every package is versioned and released on its own. A release starts from a tag 
 3. **Draft**: each tag makes [release.yml](.github/workflows/release.yml) draft a GitHub release, with notes built from the titles and labels of the PRs that touched that package.
 4. **Publish**: publishing the draft makes [publish.yml](.github/workflows/publish.yml) build and test the package from the tag, check its command surface against npm, publish it to npm with provenance and announce it on Slack.
 
-When a release depends on another unreleased package (for example a plugin needing a new `cli-core`), publish the dependency's release first: `publish.yml` refuses to publish a package whose workspace dependencies aren't on npm yet.
+Internal dependencies need no manual step. When a released package uses unreleased changes of a workspace dependency (`cli-core`, `cli-ux`, …), `pnpm release:version` releases the dependency in the same PR, even if you skip it with `--interactive`. `publish.yml` then publishes the dependency to npm before the package, and marks the dependency's draft release as published.
 
 PRs get a `pkg:<dir>` label from the files they touch; that's how each release lists only its own changes. After adding or removing a package, run `pnpm release:config` and commit the generated `.github/labeler.yml` and `.github/release-*.yml`.
 

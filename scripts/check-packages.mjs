@@ -9,6 +9,7 @@
  *   - workspace dependencies use `workspace:`
  *   - dependencies in the pnpm catalog use `catalog:` (see EXCEPTIONS)
  *   - no per-package lint / check / posttest / release scripts (run from the root)
+ *   - scripts only run (`pnpm <name>`) scripts the package has
  * Every public package:
  *   - license, author, bugs, publishConfig, engines (Node >= 20)
  *   - repository points at this monorepo with its directory, homepage at its folder
@@ -26,6 +27,9 @@ import { listPackages } from './lib/workspace.mjs'
 const REPO = 'https://github.com/commercelayer/commercelayer-cli'
 const AUTHOR = 'Pierluigi Viti <pierluigi@commercelayer.io>'
 const OCLIF_FILES = ['/bin/run.*', '/lib', '/npm-shrinkwrap.json', '/oclif.manifest.json']
+
+/** pnpm commands that scripts may run, as opposed to the package's own scripts */
+const PNPM_COMMANDS = new Set(['add', 'dlx', 'exec', 'install', 'pack', 'publish'])
 
 /** Dependencies deliberately not on the catalog version: `<package dir>:<dependency>` */
 const EXCEPTIONS = {
@@ -65,6 +69,12 @@ for (const pkg of packages) {
     }
   }
   for (const script of ['lint', 'check', 'posttest', 'release']) check(pkg, !(script in scripts), `script '${script}' runs from the root, remove it`)
+  // A script calling a missing one only fails when it runs: prepack at publish time
+  for (const [name, body] of Object.entries(scripts)) {
+    for (const [, called] of body.matchAll(/\bpnpm (?:run )?([a-z][\w:-]*)/g)) {
+      if (!PNPM_COMMANDS.has(called)) check(pkg, called in scripts, `script '${name}' runs 'pnpm ${called}', which is not a script of the package`)
+    }
+  }
 
   if (pkg.private) continue
 

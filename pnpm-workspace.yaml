@@ -5,8 +5,6 @@ packages:
 # One version for the dependencies the packages share: they declare
 # `"<name>": "catalog:"` and the version lives only here.
 catalog:
-  '@babel/preset-env': ^7.29.7
-  '@babel/preset-typescript': ^7.29.7
   '@commercelayer/provisioning-sdk': ^2.10.2
   '@commercelayer/sdk': ^6.58.0
   '@oclif/core': ^3.27.0
@@ -15,7 +13,6 @@ catalog:
   '@types/chai': ^5.2.3
   '@types/cli-progress': ^3.11.6
   '@types/inquirer': ^8.2.13
-  '@types/jest': ^29.5.14
   '@types/lodash.isempty': ^4.4.9
   '@types/mocha': ^10.0.10
   '@types/node': ^25.9.8
@@ -27,7 +24,6 @@ catalog:
   'cli-table3': ^0.6.5
   'dotenv': ^17.4.2
   'inquirer': ^8.2.7
-  'jest': ^29.7.0
   'json-2-csv': ^5.6.0
   'lodash.isempty': ^4.4.0
   'mocha': ^11.8.0
@@ -55,3 +51,5 @@ overrides:
   diff@<8.0.3: ^8.0.4
   # GHSA buffer bounds check - nyc pins istanbul-lib-processinfo, which pins uuid@8.3.2
   uuid@<11.1.1: ^11.1.1
+  # GHSA-g7r4-m6w7-qqqr (low) - tsup pins esbuild ^0.27, fixed in 0.28.1
+  esbuild@<0.28.1: ^0.28.1

@@ -46,7 +46,7 @@ export const specialFolder = (filePath: string, createIfNotExists: boolean = fal
 	if (specialFolders.includes(root)) {
 		let filePrefix = homedir()
 		if (root === 'desktop') filePrefix += `${sep}Desktop`
-		filePath = filePath.replace(root, filePrefix)
+		filePath = filePrefix + filePath.slice(root.length)
 	}
 	const fileDir = dirname(filePath)
 	if (createIfNotExists && !existsSync(fileDir)) mkdirSync(fileDir, { recursive: true })
