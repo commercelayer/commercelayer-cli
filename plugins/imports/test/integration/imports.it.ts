@@ -15,7 +15,7 @@ describeLive('imports', () => {
   })
 
   it('lists the imports', async () => {
-    expect(await run(['importsist', '-l', '5'])).to.match(/Resource type|No imports found/)
+    expect(await run(['imports:list', '-l', '5'])).to.match(/Resource type|No imports found/)
     expect(await run(['imports', '-l', '5'])).to.match(/Resource type|No imports found/)
   })
 

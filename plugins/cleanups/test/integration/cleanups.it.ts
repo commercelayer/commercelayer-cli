@@ -15,7 +15,7 @@ describeLive('cleanups', () => {
   })
 
   it('lists the cleanups', async () => {
-    expect(await run(['cleanupsist', '-l', '5'])).to.match(/Resource type|No cleanups found/)
+    expect(await run(['cleanups:list', '-l', '5'])).to.match(/Resource type|No cleanups found/)
     expect(await run(['cleanups', '-l', '5'])).to.match(/Resource type|No cleanups found/)
   })
 

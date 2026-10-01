@@ -15,7 +15,7 @@ describeLive('exports', () => {
   })
 
   it('lists the exports', async () => {
-    expect(await run(['exportsist', '-l', '5'])).to.match(/Resource type|No exports found/)
+    expect(await run(['exports:list', '-l', '5'])).to.match(/Resource type|No exports found/)
     expect(await run(['exports', '-l', '5'])).to.match(/Resource type|No exports found/)
   })
 

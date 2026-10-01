@@ -11,7 +11,7 @@
   "scripts": {
     "build": "pnpm -r build",
     "test": "pnpm -r test",
-    "test:integration": "pnpm -r --if-present --workspace-concurrency=1 test:integration",
+    "test:integration": "pnpm -r --no-bail --if-present --workspace-concurrency=1 test:integration",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
     "release:version": "node scripts/finish-version.mjs",
