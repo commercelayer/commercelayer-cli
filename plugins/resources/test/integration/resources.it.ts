@@ -1,16 +1,6 @@
-import { describeLive, liveAuth, liveFirst } from '@commercelayer/cli-test-utils'
+import { describeLive, jsonOutput, liveAuth, liveFirst } from '@commercelayer/cli-test-utils'
 import { runCommand } from '@oclif/test'
 import { expect } from 'chai'
-
-/** The JSON block of a command's output: the commands print other lines around it (e.g. the list's Records footer) */
-const jsonBlock = (stdout: string): string => {
-  const lines = stdout.split('\n')
-  const start = lines.findIndex((l) => /^[[{]/.test(l))
-  if (start < 0) throw new Error(`No JSON in the output:\n${stdout}`)
-  if (/^(\[\]|\{\})$/.test(lines[start])) return lines[start]
-  const end = lines.findIndex((l, i) => i > start && /^[\]}]$/.test(l))
-  return lines.slice(start, end + 1).join('\n')
-}
 
 let lastStdout = ''
 
@@ -19,7 +9,7 @@ const json = async (args: string[]): Promise<any> => {
   const ctx = await runCommand([...args, ...(await liveAuth()), '-j'])
   if (ctx.error) throw ctx.error
   lastStdout = ctx.stdout
-  return JSON.parse(jsonBlock(ctx.stdout))
+  return jsonOutput(ctx.stdout)
 }
 
 describeLive('resources', () => {
@@ -61,7 +51,7 @@ describeLive('resources', () => {
     const ctx = await runCommand(['resources:fetch', `skus/${skuId}/prices`, ...(await liveAuth()), '-j'])
     if (ctx.error) throw ctx.error
     if (/Relationship skus\.prices is empty/.test(ctx.stdout)) return
-    expect(JSON.parse(jsonBlock(ctx.stdout))).to.be.an('array')
+    expect(jsonOutput(ctx.stdout)).to.be.an('array')
   })
 
   it('counts the resources', async () => {
