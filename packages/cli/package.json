@@ -120,7 +120,7 @@
     "@commercelayer/provisioning-sdk": "catalog:",
     "@commercelayer/sdk": "catalog:",
     "@oclif/core": "catalog:",
-    "@oclif/plugin-autocomplete": "^3.2.56",
+    "@oclif/plugin-autocomplete": "~3.0.18",
     "@oclif/plugin-help": "catalog:",
     "@oclif/plugin-not-found": "^3.2.93",
     "@oclif/plugin-plugins": "^5.4.87",
