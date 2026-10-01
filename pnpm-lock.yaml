@@ -293,8 +293,8 @@ importers:
         specifier: 'catalog:'
         version: 3.27.0
       '@oclif/plugin-autocomplete':
-        specifier: ^3.2.56
-        version: 3.3.0(supports-color@8.1.1)
+        specifier: ~3.0.18
+        version: 3.0.18(supports-color@8.1.1)
       '@oclif/plugin-help':
         specifier: 'catalog:'
         version: 6.3.0
@@ -2327,9 +2327,9 @@ packages:
     resolution: {integrity: sha512-QCJIZoVJxV7jywgVAUlsQwl3dr3Sa21kfi5z9KrYolbexWJUtFSEtMoNiBWojD05mYycLnB50gp/VxlGdaOCRA==}
     engines: {node: '>=18.0.0'}
 
-  '@oclif/plugin-autocomplete@3.3.0':
-    resolution: {integrity: sha512-5CRpSH9FNub2IwAej2PxR6GEbQNLCy0XTzp/KqpZh6U4qiCTLPz20IXcUx9luarJBKRe2qu1cy1acHggo2MMcQ==}
-    engines: {node: '>=22.0.0'}
+  '@oclif/plugin-autocomplete@3.0.18':
+    resolution: {integrity: sha512-J+SZ5dNoBUoGerpBRJQfNm4ml4+rED23MoXXJeAE8HCFTscXtnJ3I1kS37O4D7A1O0+PsUzslQBJkLHFjZg+xQ==}
+    engines: {node: '>=18.0.0'}
 
   '@oclif/plugin-help@6.3.0':
     resolution: {integrity: sha512-cpSRv7tyHHFPv39HrV22eNmu8ylrwjmPvqdlNo3URp79+p5319p+a8PI/3ez6A6GZmjwBj1EWUdVz1aPUAsSmw==}
@@ -5744,10 +5744,10 @@ snapshots:
       wrap-ansi: 7.0.0
       wsl-utils: 0.4.0
 
-  '@oclif/plugin-autocomplete@3.3.0(supports-color@8.1.1)':
+  '@oclif/plugin-autocomplete@3.0.18(supports-color@8.1.1)':
     dependencies:
-      '@oclif/core': 4.14.0
-      ansis: 3.17.0
+      '@oclif/core': 3.27.0
+      chalk: 5.6.2
       debug: 4.4.3(supports-color@8.1.1)
       ejs: 3.1.10
     transitivePeerDependencies:
