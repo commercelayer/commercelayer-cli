@@ -8,6 +8,7 @@ describe('provisioning:list', () => {
   it('lists the resources', async () => {
     api()
       .get('/api/roles')
+      .query(true)
       .reply(200, list([resource('roles', 'rOl1', { name: 'Admin', kind: 'admin' }), resource('roles', 'rOl2', { name: 'Read only', kind: 'read_only' })]))
     const ctx = await runCommand(['provisioning:list', 'roles', ...AUTH])
     if (ctx.error) throw ctx.error
@@ -26,7 +27,7 @@ describe('provisioning:list', () => {
   })
 
   it('prints unformatted JSON', async () => {
-    api().get('/api/roles').reply(200, list([resource('roles', 'rOl1', { name: 'Admin' })]))
+    api().get('/api/roles').query(true).reply(200, list([resource('roles', 'rOl1', { name: 'Admin' })]))
     const ctx = await runCommand(['provisioning:list', 'roles', ...AUTH, '-j', '-u'])
     if (ctx.error) throw ctx.error
     expect(JSON.parse(ctx.stdout.substring(ctx.stdout.indexOf('['), ctx.stdout.lastIndexOf(']') + 1))[0].name).to.equal('Admin')
@@ -38,7 +39,7 @@ describe('provisioning:list', () => {
   })
 
   it('reports the API error', async () => {
-    api().get('/api/roles').reply(401, apiError(401, 'Invalid token'))
+    api().get('/api/roles').query(true).reply(401, apiError(401, 'Invalid token'))
     const ctx = await runCommand(['provisioning:list', 'roles', ...AUTH])
     expect(ctx.error?.message).to.match(/Invalid token/)
   })

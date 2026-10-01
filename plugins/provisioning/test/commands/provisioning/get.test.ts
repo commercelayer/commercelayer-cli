@@ -6,7 +6,7 @@ describe('provisioning:get', () => {
   useMockedApi()
 
   it('lists without an ID', async () => {
-    api().get('/api/roles').reply(200, list([resource('roles', 'rOl1', { name: 'Admin' })]))
+    api().get('/api/roles').query(true).reply(200, list([resource('roles', 'rOl1', { name: 'Admin' })]))
     const ctx = await runCommand(['provisioning:get', 'roles', ...AUTH])
     if (ctx.error) throw ctx.error
     expect(ctx.stdout).to.contain('rOl1')

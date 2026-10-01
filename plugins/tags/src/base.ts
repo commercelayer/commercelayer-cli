@@ -2,7 +2,7 @@
 import { clColor, clConfig, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import type { CommerceLayerClient, ListResponse, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
-import commercelayer, { Bundles, BuyXPayYPromotions, CommerceLayerStatic, Coupons, Customers, ExternalPromotions, FixedAmountPromotions, FixedPricePromotions, FreeGiftPromotions, FreeShippingPromotions, GiftCards, LineItemOptions, Orders, PercentageDiscountPromotions, Promotions, Returns, Shipments, SkuOptions, Skus} from '@commercelayer/sdk'
+import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
 
@@ -171,24 +171,24 @@ export default abstract class BaseCommand extends Command {
     let attribute: string | undefined
 
     switch (type) {
-      case Returns.TYPE:
-      case Shipments.TYPE:
-      case Orders.TYPE: { attribute = 'number'; break }
-      case Bundles.TYPE:
-      case Coupons.TYPE:
-      case GiftCards.TYPE:
-      case Skus.TYPE: { attribute = 'code'; break }
-      case BuyXPayYPromotions.TYPE:
-      case ExternalPromotions.TYPE:
-      case FixedAmountPromotions.TYPE:
-      case FixedPricePromotions.TYPE:
-      case FreeGiftPromotions.TYPE:
-      case FreeShippingPromotions.TYPE:
-      case PercentageDiscountPromotions.TYPE:
-      case Promotions.TYPE:
-      case LineItemOptions.TYPE:
-      case SkuOptions.TYPE: { attribute = 'name'; break }
-      case Customers.TYPE: { attribute = 'email'; break }
+      case 'returns':
+      case 'shipments':
+      case 'orders': { attribute = 'number'; break }
+      case 'bundles':
+      case 'coupons':
+      case 'gift_cards':
+      case 'skus': { attribute = 'code'; break }
+      case 'buy_x_pay_y_promotions':
+      case 'external_promotions':
+      case 'fixed_amount_promotions':
+      case 'fixed_price_promotions':
+      case 'free_gift_promotions':
+      case 'free_shipping_promotions':
+      case 'percentage_discount_promotions':
+      case 'promotions':
+      case 'line_item_options':
+      case 'sku_options': { attribute = 'name'; break }
+      case 'customers': { attribute = 'email'; break }
 
     }
 

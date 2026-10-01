@@ -6,7 +6,7 @@ name: Integration
 # resources the suites create and delete themselves (named cli-it-…). Not on every pull request, to spare the
 # rate limits and keep reviews independent of the organization's data: on
 # pushes to the integration and main branches, every night, on demand, and
-# on pull requests that change the suites themselves.
+# on pull requests that change the suites themselves or the dependencies.
 on:
   push:
     branches: [main, monorepo]
@@ -16,6 +16,9 @@ on:
   pull_request:
     paths:
       - .github/workflows/integration.yml
+      # Dependency updates (an SDK above all) must work against the real API
+      - pnpm-workspace.yaml
+      - pnpm-lock.yaml
       - packages/test-utils/src/live.ts
       - '**/test/integration/**'
 
