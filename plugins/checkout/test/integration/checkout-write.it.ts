@@ -3,17 +3,22 @@ import { describeLive, LIVE, LIVE_ORG, LIVE_RUN, LIVE_SALES_CHANNEL, liveDelete,
 import { runCommand } from '@oclif/test'
 import { expect } from 'chai'
 
-/** A market and the code of an SKU with a price in its price list */
-const orderableSku = async (): Promise<{ market: string; code: string } | undefined> => {
-  const markets = (await liveRequest('GET', '/api/markets?page[size]=10&include=price_list')).data
-  for (const market of markets) {
-    const priceList = market.relationships?.price_list?.data?.id
-    if (!priceList) continue
-    const prices = await liveRequest('GET', `/api/prices?filter[q][price_list_id_eq]=${priceList}&page[size]=1&include=sku&fields[skus]=code`)
-    const code = prices.included?.find((r: { type: string }) => r.type === 'skus')?.attributes?.code
-    if (code) return { market: market.id, code }
+/**
+ * A market and the code of an SKU with a price in its price list: from a
+ * price, its price list, and a market using that price list
+ */
+const orderableSku = async (): Promise<{ market: string; code: string } | string> => {
+  const prices = await liveRequest('GET', '/api/prices?page[size]=25&include=sku,price_list&fields[skus]=code')
+  if (!prices.data.length) return 'no prices'
+  for (const price of prices.data) {
+    const priceList = price.relationships?.price_list?.data?.id
+    const skuId = price.relationships?.sku?.data?.id
+    const code = prices.included?.find((r: { type: string; id: string }) => r.type === 'skus' && r.id === skuId)?.attributes?.code
+    if (!priceList || !code) continue
+    const markets = await liveRequest('GET', `/api/markets?filter[q][price_list_id_eq]=${priceList}&page[size]=1`)
+    if (markets.data[0]) return { market: markets.data[0].id, code }
   }
-  return undefined
+  return 'no market uses the price list of the first prices'
 }
 
 // checkout creates a draft order of this run (deleted afterwards). It needs
@@ -26,7 +31,10 @@ describeLive(
 
     it('creates the order with a line item and prints the checkout URL', async function () {
       const target = await orderableSku()
-      if (!target) this.skip()
+      if (typeof target === 'string') {
+        console.log(`      skipped: ${target}`)
+        this.skip()
+      }
       const { market, code } = target as { market: string; code: string }
       const token = await liveSalesChannelToken(market)
       const ctx = await runCommand(['checkout', '-o', LIVE_ORG, '-a', token, '-S', code, '-e', `${LIVE_RUN}@example.com`])
