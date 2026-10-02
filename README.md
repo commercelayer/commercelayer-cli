@@ -61,7 +61,7 @@ CL_CLI_ORGANIZATION=<org slug> CL_CLI_CLIENT_ID=<client id> CL_CLI_CLIENT_SECRET
 
 Use an integration application of a test organization, never a production one. In CI, [integration.yml](.github/workflows/integration.yml) runs them against `cli-test-org` on pushes to `monorepo` and `main`, every night, on demand, and on pull requests that change the suites or the dependencies. They assert on the shape of the output, not on specific records.
 
-The suites that change data (`*-write.it.ts`) only work on resources they create and delete themselves, whose names, emails and references start with `cli-it-`. `node scripts/test/live-sweep.mjs` (run before and after the suites in CI) deletes whatever an interrupted run left behind, and nothing else. The checkout and links suites also need `CL_CLI_SALES_CHANNEL_CLIENT_ID`, the client ID of a sales channel application of the organization, and are skipped without it.
+The suites that change data (`*-write.it.ts`) only work on resources they create and delete themselves, whose names, emails and references start with `cli-it-`. `node packages/test-utils/bin/live-sweep.mjs` (run before and after the suites in CI) deletes whatever an interrupted run left behind, and nothing else. The checkout and links suites also need `CL_CLI_SALES_CHANNEL_CLIENT_ID`, the client ID of a sales channel application of the organization, and are skipped without it.
 
 ## Generated code
 
