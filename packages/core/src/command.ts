@@ -16,11 +16,15 @@ export const commandFlags = <T extends FlagInput>(flags: T, exclude?: Array<keyo
 }
 
 
-/** The --api-version flag of the commands that call the Core API (see clApi.apiVersion) */
+/**
+ * The --api-version flag of the commands that call the Core API (see clApi.apiVersion).
+ * Hidden like --domain: set by CL_CLI_API_VERSION, mostly to pick the environment in development.
+ */
 export const apiVersionFlag = () => Flags.string({
 	description: 'the Core API version of the requests (e.g. 2026-05), unversioned by default',
+	required: false,
+	hidden: true,
 	env: 'CL_CLI_API_VERSION',
-	helpGroup: 'API',
 })
 
 

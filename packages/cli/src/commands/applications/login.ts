@@ -39,6 +39,11 @@ export default class ApplicationsLogin extends Command {
 			required: false,
 			hidden: true
 		}),
+		'api-version': Flags.string({
+			description: 'Core API version (default: the CLI default), saved with the application',
+			required: false,
+			hidden: true
+		}),
 		clientId: Flags.string({
 			name: 'clientId',
 			char: 'i',
@@ -112,12 +117,14 @@ export default class ApplicationsLogin extends Command {
 			clientSecret: flags.clientSecret,
 			slug: flags.organization,
 			domain: flags.domain,
+			apiVersion: flags['api-version'],
 			scope,
 			email: flags.email,
 			password: flags.password
 		}
 
 		if (config.domain === configParam(ConfigParams.defaultDomain)) config.domain = undefined
+		if (!config.apiVersion || (config.apiVersion === configParam(ConfigParams.defaultApiVersion))) config.apiVersion = undefined
 
 
 		try {
@@ -188,7 +195,7 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 		org = { slug: 'provisioning', name: user?.name || 'Provisioning API' }
 		app = { name: 'Provisioning App' }
 	} else { // core
-		const cl = commercelayer({ apiVersion: clApi.apiVersion() as ApiVersion, organization: auth.slug || '', domain: auth.domain, accessToken })
+		const cl = commercelayer({ apiVersion: clApi.apiVersion({ 'api-version': auth.apiVersion }) as ApiVersion, organization: auth.slug || '', domain: auth.domain, accessToken })
 		// Organization info
 		org = await cl.organization.retrieve().catch(() => { error(cl.organization.type()) })
 		// Application info

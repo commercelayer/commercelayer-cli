@@ -17,6 +17,7 @@ import {
   request,
   requestRateLimitDelay,
 } from '../../src/api'
+import clConfig from '../../src/config'
 
 describe('api', () => {
   describe('baseURL', () => {
@@ -70,6 +71,19 @@ describe('api', () => {
       process.env.CL_CLI_API_VERSION = '2017-08'
       expect(apiVersion()).to.equal('2017-08')
       expect(apiVersion({ 'api-version': '2026-05' })).to.equal('2026-05')
+    })
+
+    it('falls back to the default version, as the domain does', () => {
+      const saved = clConfig.api.default_api_version
+      try {
+        clConfig.api.default_api_version = '2025-01'
+        expect(apiVersion()).to.equal('2025-01')
+        process.env.CL_CLI_API_VERSION = '2017-08'
+        expect(apiVersion()).to.equal('2017-08')
+        expect(apiVersion({ 'api-version': '2026-05' })).to.equal('2026-05')
+      } finally {
+        clConfig.api.default_api_version = saved
+      }
     })
   })
 

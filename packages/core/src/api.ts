@@ -26,12 +26,13 @@ const extractDomain = (baseUrl: string): string | undefined => {
 
 
 /**
- * Core API version of the requests: the --api-version flag, then CL_CLI_API_VERSION.
- * SDK 8 puts a version in the path (/api/<version>/…), which the production API
- * doesn't serve yet: without one the requests stay unversioned (/api/…).
+ * Core API version of the requests, as the domain is for their URL: the
+ * --api-version flag (saved with the application at login, or set by
+ * CL_CLI_API_VERSION), otherwise the default version (config.api.default_api_version).
+ * Undefined means unversioned requests (/api/…).
  */
 const apiVersion = (flags?: Record<string, any>): string | undefined => {
-	return flags?.['api-version'] || process.env.CL_CLI_API_VERSION || undefined
+	return flags?.['api-version'] || process.env.CL_CLI_API_VERSION || config.api.default_api_version || undefined
 }
 
 

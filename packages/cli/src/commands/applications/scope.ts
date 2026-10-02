@@ -59,6 +59,7 @@ export default class ApplicationsScope extends Command {
     const argv: string[] = []
     if (current.slug) argv.push('-o', current.slug)
     if (current.domain) argv.push('-d', current.domain)
+    if (current.apiVersion) argv.push('--api-version', current.apiVersion)
 
     let appInfo: AppInfo
 

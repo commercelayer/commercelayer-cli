@@ -57,12 +57,14 @@ export default class ApplicationsAdd extends Command {
       clientSecret: flags.clientSecret,
       slug: flags.organization,
       domain: flags.domain,
+      apiVersion: flags['api-version'],
       scope,
       email: flags.email,
       password: flags.password
     }
 
     if (config.domain === configParam(ConfigParams.defaultDomain)) config.domain = undefined
+    if (!config.apiVersion || (config.apiVersion === configParam(ConfigParams.defaultApiVersion))) config.apiVersion = undefined
 
 
     try {
