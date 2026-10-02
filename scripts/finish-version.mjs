@@ -22,8 +22,7 @@
  * branch and a pull request. Once it is merged, `pnpm release:tag` tags the
  * merge commit, and pushing the tags drafts the GitHub releases.
  *
- * Usage:  node scripts/finish-version.mjs [--preid <id>] [--interactive | --yes] [--base <branch>] [--no-pr] [--dry-run]
- *   --preid <id>    bump to a prerelease (x.y.z-<id>.n) instead of a stable version
+ * Usage:  node scripts/finish-version.mjs [--interactive | --yes] [--base <branch>] [--no-pr] [--dry-run]
  *   --interactive   confirm, change or skip each package's version
  *   --yes           no confirmation at all
  *   --base <b>    branch the release PR targets (default: main)
@@ -45,7 +44,6 @@ const DRY = flag('--dry-run')
 const YES = flag('--yes')
 const INTERACTIVE = flag('--interactive')
 const NO_PR = flag('--no-pr')
-const PREID = option('--preid')
 const BASE = option('--base', 'main')
 
 const fail = (msg) => {
@@ -58,15 +56,12 @@ git('fetch', '--quiet', 'origin', BASE, '--tags')
 if (git('rev-parse', 'HEAD') !== git('rev-parse', `origin/${BASE}`)) fail(`HEAD is not origin/${BASE}. Check out an up-to-date ${BASE} first.`)
 
 /**
- * The next version for a bump level, optionally as a prerelease:
- * - from a prerelease: the same preid only moves the counter (x.y.z-beta.1 ->
- *   x.y.z-beta.2), another one restarts it (x.y.z-rc.0), none releases x.y.z
- * - from a stable version: x.y.z bumped by level, -<preid>.0 with a preid
+ * The next version for a bump level. Only stable versions are released:
+ * a prerelease left in a package.json (x.y.z-beta.n) is released as x.y.z.
+ * Prereleases aren't published to npm: try a release with `pnpm release:try`,
+ * or share a pkg.pr.new preview (preview.yml).
  */
-const bump = (version, level, preid) => {
-  if (semver.prerelease(version)) return preid ? semver.inc(version, 'prerelease', preid) : semver.inc(version, 'release')
-  return preid ? semver.inc(version, `pre${level}`, preid) : semver.inc(version, level)
-}
+const bump = (version, level) => (semver.prerelease(version) ? semver.inc(version, 'release') : semver.inc(version, level))
 
 /**
  * The bump level of a package's commits since a tag, from the Conventional
@@ -98,7 +93,7 @@ for (const pkg of publicPackages()) {
     .filter(([subject]) => !/^chore\(release\)/.test(subject))
   if (commits.length === 0) continue
   const { level, why } = await recommend(pkg, since)
-  candidates.push({ pkg, since, commits, level, why, next: bump(pkg.version, level, PREID) })
+  candidates.push({ pkg, since, commits, level, why, next: bump(pkg.version, level) })
 }
 
 if (candidates.length === 0) {
@@ -124,7 +119,7 @@ if (INTERACTIVE) {
     const answer = await ask(`  Version [${c.next}] (s to skip, or type a version): `)
     if (answer === 's') continue
     const version = answer || c.next
-    if (!semver.valid(version)) fail(`'${version}' is not a valid version`)
+    if (!semver.valid(version) || semver.prerelease(version)) fail(`'${version}' is not a valid stable version (prereleases aren't published)`)
     selected.push({ ...c, version })
   }
 } else {

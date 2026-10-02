@@ -1,0 +1,62 @@
+name: Preview
+
+# Publishes a test build of the CLI and plugins to pkg.pr.new, on demand:
+# nothing reaches npm, but anyone can install it to try a change (only
+# stable versions are released to npm). cli-core and cli-ux are always
+# included, and the previews depend on each other's preview URLs, so
+# unreleased workspace versions work.
+#
+# Run it from the Actions tab on the branch to try; the run summary lists the
+# install commands: `npm install -g <url>` for the CLI,
+# `commercelayer plugins:install <url>` for a plugin.
+on:
+  workflow_dispatch:
+    inputs:
+      plugins:
+        description: 'Plugins to preview, by folder (e.g. "tags orders"), or "all"'
+        required: true
+        default: all
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    name: Publish a preview to pkg.pr.new
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - name: Publish the preview
+        env:
+          PLUGINS: ${{ inputs.plugins }}
+        run: |
+          set -euo pipefail
+          if [ "$PLUGINS" = all ]; then
+            PATHS=(./plugins/*)
+          else
+            PATHS=()
+            for p in $PLUGINS; do
+              [ -d "plugins/$p" ] || { echo "::error::No plugin in plugins/$p"; exit 1; }
+              PATHS+=("./plugins/$p")
+            done
+          fi
+          pnpm dlx pkg-pr-new publish --pnpm --comment=off --json preview.json ./packages/cli ./packages/core ./packages/ux "${PATHS[@]}"
+
+      - name: Install commands
+        run: |
+          node -e '
+            const { packages = [] } = require("./preview.json")
+            const lines = ["## Preview, not released on npm", "", "| Package | Install |", "| --- | --- |"]
+            for (const { name, url } of packages) {
+              if (/cli-(core|ux)$/.test(name)) continue
+              lines.push(`| ${name} | \`${name === "@commercelayer/cli" ? "npm install -g" : "commercelayer plugins:install"} ${url}\` |`)
+            }
+            lines.push("", "Install the preview CLI first: the preview plugins need its version.")
+            require("fs").appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n") + "\n")
+          '

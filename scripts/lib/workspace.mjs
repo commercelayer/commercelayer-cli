@@ -59,11 +59,9 @@ export const resolveTag = (tag) => {
   if (!pkg) return { error: `Tag prefix '${dir}' does not match a workspace package directory` }
   if (pkg.private) return { error: `${pkg.name} is private and must not be released` }
   if (pkg.version !== version) return { error: `Tag version ${version} does not match ${pkg.path}/package.json (${pkg.version})` }
-  // `6.0.0-beta.3` -> `beta`; a bare numeric prerelease (`6.0.0-0`) -> `next`
-  const [preid] = semver.prerelease(version) ?? []
-  const prerelease = preid !== undefined
-  const distTag = prerelease ? (typeof preid === 'number' ? 'next' : preid) : 'latest'
-  return { ...pkg, tag, prerelease, distTag }
+  // Only stable versions reach npm: try a release with `pnpm release:try`, share a pkg.pr.new preview (preview.yml)
+  if (semver.prerelease(version)) return { error: `${tag} is a prerelease: prereleases aren't released or published` }
+  return { ...pkg, tag, prerelease: false, distTag: 'latest' }
 }
 
 export const tagOf = (pkg, version = pkg.version) => `${pkg.dir}-v${version}`
