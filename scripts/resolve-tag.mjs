@@ -13,8 +13,7 @@
  *
  * Usage:  node scripts/resolve-tag.mjs <tag>
  */
-import semver from 'semver'
-import { git, resolveTag } from './lib/workspace.mjs'
+import { previousRelease, resolveTag } from './lib/workspace.mjs'
 
 const tag = process.argv[2]
 const pkg = resolveTag(tag ?? '')
@@ -23,16 +22,7 @@ if (pkg.error) {
   process.exit(1)
 }
 
-const prefix = `${pkg.dir}-v`
-const previous = git('tag', '--list', `${prefix}*`)
-  .split('\n')
-  .filter(Boolean)
-  .map((t) => t.slice(prefix.length))
-  .filter((v) => semver.valid(v))
-  .filter((v) => pkg.prerelease || !semver.prerelease(v))
-  .filter((v) => semver.lt(v, pkg.version))
-  .sort(semver.compare)
-  .pop()
+const previous = previousRelease(pkg)
 
 const out = {
   dir: pkg.dir,
@@ -41,6 +31,6 @@ const out = {
   version: pkg.version,
   prerelease: pkg.prerelease,
   dist_tag: pkg.distTag,
-  previous_tag: previous ? `${prefix}${previous}` : '',
+  previous_tag: previous ?? '',
 }
 for (const [k, v] of Object.entries(out)) console.log(`${k}=${v}`)

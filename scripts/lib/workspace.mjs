@@ -5,7 +5,7 @@
  * @manypkg/get-packages): `packages/<dir>` and `plugins/<dir>`, with `<dir>`
  * unique across both. It is the package's identity everywhere in
  * the release flow: tags are `<dir>-v<version>`, labels are `pkg:<dir>`, the
- * release-notes config is `.github/release-<dir>.yml`.
+ * release notes cover the commits under its folder.
  */
 import { execFileSync } from 'node:child_process'
 import { readFileSync, writeFileSync } from 'node:fs'
@@ -67,6 +67,25 @@ export const resolveTag = (tag) => {
 }
 
 export const tagOf = (pkg, version = pkg.version) => `${pkg.dir}-v${version}`
+
+/**
+ * The tag of a package's closest lower release, for the notes of `version`:
+ * for a stable release the previous stable one, for a prerelease the previous
+ * release of any kind. Undefined for a first release.
+ */
+export const previousRelease = (pkg, version = pkg.version) => {
+  const prefix = `${pkg.dir}-v`
+  const previous = git('tag', '--list', `${prefix}*`)
+    .split('\n')
+    .filter(Boolean)
+    .map((t) => t.slice(prefix.length))
+    .filter((v) => semver.valid(v))
+    .filter((v) => semver.prerelease(version) || !semver.prerelease(v))
+    .filter((v) => semver.lt(v, version))
+    .sort(semver.compare)
+    .pop()
+  return previous ? `${prefix}${previous}` : undefined
+}
 
 /**
  * The most recent tag of a package, stable or not, reachable from HEAD: the
