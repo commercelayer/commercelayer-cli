@@ -52,7 +52,7 @@ jobs:
           CL_CLI_CLIENT_SECRET: ${{ secrets.CL_CLI_CLIENT_SECRET }}
           # Optional: the checkout and links suites are skipped without it
           CL_CLI_SALES_CHANNEL_CLIENT_ID: ${{ secrets.CL_CLI_SALES_CHANNEL_CLIENT_ID }}
-        run: node scripts/test/live-sweep.mjs
+        run: node packages/test-utils/bin/live-sweep.mjs
 
       - name: Run integration suites
         env: *credentials
@@ -67,4 +67,4 @@ jobs:
       - name: Remove this run's test resources
         if: always()
         env: *credentials
-        run: node scripts/test/live-sweep.mjs
+        run: node packages/test-utils/bin/live-sweep.mjs

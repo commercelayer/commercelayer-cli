@@ -71,7 +71,7 @@ export const describeLive = (title: string, fn: (this: Mocha.Suite) => void, ena
 /*
  * Suites that change data create their own resources and delete them in an
  * after() hook. Every name, email, code or reference they create starts with
- * LIVE_PREFIX, so a run never touches existing data and scripts/test/live-sweep.mjs
+ * LIVE_PREFIX, so a run never touches existing data and packages/test-utils/bin/live-sweep.mjs
  * can remove what an interrupted run left behind.
  */
 

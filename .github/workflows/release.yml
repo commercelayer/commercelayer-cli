@@ -4,12 +4,12 @@ name: Release
 # here: publish.yml publishes once someone publishes the draft.
 #
 # Tags are `<dir>-v<version>`, where <dir> is the package's directory under
-# packages/ or plugins/ (scripts/tag.mjs creates them). The package is derived
+# packages/ or plugins/ (`pnpm release:tag` creates them). The package is derived
 # from the tag, so adding a package needs no change here. Legacy bare `v*`
 # tags don't match `*-v*` and stay inert.
 #
 # Release notes come from the package's Conventional Commits since its
-# previous release (scripts/release-notes.mjs, conventional-changelog): only
+# previous release (`cl-release notes`, conventional-changelog): only
 # the commits that touched its folder, however long the range.
 on:
   push:
@@ -32,17 +32,17 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with: { node-version: 'lts/*', cache: 'pnpm' }
-      # The release scripts' own dependencies only (the root package)
-      - run: pnpm install --frozen-lockfile --filter @commercelayer/cli-monorepo
+      # The release tooling only: the root package and cl-release (packages/release)
+      - run: pnpm install --frozen-lockfile --filter "@commercelayer/cli-monorepo..."
 
       - name: Resolve package
         id: meta
-        run: node scripts/resolve-tag.mjs "$GITHUB_REF_NAME" | tee -a "$GITHUB_OUTPUT"
+        run: pnpm exec cl-release resolve "$GITHUB_REF_NAME" | tee -a "$GITHUB_OUTPUT"
 
       - name: Generate release notes for this package
         run: |
           set -euo pipefail
-          node scripts/release-notes.mjs "$GITHUB_REF_NAME" "${{ steps.meta.outputs.previous_tag }}" > release-notes.md
+          pnpm exec cl-release notes "$GITHUB_REF_NAME" "${{ steps.meta.outputs.previous_tag }}" > release-notes.md
           cat release-notes.md
 
       - name: Create draft release

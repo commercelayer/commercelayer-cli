@@ -7,7 +7,7 @@
  *
  * Runs before the integration suites in CI (integration.yml).
  *
- * Usage:  CL_CLI_ORGANIZATION=… CL_CLI_CLIENT_ID=… CL_CLI_CLIENT_SECRET=… node scripts/test/live-sweep.mjs [--dry-run]
+ * Usage:  CL_CLI_ORGANIZATION=… CL_CLI_CLIENT_ID=… CL_CLI_CLIENT_SECRET=… node packages/test-utils/bin/live-sweep.mjs [--dry-run]
  */
 const PREFIX = 'cli-it-'
 const DRY = process.argv.includes('--dry-run')

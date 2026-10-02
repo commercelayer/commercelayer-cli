@@ -27,7 +27,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - name: Release config is up to date
-        run: node scripts/gen-release-config.mjs --check
+        run: pnpm exec cl-release labels --check
       - name: Packages are consistent
         run: node scripts/check-packages.mjs
 
@@ -109,7 +109,7 @@ jobs:
           set -euo pipefail
           for path in $(pnpm --filter '${{ steps.select.outputs.filter }}' --filter '!@commercelayer/cli-monorepo' list --depth -1 --json | node -e 'for (const p of JSON.parse(require("fs").readFileSync(0))) console.log(require("path").relative(process.cwd(), p.path))'); do
             [ "$path" = "" ] && continue
-            node scripts/check-manifest.mjs "$(basename "$path")" --warn
+            pnpm exec cl-release manifest "$(basename "$path")" --warn
           done
 
   generated:
