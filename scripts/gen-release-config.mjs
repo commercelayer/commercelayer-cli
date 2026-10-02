@@ -1,19 +1,10 @@
 #!/usr/bin/env node
 /**
- * Generates the per-package release-notes plumbing:
- *
- *   .github/labeler.yml           one `pkg:<dir>` label per package, applied
- *                                 from the files a PR touches
- *   .github/release-<dir>.yml     one GitHub release-notes config per package,
- *                                 selected by release.yml from the tag prefix
- *
- * GitHub's generated notes cover a commit range with no path filter, so
- * without these every release would list every PR in the window. Each config
- * puts PRs labelled with its own package first, then a catch-all "Shared"
- * category that excludes the other packages' labels: a PR touching several
- * packages appears in each of their releases, a PR touching only other
- * packages appears in none, and an unlabelled PR (root tooling, lockfile, CI)
- * appears in all of them rather than vanishing.
+ * Generates .github/labeler.yml: one `pkg:<dir>` label per package, applied
+ * from the files a PR touches, so a PR shows at a glance which packages it
+ * changes. Removes the GitHub release-notes configs (.github/release-<dir>.yml)
+ * it used to generate: the notes now come from the commits
+ * (scripts/release-notes.mjs).
  *
  * Usage:  node scripts/gen-release-config.mjs [--check]
  *   --check  exit 1 if the committed files are out of date (used in CI)
@@ -37,32 +28,7 @@ files.set(
     packages.map((pkg) => `\n'${label(pkg)}':\n  - changed-files:\n      - any-glob-to-any-file:\n          - '${pkg.path}/**'\n`).join(''),
 )
 
-for (const pkg of packages) {
-  const others = packages.filter((p) => p !== pkg).map((p) => `          - '${label(p)}'`)
-  files.set(
-    join(GITHUB, `release-${pkg.dir}.yml`),
-    `${HEADER}# Release notes for ${pkg.name} (${pkg.path}), tags ${pkg.dir}-v*.
-changelog:
-  exclude:
-    labels:
-      - ignore-for-release
-    authors:
-      - dependabot
-  categories:
-    - title: 📦 ${pkg.name}
-      labels:
-        - '${label(pkg)}'
-    - title: 🔧 Shared — tooling, dependencies, CI
-      labels:
-        - '*'
-      exclude:
-        labels:
-${others.join('\n')}
-`,
-  )
-}
-
-// Configs of packages that no longer exist
+// The release-notes configs of GitHub's generated notes, no longer used
 const stale = readdirSync(GITHUB).filter((f) => /^release-.+\.yml$/.test(f) && !files.has(join(GITHUB, f)))
 
 const outdated = [...files].filter(([path, content]) => !existsSync(path) || readFileSync(path, 'utf8') !== content).map(([path]) => path)

@@ -8,9 +8,9 @@ name: Release
 # from the tag, so adding a package needs no change here. Legacy bare `v*`
 # tags don't match `*-v*` and stay inert.
 #
-# Release notes are GitHub's, built from PR titles and labels, with the
-# package's own config (.github/release-<dir>.yml) so each release lists only
-# the PRs that touched that package (see scripts/gen-release-config.mjs).
+# Release notes come from the package's Conventional Commits since its
+# previous release (scripts/release-notes.mjs, conventional-changelog): only
+# the commits that touched its folder, however long the range.
 on:
   push:
     tags:
@@ -29,23 +29,20 @@ jobs:
           # Full history and tags: the package's previous tag must be found
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 'lts/*' }
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      # The release scripts' own dependencies only (the root package)
+      - run: pnpm install --frozen-lockfile --filter @commercelayer/cli-monorepo
 
       - name: Resolve package
         id: meta
         run: node scripts/resolve-tag.mjs "$GITHUB_REF_NAME" | tee -a "$GITHUB_OUTPUT"
 
       - name: Generate release notes for this package
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          ARGS=(-f "tag_name=${GITHUB_REF_NAME}" -f "configuration_file_path=.github/release-${{ steps.meta.outputs.dir }}.yml")
-          if [ -n "${{ steps.meta.outputs.previous_tag }}" ]; then
-            ARGS+=(-f "previous_tag_name=${{ steps.meta.outputs.previous_tag }}")
-          fi
-          gh api -X POST "repos/${GITHUB_REPOSITORY}/releases/generate-notes" "${ARGS[@]}" --jq .body > release-notes.md
+          node scripts/release-notes.mjs "$GITHUB_REF_NAME" "${{ steps.meta.outputs.previous_tag }}" > release-notes.md
           cat release-notes.md
 
       - name: Create draft release
