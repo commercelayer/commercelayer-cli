@@ -1,5 +1,5 @@
 
-import { clApi, clColor, clCommand, clConfig, clToken, clUtil } from '@commercelayer/cli-core'
+import { clApi, clColor, clCommand, clConfig, clOutput, clToken, clUtil } from '@commercelayer/cli-core'
 import type { CommerceLayerClient, ListResponse, QueryPageSize, QueryParamsList, Resource } from '@commercelayer/sdk'
 import notifier from 'node-notifier'
 import Command, { cliux, Flags } from '../../base'
@@ -245,6 +245,7 @@ export default class ResourcesAll extends Command {
 
 
       let delay = -1
+      let lastPageFull = false
 
       do {
 
@@ -267,7 +268,9 @@ export default class ResourcesAll extends Command {
 
         const res: ListResponse<Resource> = await resSdk.list(params)
         pages = res.meta.pageCount // pages count can change during extraction
-        const recordCount: number = res.meta.recordCount
+        // Above 10,000 records the counts are estimates: never below what was fetched
+        const recordCount: number = Math.max(res.meta.recordCount, resources.length + res.length)
+        lastPageFull = res.length === params.pageSize
 
         if (recordCount > 0) {
 
@@ -279,7 +282,7 @@ export default class ResourcesAll extends Command {
             }
             this.log()
             progressBar.start(recordCount, 0)
-            if (blindMode) this.log(`Export of ${recordCount} ${itemsDesc} started`)
+            if (blindMode) this.log(`Export of ${clOutput.formatCount(recordCount, clApi.isRecordCountEstimated(res.meta))} ${itemsDesc} started`)
           } else progressBar.setTotal(recordCount)
 
           if (flags.extract) {
@@ -293,7 +296,8 @@ export default class ResourcesAll extends Command {
         }
 
       }
-      while ((pages === -1) || (page < pages))
+      // page_count is an estimate above 10,000 records: a full last page means there may be more
+      while ((pages === -1) || (page < pages) || lastPageFull)
 
       progressBar.stop()
 
