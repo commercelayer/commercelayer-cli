@@ -9,8 +9,9 @@
  *
  * Only packages with commits touching their directory since their last
  * `<dir>-v*` tag are released; the others are left alone. Each one's version
- * is derived from those commits' Conventional Commit types (breaking -> major,
- * feat -> minor, anything else -> patch). Packages depending on a released one
+ * is derived from those commits' Conventional Commit types by
+ * conventional-recommended-bump (breaking -> major, feat -> minor, anything
+ * else -> patch). Packages depending on a released one
  * are not bumped: they pick it up through their `^` range, and adopting a new
  * major of a dependency is a change of its own.
  *
@@ -32,6 +33,7 @@
 import { execFileSync } from 'node:child_process'
 import { join } from 'node:path'
 import { createInterface } from 'node:readline/promises'
+import { Bumper } from 'conventional-recommended-bump'
 import semver from 'semver'
 import { git, lastTag, publicPackages, readJson, tagOf, writeJson } from './lib/workspace.mjs'
 
@@ -66,10 +68,21 @@ const bump = (version, level, preid) => {
   return preid ? semver.inc(version, `pre${level}`, preid) : semver.inc(version, level)
 }
 
-const levelOf = (subjects, bodies) => {
-  if (subjects.some((s) => /^\w+(\(.+\))?!:/.test(s)) || bodies.some((b) => /BREAKING[ -]CHANGE/.test(b))) return 'major'
-  if (subjects.some((s) => /^feat(\(.+\))?:/.test(s))) return 'minor'
-  return 'patch'
+/**
+ * The bump level of a package's commits since a tag, from the Conventional
+ * Commits preset (breaking -> major, feat -> minor, anything else -> patch),
+ * and the header of the commit that decides it, shown in the plan.
+ */
+const recommend = async (pkg, since) => {
+  const { releaseType, commits } = await new Bumper()
+    .loadPreset('conventionalcommits')
+    .tag(since ?? '')
+    .commits({ path: pkg.path })
+    .bump()
+  const level = releaseType ?? 'patch'
+  const breaking = (c) => c.notes.length > 0
+  const decisive = level === 'major' ? commits.find(breaking) : level === 'minor' ? commits.find((c) => c.type === 'feat') : undefined
+  return { level, why: decisive?.header ?? '' }
 }
 
 const candidates = []
@@ -84,11 +97,8 @@ for (const pkg of publicPackages()) {
     .map((c) => c.split('\x1f'))
     .filter(([subject]) => !/^chore\(release\)/.test(subject))
   if (commits.length === 0) continue
-  const level = levelOf(
-    commits.map(([s]) => s),
-    commits.map(([, b]) => b ?? ''),
-  )
-  candidates.push({ pkg, since, commits, level, next: bump(pkg.version, level, PREID) })
+  const { level, why } = await recommend(pkg, since)
+  candidates.push({ pkg, since, commits, level, why, next: bump(pkg.version, level, PREID) })
 }
 
 if (candidates.length === 0) {
@@ -122,7 +132,7 @@ if (INTERACTIVE) {
   const width = Math.max(...selected.map((s) => s.pkg.name.length))
   console.log(`\n${selected.length} changed package(s):\n`)
   for (const s of selected) {
-    const why = s.commits.find(([subject]) => levelOf([subject], []) === s.level)?.[0] ?? ''
+    const why = s.why || s.commits[0][0]
     console.log(`  ${s.pkg.name.padEnd(width)}  ${s.pkg.version} → ${s.version}  ${s.level}, ${s.commits.length} commit(s): ${why}`)
   }
   if (rl) {
