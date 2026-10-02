@@ -81,6 +81,7 @@ const hook: Hook<'prerun'> = async function (opts) {
 	// Add to command line args application info read from config file
 	if (_flags.organization && configData.slug) opts.argv.splice(ffIdx, 0, '--organization=' + configData.slug)
 	if (_flags.domain && configData.domain) opts.argv.splice(ffIdx, 0, '--domain=' + configData.domain)
+	if (_flags['api-version'] && configData.apiVersion) opts.argv.splice(ffIdx, 0, '--api-version=' + configData.apiVersion)
 
 	// If command requires clientId and clientSecret (or scope) add them to the command line arguments
 	if (_flags.clientId && configData.clientId) opts.argv.splice(ffIdx, 0, '--clientId=' + configData.clientId)

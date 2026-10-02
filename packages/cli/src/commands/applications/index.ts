@@ -85,6 +85,7 @@ const extraColumns = (flags: any): any => {
 		extra.id = { header: 'ID', get: (row: { id: any }) => clColor.dim(row.id || '')  }
 		extra.appkey = { header: 'APPKEY', get: (row: { key: any }) => clColor.dim(row.key || '') }
 		extra.domain = { header: 'DOMAIN', get: (row: { domain: any }) => clColor.dim(row.domain || '') }
+		extra.apiVersion = { header: 'API VERSION', get: (row: { apiVersion: any }) => clColor.dim(row.apiVersion || '') }
 	}
 	return extra
 }

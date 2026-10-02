@@ -1,4 +1,4 @@
-import { clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
+import { clColor, clCommand, clOutput, clUpdate } from '@commercelayer/cli-core'
 import { CommerceLayerStatic, type Order } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
@@ -28,6 +28,7 @@ export default abstract class extends Command {
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN'
     }),
+    'api-version': clCommand.apiVersionFlag(),
     accessToken: Flags.string({
       hidden: true,
       required: true,

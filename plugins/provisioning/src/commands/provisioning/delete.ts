@@ -1,7 +1,7 @@
 import { clColor, clCommand } from "@commercelayer/cli-core";
-import type { CommerceLayerProvisioningClient } from "@commercelayer/provisioning-sdk";
 import Command, { Args } from "../../base";
 import { addRequestReader, isRequestInterrupted } from "../../lang";
+import type { CommerceLayerProvisioningClient } from "../../sdk";
 
 const OPERATION = "delete";
 

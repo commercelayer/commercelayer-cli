@@ -1,4 +1,5 @@
-import { clColor, clConfig, clOutput, clText, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { clApi, clColor, clCommand, clConfig, clOutput, clText, clUpdate, clUtil } from '@commercelayer/cli-core'
+import type { ApiVersion } from '@commercelayer/sdk'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type LinkCreate } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Command, ux as cliux, Flags } from '@oclif/core'
@@ -29,6 +30,7 @@ export abstract class BaseCommand extends Command {
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN'
     }),
+    'api-version': clCommand.apiVersionFlag(),
     accessToken: Flags.string({
       char: 'a',
       description: 'custom access token to use instead of the one used for login',
@@ -75,6 +77,7 @@ export abstract class BaseCommand extends Command {
     const userAgent = clUtil.userAgent(this.config)
 
     return this.cl = commercelayer({
+      apiVersion: clApi.apiVersion(flags) as ApiVersion,
       organization,
       domain,
       accessToken,
