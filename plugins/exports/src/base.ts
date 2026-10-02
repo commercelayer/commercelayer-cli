@@ -3,19 +3,16 @@ import { rename } from 'node:fs/promises'
 import { join } from 'node:path'
 import { gunzipSync, type InputType } from 'node:zlib'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
-import { clApi, clColor, clFilter, clOutput, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { CLCommand, clApi, clColor, clFilter, clOutput, clToken, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
-import { Args, Command, Flags } from '@oclif/core'
+import { Args, Flags } from '@oclif/core'
 import axios from 'axios'
 import notifier from 'node-notifier'
 
 type CommandError = Interfaces.CommandError
-
-
-const pkg: clUpdate.Package = require('../package.json')
 
 
 export const encoding = 'utf-8'
@@ -46,28 +43,12 @@ export const computeDelay = (): number => {
 }
 
 
-export default abstract class BaseCommand extends Command {
+export default abstract class BaseCommand extends CLCommand {
 
+  // oclif collects the static properties of a command up to the first class
+  // without any (cacheCommand): without its own, the manifest would miss them
   static baseFlags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN'
-    }),
-    accessToken: Flags.string({
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN'
-    })
+    ...CLCommand.baseFlags
   }
 
 
@@ -75,55 +56,10 @@ export default abstract class BaseCommand extends Command {
   protected cl!: CommerceLayerClient
 
 
-
-  // INIT (override)
-  async init(): Promise<any> {
-    // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
-    return await super.init()
-  }
-
-
-  async catch(error: CommandError): Promise<any> {
-    if (error.message?.includes('quit')) this.exit()
-    else return super.catch(error)
-  }
-
-
-
-  protected checkApplication(accessToken: string, kinds: string[]): boolean {
-
-    const info = clToken.decodeAccessToken(accessToken)
-
-    if (info === null) this.error('Invalid access token provided')
-    else
-    if (!kinds.includes(info.application.kind))
-      this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Application kind must be one of the following: ${clColor.cyanBright(kinds.join(', '))}`)
-
-    return true
-
-  }
-
-
   protected commercelayerInit(flags: any): CommerceLayerClient {
-
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken: string = flags.accessToken
-
-    const userAgent = clUtil.userAgent(this.config)
-
-    this.environment = clToken.getTokenEnvironment(accessToken)
-
-    this.cl = commercelayer({
-      organization,
-      domain,
-      accessToken,
-      userAgent
-    })
-
+    this.environment = clToken.getTokenEnvironment(flags.accessToken as string)
+    this.cl = commercelayer(this.clientOptions(flags))
     return this.cl
-
   }
 
 
@@ -139,22 +75,12 @@ export default abstract class BaseCommand extends Command {
   }
 
 
-  protected handleError(error: CommandError, _flags?: any, id?: string): void {
-    if (CommerceLayerStatic.isApiError(error)) {
-      if (error.status === 401) {
-        const err = error.first()
-        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s exports'] },
-        )
-      } else
-        if (error.status === 404) {
-          this.error(`Unable to find export${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
-        } else this.error(clOutput.formatError(error))
-    } else throw error
+  protected handleError(error: CommandError, flags?: any, id?: string): void {
+    if (CommerceLayerStatic.isApiError(error)) this.handleApiError(error, { resource: 'export', id, flags })
+    else throw error
   }
 
 }
-
 
 
 export abstract class ExportCommand extends BaseCommand {
@@ -275,7 +201,6 @@ export abstract class ExportCommand extends BaseCommand {
   }
 
 
-
   protected includeFlag(flag: string[] | undefined, relationships?: KeyValRel, force?: boolean): string[] {
 
     const values: string[] = []
@@ -361,7 +286,6 @@ export abstract class ExportCommand extends BaseCommand {
   }
 
 }
-
 
 
 export { Args, Flags }

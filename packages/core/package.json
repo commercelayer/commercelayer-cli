@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@commercelayer/cli-test-utils": "workspace:*",
+    "@oclif/core": "catalog:",
     "@types/chai": "catalog:",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mocha": "catalog:",
@@ -51,10 +52,12 @@
   },
   "dependencies": {
     "@commercelayer/js-auth": "catalog:",
-    "@oclif/core": "catalog:",
     "chalk": "catalog:",
     "jsonwebtoken": "^9.0.3",
     "update-notifier-cjs": "catalog:"
+  },
+  "peerDependencies": {
+    "@oclif/core": "^5.1.2"
   },
   "publishConfig": {
     "access": "public"

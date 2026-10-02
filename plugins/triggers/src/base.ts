@@ -1,38 +1,17 @@
-import { clApi, clColor, clOutput, clUpdate } from '@commercelayer/cli-core'
+import { CLCommand, clApi, clColor, clOutput } from '@commercelayer/cli-core'
 import { CommerceLayerStatic, type Resource } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
-import { Args, Command, type Errors, Flags } from '@oclif/core'
+import { Args, type Errors, Flags } from '@oclif/core'
 import exec from './exec'
 
 type CLIError = InstanceType<typeof Errors.CLIError>
 type CommandError = Interfaces.CommandError
 
 
-const pkg: clUpdate.Package = require('../package.json')
-
-
-export default abstract class extends Command {
+export default abstract class extends CLCommand {
 
   static baseFlags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true,
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
-    }),
-    accessToken: Flags.string({
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-    }),
+    ...CLCommand.baseFlags,
     print: Flags.boolean({
       char: 'p',
       description: 'print out the modified resource',
@@ -52,13 +31,6 @@ export default abstract class extends Command {
 
   static args = {
     id: Args.string({ name: 'id', description: 'the unique id of the resource', required: true }),
-  }
-
-
-  // INIT (override)
-  async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
-    return await super.init()
   }
 
 
@@ -114,7 +86,6 @@ export default abstract class extends Command {
   }
 
 }
-
 
 
 export { Flags }
