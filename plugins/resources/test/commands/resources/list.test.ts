@@ -19,6 +19,19 @@ describe('resources:list', () => {
     .do(() => {
       api()
         .get('/api/customers')
+        .query(true)
+        .reply(200, { ...list([resource('customers', 'cUs1', { email: 'jane@example.com' })]), meta: { record_count: 12_345, page_count: 1235 } })
+    })
+    .stdout()
+    .command(['resources:list', 'customers', ...AUTH])
+    .it('marks the counts of the footer as estimated above 10,000 records', (ctx) => {
+      expect(ctx.stdout).to.match(/Records: .*1.* of ≈12,345 \| Page: .*1.* of ≈1,235/)
+    })
+
+  test
+    .do(() => {
+      api()
+        .get('/api/customers')
         .query((q) => q['filter[q][email_end]'] === 'example.com' && q.sort === '-created_at' && q['page[size]'] === '5' && q['page[number]'] === '2' && q['fields[customers]'] === 'email' && q.include === 'customer_group')
         .reply(200, list([resource('customers', 'cUs1', { email: 'jane@example.com' })]))
     })
