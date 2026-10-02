@@ -32,6 +32,7 @@
 import { execFileSync } from 'node:child_process'
 import { join } from 'node:path'
 import { createInterface } from 'node:readline/promises'
+import semver from 'semver'
 import { git, lastTag, publicPackages, readJson, tagOf, writeJson } from './lib/workspace.mjs'
 
 const args = process.argv.slice(2)
@@ -54,26 +55,15 @@ if (git('status', '--porcelain')) fail('Working tree is not clean.')
 git('fetch', '--quiet', 'origin', BASE, '--tags')
 if (git('rev-parse', 'HEAD') !== git('rev-parse', `origin/${BASE}`)) fail(`HEAD is not origin/${BASE}. Check out an up-to-date ${BASE} first.`)
 
-const parse = (v) => {
-  const [core, pre] = v.split('-')
-  const [major, minor, patch] = core.split('.').map(Number)
-  const [id, n] = pre ? pre.split('.') : []
-  return { major, minor, patch, id, n: n === undefined ? undefined : Number(n) }
-}
-
+/**
+ * The next version for a bump level, optionally as a prerelease:
+ * - from a prerelease: the same preid only moves the counter (x.y.z-beta.1 ->
+ *   x.y.z-beta.2), another one restarts it (x.y.z-rc.0), none releases x.y.z
+ * - from a stable version: x.y.z bumped by level, -<preid>.0 with a preid
+ */
 const bump = (version, level, preid) => {
-  const v = parse(version)
-  // Already a prerelease of the same id: only the counter moves
-  if (preid && v.id === preid) return `${v.major}.${v.minor}.${v.patch}-${preid}.${v.n + 1}`
-  const base = v.id
-    ? { major: v.major, minor: v.minor, patch: v.patch } // leaving a prerelease: x.y.z-id.n -> x.y.z
-    : level === 'major'
-      ? { major: v.major + 1, minor: 0, patch: 0 }
-      : level === 'minor'
-        ? { major: v.major, minor: v.minor + 1, patch: 0 }
-        : { major: v.major, minor: v.minor, patch: v.patch + 1 }
-  const stable = `${base.major}.${base.minor}.${base.patch}`
-  return preid ? `${stable}-${preid}.0` : stable
+  if (semver.prerelease(version)) return preid ? semver.inc(version, 'prerelease', preid) : semver.inc(version, 'release')
+  return preid ? semver.inc(version, `pre${level}`, preid) : semver.inc(version, level)
 }
 
 const levelOf = (subjects, bodies) => {
@@ -84,7 +74,7 @@ const levelOf = (subjects, bodies) => {
 
 const candidates = []
 for (const pkg of publicPackages()) {
-  const since = lastTag(pkg)
+  const since = await lastTag(pkg)
   const range = since ? [`${since}..HEAD`] : []
   const log = git('log', '--no-merges', '--format=%s%x1f%b%x1e', ...range, '--', pkg.path)
   const commits = log
@@ -124,7 +114,7 @@ if (INTERACTIVE) {
     const answer = await ask(`  Version [${c.next}] (s to skip, or type a version): `)
     if (answer === 's') continue
     const version = answer || c.next
-    if (!/^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$/.test(version)) fail(`'${version}' is not a valid version`)
+    if (!semver.valid(version)) fail(`'${version}' is not a valid version`)
     selected.push({ ...c, version })
   }
 } else {

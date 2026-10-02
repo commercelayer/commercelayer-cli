@@ -9,6 +9,8 @@
 import { execFileSync } from 'node:child_process'
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { getSemverTags } from 'git-semver-tags'
+import semver from 'semver'
 
 export const ROOTS = ['packages', 'plugins']
 
@@ -35,27 +37,25 @@ export const publicPackages = () => listPackages().filter((p) => !p.private)
 
 /** The package a `<dir>-v<version>` tag belongs to, or an error message. */
 export const resolveTag = (tag) => {
-  const match = /^(.+?)-v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)$/.exec(tag)
-  if (!match) return { error: `'${tag}' is not a <dir>-v<version> tag` }
+  const match = /^(.+?)-v(.+)$/.exec(tag)
+  if (!match || !semver.valid(match[2])) return { error: `'${tag}' is not a <dir>-v<version> tag` }
   const [, dir, version] = match
   const pkg = listPackages().find((p) => p.dir === dir)
   if (!pkg) return { error: `Tag prefix '${dir}' does not match a directory in ${ROOTS.join(' or ')}` }
   if (pkg.private) return { error: `${pkg.name} is private and must not be released` }
   if (pkg.version !== version) return { error: `Tag version ${version} does not match ${pkg.path}/package.json (${pkg.version})` }
-  const prerelease = version.includes('-')
   // `6.0.0-beta.3` -> `beta`; a bare numeric prerelease (`6.0.0-0`) -> `next`
-  const preid = prerelease ? version.split('-')[1].split('.')[0] : undefined
-  const distTag = prerelease ? (/^\d+$/.test(preid) ? 'next' : preid) : 'latest'
+  const [preid] = semver.prerelease(version) ?? []
+  const prerelease = preid !== undefined
+  const distTag = prerelease ? (typeof preid === 'number' ? 'next' : preid) : 'latest'
   return { ...pkg, tag, prerelease, distTag }
 }
 
 export const tagOf = (pkg, version = pkg.version) => `${pkg.dir}-v${version}`
 
-/** The most recent tag of a package, stable or not, reachable from HEAD. */
-export const lastTag = (pkg) => {
-  try {
-    return git('describe', '--tags', '--abbrev=0', '--match', `${pkg.dir}-v*`, 'HEAD')
-  } catch {
-    return undefined
-  }
-}
+/**
+ * The most recent tag of a package, stable or not, reachable from HEAD: the
+ * first in history order (git-semver-tags), not the closest one by commit
+ * count, so a release made on a maintenance branch and merged back counts.
+ */
+export const lastTag = async (pkg) => (await getSemverTags({ tagPrefix: `${pkg.dir}-v` }))[0]
