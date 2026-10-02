@@ -15,18 +15,18 @@
  * A package already on npm is skipped: it may have been published as the
  * dependency of another one.
  *
- * `pnpm pack` builds each tarball (running prepack, and rewriting
- * `workspace:` ranges to real versions); `npm publish` uploads it, which lets
- * npm do the OIDC trusted-publishing exchange and attach provenance in CI.
+ * Each package is published with `pnpm publish`, which runs prepack, rewrites
+ * `workspace:` ranges to real versions, and in CI does the OIDC
+ * trusted-publishing exchange with npm and attaches provenance. Not
+ * `pnpm publish -r`: it would give every package the same dist-tag, and
+ * publish any workspace version not on npm, tagged for release or not.
  *
  * The package and its workspace dependencies must be built first.
  *
  * Usage:  node scripts/publish.mjs <tag> [--dry-run]
  */
 import { execFileSync } from 'node:child_process'
-import { appendFileSync, mkdtempSync, rmSync } from 'node:fs'
-import { tmpdir } from 'node:os'
-import { join, resolve } from 'node:path'
+import { appendFileSync } from 'node:fs'
 import { git, listPackages, resolveTag, tagOf, workspaceDeps } from './lib/workspace.mjs'
 
 const [tag, ...rest] = process.argv.slice(2)
@@ -74,20 +74,13 @@ visit(pkg, [])
 const publish = (p) => {
   const target = resolveTag(tagOf(p))
   if (target.error) fail(target.error)
-  const out = mkdtempSync(join(tmpdir(), 'publish-'))
-  try {
-    console.log(`› Packing ${p.name}@${p.version}`)
-    run('pnpm', ['pack', '--pack-destination', out], { cwd: p.path, stdio: 'inherit' })
-    const tarball = run('ls', [out]).trim().split('\n')[0]
-    const args = ['publish', resolve(out, tarball), '--access', 'public', '--tag', target.distTag]
-    if (process.env.CI) args.push('--provenance')
-    if (DRY) args.push('--dry-run')
-    console.log(`› npm ${args.join(' ')}`)
-    run('npm', args, { stdio: 'inherit' })
-    console.log(`✓ ${DRY ? 'Would publish' : 'Published'} ${p.name}@${p.version} (dist-tag ${target.distTag})`)
-  } finally {
-    rmSync(out, { recursive: true, force: true })
-  }
+  // The release tag is checked out detached: no branch or clean-tree checks
+  const args = ['publish', '--access', 'public', '--tag', target.distTag, '--no-git-checks']
+  if (process.env.CI) args.push('--provenance')
+  if (DRY) args.push('--dry-run')
+  console.log(`› pnpm ${args.join(' ')}  (${p.path})`)
+  run('pnpm', args, { cwd: p.path, stdio: 'inherit' })
+  console.log(`✓ ${DRY ? 'Would publish' : 'Published'} ${p.name}@${p.version} (dist-tag ${target.distTag})`)
 }
 
 for (const dep of toPublish) {

@@ -37,13 +37,12 @@ jobs:
           fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
+      # No registry-url: it writes an .npmrc with a placeholder token, and
+      # pnpm publish authenticates through OIDC trusted publishing instead
       - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-          registry-url: https://registry.npmjs.org
           cache: 'pnpm'
-      - name: npm with trusted publishing support
-        run: npm install -g npm@^11.5.1
 
       # Before resolve-tag, which needs the release scripts' dependencies
       - run: pnpm install --frozen-lockfile
