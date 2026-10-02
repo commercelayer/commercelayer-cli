@@ -27,9 +27,26 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
       - name: Release config is up to date
-        run: node scripts/gen-release-config.mjs --check
+        run: pnpm exec cl-release labels --check
       - name: Packages are consistent
         run: node scripts/check-packages.mjs
+
+  commits:
+    name: Commit messages
+    # The commits a pull request brings: merged with a merge commit, each of
+    # them reaches the base branch, and the release scripts read them all
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile --filter @commercelayer/cli-monorepo
+      - name: Conventional Commits
+        run: pnpm exec commitlint --from '${{ github.event.pull_request.base.sha }}' --to '${{ github.event.pull_request.head.sha }}' --verbose
 
   test:
     # The current LTS, and the minimum Node of the packages (engines), where
@@ -92,7 +109,7 @@ jobs:
           set -euo pipefail
           for path in $(pnpm --filter '${{ steps.select.outputs.filter }}' --filter '!@commercelayer/cli-monorepo' list --depth -1 --json | node -e 'for (const p of JSON.parse(require("fs").readFileSync(0))) console.log(require("path").relative(process.cwd(), p.path))'); do
             [ "$path" = "" ] && continue
-            node scripts/check-manifest.mjs "$(basename "$path")" --warn
+            pnpm exec cl-release manifest "$(basename "$path")" --warn
           done
 
   generated:

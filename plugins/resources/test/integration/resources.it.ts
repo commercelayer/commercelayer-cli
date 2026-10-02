@@ -22,7 +22,8 @@ describeLive('resources', () => {
     const skus = await json(['resources:list', 'skus', '-n', '5'])
     expect(skus).to.be.an('array').with.length.at.most(5)
     for (const sku of skus) expect(sku).to.include({ type: 'skus' }).and.to.have.property('code')
-    if (skus.length) expect(lastStdout).to.match(/Records: \d+ of [\d,.]+ \| Page: 1 of \d+/)
+    // ≈ marks the counts the API estimates above 10,000 records
+    if (skus.length) expect(lastStdout).to.match(/Records: \d+ of ≈?[\d,.]+ \| Page: 1 of ≈?[\d,.]+/)
   })
 
   it('lists with filters, sort and fields', async () => {

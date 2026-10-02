@@ -1,8 +1,7 @@
 name: Labeler
 
-# Keeps the `pkg:<dir>` labels in step with the files a PR touches. The
-# per-package release-notes configs (.github/release-<dir>.yml) filter on
-# them, so the split must not depend on someone labelling every PR by hand.
+# Keeps the `pkg:<dir>` labels in step with the files a PR touches, so a PR
+# shows which packages it changes without someone labelling it by hand.
 on:
   pull_request:
 

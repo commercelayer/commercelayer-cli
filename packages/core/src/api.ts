@@ -48,7 +48,23 @@ const humanizeResource = (type: string, singular?: boolean): string => {
 }
 
 
-export { apiVersion, baseURL, execMode, extractDomain, humanizeResource }
+/**
+ * Above this many matching records the API estimates record_count and
+ * page_count, and flags it with meta.record_count_estimated
+ * (https://docs.commercelayer.io/core/pagination)
+ */
+const RECORD_COUNT_EXACT_MAX = 10_000
+
+/**
+ * Whether a list's counts are estimated: the API flag when the SDK passes it
+ * on, otherwise the documented threshold
+ */
+const isRecordCountEstimated = (meta?: { recordCount?: number; recordCountEstimated?: boolean; record_count_estimated?: boolean }): boolean => {
+	return meta?.recordCountEstimated ?? meta?.record_count_estimated ?? ((meta?.recordCount ?? 0) > RECORD_COUNT_EXACT_MAX)
+}
+
+
+export { apiVersion, baseURL, execMode, extractDomain, humanizeResource, isRecordCountEstimated, RECORD_COUNT_EXACT_MAX }
 
 
 const CACHEABLE_RESOURCES = [

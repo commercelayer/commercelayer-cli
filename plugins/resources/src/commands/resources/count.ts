@@ -1,4 +1,4 @@
-import { clApi, clColor, clFilter, clUtil, type KeyValString } from '@commercelayer/cli-core'
+import { clApi, clColor, clFilter, clOutput, clUtil, type KeyValString } from '@commercelayer/cli-core'
 import type { ApiVersion } from '@commercelayer/sdk'
 import { CommerceLayer, type CommerceLayerClient, type ListResponse, type Resource } from '@commercelayer/sdk'
 import { Args, BaseCommand, cliux, Flags } from '../../base'
@@ -57,7 +57,10 @@ export default class ResourcesCount extends BaseCommand {
 
     const res = await resSdk.list({ filters /* , pageNumber: 1, pageSize: 1 */}) as ListResponse<Resource>
 
-    if (typeof res?.recordCount === 'number') cliux.action.stop(clColor.yellowBright(res.recordCount.toLocaleString()))
+    if (typeof res?.recordCount === 'number') {
+      const estimated = clApi.isRecordCountEstimated(res.meta)
+      cliux.action.stop(clColor.yellowBright(clOutput.formatCount(res.recordCount, estimated)) + (estimated ? clColor.dim(` (estimated above ${clApi.RECORD_COUNT_EXACT_MAX.toLocaleString()})`) : ''))
+    }
     else {
       cliux.action.stop(clColor.msg.error('error'))
       this.error(`\nError counting ${humanized}`)

@@ -9,9 +9,11 @@ import {
   execMode,
   extractDomain,
   humanizeResource,
+  isRecordCountEstimated,
   isResourceCacheable,
   liveEnvironment,
   Operation,
+  RECORD_COUNT_EXACT_MAX,
   request,
   requestRateLimitDelay,
 } from '../../src/api'
@@ -69,6 +71,16 @@ describe('api', () => {
       expect(apiVersion()).to.equal('2017-08')
       expect(apiVersion({ 'api-version': '2026-05' })).to.equal('2026-05')
     })
+  })
+
+  it('tells estimated list counts', () => {
+    expect(RECORD_COUNT_EXACT_MAX).to.equal(10_000)
+    expect(isRecordCountEstimated({ recordCount: 10_000 })).to.equal(false)
+    expect(isRecordCountEstimated({ recordCount: 10_001 })).to.equal(true)
+    // the API flag wins over the threshold when the SDK passes it on
+    expect(isRecordCountEstimated({ recordCount: 20_000, recordCountEstimated: false })).to.equal(false)
+    expect(isRecordCountEstimated({ recordCount: 5, record_count_estimated: true })).to.equal(true)
+    expect(isRecordCountEstimated()).to.equal(false)
   })
 
   it('humanizes resource types', () => {

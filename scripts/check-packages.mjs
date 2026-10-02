@@ -21,8 +21,8 @@
  * Usage:  node scripts/check-packages.mjs
  */
 import { existsSync, readFileSync } from 'node:fs'
-import { join } from 'node:path'
-import { listPackages } from './lib/workspace.mjs'
+import { basename, join } from 'node:path'
+import { getPackagesSync } from '@manypkg/get-packages'
 
 const REPO = 'https://github.com/commercelayer/commercelayer-cli'
 const AUTHOR = 'Pierluigi Viti <pierluigi@commercelayer.io>'
@@ -48,7 +48,13 @@ for (const line of readFileSync('pnpm-workspace.yaml', 'utf8').split('\n')) {
   }
 }
 
-const packages = listPackages()
+const packages = getPackagesSync(process.cwd()).packages.map(({ relativeDir: path, packageJson: manifest }) => ({
+  dir: basename(path),
+  path,
+  name: manifest.name,
+  private: manifest.private === true,
+  manifest,
+}))
 const workspace = new Set(packages.map((p) => p.name))
 const problems = []
 const check = (pkg, ok, message) => {

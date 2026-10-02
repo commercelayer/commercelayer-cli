@@ -13,6 +13,16 @@ describe('resources:list', () => {
     expect(ctx.stdout).to.contain('cUs2')
   })
 
+  it('marks the counts of the footer as estimated above 10,000 records', async () => {
+    api()
+      .get('/api/customers')
+      .query(true)
+      .reply(200, { ...list([resource('customers', 'cUs1', { email: 'jane@example.com' })]), meta: { record_count: 12_345, page_count: 1235 } })
+    const ctx = await runCommand(['resources:list', 'customers', ...AUTH])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.match(/Records: .*1.* of ≈12,345 \| Page: .*1.* of ≈1,235/)
+  })
+
   it('passes filters, sort, paging, fields and includes to the API', async () => {
     api()
       .get('/api/customers')

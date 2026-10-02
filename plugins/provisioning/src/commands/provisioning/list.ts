@@ -1,5 +1,5 @@
 // import { mergeCommandParams } from '../../commands'
-import { clColor } from "@commercelayer/cli-core";
+import { clApi, clColor, clOutput } from "@commercelayer/cli-core";
 import Command, {
 	cliux,
 	Flags /* FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, */,
@@ -148,7 +148,7 @@ export default class ProvisioningList extends Command {
 				this.printOutput(out, flags);
 				if (!flags["headers-only"])
 					this.log(
-						`\nRecords: ${clColor.blueBright(res.length)} of ${meta.recordCount} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`,
+						`\nRecords: ${clColor.blueBright(res.length)} of ${clOutput.formatCount(meta.recordCount, clApi.isRecordCountEstimated(meta))} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${clOutput.formatCount(meta.pageCount, clApi.isRecordCountEstimated(meta))}\n`,
 					);
 
 				// Save command output

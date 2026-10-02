@@ -5,6 +5,10 @@ import type { Interfaces } from '@oclif/core'
 import open from 'open'
 import { computeDelay, ExportCommand, Flags, notify } from '../../base'
 
+/** How often, and how long, to wait for the API to count the records of a new export (ms) */
+const COUNT_POLL = 1000
+const COUNT_TIMEOUT = 60_000
+
 type CommandError = Interfaces.CommandError
 
 
@@ -150,18 +154,25 @@ export default class ExportsCreate extends ExportCommand {
 
       let exp = await this.cl.exports.create(expCreate)
 
-      // Await for asyncronous export to be ready
+      // The API counts the records asynchronously: wait for the count, a fixed
+      // delay could read it before it is set and report an empty export
       this.log()
       cliux.action.start(`Initializing export ${exp.id}`)
-      await cliux.wait(2000)
+      const countDeadline = Date.now() + COUNT_TIMEOUT
+      do {
+        await cliux.wait(COUNT_POLL)
+        exp = await this.cl.exports.retrieve(exp)
+      } while (((exp.records_count === null) || (exp.records_count === undefined)) && (Date.now() < countDeadline))
       cliux.action.stop()
-      exp = await this.cl.exports.retrieve(exp)
 
       this.log()
-      if (!exp.records_count) {
+      if (exp.records_count === 0) {
         this.log(clColor.italic('No records found'))
         this.exit()
-      } else this.log(`Started export ${clColor.style.id(exp.id)}`)
+      }
+      if ((exp.records_count === null) || (exp.records_count === undefined))
+        this.error(`Export ${clColor.style.id(exp.id)} has not counted its records after ${COUNT_TIMEOUT / 1000}s: check it later with ${clColor.cli.command(`exports:details ${exp.id}`)}`)
+      this.log(`Started export ${clColor.style.id(exp.id)}`)
       this.log()
 
       let jwtData = clToken.decodeAccessToken(accessToken) as any

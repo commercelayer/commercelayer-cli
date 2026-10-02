@@ -14,16 +14,22 @@
     "test:integration": "pnpm -r --no-bail --if-present --workspace-concurrency=1 test:integration",
     "lint": "biome check --enforce-assist=true",
     "check": "biome check --enforce-assist=true --write",
-    "release:version": "node scripts/finish-version.mjs",
-    "release:tag": "node scripts/tag.mjs",
-    "release:config": "node scripts/gen-release-config.mjs",
-    "release:publish": "node scripts/publish.mjs",
+    "release:version": "cl-release version",
+    "release:tag": "cl-release tag",
+    "release:config": "cl-release labels",
+    "release:publish": "cl-release publish",
     "generate": "pnpm -r --if-present generate",
     "generate-local": "pnpm -r --if-present generate-local",
-    "check:packages": "node scripts/check-packages.mjs"
+    "check:packages": "node scripts/check-packages.mjs",
+    "lint:commits": "commitlint --from origin/main --to HEAD --verbose",
+    "release:try": "cl-release try"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.14"
+    "@biomejs/biome": "^2.5.14",
+    "@commercelayer/cli-release": "workspace:*",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@manypkg/get-packages": "^3.1.0"
   },
   "engines": {
     "node": ">=22.13"

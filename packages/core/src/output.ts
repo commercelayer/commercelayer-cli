@@ -66,6 +66,12 @@ const localeDate = (date: string): string => {
 }
 
 
+/** A record or page count, marked as approximate when the API estimated it (≈) */
+const formatCount = (count: number, estimated = false): string => {
+	return `${estimated ? '≈' : ''}${count.toLocaleString()}`
+}
+
+
 /** Format aoutput */
 const formatOutput = (output: any, flags?: any, { color = true } = {}): string => {
 	if (!output) return ''
@@ -84,4 +90,4 @@ const formatError = (error: any, flags?: any): string => {
 }
 
 
-export { center, cleanDate, formatError, formatOutput, localeDate, maxLength, printCSV, printJSON, printObject }
+export { center, cleanDate, formatCount, formatError, formatOutput, localeDate, maxLength, printCSV, printJSON, printObject }

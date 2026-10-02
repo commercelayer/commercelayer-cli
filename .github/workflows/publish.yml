@@ -2,7 +2,7 @@ name: Publish
 
 # Publishes to npm when a human publishes a draft release created by
 # release.yml, then announces it on Slack. The tagged package is published
-# (scripts/publish.mjs), built and tested from exactly the tag, together with
+# (`cl-release publish`), built and tested from exactly the tag, together with
 # the workspace dependencies it needs that aren't on npm yet (cli-core,
 # cli-ux, … released in the same chore(release) PR); their draft releases
 # are then marked published too.
@@ -37,19 +37,19 @@ jobs:
           fetch-depth: 0
 
       - uses: pnpm/action-setup@v4
+      # No registry-url: it writes an .npmrc with a placeholder token, and
+      # pnpm publish authenticates through OIDC trusted publishing instead
       - uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-          registry-url: https://registry.npmjs.org
           cache: 'pnpm'
-      - name: npm with trusted publishing support
-        run: npm install -g npm@^11.5.1
+
+      # Before resolving the tag: cl-release and its dependencies
+      - run: pnpm install --frozen-lockfile
 
       - name: Resolve package
         id: meta
-        run: node scripts/resolve-tag.mjs "$TAG" | tee -a "$GITHUB_OUTPUT"
-
-      - run: pnpm install --frozen-lockfile
+        run: pnpm exec cl-release resolve "$TAG" | tee -a "$GITHUB_OUTPUT"
 
       - name: Build the package and its workspace dependencies
         run: pnpm --filter '${{ steps.meta.outputs.package }}...' build
@@ -63,11 +63,11 @@ jobs:
         run: pnpm --filter '${{ steps.meta.outputs.package }}...' --workspace-concurrency=1 test
 
       - name: Command surface vs npm
-        run: node scripts/check-manifest.mjs '${{ steps.meta.outputs.dir }}'
+        run: pnpm exec cl-release manifest '${{ steps.meta.outputs.dir }}'
 
       - name: Publish
         id: publish
-        run: node scripts/publish.mjs "$TAG"
+        run: pnpm exec cl-release publish "$TAG"
 
       - name: Publish the draft releases of the dependencies published along
         if: steps.publish.outputs.published_deps != ''
