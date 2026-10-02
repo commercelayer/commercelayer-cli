@@ -52,7 +52,7 @@ export default class ResourcesCount extends BaseCommand {
     const humanized = clApi.humanizeResource(resource.type)
 
     this.log()
-    if (!flags.doc) cliux.action.start(`Counting ${humanized}`)
+    cliux.action.start(`Counting ${humanized}`)
 
     const res = await resSdk.list({ filters /* , pageNumber: 1, pageSize: 1 */}) as ListResponse<Resource>
 

@@ -1,49 +1,19 @@
-import { clColor, clFilter, clOutput, clToken, clUpdate, clUtil, type KeyValRel, type KeyValString } from '@commercelayer/cli-core'
+import { CLCommand, clColor, clFilter, type KeyValRel, type KeyValString } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
-import { Args, Command, Flags } from '@oclif/core'
+import { Args, Flags } from '@oclif/core'
 
 type CommandError = Interfaces.CommandError
 
 
-const pkg: clUpdate.Package = require('../package.json')
+export default abstract class extends CLCommand {
 
-
-export default abstract class extends Command {
-
+  // oclif collects the static properties of a command up to the first class
+  // without any (cacheCommand): without its own, the manifest would miss them
   static baseFlags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true,
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN',
-    }),
-    accessToken: Flags.string({
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-    }),
+    ...CLCommand.baseFlags
   }
-
-
-
-  // INIT (override)
-  async init(): Promise<any> {
-    // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
-    return await super.init()
-  }
-
-
 
 
   // -- CUSTOM METHODS -- //
@@ -97,35 +67,8 @@ export default abstract class extends Command {
   }
 
 
-  protected checkApplication(accessToken: string, kinds: string[]): boolean {
-
-    const info = clToken.decodeAccessToken(accessToken)
-
-    if (info === null) this.error('Invalid access token provided')
-    else
-      if (!kinds.includes(info.application.kind))
-        this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Application kind must be one of the following: ${clColor.cyanBright(kinds.join(', '))}`)
-
-    return true
-
-  }
-
-
   protected commercelayerInit(flags: any): CommerceLayerClient {
-
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken = flags.accessToken
-
-    const userAgent = clUtil.userAgent(this.config)
-
-    return commercelayer({
-      organization,
-      domain,
-      accessToken,
-      userAgent
-    })
-
+    return commercelayer(this.clientOptions(flags))
   }
 
 
@@ -142,21 +85,11 @@ export default abstract class extends Command {
 
 
   protected handleError(error: CommandError, flags?: any, id?: string): void {
-    if (CommerceLayerStatic.isApiError(error)) {
-      if (error.status === 401) {
-        const err = error.first()
-        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s exports'] },
-        )
-      } else
-      if (error.status === 404) {
-        this.error(`Unable to find export${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
-      } else this.error(clOutput.formatOutput(error, flags))
-    } else throw error
+    if (CommerceLayerStatic.isApiError(error)) this.handleApiError(error, { resource: 'cleanup', id, flags })
+    else throw error
   }
 
 }
-
 
 
 export { Args, cliux, Flags }
