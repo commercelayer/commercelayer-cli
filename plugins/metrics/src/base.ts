@@ -1,52 +1,25 @@
-import { clColor, clConfig, clOutput, clToken, clUpdate } from '@commercelayer/cli-core'
+import { accessTokenFlag, CLCommand, clColor, clConfig, clOutput, clToken } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
-import { Args, Command, Flags } from '@oclif/core'
+import { Args, Flags } from '@oclif/core'
 import { type MetricsFilter, type MetricsQueryBreakdown, type MetricsQueryBreakdownResponse, operators, resources } from './common'
 
 type CommandError = Interfaces.CommandError
 
 
-
-const pkg: clUpdate.Package = require('../package.json')
-
-
 const REQUIRED_APP_KIND = clConfig.metrics.applications
 
 
-export abstract class BaseCommand extends Command {
+export abstract class BaseCommand extends CLCommand {
 
   static baseFlags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN'
-    }),
-    accessToken: Flags.string({
+    ...CLCommand.baseFlags,
+    accessToken: accessTokenFlag({
       char: 'a',
       description: 'custom access token to use instead of the one used for login',
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-      dependsOn: ['organization']
+      dependsOn: ['organization'],
     })
-  }
-
-
-  // INIT (override)
-  async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
-    return await super.init()
   }
 
 
@@ -56,14 +29,8 @@ export abstract class BaseCommand extends Command {
 
 
   protected async handleError(error: any, flags?: any): Promise<any> {
-    if (CommerceLayerStatic.isApiError(error)) {
-      if (error.status === 401) {
-        const err = error.first()
-        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s resources'] }
-        )
-      } else this.error(clOutput.formatError(error, flags))
-    } else return await super.catch(error as CommandError)
+    if (CommerceLayerStatic.isApiError(error)) this.handleApiError(error, { flags })
+    else return await super.catch(error as CommandError)
   }
 
 /*
@@ -203,7 +170,6 @@ export abstract class BaseBreakdownCommand extends BaseResourceCommand {
   static args = {
     ...BaseResourceCommand.args
   }
-
 
 
   protected breakdownFlag(flag?: string): MetricsQueryBreakdown | undefined {

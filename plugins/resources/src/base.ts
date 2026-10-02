@@ -1,11 +1,11 @@
 import { existsSync } from 'node:fs'
 import type { KeyVal, KeyValArray, KeyValObj, KeyValRel, KeyValSort, KeyValString, ResAttributes } from '@commercelayer/cli-core'
-import { clColor, clCommand, clConfig, clFilter, clText, clToken, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { accessTokenFlag, CLCommand, clColor, clCommand, clConfig, clFilter, clText, clUtil, domainFlag, organizationFlag } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import type { CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId, ResourceType, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
-import { Args, Command, type Config, Flags } from '@oclif/core'
+import { Args, type Config, Flags } from '@oclif/core'
 import { aliasExists, type CommandParams, checkAlias, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import { exportCsv } from './csv'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
@@ -16,53 +16,23 @@ import { type ApiResource, findResource } from './util/resources'
 type CommandError = Interfaces.CommandError
 
 
-
-const pkg: clUpdate.Package = require('../package.json')
-
-
 export const FLAG_SAVE_PARAMS = 'save-args'
 export const FLAG_LOAD_PARAMS = 'load-args'
 
 
-export abstract class BaseCommand extends Command {
+export abstract class BaseCommand extends CLCommand {
 
   static flags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN'
-    }),
-    accessToken: Flags.string({
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN'
-    })
+    organization: organizationFlag(),
+    domain: domainFlag(),
+    accessToken: accessTokenFlag(),
   }
 
 
   protected initCommerceLayer(flags: any, ...options: any[]): CommerceLayerClient {
-
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken = flags.accessToken
-    const userAgent = clUtil.userAgent(this.config)
-
-
-    const cl = commercelayer({ organization, domain, accessToken, userAgent, ...options })
-
+    const cl = commercelayer({ ...this.clientOptions(flags), ...options })
     if ('cl' in this) this.cl = cl
-
     return cl
-
   }
 
 
@@ -245,14 +215,6 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  // INIT (override)
-  async init(): Promise<any> {
-    // Check for plugin updates only if in visible mode
-    if (!this.argv.includes('--blind') && !this.argv.includes('--silent') && !this.argv.includes('--quiet')) clUpdate.checkUpdate(pkg)
-    return await super.init()
-  }
-
-
   // CATCH (override)
   async catch(error: any): Promise<any> {
     if (error.message?.match(/Missing \d required args?:\nresource/))
@@ -262,7 +224,6 @@ export abstract class BaseQueryCommand extends BaseCommand {
     // else throw error				// overwrite command catch method
     else return await super.catch(error as CommandError)	// extend command catch method
   }
-
 
 
   // -- CUSTOM METHODS -- //
@@ -723,20 +684,6 @@ export abstract class BaseQueryCommand extends BaseCommand {
   }
 
 
-  protected checkApplication(accessToken: string, kinds: string[]): boolean {
-
-    const info = clToken.decodeAccessToken(accessToken)
-
-    if (info === null) this.error('Invalid access token provided')
-    else
-      if (!kinds.includes(info.application.kind))
-        this.error(`Invalid application kind: ${clColor.msg.error(info.application.kind)}. Application kind must be one of the following: ${clColor.cyanBright(kinds.join(', '))}`)
-
-    return true
-
-  }
-
-
   protected checkAlias(alias: string, resource: string, operation: ResourceOperation, config: Config): void {
     let ok = false
     try {
@@ -811,7 +758,6 @@ export default abstract class extends BaseQueryCommand {
   }
 
 }
-
 
 
 export { Args, cliux, Flags }
