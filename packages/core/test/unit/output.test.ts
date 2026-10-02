@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { center, cleanDate, formatError, formatOutput, localeDate, maxLength, printCSV, printJSON, printObject } from '../../src/output'
+import { center, cleanDate, formatCount, formatError, formatOutput, localeDate, maxLength, printCSV, printJSON, printObject } from '../../src/output'
 
 describe('output', () => {
   const rows = [
@@ -30,6 +30,11 @@ describe('output', () => {
     it('prints nothing for no rows', () => {
       expect(printCSV([])).to.equal('')
     })
+  })
+
+  it('formats counts, marking the estimated ones', () => {
+    expect(formatCount(1234)).to.equal((1234).toLocaleString())
+    expect(formatCount(16_998, true)).to.equal(`≈${(16_998).toLocaleString()}`)
   })
 
   it('centers a string', () => {
