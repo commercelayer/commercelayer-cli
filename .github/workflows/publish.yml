@@ -45,11 +45,12 @@ jobs:
       - name: npm with trusted publishing support
         run: npm install -g npm@^11.5.1
 
+      # Before resolve-tag, which needs the release scripts' dependencies
+      - run: pnpm install --frozen-lockfile
+
       - name: Resolve package
         id: meta
         run: node scripts/resolve-tag.mjs "$TAG" | tee -a "$GITHUB_OUTPUT"
-
-      - run: pnpm install --frozen-lockfile
 
       - name: Build the package and its workspace dependencies
         run: pnpm --filter '${{ steps.meta.outputs.package }}...' build
