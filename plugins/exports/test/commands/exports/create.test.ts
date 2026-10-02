@@ -41,6 +41,22 @@ describe('exports:create', () => {
     expect(JSON.parse(readFileSync(join(dir, 'skus.json'), 'utf8'))).to.deep.equal(records)
   })
 
+  it('waits for the API to count the records', async function () {
+    this.timeout(15000)
+    api()
+      .post('/api/exports')
+      .reply(201, single(exportJob('eXp1', { status: 'pending', records_count: null })))
+      .get('/api/exports/eXp1')
+      .reply(200, single(exportJob('eXp1', { status: 'pending', records_count: null })))
+      .get('/api/exports/eXp1')
+      .reply(200, single(exportJob('eXp1')))
+    attachment()
+    const ctx = await runCommand(['exports:create', ...AUTH, '-t', 'skus', '-x', join(dir, 'counted'), '--blind'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).not.to.contain('No records found')
+    expect(ctx.stdout).to.contain('Exported 2 skus')
+  })
+
   it('stops when there is nothing to export', async function () {
     this.timeout(15000)
     api()
