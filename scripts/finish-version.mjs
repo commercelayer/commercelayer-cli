@@ -35,7 +35,7 @@ import { join } from 'node:path'
 import { createInterface } from 'node:readline/promises'
 import { Bumper } from 'conventional-recommended-bump'
 import semver from 'semver'
-import { git, lastTag, publicPackages, readJson, tagOf, writeJson } from './lib/workspace.mjs'
+import { git, lastTag, publicPackages, readJson, sortByDependencies, tagOf, workspaceDeps, writeJson } from './lib/workspace.mjs'
 
 const args = process.argv.slice(2)
 const flag = (name) => args.includes(name)
@@ -149,14 +149,10 @@ rl?.close()
 // cli-ux, …) needs that change on npm too: unreleased changes of runtime
 // workspace dependencies are always released with it, so nobody has to
 // release and publish them first by hand.
-const runtimeDeps = (pkg) =>
-  Object.entries({ ...pkg.manifest.dependencies, ...pkg.manifest.peerDependencies })
-    .filter(([, range]) => range.startsWith('workspace:'))
-    .map(([name]) => name)
 for (let added = true; added; ) {
   added = false
   for (const s of [...selected]) {
-    for (const name of runtimeDeps(s.pkg)) {
+    for (const name of workspaceDeps(s.pkg)) {
       if (selected.some((x) => x.pkg.name === name)) continue
       const dep = candidates.find((c) => c.pkg.name === name)
       if (!dep) continue
@@ -167,13 +163,8 @@ for (let added = true; added; ) {
   }
 }
 // Dependencies first, so tags, drafts and publishing follow the same order
-const depth = (s, seen = new Set()) => {
-  if (seen.has(s.pkg.name)) return 0
-  seen.add(s.pkg.name)
-  const deps = selected.filter((x) => runtimeDeps(s.pkg).includes(x.pkg.name))
-  return deps.length === 0 ? 0 : 1 + Math.max(...deps.map((d) => depth(d, seen)))
-}
-selected.sort((a, b) => depth(a) - depth(b) || a.pkg.dir.localeCompare(b.pkg.dir))
+const order = sortByDependencies(selected.map((s) => s.pkg))
+selected.sort((a, b) => order.indexOf(a.pkg) - order.indexOf(b.pkg))
 
 if (selected.length === 0) {
   console.log('\nNothing selected.')
