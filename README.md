@@ -43,6 +43,14 @@ Shared dependency versions live in the `catalog:` of `pnpm-workspace.yaml`: pack
 
 Run a single package's script with `pnpm --filter <package name> <script>`, for example `pnpm --filter @commercelayer/cli test`.
 
+### Commit messages
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org) (`feat(tags): …`, `fix(core): …`, `feat!: …` or a `BREAKING CHANGE:` footer for a major): the release scripts derive each package's version and release notes from them. Pull requests are merged with a merge commit, so every commit counts, and CI checks them with commitlint (`commitlint.config.mjs`). To check a branch before pushing:
+
+```sh
+pnpm lint:commits
+```
+
 ### Tests against the real API
 
 `pnpm test` runs against a mocked API, with no credentials. The integration suites (`test/integration/*.it.ts`) run read-only commands against the real Core API of a test organization; they are skipped unless its credentials are set:
