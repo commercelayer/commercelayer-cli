@@ -11,7 +11,7 @@
  *   previous-tag  defaults to the package's previous release (as resolve-tag finds it)
  */
 import { ConventionalChangelog } from 'conventional-changelog'
-import { git, previousRelease, resolveTag } from './lib/workspace.mjs'
+import { git, previousRelease, readJson, resolveTag } from './lib/workspace.mjs'
 
 const [tag, previousArg] = process.argv.slice(2)
 const pkg = resolveTag(tag ?? '')
@@ -26,7 +26,8 @@ const date = git('log', '-1', '--format=%cs', tag)
 
 const changelog = new ConventionalChangelog()
   .loadPreset('conventionalcommits')
-  .readRepository()
+  // Links from the root package.json, not the git remote, which a clone may not point at GitHub
+  .repository(readJson('package.json').repository)
   .package({ name: pkg.name, version: pkg.version })
   .tags({ prefix: `${pkg.dir}-v` })
   .commits({ path: pkg.path, ...(previous ? { from: previous } : {}), to: tag })
