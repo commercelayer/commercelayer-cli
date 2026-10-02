@@ -27,7 +27,7 @@ import { execFileSync } from 'node:child_process'
 import { appendFileSync, mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
-import { git, listPackages, resolveTag, tagOf } from './lib/workspace.mjs'
+import { git, listPackages, resolveTag, tagOf, workspaceDeps } from './lib/workspace.mjs'
 
 const [tag, ...rest] = process.argv.slice(2)
 const DRY = rest.includes('--dry-run')
@@ -59,10 +59,9 @@ const workspace = new Map(listPackages().map((p) => [p.name, p]))
 const tags = new Set(git('tag', '--list', '*-v*').split('\n'))
 const toPublish = []
 const visit = (p, chain) => {
-  const { dependencies = {}, peerDependencies = {}, optionalDependencies = {} } = p.manifest
-  for (const [name, range] of Object.entries({ ...dependencies, ...peerDependencies, ...optionalDependencies })) {
+  for (const name of workspaceDeps(p)) {
     const dep = workspace.get(name)
-    if (!range.startsWith('workspace:') || !dep || toPublish.includes(dep) || onNpm(dep.name, dep.version)) continue
+    if (!dep || toPublish.includes(dep) || onNpm(dep.name, dep.version)) continue
     if (dep.private) fail(`${p.name} depends on the private ${dep.name}`)
     const depTag = tagOf(dep)
     if (!tags.has(depTag)) fail(`${[...chain, p.name].join(' → ')} needs ${dep.name}@${dep.version}, which is not on npm and has no ${depTag} release tag. Release it with \`pnpm release:version\`.`)
