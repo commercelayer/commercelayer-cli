@@ -53,3 +53,5 @@ overrides:
   uuid@<11.1.1: ^11.1.1
   # GHSA-g7r4-m6w7-qqqr (low) - tsup pins esbuild ^0.27, fixed in 0.28.1
   esbuild@<0.28.1: ^0.28.1
+  # GHSA high - oclif (got, cacheable-request) pins http-cache-semantics <=4.2.0, fixed in 4.3.0
+  http-cache-semantics@<4.3.0: ^4.3.0
