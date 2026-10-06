@@ -188,7 +188,8 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	let org: Partial<Organization>, app: Partial<Application>, user: any
 	if (provisioning) {
-		const clp = clprovisioning({ domain: auth.domain, accessToken })
+		// Unversioned requests (/api/…): provisioning-sdk 3 types require 2026-05, the SDK omits the segment when undefined
+		const clp = clprovisioning({ apiVersion: undefined as unknown as Parameters<typeof clprovisioning>[0]['apiVersion'], domain: auth.domain, accessToken })
 		// User info
 		const usr = await clp.user.retrieve().catch(() => { error(clp.user.type()) })
 		if (usr) user = { name: `${usr.first_name}${(usr.first_name && usr.last_name)? ' ' : ''}${usr.last_name}`, email: usr.email }

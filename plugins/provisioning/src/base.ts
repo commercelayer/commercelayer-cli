@@ -20,6 +20,7 @@ import {
 import type { Interfaces } from "@oclif/core"
 import { Args, Command, ux as cliux, Flags } from "@oclif/core"
 import commercelayer, {
+	API_VERSION,
 	type CommerceLayerProvisioningClient,
 	CommerceLayerProvisioningStatic,
 	type QueryParams,
@@ -142,7 +143,7 @@ export abstract class BaseCommand extends Command {
 		const accessToken = flags.accessToken
 		const userAgent = clUtil.userAgent(this.config)
 
-		const cl = commercelayer({ domain, accessToken, userAgent, ...options })
+		const cl = commercelayer({ apiVersion: API_VERSION, domain, accessToken, userAgent, ...options })
 
 		if ("cl" in this) this.cl = cl
 

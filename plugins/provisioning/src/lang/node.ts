@@ -18,7 +18,7 @@ const buildTypescript = (
 	ts += `\nconst accessToken = '${flags.accessToken}'`;
 	if (flags.domain) ts += `\nconst domain = '${flags.domain}'`;
 
-	ts += `\n\nconst cl = commercelayer({ accessToken${flags.domain ? ", domain" : ""} })`;
+	ts += `\n\nconst cl = commercelayer({ apiVersion: '2026-05', accessToken${flags.domain ? ", domain" : ""} })`;
 
 	if (hasParams)
 		ts += `\n\nconst params: QueryParams${qpSuffix} = ${clOutput.printObject(params, { color: false })}`;

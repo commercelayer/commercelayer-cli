@@ -17,7 +17,7 @@ describe('resources:list', () => {
     api()
       .get('/api/customers')
       .query(true)
-      .reply(200, { ...list([resource('customers', 'cUs1', { email: 'jane@example.com' })]), meta: { record_count: 12_345, page_count: 1235 } })
+      .reply(200, { ...list([resource('customers', 'cUs1', { email: 'jane@example.com' })]), meta: { record_count: 12_345, page_count: 1235, record_count_estimated: true } })
     const ctx = await runCommand(['resources:list', 'customers', ...AUTH])
     if (ctx.error) throw ctx.error
     expect(ctx.stdout).to.match(/Records: .*1.* of ≈12,345 \| Page: .*1.* of ≈1,235/)
