@@ -23,6 +23,26 @@ describe('resources:all', () => {
       expect(saved.map((s: { code: string }) => s.code)).to.deep.equal(['TSHIRT-M', 'TSHIRT-L'])
     })
 
+  // Above 10,000 records page_count is an estimate: here it says 1, but the first page is full
+  const page = (n: number, size: number) => Array.from({ length: size }, (_, i) => resource('skus', `sKu${n}-${i}`, { code: `C${n}-${i}` }))
+  let scope: ReturnType<typeof api>
+  test
+    .do(() => {
+      scope = api()
+        .get('/api/skus')
+        .query((q) => q['page[number]'] === '1')
+        .reply(200, { data: page(1, 25), meta: { record_count: 10_001, page_count: 1 } })
+        .get('/api/skus')
+        .query((q) => q['page[number]'] === '2')
+        .reply(200, { data: page(2, 3), meta: { record_count: 10_001, page_count: 1 } })
+    })
+    .stdout()
+    .command(['resources:all', 'skus', ...AUTH, '-x', join(dir, 'estimated.json'), '-j', '--blind'])
+    .it('keeps fetching past an estimated page count while the pages are full', () => {
+      expect(scope.isDone(), 'second page requested').to.equal(true)
+      expect(JSON.parse(readFileSync(join(dir, 'estimated.json'), 'utf8'))).to.have.length(28)
+    })
+
   test
     .command(['resources:all', 'skus', ...AUTH])
     .catch(/Undefined output file path/)

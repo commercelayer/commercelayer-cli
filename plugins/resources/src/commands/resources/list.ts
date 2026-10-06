@@ -1,4 +1,4 @@
-import { clColor } from '@commercelayer/cli-core'
+import { clApi, clColor, clOutput } from '@commercelayer/cli-core'
 import type { CommerceLayerClient, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
 import Command, { cliux, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS, Flags } from '../../base'
 import { mergeCommandParams } from '../../commands'
@@ -136,7 +136,7 @@ export default class ResourcesList extends Command {
 
         this.printHeaders(rawReader?.headers, flags)
         this.printOutput(out, flags)
-        if (!flags['headers-only']) this.log(`\nRecords: ${clColor.blueBright(res.length)} of ${meta.recordCount} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${meta.pageCount}\n`)
+        if (!flags['headers-only']) this.log(`\nRecords: ${clColor.blueBright(res.length)} of ${clOutput.formatCount(meta.recordCount, clApi.isRecordCountEstimated(meta))} | Page: ${clColor.blueBright(String(flags.page || 1))} of ${clOutput.formatCount(meta.pageCount, clApi.isRecordCountEstimated(meta))}\n`)
 
         // Save command output
         if (flags.save || flags['save-path']) this.saveOutput(out, flags)

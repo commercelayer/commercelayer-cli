@@ -50,6 +50,25 @@ describe('exports:create', () => {
         .post('/api/exports')
         .reply(201, single(exportJob('eXp1', { status: 'pending', records_count: null })))
         .get('/api/exports/eXp1')
+        .reply(200, single(exportJob('eXp1', { status: 'pending', records_count: null })))
+        .get('/api/exports/eXp1')
+        .reply(200, single(exportJob('eXp1')))
+      attachment()
+    })
+    .stdout()
+    .command(['exports:create', ...AUTH, '-t', 'skus', '-x', join(dir, 'counted'), '--blind'])
+    .it('waits for the API to count the records', (ctx) => {
+      expect(ctx.stdout).not.to.contain('No records found')
+      expect(ctx.stdout).to.contain('Exported 2 skus')
+    })
+
+  test
+    .timeout(15000)
+    .do(() => {
+      api()
+        .post('/api/exports')
+        .reply(201, single(exportJob('eXp1', { status: 'pending', records_count: null })))
+        .get('/api/exports/eXp1')
         .reply(200, single(exportJob('eXp1', { records_count: 0 })))
     })
     .stdout()

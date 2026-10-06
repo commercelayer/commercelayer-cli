@@ -11,8 +11,8 @@ export { MAX_CLEANUP_SIZE, MAX_QUEUE_LENGTH }
 type Chunk = CleanupCreate & {
   groupId: string,
   chunkNumber: number,
-  startId: string,
-  endId: string,
+  startId: string | null,
+  endId: string | null,
   chunkItems: number
 }
 
@@ -42,9 +42,11 @@ const splitRecords = async (resSdk: any, clp: CleanupCreate, totalRecords: numbe
     const chunkPages = Math.ceil(chunkRecords / pageSize)
     chunkPage += chunkPages
 
-    const chunkLastPage = await resSdk.list({ filters: clp.filters, pageSize, pageNumber: chunkPage, sort: { id: 'asc' } })
-
-    stopId = chunkLastPage.last()?.id
+    // Above 10,000 records the total is an estimate: the last chunk has no
+    // upper bound, so records past an underestimated total are cleaned too,
+    // and an overestimated total ends at the first page past the real end
+    const lastChunk = chunkNum === totChunks - 1
+    stopId = lastChunk ? null : ((await resSdk.list({ filters: clp.filters, pageSize, pageNumber: chunkPage, sort: { id: 'asc' } })).last()?.id ?? null)
 
     const chunk: Chunk = {
       ...clp,
@@ -56,6 +58,7 @@ const splitRecords = async (resSdk: any, clp: CleanupCreate, totalRecords: numbe
     }
 
     chunks[chunkNum] = chunk
+    if (!stopId) break
 
     startId = stopId
 
