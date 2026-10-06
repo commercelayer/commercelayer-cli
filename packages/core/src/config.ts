@@ -111,7 +111,7 @@ const LINK_RESOURCE_TYPES: readonly string[] = [
 
 type ApiConfig = {
 	default_domain: string
-	/** Core API version used when none is given ('' = unversioned requests, /api/…) */
+	/** Core API version used when none is given ('' would make the requests unversioned, /api/…) */
 	default_api_version: string
 	default_app_domain: string
 	default_stg_domain: string
@@ -246,8 +246,7 @@ const RATE_LIMIT = {
 const config: Config = {
 	api: {	// CORE
 		default_domain: 'commercelayer.io',
-		// Unversioned for now: the production API doesn't serve the versioned paths (/api/<version>/…) yet
-		default_api_version: '',
+		default_api_version: '2026-05',
 		default_app_domain: 'commercelayer.app',
 		default_stg_domain: 'commercelayer.co',
 		token_expiration_mins: 60 * 4,	// 4 hours (14400 secs)

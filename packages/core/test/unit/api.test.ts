@@ -62,9 +62,9 @@ describe('api', () => {
       else process.env.CL_CLI_API_VERSION = env
     })
 
-    it('is unversioned by default', () => {
-      expect(apiVersion()).to.equal(undefined)
-      expect(apiVersion({})).to.equal(undefined)
+    it('defaults to 2026-05', () => {
+      expect(apiVersion()).to.equal('2026-05')
+      expect(apiVersion({})).to.equal('2026-05')
     })
 
     it('takes the flag, then the environment', () => {
