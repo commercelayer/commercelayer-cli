@@ -386,9 +386,6 @@ importers:
       '@commercelayer/js-auth':
         specifier: 'catalog:'
         version: 8.0.1
-      '@oclif/core':
-        specifier: 'catalog:'
-        version: 5.1.2
       chalk:
         specifier: 'catalog:'
         version: 6.0.1
@@ -402,6 +399,9 @@ importers:
       '@commercelayer/cli-test-utils':
         specifier: workspace:*
         version: link:../test-utils
+      '@oclif/core':
+        specifier: 'catalog:'
+        version: 5.1.2
       '@types/chai':
         specifier: 'catalog:'
         version: 5.2.3

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
 import { type Command, Flags, type Interfaces } from "@oclif/core"
+import config from "./config"
 
 type FlagInput = Interfaces.FlagInput
 
@@ -21,7 +22,7 @@ export const commandFlags = <T extends FlagInput>(flags: T, exclude?: Array<keyo
  * Hidden like --domain: set by CL_CLI_API_VERSION, mostly to pick the environment in development.
  */
 export const apiVersionFlag = () => Flags.string({
-	description: 'the Core API version of the requests (e.g. 2026-05), unversioned by default',
+	description: `the Core API version of the requests (default: ${config.api.default_api_version || 'unversioned'})`,
 	required: false,
 	hidden: true,
 	env: 'CL_CLI_API_VERSION',

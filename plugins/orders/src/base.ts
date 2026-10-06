@@ -1,39 +1,17 @@
-import { clColor, clCommand, clOutput, clUpdate } from '@commercelayer/cli-core'
+import { CLCommand, clColor, clOutput } from '@commercelayer/cli-core'
 import { CommerceLayerStatic, type Order } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
-import { Args, Command, Flags } from '@oclif/core'
+import { Args, Flags } from '@oclif/core'
 import exec from './exec'
 import type { ActionType } from './triggers'
 
 type CommandError = Interfaces.CommandError
 
 
-const pkg: clUpdate.Package = require('../package.json')
-
-
-export default abstract class extends Command {
+export default abstract class extends CLCommand {
 
   static baseFlags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN'
-    }),
-    'api-version': clCommand.apiVersionFlag(),
-    accessToken: Flags.string({
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN'
-    }),
+    ...CLCommand.baseFlags,
     print: Flags.boolean({
       char: 'p',
       description: 'print out the modified order'
@@ -56,13 +34,6 @@ export default abstract class extends Command {
   }
 
 
-  // INIT (override)
-  async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
-    return await super.init()
-  }
-
-
   async catch(error: CommandError): Promise<any> {
     if (error.message?.includes('quit')) this.exit()
     else this.handleError(error as Error)
@@ -73,18 +44,8 @@ export default abstract class extends Command {
     if (error.message?.match(/Missing \d required args?:\nid/))
       this.error(`Missing the required unique ${clColor.style.error('id')} of the order`)
     else
-      if (CommerceLayerStatic.isApiError(error)) {
-        if (error.status === 401) {
-          const err = error.first()
-          this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-            { suggestions: ['Execute login to get access to the organization\'s orders'] },
-          )
-        } else
-          if (error.status === 404) {
-            const id = (error as any).id || ''
-            this.error(`Unable to find order${id ? ` with id ${clColor.msg.error(id)}` : ''}`)
-          } else this.error(clOutput.formatError(error, flags))
-      } else throw error
+      if (CommerceLayerStatic.isApiError(error)) this.handleApiError(error, { resource: 'order', id: (error as any).id || '', flags })
+      else throw error
   }
 
 
@@ -102,7 +63,6 @@ export default abstract class extends Command {
   }
 
 }
-
 
 
 export { Flags }
