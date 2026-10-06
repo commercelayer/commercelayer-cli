@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { CLCommand, clColor, clConfig } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { CommerceLayerClient, ListResponse, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, ListResponse, Tag, TaggableResource, TaggableResourceType } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Flags } from '@oclif/core'
@@ -22,7 +22,7 @@ export default abstract class BaseCommand extends CLCommand {
 
 
   protected commercelayerInit(flags: any): CommerceLayerClient {
-    this.cl = commercelayer(this.clientOptions(flags))
+    this.cl = commercelayer(this.clientOptions<ApiVersion>(flags))
     return this.cl
   }
 

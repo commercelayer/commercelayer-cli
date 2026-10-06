@@ -2,6 +2,7 @@ import { inspect } from 'node:util'
 import type { ApiMode, AppAuth, AppInfo, AuthScope } from '@commercelayer/cli-core'
 import { clApi, clApplication, clColor, clCommand, clConfig, clToken } from '@commercelayer/cli-core'
 import clprovisioning from '@commercelayer/provisioning-sdk'
+import type { ApiVersion } from '@commercelayer/sdk'
 import commercelayer, { type Application, CommerceLayerStatic, type Organization } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Command, type Config, Errors, Flags } from '@oclif/core'
@@ -35,6 +36,11 @@ export default class ApplicationsLogin extends Command {
 		domain: Flags.string({
 			char: 'd',
 			description: 'api domain',
+			required: false,
+			hidden: true
+		}),
+		'api-version': Flags.string({
+			description: 'Core API version (default: the CLI default), saved with the application',
 			required: false,
 			hidden: true
 		}),
@@ -111,12 +117,14 @@ export default class ApplicationsLogin extends Command {
 			clientSecret: flags.clientSecret,
 			slug: flags.organization,
 			domain: flags.domain,
+			apiVersion: flags['api-version'],
 			scope,
 			email: flags.email,
 			password: flags.password
 		}
 
 		if (config.domain === configParam(ConfigParams.defaultDomain)) config.domain = undefined
+		if (!config.apiVersion || (config.apiVersion === configParam(ConfigParams.defaultApiVersion))) config.apiVersion = undefined
 
 
 		try {
@@ -180,14 +188,15 @@ const getApplicationInfo = async (auth: AppAuth, accessToken: string): Promise<A
 
 	let org: Partial<Organization>, app: Partial<Application>, user: any
 	if (provisioning) {
-		const clp = clprovisioning({ domain: auth.domain, accessToken })
+		// Unversioned requests (/api/…): provisioning-sdk 3 types require 2026-05, the SDK omits the segment when undefined
+		const clp = clprovisioning({ apiVersion: undefined as unknown as Parameters<typeof clprovisioning>[0]['apiVersion'], domain: auth.domain, accessToken })
 		// User info
 		const usr = await clp.user.retrieve().catch(() => { error(clp.user.type()) })
 		if (usr) user = { name: `${usr.first_name}${(usr.first_name && usr.last_name)? ' ' : ''}${usr.last_name}`, email: usr.email }
 		org = { slug: 'provisioning', name: user?.name || 'Provisioning API' }
 		app = { name: 'Provisioning App' }
 	} else { // core
-		const cl = commercelayer({ organization: auth.slug || '', domain: auth.domain, accessToken })
+		const cl = commercelayer({ apiVersion: clApi.apiVersion({ 'api-version': auth.apiVersion }) as ApiVersion, organization: auth.slug || '', domain: auth.domain, accessToken })
 		// Organization info
 		org = await cl.organization.retrieve().catch(() => { error(cl.organization.type()) })
 		// Application info

@@ -24,15 +24,23 @@ const apiError = (status: number, errors = [{ title: 'Unauthorized', detail: 'In
 
 describe('CLCommand', () => {
   it('has the flags the CLI fills in from the current application', () => {
-    const { organization, domain, accessToken } = CLCommand.baseFlags
+    const { organization, domain, accessToken, 'api-version': apiVersion } = CLCommand.baseFlags
     expect(organization).to.include({ char: 'o', required: true, hidden: true, env: 'CL_CLI_ORGANIZATION' })
     expect(domain).to.include({ char: 'd', required: false, hidden: true, env: 'CL_CLI_DOMAIN' })
     expect(accessToken).to.include({ required: true, hidden: true, env: 'CL_CLI_ACCESS_TOKEN' })
+    expect(apiVersion).to.include({ required: false, hidden: true, env: 'CL_CLI_API_VERSION' })
   })
 
-  it('builds the client options from the flags, with the CLI user agent', () => {
-    const options = command().clientOptions({ organization: 'org', domain: 'commercelayer.co', accessToken: 'token' })
-    expect(options).to.deep.equal({ organization: 'org', domain: 'commercelayer.co', accessToken: 'token', userAgent: 'CLI-test/1.2.3' })
+  it('builds the client options from the flags, with the CLI user agent and the default API version', () => {
+    const env = process.env.CL_CLI_API_VERSION
+    delete process.env.CL_CLI_API_VERSION
+    try {
+      const options = command().clientOptions({ organization: 'org', domain: 'commercelayer.co', accessToken: 'token' })
+      expect(options).to.deep.equal({ apiVersion: '2026-05', organization: 'org', domain: 'commercelayer.co', accessToken: 'token', userAgent: 'CLI-test/1.2.3' })
+      expect(command().clientOptions({ organization: 'org', accessToken: 'token', 'api-version': '2017-08' }).apiVersion).to.equal('2017-08')
+    } finally {
+      if (env !== undefined) process.env.CL_CLI_API_VERSION = env
+    }
   })
 
   describe('checkApplication', () => {

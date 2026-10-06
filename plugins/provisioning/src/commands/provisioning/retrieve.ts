@@ -1,12 +1,12 @@
-import type {
-	CommerceLayerProvisioningClient,
-	QueryParamsRetrieve,
-} from "@commercelayer/provisioning-sdk";
 import Command, {
 	Args,
 	/*, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAM */ Flags,
 } from "../../base";
 import { addRequestReader, isRequestInterrupted } from "../../lang";
+import type {
+	CommerceLayerProvisioningClient,
+	QueryParamsRetrieve,
+} from "../../sdk";
 
 // import { mergeCommandParams } from '../../commands'
 

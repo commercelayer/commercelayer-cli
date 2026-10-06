@@ -8,7 +8,9 @@
  * client from clientOptions().
  */
 import { Command, Flags, type Interfaces } from '@oclif/core'
+import * as clApi from './api'
 import * as clColor from './color'
+import { apiVersionFlag } from './command'
 import * as clOutput from './output'
 import * as clToken from './token'
 import * as clUpdate from './update'
@@ -55,8 +57,9 @@ export const accessTokenFlag = (options: BaseFlagOptions = {}) => Flags.string({
 })
 
 
-/** The options of a Core API client (SDK), from the command flags */
-export type ClientOptions = {
+/** The options of a Core API client (SDK), from the command flags: V is the SDK's ApiVersion */
+export type ClientOptions<V extends string = string> = {
+	apiVersion: V
 	organization: string
 	domain?: string
 	accessToken: string
@@ -91,6 +94,7 @@ export abstract class CLCommand extends Command {
 		organization: organizationFlag(),
 		domain: domainFlag(),
 		accessToken: accessTokenFlag(),
+		'api-version': apiVersionFlag(),
 	}
 
 	/** The application kinds the commands accept, checked on the access token before they run (all when undefined) */
@@ -138,9 +142,15 @@ export abstract class CLCommand extends Command {
 	}
 
 
-	/** The options of the Core API client: organization, domain and access token from the flags, the CLI user agent */
-	protected clientOptions(flags: { organization?: string; domain?: string; accessToken?: string }): ClientOptions {
+	/**
+	 * The options of the Core API client: API version, organization, domain and
+	 * access token from the flags, the CLI user agent. V is the SDK's ApiVersion
+	 * (cli-core doesn't depend on the SDK): `commercelayer(this.clientOptions<ApiVersion>(flags))`.
+	 * An undefined version (no default) makes the requests unversioned.
+	 */
+	protected clientOptions<V extends string = string>(flags: { organization?: string; domain?: string; accessToken?: string; 'api-version'?: string }): ClientOptions<V> {
 		return {
+			apiVersion: clApi.apiVersion(flags) as V,
 			organization: flags.organization || '',
 			domain: flags.domain,
 			accessToken: flags.accessToken || '',

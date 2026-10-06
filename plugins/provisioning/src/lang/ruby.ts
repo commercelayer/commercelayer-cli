@@ -1,4 +1,4 @@
-import type { QueryParams } from "@commercelayer/provisioning-sdk";
+import type { QueryParams } from "../sdk";
 import type { RequestData } from "./request";
 
 const buildRuby = (_request: RequestData, _params?: QueryParams): string => {

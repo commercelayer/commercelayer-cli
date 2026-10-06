@@ -1,4 +1,5 @@
 import { accessTokenFlag, CLCommand, clColor, clConfig, clText } from '@commercelayer/cli-core'
+import type { ApiVersion } from '@commercelayer/sdk'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type LinkCreate } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, ux as cliux, Flags } from '@oclif/core'
@@ -34,7 +35,7 @@ export abstract class BaseCommand extends CLCommand {
 
 
   protected commercelayerInit(flags: any): CommerceLayerClient {
-    this.cl = commercelayer(this.clientOptions(flags))
+    this.cl = commercelayer(this.clientOptions<ApiVersion>(flags))
     return this.cl
   }
 

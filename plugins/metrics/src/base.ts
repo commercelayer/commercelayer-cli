@@ -1,4 +1,4 @@
-import { accessTokenFlag, CLCommand, clColor, clConfig, clOutput, clToken } from '@commercelayer/cli-core'
+import { accessTokenFlag, CLCommand, clColor, clCommand, clConfig, clOutput, clToken } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
@@ -13,8 +13,9 @@ const REQUIRED_APP_KIND = clConfig.metrics.applications
 
 export abstract class BaseCommand extends CLCommand {
 
+  // The Metrics API has no version: no --api-version
   static baseFlags = {
-    ...CLCommand.baseFlags,
+    ...clCommand.commandFlags(CLCommand.baseFlags, ['api-version']),
     accessToken: accessTokenFlag({
       char: 'a',
       description: 'custom access token to use instead of the one used for login',

@@ -5,7 +5,7 @@ import { gunzipSync, type InputType } from 'node:zlib'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
 import { CLCommand, clApi, clColor, clFilter, clOutput, clToken, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, Export, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Flags } from '@oclif/core'
@@ -58,7 +58,7 @@ export default abstract class BaseCommand extends CLCommand {
 
   protected commercelayerInit(flags: any): CommerceLayerClient {
     this.environment = clToken.getTokenEnvironment(flags.accessToken as string)
-    this.cl = commercelayer(this.clientOptions(flags))
+    this.cl = commercelayer(this.clientOptions<ApiVersion>(flags))
     return this.cl
   }
 

@@ -139,6 +139,7 @@ const currentApplication = (app?: AppInfo): AppInfo | undefined => {
 		name: app.name,
 		slug: app.slug,
 		domain: app.domain,
+		apiVersion: app.apiVersion,
 		kind: app.kind,
 		mode: app.mode,
 		organization: app.organization,
@@ -191,6 +192,7 @@ enum ConfigParams {
 	applicationTypeCheck = 'applicationTypeCheck',
 	scopeCheck = 'scopeCheck',
 	defaultDomain = 'defaultDomain',
+	defaultApiVersion = 'defaultApiVersion',
 	test = 'test'
 }
 
@@ -203,6 +205,7 @@ const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
 	defaultDomain: clConfig.api.default_domain,
+	defaultApiVersion: clConfig.api.default_api_version,
 	applicationTypeCheck: clConfig.cli.applications,
 	scopeCheck: clConfig.application.login_scopes
 }

@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs'
 import type { KeyVal, KeyValArray, KeyValObj, KeyValRel, KeyValSort, KeyValString, ResAttributes } from '@commercelayer/cli-core'
 import { accessTokenFlag, CLCommand, clColor, clCommand, clConfig, clFilter, clText, clUtil, domainFlag, organizationFlag } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId, ResourceType, ResourceTypeLock } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId, ResourceType, ResourceTypeLock } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, type Config, Flags } from '@oclif/core'
@@ -30,7 +30,7 @@ export abstract class BaseCommand extends CLCommand {
 
 
   protected initCommerceLayer(flags: any, ...options: any[]): CommerceLayerClient {
-    const cl = commercelayer({ ...this.clientOptions(flags), ...options })
+    const cl = commercelayer({ ...this.clientOptions<ApiVersion>(flags), ...options })
     if ('cl' in this) this.cl = cl
     return cl
   }

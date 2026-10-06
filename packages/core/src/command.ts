@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 
-import type { Command, Interfaces } from "@oclif/core"
+import { type Command, Flags, type Interfaces } from "@oclif/core"
+import config from "./config"
 
 type FlagInput = Interfaces.FlagInput
 
@@ -14,6 +15,18 @@ export const commandFlags = <T extends FlagInput>(flags: T, exclude?: Array<keyo
 	if (exclude) for (const e of exclude) delete filteredFlags[e]
 	return filteredFlags
 }
+
+
+/**
+ * The --api-version flag of the commands that call the Core API (see clApi.apiVersion).
+ * Hidden like --domain: set by CL_CLI_API_VERSION, mostly to pick the environment in development.
+ */
+export const apiVersionFlag = () => Flags.string({
+	description: `the Core API version of the requests (default: ${config.api.default_api_version || 'unversioned'})`,
+	required: false,
+	hidden: true,
+	env: 'CL_CLI_API_VERSION',
+})
 
 
 export const allFlags = (command: Command.Class): FlagInput => {
