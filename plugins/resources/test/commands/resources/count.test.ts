@@ -19,10 +19,20 @@ describe('resources:count', () => {
     api()
       .get('/api/skus')
       .query(true)
-      .reply(200, { ...list([resource('skus', 'sKu1')]), meta: { record_count: 16_998, page_count: 1700 } })
+      .reply(200, { ...list([resource('skus', 'sKu1')]), meta: { record_count: 16_998, page_count: 1700, record_count_estimated: true } })
     const ctx = await runCommand(['resources:count', 'skus', ...AUTH])
     if (ctx.error) throw ctx.error
     expect(ctx.stdout + ctx.stderr).to.contain('≈16,998').and.to.contain('estimated above 10,000')
+  })
+
+  it('trusts the API when it says a count above 10,000 is exact', async () => {
+    api()
+      .get('/api/skus')
+      .query(true)
+      .reply(200, { ...list([resource('skus', 'sKu1')]), meta: { record_count: 16_998, page_count: 1700, record_count_estimated: false } })
+    const ctx = await runCommand(['resources:count', 'skus', ...AUTH])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout + ctx.stderr).to.contain('16,998').and.not.to.contain('≈')
   })
 
   it('reports zero as a count, not as an error', async () => {

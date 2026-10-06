@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 
-import { clApi, clColor, clText, clToken, clUtil } from '@commercelayer/cli-core'
+import { clApi, clColor, clCommand, clText, clToken, clUtil } from '@commercelayer/cli-core'
 import type { CommerceLayerClient, ResourceCreate, ResourceId, ResourceUpdate } from '@commercelayer/sdk'
 import Listr from 'listr'
 import Command, { Flags } from '../../base'
@@ -38,6 +38,7 @@ export default class SeederSeed extends Command {
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN',
     }),
+    'api-version': clCommand.apiVersionFlag(),
     accessToken: Flags.string({
       hidden: true,
       required: true,

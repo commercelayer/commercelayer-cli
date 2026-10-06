@@ -27,10 +27,10 @@ describe('resources:all', () => {
     const scope = api()
       .get('/api/skus')
       .query((q) => q['page[number]'] === '1')
-      .reply(200, { data: page(1, 25), meta: { record_count: 10_001, page_count: 1 } })
+      .reply(200, { data: page(1, 25), meta: { record_count: 10_001, page_count: 1, record_count_estimated: true } })
       .get('/api/skus')
       .query((q) => q['page[number]'] === '2')
-      .reply(200, { data: page(2, 3), meta: { record_count: 10_001, page_count: 1 } })
+      .reply(200, { data: page(2, 3), meta: { record_count: 10_001, page_count: 1, record_count_estimated: true } })
     const ctx = await runCommand(['resources:all', 'skus', ...AUTH, '-x', join(dir, 'estimated.json'), '-j', '--blind'])
     if (ctx.error) throw ctx.error
     expect(scope.isDone(), 'second page requested').to.equal(true)

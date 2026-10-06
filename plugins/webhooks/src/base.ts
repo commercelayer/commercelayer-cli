@@ -1,5 +1,6 @@
-import { clColor, clOutput, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { clApi, clColor, clCommand, clOutput, clUpdate, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import type { ApiVersion } from '@commercelayer/sdk'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Args, Command, Flags } from '@oclif/core'
@@ -27,6 +28,7 @@ export abstract class BaseCommand extends Command {
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN'
     }),
+    'api-version': clCommand.apiVersionFlag(),
     accessToken: Flags.string({
       hidden: true,
       required: true,
@@ -72,6 +74,7 @@ export abstract class BaseCommand extends Command {
     const userAgent = clUtil.userAgent(this.config)
 
     return commercelayer({
+      apiVersion: clApi.apiVersion(flags) as ApiVersion,
       organization,
       domain,
       accessToken,

@@ -1,6 +1,6 @@
 import { type ApiMode, clApi, clColor, clToken, clUpdate, clUtil, type Method } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { CommerceLayerClient, ListResponse, QueryParamsList, Resource, ResourceId } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, ListResponse, QueryParamsList, Resource, ResourceId } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import type { Interfaces } from '@oclif/core'
 import { Command, type Errors, Flags } from '@oclif/core'
@@ -82,7 +82,7 @@ export default abstract class extends Command {
     const accessToken: string = flags.accessToken
     const userAgent = clUtil.userAgent(this.config)
 
-    this.cl = commercelayer({ organization, domain, accessToken, userAgent })
+    this.cl = commercelayer({ apiVersion: clApi.apiVersion(flags) as ApiVersion, organization, domain, accessToken, userAgent })
 
     this.environment = clToken.getTokenEnvironment(accessToken)
 
