@@ -5,6 +5,6 @@ describe('resources:schema', () => {
     .stdout()
     .command(['resources:schema'])
     .it('prints the schema version of the SDK', (ctx) => {
-      expect(ctx.stdout).to.match(/Current schema version: \d+\.\d+\.\d+/)
+      expect(ctx.stdout).to.match(/Current schema version: (\d+\.\d+\.\d+|\d{4}-\d{2})/)
     })
 })

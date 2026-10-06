@@ -31,7 +31,18 @@ export const useMockedApi = (): void => {
 }
 
 /** A nock scope on the Core API of the test organization */
-export const api = (base: string = coreApi()): nock.Scope => nock(base)
+/** The version segment of the Core API paths (/api/2026-05/…) */
+const API_VERSION_SEGMENT = /^\/api\/\d{4}-\d{2}\//
+
+/**
+ * A mock of the API. The requests of SDK 8 carry the Core API version in
+ * their path (/api/2026-05/orders): the mocks are written for /api/orders and
+ * match whatever version the CLI uses (versionedApi checks the version).
+ */
+export const api = (base: string = coreApi()): nock.Scope => nock(base).filteringPath((path) => path.replace(API_VERSION_SEGMENT, '/api/'))
+
+/** A mock of the API that matches the exact request path, version included */
+export const versionedApi = (base: string = coreApi()): nock.Scope => nock(base)
 
 /** An unsigned JWT: the CLI commands only decode access tokens */
 export const jwt = (payload: object, header: object = { alg: 'HS512', typ: 'JWT' }): string =>

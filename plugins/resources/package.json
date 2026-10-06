@@ -80,7 +80,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "workspace:^",
     "@commercelayer/cli-ux": "workspace:^",
-    "@commercelayer/sdk": "catalog:",
+    "@commercelayer/sdk": "^8.0.0",
     "@oclif/core": "catalog:",
     "inquirer": "catalog:",
     "json-2-csv": "catalog:",
