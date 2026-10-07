@@ -1,0 +1,169 @@
+## [1.2.3](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.2.2...v1.2.3) (2026-08-19)
+
+
+### Bug Fixes
+
+* fix dependencies and biome config ([862c987](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/862c9874e303539fb83a8966e235631ae5ea9c53))
+* fix dependencies and biome config ([e0b1404](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/e0b1404b16b1cd9024bb4462cf9a21d5707e8620))
+
+## [1.2.2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.2.1...v1.2.2) (2026-07-20)
+
+
+### Bug Fixes
+
+* fix publish workflow ([0f8ac3c](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/0f8ac3cc400de1034758574f4260295faff87308))
+* update dependencies and codeql ([fa20c8c](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/fa20c8cb8e0c04a6850a34f8748bb6c557aba0db))
+
+## [1.2.1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.2.0...v1.2.1) (2026-04-15)
+
+
+### Bug Fixes
+
+* run tests in updates workflow ([045a532](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/045a53244f60b0e67f2e6b889f31bd6efbd8c2e9))
+* update dependencies and add updates workflow ([9121603](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/9121603e6ef092e4f88368d21eaefc64cd2d9e33))
+
+# [1.2.0](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.7...v1.2.0) (2026-03-24)
+
+
+### Bug Fixes
+
+* update dependencies ([2fe6e4a](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/2fe6e4a150b3de8771a397b9ecb09ebcb050f7d0))
+
+
+### Features
+
+* add biome ([928af54](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/928af5495132b758d48be6f21d7caf2101953e22))
+
+## [1.1.7](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.6...v1.1.7) (2026-03-18)
+
+
+### Bug Fixes
+
+* fix error handler ([c5b5cc6](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/c5b5cc6cc1f295a150f675926779d411b533bbff))
+
+## [1.1.6](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.5...v1.1.6) (2026-03-17)
+
+
+### Bug Fixes
+
+* update dependencies ([f91d764](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/f91d76487c4d7c66f798fd79b2b54eb98edcc78f))
+
+## [1.1.5](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.4...v1.1.5) (2026-03-17)
+
+
+### Bug Fixes
+
+* fix metrics chat endpoint config ([7fed6c4](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/7fed6c4d61f0a5af7ff472860db1b8420e43ae5f))
+
+## [1.1.4](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.3...v1.1.4) (2026-03-16)
+
+
+### Bug Fixes
+
+* fix metrics chat endpoint ([8fc7067](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/8fc7067275851493d87aaff0c71bfd5626de4495))
+
+## [1.1.3](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.2...v1.1.3) (2026-03-16)
+
+
+### Bug Fixes
+
+* update cli core dependency ([7fbde51](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/7fbde51a37886052b3e1b86b158d5dbd47f9d2b6))
+
+## [1.1.2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.1...v1.1.2) (2026-03-16)
+
+
+### Bug Fixes
+
+* ask chat hidden alias ([86a71a2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/86a71a212e2360418ffab96d13e7b776eec9ca78))
+
+## [1.1.1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.1.0...v1.1.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* ask hidden aliases ([c6c6a7d](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/c6c6a7da106c54989ea9fcd6ecf89f59491d6da8))
+
+# [1.1.0](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.9...v1.1.0) (2026-03-13)
+
+
+### Features
+
+* enhance chat interface and handle shutdown ([87772f3](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/87772f3bb455c3f76ab0ff8c334a2220389be7e1))
+
+## [1.0.9](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.8...v1.0.9) (2026-03-02)
+
+
+### Bug Fixes
+
+* updatecli-core to latest version ([e644c5e](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/e644c5eccab5670e73cbafc97fcd69334983e67f))
+
+## [1.0.8](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.7...v1.0.8) (2026-03-02)
+
+
+### Bug Fixes
+
+* update dependencies ([34a57b5](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/34a57b5439d33a1b0eef2175b6c809f90f5cac78))
+
+## [1.0.7](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.6...v1.0.7) (2025-12-05)
+
+
+### Bug Fixes
+
+* update dependencies ([1c0250f](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/1c0250ff6da615d3a0e0c9aa20d70b93195449b7))
+
+## [1.0.6](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.5...v1.0.6) (2025-10-23)
+
+
+### Bug Fixes
+
+* fix search command description ([3bcc713](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/3bcc713df90d7c095918910e27a8544661541fbd))
+
+## [1.0.5](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.4...v1.0.5) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix codeql action ([80392e1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/80392e17e2099c44f39d25580e88dbd9e1b8632a))
+
+## [1.0.4](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.3...v1.0.4) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix release script ([61e8037](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/61e803716f247542b28403108eb5485dc47b7480))
+
+## [1.0.3](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.2...v1.0.3) (2025-07-23)
+
+
+### Bug Fixes
+
+* fix vulnerability issues ([d632ed7](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/d632ed714462a87a62686a4f119c42235a81e244))
+
+## [1.0.2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.1...v1.0.2) (2025-05-29)
+
+
+### Bug Fixes
+
+* fix fbt command ([e64a90e](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/e64a90eea304cecfa1c393af51e1e26b8559fe38))
+* fix lint issues ([816da5b](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/816da5b6371cc98e6fcf7c45c02c1dde73960bc2))
+
+## [1.0.1](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/compare/v1.0.0...v1.0.1) (2025-05-16)
+
+
+### Bug Fixes
+
+* update readme ([6600431](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/6600431ad31f44d6d77371bc8c0775658a612f32))
+
+# 1.0.0 (2025-05-14)
+
+
+### Bug Fixes
+
+* fix git ignore ([c238653](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/c238653c04a87e0dedcdc05316cbc110d9e6c910))
+* fix linter errors ([fef761f](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/fef761f54034f3c0c67853294209b2f28096e86f))
+
+
+### Features
+
+* first commit ([4fb2a1c](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/4fb2a1c2086930c10bd2a7cd959d34e46f4c7d25))
+* update doc ([45f84e2](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/commit/45f84e2635963e2cab2e099e3ad5501e19b6b50b))

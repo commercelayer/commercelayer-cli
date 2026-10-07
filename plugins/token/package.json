@@ -1,0 +1,85 @@
+{
+  "name": "@commercelayer/cli-plugin-token",
+  "description": "Commerce Layer CLI Token plugin",
+  "version": "8.1.5",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/token",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/token"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-token",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "token": {
+        "description": "Manage Commerce Layer access tokens",
+        "hidden": false
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/token/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
+  },
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@commercelayer/cli-dev": "workspace:^",
+    "@commercelayer/cli-test-utils": "workspace:*",
+    "@oclif/plugin-help": "catalog:",
+    "@oclif/test": "catalog:",
+    "@types/chai": "catalog:",
+    "@types/inquirer": "catalog:",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
+    "chai": "catalog:",
+    "mocha": "catalog:",
+    "nock": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/cli-ux": "workspace:^",
+    "@commercelayer/js-auth": "^7.4.2",
+    "@commercelayer/sdk": "catalog:",
+    "@oclif/core": "catalog:",
+    "inquirer": "catalog:",
+    "tslib": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

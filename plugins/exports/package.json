@@ -1,0 +1,88 @@
+{
+  "name": "@commercelayer/cli-plugin-exports",
+  "description": "Commerce Layer CLI Exports plugin",
+  "version": "4.0.7",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/exports",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/exports"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-exports",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "exports": {
+        "description": "Export resources from Commerce Layer",
+        "hidden": false
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/exports/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
+  },
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@commercelayer/cli-dev": "workspace:^",
+    "@commercelayer/cli-test-utils": "workspace:*",
+    "@oclif/plugin-help": "catalog:",
+    "@oclif/test": "catalog:",
+    "@types/chai": "catalog:",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
+    "@types/node-notifier": "catalog:",
+    "chai": "catalog:",
+    "mocha": "catalog:",
+    "nock": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/cli-ux": "workspace:^",
+    "@commercelayer/sdk": "catalog:",
+    "@oclif/core": "catalog:",
+    "axios": "catalog:",
+    "cli-table3": "catalog:",
+    "node-notifier": "catalog:",
+    "open": "catalog:",
+    "spinnies": "^0.5.1",
+    "tslib": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

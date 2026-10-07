@@ -7,10 +7,13 @@
 	},
 	"files": {
 		"includes": [
-			"./src/**",
-			"./test/**",
-			"./specs/**",
-			"./gen/**"
+			"scripts/**",
+			"**/gen.config.ts",
+			"**/src/**",
+			"**/test/**",
+			"**/specs/**",
+			"**/gen/**",
+			"!**/.fig"
 		]
 	},
 	"formatter": {
@@ -45,5 +48,20 @@
 				"organizeImports": "on"
 			}
 		}
-	}
+	},
+	"overrides": [
+		{
+			"includes": [
+				"packages/ux/**",
+				"packages/dev/**"
+			],
+			"linter": {
+				"rules": {
+					"style": {
+						"noNonNullAssertion": "off"
+					}
+				}
+			}
+		}
+	]
 }

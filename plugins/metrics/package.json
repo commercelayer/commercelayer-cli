@@ -1,0 +1,84 @@
+{
+  "name": "@commercelayer/cli-plugin-metrics",
+  "description": "Commerce Layer CLI metrics plugin",
+  "version": "1.2.4",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/metrics",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/metrics"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-metrics",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "metrics": {
+        "description": "Make requests to the Commerce Layer Metrics API",
+        "hidden": false
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/metrics/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
+  },
+  "devDependencies": {
+    "@commercelayer/cli-dev": "workspace:^",
+    "@commercelayer/cli-test-utils": "workspace:*",
+    "@oclif/plugin-help": "catalog:",
+    "@oclif/test": "^4.1.22",
+    "@types/chai": "catalog:",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
+    "chai": "catalog:",
+    "mocha": "catalog:",
+    "nock": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/cli-ux": "workspace:^",
+    "@commercelayer/sdk": "catalog:",
+    "@oclif/core": "catalog:",
+    "eventsource-parser": "^3.1.1",
+    "ora": "^9.4.1",
+    "tslib": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

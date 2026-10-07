@@ -1,130 +1,72 @@
 # Commerce Layer CLI
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/@commercelayer/cli.svg)](https://npmjs.org/package/@commercelayer/cli)
-[![Downloads/week](https://img.shields.io/npm/dw/@commercelayer/cli.svg)](https://npmjs.org/package/@commercelayer/cli)
-[![License](https://img.shields.io/npm/l/@commercelayer/commercelayer-cli.svg)](https://github.com/commercelayer/commercelayer-cli/blob/master/package.json)
-[![CodeQL](https://github.com/commercelayer/commercelayer-cli/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/commercelayer/commercelayer-cli/actions/workflows/codeql-analysis.yml)
+Monorepo for the [Commerce Layer](https://commercelayer.io) CLI, its shared libraries and its plugins.
 
-The official Commerce Layer CLI which helps you to manage your Commerce Layer applications right from the terminal.
+| Package | Path | npm |
+| --- | --- | --- |
+| Commerce Layer CLI | [`packages/cli`](packages/cli) | [`@commercelayer/cli`](https://www.npmjs.com/package/@commercelayer/cli) |
+| CLI core library (internal) | [`packages/core`](packages/core) | [`@commercelayer/cli-core`](https://www.npmjs.com/package/@commercelayer/cli-core) |
+| CLI UX library (internal) | [`packages/ux`](packages/ux) | [`@commercelayer/cli-ux`](https://www.npmjs.com/package/@commercelayer/cli-ux) |
+| CLI development tools (private) | [`packages/dev`](packages/dev) | not published |
+| Code generator (private) | [`packages/generator`](packages/generator) | not published |
+| Test utilities (private) | [`packages/test-utils`](packages/test-utils) | not published |
+| Checkout plugin | [`plugins/checkout`](plugins/checkout) | [`@commercelayer/cli-plugin-checkout`](https://www.npmjs.com/package/@commercelayer/cli-plugin-checkout) |
+| Cleanups plugin | [`plugins/cleanups`](plugins/cleanups) | [`@commercelayer/cli-plugin-cleanups`](https://www.npmjs.com/package/@commercelayer/cli-plugin-cleanups) |
+| Exports plugin | [`plugins/exports`](plugins/exports) | [`@commercelayer/cli-plugin-exports`](https://www.npmjs.com/package/@commercelayer/cli-plugin-exports) |
+| Imports plugin | [`plugins/imports`](plugins/imports) | [`@commercelayer/cli-plugin-imports`](https://www.npmjs.com/package/@commercelayer/cli-plugin-imports) |
+| Links plugin | [`plugins/links`](plugins/links) | [`@commercelayer/cli-plugin-links`](https://www.npmjs.com/package/@commercelayer/cli-plugin-links) |
+| Metrics plugin | [`plugins/metrics`](plugins/metrics) | [`@commercelayer/cli-plugin-metrics`](https://www.npmjs.com/package/@commercelayer/cli-plugin-metrics) |
+| Microstore plugin | [`plugins/microstore`](plugins/microstore) | [`@commercelayer/cli-plugin-microstore`](https://www.npmjs.com/package/@commercelayer/cli-plugin-microstore) |
+| Orders plugin | [`plugins/orders`](plugins/orders) | [`@commercelayer/cli-plugin-orders`](https://www.npmjs.com/package/@commercelayer/cli-plugin-orders) |
+| Provisioning plugin | [`plugins/provisioning`](plugins/provisioning) | [`@commercelayer/cli-plugin-provisioning`](https://www.npmjs.com/package/@commercelayer/cli-plugin-provisioning) |
+| Resources plugin | [`plugins/resources`](plugins/resources) | [`@commercelayer/cli-plugin-resources`](https://www.npmjs.com/package/@commercelayer/cli-plugin-resources) |
+| Seeder plugin | [`plugins/seeder`](plugins/seeder) | [`@commercelayer/cli-plugin-seeder`](https://www.npmjs.com/package/@commercelayer/cli-plugin-seeder) |
+| Tags plugin | [`plugins/tags`](plugins/tags) | [`@commercelayer/cli-plugin-tags`](https://www.npmjs.com/package/@commercelayer/cli-plugin-tags) |
+| Token plugin | [`plugins/token`](plugins/token) | [`@commercelayer/cli-plugin-token`](https://www.npmjs.com/package/@commercelayer/cli-plugin-token) |
+| Triggers plugin | [`plugins/triggers`](plugins/triggers) | [`@commercelayer/cli-plugin-triggers`](https://www.npmjs.com/package/@commercelayer/cli-plugin-triggers) |
+| Webhooks plugin | [`plugins/webhooks`](plugins/webhooks) | [`@commercelayer/cli-plugin-webhooks`](https://www.npmjs.com/package/@commercelayer/cli-plugin-webhooks) |
 
-![Commerce Layer CLI demo](assets/home.gif)
+See [`packages/cli/README.md`](packages/cli/README.md) for installation and usage.
 
-## What is Commerce Layer?
+## Development
 
-[Commerce Layer](https://commercelayer.io) is a multi-market commerce API and order management system that lets you add global shopping capabilities to any website, mobile app, chatbot, wearable, voice, or IoT device, with ease. Compose your stack with the best-of-breed tools you already mastered and love. Make any experience shoppable, anywhere, through a blazing-fast, enterprise-grade, and secure API.
+Requires Node.js 20+ and [pnpm](https://pnpm.io).
 
-## Table of contents
-
-<!-- toc -->
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [Commands](#commands)
-* [Plugins](#plugins)
-* [Contributors Guide](#contributors-guide)
-* [Need help?](#need-help)
-* [License](#license)
-<!-- tocstop -->
-
-## Installation
-
-Run the command below to install the CLI using your favorite package manager:
-
-```bash
-npm install -g @commercelayer/cli
+```sh
+pnpm install   # install all workspace packages
+pnpm build     # build every package
+pnpm test      # run every package's tests
+pnpm lint      # lint the whole repository
 ```
 
-```bash
-yarn global add @commercelayer/cli
-```
+Shared dependency versions live in the `catalog:` of `pnpm-workspace.yaml`: packages declare `"<name>": "catalog:"`. `pnpm check:packages` (also run in CI) checks that the packages stay consistent: catalog and workspace dependencies, repository fields, oclif settings, scripts.
 
-_More installation options, coming soon..._
+Run a single package's script with `pnpm --filter <package name> <script>`, for example `pnpm --filter @commercelayer/cli test`.
 
-## Usage
+## Generated code
 
-Installing the CLI provides access to the `commercelayer`, `clayer`, and `cl` command.
+Some plugins generate part of their code: `triggers` and `orders` generate a command for each API trigger, and `resources` and `provisioning` generate their resource list. Each of them declares its generator in a `gen.config.ts`, run by the private [`packages/generator`](packages/generator) (`cl-generate`), in the same way as `commercelayer-sdk` does with its `sdk.config.ts`:
 
-<!-- usage-DISABLED -->
-```sh-session
-$ (commercelayer | clayer | cl) COMMAND
+- `pnpm generate` (at the root or in a plugin) downloads the schema, updates the plugin's snapshot (`gen/triggers.json`) and regenerates the code.
+- `pnpm generate-local` regenerates from the committed snapshot, offline. `resources` and `provisioning` read the installed SDK instead, so there both commands do the same thing.
+- CI (`verify.yml`) regenerates everything with `generate-local` and fails if the result differs from what is committed.
+- The [Regenerate code](.github/workflows/generate.yml) workflow (manual dispatch) regenerates against an API environment and opens a pull request when something changed.
 
-$ commercelayer (-v | version | --version) to check the version of the CLI you have installed.
+Don't edit generated files by hand: change the templates (`gen/templates`) or the generator, then regenerate.
 
-$ commercelayer help [COMMAND]
-or
-$ commercelayer [COMMAND] (--help | -h) for detailed information about CLI commands.
-```
-<!-- usagestop-DISABLED -->
+## Releasing
 
-Kindly check out this [quick step-by-step example](https://gist.github.com/silviorelli/93424c7e0483780dc5c51fe7a3d215c1) which will show you how to place an order using this CLI.
+Every package is versioned and released on its own. A release starts from a tag `<dir>-v<version>`, where `<dir>` is the package's directory (`cli-v6.10.0`, `core-v5.12.0`, `orders-v5.7.0`).
 
-## Commands
+1. **Bump**: on an up-to-date `main`, run `pnpm release:version`. Only packages with commits touching their folder since their last tag are released. Each one's version is derived from those commits (breaking → major, `feat` → minor, anything else → patch), and you confirm the whole plan once. Use `--interactive` to change or skip single packages, `--yes` to skip the confirmation, `--preid <id>` for a prerelease (`x.y.z-<id>.n`, published under the `<id>` dist-tag). The bumps go on a `release/…` branch and a `chore(release)` pull request. Packages depending on a released one aren't bumped: they pick it up through their `^` range.
+2. **Tag**: after merging it, on an up-to-date `main` run `pnpm release:tag`. It tags the merge commit for every package whose version isn't released yet and pushes the tags.
+3. **Draft**: each tag makes [release.yml](.github/workflows/release.yml) draft a GitHub release, with notes built from the titles and labels of the PRs that touched that package.
+4. **Publish**: publishing the draft makes [publish.yml](.github/workflows/publish.yml) build and test the package from the tag, check its command surface against npm, publish it to npm with provenance and announce it on Slack.
 
-The Commerce Layer CLI supports the following commands:
+Internal dependencies need no manual step. When a released package uses unreleased changes of a workspace dependency (`cli-core`, `cli-ux`, …), `pnpm release:version` releases the dependency in the same PR, even if you skip it with `--interactive`. `publish.yml` then publishes the dependency to npm before the package, and marks the dependency's draft release as published.
 
-<!-- commands -->
-
-* [`commercelayer applications`](docs/applications.md) - Manage login to CLI applications.
-* [`commercelayer autocomplete`](docs/autocomplete.md) - Display autocomplete installation instructions.
-* [`commercelayer cli`](docs/cli.md) - Core CLI commands.
-* [`commercelayer help`](docs/help.md) - Display help for commercelayer.
-* [`commercelayer plugins`](docs/plugins.md) - Manage CLI plugins.
-
-<!-- commandsstop -->
-
-## Plugins
-
-The Commerce Layer CLI currently supports the following plugins:
-
-* [`resources`](https://github.com/commercelayer/commercelayer-cli-plugin-resources/blob/main/README.md) - Execute CRUD operations on API resources.
-* [`seeder`](https://github.com/commercelayer/commercelayer-cli-plugin-seeder/blob/main/README.md) - Execute Commerce Layer seeder.
-* [`imports`](https://github.com/commercelayer/commercelayer-cli-plugin-imports/blob/main/README.md) - Import resources in Commerce Layer.
-* [`webhooks`](https://github.com/commercelayer/commercelayer-cli-plugin-webhooks/blob/main/README.md) - Manage webhooks in Commerce Layer.
-* [`orders`](https://github.com/commercelayer/commercelayer-cli-plugin-orders/blob/main/README.md) - Execute actions on orders in Commerce Layer.
-* [`checkout`](https://github.com/commercelayer/commercelayer-cli-plugin-checkout/blob/main/README.md) - Generate checkout URLs.
-* [`triggers`](https://github.com/commercelayer/commercelayer-cli-plugin-triggers/blob/main/README.md) - Execute actions on resources in Commerce Layer.
-* [`token`](https://github.com/commercelayer/commercelayer-cli-plugin-token/blob/main/README.md) - Manage Commerce Layer access tokens.
-* [`microstore`](https://github.com/commercelayer/commercelayer-cli-plugin-microstore/blob/main/README.md) - Generate Microstore URLs.
-* [`exports`](https://github.com/commercelayer/commercelayer-cli-plugin-exports/blob/main/README.md) - Export resources from Commerce Layer.
-* [`cleanups`](https://github.com/commercelayer/commercelayer-cli-plugin-cleanups/blob/main/README.md) - Cleanup resources from Commerce Layer.
-* [`tags`](https://github.com/commercelayer/commercelayer-cli-plugin-tags/blob/main/README.md) - Manage resources tags in Commerce Layer.
-* [`provisioning`](https://github.com/commercelayer/commercelayer-cli-plugin-provisioning/blob/main/README.md) - Make requests to Commerce Layer's Provisioning API.
-* [`links`](https://github.com/commercelayer/commercelayer-cli-plugin-links/blob/main/README.md) - Generate short links for shoppable resources.
-* [`metrics`](https://github.com/commercelayer/commercelayer-cli-plugin-metrics/blob/main/README.md) - Make requests to Commerce Layer's Metrics API.
-
-You can run the command below to get a list of all available CLI plugins:
-
-```sh-session
-commercelayer plugins:available
-```
-
-You can run the command below to update all available CLI plugins:
-
-```sh-session
-commercelayer plugins:update
-```
-
-## Contributors Guide
-
-1. Fork [this repository](https://github.com/commercelayer/commercelayer-cli) (learn how to do this [here](https://help.github.com/articles/fork-a-repo)).
-
-2. Clone the forked repository like so:
-
-    ```bash
-    git clone https://github.com/<your username>/commercelayer-cli.git && cd commercelayer-cli
-    ```
-
-3. Make your changes and create a pull request ([learn how to do this](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)).
-
-4. Someone will attend to your pull request and provide some feedback.
-
-## Need help?
-
-* Join [Commerce Layer's Discord community](https://discord.gg/commercelayer).
-* Ping us on [Bluesky](https://bsky.app/profile/commercelayer.io), [X (formerly Twitter)](https://x.com/commercelayer), or [LinkedIn](https://www.linkedin.com/company/commerce-layer).
-* Is there a bug? Create an [issue](https://github.com/commercelayer/commercelayer-cli/issues) on this repository.
+PRs get a `pkg:<dir>` label from the files they touch; that's how each release lists only its own changes. After adding or removing a package, run `pnpm release:config` and commit the generated `.github/labeler.yml` and `.github/release-*.yml`.
 
 ## License
 
-This repository is published under the [MIT](LICENSE) license.
+[MIT](LICENSE)

@@ -1,0 +1,80 @@
+{
+  "name": "@commercelayer/cli-dev",
+  "description": "Development tools of the Commerce Layer CLI (README generation). Private workspace package, not published.",
+  "version": "3.1.12",
+  "packageManager": "pnpm@11.20.0",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/packages/dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "packages/dev"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "bin": {
+    "cl-cli-dev": "./bin/run.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-cli-dev",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "repositoryPrefix": "<%- repo %>/blob/main/packages/dev/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":"
+  },
+  "scripts": {
+    "pretest": "tsc --noEmit && echo 'Skipping test dir compile check in CI for now (3rd party type error) but you should compile it locally'",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "build": "rm -rf lib && tsc",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "readme": "./bin/run.js readme && git add README.md"
+  },
+  "devDependencies": {
+    "@oclif/plugin-help": "catalog:",
+    "@oclif/test": "catalog:",
+    "@types/chai": "catalog:",
+    "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.17.25",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
+    "chai": "catalog:",
+    "globby": "^10.0.2",
+    "mocha": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@oclif/core": "catalog:",
+    "fs-extra": "^10.1.0",
+    "github-slugger": "^1.5.0",
+    "lodash": "^4.18.1",
+    "normalize-package-data": "^5.0.0",
+    "tslib": "catalog:"
+  },
+  "private": true
+}

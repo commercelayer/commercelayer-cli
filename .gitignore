@@ -1,16 +1,20 @@
 *-debug.log
 *-error.log
-/.nyc_output
-/dist
-/lib
-/tmp
+.nyc_output
+/packages/*/dist
+/plugins/*/dist
+/packages/*/lib
+/plugins/*/lib
+tmp
 /yarn.lock
 node_modules
 .DS_Store
-.editorconfig
-.oclif.manifest.json
+oclif.manifest.json
 /package-lock.json
-/tsconfig.tsbuildinfo
+tsconfig.tsbuildinfo
 test_data*
 *.env
 
+coverage
+temp/
+*.tgz

@@ -1,0 +1,88 @@
+{
+  "name": "@commercelayer/cli-plugin-provisioning",
+  "description": "Commerce Layer CLI Provisioning plugin",
+  "version": "2.2.1",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/provisioning",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "plugins/provisioning"
+  },
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "/bin/run.*",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "ecommerce",
+    "cli",
+    "commercelayer"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "cl-provisioning",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ],
+    "plugins": [],
+    "topics": {
+      "cleanups": {
+        "description": "Execute provisioning operations in Commerce Layer",
+        "hidden": false
+      }
+    },
+    "repositoryPrefix": "<%- repo %>/blob/main/plugins/provisioning/<%- commandPath %>",
+    "additionalHelpFlags": [
+      "-h"
+    ],
+    "topicSeparator": ":",
+    "hooks": {}
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "prepack": "pnpm build && oclif manifest && pnpm readme",
+    "postpack": "rm -f oclif.manifest.json",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
+    "generate": "cl-generate",
+    "generate-local": "cl-generate --local"
+  },
+  "devDependencies": {
+    "@commercelayer/cli-dev": "workspace:^",
+    "@commercelayer/cli-generator": "workspace:*",
+    "@commercelayer/cli-test-utils": "workspace:*",
+    "@oclif/plugin-help": "catalog:",
+    "@oclif/test": "catalog:",
+    "@types/chai": "catalog:",
+    "@types/inquirer": "catalog:",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
+    "chai": "catalog:",
+    "mocha": "catalog:",
+    "nock": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@commercelayer/cli-core": "workspace:^",
+    "@commercelayer/provisioning-sdk": "catalog:",
+    "@oclif/core": "catalog:",
+    "inquirer": "catalog:",
+    "json-2-csv": "catalog:",
+    "tslib": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

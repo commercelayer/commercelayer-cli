@@ -1,0 +1,64 @@
+{
+  "name": "@commercelayer/cli-core",
+  "version": "5.12.0",
+  "description": "Internal package of the Commerce Layer CLI: core utilities shared by the CLI and its plugins. Not intended for direct use.",
+  "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/commercelayer-cli.git",
+    "directory": "packages/core"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "lib/index.mjs",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "require": "./lib/index.js",
+    "import": "./lib/index.mjs"
+  },
+  "scripts": {
+    "build": "tsup",
+    "start": "tsx src/index.ts",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test-local": "tsx test/spot.ts"
+  },
+  "keywords": [
+    "ecommerce",
+    "commercelayer"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@commercelayer/cli-test-utils": "workspace:*",
+    "@types/chai": "catalog:",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/mocha": "catalog:",
+    "@types/node": "catalog:",
+    "chai": "catalog:",
+    "dotenv": "catalog:",
+    "mocha": "catalog:",
+    "nock": "catalog:",
+    "nyc": "catalog:",
+    "oclif": "catalog:",
+    "tsup": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@commercelayer/js-auth": "^6.7.2",
+    "@oclif/core": "catalog:",
+    "chalk": "catalog:",
+    "jsonwebtoken": "^9.0.3",
+    "update-notifier-cjs": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/packages/core",
+  "bugs": "https://github.com/commercelayer/commercelayer-cli/issues"
+}

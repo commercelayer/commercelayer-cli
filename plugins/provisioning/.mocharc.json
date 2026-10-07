@@ -1,0 +1,7 @@
+{
+  "import": "tsx",
+  "require": [
+    "../../scripts/test/oclif-root.cjs"
+  ],
+  "timeout": 10000
+}

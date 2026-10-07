@@ -1,3 +1,43 @@
+packages:
+  - 'packages/*'
+  - 'plugins/*'
+
+# One version for the dependencies the packages share: they declare
+# `"<name>": "catalog:"` and the version lives only here.
+catalog:
+  '@commercelayer/provisioning-sdk': ^2.10.2
+  '@commercelayer/sdk': ^6.58.0
+  '@oclif/core': ^3.27.0
+  '@oclif/plugin-help': ^6.3.0
+  '@oclif/test': ^3.2.15
+  '@types/chai': ^5.2.3
+  '@types/cli-progress': ^3.11.6
+  '@types/inquirer': ^8.2.13
+  '@types/lodash.isempty': ^4.4.9
+  '@types/mocha': ^10.0.10
+  '@types/node': ^25.9.8
+  '@types/node-notifier': ^8.0.5
+  'axios': ^1.19.0
+  'chai': ^6.2.2
+  'chalk': ^4.1.2
+  'cli-progress': ^3.12.0
+  'cli-table3': ^0.6.5
+  'dotenv': ^17.4.2
+  'inquirer': ^8.2.7
+  'json-2-csv': ^5.6.0
+  'lodash.isempty': ^4.4.0
+  'mocha': ^11.8.0
+  'nock': ^14.0.17
+  'node-notifier': ^10.0.1
+  'nyc': ^18.0.0
+  'oclif': ^4.24.0
+  'open': ^8.4.2
+  'tslib': ^2.8.1
+  'tsup': ^8.5.1
+  'tsx': ^4.23.15
+  'typescript': ^6.0.3
+  'update-notifier-cjs': ^5.1.7
+
 allowBuilds:
   esbuild: true
   yarn: true
@@ -7,3 +47,16 @@ allowBuilds:
 overrides:
   # GHSA RCE + DoS - mocha pins serialize-javascript ^6.0.2
   serialize-javascript@<7.0.5: ^7.1.0
+  # GHSA DoS in parsePatch/applyPatch - mocha pins diff ^7.0.0
+  diff@<8.0.3: ^8.0.4
+  # GHSA buffer bounds check - nyc pins istanbul-lib-processinfo, which pins uuid@8.3.2
+  uuid@<11.1.1: ^11.1.1
+  # GHSA-g7r4-m6w7-qqqr (low) - tsup pins esbuild ^0.27, fixed in 0.28.1
+  esbuild@<0.28.1: ^0.28.1
+  # GHSA high - oclif (got, cacheable-request) pins http-cache-semantics <=4.2.0, fixed in 4.3.0
+  http-cache-semantics@<4.3.0: ^4.3.0
+
+# SDK 8.0.0, released on 2026-10-06, within pnpm's default minimumReleaseAge
+# (1 day) when adopted: first-party package, installed right away.
+minimumReleaseAgeExclude:
+  - '@commercelayer/sdk@8.0.0'
