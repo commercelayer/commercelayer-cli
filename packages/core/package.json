@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/cli-core",
-  "version": "5.11.5",
+  "version": "5.12.0",
   "description": "Internal package of the Commerce Layer CLI: core utilities shared by the CLI and its plugins. Not intended for direct use.",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
