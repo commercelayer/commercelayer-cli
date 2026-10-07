@@ -18,8 +18,9 @@
  * --interactive lets you change or skip each package's version.
  *
  * Nothing is committed to the base branch: the bumps go on a `release/…`
- * branch and a pull request. Once it is merged, `pnpm release:tag` tags the
- * merge commit, and pushing the tags drafts the GitHub releases.
+ * branch and a pull request. Once it is approved and merged, `pnpm release:tag`
+ * tags the versions and drafts the GitHub releases, and `pnpm release:publish`
+ * publishes them to npm.
  */
 import { execFileSync } from 'node:child_process'
 import { join } from 'node:path'
@@ -197,7 +198,7 @@ export const run = async (args: string[]): Promise<void> => {
   console.log(`✓ Committed on ${branch}`)
 
   if (values['no-pr']) {
-    console.log(`\nPush it and open a PR to ${base}; once merged run \`pnpm release:tag\`.`)
+    console.log(`\nPush it and open a PR to ${base}; once approved and merged run \`pnpm release:tag\`, then \`pnpm release:publish\`.`)
     return
   }
 
@@ -207,7 +208,7 @@ export const run = async (args: string[]): Promise<void> => {
     '',
     ...selected.map((s) => `- \`${s.pkg.name}\` ${s.pkg.version} → **${s.version}** (\`${tagOf(s.pkg, s.version)}\`)`),
     '',
-    `After merging, run \`pnpm release:tag\` on an up-to-date \`${base}\` to tag the merge commit and draft the releases.`,
+    `Once approved and merged, run \`pnpm release:tag\` on an up-to-date \`${base}\` to tag the versions and draft the releases, then \`pnpm release:publish\` to publish them to npm.`,
   ].join('\n')
   // The release PR itself has no place in the release notes
   execFileSync('gh', ['label', 'create', 'ignore-for-release', '--force', '--color', 'ededed', '--description', 'Excluded from release notes'], {

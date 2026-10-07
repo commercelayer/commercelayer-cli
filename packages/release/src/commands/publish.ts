@@ -22,10 +22,10 @@
  *
  * The package and its workspace dependencies must be built first.
  */
-import { execFileSync } from 'node:child_process'
+import { spawnSync } from 'node:child_process'
 import { appendFileSync } from 'node:fs'
 import { parse } from '../args.ts'
-import { fail, git, listPackages, onNpm, type Package, resolveTagOrFail, tagOf, workspaceDeps } from '../workspace.ts'
+import { fail, git, listPackages, onNpm, type Package, resolveTagOrFail, tagOf, waitForNpm, workspaceDeps } from '../workspace.ts'
 
 const USAGE = `Usage: cl-release publish <tag> [--dry-run]
   --dry-run  pnpm publish --dry-run: nothing reaches npm`
@@ -60,6 +60,13 @@ export const dependenciesToPublish = (
   return toPublish
 }
 
+/**
+ * Whether npm refused a version because it is being published right now, by
+ * another workflow run (e.g. the release of a dependency, published at the
+ * same time as the plugins that need it): `E409 … previously staged version`.
+ */
+export const isConcurrentPublish = (stderr: string): boolean => /E409|previously staged version|cannot publish over/i.test(stderr)
+
 export const run = (args: string[]): void => {
   const { values, positionals } = parse(args, { 'dry-run': { type: 'boolean' } }, USAGE)
   const dry = values['dry-run']
@@ -81,23 +88,38 @@ export const run = (args: string[]): void => {
     fail((error as Error).message, '::error::')
   }
 
-  const publish = (p: Package): void => {
+  /** Publishes a package: false if another run published it meanwhile */
+  const publish = (p: Package): boolean => {
     const target = resolveTagOrFail(tagOf(p), packages)
     // The release tag is checked out detached: no branch or clean-tree checks
     const pnpmArgs = ['publish', '--access', 'public', '--tag', target.distTag, '--no-git-checks']
     if (process.env.CI) pnpmArgs.push('--provenance')
     if (dry) pnpmArgs.push('--dry-run')
     console.log(`› pnpm ${pnpmArgs.join(' ')}  (${p.path})`)
-    execFileSync('pnpm', pnpmArgs, { cwd: p.path, stdio: 'inherit' })
+    const result = spawnSync('pnpm', pnpmArgs, { cwd: p.path, stdio: ['ignore', 'inherit', 'pipe'], encoding: 'utf8' })
+    process.stderr.write(result.stderr ?? '')
+    if (result.status !== 0) {
+      // Being published by another run: wait for it instead of failing
+      if (!dry && isConcurrentPublish(result.stderr ?? '')) {
+        console.log(`· ${p.name}@${p.version} is being published by another run: waiting for it on npm`)
+        if (waitForNpm(p.name, p.version)) {
+          console.log(`✓ ${p.name}@${p.version} is on npm`)
+          return false
+        }
+      }
+      fail(`pnpm publish of ${p.name}@${p.version} failed`, '::error::')
+    }
     console.log(`✓ ${dry ? 'Would publish' : 'Published'} ${p.name}@${p.version} (dist-tag ${target.distTag})`)
+    return true
   }
 
+  const published: Package[] = []
   for (const dep of toPublish) {
     console.log(`› ${pkg.name} needs ${dep.name}@${dep.version}, not on npm yet: publishing it first`)
-    publish(dep)
+    if (publish(dep)) published.push(dep)
   }
   publish(pkg)
 
-  // Tags of the dependencies published along, for publish.yml
-  if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `published_deps=${toPublish.map((d) => tagOf(d)).join(' ')}\n`)
+  // Tags of the dependencies this run published, for publish.yml (one published by its own run marks its own release)
+  if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `published_deps=${published.map((d) => tagOf(d)).join(' ')}\n`)
 }
