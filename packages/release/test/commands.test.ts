@@ -1,8 +1,9 @@
 import { expect } from 'chai'
+import { planDrafts } from '../src/commands/drafts.ts'
 import { labelerConfig } from '../src/commands/labels.ts'
 import { surfaceDiff } from '../src/commands/manifest.ts'
 import { withMaintenanceNote } from '../src/commands/notes.ts'
-import { dependenciesToPublish } from '../src/commands/publish.ts'
+import { dependenciesToPublish, isConcurrentPublish } from '../src/commands/publish.ts'
 import { withWorkspaceDeps } from '../src/commands/try.ts'
 import { addChangedDependencies, bump } from '../src/commands/version.ts'
 import { pkg } from './helpers.ts'
@@ -88,5 +89,43 @@ describe('try', () => {
     const tags = pkg('tags', '1.0.0', ['ux'])
     const orders = pkg('orders', '1.0.0', ['core'])
     expect([...withWorkspaceDeps([tags], [core, ux, tags, orders])].map((p) => p.dir)).to.deep.equal(['tags', 'ux', 'core'])
+  })
+})
+
+describe('drafts', () => {
+  const core = pkg('core', '5.12.0')
+  const ux = pkg('ux', '1.2.6', ['core'])
+  const tags = pkg('tags', '2.2.7', ['core', 'ux'])
+  const resources = pkg('resources', '6.20.0', ['core'])
+  const packages = [core, ux, tags, resources, pkg('dev', '1.0.0', [], { private: true })]
+
+  it('publishes the dependencies first, each draft after the drafts of its dependencies', () => {
+    const plan = planDrafts([{ tag: 'resources-v6.20.0' }, { tag: 'tags-v2.2.7' }, { tag: 'ux-v1.2.6' }, { tag: 'core-v5.12.0' }], packages)
+    const order = plan.map((r) => r.tag)
+    expect(order.indexOf('core-v5.12.0')).to.be.lessThan(order.indexOf('ux-v1.2.6'))
+    expect(order.indexOf('ux-v1.2.6')).to.be.lessThan(order.indexOf('tags-v2.2.7'))
+    expect(order.indexOf('core-v5.12.0')).to.be.lessThan(order.indexOf('resources-v6.20.0'))
+    expect(plan.find((r) => r.tag === 'tags-v2.2.7')?.waitFor).to.have.members(['core-v5.12.0', 'ux-v1.2.6'])
+    expect(plan.find((r) => r.tag === 'core-v5.12.0')?.waitFor).to.deep.equal([])
+  })
+
+  it('waits only for the dependencies drafted along', () => {
+    const plan = planDrafts([{ tag: 'tags-v2.2.7' }], packages)
+    expect(plan).to.have.length(1)
+    expect(plan[0]).to.include({ tag: 'tags-v2.2.7', version: '2.2.7' })
+    expect(plan[0].waitFor).to.deep.equal([])
+  })
+
+  it('refuses tags that are not workspace package releases', () => {
+    expect(() => planDrafts([{ tag: 'v6.9.9' }], packages)).to.throw(/not a <dir>-v<version> tag/)
+    expect(() => planDrafts([{ tag: 'nope-v1.0.0' }], packages)).to.throw(/no workspace package/)
+    expect(() => planDrafts([{ tag: 'dev-v1.0.0' }], packages)).to.throw(/private/)
+  })
+})
+
+describe('publish of a concurrent release', () => {
+  it('recognizes the npm conflict of a version being published by another run', () => {
+    expect(isConcurrentPublish('npm error code E409\nnpm error 409 Conflict - PUT … - Cannot publish over previously staged version "5.12.0".')).to.equal(true)
+    expect(isConcurrentPublish('npm error code E403\nnpm error 403 Forbidden')).to.equal(false)
   })
 })

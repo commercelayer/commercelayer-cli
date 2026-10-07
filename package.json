@@ -17,7 +17,7 @@
     "release:version": "cl-release version",
     "release:tag": "cl-release tag",
     "release:config": "cl-release labels",
-    "release:publish": "cl-release publish",
+    "release:publish": "cl-release drafts",
     "generate": "pnpm -r --if-present generate",
     "generate-local": "pnpm -r --if-present generate-local",
     "check:packages": "node scripts/check-packages.mjs",

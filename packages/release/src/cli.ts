@@ -13,7 +13,8 @@ const COMMANDS = {
   try: ['Install the working tree in a sandbox, packed as for npm', () => import('./commands/try.ts')],
   resolve: ['Resolve a release tag to its package, as $GITHUB_OUTPUT lines', () => import('./commands/resolve.ts')],
   notes: ['Write the release notes of a tag', () => import('./commands/notes.ts')],
-  publish: ['Publish a tag to npm, with the workspace dependencies it needs', () => import('./commands/publish.ts')],
+  drafts: ['Publish the draft GitHub releases, dependencies first (pnpm release:publish)', () => import('./commands/drafts.ts')],
+  publish: ['Publish a tag to npm, with the workspace dependencies it needs (publish.yml)', () => import('./commands/publish.ts')],
   manifest: ['Compare a package command surface with its npm version', () => import('./commands/manifest.ts')],
   labels: ['Generate .github/labeler.yml (pkg:<dir> labels)', () => import('./commands/labels.ts')],
 } satisfies Record<string, [string, () => Promise<{ run: (args: string[]) => Promise<void> | void }>]>

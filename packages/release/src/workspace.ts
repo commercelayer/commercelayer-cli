@@ -136,9 +136,26 @@ export const lastTag = async (pkg: Pick<Package, 'dir'>): Promise<string | undef
 /** Whether a version of a package is on npm. */
 export const onNpm = (name: string, version: string): boolean => {
   try {
-    return execFileSync('npm', ['view', `${name}@${version}`, 'version'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim() === version
+    // --prefer-online: a version published a moment ago, not npm's cached answer
+    return execFileSync('npm', ['view', '--prefer-online', `${name}@${version}`, 'version'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim() === version
   } catch {
     return false
+  }
+}
+
+/** Blocks for a while (the release commands run step by step). */
+export const sleep = (ms: number): void => {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms)
+}
+
+/**
+ * Waits until a version is on npm, polling: a version just published takes a
+ * few seconds to show. False if it doesn't show within the timeout.
+ */
+export const waitForNpm = (name: string, version: string, { timeout = 300_000, interval = 10_000 } = {}): boolean => {
+  for (const end = Date.now() + timeout; ; sleep(interval)) {
+    if (onNpm(name, version)) return true
+    if (Date.now() >= end) return false
   }
 }
 
