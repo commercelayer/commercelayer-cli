@@ -52,6 +52,9 @@ const FLAG_VALUE = `value: Flags.string({
       required: true,
     }),`
 
+/** A text as the content of a single-quoted string literal: backslashes and quotes escaped */
+const quote = (text: string): string => text.replace(/\\/g, '\\\\').replace(/'/g, "\\'")
+
 const triggersModule = (template: string, triggers: Trigger[], indent: number): string => {
   const pad = ' '.repeat(indent)
   const close = ' '.repeat(indent - 2)
@@ -60,7 +63,7 @@ const triggersModule = (template: string, triggers: Trigger[], indent: number): 
       (t) => `${t.action}: {
 ${pad}action: '${t.action}',
 ${pad}trigger: '${t.trigger}',
-${pad}description: '${t.description.replace(/'/g, "\\'")}',
+${pad}description: '${quote(t.description)}',
 ${close}},`,
     )
     .join('\n\t')
