@@ -16,7 +16,7 @@ jobs:
     name: Apply package labels
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v5
+      - uses: actions/labeler@v7
         with:
           # A label that no longer matches the changed files is removed.
           # Only the labels in .github/labeler.yml are managed.

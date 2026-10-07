@@ -32,11 +32,11 @@ jobs:
     steps:
       # Pushes and PRs made with the default GITHUB_TOKEN don't trigger other
       # workflows: use the CI token, so Verify runs on the regeneration PR
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           token: ${{ secrets.COMMERCELAYER_CI_TOKEN }}
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with: { node-version: 'lts/*', cache: 'pnpm' }
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @commercelayer/cli-core build

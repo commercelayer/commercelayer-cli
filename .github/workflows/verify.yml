@@ -20,9 +20,9 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with: { node-version: 'lts/*', cache: 'pnpm' }
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint
@@ -38,11 +38,11 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with: { node-version: 'lts/*', cache: 'pnpm' }
       - run: pnpm install --frozen-lockfile --filter @commercelayer/cli-monorepo
       - name: Conventional Commits
@@ -61,12 +61,12 @@ jobs:
       matrix:
         node: ['lts/*', '22.13']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # The base commit has to be present to compute the changed packages
           fetch-depth: 0
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with: { node-version: '${{ matrix.node }}', cache: 'pnpm' }
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
@@ -119,9 +119,9 @@ jobs:
     # and fails if anything differs: a generated file was edited by hand, or
     # a snapshot/SDK update was committed without regenerating.
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with: { node-version: 'lts/*', cache: 'pnpm' }
       - run: pnpm install --frozen-lockfile
       # gen.config.ts files import cli-core, which resolves to its build
