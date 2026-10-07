@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { rename } from 'node:fs/promises'
+import { copyFile, rename, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import { gunzipSync, type InputType } from 'node:zlib'
 import type { ApiMode, KeyValRel, KeyValString } from '@commercelayer/cli-core'
@@ -13,6 +13,22 @@ import axios from 'axios'
 import notifier from 'node-notifier'
 
 type CommandError = Interfaces.CommandError
+
+
+/**
+ * Moves a file, also to another file system: rename() can't (EXDEV), as when
+ * the export goes from the cache folder to a /tmp on tmpfs (Ubuntu 26.04) or
+ * to another disk, so the file is copied and the original removed.
+ */
+export const moveFile = async (from: string, to: string, fs = { rename, copyFile, rm }): Promise<void> => {
+  try {
+    await fs.rename(from, to)
+  } catch (error: any) {
+    if (error?.code !== 'EXDEV') throw error
+    await fs.copyFile(from, to)
+    await fs.rm(from, { force: true })
+  }
+}
 
 
 export const encoding = 'utf-8'
@@ -140,7 +156,7 @@ export abstract class ExportCommand extends BaseCommand {
 
       const filePath = this.getOutputFilePath(flags)
 
-      return rename(tempFile, filePath)
+      return moveFile(tempFile, filePath)
         .then(() => {
           if (existsSync(filePath) && !flags.quiet) this.log(`Exported file saved to ${clColor.style.path(filePath)}\n`)
           return filePath
