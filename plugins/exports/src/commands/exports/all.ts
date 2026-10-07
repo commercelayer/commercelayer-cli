@@ -7,6 +7,7 @@ import type { Interfaces } from '@oclif/core'
 import open from 'open'
 import Spinnies from 'spinnies'
 import { ExportCommand, type ExportFormat, encoding, Flags, notify } from '../../base'
+import { countCsvRecords } from '../../csv'
 import ExportsCreate from './create'
 
 type CommandError = Interfaces.CommandError
@@ -450,7 +451,7 @@ export default class ExportsAll extends ExportCommand {
 
     switch (format) {
       case 'csv': {
-        expRecords = (expFile.match(/(?:"(?:[^"]|"")*"|[^,\n]*)(?:,(?:"(?:[^"]|"")*"|[^,\n]*))*\n/g) || []).length
+        expRecords = countCsvRecords(expFile)
         if (!cleaned) expRecords--
         break
       }
