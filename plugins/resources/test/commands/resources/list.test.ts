@@ -20,7 +20,7 @@ describe('resources:list', () => {
       api()
         .get('/api/customers')
         .query(true)
-        .reply(200, { ...list([resource('customers', 'cUs1', { email: 'jane@example.com' })]), meta: { record_count: 12_345, page_count: 1235 } })
+        .reply(200, { ...list([resource('customers', 'cUs1', { email: 'jane@example.com' })]), meta: { record_count: 12_345, page_count: 1235, record_count_estimated: true } })
     })
     .stdout()
     .command(['resources:list', 'customers', ...AUTH])

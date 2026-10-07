@@ -36,6 +36,7 @@ const EXCEPTIONS = {
   'core:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
   'ux:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
   'metrics:@oclif/test': 'already on @oclif/test 4, the others move with the oclif upgrade',
+  'resources:@commercelayer/sdk': 'on SDK 8 for the 2026-05 resources, the others move with the oclif 5 major',
 }
 
 // `catalog:` entries of pnpm-workspace.yaml (flat `  name: version` lines)

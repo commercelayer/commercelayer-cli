@@ -1299,8 +1299,8 @@ importers:
         specifier: workspace:^
         version: link:../../packages/ux
       '@commercelayer/sdk':
-        specifier: 'catalog:'
-        version: 6.58.0
+        specifier: ^8.0.0
+        version: 8.0.0
       '@oclif/core':
         specifier: 'catalog:'
         version: 3.27.0
@@ -1936,6 +1936,10 @@ packages:
 
   '@commercelayer/sdk@6.58.0':
     resolution: {integrity: sha512-AoTMeIXim3/JNbuffvMtE4XY0eGn7qVOxdTFpVvuQrz5LVSimJYEFL/VMzqMap4vukHsZdYq4p5X+ZzXXP/Jbg==}
+    engines: {node: '>=20'}
+
+  '@commercelayer/sdk@8.0.0':
+    resolution: {integrity: sha512-cdlMwi3wvK79hs9LTlE8nLsEx7JM1JNPJmtOCDRNzjG/sUiezfO96qDbQmP1Qd2PtUtapcAEqUgDmj59rtGlVw==}
     engines: {node: '>=20'}
 
   '@cspotcode/source-map-support@0.8.1':
@@ -5321,6 +5325,8 @@ snapshots:
   '@commercelayer/provisioning-sdk@2.10.2': {}
 
   '@commercelayer/sdk@6.58.0': {}
+
+  '@commercelayer/sdk@8.0.0': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:

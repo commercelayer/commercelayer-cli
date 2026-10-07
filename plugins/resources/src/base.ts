@@ -6,6 +6,7 @@ import type { CommerceLayerClient, QueryParams, QueryParamsRetrieve, ResourceId,
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
 import { Args, Command, type Config, Flags } from '@oclif/core'
 import type { CommandError } from '@oclif/core/lib/interfaces'
+import { apiVersion, apiVersionFlag } from './api-version'
 import { aliasExists, type CommandParams, checkAlias, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 import { exportCsv } from './csv'
 import { availableLanguages, buildCommand, getLanguageArg, languageInfo, promptLanguage, type RequestData } from './lang'
@@ -39,6 +40,7 @@ export abstract class BaseCommand extends Command {
       dependsOn: ['organization'],
       env: 'CL_CLI_DOMAIN'
     }),
+    'api-version': apiVersionFlag(),
     accessToken: Flags.string({
       hidden: true,
       required: true,
@@ -55,7 +57,7 @@ export abstract class BaseCommand extends Command {
     const userAgent = clUtil.userAgent(this.config)
 
 
-    const cl = commercelayer({ organization, domain, accessToken, userAgent, ...options })
+    const cl = commercelayer({ apiVersion: apiVersion(flags), organization, domain, accessToken, userAgent, ...options })
 
     if ('cl' in this) this.cl = cl
 

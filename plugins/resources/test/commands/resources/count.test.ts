@@ -23,13 +23,27 @@ describe('resources:count', () => {
       api()
         .get('/api/skus')
         .query(true)
-        .reply(200, { ...list([resource('skus', 'sKu1')]), meta: { record_count: 16_998, page_count: 1700 } })
+        .reply(200, { ...list([resource('skus', 'sKu1')]), meta: { record_count: 16_998, page_count: 1700, record_count_estimated: true } })
     })
     .stdout()
     .stderr()
     .command(['resources:count', 'skus', ...AUTH])
     .it('marks a count above 10,000 as estimated', (ctx) => {
       expect(ctx.stdout + ctx.stderr).to.contain('≈16,998').and.to.contain('estimated above 10,000')
+    })
+
+  test
+    .do(() => {
+      api()
+        .get('/api/skus')
+        .query(true)
+        .reply(200, { ...list([resource('skus', 'sKu1')]), meta: { record_count: 16_998, page_count: 1700, record_count_estimated: false } })
+    })
+    .stdout()
+    .stderr()
+    .command(['resources:count', 'skus', ...AUTH])
+    .it('trusts the API when it says a count above 10,000 is exact', (ctx) => {
+      expect(ctx.stdout + ctx.stderr).to.contain('16,998').and.not.to.contain('≈')
     })
 
   test
