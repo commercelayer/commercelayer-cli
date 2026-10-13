@@ -5,8 +5,8 @@
  * (`cl-release version`). For each package it creates the annotated tag
  * `<dir>-v<version>`, unless that tag already exists or the version is
  * already on npm, and then pushes the new tags. Each pushed tag makes
- * release.yml draft a GitHub release; `pnpm release:publish` (or publishing
- * the draft on GitHub) publishes to npm.
+ * A manual recovery tool: publish.yml tags the versions it releases
+ * (`cl-release ship`).
  *
  * The tag goes on the commit that set the version in the package.json (the
  * version bump of the release PR), not on HEAD: a pull request merged after
@@ -66,5 +66,5 @@ export const run = (args: string[]): void => {
   }
 
   for (const tag of created) git('push', '--quiet', 'origin', `refs/tags/${tag}`)
-  console.log(`\n✓ Pushed ${created.length} tag(s). Review and publish the draft releases on GitHub to publish to npm.`)
+  console.log(`\n✓ Pushed ${created.length} tag(s). Run publish.yml to publish them.`)
 }

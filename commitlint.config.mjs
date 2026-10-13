@@ -6,7 +6,7 @@
  */
 export default {
   extends: ['@commitlint/config-conventional'],
-  // The release commits are written by `pnpm release:version` and list
+  // The release commits are written by `pnpm release:publish` and list
   // every released tag in the header, well past the length limit
   ignores: [(message) => message.startsWith('chore(release): ')],
 }

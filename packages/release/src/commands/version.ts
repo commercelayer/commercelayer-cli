@@ -18,9 +18,9 @@
  * --interactive lets you change or skip each package's version.
  *
  * Nothing is committed to the base branch: the bumps go on a `release/…`
- * branch and a pull request. Once it is approved and merged, `pnpm release:tag`
- * tags the versions and drafts the GitHub releases, and `pnpm release:publish`
- * publishes them to npm.
+ * branch and a pull request, whose description has the release notes of
+ * each package. Once it is approved and merged, publish.yml publishes the
+ * versions (`cl-release ship`): tags, npm, GitHub releases.
  */
 import { execFileSync } from 'node:child_process'
 import { join } from 'node:path'
@@ -28,7 +28,8 @@ import { createInterface } from 'node:readline/promises'
 import { Bumper } from 'conventional-recommended-bump'
 import semver from 'semver'
 import { parse } from '../args.ts'
-import { fail, git, lastTag, type Package, publicPackages, readJson, requireUpToDate, sortByDependencies, tagOf, workspaceDeps, writeJson } from '../workspace.ts'
+import { fail, git, lastTag, type Package, previousRelease, publicPackages, readJson, requireUpToDate, sortByDependencies, tagOf, workspaceDeps, writeJson } from '../workspace.ts'
+import { buildNotes } from './notes.ts'
 
 const USAGE = `Usage: cl-release version [--interactive | --yes] [--base <branch>] [--no-pr] [--dry-run]
   --interactive  confirm, change or skip each package's version
@@ -86,6 +87,39 @@ export const addChangedDependencies = (selected: Selected[], candidates: Candida
     }
   }
   return added
+}
+
+/** GitHub refuses a pull request body above 65,536 characters */
+const MAX_BODY = 60_000
+
+export type ReleaseEntry = { name: string; path: string; from: string; to: string; tag: string; notes: string }
+
+/**
+ * The body of the release PR: the version bumps, then the release notes of
+ * each package in a collapsible section, so the reviewers approve what will
+ * be published. Notes too long to fit are cut, with the commits' link.
+ */
+export const releasePrBody = (entries: ReleaseEntry[], repository = 'https://github.com/commercelayer/commercelayer-cli'): string => {
+  const head = [
+    'Merging this pull request publishes these versions: publish.yml tags them, publishes them to npm and publishes their GitHub releases.',
+    '',
+    ...entries.map((e) => `- \`${e.name}\` ${e.from} → **${e.to}** (\`${e.tag}\`)`),
+    '',
+    '## Release notes',
+    '',
+  ].join('\n')
+  const section = (e: ReleaseEntry, notes: string) => `<details><summary><b>${e.name}</b> ${e.to}</summary>\n\n${notes}\n\n</details>\n`
+  const budget = Math.floor((MAX_BODY - head.length) / Math.max(entries.length, 1)) - 200
+  return (
+    head +
+    entries
+      .map((e) => {
+        if (e.notes.length <= budget) return section(e, e.notes)
+        const cut = e.notes.slice(0, Math.max(budget, 0)).replace(/\n[^\n]*$/, '')
+        return section(e, `${cut}\n\n… [all the changes](${repository}/commits/main/${e.path})`)
+      })
+      .join('\n')
+  )
 }
 
 export const run = async (args: string[]): Promise<void> => {
@@ -167,7 +201,7 @@ export const run = async (args: string[]): Promise<void> => {
 
   for (const { added, by } of addChangedDependencies(selected, candidates))
     console.log(`+ ${added.pkg.name} ${added.pkg.version} → ${added.version}: unreleased changes, required by ${by.pkg.name}`)
-  // Dependencies first, so tags, drafts and publishing follow the same order
+  // Dependencies first, the order publish.yml releases them in
   const order = sortByDependencies(selected.map((s) => s.pkg))
   selected.sort((a, b) => order.indexOf(a.pkg) - order.indexOf(b.pkg))
 
@@ -198,18 +232,19 @@ export const run = async (args: string[]): Promise<void> => {
   console.log(`✓ Committed on ${branch}`)
 
   if (values['no-pr']) {
-    console.log(`\nPush it and open a PR to ${base}; once approved and merged run \`pnpm release:tag\`, then \`pnpm release:publish\`.`)
+    console.log(`\nPush it and open a PR to ${base}: once approved and merged, publish.yml publishes the versions.`)
     return
   }
 
   git('push', '--quiet', '-u', 'origin', branch)
-  const body = [
-    'Version bumps:',
-    '',
-    ...selected.map((s) => `- \`${s.pkg.name}\` ${s.pkg.version} → **${s.version}** (\`${tagOf(s.pkg, s.version)}\`)`),
-    '',
-    `Once approved and merged, run \`pnpm release:tag\` on an up-to-date \`${base}\` to tag the versions and draft the releases, then \`pnpm release:publish\` to publish them to npm.`,
-  ].join('\n')
+  const today = new Date().toISOString().slice(0, 10)
+  const entries: ReleaseEntry[] = []
+  for (const s of selected) {
+    const tag = tagOf(s.pkg, s.version)
+    const notes = await buildNotes({ pkg: s.pkg, version: s.version, tag, to: 'HEAD', previous: previousRelease(s.pkg, s.version), date: today })
+    entries.push({ name: s.pkg.name, path: s.pkg.path, from: s.pkg.version, to: s.version, tag, notes })
+  }
+  const body = releasePrBody(entries)
   // The release PR itself has no place in the release notes
   execFileSync('gh', ['label', 'create', 'ignore-for-release', '--force', '--color', 'ededed', '--description', 'Excluded from release notes'], {
     stdio: 'ignore',

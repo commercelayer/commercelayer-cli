@@ -1,24 +1,13 @@
 /**
- * Publishes the package a release tag points at, together with the workspace
- * dependencies it needs.
- *
- * Never "everything whose version is not on npm": publishing one draft
- * release publishes only that package, plus the workspace dependencies
- * (cli-core, cli-ux, …) whose required version isn't on npm yet. Those are
- * released in the same `chore(release)` PR (`cl-release version`), so
- * their tags exist on the same commit; they are published first, from that
- * tree, and reported so publish.yml can mark their draft releases published.
- * A dependency version without a release tag was bumped outside the release
- * flow, and publishing stops.
- *
- * A package already on npm is skipped: it may have been published as the
- * dependency of another one.
+ * Publishes the package of a release tag to npm, together with the workspace
+ * dependencies it needs that aren't on npm yet (each with its release tag),
+ * dependencies first. A manual recovery tool: releases are published by
+ * publish.yml (`cl-release ship`), which reuses publishToNpm.
  *
  * Each package is published with `pnpm publish`, which runs prepack, rewrites
  * `workspace:` ranges to real versions, and in CI does the OIDC
- * trusted-publishing exchange with npm and attaches provenance. Not
- * `pnpm publish -r`: it would give every package the same dist-tag, and
- * publish any workspace version not on npm, tagged for release or not.
+ * trusted-publishing exchange with npm and attaches provenance. A package
+ * already on npm is skipped.
  *
  * The package and its workspace dependencies must be built first.
  */
@@ -50,7 +39,7 @@ export const dependenciesToPublish = (
       const depTag = tagOf(dep)
       if (!tags.has(depTag))
         throw new Error(
-          `${[...chain, p.name].join(' → ')} needs ${dep.name}@${dep.version}, which is not on npm and has no ${depTag} release tag. Release it with \`pnpm release:version\`.`,
+          `${[...chain, p.name].join(' → ')} needs ${dep.name}@${dep.version}, which is not on npm and has no ${depTag} release tag. Release it with \`pnpm release:publish\`.`,
         )
       visit(dep, [...chain, p.name])
       toPublish.push(dep)
@@ -66,6 +55,34 @@ export const dependenciesToPublish = (
  * same time as the plugins that need it): `E409 … previously staged version`.
  */
 export const isConcurrentPublish = (stderr: string): boolean => /E409|previously staged version|cannot publish over/i.test(stderr)
+
+/**
+ * Publishes a package to npm with pnpm publish (provenance in CI) from its
+ * folder. False if another run published that version meanwhile (npm refused
+ * it with E409, and it showed up on npm).
+ */
+export const publishToNpm = (p: Package, { dry = false, distTag = 'latest' }: { dry?: boolean; distTag?: string } = {}): boolean => {
+  // The release commit is checked out detached: no branch or clean-tree checks
+  const pnpmArgs = ['publish', '--access', 'public', '--tag', distTag, '--no-git-checks']
+  if (process.env.CI) pnpmArgs.push('--provenance')
+  if (dry) pnpmArgs.push('--dry-run')
+  console.log(`› pnpm ${pnpmArgs.join(' ')}  (${p.path})`)
+  const result = spawnSync('pnpm', pnpmArgs, { cwd: p.path, stdio: ['ignore', 'inherit', 'pipe'], encoding: 'utf8' })
+  process.stderr.write(result.stderr ?? '')
+  if (result.status !== 0) {
+    // Being published by another run: wait for it instead of failing
+    if (!dry && isConcurrentPublish(result.stderr ?? '')) {
+      console.log(`· ${p.name}@${p.version} is being published by another run: waiting for it on npm`)
+      if (waitForNpm(p.name, p.version)) {
+        console.log(`✓ ${p.name}@${p.version} is on npm`)
+        return false
+      }
+    }
+    fail(`pnpm publish of ${p.name}@${p.version} failed`, '::error::')
+  }
+  console.log(`✓ ${dry ? 'Would publish' : 'Published'} ${p.name}@${p.version} (dist-tag ${distTag})`)
+  return true
+}
 
 export const run = (args: string[]): void => {
   const { values, positionals } = parse(args, { 'dry-run': { type: 'boolean' } }, USAGE)
@@ -88,37 +105,12 @@ export const run = (args: string[]): void => {
     fail((error as Error).message, '::error::')
   }
 
-  /** Publishes a package: false if another run published it meanwhile */
-  const publish = (p: Package): boolean => {
-    const target = resolveTagOrFail(tagOf(p), packages)
-    // The release tag is checked out detached: no branch or clean-tree checks
-    const pnpmArgs = ['publish', '--access', 'public', '--tag', target.distTag, '--no-git-checks']
-    if (process.env.CI) pnpmArgs.push('--provenance')
-    if (dry) pnpmArgs.push('--dry-run')
-    console.log(`› pnpm ${pnpmArgs.join(' ')}  (${p.path})`)
-    const result = spawnSync('pnpm', pnpmArgs, { cwd: p.path, stdio: ['ignore', 'inherit', 'pipe'], encoding: 'utf8' })
-    process.stderr.write(result.stderr ?? '')
-    if (result.status !== 0) {
-      // Being published by another run: wait for it instead of failing
-      if (!dry && isConcurrentPublish(result.stderr ?? '')) {
-        console.log(`· ${p.name}@${p.version} is being published by another run: waiting for it on npm`)
-        if (waitForNpm(p.name, p.version)) {
-          console.log(`✓ ${p.name}@${p.version} is on npm`)
-          return false
-        }
-      }
-      fail(`pnpm publish of ${p.name}@${p.version} failed`, '::error::')
-    }
-    console.log(`✓ ${dry ? 'Would publish' : 'Published'} ${p.name}@${p.version} (dist-tag ${target.distTag})`)
-    return true
-  }
-
   const published: Package[] = []
   for (const dep of toPublish) {
     console.log(`› ${pkg.name} needs ${dep.name}@${dep.version}, not on npm yet: publishing it first`)
-    if (publish(dep)) published.push(dep)
+    if (publishToNpm(resolveTagOrFail(tagOf(dep), packages), { dry })) published.push(dep)
   }
-  publish(pkg)
+  publishToNpm(pkg, { dry })
 
   // Tags of the dependencies this run published, for publish.yml (one published by its own run marks its own release)
   if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `published_deps=${published.map((d) => tagOf(d)).join(' ')}\n`)
