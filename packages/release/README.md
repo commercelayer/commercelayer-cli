@@ -6,7 +6,7 @@ Private workspace package, not published. The release tooling of the monorepo, r
 
 1. `pnpm release:publish` bumps the changed packages and opens the `chore(release)` pull request, with the release notes of each package in its description.
 2. A reviewer approves it, and it is merged.
-3. publish.yml, on the push to main, publishes the versions not on npm (`cl-release ship`): it builds and tests them from the commit that set them, then, dependencies first, tags each version, publishes it to npm (OIDC, provenance) and publishes its GitHub release. One Slack message lists the release.
+3. publish.yml, on the push to main, publishes the versions not on npm (`cl-release ship`): it builds and tests them from the commit that set them, then, dependencies first, tags each version, publishes it to npm (OIDC, provenance) and publishes its GitHub release. Each package published to npm gets its own Slack message, with the link to its release notes.
 
 A release that stopped halfway resumes by running publish.yml by hand: what is on npm is skipped.
 

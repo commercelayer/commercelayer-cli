@@ -13,6 +13,8 @@
  *   - publishes its GitHub release with the notes of its commits (a draft
  *     left by the previous flow is published instead).
  *
+ * publish.yml then posts one Slack message per package published to npm.
+ *
  * Versions bumped by different commits are released one commit per run,
  * oldest first: a run reports what is left, and the next push (or a manual
  * run of publish.yml) releases it. A run interrupted halfway resumes where it
@@ -122,7 +124,7 @@ export const run = async (args: string[]): Promise<void> => {
   }
 
   const tmp = mkdtempSync(join(tmpdir(), 'cl-release-ship-'))
-  const released: string[] = []
+  const released: { name: string; version: string; tag: string; path: string }[] = []
   try {
     for (const pkg of group.packages) {
       const tag = tagOf(pkg)
@@ -139,7 +141,11 @@ export const run = async (args: string[]): Promise<void> => {
 
       // npm first: a failed publish leaves no release behind, and the next run retries it
       if (onNpm(pkg.name, pkg.version)) console.log(`· ${pkg.name}@${pkg.version} is already on npm`)
-      else publishToNpm(pkg, { dry })
+      else {
+        publishToNpm(pkg, { dry })
+        // Announced by the run that publishes it, not again by a run that resumes
+        released.push({ name: pkg.name, version: pkg.version, tag, path: pkg.path })
+      }
 
       // The GitHub release, with the notes of the package's commits
       const previous = previousRelease(pkg)
@@ -157,15 +163,16 @@ export const run = async (args: string[]): Promise<void> => {
         gh('release', 'create', tag, '--verify-tag', '--title', title, '--notes-file', notesFile, `--latest=${latest}`)
         console.log(`✓ Published the release ${tag}`)
       }
-      released.push(`${pkg.name}@${pkg.version}`)
     }
   } finally {
     rmSync(tmp, { recursive: true, force: true })
+    // Also when a package fails, so the ones published before it are announced:
+    // released_json is the matrix of the announce job of publish.yml, one Slack message per package
+    const names = released.map((r) => `${r.name}@${r.version}`)
+    output({ released: names.join(' '), released_json: JSON.stringify(released) })
+    if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Published\n\n${names.map((r) => `- \`${r}\``).join('\n')}\n`)
   }
 
-  // released_md: a Slack mrkdwn list, with \n escaped for the JSON payload of publish.yml
-  output({ released: released.join(' '), count: String(released.length), released_md: released.map((r) => `• \`${r}\``).join('\\n') })
-  if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Released\n\n${released.map((r) => `- \`${r}\``).join('\n')}\n`)
   for (const g of groups.slice(1)) console.log(`::notice::Still pending, for the next run: ${g.packages.map((p) => `${p.name}@${p.version}`).join(', ')}`)
   console.log(`\n✓ ${dry ? 'Would release' : 'Released'} ${released.length} package(s)`)
 }

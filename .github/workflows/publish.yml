@@ -8,7 +8,7 @@ name: Publish
 # set them (the version bump of the release PR). That commit is checked out,
 # its packages built and tested, and `cl-release ship` then, dependencies
 # first, tags each version, publishes it to npm and publishes its GitHub
-# release with the notes of its commits. One Slack message lists the release.
+# release with the notes of its commits. One Slack message per released package.
 # A push with nothing to release ends after the plan.
 #
 # npm authentication is OIDC trusted publishing, no NPM_TOKEN: each package's
@@ -58,6 +58,8 @@ jobs:
     needs: plan
     if: needs.plan.outputs.commit != ''
     runs-on: ubuntu-latest
+    outputs:
+      released: ${{ steps.ship.outputs.released_json }}
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -98,21 +100,44 @@ jobs:
         id: ship
         run: pnpm exec cl-release ship
 
+  announce:
+    # One Slack message per released package, with the link to its release
+    name: Slack ${{ matrix.release.name }}
+    needs: publish
+    # Also after a failed publish job: the packages it published before failing
+    if: ${{ !cancelled() && needs.publish.outputs.released != '' && needs.publish.outputs.released != '[]' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        release: ${{ fromJSON(needs.publish.outputs.released) }}
+    steps:
       - name: Post to a Slack channel
-        if: steps.ship.outputs.released != ''
         uses: slackapi/slack-github-action@v4
         with:
           webhook-type: incoming-webhook
           payload: |
             {
-            "text": "New release of ${{ steps.ship.outputs.count }} package(s) of the Commerce Layer CLI.",
+            "text": "New release ${{ matrix.release.name }} v${{ matrix.release.version }}.",
             "blocks": [
               {
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "New release of <${{ github.event.repository.html_url }}|Commerce Layer CLI> packages, published to npm:\n${{ steps.ship.outputs.released_md }}\n*<${{ github.event.repository.html_url }}/releases|release notes>*"
+                "text": "New release for <${{ github.event.repository.html_url }}/tree/main/${{ matrix.release.path }}|`${{ matrix.release.name }}`>\n*<${{ github.event.repository.html_url }}/releases/tag/${{ matrix.release.tag }}|release notes>*"
               }
+              },
+              {
+              "type": "section",
+              "fields": [
+                {
+                "type": "mrkdwn",
+                "text": "*Package:*\n${{ matrix.release.name }}"
+                },
+                {
+                "type": "mrkdwn",
+                "text": "*Version:*\n${{ matrix.release.version }}"
+                }
+              ]
               },
               {
               "type": "context",
