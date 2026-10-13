@@ -14,3 +14,4 @@ plugins/orders/test/commands/orders/index.test.ts -linguist-generated
 plugins/orders/test/commands/orders/noc.test.ts -linguist-generated
 plugins/resources/src/util/resources/available.ts linguist-generated
 plugins/provisioning/src/util/resources/available.ts linguist-generated
+packages/core/src/resource-types.ts linguist-generated

@@ -7,5 +7,6 @@ describe('cleanups:types', () => {
     if (ctx.error) throw ctx.error
     expect(ctx.stdout).to.contain('Supported cleanup types')
     expect(ctx.stdout).to.contain('skus')
+    expect(ctx.stdout).to.contain('coupons')
   })
 })

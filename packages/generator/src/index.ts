@@ -1,5 +1,6 @@
 export { defineConfig, type GeneratorConfig, type OpenApiSchema } from './config'
 export type { Context } from './context'
+export { extractResourceTypes, type ResourceTypes, type ResourceTypesOptions, resourceTypes } from './presets/resource-types'
 export { type ResourceEntry, type ResourceListOptions, resourceList } from './presets/resources'
 export { type TriggerCommandsOptions, triggerCommands } from './presets/triggers'
 export { extractTriggers, type Snapshot, type Trigger } from './schema'

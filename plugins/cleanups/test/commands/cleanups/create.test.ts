@@ -36,6 +36,21 @@ describe('cleanups:create', () => {
     expect(ctx.stdout).to.contain('The cleanup of 3 skus has been started')
   })
 
+  it('starts a cleanup of coupons', async () => {
+    application()
+    api()
+      .get('/api/coupons')
+      .query((q) => q['filter[q][code_start]'] === 'OLD' && q['page[size]'] === '1' && !q.sort)
+      .reply(200, { ...list([resource('coupons', 'cpn1')]), meta: { record_count: 2, page_count: 2 } })
+    const scope = api()
+      .post('/api/cleanups', (body) => body.data.attributes.resource_type === 'coupons' && body.data.attributes.filters.code_start === 'OLD')
+      .reply(201, single(cleanup('cLn8', { status: 'pending', resource_type: 'coupons' })))
+    const ctx = await runCommand(['cleanups:create', ...AUTH, '-t', 'coupons', '-w', 'code_start=OLD', '--blind'])
+    if (ctx.error) throw ctx.error
+    expect(scope.isDone(), 'cleanup created').to.equal(true)
+    expect(ctx.stdout).to.contain('The cleanup of 2 coupons has been started')
+  })
+
   it('leaves the last chunk open-ended when the total is estimated', async () => {
     application()
     // Above 10,000 records the API estimates the count: 25,000 -> chunks of 10,000, 10,000 and the rest

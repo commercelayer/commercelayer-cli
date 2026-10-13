@@ -21,7 +21,9 @@
     "build": "tsup",
     "start": "tsx src/index.ts",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "test-local": "tsx test/spot.ts"
+    "test-local": "tsx test/spot.ts",
+    "generate": "cl-generate",
+    "generate-local": "cl-generate --local"
   },
   "keywords": [
     "ecommerce",
@@ -34,6 +36,7 @@
     "node": ">=22.13"
   },
   "devDependencies": {
+    "@commercelayer/cli-generator": "workspace:*",
     "@commercelayer/cli-test-utils": "workspace:*",
     "@oclif/core": "catalog:",
     "@types/chai": "catalog:",
