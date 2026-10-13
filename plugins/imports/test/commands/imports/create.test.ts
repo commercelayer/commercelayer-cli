@@ -52,6 +52,21 @@ describe('imports:create', () => {
       expect(ctx.stdout).to.contain('The import of 2 skus has been started')
     })
 
+  for (const type of ['price_lists', 'stock_locations']) {
+    test
+      .do(() => {
+        application()
+        api()
+          .post('/api/imports', (body) => body.data.attributes.resource_type === type)
+          .reply(201, single(importJob('iMp8', { status: 'pending', resource_type: type })))
+      })
+      .stdout()
+      .command(['imports:create', ...AUTH, '-t', type, '-i', jsonFile, '--blind'])
+      .it(`starts the import of ${type}`, (ctx) => {
+        expect(ctx.stdout).to.contain('has been started')
+      })
+  }
+
   test
     .do(() => {
       application()

@@ -39,6 +39,24 @@ describe('cleanups:create', () => {
       expect(ctx.stdout).to.contain('The cleanup of 3 skus has been started')
     })
 
+  test
+    .do(() => {
+      application()
+      api()
+        .get('/api/coupons')
+        .query((q) => q['filter[q][code_start]'] === 'OLD' && q['page[size]'] === '1' && !q.sort)
+        .reply(200, { ...list([resource('coupons', 'cpn1')]), meta: { record_count: 2, page_count: 2 } })
+      scope = api()
+        .post('/api/cleanups', (body) => body.data.attributes.resource_type === 'coupons' && body.data.attributes.filters.code_start === 'OLD')
+        .reply(201, single(cleanup('cLn8', { status: 'pending', resource_type: 'coupons' })))
+    })
+    .stdout()
+    .command(['cleanups:create', ...AUTH, '-t', 'coupons', '-w', 'code_start=OLD', '--blind'])
+    .it('starts a cleanup of coupons', (ctx) => {
+      expect(scope.isDone(), 'cleanup created').to.equal(true)
+      expect(ctx.stdout).to.contain('The cleanup of 2 coupons has been started')
+    })
+
   const bounds: Array<{ gt?: string; lteq?: string }> = []
   test
     .do(() => {
