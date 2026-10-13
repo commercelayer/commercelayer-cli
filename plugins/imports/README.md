@@ -40,9 +40,9 @@ List all the created imports or show details of a single import.
 USAGE
   $ commercelayer imports [ID] [-A | -l <value>] [-t
     addresses|bundles|coupons|customer_addresses|customer_payment_sources|customer_subscriptions|customers|gift_cards|li
-    ne_items|line_item_options|orders|price_tiers|prices|shipping_categories|sku_lists|sku_list_items|sku_options|skus|s
-    tock_items|stock_transfers|tags|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e]
-    [-w]
+    ne_item_options|line_items|orders|price_lists|price_tiers|prices|shipping_categories|sku_list_items|sku_lists|sku_op
+    tions|skus|stock_items|stock_locations|stock_transfers|tags|tax_categories] [-g <value> | ] [-s
+    in_progress|pending|completed|interrupted] [-e] [-w]
 
 ARGUMENTS
   [ID]  unique id of the import to be retrieved
@@ -55,10 +55,10 @@ FLAGS
   -s, --status=<option>  the import job status
                          <options: in_progress|pending|completed|interrupted>
   -t, --type=<option>    the type of resource imported
-                         <options:
-                         addresses|bundles|coupons|customer_addresses|customer_payment_sources|customer_subscriptions|cu
-                         stomers|gift_cards|line_items|line_item_options|orders|price_tiers|prices|shipping_categories|s
-                         ku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|tax_categories>
+                         <options: addresses|bundles|coupons|customer_addresses|customer_payment_sources|customer_subscr
+                         iptions|customers|gift_cards|line_item_options|line_items|orders|price_lists|price_tiers|prices
+                         |shipping_categories|sku_list_items|sku_lists|sku_options|skus|stock_items|stock_locations|stoc
+                         k_transfers|tags|tax_categories>
   -w, --warnings         show only import with warnings
 
 DESCRIPTION
@@ -192,9 +192,9 @@ List all the created imports.
 USAGE
   $ commercelayer imports:list [-A | -l <value>] [-t
     addresses|bundles|coupons|customer_addresses|customer_payment_sources|customer_subscriptions|customers|gift_cards|li
-    ne_items|line_item_options|orders|price_tiers|prices|shipping_categories|sku_lists|sku_list_items|sku_options|skus|s
-    tock_items|stock_transfers|tags|tax_categories] [-g <value> | ] [-s in_progress|pending|completed|interrupted] [-e]
-    [-w]
+    ne_item_options|line_items|orders|price_lists|price_tiers|prices|shipping_categories|sku_list_items|sku_lists|sku_op
+    tions|skus|stock_items|stock_locations|stock_transfers|tags|tax_categories] [-g <value> | ] [-s
+    in_progress|pending|completed|interrupted] [-e] [-w]
 
 FLAGS
   -A, --all              show all imports instead of first 25 only
@@ -204,10 +204,10 @@ FLAGS
   -s, --status=<option>  the import job status
                          <options: in_progress|pending|completed|interrupted>
   -t, --type=<option>    the type of resource imported
-                         <options:
-                         addresses|bundles|coupons|customer_addresses|customer_payment_sources|customer_subscriptions|cu
-                         stomers|gift_cards|line_items|line_item_options|orders|price_tiers|prices|shipping_categories|s
-                         ku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|tax_categories>
+                         <options: addresses|bundles|coupons|customer_addresses|customer_payment_sources|customer_subscr
+                         iptions|customers|gift_cards|line_item_options|line_items|orders|price_lists|price_tiers|prices
+                         |shipping_categories|sku_list_items|sku_lists|sku_options|skus|stock_items|stock_locations|stoc
+                         k_transfers|tags|tax_categories>
   -w, --warnings         show only import with warnings
 
 DESCRIPTION

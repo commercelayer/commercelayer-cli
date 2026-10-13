@@ -37,6 +37,18 @@ describe('imports:create', () => {
     expect(ctx.stdout).to.contain('The import of 2 skus has been started')
   })
 
+  for (const type of ['price_lists', 'stock_locations']) {
+    it(`starts the import of ${type}`, async () => {
+      application()
+      api()
+        .post('/api/imports', (body) => body.data.attributes.resource_type === type)
+        .reply(201, single(importJob('iMp8', { status: 'pending', resource_type: type })))
+      const ctx = await runCommand(['imports:create', ...AUTH, '-t', type, '-i', jsonFile, '--blind'])
+      if (ctx.error) throw ctx.error
+      expect(ctx.stdout).to.contain('has been started')
+    })
+  }
+
   it('starts the import of a CSV file, header excluded from the count', async () => {
     application()
     api()
