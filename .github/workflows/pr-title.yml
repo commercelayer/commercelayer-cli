@@ -1,0 +1,29 @@
+name: Pull request title
+
+# Merged, a pull request leaves a merge commit on main whose message is the
+# pull request title: it must be a Conventional Commit too, so the history of
+# main says what changed instead of "Merge pull request #… from <branch>"
+# (with the repository's merge commit message set to the pull request title).
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  title:
+    name: Pull request title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with: { node-version: 'lts/*', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile --filter @commercelayer/cli-monorepo
+      - name: Conventional Commit
+        # The title through the environment, never interpolated in the script
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          COMMITLINT_PR_TITLE: '1'
+        run: printf '%s\n' "$TITLE" | pnpm exec commitlint --verbose

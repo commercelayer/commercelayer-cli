@@ -40,6 +40,9 @@ export const buildNotes = async ({ pkg, version, tag, to, previous, date }: Note
     .package({ name: pkg.name, version })
     .tags({ prefix: `${pkg.dir}-v` })
     .commits({ path: pkg.path, ...(previous ? { from: previous } : {}), to })
+    // One block for the whole range: by default a tagged commit starts a new
+    // block, so a range ending on the release tag printed an empty one first
+    .writer({ generateOn: () => false })
     .context({
       version,
       date,
