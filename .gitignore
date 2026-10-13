@@ -21,3 +21,5 @@ temp/
 
 # pnpm release:try sandbox
 /.release-try/
+
+lib/
