@@ -1,3 +1,5 @@
+// Generated from the OpenAPI schema (gen.config.ts): the types the API accepts
+import { CLEANUP_RESOURCE_TYPES, EXPORT_RESOURCE_TYPES, IMPORT_RESOURCE_TYPES, LINK_RESOURCE_TYPES, TAG_RESOURCE_TYPES } from './resource-types'
 
 const JOB_STATUSES: readonly string[] = [
 	'in_progress',
@@ -7,110 +9,10 @@ const JOB_STATUSES: readonly string[] = [
 ] as const
 
 
-const IMPORT_RESOURCE_TYPES: readonly string[] = [
-	'addresses',
-	'bundles',
-	'coupons',
-	'customer_addresses',
-	'customer_payment_sources',
-	'customer_subscriptions',
-	'customers',
-	'gift_cards',
-	'line_items',
-	'line_item_options',
-	'orders',
-	'price_tiers',
-	'prices',
-	'shipping_categories',
-	'sku_lists',
-	'sku_list_items',
-	'sku_options',
-	'skus',
-	'stock_items',
-	'stock_transfers',
-	'tags',
-	'tax_categories'
-] as const
-
-
-const EXPORT_RESOURCE_TYPES: readonly string[] = [
-	'addresses',
-	'authorizations',
-	'bundles',
-	'captures',
-	'coupons',
-	'customer_addresses',
-	'customer_payment_sources',
-	'customer_subscriptions',
-	'customers',
-	'gift_cards',
-	'line_items',
-	'line_item_options',
-	'orders',
-	'payment_methods',
-	'price_tiers',
-	'prices',
-	'refunds',
-	'returns',
-	'shipments',
-	'shipping_categories',
-	'shipping_methods',
-	'sku_lists',
-	'sku_list_items',
-	'sku_options',
-	'skus',
-	'stock_items',
-	'stock_transfers',
-	'tags',
-	'tax_categories',
-	'transactions',
-	'voids'
-] as const
-
-
-const CLEANUP_RESOURCE_TYPES: readonly string[] = [
-	'bundles',
-	'gift_cards',
-	'prices',
-	'promotions',
-	'sku_lists',
-	'sku_options',
-	'skus',
-	'stock_items'
-] as const
-
-
-const TAG_RESOURCE_TYPES: readonly string[] = [
-	'addresses',
-	'bundles',
-	'customers',
-	'coupons',
-	'gift_cards',
-	'line_items',
-	'line_item_options',
-	'orders',
-	'returns',
-	'skus',
-	'sku_options',
-	'promotions',
-	'external_promotions',
-	'fixed_amount_promotions',
-	'fixed_price_promotions',
-	'free_gift_promotions',
-	'free_shipping_promotions',
-	'percentage_discount_promotions'
-] as const
-
-
-const LINK_RESOURCE_TYPES: readonly string[] = [
-	'orders',
-	'skus',
-	'sku_lists'
-] as const
-
-
 type ApiConfig = {
 	default_domain: string
+	/** Core API version used when none is given ('' would make the requests unversioned, /api/…) */
+	default_api_version: string
 	default_app_domain: string
 	default_stg_domain: string
 	token_expiration_mins: number
@@ -244,6 +146,7 @@ const RATE_LIMIT = {
 const config: Config = {
 	api: {	// CORE
 		default_domain: 'commercelayer.io',
+		default_api_version: '2026-05',
 		default_app_domain: 'commercelayer.app',
 		default_stg_domain: 'commercelayer.co',
 		token_expiration_mins: 60 * 4,	// 4 hours (14400 secs)

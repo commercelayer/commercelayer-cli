@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import * as Color from 'color'
+import Color from 'color'
 
 
 
@@ -120,6 +120,6 @@ export function getColor(color: StandardChalk): StandardChalk
 export function getColor(color: string | StandardChalk): string | StandardChalk | undefined {
   try {
     // eslint-disable-next-line new-cap
-    return isStandardChalk(color) ? color : new Color.default(color).hex()
+    return isStandardChalk(color) ? color : Color(color).hex()
   } catch { }
 }

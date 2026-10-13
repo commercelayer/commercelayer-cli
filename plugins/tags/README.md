@@ -45,7 +45,7 @@ USAGE
   $ commercelayer tags [ID] [-A | -l <value>]
 
 ARGUMENTS
-  ID  unique id of the tag to be retrieved
+  [ID]  unique id of the tag to be retrieved
 
 FLAGS
   -A, --all            show all tags instead of first 25 only

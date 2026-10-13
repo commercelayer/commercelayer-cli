@@ -29,3 +29,4 @@ Plugins call it through their `generate` / `generate-local` scripts.
 
 - `triggerCommands({ mode: 'per-resource' | 'single-resource', ... })`: one command and one spec per trigger attribute, plus the trigger list module, from `gen/templates/*.tpl` (used by `triggers` and `orders`).
 - `resourceList({ output, name, resources })`: the resource list module, from a list the plugin builds from its SDK (used by `resources` and `provisioning`).
+- `resourceTypes({ output })` with `extractResourceTypes`: the resource types of imports, exports and cleanups (the `resource_type` enums), tags (resources with a `tags` relationship) and links (types of a link's `item`), from the OpenAPI schema (used by `cli-core`, whose `clConfig` lists come from it).

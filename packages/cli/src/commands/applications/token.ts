@@ -1,8 +1,10 @@
 import { type AccessToken, type AccessTokenInfo, type AppKey, type CustomToken, clColor, clConfig, clOutput, clToken } from '@commercelayer/cli-core'
-import type { Config } from '@oclif/core/lib/interfaces/config'
+import type { Interfaces } from '@oclif/core'
 import Command, { Flags } from '../../base'
 import { ConfigParams, configFileExists, configParam, currentApplication, readConfigFile, readTokenFile, writeTokenFile } from '../../config'
 import { printCurrent } from './current'
+
+type Config = Interfaces.Config
 
 
 

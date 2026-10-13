@@ -4,6 +4,7 @@ import { join } from 'node:path'
 import { api, coreApi, useMockedApi } from '@commercelayer/cli-test-utils'
 import { expect } from 'chai'
 import {
+  apiVersion,
   baseURL,
   execMode,
   extractDomain,
@@ -16,6 +17,7 @@ import {
   request,
   requestRateLimitDelay,
 } from '../../src/api'
+import clConfig from '../../src/config'
 
 describe('api', () => {
   describe('baseURL', () => {
@@ -47,6 +49,42 @@ describe('api', () => {
     expect(execMode(undefined)).to.equal('test')
     expect(liveEnvironment('live')).to.equal(true)
     expect(liveEnvironment('test')).to.equal(false)
+  })
+
+  describe('apiVersion', () => {
+    let env: string | undefined
+    beforeEach(() => {
+      env = process.env.CL_CLI_API_VERSION
+      delete process.env.CL_CLI_API_VERSION
+    })
+    afterEach(() => {
+      if (env === undefined) delete process.env.CL_CLI_API_VERSION
+      else process.env.CL_CLI_API_VERSION = env
+    })
+
+    it('defaults to 2026-05', () => {
+      expect(apiVersion()).to.equal('2026-05')
+      expect(apiVersion({})).to.equal('2026-05')
+    })
+
+    it('takes the flag, then the environment', () => {
+      process.env.CL_CLI_API_VERSION = '2017-08'
+      expect(apiVersion()).to.equal('2017-08')
+      expect(apiVersion({ 'api-version': '2026-05' })).to.equal('2026-05')
+    })
+
+    it('falls back to the default version, as the domain does', () => {
+      const saved = clConfig.api.default_api_version
+      try {
+        clConfig.api.default_api_version = '2025-01'
+        expect(apiVersion()).to.equal('2025-01')
+        process.env.CL_CLI_API_VERSION = '2017-08'
+        expect(apiVersion()).to.equal('2017-08')
+        expect(apiVersion({ 'api-version': '2026-05' })).to.equal('2026-05')
+      } finally {
+        clConfig.api.default_api_version = saved
+      }
+    })
   })
 
   it('tells estimated list counts', () => {

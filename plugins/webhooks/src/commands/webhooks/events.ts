@@ -1,9 +1,11 @@
 import { clApi, clColor, clConfig, clOutput, clUtil } from '@commercelayer/cli-core'
 import type { EventCallback, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table, { type HorizontalAlignment, type VerticalAlignment } from 'cli-table3'
 import { BaseIdCommand, cliux, Flags } from '../../base'
 import { responseCodeColor } from './event'
+
+type CommandError = Interfaces.CommandError
 
 
 const MAX_EVENTS = 1000

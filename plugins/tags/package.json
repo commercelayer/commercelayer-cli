@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-tags",
   "description": "Commerce Layer CLI Tags plugin",
-  "version": "2.2.6",
+  "version": "3.0.0-beta.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/tags",
   "repository": {
@@ -11,7 +11,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.13"
   },
   "files": [
     "/bin/run.*",
@@ -51,6 +51,7 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test:integration": "mocha --forbid-only \"test/integration/**/*.it.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md"
   },
   "devDependencies": {

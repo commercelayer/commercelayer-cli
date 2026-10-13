@@ -46,7 +46,8 @@ FLAGS
   -B, --bundle=<value>...    a bundle code
   -O, --order=<value>        an order id
   -S, --sku=<value>...       an SKU code
-  -a, --accessToken=<value>  (required) custom access token to use instead of the one used for login
+  -a, --accessToken=<value>  (required) [env: CL_CLI_ACCESS_TOKEN] custom access token to use instead of the one used
+                             for login
   -c, --coupon=<value>       a promo code
   -e, --email=<value>        a customer email
   -m, --market=<value>       a market number
@@ -77,7 +78,8 @@ ARGUMENTS
   ID  unique id of the order
 
 FLAGS
-  -a, --accessToken=<value>  (required) custom access token to use instead of the one used for login
+  -a, --accessToken=<value>  (required) [env: CL_CLI_ACCESS_TOKEN] custom access token to use instead of the one used
+                             for login
       --open                 open checkout URL in default browser
 
 DESCRIPTION

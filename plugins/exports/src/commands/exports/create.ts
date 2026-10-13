@@ -1,14 +1,15 @@
-
 import { clColor, clToken } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
 import type { ExportCreate, ResourceTypeLock } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import open from 'open'
 import { computeDelay, ExportCommand, Flags, notify } from '../../base'
 
 /** How often, and how long, to wait for the API to count the records of a new export (ms) */
 const COUNT_POLL = 1000
 const COUNT_TIMEOUT = 60_000
+
+type CommandError = Interfaces.CommandError
 
 
 

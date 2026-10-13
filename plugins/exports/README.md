@@ -39,13 +39,22 @@ List all the created exports or show details of a single export.
 ```sh-session
 USAGE
   $ commercelayer exports [ID] [-A | -l <value>] [-t
-    addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_subscriptions
-    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|returns|shipmen
-    ts|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|t
-    ax_categories|transactions|voids] [-s in_progress|pending|completed|interrupted]
+    addresses|adjustments|adyen_payments|applications|attachments|axerve_payments|braintree_payments|bundles|business_ru
+    les|carrier_accounts|checkout_com_payments|coupons|customer_addresses|customer_groups|customer_password_resets|custo
+    mer_payment_sources|customer_subscriptions|customers|delivery_lead_times|discount_engine_items|discount_engines|even
+    t_callbacks|event_stores|events|external_payments|geocoders|gift_cards|in_stock_subscriptions|inventory_models|inven
+    tory_return_locations|inventory_stock_locations|klarna_payments|line_item_options|line_items|links|markets|merchants
+    |notifications|order_factories|order_subscription_items|order_subscriptions|order_validation_rules|orders|packages|p
+    arcel_line_items|parcels|payment_gateways|payment_links|payment_methods|payment_options|payment_sessions|payment_set
+    tings|payment_transactions|payment_wallets|paypal_payments|pickups|price_list_schedulers|price_lists|price_tiers|pri
+    ces|promotion_rules|promotions|reserved_stocks|resource_errors|return_line_items|returns|satispay_payments|shipments
+    |shipping_categories|shipping_method_tiers|shipping_methods|shipping_zones|sku_list_items|sku_lists|sku_options|skus
+    |stock_items|stock_line_items|stock_locations|stock_reservations|stock_transfers|stores|stripe_payments|subscription
+    _models|tags|tax_calculators|tax_categories|tax_rules|transactions|webhooks|wire_transfers] [-s
+    in_progress|pending|completed|interrupted]
 
 ARGUMENTS
-  ID  unique id of the export to be retrieved
+  [ID]  unique id of the export to be retrieved
 
 FLAGS
   -A, --all
@@ -60,10 +69,18 @@ FLAGS
 
   -t, --type=<option>
       the type of resource exported
-      <options: addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_sub
-      scriptions|customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|retur
-      ns|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transf
-      ers|tags|tax_categories|transactions|voids>
+      <options: addresses|adjustments|adyen_payments|applications|attachments|axerve_payments|braintree_payments|bundles|b
+      usiness_rules|carrier_accounts|checkout_com_payments|coupons|customer_addresses|customer_groups|customer_password_re
+      sets|customer_payment_sources|customer_subscriptions|customers|delivery_lead_times|discount_engine_items|discount_en
+      gines|event_callbacks|event_stores|events|external_payments|geocoders|gift_cards|in_stock_subscriptions|inventory_mo
+      dels|inventory_return_locations|inventory_stock_locations|klarna_payments|line_item_options|line_items|links|markets
+      |merchants|notifications|order_factories|order_subscription_items|order_subscriptions|order_validation_rules|orders|
+      packages|parcel_line_items|parcels|payment_gateways|payment_links|payment_methods|payment_options|payment_sessions|p
+      ayment_settings|payment_transactions|payment_wallets|paypal_payments|pickups|price_list_schedulers|price_lists|price
+      _tiers|prices|promotion_rules|promotions|reserved_stocks|resource_errors|return_line_items|returns|satispay_payments
+      |shipments|shipping_categories|shipping_method_tiers|shipping_methods|shipping_zones|sku_list_items|sku_lists|sku_op
+      tions|skus|stock_items|stock_line_items|stock_locations|stock_reservations|stock_transfers|stores|stripe_payments|su
+      bscription_models|tags|tax_calculators|tax_categories|tax_rules|transactions|webhooks|wire_transfers>
 
 DESCRIPTION
   list all the created exports or show details of a single export
@@ -197,10 +214,19 @@ List all the created exports.
 ```sh-session
 USAGE
   $ commercelayer exports:list [-A | -l <value>] [-t
-    addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_subscriptions
-    |customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|returns|shipmen
-    ts|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transfers|tags|t
-    ax_categories|transactions|voids] [-s in_progress|pending|completed|interrupted]
+    addresses|adjustments|adyen_payments|applications|attachments|axerve_payments|braintree_payments|bundles|business_ru
+    les|carrier_accounts|checkout_com_payments|coupons|customer_addresses|customer_groups|customer_password_resets|custo
+    mer_payment_sources|customer_subscriptions|customers|delivery_lead_times|discount_engine_items|discount_engines|even
+    t_callbacks|event_stores|events|external_payments|geocoders|gift_cards|in_stock_subscriptions|inventory_models|inven
+    tory_return_locations|inventory_stock_locations|klarna_payments|line_item_options|line_items|links|markets|merchants
+    |notifications|order_factories|order_subscription_items|order_subscriptions|order_validation_rules|orders|packages|p
+    arcel_line_items|parcels|payment_gateways|payment_links|payment_methods|payment_options|payment_sessions|payment_set
+    tings|payment_transactions|payment_wallets|paypal_payments|pickups|price_list_schedulers|price_lists|price_tiers|pri
+    ces|promotion_rules|promotions|reserved_stocks|resource_errors|return_line_items|returns|satispay_payments|shipments
+    |shipping_categories|shipping_method_tiers|shipping_methods|shipping_zones|sku_list_items|sku_lists|sku_options|skus
+    |stock_items|stock_line_items|stock_locations|stock_reservations|stock_transfers|stores|stripe_payments|subscription
+    _models|tags|tax_calculators|tax_categories|tax_rules|transactions|webhooks|wire_transfers] [-s
+    in_progress|pending|completed|interrupted]
 
 FLAGS
   -A, --all
@@ -215,10 +241,18 @@ FLAGS
 
   -t, --type=<option>
       the type of resource exported
-      <options: addresses|authorizations|bundles|captures|coupons|customer_addresses|customer_payment_sources|customer_sub
-      scriptions|customers|gift_cards|line_items|line_item_options|orders|payment_methods|price_tiers|prices|refunds|retur
-      ns|shipments|shipping_categories|shipping_methods|sku_lists|sku_list_items|sku_options|skus|stock_items|stock_transf
-      ers|tags|tax_categories|transactions|voids>
+      <options: addresses|adjustments|adyen_payments|applications|attachments|axerve_payments|braintree_payments|bundles|b
+      usiness_rules|carrier_accounts|checkout_com_payments|coupons|customer_addresses|customer_groups|customer_password_re
+      sets|customer_payment_sources|customer_subscriptions|customers|delivery_lead_times|discount_engine_items|discount_en
+      gines|event_callbacks|event_stores|events|external_payments|geocoders|gift_cards|in_stock_subscriptions|inventory_mo
+      dels|inventory_return_locations|inventory_stock_locations|klarna_payments|line_item_options|line_items|links|markets
+      |merchants|notifications|order_factories|order_subscription_items|order_subscriptions|order_validation_rules|orders|
+      packages|parcel_line_items|parcels|payment_gateways|payment_links|payment_methods|payment_options|payment_sessions|p
+      ayment_settings|payment_transactions|payment_wallets|paypal_payments|pickups|price_list_schedulers|price_lists|price
+      _tiers|prices|promotion_rules|promotions|reserved_stocks|resource_errors|return_line_items|returns|satispay_payments
+      |shipments|shipping_categories|shipping_method_tiers|shipping_methods|shipping_zones|sku_list_items|sku_lists|sku_op
+      tions|skus|stock_items|stock_line_items|stock_locations|stock_reservations|stock_transfers|stores|stripe_payments|su
+      bscription_models|tags|tax_calculators|tax_categories|tax_rules|transactions|webhooks|wire_transfers>
 
 DESCRIPTION
   list all the created exports

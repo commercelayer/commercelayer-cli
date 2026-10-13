@@ -1,4 +1,4 @@
-import type { QueryParams } from "@commercelayer/provisioning-sdk";
+import type { QueryParams } from "../sdk";
 import { getFullUrl } from ".";
 import { getHeaders, getMethod, type RequestData } from "./request";
 

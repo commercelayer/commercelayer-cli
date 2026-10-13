@@ -1,12 +1,12 @@
 import { clApi, clColor } from "@commercelayer/cli-core";
-import type {
-	CommerceLayerProvisioningClient,
-	QueryParamsRetrieve,
-} from "@commercelayer/provisioning-sdk";
 import Command, {
 	Flags /* , FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS */,
 } from "../../base";
 import { addRequestReader, isRequestInterrupted } from "../../lang";
+import type {
+	CommerceLayerProvisioningClient,
+	QueryParamsRetrieve,
+} from "../../sdk";
 
 // import { mergeCommandParams } from '../../commands'
 

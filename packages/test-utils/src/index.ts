@@ -35,9 +35,9 @@ export const useMockedApi = (): void => {
 const API_VERSION_SEGMENT = /^\/api\/\d{4}-\d{2}\//
 
 /**
- * A mock of the API. The requests of SDK 8 carry the Core API version in
- * their path (/api/2026-05/orders): the mocks are written for /api/orders and
- * match whatever version the CLI uses (versionedApi checks the version).
+ * A mock of the API. The requests carry the Core API version in their path
+ * (/api/2026-05/orders): the mocks are written for /api/orders and match
+ * whatever version the CLI uses (versionedApi checks the version).
  */
 export const api = (base: string = coreApi()): nock.Scope => nock(base).filteringPath((path) => path.replace(API_VERSION_SEGMENT, '/api/'))
 
@@ -78,3 +78,23 @@ export const apiError = (status: number, title: string, detail = title) => ({
 })
 
 export const notFound = () => apiError(404, 'Record not found', 'The requested resource was not found')
+
+/** Integration suites against the real API: see ./live */
+export {
+  describeLive,
+  jsonOutput,
+  LIVE,
+  LIVE_ORG,
+  LIVE_PREFIX,
+  LIVE_RUN,
+  LIVE_SALES_CHANNEL,
+  liveApi,
+  liveAuth,
+  liveCreate,
+  liveDelete,
+  liveFirst,
+  liveName,
+  liveRequest,
+  liveSalesChannelToken,
+  liveToken,
+} from './live'

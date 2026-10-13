@@ -11,7 +11,7 @@
  *   - no per-package lint / check / posttest / release scripts (run from the root)
  *   - scripts only run (`pnpm <name>`) scripts the package has
  * Every public package:
- *   - license, author, bugs, publishConfig, engines (Node >= 20)
+ *   - license, author, bugs, publishConfig, engines (Node >= 22.13)
  *   - repository points at this monorepo with its directory, homepage at its folder
  *   - a LICENSE file
  * Every public oclif package (CLI and plugins):
@@ -21,23 +21,20 @@
  * Usage:  node scripts/check-packages.mjs
  */
 import { existsSync, readFileSync } from 'node:fs'
-import { join } from 'node:path'
-import { listPackages } from './lib/workspace.mjs'
+import { basename, join } from 'node:path'
+import { getPackagesSync } from '@manypkg/get-packages'
 
 const REPO = 'https://github.com/commercelayer/commercelayer-cli'
 const AUTHOR = 'Pierluigi Viti <pierluigi@commercelayer.io>'
+// require(esm) without a flag (22.12), and the floor of inquirer 14 (22.13)
+const NODE = '>=22.13'
 const OCLIF_FILES = ['/bin/run.*', '/lib', '/npm-shrinkwrap.json', '/oclif.manifest.json']
 
 /** pnpm commands that scripts may run, as opposed to the package's own scripts */
 const PNPM_COMMANDS = new Set(['add', 'dlx', 'exec', 'install', 'pack', 'publish'])
 
 /** Dependencies deliberately not on the catalog version: `<package dir>:<dependency>` */
-const EXCEPTIONS = {
-  'core:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
-  'ux:typescript': "tsup's declaration build sets baseUrl, rejected by TypeScript 6",
-  'metrics:@oclif/test': 'already on @oclif/test 4, the others move with the oclif upgrade',
-  'resources:@commercelayer/sdk': 'on SDK 8 for the 2026-05 resources, the others move with the oclif 5 major',
-}
+const EXCEPTIONS = {}
 
 // `catalog:` entries of pnpm-workspace.yaml (flat `  name: version` lines)
 const catalog = new Set()
@@ -51,7 +48,13 @@ for (const line of readFileSync('pnpm-workspace.yaml', 'utf8').split('\n')) {
   }
 }
 
-const packages = listPackages()
+const packages = getPackagesSync(process.cwd()).packages.map(({ relativeDir: path, packageJson: manifest }) => ({
+  dir: basename(path),
+  path,
+  name: manifest.name,
+  private: manifest.private === true,
+  manifest,
+}))
 const workspace = new Set(packages.map((p) => p.name))
 const problems = []
 const check = (pkg, ok, message) => {
@@ -83,7 +86,7 @@ for (const pkg of packages) {
   check(pkg, m.author === AUTHOR, `author must be '${AUTHOR}'`)
   check(pkg, m.bugs === `${REPO}/issues`, `bugs must be ${REPO}/issues`)
   check(pkg, m.publishConfig?.access === 'public', 'publishConfig.access must be public')
-  check(pkg, /^>=\s*2\d/.test(m.engines?.node ?? ''), `engines.node must be >=20 or stricter (is ${m.engines?.node})`)
+  check(pkg, m.engines?.node === NODE, `engines.node must be ${NODE} (is ${m.engines?.node})`)
   check(
     pkg,
     m.repository?.url === `${REPO}.git` && m.repository?.directory === pkg.path,

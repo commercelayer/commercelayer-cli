@@ -15,6 +15,8 @@ interface AppKey {
 interface AppAuth {
 	slug?: string
 	domain?: string
+	/** Core API version of the requests (see clApi.apiVersion), unversioned when missing */
+	apiVersion?: string
 	clientId: string
 	clientSecret?: string
 	scope?: AuthScope

@@ -27,7 +27,7 @@ commercelayer [COMMAND] (--help | -h) for detailed information about plugin comm
 * [`commercelayer provisioning:create RESOURCE`](#commercelayer-provisioningcreate-resource)
 * [`commercelayer provisioning:delete RESOURCE [ID]`](#commercelayer-provisioningdelete-resource-id)
 * [`commercelayer provisioning:exec RESOURCE [ID] [ACTION]`](#commercelayer-provisioningexec-resource-id-action)
-* [`commercelayer provisioning:fetch RESOURCE PATH [ID]`](#commercelayer-provisioningfetch-resource-path-id)
+* [`commercelayer provisioning:fetch PATH [ID]`](#commercelayer-provisioningfetch-path-id)
 * [`commercelayer provisioning:get RESOURCE [ID]`](#commercelayer-provisioningget-resource-id)
 * [`commercelayer provisioning:list RESOURCE`](#commercelayer-provisioninglist-resource)
 * [`commercelayer provisioning:resources`](#commercelayer-provisioningresources)
@@ -97,7 +97,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource to delete
+  [ID]      id of the resource to delete
 
 FLAGS
   -H, --headers       show response headers
@@ -138,8 +138,8 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource on which to execute the action
-  ACTION    action to execute on resource
+  [ID]      id of the resource on which to execute the action
+  [ACTION]  action to execute on resource
 
 FLAGS
   -a, --attribute=<value>...  define a resource attribute
@@ -160,20 +160,18 @@ EXAMPLES
 
 _See code: [src/commands/provisioning/exec.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/provisioning/src/commands/provisioning/exec.ts)_
 
-### `commercelayer provisioning:fetch RESOURCE PATH [ID]`
+### `commercelayer provisioning:fetch PATH [ID]`
 
 Retrieve a resource or list a set of resources.
 
 ```sh-session
 USAGE
-  $ commercelayer provisioning:fetch RESOURCE... PATH... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node
-    [--doc | -R]] [--curl ] [--node ] [-H ] [-Y ] [-e <value>... | ] [-w <value>...] [-p <value>] [-n <value>] [-s
-    <value>...]
+  $ commercelayer provisioning:fetch PATH... [ID...] [-i <value>...] [-f <value>...] [-u -j] [-l curl|node [--doc | -R]]
+    [--curl ] [--node ] [-H ] [-Y ] [-e <value>... | ] [-w <value>...] [-p <value>] [-n <value>] [-s <value>...]
 
 ARGUMENTS
-  RESOURCE...  the resource type
-  PATH...      path (or URL) of the resource(s) to fetch
-  ID...        resource id
+  PATH...  path (or URL) of the resource(s) to fetch
+  [ID...]  resource id
 
 FLAGS
   -H, --headers             show response headers
@@ -228,7 +226,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE...  the resource type
-  ID...        id of the resource to retrieve
+  [ID...]      id of the resource to retrieve
 
 FLAGS
   -H, --headers             show response headers
@@ -360,7 +358,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource to retrieve
+  [ID]      id of the resource to retrieve
 
 FLAGS
   -H, --headers             show response headers
@@ -411,7 +409,7 @@ USAGE
 
 ARGUMENTS
   RESOURCE  the resource type
-  ID        id of the resource to update
+  [ID]      id of the resource to update
 
 FLAGS
   -D, --data=<value>                 the data file to use as request body

@@ -17,13 +17,17 @@ import {
 	clUpdate,
 	clUtil,
 } from "@commercelayer/cli-core"
+import type { Interfaces } from "@oclif/core"
+import { Args, Command, ux as cliux, Flags } from "@oclif/core"
 import commercelayer, {
+	API_VERSION,
 	type CommerceLayerProvisioningClient,
 	CommerceLayerProvisioningStatic,
 	type QueryParams,
-} from "@commercelayer/provisioning-sdk"
-import { Args, Command, ux as cliux, Flags } from "@oclif/core"
-import type { CommandError } from "@oclif/core/lib/interfaces"
+} from "./sdk"
+
+type CommandError = Interfaces.CommandError
+
 import { exportCsv } from "./csv"
 import {
 	availableLanguages,
@@ -35,6 +39,7 @@ import {
 } from "./lang"
 import { exportOutput, formatOutput } from "./output"
 import { findResource, type Resource } from "./util/resources"
+
 
 // import { aliasExists, checkAlias, type CommandParams, loadCommandData, type ResourceOperation, saveCommandData } from './commands'
 // import type { ResourceId, ResourceType } from '@commercelayer/provisioning-sdk/lib/cjs/resource'
@@ -138,7 +143,7 @@ export abstract class BaseCommand extends Command {
 		const accessToken = flags.accessToken
 		const userAgent = clUtil.userAgent(this.config)
 
-		const cl = commercelayer({ domain, accessToken, userAgent, ...options })
+		const cl = commercelayer({ apiVersion: API_VERSION, domain, accessToken, userAgent, ...options })
 
 		if ("cl" in this) this.cl = cl
 

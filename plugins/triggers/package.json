@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-triggers",
   "description": "Commerce Layer CLI Triggers plugin",
-  "version": "4.20.0",
+  "version": "5.0.0-beta.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/triggers",
   "repository": {
@@ -11,7 +11,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.13"
   },
   "files": [
     "/bin/run.*",
@@ -50,6 +50,7 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test:integration": "mocha --forbid-only \"test/integration/**/*.it.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "generate": "cl-generate",
     "generate-local": "cl-generate --local"
@@ -62,7 +63,6 @@
     "@oclif/plugin-help": "catalog:",
     "@oclif/test": "catalog:",
     "@types/chai": "catalog:",
-    "@types/inquirer": "catalog:",
     "@types/mocha": "catalog:",
     "@types/node": "catalog:",
     "chai": "catalog:",

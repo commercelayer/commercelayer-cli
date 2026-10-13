@@ -45,7 +45,7 @@ USAGE
     [--sort <value>...] [-L] [-H]
 
 ARGUMENTS
-  ID  unique id of the link to get a single link
+  [ID]  unique id of the link to get a single link
 
 FLAGS
   -A, --all                 show all links instead of first 25 only
@@ -87,7 +87,7 @@ Create a new resource link.
 
 ```sh-session
 USAGE
-  $ commercelayer links:create [-t orders|skus|sku_lists] [-i <value>] [-I <value>] [-S <value>...] [-n <value>]
+  $ commercelayer links:create [-t orders|sku_lists|skus] [-i <value>] [-I <value>] [-S <value>...] [-n <value>]
     [-s <value>] [-e <value>] [-D <value>] [--open]
 
 FLAGS
@@ -99,7 +99,7 @@ FLAGS
   -n, --name=<value>           the name associated to the the link
   -s, --starts=<value>         the link's start date and time
   -t, --item_type=<option>     the type of the resource for which the link is created
-                               <options: orders|skus|sku_lists>
+                               <options: orders|sku_lists|skus>
       --open                   open link in default browser
 
 DESCRIPTION
@@ -312,7 +312,7 @@ Create a new resource link.
 
 ```sh-session
 USAGE
-  $ commercelayer links:update ID [-t orders|skus|sku_lists] [-i <value>] [-I <value>] [-S <value>...] [-n
+  $ commercelayer links:update ID [-t orders|sku_lists|skus] [-i <value>] [-I <value>] [-S <value>...] [-n
     <value>] [-s <value>] [-e <value>] [-D <value>] [--open]
 
 ARGUMENTS
@@ -327,7 +327,7 @@ FLAGS
   -n, --name=<value>           the name associated to the the link
   -s, --starts=<value>         the link's start date and time
   -t, --item_type=<option>     the type of the resource for which the link is created
-                               <options: orders|skus|sku_lists>
+                               <options: orders|sku_lists|skus>
       --open                   open link in default browser
 
 DESCRIPTION

@@ -9,7 +9,7 @@ import { triggers } from '../../triggers/checkout_com_payments'
 
 const promptAction = async (id: string): Promise<string> => {
   const answers = await inquirer.prompt([{
-    type: 'list',
+    type: 'select',
     name: 'trigger',
     message: `Select an action to execute on checkout com payment ${clColor.api.id(id)}:`,
     choices: Object.keys(triggers).sort().map(a => {

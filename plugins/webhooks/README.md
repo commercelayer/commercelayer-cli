@@ -48,7 +48,7 @@ USAGE
   $ commercelayer webhooks [ID] [-c open|closed] [-t <value>] [-H] [-e]
 
 ARGUMENTS
-  ID  unique id of the webhook to get a single webhook
+  [ID]  unique id of the webhook to get a single webhook
 
 FLAGS
   -H, --hide-empty        hide empty attributes

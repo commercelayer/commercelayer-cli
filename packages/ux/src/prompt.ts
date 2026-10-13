@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 
 import { Errors } from '@oclif/core'
+import ansiEscapes from 'ansi-escapes'
 import chalk from 'chalk'
 import { config } from './config'
 
@@ -78,7 +79,6 @@ async function single(options: IPromptConfig): Promise<string> {
 }
 
 function replacePrompt(prompt: string): void {
-  const ansiEscapes = require('ansi-escapes')
   process.stderr.write(
     ansiEscapes.cursorHide +
     ansiEscapes.cursorUp(1) +

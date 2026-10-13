@@ -1,14 +1,16 @@
 import { type ApiMode, clApi, clColor, clToken, clUpdate, clUtil, type Method } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { CommerceLayerClient, ListResponse, QueryParamsList, Resource, ResourceId } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, ListResponse, QueryParamsList, Resource, ResourceId } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { Command, Flags } from '@oclif/core'
-import type { CLIError } from '@oclif/core/lib/errors'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
+import { Command, type Errors, Flags } from '@oclif/core'
 import { isRemotePath, pathJoin } from './common'
 import config from './config'
 import { type BusinessModel, readModelData } from './data'
 import { loadSchema } from './schema'
+
+type CLIError = InstanceType<typeof Errors.CLIError>
+type CommandError = Interfaces.CommandError
 
 
 const pkg: clUpdate.Package = require('../package.json')
@@ -80,7 +82,7 @@ export default abstract class extends Command {
     const accessToken: string = flags.accessToken
     const userAgent = clUtil.userAgent(this.config)
 
-    this.cl = commercelayer({ organization, domain, accessToken, userAgent })
+    this.cl = commercelayer({ apiVersion: clApi.apiVersion(flags) as ApiVersion, organization, domain, accessToken, userAgent })
 
     this.environment = clToken.getTokenEnvironment(accessToken)
 

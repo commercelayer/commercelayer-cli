@@ -1,8 +1,10 @@
 import { URL } from 'node:url'
 import { clColor } from '@commercelayer/cli-core'
 import type { WebhookUpdate } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import { BaseIdCommand, Flags } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 export default class WebhooksUpdate extends BaseIdCommand {

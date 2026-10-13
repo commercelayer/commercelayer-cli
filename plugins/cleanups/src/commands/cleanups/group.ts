@@ -1,8 +1,10 @@
 import { clColor, clConfig, clOutput } from '@commercelayer/cli-core'
 import type { Cleanup, QueryPageSize, QueryParamsList } from '@commercelayer/sdk'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
 import Table, { type HorizontalAlignment } from 'cli-table3'
 import Command, { Args, cliux } from '../../base'
+
+type CommandError = Interfaces.CommandError
 
 
 

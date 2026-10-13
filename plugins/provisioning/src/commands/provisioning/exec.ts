@@ -1,6 +1,6 @@
 import { clColor } from "@commercelayer/cli-core";
-import type { CommerceLayerProvisioningClient } from "@commercelayer/provisioning-sdk";
 import Command, { Args, BaseCommand, Flags } from "../../base";
+import type { CommerceLayerProvisioningClient } from "../../sdk";
 
 export default class ProvisioningExec extends BaseCommand {
 	static description = "execute an action on a resource";

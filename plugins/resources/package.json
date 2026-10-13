@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli-plugin-resources",
   "description": "Commerce Layer CLI Resources plugin",
-  "version": "6.20.0",
+  "version": "7.0.0-beta.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/plugins/resources",
   "repository": {
@@ -11,7 +11,7 @@
   },
   "bugs": "https://github.com/commercelayer/commercelayer-cli/issues",
   "engines": {
-    "node": ">=20.18.1"
+    "node": ">=22.13"
   },
   "files": [
     "/bin/run.*",
@@ -53,6 +53,7 @@
     "prepack": "pnpm build && oclif manifest && pnpm readme",
     "postpack": "rm -f oclif.manifest.json",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "test:integration": "mocha --forbid-only \"test/integration/**/*.it.ts\"",
     "readme": "cl-cli-dev readme --plugin --bin=commercelayer && git add README.md",
     "generate": "cl-generate",
     "generate-local": "cl-generate --local"
@@ -65,7 +66,6 @@
     "@oclif/plugin-help": "catalog:",
     "@oclif/test": "catalog:",
     "@types/chai": "catalog:",
-    "@types/inquirer": "catalog:",
     "@types/mocha": "catalog:",
     "@types/node": "catalog:",
     "@types/node-notifier": "catalog:",
@@ -80,7 +80,7 @@
   "dependencies": {
     "@commercelayer/cli-core": "workspace:^",
     "@commercelayer/cli-ux": "workspace:^",
-    "@commercelayer/sdk": "^8.0.0",
+    "@commercelayer/sdk": "catalog:",
     "@oclif/core": "catalog:",
     "inquirer": "catalog:",
     "json-2-csv": "catalog:",

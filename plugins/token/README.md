@@ -99,7 +99,7 @@ FLAGS
   -a, --assertion=<value>     use jwt assertion
   -e, --email=<value>         customer email
   -i, --clientId=<value>      (required) application client_id
-  -o, --organization=<value>  the slug of your organization
+  -o, --organization=<value>  [env: CL_CLI_ORGANIZATION] the slug of your organization
   -p, --password=<value>      customer secret password
   -s, --clientSecret=<value>  application client_secret
       --info                  show access token info
@@ -131,7 +131,7 @@ ARGUMENTS
 FLAGS
   -S, --scope=<value>...      access token scope
   -i, --clientId=<value>      (required) application client_id
-  -o, --organization=<value>  the slug of your organization
+  -o, --organization=<value>  [env: CL_CLI_ORGANIZATION] the slug of your organization
   -s, --clientSecret=<value>  application client_secret
 
 DESCRIPTION

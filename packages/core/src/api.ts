@@ -25,6 +25,17 @@ const extractDomain = (baseUrl: string): string | undefined => {
 }
 
 
+/**
+ * Core API version of the requests, as the domain is for their URL: the
+ * --api-version flag (saved with the application at login, or set by
+ * CL_CLI_API_VERSION), otherwise the default version (config.api.default_api_version).
+ * Undefined means unversioned requests (/api/…).
+ */
+const apiVersion = (flags?: Record<string, any>): string | undefined => {
+	return flags?.['api-version'] || process.env.CL_CLI_API_VERSION || config.api.default_api_version || undefined
+}
+
+
 /** Decode API execution mode */
 const execMode = (liveFlag: string | boolean | undefined): ApiMode => {
 	return ((liveFlag === true) || (liveFlag === 'live')) ? 'live' : 'test'
@@ -54,7 +65,7 @@ const isRecordCountEstimated = (meta?: { recordCount?: number; recordCountEstima
 }
 
 
-export { baseURL, execMode, extractDomain, humanizeResource, isRecordCountEstimated, RECORD_COUNT_EXACT_MAX }
+export { apiVersion, baseURL, execMode, extractDomain, humanizeResource, isRecordCountEstimated, RECORD_COUNT_EXACT_MAX }
 
 
 const CACHEABLE_RESOURCES = [

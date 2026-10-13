@@ -38,11 +38,11 @@ List all the created cleanups or show details of a single cleanup.
 ```sh-session
 USAGE
   $ commercelayer cleanups [ID] [-A | -l <value>] [-t
-    bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items] [-s
+    bundles|coupons|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items] [-s
     in_progress|pending|completed|interrupted]
 
 ARGUMENTS
-  ID  unique id of the cleanup to be retrieved
+  [ID]  unique id of the cleanup to be retrieved
 
 FLAGS
   -A, --all              show all cleanups instead of first 25 only
@@ -50,7 +50,7 @@ FLAGS
   -s, --status=<option>  the cleanup job status
                          <options: in_progress|pending|completed|interrupted>
   -t, --type=<option>    the type of resource cleaned
-                         <options: bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items>
+                         <options: bundles|coupons|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items>
 
 DESCRIPTION
   list all the created cleanups or show details of a single cleanup
@@ -64,13 +64,13 @@ Create a new cleanup.
 
 ```sh-session
 USAGE
-  $ commercelayer cleanups:create -t bundles|gift_cards|prices|promotions|... [-w <value>...] [-b | -q | ]
+  $ commercelayer cleanups:create -t bundles|coupons|gift_cards|prices|... [-w <value>...] [-b | -q | ]
 
 FLAGS
-  -b, --blind                                          execute in blind mode without showing the progress monitor
-  -q, --quiet                                          execute command without showing warning messages
-  -t, --type=bundles|gift_cards|prices|promotions|...  (required) the type of resource to clean up
-  -w, --where=<value>...                               comma separated list of query filters
+  -b, --blind                                       execute in blind mode without showing the progress monitor
+  -q, --quiet                                       execute command without showing warning messages
+  -t, --type=bundles|coupons|gift_cards|prices|...  (required) the type of resource to clean up
+  -w, --where=<value>...                            comma separated list of query filters
 
 DESCRIPTION
   create a new cleanup
@@ -149,7 +149,7 @@ List all the created cleanups.
 ```sh-session
 USAGE
   $ commercelayer cleanups:list [-A | -l <value>] [-t
-    bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items] [-s
+    bundles|coupons|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items] [-s
     in_progress|pending|completed|interrupted]
 
 FLAGS
@@ -158,7 +158,7 @@ FLAGS
   -s, --status=<option>  the cleanup job status
                          <options: in_progress|pending|completed|interrupted>
   -t, --type=<option>    the type of resource cleaned
-                         <options: bundles|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items>
+                         <options: bundles|coupons|gift_cards|prices|promotions|sku_lists|sku_options|skus|stock_items>
 
 DESCRIPTION
   list all the created cleanups

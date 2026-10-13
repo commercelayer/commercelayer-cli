@@ -1,10 +1,10 @@
-import { test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 import { AUTH } from '../../helpers'
 
 describe('resources:last', () => {
-  test
-    .stdout()
-    .command(['resources:last', 'unicorns', ...AUTH])
-    .catch(/Invalid resource unicorns/)
-    .it('rejects an unknown resource')
+  it('rejects an unknown resource', async () => {
+    const ctx = await runCommand(['resources:last', 'unicorns', ...AUTH])
+    expect(ctx.error?.message).to.match(/Invalid resource unicorns/)
+  })
 })

@@ -1,4 +1,4 @@
-const treeify = require('object-treeify')
+import treeify from 'object-treeify'
 
 export class Tree {
   nodes: Record<string, Tree> = {}

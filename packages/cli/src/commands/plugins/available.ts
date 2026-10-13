@@ -1,7 +1,9 @@
 import { clColor, clUtil } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
+import type { Interfaces } from '@oclif/core'
 import { Command, Flags } from '@oclif/core'
-import type { Config } from '@oclif/core/lib/interfaces'
+
+type Config = Interfaces.Config
 
 
 const PLUGIN_PREFIX = '@commercelayer/cli-plugin-'

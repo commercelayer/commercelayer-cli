@@ -1,6 +1,6 @@
 import { clApi, clColor, clFilter, clOutput, clUtil, type KeyValString } from '@commercelayer/cli-core'
+import type { ApiVersion } from '@commercelayer/sdk'
 import { CommerceLayer, type CommerceLayerClient, type ListResponse, type Resource } from '@commercelayer/sdk'
-import { apiVersion } from '../../api-version'
 import { Args, BaseCommand, cliux, Flags } from '../../base'
 
 
@@ -42,7 +42,7 @@ export default class ResourcesCount extends BaseCommand {
     const accessToken = flags.accessToken
 
 
-    const cl = CommerceLayer({ apiVersion: apiVersion(flags), organization, domain, accessToken, userAgent: clUtil.userAgent(this.config), timeout: 20_000 })
+    const cl = CommerceLayer({ apiVersion: clApi.apiVersion(flags) as ApiVersion, organization, domain, accessToken, userAgent: clUtil.userAgent(this.config), timeout: 20_000 })
     const resSdk: any = cl[resource.api as keyof CommerceLayerClient]
     this.checkOperation(resSdk)
 
@@ -53,7 +53,7 @@ export default class ResourcesCount extends BaseCommand {
     const humanized = clApi.humanizeResource(resource.type)
 
     this.log()
-    if (!flags.doc) cliux.action.start(`Counting ${humanized}`)
+    cliux.action.start(`Counting ${humanized}`)
 
     const res = await resSdk.list({ filters /* , pageNumber: 1, pageSize: 1 */}) as ListResponse<Resource>
 

@@ -1,6 +1,5 @@
-import { clOutput } from '@commercelayer/cli-core'
+import { clApi, clOutput } from '@commercelayer/cli-core'
 import type { QueryParams } from '@commercelayer/sdk'
-import { apiVersion } from '../api-version'
 import { getOperation, type RequestData } from './request'
 
 
@@ -17,7 +16,8 @@ const buildTypescript = (request: RequestData, params?: QueryParams, flags?: any
 	ts += `\nconst accessToken = '${flags.accessToken}'`
 	if (flags.domain) ts += `\nconst domain = '${flags.domain}'`
 
-	ts += `\n\nconst cl = CommerceLayer({ organization, accessToken, apiVersion: '${apiVersion(flags)}'${flags.domain ? ', domain' : ''} })`
+	const apiVersion = clApi.apiVersion(flags)
+	ts += `\n\nconst cl = CommerceLayer({ organization, accessToken${apiVersion ? `, apiVersion: '${apiVersion}'` : ''}${flags.domain ? ', domain' : ''} })`
 
 	if (hasParams) ts += `\n\nconst params: QueryParams${qpSuffix} = ${clOutput.printObject(params, { color: false })}`
 

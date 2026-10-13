@@ -1,14 +1,20 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
+import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { type AccessToken, type AppInfo, type AppKey, clApi, clConfig } from '@commercelayer/cli-core'
-import type { Config } from '@oclif/core/lib/interfaces/config'
+import type { Interfaces } from '@oclif/core'
 import Configstore from 'configstore'
+
+type Config = Interfaces.Config
 
 const packageJson = require('../package.json')
 
 
 
-const clicfg = new Configstore(packageJson.name as string, null, { globalConfigPath: true })
+// configstore >=6 rejects ids with a slash: keep the file where globalConfigPath put it
+// ($XDG_CONFIG_HOME or ~/.config, then @commercelayer/cli/config.json)
+const configHome = process.env.XDG_CONFIG_HOME || join(homedir(), '.config')
+const clicfg = new Configstore(packageJson.name as string, undefined, { configPath: join(configHome, packageJson.name as string, 'config.json') })
 export default clicfg
 
 
@@ -133,6 +139,7 @@ const currentApplication = (app?: AppInfo): AppInfo | undefined => {
 		name: app.name,
 		slug: app.slug,
 		domain: app.domain,
+		apiVersion: app.apiVersion,
 		kind: app.kind,
 		mode: app.mode,
 		organization: app.organization,
@@ -145,7 +152,7 @@ const currentApplication = (app?: AppInfo): AppInfo | undefined => {
 }
 
 const currentOrganization = (): string | undefined => {
-	const current = clicfg.get(ConfigParams.currentApplication)
+	const current = clicfg.get<AppKey & { slug?: string }>(ConfigParams.currentApplication)
 	return current?.slug
 }
 
@@ -185,6 +192,7 @@ enum ConfigParams {
 	applicationTypeCheck = 'applicationTypeCheck',
 	scopeCheck = 'scopeCheck',
 	defaultDomain = 'defaultDomain',
+	defaultApiVersion = 'defaultApiVersion',
 	test = 'test'
 }
 
@@ -197,6 +205,7 @@ const defaultConfig: any = {
 	test: 'defaultTestValue',
 	commandRetention: 30,	// days of retention
 	defaultDomain: clConfig.api.default_domain,
+	defaultApiVersion: clConfig.api.default_api_version,
 	applicationTypeCheck: clConfig.cli.applications,
 	scopeCheck: clConfig.application.login_scopes
 }

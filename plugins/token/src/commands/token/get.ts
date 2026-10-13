@@ -1,7 +1,11 @@
 import {type AppAuth, clColor, clCommand, clConfig } from '@commercelayer/cli-core'
-import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import type { Interfaces } from '@oclif/core'
 import Command, { Flags } from '../../base'
 import { decodeAccessToken, getAccessToken } from '../../token'
+
+type ArgOutput = Record<string, any>
+type FlagOutput = Record<string, any>
+type Input<F extends FlagOutput, B extends FlagOutput, A extends ArgOutput> = Interfaces.Input<F, B, A>
 
 
 

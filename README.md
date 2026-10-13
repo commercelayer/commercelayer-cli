@@ -30,7 +30,7 @@ See [`packages/cli/README.md`](packages/cli/README.md) for installation and usag
 
 ## Development
 
-Requires Node.js 20+ and [pnpm](https://pnpm.io).
+Requires Node.js 22.13+ and [pnpm](https://pnpm.io).
 
 ```sh
 pnpm install   # install all workspace packages
@@ -43,6 +43,26 @@ Shared dependency versions live in the `catalog:` of `pnpm-workspace.yaml`: pack
 
 Run a single package's script with `pnpm --filter <package name> <script>`, for example `pnpm --filter @commercelayer/cli test`.
 
+### Commit messages
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org) (`feat(tags): …`, `fix(core): …`, `feat!: …` or a `BREAKING CHANGE:` footer for a major): the release scripts derive each package's version and release notes from them. Pull requests are merged with a merge commit, so every commit counts, and CI checks them with commitlint (`commitlint.config.mjs`). To check a branch before pushing:
+
+```sh
+pnpm lint:commits
+```
+
+### Tests against the real API
+
+`pnpm test` runs against a mocked API, with no credentials. The integration suites (`test/integration/*.it.ts`) run read-only commands against the real Core API of a test organization; they are skipped unless its credentials are set:
+
+```sh
+CL_CLI_ORGANIZATION=<org slug> CL_CLI_CLIENT_ID=<client id> CL_CLI_CLIENT_SECRET=<client secret> pnpm test:integration
+```
+
+Use an integration application of a test organization, never a production one. In CI, [integration.yml](.github/workflows/integration.yml) runs them against `cli-test-org` on pushes to `monorepo` and `main`, every night, on demand, and on pull requests that change the suites or the dependencies. They assert on the shape of the output, not on specific records.
+
+The suites that change data (`*-write.it.ts`) only work on resources they create and delete themselves, whose names, emails and references start with `cli-it-`. `node packages/test-utils/bin/live-sweep.mjs` (run before and after the suites in CI) deletes whatever an interrupted run left behind, and nothing else. The checkout and links suites also need `CL_CLI_SALES_CHANNEL_CLIENT_ID`, the client ID of a sales channel application of the organization, and are skipped without it.
+
 ## Generated code
 
 Some plugins generate part of their code: `triggers` and `orders` generate a command for each API trigger, and `resources` and `provisioning` generate their resource list. Each of them declares its generator in a `gen.config.ts`, run by the private [`packages/generator`](packages/generator) (`cl-generate`), in the same way as `commercelayer-sdk` does with its `sdk.config.ts`:
@@ -53,19 +73,6 @@ Some plugins generate part of their code: `triggers` and `orders` generate a com
 - The [Regenerate code](.github/workflows/generate.yml) workflow (manual dispatch) regenerates against an API environment and opens a pull request when something changed.
 
 Don't edit generated files by hand: change the templates (`gen/templates`) or the generator, then regenerate.
-
-## Releasing
-
-Every package is versioned and released on its own. A release starts from a tag `<dir>-v<version>`, where `<dir>` is the package's directory (`cli-v6.10.0`, `core-v5.12.0`, `orders-v5.7.0`).
-
-1. **Bump**: on an up-to-date `main`, run `pnpm release:version`. Only packages with commits touching their folder since their last tag are released. Each one's version is derived from those commits (breaking → major, `feat` → minor, anything else → patch), and you confirm the whole plan once. Use `--interactive` to change or skip single packages, `--yes` to skip the confirmation, `--preid <id>` for a prerelease (`x.y.z-<id>.n`, published under the `<id>` dist-tag). The bumps go on a `release/…` branch and a `chore(release)` pull request. Packages depending on a released one aren't bumped: they pick it up through their `^` range.
-2. **Tag**: after merging it, on an up-to-date `main` run `pnpm release:tag`. It tags the merge commit for every package whose version isn't released yet and pushes the tags.
-3. **Draft**: each tag makes [release.yml](.github/workflows/release.yml) draft a GitHub release, with notes built from the titles and labels of the PRs that touched that package.
-4. **Publish**: publishing the draft makes [publish.yml](.github/workflows/publish.yml) build and test the package from the tag, check its command surface against npm, publish it to npm with provenance and announce it on Slack.
-
-Internal dependencies need no manual step. When a released package uses unreleased changes of a workspace dependency (`cli-core`, `cli-ux`, …), `pnpm release:version` releases the dependency in the same PR, even if you skip it with `--interactive`. `publish.yml` then publishes the dependency to npm before the package, and marks the dependency's draft release as published.
-
-PRs get a `pkg:<dir>` label from the files they touch; that's how each release lists only its own changes. After adding or removing a package, run `pnpm release:config` and commit the generated `.github/labeler.yml` and `.github/release-*.yml`.
 
 ## License
 

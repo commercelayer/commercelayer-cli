@@ -1,11 +1,11 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('exports:types', () => {
-  test
-    .stdout()
-    .command(['exports:types'])
-    .it('lists the exportable resource types', (ctx) => {
-      expect(ctx.stdout).to.contain('skus')
-      expect(ctx.stdout).to.contain('orders')
-    })
+  it('lists the exportable resource types', async () => {
+    const ctx = await runCommand(['exports:types'])
+    if (ctx.error) throw ctx.error
+    expect(ctx.stdout).to.contain('skus')
+    expect(ctx.stdout).to.contain('orders')
+  })
 })

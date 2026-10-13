@@ -20,7 +20,7 @@ const promptApplication = async (apps: AppInfo[], fields?: string[]): Promise<an
 	const details = fields || ['organization', 'kind', 'mode', 'alias'/*, 'api' */]
 
 	const answers = await inquirer.prompt([{
-		type: 'list',
+		type: 'select',
 		name: 'application',
 		message: 'Select an application to switch to:',
 		choices: apps.map(a => {

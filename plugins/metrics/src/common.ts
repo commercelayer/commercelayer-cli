@@ -103,7 +103,15 @@ export type MetricsFilterFbt = {
   }
 }
 export type MetricsQueryFbt = {
-  filter?: MetricsFilterFbt
+  filter: MetricsFilterFbt
+}
+
+/** An item of an FBT query result */
+export type MetricsFbtItem = {
+  item_id: string
+  value: number
+  type: string
+  name?: string
 }
 
 

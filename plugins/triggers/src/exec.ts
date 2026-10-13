@@ -1,8 +1,11 @@
 import { clApi, clColor, clText, clUtil } from '@commercelayer/cli-core'
-import type { CommerceLayerClient, QueryParamsRetrieve, QueryRecordFields, Resource } from '@commercelayer/sdk'
+import type { ApiVersion, CommerceLayerClient, QueryParamsRetrieve, Resource } from '@commercelayer/sdk'
 import commercelayer, { CommerceLayerStatic } from '@commercelayer/sdk'
-import { CLIError } from '@oclif/core/lib/errors'
-import type { Config } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
+import { Errors } from '@oclif/core'
+
+const { CLIError } = Errors
+type Config = Interfaces.Config
 
 
 
@@ -15,6 +18,7 @@ const commercelayerInit = (flags: any, config?: Config): CommerceLayerClient => 
   const userAgent = config? clUtil.userAgent(config) : undefined
 
   return commercelayer({
+    apiVersion: clApi.apiVersion(flags) as ApiVersion,
     organization,
     domain,
     accessToken,
@@ -39,8 +43,7 @@ const exec = async <R extends Resource>(resourceType: string, id: string, action
   const res: any = { id, [`_${action}`]: flags.value || true }
   const params: QueryParamsRetrieve = {}
   if (fields && (fields.length > 0)) {
-    params.fields = {}
-    params.fields[resourceType as R['type']] = fields as QueryRecordFields[R['type']]
+    params.fields = { [resourceType]: fields } as QueryParamsRetrieve['fields']
   }
 
   const result = resSdk.update(res, params).catch((error: unknown) => {

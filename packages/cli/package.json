@@ -1,7 +1,7 @@
 {
   "name": "@commercelayer/cli",
   "description": "Commerce Layer CLI",
-  "version": "6.9.9",
+  "version": "7.0.0-beta.0",
   "author": "Pierluigi Viti <pierluigi@commercelayer.io>",
   "license": "MIT",
   "homepage": "https://github.com/commercelayer/commercelayer-cli/tree/main/packages/cli",
@@ -17,7 +17,7 @@
     "clayer": "./bin/run.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.13"
   },
   "files": [
     "/bin/run.*",
@@ -98,12 +98,9 @@
     "@fig/complete-oclif": "^2.0.1",
     "@oclif/test": "catalog:",
     "@types/chai": "catalog:",
-    "@types/configstore": "^4.0.0",
-    "@types/inquirer": "catalog:",
     "@types/lodash.kebabcase": "^4.1.9",
     "@types/mocha": "catalog:",
     "@types/node": "catalog:",
-    "@types/update-notifier": "^5.1.0",
     "@withfig/autocomplete-types": "^1.31.0",
     "chai": "catalog:",
     "dotenv": "catalog:",
@@ -120,11 +117,11 @@
     "@commercelayer/provisioning-sdk": "catalog:",
     "@commercelayer/sdk": "catalog:",
     "@oclif/core": "catalog:",
-    "@oclif/plugin-autocomplete": "~3.0.18",
+    "@oclif/plugin-autocomplete": "^4.0.2",
     "@oclif/plugin-help": "catalog:",
-    "@oclif/plugin-not-found": "^3.2.93",
-    "@oclif/plugin-plugins": "^5.4.87",
-    "configstore": "^5.0.1",
+    "@oclif/plugin-not-found": "^4.0.2",
+    "@oclif/plugin-plugins": "^7.0.3",
+    "configstore": "^8.0.0",
     "inquirer": "catalog:",
     "lodash.kebabcase": "^4.1.1",
     "tslib": "catalog:",

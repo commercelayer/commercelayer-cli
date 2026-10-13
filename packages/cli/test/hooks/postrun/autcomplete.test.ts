@@ -1,9 +1,10 @@
-import { expect, test } from '@oclif/test'
+import { runHook } from '@oclif/test'
+import { expect } from 'chai'
 
 describe('hooks', () => {
-  test
-    .stdout()
-    .hook('autocomplete', { id: 'noc' })
-    .do(output => expect(output.stdout).to.be.itself)
-    .it('shows a message')
+  it('shows a message', async () => {
+    const ctx = await runHook('autocomplete', { id: 'noc' })
+    if (ctx.error) throw ctx.error
+    await (output => expect(output.stdout).to.be.itself)(ctx)
+  })
 })

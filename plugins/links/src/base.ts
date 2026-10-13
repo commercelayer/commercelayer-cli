@@ -1,51 +1,26 @@
-import { clColor, clConfig, clOutput, clText, clUpdate, clUtil } from '@commercelayer/cli-core'
+import { accessTokenFlag, CLCommand, clColor, clConfig, clText } from '@commercelayer/cli-core'
+import type { ApiVersion } from '@commercelayer/sdk'
 import commercelayer, { type CommerceLayerClient, CommerceLayerStatic, type LinkCreate } from '@commercelayer/sdk'
-import { Args, Command, ux as cliux, Flags } from '@oclif/core'
-import type { CommandError } from '@oclif/core/lib/interfaces'
+import type { Interfaces } from '@oclif/core'
+import { Args, ux as cliux, Flags } from '@oclif/core'
 import { DOC_DATE_TIME_STRING_FORMAT, fillUTCDate } from './util'
 
+type CommandError = Interfaces.CommandError
 
 
-const pkg: clUpdate.Package = require('../package.json')
-
-
-
-export abstract class BaseCommand extends Command {
+export abstract class BaseCommand extends CLCommand {
 
   static baseFlags = {
-    organization: Flags.string({
-      char: 'o',
-      description: 'the slug of your organization',
-      required: true,
-      env: 'CL_CLI_ORGANIZATION',
-      hidden: true
-    }),
-    domain: Flags.string({
-      char: 'd',
-      required: false,
-      hidden: true,
-      dependsOn: ['organization'],
-      env: 'CL_CLI_DOMAIN'
-    }),
-    accessToken: Flags.string({
+    ...CLCommand.baseFlags,
+    accessToken: accessTokenFlag({
       char: 'a',
       description: 'custom access token to use instead of the one used for login',
-      hidden: true,
-      required: true,
-      env: 'CL_CLI_ACCESS_TOKEN',
-      dependsOn: ['organization']
+      dependsOn: ['organization'],
     })
   }
 
 
   protected cl!: CommerceLayerClient
-
-
-  // INIT (override)
-  async init(): Promise<any> {
-    clUpdate.checkUpdate(pkg)
-    return await super.init()
-  }
 
 
   async catch(error: any): Promise<any> {
@@ -54,31 +29,14 @@ export abstract class BaseCommand extends Command {
 
 
   protected async handleError(error: any, flags?: any): Promise<any> {
-    if (CommerceLayerStatic.isApiError(error)) {
-      if (error.status === 401) {
-        const err = error.first()
-        this.error(clColor.msg.error(`${err.title}:  ${err.detail}`),
-          { suggestions: ['Execute login to get access to the organization\'s resources'] }
-        )
-      } else this.error(clOutput.formatError(error, flags))
-    } else return await super.catch(error as CommandError)
+    if (CommerceLayerStatic.isApiError(error)) this.handleApiError(error, { flags })
+    else return await super.catch(error as CommandError)
   }
 
 
   protected commercelayerInit(flags: any): CommerceLayerClient {
-
-    const organization = flags.organization
-    const domain = flags.domain
-    const accessToken = flags.accessToken
-    const userAgent = clUtil.userAgent(this.config)
-
-    return this.cl = commercelayer({
-      organization,
-      domain,
-      accessToken,
-      userAgent
-    })
-
+    this.cl = commercelayer(this.clientOptions<ApiVersion>(flags))
+    return this.cl
   }
 
 
@@ -282,7 +240,6 @@ export abstract class BaseIdCommand extends BaseCommand {
   }
 
 }
-
 
 
 export { Args, cliux, Flags }

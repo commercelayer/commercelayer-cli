@@ -1,14 +1,14 @@
 import { clColor, clText } from "@commercelayer/cli-core";
-import type {
-	CommerceLayerProvisioningClient,
-	QueryPageSize,
-	QueryParamsList,
-} from "@commercelayer/provisioning-sdk";
 import Command, {
 	Args,
 	cliux /*, FLAG_LOAD_PARAMS, FLAG_SAVE_PARAMS */,
 } from "../../base";
 import { addRequestReader, isRequestInterrupted } from "../../lang";
+import type {
+	CommerceLayerProvisioningClient,
+	QueryPageSize,
+	QueryParamsList,
+} from "../../sdk";
 // import { mergeCommandParams } from '../../commands'
 import ResourcesList from "./list";
 

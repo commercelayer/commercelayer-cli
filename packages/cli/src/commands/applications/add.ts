@@ -1,10 +1,14 @@
 import { inspect } from 'node:util'
 import { type AppAuth, clApplication, clColor, clCommand, clToken } from '@commercelayer/cli-core'
 import { CommerceLayerStatic } from '@commercelayer/sdk'
+import type { Interfaces } from '@oclif/core'
 import { Command } from '@oclif/core'
-import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
 import { appsDirCreate, ConfigParams, configParam, writeConfigFile, writeTokenFile } from '../../config'
 import ApplicationsLogin, { checkAlias, checkScope, getApplicationInfo } from './login'
+
+type ArgOutput = Record<string, any>
+type FlagOutput = Record<string, any>
+type Input<F extends FlagOutput, B extends FlagOutput, A extends ArgOutput> = Interfaces.Input<F, B, A>
 
 
 
@@ -53,12 +57,14 @@ export default class ApplicationsAdd extends Command {
       clientSecret: flags.clientSecret,
       slug: flags.organization,
       domain: flags.domain,
+      apiVersion: flags['api-version'],
       scope,
       email: flags.email,
       password: flags.password
     }
 
     if (config.domain === configParam(ConfigParams.defaultDomain)) config.domain = undefined
+    if (!config.apiVersion || (config.apiVersion === configParam(ConfigParams.defaultApiVersion))) config.apiVersion = undefined
 
 
     try {

@@ -1,5 +1,7 @@
+import type { Interfaces } from '@oclif/core'
 import { flush, handle, run, settings} from '@oclif/core'
-import type { LoadOptions } from '@oclif/core/lib/interfaces'
+
+type LoadOptions = Interfaces.LoadOptions
 
 
 export async function execute(options: {

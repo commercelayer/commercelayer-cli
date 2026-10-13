@@ -1,8 +1,12 @@
 import { clColor, clCommand } from '@commercelayer/cli-core'
 import * as cliux from '@commercelayer/cli-ux'
-import type { ArgOutput, FlagOutput, Input } from '@oclif/core/lib/interfaces/parser'
+import type { Interfaces } from '@oclif/core'
 import Command, { Args, Flags } from '../../base'
 import { revokeAccessToken } from '../../token'
+
+type ArgOutput = Record<string, any>
+type FlagOutput = Record<string, any>
+type Input<F extends FlagOutput, B extends FlagOutput, A extends ArgOutput> = Interfaces.Input<F, B, A>
 
 
 

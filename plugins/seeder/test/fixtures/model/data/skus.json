@@ -1,4 +1,5 @@
 [
   { "reference": "SKU1", "code": "TSHIRT", "name": "T-shirt", "shipping_category": "SC1" },
-  { "reference": "SKU_BAD", "code": "BAD", "colour": "red" }
+  { "reference": "SKU_BAD", "code": "BAD", "colour": "red" },
+  { "reference": "SKU_ORPHAN", "code": "ORPHAN", "name": "Orphan", "shipping_category": "SC_GHOST" }
 ]

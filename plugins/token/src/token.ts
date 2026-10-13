@@ -1,5 +1,6 @@
 import type { AccessToken, AccessTokenInfo, AppAuth, CustomToken } from '@commercelayer/cli-core'
-import { clConfig, clToken } from '@commercelayer/cli-core'
+import { clApi, clConfig, clToken } from '@commercelayer/cli-core'
+import type { ApiVersion } from '@commercelayer/sdk'
 import commercelayer from '@commercelayer/sdk'
 
 
@@ -36,6 +37,7 @@ const testAccessToken = async (token: CustomToken | string, flags: any): Promise
   const accessToken = (typeof token === 'string') ? token : token.accessToken
 
   const cl = commercelayer({
+    apiVersion: clApi.apiVersion(flags) as ApiVersion,
     organization,
     domain,
     accessToken,

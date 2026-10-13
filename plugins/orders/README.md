@@ -50,6 +50,7 @@ $ commercelayer plugins:install orders
 * [`commercelayer orders:pending ID`](#commercelayer-orderspending-id)
 * [`commercelayer orders:place ID`](#commercelayer-ordersplace-id)
 * [`commercelayer orders:refresh ID`](#commercelayer-ordersrefresh-id)
+* [`commercelayer orders:refresh_prices ID`](#commercelayer-ordersrefresh_prices-id)
 * [`commercelayer orders:refund ID`](#commercelayer-ordersrefund-id)
 * [`commercelayer orders:refund_invoice ID`](#commercelayer-ordersrefund_invoice-id)
 * [`commercelayer orders:remove_tags ID`](#commercelayer-ordersremove_tags-id)
@@ -512,6 +513,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/orders/refresh.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/refresh.ts)_
+
+### `commercelayer orders:refresh_prices ID`
+
+Send this attribute if you want to refresh the prices of the line items associated to this order. Cannot be passed by sales channels.
+
+```sh-session
+USAGE
+  $ commercelayer orders:refresh_prices ID [-u [-j -p]]
+
+ARGUMENTS
+  ID  the unique id of the order
+
+FLAGS
+  -j, --json         print result in JSON format
+  -p, --print        print out the modified order
+  -u, --unformatted  print JSON output without indentation
+
+DESCRIPTION
+  Send this attribute if you want to refresh the prices of the line items associated to this order. Cannot be passed by
+  sales channels.
+```
+
+_See code: [src/commands/orders/refresh_prices.ts](https://github.com/commercelayer/commercelayer-cli/blob/main/plugins/orders/src/commands/orders/refresh_prices.ts)_
 
 ### `commercelayer orders:refund ID`
 

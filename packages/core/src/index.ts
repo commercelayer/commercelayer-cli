@@ -1,7 +1,8 @@
 
 export * as clApi from './api'
-
 export * as clApplication from './application'
+export type { ApiErrorLike, ApiErrorOptions, BaseFlagOptions, ClientOptions } from './base'
+export { accessTokenFlag, CLCommand, domainFlag, organizationFlag } from './base'
 export * as clCommand from './command'
 export { default as clConfig } from './config'
 

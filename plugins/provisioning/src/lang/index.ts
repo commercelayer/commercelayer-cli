@@ -1,5 +1,5 @@
-import type { QueryParams } from "@commercelayer/provisioning-sdk";
 import inquirer from "inquirer";
+import type { QueryParams } from "../sdk";
 import { buildCurl } from "./curl";
 import { buildTypescript } from "./node";
 import type { RequestData } from "./request";

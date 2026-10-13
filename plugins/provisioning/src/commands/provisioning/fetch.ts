@@ -24,10 +24,9 @@ export default class ResourcesFetch extends BaseFilterCommand {
 		...ListCommand.flags,
 	};
 
-	// The published arguments, kept on the oclif 3 line: path-only fetch ships
-	// with the oclif 5 major (it removes the resource argument)
+	// No resource arg (the resource type is part of the path), as in resources:fetch
 	static args = {
-		...ListCommand.args,
+		...BaseFilterCommand.args,
 		path: Args.string({
 			name: "path",
 			description: "path (or URL) of the resource(s) to fetch",

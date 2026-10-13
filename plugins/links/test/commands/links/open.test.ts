@@ -1,25 +1,20 @@
-import { expect, test } from '@oclif/test'
+import { runCommand } from '@oclif/test'
+import { expect } from 'chai'
 import { AUTH, api, apiError, link, single, useMockedApi } from '../../helpers'
 
 describe('links:open', () => {
   useMockedApi()
 
-  test
-    .do(() => {
-      api().get('/api/links/nope').reply(404, apiError(404, 'Record not found'))
-    })
-    .stdout()
-    .command(['links:open', 'nope', ...AUTH])
-    .exit(0)
-    .it('says when the link does not exist', (ctx) => {
-      expect(ctx.stdout).to.contain('Link nope not found')
-    })
+  it('says when the link does not exist', async () => {
+    api().get('/api/links/nope').reply(404, apiError(404, 'Record not found'))
+    const ctx = await runCommand(['links:open', 'nope', ...AUTH])
+    expect(ctx.error?.oclif?.exit ?? 0).to.equal(0)
+    expect(ctx.stdout).to.contain('Link nope not found')
+  })
 
-  test
-    .do(() => {
-      api().get('/api/links/lnK1').reply(200, single(link('lnK1', { url: null })))
-    })
-    .command(['links:open', 'lnK1', ...AUTH])
-    .catch(/Link's URL is empty/)
-    .it('fails when the link has no URL')
+  it('fails when the link has no URL', async () => {
+    api().get('/api/links/lnK1').reply(200, single(link('lnK1', { url: null })))
+    const ctx = await runCommand(['links:open', 'lnK1', ...AUTH])
+    expect(ctx.error?.message).to.match(/Link's URL is empty/)
+  })
 })
