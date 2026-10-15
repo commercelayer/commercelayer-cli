@@ -89,7 +89,9 @@ jobs:
         run: pnpm exec cl-release ship --plan
 
   publish:
-    name: Publish ${{ needs.plan.outputs.packages }}
+    # Fixed names: GitHub shows a skipped job's name unevaluated (${{ … }}); the
+    # packages are in the log and the summary of the run
+    name: Publish to npm
     needs: plan
     if: needs.plan.outputs.commit != ''
     runs-on: ubuntu-latest
@@ -149,7 +151,7 @@ jobs:
 
   announce:
     # One Slack message per released package, with the link to its release
-    name: Slack ${{ matrix.release.name }}
+    name: Slack message
     needs: publish
     # Also after a failed publish job: the packages it published before failing
     if: ${{ !cancelled() && needs.publish.outputs.released != '' && needs.publish.outputs.released != '[]' }}
