@@ -28,7 +28,7 @@ import { createInterface } from 'node:readline/promises'
 import { Bumper } from 'conventional-recommended-bump'
 import semver from 'semver'
 import { parse } from '../args.ts'
-import { fail, git, lastTag, type Package, previousRelease, publicPackages, readJson, requireUpToDate, sortByDependencies, tagOf, workspaceDeps, writeJson } from '../workspace.ts'
+import { fail, git, lastTag, onNpm, type Package, previousRelease, publicPackages, readJson, requireUpToDate, sortByDependencies, tagOf, workspaceDeps, writeJson } from '../workspace.ts'
 import { buildNotes } from './notes.ts'
 
 const USAGE = `Usage: cl-release version [--interactive | --yes] [--base <branch>] [--no-pr] [--dry-run]
@@ -137,6 +137,15 @@ export const run = async (args: string[]): Promise<void> => {
   const base = values.base
 
   requireUpToDate(base)
+
+  // A merged release not on npm yet (publish.yml still running, or failed):
+  // its tags don't exist yet, so its changes would be released a second time
+  const pending = publicPackages().filter((p) => !semver.prerelease(p.version) && !onNpm(p.name, p.version))
+  if (pending.length > 0)
+    fail(
+      `Not released yet: ${pending.map((p) => `${p.name}@${p.version}`).join(', ')}. ` +
+        'Wait for publish.yml to publish them (Actions → Publish; run it again if it failed), then prepare the next release.',
+    )
 
   const candidates: Candidate[] = []
   for (const pkg of publicPackages()) {

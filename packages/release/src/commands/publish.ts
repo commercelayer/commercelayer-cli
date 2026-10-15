@@ -39,7 +39,7 @@ export const dependenciesToPublish = (
       const depTag = tagOf(dep)
       if (!tags.has(depTag))
         throw new Error(
-          `${[...chain, p.name].join(' → ')} needs ${dep.name}@${dep.version}, which is not on npm and has no ${depTag} release tag. Release it with \`pnpm release:publish\`.`,
+          `${[...chain, p.name].join(' → ')} needs ${dep.name}@${dep.version}, which is not on npm and has no ${depTag} release tag. Release it with \`pnpm release:prepare\`.`,
         )
       visit(dep, [...chain, p.name])
       toPublish.push(dep)
