@@ -1,6 +1,6 @@
 /**
  * Releases the package versions not on npm yet: run by publish.yml on every
- * push to main, so merging an approved release PR (`pnpm release:publish`)
+ * push to main, so merging an approved release PR (`pnpm release:prepare`)
  * publishes it, with no other manual step.
  *
  * --plan finds them: the public packages whose package.json version isn't on
@@ -119,7 +119,7 @@ export const run = async (args: string[]): Promise<void> => {
     for (const name of workspaceDeps(pkg)) {
       const dep = all.get(name)
       if (dep && !names.has(name) && !onNpm(dep.name, dep.version))
-        fail(`${pkg.name} needs ${dep.name}@${dep.version}, which is neither on npm nor in this release. Release it with \`pnpm release:publish\`.`)
+        fail(`${pkg.name} needs ${dep.name}@${dep.version}, which is neither on npm nor in this release. Release it with \`pnpm release:prepare\`.`)
     }
   }
 

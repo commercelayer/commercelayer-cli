@@ -1,14 +1,14 @@
 /**
  * cl-release: the release tooling of the monorepo.
  *
- * The root scripts run it (`pnpm release:publish`, …), and the workflows call
+ * The root scripts run it (`pnpm release:prepare`, …), and the workflows call
  * its commands directly (`pnpm exec cl-release resolve <tag>`, …). It works
  * from anywhere in the repository: it runs at the workspace root.
  */
 import { execFileSync } from 'node:child_process'
 
 const COMMANDS = {
-  version: ['Bump the changed packages and open the release pull request (pnpm release:publish)', () => import('./commands/version.ts')],
+  version: ['Bump the changed packages and open the release pull request (pnpm release:prepare)', () => import('./commands/version.ts')],
   ship: ['Tag, publish to npm and release the versions not on npm (publish.yml)', () => import('./commands/ship.ts')],
   tag: ['Tag the versions not released yet and push the tags (manual recovery: ship tags them)', () => import('./commands/tag.ts')],
   try: ['Install the working tree in a sandbox, packed as for npm', () => import('./commands/try.ts')],

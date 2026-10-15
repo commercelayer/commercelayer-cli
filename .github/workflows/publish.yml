@@ -1,7 +1,7 @@
 name: Publish
 
 # Releases the package versions not on npm yet, on every push to main: merging
-# an approved release pull request (`pnpm release:publish`) publishes it, with
+# an approved release pull request (`pnpm release:prepare`) publishes it, with
 # no other manual step.
 #
 # `cl-release ship --plan` finds the versions not on npm and the commit that
@@ -144,6 +144,12 @@ jobs:
           for dir in ${{ needs.plan.outputs.dirs }}; do
             node "$CL_RELEASE" manifest "$dir"
           done
+
+      # The release tags are annotated: git needs an identity to create them
+      - name: Git identity of the release tags
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Tag, publish to npm and release
         id: ship
