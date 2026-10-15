@@ -79,6 +79,18 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # The release tooling of this workflow's commit, not of the release
+      # commit: an older commit has an older cl-release (the first release
+      # after this workflow changed found no `ship` command there)
+      - name: Release tooling
+        uses: actions/checkout@v7
+        with:
+          path: .release-tooling
+      - name: Install the release tooling
+        run: |
+          pnpm --dir .release-tooling install --frozen-lockfile --filter @commercelayer/cli-release...
+          echo "CL_RELEASE=$GITHUB_WORKSPACE/.release-tooling/packages/release/bin/cl-release.mjs" >> "$GITHUB_ENV"
+
       - name: Build the packages and their workspace dependencies
         run: pnpm ${{ needs.plan.outputs.filters }} build
 
@@ -93,12 +105,12 @@ jobs:
         run: |
           set -euo pipefail
           for dir in ${{ needs.plan.outputs.dirs }}; do
-            pnpm exec cl-release manifest "$dir"
+            node "$CL_RELEASE" manifest "$dir"
           done
 
       - name: Tag, publish to npm and release
         id: ship
-        run: pnpm exec cl-release ship
+        run: node "$CL_RELEASE" ship
 
   announce:
     # One Slack message per released package, with the link to its release
