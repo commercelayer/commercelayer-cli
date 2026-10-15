@@ -1,11 +1,11 @@
 import { expect } from 'chai'
-import { planDrafts } from '../src/commands/drafts.ts'
 import { labelerConfig } from '../src/commands/labels.ts'
 import { surfaceDiff } from '../src/commands/manifest.ts'
 import { withMaintenanceNote } from '../src/commands/notes.ts'
 import { dependenciesToPublish, isConcurrentPublish } from '../src/commands/publish.ts'
+import { planShip } from '../src/commands/ship.ts'
 import { withWorkspaceDeps } from '../src/commands/try.ts'
-import { addChangedDependencies, bump } from '../src/commands/version.ts'
+import { addChangedDependencies, bump, releasePrBody } from '../src/commands/version.ts'
 import { pkg } from './helpers.ts'
 
 describe('version', () => {
@@ -92,40 +92,50 @@ describe('try', () => {
   })
 })
 
-describe('drafts', () => {
-  const core = pkg('core', '5.12.0')
-  const ux = pkg('ux', '1.2.6', ['core'])
-  const tags = pkg('tags', '2.2.7', ['core', 'ux'])
-  const resources = pkg('resources', '6.20.0', ['core'])
-  const packages = [core, ux, tags, resources, pkg('dev', '1.0.0', [], { private: true })]
-
-  it('publishes the dependencies first, each draft after the drafts of its dependencies', () => {
-    const plan = planDrafts([{ tag: 'resources-v6.20.0' }, { tag: 'tags-v2.2.7' }, { tag: 'ux-v1.2.6' }, { tag: 'core-v5.12.0' }], packages)
-    const order = plan.map((r) => r.tag)
-    expect(order.indexOf('core-v5.12.0')).to.be.lessThan(order.indexOf('ux-v1.2.6'))
-    expect(order.indexOf('ux-v1.2.6')).to.be.lessThan(order.indexOf('tags-v2.2.7'))
-    expect(order.indexOf('core-v5.12.0')).to.be.lessThan(order.indexOf('resources-v6.20.0'))
-    expect(plan.find((r) => r.tag === 'tags-v2.2.7')?.waitFor).to.have.members(['core-v5.12.0', 'ux-v1.2.6'])
-    expect(plan.find((r) => r.tag === 'core-v5.12.0')?.waitFor).to.deep.equal([])
-  })
-
-  it('waits only for the dependencies drafted along', () => {
-    const plan = planDrafts([{ tag: 'tags-v2.2.7' }], packages)
-    expect(plan).to.have.length(1)
-    expect(plan[0]).to.include({ tag: 'tags-v2.2.7', version: '2.2.7' })
-    expect(plan[0].waitFor).to.deep.equal([])
-  })
-
-  it('refuses tags that are not workspace package releases', () => {
-    expect(() => planDrafts([{ tag: 'v6.9.9' }], packages)).to.throw(/not a <dir>-v<version> tag/)
-    expect(() => planDrafts([{ tag: 'nope-v1.0.0' }], packages)).to.throw(/no workspace package/)
-    expect(() => planDrafts([{ tag: 'dev-v1.0.0' }], packages)).to.throw(/private/)
-  })
-})
-
 describe('publish of a concurrent release', () => {
   it('recognizes the npm conflict of a version being published by another run', () => {
     expect(isConcurrentPublish('npm error code E409\nnpm error 409 Conflict - PUT … - Cannot publish over previously staged version "5.12.0".')).to.equal(true)
     expect(isConcurrentPublish('npm error code E403\nnpm error 403 Forbidden')).to.equal(false)
+  })
+})
+
+describe('ship', () => {
+  const core = pkg('core', '6.0.0')
+  const ux = pkg('ux', '2.0.0', ['core'])
+  const tags = pkg('tags', '3.0.0', ['core', 'ux'])
+  const exportsPkg = pkg('exports', '4.0.9', ['core'])
+
+  it('groups the pending versions by the commit that set them, oldest first, dependencies first', () => {
+    const groups = planShip([
+      { pkg: tags, commit: 'bbb', time: 200 },
+      { pkg: exportsPkg, commit: 'aaa', time: 100 },
+      { pkg: ux, commit: 'bbb', time: 200 },
+      { pkg: core, commit: 'bbb', time: 200 },
+    ])
+    expect(groups.map((g) => g.commit)).to.deep.equal(['aaa', 'bbb'])
+    expect(groups[1].packages.map((p) => p.dir)).to.deep.equal(['core', 'ux', 'tags'])
+  })
+
+  it('has nothing to release when every version is on npm', () => {
+    expect(planShip([])).to.deep.equal([])
+  })
+})
+
+describe('release PR body', () => {
+  const entry = (name: string, notes: string) => ({ name: `@cl/${name}`, path: `plugins/${name}`, from: '1.0.0', to: '2.0.0', tag: `${name}-v2.0.0`, notes })
+
+  it('lists the bumps and the release notes of each package', () => {
+    const body = releasePrBody([entry('tags', '## 2.0.0\n\n### Features\n\n* tags')])
+    expect(body).to.contain('- `@cl/tags` 1.0.0 → **2.0.0** (`tags-v2.0.0`)')
+    expect(body).to.contain('<details><summary><b>@cl/tags</b> 2.0.0</summary>')
+    expect(body).to.contain('### Features')
+    expect(body).to.contain('publish.yml')
+  })
+
+  it('stays within GitHub limit, cutting long notes with a link to the commits', () => {
+    const long = Array.from({ length: 5000 }, (_, i) => `* change ${i}`).join('\n')
+    const body = releasePrBody(Array.from({ length: 18 }, (_, i) => entry(`p${i}`, long)))
+    expect(body.length).to.be.lessThan(65_536)
+    expect(body).to.contain('… [all the changes](https://github.com/commercelayer/commercelayer-cli/commits/main/plugins/p0)')
   })
 })

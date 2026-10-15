@@ -1,19 +1,19 @@
 /**
  * cl-release: the release tooling of the monorepo.
  *
- * The root scripts run it (`pnpm release:version`, …), and the workflows call
+ * The root scripts run it (`pnpm release:publish`, …), and the workflows call
  * its commands directly (`pnpm exec cl-release resolve <tag>`, …). It works
  * from anywhere in the repository: it runs at the workspace root.
  */
 import { execFileSync } from 'node:child_process'
 
 const COMMANDS = {
-  version: ['Bump the changed packages and open the chore(release) pull request', () => import('./commands/version.ts')],
-  tag: ['Tag the package versions not released yet and push the tags', () => import('./commands/tag.ts')],
+  version: ['Bump the changed packages and open the release pull request (pnpm release:publish)', () => import('./commands/version.ts')],
+  ship: ['Tag, publish to npm and release the versions not on npm (publish.yml)', () => import('./commands/ship.ts')],
+  tag: ['Tag the versions not released yet and push the tags (manual recovery: ship tags them)', () => import('./commands/tag.ts')],
   try: ['Install the working tree in a sandbox, packed as for npm', () => import('./commands/try.ts')],
   resolve: ['Resolve a release tag to its package, as $GITHUB_OUTPUT lines', () => import('./commands/resolve.ts')],
   notes: ['Write the release notes of a tag', () => import('./commands/notes.ts')],
-  drafts: ['Publish the draft GitHub releases, dependencies first (pnpm release:publish)', () => import('./commands/drafts.ts')],
   publish: ['Publish a tag to npm, with the workspace dependencies it needs (publish.yml)', () => import('./commands/publish.ts')],
   manifest: ['Compare a package command surface with its npm version', () => import('./commands/manifest.ts')],
   labels: ['Generate .github/labeler.yml (pkg:<dir> labels)', () => import('./commands/labels.ts')],

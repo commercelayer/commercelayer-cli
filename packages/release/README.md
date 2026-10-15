@@ -4,22 +4,23 @@ Private workspace package, not published. The release tooling of the monorepo, r
 
 ## Releasing
 
-1. `pnpm release:version` bumps the changed packages and opens the `chore(release)` pull request.
+1. `pnpm release:publish` bumps the changed packages and opens the `chore(release)` pull request, with the release notes of each package in its description.
 2. A reviewer approves it, and it is merged.
-3. `pnpm release:tag` tags each new version on its version bump commit; release.yml drafts a GitHub release per tag.
-4. `pnpm release:publish` publishes the drafts, dependencies first; publish.yml publishes each package to npm (OIDC, provenance) and posts to Slack.
+3. publish.yml, on the push to main, publishes the versions not on npm (`cl-release ship`): it builds and tests them from the commit that set them, then, dependencies first, tags each version, publishes it to npm (OIDC, provenance) and publishes its GitHub release. Each package published to npm gets its own Slack message, with the link to its release notes.
+
+A release that stopped halfway resumes by running publish.yml by hand: what is on npm is skipped.
 
 ## Commands
 
 ```sh
-cl-release version [--interactive | --yes] [--base <b>] [--no-pr] [--dry-run]   # pnpm release:version
-cl-release tag [--base <b>] [--no-push] [--dry-run]                              # pnpm release:tag
+cl-release version [--interactive | --yes] [--base <b>] [--no-pr] [--dry-run]   # pnpm release:publish
+cl-release ship [--plan] [--dry-run]                                             # publish.yml
+cl-release tag [--base <b>] [--no-push] [--dry-run]                              # manual recovery
 cl-release try [<plugin dir>...] [--out <dir>]                                   # pnpm release:try
-cl-release drafts [<tag>...] [--yes] [--dry-run] [--timeout <m>]                 # pnpm release:publish
 cl-release labels [--check]                                                      # pnpm release:config
-cl-release resolve <tag>                        # release.yml, publish.yml
-cl-release notes <tag> [previous-tag]           # release.yml
-cl-release publish <tag> [--dry-run]            # publish.yml
+cl-release resolve <tag>                        # manual recovery
+cl-release notes <tag> [previous-tag]
+cl-release publish <tag> [--dry-run]            # manual recovery: one tag
 cl-release manifest <dir> [--against <v>] [--warn]   # verify.yml, publish.yml
 ```
 
