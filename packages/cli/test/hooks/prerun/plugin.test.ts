@@ -49,11 +49,14 @@ describe('hooks:prerun:plugin pinning', () => {
 })
 
 describe('plugin table', () => {
-  it('installs the current major of every plugin of the workspace, as a ^N range', () => {
+  // A new major of a plugin reaches the table only explicitly: the table may
+  // lag behind the workspace, never get ahead of it
+  it('installs every plugin with a ^N range, N a major of the workspace plugin', () => {
     for (const p of getAvailablePlugins()) {
       const { name, version } = JSON.parse(readFileSync(join(__dirname, `../../../../../plugins/${p.name}/package.json`), 'utf8'))
       expect(name).to.equal(p.plugin)
-      expect(p.version, p.name).to.equal(`^${version.split('.')[0]}`)
+      expect(p.version, p.name).to.match(/^\^\d+$/)
+      expect(Number(p.version.slice(1)), p.name).to.be.at.most(Number(version.split('.')[0]))
     }
   })
 })
