@@ -204,7 +204,7 @@ jobs:
                 },
                 {
                 "type": "mrkdwn",
-                "text": "*${{ github.event.sender.login }}* has merged this release."
+                "text": "*${{ github.event.sender.login }}* has triggered this release."
                 }
               ]
               }
