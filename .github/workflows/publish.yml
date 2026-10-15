@@ -11,6 +11,9 @@ name: Publish
 # release with the notes of its commits. One Slack message per released package.
 # A push with nothing to release ends after the plan.
 #
+# Nothing is released unless every other workflow of the commit (Verify,
+# Integration, CodeQL, …) succeeded: the plan waits for them first.
+#
 # npm authentication is OIDC trusted publishing, no NPM_TOKEN: each package's
 # trusted publisher must name the repository commercelayer/commercelayer-cli
 # and this workflow file (publish.yml). Run it by hand to resume a release
@@ -31,8 +34,40 @@ permissions:
   id-token: write
 
 jobs:
+  checks:
+    name: Checks of the commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Wait for the other workflows of the commit, all green
+        # The workflow runs of this commit but Publish's own (this one, or an
+        # earlier failed one that a manual run resumes)
+        run: |
+          set -euo pipefail
+          sleep 30
+          while true; do
+            runs=$(gh run list --commit "$GITHUB_SHA" --limit 100 --json workflowName,status,conclusion \
+              --jq '[.[] | select(.workflowName != "Publish")]')
+            pending=$(jq -r '[.[] | select(.status != "completed") | .workflowName] | join(", ")' <<<"$runs")
+            if [ -z "$pending" ]; then break; fi
+            echo "Waiting for: $pending"
+            sleep 30
+          done
+          jq -r '.[] | "\(.workflowName): \(.conclusion)"' <<<"$runs"
+          failed=$(jq -r '[.[] | select(.conclusion != "success" and .conclusion != "skipped" and .conclusion != "neutral") | "\(.workflowName) (\(.conclusion))"] | join(", ")' <<<"$runs")
+          if [ -n "$failed" ]; then
+            echo "::error::Not released: $failed did not succeed on $GITHUB_SHA. Fix it, then run Publish by hand (or push the fix)."
+            exit 1
+          fi
+
   plan:
     name: Versions to release
+    needs: checks
     runs-on: ubuntu-latest
     outputs:
       commit: ${{ steps.plan.outputs.commit }}
@@ -79,6 +114,18 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # The release tooling of this workflow's commit, not of the release
+      # commit: an older commit has an older cl-release (the first release
+      # after this workflow changed found no `ship` command there)
+      - name: Release tooling
+        uses: actions/checkout@v7
+        with:
+          path: .release-tooling
+      - name: Install the release tooling
+        run: |
+          pnpm --dir .release-tooling install --frozen-lockfile --filter @commercelayer/cli-release...
+          echo "CL_RELEASE=$GITHUB_WORKSPACE/.release-tooling/packages/release/bin/cl-release.mjs" >> "$GITHUB_ENV"
+
       - name: Build the packages and their workspace dependencies
         run: pnpm ${{ needs.plan.outputs.filters }} build
 
@@ -93,12 +140,12 @@ jobs:
         run: |
           set -euo pipefail
           for dir in ${{ needs.plan.outputs.dirs }}; do
-            pnpm exec cl-release manifest "$dir"
+            node "$CL_RELEASE" manifest "$dir"
           done
 
       - name: Tag, publish to npm and release
         id: ship
-        run: pnpm exec cl-release ship
+        run: node "$CL_RELEASE" ship
 
   announce:
     # One Slack message per released package, with the link to its release
