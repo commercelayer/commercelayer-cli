@@ -34,10 +34,11 @@ Update Commerce Layer CLI.
 
 ```sh-session
 USAGE
-  $ commercelayer cli:update [-v <value>]
+  $ commercelayer cli:update [-v <value> | --latest]
 
 FLAGS
   -v, --version=<value>  update CLI to a specific version or tag
+      --latest           update CLI to its latest version, a new major included
 
 DESCRIPTION
   Update Commerce Layer CLI
@@ -47,6 +48,10 @@ ALIASES
   $ commercelayer latest
 
 EXAMPLES
+  $ commercelayer cli:update
+
+  $ commercelayer cli:update --latest
+
   $ commercelayer cli:update --version=<version-or-tag>
 ```
 
