@@ -18,7 +18,8 @@ const hook: Hook<'init'> = async (opts) => {
 
   const notifier = updateNotifier({ pkg, updateCheckInterval: (process.env.CL_CLI_UPDATE_NOTIFY ? 0 : 1000 * 60 * 60) })
 
-  const updateCommand = /* '{updateCommand}' */ 'commercelayer ' + UPDATE_COMMAND
+  // cli:update stays on the current major: a new one needs --latest
+  const updateCommand = /* '{updateCommand}' */ 'commercelayer ' + UPDATE_COMMAND + ((notifier.update?.type === 'major') ? ' --latest' : '')
 
   notifier.notify({
     isGlobal: true,
