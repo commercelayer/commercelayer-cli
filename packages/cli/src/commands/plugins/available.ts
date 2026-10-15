@@ -44,6 +44,7 @@ export default class PluginsAvailable extends Command {
       cliux.Table.table(availablePlugins, {
         key: { header: 'PLUGIN (KEY)', minWidth: 20, get: row => (row.hidden ? clColor.dim : clColor).blueBright(row.name) },
         description: { header: 'DESCRIPTION', get: row => (row.hidden ? clColor.dim(row.description) : row.description) },
+        version: { header: 'VERSION', get: row => clColor.dim(row.version) },
       }, {
         printLine: clUtil.log,
       })
@@ -62,25 +63,31 @@ type PluginRelease = {
   description: string;
   enabled: boolean;
   hidden?: boolean;
-  version?: string;
+  /**
+   * The versions of the plugin this CLI installs and updates: its major, as
+   * a range (^N). A new major of the plugin is never installed or updated to
+   * implicitly: the user asks for it (plugins:install <plugin> --latest),
+   * or a CLI release raises the range here (a breaking change of the CLI).
+   */
+  version: string;
 }
 
 const AvailablePlugins: PluginRelease[] = [
-  { name: 'resources', plugin: '@commercelayer/cli-plugin-resources', description: 'CRUD operations on API resources', enabled: true },
-  { name: 'seeder', plugin: '@commercelayer/cli-plugin-seeder', description: 'Organization data seeder', enabled: true },
-  { name: 'imports', plugin: '@commercelayer/cli-plugin-imports', description: 'Organization imports manager', enabled: true },
-  { name: 'webhooks', plugin: '@commercelayer/cli-plugin-webhooks', description: 'Organization webhooks analyzer', enabled: true },
-  { name: 'orders', plugin: '@commercelayer/cli-plugin-orders', description: 'Organization orders management', enabled: true },
-  { name: 'checkout', plugin: '@commercelayer/cli-plugin-checkout', description: 'Checkout URLs generation', enabled: true },
-  { name: 'triggers', plugin: '@commercelayer/cli-plugin-triggers', description: 'Execute actions on resources', enabled: true },
-  { name: 'token', plugin: '@commercelayer/cli-plugin-token', description: 'Manage Commerce Layer access tokens', enabled: true },
-  { name: 'microstore', plugin: '@commercelayer/cli-plugin-microstore', description: 'Microstore URLs generation', enabled: true },
-  { name: 'exports', plugin: '@commercelayer/cli-plugin-exports', description: 'Organization exports manager', enabled: true },
-  { name: 'cleanups', plugin: '@commercelayer/cli-plugin-cleanups', description: 'Organization cleanups manager', enabled: true },
-  { name: 'tags', plugin: '@commercelayer/cli-plugin-tags', description: 'Manage resources tags', enabled: true },
-  { name: 'provisioning', plugin: '@commercelayer/cli-plugin-provisioning', description: 'Add support for Provisioning API', enabled: true },
-  { name: 'links', plugin: '@commercelayer/cli-plugin-links', description: 'Manage links to resources', enabled: true },
-  { name: 'metrics', plugin: '@commercelayer/cli-plugin-metrics', description: 'Add support for Metrics APIs', enabled: true }
+  { name: 'resources', plugin: '@commercelayer/cli-plugin-resources', description: 'CRUD operations on API resources', version: '^7', enabled: true },
+  { name: 'seeder', plugin: '@commercelayer/cli-plugin-seeder', description: 'Organization data seeder', version: '^6', enabled: true },
+  { name: 'imports', plugin: '@commercelayer/cli-plugin-imports', description: 'Organization imports manager', version: '^5', enabled: true },
+  { name: 'webhooks', plugin: '@commercelayer/cli-plugin-webhooks', description: 'Organization webhooks analyzer', version: '^5', enabled: true },
+  { name: 'orders', plugin: '@commercelayer/cli-plugin-orders', description: 'Organization orders management', version: '^6', enabled: true },
+  { name: 'checkout', plugin: '@commercelayer/cli-plugin-checkout', description: 'Checkout URLs generation', version: '^6', enabled: true },
+  { name: 'triggers', plugin: '@commercelayer/cli-plugin-triggers', description: 'Execute actions on resources', version: '^5', enabled: true },
+  { name: 'token', plugin: '@commercelayer/cli-plugin-token', description: 'Manage Commerce Layer access tokens', version: '^9', enabled: true },
+  { name: 'microstore', plugin: '@commercelayer/cli-plugin-microstore', description: 'Microstore URLs generation', version: '^4', enabled: true },
+  { name: 'exports', plugin: '@commercelayer/cli-plugin-exports', description: 'Organization exports manager', version: '^5', enabled: true },
+  { name: 'cleanups', plugin: '@commercelayer/cli-plugin-cleanups', description: 'Organization cleanups manager', version: '^4', enabled: true },
+  { name: 'tags', plugin: '@commercelayer/cli-plugin-tags', description: 'Manage resources tags', version: '^3', enabled: true },
+  { name: 'provisioning', plugin: '@commercelayer/cli-plugin-provisioning', description: 'Add support for Provisioning API', version: '^3', enabled: true },
+  { name: 'links', plugin: '@commercelayer/cli-plugin-links', description: 'Manage links to resources', version: '^2', enabled: true },
+  { name: 'metrics', plugin: '@commercelayer/cli-plugin-metrics', description: 'Add support for Metrics APIs', version: '^2', enabled: true }
 ]
 
 
