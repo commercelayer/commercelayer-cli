@@ -1,5 +1,8 @@
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { expect } from 'chai'
-import { testBuildPlugin } from '../../../src/hooks/prerun/plugin'
+import { getAvailablePlugins } from '../../../src/commands/plugins/available'
+import { pinPlugins, testBuildPlugin } from '../../../src/hooks/prerun/plugin'
 
 describe('hooks:prerun:plugin', () => {
   describe('test builds', () => {
@@ -19,5 +22,38 @@ describe('hooks:prerun:plugin', () => {
       expect(testBuildPlugin('https://example.com/@commercelayer/cli-plugin-tags@1')).to.equal(undefined)
       expect(testBuildPlugin('tags')).to.equal(undefined)
     })
+  })
+})
+
+describe('hooks:prerun:plugin pinning', () => {
+  const table = getAvailablePlugins()
+  const range = (name: string): string | undefined => table.find((p) => p.name === name)?.version
+
+  it('pins the plugins that follow latest to their installed major, or else to the plugin table', () => {
+    const manifest = {
+      oclif: {
+        plugins: [
+          { name: '@commercelayer/cli-plugin-tags', tag: 'latest', type: 'user' },
+          { name: '@commercelayer/cli-plugin-orders', type: 'user' },
+          { name: '@commercelayer/cli-plugin-imports', tag: '^4', type: 'user' },
+          { name: 'some-other-plugin', tag: 'latest', type: 'user' },
+        ],
+      },
+    }
+    const installed = new Map([['@commercelayer/cli-plugin-orders', '5.7.0']])
+    expect(pinPlugins(manifest, table, installed)).to.equal(true)
+    // orders keeps its major 5 even if the table installs ^6: a new major is never implicit
+    expect(manifest.oclif.plugins.map((p) => p.tag)).to.deep.equal([range('tags'), '^5', '^4', 'latest'])
+    expect(pinPlugins(manifest, table, installed)).to.equal(false)
+  })
+})
+
+describe('plugin table', () => {
+  it('installs the current major of every plugin of the workspace, as a ^N range', () => {
+    for (const p of getAvailablePlugins()) {
+      const { name, version } = JSON.parse(readFileSync(join(__dirname, `../../../../../plugins/${p.name}/package.json`), 'utf8'))
+      expect(name).to.equal(p.plugin)
+      expect(p.version, p.name).to.equal(`^${version.split('.')[0]}`)
+    }
   })
 })
