@@ -57,6 +57,22 @@ export const liveFirst = async (type: string, query: Record<string, string> = {}
 }
 
 /**
+ * The value of a lookup once it satisfies a condition: the API lists a change
+ * (a renamed or deleted resource) a moment after the write that made it, so a
+ * lookup right after a command may still see the previous state. Returns the
+ * last value when the time is up, for the test's own assertion to report.
+ */
+export const liveEventually = async <T>(lookup: () => Promise<T>, done: (value: T) => boolean, timeout = 20_000, interval = 1000): Promise<T> => {
+  const until = Date.now() + timeout
+  let value = await lookup()
+  while (!done(value) && Date.now() < until) {
+    await new Promise((resolve) => setTimeout(resolve, interval))
+    value = await lookup()
+  }
+  return value
+}
+
+/**
  * A describe block that runs only with the test organization's credentials,
  * with a timeout fit for real API calls.
  */

@@ -92,6 +92,7 @@ export {
   liveAuth,
   liveCreate,
   liveDelete,
+  liveEventually,
   liveFirst,
   liveName,
   liveRequest,

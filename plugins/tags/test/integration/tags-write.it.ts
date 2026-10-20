@@ -1,4 +1,4 @@
-import { describeLive, LIVE_RUN, liveAuth, liveCreate, liveDelete, liveFirst, liveName } from '@commercelayer/cli-test-utils'
+import { describeLive, LIVE_RUN, liveAuth, liveCreate, liveDelete, liveEventually, liveFirst, liveName } from '@commercelayer/cli-test-utils'
 import { runCommand } from '@oclif/test'
 import { expect } from 'chai'
 
@@ -9,6 +9,9 @@ const run = async (args: string[]): Promise<string> => {
 }
 
 const tagId = (name: string) => liveFirst('tags', { 'filter[q][name_eq]': name })
+// The API lists a created, renamed or deleted tag a moment after the command
+const tagListed = (name: string) => liveEventually(() => tagId(name), (id) => id !== undefined)
+const tagGone = (name: string) => liveEventually(() => tagId(name), (id) => id === undefined)
 
 // A tag of this run on a customer of this run
 describeLive('tags: create, add, remove, update and delete', () => {
@@ -26,7 +29,7 @@ describeLive('tags: create, add, remove, update and delete', () => {
 
   it('creates a tag', async () => {
     await run(['tags:create', '-n', name])
-    expect(await tagId(name)).to.be.a('string')
+    expect(await tagListed(name)).to.be.a('string')
   })
 
   it('tags a resource and finds it', async () => {
@@ -41,12 +44,12 @@ describeLive('tags: create, add, remove, update and delete', () => {
 
   it('renames the tag', async () => {
     await run(['tags:update', name, '-n', renamed])
-    expect(await tagId(renamed)).to.be.a('string')
-    expect(await tagId(name)).to.equal(undefined)
+    expect(await tagListed(renamed)).to.be.a('string')
+    expect(await tagGone(name)).to.equal(undefined)
   })
 
   it('deletes the tag', async () => {
     await run(['tags:delete', '-n', renamed])
-    expect(await tagId(renamed)).to.equal(undefined)
+    expect(await tagGone(renamed)).to.equal(undefined)
   })
 })
