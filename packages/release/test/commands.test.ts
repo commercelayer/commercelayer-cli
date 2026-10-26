@@ -5,7 +5,7 @@ import { withMaintenanceNote } from '../src/commands/notes.ts'
 import { dependenciesToPublish, isConcurrentPublish } from '../src/commands/publish.ts'
 import { planShip } from '../src/commands/ship.ts'
 import { withWorkspaceDeps } from '../src/commands/try.ts'
-import { addChangedDependencies, bump, releasePrBody } from '../src/commands/version.ts'
+import { addChangedDependencies, bump, releasePrBody, withReleaseSection } from '../src/commands/version.ts'
 import { pkg } from './helpers.ts'
 
 describe('version', () => {
@@ -137,5 +137,24 @@ describe('release PR body', () => {
     const body = releasePrBody(Array.from({ length: 18 }, (_, i) => entry(`p${i}`, long)))
     expect(body.length).to.be.lessThan(65_536)
     expect(body).to.contain('… [all the changes](https://github.com/commercelayer/commercelayer-cli/commits/main/plugins/p0)')
+  })
+})
+
+describe('release section of a pull request', () => {
+  it('adds the release to the description of the changes', () => {
+    const body = withReleaseSection('## Changes\n\n- a fix\n', 'notes v1')
+    expect(body).to.match(/^## Changes\n\n- a fix\n\n<!-- cl-release -->\n## Release\n\nnotes v1\n<!-- \/cl-release -->$/)
+  })
+
+  it('replaces the release section, keeping the rest', () => {
+    const once = withReleaseSection('intro', 'notes v1')
+    const twice = withReleaseSection(`${once}\n\nfooter`, 'notes v2')
+    expect(twice).to.contain('intro').and.to.contain('notes v2').and.to.contain('footer')
+    expect(twice).not.to.contain('notes v1')
+    expect(twice.match(/<!-- cl-release -->/g)).to.have.length(1)
+  })
+
+  it('is the whole description of a new pull request', () => {
+    expect(withReleaseSection('', 'notes')).to.equal('<!-- cl-release -->\n## Release\n\nnotes\n<!-- /cl-release -->')
   })
 })

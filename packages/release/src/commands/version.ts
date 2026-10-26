@@ -17,10 +17,14 @@
  * By default it prints the plan and asks for a single confirmation;
  * --interactive lets you change or skip each package's version.
  *
- * Nothing is committed to the base branch: the bumps go on a `release/…`
- * branch and a pull request, whose description has the release notes of
- * each package. Once it is approved and merged, publish.yml publishes the
- * versions (`cl-release ship`): tags, npm, GitHub releases.
+ * Nothing is committed to the base branch. Run on the base branch, the
+ * bumps go on a `release/…` branch and a pull request of their own. Run on
+ * another branch (the changes to release), the bumps are committed on it and
+ * pushed: its pull request, opened if there is none, then holds the changes
+ * and their release, approved with one review. Either way the description
+ * has the release notes of each package, and once the pull request is
+ * approved and merged publish.yml publishes the versions (`cl-release ship`):
+ * tags, npm, GitHub releases.
  */
 import { execFileSync } from 'node:child_process'
 import { join } from 'node:path'
@@ -35,7 +39,10 @@ const USAGE = `Usage: cl-release version [--interactive | --yes] [--base <branch
   --interactive  confirm, change or skip each package's version
   --yes          no confirmation at all
   --base <b>     branch the release PR targets (default: main)
-  --no-pr        commit on a local release branch only, do not push or open a PR
+  --no-pr        commit only, do not push or open (or update) a PR
+
+On the base branch it opens a release PR of its own; on another branch it
+commits the bumps there and opens or updates that branch's PR.
   --dry-run      show what would happen and change nothing`
 
 type Level = 'major' | 'minor' | 'patch'
@@ -122,6 +129,42 @@ export const releasePrBody = (entries: ReleaseEntry[], repository = 'https://git
   )
 }
 
+const RELEASE_START = '<!-- cl-release -->'
+const RELEASE_END = '<!-- /cl-release -->'
+
+/**
+ * A pull request description with the release section added, or replaced
+ * when there is one already: the rest of the description is kept.
+ */
+export const withReleaseSection = (body: string, release: string): string => {
+  const section = `${RELEASE_START}\n## Release\n\n${release}\n${RELEASE_END}`
+  const start = body.indexOf(RELEASE_START)
+  const end = body.indexOf(RELEASE_END)
+  if (start > -1 && end > start) return `${body.slice(0, start)}${section}${body.slice(end + RELEASE_END.length)}`
+  return body.trim() ? `${body.trimEnd()}\n\n${section}` : section
+}
+
+type BranchPr = { number: number; url: string; body: string; reviewDecision: string; isDraft: boolean }
+
+/** The open pull request of a branch, if any */
+const branchPr = (branch: string): BranchPr | undefined => {
+  try {
+    const pr = JSON.parse(execFileSync('gh', ['pr', 'view', branch, '--json', 'number,url,body,reviewDecision,isDraft,state'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }))
+    return pr.state === 'OPEN' ? pr : undefined
+  } catch {
+    return undefined
+  }
+}
+
+/** The version of a package on a ref, if the package exists there */
+const versionAt = (ref: string, pkg: Package): string | undefined => {
+  try {
+    return JSON.parse(git('show', `${ref}:${pkg.path}/package.json`)).version
+  } catch {
+    return undefined
+  }
+}
+
 export const run = async (args: string[]): Promise<void> => {
   const { values } = parse(
     args,
@@ -135,8 +178,24 @@ export const run = async (args: string[]): Promise<void> => {
     USAGE,
   )
   const base = values.base
+  const current = git('branch', '--show-current')
+  // On another branch than the base: the release goes in that branch's PR
+  const onBranch = current !== '' && current !== base
 
-  requireUpToDate(base)
+  let pr: BranchPr | undefined
+  if (onBranch) {
+    if (git('status', '--porcelain')) fail('Working tree is not clean.')
+    git('fetch', '--quiet', 'origin', base, '--tags')
+    try {
+      git('merge-base', '--is-ancestor', `origin/${base}`, 'HEAD')
+    } catch {
+      fail(`${current} doesn't have the latest ${base}: merge origin/${base} into it first.`)
+    }
+    const bumped = publicPackages().filter((p) => versionAt(`origin/${base}`, p) !== undefined && versionAt(`origin/${base}`, p) !== p.version)
+    if (bumped.length > 0)
+      fail(`The release is already prepared on ${current}: ${bumped.map((p) => `${p.name}@${p.version}`).join(', ')}. To prepare it again, revert its chore(release) commit first.`)
+    pr = branchPr(current)
+  } else requireUpToDate(base)
 
   // A merged release not on npm yet (publish.yml still running, or failed):
   // its tags don't exist yet, so its changes would be released a second time
@@ -220,16 +279,27 @@ export const run = async (args: string[]): Promise<void> => {
   }
 
   const tags = selected.map((s) => tagOf(s.pkg, s.version))
-  const branch = `release/${tags.length === 1 ? tags[0] : new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '')}`
+  const branch = onBranch ? current : `release/${tags.length === 1 ? tags[0] : new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '')}`
   const subject = `chore(release): ${tags.join(', ')}`
 
-  console.log(`\n${subject}\n  branch: ${branch}`)
+  console.log(`\n${subject}\n  branch: ${branch}${pr ? `, pull request #${pr.number}` : ''}`)
   if (values['dry-run']) {
     console.log('  (dry run: nothing changed)')
     return
   }
 
-  git('switch', '--quiet', '-c', branch)
+  // A new commit on an approved PR dismisses its approval
+  if (pr?.reviewDecision === 'APPROVED' && !values.yes) {
+    const confirm = createInterface({ input: process.stdin, output: process.stdout })
+    const answer = (await confirm.question(`\n#${pr.number} is approved: the release commit dismisses its approval, and it needs a new review. Go on? [y/N] `)).trim().toLowerCase()
+    confirm.close()
+    if (answer !== 'y' && answer !== 'yes') {
+      console.log('Aborted: nothing changed.')
+      process.exit(0)
+    }
+  }
+
+  if (!onBranch) git('switch', '--quiet', '-c', branch)
   for (const s of selected) {
     const file = join(s.pkg.path, 'package.json')
     const manifest = readJson(file)
@@ -241,7 +311,7 @@ export const run = async (args: string[]): Promise<void> => {
   console.log(`✓ Committed on ${branch}`)
 
   if (values['no-pr']) {
-    console.log(`\nPush it and open a PR to ${base}: once approved and merged, publish.yml publishes the versions.`)
+    console.log(`\nPush it and open (or update) a PR to ${base}: once approved and merged, publish.yml publishes the versions.`)
     return
   }
 
@@ -254,6 +324,20 @@ export const run = async (args: string[]): Promise<void> => {
     entries.push({ name: s.pkg.name, path: s.pkg.path, from: s.pkg.version, to: s.version, tag, notes })
   }
   const body = releasePrBody(entries)
+
+  if (onBranch) {
+    if (pr) {
+      execFileSync('gh', ['pr', 'edit', String(pr.number), '--body', withReleaseSection(pr.body, body)], { stdio: 'ignore' })
+      console.log(`✓ Release added to #${pr.number}: ${pr.url}`)
+      console.log(pr.isDraft ? '  It is a draft: mark it ready and request the reviews.' : '  Request the reviews if not done yet.')
+    } else {
+      // Titled after the branch's first change, the message of its merge commit on the base branch
+      const [first] = git('log', '--reverse', '--format=%s', `origin/${base}..HEAD`).split('\n').filter((c) => !c.startsWith('chore(release)'))
+      execFileSync('gh', ['pr', 'create', '--base', base, '--head', branch, '--title', first ?? subject, '--body', withReleaseSection('', body)], { stdio: 'inherit' })
+    }
+    return
+  }
+
   // The release PR itself has no place in the release notes
   execFileSync('gh', ['label', 'create', 'ignore-for-release', '--force', '--color', 'ededed', '--description', 'Excluded from release notes'], {
     stdio: 'ignore',
